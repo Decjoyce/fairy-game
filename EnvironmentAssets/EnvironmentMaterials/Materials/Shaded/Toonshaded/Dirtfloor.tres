@@ -1,0 +1,20 @@
+[gd_resource type="ShaderMaterial" load_steps=5 format=3 uid="uid://clygb44bhq2h2"]
+
+[ext_resource type="Material" uid="uid://dyejtq23uplk4" path="res://EnvironmentAssets/EnvironmentMaterials/Materials/Shaded/outline.tres" id="1_agr42"]
+[ext_resource type="Shader" uid="uid://m80xhd161fmy" path="res://EnvironmentAssets/Shaders/cel-shader-base.gdshader" id="2_mb4vm"]
+[ext_resource type="Texture2D" uid="uid://dctjts1ptvdvj" path="res://EnvironmentAssets/EnvironmentModels/Dirtfloor/Dirtfloor_texture_Floordirt_Base_color.png" id="3_u1sp2"]
+[ext_resource type="Texture2D" uid="uid://cnrilqb3unyf6" path="res://EnvironmentAssets/EnvironmentModels/Dirtfloor/Dirtfloor_texture_Floordirt_Normal_OpenGL.png" id="4_hcynd"]
+
+[resource]
+render_priority = 0
+next_pass = ExtResource("1_agr42")
+shader = ExtResource("2_mb4vm")
+shader_parameter/normal_scale = 1.0
+shader_parameter/normal_map = ExtResource("4_hcynd")
+shader_parameter/ao_light_affect = 0.0
+shader_parameter/color = Color(1, 1, 1, 1)
+shader_parameter/base_texture = ExtResource("3_u1sp2")
+shader_parameter/specular = Color(0.3, 0.3, 0.3, 0.5)
+shader_parameter/fresnel = Color(0.2, 0.2, 0.2, 0.3)
+shader_parameter/uv_scale = Vector2(1, 1)
+shader_parameter/uv_offset = Vector2(0, 0)

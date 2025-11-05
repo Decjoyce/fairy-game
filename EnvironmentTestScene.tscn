@@ -16,21 +16,21 @@
 sky_horizon_color = Color(0, 0.37292683, 0.8185948, 1)
 sky_curve = 0.23537512
 ground_horizon_color = Color(0.3529412, 0.30588236, 0.2509804, 1)
+ground_curve = 0.060628746
 
 [sub_resource type="Sky" id="Sky_uqgcp"]
 sky_material = SubResource("ProceduralSkyMaterial_kuxx7")
 
 [sub_resource type="Environment" id="Environment_p577t"]
-background_mode = 1
 sky = SubResource("Sky_uqgcp")
-ambient_light_color = Color(0.79350466, 0.41692376, 0.16339165, 1)
-ambient_light_energy = 2.0
+ambient_light_source = 2
+ambient_light_color = Color(0.8442037, 0.6984972, 0.8872121, 1)
+reflected_light_source = 1
 tonemap_mode = 4
 tonemap_exposure = 1.5
 ssao_enabled = true
 volumetric_fog_enabled = true
 volumetric_fog_density = 0.02
-volumetric_fog_albedo = Color(1, 0.8047244, 0.48797667, 1)
 volumetric_fog_emission = Color(0.13725491, 0.16862746, 0.1882353, 1)
 volumetric_fog_sky_affect = 0.0
 
@@ -41,6 +41,7 @@ environment = SubResource("Environment_p577t")
 
 [node name="LightmapGI" type="LightmapGI" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 17, 0)
+interior = true
 generate_probes_subdiv = 1
 light_data = ExtResource("1_8kqk1")
 
@@ -280,7 +281,7 @@ shadow_enabled = true
 omni_range = 7.53
 
 [node name="OmniLight3D2" type="OmniLight3D" parent="Lights"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 5, -1)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 5, -1)
 light_color = Color(0.8862745, 0.54509807, 0.27058825, 1)
 light_energy = 1.5
 light_volumetric_fog_energy = 2.0
@@ -296,7 +297,7 @@ shadow_enabled = true
 omni_range = 8.0
 
 [node name="OmniLight3D" type="OmniLight3D" parent="Lights/OmniLight3D2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 0, -13)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 0, -13)
 light_color = Color(0.8862745, 0.54509807, 0.27058825, 1)
 light_energy = 1.5
 light_volumetric_fog_energy = 2.0
@@ -308,7 +309,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14, 0, -45)
 light_color = Color(0.8862745, 0.54509807, 0.27058825, 1)
 light_energy = 1.5
 light_volumetric_fog_energy = 2.0
-shadow_enabled = true
 omni_range = 8.0
 
 [node name="OmniLight3D6" type="OmniLight3D" parent="Lights/OmniLight3D2"]
@@ -316,7 +316,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11, 0, -35)
 light_color = Color(0.8862745, 0.54509807, 0.27058825, 1)
 light_energy = 1.5
 light_volumetric_fog_energy = 2.0
-shadow_enabled = true
 omni_range = 8.0
 
 [node name="OmniLight3D4" type="OmniLight3D" parent="Lights/OmniLight3D2"]
@@ -332,7 +331,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, -48)
 light_color = Color(0.8862745, 0.54509807, 0.27058825, 1)
 light_energy = 1.5
 light_volumetric_fog_energy = 2.0
-shadow_enabled = true
 omni_range = 8.0
 
 [node name="OmniLight3D8" type="OmniLight3D" parent="Lights/OmniLight3D2"]
@@ -340,19 +338,16 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14, 0, -53)
 light_color = Color(0.8862745, 0.54509807, 0.27058825, 1)
 light_energy = 1.5
 light_volumetric_fog_energy = 2.0
-shadow_enabled = true
 omni_range = 8.0
 
 [node name="OmniLight3D3" type="OmniLight3D" parent="Lights/OmniLight3D2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, -4, -33)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, -1, -33)
 light_color = Color(0.8862745, 0.54509807, 0.27058825, 1)
-light_energy = 1.5
 light_volumetric_fog_energy = 2.0
-shadow_enabled = true
 omni_range = 8.0
 
 [node name="OmniLight3D9" type="OmniLight3D" parent="Lights/OmniLight3D2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 0, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 0, 0)
 light_color = Color(0.8862745, 0.54509807, 0.27058825, 1)
 light_energy = 1.5
 light_volumetric_fog_energy = 2.0
@@ -368,4 +363,4 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3, 0)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3, -15)
 
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(0.8660254, 0, -0.5, 0, 1, 0, 0.5, 0, 0.8660254, 0, 4, -29)
+transform = Transform3D(0.86602545, 0, -0.5000001, 0, 1, 0, 0.5000001, 0, 0.86602545, 0, 4, -29)
