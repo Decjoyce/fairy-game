@@ -1,0 +1,21 @@
+[gd_resource type="StandardMaterial3D" load_steps=5 format=3 uid="uid://dmttfsdg4kjmc"]
+
+[ext_resource type="Texture2D" uid="uid://cuc5eewjeoibg" path="res://EnvironmentAssets/EnvironmentModels/Roof/Roof_texture_Wall_Base_color.png-texture_Wall_Opacity.png" id="1_y63fp"]
+[ext_resource type="Texture2D" uid="uid://cc5wtj5et2jjh" path="res://EnvironmentAssets/EnvironmentModels/Roof/Roof_texture_Wall_Emissive.png" id="2_ogi8p"]
+[ext_resource type="Texture2D" uid="uid://cdb5eqx8efw2w" path="res://EnvironmentAssets/EnvironmentModels/Roof/Roof_texture_Wall_Metallic.png-texture_Wall_Roughness.png" id="3_cdplg"]
+[ext_resource type="Texture2D" uid="uid://ogt2vk411sn1" path="res://EnvironmentAssets/EnvironmentModels/Roof/Roof_texture_Wall_Normal.png" id="4_f7qa1"]
+
+[resource]
+resource_name = "texture_wall"
+transparency = 4
+cull_mode = 2
+albedo_texture = ExtResource("1_y63fp")
+metallic = 1.0
+metallic_texture = ExtResource("3_cdplg")
+metallic_texture_channel = 2
+roughness_texture = ExtResource("3_cdplg")
+roughness_texture_channel = 1
+emission_enabled = true
+emission_texture = ExtResource("2_ogi8p")
+normal_enabled = true
+normal_texture = ExtResource("4_f7qa1")

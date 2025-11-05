@@ -1,0 +1,21 @@
+[gd_resource type="StandardMaterial3D" load_steps=5 format=3 uid="uid://d4jc1o75fdadt"]
+
+[ext_resource type="Texture2D" uid="uid://25c8b6r5y6rb" path="res://EnvironmentAssets/EnvironmentModels/Pillar/Half/Halfpillar_HalfPillar_BaseColor-HalfPillar_Alpha.png" id="1_kwlp5"]
+[ext_resource type="Texture2D" uid="uid://cv6f5d2x58tf1" path="res://EnvironmentAssets/EnvironmentModels/Pillar/Half/Halfpillar_HalfPillar_Emission.png" id="2_qcgmn"]
+[ext_resource type="Texture2D" uid="uid://74g76t284sqk" path="res://EnvironmentAssets/EnvironmentModels/Pillar/Half/Halfpillar_HalfPillar_Metallic-HalfPillar_Roughness.png" id="3_k5tsp"]
+[ext_resource type="Texture2D" uid="uid://cje2wgcx57cic" path="res://EnvironmentAssets/EnvironmentModels/Pillar/Half/Halfpillar_HalfPillar_Normal.png" id="4_e0ya6"]
+
+[resource]
+resource_name = "HalfPillar"
+transparency = 4
+cull_mode = 2
+albedo_texture = ExtResource("1_kwlp5")
+metallic = 1.0
+metallic_texture = ExtResource("3_k5tsp")
+metallic_texture_channel = 2
+roughness_texture = ExtResource("3_k5tsp")
+roughness_texture_channel = 1
+emission_enabled = true
+emission_texture = ExtResource("2_qcgmn")
+normal_enabled = true
+normal_texture = ExtResource("4_e0ya6")
