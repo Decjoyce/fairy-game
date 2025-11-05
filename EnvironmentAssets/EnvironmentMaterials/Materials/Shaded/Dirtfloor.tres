@@ -1,19 +1,23 @@
 [gd_resource type="ShaderMaterial" load_steps=5 format=3 uid="uid://clygb44bhq2h2"]
 
-[ext_resource type="Material" uid="uid://dyejtq23uplk4" path="res://EnvironmentAssets/EnvironmentMaterials/Materials/Shaded/outline.tres" id="1_ebos2"]
-[ext_resource type="Shader" uid="uid://m80xhd161fmy" path="res://EnvironmentAssets/Shaders/cel-shader-base.gdshader" id="2_a5fk1"]
-[ext_resource type="Texture2D" uid="uid://c5hjb6fv167i6" path="res://EnvironmentAssets/EnvironmentModels/Dirtfloor/texture_Floordirt_Base_color.png" id="3_5j06e"]
-[ext_resource type="Texture2D" uid="uid://be3oa3oi20yf7" path="res://EnvironmentAssets/EnvironmentModels/Dirtfloor/texture_Floordirt_Normal_OpenGL.png" id="4_fg8np"]
+[ext_resource type="Material" uid="uid://dyejtq23uplk4" path="res://EnvironmentAssets/EnvironmentMaterials/Materials/Shaded/outline.tres" id="1_agr42"]
+[ext_resource type="Shader" uid="uid://m80xhd161fmy" path="res://EnvironmentAssets/Shaders/cel-shader-base.gdshader" id="2_mb4vm"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_u1sp2"]
+load_path = "res://.godot/imported/texture_Floordirt_Base_color.png-f429df765b08d44f1cba09c279383878.s3tc.ctex"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_hcynd"]
+load_path = "res://.godot/imported/texture_Floordirt_Normal_OpenGL.png-a86604d0383d2df760eb93a8cf4a402c.s3tc.ctex"
 
 [resource]
 render_priority = 0
-next_pass = ExtResource("1_ebos2")
-shader = ExtResource("2_a5fk1")
+next_pass = ExtResource("1_agr42")
+shader = ExtResource("2_mb4vm")
 shader_parameter/normal_scale = 1.0
-shader_parameter/normal_map = ExtResource("4_fg8np")
+shader_parameter/normal_map = SubResource("CompressedTexture2D_hcynd")
 shader_parameter/ao_light_affect = 0.0
 shader_parameter/color = Color(1, 1, 1, 1)
-shader_parameter/base_texture = ExtResource("3_5j06e")
+shader_parameter/base_texture = SubResource("CompressedTexture2D_u1sp2")
 shader_parameter/specular = Color(0.3, 0.3, 0.3, 0.5)
 shader_parameter/fresnel = Color(0.2, 0.2, 0.2, 0.3)
 shader_parameter/uv_scale = Vector2(1, 1)
