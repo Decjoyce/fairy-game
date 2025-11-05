@@ -1,5 +1,6 @@
-[gd_scene load_steps=9 format=3 uid="uid://cdra8lh1m5gpy"]
+[gd_scene load_steps=15 format=3 uid="uid://cdra8lh1m5gpy"]
 
+[ext_resource type="LightmapGIData" uid="uid://y22oyswl3ksk" path="res://EnvironmentAssets/EnvironmentMaterials/LightMapBake/EnvironmentTestScene.lmbake" id="1_8kqk1"]
 [ext_resource type="PackedScene" uid="uid://xfb71tgdh6jo" path="res://EnvironmentAssets/EnvironmentModels/Dirtfloor/Dirtfloor.glb" id="1_r4gc6"]
 [ext_resource type="PackedScene" uid="uid://br01bblhowysi" path="res://EnvironmentAssets/EnvironmentModels/Wall/Wall.glb" id="2_v6csk"]
 [ext_resource type="PackedScene" uid="uid://c21b4yr5neqr7" path="res://EnvironmentAssets/EnvironmentModels/Roof/Roof.glb" id="3_orvg3"]
@@ -8,8 +9,38 @@
 [ext_resource type="PackedScene" uid="uid://cfckixc5dspcd" path="res://EnvironmentAssets/EnvironmentModels/Dirtbox/End/DirtEnd.glb" id="5_kdqhf"]
 [ext_resource type="PackedScene" uid="uid://ch50k7mhw1jqj" path="res://EnvironmentAssets/EnvironmentModels/Stoneslab/Stonelab.glb" id="7_kdqhf"]
 [ext_resource type="PackedScene" uid="uid://de1fva8w3lccr" path="res://EnvironmentAssets/EnvironmentModels/Dirtbox/Middle/DirtMiddle.glb" id="7_kuxx7"]
+[ext_resource type="PackedScene" uid="uid://bry8rqyr2pf37" path="res://EnvironmentAssets/EnvironmentModels/Rocks/Rocks.glb" id="9_p577t"]
+[ext_resource type="PackedScene" uid="uid://nyu8sf237tbj" path="res://EnvironmentAssets/EnvironmentModels/Pillar/Half/Halfpillar.glb" id="10_8kqk1"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_kuxx7"]
+sky_horizon_color = Color(0, 0.37292683, 0.8185948, 1)
+sky_curve = 0.23537512
+ground_horizon_color = Color(0.3529412, 0.30588236, 0.2509804, 1)
+
+[sub_resource type="Sky" id="Sky_uqgcp"]
+sky_material = SubResource("ProceduralSkyMaterial_kuxx7")
+
+[sub_resource type="Environment" id="Environment_p577t"]
+background_mode = 1
+sky = SubResource("Sky_uqgcp")
+ambient_light_source = 3
+tonemap_mode = 4
+tonemap_exposure = 1.5
+volumetric_fog_enabled = true
+volumetric_fog_density = 0.02
+volumetric_fog_albedo = Color(1, 0.8047244, 0.48797667, 1)
+volumetric_fog_emission = Color(0.13725491, 0.16862746, 0.1882353, 1)
+volumetric_fog_sky_affect = 0.0
 
 [node name="EnvironmentSetup" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_p577t")
+
+[node name="LightmapGI" type="LightmapGI" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 17, 0)
+generate_probes_subdiv = 1
+light_data = ExtResource("1_8kqk1")
 
 [node name="Hall" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -14)
@@ -55,3 +86,41 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3, 0)
 
 [node name="DirtMiddle" parent="." instance=ExtResource("7_kuxx7")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3, -15)
+
+[node name="Rocks" parent="." instance=ExtResource("9_p577t")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, -18)
+
+[node name="Halfpillar" parent="." instance=ExtResource("10_8kqk1")]
+transform = Transform3D(-0.25881904, 0, -0.9659258, 0, 1, 0, 0.9659258, 0, -0.25881904, 3, 0, -13)
+
+[node name="OmniLight3D2" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 5, -1)
+light_color = Color(0.8862745, 0.54509807, 0.27058825, 1)
+light_energy = 1.5
+light_volumetric_fog_energy = 2.0
+shadow_enabled = true
+omni_range = 8.0
+
+[node name="OmniLight3D2" type="OmniLight3D" parent="OmniLight3D2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -13)
+light_color = Color(0.8862745, 0.54509807, 0.27058825, 1)
+light_energy = 1.5
+light_volumetric_fog_energy = 2.0
+shadow_enabled = true
+omni_range = 8.0
+
+[node name="OmniLight3D" type="OmniLight3D" parent="OmniLight3D2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 0, -13)
+light_color = Color(0.8862745, 0.54509807, 0.27058825, 1)
+light_energy = 1.5
+light_volumetric_fog_energy = 2.0
+shadow_enabled = true
+omni_range = 8.0
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 5, -1)
+light_color = Color(0.8862745, 0.54509807, 0.27058825, 1)
+light_energy = 1.5
+light_volumetric_fog_energy = 2.0
+shadow_enabled = true
+omni_range = 8.0
