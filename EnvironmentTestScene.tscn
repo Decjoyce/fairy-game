@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://cdra8lh1m5gpy"]
+[gd_scene load_steps=18 format=3 uid="uid://cdra8lh1m5gpy"]
 
 [ext_resource type="LightmapGIData" uid="uid://y22oyswl3ksk" path="res://EnvironmentAssets/EnvironmentMaterials/LightMapBake/EnvironmentTestScene.lmbake" id="1_8kqk1"]
 [ext_resource type="PackedScene" uid="uid://xfb71tgdh6jo" path="res://EnvironmentAssets/EnvironmentModels/Dirtfloor/Dirtfloor.glb" id="1_r4gc6"]
@@ -6,11 +6,14 @@
 [ext_resource type="PackedScene" uid="uid://c21b4yr5neqr7" path="res://EnvironmentAssets/EnvironmentModels/Roof/Roof.glb" id="3_orvg3"]
 [ext_resource type="PackedScene" uid="uid://bmamnnx3o5e28" path="res://EnvironmentAssets/EnvironmentModels/Pillar/Full/Fullpillar.glb" id="4_kuxx7"]
 [ext_resource type="PackedScene" uid="uid://ug0eek4wmkkj" path="res://EnvironmentAssets/EnvironmentModels/WallDoor/Walldoor.glb" id="4_v6csk"]
-[ext_resource type="PackedScene" uid="uid://cfckixc5dspcd" path="res://EnvironmentAssets/EnvironmentModels/Dirtbox/End/DirtEnd.glb" id="5_kdqhf"]
 [ext_resource type="PackedScene" uid="uid://ch50k7mhw1jqj" path="res://EnvironmentAssets/EnvironmentModels/Stoneslab/Stonelab.glb" id="7_kdqhf"]
-[ext_resource type="PackedScene" uid="uid://de1fva8w3lccr" path="res://EnvironmentAssets/EnvironmentModels/Dirtbox/Middle/DirtMiddle.glb" id="7_kuxx7"]
 [ext_resource type="PackedScene" uid="uid://bry8rqyr2pf37" path="res://EnvironmentAssets/EnvironmentModels/Rocks/Rocks.glb" id="9_p577t"]
 [ext_resource type="PackedScene" uid="uid://nyu8sf237tbj" path="res://EnvironmentAssets/EnvironmentModels/Pillar/Half/Halfpillar.glb" id="10_8kqk1"]
+[ext_resource type="PackedScene" uid="uid://bo4nyrbne608d" path="res://EnvironmentAssets/EnvironmentModels/Dirtbox/Hall/DirtCubeHall.glb" id="11_joqrx"]
+[ext_resource type="PackedScene" uid="uid://bb6y0ujjbu6ol" path="res://EnvironmentAssets/EnvironmentModels/Dirtbox/End/DirtCubeEnd.glb" id="12_048kb"]
+[ext_resource type="PackedScene" uid="uid://djn3cgdf3m2v5" path="res://EnvironmentAssets/EnvironmentModels/Dirtbox/Corner/DirtCubeCorner.glb" id="13_048kb"]
+[ext_resource type="PackedScene" uid="uid://byd6onaompomr" path="res://EnvironmentAssets/EnvironmentModels/Dirtbox/Middle/DirtCubeMiddle.glb" id="13_r78ab"]
+[ext_resource type="PackedScene" uid="uid://b6xj1a6qok0vw" path="res://EnvironmentAssets/EnvironmentModels/Dirtbox/Side/DirtCubeSide.glb" id="14_p5uwf"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_kuxx7"]
 sky_horizon_color = Color(0, 0.37292683, 0.8185948, 1)
@@ -24,7 +27,6 @@ sky_material = SubResource("ProceduralSkyMaterial_kuxx7")
 [sub_resource type="Environment" id="Environment_p577t"]
 sky = SubResource("Sky_uqgcp")
 ambient_light_source = 2
-ambient_light_color = Color(0.8442037, 0.6984972, 0.8872121, 1)
 reflected_light_source = 1
 tonemap_mode = 4
 tonemap_exposure = 1.5
@@ -334,7 +336,7 @@ light_volumetric_fog_energy = 2.0
 omni_range = 8.0
 
 [node name="OmniLight3D8" type="OmniLight3D" parent="Lights/OmniLight3D2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14, 0, -53)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 0, -57)
 light_color = Color(0.8862745, 0.54509807, 0.27058825, 1)
 light_energy = 1.5
 light_volumetric_fog_energy = 2.0
@@ -356,11 +358,47 @@ omni_range = 8.0
 
 [node name="DirtCover" type="Node3D" parent="."]
 
-[node name="DirtEnd" parent="DirtCover" instance=ExtResource("5_kdqhf")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3, 0)
-
-[node name="DirtMiddle" parent="DirtCover" instance=ExtResource("7_kuxx7")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3, -15)
-
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(0.86602545, 0, -0.5000001, 0, 1, 0, 0.5000001, 0, 0.86602545, 0, 4, -29)
+
+[node name="DirtCubeHall" parent="." instance=ExtResource("11_joqrx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2, -14)
+
+[node name="DirtCubeEnd" parent="." instance=ExtResource("12_048kb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2, 0)
+
+[node name="DirtCubeCorner" parent="." instance=ExtResource("13_048kb")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -14, -2, -28)
+
+[node name="DirtCubeMiddle" parent="." instance=ExtResource("13_r78ab")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2, -28)
+
+[node name="DirtCubeSide" parent="." instance=ExtResource("14_p5uwf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14, -2, -28)
+
+[node name="DirtCubeCorner2" parent="." instance=ExtResource("13_048kb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 28, -2, -28)
+
+[node name="DirtCubeCorner3" parent="." instance=ExtResource("13_048kb")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 28, -2, -56)
+
+[node name="DirtCubeSide2" parent="." instance=ExtResource("14_p5uwf")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 28, -2, -42)
+
+[node name="DirtCubeMiddle2" parent="." instance=ExtResource("13_r78ab")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14, -2, -42)
+
+[node name="DirtCubeMiddle3" parent="." instance=ExtResource("13_r78ab")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2, -42)
+
+[node name="DirtCubeSide3" parent="." instance=ExtResource("14_p5uwf")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -14, -2, -42)
+
+[node name="DirtCubeCorner4" parent="." instance=ExtResource("13_048kb")]
+transform = Transform3D(-1, 0, 8.940697e-08, 0, 1, 0, -8.940697e-08, 0, -1, -14, -2, -56)
+
+[node name="DirtCubeSide4" parent="." instance=ExtResource("14_p5uwf")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, -2, -56)
+
+[node name="DirtCubeSide5" parent="." instance=ExtResource("14_p5uwf")]
+transform = Transform3D(-0.99999994, 0, 5.9604645e-08, 0, 1, 0, -5.9604645e-08, 0, -0.99999994, 14, -2, -56)
