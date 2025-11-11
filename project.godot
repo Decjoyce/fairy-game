@@ -11,5 +11,29 @@ config_version=5
 [application]
 
 config/name="fairy-game"
+run/main_scene="uid://cdra8lh1m5gpy"
 config/features=PackedStringArray("4.5", "Forward Plus")
 config/icon="res://icon.svg"
+
+[shader_globals]
+
+outline_color={
+"type": "color",
+"value": Color(0, 0, 0, 1)
+}
+outline_width={
+"type": "float",
+"value": 4.0
+}
+specular_smoothness={
+"type": "float",
+"value": 0.05
+}
+fresnel_smoothness={
+"type": "float",
+"value": 0.05
+}
+diffuse_curve={
+"type": "sampler2D",
+"value": "::nwpjk"
+}

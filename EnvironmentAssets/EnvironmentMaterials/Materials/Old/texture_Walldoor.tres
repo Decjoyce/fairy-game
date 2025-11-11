@@ -1,0 +1,21 @@
+[gd_resource type="StandardMaterial3D" load_steps=5 format=3 uid="uid://cbe8cp8tyny3v"]
+
+[ext_resource type="Texture2D" uid="uid://dk34y0yxru86b" path="res://EnvironmentAssets/EnvironmentModels/WallDoor/Walldoor_texture_Walldoor_Base_color-texture_Walldoor_Opacity.png" id="1_jcfvp"]
+[ext_resource type="Texture2D" uid="uid://nvopcs63uasv" path="res://EnvironmentAssets/EnvironmentModels/WallDoor/Walldoor_texture_Walldoor_Emissive.png" id="2_12grk"]
+[ext_resource type="Texture2D" uid="uid://dfdcbyf6qajs0" path="res://EnvironmentAssets/EnvironmentModels/WallDoor/Walldoor_texture_Walldoor_Metallic.png-texture_Walldoor_Roughness.png" id="3_ql6gq"]
+[ext_resource type="Texture2D" uid="uid://sp0npq1ya13u" path="res://EnvironmentAssets/EnvironmentModels/WallDoor/Walldoor_texture_Walldoor_Normal.png" id="4_8xe8t"]
+
+[resource]
+resource_name = "texture_Walldoor"
+transparency = 4
+cull_mode = 2
+albedo_texture = ExtResource("1_jcfvp")
+metallic = 1.0
+metallic_texture = ExtResource("3_ql6gq")
+metallic_texture_channel = 2
+roughness_texture = ExtResource("3_ql6gq")
+roughness_texture_channel = 1
+emission_enabled = true
+emission_texture = ExtResource("2_12grk")
+normal_enabled = true
+normal_texture = ExtResource("4_8xe8t")
