@@ -1,0 +1,25 @@
+[gd_scene load_steps=6 format=3 uid="uid://bq86osdembn58"]
+
+[ext_resource type="Script" uid="uid://io22wsbhy73f" path="res://TEMP_movement_stuff/player_test.gd" id="1_e0b2u"]
+[ext_resource type="Script" uid="uid://cbig6tk8hiy08" path="res://TEMP_movement_stuff/movement_improved_2.gd" id="2_e0b2u"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1snfn"]
+albedo_color = Color(1, 0.15294118, 1, 1)
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_1snfn"]
+
+[sub_resource type="Environment" id="Environment_xys6k"]
+
+[node name="player_test" type="Node3D"]
+script = ExtResource("1_e0b2u")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+material_override = SubResource("StandardMaterial3D_1snfn")
+mesh = SubResource("CapsuleMesh_1snfn")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+environment = SubResource("Environment_xys6k")
+current = true
+
+[node name="MovementImproved2" type="Node" parent="."]
+script = ExtResource("2_e0b2u")
