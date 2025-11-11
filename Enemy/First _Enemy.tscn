@@ -1,0 +1,153 @@
+[gd_scene load_steps=15 format=3 uid="uid://bj8n80dbd408c"]
+
+[ext_resource type="Texture2D" uid="uid://d117rsf1rrxb6" path="res://Sprites/ballybogIdle_n.png" id="1_qr3a0"]
+[ext_resource type="Texture2D" uid="uid://cjn3bxmukh4fj" path="res://Sprites/ballybogIdle.png" id="2_ajj11"]
+[ext_resource type="Script" uid="uid://b5653u7w56pqw" path="res://extras_sprites/scripts/sprite_3D_billboard.gd" id="3_jrekf"]
+[ext_resource type="Script" uid="uid://b4m0sglcg4smw" path="res://extras_sprites/scripts/animatio_data.gd" id="4_f2srf"]
+[ext_resource type="Script" uid="uid://r7bhwy0jfpk7" path="res://EnemyStateMachine/StateMachine.gd" id="5_bin5x"]
+[ext_resource type="Script" uid="uid://c3fdtr0ieg5dj" path="res://EnemyStateMachine/sm_controller.gd" id="5_f2srf"]
+[ext_resource type="Script" uid="uid://dc3uc7qhwg03r" path="res://EnemyStateMachine/idle_state.gd" id="6_ajj11"]
+[ext_resource type="Script" uid="uid://bg6gxealt4p8b" path="res://EnemyStateMachine/Fighting.gd" id="7_jrekf"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_abuop"]
+
+[sub_resource type="Shader" id="Shader_pmwph"]
+code = "shader_type spatial;
+render_mode diffuse_lambert_wrap,cull_disabled;
+
+uniform float rows:hint_range(1.0, 100.0, 1) = 1;
+uniform float columns:hint_range(1.0, 100.0, 1) = 1;
+uniform float frame:hint_range(0.0, 100.0, 1) = 0;
+uniform bool invert_rows_columns = false;
+uniform sampler2D sprite:filter_nearest_mipmap;
+uniform int mode:hint_range(0, 1, 1) = 1;
+varying vec3 look_dir;
+uniform sampler2D Normal;
+
+
+float billboard_mode_a(vec3 CAMERA_POSITION,vec3 NODE_POSITION, mat4 MODEL_MAT,float directions){
+	vec3 direction_to_camera = normalize(CAMERA_POSITION-NODE_POSITION);
+	float angle_to_camera = atan(direction_to_camera.x,direction_to_camera.z);
+	vec4 model_direction = MODEL_MAT*vec4(1.0,0.0,0.0,0.0);
+	float y_angle = atan(model_direction.x,model_direction.z)-PI/2.0;
+	float final_angle = angle_to_camera-y_angle;
+	float int_y_angle = round((final_angle / TAU) * float(directions)) / float(directions);
+	return int_y_angle;
+}
+float billboard_mobe_b(vec3 CAMERA_POSITION,mat4 MODEL_MAT,mat4 VIEW_MAT,float directions,int ret){
+
+    vec3 ray_origin = CAMERA_POSITION;
+
+    vec3 object_origin = (MODEL_MAT * vec4(0.0,0.0,0.0,1.0)).xyz;
+    vec3 cam_dir = object_origin - ray_origin;
+    cam_dir = normalize((VIEW_MAT * vec4(cam_dir, 0.0)).xyz);
+
+    float angle = 180.0 - degrees(acos(dot(normalize(cam_dir.xz), normalize(look_dir.xz))));
+    float _direction = round(angle/180.0 * directions);
+
+    float flip = sign((look_dir.x * cam_dir.z) - (look_dir.z * cam_dir.x));
+
+    flip = mix(flip, 1.0, max(step(_direction, 0.0), step(directions, _direction)));
+	float retu = ret == 0 ? _direction : flip;
+	return retu ;
+}
+void vertex() {
+		 MODELVIEW_MATRIX = VIEW_MATRIX * mat4(vec4(normalize(cross(vec3(0.0, 1.0, 0.0), INV_VIEW_MATRIX[2].xyz)), 0.0), vec4(0.0, 1.0, 0.0, 0.0), vec4(normalize(cross(INV_VIEW_MATRIX[0].xyz, vec3(0.0, 1.0, 0.0))), 0.0), MODEL_MATRIX[3]);
+		look_dir = MODELVIEW_NORMAL_MATRIX * NORMAL;
+		MODELVIEW_NORMAL_MATRIX = mat3(MODELVIEW_MATRIX);
+	switch (mode){
+		case 0:
+			float y = invert_rows_columns == true ? billboard_mode_a(CAMERA_POSITION_WORLD,NODE_POSITION_WORLD,MODEL_MATRIX,rows) : billboard_mode_a(CAMERA_POSITION_WORLD,NODE_POSITION_WORLD,MODEL_MATRIX,columns);
+			float x = invert_rows_columns == true ? frame/columns:frame/rows;
+			UV /= vec2(rows,columns);
+			UV += invert_rows_columns == true ?vec2(y,x):vec2(x,y);
+			break;
+		case 1:
+			float x = invert_rows_columns == true ? frame/columns:frame/rows;
+			float y = billboard_mobe_b(CAMERA_POSITION_WORLD,MODEL_MATRIX,VIEW_MATRIX,rows,0);
+			float f = billboard_mobe_b(CAMERA_POSITION_WORLD,MODEL_MATRIX,VIEW_MATRIX,rows,1);
+			if (invert_rows_columns){
+				y = billboard_mobe_b(CAMERA_POSITION_WORLD,MODEL_MATRIX,VIEW_MATRIX,columns,0);
+				f = billboard_mobe_b(CAMERA_POSITION_WORLD,MODEL_MATRIX,VIEW_MATRIX,columns,1);
+			}
+			UV.y += invert_rows_columns == true ? x:y;
+			UV /=vec2(rows,columns);
+			UV.x +=  invert_rows_columns == true ? y : x;
+			UV *= invert_rows_columns == true ? vec2(1.0,f):vec2(f,1.0);
+			break;
+	};
+}
+
+void fragment() {
+	vec3 VNormal = texture(Normal,UV).rgb;
+	vec4 sprite_texture;
+	sprite_texture = texture(sprite,UV);
+	ALBEDO = sprite_texture.rgb;
+	ALPHA = sprite_texture.a;
+	NORMAL_MAP = VNormal;
+}
+"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_g8xqt"]
+render_priority = 0
+shader = SubResource("Shader_pmwph")
+shader_parameter/rows = 1.0
+shader_parameter/columns = 8.0
+shader_parameter/frame = 0.0
+shader_parameter/invert_rows_columns = false
+shader_parameter/sprite = ExtResource("2_ajj11")
+shader_parameter/mode = 0
+shader_parameter/Normal = ExtResource("1_qr3a0")
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_e8ov3"]
+material = SubResource("ShaderMaterial_g8xqt")
+size = Vector2(2.16, 2.16)
+orientation = 2
+
+[sub_resource type="Resource" id="Resource_khln7"]
+script = ExtResource("4_f2srf")
+sprite = ExtResource("2_ajj11")
+texture_normal = ExtResource("1_qr3a0")
+columns = 8.0
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_f2srf"]
+radius = 2.1178575
+
+[node name="StaticBody3D" type="StaticBody3D"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("CapsuleShape3D_abuop")
+
+[node name="Sprite3DBillBoard" type="MeshInstance3D" parent="."]
+mesh = SubResource("PlaneMesh_e8ov3")
+script = ExtResource("3_jrekf")
+animations_array = Array[ExtResource("4_f2srf")]([SubResource("Resource_khln7")])
+animation = 0
+frame = 0.0
+sprite_scale = 0.002
+metadata/_custom_type_script = "uid://b5653u7w56pqw"
+
+[node name="SM_controller" type="Node" parent="." node_paths=PackedStringArray("node_StateMachine")]
+script = ExtResource("5_f2srf")
+node_StateMachine = NodePath("../StateMachine")
+
+[node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("Init_node_state")]
+script = ExtResource("5_bin5x")
+Init_node_state = NodePath("IdleState")
+
+[node name="IdleState" type="Node" parent="StateMachine" node_paths=PackedStringArray("Body", "Sprite")]
+script = ExtResource("6_ajj11")
+Body = NodePath("../..")
+Sprite = NodePath("../../Sprite3DBillBoard")
+
+[node name="Fighting" type="Node" parent="StateMachine"]
+script = ExtResource("7_jrekf")
+
+[node name="Area3D" type="Area3D" parent="." groups=["Player"]]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+shape = SubResource("SphereShape3D_f2srf")
+debug_color = Color(0.88782513, 0.3293662, 1.92523e-07, 0.41960785)
+
+[connection signal="body_shape_entered" from="Area3D" to="SM_controller" method="_on_area_3d_body_shape_entered"]
+[connection signal="body_shape_exited" from="Area3D" to="SM_controller" method="_on_area_3d_body_shape_exited"]
