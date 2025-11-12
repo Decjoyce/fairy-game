@@ -1,0 +1,40 @@
+class_name HandState
+extends Node
+
+const FREE = "FREE"
+const CHALK = "CHALK"
+const GRABBING_ITEM = "GRABBING_ITEM"
+const GRABBING_OBJ = "GRABBING_OBJ"
+const LEVER = "LEVER"
+
+var hand_controller: PlayerHand
+
+func _ready() -> void:
+	await owner.ready
+	hand_controller = get_parent().get_parent() as PlayerHand
+	assert(hand_controller != null, "HandState must be childed to PlayerHand node")
+
+## Emitted when the state finishes and wants to transition to another state.
+signal finished(next_state_path: String, data: Dictionary)
+
+## Called by the state machine when receiving unhandled input events.
+func handle_input(_event: InputEvent) -> void:
+	pass
+
+## Called by the state machine on the engine's main loop tick.
+func update(_delta: float) -> void:
+	pass
+
+## Called by the state machine on the engine's physics update tick.
+func physics_update(_delta: float) -> void:
+	pass
+
+## Called by the state machine upon changing the active state. The `data` parameter
+## is a dictionary with arbitrary data the state can use to initialize itself.
+func enter(previous_state_path: String, data := {}) -> void:
+	pass
+
+## Called by the state machine before changing the active state. Use this function
+## to clean up the state.
+func exit() -> void:
+	pass
