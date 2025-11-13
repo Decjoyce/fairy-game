@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://bq86osdembn58"]
+[gd_scene load_steps=7 format=3 uid="uid://bq86osdembn58"]
 
 [ext_resource type="Script" uid="uid://io22wsbhy73f" path="res://TEMP_movement_stuff/player_test.gd" id="1_e0b2u"]
 [ext_resource type="Script" uid="uid://cbig6tk8hiy08" path="res://TEMP_movement_stuff/movement_improved_2.gd" id="2_e0b2u"]
+[ext_resource type="PackedScene" uid="uid://dqojmsc2q6wf4" path="res://TEMP_interact_stuff/player_interaction.tscn" id="3_3jgj8"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1snfn"]
 albedo_color = Color(1, 0.15294118, 1, 1)
@@ -23,3 +24,6 @@ current = true
 
 [node name="MovementImproved2" type="Node" parent="."]
 script = ExtResource("2_e0b2u")
+
+[node name="Interaction" parent="." node_paths=PackedStringArray("cam") instance=ExtResource("3_3jgj8")]
+cam = NodePath("../Camera3D")

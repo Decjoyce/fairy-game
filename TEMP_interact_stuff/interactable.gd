@@ -1,5 +1,5 @@
 class_name Interactable
-extends Node
+extends Node3D
 
 signal begin_interact(sig: float)
 signal interacting(sig: float)

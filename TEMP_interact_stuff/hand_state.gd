@@ -3,8 +3,8 @@ extends Node
 
 const FREE = "FREE"
 const CHALK = "CHALK"
-const GRABBING_ITEM = "GRABBING_ITEM"
-const GRABBING_OBJ = "GRABBING_OBJ"
+const GRAB_ITEM = "GRAB_ITEM"
+const GRAB_OBJ = "GRAB_OBJ"
 const LEVER = "LEVER"
 
 var hand_controller: PlayerHand
@@ -12,7 +12,7 @@ var hand_controller: PlayerHand
 func _ready() -> void:
 	await owner.ready
 	hand_controller = get_parent().get_parent() as PlayerHand
-	assert(hand_controller != null, "HandState must be childed to PlayerHand node")
+	assert(hand_controller != null, "HandState must be childed to PlayerHand node - " + name)
 
 ## Emitted when the state finishes and wants to transition to another state.
 signal finished(next_state_path: String, data: Dictionary)

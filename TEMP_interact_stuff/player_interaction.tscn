@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://dqojmsc2q6wf4"]
+[gd_scene load_steps=6 format=3 uid="uid://dqojmsc2q6wf4"]
 
 [ext_resource type="Script" uid="uid://bkcxym5jqdgg4" path="res://TEMP_interact_stuff/player_interaction.gd" id="1_ebye2"]
 [ext_resource type="Script" uid="uid://bvrebn6ao2hvn" path="res://TEMP_interact_stuff/player_hand.gd" id="2_f78vs"]
 [ext_resource type="Script" uid="uid://ceufl68l7cqys" path="res://TEMP_interact_stuff/handstate_free.gd" id="3_7baq5"]
+[ext_resource type="Script" uid="uid://d533dr0gr15o" path="res://TEMP_interact_stuff/handstate_grab.gd" id="4_r26r4"]
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_7baq5"]
 
@@ -31,6 +32,10 @@ metadata/_edit_use_anchors_ = true
 [node name="FREE" type="Node" parent="Hand_Left/States"]
 script = ExtResource("3_7baq5")
 
+[node name="GRAB_ITEM" type="Node" parent="Hand_Left/States"]
+script = ExtResource("4_r26r4")
+delay_before_max_charge = 4
+
 [node name="_hand_sprite" type="TextureRect" parent="Hand_Left"]
 modulate = Color(1, 0, 0, 1)
 layout_mode = 1
@@ -58,6 +63,9 @@ metadata/_edit_use_anchors_ = true
 
 [node name="FREE" type="Node" parent="Hand_Right/States"]
 script = ExtResource("3_7baq5")
+
+[node name="GRAB_ITEM" type="Node" parent="Hand_Right/States"]
+script = ExtResource("4_r26r4")
 
 [node name="_hand_sprite" type="TextureRect" parent="Hand_Right"]
 modulate = Color(0, 1, 1, 1)

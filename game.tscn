@@ -1,34 +1,44 @@
-[gd_scene load_steps=5 format=3 uid="uid://bs8ivnvddloci"]
+[gd_scene load_steps=6 format=3 uid="uid://bs8ivnvddloci"]
 
 [ext_resource type="PackedScene" uid="uid://bq86osdembn58" path="res://TEMP_movement_stuff/player_test.tscn" id="1_80nbo"]
 [ext_resource type="Texture2D" uid="uid://cgyj66wq3420m" path="res://assets/original-10983455-2.jpg" id="1_e2o6t"]
+[ext_resource type="PackedScene" uid="uid://bl71ii1my6e14" path="res://TEMP_interact_stuff/test_interactable.tscn" id="3_feb5d"]
+[ext_resource type="PackedScene" uid="uid://dfe565flkjwxt" path="res://TEMP_interact_stuff/test_grabbable_item.tscn" id="4_fc0e3"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_feb5d"]
 albedo_texture = ExtResource("1_e2o6t")
 uv1_scale = Vector3(0.25, 0.25, 0.2)
 uv1_triplanar = true
 
-[sub_resource type="PlaneMesh" id="PlaneMesh_mwb40"]
-size = Vector2(50, 50)
-
 [node name="game" type="Node3D"]
 
 [node name="Node3D" type="Node3D" parent="."]
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Node3D"]
+[node name="MeshInstance3D" type="CSGBox3D" parent="Node3D"]
 material_override = SubResource("StandardMaterial3D_feb5d")
-mesh = SubResource("PlaneMesh_mwb40")
-skeleton = NodePath("../..")
+use_collision = true
+size = Vector3(100, 0.1, 100)
 
-[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
-transform = Transform3D(-4.371139e-08, -1, -4.371139e-08, 0, -4.371139e-08, 1, -1, 4.371139e-08, 1.9106855e-15, 2, 0, 1)
+[node name="MeshInstance3D2" type="CSGBox3D" parent="Node3D"]
+transform = Transform3D(-4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 0, 1, -2, 0, 0)
 material_override = SubResource("StandardMaterial3D_feb5d")
-mesh = SubResource("PlaneMesh_mwb40")
+use_collision = true
+size = Vector3(100, 0.1, 100)
 
-[node name="MeshInstance3D3" type="MeshInstance3D" parent="."]
-transform = Transform3D(1.1924881e-08, 1, 0, 4.371139e-08, -5.2125306e-16, 1, 1, -1.1924881e-08, -4.371139e-08, -2, 0, -1)
+[node name="MeshInstance3D3" type="CSGBox3D" parent="Node3D"]
+transform = Transform3D(-4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 0, 1, 2, 0, 0)
 material_override = SubResource("StandardMaterial3D_feb5d")
-mesh = SubResource("PlaneMesh_mwb40")
+use_collision = true
+size = Vector3(100, 0.1, 100)
 
 [node name="player_test" parent="." instance=ExtResource("1_80nbo")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.8660254, -0.4829629, 0.12940954, 0, 0.25881907, 0.9659258, -0.5, -0.83651626, 0.22414389, 0, 0, 0)
+
+[node name="Interactable" parent="." instance=ExtResource("3_feb5d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 3)
+
+[node name="TEST_Grabbable_item" parent="." instance=ExtResource("4_fc0e3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -2)

@@ -1,7 +1,8 @@
 class_name PlayerInteract
 extends Control
 
-var cam: Camera3D
+@export var cam: Camera3D
+const INT_RAY_LENGTH = 2.0
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:

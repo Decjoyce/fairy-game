@@ -19,6 +19,10 @@ config/icon="res://icon.svg"
 
 Grid_DB="*res://TEMP_movement_stuff/g_grid_database.gd"
 
+[global_group]
+
+Interactables=""
+
 [input]
 
 move_up={
@@ -59,11 +63,13 @@ turn_right={
 }
 action_LEFT={
 "deadzone": 0.2,
-"events": []
+"events": [Object(InputEventJoypadMotion,"resource_local_to_scene":false,"resource_name":"","device":-1,"axis":4,"axis_value":1.0,"script":null)
+]
 }
 action_RIGHT={
 "deadzone": 0.2,
-"events": []
+"events": [Object(InputEventJoypadMotion,"resource_local_to_scene":false,"resource_name":"","device":-1,"axis":5,"axis_value":1.0,"script":null)
+]
 }
 LEFT_joystick_up={
 "deadzone": 0.2,
