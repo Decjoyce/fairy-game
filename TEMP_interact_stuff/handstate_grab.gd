@@ -3,28 +3,19 @@ extends HandState
 
 var is_ready: bool
 
-var is_charging: bool 
-
-var charge_amount: float
-@export var delay_before_max_charge = 2
-var time_held_down: float = 0.0
-
-const GRAB_DIST = 1
-
-var grabbed_item: Interactable
-
 func handle_input(_event: InputEvent) -> void:
 	pass
 
 func update(_delta: float) -> void:
 	hand_controller.joystick_movement(_delta)
+	if Input.is_action_just_pressed("change_hand_speed_" + hand_controller.stringed_hand_type): hand_controller.change_hand_speed()
 	
 	if is_ready:
 		if Input.is_action_just_pressed("action_" + hand_controller.stringed_hand_type):
 			begin_charge()
-		if Input.is_action_pressed("action_" + hand_controller.stringed_hand_type):
+	if Input.is_action_pressed("action_" + hand_controller.stringed_hand_type):
 			charging(_delta)
-		if is_charging and Input.is_action_just_released("action_" + hand_controller.stringed_hand_type):
+	if is_charging and Input.is_action_just_released("action_" + hand_controller.stringed_hand_type):
 			end_charge()
 	
 	grabbing()
@@ -45,6 +36,9 @@ func exit() -> void:
 # --------------------------------------------------------------------------------------------------
 # ↓ Grabbing Stuff ↓
 
+const GRAB_DIST = 1
+var grabbed_item: Interactable
+
 func grabbing() -> void:
 	var origin = hand_controller.cam.project_ray_origin(hand_controller.get_screen_position() + hand_controller.size/2)
 	var end = origin + hand_controller.cam.project_ray_normal(hand_controller.position + hand_controller.size/2) * GRAB_DIST
@@ -54,6 +48,11 @@ func grabbing() -> void:
 # ↑ Grabbing Stuff ↑
 # --------------------------------------------------------------------------------------------------
 # ↓ Charge Stuff ↓
+
+var is_charging: bool 
+var charge_amount: float
+@export var delay_before_max_charge = 2
+var time_held_down: float = 0.0
 
 func begin_charge() -> void:
 	is_charging = true

@@ -27,4 +27,4 @@ func _physics_process(delta: float) -> void:
 	elif Input.is_action_just_pressed("move_right"):
 		movement.add_move_amount_horizontal(1)
 	
-	movement.move(0.001, delta)
+	movement.move(0.01, delta)

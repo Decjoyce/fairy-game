@@ -5,7 +5,7 @@ var is_grabbed: bool = false
 
 @export var rb: RigidBody3D
 
-@export var throw_distance : float = 4.0
+@export var throw_distance : float = 8.0
 
 @export var idle_graphics: Node3D
 @export var grabbed_graphics: Node3D
