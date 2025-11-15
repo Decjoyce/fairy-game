@@ -11,6 +11,9 @@ var is_grabbed: bool = false
 @export var grabbed_graphics: Node3D
 @export var untouched_graphics: Node3D
 
+enum item_weight_types {WEIGHTLESS, LIGHT, MEDIUM, HEAVY}
+@export var item_weight: item_weight_types
+
 func _ready() -> void:
 	interaction_type = InteractTypes.GRAB_ITEM
 

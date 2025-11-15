@@ -1,12 +1,14 @@
-class_name HandState_Grab
+class_name HandState_Grab_Item
 extends HandState
 
 var is_ready: bool
+var is_exiting: bool
 
 func handle_input(_event: InputEvent) -> void:
 	pass
 
 func update(_delta: float) -> void:
+	if is_exiting: return
 	hand_controller.joystick_movement(_delta)
 	if Input.is_action_just_pressed("change_hand_speed_" + hand_controller.stringed_hand_type): hand_controller.change_hand_speed()
 	
@@ -31,6 +33,8 @@ func enter(previous_state_path: String, data := {}) -> void:
 
 func exit() -> void:
 	is_ready = false
+	#is_exiting = true
+	#grabbed_item = null
 
 # ↑ State Stuff ↑
 # --------------------------------------------------------------------------------------------------
@@ -69,8 +73,8 @@ func end_charge() -> void:
 	if charge_amount < 0.2: grabbed_item.on_end_interact()
 	else: grabbed_item.throw(charge_amount)
 	
-	finished.emit(FREE)
-	
 	is_charging = false
 	charge_amount = 0
 	time_held_down = 0
+	
+	finished.emit(FREE)

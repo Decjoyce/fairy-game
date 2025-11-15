@@ -14,6 +14,7 @@ enum HandTypes {LEFT, RIGHT}
 func _ready() -> void:
 	_init_states()
 
+# ↑ General Stuff ↑
 # --------------------------------------------------------------------------------------------------
 # ↓ State Stuff ↓
 
@@ -23,7 +24,7 @@ func _ready() -> void:
 func _init_states() -> void:
 	for state_node: HandState in get_child(0).find_children("*", "HandState"):
 		state_node.finished.connect(_transition_to_next_state)
-		
+	
 	await owner.ready
 	state.enter("")
 	cam = player_interact.cam
@@ -52,7 +53,9 @@ func _transition_to_next_state(target_state_path: String, data: Dictionary = {})
 # ↓ Hand Stuff ↓
 
 const min_speed: float = 500
-const max_speed: float = 1000
+const mid_speed: float = 1000
+const max_speed: float = 1500
+var cur_speed_index: int = 0
 @onready var current_speed: float = min_speed
 
 func joystick_movement(delta: float) -> void:
@@ -66,8 +69,11 @@ func move_hand(dir: Vector2, delta: float) -> void:
 	position.y = clampf(position.y, 0, player_interact.size.y - size.y)
 
 func change_hand_speed() -> void:
-	if current_speed == min_speed: current_speed = max_speed
-	elif current_speed == max_speed: current_speed = min_speed
+	cur_speed_index = wrapi(cur_speed_index+1, 0, 3)
+	match cur_speed_index:
+		0: current_speed = min_speed
+		1: current_speed = mid_speed
+		2: current_speed = max_speed
 
 # ↑ Hand Stuff ↑
 # --------------------------------------------------------------------------------------------------
@@ -86,11 +92,25 @@ func begin_interact() -> void:
 		hovering_interactable.InteractTypes.INSTANT:
 			pass
 		hovering_interactable.InteractTypes.GRAB_ITEM:
+			if player_interact.get_other_hand_state(hand_type) is HandState_Grab_Item:
+				if player_interact.get_other_hand_current_interactable(hand_type) == current_interactable:
+					player_interact.free_interaction_on_other_hand(hand_type) # replace with signal
+			
 			state.finished.emit(state.GRAB_ITEM)
 		hovering_interactable.InteractTypes.GRAB_OBJ:
+			state.finished.emit(state.GRAB_OBJ)
 			pass
 		hovering_interactable.InteractTypes.LEVER:
 			pass
+
+func on_player_moved(direction: Vector3, target: Vector3) -> void:
+	if !state.moving_breaks_free:
+		return
+	force_stop_interacting()
+
+func force_stop_interacting(next_state: String = "FREE", call_end_func_on_interactable: bool = true, call_end_func_on_state: bool = true) -> void:
+	state.finished.emit(next_state)
+	current_interactable = null
 
 func interact_checker(): # -> Interactable:
 	var space_state = cam.get_world_3d().direct_space_state

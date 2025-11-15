@@ -8,11 +8,19 @@ const GRAB_OBJ = "GRAB_OBJ"
 const LEVER = "LEVER"
 
 var hand_controller: PlayerHand
+var player: PlayerTest
+var player_interact: PlayerInteract
+var other_hand: PlayerHand
+
+@export var moving_breaks_free: bool
 
 func _ready() -> void:
 	await owner.ready
 	hand_controller = get_parent().get_parent() as PlayerHand
 	assert(hand_controller != null, "HandState must be childed to PlayerHand node - " + name)
+	player = hand_controller.player as PlayerTest
+	player_interact = hand_controller.player_interact as PlayerInteract
+	other_hand = player_interact.get_other_hand(hand_controller.hand_type)
 
 ## Emitted when the state finishes and wants to transition to another state.
 signal finished(next_state_path: String, data: Dictionary)

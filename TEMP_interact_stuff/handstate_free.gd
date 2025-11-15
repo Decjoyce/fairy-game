@@ -2,7 +2,6 @@ class_name HandState_Free
 extends HandState
 
 func handle_input(_event: InputEvent) -> void:
-	#if _event.is_action_just_pressed("action_" + hand_controller.stringed_hand_type): interact_func
 	pass
 
 func update(_delta: float) -> void:

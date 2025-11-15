@@ -3,7 +3,6 @@
 [ext_resource type="Script" uid="uid://s5cfdf85lm5g" path="res://TEMP_interact_stuff/grabbable_item.gd" id="1_llc7q"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_llc7q"]
-bounce = 0.75
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_llc7q"]
 size = Vector3(0.5, 0.5, 0.5)
@@ -16,6 +15,7 @@ radius = 0.25
 height = 0.5
 
 [node name="TEST_Grabbable_item" type="RigidBody3D" node_paths=PackedStringArray("rb", "idle_graphics")]
+collision_layer = 2
 axis_lock_angular_x = true
 axis_lock_angular_z = true
 mass = 0.5

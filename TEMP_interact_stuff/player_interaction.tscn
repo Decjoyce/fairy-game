@@ -1,29 +1,41 @@
-[gd_scene load_steps=6 format=3 uid="uid://dqojmsc2q6wf4"]
+[gd_scene load_steps=7 format=3 uid="uid://dqojmsc2q6wf4"]
 
 [ext_resource type="Script" uid="uid://bkcxym5jqdgg4" path="res://TEMP_interact_stuff/player_interaction.gd" id="1_ebye2"]
 [ext_resource type="Script" uid="uid://bvrebn6ao2hvn" path="res://TEMP_interact_stuff/player_hand.gd" id="2_f78vs"]
 [ext_resource type="Script" uid="uid://ceufl68l7cqys" path="res://TEMP_interact_stuff/handstate_free.gd" id="3_7baq5"]
-[ext_resource type="Script" uid="uid://d533dr0gr15o" path="res://TEMP_interact_stuff/handstate_grab.gd" id="4_r26r4"]
+[ext_resource type="Script" uid="uid://d533dr0gr15o" path="res://TEMP_interact_stuff/handstate_grab_item.gd" id="4_r26r4"]
+[ext_resource type="Script" uid="uid://c6qqmpwrn8dic" path="res://TEMP_interact_stuff/handstate_grab_obj.gd" id="5_wcvr7"]
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_7baq5"]
 
-[node name="Interaction" type="Control"]
+[node name="Interaction" type="Control" node_paths=PackedStringArray("hand_left", "hand_right")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+size_flags_horizontal = 6
+size_flags_vertical = 6
 script = ExtResource("1_ebye2")
+hand_left = NodePath("Hand_Left")
+hand_right = NodePath("Hand_Right")
 
 [node name="Hand_Left" type="Control" parent="." node_paths=PackedStringArray("initial_state")]
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 1
-anchor_right = 0.055555556
-anchor_bottom = 0.09876543
-offset_right = -24.0
-offset_bottom = -24.0
+anchor_left = 0.379
+anchor_top = 0.45100003
+anchor_right = 0.43500003
+anchor_bottom = 0.5493827
+offset_left = 0.3919983
+offset_top = -0.24801636
+offset_right = -0.120025635
+offset_bottom = 3.0517578e-05
+grow_horizontal = 2
+grow_vertical = 2
 script = ExtResource("2_f78vs")
+hand_type = null
 initial_state = NodePath("States/FREE")
 metadata/_edit_use_anchors_ = true
 
@@ -35,6 +47,10 @@ script = ExtResource("3_7baq5")
 [node name="GRAB_ITEM" type="Node" parent="Hand_Left/States"]
 script = ExtResource("4_r26r4")
 delay_before_max_charge = 4
+
+[node name="GRAB_OBJ" type="Node" parent="Hand_Left/States"]
+script = ExtResource("5_wcvr7")
+moving_breaks_free = true
 
 [node name="_hand_sprite" type="TextureRect" parent="Hand_Left"]
 modulate = Color(1, 0, 0, 1)
@@ -50,10 +66,12 @@ expand_mode = 1
 [node name="Hand_Right" type="Control" parent="." node_paths=PackedStringArray("initial_state")]
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 1
-anchor_right = 0.055555556
-anchor_bottom = 0.09876543
-offset_left = 1088.0
-offset_right = 1088.0
+anchor_left = 0.6032986
+anchor_top = 0.45061728
+anchor_right = 0.6588542
+anchor_bottom = 0.5493827
+grow_horizontal = 2
+grow_vertical = 2
 script = ExtResource("2_f78vs")
 hand_type = 1
 initial_state = NodePath("States/FREE")
@@ -67,15 +85,16 @@ script = ExtResource("3_7baq5")
 [node name="GRAB_ITEM" type="Node" parent="Hand_Right/States"]
 script = ExtResource("4_r26r4")
 
+[node name="GRAB_OBJ" type="Node" parent="Hand_Right/States"]
+script = ExtResource("5_wcvr7")
+moving_breaks_free = true
+
 [node name="_hand_sprite" type="TextureRect" parent="Hand_Right"]
 modulate = Color(0, 1, 1, 1)
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 17.0
-anchor_right = 18.0
+anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -1088.0
-offset_right = -1088.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = SubResource("CanvasTexture_7baq5")
