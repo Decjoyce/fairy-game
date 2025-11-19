@@ -125,7 +125,8 @@ func rotate_input() -> void:
 		compass.global_rotation.y = target_rotation
 
 func rotate(delta: float):
-	player.rotation.y = lerp_angle(player.rotation.y, target_rotation, delta * rotation_speed)
+	var weight = 1 - exp(-rotation_speed * delta)
+	player.rotation.y = lerp_angle(player.rotation.y, target_rotation, weight)
 
 # ↑ Rotating Stuff ↑
 # --------------------------------------------------------------------------------------------------
