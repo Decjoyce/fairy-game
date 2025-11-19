@@ -96,7 +96,7 @@ func charging(_delta: float) -> void:
 
 func end_charge() -> void:
 	hand_controller.animation_player.play("a_hand_grab_item_throw")
-	if charge_amount < 0.2: grabbed_item.end_interact()
+	if charge_amount < 0.1: grabbed_item.end_interact()
 	else: 
 		grabbed_item.throw(charge_amount)
 	

@@ -19,7 +19,7 @@ enum item_weight_types {WEIGHTLESS, LIGHT, MEDIUM, HEAVY}
 func _ready() -> void:
 	interaction_type = InteractTypes.GRAB_ITEM
 
-func begin_interact() -> void:
+func begin_interact(sig: float = -1) -> void:
 	if grabbed_graphics:
 		if untouched_graphics: untouched_graphics.visible = false
 		idle_graphics.visible = false
@@ -27,10 +27,10 @@ func begin_interact() -> void:
 	rb.freeze = true
 	rb.linear_velocity = Vector3.ZERO
 
-func interacting() -> void:
+func interacting(sig: float = -1) -> void:
 	pass
 
-func end_interact() -> void:
+func end_interact(sig: float = -1) -> void:
 	#if grabbed_graphics: grabbed_graphics.visible = false
 	#idle_graphics.visible = true
 	

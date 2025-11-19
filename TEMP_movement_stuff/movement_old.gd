@@ -38,20 +38,28 @@ func movement_input() -> void:
 	if Input.is_action_just_pressed("move_up") and check_can_move_up():
 		target_pos = target_pos - compass.basis.z * Vector3.ONE
 		
+		current_direction = MoveDirections.VERTICAL
 		on_move.emit(Vector3.FORWARD, target_pos)
+		
 		on_move_up.emit(target_pos)
 	elif Input.is_action_just_pressed("move_down") and check_can_move_down():
 		target_pos = target_pos + compass.basis.z * Vector3.ONE
+		
+		current_direction = MoveDirections.VERTICAL
 		
 		on_move.emit(Vector3.BACK, target_pos)
 		on_move_down.emit(target_pos)
 	elif Input.is_action_just_pressed("move_left") and check_can_move_left():
 		target_pos = target_pos - compass.basis.x * Vector3.ONE
 		
+		current_direction = MoveDirections.HORIZONTAL
+		
 		on_move.emit(Vector3.LEFT, target_pos)
 		on_move_left.emit(target_pos)
 	elif Input.is_action_just_pressed("move_right") and check_can_move_right():
 		target_pos = target_pos + compass.basis.x * Vector3.ONE
+		
+		current_direction = MoveDirections.HORIZONTAL
 		
 		on_move.emit(Vector3.RIGHT, target_pos)
 		on_move_right.emit(target_pos)
@@ -67,8 +75,9 @@ func movement(delta: float) -> void:
 	
 	if dist_to_target > 0.001: ## This is conditioned so we can know if player is moving, to stop them from being able to attack while moving
 		#t_bob += delta * (target_pos - player.position).length() * speed ## some headbobbing formula i used before. Its really bad.
-		player.global_position.x = lerpf(player.global_position.x, target_pos.x, speed * delta)
-		player.global_position.z = lerpf(player.global_position.z, target_pos.z, speed * delta)
+		var weight = 1 - exp(-speed * delta)
+		player.global_position.x = lerpf(player.global_position.x, target_pos.x, weight)
+		player.global_position.z = lerpf(player.global_position.z, target_pos.z, weight)
 		
 		if floor_detector.get_collision_point():
 			player.global_position.y = floor_detector.get_collision_point().y + player.PLAYER_HEIGHT
@@ -83,22 +92,22 @@ func check_can_move_up() -> bool:
 	if check_grabbed_obj_direction(0): 
 		print("j")
 		return false
-	return !ray_north.is_colliding() and (dist_to_target <= 0.5 or current_direction != MoveDirections.HORIZONTAL)
+	return !ray_north.is_colliding() and (dist_to_target <= 0.6 or current_direction != MoveDirections.HORIZONTAL)
 
 func check_can_move_down() -> bool:
 	#if DEBUG.noclip: return true
 	if check_grabbed_obj_direction(1): return false
-	return !ray_south.is_colliding() and (dist_to_target <= 0.5 or current_direction != MoveDirections.HORIZONTAL)
+	return !ray_south.is_colliding() and (dist_to_target <= 0.6 or current_direction != MoveDirections.HORIZONTAL)
 
 func check_can_move_left() -> bool:
 	#if DEBUG.noclip: return true
 	if check_grabbed_obj_direction(2): return false
-	return !ray_west.is_colliding() and (dist_to_target <= 0.5 or current_direction != MoveDirections.VERTICAL)
+	return !ray_west.is_colliding() and (dist_to_target <= 0.6 or current_direction != MoveDirections.VERTICAL)
 
 func check_can_move_right() -> bool:
 	#if DEBUG.noclip: return true
 	if check_grabbed_obj_direction(3): return false
-	return !ray_east.is_colliding() and (dist_to_target <= 0.5 or current_direction != MoveDirections.VERTICAL)
+	return !ray_east.is_colliding() and (dist_to_target <= 0.6 or current_direction != MoveDirections.VERTICAL)
 
 # ↑ Moving Stuff ↑
 # --------------------------------------------------------------------------------------------------

@@ -11,11 +11,11 @@ enum InteractTypes {INSTANT, GRAB_ITEM, GRAB_OBJ, LEVER} # might move all the en
 enum PromptTypes {ITEM_PROMPT, LEVER_HOVER, OBJ_PROMPT, BUTTON_PROMPT}
 @export var hand_prompt : PromptTypes
 
-func begin_interact() -> void:
+func begin_interact(sig: float = -1) -> void:
 	pass
 
-func interacting() -> void:
+func interacting(sig: float = -1) -> void:
 	pass
 
-func end_interact() -> void:
+func end_interact(sig: float = -1) -> void:
 	pass
