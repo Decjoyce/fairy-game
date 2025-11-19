@@ -5,6 +5,8 @@ var is_grabbed: bool = false
 
 @export var rb: RigidBody3D
 
+@export var grabbed_offset: Vector3 = Vector3.ZERO
+
 @export var throw_distance : float = 8.0
 
 @export var idle_graphics: Node3D
@@ -17,7 +19,7 @@ enum item_weight_types {WEIGHTLESS, LIGHT, MEDIUM, HEAVY}
 func _ready() -> void:
 	interaction_type = InteractTypes.GRAB_ITEM
 
-func on_begin_interact() -> void:
+func begin_interact() -> void:
 	if grabbed_graphics:
 		if untouched_graphics: untouched_graphics.visible = false
 		idle_graphics.visible = false
@@ -25,12 +27,12 @@ func on_begin_interact() -> void:
 	rb.freeze = true
 	rb.linear_velocity = Vector3.ZERO
 
-func on_interacting() -> void:
+func interacting() -> void:
 	pass
 
-func on_end_interact() -> void:
-	if grabbed_graphics: grabbed_graphics.visible = false
-	idle_graphics.visible = true
+func end_interact() -> void:
+	#if grabbed_graphics: grabbed_graphics.visible = false
+	#idle_graphics.visible = true
 	
 	rb.freeze = false
 	rb.linear_velocity = Vector3.ZERO

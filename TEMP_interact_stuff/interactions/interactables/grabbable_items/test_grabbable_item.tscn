@@ -1,6 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://dfe565flkjwxt"]
+[gd_scene load_steps=7 format=3 uid="uid://dfe565flkjwxt"]
 
-[ext_resource type="Script" uid="uid://s5cfdf85lm5g" path="res://TEMP_interact_stuff/grabbable_item.gd" id="1_llc7q"]
+[ext_resource type="Script" uid="uid://s5cfdf85lm5g" path="res://TEMP_interact_stuff/interactions/interactables/grabbable_items/grabbable_item.gd" id="1_llc7q"]
+[ext_resource type="Texture2D" uid="uid://fn4v0r2yystc" path="res://icon.svg" id="2_3c3r3"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_llc7q"]
 
@@ -26,6 +27,7 @@ rb = NodePath(".")
 idle_graphics = NodePath("MeshInstance3D")
 
 [node name="Area3D" type="Area3D" parent="."]
+collision_layer = 2
 
 [node name="CollisionShape3D2" type="CollisionShape3D" parent="Area3D"]
 shape = SubResource("BoxShape3D_llc7q")
@@ -35,4 +37,10 @@ shape = SubResource("BoxShape3D_234jp")
 debug_color = Color(0.8442249, 0.37985525, 5.7756904e-07, 0.41960785)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+visible = false
 mesh = SubResource("SphereMesh_234jp")
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+pixel_size = 0.0038
+billboard = 2
+texture = ExtResource("2_3c3r3")

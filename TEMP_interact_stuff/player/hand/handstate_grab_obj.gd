@@ -5,7 +5,8 @@ func handle_input(_event: InputEvent) -> void:
 	pass
 
 func update(_delta: float) -> void:
-	if Input.is_action_just_pressed("action_" + hand_controller.stringed_hand_type): finished.emit(FREE)
+	if Input.is_action_just_pressed("action_" + hand_controller.stringed_hand_type): 
+		finished.emit(FREE)
 	
 	if Input.is_action_just_pressed("turn_left") or Input.is_action_just_pressed("turn_right"): finished.emit(FREE)
 
@@ -13,11 +14,12 @@ func physics_update(_delta: float) -> void:
 	pass
 
 func enter(previous_state_path: String, data := {}) -> void:
+	hand_controller.hovering_interactable = null
 	setup()
-	
+	hand_controller.animation_player.play("a_hand_idle_grab_item")
 
 func exit() -> void:
-	grabbed_obj.on_end_interact()
+	grabbed_obj.end_interact()
 	if !grabbed_obj.is_being_pulled:
 		
 		player_interact.movement.is_grabbing_object = false

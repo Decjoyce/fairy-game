@@ -11,6 +11,8 @@ var current_state: plate_states
 
 var items_on_plate: Dictionary[Grabbable_Item, int]
 
+@onready var collision: StaticBody3D = $Graphics/Collision
+
 @export var weight_to_activate: float
 var current_weight: float
 
@@ -34,6 +36,7 @@ func item_entered_pressure_plate(item: Grabbable_Item) -> void:
 
 func item_exited_pressure_plate(item: Grabbable_Item) -> void:
 	if items_on_plate.has(item): items_on_plate.erase(item)
+	print("exited")
 	check_weight()
 
 # ↑ Triggering Stuff ↑
@@ -47,8 +50,8 @@ func check_weight() -> void:
 	elif current_weight < weight_to_activate and current_weight > 0: inbetween()
 	else: deactivate()
 
-func update_total_weight() -> int:
-	var updated_weight: int = 0
+func update_total_weight() -> float:
+	var updated_weight: float = 0
 	for item in items_on_plate:
 		updated_weight += items_on_plate[item]
 	current_weight = updated_weight

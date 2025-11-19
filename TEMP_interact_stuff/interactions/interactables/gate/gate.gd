@@ -22,7 +22,6 @@ func open_gate(amount: float) -> void:
 func _process(delta: float) -> void:
 	if is_opening:
 		var time_since_start := Time.get_ticks_msec() - time_move_started
-		var length_to_complete = abs(_end_position - _start_position) / speed
 		var percentage_complete = clamp(time_since_start / speed, 0, 1)
 		#prints(length_to_complete, percentage_complete)
 		

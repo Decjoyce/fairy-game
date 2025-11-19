@@ -6,10 +6,10 @@ extends Node
 
 @onready var compass: Node3D = $Compass
 
-@onready var ray_north: RayCast3D = $Compass/North ## Checks if player can move forward and also temporary interact
-@onready var ray_east: RayCast3D = $Compass/East ## Checks if player can move right
-@onready var ray_south: RayCast3D = $Compass/South ## Checks if player can move back
-@onready var ray_west: RayCast3D = $Compass/West ## Checks if player can move left
+@onready var ray_north: ShapeCast3D = $Compass/North ## Checks if player can move forward and also temporary interact
+@onready var ray_east: ShapeCast3D = $Compass/East ## Checks if player can move right
+@onready var ray_south: ShapeCast3D = $Compass/South ## Checks if player can move back
+@onready var ray_west: ShapeCast3D = $Compass/West ## Checks if player can move left
 
 # ↑ General Stuff ↑
 # --------------------------------------------------------------------------------------------------
@@ -122,9 +122,8 @@ var grabbed_obj: Grabbable_Obj
 
 func check_grabbed_obj_direction(dir: int) -> bool: # 0 = north, clockwise
 	if !is_grabbing_object: 
-		print("d")
 		return false
-	if grabbed_obj.detect_dirs[dir].has_overlapping_bodies() or grabbed_obj.detect_dirs[dir].has_overlapping_areas(): 
-		print(grabbed_obj.detect_dirs[dir].get_overlapping_bodies())
+	grabbed_obj.detect_dirs[dir].force_shapecast_update()
+	if grabbed_obj.detect_dirs[dir].is_colliding(): 
 		return true
 	else: return false

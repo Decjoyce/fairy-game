@@ -1,8 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://bq86osdembn58"]
+[gd_scene load_steps=9 format=3 uid="uid://bq86osdembn58"]
 
 [ext_resource type="Script" uid="uid://io22wsbhy73f" path="res://TEMP_movement_stuff/player_test.gd" id="1_e0b2u"]
 [ext_resource type="Script" uid="uid://by88p7ijbixe5" path="res://TEMP_movement_stuff/movement_old.gd" id="2_3jgj8"]
-[ext_resource type="PackedScene" uid="uid://dqojmsc2q6wf4" path="res://TEMP_interact_stuff/player_interaction.tscn" id="3_3jgj8"]
+[ext_resource type="PackedScene" uid="uid://dqojmsc2q6wf4" path="res://TEMP_interact_stuff/player/interaction/player_interaction.tscn" id="3_3jgj8"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1snfn"]
 albedo_color = Color(1, 0.15294118, 1, 1)
@@ -10,6 +10,12 @@ albedo_color = Color(1, 0.15294118, 1, 1)
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_1snfn"]
 
 [sub_resource type="Environment" id="Environment_xys6k"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_3jgj8"]
+size = Vector3(0.5, 1, 1.1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_xwuyi"]
+size = Vector3(1.1, 1, 0.5)
 
 [node name="player_test" type="Node3D"]
 script = ExtResource("1_e0b2u")
@@ -30,22 +36,29 @@ metadata/_custom_type_script = "uid://by88p7ijbixe5"
 
 [node name="Compass" type="Node3D" parent="Movement"]
 
-[node name="North" type="RayCast3D" parent="Movement/Compass"]
-target_position = Vector3(0, 0, -1.1)
-debug_shape_custom_color = Color(0, 1, 0, 1)
-debug_shape_thickness = 3
+[node name="North" type="ShapeCast3D" parent="Movement/Compass"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.55)
+shape = SubResource("BoxShape3D_3jgj8")
+target_position = Vector3(0, 0, 0)
+debug_shape_custom_color = Color(0.32798007, 0.4496488, 0.99998206, 1)
 
-[node name="East" type="RayCast3D" parent="Movement/Compass"]
-target_position = Vector3(1.1, 0, 0)
-debug_shape_custom_color = Color(0, 0.57312953, 5.7756904e-07, 1)
+[node name="East" type="ShapeCast3D" parent="Movement/Compass"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.55, 0, 0)
+shape = SubResource("BoxShape3D_xwuyi")
+target_position = Vector3(0, 0, 0)
+debug_shape_custom_color = Color(1, 0.64589864, 0.7194342, 1)
 
-[node name="South" type="RayCast3D" parent="Movement/Compass"]
-target_position = Vector3(0, 0, 1.1)
-debug_shape_custom_color = Color(0, 0.57312953, 5.7756904e-07, 1)
+[node name="South" type="ShapeCast3D" parent="Movement/Compass"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.55)
+shape = SubResource("BoxShape3D_3jgj8")
+target_position = Vector3(0, 0, 0)
+debug_shape_custom_color = Color(1, 0.8018582, 0.08261081, 1)
 
-[node name="West" type="RayCast3D" parent="Movement/Compass"]
-target_position = Vector3(-1.1, 0, 0)
-debug_shape_custom_color = Color(0, 0.57312953, 5.7756904e-07, 1)
+[node name="West" type="ShapeCast3D" parent="Movement/Compass"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.55, 0, 0)
+shape = SubResource("BoxShape3D_xwuyi")
+target_position = Vector3(0, 0, 0)
+debug_shape_custom_color = Color(0, 0.79870725, 0.7254093, 1)
 
 [node name="Interaction" parent="." node_paths=PackedStringArray("movement", "cam") instance=ExtResource("3_3jgj8")]
 movement = NodePath("../Movement")

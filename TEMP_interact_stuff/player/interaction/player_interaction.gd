@@ -5,17 +5,15 @@ extends Control
 
 @export var cam: Camera3D
 const INT_RAY_LENGTH = 2.0
+@export_flags_2d_physics var interaction_collision_mask: int
 
 @export var hand_left: PlayerHand # index = 0
 @export var hand_right: PlayerHand # index = 1
-
-
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	movement.on_move.connect(hand_left.on_player_moved)
 	movement.on_move.connect(hand_right.on_player_moved)
-
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:

@@ -9,21 +9,22 @@ var is_being_pulled: bool
 
 @onready var col: StaticBody3D = $Collision
 
-@onready var detect_dirs: Array[Area3D] = [$Detecters/North, $Detecters/East, $Detecters/South, $Detecters/West]
+@onready var detect_dirs: Array[ShapeCast3D] = [$Detecters/North, $Detecters/South, $Detecters/West, $Detecters/East]
 
 var last_pos: Vector3
 
 func _process(delta: float) -> void:
 	call_deferred("update_last_pos", delta)
 
-func on_begin_interact() -> void:
+func begin_interact() -> void:
+	
 	is_grabbed = true
 	grabbed_times += 1
 	if requires_two_hands and grabbed_times < 2:
 		return
 	
 	for dirs in detect_dirs:
-		dirs.monitoring = true
+		dirs.enabled = true
 	
 	col.collision_layer = 2
 	
@@ -32,10 +33,10 @@ func on_begin_interact() -> void:
 	
 	is_being_pulled = true
 
-func on_interacting() -> void:
+func interacting() -> void:
 	pass
 
-func on_end_interact() -> void:
+func end_interact() -> void:
 	grabbed_times -= 1
 	is_grabbed = grabbed_times > 0
 	if requires_two_hands or grabbed_times <= 0: stop_being_pulled()
@@ -51,7 +52,7 @@ func stop_being_pulled() -> void:
 	is_being_pulled = false
 	
 	for dirs in detect_dirs:
-		dirs.monitoring = false
+		dirs.enabled = false
 	
 	col.collision_layer = 1
 
