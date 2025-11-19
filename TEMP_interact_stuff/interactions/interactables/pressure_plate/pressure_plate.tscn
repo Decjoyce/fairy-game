@@ -32,5 +32,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.049999997, 0)
 shape = SubResource("BoxShape3D_qye5f")
 debug_color = Color(0.83023536, 0.46282655, 3.85046e-07, 1)
 
+[connection signal="area_shape_entered" from="Graphics/Trigger" to="." method="_on_area_entered_trigger"]
+[connection signal="area_shape_exited" from="Graphics/Trigger" to="." method="_on_area_exited_trigger"]
 [connection signal="body_entered" from="Graphics/Trigger" to="." method="_on_body_entered_trigger"]
 [connection signal="body_exited" from="Graphics/Trigger" to="." method="_on_body_exited_trigger"]

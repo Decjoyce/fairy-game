@@ -10,6 +10,7 @@ enum plate_states {DEACTIVATED, ACTIVATED, INBETWEEN}
 var current_state: plate_states
 
 var items_on_plate: Dictionary[Grabbable_Item, int]
+var entities_on_plate: Dictionary[Node3D, float]
 
 @onready var collision: StaticBody3D = $Graphics/Collision
 
@@ -27,6 +28,15 @@ func _on_body_entered_trigger(body: Node3D) -> void:
 func _on_body_exited_trigger(body: Node3D) -> void:
 	if body is Grabbable_Item:
 		item_exited_pressure_plate(body as Grabbable_Item)
+	
+
+func _on_area_entered_trigger(area_rid: RID, area: Area3D, area_shape_index: int, local_shape_index: int) -> void:
+	if area.get_parent() is Entity:
+		entity_entered_pressure_plate(area.get_parent() as Entity)
+
+func _on_area_exited_trigger(area_rid: RID, area: Area3D, area_shape_index: int, local_shape_index: int) -> void:
+	if area.get_parent() is Entity:
+		entity_exited_pressure_plate(area.get_parent() as Entity)
 
 func item_entered_pressure_plate(item: Grabbable_Item) -> void:
 	if items_on_plate.has(item): return
@@ -36,6 +46,17 @@ func item_entered_pressure_plate(item: Grabbable_Item) -> void:
 
 func item_exited_pressure_plate(item: Grabbable_Item) -> void:
 	if items_on_plate.has(item): items_on_plate.erase(item)
+	print("exited")
+	check_weight()
+
+func entity_entered_pressure_plate(entity: Entity) -> void:
+	if entities_on_plate.has(entity): return
+	print("entered")
+	entities_on_plate[entity] = entity.current_weight
+	check_weight()
+
+func entity_exited_pressure_plate(entity: Entity) -> void:
+	if entities_on_plate.has(entity): entities_on_plate.erase(entity)
 	print("exited")
 	check_weight()
 
@@ -54,6 +75,8 @@ func update_total_weight() -> float:
 	var updated_weight: float = 0
 	for item in items_on_plate:
 		updated_weight += items_on_plate[item]
+	for entity in entities_on_plate:
+		updated_weight += entities_on_plate[entity]
 	current_weight = updated_weight
 	return current_weight
 
@@ -74,7 +97,6 @@ func deactivate() -> void:
 	current_state = plate_states.DEACTIVATED
 
 func inbetween() -> void:
-	if current_state == plate_states.INBETWEEN: return
 	on_change.emit(current_weight / weight_to_activate)
 	current_state = plate_states.INBETWEEN
 

@@ -27,73 +27,6 @@ tracks/0/keys = {
 "values": [ExtResource("6_ft4o3")]
 }
 
-[sub_resource type="Animation" id="Animation_h6x2d"]
-resource_name = "a_hand_idle"
-length = 0.001
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("_hand_sprite:texture")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [ExtResource("6_ft4o3")]
-}
-
-[sub_resource type="Animation" id="Animation_njhm0"]
-resource_name = "a_hand_prompt"
-length = 0.001
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("_hand_sprite:texture")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [ExtResource("9_3efos")]
-}
-
-[sub_resource type="Animation" id="Animation_ft4o3"]
-resource_name = "a_hand_pickup"
-length = 0.1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("_hand_sprite:texture")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.099999994),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [ExtResource("7_h6x2d"), ExtResource("8_3efos")]
-}
-
-[sub_resource type="Animation" id="Animation_3efos"]
-resource_name = "a_hand_idle_grab_item"
-length = 0.001
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("_hand_sprite:texture")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [ExtResource("8_3efos")]
-}
-
 [sub_resource type="Animation" id="Animation_pvvfk"]
 resource_name = "a_hand_grab_item_charge"
 loop_mode = 1
@@ -124,6 +57,73 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [ExtResource("11_njhm0"), ExtResource("11_njhm0")]
+}
+
+[sub_resource type="Animation" id="Animation_h6x2d"]
+resource_name = "a_hand_idle"
+length = 0.001
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("_hand_sprite:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("6_ft4o3")]
+}
+
+[sub_resource type="Animation" id="Animation_3efos"]
+resource_name = "a_hand_idle_grab_item"
+length = 0.001
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("_hand_sprite:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("8_3efos")]
+}
+
+[sub_resource type="Animation" id="Animation_ft4o3"]
+resource_name = "a_hand_pickup"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("_hand_sprite:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.099999994),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [ExtResource("7_h6x2d"), ExtResource("8_3efos")]
+}
+
+[sub_resource type="Animation" id="Animation_njhm0"]
+resource_name = "a_hand_prompt"
+length = 0.001
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("_hand_sprite:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("9_3efos")]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_3efos"]

@@ -35,6 +35,7 @@ func physics_update(_delta: float) -> void:
 
 func enter(previous_state_path: String, data := {}) -> void:
 	grabbed_item = hand_controller.hovering_interactable
+	
 	hand_controller.animation_player.play("a_hand_pickup")
 	
 	var origin = hand_controller.cam.project_ray_origin(hand_controller.get_screen_position() + hand_controller.size/2)

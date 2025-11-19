@@ -10,6 +10,7 @@ extends Node
 @onready var ray_east: ShapeCast3D = $Compass/East ## Checks if player can move right
 @onready var ray_south: ShapeCast3D = $Compass/South ## Checks if player can move back
 @onready var ray_west: ShapeCast3D = $Compass/West ## Checks if player can move left
+@export var floor_detector: RayCast3D ## Checks if player can move left
 
 # ↑ General Stuff ↑
 # --------------------------------------------------------------------------------------------------
@@ -68,6 +69,10 @@ func movement(delta: float) -> void:
 		#t_bob += delta * (target_pos - player.position).length() * speed ## some headbobbing formula i used before. Its really bad.
 		player.global_position.x = lerpf(player.global_position.x, target_pos.x, speed * delta)
 		player.global_position.z = lerpf(player.global_position.z, target_pos.z, speed * delta)
+		
+		if floor_detector.get_collision_point():
+			player.global_position.y = floor_detector.get_collision_point().y + player.PLAYER_HEIGHT
+		
 		is_moving = true
 	else:
 		is_moving = false
