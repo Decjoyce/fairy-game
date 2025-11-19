@@ -68,7 +68,7 @@ func joystick_movement(delta: float) -> void:
 func move_hand(dir: Vector2, delta: float) -> void:
 	position += Vector2(dir.x, -dir.y) * current_speed * delta
 	position.x = clampf(position.x, 0, player_interact.size.x - size.x)
-	position.y = clampf(position.y, 0, player_interact.size.y - size.y)
+	position.y = clampf(position.y, 0, player_interact.size.y - size.y * 1.4)
 
 func change_hand_speed() -> void:
 	cur_speed_index = wrapi(cur_speed_index+1, 0, 3)
@@ -76,6 +76,10 @@ func change_hand_speed() -> void:
 		0: current_speed = min_speed
 		1: current_speed = mid_speed
 		2: current_speed = max_speed
+
+func update_hand_prompt() -> void:
+	if hovering_interactable and animation_player.has_animation(hovering_interactable.hand_prompt):
+		animation_player.play(hovering_interactable.hand_prompt)
 
 # ↑ Hand Stuff ↑
 # --------------------------------------------------------------------------------------------------
@@ -93,7 +97,8 @@ func begin_interact() -> void:
 	current_interactable.begin_interact()
 	match hovering_interactable.interaction_type:
 		hovering_interactable.InteractTypes.INSTANT:
-			pass
+			if animation_player.has_animation(current_interactable.interact_animation):
+				animation_player.play(current_interactable.interact_animation)
 			
 		hovering_interactable.InteractTypes.GRAB_ITEM:
 			if player_interact.get_other_hand_state(hand_type) is HandState_Grab_Item:
@@ -136,8 +141,6 @@ func interact_checker(): # -> Interactable:
 	
 	var _interactable: Interactable = result.collider.get_parent() as Interactable
 	
-	if _interactable and _interactable != hovering_interactable:
-		animation_player.play("a_hand_prompt")
 	
 	return _interactable
 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://dqojmsc2q6wf4"]
+[gd_scene load_steps=25 format=3 uid="uid://dqojmsc2q6wf4"]
 
 [ext_resource type="Script" uid="uid://bkcxym5jqdgg4" path="res://TEMP_interact_stuff/player/interaction/player_interaction.gd" id="1_ebye2"]
 [ext_resource type="Script" uid="uid://bvrebn6ao2hvn" path="res://TEMP_interact_stuff/player/hand/player_hand.gd" id="2_f78vs"]
@@ -11,6 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://mca3ko5edbht" path="res://TEMP_interact_stuff/player/hand/assets/hand_hover.png" id="9_3efos"]
 [ext_resource type="Texture2D" uid="uid://bj70dokyron4r" path="res://TEMP_interact_stuff/player/hand/assets/hand_torch.png" id="10_434r6"]
 [ext_resource type="Texture2D" uid="uid://bf5kpbbhis3ra" path="res://TEMP_interact_stuff/player/hand/assets/hand_extend_full.png" id="11_njhm0"]
+[ext_resource type="Texture2D" uid="uid://dehow8buqijkk" path="res://TEMP_interact_stuff/player/hand/assets/hand_lever.png" id="12_pvvfk"]
 
 [sub_resource type="Animation" id="Animation_434r6"]
 length = 0.001
@@ -110,7 +111,7 @@ tracks/0/keys = {
 }
 
 [sub_resource type="Animation" id="Animation_njhm0"]
-resource_name = "a_hand_prompt"
+resource_name = "hand_prompt_default"
 length = 0.001
 loop_mode = 1
 tracks/0/type = "value"
@@ -126,6 +127,74 @@ tracks/0/keys = {
 "values": [ExtResource("9_3efos")]
 }
 
+[sub_resource type="Animation" id="Animation_3t2v1"]
+resource_name = "hand_prompt_button"
+length = 0.001
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("_hand_sprite:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("11_njhm0")]
+}
+
+[sub_resource type="Animation" id="Animation_rbe5j"]
+resource_name = "hand_prompt_lever"
+length = 0.001
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("_hand_sprite:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("10_434r6")]
+}
+
+[sub_resource type="Animation" id="Animation_pd1hw"]
+resource_name = "hand_prompt_door_locked"
+length = 0.001
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("_hand_sprite:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("12_pvvfk")]
+}
+
+[sub_resource type="Animation" id="Animation_sx4t2"]
+resource_name = "hand_press"
+length = 0.001
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("_hand_sprite:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("8_3efos")]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_3efos"]
 _data = {
 &"RESET": SubResource("Animation_434r6"),
@@ -134,7 +203,11 @@ _data = {
 &"a_hand_idle": SubResource("Animation_h6x2d"),
 &"a_hand_idle_grab_item": SubResource("Animation_3efos"),
 &"a_hand_pickup": SubResource("Animation_ft4o3"),
-&"a_hand_prompt": SubResource("Animation_njhm0")
+&"hand_press": SubResource("Animation_sx4t2"),
+&"hand_prompt_button": SubResource("Animation_3t2v1"),
+&"hand_prompt_default": SubResource("Animation_njhm0"),
+&"hand_prompt_door_locked": SubResource("Animation_pd1hw"),
+&"hand_prompt_lever": SubResource("Animation_rbe5j")
 }
 
 [node name="Interaction" type="Control" node_paths=PackedStringArray("hand_left", "hand_right")]

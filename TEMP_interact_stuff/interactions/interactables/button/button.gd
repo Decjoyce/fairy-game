@@ -1,5 +1,5 @@
 class_name InteractableButton
-extends Interactable
+extends InteractableInstant
 
 signal on_activated(sig: float)
 signal on_change(sig: float)

@@ -13,7 +13,7 @@ func update(_delta: float) -> void:
 		return
 	
 	hand_controller.hovering_interactable = hand_controller.interact_checker()
-	
+	hand_controller.update_hand_prompt()
 
 func physics_update(_delta: float) -> void:
 	pass

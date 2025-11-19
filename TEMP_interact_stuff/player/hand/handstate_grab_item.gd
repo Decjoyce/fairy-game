@@ -38,11 +38,10 @@ func enter(previous_state_path: String, data := {}) -> void:
 	
 	hand_controller.animation_player.play("a_hand_pickup")
 	
-	var origin = hand_controller.cam.project_ray_origin(hand_controller.get_screen_position() + hand_controller.size/2)
-	var end = origin + hand_controller.cam.project_ray_normal(hand_controller.position + hand_controller.size/2) * GRAB_DIST
+	set_grab_position()
 	tween = get_tree().create_tween().bind_node(self).set_trans(Tween.TRANS_LINEAR)
 	tween.set_parallel(true)
-	tween.tween_property(grabbed_item, "global_position", end, 0.1)
+	tween.tween_property(grabbed_item, "global_position", grab_position, 0.075)
 	tween.tween_property(grabbed_item, "global_rotation", hand_controller.player.rotation, 0.1)
 	
 	await tween.finished
