@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://bq86osdembn58"]
+[gd_scene load_steps=9 format=3 uid="uid://bq86osdembn58"]
 
 [ext_resource type="Script" uid="uid://io22wsbhy73f" path="res://scenes/_player/player_test.gd" id="1_e0b2u"]
 [ext_resource type="Script" uid="uid://by88p7ijbixe5" path="res://scenes/_player/player_movement.gd" id="2_3jgj8"]
@@ -10,8 +10,8 @@
 albedo_color = Color(1, 0.15294118, 1, 1)
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_1snfn"]
-
-[sub_resource type="Environment" id="Environment_xys6k"]
+radius = 0.2
+height = 1.25
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_3jgj8"]
 size = Vector3(0.5, 0.9, 1.1)
@@ -29,12 +29,11 @@ monitoring = false
 shape = SubResource("CapsuleShape3D_3jgj8")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-visible = false
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.375, 0)
 material_override = SubResource("StandardMaterial3D_1snfn")
 mesh = SubResource("CapsuleMesh_1snfn")
 
 [node name="Camera3D" type="Camera3D" parent="."]
-environment = SubResource("Environment_xys6k")
 current = true
 
 [node name="FloorDetector" type="RayCast3D" parent="."]
