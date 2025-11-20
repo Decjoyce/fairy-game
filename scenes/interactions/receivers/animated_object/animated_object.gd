@@ -11,11 +11,11 @@ var anim_player: AnimationPlayer
 
 func _ready() -> void:
 	update_anim_player(connnect_anim_player, anim_to_play)
+	anim_player.current_animation = anim_to_play
+	anim_player.play_section(anim_to_play, 0, 0.001)
 
 func play_animation(sig: float) -> void:
 	var mapped_time: float = remap(sig, 0, 1, 0, anim_player.get_animation(anim_to_play).length)
-
-	anim_player.current_animation = anim_to_play
 	
 	if mapped_time > anim_player.current_animation_position:
 		anim_player.play_section(anim_to_play, anim_player.current_animation_position, mapped_time)
