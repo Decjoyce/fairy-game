@@ -1,0 +1,45 @@
+[gd_scene load_steps=6 format=3 uid="uid://c0xgetxp4i66e"]
+
+[ext_resource type="PackedScene" uid="uid://bq86osdembn58" path="res://scenes/_player/_player_test.tscn" id="1_r2lxk"]
+[ext_resource type="PackedScene" uid="uid://cafafqbxrlmdt" path="res://scenes/__prototyping/dev_tiles/open/dev_open_wall.tscn" id="2_desnm"]
+[ext_resource type="PackedScene" uid="uid://d2pk1l2expq4i" path="res://scenes/__prototyping/dev_tiles/open/dev_open_middle_a.tscn" id="3_5x20l"]
+[ext_resource type="PackedScene" uid="uid://6bfa5eai5wft" path="res://scenes/__prototyping/dev_tiles/open/dev_floor_guidemid.tscn" id="4_n3fj6"]
+[ext_resource type="PackedScene" uid="uid://dgcgp7tvg5dy8" path="res://scenes/__prototyping/dev_tiles/open/dev_open_corner.tscn" id="5_5x20l"]
+
+[node name="painting_testing" type="Node3D"]
+
+[node name="player_test" parent="." instance=ExtResource("1_r2lxk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+
+[node name="dev_open_palette" type="Node3D" parent="."]
+
+[node name="_dev_open_wall" parent="dev_open_palette" instance=ExtResource("2_desnm")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, -2)
+
+[node name="_dev_open_wall3" parent="dev_open_palette" instance=ExtResource("2_desnm")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 2, 0, 0)
+
+[node name="_dev_open_wall4" parent="dev_open_palette" instance=ExtResource("2_desnm")]
+transform = Transform3D(1.3113416e-07, 0, -1, 0, 1, 0, 1, 0, 1.3113416e-07, -4, 0, 0)
+
+[node name="_dev_open_middle_a" parent="dev_open_palette" instance=ExtResource("3_5x20l")]
+
+[node name="_dev_open_middle_a3" parent="dev_open_palette" instance=ExtResource("3_5x20l")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 0)
+
+[node name="_dev_open_wall2" parent="dev_open_palette" instance=ExtResource("2_desnm")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, -2)
+
+[node name="_dev_open_middle_a2" parent="dev_open_palette" instance=ExtResource("3_5x20l")]
+
+[node name="_dev_floor_guidemid" parent="dev_open_palette" instance=ExtResource("4_n3fj6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -8)
+
+[node name="_dev_open_corner" parent="dev_open_palette/_dev_floor_guidemid" instance=ExtResource("5_5x20l")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 2, 0, 6)
+
+[node name="_dev_open_corner2" parent="dev_open_palette/_dev_floor_guidemid" instance=ExtResource("5_5x20l")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -2, 0, 6)
+
+[node name="_dev_open_corner3" parent="dev_open_palette/_dev_floor_guidemid" instance=ExtResource("5_5x20l")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -4, 0, 6)
