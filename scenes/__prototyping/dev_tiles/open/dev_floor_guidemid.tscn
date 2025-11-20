@@ -1,0 +1,42 @@
+[gd_scene load_steps=4 format=3 uid="uid://6bfa5eai5wft"]
+
+[ext_resource type="Material" uid="uid://c1s48fevcaqy3" path="res://assets/_dev/materials/_dev_m_aquamarine.tres" id="1_7cbel"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_qvop2"]
+size = Vector3(0.2, 0.1, 0.2)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_qvop2"]
+material = ExtResource("1_7cbel")
+top_radius = 0.1
+bottom_radius = 0.2
+height = 0.1
+
+[node name="_dev_floor_guidemid" type="StaticBody3D"]
+
+[node name="_guide_l" type="CollisionShape3D" parent="."]
+transform = Transform3D(0.99999994, 0, 0, 0, 1, 0, 0, 0, 0.99999994, 1, 0.05, 1)
+shape = SubResource("BoxShape3D_qvop2")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="_guide_l"]
+mesh = SubResource("CylinderMesh_qvop2")
+
+[node name="_guide_l2" type="CollisionShape3D" parent="."]
+transform = Transform3D(0.99999994, 0, 0, 0, 1, 0, 0, 0, 0.99999994, -1, 0.05, 1)
+shape = SubResource("BoxShape3D_qvop2")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="_guide_l2"]
+mesh = SubResource("CylinderMesh_qvop2")
+
+[node name="_guide_l3" type="CollisionShape3D" parent="."]
+transform = Transform3D(0.99999994, 0, 0, 0, 1, 0, 0, 0, 0.99999994, -1, 0.05, -1)
+shape = SubResource("BoxShape3D_qvop2")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="_guide_l3"]
+mesh = SubResource("CylinderMesh_qvop2")
+
+[node name="_guide_l4" type="CollisionShape3D" parent="."]
+transform = Transform3D(0.99999994, 0, 0, 0, 1, 0, 0, 0, 0.99999994, 1, 0.05, -1)
+shape = SubResource("BoxShape3D_qvop2")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="_guide_l4"]
+mesh = SubResource("CylinderMesh_qvop2")

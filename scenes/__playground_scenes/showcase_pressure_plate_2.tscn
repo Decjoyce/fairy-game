@@ -1,0 +1,29 @@
+[gd_scene load_steps=5 format=3 uid="uid://dt000wx45qu71"]
+
+[ext_resource type="PackedScene" uid="uid://dt13fur6twjep" path="res://scenes/interactions/receivers/gate/gate.tscn" id="1_jpr2b"]
+[ext_resource type="PackedScene" uid="uid://csot2mi7746ll" path="res://scenes/interactions/triggers/pressure_plate/pressure_plate.tscn" id="2_urjp1"]
+[ext_resource type="PackedScene" uid="uid://b06jwmfvcpsvx" path="res://scenes/__prototyping/dev_tiles/open/dev_open_doorway.tscn" id="3_gb0u1"]
+
+[sub_resource type="Environment" id="Environment_jpr2b"]
+background_mode = 1
+
+[node name="Showcase_PressurePlate2" type="Node3D"]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 0, 0)
+
+[node name="Env" type="Node3D" parent="."]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 0, 0)
+
+[node name="_dev_open_doorway2" parent="Env" instance=ExtResource("3_gb0u1")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -1, 0, 4.371139e-08)
+
+[node name="_dev_open_doorway3" parent="Env" instance=ExtResource("3_gb0u1")]
+transform = Transform3D(1.3113416e-07, 0, -1, 0, 1, 0, 1, 0, 1.3113416e-07, 1, 0, -4.371139e-08)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="Env"]
+environment = SubResource("Environment_jpr2b")
+
+[node name="Gate" parent="." instance=ExtResource("1_jpr2b")]
+speed = 100.0
+
+[node name="PressurePlate" parent="." instance=ExtResource("2_urjp1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.05000019, 1)

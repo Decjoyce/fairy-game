@@ -1,18 +1,79 @@
-[gd_scene load_steps=7 format=3 uid="uid://dw2dbsjbocxi7"]
+[gd_scene load_steps=35 format=3 uid="uid://dw2dbsjbocxi7"]
 
 [ext_resource type="PackedScene" uid="uid://bq86osdembn58" path="res://scenes/_player/_player_test.tscn" id="2_3vnxs"]
-[ext_resource type="Material" uid="uid://bk8gbrrgpacoj" path="res://assets/_dev/materials/_dev_white.tres" id="2_rdknj"]
-[ext_resource type="Material" uid="uid://bmx5kbkw1qnpa" path="res://assets/_dev/materials/_dev_grey.tres" id="3_rdknj"]
+[ext_resource type="PackedScene" uid="uid://cafafqbxrlmdt" path="res://scenes/__prototyping/dev_tiles/open/dev_open_wall.tscn" id="2_cti4x"]
+[ext_resource type="Texture2D" uid="uid://hfd6qbmx87rr" path="res://assets/misc/cat-standing-on-a-chair-leoch-studio.png" id="2_fnuid"]
+[ext_resource type="PackedScene" uid="uid://b26113vjudnhl" path="res://scenes/__prototyping/dev_tiles/open/dev_open_hall.tscn" id="3_mlo6p"]
+[ext_resource type="PackedScene" uid="uid://b06jwmfvcpsvx" path="res://scenes/__prototyping/dev_tiles/open/dev_open_doorway.tscn" id="4_viu01"]
+[ext_resource type="PackedScene" uid="uid://c8bbyhj5yynyl" path="res://scenes/__prototyping/dev_tiles/open/dev_open_middle_b.tscn" id="5_h40wo"]
+[ext_resource type="PackedScene" uid="uid://dgcgp7tvg5dy8" path="res://scenes/__prototyping/dev_tiles/open/dev_open_corner.tscn" id="6_fnuid"]
+[ext_resource type="PackedScene" uid="uid://d2pk1l2expq4i" path="res://scenes/__prototyping/dev_tiles/open/dev_open_middle_a.tscn" id="7_ir6gx"]
+[ext_resource type="PackedScene" uid="uid://dt13fur6twjep" path="res://scenes/interactions/receivers/gate/gate.tscn" id="8_mlo6p"]
+[ext_resource type="PackedScene" uid="uid://qu5rxgbydmet" path="res://scenes/interactions/triggers/button/button.tscn" id="10_h40wo"]
+[ext_resource type="PackedScene" uid="uid://breoxrktuf13i" path="res://scenes/__prototyping/dev_tiles/open/dev_floor_guide.tscn" id="12_ir6gx"]
+[ext_resource type="PackedScene" uid="uid://6bfa5eai5wft" path="res://scenes/__prototyping/dev_tiles/open/dev_floor_guidemid.tscn" id="13_ojeeo"]
+[ext_resource type="PackedScene" uid="uid://bsr88kqaskqgh" path="res://scenes/interactions/triggers/teleporter/teleporter.tscn" id="14_6ords"]
+[ext_resource type="Script" uid="uid://s5cfdf85lm5g" path="res://scenes/interactions/interactables/grabbable_items/grabbable_item.gd" id="14_p1gsu"]
+[ext_resource type="Material" uid="uid://ioo51vym3k1d" path="res://scenes/interactions/triggers/teleporter/m_teleport.tres" id="15_50n8y"]
+[ext_resource type="Texture2D" uid="uid://bsduc3iepom6j" path="res://assets/misc/n64_sphere_sprite.png" id="15_a71ib"]
+[ext_resource type="PackedScene" uid="uid://csot2mi7746ll" path="res://scenes/interactions/triggers/pressure_plate/pressure_plate.tscn" id="15_fpxpw"]
+[ext_resource type="PackedScene" uid="uid://dfe565flkjwxt" path="res://scenes/interactions/interactables/grabbable_items/test_grabbable_item.tscn" id="16_3wul1"]
+[ext_resource type="Material" uid="uid://cfsra4dny0m23" path="res://assets/_dev/materials/_dev_m_white.tres" id="17_fpxpw"]
+[ext_resource type="Material" uid="uid://bmx5kbkw1qnpa" path="res://assets/_dev/materials/_dev_m_grey.tres" id="18_o5rkc"]
 
-[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_3vnxs"]
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_ir6gx"]
+panorama = ExtResource("2_fnuid")
+filter = false
 
-[sub_resource type="Sky" id="Sky_3vnxs"]
-sky_material = SubResource("ProceduralSkyMaterial_3vnxs")
+[sub_resource type="Sky" id="Sky_ojeeo"]
+sky_material = SubResource("PanoramaSkyMaterial_ir6gx")
+radiance_size = 0
 
 [sub_resource type="Environment" id="Environment_rdknj"]
 background_mode = 2
 background_color = Color(1, 1, 1, 1)
-sky = SubResource("Sky_3vnxs")
+sky = SubResource("Sky_ojeeo")
+sky_custom_fov = 63.5
+sky_rotation = Vector3(0.5270894, -2.3492131, 0.6230825)
+ambient_light_source = 2
+ambient_light_color = Color(0.8862616, 0.88626146, 0.8862615, 1)
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_3wul1"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_hsji5"]
+material = ExtResource("15_50n8y")
+radial_segments = 6
+rings = 6
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_p1gsu"]
+bounce = 1.0
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_llc7q"]
+size = Vector3(0.5, 0.5, 0.5)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_234jp"]
+size = Vector3(0.4, 0.4, 0.4)
+
+[sub_resource type="SphereMesh" id="SphereMesh_234jp"]
+radius = 0.25
+height = 0.5
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_a71ib"]
+bounce = 0.55
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_fpxpw"]
+size = Vector3(0.1, 2, 2)
+
+[sub_resource type="BoxMesh" id="BoxMesh_o5rkc"]
+material = ExtResource("17_fpxpw")
+size = Vector3(0.1, 2, 0.62)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_25we5"]
+size = Vector3(2, 0.1, 2)
+
+[sub_resource type="BoxMesh" id="BoxMesh_65s44"]
+material = ExtResource("18_o5rkc")
+size = Vector3(2, 0.1, 2)
 
 [node name="Playground_Interactions" type="Node3D"]
 
@@ -21,20 +82,699 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 
 [node name="_environment" type="Node3D" parent="."]
 
-[node name="_floor" type="CSGBox3D" parent="_environment"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.05, 0)
-use_collision = true
-size = Vector3(100, 0.1, 100)
-material = ExtResource("2_rdknj")
-
-[node name="_back_wall" type="CSGBox3D" parent="_environment"]
-transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 0, 0.95, 1)
-use_collision = true
-size = Vector3(0.2, 2, 2)
-material = ExtResource("3_rdknj")
-
 [node name="WorldEnvironment" type="WorldEnvironment" parent="_environment"]
 environment = SubResource("Environment_rdknj")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="_environment"]
 transform = Transform3D(1, 0, 0, 0, -0.25881898, 0.9659258, 0, -0.9659258, -0.25881898, 0, 0, 0)
+
+[node name="dev_open_palette" type="Node3D" parent="_environment"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -6, 0)
+
+[node name="_dev_open_wall" parent="_environment/dev_open_palette" instance=ExtResource("2_cti4x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 2)
+
+[node name="_dev_open_hall" parent="_environment/dev_open_palette" instance=ExtResource("3_mlo6p")]
+
+[node name="_dev_open_doorway" parent="_environment/dev_open_palette" instance=ExtResource("4_viu01")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2)
+
+[node name="_dev_open_middle_b" parent="_environment/dev_open_palette" instance=ExtResource("5_h40wo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -6)
+
+[node name="_dev_open_corner" parent="_environment/dev_open_palette" instance=ExtResource("6_fnuid")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 2)
+
+[node name="_dev_open_middle_a" parent="_environment/dev_open_palette" instance=ExtResource("7_ir6gx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2)
+
+[node name="Room_Start" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -3)
+
+[node name="_env" type="Node3D" parent="Room_Start"]
+
+[node name="_dev_open_doorway2" parent="Room_Start/_env" instance=ExtResource("4_viu01")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, -3)
+
+[node name="_dev_open_doorway3" parent="Room_Start/_env" instance=ExtResource("4_viu01")]
+transform = Transform3D(1.3113416e-07, 0, -1, 0, 1, 0, 1, 0, 1.3113416e-07, -2, 0, -1)
+
+[node name="_dev_open_doorway4" parent="Room_Start/_env" instance=ExtResource("4_viu01")]
+transform = Transform3D(-2.1855693e-07, 0, 1, 0, 1, 0, -1, 0, -2.1855693e-07, 2, 0, -1)
+
+[node name="_dev_open_hall2" parent="Room_Start/_env" instance=ExtResource("3_mlo6p")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -4, -1, -1)
+
+[node name="_dev_open_hall3" parent="Room_Start/_env" instance=ExtResource("3_mlo6p")]
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 0, -1, -5)
+
+[node name="_dev_open_hall4" parent="Room_Start/_env" instance=ExtResource("3_mlo6p")]
+transform = Transform3D(1.3113416e-07, 0, 1, 0, 1, 0, -1, 0, 1.3113416e-07, 4, -1, -1)
+
+[node name="_floor" type="Node3D" parent="Room_Start/_env"]
+
+[node name="_dev_open_middle_a5" parent="Room_Start/_env/_floor" instance=ExtResource("7_ir6gx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1)
+
+[node name="_dev_open_middle_a13" parent="Room_Start/_env/_floor" instance=ExtResource("7_ir6gx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1)
+
+[node name="_dev_open_middle_a6" parent="Room_Start/_env/_floor" instance=ExtResource("7_ir6gx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 1)
+
+[node name="_dev_open_middle_a7" parent="Room_Start/_env/_floor" instance=ExtResource("7_ir6gx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 1)
+
+[node name="_dev_open_middle_a15" parent="Room_Start/_env/_floor" instance=ExtResource("7_ir6gx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, -3)
+
+[node name="_dev_open_middle_a8" parent="Room_Start/_env/_floor" instance=ExtResource("7_ir6gx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1)
+
+[node name="_dev_open_middle_a9" parent="Room_Start/_env/_floor" instance=ExtResource("7_ir6gx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 1)
+
+[node name="_dev_open_middle_a14" parent="Room_Start/_env/_floor" instance=ExtResource("7_ir6gx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, -3)
+
+[node name="_dev_open_middle_a10" parent="Room_Start/_env/_floor" instance=ExtResource("7_ir6gx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 1)
+
+[node name="_wall" type="Node3D" parent="Room_Start/_env"]
+
+[node name="_dev_open_wall2" parent="Room_Start/_env/_wall" instance=ExtResource("2_cti4x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 3)
+
+[node name="_dev_open_wall3" parent="Room_Start/_env/_wall" instance=ExtResource("2_cti4x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 3)
+
+[node name="_dev_open_wall4" parent="Room_Start/_env/_wall" instance=ExtResource("2_cti4x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 3)
+
+[node name="_dev_open_wall5" parent="Room_Start/_env/_wall" instance=ExtResource("2_cti4x")]
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 0, 0, -5)
+
+[node name="_dev_open_wall7" parent="Room_Start/_env/_wall" instance=ExtResource("2_cti4x")]
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, -2, 0, -5)
+
+[node name="_dev_open_wall9" parent="Room_Start/_env/_wall" instance=ExtResource("2_cti4x")]
+transform = Transform3D(-8.940697e-08, 0, -0.99999994, 0, 1, 0, 0.99999994, 0, -8.940697e-08, -4, 0, -1)
+
+[node name="_dev_open_wall14" parent="Room_Start/_env/_wall" instance=ExtResource("2_cti4x")]
+transform = Transform3D(-8.940697e-08, 0, -0.99999994, 0, 1, 0, 0.99999994, 0, -8.940697e-08, -4, 0, -3)
+
+[node name="_dev_open_wall10" parent="Room_Start/_env/_wall" instance=ExtResource("2_cti4x")]
+transform = Transform3D(-8.940697e-08, 0, -0.99999994, 0, 1, 0, 0.99999994, 0, -8.940697e-08, -4, 0, 1)
+
+[node name="_dev_open_wall11" parent="Room_Start/_env/_wall" instance=ExtResource("2_cti4x")]
+transform = Transform3D(1.7682972e-07, 0, 0.9999999, 0, 1, 0, -0.9999999, 0, 1.7682972e-07, 4, 0, 1)
+
+[node name="_dev_open_wall12" parent="Room_Start/_env/_wall" instance=ExtResource("2_cti4x")]
+transform = Transform3D(1.7682972e-07, 0, 0.9999999, 0, 1, 0, -0.9999999, 0, 1.7682972e-07, 4, 0, -1)
+
+[node name="_dev_open_wall13" parent="Room_Start/_env/_wall" instance=ExtResource("2_cti4x")]
+transform = Transform3D(1.7682972e-07, 0, 0.9999999, 0, 1, 0, -0.9999999, 0, 1.7682972e-07, 4, 0, -3)
+
+[node name="_dev_open_wall8" parent="Room_Start/_env/_wall" instance=ExtResource("2_cti4x")]
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 2, 0, -5)
+
+[node name="_corner" type="Node3D" parent="Room_Start/_env"]
+
+[node name="_dev_open_corner2" parent="Room_Start/_env/_corner" instance=ExtResource("6_fnuid")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, 3)
+
+[node name="_dev_open_corner3" parent="Room_Start/_env/_corner" instance=ExtResource("6_fnuid")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 4, 0, -5)
+
+[node name="_dev_open_corner4" parent="Room_Start/_env/_corner" instance=ExtResource("6_fnuid")]
+transform = Transform3D(-1.0000001, 0, 0, 0, 1, 0, 0, 0, -1.0000001, -4, 0, -5)
+
+[node name="_dev_open_corner5" parent="Room_Start/_env/_corner" instance=ExtResource("6_fnuid")]
+transform = Transform3D(4.3711392e-08, 0, -1.0000001, 0, 1, 0, 1.0000001, 0, 4.3711392e-08, -4, 0, 3)
+
+[node name="_dev_floor_guide" parent="Room_Start/_env" instance=ExtResource("12_ir6gx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 3)
+
+[node name="_dev_floor_guide2" parent="Room_Start/_env" instance=ExtResource("12_ir6gx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1)
+
+[node name="_dev_floor_guide4" parent="Room_Start/_env" instance=ExtResource("12_ir6gx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -3)
+
+[node name="_dev_floor_guide3" parent="Room_Start/_env" instance=ExtResource("12_ir6gx")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 2, 0, -1)
+
+[node name="_dev_floor_guide5" parent="Room_Start/_env" instance=ExtResource("12_ir6gx")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -2, 0, -1)
+
+[node name="_dev_floor_guidemid" parent="Room_Start/_env" instance=ExtResource("13_ojeeo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1)
+
+[node name="Teleporter_to_item" parent="Room_Start" node_paths=PackedStringArray("out_pos") instance=ExtResource("14_6ords")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -5)
+out_pos = NodePath("../../Room_Items/Teleporter/In")
+
+[node name="Trigger" type="Area3D" parent="Room_Start/Teleporter_to_item"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, -0.3)
+collision_mask = 3
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Room_Start/Teleporter_to_item/Trigger"]
+shape = SubResource("SphereShape3D_3wul1")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Room_Start/Teleporter_to_item/Trigger"]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 0, 0)
+mesh = SubResource("SphereMesh_hsji5")
+
+[node name="In" type="Node3D" parent="Room_Start/Teleporter_to_item"]
+transform = Transform3D(-1, 0, 5.9604645e-08, 0, 1, 0, -5.9604645e-08, 0, -1, 0, 1, 1)
+
+[node name="Teleporter_to_interactions" parent="Room_Start" node_paths=PackedStringArray("out_pos") instance=ExtResource("14_6ords")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -4, 0, -1)
+out_pos = NodePath("../../Room_Interacting/Teleporter/In")
+
+[node name="Trigger" type="Area3D" parent="Room_Start/Teleporter_to_interactions"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, -0.3)
+collision_mask = 3
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Room_Start/Teleporter_to_interactions/Trigger"]
+shape = SubResource("SphereShape3D_3wul1")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Room_Start/Teleporter_to_interactions/Trigger"]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 0, 0)
+mesh = SubResource("SphereMesh_hsji5")
+
+[node name="In" type="Node3D" parent="Room_Start/Teleporter_to_interactions"]
+transform = Transform3D(-1, 0, 5.9604645e-08, 0, 1, 0, -5.9604645e-08, 0, -1, 0, 1, 1)
+
+[node name="Room_Items" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -13)
+
+[node name="_env" type="Node3D" parent="Room_Items"]
+
+[node name="_floor" type="Node3D" parent="Room_Items/_env"]
+
+[node name="_dev_open_middle_a5" parent="Room_Items/_env/_floor" instance=ExtResource("7_ir6gx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1)
+
+[node name="_dev_open_middle_a6" parent="Room_Items/_env/_floor" instance=ExtResource("7_ir6gx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 1)
+
+[node name="_dev_open_middle_a7" parent="Room_Items/_env/_floor" instance=ExtResource("7_ir6gx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 1)
+
+[node name="_dev_open_middle_a15" parent="Room_Items/_env/_floor" instance=ExtResource("7_ir6gx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, -3)
+
+[node name="_dev_open_middle_a8" parent="Room_Items/_env/_floor" instance=ExtResource("7_ir6gx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1)
+
+[node name="_dev_open_middle_a9" parent="Room_Items/_env/_floor" instance=ExtResource("7_ir6gx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 1)
+
+[node name="_dev_open_middle_a14" parent="Room_Items/_env/_floor" instance=ExtResource("7_ir6gx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, -3)
+
+[node name="_dev_open_middle_a16" parent="Room_Items/_env/_floor" instance=ExtResource("7_ir6gx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, -1)
+
+[node name="_dev_open_middle_a17" parent="Room_Items/_env/_floor" instance=ExtResource("7_ir6gx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1)
+
+[node name="_dev_open_middle_a18" parent="Room_Items/_env/_floor" instance=ExtResource("7_ir6gx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, -1)
+
+[node name="_dev_open_middle_a19" parent="Room_Items/_env/_floor" instance=ExtResource("7_ir6gx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -3)
+
+[node name="_dev_open_middle_a10" parent="Room_Items/_env/_floor" instance=ExtResource("7_ir6gx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 1)
+
+[node name="_wall" type="Node3D" parent="Room_Items/_env"]
+
+[node name="_dev_open_wall2" parent="Room_Items/_env/_wall" instance=ExtResource("2_cti4x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 3)
+
+[node name="_dev_open_wall3" parent="Room_Items/_env/_wall" instance=ExtResource("2_cti4x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 3)
+
+[node name="_dev_open_wall4" parent="Room_Items/_env/_wall" instance=ExtResource("2_cti4x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 3)
+
+[node name="_dev_open_wall5" parent="Room_Items/_env/_wall" instance=ExtResource("2_cti4x")]
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 0, 0, -5)
+
+[node name="_dev_open_wall7" parent="Room_Items/_env/_wall" instance=ExtResource("2_cti4x")]
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, -2, 0, -5)
+
+[node name="_dev_open_wall9" parent="Room_Items/_env/_wall" instance=ExtResource("2_cti4x")]
+transform = Transform3D(-8.940697e-08, 0, -0.99999994, 0, 1, 0, 0.99999994, 0, -8.940697e-08, -4, 0, -1)
+
+[node name="_dev_open_wall14" parent="Room_Items/_env/_wall" instance=ExtResource("2_cti4x")]
+transform = Transform3D(-8.940697e-08, 0, -0.99999994, 0, 1, 0, 0.99999994, 0, -8.940697e-08, -4, 0, -3)
+
+[node name="_dev_open_wall10" parent="Room_Items/_env/_wall" instance=ExtResource("2_cti4x")]
+transform = Transform3D(-8.940697e-08, 0, -0.99999994, 0, 1, 0, 0.99999994, 0, -8.940697e-08, -4, 0, 1)
+
+[node name="_dev_open_wall11" parent="Room_Items/_env/_wall" instance=ExtResource("2_cti4x")]
+transform = Transform3D(1.7682972e-07, 0, 0.9999999, 0, 1, 0, -0.9999999, 0, 1.7682972e-07, 4, 0, 1)
+
+[node name="_dev_open_wall12" parent="Room_Items/_env/_wall" instance=ExtResource("2_cti4x")]
+transform = Transform3D(1.7682972e-07, 0, 0.9999999, 0, 1, 0, -0.9999999, 0, 1.7682972e-07, 4, 0, -1)
+
+[node name="_dev_open_wall13" parent="Room_Items/_env/_wall" instance=ExtResource("2_cti4x")]
+transform = Transform3D(1.7682972e-07, 0, 0.9999999, 0, 1, 0, -0.9999999, 0, 1.7682972e-07, 4, 0, -3)
+
+[node name="_dev_open_wall8" parent="Room_Items/_env/_wall" instance=ExtResource("2_cti4x")]
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 2, 0, -5)
+
+[node name="_corner" type="Node3D" parent="Room_Items/_env"]
+
+[node name="_dev_open_corner2" parent="Room_Items/_env/_corner" instance=ExtResource("6_fnuid")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, 3)
+
+[node name="_dev_open_corner3" parent="Room_Items/_env/_corner" instance=ExtResource("6_fnuid")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 4, 0, -5)
+
+[node name="_dev_open_corner4" parent="Room_Items/_env/_corner" instance=ExtResource("6_fnuid")]
+transform = Transform3D(-1.0000001, 0, 0, 0, 1, 0, 0, 0, -1.0000001, -4, 0, -5)
+
+[node name="_dev_open_corner5" parent="Room_Items/_env/_corner" instance=ExtResource("6_fnuid")]
+transform = Transform3D(4.3711392e-08, 0, -1.0000001, 0, 1, 0, 1.0000001, 0, 4.3711392e-08, -4, 0, 3)
+
+[node name="_dev_floor_guide" parent="Room_Items/_env" instance=ExtResource("12_ir6gx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 3)
+
+[node name="_dev_floor_guidemid" parent="Room_Items/_env" instance=ExtResource("13_ojeeo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1)
+
+[node name="_dev_floor_guidemid3" parent="Room_Items/_env" instance=ExtResource("13_ojeeo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1)
+
+[node name="_dev_floor_guidemid4" parent="Room_Items/_env" instance=ExtResource("13_ojeeo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 1)
+
+[node name="_dev_floor_guidemid5" parent="Room_Items/_env" instance=ExtResource("13_ojeeo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 1)
+
+[node name="_dev_floor_guidemid6" parent="Room_Items/_env" instance=ExtResource("13_ojeeo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, -1)
+
+[node name="_dev_floor_guidemid2" parent="Room_Items/_env" instance=ExtResource("13_ojeeo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, -1)
+
+[node name="_dev_floor_guidemid7" parent="Room_Items/_env" instance=ExtResource("13_ojeeo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -3)
+
+[node name="_dev_floor_guidemid8" parent="Room_Items/_env" instance=ExtResource("13_ojeeo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, -3)
+
+[node name="_dev_floor_guidemid9" parent="Room_Items/_env" instance=ExtResource("13_ojeeo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, -3)
+
+[node name="Teleporter" parent="Room_Items" node_paths=PackedStringArray("out_pos") instance=ExtResource("14_6ords")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 3)
+out_pos = NodePath("../../Room_Start/Teleporter_to_item/In")
+
+[node name="Trigger" type="Area3D" parent="Room_Items/Teleporter"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0.3)
+collision_mask = 3
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Room_Items/Teleporter/Trigger"]
+shape = SubResource("SphereShape3D_3wul1")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Room_Items/Teleporter/Trigger"]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 0, 0)
+mesh = SubResource("SphereMesh_hsji5")
+
+[node name="In" type="Node3D" parent="Room_Items/Teleporter"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.999, -1)
+
+[node name="TEST_Grabbable_item" parent="Room_Items" instance=ExtResource("16_3wul1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0.4, 0)
+gravity_scale = 1.0
+item_weight = 3
+
+[node name="TEST_Grabbable_item2" parent="Room_Items" instance=ExtResource("16_3wul1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0.4, 0)
+item_weight = 3
+
+[node name="TEST_Grabbable_item3" type="RigidBody3D" parent="Room_Items" node_paths=PackedStringArray("rb", "idle_graphics")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0.4, -2)
+collision_layer = 2
+axis_lock_angular_x = true
+axis_lock_angular_z = true
+mass = 0.5
+physics_material_override = SubResource("PhysicsMaterial_p1gsu")
+gravity_scale = 0.8
+script = ExtResource("14_p1gsu")
+rb = NodePath(".")
+idle_graphics = NodePath("MeshInstance3D")
+item_weight = 3
+
+[node name="Area3D" type="Area3D" parent="Room_Items/TEST_Grabbable_item3"]
+collision_layer = 2
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="Room_Items/TEST_Grabbable_item3/Area3D"]
+shape = SubResource("BoxShape3D_llc7q")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Room_Items/TEST_Grabbable_item3"]
+shape = SubResource("BoxShape3D_234jp")
+debug_color = Color(0.8442249, 0.37985525, 5.7756904e-07, 0.41960785)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Room_Items/TEST_Grabbable_item3"]
+visible = false
+mesh = SubResource("SphereMesh_234jp")
+
+[node name="Sprite3D" type="Sprite3D" parent="Room_Items/TEST_Grabbable_item3"]
+pixel_size = 0.0064
+billboard = 1
+texture_filter = 0
+texture = ExtResource("15_a71ib")
+
+[node name="TEST_Grabbable_item4" type="RigidBody3D" parent="Room_Items" node_paths=PackedStringArray("rb", "idle_graphics")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0.4, -2)
+collision_layer = 2
+axis_lock_angular_x = true
+axis_lock_angular_z = true
+mass = 0.5
+physics_material_override = SubResource("PhysicsMaterial_a71ib")
+gravity_scale = 1.477
+script = ExtResource("14_p1gsu")
+rb = NodePath(".")
+idle_graphics = NodePath("MeshInstance3D")
+item_weight = 3
+
+[node name="Area3D" type="Area3D" parent="Room_Items/TEST_Grabbable_item4"]
+collision_layer = 2
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="Room_Items/TEST_Grabbable_item4/Area3D"]
+shape = SubResource("BoxShape3D_llc7q")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Room_Items/TEST_Grabbable_item4"]
+shape = SubResource("BoxShape3D_234jp")
+debug_color = Color(0.8442249, 0.37985525, 5.7756904e-07, 0.41960785)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Room_Items/TEST_Grabbable_item4"]
+visible = false
+mesh = SubResource("SphereMesh_234jp")
+
+[node name="Sprite3D" type="Sprite3D" parent="Room_Items/TEST_Grabbable_item4"]
+modulate = Color(18.892157, 0, 18.892157, 1)
+pixel_size = 0.0064
+billboard = 1
+texture_filter = 0
+texture = ExtResource("15_a71ib")
+
+[node name="Room_Interacting" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 0, -3)
+
+[node name="_env" type="Node3D" parent="Room_Interacting"]
+
+[node name="_floor" type="Node3D" parent="Room_Interacting/_env"]
+
+[node name="_dev_open_middle_a5" parent="Room_Interacting/_env/_floor" instance=ExtResource("7_ir6gx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1)
+
+[node name="_dev_open_middle_a6" parent="Room_Interacting/_env/_floor" instance=ExtResource("7_ir6gx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 1)
+
+[node name="_dev_open_middle_a8" parent="Room_Interacting/_env/_floor" instance=ExtResource("7_ir6gx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1)
+
+[node name="_dev_open_middle_a9" parent="Room_Interacting/_env/_floor" instance=ExtResource("7_ir6gx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 1)
+
+[node name="_dev_open_middle_a14" parent="Room_Interacting/_env/_floor" instance=ExtResource("7_ir6gx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, -3)
+
+[node name="_dev_open_middle_a16" parent="Room_Interacting/_env/_floor" instance=ExtResource("7_ir6gx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, -1)
+
+[node name="_dev_open_middle_a17" parent="Room_Interacting/_env/_floor" instance=ExtResource("7_ir6gx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1)
+
+[node name="_dev_open_middle_a18" parent="Room_Interacting/_env/_floor" instance=ExtResource("7_ir6gx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, -1)
+
+[node name="_dev_open_middle_a19" parent="Room_Interacting/_env/_floor" instance=ExtResource("7_ir6gx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -3)
+
+[node name="_wall" type="Node3D" parent="Room_Interacting/_env"]
+
+[node name="_dev_open_wall2" parent="Room_Interacting/_env/_wall" instance=ExtResource("2_cti4x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 3)
+
+[node name="_dev_open_wall3" parent="Room_Interacting/_env/_wall" instance=ExtResource("2_cti4x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 3)
+
+[node name="_dev_open_wall4" parent="Room_Interacting/_env/_wall" instance=ExtResource("2_cti4x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 3)
+
+[node name="_dev_open_wall5" parent="Room_Interacting/_env/_wall" instance=ExtResource("2_cti4x")]
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 0, 0, -5)
+
+[node name="_dev_open_wall7" parent="Room_Interacting/_env/_wall" instance=ExtResource("2_cti4x")]
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, -2, 0, -5)
+
+[node name="_dev_open_wall9" parent="Room_Interacting/_env/_wall" instance=ExtResource("2_cti4x")]
+transform = Transform3D(-8.940695e-08, 0, -0.9999999, 0, 1, 0, 0.9999999, 0, -8.940695e-08, -4, 0, -1)
+
+[node name="_dev_open_wall14" parent="Room_Interacting/_env/_wall" instance=ExtResource("2_cti4x")]
+transform = Transform3D(-8.940697e-08, 0, -0.99999994, 0, 1, 0, 0.99999994, 0, -8.940697e-08, -4, 0, -3)
+
+[node name="_dev_open_wall10" parent="Room_Interacting/_env/_wall" instance=ExtResource("2_cti4x")]
+transform = Transform3D(-8.940697e-08, 0, -0.99999994, 0, 1, 0, 0.99999994, 0, -8.940697e-08, -4, 0, 1)
+
+[node name="_dev_open_wall11" parent="Room_Interacting/_env/_wall" instance=ExtResource("2_cti4x")]
+transform = Transform3D(1.7682972e-07, 0, 0.9999999, 0, 1, 0, -0.9999999, 0, 1.7682972e-07, 4, 0, 1)
+
+[node name="_dev_open_wall12" parent="Room_Interacting/_env/_wall" instance=ExtResource("2_cti4x")]
+transform = Transform3D(1.7682972e-07, 0, 0.9999999, 0, 1, 0, -0.9999999, 0, 1.7682972e-07, 4, 0, -1)
+
+[node name="_dev_open_wall13" parent="Room_Interacting/_env/_wall" instance=ExtResource("2_cti4x")]
+transform = Transform3D(1.7682972e-07, 0, 0.9999999, 0, 1, 0, -0.9999999, 0, 1.7682972e-07, 4, 0, -3)
+
+[node name="_dev_open_wall8" parent="Room_Interacting/_env/_wall" instance=ExtResource("2_cti4x")]
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 2, 0, -5)
+
+[node name="_corner" type="Node3D" parent="Room_Interacting/_env"]
+
+[node name="_dev_open_corner2" parent="Room_Interacting/_env/_corner" instance=ExtResource("6_fnuid")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, 3)
+
+[node name="_dev_open_corner3" parent="Room_Interacting/_env/_corner" instance=ExtResource("6_fnuid")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 4, 0, -5)
+
+[node name="_dev_open_corner4" parent="Room_Interacting/_env/_corner" instance=ExtResource("6_fnuid")]
+transform = Transform3D(-1.0000001, 0, 0, 0, 1, 0, 0, 0, -1.0000001, -4, 0, -5)
+
+[node name="_dev_open_corner5" parent="Room_Interacting/_env/_corner" instance=ExtResource("6_fnuid")]
+transform = Transform3D(4.3711392e-08, 0, -1.0000001, 0, 1, 0, 1.0000001, 0, 4.3711392e-08, -4, 0, 3)
+
+[node name="_dev_floor_guide6" parent="Room_Interacting/_env" instance=ExtResource("12_ir6gx")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 4, 0, -1)
+
+[node name="Teleporter" parent="Room_Interacting" node_paths=PackedStringArray("out_pos") instance=ExtResource("14_6ords")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 4, 0, -1)
+out_pos = NodePath("../../Room_Start/Teleporter_to_interactions/In")
+
+[node name="Trigger" type="Area3D" parent="Room_Interacting/Teleporter"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0.3)
+collision_mask = 3
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Room_Interacting/Teleporter/Trigger"]
+shape = SubResource("SphereShape3D_3wul1")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Room_Interacting/Teleporter/Trigger"]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 0, 0)
+mesh = SubResource("SphereMesh_hsji5")
+
+[node name="In" type="Node3D" parent="Room_Interacting/Teleporter"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.999, -1)
+
+[node name="TEST_Grabbable_item" parent="Room_Interacting" instance=ExtResource("16_3wul1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0.4, 0)
+item_weight = 2
+
+[node name="Showcase_PressurePlate2" type="Node3D" parent="Room_Interacting"]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -3, 0, 1)
+
+[node name="Env" type="Node3D" parent="Room_Interacting/Showcase_PressurePlate2"]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 0, 0)
+
+[node name="_dev_open_doorway2" parent="Room_Interacting/Showcase_PressurePlate2/Env" instance=ExtResource("4_viu01")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -1, 0, 4.371139e-08)
+
+[node name="_dev_open_doorway3" parent="Room_Interacting/Showcase_PressurePlate2/Env" instance=ExtResource("4_viu01")]
+transform = Transform3D(1.3113416e-07, 0, -1, 0, 1, 0, 1, 0, 1.3113416e-07, 1, 0, -4.371139e-08)
+
+[node name="Gate" parent="Room_Interacting/Showcase_PressurePlate2" instance=ExtResource("8_mlo6p")]
+
+[node name="PressurePlate" parent="Room_Interacting/Showcase_PressurePlate2" instance=ExtResource("15_fpxpw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.05000019, 1)
+weight_to_activate = 1.0
+
+[node name="Showcase_Button" type="Node3D" parent="Room_Interacting"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 0, 15)
+
+[node name="Gate_Button" parent="Room_Interacting/Showcase_Button" instance=ExtResource("8_mlo6p")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -13, 0, -18)
+
+[node name="Button" parent="Room_Interacting/Showcase_Button" instance=ExtResource("10_h40wo")]
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, -12, 0.8, -18.9)
+
+[node name="_dev_open_doorway4" parent="Room_Interacting/Showcase_Button" instance=ExtResource("4_viu01")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -14, 0, -18)
+
+[node name="_dev_open_wall26" type="StaticBody3D" parent="Room_Interacting/Showcase_Button"]
+transform = Transform3D(-1, 0, 2.6226832e-07, 0, 1, 0, -2.6226832e-07, 0, -1, -12, -0.8, -18)
+
+[node name="_wall_back" type="CollisionShape3D" parent="Room_Interacting/Showcase_Button/_dev_open_wall26"]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 1, 0.95)
+shape = SubResource("BoxShape3D_fpxpw")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Room_Interacting/Showcase_Button/_dev_open_wall26/_wall_back"]
+mesh = SubResource("BoxMesh_o5rkc")
+
+[node name="_wall_floor" type="CollisionShape3D" parent="Room_Interacting/Showcase_Button/_dev_open_wall26"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.05, 0)
+shape = SubResource("BoxShape3D_25we5")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Room_Interacting/Showcase_Button/_dev_open_wall26/_wall_floor"]
+mesh = SubResource("BoxMesh_65s44")
+
+[node name="_dev_open_doorway5" parent="Room_Interacting/Showcase_Button" instance=ExtResource("4_viu01")]
+transform = Transform3D(1.3113416e-07, 0, -1, 0, 1, 0, 1, 0, 1.3113416e-07, -12, 0, -18)
+
+[node name="Room_Animation" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 0, -3)
+
+[node name="_env" type="Node3D" parent="Room_Animation"]
+
+[node name="_floor" type="Node3D" parent="Room_Animation/_env"]
+
+[node name="_dev_open_middle_a5" parent="Room_Animation/_env/_floor" instance=ExtResource("7_ir6gx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1)
+
+[node name="_dev_open_middle_a6" parent="Room_Animation/_env/_floor" instance=ExtResource("7_ir6gx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 1)
+
+[node name="_dev_open_middle_a7" parent="Room_Animation/_env/_floor" instance=ExtResource("7_ir6gx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 1)
+
+[node name="_dev_open_middle_a15" parent="Room_Animation/_env/_floor" instance=ExtResource("7_ir6gx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, -3)
+
+[node name="_dev_open_middle_a8" parent="Room_Animation/_env/_floor" instance=ExtResource("7_ir6gx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1)
+
+[node name="_dev_open_middle_a9" parent="Room_Animation/_env/_floor" instance=ExtResource("7_ir6gx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 1)
+
+[node name="_dev_open_middle_a14" parent="Room_Animation/_env/_floor" instance=ExtResource("7_ir6gx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, -3)
+
+[node name="_dev_open_middle_a16" parent="Room_Animation/_env/_floor" instance=ExtResource("7_ir6gx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, -1)
+
+[node name="_dev_open_middle_a17" parent="Room_Animation/_env/_floor" instance=ExtResource("7_ir6gx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1)
+
+[node name="_dev_open_middle_a18" parent="Room_Animation/_env/_floor" instance=ExtResource("7_ir6gx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, -1)
+
+[node name="_dev_open_middle_a19" parent="Room_Animation/_env/_floor" instance=ExtResource("7_ir6gx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -3)
+
+[node name="_dev_open_middle_a10" parent="Room_Animation/_env/_floor" instance=ExtResource("7_ir6gx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 1)
+
+[node name="_wall" type="Node3D" parent="Room_Animation/_env"]
+
+[node name="_dev_open_wall2" parent="Room_Animation/_env/_wall" instance=ExtResource("2_cti4x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 3)
+
+[node name="_dev_open_wall3" parent="Room_Animation/_env/_wall" instance=ExtResource("2_cti4x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 3)
+
+[node name="_dev_open_wall4" parent="Room_Animation/_env/_wall" instance=ExtResource("2_cti4x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 3)
+
+[node name="_dev_open_wall5" parent="Room_Animation/_env/_wall" instance=ExtResource("2_cti4x")]
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 0, 0, -5)
+
+[node name="_dev_open_wall7" parent="Room_Animation/_env/_wall" instance=ExtResource("2_cti4x")]
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, -2, 0, -5)
+
+[node name="_dev_open_wall9" parent="Room_Animation/_env/_wall" instance=ExtResource("2_cti4x")]
+transform = Transform3D(-8.940697e-08, 0, -0.99999994, 0, 1, 0, 0.99999994, 0, -8.940697e-08, -4, 0, -1)
+
+[node name="_dev_open_wall14" parent="Room_Animation/_env/_wall" instance=ExtResource("2_cti4x")]
+transform = Transform3D(-8.940697e-08, 0, -0.99999994, 0, 1, 0, 0.99999994, 0, -8.940697e-08, -4, 0, -3)
+
+[node name="_dev_open_wall10" parent="Room_Animation/_env/_wall" instance=ExtResource("2_cti4x")]
+transform = Transform3D(-8.940697e-08, 0, -0.99999994, 0, 1, 0, 0.99999994, 0, -8.940697e-08, -4, 0, 1)
+
+[node name="_dev_open_wall11" parent="Room_Animation/_env/_wall" instance=ExtResource("2_cti4x")]
+transform = Transform3D(1.7682972e-07, 0, 0.9999999, 0, 1, 0, -0.9999999, 0, 1.7682972e-07, 4, 0, 1)
+
+[node name="_dev_open_wall12" parent="Room_Animation/_env/_wall" instance=ExtResource("2_cti4x")]
+transform = Transform3D(1.7682972e-07, 0, 0.9999999, 0, 1, 0, -0.9999999, 0, 1.7682972e-07, 4, 0, -1)
+
+[node name="_dev_open_wall13" parent="Room_Animation/_env/_wall" instance=ExtResource("2_cti4x")]
+transform = Transform3D(1.7682972e-07, 0, 0.9999999, 0, 1, 0, -0.9999999, 0, 1.7682972e-07, 4, 0, -3)
+
+[node name="_dev_open_wall8" parent="Room_Animation/_env/_wall" instance=ExtResource("2_cti4x")]
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 2, 0, -5)
+
+[node name="_corner" type="Node3D" parent="Room_Animation/_env"]
+
+[node name="_dev_open_corner2" parent="Room_Animation/_env/_corner" instance=ExtResource("6_fnuid")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, 3)
+
+[node name="_dev_open_corner3" parent="Room_Animation/_env/_corner" instance=ExtResource("6_fnuid")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 4, 0, -5)
+
+[node name="_dev_open_corner4" parent="Room_Animation/_env/_corner" instance=ExtResource("6_fnuid")]
+transform = Transform3D(-1.0000001, 0, 0, 0, 1, 0, 0, 0, -1.0000001, -4, 0, -5)
+
+[node name="_dev_open_corner5" parent="Room_Animation/_env/_corner" instance=ExtResource("6_fnuid")]
+transform = Transform3D(4.3711392e-08, 0, -1.0000001, 0, 1, 0, 1.0000001, 0, 4.3711392e-08, -4, 0, 3)
+
+[node name="_dev_floor_guide7" parent="Room_Animation/_env" instance=ExtResource("12_ir6gx")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -4, 0, -1)
+
+[node name="Teleporter" parent="Room_Animation" node_paths=PackedStringArray("out_pos") instance=ExtResource("14_6ords")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -4, 0, -1)
+out_pos = NodePath("../../Room_Start/Teleporter_to_item/In")
+
+[node name="Trigger" type="Area3D" parent="Room_Animation/Teleporter"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0.3)
+collision_mask = 3
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Room_Animation/Teleporter/Trigger"]
+shape = SubResource("SphereShape3D_3wul1")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Room_Animation/Teleporter/Trigger"]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 0, 0)
+mesh = SubResource("SphereMesh_hsji5")
+
+[node name="In" type="Node3D" parent="Room_Animation/Teleporter"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.999, -1)
+
+[node name="TEST_Grabbable_item" parent="Room_Animation" instance=ExtResource("16_3wul1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0.4, 0)
+
+[connection signal="area_entered" from="Room_Start/Teleporter_to_item/Trigger" to="Room_Start/Teleporter_to_item" method="_teleport_entity"]
+[connection signal="body_entered" from="Room_Start/Teleporter_to_item/Trigger" to="Room_Start/Teleporter_to_item" method="_teleport_item"]
+[connection signal="area_entered" from="Room_Start/Teleporter_to_interactions/Trigger" to="Room_Start/Teleporter_to_interactions" method="_teleport_entity"]
+[connection signal="body_entered" from="Room_Start/Teleporter_to_interactions/Trigger" to="Room_Start/Teleporter_to_interactions" method="_teleport_item"]
+[connection signal="area_entered" from="Room_Items/Teleporter/Trigger" to="Room_Items/Teleporter" method="_teleport_entity"]
+[connection signal="body_entered" from="Room_Items/Teleporter/Trigger" to="Room_Items/Teleporter" method="_teleport_item"]
+[connection signal="area_entered" from="Room_Interacting/Teleporter/Trigger" to="Room_Interacting/Teleporter" method="_teleport_entity"]
+[connection signal="body_entered" from="Room_Interacting/Teleporter/Trigger" to="Room_Interacting/Teleporter" method="_teleport_item"]
+[connection signal="on_change" from="Room_Interacting/Showcase_PressurePlate2/PressurePlate" to="Room_Interacting/Showcase_PressurePlate2/Gate" method="open_gate"]
+[connection signal="on_activated" from="Room_Interacting/Showcase_Button/Button" to="Room_Interacting/Showcase_Button/Gate_Button" method="open_gate"]
+[connection signal="on_deactivated" from="Room_Interacting/Showcase_Button/Button" to="Room_Interacting/Showcase_Button/Gate_Button" method="open_gate"]
+[connection signal="area_entered" from="Room_Animation/Teleporter/Trigger" to="Room_Animation/Teleporter" method="_teleport_entity"]
+[connection signal="body_entered" from="Room_Animation/Teleporter/Trigger" to="Room_Animation/Teleporter" method="_teleport_item"]

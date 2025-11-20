@@ -19,7 +19,6 @@ func _ready() -> void:
 	timer.wait_time = delay_before_reset
 
 func begin_interact(sig: float = -1) -> void:
-	if activated: return
 	activate_button()
 
 func _process(delta: float) -> void:
@@ -28,6 +27,7 @@ func _process(delta: float) -> void:
 		on_change.emit(mapped_time_left)
 
 func activate_button() -> void:
+	if activated: return
 	activated = true
 	
 	on_activated.emit(1)
@@ -50,3 +50,12 @@ func deactivate_button(emit_signal: bool = true):
 
 func _on_timer_timeout() -> void:
 	deactivate_button()
+
+
+func _on_item_entered(area: Area3D) -> void:
+	print("hmm")
+	if area.get_parent() is Grabbable_Item:
+		var rb = area.get_parent().rb as RigidBody3D
+		print(rb.linear_velocity.length_squared())
+		if rb.linear_velocity.length_squared() > 1:
+			activate_button()

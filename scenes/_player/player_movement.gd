@@ -14,7 +14,7 @@ extends Node
 
 # ↑ General Stuff ↑
 # --------------------------------------------------------------------------------------------------
-# ↓ Movin Stuff ↓
+# ↓ Moving Stuff ↓
 
 var is_moving: bool
 var target_pos: Vector3
@@ -142,3 +142,24 @@ func check_grabbed_obj_direction(dir: int) -> bool: # 0 = north, clockwise
 	if grabbed_obj.detect_dirs[dir].is_colliding(): 
 		return true
 	else: return false
+
+# ↑ Grabbing Stuff ↑
+# --------------------------------------------------------------------------------------------------
+# ↓ Teleport Stuff ↓
+
+func teleport_player(out_pos: Node3D) -> void:
+	var new_position := out_pos.global_position.round()
+	var new_rotation := out_pos.global_rotation.y
+	
+	is_moving = false
+	
+	target_pos = new_position
+	target_rotation = new_rotation
+	
+	compass.global_position = new_position
+	compass.global_rotation.y = new_rotation
+	
+	player.global_position = new_position
+	player.global_rotation.y = new_rotation
+	
+	current_direction = MoveDirections.NOT_MOVING

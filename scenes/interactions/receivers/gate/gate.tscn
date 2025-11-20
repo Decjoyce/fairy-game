@@ -20,6 +20,12 @@ shape = SubResource("BoxShape3D_i1hti")
 [node name="MeshInstance3D" type="MeshInstance3D" parent="gate"]
 mesh = SubResource("BoxMesh_i1hti")
 
+[node name="Label3D" type="Label3D" parent="gate"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.2, -0.099999994)
+billboard = 1
+text = "GATE"
+font_size = 67
+
 [node name="PlayerCollision" type="StaticBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 collision_layer = 8

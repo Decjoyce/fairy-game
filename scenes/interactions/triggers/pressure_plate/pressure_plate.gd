@@ -14,7 +14,7 @@ var entities_on_plate: Dictionary[Node3D, float]
 
 @onready var collision: StaticBody3D = $Graphics/Collision
 
-@export var weight_to_activate: float
+@export_range(1.0, 10, 0.5) var weight_to_activate: float = 2.0
 var current_weight: float
 
 # ↑ General Stuff ↑
@@ -86,18 +86,21 @@ func update_total_weight() -> float:
 
 func activate() -> void:
 	if current_state == plate_states.ACTIVATED: return
-	on_activated.emit(current_weight / weight_to_activate)
-	on_change.emit(current_weight / weight_to_activate)
+	var weight_percent: float = clampf(current_weight / weight_to_activate, 0, 1)
+	on_activated.emit(weight_percent)
+	on_change.emit(weight_percent)
 	current_state = plate_states.ACTIVATED
 
 func deactivate() -> void:
 	if current_state == plate_states.DEACTIVATED: return
+	var weight_percent: float = clampf(current_weight / weight_to_activate, 0, 1)
 	on_deactivated.emit(0)
-	on_change.emit(current_weight / weight_to_activate)
+	on_change.emit(weight_percent)
 	current_state = plate_states.DEACTIVATED
 
 func inbetween() -> void:
-	on_change.emit(current_weight / weight_to_activate)
+	var weight_percent: float = clampf(current_weight / weight_to_activate, 0, 1)
+	on_change.emit(weight_percent)
 	current_state = plate_states.INBETWEEN
 
 # ↑ Activating Stuff ↑
@@ -108,15 +111,18 @@ var is_lerping: bool
 var time_move_started: float 
 var _start_position: float
 var _end_position: float
-@export var deactivated_pos: float = -0.1
-@export var _lerp_speed: float = 100
+var deactivated_pos: float
+@export_range(800, 1500, 100) var _lerp_speed: float = 1000
 @onready var graphics: Node3D = $Graphics
+
+func _ready() -> void:
+	deactivated_pos = -position.y
 
 func animate_plate() -> void:
 	time_move_started = Time.get_ticks_msec()
 	is_lerping = true
 	_start_position = graphics.position.y
-	var move_amount : float = current_weight / weight_to_activate
+	var move_amount : float = clampf(current_weight / weight_to_activate, 0, 1)
 	_end_position = deactivated_pos * move_amount
 	prints(current_weight, weight_to_activate, move_amount, _end_position)
 

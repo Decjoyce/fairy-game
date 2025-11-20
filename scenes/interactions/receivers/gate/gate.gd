@@ -9,7 +9,7 @@ var time_move_started: float
 var _start_position: float
 var _end_position: float
 var closed_pos: float = 2
-@export var speed: float = 100
+@export var speed: float = 600.0
 @onready var graphics: Node3D = $gate
 @onready var player_col: CollisionShape3D = $PlayerCollision/CollisionShape3D
 @export var height_to_toggle_player_barrier: float = 0.3
