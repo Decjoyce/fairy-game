@@ -37,6 +37,13 @@ func end_interact(sig: float = -1) -> void:
 	rb.freeze = false
 	rb.linear_velocity = Vector3.ZERO
 
+# ↑ Interacting Stuff ↑
+# --------------------------------------------------------------------------------------------------
+# ↓ Item Stuff ↓
+
+func use_item() -> void:
+	pass
+
 func throw(_throw_mult: float) -> void:
 	rb.linear_velocity = Vector3.ZERO
 	rb.freeze = false

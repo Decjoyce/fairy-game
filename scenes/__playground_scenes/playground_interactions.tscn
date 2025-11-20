@@ -631,6 +631,23 @@ mesh = SubResource("SphereMesh_hsji5")
 [node name="In" type="Node3D" parent="Room_Start/Teleporter_to_anim"]
 transform = Transform3D(-1, 0, 5.9604645e-08, 0, 1, 0, -5.9604645e-08, 0, -1, 0, 1, 1)
 
+[node name="Label3D3" type="Label3D" parent="Room_Start"]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -2.7000003, 1.7, -1)
+text = "Triggers &
+Receivers"
+font_size = 52
+
+[node name="Label3D4" type="Label3D" parent="Room_Start"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.7, -4)
+text = "Items"
+font_size = 52
+
+[node name="Label3D5" type="Label3D" parent="Room_Start"]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 2.8, 1.7, -1)
+text = "Animated
+Objects"
+font_size = 52
+
 [node name="Room_Items" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -13)
 
@@ -850,6 +867,12 @@ billboard = 1
 texture_filter = 0
 texture = ExtResource("15_a71ib")
 
+[node name="Label3D3" type="Label3D" parent="Room_Items"]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 0, 2.7, -3)
+billboard = 1
+text = "Items"
+font_size = 97
+
 [node name="Room_Interacting" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 0, -3)
 
@@ -958,7 +981,7 @@ mesh = SubResource("SphereMesh_hsji5")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.999, -1)
 
 [node name="TEST_Grabbable_item" parent="Room_Interacting" instance=ExtResource("16_3wul1")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0.4, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0.4, -1)
 item_weight = 2
 
 [node name="Showcase_PressurePlate2" type="Node3D" parent="Room_Interacting"]
@@ -1010,6 +1033,13 @@ mesh = SubResource("BoxMesh_65s44")
 
 [node name="_dev_open_doorway5" parent="Room_Interacting/Showcase_Button" instance=ExtResource("4_viu01")]
 transform = Transform3D(1.3113416e-07, 0, -1, 0, 1, 0, 1, 0, 1.3113416e-07, -12, 0, -18)
+
+[node name="Label3D2" type="Label3D" parent="Room_Interacting"]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -4, 2.7, -1)
+billboard = 1
+text = "Triggers &
+Receivers"
+font_size = 97
 
 [node name="Room_Animation" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 0, -3)

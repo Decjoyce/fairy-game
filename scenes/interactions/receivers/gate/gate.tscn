@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://dt13fur6twjep"]
+[gd_scene load_steps=5 format=3 uid="uid://dt13fur6twjep"]
 
 [ext_resource type="Script" uid="uid://42c4j0jtwejr" path="res://scenes/interactions/receivers/gate/gate.gd" id="1_cm4qh"]
 
@@ -7,6 +7,9 @@ size = Vector3(2, 2, 0.2)
 
 [sub_resource type="BoxMesh" id="BoxMesh_i1hti"]
 size = Vector3(2, 2, 0.2)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_wx5q6"]
+size = Vector3(2, 0.4, 0.4)
 
 [node name="Gate" type="Node3D"]
 script = ExtResource("1_cm4qh")
@@ -20,11 +23,18 @@ shape = SubResource("BoxShape3D_i1hti")
 [node name="MeshInstance3D" type="MeshInstance3D" parent="gate"]
 mesh = SubResource("BoxMesh_i1hti")
 
-[node name="Label3D" type="Label3D" parent="gate"]
+[node name="_label" type="Label3D" parent="gate"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.2, -0.099999994)
 billboard = 1
 text = "GATE"
 font_size = 67
+
+[node name="UnderChecker" type="Area3D" parent="gate"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.2, 0)
+collision_mask = 3
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="gate/UnderChecker"]
+shape = SubResource("BoxShape3D_wx5q6")
 
 [node name="PlayerCollision" type="StaticBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
@@ -33,3 +43,8 @@ collision_mask = 0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="PlayerCollision"]
 shape = SubResource("BoxShape3D_i1hti")
+
+[connection signal="area_entered" from="gate/UnderChecker" to="." method="_on_area_entered_under_checker"]
+[connection signal="area_exited" from="gate/UnderChecker" to="." method="_on_area_exited_under_checker"]
+[connection signal="body_entered" from="gate/UnderChecker" to="." method="_on_body_entered_under_checker"]
+[connection signal="body_exited" from="gate/UnderChecker" to="." method="_on_body_exited_under_checker"]

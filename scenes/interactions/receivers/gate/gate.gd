@@ -13,6 +13,9 @@ var closed_pos: float = 2
 @onready var graphics: Node3D = $gate
 @onready var player_col: CollisionShape3D = $PlayerCollision/CollisionShape3D
 @export var height_to_toggle_player_barrier: float = 0.3
+@onready var under_checker: Area3D = $gate/UnderChecker
+
+var things_under: Array[Node3D]
 
 func open_gate(amount: float) -> void:
 	time_move_started = Time.get_ticks_msec()
@@ -40,3 +43,21 @@ func _process(delta: float) -> void:
 func plate_lerp(start: float, finish: float, percentage: float):
 	var _percentage = clampf(percentage, 0.0, 1.0)
 	return (1-_percentage) * start + _percentage * finish
+
+
+func _on_area_entered_under_checker(area: Area3D) -> void:
+	if area.get_parent() is Grabbable_Item or area.get_parent() is Entity:
+		things_under.append(area.get_parent())
+
+func _on_area_exited_under_checker(area: Area3D) -> void:
+	if things_under.has(area.get_parent()):
+		things_under.erase(area.get_parent())
+
+
+func _on_body_entered_under_checker(body: Node3D) -> void:
+	if body is Grabbable_Item or body is Entity:
+		things_under.append(body)
+
+func _on_body_exited_under_checker(body: Node3D) -> void:
+	if things_under.has(body):
+		things_under.erase(body)
