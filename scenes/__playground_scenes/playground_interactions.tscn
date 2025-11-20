@@ -76,6 +76,21 @@ size = Vector3(2, 0.1, 2)
 material = ExtResource("18_o5rkc")
 size = Vector3(2, 0.1, 2)
 
+[sub_resource type="Animation" id="Animation_f8tpx"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+
 [sub_resource type="Animation" id="Animation_a71ib"]
 resource_name = "playground_rotation_test"
 length = 5.0
@@ -90,21 +105,6 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Vector3(0, 0, 0), Vector3(0, -6.2831855, 0)]
-}
-
-[sub_resource type="Animation" id="Animation_f8tpx"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:rotation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(0, 0, 0)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_f8tpx"]
@@ -1040,6 +1040,11 @@ billboard = 1
 text = "Triggers &
 Receivers"
 font_size = 97
+
+[node name="Decal" type="Decal" parent="Room_Interacting"]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 1.5, 1, 3.6999998)
+size = Vector3(9, 2, 2)
+texture_albedo = ExtResource("2_fnuid")
 
 [node name="Room_Animation" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 0, -3)

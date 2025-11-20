@@ -39,10 +39,20 @@ func end_interact(sig: float = -1) -> void:
 
 # ↑ Interacting Stuff ↑
 # --------------------------------------------------------------------------------------------------
-# ↓ Item Stuff ↓
+# ↓ Use Stuff ↓
 
-func use_item() -> void:
+func begin_using_item() -> void:
 	pass
+
+func using_item() -> void:
+	pass
+
+func end_using_item() -> void:
+	pass
+
+# ↑ Use Stuff ↑
+# --------------------------------------------------------------------------------------------------
+# ↓ Item Stuff ↓
 
 func throw(_throw_mult: float) -> void:
 	rb.linear_velocity = Vector3.ZERO
