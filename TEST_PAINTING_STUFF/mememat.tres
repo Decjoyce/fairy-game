@@ -1,0 +1,69 @@
+[gd_resource type="VisualShader" load_steps=7 format=3 uid="uid://bjcg6f61hwjaa"]
+
+[sub_resource type="VisualShaderNodeInput" id="VisualShaderNodeInput_ucfq7"]
+input_name = "uv"
+
+[sub_resource type="VisualShaderNodeTexture2DParameter" id="VisualShaderNodeTexture2DParameter_u5xeb"]
+parameter_name = "MainColor"
+
+[sub_resource type="VisualShaderNodeTexture2DParameter" id="VisualShaderNodeTexture2DParameter_im4uy"]
+parameter_name = "Paint"
+
+[sub_resource type="VisualShaderNodeTexture" id="VisualShaderNodeTexture_dncyw"]
+expanded_output_ports = [0]
+source = 5
+
+[sub_resource type="VisualShaderNodeTexture" id="VisualShaderNodeTexture_f5ld3"]
+source = 5
+
+[sub_resource type="VisualShaderNodeMix" id="VisualShaderNodeMix_mfog2"]
+
+[resource]
+code = "shader_type spatial;
+render_mode blend_mix, depth_draw_opaque, depth_test_default, cull_back, diffuse_lambert, specular_schlick_ggx;
+
+uniform sampler2D MainColor;
+uniform sampler2D Paint;
+
+
+
+void fragment() {
+// Input:2
+	vec2 n_out2p0 = UV;
+
+
+	vec4 n_out6p0;
+// Texture2D:6
+	n_out6p0 = texture(MainColor, n_out2p0);
+
+
+	vec4 n_out5p0;
+// Texture2D:5
+	n_out5p0 = texture(Paint, n_out2p0);
+	float n_out5p4 = n_out5p0.a;
+
+
+// Mix:7
+	float n_out7p0 = mix(n_out6p0.x, n_out5p0.x, n_out5p4);
+
+
+// Output:0
+	ALBEDO = vec3(n_out7p0);
+
+
+}
+"
+nodes/vertex/0/position = Vector2(880, -40)
+nodes/fragment/2/node = SubResource("VisualShaderNodeInput_ucfq7")
+nodes/fragment/2/position = Vector2(-1175.415, 494.2994)
+nodes/fragment/3/node = SubResource("VisualShaderNodeTexture2DParameter_u5xeb")
+nodes/fragment/3/position = Vector2(-1195.415, 134.29941)
+nodes/fragment/4/node = SubResource("VisualShaderNodeTexture2DParameter_im4uy")
+nodes/fragment/4/position = Vector2(-1175.415, 614.29944)
+nodes/fragment/5/node = SubResource("VisualShaderNodeTexture_dncyw")
+nodes/fragment/5/position = Vector2(-375.415, 774.29944)
+nodes/fragment/6/node = SubResource("VisualShaderNodeTexture_f5ld3")
+nodes/fragment/6/position = Vector2(-355.415, 114.29941)
+nodes/fragment/7/node = SubResource("VisualShaderNodeMix_mfog2")
+nodes/fragment/7/position = Vector2(4.5849915, 394.2994)
+nodes/fragment/connections = PackedInt32Array(2, 0, 6, 0, 4, 0, 5, 2, 3, 0, 6, 2, 2, 0, 5, 0, 5, 0, 7, 1, 6, 0, 7, 0, 5, 4, 7, 2, 7, 0, 0, 0)

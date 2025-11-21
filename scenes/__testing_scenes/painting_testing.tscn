@@ -1,45 +1,110 @@
-[gd_scene load_steps=6 format=3 uid="uid://c0xgetxp4i66e"]
+[gd_scene load_steps=17 format=4 uid="uid://c0xgetxp4i66e"]
 
+[ext_resource type="Texture2D" uid="uid://hfd6qbmx87rr" path="res://assets/misc/cat-standing-on-a-chair-leoch-studio.png" id="1_lsloo"]
 [ext_resource type="PackedScene" uid="uid://bq86osdembn58" path="res://scenes/_player/_player_test.tscn" id="1_r2lxk"]
-[ext_resource type="PackedScene" uid="uid://cafafqbxrlmdt" path="res://scenes/__prototyping/dev_tiles/open/dev_open_wall.tscn" id="2_desnm"]
-[ext_resource type="PackedScene" uid="uid://d2pk1l2expq4i" path="res://scenes/__prototyping/dev_tiles/open/dev_open_middle_a.tscn" id="3_5x20l"]
-[ext_resource type="PackedScene" uid="uid://6bfa5eai5wft" path="res://scenes/__prototyping/dev_tiles/open/dev_floor_guidemid.tscn" id="4_n3fj6"]
-[ext_resource type="PackedScene" uid="uid://dgcgp7tvg5dy8" path="res://scenes/__prototyping/dev_tiles/open/dev_open_corner.tscn" id="5_5x20l"]
+[ext_resource type="Script" uid="uid://bchpd4xogaeot" path="res://TEST_PAINTING_STUFF/setup_mesh_for_paint.gd" id="6_n3fj6"]
+[ext_resource type="Shader" uid="uid://bjcg6f61hwjaa" path="res://TEST_PAINTING_STUFF/mememat.tres" id="7_kvc1n"]
+[ext_resource type="Script" uid="uid://cmod1tekf4wn4" path="res://TEST_PAINTING_STUFF/brush.gd" id="8_3ih6w"]
+[ext_resource type="Texture2D" path="res://assets/misc/fake_plane/PLACEHOLDER_basetile.png" id="8_kvc1n"]
+[ext_resource type="Script" uid="uid://bnh1c5k3vhh1d" path="res://TEST_PAINTING_STUFF/draw_viewport.gd" id="9_rmmcb"]
+[ext_resource type="Script" uid="uid://dlbo61dx3o6dw" path="res://TEST_PAINTING_STUFF/paint.gd" id="10_s1wev"]
+[ext_resource type="PackedScene" uid="uid://dfe565flkjwxt" path="res://scenes/interactions/interactables/grabbable_items/test_grabbable_item.tscn" id="12_885u7"]
+
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_885u7"]
+panorama = ExtResource("1_lsloo")
+filter = false
+
+[sub_resource type="Sky" id="Sky_ojeeo"]
+sky_material = SubResource("PanoramaSkyMaterial_885u7")
+radiance_size = 0
+
+[sub_resource type="Environment" id="Environment_rmmcb"]
+background_mode = 2
+background_color = Color(1, 1, 1, 1)
+sky = SubResource("Sky_ojeeo")
+sky_custom_fov = 63.5
+sky_rotation = Vector3(0.5270894, -2.3492131, 0.6230825)
+ambient_light_source = 2
+ambient_light_color = Color(0.8862616, 0.88626146, 0.8862615, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_rmmcb"]
+resource_local_to_scene = true
+render_priority = 0
+shader = ExtResource("7_kvc1n")
+shader_parameter/MainColor = ExtResource("8_kvc1n")
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_qchyt"]
+_surfaces = [{
+"aabb": AABB(-1, -1, -0.016855, 2, 2, 0.03371),
+"format": 34896613377,
+"index_count": 36,
+"index_data": PackedByteArray("AAABAAIAAgABAAMAAQAAAAQAAQAEAAMABQAAAAIAAwAFAAIABAAAAAYABgAAAAUAAwAEAAcABAAGAAcABwAFAAMABwAGAAUA"),
+"name": "Cube",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 8,
+"vertex_data": PackedByteArray("AAAAAP//AAAAAAAAAAAAAAAA/////wAAAAD//wAAAAD//wAAAAAAAP///////wAA//8AAP//AAD/////AAAAAA==")
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_kvc1n"]
+_surfaces = [{
+"aabb": AABB(-1, -1, -0.016855, 2, 2, 0.03371),
+"attribute_data": PackedByteArray("y6O7iv+hu4rLo0L1/6FC9UN1QvVDdbuKvApC9bwKu4rLo7wK/6G8CsujQ3X/oUN1Q3VDdUN1vAq8CkN1vAq8CoeMu4q7iruKh4xC9buKQvWHjLwKu4q8CoeMQ3W7ikN1"),
+"format": 34896613399,
+"index_count": 36,
+"index_data": PackedByteArray("AAABAAIAAgABAAMABAAFAAYABgAFAAcACAAJAAoACgAJAAsADAANAA4ADgANAA8AEAARABIAEgARABMAFAAVABYAFgAVABcA"),
+"material": SubResource("ShaderMaterial_rmmcb"),
+"name": "Cube",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 24,
+"vertex_data": PackedByteArray("AAAAAP///z8AAAAAAAD/PwAA//////8/AAD//wAA/z///wAA////PwAAAAD///8//////////z8AAP//////P///AAAAAP8///8AAP///z//////AAD/P/////////8/AAAAAAAAAAD//wAAAAAAAAAA//8AAAAA/////wAAAAAAAAAAAACqKgAAAAD//6oq//8AAAAAqir//wAA//+qKv////8AAKoq////////qioAAP//AACqKgAA/////6oq/3////9/////f////3////9//3//f/9//3//f/9//3//fwAA/38AAP9/AAD/fwAA/z//v/8//7//P/+//z//v1RVVFVUVVRVVFVUVVRVVFVU1aoqVNWqKlTVqipU1aoq")
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_qchyt")
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_kvc1n"]
+data = PackedVector3Array(-1, -1, 0.0169, -1, -1, -0.0169, -1, 1, 0.0169, -1, 1, 0.0169, -1, -1, -0.0169, -1, 1, -0.0169, 1, -1, 0.0169, -1, -1, 0.0169, 1, 1, 0.0169, 1, 1, 0.0169, -1, -1, 0.0169, -1, 1, 0.0169, 1, -1, -0.0169, 1, -1, 0.0169, 1, 1, -0.0169, 1, 1, -0.0169, 1, -1, 0.0169, 1, 1, 0.0169, -1, -1, -0.0169, 1, -1, -0.0169, -1, 1, -0.0169, -1, 1, -0.0169, 1, -1, -0.0169, 1, 1, -0.0169, -1, -1, -0.0169, -1, -1, 0.0169, 1, -1, -0.0169, 1, -1, -0.0169, -1, -1, 0.0169, 1, -1, 0.0169, 1, 1, -0.0169, 1, 1, 0.0169, -1, 1, -0.0169, -1, 1, -0.0169, 1, 1, 0.0169, -1, 1, 0.0169)
 
 [node name="painting_testing" type="Node3D"]
 
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_rmmcb")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -0.258819, 0.9659259, 0, -0.9659259, -0.258819, 0, 0, 0)
+
 [node name="player_test" parent="." instance=ExtResource("1_r2lxk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -1)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." node_paths=PackedStringArray("draw_viewport")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+mesh = SubResource("ArrayMesh_kvc1n")
+script = ExtResource("6_n3fj6")
+draw_viewport = NodePath("../SubViewport")
 
-[node name="dev_open_palette" type="Node3D" parent="."]
+[node name="StaticBody3D2" type="StaticBody3D" parent="MeshInstance3D" groups=["Painterly"]]
+collision_layer = 2
+collision_mask = 2
 
-[node name="_dev_open_wall" parent="dev_open_palette" instance=ExtResource("2_desnm")]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, -2)
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D/StaticBody3D2"]
+shape = SubResource("ConcavePolygonShape3D_kvc1n")
 
-[node name="_dev_open_wall3" parent="dev_open_palette" instance=ExtResource("2_desnm")]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 2, 0, 0)
+[node name="SubViewport" type="SubViewport" parent="."]
+transparent_bg = true
+handle_input_locally = false
+size = Vector2i(1024, 1024)
+render_target_clear_mode = 1
+render_target_update_mode = 4
+script = ExtResource("9_rmmcb")
 
-[node name="_dev_open_wall4" parent="dev_open_palette" instance=ExtResource("2_desnm")]
-transform = Transform3D(1.3113416e-07, 0, -1, 0, 1, 0, 1, 0, 1.3113416e-07, -4, 0, 0)
+[node name="Brush" type="Node2D" parent="SubViewport"]
+script = ExtResource("8_3ih6w")
 
-[node name="_dev_open_middle_a" parent="dev_open_palette" instance=ExtResource("3_5x20l")]
-
-[node name="_dev_open_middle_a3" parent="dev_open_palette" instance=ExtResource("3_5x20l")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 0)
-
-[node name="_dev_open_wall2" parent="dev_open_palette" instance=ExtResource("2_desnm")]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, -2)
-
-[node name="_dev_open_middle_a2" parent="dev_open_palette" instance=ExtResource("3_5x20l")]
-
-[node name="_dev_floor_guidemid" parent="dev_open_palette" instance=ExtResource("4_n3fj6")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -8)
-
-[node name="_dev_open_corner" parent="dev_open_palette/_dev_floor_guidemid" instance=ExtResource("5_5x20l")]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 2, 0, 6)
-
-[node name="_dev_open_corner2" parent="dev_open_palette/_dev_floor_guidemid" instance=ExtResource("5_5x20l")]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -2, 0, 6)
-
-[node name="_dev_open_corner3" parent="dev_open_palette/_dev_floor_guidemid" instance=ExtResource("5_5x20l")]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -4, 0, 6)
+[node name="PaintController" type="Node3D" parent="." node_paths=PackedStringArray("player", "draw_viewport")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+script = ExtResource("10_s1wev")
+player = NodePath("../player_test")
+draw_viewport = NodePath("../SubViewport")
+sd = ExtResource("12_885u7")
