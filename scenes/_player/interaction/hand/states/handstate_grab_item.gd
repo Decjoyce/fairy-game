@@ -36,6 +36,8 @@ func physics_update(_delta: float) -> void:
 func enter(previous_state_path: String, data := {}) -> void:
 	grabbed_item = hand_controller.hovering_interactable
 	
+	_space_state = hand_controller.cam.get_world_3d().direct_space_state
+	
 	hand_controller.animation_player.play("a_hand_pickup")
 	
 	set_grab_position()
@@ -63,10 +65,24 @@ func exit() -> void:
 const GRAB_DIST = 1
 var grabbed_item: Grabbable_Item
 var grab_position: Vector3
+@export_flags_2d_physics var grab_ray_collision_mask: int
+
+var _space_state: PhysicsDirectSpaceState3D
 
 func set_grab_position() -> void:
 	var origin := hand_controller.cam.project_ray_origin(offset_helper.get_screen_position())
-	grab_position = origin + hand_controller.cam.project_ray_normal(offset_helper.global_position) * GRAB_DIST
+	var end := origin + hand_controller.cam.project_ray_normal(offset_helper.global_position) * GRAB_DIST
+	
+	var query := PhysicsRayQueryParameters3D.create(origin, end, grab_ray_collision_mask) # probably want to add layer stuff later
+	query.collide_with_areas = true
+	
+	var result = _space_state.intersect_ray(query)
+	
+	if !result or !result.collider:
+		grab_position = end
+	else:
+		#print(result.collider)
+		grab_position = result.position + (result.normal * 0.1)
 
 func grabbing() -> void:
 	grabbed_item.global_position = grab_position

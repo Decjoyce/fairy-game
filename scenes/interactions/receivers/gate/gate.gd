@@ -5,7 +5,7 @@ signal on_change(sig: float)
 signal on_deactivated(sig: float)
 
 var is_opening: bool
-var time_move_started: float 
+var time_since_start: float = 0.0
 var _start_position: float
 var _end_position: float
 var closed_pos: float = 2
@@ -18,7 +18,7 @@ var closed_pos: float = 2
 var things_under: Array[Node3D]
 
 func open_gate(amount: float) -> void:
-	time_move_started = Time.get_ticks_msec()
+	time_since_start = 0
 	is_opening = true
 	_start_position = graphics.position.y
 	prints("open: ", amount)
@@ -30,8 +30,9 @@ func open_gate(amount: float) -> void:
 		player_col.set_deferred("disabled",false)
 
 func _process(delta: float) -> void:
-	if is_opening:
-		var time_since_start := Time.get_ticks_msec() - time_move_started
+	if is_opening and !things_under:
+		#print(time_since_start)
+		time_since_start += delta
 		var percentage_complete = clamp(time_since_start / speed, 0, 1)
 		#prints(length_to_complete, percentage_complete)
 		
@@ -39,6 +40,7 @@ func _process(delta: float) -> void:
 		
 		if percentage_complete >= 1:
 			is_opening = false
+			#time_since_start = 0
 
 func plate_lerp(start: float, finish: float, percentage: float):
 	var _percentage = clampf(percentage, 0.0, 1.0)

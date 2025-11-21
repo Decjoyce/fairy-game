@@ -41,6 +41,7 @@ func exit() -> void:
 	pass
 
 func draw_chalk() -> void:
+	
 	var space_state = cam.get_world_3d().direct_space_state
 	
 	var origin = cam.project_ray_origin(offset_helper.get_screen_position())
@@ -57,9 +58,9 @@ func draw_chalk() -> void:
 		return
 	
 	if result.collider.is_in_group("DrawBoards"):
+		
 		var draw_board : DrawBoard = result.collider.get_parent() as DrawBoard
 		draw_viewport = draw_board.draw_viewport
 		var uv = draw_board.get_uv_coords(result.position, result.normal, true)
 		if uv:
-			
 			draw_viewport.paint(uv, Color.RED)

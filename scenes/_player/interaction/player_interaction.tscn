@@ -250,6 +250,7 @@ script = ExtResource("3_7baq5")
 [node name="GRAB_ITEM" type="Node" parent="Hand_Left/States" node_paths=PackedStringArray("offset_helper")]
 script = ExtResource("4_r26r4")
 offset_helper = NodePath("../../_hand_sprite/_pickup_pos")
+grab_ray_collision_mask = 1
 delay_before_max_charge = 4
 
 [node name="GRAB_OBJ" type="Node" parent="Hand_Left/States"]
@@ -333,6 +334,7 @@ script = ExtResource("3_7baq5")
 [node name="GRAB_ITEM" type="Node" parent="Hand_Right/States" node_paths=PackedStringArray("offset_helper")]
 script = ExtResource("4_r26r4")
 offset_helper = NodePath("../../_hand_sprite/_pickup_pos")
+grab_ray_collision_mask = 1
 
 [node name="GRAB_OBJ" type="Node" parent="Hand_Right/States"]
 script = ExtResource("5_wcvr7")
