@@ -1,4 +1,4 @@
-[gd_scene load_steps=67 format=4 uid="uid://dw2dbsjbocxi7"]
+[gd_scene load_steps=73 format=4 uid="uid://dw2dbsjbocxi7"]
 
 [ext_resource type="PackedScene" uid="uid://bq86osdembn58" path="res://scenes/_player/_player_test.tscn" id="2_3vnxs"]
 [ext_resource type="PackedScene" uid="uid://cafafqbxrlmdt" path="res://scenes/__prototyping/dev_tiles/open/dev_open_wall.tscn" id="2_cti4x"]
@@ -23,6 +23,12 @@
 [ext_resource type="Script" uid="uid://c4t3ko70ihpyy" path="res://scenes/interactions/receivers/animated_object/animated_object.gd" id="21_a71ib"]
 [ext_resource type="Texture2D" uid="uid://fn4v0r2yystc" path="res://icon.svg" id="21_f8tpx"]
 [ext_resource type="PackedScene" uid="uid://bg5p5awk0jedc" path="res://scenes/interactions/Drawing/draw_board.tscn" id="23_rcrad"]
+[ext_resource type="PackedScene" uid="uid://bwo817pko4lmy" path="res://scenes/__prototyping/dev_tiles/dev_hall.tscn" id="24_lryfm"]
+[ext_resource type="PackedScene" uid="uid://iespsshl647t" path="res://scenes/__prototyping/dev_tiles/dev_doorway.tscn" id="25_limx5"]
+[ext_resource type="PackedScene" uid="uid://bqcjydc6ptmay" path="res://scenes/__prototyping/dev_tiles/dev_middle_b.tscn" id="26_teo1q"]
+[ext_resource type="PackedScene" uid="uid://h3b7e5r20lrw" path="res://scenes/__prototyping/dev_tiles/dev_corner.tscn" id="27_thvja"]
+[ext_resource type="PackedScene" uid="uid://5jsxyb4jf5k8" path="res://scenes/__prototyping/dev_tiles/dev_wall.tscn" id="28_1f7u1"]
+[ext_resource type="PackedScene" uid="uid://cjjfi78pp31yc" path="res://scenes/__prototyping/dev_tiles/dev_middle_a.tscn" id="29_bk0h7"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_ir6gx"]
 panorama = ExtResource("2_fnuid")
@@ -1002,7 +1008,7 @@ transform = Transform3D(1.3113416e-07, 0, -1, 0, 1, 0, 1, 0, 1.3113416e-07, 1, 0
 
 [node name="PressurePlate" parent="Room_Interacting/Showcase_PressurePlate2" instance=ExtResource("15_fpxpw")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.05000019, 1)
-weight_to_activate = 1.0
+weight_to_activate = 10.0
 
 [node name="Showcase_Button" type="Node3D" parent="Room_Interacting"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 0, 15)
@@ -1263,6 +1269,30 @@ font_size = 97
 [node name="DrawBoard" parent="." instance=ExtResource("23_rcrad")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -4)
 
+[node name="_dev_palette" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 17.164291)
+
+[node name="_dev_hall" parent="_dev_palette" instance=ExtResource("24_lryfm")]
+
+[node name="_dev_hall2" parent="_dev_palette" instance=ExtResource("24_lryfm")]
+
+[node name="_dev_doorway" parent="_dev_palette" instance=ExtResource("25_limx5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2)
+
+[node name="_dev_middle_b" parent="_dev_palette" instance=ExtResource("26_teo1q")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -4)
+
+[node name="_dev_corner" parent="_dev_palette" instance=ExtResource("27_thvja")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 2)
+
+[node name="_dev_wall" parent="_dev_palette" instance=ExtResource("28_1f7u1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 2)
+
+[node name="_dev_middle_a" parent="_dev_palette" instance=ExtResource("29_bk0h7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2)
+
+[node name="----------------" type="Node" parent="_dev_palette"]
+
 [connection signal="area_entered" from="Room_Start/Teleporter_to_item/Trigger" to="Room_Start/Teleporter_to_item" method="_teleport_entity"]
 [connection signal="body_entered" from="Room_Start/Teleporter_to_item/Trigger" to="Room_Start/Teleporter_to_item" method="_teleport_item"]
 [connection signal="area_entered" from="Room_Start/Teleporter_to_interactions/Trigger" to="Room_Start/Teleporter_to_interactions" method="_teleport_entity"]
@@ -1274,7 +1304,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -4)
 [connection signal="area_entered" from="Room_Interacting/Teleporter/Trigger" to="Room_Interacting/Teleporter" method="_teleport_entity"]
 [connection signal="body_entered" from="Room_Interacting/Teleporter/Trigger" to="Room_Interacting/Teleporter" method="_teleport_item"]
 [connection signal="on_change" from="Room_Interacting/Showcase_PressurePlate2/PressurePlate" to="Room_Interacting/Showcase_PressurePlate2/Gate" method="open_gate"]
-[connection signal="on_activated" from="Room_Interacting/Showcase_Button/Button" to="Room_Interacting/Showcase_Button/Gate_Button" method="open_gate"]
+[connection signal="on_activated" from="Room_Interacting/Showcase_Button/Button" to="Room_Interacting/Showcase_PressurePlate2/PressurePlate" method="_on_button_on_activated"]
 [connection signal="on_deactivated" from="Room_Interacting/Showcase_Button/Button" to="Room_Interacting/Showcase_Button/Gate_Button" method="open_gate"]
 [connection signal="area_entered" from="Room_Animation/Teleporter/Trigger" to="Room_Animation/Teleporter" method="_teleport_entity"]
 [connection signal="body_entered" from="Room_Animation/Teleporter/Trigger" to="Room_Animation/Teleporter" method="_teleport_item"]

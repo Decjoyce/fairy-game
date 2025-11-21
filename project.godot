@@ -32,6 +32,7 @@ import/blender/enabled=false
 
 [global_group]
 
+Player="Player (duh)"
 Interactables=""
 DrawBoards=""
 
@@ -155,4 +156,27 @@ enter_paint_mode_RIGHT={
 "deadzone": 0.2,
 "events": [Object(InputEventJoypadButton,"resource_local_to_scene":false,"resource_name":"","device":-1,"button_index":1,"pressure":0.0,"pressed":true,"script":null)
 ]
+}
+
+[shader_globals]
+
+outline_color={
+"type": "color",
+"value": Color(0, 0, 0, 1)
+}
+outline_width={
+"type": "float",
+"value": 4.0
+}
+specular_smoothness={
+"type": "float",
+"value": 0.05
+}
+fresnel_smoothness={
+"type": "float",
+"value": 0.05
+}
+diffuse_curve={
+"type": "sampler2D",
+"value": "::nwpjk"
 }
