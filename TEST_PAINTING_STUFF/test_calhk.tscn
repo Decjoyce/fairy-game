@@ -1,0 +1,39 @@
+[gd_scene load_steps=7 format=3 uid="uid://d3xlumsiwkn5k"]
+
+[ext_resource type="PackedScene" uid="uid://bq86osdembn58" path="res://scenes/_player/_player_test.tscn" id="1_wiknc"]
+[ext_resource type="Texture2D" uid="uid://hfd6qbmx87rr" path="res://assets/misc/cat-standing-on-a-chair-leoch-studio.png" id="2_to0f4"]
+[ext_resource type="PackedScene" uid="uid://bg5p5awk0jedc" path="res://scenes/interactions/Drawing/draw_board.tscn" id="3_dypac"]
+
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_j7qyo"]
+panorama = ExtResource("2_to0f4")
+filter = false
+
+[sub_resource type="Sky" id="Sky_ojeeo"]
+sky_material = SubResource("PanoramaSkyMaterial_j7qyo")
+radiance_size = 0
+
+[sub_resource type="Environment" id="Environment_a2wkj"]
+background_mode = 2
+background_color = Color(1, 1, 1, 1)
+sky = SubResource("Sky_ojeeo")
+sky_custom_fov = 63.5
+sky_rotation = Vector3(0.5270894, -2.3492131, 0.6230825)
+ambient_light_source = 2
+ambient_light_color = Color(0.8862616, 0.88626146, 0.8862615, 1)
+
+[node name="Node3D" type="Node3D"]
+
+[node name="player_test" parent="." node_paths=PackedStringArray("draw_viewport") instance=ExtResource("1_wiknc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+draw_viewport = NodePath("")
+
+[node name="_environment" type="Node3D" parent="."]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="_environment"]
+environment = SubResource("Environment_a2wkj")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="_environment"]
+transform = Transform3D(1, 0, 0, 0, -0.25881898, 0.9659258, 0, -0.9659258, -0.25881898, 0, 0, 0)
+
+[node name="DrawBoard" parent="." instance=ExtResource("3_dypac")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)

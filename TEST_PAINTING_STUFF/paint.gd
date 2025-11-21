@@ -36,11 +36,11 @@ func paint_at_spot(): # -> Interactable:
 	
 	#print(result.collider)
 	
-	if result.collider.is_in_group("Painterly"):
+	#if result.collider.is_in_group("Painterly"):
 		#print("paint")
 		#print(result.position)
-		var uv = LevelUVPosition.get_uv_coords(result.position, result.normal, false)
+		#var uv = LevelUVPosition.get_uv_coords(result.position, result.normal, false)
 		#print(uv)
-		if uv:
-			draw_viewport.paint(uv, Color.RED)
+		#if uv:
+		#	draw_viewport.paint(uv, Color.RED)
 	

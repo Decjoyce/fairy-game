@@ -12,6 +12,10 @@ func update(_delta: float) -> void:
 		interact()
 		return
 	
+	if Input.is_action_just_pressed("enter_paint_mode_" + hand_controller.stringed_hand_type):
+		finished.emit(CHALK)
+		return
+	
 	hand_controller.hovering_interactable = hand_controller.interact_checker()
 	hand_controller.update_hand_prompt()
 

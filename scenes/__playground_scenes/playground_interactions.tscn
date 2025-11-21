@@ -1,4 +1,4 @@
-[gd_scene load_steps=66 format=4 uid="uid://dw2dbsjbocxi7"]
+[gd_scene load_steps=67 format=4 uid="uid://dw2dbsjbocxi7"]
 
 [ext_resource type="PackedScene" uid="uid://bq86osdembn58" path="res://scenes/_player/_player_test.tscn" id="2_3vnxs"]
 [ext_resource type="PackedScene" uid="uid://cafafqbxrlmdt" path="res://scenes/__prototyping/dev_tiles/open/dev_open_wall.tscn" id="2_cti4x"]
@@ -22,19 +22,20 @@
 [ext_resource type="Material" uid="uid://bmx5kbkw1qnpa" path="res://assets/_dev/materials/_dev_m_grey.tres" id="18_o5rkc"]
 [ext_resource type="Script" uid="uid://c4t3ko70ihpyy" path="res://scenes/interactions/receivers/animated_object/animated_object.gd" id="21_a71ib"]
 [ext_resource type="Texture2D" uid="uid://fn4v0r2yystc" path="res://icon.svg" id="21_f8tpx"]
+[ext_resource type="PackedScene" uid="uid://bg5p5awk0jedc" path="res://scenes/interactions/Drawing/draw_board.tscn" id="23_rcrad"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_ir6gx"]
 panorama = ExtResource("2_fnuid")
 filter = false
 
-[sub_resource type="Sky" id="Sky_ojeeo"]
+[sub_resource type="Sky" id="Sky_1e1q4"]
 sky_material = SubResource("PanoramaSkyMaterial_ir6gx")
 radiance_size = 0
 
 [sub_resource type="Environment" id="Environment_rdknj"]
 background_mode = 2
 background_color = Color(1, 1, 1, 1)
-sky = SubResource("Sky_ojeeo")
+sky = SubResource("Sky_1e1q4")
 sky_custom_fov = 63.5
 sky_rotation = Vector3(0.5270894, -2.3492131, 0.6230825)
 ambient_light_source = 2
@@ -1258,6 +1259,9 @@ transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 0, 2
 billboard = 1
 text = "Animated Objects"
 font_size = 97
+
+[node name="DrawBoard" parent="." instance=ExtResource("23_rcrad")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -4)
 
 [connection signal="area_entered" from="Room_Start/Teleporter_to_item/Trigger" to="Room_Start/Teleporter_to_item" method="_teleport_entity"]
 [connection signal="body_entered" from="Room_Start/Teleporter_to_item/Trigger" to="Room_Start/Teleporter_to_item" method="_teleport_item"]

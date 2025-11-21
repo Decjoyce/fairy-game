@@ -1,8 +1,9 @@
+class_name DrawBoard
 extends MeshInstance3D
 
 
 var meshtool
-#var uv_mesh
+var uv_mesh
 var mesh_instance
  
 var transform_vertex_to_global = true
@@ -12,12 +13,21 @@ var _world_normals :Array[Vector3] = []
 var _world_vertices := []
 var _local_face_vertices := []
 
+@export var draw_viewport: DrawViewport
+
+func clear_board(sig: float):
+	draw_viewport.clearme()
+
+func _ready() -> void:
+	setup_mesh(mesh)
+	(mesh.surface_get_material(0) as ShaderMaterial).set_shader_parameter("Paint", draw_viewport.get_texture())
+
 func setup_mesh(_mesh_instance):
 	mesh_instance = _mesh_instance
-	mesh = _mesh_instance.mesh
+	uv_mesh = mesh
   
 	meshtool = MeshDataTool.new()
-	meshtool.create_from_surface(mesh, 0)  
+	meshtool.create_from_surface(uv_mesh, 0)  
 	
 	_face_count = meshtool.get_face_count()
 	_world_normals.resize(_face_count)
@@ -29,7 +39,7 @@ func _resize_pools():
  
 func _load_mesh_data():
 	for idx in range(_face_count):
-		_world_normals[idx] = mesh_instance.global_transform.basis * meshtool.get_face_normal(idx)
+		_world_normals[idx] = global_transform.basis * meshtool.get_face_normal(idx)
 	
 		var fv1 = meshtool.get_face_vertex(idx, 0)
 		var fv2 = meshtool.get_face_vertex(idx, 1)
@@ -38,9 +48,9 @@ func _load_mesh_data():
 		_local_face_vertices.append([fv1, fv2, fv3])    
 		
 		_world_vertices.append([
-			mesh_instance.global_transform.basis * meshtool.get_vertex(fv1),
-			mesh_instance.global_transform.basis * meshtool.get_vertex(fv2),
-			mesh_instance.global_transform.basis * meshtool.get_vertex(fv3),
+			global_transform.basis * meshtool.get_vertex(fv1),
+			global_transform.basis * meshtool.get_vertex(fv2),
+			global_transform.basis * meshtool.get_vertex(fv3),
 		])
 	
 func get_face(point, normal, epsilon = 0.1) -> Array:
@@ -48,7 +58,7 @@ func get_face(point, normal, epsilon = 0.1) -> Array:
 	for idx in range(_face_count):
 		var world_normal = _world_normals[idx]
 	
-		if !equals_with_epsilon(world_normal, mesh_instance.global_transform.basis * normal, epsilon):
+		if !equals_with_epsilon(world_normal, global_transform.basis * normal, epsilon):
 			continue  
 		var vertices = _world_vertices[idx]    
 		
@@ -77,7 +87,7 @@ func get_uv_coords(point, normal, transform = true):
 	# these values can be obtained from a raycast
 	transform_vertex_to_global = transform
   
-	var face = get_face(point - Vector3.UP, normal)
+	var face = get_face(point - global_position, normal)
 	if face.size() < 3:
 		return null
 	face = face as Array
