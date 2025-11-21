@@ -82,10 +82,10 @@ func get_face(point, normal, epsilon = 0.1) -> Array:
 	
 	return []
  
-func get_uv_coords(point, normal, transform = true):
+func get_uv_coords(point, normal, o_transform = true):
 	# Gets the uv coordinates on the mesh given a point on the mesh and normal
 	# these values can be obtained from a raycast
-	transform_vertex_to_global = transform
+	transform_vertex_to_global = o_transform
   
 	var face = get_face(point - global_position, normal)
 	if face.size() < 3:

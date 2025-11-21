@@ -1304,7 +1304,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2)
 [connection signal="area_entered" from="Room_Interacting/Teleporter/Trigger" to="Room_Interacting/Teleporter" method="_teleport_entity"]
 [connection signal="body_entered" from="Room_Interacting/Teleporter/Trigger" to="Room_Interacting/Teleporter" method="_teleport_item"]
 [connection signal="on_change" from="Room_Interacting/Showcase_PressurePlate2/PressurePlate" to="Room_Interacting/Showcase_PressurePlate2/Gate" method="open_gate"]
-[connection signal="on_activated" from="Room_Interacting/Showcase_Button/Button" to="Room_Interacting/Showcase_PressurePlate2/PressurePlate" method="_on_button_on_activated"]
+[connection signal="on_activated" from="Room_Interacting/Showcase_Button/Button" to="Room_Interacting/Showcase_Button/Gate_Button" method="open_gate"]
 [connection signal="on_deactivated" from="Room_Interacting/Showcase_Button/Button" to="Room_Interacting/Showcase_Button/Gate_Button" method="open_gate"]
 [connection signal="area_entered" from="Room_Animation/Teleporter/Trigger" to="Room_Animation/Teleporter" method="_teleport_entity"]
 [connection signal="body_entered" from="Room_Animation/Teleporter/Trigger" to="Room_Animation/Teleporter" method="_teleport_item"]

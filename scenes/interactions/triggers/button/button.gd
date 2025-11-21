@@ -40,7 +40,7 @@ func activate_button() -> void:
 		timer.wait_time = delay_before_reset
 		timer.start()
 
-func deactivate_button(emit_signal: bool = true): 
+func deactivate_button(emit_a_signal: bool = true): 
 	activated = false
 	
 	if emit_signal:
