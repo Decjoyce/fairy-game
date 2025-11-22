@@ -1,0 +1,17 @@
+[gd_scene load_steps=2 format=3 uid="uid://b1mli67nii84n"]
+
+[ext_resource type="PackedScene" uid="uid://iao5uma7y1aw" path="res://EnvironmentAssets/HallModels/HallEnd/HallEnd.glb" id="1_s5csa"]
+
+[node name="HallEnd" instance=ExtResource("1_s5csa")]
+
+[node name="CollisionShape3D" parent="Roof/StaticBody3D" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.05996704, -0.041610718, -0.005065918)
+
+[node name="CollisionShape3D" parent="WallR/StaticBody3D" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.045654297, 5.8357635, -0.0065817833)
+
+[node name="CollisionShape3D" parent="WallB/StaticBody3D" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.044036865, 5.8420024, -0.01171875)
+
+[node name="CollisionShape3D" parent="WallL/StaticBody3D" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.03125, 5.88247, 0.01776123)
