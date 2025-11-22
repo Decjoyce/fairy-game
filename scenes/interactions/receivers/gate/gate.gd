@@ -9,10 +9,10 @@ var time_since_start: float = 0.0
 var _start_position: float
 var _end_position: float
 var closed_pos: float = 2
-@export var speed: float = 600.0
+@export var speed: float = 0.5
 @onready var graphics: Node3D = $gate
 @onready var player_col: CollisionShape3D = $PlayerCollision/CollisionShape3D
-@export var height_to_toggle_player_barrier: float = 0.3
+@export var height_to_toggle_player_barrier: float = 0.01
 @onready var under_checker: Area3D = $gate/UnderChecker
 
 var things_under: Array[Node3D]
@@ -58,6 +58,8 @@ func _on_area_exited_under_checker(area: Area3D) -> void:
 
 func _on_body_entered_under_checker(body: Node3D) -> void:
 	if body is Grabbable_Item or body is Entity:
+		if body is Grabbable_Item:
+			if body.is_grabbed: return
 		things_under.append(body)
 
 func _on_body_exited_under_checker(body: Node3D) -> void:

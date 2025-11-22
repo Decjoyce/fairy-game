@@ -14,7 +14,10 @@ var expression = Expression.new()
 func _ready():
 	console_line.text_submitted.connect(self._on_text_submitted)
 	console_line.text_changed.connect(self._on_text_change)
-	current_selected_object = self
+	console_line.focus_entered.connect(Debug.freeze_player)
+	console_line.focus_exited.connect(Debug.unfreeze_player)
+	current_selected_object = Debug
+	autocomplete_methods = current_selected_object.get_script().get_script_method_list().map(func (x): return x.name + str(x.args.map(func (j): return j.name)))
 
 func _process(delta: float) -> void:
 	if !Debug.is_debugging:
@@ -23,6 +26,12 @@ func _process(delta: float) -> void:
 		select_object()
 	if Input.is_action_just_pressed("_debug_objectpick_alt"):
 		alt_select_object()
+	
+	if autocomplete_methods and Input.is_action_just_pressed("ui_focus_next"):
+		var aut_comp := label_auto_complete.text.replace("[", "(")
+		aut_comp = aut_comp.replace("]", ")")
+		console_line.text = aut_comp
+		label_auto_complete.clear()
 	
 	if history.size() > 0:
 		if Input.is_action_just_pressed("ui_page_up"):
@@ -40,7 +49,6 @@ func _process(delta: float) -> void:
 # --------------------------------------------------------------------------------------------------
 # ↓ Text Submitting Stuff ↓
 
-@onready var autoco: RichTextLabel = $bg/Autocomplate
 var autocomplete_methods: Array = []
 
 func _on_text_change(command):
@@ -52,7 +60,6 @@ func _on_text_change(command):
 		var new_auto_complete: String = ""
 		for method in autocomplete_methods:
 			if method.begins_with(console_line.text):
-				print(method.substr(console_line.text.length()))
 				new_auto_complete = method
 		if new_auto_complete != "":
 			label_auto_complete.text = new_auto_complete
@@ -119,25 +126,25 @@ func select_object() -> void:
 	var result = space_state.intersect_ray(query)
 	
 	if !result or !result.collider:
-		current_selected_object = self
+		current_selected_object = Debug
 		update_select_text()
-		autocomplete_methods.clear()
+		autocomplete_methods = current_selected_object.get_script().get_script_method_list().map(func (x): return x.name + str(x.args.map(func (j): return j.name)))
 		return
 	if result.collider.is_in_group("debug_PickableObjects"):
 		current_selected_object = result.collider
 	elif result.collider.owner.is_in_group("debug_PickableObjects"):
 		current_selected_object = result.collider.owner
 	else: 
-		current_selected_object = self
+		current_selected_object = Debug
 		update_select_text()
-		autocomplete_methods.clear()
+		autocomplete_methods = current_selected_object.get_script().get_script_method_list().map(func (x): return x.name + str(x.args.map(func (j): return j.name)))
 		return
 	
 	autocomplete_methods = current_selected_object.get_script().get_script_method_list().map(func (x): return x.name + str(x.args.map(func (j): return j.name)))
 	update_select_text()
 
 func update_select_text():
-	if current_selected_object == self:
+	if current_selected_object == Debug:
 		label_current_selected.text = ""
 		return
 	label_current_selected.text = "[b]Selected: [color=aqua]" + current_selected_object.name
@@ -171,4 +178,4 @@ func update_alt_select_text():
 	if alt_selected_object == null:
 		label_alt_selected.text = ""
 		return
-	label_alt_selected.text = "[b]Selected: [color=red]" + alt_selected_object.name
+	label_alt_selected.text = "[b]ALT Selected: [color=red]" + alt_selected_object.name

@@ -1,3 +1,4 @@
+class_name DEBUG
 extends Node
 
 const DEBUGGER_ENABLED: bool = true
@@ -22,8 +23,19 @@ func _init_me() -> void:
 	print(get_tree().get_nodes_in_group("MainCamera"))
 	cam = get_tree().get_first_node_in_group("MainCamera") as Camera3D
 
+func freeze_player() -> void:
+	if !player: return
+	player.freeze = true
+
+func unfreeze_player() -> void:
+	if !player: return
+	player.freeze = false
+
 # ↑ General Stuff ↑
 # --------------------------------------------------------------------------------------------------
 # ↓ Commands Stuff ↓
 
 var noclip_enabled: bool
+
+func noclip() -> void:
+	noclip_enabled = !noclip_enabled
