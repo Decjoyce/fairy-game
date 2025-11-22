@@ -17,6 +17,8 @@ func _ready():
 	current_selected_object = self
 
 func _process(delta: float) -> void:
+	if !Debug.is_debugging:
+		return
 	if Input.is_action_just_pressed("_debug_objectpick"):
 		select_object()
 	if Input.is_action_just_pressed("_debug_objectpick_alt"):
