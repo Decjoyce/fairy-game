@@ -18,6 +18,7 @@ config/icon="res://icon.svg"
 [autoload]
 
 Grid_DB="*res://zzz_GARBAGE/OBSELETE__g_grid_database.gd"
+Debug="*res://scenes/__prototyping/debugger/debugger.tscn"
 
 [debug]
 
@@ -35,6 +36,8 @@ import/blender/enabled=false
 Player="Player (duh)"
 Interactables=""
 DrawBoards=""
+debug_PickableObjects=""
+MainCamera=""
 
 [input]
 
@@ -155,6 +158,11 @@ enter_paint_mode_LEFT={
 enter_paint_mode_RIGHT={
 "deadzone": 0.2,
 "events": [Object(InputEventJoypadButton,"resource_local_to_scene":false,"resource_name":"","device":-1,"button_index":1,"pressure":0.0,"pressed":true,"script":null)
+]
+}
+_debug_objectpick={
+"deadzone": 0.2,
+"events": [Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":true,"ctrl_pressed":true,"meta_pressed":false,"button_mask":0,"position":Vector2(0, 0),"global_position":Vector2(0, 0),"factor":1.0,"button_index":1,"canceled":false,"pressed":false,"double_click":false,"script":null)
 ]
 }
 
