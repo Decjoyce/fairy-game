@@ -133,7 +133,7 @@ func select_object() -> void:
 		autocomplete_methods.clear()
 		return
 	
-	autocomplete_methods = current_selected_object.get_script().get_script_method_list().map(func (x): return x.name)
+	autocomplete_methods = current_selected_object.get_script().get_script_method_list().map(func (x): return x.name + str(x.args.map(func (j): return j.name)))
 	update_select_text()
 
 func update_select_text():
