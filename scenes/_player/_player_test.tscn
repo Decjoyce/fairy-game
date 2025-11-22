@@ -5,6 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://dqojmsc2q6wf4" path="res://scenes/_player/interaction/player_interaction.tscn" id="3_3jgj8"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_3jgj8"]
+height = 1.3
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1snfn"]
 albedo_color = Color(1, 0.15294118, 1, 1)
@@ -26,6 +27,7 @@ script = ExtResource("1_e0b2u")
 monitoring = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Collision"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.35000002, 0)
 shape = SubResource("CapsuleShape3D_3jgj8")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
