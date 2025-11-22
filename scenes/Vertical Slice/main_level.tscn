@@ -1,4 +1,4 @@
-[gd_scene load_steps=43 format=4 uid="uid://cbcg3b16t6emq"]
+[gd_scene load_steps=49 format=4 uid="uid://cbcg3b16t6emq"]
 
 [ext_resource type="Material" uid="uid://cfsra4dny0m23" path="res://assets/_dev/materials/_dev_m_white.tres" id="1_w4tqo"]
 [ext_resource type="PackedScene" uid="uid://bwo817pko4lmy" path="res://scenes/__prototyping/dev_tiles/dev_hall.tscn" id="1_x57s4"]
@@ -118,6 +118,27 @@ size = Vector3(2, 0.1, 2)
 size = Vector3(2, 0.1, 2)
 
 [sub_resource type="BoxMesh" id="BoxMesh_p5f8p"]
+material = ExtResource("3_gm7ib")
+size = Vector3(2, 0.1, 2)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_nadpw"]
+size = Vector3(0.1, 2, 2)
+
+[sub_resource type="BoxMesh" id="BoxMesh_qtits"]
+material = ExtResource("1_w4tqo")
+size = Vector3(0.1, 2, 2)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_8bwnf"]
+size = Vector3(2, 0.1, 2)
+
+[sub_resource type="BoxMesh" id="BoxMesh_dn5go"]
+material = ExtResource("3_gm7ib")
+size = Vector3(2, 0.1, 2)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_3tfc1"]
+size = Vector3(2, 0.1, 2)
+
+[sub_resource type="BoxMesh" id="BoxMesh_tckh6"]
 material = ExtResource("3_gm7ib")
 size = Vector3(2, 0.1, 2)
 
@@ -260,6 +281,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 2)
 [node name="_dev_wall" parent="_dev_palette" instance=ExtResource("6_ktip7")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 2)
 
+[node name="_dev_wall3" parent="_dev_palette" instance=ExtResource("6_ktip7")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -16, 0, -18)
+
 [node name="_dev_wall2" parent="_dev_palette" instance=ExtResource("6_ktip7")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -23, 0, -8)
 
@@ -269,7 +293,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2)
 [node name="----------------" type="Node" parent="_dev_palette"]
 
 [node name="TutorialRoom" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 3)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, -7)
 
 [node name="_dev_corner2" parent="TutorialRoom" instance=ExtResource("5_xyiqh")]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 1, 0, -1)
@@ -397,9 +421,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 0, -5)
 [node name="_dev_wall2" parent="TutorialRoom" instance=ExtResource("6_ktip7")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, -1)
 
-[node name="_dev_wall3" parent="TutorialRoom" instance=ExtResource("6_ktip7")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, -1)
-
 [node name="_dev_wall6" parent="TutorialRoom" instance=ExtResource("6_ktip7")]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 3, 0, -7)
 
@@ -426,6 +447,7 @@ mesh = SubResource("ArrayMesh_3i7je")
 skeleton = NodePath("")
 
 [node name="Hallways" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 0, -10)
 
 [node name="_dev_hall2" parent="Hallways" instance=ExtResource("1_x57s4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, -6)
@@ -576,7 +598,98 @@ shape = SubResource("BoxShape3D_ktip7")
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Hallways/_dev_corner4/_wall_floor"]
 mesh = SubResource("BoxMesh_p5f8p")
 
+[node name="_dev_doorway2" type="StaticBody3D" parent="Hallways"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 2)
+
+[node name="_wall_back_l" type="CollisionShape3D" parent="Hallways/_dev_doorway2"]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0.9, 1, 0.9)
+shape = SubResource("BoxShape3D_cti4x")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Hallways/_dev_doorway2/_wall_back_l"]
+mesh = SubResource("BoxMesh_mlo6p")
+
+[node name="_wall_back_r" type="CollisionShape3D" parent="Hallways/_dev_doorway2"]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -0.9000001, 1, 0.9)
+shape = SubResource("BoxShape3D_cti4x")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Hallways/_dev_doorway2/_wall_back_r"]
+mesh = SubResource("BoxMesh_mlo6p")
+
+[node name="_wall_roof" type="CollisionShape3D" parent="Hallways/_dev_doorway2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.05, 0)
+shape = SubResource("BoxShape3D_65s44")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Hallways/_dev_doorway2/_wall_roof"]
+mesh = SubResource("BoxMesh_xtqac")
+
+[node name="_wall_floor" type="CollisionShape3D" parent="Hallways/_dev_doorway2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.05, 0)
+shape = SubResource("BoxShape3D_25we5")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Hallways/_dev_doorway2/_wall_floor"]
+mesh = SubResource("BoxMesh_65s44")
+
+[node name="_dev_hall33" parent="Hallways" instance=ExtResource("1_x57s4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 4)
+
+[node name="_dev_hall34" parent="Hallways" instance=ExtResource("1_x57s4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 6)
+
+[node name="_dev_hall35" parent="Hallways" instance=ExtResource("1_x57s4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 8)
+
+[node name="_dev_corner9" parent="Hallways" instance=ExtResource("5_xyiqh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 10)
+
+[node name="_dev_hall36" parent="Hallways" instance=ExtResource("1_x57s4")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -1, 0, 10)
+
+[node name="_dev_hall37" parent="Hallways" instance=ExtResource("1_x57s4")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -3, 0, 10)
+
+[node name="_dev_hall38" parent="Hallways" instance=ExtResource("1_x57s4")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -5, 0, 10)
+
+[node name="_dev_wall3" type="StaticBody3D" parent="Hallways"]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -7, 0, 10)
+
+[node name="_wall_back" type="CollisionShape3D" parent="Hallways/_dev_wall3"]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 1, 0.95)
+shape = SubResource("BoxShape3D_nadpw")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Hallways/_dev_wall3/_wall_back"]
+mesh = SubResource("BoxMesh_qtits")
+
+[node name="_wall_back2" type="CollisionShape3D" parent="Hallways/_dev_wall3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.9396887, 1, -0.05000019)
+shape = SubResource("BoxShape3D_nadpw")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Hallways/_dev_wall3/_wall_back2"]
+mesh = SubResource("BoxMesh_qtits")
+
+[node name="_wall_back3" type="CollisionShape3D" parent="Hallways/_dev_wall3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.9425173, 1, -0.05000019)
+shape = SubResource("BoxShape3D_nadpw")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Hallways/_dev_wall3/_wall_back3"]
+mesh = SubResource("BoxMesh_qtits")
+
+[node name="_wall_roof" type="CollisionShape3D" parent="Hallways/_dev_wall3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.05, 0)
+shape = SubResource("BoxShape3D_8bwnf")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Hallways/_dev_wall3/_wall_roof"]
+mesh = SubResource("BoxMesh_dn5go")
+
+[node name="_wall_floor" type="CollisionShape3D" parent="Hallways/_dev_wall3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.05, 0)
+shape = SubResource("BoxShape3D_3tfc1")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Hallways/_dev_wall3/_wall_floor"]
+mesh = SubResource("BoxMesh_tckh6")
+
 [node name="Buttons and pressure plates" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 0, -10)
 
 [node name="PuzzleGate_1" parent="Buttons and pressure plates" instance=ExtResource("11_xyiqh")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -23, 0, -7)
@@ -593,7 +706,16 @@ speed = 0.4
 [node name="PressurePlate_PuzzleComplete" parent="Buttons and pressure plates" instance=ExtResource("12_ktip7")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -22, 0, -7)
 
+[node name="IntroGate" parent="Buttons and pressure plates" instance=ExtResource("11_xyiqh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 3)
+
+[node name="IntroButton" parent="Buttons and pressure plates" instance=ExtResource("9_gm7ib")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 1.8720074, 1, 4)
+trigger_while_activated = true
+delay_before_reset = 5.0
+
 [node name="PuzzleRoom" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 0, -10)
 
 [node name="_dev_doorway2" type="StaticBody3D" parent="PuzzleRoom"]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -15, 0, -6)
@@ -765,6 +887,7 @@ mesh = SubResource("ArrayMesh_dn5go")
 skeleton = NodePath("")
 
 [node name="BossRoom" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 0, -10)
 
 [node name="_dev_wall3" parent="BossRoom" instance=ExtResource("6_ktip7")]
 transform = Transform3D(-1, 0, 8.940697e-08, 0, 1, 0, -8.940697e-08, 0, -1, -25, 0, 6)
@@ -1017,3 +1140,4 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19, 0, 8)
 
 [connection signal="on_change" from="Buttons and pressure plates/Button_1" to="Buttons and pressure plates/Gate _1" method="open_gate"]
 [connection signal="on_change" from="Buttons and pressure plates/PressurePlate_PuzzleComplete" to="Buttons and pressure plates/PuzzleGate_1" method="open_gate"]
+[connection signal="on_change" from="Buttons and pressure plates/IntroButton" to="Buttons and pressure plates/IntroGate" method="open_gate"]
