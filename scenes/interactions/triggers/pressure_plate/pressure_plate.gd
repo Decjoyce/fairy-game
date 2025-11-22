@@ -17,6 +17,8 @@ var entities_on_plate: Dictionary[Node3D, float]
 @export_range(1.0, 10, 0.5) var weight_to_activate: float = 2.0
 var current_weight: float
 
+
+
 # ↑ General Stuff ↑
 # --------------------------------------------------------------------------------------------------
 # ↓ Triggering Stuff ↓
