@@ -19,6 +19,9 @@ var needed_items_left: Array[Grabbable_Item]
 @export_category("Destroy?")
 @export var destroy_items_on_receive: bool
 
+@export_category("Aesthetics")
+@export var hand_prompt: String = "hand_prompt_default"
+
 var is_activated: bool
 @onready var col: CollisionShape3D = $Area3D/CollisionShape3D 
 

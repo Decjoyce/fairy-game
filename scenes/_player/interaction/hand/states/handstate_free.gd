@@ -21,16 +21,14 @@ func update(_delta: float) -> void:
 	var same_frame_check: int = 0
 	
 	hand_controller.hovering_interactable = hand_controller.interact_checker()
-	#prints("from state:", hand_controller.stringed_hand_type, hand_controller.interact_checker(), " { } ", hand_controller.hovering_interactable)
 	if hand_controller.hovering_interactable:
 		if hand_controller.anim_is_prompting: return
-		print("lds")
 		hand_controller.anim_is_prompting = true
-		hand_controller.anim_update_animations()
+		hand_controller.anim_change_prompt_anim(hand_controller.hovering_interactable.hand_prompt)
 	else: 
 		if !hand_controller.anim_is_prompting: return
 		hand_controller.anim_is_prompting = false
-		hand_controller.anim_update_animations()
+		hand_controller.anim_change_prompt_anim(anim_prompt)
 
 func physics_update(_delta: float) -> void:
 	pass

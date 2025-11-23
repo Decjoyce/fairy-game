@@ -199,7 +199,6 @@ func anim_change_prompt_anim(_new_anim: String, update_anims: bool = true) -> vo
 func anim_update_animations() -> void:
 	var times_visited_this_frame: int
 	var strdsd: String = ""
-	prints(animation_player.is_playing())
 	if anim_is_overriding: return
 	elif !anim_is_overriding and anim_is_prompting:
 		if animation_player.current_animation == anim_prompting_animation: return
@@ -207,8 +206,7 @@ func anim_update_animations() -> void:
 	else:
 		if animation_player.current_animation == anim_idle_animation: return
 		animation_player.play(anim_idle_animation, -1, 0.5)
-		#prints("dddddd", animation_player.current_animation)
-	prints(times_visited_this_frame, strdsd)
+		
 
 func anim_override_current_animation(_new_anim: String, restart_if_performing_anim_already: bool = false) -> void:
 	if _new_anim == "" or !animation_player.has_animation(_new_anim): return
@@ -216,13 +214,11 @@ func anim_override_current_animation(_new_anim: String, restart_if_performing_an
 	anim_is_overriding = true
 	animation_player.stop()
 	animation_player.play(_new_anim)
-	prints(animation_player.current_animation)
 	animation_player.animation_finished.connect(_on_anim_override_finished)
 	anim_override_animation = _new_anim
  
 func _on_anim_override_finished(_anim_name: String) -> void:
 	anim_is_overriding = false
-	print("okoko")
 	animation_player.animation_finished.disconnect(_on_anim_override_finished)
 	anim_update_animations()
 

@@ -8,6 +8,9 @@ var tween: Tween
 
 @export var offset_helper: Control
 
+var current_grab_prompt: String
+var current_hand_prompt: String
+
 func handle_input(_event: InputEvent) -> void:
 	pass
 
@@ -28,7 +31,14 @@ func update(_delta: float) -> void:
 			end_charge()
 	
 	item_receiver = hand_controller.interact_checker_item_receiver()
-	hand_controller.anim_is_prompting = item_receiver != null
+	if item_receiver: 
+		if !hand_controller.anim_is_prompting:
+			hand_controller.anim_is_prompting = true
+			hand_controller.anim_change_prompt_anim(item_receiver.hand_prompt)
+	else:
+		if hand_controller.anim_is_prompting:
+			hand_controller.anim_is_prompting = false
+			hand_controller.anim_change_prompt_anim(anim_prompt)
 	
 	if Input.is_action_just_pressed("use_" + hand_controller.stringed_hand_type):
 		use()
