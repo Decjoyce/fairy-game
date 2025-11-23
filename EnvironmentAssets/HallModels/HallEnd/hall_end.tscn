@@ -1,17 +1,23 @@
-[gd_scene load_steps=2 format=3 uid="uid://b1mli67nii84n"]
+[gd_scene load_steps=3 format=3 uid="uid://b1mli67nii84n"]
 
 [ext_resource type="PackedScene" uid="uid://iao5uma7y1aw" path="res://EnvironmentAssets/HallModels/HallEnd/HallEnd.glb" id="1_s5csa"]
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_s5csa"]
+size = Vector3(16.008545, 1.9753723, 16.133423)
+
 [node name="HallEnd" instance=ExtResource("1_s5csa")]
 
-[node name="CollisionShape3D" parent="Roof/StaticBody3D" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.04159546, -0.041610718, 0.011474609)
+[node name="StaticBody3D" type="StaticBody3D" parent="Roof" index="0"]
 
-[node name="CollisionShape3D" parent="WallR/StaticBody3D" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.039916992, 5.8376255, -0.009877682)
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Roof/StaticBody3D" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0018310547, -0.0315094, -0.010925293)
+shape = SubResource("BoxShape3D_s5csa")
 
-[node name="CollisionShape3D" parent="WallB/StaticBody3D" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.048309326, 5.827965, -0.020324707)
+[node name="WallR" parent="." index="2"]
+visible = false
 
-[node name="CollisionShape3D" parent="WallL/StaticBody3D" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.030883789, 5.826379, -0.006072998)
+[node name="WallB" parent="." index="3"]
+visible = false
+
+[node name="WallL" parent="." index="4"]
+visible = false
