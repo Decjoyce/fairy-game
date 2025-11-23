@@ -15,7 +15,7 @@
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_abuop"]
 
-[sub_resource type="Shader" id="Shader_g8xqt"]
+[sub_resource type="Shader" id="Shader_e8ov3"]
 code = "shader_type spatial;
 render_mode diffuse_lambert_wrap,cull_disabled;
 
@@ -92,9 +92,9 @@ void fragment() {
 }
 "
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_e8ov3"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_khln7"]
 render_priority = 0
-shader = SubResource("Shader_g8xqt")
+shader = SubResource("Shader_e8ov3")
 shader_parameter/rows = 5.0
 shader_parameter/columns = 8.0
 shader_parameter/frame = 1.0
@@ -103,8 +103,8 @@ shader_parameter/sprite = ExtResource("2_e8ov3")
 shader_parameter/mode = 0
 shader_parameter/Normal = ExtResource("1_g8xqt")
 
-[sub_resource type="PlaneMesh" id="PlaneMesh_khln7"]
-material = SubResource("ShaderMaterial_e8ov3")
+[sub_resource type="PlaneMesh" id="PlaneMesh_7pn84"]
+material = SubResource("ShaderMaterial_khln7")
 size = Vector2(2.16, 2.16)
 orientation = 2
 
@@ -114,7 +114,7 @@ sprite = ExtResource("2_ajj11")
 texture_normal = ExtResource("1_qr3a0")
 columns = 8.0
 
-[sub_resource type="Resource" id="Resource_7pn84"]
+[sub_resource type="Resource" id="Resource_xay2k"]
 script = ExtResource("4_f2srf")
 name = "walk"
 sprite = ExtResource("2_e8ov3")
@@ -124,23 +124,6 @@ columns = 8.0
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_f2srf"]
 radius = 2.1178575
-
-[sub_resource type="Animation" id="Animation_g8xqt"]
-resource_name = "test_walk"
-length = 1.1
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:frame")
-tracks/0/interp = 0
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.26666668, 0.7, 1),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 0,
-"values": [0.0, 1.0, 2.0, 3.0]
-}
 
 [sub_resource type="Animation" id="Animation_e8ov3"]
 resource_name = "Idle"
@@ -170,6 +153,23 @@ tracks/1/keys = {
 "values": [0.0]
 }
 
+[sub_resource type="Animation" id="Animation_g8xqt"]
+resource_name = "test_walk"
+length = 1.1
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 0
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.26666668, 0.7, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 1.0, 2.0, 3.0]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_khln7"]
 _data = {
 &"Idle": SubResource("Animation_e8ov3"),
@@ -183,9 +183,9 @@ _data = {
 shape = SubResource("CapsuleShape3D_abuop")
 
 [node name="Sprite3DBillBoard" type="MeshInstance3D" parent="."]
-mesh = SubResource("PlaneMesh_khln7")
+mesh = SubResource("PlaneMesh_7pn84")
 script = ExtResource("3_jrekf")
-animations_array = Array[ExtResource("4_f2srf")]([SubResource("Resource_ql322"), SubResource("Resource_7pn84")])
+animations_array = Array[ExtResource("4_f2srf")]([SubResource("Resource_ql322"), SubResource("Resource_xay2k")])
 animation = 1
 frame = 1.0
 sprite_scale = 0.002
@@ -223,9 +223,6 @@ Animator = NodePath("../../AnimationPlayer")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
 shape = SubResource("SphereShape3D_f2srf")
 debug_color = Color(0.88782513, 0.3293662, 1.92523e-07, 0.41960785)
-
-[node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(0.84831625, 0, 0.52949, 0, 1, 0, -0.52949, 0, 0.8483162, 1.1203327, 0.33121884, 2.133411)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 root_node = NodePath("../Sprite3DBillBoard")
