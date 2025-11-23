@@ -31,7 +31,27 @@ signal on_move_left(target_position: Vector3)
 signal on_move_right(target_position: Vector3)
 
 func _ready() -> void:
-	compass.global_position = player.global_position
+	var new_position := player.global_position.round()
+	var new_rotation := player.global_rotation.y
+	
+	is_moving = false
+	
+	target_pos = new_position
+	target_rotation = new_rotation
+	
+	compass.global_position = new_position
+	compass.global_rotation.y = new_rotation
+	
+	player.global_position = new_position
+	player.global_rotation.y = new_rotation
+	
+	current_direction = MoveDirections.NOT_MOVING
+	
+	ray_north.force_shapecast_update()
+	ray_south.force_shapecast_update()
+	ray_east.force_shapecast_update()
+	ray_west.force_shapecast_update()
+	
 
 func movement_input() -> void:
 	

@@ -1,12 +1,27 @@
-[gd_scene load_steps=8 format=3 uid="uid://bm8kaq0ah5g7q"]
+[gd_scene load_steps=11 format=3 uid="uid://bm8kaq0ah5g7q"]
 
 [ext_resource type="Script" uid="uid://s5cfdf85lm5g" path="res://scenes/interactions/interactables/grabbable_items/grabbable_item.gd" id="1_csxji"]
 [ext_resource type="Texture2D" uid="uid://cek17ch4ko4ca" path="res://scenes/interactions/interactables/grabbable_items/torch/torch.png" id="2_20p6n"]
-[ext_resource type="Script" uid="uid://d3averdt6fuqm" path="res://itemtype_torch.gd" id="2_t5i1y"]
+[ext_resource type="Script" uid="uid://d3averdt6fuqm" path="res://scenes/interactions/interactables/grabbable_items/type/itemtype_torch.gd" id="2_t5i1y"]
 [ext_resource type="Script" uid="uid://dmxkgeraxg8wd" path="res://scenes/interactions/interactables/grabbable_items/torch/torch_light.gd" id="3_7p8xc"]
+[ext_resource type="AudioStream" uid="uid://dutddyikwuiut" path="res://assets/misc/hittingsound_shorter.wav" id="5_j22s6"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_t5i1y"]
+noise_type = 2
+seed = 50
+frequency = 0.7527
+fractal_type = 3
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_j22s6"]
+generate_mipmaps = false
+noise = SubResource("FastNoiseLite_t5i1y")
 
 [sub_resource type="Resource" id="Resource_j22s6"]
 script = ExtResource("2_t5i1y")
+noise = SubResource("NoiseTexture2D_j22s6")
+light_strength = 1.0
+flicker_frequency = 1.0
+item_type = 1
 metadata/_custom_type_script = "uid://d3averdt6fuqm"
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_20p6n"]
@@ -20,6 +35,8 @@ collision_layer = 2
 axis_lock_angular_x = true
 axis_lock_angular_y = true
 axis_lock_angular_z = true
+contact_monitor = true
+max_contacts_reported = 1
 script = ExtResource("1_csxji")
 item_type = SubResource("Resource_j22s6")
 grabbed_rotation = 0.524
@@ -39,16 +56,23 @@ shape = SubResource("BoxShape3D_7p8xc")
 [node name="Node3D" type="Node3D" parent="."]
 
 [node name="Idle" type="Sprite3D" parent="Node3D"]
+layers = 4
 pixel_size = 0.0015
 billboard = 1
 texture = ExtResource("2_20p6n")
 
 [node name="Grabbed" type="Sprite3D" parent="Node3D"]
 transform = Transform3D(0.99999994, 0, 0, 0, 0.99999994, 0, 0, 0, 1, 0, 0.161, 0)
+layers = 4
 pixel_size = 0.0013
 texture = ExtResource("2_20p6n")
 
 [node name="OmniLight3D" type="OmniLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.28, 0)
 light_color = Color(0.7468442, 0.34661883, 0, 1)
+omni_range = 3.0
 script = ExtResource("3_7p8xc")
+torch_details = SubResource("Resource_j22s6")
+
+[node name="AudioPlayer" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("5_j22s6")

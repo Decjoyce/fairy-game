@@ -1,4 +1,4 @@
-[gd_scene load_steps=77 format=4 uid="uid://dw2dbsjbocxi7"]
+[gd_scene load_steps=78 format=4 uid="uid://dw2dbsjbocxi7"]
 
 [ext_resource type="PackedScene" uid="uid://bq86osdembn58" path="res://scenes/_player/_player_test.tscn" id="2_3vnxs"]
 [ext_resource type="PackedScene" uid="uid://cafafqbxrlmdt" path="res://scenes/__prototyping/dev_tiles/open/dev_open_wall.tscn" id="2_cti4x"]
@@ -21,12 +21,13 @@
 [ext_resource type="Material" uid="uid://cfsra4dny0m23" path="res://assets/_dev/materials/_dev_m_white.tres" id="17_fpxpw"]
 [ext_resource type="Material" uid="uid://bmx5kbkw1qnpa" path="res://assets/_dev/materials/_dev_m_grey.tres" id="18_o5rkc"]
 [ext_resource type="Script" uid="uid://c4t3ko70ihpyy" path="res://scenes/interactions/receivers/animated_object/animated_object.gd" id="21_a71ib"]
-[ext_resource type="Script" uid="uid://cqhq7vrwiw3m6" path="res://item_type.gd" id="21_lwfn2"]
-[ext_resource type="Script" uid="uid://q0egps2wmpgo" path="res://itemtype_key.gd" id="23_6a6ye"]
+[ext_resource type="Script" uid="uid://cqhq7vrwiw3m6" path="res://scenes/interactions/interactables/grabbable_items/type/item_type.gd" id="21_lwfn2"]
+[ext_resource type="Script" uid="uid://q0egps2wmpgo" path="res://scenes/interactions/interactables/grabbable_items/type/itemtype_key.gd" id="23_6a6ye"]
 [ext_resource type="PackedScene" uid="uid://bg5p5awk0jedc" path="res://scenes/interactions/Drawing/draw_board.tscn" id="23_rcrad"]
 [ext_resource type="PackedScene" uid="uid://da8jmxsuq7td1" path="res://scenes/interactions/triggers/item_trigger/item_trigger.tscn" id="24_1e1q4"]
 [ext_resource type="PackedScene" uid="uid://ccxmagyj4smfr" path="res://scenes/interactions/triggers/item_receiver/item_receiver.tscn" id="24_lwfn2"]
 [ext_resource type="PackedScene" uid="uid://clnnqb1efkbei" path="res://scenes/interactions/prefabs/locked_door.tscn" id="27_lfnjp"]
+[ext_resource type="PackedScene" uid="uid://boygsguyqneek" path="res://scenes/interactions/interactables/grabbable_items/test_breakable.tscn" id="28_po0fx"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_ir6gx"]
 panorama = ExtResource("2_fnuid")
@@ -57,6 +58,7 @@ bounce = 1.0
 
 [sub_resource type="Resource" id="Resource_lfnjp"]
 script = ExtResource("21_lwfn2")
+item_type = null
 metadata/_custom_type_script = "uid://cqhq7vrwiw3m6"
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_llc7q"]
@@ -74,6 +76,7 @@ bounce = 0.55
 
 [sub_resource type="Resource" id="Resource_po0fx"]
 script = ExtResource("21_lwfn2")
+item_type = null
 metadata/_custom_type_script = "uid://cqhq7vrwiw3m6"
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_fpxpw"]
@@ -443,6 +446,7 @@ shadow_mesh = SubResource("ArrayMesh_mdgbl")
 
 [sub_resource type="Resource" id="Resource_teo1q"]
 script = ExtResource("21_lwfn2")
+item_type = null
 metadata/_custom_type_script = "uid://cqhq7vrwiw3m6"
 
 [sub_resource type="Resource" id="Resource_limx5"]
@@ -1583,7 +1587,7 @@ type_of_item = 0
 num_needed = 5
 
 [node name="DrawBoard" parent="." instance=ExtResource("23_rcrad")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.3, -4)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3.3, -4)
 
 [node name="ItemTrigger" parent="." node_paths=PackedStringArray("specific_item") instance=ExtResource("24_1e1q4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.5, 0, -8.6)
@@ -1593,6 +1597,9 @@ delete_obj_after_use = true
 
 [node name="ItemReceiver" parent="." instance=ExtResource("27_lfnjp")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 1, -9)
+
+[node name="Breakable_Item" parent="." instance=ExtResource("28_po0fx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.7, -4)
 
 [connection signal="area_entered" from="Room_Start/Teleporter_to_item/Trigger" to="Room_Start/Teleporter_to_item" method="_teleport_entity"]
 [connection signal="body_entered" from="Room_Start/Teleporter_to_item/Trigger" to="Room_Start/Teleporter_to_item" method="_teleport_item"]

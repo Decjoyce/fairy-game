@@ -31,6 +31,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.95, 1, 0)
 shape = SubResource("BoxShape3D_rdknj")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="_wall_left"]
+layers = 3
 mesh = SubResource("BoxMesh_rdknj")
 
 [node name="_wall_right" type="CollisionShape3D" parent="."]
@@ -38,6 +39,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.95, 1, 0)
 shape = SubResource("BoxShape3D_rdknj")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="_wall_right"]
+layers = 3
 mesh = SubResource("BoxMesh_rdknj")
 
 [node name="_wall_roof" type="CollisionShape3D" parent="."]
@@ -45,6 +47,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.05, 0)
 shape = SubResource("BoxShape3D_65s44")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="_wall_roof"]
+layers = 3
 mesh = SubResource("BoxMesh_65s44")
 
 [node name="_wall_floor" type="CollisionShape3D" parent="."]
@@ -52,4 +55,5 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.05, 0)
 shape = SubResource("BoxShape3D_gg1vk")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="_wall_floor"]
+layers = 3
 mesh = SubResource("BoxMesh_cxone")

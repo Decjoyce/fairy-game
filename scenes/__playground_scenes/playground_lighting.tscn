@@ -44,7 +44,8 @@ environment = SubResource("Environment_7jqst")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="env"]
 transform = Transform3D(1, 0, 0, 0, -0.5000001, 0.8660254, 0, -0.8660254, -0.5000001, 0, 0, 0)
-visible = false
+light_energy = 0.002
+sky_mode = 1
 
 [node name="_dev_palette" type="Node3D" parent="env"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -8, 0)
@@ -266,3 +267,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 
 [node name="Torch" parent="." instance=ExtResource("9_gn2f0")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0.8000002, -4)
+
+[node name="Torch2" parent="." instance=ExtResource("9_gn2f0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 0.8000002, -2)
+
+[node name="Torch3" parent="." instance=ExtResource("9_gn2f0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15, 0.8000002, -8)

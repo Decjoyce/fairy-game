@@ -18,14 +18,26 @@ enum item_weight_types {WEIGHTLESS, LIGHT, MEDIUM, HEAVY}
 
 @export_category("Throwing")
 @export var throw_distance : float = 8.0
+@export var can_break: bool
+@export var break_force: float = 35.0
 
 @export_category("Graphics")
 @export var idle_graphics: Node3D
 @export var grabbed_graphics: Node3D
 @export var untouched_graphics: Node3D
 
+@export_category("Audio")
+@onready var audio_player: AudioStreamPlayer3D = $AudioPlayer
+@export var base_volume: float = 1.0
+
+var prev_velocity: Vector3
+
 func _ready() -> void:
 	interaction_type = InteractTypes.GRAB_ITEM
+	rb.body_entered.connect(_on_collide)
+
+func _physics_process(delta: float) -> void:
+	prev_velocity = rb.linear_velocity
 
 func begin_interact(sig: float = -1) -> void:
 	if grabbed_graphics:
@@ -62,6 +74,8 @@ func end_using_item() -> void:
 # --------------------------------------------------------------------------------------------------
 # ↓ Item Stuff ↓
 
+var init_impact: bool
+
 func throw(_throw_mult: float) -> void:
 	if grabbed_graphics: grabbed_graphics.visible = false
 	idle_graphics.visible = true
@@ -69,5 +83,25 @@ func throw(_throw_mult: float) -> void:
 	rb.freeze = false
 	var throw_force := throw_distance * _throw_mult
 	throw_force = sqrt(throw_force * -2 * rb.get_gravity().y)
-	prints(_throw_mult, throw_distance * _throw_mult, throw_force)
+	#prints(_throw_mult, throw_distance * _throw_mult, throw_force)
 	rb.apply_central_impulse(-basis.z * throw_force * rb.mass)
+
+func _on_collide(body: Node) -> void:
+	if !init_impact:
+		init_impact = true
+		return
+	var current_force: float = prev_velocity.length_squared()
+	print(current_force)
+	if current_force <= 0.5: return
+	
+	audio_player.volume_linear = current_force/10
+	audio_player.play()
+	
+	Impact_Manager.play_impact_at(global_position, 0, 0.5)
+	
+	if can_break and current_force >= break_force:
+		break_item()
+
+func break_item() -> void:
+	if !can_break: return
+	queue_free()
