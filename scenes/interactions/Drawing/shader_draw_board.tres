@@ -1,4 +1,4 @@
-[gd_resource type="VisualShader" load_steps=10 format=3 uid="uid://bjcg6f61hwjaa"]
+[gd_resource type="VisualShader" load_steps=8 format=3 uid="uid://bjcg6f61hwjaa"]
 
 [sub_resource type="VisualShaderNodeColorParameter" id="VisualShaderNodeColorParameter_ucfq7"]
 parameter_name = "emission"
@@ -10,17 +10,11 @@ operator = 2
 [sub_resource type="VisualShaderNodeInput" id="VisualShaderNodeInput_ucfq7"]
 input_name = "uv"
 
-[sub_resource type="VisualShaderNodeTexture2DParameter" id="VisualShaderNodeTexture2DParameter_u5xeb"]
-parameter_name = "MainColor"
-
 [sub_resource type="VisualShaderNodeTexture2DParameter" id="VisualShaderNodeTexture2DParameter_im4uy"]
 parameter_name = "Paint"
 
 [sub_resource type="VisualShaderNodeTexture" id="VisualShaderNodeTexture_dncyw"]
 expanded_output_ports = [0]
-source = 5
-
-[sub_resource type="VisualShaderNodeTexture" id="VisualShaderNodeTexture_f5ld3"]
 source = 5
 
 [sub_resource type="VisualShaderNodeMix" id="VisualShaderNodeMix_mfog2"]
@@ -65,14 +59,10 @@ void fragment() {
 nodes/vertex/0/position = Vector2(880, -40)
 nodes/fragment/2/node = SubResource("VisualShaderNodeInput_ucfq7")
 nodes/fragment/2/position = Vector2(-1175.415, 494.2994)
-nodes/fragment/3/node = SubResource("VisualShaderNodeTexture2DParameter_u5xeb")
-nodes/fragment/3/position = Vector2(-1195.415, 134.29941)
 nodes/fragment/4/node = SubResource("VisualShaderNodeTexture2DParameter_im4uy")
 nodes/fragment/4/position = Vector2(-1175.415, 614.29944)
 nodes/fragment/5/node = SubResource("VisualShaderNodeTexture_dncyw")
 nodes/fragment/5/position = Vector2(-375.415, 774.29944)
-nodes/fragment/6/node = SubResource("VisualShaderNodeTexture_f5ld3")
-nodes/fragment/6/position = Vector2(-360, 120)
 nodes/fragment/7/node = SubResource("VisualShaderNodeMix_mfog2")
 nodes/fragment/7/position = Vector2(120, 320)
 nodes/fragment/8/node = SubResource("VisualShaderNodeFloatConstant_ucfq7")
@@ -81,4 +71,4 @@ nodes/fragment/10/node = SubResource("VisualShaderNodeColorParameter_ucfq7")
 nodes/fragment/10/position = Vector2(-380, 560)
 nodes/fragment/11/node = SubResource("VisualShaderNodeFloatOp_ucfq7")
 nodes/fragment/11/position = Vector2(60, 720)
-nodes/fragment/connections = PackedInt32Array(2, 0, 6, 0, 4, 0, 5, 2, 3, 0, 6, 2, 2, 0, 5, 0, 5, 4, 7, 2, 5, 0, 0, 0, 8, 0, 7, 0, 5, 4, 7, 1, 5, 0, 11, 0, 10, 0, 11, 1, 11, 0, 0, 5)
+nodes/fragment/connections = PackedInt32Array(4, 0, 5, 2, 2, 0, 5, 0, 5, 4, 7, 2, 5, 0, 0, 0, 8, 0, 7, 0, 5, 4, 7, 1, 5, 0, 11, 0, 10, 0, 11, 1, 11, 0, 0, 5)

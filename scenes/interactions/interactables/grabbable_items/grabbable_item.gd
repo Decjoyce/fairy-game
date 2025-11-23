@@ -3,18 +3,26 @@ extends Interactable
 
 var is_grabbed: bool = false
 
-@export var rb: RigidBody3D
+@onready var rb: RigidBody3D = $"."
 
+@export_category("Item Type")
+@export var item_type: ItemType
+
+@export_category("Weight")
+enum item_weight_types {WEIGHTLESS, LIGHT, MEDIUM, HEAVY}
+@export var item_weight: item_weight_types
+
+@export_category("Grabbing")
 @export var grabbed_offset: Vector3 = Vector3.ZERO
+@export var grabbed_rotation: float = 0.0
 
+@export_category("Throwing")
 @export var throw_distance : float = 8.0
 
+@export_category("Graphics")
 @export var idle_graphics: Node3D
 @export var grabbed_graphics: Node3D
 @export var untouched_graphics: Node3D
-
-enum item_weight_types {WEIGHTLESS, LIGHT, MEDIUM, HEAVY}
-@export var item_weight: item_weight_types
 
 func _ready() -> void:
 	interaction_type = InteractTypes.GRAB_ITEM
@@ -31,8 +39,8 @@ func interacting(sig: float = -1) -> void:
 	pass
 
 func end_interact(sig: float = -1) -> void:
-	#if grabbed_graphics: grabbed_graphics.visible = false
-	#idle_graphics.visible = true
+	if grabbed_graphics: grabbed_graphics.visible = false
+	idle_graphics.visible = true
 	
 	rb.freeze = false
 	rb.linear_velocity = Vector3.ZERO
@@ -55,6 +63,8 @@ func end_using_item() -> void:
 # ↓ Item Stuff ↓
 
 func throw(_throw_mult: float) -> void:
+	if grabbed_graphics: grabbed_graphics.visible = false
+	idle_graphics.visible = true
 	rb.linear_velocity = Vector3.ZERO
 	rb.freeze = false
 	var throw_force := throw_distance * _throw_mult

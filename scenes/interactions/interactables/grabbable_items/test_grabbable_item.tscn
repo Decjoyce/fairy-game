@@ -1,9 +1,14 @@
-[gd_scene load_steps=7 format=3 uid="uid://dfe565flkjwxt"]
+[gd_scene load_steps=9 format=3 uid="uid://dfe565flkjwxt"]
 
 [ext_resource type="Script" uid="uid://s5cfdf85lm5g" path="res://scenes/interactions/interactables/grabbable_items/grabbable_item.gd" id="1_llc7q"]
 [ext_resource type="Texture2D" uid="uid://fn4v0r2yystc" path="res://icon.svg" id="2_3c3r3"]
+[ext_resource type="Script" uid="uid://cqhq7vrwiw3m6" path="res://item_type.gd" id="2_5o2oe"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_llc7q"]
+
+[sub_resource type="Resource" id="Resource_yadgr"]
+script = ExtResource("2_5o2oe")
+metadata/_custom_type_script = "uid://cqhq7vrwiw3m6"
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_llc7q"]
 size = Vector3(0.5, 0.5, 0.5)
@@ -15,7 +20,7 @@ size = Vector3(0.4, 0.4, 0.4)
 radius = 0.25
 height = 0.5
 
-[node name="TEST_Grabbable_item" type="RigidBody3D" node_paths=PackedStringArray("rb", "idle_graphics") groups=["debug_PickableObjects"]]
+[node name="TEST_Grabbable_item" type="RigidBody3D" node_paths=PackedStringArray("idle_graphics") groups=["debug_PickableObjects"]]
 collision_layer = 2
 axis_lock_angular_x = true
 axis_lock_angular_z = true
@@ -23,8 +28,8 @@ mass = 0.5
 physics_material_override = SubResource("PhysicsMaterial_llc7q")
 gravity_scale = 0.8
 script = ExtResource("1_llc7q")
-rb = NodePath(".")
-idle_graphics = NodePath("MeshInstance3D")
+item_type = SubResource("Resource_yadgr")
+idle_graphics = NodePath("Sprite3D")
 
 [node name="Area3D" type="Area3D" parent="."]
 collision_layer = 2

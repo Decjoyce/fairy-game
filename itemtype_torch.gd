@@ -1,0 +1,2 @@
+class_name ItemType_Torch
+extends ItemType

@@ -1,0 +1,268 @@
+[gd_scene load_steps=18 format=3 uid="uid://dacspddaimn4a"]
+
+[ext_resource type="PackedScene" uid="uid://bwo817pko4lmy" path="res://scenes/__prototyping/dev_tiles/dev_hall.tscn" id="1_daejx"]
+[ext_resource type="Material" uid="uid://bk8gbrrgpacoj" path="res://assets/_dev/materials/_dev_m_source.tres" id="2_hoyov"]
+[ext_resource type="Material" uid="uid://bmx5kbkw1qnpa" path="res://assets/_dev/materials/_dev_m_grey.tres" id="3_gn2f0"]
+[ext_resource type="PackedScene" uid="uid://bqcjydc6ptmay" path="res://scenes/__prototyping/dev_tiles/dev_middle_b.tscn" id="4_4n6yk"]
+[ext_resource type="PackedScene" uid="uid://h3b7e5r20lrw" path="res://scenes/__prototyping/dev_tiles/dev_corner.tscn" id="5_4spql"]
+[ext_resource type="PackedScene" uid="uid://5jsxyb4jf5k8" path="res://scenes/__prototyping/dev_tiles/dev_wall.tscn" id="6_de0i5"]
+[ext_resource type="PackedScene" uid="uid://cjjfi78pp31yc" path="res://scenes/__prototyping/dev_tiles/dev_middle_a.tscn" id="7_y66gh"]
+[ext_resource type="PackedScene" uid="uid://iespsshl647t" path="res://scenes/__prototyping/dev_tiles/dev_doorway.tscn" id="8_hoyov"]
+[ext_resource type="PackedScene" uid="uid://bm8kaq0ah5g7q" path="res://scenes/interactions/interactables/grabbable_items/torch/torch.tscn" id="9_gn2f0"]
+[ext_resource type="PackedScene" uid="uid://bq86osdembn58" path="res://scenes/_player/_player_test.tscn" id="10_4n6yk"]
+
+[sub_resource type="Environment" id="Environment_7jqst"]
+background_mode = 1
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_cti4x"]
+size = Vector3(0.2, 2, 0.2)
+
+[sub_resource type="BoxMesh" id="BoxMesh_mlo6p"]
+material = ExtResource("2_hoyov")
+size = Vector3(0.2, 2, 0.2)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_65s44"]
+size = Vector3(2, 0.1, 2)
+
+[sub_resource type="BoxMesh" id="BoxMesh_xtqac"]
+material = ExtResource("3_gn2f0")
+size = Vector3(2, 0.1, 2)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_25we5"]
+size = Vector3(2, 0.1, 2)
+
+[sub_resource type="BoxMesh" id="BoxMesh_65s44"]
+material = ExtResource("3_gn2f0")
+size = Vector3(2, 0.1, 2)
+
+[node name="PlaygroundLighting" type="Node3D"]
+
+[node name="env" type="Node3D" parent="."]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="env"]
+environment = SubResource("Environment_7jqst")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="env"]
+transform = Transform3D(1, 0, 0, 0, -0.5000001, 0.8660254, 0, -0.8660254, -0.5000001, 0, 0, 0)
+visible = false
+
+[node name="_dev_palette" type="Node3D" parent="env"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -8, 0)
+
+[node name="_dev_hall" parent="env/_dev_palette" instance=ExtResource("1_daejx")]
+
+[node name="_dev_hall2" parent="env/_dev_palette" instance=ExtResource("1_daejx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8, 0)
+
+[node name="_dev_hall3" parent="env/_dev_palette" instance=ExtResource("1_daejx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8, -2)
+
+[node name="_dev_hall4" parent="env/_dev_palette" instance=ExtResource("1_daejx")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -2, 8, -4)
+
+[node name="_dev_hall5" parent="env/_dev_palette" instance=ExtResource("1_daejx")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -4, 8, -4)
+
+[node name="_dev_doorway" type="StaticBody3D" parent="env/_dev_palette"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2)
+
+[node name="_wall_back_l" type="CollisionShape3D" parent="env/_dev_palette/_dev_doorway"]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0.9, 1, 0.9)
+shape = SubResource("BoxShape3D_cti4x")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="env/_dev_palette/_dev_doorway/_wall_back_l"]
+mesh = SubResource("BoxMesh_mlo6p")
+
+[node name="_wall_back_r" type="CollisionShape3D" parent="env/_dev_palette/_dev_doorway"]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -4.9, 1, 0.9000001)
+shape = SubResource("BoxShape3D_cti4x")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="env/_dev_palette/_dev_doorway/_wall_back_r"]
+mesh = SubResource("BoxMesh_mlo6p")
+
+[node name="_wall_roof" type="CollisionShape3D" parent="env/_dev_palette/_dev_doorway"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.05, 0)
+shape = SubResource("BoxShape3D_65s44")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="env/_dev_palette/_dev_doorway/_wall_roof"]
+mesh = SubResource("BoxMesh_xtqac")
+
+[node name="_wall_floor" type="CollisionShape3D" parent="env/_dev_palette/_dev_doorway"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.05, 0)
+shape = SubResource("BoxShape3D_25we5")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="env/_dev_palette/_dev_doorway/_wall_floor"]
+mesh = SubResource("BoxMesh_65s44")
+
+[node name="_dev_middle_b" parent="env/_dev_palette" instance=ExtResource("4_4n6yk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -4)
+
+[node name="_dev_corner" parent="env/_dev_palette" instance=ExtResource("5_4spql")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 2)
+
+[node name="_dev_corner2" parent="env/_dev_palette" instance=ExtResource("5_4spql")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 8, -4)
+
+[node name="_dev_corner13" parent="env/_dev_palette" instance=ExtResource("5_4spql")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 8, -4)
+
+[node name="_dev_corner3" parent="env/_dev_palette" instance=ExtResource("5_4spql")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -6, 8, -6)
+
+[node name="_dev_corner5" parent="env/_dev_palette" instance=ExtResource("5_4spql")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -10, 8, -8)
+
+[node name="_dev_corner7" parent="env/_dev_palette" instance=ExtResource("5_4spql")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -12, 8, -10)
+
+[node name="_dev_corner6" parent="env/_dev_palette" instance=ExtResource("5_4spql")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 8, 0)
+
+[node name="_dev_corner8" parent="env/_dev_palette" instance=ExtResource("5_4spql")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 8, 2)
+
+[node name="_dev_corner4" parent="env/_dev_palette" instance=ExtResource("5_4spql")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 8, -2)
+
+[node name="_dev_wall" parent="env/_dev_palette" instance=ExtResource("6_de0i5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 2)
+
+[node name="_dev_wall2" parent="env/_dev_palette" instance=ExtResource("6_de0i5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8, 0)
+
+[node name="_dev_wall3" parent="env/_dev_palette" instance=ExtResource("6_de0i5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 8, -2)
+
+[node name="_dev_wall5" parent="env/_dev_palette" instance=ExtResource("6_de0i5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16, 8, 2)
+
+[node name="_dev_wall6" parent="env/_dev_palette" instance=ExtResource("6_de0i5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14, 8, 2)
+
+[node name="_dev_wall7" parent="env/_dev_palette" instance=ExtResource("6_de0i5")]
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, -14, 8, -10)
+
+[node name="_dev_wall8" parent="env/_dev_palette" instance=ExtResource("6_de0i5")]
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, -16, 8, -10)
+
+[node name="_dev_wall4" parent="env/_dev_palette" instance=ExtResource("6_de0i5")]
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, -8, 8, -6)
+
+[node name="_dev_middle_a" parent="env/_dev_palette" instance=ExtResource("7_y66gh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2)
+
+[node name="_dev_middle_a2" parent="env/_dev_palette" instance=ExtResource("7_y66gh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 8, -4)
+
+[node name="_dev_middle_a3" parent="env/_dev_palette" instance=ExtResource("7_y66gh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 8, -4)
+
+[node name="_dev_middle_a5" parent="env/_dev_palette" instance=ExtResource("7_y66gh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 8, -2)
+
+[node name="_dev_middle_a4" parent="env/_dev_palette" instance=ExtResource("7_y66gh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 8, -6)
+
+[node name="_dev_middle_a6" parent="env/_dev_palette" instance=ExtResource("7_y66gh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 8, -4)
+
+[node name="_dev_middle_a7" parent="env/_dev_palette" instance=ExtResource("7_y66gh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 8, -2)
+
+[node name="_dev_middle_a8" parent="env/_dev_palette" instance=ExtResource("7_y66gh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 8, -6)
+
+[node name="_dev_middle_a9" parent="env/_dev_palette" instance=ExtResource("7_y66gh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 8, -8)
+
+[node name="_dev_middle_a10" parent="env/_dev_palette" instance=ExtResource("7_y66gh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 8, 0)
+
+[node name="_dev_corner9" parent="env/_dev_palette" instance=ExtResource("5_4spql")]
+transform = Transform3D(1.3113416e-07, 0, -1, 0, 1, 0, 1, 0, 1.3113416e-07, -20, 8, 0)
+
+[node name="_dev_corner10" parent="env/_dev_palette" instance=ExtResource("5_4spql")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -18, 8, -10)
+
+[node name="_dev_corner11" parent="env/_dev_palette" instance=ExtResource("5_4spql")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -20, 8, -8)
+
+[node name="_dev_corner12" parent="env/_dev_palette" instance=ExtResource("5_4spql")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -18, 8, 2)
+
+[node name="_dev_middle_a11" parent="env/_dev_palette" instance=ExtResource("7_y66gh")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -20, 8, -4)
+
+[node name="_dev_middle_a12" parent="env/_dev_palette" instance=ExtResource("7_y66gh")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -20, 8, -6)
+
+[node name="_dev_middle_a13" parent="env/_dev_palette" instance=ExtResource("7_y66gh")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -20, 8, -2)
+
+[node name="_dev_middle_a14" parent="env/_dev_palette" instance=ExtResource("7_y66gh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18, 8, -4)
+
+[node name="_dev_middle_a15" parent="env/_dev_palette" instance=ExtResource("7_y66gh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18, 8, -2)
+
+[node name="_dev_middle_a16" parent="env/_dev_palette" instance=ExtResource("7_y66gh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18, 8, -6)
+
+[node name="_dev_middle_a17" parent="env/_dev_palette" instance=ExtResource("7_y66gh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18, 8, -8)
+
+[node name="_dev_middle_a18" parent="env/_dev_palette" instance=ExtResource("7_y66gh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18, 8, 0)
+
+[node name="_dev_middle_a19" parent="env/_dev_palette" instance=ExtResource("7_y66gh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16, 8, -4)
+
+[node name="_dev_middle_a20" parent="env/_dev_palette" instance=ExtResource("7_y66gh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16, 8, -2)
+
+[node name="_dev_middle_a21" parent="env/_dev_palette" instance=ExtResource("7_y66gh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16, 8, -6)
+
+[node name="_dev_middle_a22" parent="env/_dev_palette" instance=ExtResource("7_y66gh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16, 8, -8)
+
+[node name="_dev_middle_a23" parent="env/_dev_palette" instance=ExtResource("7_y66gh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16, 8, 0)
+
+[node name="_dev_middle_a24" parent="env/_dev_palette" instance=ExtResource("7_y66gh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14, 8, -4)
+
+[node name="_dev_middle_a25" parent="env/_dev_palette" instance=ExtResource("7_y66gh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14, 8, -2)
+
+[node name="_dev_middle_a26" parent="env/_dev_palette" instance=ExtResource("7_y66gh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14, 8, -6)
+
+[node name="_dev_middle_a27" parent="env/_dev_palette" instance=ExtResource("7_y66gh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14, 8, -8)
+
+[node name="_dev_middle_a28" parent="env/_dev_palette" instance=ExtResource("7_y66gh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14, 8, 0)
+
+[node name="----------------" type="Node" parent="env/_dev_palette"]
+
+[node name="_dev_doorway2" parent="env/_dev_palette" instance=ExtResource("8_hoyov")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -6, 8, -4)
+
+[node name="_dev_corner14" parent="env/_dev_palette" instance=ExtResource("5_4spql")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -22, 8, -2)
+
+[node name="_dev_corner15" parent="env/_dev_palette" instance=ExtResource("5_4spql")]
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, -22, 8, -6)
+
+[node name="_dev_doorway4" parent="env/_dev_palette" instance=ExtResource("8_hoyov")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -22, 8, -4)
+
+[node name="_dev_doorway3" parent="env/_dev_palette" instance=ExtResource("8_hoyov")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -4, 8, -4)
+
+[node name="player_test" parent="." instance=ExtResource("10_4n6yk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+
+[node name="Torch" parent="." instance=ExtResource("9_gn2f0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0.8000002, -4)

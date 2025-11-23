@@ -90,25 +90,25 @@ func movement(delta: float) -> void:
 func check_can_move_up() -> bool:
 	if Debug.noclip_enabled: return true
 	if check_grabbed_obj_direction(0): return false
-	#ray_north.force_shapecast_update()
+	ray_north.force_shapecast_update()
 	return !ray_north.is_colliding() and (dist_to_target <= 0.6 or current_direction != MoveDirections.HORIZONTAL)
 
 func check_can_move_down() -> bool:
 	if Debug.noclip_enabled: return true
 	if check_grabbed_obj_direction(1): return false
-	#ray_south.force_shapecast_update()
+	ray_south.force_shapecast_update()
 	return !ray_south.is_colliding() and (dist_to_target <= 0.6 or current_direction != MoveDirections.HORIZONTAL)
 
 func check_can_move_left() -> bool:
 	if Debug.noclip_enabled: return true
 	if check_grabbed_obj_direction(2): return false
-	#ray_west.force_shapecast_update()
+	ray_west.force_shapecast_update()
 	return !ray_west.is_colliding() and (dist_to_target <= 0.6 or current_direction != MoveDirections.VERTICAL)
 
 func check_can_move_right() -> bool:
 	if Debug.noclip_enabled: return true
 	if check_grabbed_obj_direction(3): return false
-	#ray_east.force_shapecast_update()
+	ray_east.force_shapecast_update()
 	return !ray_east.is_colliding() and (dist_to_target <= 0.6 or current_direction != MoveDirections.VERTICAL)
 
 # ↑ Moving Stuff ↑

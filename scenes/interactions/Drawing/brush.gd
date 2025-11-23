@@ -7,7 +7,6 @@ extends Node2D
 @export var texture: Texture2D
 @export var brush_size: float = 100
  
-#@onready var calc = $'../../ScoreCalculator'
  
 var brush_queue = []
  
@@ -22,4 +21,3 @@ func _draw():
 		draw_circle(Vector2(b[0].x - brush_size/2, b[0].y - brush_size/2), brush_size, Color.AQUA)
 	brush_queue = []
 	
-	#calc.recalculate_score()
