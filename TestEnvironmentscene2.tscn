@@ -1,0 +1,48 @@
+[gd_scene load_steps=9 format=3 uid="uid://fcbo0dvt0qyv"]
+
+[ext_resource type="PackedScene" uid="uid://cbpufrkbckfcj" path="res://EnvironmentAssets/HallModels/Hall/hall.tscn" id="1_a36f4"]
+[ext_resource type="PackedScene" uid="uid://ciiy1nknog2hh" path="res://EnvironmentAssets/HallModels/HallCorner/hall_corner.tscn" id="2_8578k"]
+[ext_resource type="PackedScene" uid="uid://b1mli67nii84n" path="res://EnvironmentAssets/HallModels/HallEnd/hall_end.tscn" id="3_maphf"]
+[ext_resource type="PackedScene" uid="uid://bhb1k7b82cibf" path="res://EnvironmentAssets/HallModels/HallNoWall/hall_no_wall.tscn" id="5_a36f4"]
+[ext_resource type="PackedScene" uid="uid://cb16cor50f44t" path="res://EnvironmentAssets/HallModels/HallOneWall/hall_one_wall.tscn" id="5_dfe4n"]
+[ext_resource type="PackedScene" uid="uid://csxu3gqq1p47l" path="res://EnvironmentAssets/HallModels/DirtCube/DirtC/DirtCorner.glb" id="6_coafc"]
+[ext_resource type="PackedScene" uid="uid://7kvpt28nxtyy" path="res://EnvironmentAssets/HallModels/DirtCube/DirtE/DirtEnd.glb" id="7_dfe4n"]
+[ext_resource type="PackedScene" uid="uid://d386wdddc68o8" path="res://EnvironmentAssets/HallModels/DirtCube/DirtH/DirtHall.glb" id="8_gnde1"]
+
+[node name="Node3D" type="Node3D"]
+
+[node name="Hall" parent="." instance=ExtResource("1_a36f4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -40, 0, 0)
+
+[node name="HallCorner" parent="." instance=ExtResource("2_8578k")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -40, 0, -16)
+
+[node name="HallEnd" parent="." instance=ExtResource("3_maphf")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -56, 0, -16)
+
+[node name="HallOneWall" parent="." instance=ExtResource("5_dfe4n")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -24, 0, 16)
+
+[node name="HallNoWall2" parent="." instance=ExtResource("5_a36f4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -40, 0, 16)
+
+[node name="DirtCorner" parent="." instance=ExtResource("6_coafc")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -40, 0, -16)
+
+[node name="DirtEnd" parent="." instance=ExtResource("7_dfe4n")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -56, 0, -16)
+
+[node name="DirtHall" parent="." instance=ExtResource("8_gnde1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -40, 0, 0)
+
+[node name="DirtCorner2" parent="." instance=ExtResource("6_coafc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -40, 0, 16)
+
+[node name="DirtEnd2" parent="." instance=ExtResource("7_dfe4n")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -24, 0, 16)
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -0.9659258, 0.25881904, 0, -0.25881904, -0.9659258, -41, 6, 0)
+light_color = Color(0.007843138, 0.47843137, 0.5764706, 1)
+light_energy = 4.794
+light_volumetric_fog_energy = 0.97
