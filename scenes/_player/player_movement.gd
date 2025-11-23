@@ -171,3 +171,21 @@ func teleport_player(out_pos: Node3D) -> void:
 	ray_east.force_shapecast_update()
 	ray_west.force_shapecast_update()
 	
+
+func teleport_player_by_coords(out_pos: Vector3) -> void:
+	var new_position := out_pos.round()
+	
+	is_moving = false
+	
+	target_pos = new_position
+	
+	compass.global_position = new_position
+	
+	player.global_position = new_position
+	
+	current_direction = MoveDirections.NOT_MOVING
+	
+	ray_north.force_shapecast_update()
+	ray_south.force_shapecast_update()
+	ray_east.force_shapecast_update()
+	ray_west.force_shapecast_update()

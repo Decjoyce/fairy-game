@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://dqojmsc2q6wf4"]
+[gd_scene load_steps=29 format=3 uid="uid://dqojmsc2q6wf4"]
 
 [ext_resource type="Script" uid="uid://bkcxym5jqdgg4" path="res://scenes/_player/interaction/player_interaction.gd" id="1_ebye2"]
 [ext_resource type="Script" uid="uid://bvrebn6ao2hvn" path="res://scenes/_player/interaction/hand/player_hand.gd" id="2_f78vs"]
@@ -9,6 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://doii0wm4ij7ms" path="res://scenes/_player/interaction/hand/assets/hand_hold.png" id="6_ft4o3"]
 [ext_resource type="Texture2D" uid="uid://bf54ba5wmnwv7" path="res://scenes/_player/interaction/hand/assets/hand_pick.png" id="7_h6x2d"]
 [ext_resource type="Texture2D" uid="uid://dtjkym227bqie" path="res://scenes/_player/interaction/hand/assets/hand_extend.png" id="8_3efos"]
+[ext_resource type="Texture2D" uid="uid://cek17ch4ko4ca" path="res://scenes/interactions/interactables/grabbable_items/torch/torch.png" id="8_gulgn"]
 [ext_resource type="Texture2D" uid="uid://mca3ko5edbht" path="res://scenes/_player/interaction/hand/assets/hand_hover.png" id="9_3efos"]
 [ext_resource type="Texture2D" uid="uid://bj70dokyron4r" path="res://scenes/_player/interaction/hand/assets/hand_torch.png" id="10_434r6"]
 [ext_resource type="Texture2D" uid="uid://bf5kpbbhis3ra" path="res://scenes/_player/interaction/hand/assets/hand_extend_full.png" id="11_njhm0"]
@@ -324,6 +325,20 @@ offset_right = -33.0
 offset_bottom = -16.0
 grow_horizontal = 0
 grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="Hand_Left/_hand_sprite"]
+visible = false
+show_behind_parent = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("8_gulgn")
+expand_mode = 1
+stretch_mode = 4
+metadata/_edit_use_anchors_ = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Hand_Left"]
 callback_mode_method = 1
