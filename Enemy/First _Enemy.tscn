@@ -1,17 +1,21 @@
-[gd_scene load_steps=15 format=3 uid="uid://bj8n80dbd408c"]
+[gd_scene load_steps=23 format=3 uid="uid://bj8n80dbd408c"]
 
+[ext_resource type="Texture2D" uid="uid://bajdgu88x35py" path="res://Sprites/ballyWalkSheet_n.png" id="1_g8xqt"]
 [ext_resource type="Texture2D" uid="uid://d117rsf1rrxb6" path="res://Sprites/ballybogIdle_n.png" id="1_qr3a0"]
 [ext_resource type="Texture2D" uid="uid://cjn3bxmukh4fj" path="res://Sprites/ballybogIdle.png" id="2_ajj11"]
+[ext_resource type="Texture2D" uid="uid://dl3etwft2mhxm" path="res://Sprites/ballyWalkSheet.png" id="2_e8ov3"]
 [ext_resource type="Script" uid="uid://b5653u7w56pqw" path="res://extras_sprites/scripts/sprite_3D_billboard.gd" id="3_jrekf"]
 [ext_resource type="Script" uid="uid://b4m0sglcg4smw" path="res://extras_sprites/scripts/animatio_data.gd" id="4_f2srf"]
 [ext_resource type="Script" uid="uid://r7bhwy0jfpk7" path="res://EnemyStateMachine/StateMachine.gd" id="5_bin5x"]
 [ext_resource type="Script" uid="uid://c3fdtr0ieg5dj" path="res://EnemyStateMachine/sm_controller.gd" id="5_f2srf"]
 [ext_resource type="Script" uid="uid://dc3uc7qhwg03r" path="res://EnemyStateMachine/idle_state.gd" id="6_ajj11"]
 [ext_resource type="Script" uid="uid://bg6gxealt4p8b" path="res://EnemyStateMachine/Fighting.gd" id="7_jrekf"]
+[ext_resource type="Script" uid="uid://cyctjxnvvlo47" path="res://EnemyStateMachine/Wander.gd" id="11_khln7"]
+[ext_resource type="Animation" uid="uid://b6ga5k6b8stym" path="res://AnimationsBelly/Walk.res" id="12_e8ov3"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_abuop"]
 
-[sub_resource type="Shader" id="Shader_pmwph"]
+[sub_resource type="Shader" id="Shader_g8xqt"]
 code = "shader_type spatial;
 render_mode diffuse_lambert_wrap,cull_disabled;
 
@@ -88,30 +92,90 @@ void fragment() {
 }
 "
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_g8xqt"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_e8ov3"]
 render_priority = 0
-shader = SubResource("Shader_pmwph")
-shader_parameter/rows = 1.0
+shader = SubResource("Shader_g8xqt")
+shader_parameter/rows = 5.0
 shader_parameter/columns = 8.0
-shader_parameter/frame = 0.0
+shader_parameter/frame = 1.0
 shader_parameter/invert_rows_columns = false
-shader_parameter/sprite = ExtResource("2_ajj11")
+shader_parameter/sprite = ExtResource("2_e8ov3")
 shader_parameter/mode = 0
-shader_parameter/Normal = ExtResource("1_qr3a0")
+shader_parameter/Normal = ExtResource("1_g8xqt")
 
-[sub_resource type="PlaneMesh" id="PlaneMesh_e8ov3"]
-material = SubResource("ShaderMaterial_g8xqt")
+[sub_resource type="PlaneMesh" id="PlaneMesh_khln7"]
+material = SubResource("ShaderMaterial_e8ov3")
 size = Vector2(2.16, 2.16)
 orientation = 2
 
-[sub_resource type="Resource" id="Resource_khln7"]
+[sub_resource type="Resource" id="Resource_ql322"]
 script = ExtResource("4_f2srf")
 sprite = ExtResource("2_ajj11")
 texture_normal = ExtResource("1_qr3a0")
 columns = 8.0
 
+[sub_resource type="Resource" id="Resource_7pn84"]
+script = ExtResource("4_f2srf")
+name = "walk"
+sprite = ExtResource("2_e8ov3")
+texture_normal = ExtResource("1_g8xqt")
+rows = 5.0
+columns = 8.0
+
 [sub_resource type="SphereShape3D" id="SphereShape3D_f2srf"]
 radius = 2.1178575
+
+[sub_resource type="Animation" id="Animation_g8xqt"]
+resource_name = "test_walk"
+length = 1.1
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 0
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.26666668, 0.7, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 1.0, 2.0, 3.0]
+}
+
+[sub_resource type="Animation" id="Animation_e8ov3"]
+resource_name = "Idle"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:animation")
+tracks/0/interp = 0
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:frame")
+tracks/1/interp = 0
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_khln7"]
+_data = {
+&"Idle": SubResource("Animation_e8ov3"),
+&"RESET": ExtResource("12_e8ov3"),
+&"test_walk": SubResource("Animation_g8xqt")
+}
 
 [node name="StaticBody3D" type="StaticBody3D"]
 
@@ -119,11 +183,11 @@ radius = 2.1178575
 shape = SubResource("CapsuleShape3D_abuop")
 
 [node name="Sprite3DBillBoard" type="MeshInstance3D" parent="."]
-mesh = SubResource("PlaneMesh_e8ov3")
+mesh = SubResource("PlaneMesh_khln7")
 script = ExtResource("3_jrekf")
-animations_array = Array[ExtResource("4_f2srf")]([SubResource("Resource_khln7")])
-animation = 0
-frame = 0.0
+animations_array = Array[ExtResource("4_f2srf")]([SubResource("Resource_ql322"), SubResource("Resource_7pn84")])
+animation = 1
+frame = 1.0
 sprite_scale = 0.002
 metadata/_custom_type_script = "uid://b5653u7w56pqw"
 
@@ -135,19 +199,39 @@ node_StateMachine = NodePath("../StateMachine")
 script = ExtResource("5_bin5x")
 Init_node_state = NodePath("IdleState")
 
-[node name="IdleState" type="Node" parent="StateMachine" node_paths=PackedStringArray("Body", "Sprite")]
+[node name="IdleState" type="Node" parent="StateMachine" node_paths=PackedStringArray("Body", "Sprite", "SM", "Animator")]
 script = ExtResource("6_ajj11")
 Body = NodePath("../..")
 Sprite = NodePath("../../Sprite3DBillBoard")
+SM = NodePath("..")
+Animator = NodePath("../../AnimationPlayer")
 
-[node name="Fighting" type="Node" parent="StateMachine"]
+[node name="Fighting" type="Node" parent="StateMachine" node_paths=PackedStringArray("SM", "Animator")]
 script = ExtResource("7_jrekf")
+SM = NodePath("..")
+Animator = NodePath("../../AnimationPlayer")
+
+[node name="Wander" type="Node" parent="StateMachine" node_paths=PackedStringArray("Body", "Sprite", "SM", "Animator")]
+script = ExtResource("11_khln7")
+Body = NodePath("../..")
+Sprite = NodePath("../../Sprite3DBillBoard")
+SM = NodePath("..")
+Animator = NodePath("../../AnimationPlayer")
 
 [node name="Area3D" type="Area3D" parent="." groups=["Player"]]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
 shape = SubResource("SphereShape3D_f2srf")
 debug_color = Color(0.88782513, 0.3293662, 1.92523e-07, 0.41960785)
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(0.84831625, 0, 0.52949, 0, 1, 0, -0.52949, 0, 0.8483162, 1.1203327, 0.33121884, 2.133411)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+root_node = NodePath("../Sprite3DBillBoard")
+libraries = {
+&"": SubResource("AnimationLibrary_khln7")
+}
 
 [connection signal="body_shape_entered" from="Area3D" to="SM_controller" method="_on_area_3d_body_shape_entered"]
 [connection signal="body_shape_exited" from="Area3D" to="SM_controller" method="_on_area_3d_body_shape_exited"]

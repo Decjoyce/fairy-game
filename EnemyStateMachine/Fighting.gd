@@ -9,7 +9,7 @@ func on_process(delta : float):
 	
 	pass
 
-func enteer():
+func enter():
 	player = get_tree().get_nodes_in_group("Player")[0] as CharacterBody3D
 
 func exit():
