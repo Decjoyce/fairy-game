@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://dqojmsc2q6wf4"]
+[gd_scene load_steps=28 format=3 uid="uid://dqojmsc2q6wf4"]
 
 [ext_resource type="Script" uid="uid://bkcxym5jqdgg4" path="res://scenes/_player/interaction/player_interaction.gd" id="1_ebye2"]
 [ext_resource type="Script" uid="uid://bvrebn6ao2hvn" path="res://scenes/_player/interaction/hand/player_hand.gd" id="2_f78vs"]
@@ -13,6 +13,7 @@
 [ext_resource type="Texture2D" uid="uid://bj70dokyron4r" path="res://scenes/_player/interaction/hand/assets/hand_torch.png" id="10_434r6"]
 [ext_resource type="Texture2D" uid="uid://bf5kpbbhis3ra" path="res://scenes/_player/interaction/hand/assets/hand_extend_full.png" id="11_njhm0"]
 [ext_resource type="Texture2D" uid="uid://dehow8buqijkk" path="res://scenes/_player/interaction/hand/assets/hand_lever.png" id="12_pvvfk"]
+[ext_resource type="Texture2D" uid="uid://ck4of6qde1ymu" path="res://scenes/_player/interaction/hand/assets/hand_lever_two.png" id="14_aq8do"]
 
 [sub_resource type="Animation" id="Animation_434r6"]
 length = 0.001
@@ -196,6 +197,23 @@ tracks/0/keys = {
 "values": [ExtResource("10_434r6")]
 }
 
+[sub_resource type="Animation" id="Animation_gulgn"]
+resource_name = "hand_prompt_key"
+length = 0.001
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("_hand_sprite:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("14_aq8do")]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_3efos"]
 _data = {
 &"RESET": SubResource("Animation_434r6"),
@@ -208,6 +226,7 @@ _data = {
 &"hand_prompt_button": SubResource("Animation_3t2v1"),
 &"hand_prompt_default": SubResource("Animation_njhm0"),
 &"hand_prompt_door_locked": SubResource("Animation_pd1hw"),
+&"hand_prompt_key": SubResource("Animation_gulgn"),
 &"hand_prompt_lever": SubResource("Animation_rbe5j")
 }
 

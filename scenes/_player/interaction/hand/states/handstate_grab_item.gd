@@ -28,7 +28,8 @@ func update(_delta: float) -> void:
 			end_charge()
 	
 	item_receiver = hand_controller.interact_checker_item_receiver()
-	#hand_controller.update_hand_prompt()
+	if item_receiver and hand_controller.animation_player.current_animation != "hand_prompt_key":
+		hand_controller.animation_player.play("hand_prompt_key")
 	
 	if Input.is_action_just_pressed("use_" + hand_controller.stringed_hand_type):
 		use()

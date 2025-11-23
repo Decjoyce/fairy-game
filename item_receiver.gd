@@ -4,7 +4,7 @@ extends Node3D
 signal on_activated(sig: float)
 signal on_change(sig: float)
 
-enum ItemReceiverStyle {BY_TYPE, SPECIFIC_ITEMS, BOTH, ANY_ITEM}
+enum ItemReceiverStyle {BY_TYPE, SPECIFIC_ITEMS, EITHER, ANY_ITEM}
 @export var receiver_type: ItemReceiverStyle
 
 @export_category("If BY_TYPE or EITHER")
@@ -16,6 +16,7 @@ var num_have: int
 @export var specific_items_to_recieve: Array[Grabbable_Item]
 var needed_items_left: Array[Grabbable_Item]
 
+@export_category("Destroy?")
 @export var destroy_items_on_receive: bool
 
 var is_activated: bool
