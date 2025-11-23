@@ -12,6 +12,8 @@ enum HandTypes {LEFT, RIGHT}
 @onready var hand_sprite: TextureRect = $_hand_sprite
 
 func _ready() -> void:
+	#animation_player.animation_finished.connect(play_queued_animation)
+	
 	_init_states()
 
 # ↑ General Stuff ↑
@@ -58,8 +60,6 @@ const max_speed: float = 1500
 var cur_speed_index: int = 0
 @onready var current_speed: float = min_speed
 
-@onready var animation_player: AnimationPlayer = $AnimationPlayer
-
 func joystick_movement(delta: float) -> void:
 	var motion := Input.get_vector(stringed_hand_type + "_joystick_left", stringed_hand_type + "_joystick_right", stringed_hand_type + "_joystick_down", stringed_hand_type + "_joystick_up")
 	
@@ -77,10 +77,6 @@ func change_hand_speed() -> void:
 		1: current_speed = mid_speed
 		2: current_speed = max_speed
 
-func update_hand_prompt() -> void:
-	if hovering_interactable and animation_player.has_animation(hovering_interactable.hand_prompt):
-		animation_player.play(hovering_interactable.hand_prompt)
-
 # ↑ Hand Stuff ↑
 # --------------------------------------------------------------------------------------------------
 # ↓ Interacting Stuff ↓
@@ -93,6 +89,7 @@ var grabbed_obj: Interactable
 func begin_interact() -> void:
 	if !hovering_interactable:
 		return
+	anim_is_prompting = false
 	current_interactable = hovering_interactable
 	current_interactable.begin_interact()
 	match hovering_interactable.interaction_type:
@@ -134,13 +131,17 @@ func interact_checker(): # -> Interactable:
 	
 	var result = space_state.intersect_ray(query)
 	
-	if !result or !result.collider or result.collider.get_parent() is not Interactable:
-		if animation_player.current_animation != "a_hand_idle":
-			animation_player.play("a_hand_idle")
+	if !result: #!result.collider or result.collider.get_parent() is not Interactable:
+		return null
+	elif !result.collider: 
+		return null
+	elif result.collider.get_parent() is not Interactable: 
+		#prints("NOTACCEPTED", result.collider, result.collider.get_parent())
 		return null
 	
 	var _interactable: Interactable = result.collider.get_parent() as Interactable
 	
+	#prints(_interactable)
 	
 	return _interactable
 
@@ -155,11 +156,7 @@ func interact_checker_item_receiver(): # -> Interactable:
 	
 	var result = space_state.intersect_ray(query)
 	
-	
-	
 	if !result or !result.collider or result.collider.get_parent() is not ItemReceiver:
-		if result and result.collider:
-			print(result.collider.owner.name)
 		return null
 	
 	var _interactable: ItemReceiver = result.collider.get_parent() as ItemReceiver
@@ -168,4 +165,66 @@ func interact_checker_item_receiver(): # -> Interactable:
 	return _interactable
 
 # ↑ Interacting Stuff ↑
+# --------------------------------------------------------------------------------------------------
+# ↓ Animating Stuff ↓
+
+@onready var animation_player: AnimationPlayer = $AnimationPlayer
+
+var anim_is_overriding: bool
+var anim_override_animation: String
+
+var anim_is_prompting: bool
+var anim_prompting_animation: String
+@export var anim_prompting_default: String
+
+var anim_idle_animation: String
+@export var anim_idle_default: String
+
+func anim_change_idle_anim(_new_anim: String, update_anims: bool = true) -> void:
+	if _new_anim == "" or !animation_player.has_animation(_new_anim): 
+		anim_idle_animation = anim_idle_default
+		printerr(_new_anim + " - this idle animation cannot be found under - " + name)
+		return
+	anim_idle_animation = _new_anim
+	if update_anims: anim_update_animations()
+
+func anim_change_prompt_anim(_new_anim: String, update_anims: bool = true) -> void:
+	if _new_anim == "" or !animation_player.has_animation(_new_anim): 
+		anim_prompting_animation = anim_prompting_default
+		printerr(_new_anim + " - this prompt animation cannot be found under - " + name)
+		return
+	anim_prompting_animation = _new_anim
+	if update_anims: anim_update_animations()
+
+func anim_update_animations() -> void:
+	var times_visited_this_frame: int
+	var strdsd: String = ""
+	prints(animation_player.is_playing())
+	if anim_is_overriding: return
+	elif !anim_is_overriding and anim_is_prompting:
+		if animation_player.current_animation == anim_prompting_animation: return
+		animation_player.play(anim_prompting_animation, -1, 0.5)
+	else:
+		if animation_player.current_animation == anim_idle_animation: return
+		animation_player.play(anim_idle_animation, -1, 0.5)
+		#prints("dddddd", animation_player.current_animation)
+	prints(times_visited_this_frame, strdsd)
+
+func anim_override_current_animation(_new_anim: String, restart_if_performing_anim_already: bool = false) -> void:
+	if _new_anim == "" or !animation_player.has_animation(_new_anim): return
+	if !restart_if_performing_anim_already and animation_player.current_animation == anim_override_animation: return
+	anim_is_overriding = true
+	animation_player.stop()
+	animation_player.play(_new_anim)
+	prints(animation_player.current_animation)
+	animation_player.animation_finished.connect(_on_anim_override_finished)
+	anim_override_animation = _new_anim
+ 
+func _on_anim_override_finished(_anim_name: String) -> void:
+	anim_is_overriding = false
+	print("okoko")
+	animation_player.animation_finished.disconnect(_on_anim_override_finished)
+	anim_update_animations()
+
+# ↑ Animating Stuff ↑
 # --------------------------------------------------------------------------------------------------

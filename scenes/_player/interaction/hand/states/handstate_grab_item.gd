@@ -28,8 +28,7 @@ func update(_delta: float) -> void:
 			end_charge()
 	
 	item_receiver = hand_controller.interact_checker_item_receiver()
-	if item_receiver and hand_controller.animation_player.current_animation != "hand_prompt_key":
-		hand_controller.animation_player.play("hand_prompt_key")
+	hand_controller.anim_is_prompting = item_receiver != null
 	
 	if Input.is_action_just_pressed("use_" + hand_controller.stringed_hand_type):
 		use()
@@ -47,7 +46,11 @@ func enter(previous_state_path: String, data := {}) -> void:
 	
 	_space_state = hand_controller.cam.get_world_3d().direct_space_state
 	
-	hand_controller.animation_player.play("a_hand_pickup")
+	# Animation
+	hand_controller.anim_change_idle_anim(anim_idle)
+	hand_controller.anim_change_prompt_anim(anim_prompt)
+	
+	hand_controller.anim_override_current_animation("a_hand_pickup", true)
 	
 	var item_rot_z: float = grabbed_item.grabbed_rotation
 	if hand_controller.hand_type == 0: item_rot_z *= -1
@@ -61,7 +64,6 @@ func enter(previous_state_path: String, data := {}) -> void:
 	tween.tween_property(grabbed_item, "quaternion", new_rot, 0.1)
 	
 	await tween.finished
-	hand_controller.animation_player.play("a_hand_idle_grab_item")
 	is_ready = true
 	time_held_down = 0
 
@@ -139,7 +141,8 @@ func begin_charge() -> void:
 	is_charging = true
 	charge_amount = 0
 	time_held_down = 0
-	hand_controller.animation_player.play("a_hand_grab_item_charge")
+	hand_controller.anim_override_current_animation("a_hand_grab_item_charge", true)
+	hand_controller.anim_change_idle_anim("a_hand_grab_item_charge")
 	
 func charging(_delta: float) -> void:
 	if !is_charging: return
@@ -150,7 +153,7 @@ func charging(_delta: float) -> void:
 	
 
 func end_charge() -> void:
-	hand_controller.animation_player.play("a_hand_grab_item_throw")
+	hand_controller.anim_override_current_animation("a_hand_grab_item_charge", true)
 	if charge_amount < 0.1: grabbed_item.end_interact()
 	else: 
 		grabbed_item.throw(charge_amount)

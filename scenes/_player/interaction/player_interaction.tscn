@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://dqojmsc2q6wf4"]
+[gd_scene load_steps=30 format=3 uid="uid://dqojmsc2q6wf4"]
 
 [ext_resource type="Script" uid="uid://bkcxym5jqdgg4" path="res://scenes/_player/interaction/player_interaction.gd" id="1_ebye2"]
 [ext_resource type="Script" uid="uid://bvrebn6ao2hvn" path="res://scenes/_player/interaction/hand/player_hand.gd" id="2_f78vs"]
@@ -13,6 +13,7 @@
 [ext_resource type="Texture2D" uid="uid://mca3ko5edbht" path="res://scenes/_player/interaction/hand/assets/hand_hover.png" id="9_3efos"]
 [ext_resource type="Texture2D" uid="uid://bj70dokyron4r" path="res://scenes/_player/interaction/hand/assets/hand_torch.png" id="10_434r6"]
 [ext_resource type="Texture2D" uid="uid://bf5kpbbhis3ra" path="res://scenes/_player/interaction/hand/assets/hand_extend_full.png" id="11_njhm0"]
+[ext_resource type="Texture2D" uid="uid://cfymwa08wvaqh" path="res://scenes/_player/interaction/hand/assets/hand_pick_two.png" id="12_jhcvy"]
 [ext_resource type="Texture2D" uid="uid://dehow8buqijkk" path="res://scenes/_player/interaction/hand/assets/hand_lever.png" id="12_pvvfk"]
 [ext_resource type="Texture2D" uid="uid://ck4of6qde1ymu" path="res://scenes/_player/interaction/hand/assets/hand_lever_two.png" id="14_aq8do"]
 
@@ -33,7 +34,7 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id="Animation_pvvfk"]
 resource_name = "a_hand_grab_item_charge"
-loop_mode = 1
+length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -49,7 +50,7 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id="Animation_mxdlv"]
 resource_name = "a_hand_grab_item_throw"
-loop_mode = 1
+length = 5.0
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -57,16 +58,15 @@ tracks/0/path = NodePath("_hand_sprite:texture")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(0, 0.36666667, 0.96666664),
+"transitions": PackedFloat32Array(1, 1, 1),
 "update": 1,
-"values": [ExtResource("11_njhm0"), ExtResource("11_njhm0")]
+"values": [ExtResource("14_aq8do"), ExtResource("9_3efos"), ExtResource("12_jhcvy")]
 }
 
 [sub_resource type="Animation" id="Animation_h6x2d"]
 resource_name = "a_hand_idle"
 length = 0.001
-loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -150,7 +150,6 @@ tracks/0/keys = {
 [sub_resource type="Animation" id="Animation_njhm0"]
 resource_name = "hand_prompt_default"
 length = 0.001
-loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -261,17 +260,23 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("2_f78vs")
 initial_state = NodePath("States/FREE")
+anim_prompting_default = "a_hand_idle"
+anim_idle_default = "hand_prompt_default"
 metadata/_edit_use_anchors_ = true
 
 [node name="States" type="Node" parent="Hand_Left"]
 
 [node name="FREE" type="Node" parent="Hand_Left/States"]
 script = ExtResource("3_7baq5")
+anim_idle = "a_hand_idle"
+anim_prompt = "hand_prompt_default"
 
 [node name="GRAB_ITEM" type="Node" parent="Hand_Left/States" node_paths=PackedStringArray("offset_helper")]
 script = ExtResource("4_r26r4")
 offset_helper = NodePath("../../_hand_sprite/_pickup_pos")
 grab_ray_collision_mask = 1
+anim_idle = "a_hand_idle_grab_item"
+anim_prompt = "hand_prompt_key"
 
 [node name="GRAB_OBJ" type="Node" parent="Hand_Left/States"]
 script = ExtResource("5_wcvr7")
@@ -374,17 +379,23 @@ grow_vertical = 2
 script = ExtResource("2_f78vs")
 hand_type = 1
 initial_state = NodePath("States/FREE")
+anim_prompting_default = "a_hand_idle"
+anim_idle_default = "hand_prompt_default"
 metadata/_edit_use_anchors_ = true
 
 [node name="States" type="Node" parent="Hand_Right"]
 
 [node name="FREE" type="Node" parent="Hand_Right/States"]
 script = ExtResource("3_7baq5")
+anim_idle = "a_hand_idle"
+anim_prompt = "hand_prompt_default"
 
 [node name="GRAB_ITEM" type="Node" parent="Hand_Right/States" node_paths=PackedStringArray("offset_helper")]
 script = ExtResource("4_r26r4")
 offset_helper = NodePath("../../_hand_sprite/_pickup_pos")
 grab_ray_collision_mask = 1
+anim_idle = "a_hand_idle_grab_item"
+anim_prompt = "hand_prompt_key"
 
 [node name="GRAB_OBJ" type="Node" parent="Hand_Right/States"]
 script = ExtResource("5_wcvr7")

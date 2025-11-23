@@ -14,6 +14,9 @@ var other_hand: PlayerHand
 
 @export var moving_breaks_free: bool
 
+@export var anim_idle: String
+@export var anim_prompt: String
+
 func _ready() -> void:
 	await owner.ready
 	hand_controller = get_parent().get_parent() as PlayerHand

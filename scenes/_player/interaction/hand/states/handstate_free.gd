@@ -1,6 +1,8 @@
 class_name HandState_Free
 extends HandState
 
+var hovering_int: Interactable
+
 func handle_input(_event: InputEvent) -> void:
 	pass
 
@@ -16,14 +18,27 @@ func update(_delta: float) -> void:
 		finished.emit(CHALK)
 		return
 	
+	var same_frame_check: int = 0
+	
 	hand_controller.hovering_interactable = hand_controller.interact_checker()
-	hand_controller.update_hand_prompt()
+	#prints("from state:", hand_controller.stringed_hand_type, hand_controller.interact_checker(), " { } ", hand_controller.hovering_interactable)
+	if hand_controller.hovering_interactable:
+		if hand_controller.anim_is_prompting: return
+		print("lds")
+		hand_controller.anim_is_prompting = true
+		hand_controller.anim_update_animations()
+	else: 
+		if !hand_controller.anim_is_prompting: return
+		hand_controller.anim_is_prompting = false
+		hand_controller.anim_update_animations()
 
 func physics_update(_delta: float) -> void:
 	pass
 
 func enter(previous_state_path: String, data := {}) -> void:
-	hand_controller.animation_player.play("RESET")
+	prints(anim_idle, anim_prompt)
+	hand_controller.anim_change_idle_anim(anim_idle)
+	hand_controller.anim_change_prompt_anim(anim_prompt)
 	#print("hmm")
 
 func exit() -> void:
