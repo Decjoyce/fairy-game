@@ -1,0 +1,74 @@
+[gd_resource type="VisualShader" load_steps=8 format=3 uid="uid://bjcg6f61hwjaa"]
+
+[sub_resource type="VisualShaderNodeColorParameter" id="VisualShaderNodeColorParameter_ucfq7"]
+parameter_name = "emission"
+default_value_enabled = true
+
+[sub_resource type="VisualShaderNodeFloatOp" id="VisualShaderNodeFloatOp_ucfq7"]
+operator = 2
+
+[sub_resource type="VisualShaderNodeInput" id="VisualShaderNodeInput_ucfq7"]
+input_name = "uv"
+
+[sub_resource type="VisualShaderNodeTexture2DParameter" id="VisualShaderNodeTexture2DParameter_im4uy"]
+parameter_name = "Paint"
+
+[sub_resource type="VisualShaderNodeTexture" id="VisualShaderNodeTexture_dncyw"]
+expanded_output_ports = [0]
+source = 5
+
+[sub_resource type="VisualShaderNodeMix" id="VisualShaderNodeMix_mfog2"]
+
+[sub_resource type="VisualShaderNodeFloatConstant" id="VisualShaderNodeFloatConstant_ucfq7"]
+
+[resource]
+code = "shader_type spatial;
+render_mode blend_mix, depth_draw_opaque, depth_test_default, cull_back, diffuse_lambert, specular_schlick_ggx;
+
+uniform sampler2D Paint;
+uniform vec4 emission : source_color = vec4(1.000000, 1.000000, 1.000000, 1.000000);
+
+
+
+void fragment() {
+// Input:2
+	vec2 n_out2p0 = UV;
+
+
+	vec4 n_out5p0;
+// Texture2D:5
+	n_out5p0 = texture(Paint, n_out2p0);
+	float n_out5p4 = n_out5p0.a;
+
+
+// ColorParameter:10
+	vec4 n_out10p0 = emission;
+
+
+// FloatOp:11
+	float n_out11p0 = n_out5p0.x * n_out10p0.x;
+
+
+// Output:0
+	ALBEDO = vec3(n_out5p0.xyz);
+	EMISSION = vec3(n_out11p0);
+
+
+}
+"
+nodes/vertex/0/position = Vector2(880, -40)
+nodes/fragment/2/node = SubResource("VisualShaderNodeInput_ucfq7")
+nodes/fragment/2/position = Vector2(-1175.415, 494.2994)
+nodes/fragment/4/node = SubResource("VisualShaderNodeTexture2DParameter_im4uy")
+nodes/fragment/4/position = Vector2(-1175.415, 614.29944)
+nodes/fragment/5/node = SubResource("VisualShaderNodeTexture_dncyw")
+nodes/fragment/5/position = Vector2(-375.415, 774.29944)
+nodes/fragment/7/node = SubResource("VisualShaderNodeMix_mfog2")
+nodes/fragment/7/position = Vector2(40, -20)
+nodes/fragment/8/node = SubResource("VisualShaderNodeFloatConstant_ucfq7")
+nodes/fragment/8/position = Vector2(-280, 180)
+nodes/fragment/10/node = SubResource("VisualShaderNodeColorParameter_ucfq7")
+nodes/fragment/10/position = Vector2(-400, 1080)
+nodes/fragment/11/node = SubResource("VisualShaderNodeFloatOp_ucfq7")
+nodes/fragment/11/position = Vector2(60, 720)
+nodes/fragment/connections = PackedInt32Array(4, 0, 5, 2, 2, 0, 5, 0, 5, 4, 7, 2, 5, 0, 0, 0, 8, 0, 7, 0, 5, 4, 7, 1, 5, 0, 11, 0, 10, 0, 11, 1, 11, 0, 0, 5)

@@ -1,0 +1,83 @@
+[gd_scene load_steps=14 format=3 uid="uid://b74l46xwx08k1"]
+
+[ext_resource type="PackedScene" uid="uid://bwo817pko4lmy" path="res://scenes/__prototyping/dev_tiles/dev_hall.tscn" id="1_q2ntc"]
+[ext_resource type="Material" uid="uid://bk8gbrrgpacoj" path="res://assets/_dev/materials/_dev_m_source.tres" id="2_vgq1j"]
+[ext_resource type="PackedScene" uid="uid://h3b7e5r20lrw" path="res://scenes/__prototyping/dev_tiles/dev_corner.tscn" id="3_jh6ua"]
+[ext_resource type="Material" uid="uid://bmx5kbkw1qnpa" path="res://assets/_dev/materials/_dev_m_grey.tres" id="3_pvauq"]
+[ext_resource type="PackedScene" uid="uid://bqcjydc6ptmay" path="res://scenes/__prototyping/dev_tiles/dev_middle_b.tscn" id="3_vgq1j"]
+[ext_resource type="PackedScene" uid="uid://5jsxyb4jf5k8" path="res://scenes/__prototyping/dev_tiles/dev_wall.tscn" id="4_vgq1j"]
+[ext_resource type="PackedScene" uid="uid://cjjfi78pp31yc" path="res://scenes/__prototyping/dev_tiles/dev_middle_a.tscn" id="7_pvauq"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_cti4x"]
+size = Vector3(0.2, 2, 0.2)
+
+[sub_resource type="BoxMesh" id="BoxMesh_mlo6p"]
+material = ExtResource("2_vgq1j")
+size = Vector3(0.2, 2, 0.2)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_65s44"]
+size = Vector3(2, 0.1, 2)
+
+[sub_resource type="BoxMesh" id="BoxMesh_xtqac"]
+material = ExtResource("3_pvauq")
+size = Vector3(2, 0.1, 2)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_25we5"]
+size = Vector3(2, 0.1, 2)
+
+[sub_resource type="BoxMesh" id="BoxMesh_65s44"]
+material = ExtResource("3_pvauq")
+size = Vector3(2, 0.1, 2)
+
+[node name="_dev_palette" type="Node3D"]
+
+[node name="_dev_hall" parent="." instance=ExtResource("1_q2ntc")]
+
+[node name="_dev_doorway" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2)
+
+[node name="_wall_back_l" type="CollisionShape3D" parent="_dev_doorway"]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0.9, 1, 0.9)
+shape = SubResource("BoxShape3D_cti4x")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="_dev_doorway/_wall_back_l"]
+layers = 3
+mesh = SubResource("BoxMesh_mlo6p")
+
+[node name="_wall_back_r" type="CollisionShape3D" parent="_dev_doorway"]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -0.9000001, 1, 0.9)
+shape = SubResource("BoxShape3D_cti4x")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="_dev_doorway/_wall_back_r"]
+layers = 3
+mesh = SubResource("BoxMesh_mlo6p")
+
+[node name="_wall_roof" type="CollisionShape3D" parent="_dev_doorway"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.05, 0)
+shape = SubResource("BoxShape3D_65s44")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="_dev_doorway/_wall_roof"]
+layers = 3
+mesh = SubResource("BoxMesh_xtqac")
+
+[node name="_wall_floor" type="CollisionShape3D" parent="_dev_doorway"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.05, 0)
+shape = SubResource("BoxShape3D_25we5")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="_dev_doorway/_wall_floor"]
+layers = 3
+mesh = SubResource("BoxMesh_65s44")
+
+[node name="_dev_middle_b" parent="." instance=ExtResource("3_vgq1j")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -4)
+
+[node name="_dev_corner" parent="." instance=ExtResource("3_jh6ua")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 2)
+
+[node name="_dev_wall" parent="." instance=ExtResource("4_vgq1j")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 2)
+
+[node name="_dev_middle_a" parent="." instance=ExtResource("7_pvauq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2)
+
+[node name="----------------" type="Node" parent="."]

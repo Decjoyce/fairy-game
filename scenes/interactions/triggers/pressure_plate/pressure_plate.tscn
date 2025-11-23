@@ -1,0 +1,45 @@
+[gd_scene load_steps=5 format=3 uid="uid://csot2mi7746ll"]
+
+[ext_resource type="Script" uid="uid://c7ghu7bwjvv0k" path="res://scenes/interactions/triggers/pressure_plate/pressure_plate.gd" id="1_i6vjq"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_i6vjq"]
+size = Vector3(1, 0.1, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_i6vjq"]
+size = Vector3(1, 0.1, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_qye5f"]
+size = Vector3(1, 0.1, 1)
+
+[node name="PressurePlate" type="Node3D" groups=["debug_PickableObjects"]]
+script = ExtResource("1_i6vjq")
+metadata/_custom_type_script = "uid://c7ghu7bwjvv0k"
+
+[node name="Graphics" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_i6vjq")
+
+[node name="Collision" type="StaticBody3D" parent="Graphics"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Graphics/Collision"]
+shape = SubResource("BoxShape3D_i6vjq")
+debug_color = Color(0.99607843, 0, 0, 0.41960785)
+
+[node name="Label3D" type="Label3D" parent="Graphics/Collision"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.19999999, 0)
+billboard = 1
+text = "Plate"
+font_size = 67
+
+[node name="Trigger" type="Area3D" parent="Graphics"]
+collision_mask = 3
+monitorable = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Graphics/Trigger"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.049999997, 0)
+shape = SubResource("BoxShape3D_qye5f")
+debug_color = Color(0.83023536, 0.46282655, 3.85046e-07, 1)
+
+[connection signal="area_shape_entered" from="Graphics/Trigger" to="." method="_on_area_entered_trigger"]
+[connection signal="area_shape_exited" from="Graphics/Trigger" to="." method="_on_area_exited_trigger"]
+[connection signal="body_entered" from="Graphics/Trigger" to="." method="_on_body_entered_trigger"]
+[connection signal="body_exited" from="Graphics/Trigger" to="." method="_on_body_exited_trigger"]

@@ -1,0 +1,113 @@
+class_name Grabbable_Item
+extends Interactable
+
+var is_grabbed: bool = false
+
+@onready var rb: RigidBody3D = $"."
+
+@export_category("Item Type")
+@export var item_type: ItemType
+
+@export_category("Weight")
+enum item_weight_types {WEIGHTLESS, LIGHT, MEDIUM, HEAVY}
+@export var item_weight: item_weight_types
+
+@export_category("Grabbing")
+@export var grabbed_offset: Vector3 = Vector3.ZERO
+@export var grabbed_rotation: float = 0.0
+
+@export_category("Throwing")
+@export var throw_distance : float = 8.0
+@export var can_break: bool
+@export var break_force: float = 35.0
+
+@export_category("Graphics")
+@export var idle_graphics: Node3D
+@export var grabbed_graphics: Node3D
+@export var untouched_graphics: Node3D
+
+@export_category("Audio")
+@onready var audio_player: AudioStreamPlayer3D = $AudioPlayer
+@export var base_volume: float = 1.0
+
+var prev_velocity: Vector3
+
+@onready var raycast: RayCast3D = $RayCast3D
+
+func _ready() -> void:
+	interaction_type = InteractTypes.GRAB_ITEM
+	rb.body_entered.connect(_on_collide)
+
+func _physics_process(delta: float) -> void:
+	prev_velocity = rb.linear_velocity
+
+func begin_interact(sig: float = -1) -> void:
+	if grabbed_graphics:
+		if untouched_graphics: untouched_graphics.visible = false
+		idle_graphics.visible = false
+		grabbed_graphics.visible = true
+	rb.freeze = true
+	rb.linear_velocity = Vector3.ZERO
+
+func interacting(sig: float = -1) -> void:
+	pass
+
+func end_interact(sig: float = -1) -> void:
+	if grabbed_graphics: grabbed_graphics.visible = false
+	idle_graphics.visible = true
+	
+	rb.freeze = false
+	rb.linear_velocity = Vector3.ZERO
+
+# ↑ Interacting Stuff ↑
+# --------------------------------------------------------------------------------------------------
+# ↓ Use Stuff ↓
+
+func begin_using_item() -> void:
+	pass
+
+func using_item() -> void:
+	pass
+
+func end_using_item() -> void:
+	pass
+
+# ↑ Use Stuff ↑
+# --------------------------------------------------------------------------------------------------
+# ↓ Item Stuff ↓
+
+var init_impact: bool
+
+func throw(_throw_mult: float) -> void:
+	if grabbed_graphics: grabbed_graphics.visible = false
+	idle_graphics.visible = true
+	rb.linear_velocity = Vector3.ZERO
+	rb.freeze = false
+	var throw_force := throw_distance * _throw_mult
+	throw_force = sqrt(throw_force * -2 * rb.get_gravity().y)
+	#prints(_throw_mult, throw_distance * _throw_mult, throw_force)
+	rb.apply_central_impulse(-basis.z * throw_force * rb.mass)
+
+func _on_collide(body: Node) -> void:
+	if !init_impact:
+		init_impact = true
+		return
+	var current_force: float = prev_velocity.length_squared()
+	#print(current_force)
+	if current_force <= 0.5: return
+	
+	audio_player.volume_linear = current_force/120
+	print(audio_player.volume_linear)
+	audio_player.play()
+	
+	
+	if raycast.is_colliding():
+		Impact_Manager.play_impact_at(raycast.get_collision_point(), 0, 0.5)
+	else: Impact_Manager.play_impact_at(global_position, 0, 0.5)
+	
+	if can_break and current_force >= break_force:
+		break_item()
+
+func break_item() -> void:
+	if !can_break: return
+	queue_free()

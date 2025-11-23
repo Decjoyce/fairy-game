@@ -1,0 +1,135 @@
+[gd_scene load_steps=8 format=3 uid="uid://crov4wcff41jl"]
+
+[ext_resource type="Script" uid="uid://5ten54jh247y" path="res://scenes/__prototyping/debugger/debug.gd" id="1_dlc2y"]
+[ext_resource type="Script" uid="uid://dhafhdtxr8ei3" path="res://scenes/__prototyping/debugger/debug_console.gd" id="1_y4plv"]
+[ext_resource type="Script" uid="uid://3cgguqid851p" path="res://scenes/__prototyping/debugger/debug_context_menu.gd" id="3_2evvv"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2evvv"]
+bg_color = Color(0.11764706, 0.11764706, 0.11764706, 0.6862745)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_a8f6k"]
+bg_color = Color(0.103743516, 0.103743546, 0.10374347, 1)
+border_width_left = 1
+border_width_top = 2
+border_width_right = 1
+border_width_bottom = 2
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_h15fk"]
+bg_color = Color(0, 0, 0, 0.3254902)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dlc2y"]
+bg_color = Color(0.078431375, 0.078431375, 0.078431375, 0.47843137)
+border_width_bottom = 2
+
+[node name="_Debugger" type="CanvasLayer"]
+script = ExtResource("1_dlc2y")
+
+[node name="Console" type="MarginContainer" parent="."]
+visible = false
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 0.3441358
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_y4plv")
+
+[node name="bg" type="ColorRect" parent="Console"]
+layout_mode = 2
+color = Color(0.14117648, 0.14117648, 0.14117648, 0.6627451)
+
+[node name="contents" type="VBoxContainer" parent="Console"]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="History" type="RichTextLabel" parent="Console/contents"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_styles/normal = SubResource("StyleBoxFlat_2evvv")
+bbcode_enabled = true
+scroll_following = true
+vertical_alignment = 2
+
+[node name="ConsoleLine" type="LineEdit" parent="Console/contents"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_styles/normal = SubResource("StyleBoxFlat_a8f6k")
+theme_override_styles/focus = SubResource("StyleBoxFlat_a8f6k")
+clear_button_enabled = true
+
+[node name="Autocomplete" type="RichTextLabel" parent="Console/contents/ConsoleLine"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+focus_mode = 0
+focus_behavior_recursive = 1
+mouse_filter = 2
+mouse_behavior_recursive = 1
+theme_override_colors/default_color = Color(1, 1, 1, 0.69803923)
+bbcode_enabled = true
+scroll_active = false
+vertical_alignment = 1
+
+[node name="CurrentSelected" type="RichTextLabel" parent="Console/contents"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_h15fk")
+bbcode_enabled = true
+fit_content = true
+
+[node name="AltSelected" type="RichTextLabel" parent="Console/contents"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_h15fk")
+bbcode_enabled = true
+fit_content = true
+
+[node name="node3dhelper" type="Node3D" parent="Console"]
+
+[node name="ContextMenu" type="MarginContainer" parent="."]
+visible = false
+custom_minimum_size = Vector2(150, 200)
+offset_right = 150.0
+offset_bottom = 200.0
+script = ExtResource("3_2evvv")
+
+[node name="bg" type="ColorRect" parent="ContextMenu"]
+layout_mode = 2
+color = Color(0.14117648, 0.14117648, 0.14117648, 0.6627451)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ContextMenu"]
+layout_mode = 2
+
+[node name="title" type="RichTextLabel" parent="ContextMenu/VBoxContainer"]
+custom_minimum_size = Vector2(0, 25.1)
+layout_mode = 2
+theme_override_font_sizes/bold_font_size = 18
+theme_override_styles/normal = SubResource("StyleBoxFlat_dlc2y")
+bbcode_enabled = true
+text = "[b]Titles[/b]
+"
+fit_content = true
+scroll_active = false
+horizontal_alignment = 1
+
+[node name="ScrollContainer" type="ScrollContainer" parent="ContextMenu/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="contents" type="VBoxContainer" parent="ContextMenu/VBoxContainer/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="button_prefab" type="Button" parent="ContextMenu/VBoxContainer/ScrollContainer/contents"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_color = Color(0.32156864, 0.9490196, 0.9490196, 1)
+text = "dss"
+
+[node name="node3dhelper" type="Node3D" parent="ContextMenu"]

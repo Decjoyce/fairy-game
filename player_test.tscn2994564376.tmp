@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://bq86osdembn58"]
+
+[ext_resource type="PackedScene" uid="uid://cu2cgakx8egcc" path="res://scene_components/movement_component.tscn" id="1_xys6k"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1snfn"]
+albedo_color = Color(1, 0.15294118, 1, 1)
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_1snfn"]
+
+[node name="player_test" type="Node3D"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+visible = false
+material_override = SubResource("StandardMaterial3D_1snfn")
+mesh = SubResource("CapsuleMesh_1snfn")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+
+[node name="MovementComponent" parent="." instance=ExtResource("1_xys6k")]

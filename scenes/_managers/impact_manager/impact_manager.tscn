@@ -1,0 +1,145 @@
+[gd_scene load_steps=9 format=3 uid="uid://cav4snc3vfoyx"]
+
+[ext_resource type="Script" uid="uid://dhbxpwwddj3md" path="res://scenes/_managers/impact_manager/impact_manager.gd" id="1_gn4s5"]
+
+[sub_resource type="Gradient" id="Gradient_gn4s5"]
+offsets = PackedFloat32Array(0.10738255, 0.53355706, 1)
+colors = PackedColorArray(0.17363831, 0.109763734, 0.06473033, 1, 0.119775005, 0.07571457, 0.04465072, 0.689796, 0, 0, 0, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_8dvc6"]
+gradient = SubResource("Gradient_gn4s5")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.94, 0.43)
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_gn4s5"]
+initial_velocity_min = -0.19999999
+initial_velocity_max = 0.19999999
+gravity = Vector3(0, 1, 0)
+hue_variation_min = -2.2351742e-08
+hue_variation_max = -2.2351742e-08
+
+[sub_resource type="Gradient" id="Gradient_8dvc6"]
+offsets = PackedFloat32Array(0.055555556, 0.6259259)
+colors = PackedColorArray(0.3033964, 0.26424575, 0.20633256, 1, 0, 0, 0, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_lrt7d"]
+gradient = SubResource("Gradient_8dvc6")
+width = 114
+height = 49
+fill = 1
+fill_from = Vector2(0.5, 0.536)
+fill_to = Vector2(1.075, 0.475)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_v2yan"]
+transparency = 1
+blend_mode = 1
+shading_mode = 0
+albedo_texture = SubResource("GradientTexture2D_lrt7d")
+billboard_mode = 1
+
+[sub_resource type="QuadMesh" id="QuadMesh_8dvc6"]
+material = SubResource("StandardMaterial3D_v2yan")
+
+[node name="ImpactManager" type="Node3D" node_paths=PackedStringArray("holders")]
+script = ExtResource("1_gn4s5")
+holders = [NodePath("Ground")]
+metadata/_custom_type_script = "uid://dhbxpwwddj3md"
+
+[node name="Ground" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -100, 0)
+
+[node name="GroundDecal_01" type="Node3D" parent="Ground"]
+visible = false
+
+[node name="Decal" type="Decal" parent="Ground/GroundDecal_01"]
+size = Vector3(0.3, 0.1, 0.3)
+texture_albedo = SubResource("GradientTexture2D_8dvc6")
+cull_mask = 1048571
+
+[node name="Particles" type="GPUParticles3D" parent="Ground/GroundDecal_01"]
+emitting = false
+amount = 3
+amount_ratio = 0.9126
+one_shot = true
+preprocess = 0.01
+speed_scale = 2.0
+fixed_fps = 12
+process_material = SubResource("ParticleProcessMaterial_gn4s5")
+draw_pass_1 = SubResource("QuadMesh_8dvc6")
+
+[node name="GroundDecal_02" type="Node3D" parent="Ground"]
+visible = false
+
+[node name="Decal" type="Decal" parent="Ground/GroundDecal_02"]
+size = Vector3(0.3, 0.1, 0.3)
+texture_albedo = SubResource("GradientTexture2D_8dvc6")
+cull_mask = 1048571
+
+[node name="Particles" type="GPUParticles3D" parent="Ground/GroundDecal_02"]
+emitting = false
+amount = 3
+amount_ratio = 0.9126
+one_shot = true
+preprocess = 0.01
+speed_scale = 2.0
+fixed_fps = 12
+process_material = SubResource("ParticleProcessMaterial_gn4s5")
+draw_pass_1 = SubResource("QuadMesh_8dvc6")
+
+[node name="GroundDecal_03" type="Node3D" parent="Ground"]
+visible = false
+
+[node name="Decal" type="Decal" parent="Ground/GroundDecal_03"]
+size = Vector3(0.3, 0.1, 0.3)
+texture_albedo = SubResource("GradientTexture2D_8dvc6")
+cull_mask = 1048571
+
+[node name="Particles" type="GPUParticles3D" parent="Ground/GroundDecal_03"]
+emitting = false
+amount = 3
+amount_ratio = 0.9126
+one_shot = true
+preprocess = 0.01
+speed_scale = 2.0
+fixed_fps = 12
+process_material = SubResource("ParticleProcessMaterial_gn4s5")
+draw_pass_1 = SubResource("QuadMesh_8dvc6")
+
+[node name="GroundDecal_04" type="Node3D" parent="Ground"]
+visible = false
+
+[node name="Decal" type="Decal" parent="Ground/GroundDecal_04"]
+size = Vector3(0.3, 0.1, 0.3)
+texture_albedo = SubResource("GradientTexture2D_8dvc6")
+cull_mask = 1048571
+
+[node name="Particles" type="GPUParticles3D" parent="Ground/GroundDecal_04"]
+emitting = false
+amount = 3
+amount_ratio = 0.9126
+one_shot = true
+preprocess = 0.01
+speed_scale = 2.0
+fixed_fps = 12
+process_material = SubResource("ParticleProcessMaterial_gn4s5")
+draw_pass_1 = SubResource("QuadMesh_8dvc6")
+
+[node name="GroundDecal_05" type="Node3D" parent="Ground"]
+visible = false
+
+[node name="Decal" type="Decal" parent="Ground/GroundDecal_05"]
+size = Vector3(0.3, 0.1, 0.3)
+texture_albedo = SubResource("GradientTexture2D_8dvc6")
+cull_mask = 1048571
+
+[node name="Particles" type="GPUParticles3D" parent="Ground/GroundDecal_05"]
+emitting = false
+amount = 3
+amount_ratio = 0.9126
+one_shot = true
+preprocess = 0.01
+speed_scale = 2.0
+fixed_fps = 12
+process_material = SubResource("ParticleProcessMaterial_gn4s5")
+draw_pass_1 = SubResource("QuadMesh_8dvc6")

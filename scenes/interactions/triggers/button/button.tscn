@@ -1,0 +1,103 @@
+[gd_scene load_steps=9 format=3 uid="uid://qu5rxgbydmet"]
+
+[ext_resource type="Script" uid="uid://qtbq6ey4f3lb" path="res://scenes/interactions/triggers/button/button.gd" id="1_drqat"]
+[ext_resource type="Texture2D" uid="uid://cm7goh62m0nv2" path="res://assets/misc/TEMP_inv_slot.png" id="2_hacnr"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_15jbj"]
+size = Vector3(0.2, 0.1, 0.1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_15jbj"]
+size = Vector3(0.3, 0.2, 0.2)
+
+[sub_resource type="Animation" id="Animation_hacnr"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Node3D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_drqat"]
+resource_name = "button_activated"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Node3D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 0, 0.1)]
+}
+
+[sub_resource type="Animation" id="Animation_xia2v"]
+resource_name = "button_reset"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Node3D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0.1), Vector3(0, 0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_xia2v"]
+_data = {
+&"RESET": SubResource("Animation_hacnr"),
+&"button_activated": SubResource("Animation_drqat"),
+&"button_reset": SubResource("Animation_xia2v")
+}
+
+[node name="Button" type="Node3D" groups=["debug_PickableObjects"]]
+script = ExtResource("1_drqat")
+hand_prompt = "hand_prompt_button"
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+transform = Transform3D(-1, 0, -1.509958e-07, 0, 0.585, 0, 1.509958e-07, 0, -1, 0, 0, -0.001)
+pixel_size = 0.005
+double_sided = false
+texture = ExtResource("2_hacnr")
+
+[node name="Label3D" type="Label3D" parent="Sprite3D"]
+transform = Transform3D(1, 0, -2.3841858e-07, 0, 1.7094017, 0, 2.3841858e-07, 0, 1, 0, 0.34205985, 0)
+double_sided = false
+text = "Button"
+font_size = 22
+
+[node name="Node3D" type="Node3D" parent="."]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Node3D"]
+mesh = SubResource("BoxMesh_15jbj")
+skeleton = NodePath("../..")
+
+[node name="Trigger" type="Area3D" parent="."]
+collision_mask = 3
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Trigger"]
+shape = SubResource("BoxShape3D_15jbj")
+
+[node name="Timer" type="Timer" parent="."]
+one_shot = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_xia2v")
+}
+
+[connection signal="area_entered" from="Trigger" to="." method="_on_item_entered"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

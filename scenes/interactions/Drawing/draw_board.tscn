@@ -1,0 +1,72 @@
+[gd_scene load_steps=10 format=4 uid="uid://bg5p5awk0jedc"]
+
+[ext_resource type="Shader" uid="uid://bjcg6f61hwjaa" path="res://scenes/interactions/Drawing/shader_draw_board.tres" id="1_dnhn6"]
+[ext_resource type="Script" uid="uid://dwfowl01fdaxc" path="res://scenes/interactions/Drawing/draw_board.gd" id="2_k0thu"]
+[ext_resource type="Script" uid="uid://bnh1c5k3vhh1d" path="res://scenes/interactions/Drawing/draw_viewport.gd" id="3_1lux1"]
+[ext_resource type="Script" uid="uid://cmod1tekf4wn4" path="res://scenes/interactions/Drawing/brush.gd" id="4_2rj7g"]
+[ext_resource type="Texture2D" uid="uid://bsduc3iepom6j" path="res://assets/misc/n64_sphere_sprite.png" id="5_i6rtd"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_dnhn6"]
+resource_local_to_scene = true
+render_priority = 0
+shader = ExtResource("1_dnhn6")
+shader_parameter/emission = Color(0, 1, 1, 1)
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_qchyt"]
+_surfaces = [{
+"aabb": AABB(-1, -1, -0.016855, 2, 2, 0.03371),
+"format": 34896613377,
+"index_count": 36,
+"index_data": PackedByteArray("AAABAAIAAgABAAMAAQAAAAQAAQAEAAMABQAAAAIAAwAFAAIABAAAAAYABgAAAAUAAwAEAAcABAAGAAcABwAFAAMABwAGAAUA"),
+"name": "Cube",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 8,
+"vertex_data": PackedByteArray("AAAAAP//AAAAAAAAAAAAAAAA/////wAAAAD//wAAAAD//wAAAAAAAP///////wAA//8AAP//AAD/////AAAAAA==")
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_k0thu"]
+_surfaces = [{
+"aabb": AABB(-1, -1, -0.016855, 2, 2, 0.03371),
+"attribute_data": PackedByteArray("y6O7iv+hu4rLo0L1/6FC9UN1QvVDdbuKvApC9bwKu4rLo7wK/6G8CsujQ3X/oUN1Q3VDdUN1vAq8CkN1vAq8CoeMu4q7iruKh4xC9buKQvWHjLwKu4q8CoeMQ3W7ikN1"),
+"format": 34896613399,
+"index_count": 36,
+"index_data": PackedByteArray("AAABAAIAAgABAAMABAAFAAYABgAFAAcACAAJAAoACgAJAAsADAANAA4ADgANAA8AEAARABIAEgARABMAFAAVABYAFgAVABcA"),
+"material": SubResource("ShaderMaterial_dnhn6"),
+"name": "Cube",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 24,
+"vertex_data": PackedByteArray("AAAAAP///z8AAAAAAAD/PwAA//////8/AAD//wAA/z///wAA////PwAAAAD///8//////////z8AAP//////P///AAAAAP8///8AAP///z//////AAD/P/////////8/AAAAAAAAAAD//wAAAAAAAAAA//8AAAAA/////wAAAAAAAAAAAACqKgAAAAD//6oq//8AAAAAqir//wAA//+qKv////8AAKoq////////qioAAP//AACqKgAA/////6oq/3////9/////f////3////9//3//f/9//3//f/9//3//fwAA/38AAP9/AAD/fwAA/z//v/8//7//P/+//z//v1RVVFVUVVRVVFVUVVRVVFVU1aoqVNWqKlTVqipU1aoq")
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_qchyt")
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_wiknc"]
+data = PackedVector3Array(-1, -1, 0.0169, -1, -1, -0.0169, -1, 1, 0.0169, -1, 1, 0.0169, -1, -1, -0.0169, -1, 1, -0.0169, 1, -1, 0.0169, -1, -1, 0.0169, 1, 1, 0.0169, 1, 1, 0.0169, -1, -1, 0.0169, -1, 1, 0.0169, 1, -1, -0.0169, 1, -1, 0.0169, 1, 1, -0.0169, 1, 1, -0.0169, 1, -1, 0.0169, 1, 1, 0.0169, -1, -1, -0.0169, 1, -1, -0.0169, -1, 1, -0.0169, -1, 1, -0.0169, 1, -1, -0.0169, 1, 1, -0.0169, -1, -1, -0.0169, -1, -1, 0.0169, 1, -1, -0.0169, 1, -1, -0.0169, -1, -1, 0.0169, 1, -1, 0.0169, 1, 1, -0.0169, 1, 1, 0.0169, -1, 1, -0.0169, -1, 1, -0.0169, 1, 1, 0.0169, -1, 1, 0.0169)
+
+[node name="DrawBoard" type="MeshInstance3D" node_paths=PackedStringArray("draw_viewport")]
+mesh = SubResource("ArrayMesh_k0thu")
+script = ExtResource("2_k0thu")
+draw_viewport = NodePath("DrawViewport")
+metadata/_custom_type_script = "uid://dwfowl01fdaxc"
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." groups=["DrawBoards"]]
+collision_layer = 256
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_wiknc")
+
+[node name="DrawViewport" type="SubViewport" parent="."]
+transparent_bg = true
+handle_input_locally = false
+size = Vector2i(1024, 1024)
+render_target_clear_mode = 1
+render_target_update_mode = 4
+script = ExtResource("3_1lux1")
+
+[node name="Brush" type="Node2D" parent="DrawViewport"]
+script = ExtResource("4_2rj7g")
+texture = ExtResource("5_i6rtd")
+brush_size = 5.0

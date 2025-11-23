@@ -1,0 +1,144 @@
+[gd_scene load_steps=9 format=3 uid="uid://clnnqb1efkbei"]
+
+[ext_resource type="Script" uid="uid://ejuiwwsmyrgi" path="res://scenes/interactions/triggers/item_receiver/item_receiver.gd" id="1_6hp3v"]
+[ext_resource type="Script" uid="uid://c4t3ko70ihpyy" path="res://scenes/interactions/receivers/animated_object/animated_object.gd" id="2_c053m"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_6hp3v"]
+size = Vector3(1.6, 2, 0.3)
+
+[sub_resource type="BoxMesh" id="BoxMesh_c053m"]
+size = Vector3(0.8, 2, 0.1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_c053m"]
+size = Vector3(1.5, 2, 0.2)
+
+[sub_resource type="Animation" id="Animation_c053m"]
+resource_name = "door_open"
+length = 5.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("L_Pivot:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 3.8333333, 4.366667, 5),
+"transitions": PackedFloat32Array(2, 1.4640856, -0.5, 0.5),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 1.6231562, 0), Vector3(0, 1.6057029, 0), Vector3(0, 1.6231562, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("R_Pivot:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.6, 3.7, 4.266667, 5.0666666),
+"transitions": PackedFloat32Array(2, 1.4640856, -0.5, 0.5),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, -1.6231562, 0), Vector3(0, -1.6057029, 0), Vector3(0, -1.6231562, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CollisionShape3D2:disabled")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 3.0333333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+
+[sub_resource type="Animation" id="Animation_6x0ya"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("L_Pivot:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("R_Pivot:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CollisionShape3D2:disabled")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_8d8ch"]
+_data = {
+&"RESET": SubResource("Animation_6x0ya"),
+&"door_open": SubResource("Animation_c053m")
+}
+
+[node name="ItemReceiver" type="Node3D" groups=["debug_PickableObjects"]]
+script = ExtResource("1_6hp3v")
+num_needed = 1
+metadata/_custom_type_script = "uid://ejuiwwsmyrgi"
+
+[node name="Area3D" type="Area3D" parent="."]
+collision_layer = 32
+monitoring = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+shape = SubResource("BoxShape3D_6hp3v")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+
+[node name="L_Pivot" type="Node3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.75, 0, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D/L_Pivot"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.35, 0, 0)
+mesh = SubResource("BoxMesh_c053m")
+skeleton = NodePath("../../../Area3D")
+
+[node name="R_Pivot" type="Node3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.75, 0, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D/R_Pivot"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.35, 0, 0)
+mesh = SubResource("BoxMesh_c053m")
+skeleton = NodePath("../../../Area3D")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="StaticBody3D"]
+shape = SubResource("BoxShape3D_c053m")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="StaticBody3D"]
+libraries = {
+&"": SubResource("AnimationLibrary_8d8ch")
+}
+
+[node name="AnimatedObject" type="Node" parent="." node_paths=PackedStringArray("connnect_anim_player")]
+script = ExtResource("2_c053m")
+anim_to_play = "door_open"
+connnect_anim_player = NodePath("../StaticBody3D/AnimationPlayer")
+metadata/_custom_type_script = "uid://c4t3ko70ihpyy"
+
+[connection signal="on_activated" from="." to="AnimatedObject" method="play_animation"]

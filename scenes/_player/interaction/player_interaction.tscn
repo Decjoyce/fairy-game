@@ -1,0 +1,460 @@
+[gd_scene load_steps=30 format=3 uid="uid://dqojmsc2q6wf4"]
+
+[ext_resource type="Script" uid="uid://bkcxym5jqdgg4" path="res://scenes/_player/interaction/player_interaction.gd" id="1_ebye2"]
+[ext_resource type="Script" uid="uid://bvrebn6ao2hvn" path="res://scenes/_player/interaction/hand/player_hand.gd" id="2_f78vs"]
+[ext_resource type="Script" uid="uid://ceufl68l7cqys" path="res://scenes/_player/interaction/hand/states/handstate_free.gd" id="3_7baq5"]
+[ext_resource type="Script" uid="uid://d533dr0gr15o" path="res://scenes/_player/interaction/hand/states/handstate_grab_item.gd" id="4_r26r4"]
+[ext_resource type="Script" uid="uid://c6qqmpwrn8dic" path="res://scenes/_player/interaction/hand/states/handstate_grab_obj.gd" id="5_wcvr7"]
+[ext_resource type="Script" uid="uid://dpsgaiv5m7n21" path="res://scenes/_player/interaction/hand/states/handstate_chalk.gd" id="6_4ojao"]
+[ext_resource type="Texture2D" uid="uid://doii0wm4ij7ms" path="res://scenes/_player/interaction/hand/assets/hand_hold.png" id="6_ft4o3"]
+[ext_resource type="Texture2D" uid="uid://bf54ba5wmnwv7" path="res://scenes/_player/interaction/hand/assets/hand_pick.png" id="7_h6x2d"]
+[ext_resource type="Texture2D" uid="uid://dtjkym227bqie" path="res://scenes/_player/interaction/hand/assets/hand_extend.png" id="8_3efos"]
+[ext_resource type="Texture2D" uid="uid://cek17ch4ko4ca" path="res://scenes/interactions/interactables/grabbable_items/torch/torch.png" id="8_gulgn"]
+[ext_resource type="Texture2D" uid="uid://mca3ko5edbht" path="res://scenes/_player/interaction/hand/assets/hand_hover.png" id="9_3efos"]
+[ext_resource type="Texture2D" uid="uid://bj70dokyron4r" path="res://scenes/_player/interaction/hand/assets/hand_torch.png" id="10_434r6"]
+[ext_resource type="Texture2D" uid="uid://bf5kpbbhis3ra" path="res://scenes/_player/interaction/hand/assets/hand_extend_full.png" id="11_njhm0"]
+[ext_resource type="Texture2D" uid="uid://cfymwa08wvaqh" path="res://scenes/_player/interaction/hand/assets/hand_pick_two.png" id="12_jhcvy"]
+[ext_resource type="Texture2D" uid="uid://dehow8buqijkk" path="res://scenes/_player/interaction/hand/assets/hand_lever.png" id="12_pvvfk"]
+[ext_resource type="Texture2D" uid="uid://ck4of6qde1ymu" path="res://scenes/_player/interaction/hand/assets/hand_lever_two.png" id="14_aq8do"]
+
+[sub_resource type="Animation" id="Animation_434r6"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("_hand_sprite:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("6_ft4o3")]
+}
+
+[sub_resource type="Animation" id="Animation_pvvfk"]
+resource_name = "a_hand_grab_item_charge"
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("_hand_sprite:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("10_434r6")]
+}
+
+[sub_resource type="Animation" id="Animation_mxdlv"]
+resource_name = "a_hand_grab_item_throw"
+length = 5.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("_hand_sprite:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.36666667, 0.96666664),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [ExtResource("14_aq8do"), ExtResource("9_3efos"), ExtResource("12_jhcvy")]
+}
+
+[sub_resource type="Animation" id="Animation_h6x2d"]
+resource_name = "a_hand_idle"
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("_hand_sprite:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("6_ft4o3")]
+}
+
+[sub_resource type="Animation" id="Animation_3efos"]
+resource_name = "a_hand_idle_grab_item"
+length = 0.001
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("_hand_sprite:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("8_3efos")]
+}
+
+[sub_resource type="Animation" id="Animation_ft4o3"]
+resource_name = "a_hand_pickup"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("_hand_sprite:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.099999994),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [ExtResource("7_h6x2d"), ExtResource("8_3efos")]
+}
+
+[sub_resource type="Animation" id="Animation_sx4t2"]
+resource_name = "hand_press"
+length = 0.001
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("_hand_sprite:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("8_3efos")]
+}
+
+[sub_resource type="Animation" id="Animation_3t2v1"]
+resource_name = "hand_prompt_button"
+length = 0.001
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("_hand_sprite:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("11_njhm0")]
+}
+
+[sub_resource type="Animation" id="Animation_njhm0"]
+resource_name = "hand_prompt_default"
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("_hand_sprite:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("9_3efos")]
+}
+
+[sub_resource type="Animation" id="Animation_pd1hw"]
+resource_name = "hand_prompt_door_locked"
+length = 0.001
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("_hand_sprite:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("12_pvvfk")]
+}
+
+[sub_resource type="Animation" id="Animation_gulgn"]
+resource_name = "hand_prompt_key"
+length = 0.001
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("_hand_sprite:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("14_aq8do")]
+}
+
+[sub_resource type="Animation" id="Animation_rbe5j"]
+resource_name = "hand_prompt_lever"
+length = 0.001
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("_hand_sprite:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("10_434r6")]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_3efos"]
+_data = {
+&"RESET": SubResource("Animation_434r6"),
+&"a_hand_grab_item_charge": SubResource("Animation_pvvfk"),
+&"a_hand_grab_item_throw": SubResource("Animation_mxdlv"),
+&"a_hand_idle": SubResource("Animation_h6x2d"),
+&"a_hand_idle_grab_item": SubResource("Animation_3efos"),
+&"a_hand_pickup": SubResource("Animation_ft4o3"),
+&"hand_press": SubResource("Animation_sx4t2"),
+&"hand_prompt_button": SubResource("Animation_3t2v1"),
+&"hand_prompt_default": SubResource("Animation_njhm0"),
+&"hand_prompt_door_locked": SubResource("Animation_pd1hw"),
+&"hand_prompt_key": SubResource("Animation_gulgn"),
+&"hand_prompt_lever": SubResource("Animation_rbe5j")
+}
+
+[node name="Interaction" type="Control" node_paths=PackedStringArray("hand_left", "hand_right")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 6
+size_flags_vertical = 6
+script = ExtResource("1_ebye2")
+interaction_collision_mask = 3
+item_receiver_collision_mask = 32
+hand_left = NodePath("Hand_Left")
+hand_right = NodePath("Hand_Right")
+
+[node name="Hand_Left" type="Control" parent="." node_paths=PackedStringArray("initial_state")]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 1
+anchor_left = 0.379
+anchor_top = 0.45100003
+anchor_right = 0.43500003
+anchor_bottom = 0.5493827
+offset_left = 0.3919983
+offset_top = -0.24801636
+offset_right = -0.120025635
+offset_bottom = 3.0517578e-05
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("2_f78vs")
+initial_state = NodePath("States/FREE")
+anim_prompting_default = "a_hand_idle"
+anim_idle_default = "hand_prompt_default"
+metadata/_edit_use_anchors_ = true
+
+[node name="States" type="Node" parent="Hand_Left"]
+
+[node name="FREE" type="Node" parent="Hand_Left/States"]
+script = ExtResource("3_7baq5")
+anim_idle = "a_hand_idle"
+anim_prompt = "hand_prompt_default"
+
+[node name="GRAB_ITEM" type="Node" parent="Hand_Left/States" node_paths=PackedStringArray("offset_helper")]
+script = ExtResource("4_r26r4")
+offset_helper = NodePath("../../_hand_sprite/_pickup_pos")
+grab_ray_collision_mask = 1
+anim_idle = "a_hand_idle_grab_item"
+anim_prompt = "hand_prompt_key"
+
+[node name="GRAB_OBJ" type="Node" parent="Hand_Left/States"]
+script = ExtResource("5_wcvr7")
+moving_breaks_free = true
+
+[node name="CHALK" type="Node" parent="Hand_Left/States" node_paths=PackedStringArray("offset_helper")]
+script = ExtResource("6_4ojao")
+offset_helper = NodePath("../../_hand_sprite/_draw_pos")
+metadata/_custom_type_script = "uid://dpsgaiv5m7n21"
+
+[node name="_hand_sprite" type="TextureRect" parent="Hand_Left"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -0.671875
+anchor_top = -0.671875
+anchor_right = 1.671875
+anchor_bottom = 1.671875
+offset_left = 43.0
+offset_top = 43.0
+offset_right = -43.0
+offset_bottom = -43.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("6_ft4o3")
+metadata/_edit_use_anchors_ = true
+
+[node name="_pickup_pos" type="Control" parent="Hand_Left/_hand_sprite"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -36.0
+offset_top = 10.0
+offset_right = -36.0
+offset_bottom = 10.0
+grow_horizontal = 0
+grow_vertical = 2
+
+[node name="_draw_pos" type="Control" parent="Hand_Left/_hand_sprite"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -33.0
+offset_top = -16.0
+offset_right = -33.0
+offset_bottom = -16.0
+grow_horizontal = 0
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="Hand_Left/_hand_sprite"]
+visible = false
+show_behind_parent = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("8_gulgn")
+expand_mode = 1
+stretch_mode = 4
+metadata/_edit_use_anchors_ = true
+
+[node name="EatingAnim" type="Control" parent="Hand_Left/_hand_sprite"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="Hand_Left/_hand_sprite/EatingAnim"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Hand_Left"]
+callback_mode_method = 1
+libraries = {
+&"": SubResource("AnimationLibrary_3efos")
+}
+
+[node name="Hand_Right" type="Control" parent="." node_paths=PackedStringArray("initial_state")]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 1
+anchor_left = 0.6032986
+anchor_top = 0.45061728
+anchor_right = 0.6588542
+anchor_bottom = 0.5493827
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("2_f78vs")
+hand_type = 1
+initial_state = NodePath("States/FREE")
+anim_prompting_default = "a_hand_idle"
+anim_idle_default = "hand_prompt_default"
+metadata/_edit_use_anchors_ = true
+
+[node name="States" type="Node" parent="Hand_Right"]
+
+[node name="FREE" type="Node" parent="Hand_Right/States"]
+script = ExtResource("3_7baq5")
+anim_idle = "a_hand_idle"
+anim_prompt = "hand_prompt_default"
+
+[node name="GRAB_ITEM" type="Node" parent="Hand_Right/States" node_paths=PackedStringArray("offset_helper")]
+script = ExtResource("4_r26r4")
+offset_helper = NodePath("../../_hand_sprite/_pickup_pos")
+grab_ray_collision_mask = 1
+anim_idle = "a_hand_idle_grab_item"
+anim_prompt = "hand_prompt_key"
+
+[node name="GRAB_OBJ" type="Node" parent="Hand_Right/States"]
+script = ExtResource("5_wcvr7")
+moving_breaks_free = true
+
+[node name="CHALK" type="Node" parent="Hand_Right/States" node_paths=PackedStringArray("offset_helper")]
+script = ExtResource("6_4ojao")
+offset_helper = NodePath("../../_hand_sprite/_draw_pos")
+metadata/_custom_type_script = "uid://dpsgaiv5m7n21"
+
+[node name="_hand_sprite" type="TextureRect" parent="Hand_Right"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -0.671875
+anchor_top = -0.671875
+anchor_right = 1.671875
+anchor_bottom = 1.671875
+offset_left = 43.0
+offset_top = 43.0
+offset_right = -43.0
+offset_bottom = -43.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("6_ft4o3")
+flip_h = true
+metadata/_edit_use_anchors_ = true
+
+[node name="_pickup_pos" type="Control" parent="Hand_Right/_hand_sprite"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 36.0
+offset_top = 10.0
+offset_right = 36.0
+offset_bottom = 10.0
+grow_vertical = 2
+
+[node name="_draw_pos" type="Control" parent="Hand_Right/_hand_sprite"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 33.0
+offset_top = -16.0
+offset_right = 33.0
+offset_bottom = -16.0
+grow_vertical = 2
+
+[node name="EatingAnim" type="Control" parent="Hand_Right/_hand_sprite"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Hand_Right"]
+callback_mode_method = 1
+libraries = {
+&"": SubResource("AnimationLibrary_3efos")
+}

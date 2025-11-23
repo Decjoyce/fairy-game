@@ -1,0 +1,52 @@
+class_name HandState_Free
+extends HandState
+
+var hovering_int: Interactable
+
+func handle_input(_event: InputEvent) -> void:
+	pass
+
+func update(_delta: float) -> void:
+	hand_controller.joystick_movement(_delta)
+	if Input.is_action_just_pressed("change_hand_speed_" + hand_controller.stringed_hand_type): hand_controller.change_hand_speed()
+	
+	if Input.is_action_just_pressed("action_" + hand_controller.stringed_hand_type): 
+		interact()
+		return
+	
+	if Input.is_action_just_pressed("enter_paint_mode_" + hand_controller.stringed_hand_type):
+		finished.emit(CHALK)
+		return
+	
+	var same_frame_check: int = 0
+	
+	hand_controller.hovering_interactable = hand_controller.interact_checker()
+	#prints("from state:", hand_controller.stringed_hand_type, hand_controller.interact_checker(), " { } ", hand_controller.hovering_interactable)
+	if hand_controller.hovering_interactable:
+		if hand_controller.anim_is_prompting: return
+		print("lds")
+		hand_controller.anim_is_prompting = true
+		hand_controller.anim_update_animations()
+	else: 
+		if !hand_controller.anim_is_prompting: return
+		hand_controller.anim_is_prompting = false
+		hand_controller.anim_update_animations()
+
+func physics_update(_delta: float) -> void:
+	pass
+
+func enter(previous_state_path: String, data := {}) -> void:
+	prints(anim_idle, anim_prompt)
+	hand_controller.anim_change_idle_anim(anim_idle)
+	hand_controller.anim_change_prompt_anim(anim_prompt)
+	#print("hmm")
+
+func exit() -> void:
+	pass
+
+
+func interact() -> void:
+	#print("hey")
+	if !hand_controller.hovering_interactable:
+		return
+	hand_controller.begin_interact()
