@@ -32,6 +32,8 @@ enum item_weight_types {WEIGHTLESS, LIGHT, MEDIUM, HEAVY}
 
 var prev_velocity: Vector3
 
+@onready var raycast: RayCast3D = $RayCast3D
+
 func _ready() -> void:
 	interaction_type = InteractTypes.GRAB_ITEM
 	rb.body_entered.connect(_on_collide)
@@ -91,13 +93,17 @@ func _on_collide(body: Node) -> void:
 		init_impact = true
 		return
 	var current_force: float = prev_velocity.length_squared()
-	print(current_force)
+	#print(current_force)
 	if current_force <= 0.5: return
 	
-	audio_player.volume_linear = current_force/10
+	audio_player.volume_linear = current_force/120
+	print(audio_player.volume_linear)
 	audio_player.play()
 	
-	Impact_Manager.play_impact_at(global_position, 0, 0.5)
+	
+	if raycast.is_colliding():
+		Impact_Manager.play_impact_at(raycast.get_collision_point(), 0, 0.5)
+	else: Impact_Manager.play_impact_at(global_position, 0, 0.5)
 	
 	if can_break and current_force >= break_force:
 		break_item()
