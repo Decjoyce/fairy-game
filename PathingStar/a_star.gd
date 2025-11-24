@@ -3,7 +3,7 @@ extends Node3D
 @export var start_tile: Vector3i = Vector3i(-2,0,24)
 @export var end_tile: Vector3i = Vector3i(4,0,0)
 @export var test_tile: Vector3i = Vector3i(-2,0,18)
-@onready var grid_map: GridMapPathFinding = $GridMap
+@onready var grid_map: GridMapPathFinding = $GridMapPathFinding
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
