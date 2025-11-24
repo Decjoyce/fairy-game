@@ -41,8 +41,9 @@ gradient = SubResource("Gradient_bfirj")
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_4lyfc"]
 texture = SubResource("GradientTexture1D_imes0")
 
-[node name="player_test" type="Node3D" groups=["Player"]]
+[node name="player_test" type="Node3D" node_paths=PackedStringArray("combatUI") groups=["Player"]]
 script = ExtResource("1_e0b2u")
+combatUI = NodePath("Stats/UI")
 
 [node name="Collision" type="Area3D" parent="."]
 monitoring = false
@@ -111,6 +112,7 @@ metadata/_custom_type_script = "uid://46pp7aerorca"
 one_shot = true
 
 [node name="UI" type="Control" parent="Stats"]
+visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0

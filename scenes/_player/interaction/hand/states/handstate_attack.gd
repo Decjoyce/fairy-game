@@ -38,11 +38,13 @@ func physics_update(_delta: float) -> void:
 func enter(previous_state_path: String, data := {}) -> void:
 	hand_controller.anim_change_idle_anim(anim_idle)
 	hand_controller.anim_change_prompt_anim(anim_prompt)
+	player.change_to_combat()
 
 ## Called by the state machine before changing the active state. Use this function
 ## to clean up the state.
 func exit() -> void:
 	target = null
+	player.exit_to_combat()
 
 func attack() -> void:
 	if !timer.is_stopped(): 

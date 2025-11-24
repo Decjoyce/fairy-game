@@ -7,6 +7,8 @@ var is_debugging: bool
 var player: PlayerTest
 var cam: Camera3D
 
+@export var the_scenes: Array[PackedScene]
+
 func _ready() -> void:
 	_init_me()
 
@@ -38,6 +40,9 @@ func teleport_player_to_coord(x: float, y: float, z: float) -> void:
 func teleport_player_to_node(node_to_teleport_to : Node3D) -> void:
 	if !player: return
 	player.movement.teleport_player(node_to_teleport_to)
+
+func change_scene(index: int) -> void:
+	get_tree().change_scene_to_packed(the_scenes[index])
 
 # ↑ General Stuff ↑
 # --------------------------------------------------------------------------------------------------
