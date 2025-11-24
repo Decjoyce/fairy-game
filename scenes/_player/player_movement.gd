@@ -1,7 +1,7 @@
 class_name PlayerMovement
 extends Node
 
-@export var player: Node3D
+@export var player: PlayerTest
 @export var interact: PlayerInteract
 
 @onready var compass: Node3D = $Compass
@@ -56,20 +56,24 @@ func _ready() -> void:
 func movement_input() -> void:
 	
 	if Input.is_action_just_pressed("move_up") and check_can_move_up():
+		if player.in_combat and !player.stats.check_if_can_use_stam(20): return
+		if player.in_combat: player.stats.take_stamina(20)
 		target_pos = target_pos - compass.basis.z * Vector3.ONE
-		
 		current_direction = MoveDirections.VERTICAL
 		on_move.emit(Vector3.FORWARD, target_pos)
 		
 		on_move_up.emit(target_pos)
 	elif Input.is_action_just_pressed("move_down") and check_can_move_down():
+		if player.in_combat and !player.stats.check_if_can_use_stam(20): return
+		if player.in_combat: player.stats.take_stamina(20)
 		target_pos = target_pos + compass.basis.z * Vector3.ONE
-		
 		current_direction = MoveDirections.VERTICAL
 		
 		on_move.emit(Vector3.BACK, target_pos)
 		on_move_down.emit(target_pos)
 	elif Input.is_action_just_pressed("move_left") and check_can_move_left():
+		if player.in_combat and !player.stats.check_if_can_use_stam(20): return
+		if player.in_combat: player.stats.take_stamina(20)
 		target_pos = target_pos - compass.basis.x * Vector3.ONE
 		
 		current_direction = MoveDirections.HORIZONTAL
@@ -77,6 +81,9 @@ func movement_input() -> void:
 		on_move.emit(Vector3.LEFT, target_pos)
 		on_move_left.emit(target_pos)
 	elif Input.is_action_just_pressed("move_right") and check_can_move_right():
+		if player.in_combat and !player.stats.check_if_can_use_stam(20): return
+		if player.in_combat: player.stats.take_stamina(20)
+		
 		target_pos = target_pos + compass.basis.x * Vector3.ONE
 		
 		current_direction = MoveDirections.HORIZONTAL

@@ -9,6 +9,10 @@ var cam: Camera3D
 
 @export var the_scenes: Array[PackedScene]
 
+@export var audio_player: AudioStreamPlayer2D
+@export var death_audio_player: AudioStreamPlayer2D
+@export var death_audio_enemy: AudioStreamPlayer3D
+
 func _ready() -> void:
 	_init_me()
 
@@ -43,6 +47,13 @@ func teleport_player_to_node(node_to_teleport_to : Node3D) -> void:
 
 func change_scene(index: int) -> void:
 	get_tree().change_scene_to_packed(the_scenes[index])
+
+func play_death_player() -> void:
+	death_audio_player.play()
+
+func play_death_enemy(loc: Vector3) -> void:
+	death_audio_enemy.global_position = loc
+	death_audio_enemy.play()
 
 # ↑ General Stuff ↑
 # --------------------------------------------------------------------------------------------------

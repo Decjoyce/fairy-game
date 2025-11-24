@@ -8,11 +8,17 @@ var is_dead: bool
 @export var max_health: float = 100
 @export var current_health: float = -1
 
+@export var hit_sfx: AudioStreamPlayer3D
+
+@export var who_owns: Node3D
+
 func take_damage(amount: float) -> bool:
 	current_health -= amount
 	if !is_dead and current_health <= 0:
 		is_dead = true
+		who_owns.die()
 		get_parent().queue_free() # change
+	hit_sfx.play()
 	return is_dead
 
 @export_category("Stamina")
@@ -22,6 +28,9 @@ func take_damage(amount: float) -> bool:
 @export var stamina_regen_rate: float = 2
 var is_regen_stam: bool
 @onready var stam_timer: Timer = $Timer 
+
+@export var stam_sfx: AudioStreamPlayer3D
+
 
 func check_if_can_use_stam(amount: float) -> bool:
 	if amount > current_stamina: return false
@@ -35,6 +44,7 @@ func take_stamina(amount: float) -> bool:
 	if current_stamina <= 0:
 		stam_timer.wait_time = 3
 		stam_timer.start()
+		stam_sfx.play()
 		return false
 	else:
 		stam_timer.wait_time = 1.5

@@ -18,6 +18,9 @@ var freeze : bool
 func _ready() -> void:
 	current_weight = PLAYER_WEIGHT
 
+func die():
+	Debug.play_death_player()
+
 
 func change_to_combat()-> void:
 	hands_in_combat+=1

@@ -114,6 +114,38 @@ tracks/0/keys = {
 "values": [ExtResource("7_h6x2d"), ExtResource("8_3efos")]
 }
 
+[sub_resource type="Animation" id="Animation_jhcvy"]
+resource_name = "hand_attack"
+length = 0.85
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("_hand_sprite:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.13333334, 0.46666667, 0.8333333),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [ExtResource("6_ft4o3"), ExtResource("8_3efos"), ExtResource("6_ft4o3"), ExtResource("12_pvvfk")]
+}
+
+[sub_resource type="Animation" id="Animation_b33uu"]
+resource_name = "hand_attack_idle"
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("_hand_sprite:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("7_h6x2d")]
+}
+
 [sub_resource type="Animation" id="Animation_sx4t2"]
 resource_name = "hand_press"
 length = 0.001
@@ -213,38 +245,6 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [ExtResource("10_434r6")]
-}
-
-[sub_resource type="Animation" id="Animation_jhcvy"]
-resource_name = "hand_attack"
-length = 0.85
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("_hand_sprite:texture")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.13333334, 0.46666667, 0.8333333),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 1,
-"values": [ExtResource("6_ft4o3"), ExtResource("8_3efos"), ExtResource("6_ft4o3"), ExtResource("12_pvvfk")]
-}
-
-[sub_resource type="Animation" id="Animation_b33uu"]
-resource_name = "hand_attack_idle"
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("_hand_sprite:texture")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [ExtResource("9_3efos")]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_3efos"]

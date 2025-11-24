@@ -1,10 +1,12 @@
-[gd_scene load_steps=17 format=3 uid="uid://bq86osdembn58"]
+[gd_scene load_steps=19 format=3 uid="uid://bq86osdembn58"]
 
 [ext_resource type="Script" uid="uid://io22wsbhy73f" path="res://scenes/_player/player_test.gd" id="1_e0b2u"]
 [ext_resource type="Script" uid="uid://by88p7ijbixe5" path="res://scenes/_player/player_movement.gd" id="2_3jgj8"]
 [ext_resource type="PackedScene" uid="uid://dqojmsc2q6wf4" path="res://scenes/_player/interaction/player_interaction.tscn" id="3_3jgj8"]
 [ext_resource type="Script" uid="uid://46pp7aerorca" path="res://stats.gd" id="4_fhpxp"]
 [ext_resource type="Texture2D" uid="uid://drwif87vii7ya" path="res://assets/ui/HealthStaminaUI_border.png" id="5_bfirj"]
+[ext_resource type="AudioStream" uid="uid://bx7heo47e14or" path="res://assets/misc/ugh.wav" id="6_4lyfc"]
+[ext_resource type="AudioStream" uid="uid://da4l7eb7yuxm" path="res://assets/misc/out-of-breath-male-176715.wav" id="7_nbsyt"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_3jgj8"]
 height = 1.3
@@ -101,11 +103,14 @@ debug_shape_custom_color = Color(0, 0.79870725, 0.7254093, 1)
 movement = NodePath("../Movement")
 cam = NodePath("../Camera3D")
 
-[node name="Stats" type="Node" parent="." node_paths=PackedStringArray("health_bar", "stam_bar")]
+[node name="Stats" type="Node" parent="." node_paths=PackedStringArray("health_bar", "hit_sfx", "who_owns", "stam_bar", "stam_sfx")]
 script = ExtResource("4_fhpxp")
 health_bar = NodePath("UI/Border/HealthBar")
+hit_sfx = NodePath("../HitSfx")
+who_owns = NodePath("..")
 stam_bar = NodePath("UI/Border/StamBar")
 stamina_regen_rate = 20.0
+stam_sfx = NodePath("../StamSfx")
 metadata/_custom_type_script = "uid://46pp7aerorca"
 
 [node name="Timer" type="Timer" parent="Stats"]
@@ -157,5 +162,11 @@ theme_override_styles/fill = SubResource("StyleBoxTexture_4lyfc")
 value = 100.0
 show_percentage = false
 metadata/_edit_use_anchors_ = true
+
+[node name="HitSfx" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("6_4lyfc")
+
+[node name="StamSfx" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("7_nbsyt")
 
 [connection signal="timeout" from="Stats/Timer" to="Stats" method="begin_regen"]

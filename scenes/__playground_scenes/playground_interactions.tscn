@@ -1,4 +1,4 @@
-[gd_scene load_steps=92 format=4 uid="uid://dw2dbsjbocxi7"]
+[gd_scene load_steps=94 format=4 uid="uid://dw2dbsjbocxi7"]
 
 [ext_resource type="PackedScene" uid="uid://bq86osdembn58" path="res://scenes/_player/_player_test.tscn" id="2_3vnxs"]
 [ext_resource type="PackedScene" uid="uid://cafafqbxrlmdt" path="res://scenes/__prototyping/dev_tiles/open/dev_open_wall.tscn" id="2_cti4x"]
@@ -31,6 +31,8 @@
 [ext_resource type="Script" uid="uid://bjd0jmhcfi0pq" path="res://scenes/interactions/temp_enemy/tempp_enemy.gd" id="29_lryfm"]
 [ext_resource type="Script" uid="uid://46pp7aerorca" path="res://stats.gd" id="30_limx5"]
 [ext_resource type="Texture2D" uid="uid://2t1cw83o71dn" path="res://assets/ui/enemy_border.png" id="31_teo1q"]
+[ext_resource type="AudioStream" uid="uid://dutddyikwuiut" path="res://assets/misc/hittingsound_shorter.wav" id="32_1f7u1"]
+[ext_resource type="AudioStream" uid="uid://da4l7eb7yuxm" path="res://assets/misc/out-of-breath-male-176715.wav" id="33_bk0h7"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_ir6gx"]
 panorama = ExtResource("2_fnuid")
@@ -1658,10 +1660,13 @@ shape = SubResource("CapsuleShape3D_limx5")
 [node name="MeshInstance3D" type="MeshInstance3D" parent="BoxingBag/Area3D"]
 mesh = SubResource("CapsuleMesh_lryfm")
 
-[node name="Stats" type="Node" parent="BoxingBag" node_paths=PackedStringArray("health_bar", "stam_bar")]
+[node name="Stats" type="Node" parent="BoxingBag" node_paths=PackedStringArray("health_bar", "hit_sfx", "who_owns", "stam_bar", "stam_sfx")]
 script = ExtResource("30_limx5")
 health_bar = NodePath("Node3D/SubViewport/Control/Border/HealthBar")
+hit_sfx = NodePath("hit_sfx")
+who_owns = NodePath("..")
 stam_bar = NodePath("Node3D/SubViewport/Control/Border/StamBar")
+stam_sfx = NodePath("stam_sfx")
 metadata/_custom_type_script = "uid://46pp7aerorca"
 
 [node name="Timer" type="Timer" parent="BoxingBag/Stats"]
@@ -1733,6 +1738,12 @@ metadata/_edit_use_anchors_ = true
 [node name="MeshInstance3D" type="MeshInstance3D" parent="BoxingBag/Stats/Node3D"]
 mesh = SubResource("QuadMesh_teo1q")
 surface_material_override/0 = SubResource("StandardMaterial3D_1f7u1")
+
+[node name="hit_sfx" type="AudioStreamPlayer3D" parent="BoxingBag/Stats"]
+stream = ExtResource("32_1f7u1")
+
+[node name="stam_sfx" type="AudioStreamPlayer3D" parent="BoxingBag/Stats"]
+stream = ExtResource("33_bk0h7")
 
 [connection signal="area_entered" from="Room_Start/Teleporter_to_item/Trigger" to="Room_Start/Teleporter_to_item" method="_teleport_entity"]
 [connection signal="body_entered" from="Room_Start/Teleporter_to_item/Trigger" to="Room_Start/Teleporter_to_item" method="_teleport_item"]

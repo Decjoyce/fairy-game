@@ -8,4 +8,4 @@ func take_damage(amount: float) -> void:
 	if am_dead: die()
 
 func die()-> void:
-	pass
+	Debug.play_death_enemy(global_position)
