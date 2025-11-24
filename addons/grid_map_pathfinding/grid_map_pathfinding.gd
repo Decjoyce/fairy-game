@@ -87,7 +87,9 @@ func setup_astar_grid(grid_walkable_items: Array[int]):
 ## Note: the actor postions have to be on the same y-position as the grid map tiles
 func find_path(start: Vector3i, end: Vector3i) -> Array:
 	# Ensure start and end are within the grid and walkable
+	#print(point_id_map)
 	if not point_id_map.has(start) or not point_id_map.has(end):
+		#prints(point_id_map.has(start), point_id_map.has(end))
 		return [] # No valid path
 	
 	var start_id: int = point_id_map[start]

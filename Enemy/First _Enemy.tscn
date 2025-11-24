@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://bj8n80dbd408c"]
+[gd_scene load_steps=46 format=3 uid="uid://bj8n80dbd408c"]
 
 [ext_resource type="Texture2D" uid="uid://bajdgu88x35py" path="res://Sprites/ballyWalkSheet_n.png" id="1_g8xqt"]
 [ext_resource type="Texture2D" uid="uid://d117rsf1rrxb6" path="res://Sprites/ballybogIdle_n.png" id="1_qr3a0"]
@@ -10,9 +10,21 @@
 [ext_resource type="Script" uid="uid://c3fdtr0ieg5dj" path="res://EnemyStateMachine/sm_controller.gd" id="5_f2srf"]
 [ext_resource type="Script" uid="uid://dc3uc7qhwg03r" path="res://EnemyStateMachine/idle_state.gd" id="6_ajj11"]
 [ext_resource type="Script" uid="uid://bg6gxealt4p8b" path="res://EnemyStateMachine/Fighting.gd" id="7_jrekf"]
+[ext_resource type="Texture2D" uid="uid://da55c2fwj7ox7" path="res://Sprites/ballyAttack_LBottom.png" id="7_om1c7"]
+[ext_resource type="Texture2D" uid="uid://b45ckx6htx1bg" path="res://Sprites/ballyAttack_LBottom_n.png" id="8_8sfa5"]
+[ext_resource type="Texture2D" uid="uid://fohbvfmbnsw7" path="res://Sprites/ballyAttack_LMid.png" id="9_7p6et"]
+[ext_resource type="Texture2D" uid="uid://d2eurcnwm514j" path="res://Sprites/ballyAttack_LMid_n.png" id="10_c058d"]
+[ext_resource type="Texture2D" uid="uid://c1t33lxeknsve" path="res://Sprites/ballyAttack_LTop.png" id="11_id5nl"]
 [ext_resource type="Script" uid="uid://cyctjxnvvlo47" path="res://EnemyStateMachine/Wander.gd" id="11_khln7"]
 [ext_resource type="Animation" uid="uid://b6ga5k6b8stym" path="res://AnimationsBelly/Walk.res" id="12_e8ov3"]
+[ext_resource type="Texture2D" uid="uid://p2iiihprajki" path="res://Sprites/ballyAttack_LTop_n.png" id="12_hh3i1"]
 [ext_resource type="Script" uid="uid://dlre0emi41dh1" path="res://EnemyStateMachine/Chase.gd" id="12_khln7"]
+[ext_resource type="Texture2D" uid="uid://d2i5outw16p5m" path="res://Sprites/ballyAttack_RBottom.png" id="13_3yeo6"]
+[ext_resource type="Texture2D" uid="uid://0meyt1eqowl" path="res://Sprites/ballyAttack_RBottom_n.png" id="14_k8hyn"]
+[ext_resource type="Texture2D" uid="uid://d32p1mrham4j6" path="res://Sprites/ballyAttack_RMid.png" id="15_4i5rc"]
+[ext_resource type="Texture2D" uid="uid://bjd7yeekbvmx0" path="res://Sprites/ballyAttack_RMid_n.png" id="16_r671k"]
+[ext_resource type="Texture2D" uid="uid://dqyfvagjygkha" path="res://Sprites/ballyAttack_RTop.png" id="17_ccwj4"]
+[ext_resource type="Texture2D" uid="uid://bnrfxmw0nk1dq" path="res://Sprites/ballyAttack_RTop_n.png" id="18_x7fdw"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_abuop"]
 radius = 0.001
@@ -125,6 +137,54 @@ texture_normal = ExtResource("1_g8xqt")
 rows = 5.0
 columns = 8.0
 
+[sub_resource type="Resource" id="Resource_304ax"]
+script = ExtResource("4_f2srf")
+name = "Attack_LbBottom"
+sprite = ExtResource("7_om1c7")
+texture_normal = ExtResource("8_8sfa5")
+rows = 2.0
+columns = 8.0
+
+[sub_resource type="Resource" id="Resource_hu7p6"]
+script = ExtResource("4_f2srf")
+name = "Attack_LMid"
+sprite = ExtResource("9_7p6et")
+texture_normal = ExtResource("10_c058d")
+rows = 2.0
+columns = 8.0
+
+[sub_resource type="Resource" id="Resource_o6a3l"]
+script = ExtResource("4_f2srf")
+name = "Attack_LTop"
+sprite = ExtResource("11_id5nl")
+texture_normal = ExtResource("12_hh3i1")
+rows = 2.0
+columns = 8.0
+
+[sub_resource type="Resource" id="Resource_ekiru"]
+script = ExtResource("4_f2srf")
+name = "Attack_RBottom"
+sprite = ExtResource("13_3yeo6")
+texture_normal = ExtResource("14_k8hyn")
+rows = 2.0
+columns = 8.0
+
+[sub_resource type="Resource" id="Resource_88caa"]
+script = ExtResource("4_f2srf")
+name = "Attack_RMid"
+sprite = ExtResource("15_4i5rc")
+texture_normal = ExtResource("16_r671k")
+rows = 2.0
+columns = 8.0
+
+[sub_resource type="Resource" id="Resource_3fvgq"]
+script = ExtResource("4_f2srf")
+name = "Attack_RTop"
+sprite = ExtResource("17_ccwj4")
+texture_normal = ExtResource("18_x7fdw")
+rows = 2.0
+columns = 8.0
+
 [sub_resource type="SphereShape3D" id="SphereShape3D_f2srf"]
 radius = 1.0
 
@@ -173,8 +233,121 @@ tracks/0/keys = {
 "values": [0.0, 1.0, 2.0, 3.0]
 }
 
+[sub_resource type="Animation" id="Animation_2jpox"]
+resource_name = "Attack_RTop"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:animation")
+tracks/0/interp = 0
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [2]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:frame")
+tracks/1/interp = 0
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 1.0]
+}
+
+[sub_resource type="Animation" id="Animation_om1c7"]
+resource_name = "Attack_RMid"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:animation")
+tracks/0/interp = 0
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [2]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:frame")
+tracks/1/interp = 0
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 1.0]
+}
+
+[sub_resource type="Animation" id="Animation_8sfa5"]
+resource_name = "AttackR_RTop"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:animation")
+tracks/0/interp = 0
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [4]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:frame")
+tracks/1/interp = 0
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 1.0]
+}
+
+[sub_resource type="Animation" id="Animation_7p6et"]
+resource_name = "Attack_LBottom"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:animation")
+tracks/0/interp = 0
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [4]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:frame")
+tracks/1/interp = 0
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 1.0]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_khln7"]
 _data = {
+&"AttackR_RTop": SubResource("Animation_8sfa5"),
+&"Attack_LBottom": SubResource("Animation_7p6et"),
+&"Attack_RMid": SubResource("Animation_om1c7"),
+&"Attack_RTop": SubResource("Animation_2jpox"),
 &"Idle": SubResource("Animation_e8ov3"),
 &"RESET": ExtResource("12_e8ov3"),
 &"test_walk": SubResource("Animation_g8xqt")
@@ -190,7 +363,7 @@ shape = SubResource("CapsuleShape3D_abuop")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.54317766, 0)
 mesh = SubResource("PlaneMesh_ql322")
 script = ExtResource("3_jrekf")
-animations_array = Array[ExtResource("4_f2srf")]([SubResource("Resource_xay2k"), SubResource("Resource_jekun")])
+animations_array = Array[ExtResource("4_f2srf")]([SubResource("Resource_xay2k"), SubResource("Resource_jekun"), SubResource("Resource_304ax"), SubResource("Resource_hu7p6"), SubResource("Resource_o6a3l"), SubResource("Resource_ekiru"), SubResource("Resource_88caa"), SubResource("Resource_3fvgq")])
 animation = 1
 frame = 1.0
 sprite_scale = 0.001
