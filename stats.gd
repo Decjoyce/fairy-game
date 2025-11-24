@@ -38,7 +38,7 @@ func check_if_can_use_stam(amount: float) -> bool:
 
 func take_stamina(amount: float) -> bool:
 	if current_stamina <= 0: return false
-	if amount > current_stamina: return false
+	#if amount > current_stamina: return false
 	is_regen_stam = false
 	current_stamina -= amount
 	if current_stamina <= 0:

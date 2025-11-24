@@ -50,7 +50,7 @@ func attack() -> void:
 	if !timer.is_stopped(): 
 		print("Stopped at timer")
 		return
-	if !player.stats.check_if_can_use_stam(25.0): 
+	if player.stats.current_stamina <= 0: 
 		print("Stopped at stam")
 		return
 	print("wasnt stopped?")
