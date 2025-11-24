@@ -15,6 +15,8 @@
 [ext_resource type="Script" uid="uid://dlre0emi41dh1" path="res://EnemyStateMachine/Chase.gd" id="12_khln7"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_abuop"]
+radius = 0.001
+height = 0.7416992
 
 [sub_resource type="Shader" id="Shader_khln7"]
 code = "shader_type spatial;
@@ -106,7 +108,7 @@ shader_parameter/Normal = ExtResource("1_g8xqt")
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_ql322"]
 material = SubResource("ShaderMaterial_7pn84")
-size = Vector2(2.16, 2.16)
+size = Vector2(1.08, 1.08)
 orientation = 2
 
 [sub_resource type="Resource" id="Resource_xay2k"]
@@ -124,7 +126,7 @@ rows = 5.0
 columns = 8.0
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_f2srf"]
-radius = 2.1178575
+radius = 1.0
 
 [sub_resource type="Animation" id="Animation_e8ov3"]
 resource_name = "Idle"
@@ -181,15 +183,17 @@ _data = {
 [node name="StaticBody3D" type="StaticBody3D"]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.6291504, 0)
 shape = SubResource("CapsuleShape3D_abuop")
 
 [node name="Sprite3DBillBoard" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.54317766, 0)
 mesh = SubResource("PlaneMesh_ql322")
 script = ExtResource("3_jrekf")
 animations_array = Array[ExtResource("4_f2srf")]([SubResource("Resource_xay2k"), SubResource("Resource_jekun")])
 animation = 1
 frame = 1.0
-sprite_scale = 0.002
+sprite_scale = 0.001
 metadata/_custom_type_script = "uid://b5653u7w56pqw"
 
 [node name="SM_controller" type="Node" parent="." node_paths=PackedStringArray("node_StateMachine")]
