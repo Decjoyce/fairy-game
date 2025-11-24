@@ -1,0 +1,49 @@
+[gd_scene load_steps=7 format=3 uid="uid://b6xduqa4p67ks"]
+
+[ext_resource type="MeshLibrary" uid="uid://bu208a8l5866i" path="res://scenes/palettes/cairn/meshlibrary_cairn.tres" id="1_v1k7g"]
+[ext_resource type="PackedScene" uid="uid://bq86osdembn58" path="res://scenes/_player/_player_test.tscn" id="2_v1k7g"]
+[ext_resource type="PackedScene" uid="uid://bm8kaq0ah5g7q" path="res://scenes/interactions/interactables/grabbable_items/torch/torch.tscn" id="3_v1k7g"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_v1k7g"]
+sky_horizon_color = Color(0, 0.37292683, 0.8185948, 1)
+sky_curve = 0.23537512
+ground_horizon_color = Color(0.3529412, 0.30588236, 0.2509804, 1)
+ground_curve = 0.060628746
+
+[sub_resource type="Sky" id="Sky_uqgcp"]
+sky_material = SubResource("ProceduralSkyMaterial_v1k7g")
+
+[sub_resource type="Environment" id="Environment_vfcdx"]
+sky = SubResource("Sky_uqgcp")
+ambient_light_source = 2
+reflected_light_source = 1
+tonemap_mode = 4
+tonemap_exposure = 1.5
+ssao_enabled = true
+volumetric_fog_enabled = true
+volumetric_fog_density = 0.02
+volumetric_fog_emission = Color(0.13725491, 0.16862746, 0.1882353, 1)
+volumetric_fog_sky_affect = 0.0
+
+[node name="Node3D" type="Node3D"]
+
+[node name="GridMap" type="GridMap" parent="."]
+mesh_library = ExtResource("1_v1k7g")
+cell_size = Vector3(2, 0.005, 2)
+cell_center_x = false
+cell_center_z = false
+data = {
+"cells": PackedInt32Array(0, 0, 2, 0, 65535, 2, 0, 65534, 2, 1, 65533, 3, 65535, 65533, 1441795, 0, 65533, 1441792, 0, 65532, 1441792, 0, 65531, 1441792, 65535, 65532, 1441793, 65535, 65531, 1441793, 1, 65532, 1048577, 1, 65531, 1048577, 1, 65530, 1048579, 0, 65529, 655364, 0, 65530, 655360, 65535, 65530, 655363)
+}
+
+[node name="player_test" parent="." instance=ExtResource("2_v1k7g")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+
+[node name="Torch" parent="." instance=ExtResource("3_v1k7g")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0.7, -10.7)
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+light_energy = 0.096
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_vfcdx")
