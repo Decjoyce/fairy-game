@@ -505,7 +505,7 @@ billboard_mode = 2
 [node name="Playground_Interactions" type="Node3D"]
 
 [node name="player_test" parent="." instance=ExtResource("2_3vnxs")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -4)
 
 [node name="_environment" type="Node3D" parent="."]
 
@@ -693,7 +693,7 @@ collision_mask = 3
 shape = SubResource("SphereShape3D_3wul1")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Room_Start/Teleporter_to_item2/Trigger"]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 0, 0)
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -2.2, 0, 0)
 mesh = SubResource("SphereMesh_hsji5")
 
 [node name="In" type="Node3D" parent="Room_Start/Teleporter_to_item2"]
@@ -915,7 +915,7 @@ gravity_scale = 0.8
 script = ExtResource("14_p1gsu")
 item_type = SubResource("Resource_lfnjp")
 item_weight = 3
-idle_graphics = NodePath("MeshInstance3D")
+idle_graphics = NodePath("Sprite3D")
 
 [node name="Area3D" type="Area3D" parent="Room_Items/TEST_Grabbable_item3"]
 collision_layer = 2
@@ -937,6 +937,13 @@ billboard = 1
 texture_filter = 0
 texture = ExtResource("15_a71ib")
 
+[node name="AudioPlayer" type="AudioStreamPlayer3D" parent="Room_Items/TEST_Grabbable_item3"]
+stream = ExtResource("32_1f7u1")
+
+[node name="RayCast3D" type="RayCast3D" parent="Room_Items/TEST_Grabbable_item3"]
+target_position = Vector3(0, -0.4, 0)
+hit_from_inside = true
+
 [node name="TEST_Grabbable_item4" type="RigidBody3D" parent="Room_Items" node_paths=PackedStringArray("idle_graphics")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0.4, -2)
 collision_layer = 2
@@ -948,7 +955,7 @@ gravity_scale = 1.477
 script = ExtResource("14_p1gsu")
 item_type = SubResource("Resource_po0fx")
 item_weight = 3
-idle_graphics = NodePath("MeshInstance3D")
+idle_graphics = NodePath("Sprite3D")
 
 [node name="Area3D" type="Area3D" parent="Room_Items/TEST_Grabbable_item4"]
 collision_layer = 2
@@ -970,6 +977,13 @@ pixel_size = 0.0064
 billboard = 1
 texture_filter = 0
 texture = ExtResource("15_a71ib")
+
+[node name="AudioPlayer" type="AudioStreamPlayer3D" parent="Room_Items/TEST_Grabbable_item4"]
+stream = ExtResource("32_1f7u1")
+
+[node name="RayCast3D" type="RayCast3D" parent="Room_Items/TEST_Grabbable_item4"]
+target_position = Vector3(0, -0.4, 0)
+hit_from_inside = true
 
 [node name="Label3D3" type="Label3D" parent="Room_Items"]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 0, 2.7, -3)
@@ -1555,6 +1569,13 @@ billboard = 1
 texture_filter = 0
 texture = ExtResource("15_a71ib")
 
+[node name="AudioPlayer" type="AudioStreamPlayer3D" parent="Room_Receiver/TEST_Grabbable_item3"]
+stream = ExtResource("32_1f7u1")
+
+[node name="RayCast3D" type="RayCast3D" parent="Room_Receiver/TEST_Grabbable_item3"]
+target_position = Vector3(0, -0.4, 0)
+hit_from_inside = true
+
 [node name="TEST_Grabbable_item4" type="RigidBody3D" parent="Room_Receiver" node_paths=PackedStringArray("idle_graphics")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.4305903e-07, 0.4, -3)
 collision_layer = 2
@@ -1588,6 +1609,13 @@ pixel_size = 0.0064
 billboard = 1
 texture_filter = 0
 texture = ExtResource("15_a71ib")
+
+[node name="AudioPlayer" type="AudioStreamPlayer3D" parent="Room_Receiver/TEST_Grabbable_item4"]
+stream = ExtResource("32_1f7u1")
+
+[node name="RayCast3D" type="RayCast3D" parent="Room_Receiver/TEST_Grabbable_item4"]
+target_position = Vector3(0, -0.4, 0)
+hit_from_inside = true
 
 [node name="Label3D3" type="Label3D" parent="Room_Receiver"]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 0, 2.7, -3)
@@ -1643,7 +1671,7 @@ delete_obj_after_use = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 1, -9)
 
 [node name="Breakable_Item" parent="." instance=ExtResource("28_po0fx")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.7, -4)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.28214455, 0.7, -16.968552)
 
 [node name="BoxingBag" type="Node3D" parent="." node_paths=PackedStringArray("stats")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.7, 0, -2)
