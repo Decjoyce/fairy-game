@@ -17,9 +17,9 @@ config/icon="res://icon.svg"
 
 [autoload]
 
+GridMapPathfinding="*res://addons/grid_map_pathfinding/grid_map_pathfinding.gd"
 Debug="*res://scenes/__prototyping/debugger/debugger.tscn"
 Impact_Manager="*res://scenes/_managers/impact_manager/impact_manager.tscn"
-GridMapPathfinding="*res://addons/grid_map_pathfinding/grid_map_pathfinding.gd"
 
 [debug]
 
@@ -31,6 +31,10 @@ gdscript/warnings/unused_signal=0
 [debug_draw_3d]
 
 settings/addon_root_folder="res://addons/grid_map_pathfinding/debug_draw_3d"
+
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/grid_map_pathfinding/plugin.cfg")
 
 [filesystem]
 
