@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://dqojmsc2q6wf4"]
+[gd_scene load_steps=33 format=3 uid="uid://dqojmsc2q6wf4"]
 
 [ext_resource type="Script" uid="uid://bkcxym5jqdgg4" path="res://scenes/_player/interaction/player_interaction.gd" id="1_ebye2"]
 [ext_resource type="Script" uid="uid://bvrebn6ao2hvn" path="res://scenes/_player/interaction/hand/player_hand.gd" id="2_f78vs"]
@@ -7,6 +7,7 @@
 [ext_resource type="Script" uid="uid://c6qqmpwrn8dic" path="res://scenes/_player/interaction/hand/states/handstate_grab_obj.gd" id="5_wcvr7"]
 [ext_resource type="Script" uid="uid://dpsgaiv5m7n21" path="res://scenes/_player/interaction/hand/states/handstate_chalk.gd" id="6_4ojao"]
 [ext_resource type="Texture2D" uid="uid://doii0wm4ij7ms" path="res://scenes/_player/interaction/hand/assets/hand_hold.png" id="6_ft4o3"]
+[ext_resource type="Script" uid="uid://cbiffyiwdsd26" path="res://scenes/_player/interaction/hand/states/handstate_attack.gd" id="7_b33uu"]
 [ext_resource type="Texture2D" uid="uid://bf54ba5wmnwv7" path="res://scenes/_player/interaction/hand/assets/hand_pick.png" id="7_h6x2d"]
 [ext_resource type="Texture2D" uid="uid://dtjkym227bqie" path="res://scenes/_player/interaction/hand/assets/hand_extend.png" id="8_3efos"]
 [ext_resource type="Texture2D" uid="uid://cek17ch4ko4ca" path="res://scenes/interactions/interactables/grabbable_items/torch/torch.png" id="8_gulgn"]
@@ -214,6 +215,38 @@ tracks/0/keys = {
 "values": [ExtResource("10_434r6")]
 }
 
+[sub_resource type="Animation" id="Animation_jhcvy"]
+resource_name = "hand_attack"
+length = 0.85
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("_hand_sprite:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.13333334, 0.46666667, 0.8333333),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [ExtResource("6_ft4o3"), ExtResource("8_3efos"), ExtResource("6_ft4o3"), ExtResource("12_pvvfk")]
+}
+
+[sub_resource type="Animation" id="Animation_b33uu"]
+resource_name = "hand_attack_idle"
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("_hand_sprite:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("9_3efos")]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_3efos"]
 _data = {
 &"RESET": SubResource("Animation_434r6"),
@@ -222,6 +255,8 @@ _data = {
 &"a_hand_idle": SubResource("Animation_h6x2d"),
 &"a_hand_idle_grab_item": SubResource("Animation_3efos"),
 &"a_hand_pickup": SubResource("Animation_ft4o3"),
+&"hand_attack": SubResource("Animation_jhcvy"),
+&"hand_attack_idle": SubResource("Animation_b33uu"),
 &"hand_press": SubResource("Animation_sx4t2"),
 &"hand_prompt_button": SubResource("Animation_3t2v1"),
 &"hand_prompt_default": SubResource("Animation_njhm0"),
@@ -242,6 +277,7 @@ size_flags_vertical = 6
 script = ExtResource("1_ebye2")
 interaction_collision_mask = 3
 item_receiver_collision_mask = 32
+enemy_collision_mask = 1
 hand_left = NodePath("Hand_Left")
 hand_right = NodePath("Hand_Right")
 
@@ -268,6 +304,7 @@ metadata/_edit_use_anchors_ = true
 
 [node name="FREE" type="Node" parent="Hand_Left/States"]
 script = ExtResource("3_7baq5")
+moving_breaks_free = null
 anim_idle = "a_hand_idle"
 anim_prompt = "hand_prompt_default"
 
@@ -286,6 +323,15 @@ moving_breaks_free = true
 script = ExtResource("6_4ojao")
 offset_helper = NodePath("../../_hand_sprite/_draw_pos")
 metadata/_custom_type_script = "uid://dpsgaiv5m7n21"
+
+[node name="ATTACK" type="Node" parent="Hand_Left/States"]
+script = ExtResource("7_b33uu")
+anim_idle = "hand_attack_idle"
+anim_prompt = "hand_prompt_door_locked"
+metadata/_custom_type_script = "uid://cbiffyiwdsd26"
+
+[node name="Timer" type="Timer" parent="Hand_Left/States/ATTACK"]
+one_shot = true
 
 [node name="_hand_sprite" type="TextureRect" parent="Hand_Left"]
 layout_mode = 1
@@ -387,6 +433,7 @@ metadata/_edit_use_anchors_ = true
 
 [node name="FREE" type="Node" parent="Hand_Right/States"]
 script = ExtResource("3_7baq5")
+moving_breaks_free = null
 anim_idle = "a_hand_idle"
 anim_prompt = "hand_prompt_default"
 
@@ -405,6 +452,15 @@ moving_breaks_free = true
 script = ExtResource("6_4ojao")
 offset_helper = NodePath("../../_hand_sprite/_draw_pos")
 metadata/_custom_type_script = "uid://dpsgaiv5m7n21"
+
+[node name="ATTACK" type="Node" parent="Hand_Right/States"]
+script = ExtResource("7_b33uu")
+anim_idle = "hand_attack_idle"
+anim_prompt = "hand_prompt_door_locked"
+metadata/_custom_type_script = "uid://cbiffyiwdsd26"
+
+[node name="Timer" type="Timer" parent="Hand_Right/States/ATTACK"]
+one_shot = true
 
 [node name="_hand_sprite" type="TextureRect" parent="Hand_Right"]
 layout_mode = 1

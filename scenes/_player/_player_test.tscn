@@ -1,8 +1,10 @@
-[gd_scene load_steps=9 format=3 uid="uid://bq86osdembn58"]
+[gd_scene load_steps=17 format=3 uid="uid://bq86osdembn58"]
 
 [ext_resource type="Script" uid="uid://io22wsbhy73f" path="res://scenes/_player/player_test.gd" id="1_e0b2u"]
 [ext_resource type="Script" uid="uid://by88p7ijbixe5" path="res://scenes/_player/player_movement.gd" id="2_3jgj8"]
 [ext_resource type="PackedScene" uid="uid://dqojmsc2q6wf4" path="res://scenes/_player/interaction/player_interaction.tscn" id="3_3jgj8"]
+[ext_resource type="Script" uid="uid://46pp7aerorca" path="res://stats.gd" id="4_fhpxp"]
+[ext_resource type="Texture2D" uid="uid://drwif87vii7ya" path="res://assets/ui/HealthStaminaUI_border.png" id="5_bfirj"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_3jgj8"]
 height = 1.3
@@ -19,6 +21,25 @@ size = Vector3(0.5, 0.9, 1.1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_xwuyi"]
 size = Vector3(1.1, 0.9, 0.5)
+
+[sub_resource type="Gradient" id="Gradient_imes0"]
+offsets = PackedFloat32Array(0, 0.31578946, 1)
+colors = PackedColorArray(0.47993267, 0.07172013, 0.060350247, 1, 0.67502344, 0.12257505, 0.10578546, 1, 0.7764706, 0.14901961, 0.12941177, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_4lyfc"]
+gradient = SubResource("Gradient_imes0")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_nbsyt"]
+texture = SubResource("GradientTexture1D_4lyfc")
+
+[sub_resource type="Gradient" id="Gradient_bfirj"]
+colors = PackedColorArray(0, 0.31764707, 0, 1, 0, 0.7294118, 0, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_imes0"]
+gradient = SubResource("Gradient_bfirj")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_4lyfc"]
+texture = SubResource("GradientTexture1D_imes0")
 
 [node name="player_test" type="Node3D" groups=["Player"]]
 script = ExtResource("1_e0b2u")
@@ -78,3 +99,61 @@ debug_shape_custom_color = Color(0, 0.79870725, 0.7254093, 1)
 [node name="Interaction" parent="." node_paths=PackedStringArray("movement", "cam") instance=ExtResource("3_3jgj8")]
 movement = NodePath("../Movement")
 cam = NodePath("../Camera3D")
+
+[node name="Stats" type="Node" parent="." node_paths=PackedStringArray("health_bar", "stam_bar")]
+script = ExtResource("4_fhpxp")
+health_bar = NodePath("UI/Border/HealthBar")
+stam_bar = NodePath("UI/Border/StamBar")
+stamina_regen_rate = 20.0
+metadata/_custom_type_script = "uid://46pp7aerorca"
+
+[node name="Timer" type="Timer" parent="Stats"]
+one_shot = true
+
+[node name="UI" type="Control" parent="Stats"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Border" type="TextureRect" parent="Stats/UI"]
+custom_minimum_size = Vector2(365, 73)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.021701388
+anchor_top = 0.86728394
+anchor_right = 0.33854166
+anchor_bottom = 0.97993827
+grow_vertical = 0
+texture = ExtResource("5_bfirj")
+expand_mode = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="HealthBar" type="ProgressBar" parent="Stats/UI/Border"]
+show_behind_parent = true
+layout_mode = 0
+anchor_left = 0.17534247
+anchor_top = 0.41095892
+anchor_right = 0.9890411
+anchor_bottom = 0.5753425
+theme_override_styles/fill = SubResource("StyleBoxTexture_nbsyt")
+value = 100.0
+show_percentage = false
+metadata/_edit_use_anchors_ = true
+
+[node name="StamBar" type="ProgressBar" parent="Stats/UI/Border"]
+show_behind_parent = true
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.17260274
+anchor_top = 0.5890411
+anchor_right = 0.9589041
+anchor_bottom = 0.6849315
+theme_override_styles/fill = SubResource("StyleBoxTexture_4lyfc")
+value = 100.0
+show_percentage = false
+metadata/_edit_use_anchors_ = true
+
+[connection signal="timeout" from="Stats/Timer" to="Stats" method="begin_regen"]

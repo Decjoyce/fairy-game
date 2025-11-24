@@ -6,6 +6,8 @@ const PLAYER_HEIGHT: float = 1
 const PLAYER_WEIGHT: float = 5
 @onready var cam: Camera3D = $Camera3D
 
+@onready var stats: Stats = $Stats
+
 var freeze : bool
 
 # Called when the node enters the scene tree for the first time.

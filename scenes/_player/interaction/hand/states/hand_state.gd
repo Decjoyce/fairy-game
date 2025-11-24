@@ -6,6 +6,7 @@ const CHALK = "CHALK"
 const GRAB_ITEM = "GRAB_ITEM"
 const GRAB_OBJ = "GRAB_OBJ"
 const LEVER = "LEVER"
+const ATTACK = "ATTACK"
 
 var hand_controller: PlayerHand
 var player: PlayerTest

@@ -7,6 +7,7 @@ extends Control
 const INT_RAY_LENGTH = 2.0
 @export_flags_2d_physics var interaction_collision_mask: int
 @export_flags_2d_physics var item_receiver_collision_mask: int
+@export_flags_2d_physics var enemy_collision_mask: int
 
 @export var hand_left: PlayerHand # index = 0
 @export var hand_right: PlayerHand # index = 1

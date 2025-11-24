@@ -164,6 +164,25 @@ func interact_checker_item_receiver(): # -> Interactable:
 	
 	return _interactable
 
+func interact_checker_enemy(): # -> Interactable:
+	var space_state = cam.get_world_3d().direct_space_state
+	
+	var origin = cam.project_ray_origin(get_screen_position() + size/2)
+	var end = origin + cam.project_ray_normal(position + size/2) * player_interact.INT_RAY_LENGTH
+	
+	var query = PhysicsRayQueryParameters3D.create(origin, end, player_interact.enemy_collision_mask)
+	query.collide_with_areas = true
+	
+	var result = space_state.intersect_ray(query)
+	
+	if !result or !result.collider or result.collider.get_parent() is not Tempp_Enemy:
+		return null
+	
+	var _enemy: Tempp_Enemy = result.collider.get_parent() as Tempp_Enemy
+	
+	
+	return _enemy
+
 # ↑ Interacting Stuff ↑
 # --------------------------------------------------------------------------------------------------
 # ↓ Animating Stuff ↓

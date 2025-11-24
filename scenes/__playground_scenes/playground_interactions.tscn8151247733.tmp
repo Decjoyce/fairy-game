@@ -1643,10 +1643,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 1, -9)
 [node name="Breakable_Item" parent="." instance=ExtResource("28_po0fx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.7, -4)
 
-[node name="BoxingBag" type="Node3D" parent="." node_paths=PackedStringArray("stats")]
+[node name="BoxingBag" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.7, 0, -2)
 script = ExtResource("29_lryfm")
-stats = NodePath("Stats")
 metadata/_custom_type_script = "uid://bjd0jmhcfi0pq"
 
 [node name="Area3D" type="Area3D" parent="BoxingBag"]
