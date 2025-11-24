@@ -3,7 +3,12 @@ extends Node
 
 
 @export var Init_node_state : NodeState
-
+@export_category("A* stuff")
+#@export var curr_tile: Vector3i = Vector3i(-2,0,24)
+#@export var goal_tile: Vector3i = Vector3i(4,0,0)
+#@export var player_tile: Vector3i = Vector3i(-2,0,18)
+#@onready var grid_map: GridMapPathFinding = $GridMap
+@export_category("States")
 var node_states : Dictionary = {}
 var current_node_state : NodeState
 var current_node_state_name : String
@@ -18,7 +23,7 @@ func _ready() :
 	if Init_node_state:
 		Init_node_state.enter()
 		current_node_state = Init_node_state
-
+#	grid_map.setup_astar_grid(grid_map.walkable_items)
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://bj8n80dbd408c"]
+[gd_scene load_steps=24 format=3 uid="uid://bj8n80dbd408c"]
 
 [ext_resource type="Texture2D" uid="uid://bajdgu88x35py" path="res://Sprites/ballyWalkSheet_n.png" id="1_g8xqt"]
 [ext_resource type="Texture2D" uid="uid://d117rsf1rrxb6" path="res://Sprites/ballybogIdle_n.png" id="1_qr3a0"]
@@ -12,6 +12,7 @@
 [ext_resource type="Script" uid="uid://bg6gxealt4p8b" path="res://EnemyStateMachine/Fighting.gd" id="7_jrekf"]
 [ext_resource type="Script" uid="uid://cyctjxnvvlo47" path="res://EnemyStateMachine/Wander.gd" id="11_khln7"]
 [ext_resource type="Animation" uid="uid://b6ga5k6b8stym" path="res://AnimationsBelly/Walk.res" id="12_e8ov3"]
+[ext_resource type="Script" uid="uid://dlre0emi41dh1" path="res://EnemyStateMachine/Chase.gd" id="12_khln7"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_abuop"]
 
@@ -197,7 +198,7 @@ node_StateMachine = NodePath("../StateMachine")
 
 [node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("Init_node_state")]
 script = ExtResource("5_bin5x")
-Init_node_state = NodePath("IdleState")
+Init_node_state = NodePath("Chase")
 
 [node name="IdleState" type="Node" parent="StateMachine" node_paths=PackedStringArray("Body", "Sprite", "SM", "Animator")]
 script = ExtResource("6_ajj11")
@@ -213,6 +214,13 @@ Animator = NodePath("../../AnimationPlayer")
 
 [node name="Wander" type="Node" parent="StateMachine" node_paths=PackedStringArray("Body", "Sprite", "SM", "Animator")]
 script = ExtResource("11_khln7")
+Body = NodePath("../..")
+Sprite = NodePath("../../Sprite3DBillBoard")
+SM = NodePath("..")
+Animator = NodePath("../../AnimationPlayer")
+
+[node name="Chase" type="Node" parent="StateMachine" node_paths=PackedStringArray("Body", "Sprite", "SM", "Animator")]
+script = ExtResource("12_khln7")
 Body = NodePath("../..")
 Sprite = NodePath("../../Sprite3DBillBoard")
 SM = NodePath("..")

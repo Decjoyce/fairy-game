@@ -1,0 +1,25 @@
+[gd_scene load_steps=4 format=3 uid="uid://u67dcot1xqmg"]
+
+[ext_resource type="PackedScene" uid="uid://bj8n80dbd408c" path="res://Enemy/First _Enemy.tscn" id="1_4ehle"]
+[ext_resource type="MeshLibrary" uid="uid://c66nx14dpry1f" path="res://Mesh_lib_Vertical.tres" id="1_635wn"]
+[ext_resource type="Script" uid="uid://ubfk2a80dhfp" path="res://addons/grid_map_pathfinding/grid_map_pathfinding.gd" id="2_4ehle"]
+
+[node name="Vertical_slice" type="Node3D"]
+
+[node name="StaticBody3D" parent="." instance=ExtResource("1_4ehle")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 7.6618023, 1.3680899, -6.4880867)
+
+[node name="GridMapPathFinding" type="GridMap" parent="."]
+mesh_library = ExtResource("1_635wn")
+cell_size = Vector3(2, 0.7, 2)
+data = {
+"cells": PackedInt32Array(65535, 1, 1441797, 0, 1, 1441795, 1, 1, 1441795, 2, 1, 1441795, 3, 1, 4, 3, 0, 655363, 3, 65535, 655363, 3, 65534, 655363, 2, 65533, 1441796, 4, 65533, 1441799, 5, 65534, 655363, 6, 65533, 4, 6, 65532, 7, 6, 65531, 7, 6, 65530, 1048580, 5, 65530, 1048583, 4, 65529, 3, 3, 65530, 1048583, 2, 65530, 655364, 2, 65531, 1048582, 2, 65532, 655367, 3, 65531, 1048582, 4, 65531, 1048582, 5, 65531, 1048582, 5, 65532, 1048582, 5, 65533, 1048582, 4, 65532, 1048582, 3, 65532, 1048582, 3, 65533, 1048582, 4, 65530, 1048582)
+}
+script = ExtResource("2_4ehle")
+walkable_items = Array[int]([3, 4, 5, 6, 7])
+debug_start_cell = Vector3i(-1, 0, 1)
+debug_end_cell = Vector3i(5, 0, -2)
+metadata/_custom_type_script = "uid://ubfk2a80dhfp"
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(-0.2588191, 0, 0.9659258, 0, 1, 0, -0.9659258, 0, -0.2588191, 13.778312, 1.4893837, -11.459989)
