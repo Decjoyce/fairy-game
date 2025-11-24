@@ -1,0 +1,21 @@
+[gd_resource type="StandardMaterial3D" load_steps=5 format=3 uid="uid://bit86805aoq26"]
+
+[ext_resource type="Texture2D" uid="uid://b3e0tqdxqxmqp" path="res://EnvironmentAssets/Z-Old-EnvironmentModels/Rocks/Rocks_rockpile_Base_color-rockpile_Opacity.png" id="1_o4mw8"]
+[ext_resource type="Texture2D" uid="uid://cy6vhc844phdk" path="res://EnvironmentAssets/Z-Old-EnvironmentModels/Rocks/Rocks_rockpile_Emissive.png" id="2_ks0ue"]
+[ext_resource type="Texture2D" uid="uid://bu37srprrgpeg" path="res://EnvironmentAssets/Z-Old-EnvironmentModels/Rocks/Rocks_rockpile_Metallic-rockpile_Roughness.png" id="3_up146"]
+[ext_resource type="Texture2D" uid="uid://bh88d8c8htm54" path="res://EnvironmentAssets/Z-Old-EnvironmentModels/Rocks/Rocks_rockpile_Normal.png" id="4_ra0br"]
+
+[resource]
+resource_name = "rockpile"
+transparency = 4
+cull_mode = 2
+albedo_texture = ExtResource("1_o4mw8")
+metallic = 1.0
+metallic_texture = ExtResource("3_up146")
+metallic_texture_channel = 2
+roughness_texture = ExtResource("3_up146")
+roughness_texture_channel = 1
+emission_enabled = true
+emission_texture = ExtResource("2_ks0ue")
+normal_enabled = true
+normal_texture = ExtResource("4_ra0br")

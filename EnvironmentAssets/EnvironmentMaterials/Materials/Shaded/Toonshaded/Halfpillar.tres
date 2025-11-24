@@ -1,0 +1,20 @@
+[gd_resource type="ShaderMaterial" load_steps=5 format=3 uid="uid://bc24n7pgmt2fl"]
+
+[ext_resource type="Material" uid="uid://dyejtq23uplk4" path="res://EnvironmentAssets/EnvironmentMaterials/Materials/Shaded/outline.tres" id="1_bx7tb"]
+[ext_resource type="Shader" uid="uid://m80xhd161fmy" path="res://EnvironmentAssets/Shaders/cel-shader-base.gdshader" id="2_18irj"]
+[ext_resource type="Texture2D" uid="uid://25c8b6r5y6rb" path="res://EnvironmentAssets/Z-Old-EnvironmentModels/Pillar/Half/Halfpillar_HalfPillar_BaseColor-HalfPillar_Alpha.png" id="3_jk5ol"]
+[ext_resource type="Texture2D" uid="uid://cje2wgcx57cic" path="res://EnvironmentAssets/Z-Old-EnvironmentModels/Pillar/Half/Halfpillar_HalfPillar_Normal.png" id="4_syeqi"]
+
+[resource]
+render_priority = 0
+next_pass = ExtResource("1_bx7tb")
+shader = ExtResource("2_18irj")
+shader_parameter/normal_scale = 1.0
+shader_parameter/normal_map = ExtResource("4_syeqi")
+shader_parameter/ao_light_affect = 0.0
+shader_parameter/color = Color(1, 1, 1, 1)
+shader_parameter/base_texture = ExtResource("3_jk5ol")
+shader_parameter/specular = Color(0.3, 0.3, 0.3, 0.5)
+shader_parameter/fresnel = Color(0.2, 0.2, 0.2, 0.3)
+shader_parameter/uv_scale = Vector2(1, 1)
+shader_parameter/uv_offset = Vector2(0, 0)

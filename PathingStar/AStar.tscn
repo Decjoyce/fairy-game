@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://daxqurm3p1vgv"]
+
+[ext_resource type="Script" uid="uid://by1jnfmq73jtk" path="res://PathingStar/a_star.gd" id="1_2dnsi"]
+[ext_resource type="MeshLibrary" uid="uid://c66nx14dpry1f" path="res://Mesh_lib_Vertical.tres" id="2_185ry"]
+[ext_resource type="Script" uid="uid://ubfk2a80dhfp" path="res://addons/grid_map_pathfinding/grid_map_pathfinding.gd" id="3_djk2e"]
+
+[node name="AStar" type="Node3D"]
+script = ExtResource("1_2dnsi")
+
+[node name="GridMap" type="GridMap" parent="."]
+mesh_library = ExtResource("2_185ry")
+metadata/_editor_floor_ = Vector3(0, 0, 0)
+
+[node name="GridMapPathFinding" type="GridMap" parent="."]
+mesh_library = ExtResource("2_185ry")
+cell_size = Vector3(2, 0.7, 2)
+data = {
+"cells": PackedInt32Array(0, 0, 4)
+}
+script = ExtResource("3_djk2e")
+metadata/_custom_type_script = "uid://ubfk2a80dhfp"

@@ -1,0 +1,21 @@
+[gd_resource type="StandardMaterial3D" load_steps=5 format=3 uid="uid://b57vm1y6lqgmm"]
+
+[ext_resource type="Texture2D" uid="uid://duwm8fvm0y4ii" path="res://EnvironmentAssets/Z-Old-EnvironmentModels/Stoneslab/Stonelab_Stoneslab_BaseColor-Stoneslab_Alpha.png" id="1_t8s3y"]
+[ext_resource type="Texture2D" uid="uid://d4j8e7tumoygv" path="res://EnvironmentAssets/Z-Old-EnvironmentModels/Stoneslab/Stonelab_Stoneslab_Emission.png" id="2_8p88d"]
+[ext_resource type="Texture2D" uid="uid://0wu2rpqtoqk1" path="res://EnvironmentAssets/Z-Old-EnvironmentModels/Stoneslab/Stonelab_Stoneslab_Metallic-Stoneslab_Roughness.png" id="3_104uk"]
+[ext_resource type="Texture2D" uid="uid://rdbl8knc622v" path="res://EnvironmentAssets/Z-Old-EnvironmentModels/Stoneslab/Stonelab_Stoneslab_Normal.png" id="4_6drpn"]
+
+[resource]
+resource_name = "Stoneslab"
+transparency = 4
+cull_mode = 2
+albedo_texture = ExtResource("1_t8s3y")
+metallic = 1.0
+metallic_texture = ExtResource("3_104uk")
+metallic_texture_channel = 2
+roughness_texture = ExtResource("3_104uk")
+roughness_texture_channel = 1
+emission_enabled = true
+emission_texture = ExtResource("2_8p88d")
+normal_enabled = true
+normal_texture = ExtResource("4_6drpn")
