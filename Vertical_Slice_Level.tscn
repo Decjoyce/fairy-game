@@ -1,4 +1,4 @@
-[gd_scene load_steps=56 format=3 uid="uid://b1d53a2if0ifd"]
+[gd_scene load_steps=58 format=3 uid="uid://b1d53a2if0ifd"]
 
 [ext_resource type="Texture2D" uid="uid://bajdgu88x35py" path="res://Sprites/ballyWalkSheet_n.png" id="1_gqaa3"]
 [ext_resource type="Texture2D" uid="uid://dl3etwft2mhxm" path="res://Sprites/ballyWalkSheet.png" id="2_ue6a3"]
@@ -31,16 +31,21 @@
 [ext_resource type="Shader" uid="uid://4b4kstxm1aph" path="res://Shaders/Vertical_Slice_Level.gdshader" id="29_gqaa3"]
 [ext_resource type="PackedScene" uid="uid://bm8kaq0ah5g7q" path="res://scenes/interactions/interactables/grabbable_items/torch/torch.tscn" id="29_w1u0h"]
 [ext_resource type="Texture2D" uid="uid://bgvylughro1va" path="res://PaperTexture/Texturelabs_Paper_304L.jpg" id="30_ue6a3"]
+[ext_resource type="PackedScene" uid="uid://dde66nwtb1gv1" path="res://scenes/interactions/triggers/item_receiver/torch_scont/torch_scont.tscn" id="32_vefwy"]
 
-[sub_resource type="Sky" id="Sky_8pbg2"]
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_vefwy"]
+sky_top_color = Color(0.47028, 0.44203204, 0.42579472, 1)
+sky_horizon_color = Color(0.7616192, 0.75455725, 0.7504979, 1)
+ground_bottom_color = Color(0.2508181, 0.25081813, 0.2508181, 1)
+ground_horizon_color = Color(0.7616192, 0.75455725, 0.7504979, 1)
 
-[sub_resource type="Environment" id="Environment_ge771"]
+[sub_resource type="Sky" id="Sky_8k40l"]
+sky_material = SubResource("ProceduralSkyMaterial_vefwy")
+
+[sub_resource type="Environment" id="Environment_h15nr"]
 background_mode = 2
-background_color = Color(0.74204445, 0.8283267, 1, 1)
-background_energy_multiplier = 0.0
-sky = SubResource("Sky_8pbg2")
-sky_rotation = Vector3(1.6283922, 0, 0)
-ambient_light_color = Color(0.45318854, 0.44539934, 0.42429575, 1)
+background_energy_multiplier = 0.05
+sky = SubResource("Sky_8k40l")
 tonemap_mode = 2
 glow_enabled = true
 
@@ -48,7 +53,7 @@ glow_enabled = true
 radius = 0.001
 height = 0.7416992
 
-[sub_resource type="Shader" id="Shader_gqaa3"]
+[sub_resource type="Shader" id="Shader_8pbg2"]
 code = "shader_type spatial;
 render_mode diffuse_lambert_wrap,cull_disabled;
 
@@ -125,9 +130,9 @@ void fragment() {
 }
 "
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_ue6a3"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_vefwy"]
 render_priority = 0
-shader = SubResource("Shader_gqaa3")
+shader = SubResource("Shader_8pbg2")
 shader_parameter/rows = 5.0
 shader_parameter/columns = 8.0
 shader_parameter/frame = 1.0
@@ -136,18 +141,18 @@ shader_parameter/sprite = ExtResource("2_ue6a3")
 shader_parameter/mode = 0
 shader_parameter/Normal = ExtResource("1_gqaa3")
 
-[sub_resource type="PlaneMesh" id="PlaneMesh_8pbg2"]
-material = SubResource("ShaderMaterial_ue6a3")
+[sub_resource type="PlaneMesh" id="PlaneMesh_8k40l"]
+material = SubResource("ShaderMaterial_vefwy")
 size = Vector2(1.08, 1.08)
 orientation = 2
 
-[sub_resource type="Resource" id="Resource_vefwy"]
+[sub_resource type="Resource" id="Resource_h15nr"]
 script = ExtResource("4_vefwy")
 sprite = ExtResource("5_8k40l")
 texture_normal = ExtResource("6_h15nr")
 columns = 8.0
 
-[sub_resource type="Resource" id="Resource_8k40l"]
+[sub_resource type="Resource" id="Resource_igngk"]
 script = ExtResource("4_vefwy")
 name = "walk"
 sprite = ExtResource("2_ue6a3")
@@ -155,7 +160,7 @@ texture_normal = ExtResource("1_gqaa3")
 rows = 5.0
 columns = 8.0
 
-[sub_resource type="Resource" id="Resource_h15nr"]
+[sub_resource type="Resource" id="Resource_ytf8k"]
 script = ExtResource("4_vefwy")
 name = "Attack_LbBottom"
 sprite = ExtResource("7_igngk")
@@ -163,7 +168,7 @@ texture_normal = ExtResource("8_ytf8k")
 rows = 2.0
 columns = 8.0
 
-[sub_resource type="Resource" id="Resource_igngk"]
+[sub_resource type="Resource" id="Resource_5o6sm"]
 script = ExtResource("4_vefwy")
 name = "Attack_LMid"
 sprite = ExtResource("9_5o6sm")
@@ -171,7 +176,7 @@ texture_normal = ExtResource("10_wkr8j")
 rows = 2.0
 columns = 8.0
 
-[sub_resource type="Resource" id="Resource_ytf8k"]
+[sub_resource type="Resource" id="Resource_wkr8j"]
 script = ExtResource("4_vefwy")
 name = "Attack_LTop"
 sprite = ExtResource("11_v5821")
@@ -179,7 +184,7 @@ texture_normal = ExtResource("12_uqeqx")
 rows = 2.0
 columns = 8.0
 
-[sub_resource type="Resource" id="Resource_5o6sm"]
+[sub_resource type="Resource" id="Resource_v5821"]
 script = ExtResource("4_vefwy")
 name = "Attack_RBottom"
 sprite = ExtResource("13_0ahfl")
@@ -187,7 +192,7 @@ texture_normal = ExtResource("14_apgct")
 rows = 2.0
 columns = 8.0
 
-[sub_resource type="Resource" id="Resource_wkr8j"]
+[sub_resource type="Resource" id="Resource_uqeqx"]
 script = ExtResource("4_vefwy")
 name = "Attack_RMid"
 sprite = ExtResource("15_4it74")
@@ -195,7 +200,7 @@ texture_normal = ExtResource("16_ojd6j")
 rows = 2.0
 columns = 8.0
 
-[sub_resource type="Resource" id="Resource_v5821"]
+[sub_resource type="Resource" id="Resource_0ahfl"]
 script = ExtResource("4_vefwy")
 name = "Attack_RTop"
 sprite = ExtResource("17_bnyeu")
@@ -377,7 +382,7 @@ size = Vector3(500, 0.1, 500)
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_mitvi"]
 shader = ExtResource("29_gqaa3")
 shader_parameter/paper_texture = ExtResource("30_ue6a3")
-shader_parameter/blend_strength = 1.0
+shader_parameter/blend_strength = 0.6110000290225
 shader_parameter/contrast_boost = 1.08400005149
 shader_parameter/saturation = 0.822000039045
 shader_parameter/new_color = Color(0.82162356, 0.8358374, 0.854476, 0.9372549)
@@ -385,11 +390,11 @@ shader_parameter/new_color = Color(0.82162356, 0.8358374, 0.854476, 0.9372549)
 [node name="Vertical_Slice_Level" type="Node3D"]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = SubResource("Environment_ge771")
+environment = SubResource("Environment_h15nr")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.98795986, -0.08873824, 0.12673134, 0, 0.81915206, 0.57357645, -0.1547104, -0.56667054, 0.80928934, 0, 0, 0)
-light_color = Color(0.15487596, 0.154876, 0.15487596, 1)
+light_color = Color(0.26050597, 0.2605062, 0.26050603, 1)
 light_energy = 1.389
 light_indirect_energy = 6.486
 shadow_enabled = true
@@ -405,9 +410,9 @@ shape = SubResource("CapsuleShape3D_abuop")
 
 [node name="Sprite3DBillBoard" type="MeshInstance3D" parent="StaticBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.54317766, 0)
-mesh = SubResource("PlaneMesh_8pbg2")
+mesh = SubResource("PlaneMesh_8k40l")
 script = ExtResource("3_8pbg2")
-animations_array = Array[ExtResource("4_vefwy")]([SubResource("Resource_vefwy"), SubResource("Resource_8k40l"), SubResource("Resource_h15nr"), SubResource("Resource_igngk"), SubResource("Resource_ytf8k"), SubResource("Resource_5o6sm"), SubResource("Resource_wkr8j"), SubResource("Resource_v5821")])
+animations_array = Array[ExtResource("4_vefwy")]([SubResource("Resource_h15nr"), SubResource("Resource_igngk"), SubResource("Resource_ytf8k"), SubResource("Resource_5o6sm"), SubResource("Resource_wkr8j"), SubResource("Resource_v5821"), SubResource("Resource_uqeqx"), SubResource("Resource_0ahfl")])
 animation = 1
 frame = 1.0
 sprite_scale = 0.001
@@ -502,8 +507,11 @@ color = Color(0.5747226, 0.50857943, 0.49505764, 0.03529412)
 
 [node name="Torches" type="Node3D" parent="."]
 
-[node name="Torch" parent="." instance=ExtResource("29_w1u0h")]
+[node name="Torch" parent="Torches" instance=ExtResource("29_w1u0h")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 1, 1)
+
+[node name="TorchScont" parent="Torches" instance=ExtResource("32_vefwy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 1, -9.87576)
 
 [connection signal="body_shape_entered" from="StaticBody3D/Area3D" to="StaticBody3D/SM_controller" method="_on_area_3d_body_shape_entered"]
 [connection signal="body_shape_exited" from="StaticBody3D/Area3D" to="StaticBody3D/SM_controller" method="_on_area_3d_body_shape_exited"]
