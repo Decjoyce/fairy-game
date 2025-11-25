@@ -27,7 +27,7 @@ height = 0.6900085
 radius = 0.10888672
 height = 0.9732544
 
-[node name="Torch" type="RigidBody3D" node_paths=PackedStringArray("idle_graphics", "grabbed_graphics")]
+[node name="Torch" type="RigidBody3D" node_paths=PackedStringArray("col", "grab_col", "idle_graphics", "grabbed_graphics")]
 collision_layer = 2
 axis_lock_angular_x = true
 axis_lock_angular_y = true
@@ -39,6 +39,8 @@ max_contacts_reported = 1
 script = ExtResource("1_j22s6")
 item_type = SubResource("Resource_d0jyt")
 item_weight = 1
+col = NodePath("CollisionShape3D")
+grab_col = NodePath("Area3D/CollisionShape3D")
 grabbed_offset = Vector2(-82.435, -112.81)
 grabbed_rotation = 0.785
 throwing_offset = Vector2(98.705, -112.81)
@@ -50,6 +52,7 @@ interaction_type = 1
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.14949343, 0)
 shape = SubResource("CapsuleShape3D_7yijt")
+debug_color = Color(0.76020277, 3.706068e-06, 4.813075e-07, 0.41960785)
 
 [node name="Area3D" type="Area3D" parent="." groups=["Interactables"]]
 collision_layer = 2

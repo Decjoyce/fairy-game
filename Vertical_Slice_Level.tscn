@@ -1,4 +1,4 @@
-[gd_scene load_steps=61 format=3 uid="uid://b1d53a2if0ifd"]
+[gd_scene load_steps=72 format=3 uid="uid://b1d53a2if0ifd"]
 
 [ext_resource type="Texture2D" uid="uid://bajdgu88x35py" path="res://Sprites/ballyWalkSheet_n.png" id="1_gqaa3"]
 [ext_resource type="Texture2D" uid="uid://dl3etwft2mhxm" path="res://Sprites/ballyWalkSheet.png" id="2_ue6a3"]
@@ -151,8 +151,10 @@ orientation = 2
 
 [sub_resource type="Resource" id="Resource_wkr8j"]
 script = ExtResource("4_vefwy")
+name = "Attack_LTop"
 sprite = ExtResource("5_8k40l")
 texture_normal = ExtResource("6_h15nr")
+rows = 2.0
 columns = 8.0
 
 [sub_resource type="Resource" id="Resource_v5821"]
@@ -379,6 +381,163 @@ _data = {
 &"test_walk": SubResource("Animation_g8xqt")
 }
 
+[sub_resource type="Shader" id="Shader_ppblj"]
+code = "shader_type spatial;
+render_mode diffuse_lambert_wrap,cull_disabled;
+
+uniform float rows:hint_range(1.0, 100.0, 1) = 1;
+uniform float columns:hint_range(1.0, 100.0, 1) = 1;
+uniform float frame:hint_range(0.0, 100.0, 1) = 0;
+uniform bool invert_rows_columns = false;
+uniform sampler2D sprite:filter_nearest_mipmap;
+uniform int mode:hint_range(0, 1, 1) = 1;
+varying vec3 look_dir;
+uniform sampler2D Normal;
+
+
+float billboard_mode_a(vec3 CAMERA_POSITION,vec3 NODE_POSITION, mat4 MODEL_MAT,float directions){
+	vec3 direction_to_camera = normalize(CAMERA_POSITION-NODE_POSITION);
+	float angle_to_camera = atan(direction_to_camera.x,direction_to_camera.z);
+	vec4 model_direction = MODEL_MAT*vec4(1.0,0.0,0.0,0.0);
+	float y_angle = atan(model_direction.x,model_direction.z)-PI/2.0;
+	float final_angle = angle_to_camera-y_angle;
+	float int_y_angle = round((final_angle / TAU) * float(directions)) / float(directions);
+	return int_y_angle;
+}
+float billboard_mobe_b(vec3 CAMERA_POSITION,mat4 MODEL_MAT,mat4 VIEW_MAT,float directions,int ret){
+
+    vec3 ray_origin = CAMERA_POSITION;
+
+    vec3 object_origin = (MODEL_MAT * vec4(0.0,0.0,0.0,1.0)).xyz;
+    vec3 cam_dir = object_origin - ray_origin;
+    cam_dir = normalize((VIEW_MAT * vec4(cam_dir, 0.0)).xyz);
+
+    float angle = 180.0 - degrees(acos(dot(normalize(cam_dir.xz), normalize(look_dir.xz))));
+    float _direction = round(angle/180.0 * directions);
+
+    float flip = sign((look_dir.x * cam_dir.z) - (look_dir.z * cam_dir.x));
+
+    flip = mix(flip, 1.0, max(step(_direction, 0.0), step(directions, _direction)));
+	float retu = ret == 0 ? _direction : flip;
+	return retu ;
+}
+void vertex() {
+		 MODELVIEW_MATRIX = VIEW_MATRIX * mat4(vec4(normalize(cross(vec3(0.0, 1.0, 0.0), INV_VIEW_MATRIX[2].xyz)), 0.0), vec4(0.0, 1.0, 0.0, 0.0), vec4(normalize(cross(INV_VIEW_MATRIX[0].xyz, vec3(0.0, 1.0, 0.0))), 0.0), MODEL_MATRIX[3]);
+		look_dir = MODELVIEW_NORMAL_MATRIX * NORMAL;
+		MODELVIEW_NORMAL_MATRIX = mat3(MODELVIEW_MATRIX);
+	switch (mode){
+		case 0:
+			float y = invert_rows_columns == true ? billboard_mode_a(CAMERA_POSITION_WORLD,NODE_POSITION_WORLD,MODEL_MATRIX,rows) : billboard_mode_a(CAMERA_POSITION_WORLD,NODE_POSITION_WORLD,MODEL_MATRIX,columns);
+			float x = invert_rows_columns == true ? frame/columns:frame/rows;
+			UV /= vec2(rows,columns);
+			UV += invert_rows_columns == true ?vec2(y,x):vec2(x,y);
+			break;
+		case 1:
+			float x = invert_rows_columns == true ? frame/columns:frame/rows;
+			float y = billboard_mobe_b(CAMERA_POSITION_WORLD,MODEL_MATRIX,VIEW_MATRIX,rows,0);
+			float f = billboard_mobe_b(CAMERA_POSITION_WORLD,MODEL_MATRIX,VIEW_MATRIX,rows,1);
+			if (invert_rows_columns){
+				y = billboard_mobe_b(CAMERA_POSITION_WORLD,MODEL_MATRIX,VIEW_MATRIX,columns,0);
+				f = billboard_mobe_b(CAMERA_POSITION_WORLD,MODEL_MATRIX,VIEW_MATRIX,columns,1);
+			}
+			UV.y += invert_rows_columns == true ? x:y;
+			UV /=vec2(rows,columns);
+			UV.x +=  invert_rows_columns == true ? y : x;
+			UV *= invert_rows_columns == true ? vec2(1.0,f):vec2(f,1.0);
+			break;
+	};
+}
+
+void fragment() {
+	vec3 VNormal = texture(Normal,UV).rgb;
+	vec4 sprite_texture;
+	sprite_texture = texture(sprite,UV);
+	ALBEDO = sprite_texture.rgb;
+	ALPHA = sprite_texture.a;
+	NORMAL_MAP = VNormal;
+}
+"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_5a2e2"]
+render_priority = 0
+shader = SubResource("Shader_ppblj")
+shader_parameter/rows = 5.0
+shader_parameter/columns = 8.0
+shader_parameter/frame = 1.0
+shader_parameter/invert_rows_columns = false
+shader_parameter/sprite = ExtResource("2_ue6a3")
+shader_parameter/mode = 0
+shader_parameter/Normal = ExtResource("1_gqaa3")
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_x42mn"]
+material = SubResource("ShaderMaterial_5a2e2")
+size = Vector2(1.08, 1.08)
+orientation = 2
+
+[sub_resource type="Resource" id="Resource_bl5uh"]
+script = ExtResource("4_vefwy")
+name = "Attack_LTop"
+sprite = ExtResource("5_8k40l")
+texture_normal = ExtResource("6_h15nr")
+rows = 2.0
+columns = 8.0
+
+[sub_resource type="Resource" id="Resource_7os1t"]
+script = ExtResource("4_vefwy")
+name = "walk"
+sprite = ExtResource("2_ue6a3")
+texture_normal = ExtResource("1_gqaa3")
+rows = 5.0
+columns = 8.0
+
+[sub_resource type="Resource" id="Resource_tbjf3"]
+script = ExtResource("4_vefwy")
+name = "Attack_LbBottom"
+sprite = ExtResource("7_igngk")
+texture_normal = ExtResource("8_ytf8k")
+rows = 2.0
+columns = 8.0
+
+[sub_resource type="Resource" id="Resource_la572"]
+script = ExtResource("4_vefwy")
+name = "Attack_LMid"
+sprite = ExtResource("9_5o6sm")
+texture_normal = ExtResource("10_wkr8j")
+rows = 2.0
+columns = 8.0
+
+[sub_resource type="Resource" id="Resource_n7bc2"]
+script = ExtResource("4_vefwy")
+name = "Attack_LTop"
+sprite = ExtResource("11_v5821")
+texture_normal = ExtResource("12_uqeqx")
+rows = 2.0
+columns = 8.0
+
+[sub_resource type="Resource" id="Resource_wtwml"]
+script = ExtResource("4_vefwy")
+name = "Attack_RBottom"
+sprite = ExtResource("13_0ahfl")
+texture_normal = ExtResource("14_apgct")
+rows = 2.0
+columns = 8.0
+
+[sub_resource type="Resource" id="Resource_xmd6u"]
+script = ExtResource("4_vefwy")
+name = "Attack_RMid"
+sprite = ExtResource("15_4it74")
+texture_normal = ExtResource("16_ojd6j")
+rows = 2.0
+columns = 8.0
+
+[sub_resource type="Resource" id="Resource_db0d0"]
+script = ExtResource("4_vefwy")
+name = "Attack_RTop"
+sprite = ExtResource("17_bnyeu")
+texture_normal = ExtResource("18_ppblj")
+rows = 2.0
+columns = 8.0
+
 [sub_resource type="BoxShape3D" id="BoxShape3D_3ri2a"]
 size = Vector3(500, 0.1, 500)
 
@@ -467,6 +626,69 @@ libraries = {
 &"": SubResource("AnimationLibrary_khln7")
 }
 
+[node name="StaticBody3D3" type="StaticBody3D" parent="."]
+transform = Transform3D(0.9659258, 0, -0.25881898, 0, 1, 0, 0.25881898, 0, 0.9659258, -7.6057453, 1.4111557, 0.5340462)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.6291504, 0)
+shape = SubResource("CapsuleShape3D_abuop")
+
+[node name="Sprite3DBillBoard" type="MeshInstance3D" parent="StaticBody3D3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.54317766, 0)
+mesh = SubResource("PlaneMesh_x42mn")
+script = ExtResource("3_8pbg2")
+animations_array = Array[ExtResource("4_vefwy")]([SubResource("Resource_bl5uh"), SubResource("Resource_7os1t"), SubResource("Resource_tbjf3"), SubResource("Resource_la572"), SubResource("Resource_n7bc2"), SubResource("Resource_wtwml"), SubResource("Resource_xmd6u"), SubResource("Resource_db0d0")])
+animation = 1
+frame = 1.0
+sprite_scale = 0.001
+metadata/_custom_type_script = "uid://b5653u7w56pqw"
+
+[node name="SM_controller" type="Node" parent="StaticBody3D3" node_paths=PackedStringArray("node_StateMachine")]
+script = ExtResource("19_5a2e2")
+node_StateMachine = NodePath("../StateMachine")
+
+[node name="StateMachine" type="Node" parent="StaticBody3D3" node_paths=PackedStringArray("Init_node_state")]
+script = ExtResource("20_x42mn")
+Init_node_state = NodePath("Wander")
+
+[node name="IdleState" type="Node" parent="StaticBody3D3/StateMachine" node_paths=PackedStringArray("Body", "Sprite", "SM", "Animator")]
+script = ExtResource("21_bl5uh")
+Body = NodePath("../..")
+Sprite = NodePath("../../Sprite3DBillBoard")
+SM = NodePath("..")
+Animator = NodePath("../../AnimationPlayer")
+
+[node name="Fighting" type="Node" parent="StaticBody3D3/StateMachine" node_paths=PackedStringArray("SM", "Animator")]
+script = ExtResource("22_7os1t")
+SM = NodePath("..")
+Animator = NodePath("../../AnimationPlayer")
+
+[node name="Wander" type="Node" parent="StaticBody3D3/StateMachine" node_paths=PackedStringArray("Body", "Sprite", "SM", "Animator")]
+script = ExtResource("23_tbjf3")
+Body = NodePath("../..")
+Sprite = NodePath("../../Sprite3DBillBoard")
+SM = NodePath("..")
+Animator = NodePath("../../AnimationPlayer")
+
+[node name="Chase" type="Node" parent="StaticBody3D3/StateMachine" node_paths=PackedStringArray("Body", "Sprite", "SM", "Animator")]
+script = ExtResource("24_la572")
+Body = NodePath("../..")
+Sprite = NodePath("../../Sprite3DBillBoard")
+SM = NodePath("..")
+Animator = NodePath("../../AnimationPlayer")
+
+[node name="Area3D" type="Area3D" parent="StaticBody3D3" groups=["Player"]]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D3/Area3D"]
+shape = SubResource("SphereShape3D_f2srf")
+debug_color = Color(0.88782513, 0.3293662, 1.92523e-07, 0.41960785)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="StaticBody3D3"]
+root_node = NodePath("../Sprite3DBillBoard")
+libraries = {
+&"": SubResource("AnimationLibrary_khln7")
+}
+
 [node name="GridMapPathFinding" type="GridMap" parent="."]
 mesh_library = ExtResource("26_8pbg2")
 cell_size = Vector3(2, 0.7, 2)
@@ -536,5 +758,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 1.3607478, -4)
 
 [connection signal="body_shape_entered" from="StaticBody3D/Area3D" to="StaticBody3D/SM_controller" method="_on_area_3d_body_shape_entered"]
 [connection signal="body_shape_exited" from="StaticBody3D/Area3D" to="StaticBody3D/SM_controller" method="_on_area_3d_body_shape_exited"]
+[connection signal="body_shape_entered" from="StaticBody3D3/Area3D" to="StaticBody3D3/SM_controller" method="_on_area_3d_body_shape_entered"]
+[connection signal="body_shape_exited" from="StaticBody3D3/Area3D" to="StaticBody3D3/SM_controller" method="_on_area_3d_body_shape_exited"]
 [connection signal="on_change" from="Gates+devices/Button_Front_Entrance" to="Gates+devices/Gate_Entrance" method="open_gate"]
 [connection signal="on_activated" from="Gates+devices/Button_MainGate" to="Gates+devices/Main_Gate" method="open_gate"]

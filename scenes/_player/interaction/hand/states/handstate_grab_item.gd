@@ -198,7 +198,7 @@ func charging(_delta: float) -> void:
 	#t_bob += _delta * charge_amount * 50
 	if charge_amount > 0.1:
 		t_bob += _delta * charge_amount * 50
-		offset_helper.position = offset_og_pos + _headbob(t_bob)
+		#offset_helper.position = offset_og_pos + _headbob(t_bob)
 
 func end_charge() -> void:
 	hand_controller.anim_override_current_animation("a_hand_grab_item_charge", true)

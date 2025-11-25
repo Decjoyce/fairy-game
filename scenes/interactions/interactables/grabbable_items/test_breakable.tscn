@@ -1,16 +1,10 @@
-[gd_scene load_steps=10 format=3 uid="uid://boygsguyqneek"]
+[gd_scene load_steps=8 format=3 uid="uid://boygsguyqneek"]
 
 [ext_resource type="Script" uid="uid://s5cfdf85lm5g" path="res://scenes/interactions/interactables/grabbable_items/grabbable_item.gd" id="1_qka51"]
-[ext_resource type="Script" uid="uid://cqhq7vrwiw3m6" path="res://scenes/interactions/interactables/grabbable_items/type/item_type.gd" id="2_ooufx"]
 [ext_resource type="Texture2D" uid="uid://hfd6qbmx87rr" path="res://assets/misc/cat-standing-on-a-chair-leoch-studio.png" id="3_qka51"]
 [ext_resource type="AudioStream" uid="uid://dutddyikwuiut" path="res://assets/misc/hittingsound_shorter.wav" id="4_ooufx"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_llc7q"]
-
-[sub_resource type="Resource" id="Resource_yadgr"]
-script = ExtResource("2_ooufx")
-item_type = null
-metadata/_custom_type_script = "uid://cqhq7vrwiw3m6"
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_llc7q"]
 size = Vector3(0.5, 0.5, 0.5)
@@ -22,7 +16,7 @@ size = Vector3(0.4, 0.4, 0.4)
 radius = 0.25
 height = 0.5
 
-[node name="Breakable_Item" type="RigidBody3D" node_paths=PackedStringArray("idle_graphics") groups=["debug_PickableObjects"]]
+[node name="Breakable_Item" type="RigidBody3D" node_paths=PackedStringArray("col", "grab_col", "idle_graphics") groups=["debug_PickableObjects"]]
 collision_layer = 2
 axis_lock_angular_x = true
 axis_lock_angular_z = true
@@ -32,8 +26,8 @@ gravity_scale = 0.8
 contact_monitor = true
 max_contacts_reported = 1
 script = ExtResource("1_qka51")
-item_type = SubResource("Resource_yadgr")
-can_break = true
+col = NodePath("CollisionShape3D")
+grab_col = NodePath("Area3D/CollisionShape3D2")
 idle_graphics = NodePath("Sprite3D")
 
 [node name="Area3D" type="Area3D" parent="."]

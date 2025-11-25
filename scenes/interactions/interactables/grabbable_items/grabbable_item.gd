@@ -12,16 +12,23 @@ var is_grabbed: bool = false
 enum item_weight_types {WEIGHTLESS, LIGHT, MEDIUM, HEAVY}
 @export var item_weight: item_weight_types
 
+@export_category("Collision")
+@export var col: CollisionShape3D
+@export var grab_col: CollisionShape3D
+
 @export_category("Grabbing")
 @export var grabbed_offset: Vector2 = Vector2.ZERO
 @export var grabbed_rotation: float = 0.0
 
 @export_category("Throwing")
 @export var throw_distance : float = 8.0
-@export var can_break: bool
-@export var break_force: float = 35.0
 @export var throwing_offset: Vector2 = Vector2.ZERO
 @export var throwing_rotation: float = 0.0
+@export var can_break: bool
+@export var break_force: float = 35.0
+@export var destroyed_item: Node3D
+var item_spawn_on_destroyed: Grabbable_Item
+@export var destroyed_audio: AudioStreamPlayer3D
 
 @export_category("Graphics")
 @export var idle_graphics: Node3D
@@ -42,6 +49,11 @@ func _ready() -> void:
 	interaction_type = InteractTypes.GRAB_ITEM
 	rb.body_entered.connect(_on_collide)
 	prompt_text = "Grab " + name
+	if item_type is ItemType_Breakable:
+		item_spawn_on_destroyed = item_type.get_item_to_spawn().instantiate()
+		destroyed_item.add_child(item_spawn_on_destroyed)
+		item_spawn_on_destroyed.position = Vector3.UP
+		item_spawn_on_destroyed.disable_me()
 
 func _physics_process(delta: float) -> void:
 	prev_velocity = rb.linear_velocity
@@ -63,6 +75,20 @@ func end_interact(sig: float = -1) -> void:
 	idle_graphics.visible = true
 	
 	rb.freeze = false
+	rb.linear_velocity = Vector3.ZERO
+
+func enable_me() -> void:
+	grab_col.set_deferred("disabled", false)
+	col.set_deferred("disabled", false)
+	rb.freeze = false
+	rb.linear_velocity = Vector3.ZERO
+	col.force_update_transform()
+	rb.force_update_transform()
+
+func disable_me()-> void:
+	grab_col.set_deferred("disabled", true)
+	col.set_deferred("disabled", true)
+	rb.freeze = true
 	rb.linear_velocity = Vector3.ZERO
 
 # ↑ Interacting Stuff ↑
@@ -116,4 +142,12 @@ func _on_collide(body: Node) -> void:
 
 func break_item() -> void:
 	if !can_break: return
+	if destroyed_item:
+		destroyed_item.reparent(get_tree().current_scene)
+		destroyed_item.visible = true
+		destroyed_audio.play()
+		destroyed_item.global_position = raycast.get_collision_point()
+		if item_spawn_on_destroyed: 
+			item_spawn_on_destroyed.enable_me()
+			item_spawn_on_destroyed.reparent(get_tree().current_scene)
 	queue_free()

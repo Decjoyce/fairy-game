@@ -21,7 +21,7 @@ size = Vector3(0.4, 0.4, 0.4)
 radius = 0.25
 height = 0.5
 
-[node name="TEST_Grabbable_item" type="RigidBody3D" node_paths=PackedStringArray("idle_graphics") groups=["debug_PickableObjects"]]
+[node name="TEST_Grabbable_item" type="RigidBody3D" node_paths=PackedStringArray("col", "grab_col", "idle_graphics") groups=["debug_PickableObjects"]]
 collision_layer = 2
 axis_lock_angular_x = true
 axis_lock_angular_z = true
@@ -32,6 +32,8 @@ contact_monitor = true
 max_contacts_reported = 1
 script = ExtResource("1_llc7q")
 item_type = SubResource("Resource_yadgr")
+col = NodePath("CollisionShape3D")
+grab_col = NodePath("Area3D/CollisionShape3D2")
 idle_graphics = NodePath("Sprite3D")
 
 [node name="Area3D" type="Area3D" parent="."]
