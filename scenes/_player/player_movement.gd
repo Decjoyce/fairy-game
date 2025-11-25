@@ -109,7 +109,7 @@ func movement(delta: float) -> void:
 		if floor_detector.get_collision_point():
 			player.global_position.y = floor_detector.get_collision_point().y + player.PLAYER_HEIGHT
 		
-		t_bob += delta * (target_pos - player.global_position).length() * speed
+		t_bob += delta * ((target_pos - player.global_position).length() * speed)
 		var bob := _headbob(t_bob)
 		player.cam.h_offset = bob.x
 		player.cam.v_offset = bob.y
@@ -224,14 +224,27 @@ func teleport_player_by_coords(out_pos: Vector3) -> void:
 
 # ↑ Teleport Stuff ↑
 # --------------------------------------------------------------------------------------------------
-# ↓ Headbob Stuff ↓
+# ↓ Headbob & Footsteps Stuff ↓
 
 var t_bob: float
 @export var BOB_FREQ: float
 @export var  BOB_AMP: float
 
+var footstep_can_play: bool
+@onready var footstep_audio: AudioStreamPlayer3D = %FootstepAudio
+
 func _headbob(time: float) -> Vector2:
 	var pos = Vector2.ZERO
 	pos.y = sin(time * BOB_FREQ) * BOB_AMP
 	pos.x = cos(time * BOB_FREQ/2) * BOB_AMP
+	
+	#print(-pos.y)
+	var footstep_threshold = -BOB_AMP + 0.04
+	if pos.y > footstep_threshold:
+		footstep_can_play = true
+	elif pos.y < footstep_threshold and footstep_can_play:
+		footstep_can_play = false
+		footstep_audio.play()
+		
+	
 	return pos
