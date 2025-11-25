@@ -8,12 +8,14 @@ var cam: Camera3D
 enum HandTypes {LEFT, RIGHT}
 @export var hand_type : HandTypes
 @onready var stringed_hand_type: String = HandTypes.find_key(hand_type)
+@onready var hand_type_rotation_mult: int = 1
 
 @onready var hand_sprite: TextureRect = $_hand_sprite
 
 func _ready() -> void:
 	#animation_player.animation_finished.connect(play_queued_animation)
-	
+	if hand_type == 0: hand_type_rotation_mult = -1
+	else: hand_type_rotation_mult = 1
 	_init_states()
 
 # ↑ General Stuff ↑

@@ -1,36 +1,31 @@
-[gd_scene load_steps=11 format=3 uid="uid://bm8kaq0ah5g7q"]
+[gd_scene load_steps=10 format=3 uid="uid://bm8kaq0ah5g7q"]
 
-[ext_resource type="Script" uid="uid://s5cfdf85lm5g" path="res://scenes/interactions/interactables/grabbable_items/grabbable_item.gd" id="1_csxji"]
+[ext_resource type="Script" uid="uid://b0nee5gqk8fwf" path="res://scenes/interactions/interactables/grabbable_items/torch/torch.gd" id="1_j22s6"]
 [ext_resource type="Texture2D" uid="uid://cek17ch4ko4ca" path="res://scenes/interactions/interactables/grabbable_items/torch/torch.png" id="2_20p6n"]
 [ext_resource type="Script" uid="uid://d3averdt6fuqm" path="res://scenes/interactions/interactables/grabbable_items/type/itemtype_torch.gd" id="2_t5i1y"]
-[ext_resource type="Script" uid="uid://dmxkgeraxg8wd" path="res://scenes/interactions/interactables/grabbable_items/torch/torch_light.gd" id="3_7p8xc"]
 [ext_resource type="AudioStream" uid="uid://dutddyikwuiut" path="res://assets/misc/hittingsound_shorter.wav" id="5_j22s6"]
 
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_t5i1y"]
-noise_type = 2
-seed = 50
-frequency = 0.7527
-fractal_type = 3
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_j22s6"]
+frequency = 0.5412
 
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_j22s6"]
-generate_mipmaps = false
-noise = SubResource("FastNoiseLite_t5i1y")
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_7yijt"]
+noise = SubResource("FastNoiseLite_j22s6")
 
-[sub_resource type="Resource" id="Resource_j22s6"]
+[sub_resource type="Resource" id="Resource_d0jyt"]
 script = ExtResource("2_t5i1y")
-noise = SubResource("NoiseTexture2D_j22s6")
-light_strength = 1.0
+noise = SubResource("NoiseTexture2D_7yijt")
+light_strength = 2.645
 flicker_frequency = 1.0
 item_type = 1
 metadata/_custom_type_script = "uid://d3averdt6fuqm"
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_7yijt"]
 radius = 0.09
-height = 0.8
+height = 0.6900085
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_j22s6"]
 radius = 0.10888672
-height = 0.825
+height = 0.9732544
 
 [node name="Torch" type="RigidBody3D" node_paths=PackedStringArray("idle_graphics", "grabbed_graphics")]
 collision_layer = 2
@@ -41,29 +36,30 @@ mass = 0.6
 gravity_scale = 0.7
 contact_monitor = true
 max_contacts_reported = 1
-script = ExtResource("1_csxji")
-item_type = SubResource("Resource_j22s6")
-grabbed_rotation = 0.524
+script = ExtResource("1_j22s6")
+item_type = SubResource("Resource_d0jyt")
+item_weight = 1
+grabbed_rotation = 0.785
 idle_graphics = NodePath("Node3D/Idle")
 grabbed_graphics = NodePath("Node3D/Grabbed")
 interaction_type = 1
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.13685608, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.14949343, 0)
 shape = SubResource("CapsuleShape3D_7yijt")
 
 [node name="Area3D" type="Area3D" parent="." groups=["Interactables"]]
 collision_layer = 2
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.137, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.027594477, 0)
 shape = SubResource("CapsuleShape3D_j22s6")
 
 [node name="Node3D" type="Node3D" parent="."]
 
 [node name="Idle" type="Sprite3D" parent="Node3D"]
 layers = 4
-pixel_size = 0.0015
+pixel_size = 0.0013
 billboard = 1
 shaded = true
 render_priority = 1
@@ -73,18 +69,18 @@ texture = ExtResource("2_20p6n")
 transform = Transform3D(0.99999994, 0, 0, 0, 0.99999994, 0, 0, 0, 1, 0, 0.161, 0)
 visible = false
 layers = 4
-pixel_size = 0.0013
+pixel_size = 0.0012
 shaded = true
 render_priority = 1
 texture = ExtResource("2_20p6n")
 
-[node name="OmniLight3D" type="OmniLight3D" parent="."]
+[node name="TorchLight" type="OmniLight3D" parent="."]
+unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.2236549, 0)
 light_color = Color(0.7468442, 0.34661883, 0, 1)
 light_size = 0.593
+distance_fade_shadow = 46.75
 omni_range = 3.0
-script = ExtResource("3_7p8xc")
-torch_details = SubResource("Resource_j22s6")
 
 [node name="AudioPlayer" type="AudioStreamPlayer3D" parent="."]
 stream = ExtResource("5_j22s6")

@@ -40,7 +40,7 @@ func update(_delta: float) -> void:
 			hand_controller.anim_is_prompting = false
 			hand_controller.anim_change_prompt_anim(anim_prompt)
 	
-	if Input.is_action_just_pressed("use_" + hand_controller.stringed_hand_type):
+	if !is_charging and Input.is_action_just_pressed("use_" + hand_controller.stringed_hand_type):
 		use()
 	
 	if is_ready:
@@ -93,6 +93,8 @@ var grabbed_item: Grabbable_Item
 var grab_position: Vector3
 @export_flags_2d_physics var grab_ray_collision_mask: int
 
+var item_at_edge_of_screen: bool
+
 var _space_state: PhysicsDirectSpaceState3D
 
 func set_grab_position() -> void:
@@ -113,6 +115,17 @@ func set_grab_position() -> void:
 func grabbing() -> void:
 	grabbed_item.global_position = grab_position
 	grabbed_item.rotation.y = hand_controller.player.rotation.y
+	#if grabbed_item is Torch:
+		#if hand_controller.get_screen_position().x < player_interact.size.x * 0.2 or hand_controller.get_screen_position().x > player_interact.size.x * 0.8:
+			#if !item_at_edge_of_screen:
+				#grabbed_item.rotation_degrees.z = -5 * hand_controller.hand_type_rotation_mult
+				#item_at_edge_of_screen = true
+				#hand_controller.anim_change_idle_anim("hand_prompt_lever")
+		#else:
+			#if item_at_edge_of_screen:
+				#grabbed_item.rotation.z = grabbed_item.grabbed_rotation * hand_controller.hand_type_rotation_mult
+				#item_at_edge_of_screen = false
+				#hand_controller.anim_change_idle_anim(anim_idle)
 
 # ↑ Grabbing Stuff ↑
 # --------------------------------------------------------------------------------------------------
@@ -123,11 +136,11 @@ var item_receiver: ItemReceiver
 
 func use():
 	if item_receiver and item_receiver.receive_item(grabbed_item):
-		is_charging = false
-		charge_amount = 0
-		time_held_down = 0
-		
-		finished.emit(FREE)
+		if item_receiver.destroy_items_on_receive:
+			is_charging = false
+			charge_amount = 0
+			time_held_down = 0
+			finished.emit(FREE)
 	else:
 		match current_item_type.item_type:
 			ItemType.ItemTypes.DEFAULT:
@@ -153,6 +166,7 @@ func begin_charge() -> void:
 	time_held_down = 0
 	hand_controller.anim_override_current_animation("a_hand_grab_item_charge", true)
 	hand_controller.anim_change_idle_anim("a_hand_grab_item_charge")
+	grabbed_item.rotation_degrees.z = -5 * hand_controller.hand_type_rotation_mult
 	
 func charging(_delta: float) -> void:
 	if !is_charging: return

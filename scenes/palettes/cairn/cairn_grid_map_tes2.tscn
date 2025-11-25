@@ -1,8 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://b6xduqa4p67ks"]
+[gd_scene load_steps=8 format=3 uid="uid://b6xduqa4p67ks"]
 
 [ext_resource type="MeshLibrary" uid="uid://bu208a8l5866i" path="res://scenes/palettes/cairn/meshlibrary_cairn.tres" id="1_v1k7g"]
 [ext_resource type="PackedScene" uid="uid://bq86osdembn58" path="res://scenes/_player/_player_test.tscn" id="2_v1k7g"]
 [ext_resource type="PackedScene" uid="uid://bm8kaq0ah5g7q" path="res://scenes/interactions/interactables/grabbable_items/torch/torch.tscn" id="3_v1k7g"]
+[ext_resource type="PackedScene" uid="uid://dde66nwtb1gv1" path="res://scenes/interactions/triggers/item_receiver/torch_scont/torch_scont.tscn" id="4_vfcdx"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_v1k7g"]
 sky_horizon_color = Color(0, 0.37292683, 0.8185948, 1)
@@ -47,3 +48,6 @@ light_energy = 0.096
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_vfcdx")
+
+[node name="TorchScont" parent="." instance=ExtResource("4_vfcdx")]
+transform = Transform3D(-5.9604645e-08, 0, -1, 0, 1, 0, 1, 0, -5.9604645e-08, 2.6, 1, -8.8)

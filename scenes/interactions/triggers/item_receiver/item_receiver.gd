@@ -7,6 +7,8 @@ signal on_change(sig: float)
 enum ItemReceiverStyle {BY_TYPE, SPECIFIC_ITEMS, EITHER, ANY_ITEM}
 @export var receiver_type: ItemReceiverStyle
 
+@export var infinite_use: bool
+
 @export_category("If BY_TYPE or EITHER")
 @export var type_of_item: ItemType.ItemTypes = ItemType.ItemTypes.KEY
 @export var num_needed: int
@@ -21,6 +23,10 @@ var needed_items_left: Array[Grabbable_Item]
 
 @export_category("Aesthetics")
 @export var hand_prompt: String = "hand_prompt_default"
+
+@export_category("Items")
+@export var func_to_call: String
+@export var args: Array
 
 var is_activated: bool
 @onready var col: CollisionShape3D = $Area3D/CollisionShape3D 
@@ -43,7 +49,7 @@ func receive_item(_item: Grabbable_Item) -> bool:
 			return false
 
 func all_items_received() -> void:
-	if is_activated: return
+	if is_activated or infinite_use: return
 	on_activated.emit(1.0)
 	is_activated = true
 	col.disabled = true
@@ -54,6 +60,10 @@ func all_items_received() -> void:
 
 func check_item_by_type(_item: Grabbable_Item, destroy_check: bool = true) -> bool:
 	if _item.item_type.item_type != type_of_item: return false
+	if func_to_call != "":
+		if args: _item.call(func_to_call, args)
+		else: _item.call(func_to_call)
+	
 	check_if_item_should_be_destroyed(_item)
 	
 	num_have += 1

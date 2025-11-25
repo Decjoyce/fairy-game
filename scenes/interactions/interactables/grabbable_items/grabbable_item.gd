@@ -34,6 +34,8 @@ var prev_velocity: Vector3
 
 @onready var raycast: RayCast3D = $RayCast3D
 
+var has_been_picked_up: bool
+
 func _ready() -> void:
 	interaction_type = InteractTypes.GRAB_ITEM
 	rb.body_entered.connect(_on_collide)
@@ -46,6 +48,7 @@ func begin_interact(sig: float = -1) -> void:
 		if untouched_graphics: untouched_graphics.visible = false
 		idle_graphics.visible = false
 		grabbed_graphics.visible = true
+	has_been_picked_up = true
 	rb.freeze = true
 	rb.linear_velocity = Vector3.ZERO
 

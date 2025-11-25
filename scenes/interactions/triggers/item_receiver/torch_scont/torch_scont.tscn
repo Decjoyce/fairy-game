@@ -1,0 +1,45 @@
+[gd_scene load_steps=5 format=3 uid="uid://dde66nwtb1gv1"]
+
+[ext_resource type="Script" uid="uid://crwhy6uva7msm" path="res://scenes/interactions/triggers/item_receiver/torch_scont/torch_scont.gd" id="1_qpg1p"]
+[ext_resource type="Texture2D" uid="uid://cek17ch4ko4ca" path="res://scenes/interactions/interactables/grabbable_items/torch/torch.png" id="2_qpg1p"]
+[ext_resource type="PackedScene" uid="uid://bm8kaq0ah5g7q" path="res://scenes/interactions/interactables/grabbable_items/torch/torch.tscn" id="3_qpg1p"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_bi0p3"]
+radius = 0.3
+
+[node name="TorchScont" type="Node3D"]
+script = ExtResource("1_qpg1p")
+infinite_use = true
+type_of_item = 1
+hand_prompt = "hand_prompt_torch_2"
+func_to_call = "relight"
+metadata/_custom_type_script = "uid://ejuiwwsmyrgi"
+
+[node name="Area3D" type="Area3D" parent="."]
+collision_layer = 32
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+shape = SubResource("SphereShape3D_bi0p3")
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.8660254, -0.5, 0, 0.5, 0.8660254, 0, 0, 0)
+pixel_size = 0.001
+texture = ExtResource("2_qpg1p")
+
+[node name="Sprite3D2" type="Sprite3D" parent="Sprite3D"]
+transform = Transform3D(0, 0, 0.99999994, 0, 1, 0, -0.99999994, 0, 0, 0, 0, 0)
+pixel_size = 0.001
+texture = ExtResource("2_qpg1p")
+
+[node name="Torch" parent="." node_paths=PackedStringArray("scont") instance=ExtResource("3_qpg1p")]
+visible = false
+sconted = true
+scont = NodePath("..")
+
+[node name="TorchLight" type="OmniLight3D" parent="."]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.123654895, 0.2)
+light_color = Color(0.7468442, 0.34661883, 0, 1)
+light_size = 0.593
+distance_fade_shadow = 46.75
+omni_range = 3.0
