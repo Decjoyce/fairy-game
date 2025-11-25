@@ -17,6 +17,7 @@ var grav_scale: float
 
 
 func _ready() -> void:
+	super()
 	if item_type is not ItemType_Torch:
 		printerr("TORCH item type must of type torch")
 		return

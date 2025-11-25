@@ -7,6 +7,7 @@ var is_exiting: bool
 var tween: Tween
 
 @export var offset_helper: Control
+var offset_og_pos: Vector2
 
 var current_grab_prompt: String
 var current_hand_prompt: String
@@ -52,6 +53,8 @@ func physics_update(_delta: float) -> void:
 func enter(previous_state_path: String, data := {}) -> void:
 	grabbed_item = hand_controller.hovering_interactable
 	
+	offset_og_pos = offset_helper.position
+	
 	current_item_type = grabbed_item.item_type
 	
 	_space_state = hand_controller.cam.get_world_3d().direct_space_state
@@ -84,6 +87,7 @@ func exit() -> void:
 	is_charging = false
 	charge_amount = 0
 	time_held_down = 0
+	offset_helper.position = offset_og_pos
 	#is_exiting = true
 	#grabbed_item = null
 
@@ -167,6 +171,10 @@ var charge_amount: float
 @export var delay_before_max_charge := 2.0
 var time_held_down: float = 0.0
 
+@export var BOB_FREQ: float
+@export var BOB_AMP: float
+var t_bob: float = 0.0
+
 func begin_charge() -> void:
 	is_charging = true
 	charge_amount = 0
@@ -179,7 +187,8 @@ func charging(_delta: float) -> void:
 	if !is_charging: return
 	time_held_down += _delta
 	var _charged_amount = time_held_down / delay_before_max_charge
-	
+	t_bob += _delta * charge_amount * 50
+	offset_helper.position = offset_og_pos + _headbob(t_bob)
 	charge_amount = clampf(_charged_amount, 0.0, 1.0)
 	
 
@@ -195,6 +204,13 @@ func end_charge() -> void:
 	time_held_down = 0
 	
 	finished.emit(FREE)
+
+func _headbob(time: float) -> Vector2:
+	var pos = Vector2.ZERO
+	pos.x = sin(time * BOB_FREQ) * BOB_AMP
+	pos.y = cos(time * BOB_FREQ/2) * BOB_AMP
+	
+	return pos
 
 # ↑ State Stuff ↑
 # --------------------------------------------------------------------------------------------------
