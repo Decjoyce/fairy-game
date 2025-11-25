@@ -12,6 +12,7 @@ script = ExtResource("1_qpg1p")
 infinite_use = true
 type_of_item = 1
 hand_prompt = "hand_prompt_torch_2"
+prompt_text = "Refill Torch"
 func_to_call = "relight"
 metadata/_custom_type_script = "uid://ejuiwwsmyrgi"
 
@@ -25,6 +26,7 @@ shape = SubResource("SphereShape3D_bi0p3")
 transform = Transform3D(1, 0, 0, 0, 0.8660254, -0.5, 0, 0.5, 0.8660254, 0, 0, 0)
 layers = 2
 pixel_size = 0.0013
+shaded = true
 render_priority = 1
 texture = ExtResource("2_qpg1p")
 
@@ -32,6 +34,7 @@ texture = ExtResource("2_qpg1p")
 transform = Transform3D(0, 0, 0.99999994, 0, 1, 0, -0.99999994, 0, 0, 0, 0, 0)
 layers = 2
 pixel_size = 0.0013
+shaded = true
 render_priority = 1
 texture = ExtResource("2_qpg1p")
 
@@ -39,6 +42,7 @@ texture = ExtResource("2_qpg1p")
 visible = false
 sconted = true
 scont = NodePath("..")
+item_weight = 0
 
 [node name="TorchLight" type="OmniLight3D" parent="."]
 unique_name_in_owner = true

@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=3 uid="uid://dqojmsc2q6wf4"]
+[gd_scene load_steps=38 format=3 uid="uid://dqojmsc2q6wf4"]
 
 [ext_resource type="Script" uid="uid://bkcxym5jqdgg4" path="res://scenes/_player/interaction/player_interaction.gd" id="1_ebye2"]
 [ext_resource type="Script" uid="uid://bvrebn6ao2hvn" path="res://scenes/_player/interaction/hand/player_hand.gd" id="2_f78vs"]
@@ -10,13 +10,17 @@
 [ext_resource type="Script" uid="uid://cbiffyiwdsd26" path="res://scenes/_player/interaction/hand/states/handstate_attack.gd" id="7_b33uu"]
 [ext_resource type="Texture2D" uid="uid://bf54ba5wmnwv7" path="res://scenes/_player/interaction/hand/assets/hand_pick.png" id="7_h6x2d"]
 [ext_resource type="Texture2D" uid="uid://dtjkym227bqie" path="res://scenes/_player/interaction/hand/assets/hand_extend.png" id="8_3efos"]
-[ext_resource type="Texture2D" uid="uid://cek17ch4ko4ca" path="res://scenes/interactions/interactables/grabbable_items/torch/torch.png" id="8_gulgn"]
 [ext_resource type="Texture2D" uid="uid://mca3ko5edbht" path="res://scenes/_player/interaction/hand/assets/hand_hover.png" id="9_3efos"]
+[ext_resource type="Texture2D" uid="uid://x5o8gwlacxs1" path="res://assets/_not_ours_dontship/Xbox Series/XboxSeriesX_X.png" id="9_b33uu"]
+[ext_resource type="Script" uid="uid://bwjg44sotn0rj" path="res://scenes/_player/interaction/input_contexts.gd" id="9_pdn2y"]
 [ext_resource type="Texture2D" uid="uid://bj70dokyron4r" path="res://scenes/_player/interaction/hand/assets/hand_torch.png" id="10_434r6"]
+[ext_resource type="Texture2D" uid="uid://dee8ol82mg72l" path="res://assets/_not_ours_dontship/Xbox Series/XboxSeriesX_LT.png" id="10_c2wdf"]
 [ext_resource type="Texture2D" uid="uid://bf5kpbbhis3ra" path="res://scenes/_player/interaction/hand/assets/hand_extend_full.png" id="11_njhm0"]
 [ext_resource type="Texture2D" uid="uid://cfymwa08wvaqh" path="res://scenes/_player/interaction/hand/assets/hand_pick_two.png" id="12_jhcvy"]
 [ext_resource type="Texture2D" uid="uid://dehow8buqijkk" path="res://scenes/_player/interaction/hand/assets/hand_lever.png" id="12_pvvfk"]
 [ext_resource type="Texture2D" uid="uid://ck4of6qde1ymu" path="res://scenes/_player/interaction/hand/assets/hand_lever_two.png" id="14_aq8do"]
+[ext_resource type="Texture2D" uid="uid://bvp14xwrxbn3n" path="res://assets/_not_ours_dontship/Xbox Series/XboxSeriesX_B.png" id="20_x8mhs"]
+[ext_resource type="Texture2D" uid="uid://jub3n8100tqt" path="res://assets/_not_ours_dontship/Xbox Series/XboxSeriesX_RT.png" id="21_g8o0o"]
 
 [sub_resource type="Animation" id="Animation_434r6"]
 length = 0.001
@@ -322,7 +326,6 @@ metadata/_edit_use_anchors_ = true
 
 [node name="FREE" type="Node" parent="Hand_Left/States"]
 script = ExtResource("3_7baq5")
-moving_breaks_free = null
 anim_idle = "a_hand_idle"
 anim_prompt = "hand_prompt_default"
 
@@ -330,6 +333,8 @@ anim_prompt = "hand_prompt_default"
 script = ExtResource("4_r26r4")
 offset_helper = NodePath("../../_hand_sprite/_pickup_pos")
 grab_ray_collision_mask = 1
+BOB_FREQ = 2.5
+BOB_AMP = 5.0
 anim_idle = "a_hand_idle_grab_item"
 anim_prompt = "hand_prompt_key"
 
@@ -395,21 +400,8 @@ offset_bottom = -16.0
 grow_horizontal = 0
 grow_vertical = 2
 
-[node name="TextureRect" type="TextureRect" parent="Hand_Left/_hand_sprite"]
-visible = false
-show_behind_parent = true
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("8_gulgn")
-expand_mode = 1
-stretch_mode = 4
-metadata/_edit_use_anchors_ = true
-
 [node name="EatingAnim" type="Control" parent="Hand_Left/_hand_sprite"]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -424,6 +416,61 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="InputContexts" type="VBoxContainer" parent="Hand_Left/_hand_sprite"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -2.6266668
+anchor_top = 1.0266666
+anchor_right = 0.8302132
+anchor_bottom = 1.8066666
+offset_left = 3.0517578e-05
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("9_pdn2y")
+metadata/_edit_use_anchors_ = true
+
+[node name="UseAction" type="HBoxContainer" parent="Hand_Left/_hand_sprite/InputContexts"]
+layout_mode = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Hand_Left/_hand_sprite/InputContexts/UseAction"]
+custom_minimum_size = Vector2(20, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/outline_size = 10
+theme_override_font_sizes/normal_font_size = 20
+text = "Refill Torch
+"
+scroll_active = false
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="Hand_Left/_hand_sprite/InputContexts/UseAction"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+texture = ExtResource("9_b33uu")
+expand_mode = 1
+
+[node name="InteractAction" type="HBoxContainer" parent="Hand_Left/_hand_sprite/InputContexts"]
+layout_mode = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Hand_Left/_hand_sprite/InputContexts/InteractAction"]
+custom_minimum_size = Vector2(20, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/outline_size = 10
+theme_override_font_sizes/normal_font_size = 20
+text = "Hold to Throw
+"
+scroll_active = false
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="Hand_Left/_hand_sprite/InputContexts/InteractAction"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+texture = ExtResource("10_c2wdf")
+expand_mode = 1
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Hand_Left"]
 callback_mode_method = 1
@@ -451,7 +498,6 @@ metadata/_edit_use_anchors_ = true
 
 [node name="FREE" type="Node" parent="Hand_Right/States"]
 script = ExtResource("3_7baq5")
-moving_breaks_free = null
 anim_idle = "a_hand_idle"
 anim_prompt = "hand_prompt_default"
 
@@ -528,6 +574,58 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="InputContexts" type="VBoxContainer" parent="Hand_Right/_hand_sprite"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.18
+anchor_top = 1.0266666
+anchor_right = 3.70188
+anchor_bottom = 1.8066666
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("9_pdn2y")
+metadata/_edit_use_anchors_ = true
+
+[node name="UseAction" type="HBoxContainer" parent="Hand_Right/_hand_sprite/InputContexts"]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="Hand_Right/_hand_sprite/InputContexts/UseAction"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+texture = ExtResource("20_x8mhs")
+expand_mode = 1
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Hand_Right/_hand_sprite/InputContexts/UseAction"]
+custom_minimum_size = Vector2(20, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/outline_size = 10
+theme_override_font_sizes/normal_font_size = 20
+text = "Refill Torch
+"
+scroll_active = false
+vertical_alignment = 1
+
+[node name="InteractAction" type="HBoxContainer" parent="Hand_Right/_hand_sprite/InputContexts"]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="Hand_Right/_hand_sprite/InputContexts/InteractAction"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+texture = ExtResource("21_g8o0o")
+expand_mode = 1
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Hand_Right/_hand_sprite/InputContexts/InteractAction"]
+custom_minimum_size = Vector2(20, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/outline_size = 10
+theme_override_font_sizes/normal_font_size = 20
+text = "Hold to Throw
+"
+scroll_active = false
+vertical_alignment = 1
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Hand_Right"]
 callback_mode_method = 1

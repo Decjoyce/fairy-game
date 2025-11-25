@@ -12,6 +12,8 @@ enum HandTypes {LEFT, RIGHT}
 
 @onready var hand_sprite: TextureRect = $_hand_sprite
 
+@onready var input_controls: InputContexts = $_hand_sprite/InputContexts
+
 func _ready() -> void:
 	#animation_player.animation_finished.connect(play_queued_animation)
 	if hand_type == 0: hand_type_rotation_mult = -1

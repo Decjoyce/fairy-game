@@ -41,6 +41,7 @@ var has_been_picked_up: bool
 func _ready() -> void:
 	interaction_type = InteractTypes.GRAB_ITEM
 	rb.body_entered.connect(_on_collide)
+	prompt_text = "Grab " + name
 
 func _physics_process(delta: float) -> void:
 	prev_velocity = rb.linear_velocity

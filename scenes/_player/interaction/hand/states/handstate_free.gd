@@ -24,10 +24,12 @@ func update(_delta: float) -> void:
 	if hand_controller.hovering_interactable:
 		if hand_controller.anim_is_prompting: return
 		hand_controller.anim_is_prompting = true
+		hand_controller.input_controls.enable_interact_action(hand_controller.hovering_interactable.prompt_text)
 		hand_controller.anim_change_prompt_anim(hand_controller.hovering_interactable.hand_prompt)
 	else: 
 		if !hand_controller.anim_is_prompting: return
 		hand_controller.anim_is_prompting = false
+		hand_controller.input_controls.disable_interact_action()
 		hand_controller.anim_change_prompt_anim(anim_prompt)
 
 func physics_update(_delta: float) -> void:
@@ -37,6 +39,8 @@ func enter(previous_state_path: String, data := {}) -> void:
 	prints(anim_idle, anim_prompt)
 	hand_controller.anim_change_idle_anim(anim_idle)
 	hand_controller.anim_change_prompt_anim(anim_prompt)
+	hand_controller.input_controls.disable_interact_action()
+	hand_controller.input_controls.disable_use_action()
 	#print("hmm")
 
 func exit() -> void:

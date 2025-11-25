@@ -23,6 +23,7 @@ var needed_items_left: Array[Grabbable_Item]
 
 @export_category("Aesthetics")
 @export var hand_prompt: String = "hand_prompt_default"
+@export var prompt_text: String = ""
 
 @export_category("Items")
 @export var func_to_call: String
