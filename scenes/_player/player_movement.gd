@@ -109,6 +109,11 @@ func movement(delta: float) -> void:
 		if floor_detector.get_collision_point():
 			player.global_position.y = floor_detector.get_collision_point().y + player.PLAYER_HEIGHT
 		
+		t_bob += delta * (target_pos - player.global_position).length() * speed
+		var bob := _headbob(t_bob)
+		player.cam.h_offset = bob.x
+		player.cam.v_offset = bob.y
+		
 		is_moving = true
 	else:
 		is_moving = false
@@ -216,3 +221,17 @@ func teleport_player_by_coords(out_pos: Vector3) -> void:
 	ray_south.force_shapecast_update()
 	ray_east.force_shapecast_update()
 	ray_west.force_shapecast_update()
+
+# ↑ Teleport Stuff ↑
+# --------------------------------------------------------------------------------------------------
+# ↓ Headbob Stuff ↓
+
+var t_bob: float
+@export var BOB_FREQ: float
+@export var  BOB_AMP: float
+
+func _headbob(time: float) -> Vector2:
+	var pos = Vector2.ZERO
+	pos.y = sin(time * BOB_FREQ) * BOB_AMP
+	pos.x = cos(time * BOB_FREQ/2) * BOB_AMP
+	return pos
