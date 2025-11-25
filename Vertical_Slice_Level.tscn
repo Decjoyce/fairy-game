@@ -1,4 +1,4 @@
-[gd_scene load_steps=58 format=3 uid="uid://b1d53a2if0ifd"]
+[gd_scene load_steps=61 format=3 uid="uid://b1d53a2if0ifd"]
 
 [ext_resource type="Texture2D" uid="uid://bajdgu88x35py" path="res://Sprites/ballyWalkSheet_n.png" id="1_gqaa3"]
 [ext_resource type="Texture2D" uid="uid://dl3etwft2mhxm" path="res://Sprites/ballyWalkSheet.png" id="2_ue6a3"]
@@ -32,6 +32,9 @@
 [ext_resource type="PackedScene" uid="uid://bm8kaq0ah5g7q" path="res://scenes/interactions/interactables/grabbable_items/torch/torch.tscn" id="29_w1u0h"]
 [ext_resource type="Texture2D" uid="uid://bgvylughro1va" path="res://PaperTexture/Texturelabs_Paper_304L.jpg" id="30_ue6a3"]
 [ext_resource type="PackedScene" uid="uid://dde66nwtb1gv1" path="res://scenes/interactions/triggers/item_receiver/torch_scont/torch_scont.tscn" id="32_vefwy"]
+[ext_resource type="PackedScene" uid="uid://dt13fur6twjep" path="res://scenes/interactions/receivers/gate/gate.tscn" id="33_8k40l"]
+[ext_resource type="PackedScene" uid="uid://qu5rxgbydmet" path="res://scenes/interactions/triggers/button/button.tscn" id="34_h15nr"]
+[ext_resource type="PackedScene" uid="uid://clnnqb1efkbei" path="res://scenes/interactions/prefabs/locked_door.tscn" id="35_igngk"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_vefwy"]
 sky_top_color = Color(0.47028, 0.44203204, 0.42579472, 1)
@@ -53,7 +56,7 @@ glow_enabled = true
 radius = 0.001
 height = 0.7416992
 
-[sub_resource type="Shader" id="Shader_8pbg2"]
+[sub_resource type="Shader" id="Shader_igngk"]
 code = "shader_type spatial;
 render_mode diffuse_lambert_wrap,cull_disabled;
 
@@ -130,9 +133,9 @@ void fragment() {
 }
 "
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_vefwy"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ytf8k"]
 render_priority = 0
-shader = SubResource("Shader_8pbg2")
+shader = SubResource("Shader_igngk")
 shader_parameter/rows = 5.0
 shader_parameter/columns = 8.0
 shader_parameter/frame = 1.0
@@ -141,18 +144,18 @@ shader_parameter/sprite = ExtResource("2_ue6a3")
 shader_parameter/mode = 0
 shader_parameter/Normal = ExtResource("1_gqaa3")
 
-[sub_resource type="PlaneMesh" id="PlaneMesh_8k40l"]
-material = SubResource("ShaderMaterial_vefwy")
+[sub_resource type="PlaneMesh" id="PlaneMesh_5o6sm"]
+material = SubResource("ShaderMaterial_ytf8k")
 size = Vector2(1.08, 1.08)
 orientation = 2
 
-[sub_resource type="Resource" id="Resource_h15nr"]
+[sub_resource type="Resource" id="Resource_wkr8j"]
 script = ExtResource("4_vefwy")
 sprite = ExtResource("5_8k40l")
 texture_normal = ExtResource("6_h15nr")
 columns = 8.0
 
-[sub_resource type="Resource" id="Resource_igngk"]
+[sub_resource type="Resource" id="Resource_v5821"]
 script = ExtResource("4_vefwy")
 name = "walk"
 sprite = ExtResource("2_ue6a3")
@@ -160,7 +163,7 @@ texture_normal = ExtResource("1_gqaa3")
 rows = 5.0
 columns = 8.0
 
-[sub_resource type="Resource" id="Resource_ytf8k"]
+[sub_resource type="Resource" id="Resource_uqeqx"]
 script = ExtResource("4_vefwy")
 name = "Attack_LbBottom"
 sprite = ExtResource("7_igngk")
@@ -168,7 +171,7 @@ texture_normal = ExtResource("8_ytf8k")
 rows = 2.0
 columns = 8.0
 
-[sub_resource type="Resource" id="Resource_5o6sm"]
+[sub_resource type="Resource" id="Resource_0ahfl"]
 script = ExtResource("4_vefwy")
 name = "Attack_LMid"
 sprite = ExtResource("9_5o6sm")
@@ -176,7 +179,7 @@ texture_normal = ExtResource("10_wkr8j")
 rows = 2.0
 columns = 8.0
 
-[sub_resource type="Resource" id="Resource_wkr8j"]
+[sub_resource type="Resource" id="Resource_apgct"]
 script = ExtResource("4_vefwy")
 name = "Attack_LTop"
 sprite = ExtResource("11_v5821")
@@ -184,7 +187,7 @@ texture_normal = ExtResource("12_uqeqx")
 rows = 2.0
 columns = 8.0
 
-[sub_resource type="Resource" id="Resource_v5821"]
+[sub_resource type="Resource" id="Resource_4it74"]
 script = ExtResource("4_vefwy")
 name = "Attack_RBottom"
 sprite = ExtResource("13_0ahfl")
@@ -192,7 +195,7 @@ texture_normal = ExtResource("14_apgct")
 rows = 2.0
 columns = 8.0
 
-[sub_resource type="Resource" id="Resource_uqeqx"]
+[sub_resource type="Resource" id="Resource_ojd6j"]
 script = ExtResource("4_vefwy")
 name = "Attack_RMid"
 sprite = ExtResource("15_4it74")
@@ -200,7 +203,7 @@ texture_normal = ExtResource("16_ojd6j")
 rows = 2.0
 columns = 8.0
 
-[sub_resource type="Resource" id="Resource_0ahfl"]
+[sub_resource type="Resource" id="Resource_bnyeu"]
 script = ExtResource("4_vefwy")
 name = "Attack_RTop"
 sprite = ExtResource("17_bnyeu")
@@ -410,9 +413,9 @@ shape = SubResource("CapsuleShape3D_abuop")
 
 [node name="Sprite3DBillBoard" type="MeshInstance3D" parent="StaticBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.54317766, 0)
-mesh = SubResource("PlaneMesh_8k40l")
+mesh = SubResource("PlaneMesh_5o6sm")
 script = ExtResource("3_8pbg2")
-animations_array = Array[ExtResource("4_vefwy")]([SubResource("Resource_h15nr"), SubResource("Resource_igngk"), SubResource("Resource_ytf8k"), SubResource("Resource_5o6sm"), SubResource("Resource_wkr8j"), SubResource("Resource_v5821"), SubResource("Resource_uqeqx"), SubResource("Resource_0ahfl")])
+animations_array = Array[ExtResource("4_vefwy")]([SubResource("Resource_wkr8j"), SubResource("Resource_v5821"), SubResource("Resource_uqeqx"), SubResource("Resource_0ahfl"), SubResource("Resource_apgct"), SubResource("Resource_4it74"), SubResource("Resource_ojd6j"), SubResource("Resource_bnyeu")])
 animation = 1
 frame = 1.0
 sprite_scale = 0.001
@@ -511,7 +514,27 @@ color = Color(0.5747226, 0.50857943, 0.49505764, 0.03529412)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 1, 1)
 
 [node name="TorchScont" parent="Torches" instance=ExtResource("32_vefwy")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 1, -9.87576)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 1.2814243, -9.617082)
+
+[node name="Gates+devices" type="Node3D" parent="."]
+
+[node name="Gate_Entrance" parent="Gates+devices" instance=ExtResource("33_8k40l")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 0.375862, -3.9181042)
+
+[node name="Main_Gate" parent="Gates+devices" instance=ExtResource("33_8k40l")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 0.33038473, -10)
+
+[node name="Button_Front_Entrance" parent="Gates+devices" instance=ExtResource("34_h15nr")]
+transform = Transform3D(1.3113416e-07, 0, 1, 0, 1, 0, -1, 0, 1.3113416e-07, 7.7336555, 1.211202, -3.3211205)
+delay_before_reset = 5.0
+
+[node name="Button_MainGate" parent="Gates+devices" instance=ExtResource("34_h15nr")]
+transform = Transform3D(-1, 0, 8.940697e-08, 0, 1, 0, -8.940697e-08, 0, -1, 8.181404, 1.1323705, -9.74968)
+
+[node name="LockedDoor" parent="Gates+devices" instance=ExtResource("35_igngk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 1.3607478, -4)
 
 [connection signal="body_shape_entered" from="StaticBody3D/Area3D" to="StaticBody3D/SM_controller" method="_on_area_3d_body_shape_entered"]
 [connection signal="body_shape_exited" from="StaticBody3D/Area3D" to="StaticBody3D/SM_controller" method="_on_area_3d_body_shape_exited"]
+[connection signal="on_change" from="Gates+devices/Button_Front_Entrance" to="Gates+devices/Gate_Entrance" method="open_gate"]
+[connection signal="on_activated" from="Gates+devices/Button_MainGate" to="Gates+devices/Main_Gate" method="open_gate"]
