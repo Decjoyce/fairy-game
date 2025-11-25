@@ -81,6 +81,9 @@ func exit() -> void:
 	hand_controller.hovering_interactable = null
 	is_ready = false
 	tween.kill()
+	is_charging = false
+	charge_amount = 0
+	time_held_down = 0
 	#is_exiting = true
 	#grabbed_item = null
 
@@ -98,8 +101,12 @@ var item_at_edge_of_screen: bool
 var _space_state: PhysicsDirectSpaceState3D
 
 func set_grab_position() -> void:
-	var origin := hand_controller.cam.project_ray_origin(offset_helper.get_screen_position())
-	var end := origin + hand_controller.cam.project_ray_normal(offset_helper.global_position) * GRAB_DIST
+	var _grab_pos: Vector2
+	if is_charging:  _grab_pos = Vector2(grabbed_item.throwing_offset.x * hand_controller.hand_type_rotation_mult, grabbed_item.throwing_offset.y)
+	else:  _grab_pos = Vector2(grabbed_item.grabbed_offset.x * hand_controller.hand_type_rotation_mult, grabbed_item.grabbed_offset.y)
+	
+	var origin := hand_controller.cam.project_ray_origin(offset_helper.get_screen_position() + _grab_pos)
+	var end := origin + hand_controller.cam.project_ray_normal(offset_helper.global_position + _grab_pos) * GRAB_DIST
 	
 	var query := PhysicsRayQueryParameters3D.create(origin, end, grab_ray_collision_mask) # probably want to add layer stuff later
 	query.collide_with_areas = true
@@ -166,7 +173,7 @@ func begin_charge() -> void:
 	time_held_down = 0
 	hand_controller.anim_override_current_animation("a_hand_grab_item_charge", true)
 	hand_controller.anim_change_idle_anim("a_hand_grab_item_charge")
-	grabbed_item.rotation_degrees.z = -5 * hand_controller.hand_type_rotation_mult
+	grabbed_item.rotation_degrees.z = -grabbed_item.throwing_rotation * hand_controller.hand_type_rotation_mult
 	
 func charging(_delta: float) -> void:
 	if !is_charging: return

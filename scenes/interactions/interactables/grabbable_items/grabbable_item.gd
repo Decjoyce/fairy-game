@@ -13,13 +13,15 @@ enum item_weight_types {WEIGHTLESS, LIGHT, MEDIUM, HEAVY}
 @export var item_weight: item_weight_types
 
 @export_category("Grabbing")
-@export var grabbed_offset: Vector3 = Vector3.ZERO
+@export var grabbed_offset: Vector2 = Vector2.ZERO
 @export var grabbed_rotation: float = 0.0
 
 @export_category("Throwing")
 @export var throw_distance : float = 8.0
 @export var can_break: bool
 @export var break_force: float = 35.0
+@export var throwing_offset: Vector2 = Vector2.ZERO
+@export var throwing_rotation: float = 0.0
 
 @export_category("Graphics")
 @export var idle_graphics: Node3D
