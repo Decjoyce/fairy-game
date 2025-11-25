@@ -1,4 +1,4 @@
-[gd_scene load_steps=54 format=3 uid="uid://b1d53a2if0ifd"]
+[gd_scene load_steps=56 format=3 uid="uid://b1d53a2if0ifd"]
 
 [ext_resource type="Texture2D" uid="uid://bajdgu88x35py" path="res://Sprites/ballyWalkSheet_n.png" id="1_gqaa3"]
 [ext_resource type="Texture2D" uid="uid://dl3etwft2mhxm" path="res://Sprites/ballyWalkSheet.png" id="2_ue6a3"]
@@ -25,25 +25,22 @@
 [ext_resource type="Script" uid="uid://cyctjxnvvlo47" path="res://EnemyStateMachine/Wander.gd" id="23_tbjf3"]
 [ext_resource type="Script" uid="uid://dlre0emi41dh1" path="res://EnemyStateMachine/Chase.gd" id="24_la572"]
 [ext_resource type="Animation" uid="uid://b6ga5k6b8stym" path="res://AnimationsBelly/Walk.res" id="25_n7bc2"]
-[ext_resource type="MeshLibrary" uid="uid://cqtdlj2c05luu" path="res://Mesh_lib_Vertical.tres" id="26_wtwml"]
+[ext_resource type="MeshLibrary" uid="uid://bu208a8l5866i" path="res://scenes/palettes/cairn/meshlibrary_cairn.tres" id="26_8pbg2"]
 [ext_resource type="Script" uid="uid://ubfk2a80dhfp" path="res://addons/grid_map_pathfinding/grid_map_pathfinding.gd" id="27_xmd6u"]
 [ext_resource type="PackedScene" uid="uid://bq86osdembn58" path="res://scenes/_player/_player_test.tscn" id="28_db0d0"]
+[ext_resource type="Shader" uid="uid://4b4kstxm1aph" path="res://Shaders/Vertical_Slice_Level.gdshader" id="29_gqaa3"]
 [ext_resource type="PackedScene" uid="uid://bm8kaq0ah5g7q" path="res://scenes/interactions/interactables/grabbable_items/torch/torch.tscn" id="29_w1u0h"]
+[ext_resource type="Texture2D" uid="uid://bgvylughro1va" path="res://PaperTexture/Texturelabs_Paper_304L.jpg" id="30_ue6a3"]
 
-[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_xk7p0"]
-sky_top_color = Color(0.47028, 0.44203204, 0.42579472, 1)
-sky_horizon_color = Color(0.4899204, 0.48285845, 0.4787991, 1)
-ground_bottom_color = Color(0, 0, 0, 1)
-ground_horizon_color = Color(0.4899204, 0.48285845, 0.4787991, 1)
-
-[sub_resource type="Sky" id="Sky_3ri2a"]
-sky_material = SubResource("ProceduralSkyMaterial_xk7p0")
+[sub_resource type="Sky" id="Sky_8pbg2"]
 
 [sub_resource type="Environment" id="Environment_ge771"]
 background_mode = 2
 background_color = Color(0.74204445, 0.8283267, 1, 1)
-background_energy_multiplier = 0.88
-sky = SubResource("Sky_3ri2a")
+background_energy_multiplier = 0.0
+sky = SubResource("Sky_8pbg2")
+sky_rotation = Vector3(1.6283922, 0, 0)
+ambient_light_color = Color(0.45318854, 0.44539934, 0.42429575, 1)
 tonemap_mode = 2
 glow_enabled = true
 
@@ -51,7 +48,7 @@ glow_enabled = true
 radius = 0.001
 height = 0.7416992
 
-[sub_resource type="Shader" id="Shader_583mq"]
+[sub_resource type="Shader" id="Shader_gqaa3"]
 code = "shader_type spatial;
 render_mode diffuse_lambert_wrap,cull_disabled;
 
@@ -128,9 +125,9 @@ void fragment() {
 }
 "
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_p2exq"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ue6a3"]
 render_priority = 0
-shader = SubResource("Shader_583mq")
+shader = SubResource("Shader_gqaa3")
 shader_parameter/rows = 5.0
 shader_parameter/columns = 8.0
 shader_parameter/frame = 1.0
@@ -139,18 +136,18 @@ shader_parameter/sprite = ExtResource("2_ue6a3")
 shader_parameter/mode = 0
 shader_parameter/Normal = ExtResource("1_gqaa3")
 
-[sub_resource type="PlaneMesh" id="PlaneMesh_kuwra"]
-material = SubResource("ShaderMaterial_p2exq")
+[sub_resource type="PlaneMesh" id="PlaneMesh_8pbg2"]
+material = SubResource("ShaderMaterial_ue6a3")
 size = Vector2(1.08, 1.08)
 orientation = 2
 
-[sub_resource type="Resource" id="Resource_y5gym"]
+[sub_resource type="Resource" id="Resource_vefwy"]
 script = ExtResource("4_vefwy")
 sprite = ExtResource("5_8k40l")
 texture_normal = ExtResource("6_h15nr")
 columns = 8.0
 
-[sub_resource type="Resource" id="Resource_l510w"]
+[sub_resource type="Resource" id="Resource_8k40l"]
 script = ExtResource("4_vefwy")
 name = "walk"
 sprite = ExtResource("2_ue6a3")
@@ -158,7 +155,7 @@ texture_normal = ExtResource("1_gqaa3")
 rows = 5.0
 columns = 8.0
 
-[sub_resource type="Resource" id="Resource_0o764"]
+[sub_resource type="Resource" id="Resource_h15nr"]
 script = ExtResource("4_vefwy")
 name = "Attack_LbBottom"
 sprite = ExtResource("7_igngk")
@@ -166,7 +163,7 @@ texture_normal = ExtResource("8_ytf8k")
 rows = 2.0
 columns = 8.0
 
-[sub_resource type="Resource" id="Resource_ee76q"]
+[sub_resource type="Resource" id="Resource_igngk"]
 script = ExtResource("4_vefwy")
 name = "Attack_LMid"
 sprite = ExtResource("9_5o6sm")
@@ -174,7 +171,7 @@ texture_normal = ExtResource("10_wkr8j")
 rows = 2.0
 columns = 8.0
 
-[sub_resource type="Resource" id="Resource_uy4wu"]
+[sub_resource type="Resource" id="Resource_ytf8k"]
 script = ExtResource("4_vefwy")
 name = "Attack_LTop"
 sprite = ExtResource("11_v5821")
@@ -182,7 +179,7 @@ texture_normal = ExtResource("12_uqeqx")
 rows = 2.0
 columns = 8.0
 
-[sub_resource type="Resource" id="Resource_4i1sr"]
+[sub_resource type="Resource" id="Resource_5o6sm"]
 script = ExtResource("4_vefwy")
 name = "Attack_RBottom"
 sprite = ExtResource("13_0ahfl")
@@ -190,7 +187,7 @@ texture_normal = ExtResource("14_apgct")
 rows = 2.0
 columns = 8.0
 
-[sub_resource type="Resource" id="Resource_t0nn7"]
+[sub_resource type="Resource" id="Resource_wkr8j"]
 script = ExtResource("4_vefwy")
 name = "Attack_RMid"
 sprite = ExtResource("15_4it74")
@@ -198,7 +195,7 @@ texture_normal = ExtResource("16_ojd6j")
 rows = 2.0
 columns = 8.0
 
-[sub_resource type="Resource" id="Resource_t0a2k"]
+[sub_resource type="Resource" id="Resource_v5821"]
 script = ExtResource("4_vefwy")
 name = "Attack_RTop"
 sprite = ExtResource("17_bnyeu")
@@ -377,6 +374,14 @@ _data = {
 [sub_resource type="BoxShape3D" id="BoxShape3D_3ri2a"]
 size = Vector3(500, 0.1, 500)
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_mitvi"]
+shader = ExtResource("29_gqaa3")
+shader_parameter/paper_texture = ExtResource("30_ue6a3")
+shader_parameter/blend_strength = 1.0
+shader_parameter/contrast_boost = 1.08400005149
+shader_parameter/saturation = 0.822000039045
+shader_parameter/new_color = Color(0.82162356, 0.8358374, 0.854476, 0.9372549)
+
 [node name="Vertical_Slice_Level" type="Node3D"]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
@@ -392,7 +397,7 @@ directional_shadow_max_distance = 190.0
 sky_mode = 1
 
 [node name="StaticBody3D" type="StaticBody3D" parent="."]
-transform = Transform3D(0.9659258, 0, -0.25881898, 0, 1, 0, 0.25881898, 0, 0.9659258, -15.938198, 1.6680899, -19.488087)
+transform = Transform3D(0.9659258, 0, -0.25881898, 0, 1, 0, 0.25881898, 0, 0.9659258, -6.6057453, 1.4111557, 0.5340462)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.6291504, 0)
@@ -400,9 +405,9 @@ shape = SubResource("CapsuleShape3D_abuop")
 
 [node name="Sprite3DBillBoard" type="MeshInstance3D" parent="StaticBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.54317766, 0)
-mesh = SubResource("PlaneMesh_kuwra")
+mesh = SubResource("PlaneMesh_8pbg2")
 script = ExtResource("3_8pbg2")
-animations_array = Array[ExtResource("4_vefwy")]([SubResource("Resource_y5gym"), SubResource("Resource_l510w"), SubResource("Resource_0o764"), SubResource("Resource_ee76q"), SubResource("Resource_uy4wu"), SubResource("Resource_4i1sr"), SubResource("Resource_t0nn7"), SubResource("Resource_t0a2k")])
+animations_array = Array[ExtResource("4_vefwy")]([SubResource("Resource_vefwy"), SubResource("Resource_8k40l"), SubResource("Resource_h15nr"), SubResource("Resource_igngk"), SubResource("Resource_ytf8k"), SubResource("Resource_5o6sm"), SubResource("Resource_wkr8j"), SubResource("Resource_v5821")])
 animation = 1
 frame = 1.0
 sprite_scale = 0.001
@@ -455,10 +460,10 @@ libraries = {
 }
 
 [node name="GridMapPathFinding" type="GridMap" parent="."]
-mesh_library = ExtResource("26_wtwml")
+mesh_library = ExtResource("26_8pbg2")
 cell_size = Vector3(2, 0.7, 2)
 data = {
-"cells": PackedInt32Array(2, 65533, 1441796, 2, 65532, 655367, 3, 65531, 1048582, 3, 65532, 1048582, 3, 65533, 1048582, 3, 65528, 655363, 3, 65529, 655363, 65535, 0, 1441797, 0, 0, 1048579, 1, 0, 1048579, 2, 0, 1048579, 3, 0, 4, 3, 65535, 3, 3, 65534, 3, 3, 65530, 3, 4, 65533, 4, 4, 65531, 1048580, 2, 65531, 1048583, 3, 65527, 7, 3, 65526, 655365, 2, 65527, 1048579, 1, 65527, 1048579, 0, 65527, 655364, 0, 65528, 4, 65535, 65528, 1441795, 65534, 65528, 1048579, 65533, 65527, 1048580, 65533, 65529, 4, 65532, 65526, 1048580, 65533, 65528, 6, 65532, 65528, 6, 65532, 65527, 6, 65531, 65530, 4, 65531, 65526, 655364, 65531, 65527, 655366, 65531, 65528, 655366, 65531, 65529, 655366, 65530, 65528, 655367, 65530, 65529, 655367, 65530, 65530, 655367, 65530, 65531, 655363, 65530, 65532, 4, 65530, 65527, 655364, 65529, 65532, 655364, 65529, 65533, 3, 65529, 65534, 3, 65528, 65535, 655364, 65530, 65535, 1048580, 65527, 0, 655364, 65526, 1, 655364, 65527, 3, 1441796, 65531, 3, 4, 65528, 4, 1441796, 65530, 4, 4, 65529, 4, 1441799, 65526, 2, 1441796, 65532, 2, 4, 65529, 65535, 6, 65529, 0, 6, 65528, 0, 6, 65530, 0, 6, 65530, 1, 6, 65531, 1, 6, 65531, 2, 6, 65530, 2, 6, 65529, 2, 6, 65529, 1, 6, 65528, 1, 6, 65527, 1, 6, 65527, 2, 6, 65528, 2, 6, 65528, 3, 6, 65529, 3, 6, 65530, 3, 6, 65531, 0, 1048580, 1, 65531, 1048579, 0, 65531, 1048579, 65535, 65531, 1048579, 65534, 65531, 1048579, 65533, 65531, 655364, 65533, 65532, 655363, 65533, 65533, 4, 65532, 65533, 655364, 65532, 65534, 655363, 65532, 65535, 655363, 65532, 0, 655363, 65532, 1, 7, 65532, 65529, 1441799, 5, 65532, 1048579, 6, 65532, 1048579, 7, 65532, 1048579, 8, 65532, 1048581, 4, 65532, 1048582)
+"cells": PackedInt32Array(3, 65531, 1441792, 3, 65532, 655360, 3, 65526, 655365, 65531, 65529, 1441795, 65530, 65529, 655367, 65530, 65530, 655367, 65529, 0, 655363, 65528, 0, 6, 65530, 0, 655360, 65530, 1, 655360, 65531, 1, 655360, 65531, 2, 655360, 65530, 2, 1441795, 65529, 2, 6, 65529, 1, 1441795, 65528, 1, 6, 65527, 1, 6, 65528, 2, 6, 0, 0, 1441797, 3, 65534, 655362, 3, 65535, 655362, 3, 0, 3, 2, 0, 1441794, 1, 0, 1441796, 2, 65533, 1441795, 4, 65533, 3, 4, 65531, 1048579, 3, 65533, 655360, 5, 65532, 1048578, 6, 65532, 1441794, 7, 65532, 1048580, 4, 65532, 1441792, 3, 65530, 655362, 3, 65529, 655362, 3, 65528, 655362, 3, 65527, 1048579, 2, 65527, 1048578, 1, 65527, 655363, 1, 65528, 3, 0, 65528, 655363, 0, 65529, 3, 65535, 65529, 1441794, 65534, 65528, 1048579, 65534, 65530, 3, 65533, 65527, 1048579, 65533, 65531, 3, 65533, 65528, 655360, 65534, 65529, 655360, 65533, 65529, 655360, 65533, 65530, 655360, 65532, 65530, 1441793, 65532, 65527, 655363, 65532, 65528, 655360, 65532, 65529, 655360, 65531, 65528, 655363, 65532, 65532, 655362, 65532, 65533, 655362, 65531, 65534, 655363, 65531, 3, 1441795, 65532, 3, 3, 65531, 65535, 655360, 65532, 0, 655360, 65531, 0, 655360, 65532, 1, 655360, 65532, 2, 655360, 65530, 65535, 655363, 65532, 65535, 1048576, 65532, 65534, 1048576, 2, 65531, 655363, 65533, 2, 3, 65534, 1, 3, 65534, 0, 1048577, 65534, 65535, 1048579, 65533, 65533, 2, 65533, 65535, 0, 65533, 0, 0, 65533, 1, 0, 65533, 65534, 1048577, 65533, 65532, 655363, 65534, 65532, 1048578, 65535, 65532, 1048578, 0, 65532, 1048578, 1, 65532, 1048578, 2, 65532, 1048576, 65532, 65531, 1441793)
 }
 script = ExtResource("27_xmd6u")
 walkable_items = Array[int]([3, 4, 5, 6, 7])
@@ -471,37 +476,34 @@ metadata/_editor_floor_ = Vector3(0, 0, 0)
 transform = Transform3D(-0.2588191, 0, 0.9659258, 0, 1, 0, -0.9659258, 0, -0.2588191, 13.778312, 1.4893837, -11.459989)
 
 [node name="player_test" parent="." instance=ExtResource("28_db0d0")]
-transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -1, 1.4, 1)
-
-[node name="Torches" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.287013, 1.4229136, -22.326136)
-
-[node name="Torch" parent="Torches" instance=ExtResource("29_w1u0h")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.3116379, 0, 23.88982)
-
-[node name="Torch2" parent="Torches" instance=ExtResource("29_w1u0h")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.7193041, 0, 12.766284)
-
-[node name="Torch3" parent="Torches" instance=ExtResource("29_w1u0h")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.28069592, 0, 12.766284)
-
-[node name="Torch4" parent="Torches" instance=ExtResource("29_w1u0h")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.28069592, 0, 4.766283)
-
-[node name="Torch5" parent="Torches" instance=ExtResource("29_w1u0h")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.280697, 0, 6.766283)
-
-[node name="Torch6" parent="Torches" instance=ExtResource("29_w1u0h")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.280697, 0, 9.766283)
-
-[node name="Torch" parent="." instance=ExtResource("29_w1u0h")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 0.9, 1)
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 3, 1.4, 1)
 
 [node name="StaticBody3D2" type="StaticBody3D" parent="."]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.3, 0)
 shape = SubResource("BoxShape3D_3ri2a")
+
+[node name="PostProcessing" type="Node" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="PostProcessing"]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="PostProcessing"]
+layer = 0
+
+[node name="ColorRect" type="ColorRect" parent="PostProcessing/CanvasLayer"]
+material = SubResource("ShaderMaterial_mitvi")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.5747226, 0.50857943, 0.49505764, 0.03529412)
+
+[node name="Torches" type="Node3D" parent="."]
+
+[node name="Torch" parent="." instance=ExtResource("29_w1u0h")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 1, 1)
 
 [connection signal="body_shape_entered" from="StaticBody3D/Area3D" to="StaticBody3D/SM_controller" method="_on_area_3d_body_shape_entered"]
 [connection signal="body_shape_exited" from="StaticBody3D/Area3D" to="StaticBody3D/SM_controller" method="_on_area_3d_body_shape_exited"]
