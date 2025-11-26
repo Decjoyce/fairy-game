@@ -89,7 +89,7 @@ func find_path(start: Vector3i, end: Vector3i) -> Array:
 	# Ensure start and end are within the grid and walkable
 	#print(point_id_map)
 	if not point_id_map.has(start) or not point_id_map.has(end):
-		prints(point_id_map.has(start), point_id_map.has(end))
+		#prints(point_id_map.has(start), point_id_map.has(end))
 		return [] # No valid path
 	
 	var start_id: int = point_id_map[start]
@@ -97,6 +97,7 @@ func find_path(start: Vector3i, end: Vector3i) -> Array:
 	
 	# Get the path as an array of Vector3 points
 	var path = astar.get_point_path(start_id, end_id)
+	#prints(point_id_map[start],point_id_map[end])
 	return path
 
 ## Draws graphical debug path between start and end positions.[br][br]
@@ -132,32 +133,6 @@ func do_debug_path(start_pos, end_pos):
 		points[i] = map_to_local(next_point)
 		points[i].y += path_cell_size # move debug the box up
 		if i > 0 and i < path.size() - 1: 
-			DebugDraw3D.draw_box(points[i], Quaternion.IDENTITY, Vector3(path_cell_size, path_cell_size, path_cell_size), Color.YELLOW, true)
-		i += 1
-
-	# draw point path for added effect
-	DebugDraw3D.draw_point_path(points)
-	
-func do_shmoove_path(start_pos, end_pos, pathA):
-
-	#var pathA = find_path(start_pos, end_pos)
-	if astar.get_point_count() == 0: return
-	
-	var i: int = 0
-	points.resize(pathA.size())
-	##DEBUGER STUFF
-	#var temp: Vector3 = map_to_local(start_pos)
-	#temp.y += path_cell_size
-	#DebugDraw3D.draw_box(temp, Quaternion.IDENTITY, Vector3(path_cell_size, path_cell_size, path_cell_size), Color.GREEN, true)
-	#temp = map_to_local(end_pos)
-	#temp.y += path_cell_size
-	#DebugDraw3D.draw_box(temp, Quaternion.IDENTITY, Vector3(path_cell_size, path_cell_size, path_cell_size), Color.RED, true)
-	
-	# MOOOOVE
-	for next_point: Vector3 in pathA:
-		points[i] = map_to_local(next_point)
-		points[i].y += path_cell_size # move debug the box up
-		if i > 0 and i < pathA.size() - 1: 
 			DebugDraw3D.draw_box(points[i], Quaternion.IDENTITY, Vector3(path_cell_size, path_cell_size, path_cell_size), Color.YELLOW, true)
 		i += 1
 

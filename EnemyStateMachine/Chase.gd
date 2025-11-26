@@ -11,7 +11,7 @@ extends NodeState
 # SM for state change
 var is_moving: bool
 var target_pos: Vector3
-var speed: float = 4
+var speed: float = 1
 var dist_to_target: float
 var path := []
 var points: PackedVector3Array
@@ -27,9 +27,13 @@ var target_node
 
 func on_process(delta : float):
 	#movement(delta)
+	#get_pos()
+	DebugPath()
 	if Input.is_key_pressed(KEY_0): 
 		get_pos()
-		DebugPath()
+		find_path()
+	if Input.is_key_pressed(KEY_9): 
+		movement(delta)
 		
 func enter():
 	grid_map =get_tree().get_first_node_in_group("GMPF")
@@ -44,23 +48,34 @@ func exit():
 	pass
 	
 func get_pos():
-	curr_posVi = Body.position
-	curr_posPlayerVi = player.position
-	curr_posPlayerV = grid_map.astar.get_closest_position_in_segment(player.position)      #Vector3(player.position.x,0,player.position.z)
-	curr_posV = Body.position
-	curr_pos = grid_map.astar.get_closest_point(Body.position)
-	curr_posV = grid_map.astar.get_closest_position_in_segment(Body.position)
+	curr_posVi = Body.global_position
+	curr_posPlayerVi = player.global_position
+	curr_posPlayerV = grid_map.astar.get_closest_position_in_segment(player.get_child(1).global_position)      #Vector3(player.position.x,0,player.position.z)
+	curr_pos = grid_map.astar.get_closest_point(Body.global_position)
+	curr_posV = grid_map.astar.get_closest_position_in_segment(Body.global_position)
+	prints(curr_posV, curr_posPlayerV,)
+	##path = grid_map.find_path(curr_posV,curr_posPlayerV)
+	pass
+	
+func find_path():
 	path = grid_map.find_path(curr_posV,curr_posPlayerV)
-	print(curr_posV, curr_posPlayerV, curr_posVi, curr_posPlayerVi)
+	##print(curr_posV, curr_posPlayerV, curr_posVi, curr_posPlayerVi)
 	prints(path)
 	pass
 
+func debug_move():
+	Body.position = path[path.size()-1]
+
+	pass
+
 func movement(delta: float) -> void:
+	if path.size()<= 0:
+		return
 	
 	prints(current_point, path.size())
 	if current_point < path.size():
 		is_moving = true
-		target_pos.round() 
+		
 		target_pos.y = Body.global_position.y
 		dist_to_target = Body.global_position.distance_to(target_pos)
 		
@@ -77,10 +92,12 @@ func movement(delta: float) -> void:
 	
 
 func get_next_target() -> void:
-	current_point+=1
-	target_pos = path[current_point]
+	if path.size() <= 0:
+		return
+	path.pop_front()
+	target_pos = path[0]
 
 func DebugPath():
-	grid_map.do_debug_path(curr_posV,curr_posPlayerV)
+	grid_map.do_debug_path(curr_posPlayerV,curr_posV)
 	
 	pass
