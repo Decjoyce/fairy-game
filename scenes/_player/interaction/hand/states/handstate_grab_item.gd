@@ -97,6 +97,7 @@ func exit() -> void:
 	time_held_down = 0
 	offset_helper.position = offset_og_pos
 	hand_controller.input_controls.disable_interact_action()
+	t_bob = 0.0
 	#is_exiting = true
 	#grabbed_item = null
 
@@ -186,8 +187,8 @@ var charge_amount: float
 @export var delay_before_max_charge := 2.0
 var time_held_down: float = 0.0
 
-@export var BOB_FREQ: float
-@export var BOB_AMP: float
+var BOB_FREQ: float = 0.75
+var BOB_AMP: float = 6.5
 var t_bob: float = 0.0
 
 func begin_charge() -> void:
