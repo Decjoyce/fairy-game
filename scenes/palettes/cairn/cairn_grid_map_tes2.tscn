@@ -1,11 +1,27 @@
-[gd_scene load_steps=10 format=3 uid="uid://b6xduqa4p67ks"]
+[gd_scene load_steps=14 format=3 uid="uid://b6xduqa4p67ks"]
 
 [ext_resource type="MeshLibrary" uid="uid://bu208a8l5866i" path="res://scenes/palettes/cairn/meshlibrary_cairn.tres" id="1_v1k7g"]
 [ext_resource type="PackedScene" uid="uid://bq86osdembn58" path="res://scenes/_player/_player_test.tscn" id="2_v1k7g"]
 [ext_resource type="PackedScene" uid="uid://bm8kaq0ah5g7q" path="res://scenes/interactions/interactables/grabbable_items/torch/torch.tscn" id="3_v1k7g"]
 [ext_resource type="PackedScene" uid="uid://dde66nwtb1gv1" path="res://scenes/interactions/triggers/item_receiver/torch_scont/torch_scont.tscn" id="4_vfcdx"]
+[ext_resource type="Script" uid="uid://d3averdt6fuqm" path="res://scenes/interactions/interactables/grabbable_items/type/itemtype_torch.gd" id="4_xy48i"]
 [ext_resource type="PackedScene" uid="uid://dqh8lru4mt2ap" path="res://scenes/interactions/interactables/breakables/urn.tscn" id="5_iqm4c"]
 [ext_resource type="PackedScene" uid="uid://civmqin21rnce" path="res://scenes/interactions/interactables/instruments/instrument_test.tscn" id="6_o5dl7"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_j22s6"]
+frequency = 0.5412
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_7yijt"]
+noise = SubResource("FastNoiseLite_j22s6")
+
+[sub_resource type="Resource" id="Resource_wb15x"]
+script = ExtResource("4_xy48i")
+max_health = 150.0
+noise = SubResource("NoiseTexture2D_7yijt")
+light_strength = 2.645
+flicker_frequency = 1.0
+item_type = 1
+metadata/_custom_type_script = "uid://d3averdt6fuqm"
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_v1k7g"]
 sky_horizon_color = Color(0, 0.37292683, 0.8185948, 1)
@@ -44,6 +60,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 
 [node name="Torch" parent="." instance=ExtResource("3_v1k7g")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0.7, -10.7)
+item_type = SubResource("Resource_wb15x")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 light_energy = 0.006
