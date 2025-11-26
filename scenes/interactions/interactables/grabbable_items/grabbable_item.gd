@@ -98,7 +98,7 @@ func disable_me()-> void:
 func begin_using_item() -> void:
 	pass
 
-func using_item() -> void:
+func using_item(arg) -> void:
 	pass
 
 func end_using_item() -> void:

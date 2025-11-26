@@ -46,11 +46,15 @@ func update(_delta: float) -> void:
 	if !is_charging and Input.is_action_just_pressed("use_" + hand_controller.stringed_hand_type):
 		use()
 	
+	#if !item_receiver and Input.is_action_pressed("use_" + hand_controller.stringed_hand_type):
+		#use()
+	
 	if is_ready:
 		grabbing()
 
 func physics_update(_delta: float) -> void:
-	pass
+	if !item_receiver and Input.is_action_pressed("use_" + hand_controller.stringed_hand_type):
+		use()
 
 func enter(previous_state_path: String, data := {}) -> void:
 	grabbed_item = hand_controller.hovering_interactable
@@ -165,6 +169,12 @@ func use():
 				return
 			ItemType.ItemTypes.CONSUMABLE:
 				print("eat me")
+			ItemType.ItemTypes.INSTRUMENT:
+				var freq : float = remap(hand_controller.get_screen_position().x, 0, player_interact.size.x, grabbed_item.min_freq, grabbed_item.max_freq)
+				var octave: int = roundi(remap(hand_controller.get_screen_position().y/player_interact.size.y, 0, 1, 1, 3))
+				grabbed_item.using_item([freq, octave])
+			_:
+				return
 	
 
 # ↑ Using Stuff ↑
