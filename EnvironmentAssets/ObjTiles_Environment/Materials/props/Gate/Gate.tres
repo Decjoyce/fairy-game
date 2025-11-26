@@ -1,0 +1,22 @@
+[gd_resource type="StandardMaterial3D" load_steps=7 format=3 uid="uid://c6ic70i7jpqeu"]
+
+[ext_resource type="Texture2D" uid="uid://ct576hg5ji7mw" path="res://EnvironmentAssets/ObjTiles_Environment/ObjModels/Props/Gate/Gatee_Base_color.png" id="1_e3pj3"]
+[ext_resource type="Material" uid="uid://dyejtq23uplk4" path="res://EnvironmentAssets/ObjTiles_Environment/Materials/Outline/outline.tres" id="2_rpyn3"]
+[ext_resource type="Texture2D" uid="uid://d35di3kw5ukm0" path="res://EnvironmentAssets/ObjTiles_Environment/ObjModels/Props/Gate/Gatee_Metallic.png" id="2_yg75g"]
+[ext_resource type="Texture2D" uid="uid://bd2fxfs07rphm" path="res://EnvironmentAssets/ObjTiles_Environment/ObjModels/Props/Gate/Gatee_world_space_normals.png" id="4_csv7o"]
+[ext_resource type="Texture2D" uid="uid://cqtogekngvi1t" path="res://EnvironmentAssets/ObjTiles_Environment/ObjModels/Props/Gate/Gatee_Roughness.png" id="5_t0v6g"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_8k0en"]
+load_path = "res://.godot/imported/Gatee_Height.png-95ffc05b2d815ba06cd3e8f23692a542.s3tc.ctex"
+
+[resource]
+next_pass = ExtResource("2_rpyn3")
+albedo_texture = ExtResource("1_e3pj3")
+metallic = 1.0
+metallic_texture = ExtResource("2_yg75g")
+metallic_texture_channel = 4
+roughness_texture = ExtResource("5_t0v6g")
+roughness_texture_channel = 4
+normal_enabled = true
+normal_texture = ExtResource("4_csv7o")
+heightmap_texture = SubResource("CompressedTexture2D_8k0en")
