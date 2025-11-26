@@ -35,6 +35,15 @@ var is_activated: bool
 func _ready() -> void:
 	needed_items_left.assign(specific_items_to_recieve)
 
+func check_if_need_item(_item: Grabbable_Item) -> bool:
+	if receiver_type == ItemReceiverStyle.ANY_ITEM: return true
+	elif receiver_type == ItemReceiverStyle.SPECIFIC_ITEMS and specific_items_to_recieve.has(_item):
+		return true
+	elif receiver_type == ItemReceiverStyle.BY_TYPE and _item.item_type.item_type == type_of_item:
+		return true
+	elif receiver_type == ItemReceiverStyle.EITHER and (specific_items_to_recieve.has(_item) or _item.item_type.item_type == type_of_item): return true
+	else: return false
+
 func receive_item(_item: Grabbable_Item) -> bool:
 	match receiver_type:
 		0: # by type

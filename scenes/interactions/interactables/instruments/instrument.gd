@@ -11,6 +11,8 @@ var phase: float = 0.0
 var sample_hz: float = 1100.0
 var pulse_hz: float = 440.0
 
+@onready var timer: Timer = $Timer
+
 func _fill_buffer():
 	var increment = pulse_hz / sample_hz
 
@@ -25,10 +27,15 @@ func _ready() -> void:
 	music_player.stream.mix_rate = sample_hz
 	music_player.play()
 	playback = music_player.get_stream_playback()
+	
 	#_fill_buffer()
 
 func using_item(arg) -> void:
-	if fmod(Time.get_ticks_msec() * 100, 400) < 0: return
-	#prints("koko", arg[1])
-	pulse_hz = arg[0] * arg[1]
+	if timer.is_stopped():
+		play_sound(arg[0], arg[1])
+		timer.start()
+
+func play_sound(hz: float, octave: float) -> void:
+	pulse_hz = hz * octave
+	print(pulse_hz)
 	_fill_buffer()

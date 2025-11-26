@@ -61,8 +61,8 @@ func _transition_to_next_state(target_state_path: String, data: Dictionary = {})
 const min_speed: float = 500
 const mid_speed: float = 1000
 const max_speed: float = 1500
-var cur_speed_index: int = 0
-@onready var current_speed: float = min_speed
+var cur_speed_index: int = 2
+@onready var current_speed: float = max_speed
 
 func joystick_movement(delta: float) -> void:
 	var motion := Input.get_vector(stringed_hand_type + "_joystick_left", stringed_hand_type + "_joystick_right", stringed_hand_type + "_joystick_down", stringed_hand_type + "_joystick_up")

@@ -32,7 +32,7 @@ func update(_delta: float) -> void:
 			end_charge()
 	
 	if !is_charging: item_receiver = hand_controller.interact_checker_item_receiver()
-	if item_receiver: 
+	if item_receiver and item_receiver.check_if_need_item(grabbed_item):
 		if !hand_controller.anim_is_prompting:
 			hand_controller.anim_is_prompting = true
 			hand_controller.input_controls.enable_use_action(item_receiver.prompt_text)

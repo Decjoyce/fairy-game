@@ -50,9 +50,11 @@ func _ready() -> void:
 	rb.body_entered.connect(_on_collide)
 	prompt_text = "Grab " + name
 	if item_type is ItemType_Breakable:
-		item_spawn_on_destroyed = item_type.get_item_to_spawn().instantiate()
+		var _item_to_spawn: PackedScene = item_type.get_item_to_spawn()
+		if _item_to_spawn == null: return
+		item_spawn_on_destroyed = _item_to_spawn.instantiate()
 		destroyed_item.add_child(item_spawn_on_destroyed)
-		item_spawn_on_destroyed.position = Vector3.UP
+		item_spawn_on_destroyed.position = Vector3.UP * 0.75
 		item_spawn_on_destroyed.disable_me()
 
 func _physics_process(delta: float) -> void:
