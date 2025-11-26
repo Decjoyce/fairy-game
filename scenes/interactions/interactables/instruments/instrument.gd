@@ -25,7 +25,7 @@ func _ready() -> void:
 	music_player.stream.mix_rate = sample_hz
 	music_player.play()
 	playback = music_player.get_stream_playback()
-	_fill_buffer()
+	#_fill_buffer()
 
 func using_item(arg) -> void:
 	if fmod(Time.get_ticks_msec() * 100, 400) < 0: return
