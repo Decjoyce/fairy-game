@@ -1,0 +1,18 @@
+[gd_resource type="StandardMaterial3D" load_steps=6 format=3 uid="uid://b6cvru6t0xymy"]
+
+[ext_resource type="Texture2D" uid="uid://yr1jxd68pk0t" path="res://EnvironmentAssets/ObjTiles/ObjModels/Props/Gate/Gate2_Base_color.png" id="1_ysyhl"]
+[ext_resource type="Material" uid="uid://dyejtq23uplk4" path="res://EnvironmentAssets/EnvironmentMaterials/Materials/Shaded/outline.tres" id="2_5jocl"]
+[ext_resource type="Texture2D" uid="uid://dk706weub0xq7" path="res://EnvironmentAssets/ObjTiles/ObjModels/Props/Gate/Gate2_Metallic.png" id="2_046l1"]
+[ext_resource type="Texture2D" uid="uid://c44ql7fs6poxn" path="res://EnvironmentAssets/ObjTiles/ObjModels/Props/Gate/Gate2_world_space_normals.png" id="4_s6qvn"]
+[ext_resource type="Texture2D" uid="uid://cpaqvx5i8jfdm" path="res://EnvironmentAssets/ObjTiles/ObjModels/Props/Gate/Gate2_Roughness.png" id="5_it7hv"]
+
+[resource]
+next_pass = ExtResource("2_5jocl")
+albedo_texture = ExtResource("1_ysyhl")
+metallic = 1.0
+metallic_texture = ExtResource("2_046l1")
+metallic_texture_channel = 4
+roughness_texture = ExtResource("5_it7hv")
+roughness_texture_channel = 4
+normal_enabled = true
+normal_texture = ExtResource("4_s6qvn")
