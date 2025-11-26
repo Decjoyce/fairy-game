@@ -30,7 +30,7 @@
 radius = 0.001
 height = 0.7416992
 
-[sub_resource type="Shader" id="Shader_khln7"]
+[sub_resource type="Shader" id="Shader_om1c7"]
 code = "shader_type spatial;
 render_mode diffuse_lambert_wrap,cull_disabled;
 
@@ -107,9 +107,9 @@ void fragment() {
 }
 "
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_7pn84"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_8sfa5"]
 render_priority = 0
-shader = SubResource("Shader_khln7")
+shader = SubResource("Shader_om1c7")
 shader_parameter/rows = 5.0
 shader_parameter/columns = 8.0
 shader_parameter/frame = 1.0
@@ -118,18 +118,18 @@ shader_parameter/sprite = ExtResource("2_e8ov3")
 shader_parameter/mode = 0
 shader_parameter/Normal = ExtResource("1_g8xqt")
 
-[sub_resource type="PlaneMesh" id="PlaneMesh_ql322"]
-material = SubResource("ShaderMaterial_7pn84")
+[sub_resource type="PlaneMesh" id="PlaneMesh_7p6et"]
+material = SubResource("ShaderMaterial_8sfa5")
 size = Vector2(1.08, 1.08)
 orientation = 2
 
-[sub_resource type="Resource" id="Resource_xay2k"]
+[sub_resource type="Resource" id="Resource_c058d"]
 script = ExtResource("4_f2srf")
 sprite = ExtResource("2_ajj11")
 texture_normal = ExtResource("1_qr3a0")
 columns = 8.0
 
-[sub_resource type="Resource" id="Resource_jekun"]
+[sub_resource type="Resource" id="Resource_id5nl"]
 script = ExtResource("4_f2srf")
 name = "walk"
 sprite = ExtResource("2_e8ov3")
@@ -137,7 +137,7 @@ texture_normal = ExtResource("1_g8xqt")
 rows = 5.0
 columns = 8.0
 
-[sub_resource type="Resource" id="Resource_304ax"]
+[sub_resource type="Resource" id="Resource_hh3i1"]
 script = ExtResource("4_f2srf")
 name = "Attack_LbBottom"
 sprite = ExtResource("7_om1c7")
@@ -145,7 +145,7 @@ texture_normal = ExtResource("8_8sfa5")
 rows = 2.0
 columns = 8.0
 
-[sub_resource type="Resource" id="Resource_hu7p6"]
+[sub_resource type="Resource" id="Resource_3yeo6"]
 script = ExtResource("4_f2srf")
 name = "Attack_LMid"
 sprite = ExtResource("9_7p6et")
@@ -153,7 +153,7 @@ texture_normal = ExtResource("10_c058d")
 rows = 2.0
 columns = 8.0
 
-[sub_resource type="Resource" id="Resource_o6a3l"]
+[sub_resource type="Resource" id="Resource_k8hyn"]
 script = ExtResource("4_f2srf")
 name = "Attack_LTop"
 sprite = ExtResource("11_id5nl")
@@ -161,7 +161,7 @@ texture_normal = ExtResource("12_hh3i1")
 rows = 2.0
 columns = 8.0
 
-[sub_resource type="Resource" id="Resource_ekiru"]
+[sub_resource type="Resource" id="Resource_4i5rc"]
 script = ExtResource("4_f2srf")
 name = "Attack_RBottom"
 sprite = ExtResource("13_3yeo6")
@@ -169,7 +169,7 @@ texture_normal = ExtResource("14_k8hyn")
 rows = 2.0
 columns = 8.0
 
-[sub_resource type="Resource" id="Resource_88caa"]
+[sub_resource type="Resource" id="Resource_r671k"]
 script = ExtResource("4_f2srf")
 name = "Attack_RMid"
 sprite = ExtResource("15_4i5rc")
@@ -177,7 +177,7 @@ texture_normal = ExtResource("16_r671k")
 rows = 2.0
 columns = 8.0
 
-[sub_resource type="Resource" id="Resource_3fvgq"]
+[sub_resource type="Resource" id="Resource_ccwj4"]
 script = ExtResource("4_f2srf")
 name = "Attack_RTop"
 sprite = ExtResource("17_ccwj4")
@@ -187,106 +187,6 @@ columns = 8.0
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_f2srf"]
 radius = 1.0
-
-[sub_resource type="Animation" id="Animation_e8ov3"]
-resource_name = "Idle"
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:animation")
-tracks/0/interp = 0
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [0]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath(".:frame")
-tracks/1/interp = 0
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [0.0]
-}
-
-[sub_resource type="Animation" id="Animation_g8xqt"]
-resource_name = "test_walk"
-length = 1.1
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:frame")
-tracks/0/interp = 0
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.26666668, 0.7, 1),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 0,
-"values": [0.0, 1.0, 2.0, 3.0]
-}
-
-[sub_resource type="Animation" id="Animation_2jpox"]
-resource_name = "Attack_RTop"
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:animation")
-tracks/0/interp = 0
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [2]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath(".:frame")
-tracks/1/interp = 0
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [0.0, 1.0]
-}
-
-[sub_resource type="Animation" id="Animation_om1c7"]
-resource_name = "Attack_RMid"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:animation")
-tracks/0/interp = 0
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [2]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath(".:frame")
-tracks/1/interp = 0
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [0.0, 1.0]
-}
 
 [sub_resource type="Animation" id="Animation_8sfa5"]
 resource_name = "AttackR_RTop"
@@ -342,6 +242,106 @@ tracks/1/keys = {
 "values": [0.0, 1.0]
 }
 
+[sub_resource type="Animation" id="Animation_om1c7"]
+resource_name = "Attack_RMid"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:animation")
+tracks/0/interp = 0
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [2]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:frame")
+tracks/1/interp = 0
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 1.0]
+}
+
+[sub_resource type="Animation" id="Animation_2jpox"]
+resource_name = "Attack_RTop"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:animation")
+tracks/0/interp = 0
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [2]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:frame")
+tracks/1/interp = 0
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 1.0]
+}
+
+[sub_resource type="Animation" id="Animation_e8ov3"]
+resource_name = "Idle"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:animation")
+tracks/0/interp = 0
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:frame")
+tracks/1/interp = 0
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_g8xqt"]
+resource_name = "test_walk"
+length = 1.1
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 0
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.26666668, 0.7, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 1.0, 2.0, 3.0]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_khln7"]
 _data = {
 &"AttackR_RTop": SubResource("Animation_8sfa5"),
@@ -353,7 +353,7 @@ _data = {
 &"test_walk": SubResource("Animation_g8xqt")
 }
 
-[node name="StaticBody3D" type="StaticBody3D"]
+[node name="StaticBody3D" type="CharacterBody3D"]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.6291504, 0)
@@ -361,9 +361,9 @@ shape = SubResource("CapsuleShape3D_abuop")
 
 [node name="Sprite3DBillBoard" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.54317766, 0)
-mesh = SubResource("PlaneMesh_ql322")
+mesh = SubResource("PlaneMesh_7p6et")
 script = ExtResource("3_jrekf")
-animations_array = Array[ExtResource("4_f2srf")]([SubResource("Resource_xay2k"), SubResource("Resource_jekun"), SubResource("Resource_304ax"), SubResource("Resource_hu7p6"), SubResource("Resource_o6a3l"), SubResource("Resource_ekiru"), SubResource("Resource_88caa"), SubResource("Resource_3fvgq")])
+animations_array = Array[ExtResource("4_f2srf")]([SubResource("Resource_c058d"), SubResource("Resource_id5nl"), SubResource("Resource_hh3i1"), SubResource("Resource_3yeo6"), SubResource("Resource_k8hyn"), SubResource("Resource_4i5rc"), SubResource("Resource_r671k"), SubResource("Resource_ccwj4")])
 animation = 1
 frame = 1.0
 sprite_scale = 0.001

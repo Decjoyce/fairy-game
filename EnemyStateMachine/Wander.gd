@@ -1,6 +1,6 @@
 extends NodeState
 
-@export var Body : StaticBody3D # for shmoovment
+@export var Body : CharacterBody3D # for shmoovment
 @export var Sprite : Sprite3DBillBoard #For animation control i hope
 # Animator for what to play
 # SM for state change
