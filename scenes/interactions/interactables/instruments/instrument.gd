@@ -4,11 +4,11 @@ extends Grabbable_Item
 @export var music_player: AudioStreamPlayer3D
 var playback: AudioStreamPlayback = null
 
-@export var min_freq: float = 55 #880 #440.00
-@export var max_freq: float = 103.83 #1661.22 #830.61
+@export var min_freq: float = 110 #880 #440.00
+@export var max_freq: float = 207.65 #1661.22 #830.61
 var phase: float = 0.0
 
-var sample_hz: float = 880.0
+var sample_hz: float = 1100.0
 var pulse_hz: float = 440.0
 
 func _fill_buffer():
@@ -29,6 +29,6 @@ func _ready() -> void:
 
 func using_item(arg) -> void:
 	if fmod(Time.get_ticks_msec() * 100, 400) < 0: return
-	prints("koko", arg[1])
+	#prints("koko", arg[1])
 	pulse_hz = arg[0] * arg[1]
 	_fill_buffer()

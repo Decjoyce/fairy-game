@@ -171,7 +171,7 @@ func use():
 				print("eat me")
 			ItemType.ItemTypes.INSTRUMENT:
 				var freq : float = remap(hand_controller.get_screen_position().x, 0, player_interact.size.x, grabbed_item.min_freq, grabbed_item.max_freq)
-				var octave: int = roundi(remap(hand_controller.get_screen_position().y/player_interact.size.y, 0, 1, 1, 3))
+				var octave: float = remap(hand_controller.get_screen_position().y/player_interact.size.y, 0, 1, 1, 3)
 				grabbed_item.using_item([freq, octave])
 			_:
 				return
