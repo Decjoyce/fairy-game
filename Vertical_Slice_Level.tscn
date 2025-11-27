@@ -1,4 +1,4 @@
-[gd_scene load_steps=72 format=3 uid="uid://b1d53a2if0ifd"]
+[gd_scene load_steps=71 format=3 uid="uid://b1d53a2if0ifd"]
 
 [ext_resource type="Texture2D" uid="uid://bajdgu88x35py" path="res://Sprites/ballyWalkSheet_n.png" id="1_gqaa3"]
 [ext_resource type="Texture2D" uid="uid://dl3etwft2mhxm" path="res://Sprites/ballyWalkSheet.png" id="2_ue6a3"]
@@ -34,7 +34,6 @@
 [ext_resource type="PackedScene" uid="uid://dde66nwtb1gv1" path="res://scenes/interactions/triggers/item_receiver/torch_scont/torch_scont.tscn" id="32_vefwy"]
 [ext_resource type="PackedScene" uid="uid://dt13fur6twjep" path="res://scenes/interactions/receivers/gate/gate.tscn" id="33_8k40l"]
 [ext_resource type="PackedScene" uid="uid://qu5rxgbydmet" path="res://scenes/interactions/triggers/button/button.tscn" id="34_h15nr"]
-[ext_resource type="PackedScene" uid="uid://clnnqb1efkbei" path="res://scenes/interactions/prefabs/locked_door.tscn" id="35_igngk"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_vefwy"]
 sky_top_color = Color(0.47028, 0.44203204, 0.42579472, 1)
@@ -56,7 +55,7 @@ glow_enabled = true
 radius = 0.001
 height = 0.7416992
 
-[sub_resource type="Shader" id="Shader_igngk"]
+[sub_resource type="Shader" id="Shader_h15nr"]
 code = "shader_type spatial;
 render_mode diffuse_lambert_wrap,cull_disabled;
 
@@ -133,9 +132,9 @@ void fragment() {
 }
 "
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_ytf8k"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_igngk"]
 render_priority = 0
-shader = SubResource("Shader_igngk")
+shader = SubResource("Shader_h15nr")
 shader_parameter/rows = 5.0
 shader_parameter/columns = 8.0
 shader_parameter/frame = 1.0
@@ -144,12 +143,12 @@ shader_parameter/sprite = ExtResource("2_ue6a3")
 shader_parameter/mode = 0
 shader_parameter/Normal = ExtResource("1_gqaa3")
 
-[sub_resource type="PlaneMesh" id="PlaneMesh_5o6sm"]
-material = SubResource("ShaderMaterial_ytf8k")
+[sub_resource type="PlaneMesh" id="PlaneMesh_ytf8k"]
+material = SubResource("ShaderMaterial_igngk")
 size = Vector2(1.08, 1.08)
 orientation = 2
 
-[sub_resource type="Resource" id="Resource_wkr8j"]
+[sub_resource type="Resource" id="Resource_5o6sm"]
 script = ExtResource("4_vefwy")
 name = "Attack_LTop"
 sprite = ExtResource("5_8k40l")
@@ -157,7 +156,7 @@ texture_normal = ExtResource("6_h15nr")
 rows = 2.0
 columns = 8.0
 
-[sub_resource type="Resource" id="Resource_v5821"]
+[sub_resource type="Resource" id="Resource_wkr8j"]
 script = ExtResource("4_vefwy")
 name = "walk"
 sprite = ExtResource("2_ue6a3")
@@ -165,7 +164,7 @@ texture_normal = ExtResource("1_gqaa3")
 rows = 5.0
 columns = 8.0
 
-[sub_resource type="Resource" id="Resource_uqeqx"]
+[sub_resource type="Resource" id="Resource_v5821"]
 script = ExtResource("4_vefwy")
 name = "Attack_LbBottom"
 sprite = ExtResource("7_igngk")
@@ -173,7 +172,7 @@ texture_normal = ExtResource("8_ytf8k")
 rows = 2.0
 columns = 8.0
 
-[sub_resource type="Resource" id="Resource_0ahfl"]
+[sub_resource type="Resource" id="Resource_uqeqx"]
 script = ExtResource("4_vefwy")
 name = "Attack_LMid"
 sprite = ExtResource("9_5o6sm")
@@ -181,7 +180,7 @@ texture_normal = ExtResource("10_wkr8j")
 rows = 2.0
 columns = 8.0
 
-[sub_resource type="Resource" id="Resource_apgct"]
+[sub_resource type="Resource" id="Resource_0ahfl"]
 script = ExtResource("4_vefwy")
 name = "Attack_LTop"
 sprite = ExtResource("11_v5821")
@@ -189,7 +188,7 @@ texture_normal = ExtResource("12_uqeqx")
 rows = 2.0
 columns = 8.0
 
-[sub_resource type="Resource" id="Resource_4it74"]
+[sub_resource type="Resource" id="Resource_apgct"]
 script = ExtResource("4_vefwy")
 name = "Attack_RBottom"
 sprite = ExtResource("13_0ahfl")
@@ -197,7 +196,7 @@ texture_normal = ExtResource("14_apgct")
 rows = 2.0
 columns = 8.0
 
-[sub_resource type="Resource" id="Resource_ojd6j"]
+[sub_resource type="Resource" id="Resource_4it74"]
 script = ExtResource("4_vefwy")
 name = "Attack_RMid"
 sprite = ExtResource("15_4it74")
@@ -205,7 +204,7 @@ texture_normal = ExtResource("16_ojd6j")
 rows = 2.0
 columns = 8.0
 
-[sub_resource type="Resource" id="Resource_bnyeu"]
+[sub_resource type="Resource" id="Resource_ojd6j"]
 script = ExtResource("4_vefwy")
 name = "Attack_RTop"
 sprite = ExtResource("17_bnyeu")
@@ -381,7 +380,7 @@ _data = {
 &"test_walk": SubResource("Animation_g8xqt")
 }
 
-[sub_resource type="Shader" id="Shader_ppblj"]
+[sub_resource type="Shader" id="Shader_bnyeu"]
 code = "shader_type spatial;
 render_mode diffuse_lambert_wrap,cull_disabled;
 
@@ -458,9 +457,9 @@ void fragment() {
 }
 "
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_5a2e2"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ppblj"]
 render_priority = 0
-shader = SubResource("Shader_ppblj")
+shader = SubResource("Shader_bnyeu")
 shader_parameter/rows = 5.0
 shader_parameter/columns = 8.0
 shader_parameter/frame = 1.0
@@ -469,12 +468,12 @@ shader_parameter/sprite = ExtResource("2_ue6a3")
 shader_parameter/mode = 0
 shader_parameter/Normal = ExtResource("1_gqaa3")
 
-[sub_resource type="PlaneMesh" id="PlaneMesh_x42mn"]
-material = SubResource("ShaderMaterial_5a2e2")
+[sub_resource type="PlaneMesh" id="PlaneMesh_5a2e2"]
+material = SubResource("ShaderMaterial_ppblj")
 size = Vector2(1.08, 1.08)
 orientation = 2
 
-[sub_resource type="Resource" id="Resource_bl5uh"]
+[sub_resource type="Resource" id="Resource_x42mn"]
 script = ExtResource("4_vefwy")
 name = "Attack_LTop"
 sprite = ExtResource("5_8k40l")
@@ -482,7 +481,7 @@ texture_normal = ExtResource("6_h15nr")
 rows = 2.0
 columns = 8.0
 
-[sub_resource type="Resource" id="Resource_7os1t"]
+[sub_resource type="Resource" id="Resource_bl5uh"]
 script = ExtResource("4_vefwy")
 name = "walk"
 sprite = ExtResource("2_ue6a3")
@@ -490,7 +489,7 @@ texture_normal = ExtResource("1_gqaa3")
 rows = 5.0
 columns = 8.0
 
-[sub_resource type="Resource" id="Resource_tbjf3"]
+[sub_resource type="Resource" id="Resource_7os1t"]
 script = ExtResource("4_vefwy")
 name = "Attack_LbBottom"
 sprite = ExtResource("7_igngk")
@@ -498,7 +497,7 @@ texture_normal = ExtResource("8_ytf8k")
 rows = 2.0
 columns = 8.0
 
-[sub_resource type="Resource" id="Resource_la572"]
+[sub_resource type="Resource" id="Resource_tbjf3"]
 script = ExtResource("4_vefwy")
 name = "Attack_LMid"
 sprite = ExtResource("9_5o6sm")
@@ -506,7 +505,7 @@ texture_normal = ExtResource("10_wkr8j")
 rows = 2.0
 columns = 8.0
 
-[sub_resource type="Resource" id="Resource_n7bc2"]
+[sub_resource type="Resource" id="Resource_la572"]
 script = ExtResource("4_vefwy")
 name = "Attack_LTop"
 sprite = ExtResource("11_v5821")
@@ -514,7 +513,7 @@ texture_normal = ExtResource("12_uqeqx")
 rows = 2.0
 columns = 8.0
 
-[sub_resource type="Resource" id="Resource_wtwml"]
+[sub_resource type="Resource" id="Resource_n7bc2"]
 script = ExtResource("4_vefwy")
 name = "Attack_RBottom"
 sprite = ExtResource("13_0ahfl")
@@ -522,7 +521,7 @@ texture_normal = ExtResource("14_apgct")
 rows = 2.0
 columns = 8.0
 
-[sub_resource type="Resource" id="Resource_xmd6u"]
+[sub_resource type="Resource" id="Resource_wtwml"]
 script = ExtResource("4_vefwy")
 name = "Attack_RMid"
 sprite = ExtResource("15_4it74")
@@ -530,7 +529,7 @@ texture_normal = ExtResource("16_ojd6j")
 rows = 2.0
 columns = 8.0
 
-[sub_resource type="Resource" id="Resource_db0d0"]
+[sub_resource type="Resource" id="Resource_xmd6u"]
 script = ExtResource("4_vefwy")
 name = "Attack_RTop"
 sprite = ExtResource("17_bnyeu")
@@ -572,9 +571,9 @@ shape = SubResource("CapsuleShape3D_abuop")
 
 [node name="Sprite3DBillBoard" type="MeshInstance3D" parent="StaticBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.54317766, 0)
-mesh = SubResource("PlaneMesh_5o6sm")
+mesh = SubResource("PlaneMesh_ytf8k")
 script = ExtResource("3_8pbg2")
-animations_array = Array[ExtResource("4_vefwy")]([SubResource("Resource_wkr8j"), SubResource("Resource_v5821"), SubResource("Resource_uqeqx"), SubResource("Resource_0ahfl"), SubResource("Resource_apgct"), SubResource("Resource_4it74"), SubResource("Resource_ojd6j"), SubResource("Resource_bnyeu")])
+animations_array = Array[ExtResource("4_vefwy")]([SubResource("Resource_5o6sm"), SubResource("Resource_wkr8j"), SubResource("Resource_v5821"), SubResource("Resource_uqeqx"), SubResource("Resource_0ahfl"), SubResource("Resource_apgct"), SubResource("Resource_4it74"), SubResource("Resource_ojd6j")])
 animation = 1
 frame = 1.0
 sprite_scale = 0.001
@@ -635,9 +634,9 @@ shape = SubResource("CapsuleShape3D_abuop")
 
 [node name="Sprite3DBillBoard" type="MeshInstance3D" parent="StaticBody3D3"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.54317766, 0)
-mesh = SubResource("PlaneMesh_x42mn")
+mesh = SubResource("PlaneMesh_5a2e2")
 script = ExtResource("3_8pbg2")
-animations_array = Array[ExtResource("4_vefwy")]([SubResource("Resource_bl5uh"), SubResource("Resource_7os1t"), SubResource("Resource_tbjf3"), SubResource("Resource_la572"), SubResource("Resource_n7bc2"), SubResource("Resource_wtwml"), SubResource("Resource_xmd6u"), SubResource("Resource_db0d0")])
+animations_array = Array[ExtResource("4_vefwy")]([SubResource("Resource_x42mn"), SubResource("Resource_bl5uh"), SubResource("Resource_7os1t"), SubResource("Resource_tbjf3"), SubResource("Resource_la572"), SubResource("Resource_n7bc2"), SubResource("Resource_wtwml"), SubResource("Resource_xmd6u")])
 animation = 1
 frame = 1.0
 sprite_scale = 0.001
@@ -689,7 +688,7 @@ libraries = {
 &"": SubResource("AnimationLibrary_khln7")
 }
 
-[node name="GridMapPathFinding" type="GridMap" parent="."]
+[node name="GridMapPathFinding" type="GridMap" parent="." groups=["GMPF"]]
 mesh_library = ExtResource("26_8pbg2")
 cell_size = Vector3(2, 0.7, 2)
 data = {
@@ -752,9 +751,6 @@ delay_before_reset = 5.0
 
 [node name="Button_MainGate" parent="Gates+devices" instance=ExtResource("34_h15nr")]
 transform = Transform3D(-1, 0, 8.940697e-08, 0, 1, 0, -8.940697e-08, 0, -1, 8.181404, 1.1323705, -9.74968)
-
-[node name="LockedDoor" parent="Gates+devices" instance=ExtResource("35_igngk")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 1.3607478, -4)
 
 [connection signal="body_shape_entered" from="StaticBody3D/Area3D" to="StaticBody3D/SM_controller" method="_on_area_3d_body_shape_entered"]
 [connection signal="body_shape_exited" from="StaticBody3D/Area3D" to="StaticBody3D/SM_controller" method="_on_area_3d_body_shape_exited"]
