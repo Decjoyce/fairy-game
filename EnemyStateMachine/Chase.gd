@@ -87,7 +87,7 @@ func movement(delta: float) -> void:
 		target_pos.y = Body.global_position.y
 		dist_to_target = Body.global_position.distance_to(target_pos)
 		
-		if dist_to_target > 0.001: ## This is conditioned so we can know if player is moving, to stop them from being able to attack while moving
+		if dist_to_target > 0.01: ## This is conditioned so we can know if player is moving, to stop them from being able to attack while moving
 			#var weight = 1 - exp(-speed * delta)
 			Body.look_at(target_pos)
 			Body.global_position.x = lerpf(Body.global_position.x, target_pos.x, speed * delta)
