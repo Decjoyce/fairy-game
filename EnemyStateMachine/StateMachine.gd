@@ -25,6 +25,11 @@ func _ready() :
 		current_node_state = Init_node_state
 #	grid_map.setup_astar_grid(grid_map.walkable_items)
 
+func _physics_process(delta: float) -> void:
+	if current_node_state:
+		current_node_state.on_physics_process(delta)
+		
+
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) :

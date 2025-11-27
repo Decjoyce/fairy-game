@@ -1,4 +1,4 @@
-[gd_scene load_steps=46 format=3 uid="uid://bj8n80dbd408c"]
+[gd_scene load_steps=47 format=3 uid="uid://bj8n80dbd408c"]
 
 [ext_resource type="Texture2D" uid="uid://bajdgu88x35py" path="res://Sprites/ballyWalkSheet_n.png" id="1_g8xqt"]
 [ext_resource type="Texture2D" uid="uid://d117rsf1rrxb6" path="res://Sprites/ballybogIdle_n.png" id="1_qr3a0"]
@@ -27,8 +27,8 @@
 [ext_resource type="Texture2D" uid="uid://bnrfxmw0nk1dq" path="res://Sprites/ballyAttack_RTop_n.png" id="18_x7fdw"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_abuop"]
-radius = 0.001
-height = 0.7416992
+radius = 0.43391418
+height = 0.86782837
 
 [sub_resource type="Shader" id="Shader_om1c7"]
 code = "shader_type spatial;
@@ -186,7 +186,10 @@ rows = 2.0
 columns = 8.0
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_f2srf"]
-radius = 1.0
+radius = 1.5
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_om1c7"]
+radius = 5.0
 
 [sub_resource type="Animation" id="Animation_8sfa5"]
 resource_name = "AttackR_RTop"
@@ -356,11 +359,11 @@ _data = {
 [node name="Enemy_presset" type="CharacterBody3D"]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.6291504, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.4198761, 0)
 shape = SubResource("CapsuleShape3D_abuop")
 
 [node name="Sprite3DBillBoard" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.54317766, 0)
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0.45682234, 0)
 mesh = SubResource("PlaneMesh_7p6et")
 script = ExtResource("3_jrekf")
 animations_array = Array[ExtResource("4_f2srf")]([SubResource("Resource_c058d"), SubResource("Resource_id5nl"), SubResource("Resource_hh3i1"), SubResource("Resource_3yeo6"), SubResource("Resource_k8hyn"), SubResource("Resource_4i5rc"), SubResource("Resource_r671k"), SubResource("Resource_ccwj4")])
@@ -375,7 +378,7 @@ node_StateMachine = NodePath("../StateMachine")
 
 [node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("Init_node_state")]
 script = ExtResource("5_bin5x")
-Init_node_state = NodePath("Chase")
+Init_node_state = NodePath("Wander")
 
 [node name="IdleState" type="Node" parent="StateMachine" node_paths=PackedStringArray("Body", "Sprite", "SM", "Animator")]
 script = ExtResource("6_ajj11")
@@ -396,6 +399,10 @@ Sprite = NodePath("../../Sprite3DBillBoard")
 SM = NodePath("..")
 Animator = NodePath("../../AnimationPlayer")
 
+[node name="Timer" type="Timer" parent="StateMachine/Wander"]
+process_callback = 0
+wait_time = 7.0
+
 [node name="Chase" type="Node" parent="StateMachine" node_paths=PackedStringArray("Body", "Sprite", "SM", "Animator")]
 script = ExtResource("12_khln7")
 Body = NodePath("../..")
@@ -403,11 +410,23 @@ Sprite = NodePath("../../Sprite3DBillBoard")
 SM = NodePath("..")
 Animator = NodePath("../../AnimationPlayer")
 
-[node name="Area3D" type="Area3D" parent="." groups=["Player"]]
+[node name="Timer" type="Timer" parent="StateMachine/Chase"]
+process_callback = 0
+wait_time = 5.0
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+[node name="Area3D" type="Area3D" parent="." groups=["Player"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.59447724, 0)
+
+[node name="Fight area" type="CollisionShape3D" parent="Area3D"]
 shape = SubResource("SphereShape3D_f2srf")
 debug_color = Color(0.88782513, 0.3293662, 1.92523e-07, 0.41960785)
+
+[node name="Area3D2" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.59447724, 0)
+
+[node name="Vision_Hearing" type="CollisionShape3D" parent="Area3D2"]
+shape = SubResource("CylinderShape3D_om1c7")
+debug_color = Color(0.96061414, 2.117753e-06, 0.50728065, 0.41960785)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 root_node = NodePath("../Sprite3DBillBoard")
@@ -415,5 +434,10 @@ libraries = {
 &"": SubResource("AnimationLibrary_khln7")
 }
 
+[connection signal="timeout" from="StateMachine/Wander/Timer" to="StateMachine/Wander" method="_on_timer_timeout"]
+[connection signal="timeout" from="StateMachine/Chase/Timer" to="StateMachine/Chase" method="_on_timer_timeout"]
 [connection signal="body_shape_entered" from="Area3D" to="SM_controller" method="_on_area_3d_body_shape_entered"]
 [connection signal="body_shape_exited" from="Area3D" to="SM_controller" method="_on_area_3d_body_shape_exited"]
+[connection signal="area_entered" from="Area3D2" to="StateMachine/Wander" method="_on_area_3d_2_area_entered"]
+[connection signal="area_entered" from="Area3D2" to="StateMachine/Chase" method="_on_area_3d_2_area_entered"]
+[connection signal="area_exited" from="Area3D2" to="StateMachine/Chase" method="_on_area_3d_2_area_exited"]

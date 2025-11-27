@@ -123,10 +123,10 @@ func do_debug_path(start_pos, end_pos):
 	
 	var temp: Vector3 = map_to_local(start_pos)
 	temp.y += path_cell_size
-	DebugDraw3D.draw_box(temp, Quaternion.IDENTITY, Vector3(path_cell_size, path_cell_size, path_cell_size), Color.GREEN, true)
+	DebugDraw3D.draw_box(temp, Quaternion.IDENTITY, Vector3(path_cell_size/2, path_cell_size/2, path_cell_size/2), Color.GREEN, true)
 	temp = map_to_local(end_pos)
 	temp.y += path_cell_size
-	DebugDraw3D.draw_box(temp, Quaternion.IDENTITY, Vector3(path_cell_size, path_cell_size, path_cell_size), Color.RED, true)
+	DebugDraw3D.draw_box(temp, Quaternion.IDENTITY, Vector3(path_cell_size/2, path_cell_size/2, path_cell_size/2), Color.RED, true)
 	
 	# Draw boxes: Green = start, Red = end, Yellow = all others
 	for next_point: Vector3 in path:

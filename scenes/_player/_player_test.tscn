@@ -47,7 +47,7 @@ texture = SubResource("GradientTexture1D_imes0")
 script = ExtResource("1_e0b2u")
 combatUI = NodePath("Stats/UI")
 
-[node name="Collision" type="Area3D" parent="."]
+[node name="Collision" type="Area3D" parent="." groups=["Player"]]
 monitoring = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Collision"]
