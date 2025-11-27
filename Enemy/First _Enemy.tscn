@@ -186,10 +186,10 @@ rows = 2.0
 columns = 8.0
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_f2srf"]
-radius = 1.5
+radius = 1.0
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_om1c7"]
-radius = 5.0
+radius = 3.0
 
 [sub_resource type="Animation" id="Animation_8sfa5"]
 resource_name = "AttackR_RTop"
@@ -422,9 +422,10 @@ shape = SubResource("SphereShape3D_f2srf")
 debug_color = Color(0.88782513, 0.3293662, 1.92523e-07, 0.41960785)
 
 [node name="Area3D2" type="Area3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.59447724, 0)
+transform = Transform3D(0.495, 0, 0, 0, 0.495, 0, 0, 0, 0.495, 0, 0.59447724, 0)
 
 [node name="Vision_Hearing" type="CollisionShape3D" parent="Area3D2"]
+transform = Transform3D(0.99999696, 0, 0, 0, 0.99999696, 0, 0, 0, 0.99999696, 0, 0, 0)
 shape = SubResource("CylinderShape3D_om1c7")
 debug_color = Color(0.96061414, 2.117753e-06, 0.50728065, 0.41960785)
 

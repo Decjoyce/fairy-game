@@ -1,15 +1,40 @@
-[gd_scene load_steps=20 format=3 uid="uid://b1d53a2if0ifd"]
+[gd_scene load_steps=87 format=3 uid="uid://dugg6qnstestl"]
 
 [ext_resource type="PackedScene" uid="uid://bj8n80dbd408c" path="res://Enemy/First _Enemy.tscn" id="10_3cs1p"]
+[ext_resource type="Texture2D" uid="uid://bajdgu88x35py" path="res://Sprites/ballyWalkSheet_n.png" id="11_igngk"]
+[ext_resource type="Texture2D" uid="uid://dl3etwft2mhxm" path="res://Sprites/ballyWalkSheet.png" id="12_ytf8k"]
+[ext_resource type="Script" uid="uid://b5653u7w56pqw" path="res://extras_sprites/scripts/sprite_3D_billboard.gd" id="13_5o6sm"]
+[ext_resource type="Script" uid="uid://b4m0sglcg4smw" path="res://extras_sprites/scripts/animatio_data.gd" id="14_wkr8j"]
+[ext_resource type="Texture2D" uid="uid://cjn3bxmukh4fj" path="res://Sprites/ballybogIdle.png" id="15_v5821"]
+[ext_resource type="Texture2D" uid="uid://d117rsf1rrxb6" path="res://Sprites/ballybogIdle_n.png" id="16_uqeqx"]
+[ext_resource type="Texture2D" uid="uid://da55c2fwj7ox7" path="res://Sprites/ballyAttack_LBottom.png" id="17_0ahfl"]
+[ext_resource type="Texture2D" uid="uid://b45ckx6htx1bg" path="res://Sprites/ballyAttack_LBottom_n.png" id="18_apgct"]
+[ext_resource type="Texture2D" uid="uid://fohbvfmbnsw7" path="res://Sprites/ballyAttack_LMid.png" id="19_4it74"]
+[ext_resource type="Texture2D" uid="uid://d2eurcnwm514j" path="res://Sprites/ballyAttack_LMid_n.png" id="20_ojd6j"]
+[ext_resource type="Texture2D" uid="uid://c1t33lxeknsve" path="res://Sprites/ballyAttack_LTop.png" id="21_bnyeu"]
+[ext_resource type="Texture2D" uid="uid://p2iiihprajki" path="res://Sprites/ballyAttack_LTop_n.png" id="22_ppblj"]
+[ext_resource type="Texture2D" uid="uid://d2i5outw16p5m" path="res://Sprites/ballyAttack_RBottom.png" id="23_5a2e2"]
+[ext_resource type="Texture2D" uid="uid://0meyt1eqowl" path="res://Sprites/ballyAttack_RBottom_n.png" id="24_x42mn"]
+[ext_resource type="Texture2D" uid="uid://d32p1mrham4j6" path="res://Sprites/ballyAttack_RMid.png" id="25_bl5uh"]
+[ext_resource type="Texture2D" uid="uid://bjd7yeekbvmx0" path="res://Sprites/ballyAttack_RMid_n.png" id="26_7os1t"]
 [ext_resource type="MeshLibrary" uid="uid://bu208a8l5866i" path="res://scenes/palettes/cairn/meshlibrary_cairn.tres" id="26_8pbg2"]
+[ext_resource type="Texture2D" uid="uid://dqyfvagjygkha" path="res://Sprites/ballyAttack_RTop.png" id="27_tbjf3"]
 [ext_resource type="Script" uid="uid://ubfk2a80dhfp" path="res://addons/grid_map_pathfinding/grid_map_pathfinding.gd" id="27_xmd6u"]
 [ext_resource type="PackedScene" uid="uid://bq86osdembn58" path="res://scenes/_player/_player_test.tscn" id="28_db0d0"]
+[ext_resource type="Texture2D" uid="uid://bnrfxmw0nk1dq" path="res://Sprites/ballyAttack_RTop_n.png" id="28_la572"]
 [ext_resource type="Shader" uid="uid://4b4kstxm1aph" path="res://Shaders/Vertical_Slice_Level.gdshader" id="29_gqaa3"]
+[ext_resource type="Script" uid="uid://c3fdtr0ieg5dj" path="res://EnemyStateMachine/sm_controller.gd" id="29_n7bc2"]
 [ext_resource type="PackedScene" uid="uid://bm8kaq0ah5g7q" path="res://scenes/interactions/interactables/grabbable_items/torch/torch.tscn" id="29_w1u0h"]
 [ext_resource type="Texture2D" uid="uid://bgvylughro1va" path="res://PaperTexture/Texturelabs_Paper_304L.jpg" id="30_ue6a3"]
+[ext_resource type="Script" uid="uid://r7bhwy0jfpk7" path="res://EnemyStateMachine/StateMachine.gd" id="30_wtwml"]
+[ext_resource type="Script" uid="uid://dc3uc7qhwg03r" path="res://EnemyStateMachine/idle_state.gd" id="31_xmd6u"]
+[ext_resource type="Script" uid="uid://bg6gxealt4p8b" path="res://EnemyStateMachine/Fighting.gd" id="32_db0d0"]
 [ext_resource type="PackedScene" uid="uid://dde66nwtb1gv1" path="res://scenes/interactions/triggers/item_receiver/torch_scont/torch_scont.tscn" id="32_vefwy"]
 [ext_resource type="PackedScene" uid="uid://dt13fur6twjep" path="res://scenes/interactions/receivers/gate/gate.tscn" id="33_8k40l"]
+[ext_resource type="Script" uid="uid://cyctjxnvvlo47" path="res://EnemyStateMachine/Wander.gd" id="33_w1u0h"]
 [ext_resource type="PackedScene" uid="uid://qu5rxgbydmet" path="res://scenes/interactions/triggers/button/button.tscn" id="34_h15nr"]
+[ext_resource type="Script" uid="uid://dlre0emi41dh1" path="res://EnemyStateMachine/Chase.gd" id="34_ppupw"]
+[ext_resource type="Animation" uid="uid://b6ga5k6b8stym" path="res://AnimationsBelly/Walk.res" id="35_spkxr"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_vefwy"]
 sky_top_color = Color(0.47028, 0.44203204, 0.42579472, 1)
@@ -57,10 +82,670 @@ size = Vector3(500, 0.1, 500)
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_mitvi"]
 shader = ExtResource("29_gqaa3")
 shader_parameter/paper_texture = ExtResource("30_ue6a3")
-shader_parameter/blend_strength = 0.6110000290225
+shader_parameter/blend_strength = 0.6550000311125
 shader_parameter/contrast_boost = 1.08400005149
 shader_parameter/saturation = 0.822000039045
 shader_parameter/new_color = Color(0.82162356, 0.8358374, 0.854476, 0.9372549)
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_abuop"]
+radius = 0.43391418
+height = 0.86782837
+
+[sub_resource type="Shader" id="Shader_igngk"]
+code = "shader_type spatial;
+render_mode diffuse_lambert_wrap,cull_disabled;
+
+uniform float rows:hint_range(1.0, 100.0, 1) = 1;
+uniform float columns:hint_range(1.0, 100.0, 1) = 1;
+uniform float frame:hint_range(0.0, 100.0, 1) = 0;
+uniform bool invert_rows_columns = false;
+uniform sampler2D sprite:filter_nearest_mipmap;
+uniform int mode:hint_range(0, 1, 1) = 1;
+varying vec3 look_dir;
+uniform sampler2D Normal;
+
+
+float billboard_mode_a(vec3 CAMERA_POSITION,vec3 NODE_POSITION, mat4 MODEL_MAT,float directions){
+	vec3 direction_to_camera = normalize(CAMERA_POSITION-NODE_POSITION);
+	float angle_to_camera = atan(direction_to_camera.x,direction_to_camera.z);
+	vec4 model_direction = MODEL_MAT*vec4(1.0,0.0,0.0,0.0);
+	float y_angle = atan(model_direction.x,model_direction.z)-PI/2.0;
+	float final_angle = angle_to_camera-y_angle;
+	float int_y_angle = round((final_angle / TAU) * float(directions)) / float(directions);
+	return int_y_angle;
+}
+float billboard_mobe_b(vec3 CAMERA_POSITION,mat4 MODEL_MAT,mat4 VIEW_MAT,float directions,int ret){
+
+    vec3 ray_origin = CAMERA_POSITION;
+
+    vec3 object_origin = (MODEL_MAT * vec4(0.0,0.0,0.0,1.0)).xyz;
+    vec3 cam_dir = object_origin - ray_origin;
+    cam_dir = normalize((VIEW_MAT * vec4(cam_dir, 0.0)).xyz);
+
+    float angle = 180.0 - degrees(acos(dot(normalize(cam_dir.xz), normalize(look_dir.xz))));
+    float _direction = round(angle/180.0 * directions);
+
+    float flip = sign((look_dir.x * cam_dir.z) - (look_dir.z * cam_dir.x));
+
+    flip = mix(flip, 1.0, max(step(_direction, 0.0), step(directions, _direction)));
+	float retu = ret == 0 ? _direction : flip;
+	return retu ;
+}
+void vertex() {
+		 MODELVIEW_MATRIX = VIEW_MATRIX * mat4(vec4(normalize(cross(vec3(0.0, 1.0, 0.0), INV_VIEW_MATRIX[2].xyz)), 0.0), vec4(0.0, 1.0, 0.0, 0.0), vec4(normalize(cross(INV_VIEW_MATRIX[0].xyz, vec3(0.0, 1.0, 0.0))), 0.0), MODEL_MATRIX[3]);
+		look_dir = MODELVIEW_NORMAL_MATRIX * NORMAL;
+		MODELVIEW_NORMAL_MATRIX = mat3(MODELVIEW_MATRIX);
+	switch (mode){
+		case 0:
+			float y = invert_rows_columns == true ? billboard_mode_a(CAMERA_POSITION_WORLD,NODE_POSITION_WORLD,MODEL_MATRIX,rows) : billboard_mode_a(CAMERA_POSITION_WORLD,NODE_POSITION_WORLD,MODEL_MATRIX,columns);
+			float x = invert_rows_columns == true ? frame/columns:frame/rows;
+			UV /= vec2(rows,columns);
+			UV += invert_rows_columns == true ?vec2(y,x):vec2(x,y);
+			break;
+		case 1:
+			float x = invert_rows_columns == true ? frame/columns:frame/rows;
+			float y = billboard_mobe_b(CAMERA_POSITION_WORLD,MODEL_MATRIX,VIEW_MATRIX,rows,0);
+			float f = billboard_mobe_b(CAMERA_POSITION_WORLD,MODEL_MATRIX,VIEW_MATRIX,rows,1);
+			if (invert_rows_columns){
+				y = billboard_mobe_b(CAMERA_POSITION_WORLD,MODEL_MATRIX,VIEW_MATRIX,columns,0);
+				f = billboard_mobe_b(CAMERA_POSITION_WORLD,MODEL_MATRIX,VIEW_MATRIX,columns,1);
+			}
+			UV.y += invert_rows_columns == true ? x:y;
+			UV /=vec2(rows,columns);
+			UV.x +=  invert_rows_columns == true ? y : x;
+			UV *= invert_rows_columns == true ? vec2(1.0,f):vec2(f,1.0);
+			break;
+	};
+}
+
+void fragment() {
+	vec3 VNormal = texture(Normal,UV).rgb;
+	vec4 sprite_texture;
+	sprite_texture = texture(sprite,UV);
+	ALBEDO = sprite_texture.rgb;
+	ALPHA = sprite_texture.a;
+	NORMAL_MAP = VNormal;
+}
+"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ytf8k"]
+render_priority = 0
+shader = SubResource("Shader_igngk")
+shader_parameter/rows = 5.0
+shader_parameter/columns = 8.0
+shader_parameter/frame = 1.0
+shader_parameter/invert_rows_columns = false
+shader_parameter/sprite = ExtResource("12_ytf8k")
+shader_parameter/mode = 0
+shader_parameter/Normal = ExtResource("11_igngk")
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_5o6sm"]
+material = SubResource("ShaderMaterial_ytf8k")
+size = Vector2(1.08, 1.08)
+orientation = 2
+
+[sub_resource type="Resource" id="Resource_wkr8j"]
+script = ExtResource("14_wkr8j")
+sprite = ExtResource("15_v5821")
+texture_normal = ExtResource("16_uqeqx")
+columns = 8.0
+
+[sub_resource type="Resource" id="Resource_v5821"]
+script = ExtResource("14_wkr8j")
+name = "walk"
+sprite = ExtResource("12_ytf8k")
+texture_normal = ExtResource("11_igngk")
+rows = 5.0
+columns = 8.0
+
+[sub_resource type="Resource" id="Resource_uqeqx"]
+script = ExtResource("14_wkr8j")
+name = "Attack_LbBottom"
+sprite = ExtResource("17_0ahfl")
+texture_normal = ExtResource("18_apgct")
+rows = 2.0
+columns = 8.0
+
+[sub_resource type="Resource" id="Resource_0ahfl"]
+script = ExtResource("14_wkr8j")
+name = "Attack_LMid"
+sprite = ExtResource("19_4it74")
+texture_normal = ExtResource("20_ojd6j")
+rows = 2.0
+columns = 8.0
+
+[sub_resource type="Resource" id="Resource_apgct"]
+script = ExtResource("14_wkr8j")
+name = "Attack_LTop"
+sprite = ExtResource("21_bnyeu")
+texture_normal = ExtResource("22_ppblj")
+rows = 2.0
+columns = 8.0
+
+[sub_resource type="Resource" id="Resource_4it74"]
+script = ExtResource("14_wkr8j")
+name = "Attack_RBottom"
+sprite = ExtResource("23_5a2e2")
+texture_normal = ExtResource("24_x42mn")
+rows = 2.0
+columns = 8.0
+
+[sub_resource type="Resource" id="Resource_ojd6j"]
+script = ExtResource("14_wkr8j")
+name = "Attack_RMid"
+sprite = ExtResource("25_bl5uh")
+texture_normal = ExtResource("26_7os1t")
+rows = 2.0
+columns = 8.0
+
+[sub_resource type="Resource" id="Resource_bnyeu"]
+script = ExtResource("14_wkr8j")
+name = "Attack_RTop"
+sprite = ExtResource("27_tbjf3")
+texture_normal = ExtResource("28_la572")
+rows = 2.0
+columns = 8.0
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_f2srf"]
+radius = 1.0
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_om1c7"]
+radius = 3.0
+
+[sub_resource type="Animation" id="Animation_8sfa5"]
+resource_name = "AttackR_RTop"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:animation")
+tracks/0/interp = 0
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [4]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:frame")
+tracks/1/interp = 0
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 1.0]
+}
+
+[sub_resource type="Animation" id="Animation_7p6et"]
+resource_name = "Attack_LBottom"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:animation")
+tracks/0/interp = 0
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [4]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:frame")
+tracks/1/interp = 0
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 1.0]
+}
+
+[sub_resource type="Animation" id="Animation_om1c7"]
+resource_name = "Attack_RMid"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:animation")
+tracks/0/interp = 0
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [2]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:frame")
+tracks/1/interp = 0
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 1.0]
+}
+
+[sub_resource type="Animation" id="Animation_2jpox"]
+resource_name = "Attack_RTop"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:animation")
+tracks/0/interp = 0
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [2]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:frame")
+tracks/1/interp = 0
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 1.0]
+}
+
+[sub_resource type="Animation" id="Animation_e8ov3"]
+resource_name = "Idle"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:animation")
+tracks/0/interp = 0
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:frame")
+tracks/1/interp = 0
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_g8xqt"]
+resource_name = "test_walk"
+length = 1.1
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 0
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.26666668, 0.7, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 1.0, 2.0, 3.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_khln7"]
+_data = {
+&"AttackR_RTop": SubResource("Animation_8sfa5"),
+&"Attack_LBottom": SubResource("Animation_7p6et"),
+&"Attack_RMid": SubResource("Animation_om1c7"),
+&"Attack_RTop": SubResource("Animation_2jpox"),
+&"Idle": SubResource("Animation_e8ov3"),
+&"RESET": ExtResource("35_spkxr"),
+&"test_walk": SubResource("Animation_g8xqt")
+}
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_wtwml"]
+radius = 0.43391418
+height = 1.4339142
+
+[sub_resource type="Shader" id="Shader_ppblj"]
+code = "shader_type spatial;
+render_mode diffuse_lambert_wrap,cull_disabled;
+
+uniform float rows:hint_range(1.0, 100.0, 1) = 1;
+uniform float columns:hint_range(1.0, 100.0, 1) = 1;
+uniform float frame:hint_range(0.0, 100.0, 1) = 0;
+uniform bool invert_rows_columns = false;
+uniform sampler2D sprite:filter_nearest_mipmap;
+uniform int mode:hint_range(0, 1, 1) = 1;
+varying vec3 look_dir;
+uniform sampler2D Normal;
+
+
+float billboard_mode_a(vec3 CAMERA_POSITION,vec3 NODE_POSITION, mat4 MODEL_MAT,float directions){
+	vec3 direction_to_camera = normalize(CAMERA_POSITION-NODE_POSITION);
+	float angle_to_camera = atan(direction_to_camera.x,direction_to_camera.z);
+	vec4 model_direction = MODEL_MAT*vec4(1.0,0.0,0.0,0.0);
+	float y_angle = atan(model_direction.x,model_direction.z)-PI/2.0;
+	float final_angle = angle_to_camera-y_angle;
+	float int_y_angle = round((final_angle / TAU) * float(directions)) / float(directions);
+	return int_y_angle;
+}
+float billboard_mobe_b(vec3 CAMERA_POSITION,mat4 MODEL_MAT,mat4 VIEW_MAT,float directions,int ret){
+
+    vec3 ray_origin = CAMERA_POSITION;
+
+    vec3 object_origin = (MODEL_MAT * vec4(0.0,0.0,0.0,1.0)).xyz;
+    vec3 cam_dir = object_origin - ray_origin;
+    cam_dir = normalize((VIEW_MAT * vec4(cam_dir, 0.0)).xyz);
+
+    float angle = 180.0 - degrees(acos(dot(normalize(cam_dir.xz), normalize(look_dir.xz))));
+    float _direction = round(angle/180.0 * directions);
+
+    float flip = sign((look_dir.x * cam_dir.z) - (look_dir.z * cam_dir.x));
+
+    flip = mix(flip, 1.0, max(step(_direction, 0.0), step(directions, _direction)));
+	float retu = ret == 0 ? _direction : flip;
+	return retu ;
+}
+void vertex() {
+		 MODELVIEW_MATRIX = VIEW_MATRIX * mat4(vec4(normalize(cross(vec3(0.0, 1.0, 0.0), INV_VIEW_MATRIX[2].xyz)), 0.0), vec4(0.0, 1.0, 0.0, 0.0), vec4(normalize(cross(INV_VIEW_MATRIX[0].xyz, vec3(0.0, 1.0, 0.0))), 0.0), MODEL_MATRIX[3]);
+		look_dir = MODELVIEW_NORMAL_MATRIX * NORMAL;
+		MODELVIEW_NORMAL_MATRIX = mat3(MODELVIEW_MATRIX);
+	switch (mode){
+		case 0:
+			float y = invert_rows_columns == true ? billboard_mode_a(CAMERA_POSITION_WORLD,NODE_POSITION_WORLD,MODEL_MATRIX,rows) : billboard_mode_a(CAMERA_POSITION_WORLD,NODE_POSITION_WORLD,MODEL_MATRIX,columns);
+			float x = invert_rows_columns == true ? frame/columns:frame/rows;
+			UV /= vec2(rows,columns);
+			UV += invert_rows_columns == true ?vec2(y,x):vec2(x,y);
+			break;
+		case 1:
+			float x = invert_rows_columns == true ? frame/columns:frame/rows;
+			float y = billboard_mobe_b(CAMERA_POSITION_WORLD,MODEL_MATRIX,VIEW_MATRIX,rows,0);
+			float f = billboard_mobe_b(CAMERA_POSITION_WORLD,MODEL_MATRIX,VIEW_MATRIX,rows,1);
+			if (invert_rows_columns){
+				y = billboard_mobe_b(CAMERA_POSITION_WORLD,MODEL_MATRIX,VIEW_MATRIX,columns,0);
+				f = billboard_mobe_b(CAMERA_POSITION_WORLD,MODEL_MATRIX,VIEW_MATRIX,columns,1);
+			}
+			UV.y += invert_rows_columns == true ? x:y;
+			UV /=vec2(rows,columns);
+			UV.x +=  invert_rows_columns == true ? y : x;
+			UV *= invert_rows_columns == true ? vec2(1.0,f):vec2(f,1.0);
+			break;
+	};
+}
+
+void fragment() {
+	vec3 VNormal = texture(Normal,UV).rgb;
+	vec4 sprite_texture;
+	sprite_texture = texture(sprite,UV);
+	ALBEDO = sprite_texture.rgb;
+	ALPHA = sprite_texture.a;
+	NORMAL_MAP = VNormal;
+}
+"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_5a2e2"]
+render_priority = 0
+shader = SubResource("Shader_ppblj")
+shader_parameter/rows = 5.0
+shader_parameter/columns = 8.0
+shader_parameter/frame = 1.0
+shader_parameter/invert_rows_columns = false
+shader_parameter/sprite = ExtResource("12_ytf8k")
+shader_parameter/mode = 0
+shader_parameter/Normal = ExtResource("11_igngk")
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_x42mn"]
+material = SubResource("ShaderMaterial_5a2e2")
+size = Vector2(2.16, 2.16)
+orientation = 2
+
+[sub_resource type="Resource" id="Resource_bl5uh"]
+script = ExtResource("14_wkr8j")
+sprite = ExtResource("15_v5821")
+texture_normal = ExtResource("16_uqeqx")
+columns = 8.0
+
+[sub_resource type="Resource" id="Resource_7os1t"]
+script = ExtResource("14_wkr8j")
+name = "walk"
+sprite = ExtResource("12_ytf8k")
+texture_normal = ExtResource("11_igngk")
+rows = 5.0
+columns = 8.0
+
+[sub_resource type="Resource" id="Resource_tbjf3"]
+script = ExtResource("14_wkr8j")
+name = "Attack_LbBottom"
+sprite = ExtResource("17_0ahfl")
+texture_normal = ExtResource("18_apgct")
+rows = 2.0
+columns = 8.0
+
+[sub_resource type="Resource" id="Resource_la572"]
+script = ExtResource("14_wkr8j")
+name = "Attack_LMid"
+sprite = ExtResource("19_4it74")
+texture_normal = ExtResource("20_ojd6j")
+rows = 2.0
+columns = 8.0
+
+[sub_resource type="Resource" id="Resource_n7bc2"]
+script = ExtResource("14_wkr8j")
+name = "Attack_LTop"
+sprite = ExtResource("21_bnyeu")
+texture_normal = ExtResource("22_ppblj")
+rows = 2.0
+columns = 8.0
+
+[sub_resource type="Resource" id="Resource_wtwml"]
+script = ExtResource("14_wkr8j")
+name = "Attack_RBottom"
+sprite = ExtResource("23_5a2e2")
+texture_normal = ExtResource("24_x42mn")
+rows = 2.0
+columns = 8.0
+
+[sub_resource type="Resource" id="Resource_xmd6u"]
+script = ExtResource("14_wkr8j")
+name = "Attack_RMid"
+sprite = ExtResource("25_bl5uh")
+texture_normal = ExtResource("26_7os1t")
+rows = 2.0
+columns = 8.0
+
+[sub_resource type="Resource" id="Resource_db0d0"]
+script = ExtResource("14_wkr8j")
+name = "Attack_RTop"
+sprite = ExtResource("27_tbjf3")
+texture_normal = ExtResource("28_la572")
+rows = 2.0
+columns = 8.0
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_xmd6u"]
+radius = 1.0
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_db0d0"]
+radius = 6.0
+
+[sub_resource type="Animation" id="Animation_w1u0h"]
+resource_name = "AttackR_RTop"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:animation")
+tracks/0/interp = 0
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [4]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:frame")
+tracks/1/interp = 0
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 1.0]
+}
+
+[sub_resource type="Animation" id="Animation_ppupw"]
+resource_name = "Attack_LBottom"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:animation")
+tracks/0/interp = 0
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [4]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:frame")
+tracks/1/interp = 0
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 1.0]
+}
+
+[sub_resource type="Animation" id="Animation_spkxr"]
+resource_name = "Attack_RMid"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:animation")
+tracks/0/interp = 0
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [2]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:frame")
+tracks/1/interp = 0
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 1.0]
+}
+
+[sub_resource type="Animation" id="Animation_by7b7"]
+resource_name = "Attack_RTop"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:animation")
+tracks/0/interp = 0
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [2]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:frame")
+tracks/1/interp = 0
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 1.0]
+}
+
+[sub_resource type="Animation" id="Animation_2aexi"]
+resource_name = "Idle"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:animation")
+tracks/0/interp = 0
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:frame")
+tracks/1/interp = 0
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_6v1qy"]
+resource_name = "test_walk"
+length = 1.1
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 0
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.26666668, 0.7, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 1.0, 2.0, 3.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_p4nyg"]
+_data = {
+&"AttackR_RTop": SubResource("Animation_w1u0h"),
+&"Attack_LBottom": SubResource("Animation_ppupw"),
+&"Attack_RMid": SubResource("Animation_spkxr"),
+&"Attack_RTop": SubResource("Animation_by7b7"),
+&"Idle": SubResource("Animation_2aexi"),
+&"RESET": ExtResource("35_spkxr"),
+&"test_walk": SubResource("Animation_6v1qy")
+}
 
 [node name="Vertical_Slice_Level" type="Node3D"]
 
@@ -88,7 +773,6 @@ script = ExtResource("27_xmd6u")
 walkable_items = Array[int]([0])
 debug_start_cell = Vector3i(-2, 0, 6)
 debug_end_cell = Vector3i(2, 0, 2)
-metadata/_custom_type_script = "uid://ubfk2a80dhfp"
 
 [node name="Visual tiles" type="GridMap" parent="."]
 mesh_library = ExtResource("26_8pbg2")
@@ -100,7 +784,6 @@ script = ExtResource("27_xmd6u")
 walkable_items = Array[int]([0, 1, 2, 3, 4])
 debug_start_cell = Vector3i(-4, 0, -1)
 debug_end_cell = Vector3i(-3, 0, 2)
-metadata/_custom_type_script = "uid://ubfk2a80dhfp"
 metadata/_editor_floor_ = Vector3(0, 0, 0)
 
 [node name="Camera3D" type="Camera3D" parent="."]
@@ -154,11 +837,187 @@ delay_before_reset = 5.0
 [node name="Button_MainGate" parent="Gates+devices" instance=ExtResource("34_h15nr")]
 transform = Transform3D(-1, 0, 8.940697e-08, 0, 1, 0, -8.940697e-08, 0, -1, 8.181404, 1.1323705, -9.74968)
 
-[node name="Enemy_presset" parent="." instance=ExtResource("10_3cs1p")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.739928, 0.44596887, -0.04137087)
+[node name="Enemies" type="Node" parent="."]
 
-[node name="Enemy_presset2" parent="." instance=ExtResource("10_3cs1p")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.09916, 0.4639815, 3.1999366)
+[node name="First Enemy" type="CharacterBody3D" parent="Enemies"]
+transform = Transform3D(-0.99415094, 0, -0.10799942, 0, 1, 0, 0.10799942, 0, -0.99415094, 7.00449, 0.44596887, -15.007294)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Enemies/First Enemy"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.4198761, 0)
+shape = SubResource("CapsuleShape3D_abuop")
+
+[node name="Sprite3DBillBoard" type="MeshInstance3D" parent="Enemies/First Enemy"]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0.45682234, 0)
+mesh = SubResource("PlaneMesh_5o6sm")
+script = ExtResource("13_5o6sm")
+animations_array = Array[ExtResource("14_wkr8j")]([SubResource("Resource_wkr8j"), SubResource("Resource_v5821"), SubResource("Resource_uqeqx"), SubResource("Resource_0ahfl"), SubResource("Resource_apgct"), SubResource("Resource_4it74"), SubResource("Resource_ojd6j"), SubResource("Resource_bnyeu")])
+animation = 1
+frame = 1.0
+sprite_scale = 0.001
+metadata/_custom_type_script = "uid://b5653u7w56pqw"
+
+[node name="SM_controller" type="Node" parent="Enemies/First Enemy" node_paths=PackedStringArray("node_StateMachine")]
+script = ExtResource("29_n7bc2")
+node_StateMachine = NodePath("../StateMachine")
+
+[node name="StateMachine" type="Node" parent="Enemies/First Enemy" node_paths=PackedStringArray("Init_node_state")]
+script = ExtResource("30_wtwml")
+Init_node_state = NodePath("Wander")
+
+[node name="IdleState" type="Node" parent="Enemies/First Enemy/StateMachine" node_paths=PackedStringArray("Body", "Sprite", "SM", "Animator")]
+script = ExtResource("31_xmd6u")
+Body = NodePath("../..")
+Sprite = NodePath("../../Sprite3DBillBoard")
+SM = NodePath("..")
+Animator = NodePath("../../AnimationPlayer")
+
+[node name="Fighting" type="Node" parent="Enemies/First Enemy/StateMachine" node_paths=PackedStringArray("SM", "Animator")]
+script = ExtResource("32_db0d0")
+SM = NodePath("..")
+Animator = NodePath("../../AnimationPlayer")
+
+[node name="Wander" type="Node" parent="Enemies/First Enemy/StateMachine" node_paths=PackedStringArray("Body", "Sprite", "SM", "Animator")]
+script = ExtResource("33_w1u0h")
+Body = NodePath("../..")
+Sprite = NodePath("../../Sprite3DBillBoard")
+SM = NodePath("..")
+Animator = NodePath("../../AnimationPlayer")
+
+[node name="Timer" type="Timer" parent="Enemies/First Enemy/StateMachine/Wander"]
+process_callback = 0
+wait_time = 7.0
+
+[node name="Chase" type="Node" parent="Enemies/First Enemy/StateMachine" node_paths=PackedStringArray("Body", "Sprite", "SM", "Animator")]
+script = ExtResource("34_ppupw")
+Body = NodePath("../..")
+Sprite = NodePath("../../Sprite3DBillBoard")
+SM = NodePath("..")
+Animator = NodePath("../../AnimationPlayer")
+
+[node name="Timer" type="Timer" parent="Enemies/First Enemy/StateMachine/Chase"]
+process_callback = 0
+wait_time = 5.0
+
+[node name="Area3D" type="Area3D" parent="Enemies/First Enemy" groups=["Player"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.59447724, 0)
+
+[node name="Fight area" type="CollisionShape3D" parent="Enemies/First Enemy/Area3D"]
+shape = SubResource("SphereShape3D_f2srf")
+debug_color = Color(0.88782513, 0.3293662, 1.92523e-07, 0.41960785)
+
+[node name="Area3D2" type="Area3D" parent="Enemies/First Enemy"]
+transform = Transform3D(0.495, 0, 0, 0, 0.495, 0, 0, 0, 0.495, 0, 0.59447724, 0)
+
+[node name="Vision_Hearing" type="CollisionShape3D" parent="Enemies/First Enemy/Area3D2"]
+transform = Transform3D(0.99999815, 0, 2.3841858e-07, 0, 0.99999696, 0, -2.3841858e-07, 0, 0.99999815, 0, 0, 0)
+shape = SubResource("CylinderShape3D_om1c7")
+debug_color = Color(0.96061414, 2.117753e-06, 0.50728065, 0.41960785)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Enemies/First Enemy"]
+root_node = NodePath("../Sprite3DBillBoard")
+libraries = {
+&"": SubResource("AnimationLibrary_khln7")
+}
+
+[node name="BigScaryBossEnemy" type="CharacterBody3D" parent="Enemies"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.996, 0.836, 1.993)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Enemies/BigScaryBossEnemy"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.13683313, 0)
+shape = SubResource("CapsuleShape3D_wtwml")
+
+[node name="Sprite3DBillBoard" type="MeshInstance3D" parent="Enemies/BigScaryBossEnemy"]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0.45682234, 0)
+mesh = SubResource("PlaneMesh_x42mn")
+script = ExtResource("13_5o6sm")
+animations_array = Array[ExtResource("14_wkr8j")]([SubResource("Resource_bl5uh"), SubResource("Resource_7os1t"), SubResource("Resource_tbjf3"), SubResource("Resource_la572"), SubResource("Resource_n7bc2"), SubResource("Resource_wtwml"), SubResource("Resource_xmd6u"), SubResource("Resource_db0d0")])
+animation = 1
+frame = 1.0
+sprite_scale = 0.002
+metadata/_custom_type_script = "uid://b5653u7w56pqw"
+
+[node name="SM_controller" type="Node" parent="Enemies/BigScaryBossEnemy" node_paths=PackedStringArray("node_StateMachine")]
+script = ExtResource("29_n7bc2")
+node_StateMachine = NodePath("../StateMachine")
+
+[node name="StateMachine" type="Node" parent="Enemies/BigScaryBossEnemy" node_paths=PackedStringArray("Init_node_state")]
+script = ExtResource("30_wtwml")
+Init_node_state = NodePath("Wander")
+
+[node name="IdleState" type="Node" parent="Enemies/BigScaryBossEnemy/StateMachine" node_paths=PackedStringArray("Body", "Sprite", "SM", "Animator")]
+script = ExtResource("31_xmd6u")
+Body = NodePath("../..")
+Sprite = NodePath("../../Sprite3DBillBoard")
+SM = NodePath("..")
+Animator = NodePath("../../AnimationPlayer")
+
+[node name="Fighting" type="Node" parent="Enemies/BigScaryBossEnemy/StateMachine" node_paths=PackedStringArray("SM", "Animator")]
+script = ExtResource("32_db0d0")
+SM = NodePath("..")
+Animator = NodePath("../../AnimationPlayer")
+
+[node name="Wander" type="Node" parent="Enemies/BigScaryBossEnemy/StateMachine" node_paths=PackedStringArray("Body", "Sprite", "SM", "Animator")]
+script = ExtResource("33_w1u0h")
+Body = NodePath("../..")
+Sprite = NodePath("../../Sprite3DBillBoard")
+SM = NodePath("..")
+Animator = NodePath("../../AnimationPlayer")
+
+[node name="Timer" type="Timer" parent="Enemies/BigScaryBossEnemy/StateMachine/Wander"]
+process_callback = 0
+wait_time = 7.0
+
+[node name="Chase" type="Node" parent="Enemies/BigScaryBossEnemy/StateMachine" node_paths=PackedStringArray("Body", "Sprite", "SM", "Animator")]
+script = ExtResource("34_ppupw")
+Body = NodePath("../..")
+Sprite = NodePath("../../Sprite3DBillBoard")
+SM = NodePath("..")
+Animator = NodePath("../../AnimationPlayer")
+
+[node name="Timer" type="Timer" parent="Enemies/BigScaryBossEnemy/StateMachine/Chase"]
+process_callback = 0
+wait_time = 5.0
+
+[node name="Area3D" type="Area3D" parent="Enemies/BigScaryBossEnemy" groups=["Player"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.59447724, 0)
+
+[node name="Fight area" type="CollisionShape3D" parent="Enemies/BigScaryBossEnemy/Area3D"]
+shape = SubResource("SphereShape3D_xmd6u")
+debug_color = Color(0.88782513, 0.3293662, 1.92523e-07, 0.41960785)
+
+[node name="Area3D2" type="Area3D" parent="Enemies/BigScaryBossEnemy"]
+transform = Transform3D(0.495, 0, 0, 0, 0.495, 0, 0, 0, 0.495, 0, 0.59447724, 0)
+
+[node name="Vision_Hearing" type="CollisionShape3D" parent="Enemies/BigScaryBossEnemy/Area3D2"]
+transform = Transform3D(0.99999696, 0, 0, 0, 0.99999696, 0, 0, 0, 0.99999696, 0, 0, 0)
+shape = SubResource("CylinderShape3D_db0d0")
+debug_color = Color(0.96061414, 2.117753e-06, 0.50728065, 0.41960785)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Enemies/BigScaryBossEnemy"]
+root_node = NodePath("../Sprite3DBillBoard")
+libraries = {
+&"": SubResource("AnimationLibrary_p4nyg")
+}
+
+[node name="EnemyPuzzleRoom_1" parent="Enemies" instance=ExtResource("10_3cs1p")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -6.09916, 0.4639815, -14.800063)
+
+[node name="EnemyPuzzleRoom_2" parent="Enemies" instance=ExtResource("10_3cs1p")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -8.09916, 0.4639815, -12.800063)
 
 [connection signal="on_change" from="Gates+devices/Button_Front_Entrance" to="Gates+devices/Gate_Entrance" method="open_gate"]
 [connection signal="on_activated" from="Gates+devices/Button_MainGate" to="Gates+devices/Main_Gate" method="open_gate"]
+[connection signal="timeout" from="Enemies/First Enemy/StateMachine/Wander/Timer" to="Enemies/First Enemy/StateMachine/Wander" method="_on_timer_timeout"]
+[connection signal="timeout" from="Enemies/First Enemy/StateMachine/Chase/Timer" to="Enemies/First Enemy/StateMachine/Chase" method="_on_timer_timeout"]
+[connection signal="body_shape_entered" from="Enemies/First Enemy/Area3D" to="Enemies/First Enemy/SM_controller" method="_on_area_3d_body_shape_entered"]
+[connection signal="body_shape_exited" from="Enemies/First Enemy/Area3D" to="Enemies/First Enemy/SM_controller" method="_on_area_3d_body_shape_exited"]
+[connection signal="area_entered" from="Enemies/First Enemy/Area3D2" to="Enemies/First Enemy/StateMachine/Wander" method="_on_area_3d_2_area_entered"]
+[connection signal="area_entered" from="Enemies/First Enemy/Area3D2" to="Enemies/First Enemy/StateMachine/Chase" method="_on_area_3d_2_area_entered"]
+[connection signal="area_exited" from="Enemies/First Enemy/Area3D2" to="Enemies/First Enemy/StateMachine/Chase" method="_on_area_3d_2_area_exited"]
+[connection signal="timeout" from="Enemies/BigScaryBossEnemy/StateMachine/Wander/Timer" to="Enemies/BigScaryBossEnemy/StateMachine/Wander" method="_on_timer_timeout"]
+[connection signal="timeout" from="Enemies/BigScaryBossEnemy/StateMachine/Chase/Timer" to="Enemies/BigScaryBossEnemy/StateMachine/Chase" method="_on_timer_timeout"]
+[connection signal="body_shape_entered" from="Enemies/BigScaryBossEnemy/Area3D" to="Enemies/BigScaryBossEnemy/SM_controller" method="_on_area_3d_body_shape_entered"]
+[connection signal="body_shape_exited" from="Enemies/BigScaryBossEnemy/Area3D" to="Enemies/BigScaryBossEnemy/SM_controller" method="_on_area_3d_body_shape_exited"]
+[connection signal="area_entered" from="Enemies/BigScaryBossEnemy/Area3D2" to="Enemies/BigScaryBossEnemy/StateMachine/Wander" method="_on_area_3d_2_area_entered"]
+[connection signal="area_entered" from="Enemies/BigScaryBossEnemy/Area3D2" to="Enemies/BigScaryBossEnemy/StateMachine/Chase" method="_on_area_3d_2_area_entered"]
+[connection signal="area_exited" from="Enemies/BigScaryBossEnemy/Area3D2" to="Enemies/BigScaryBossEnemy/StateMachine/Chase" method="_on_area_3d_2_area_exited"]
