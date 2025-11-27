@@ -9,6 +9,7 @@ enum InteractTypes {INSTANT, GRAB_ITEM, GRAB_OBJ, LEVER, TEMP_ATTACK} # might mo
 @export var interaction_type : InteractTypes
 
 @export var hand_prompt : String = "hand_prompt_default"
+@export var prompt_text: String = ""
 
 func begin_interact(sig: float = -1) -> void:
 	pass

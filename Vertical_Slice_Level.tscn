@@ -1,6 +1,30 @@
-[gd_scene load_steps=14 format=3 uid="uid://b1d53a2if0ifd"]
+[gd_scene load_steps=72 format=3 uid="uid://b1d53a2if0ifd"]
 
-[ext_resource type="PackedScene" uid="uid://bj8n80dbd408c" path="res://Enemy/First _Enemy.tscn" id="8_66js1"]
+[ext_resource type="Texture2D" uid="uid://bajdgu88x35py" path="res://Sprites/ballyWalkSheet_n.png" id="1_gqaa3"]
+[ext_resource type="Texture2D" uid="uid://dl3etwft2mhxm" path="res://Sprites/ballyWalkSheet.png" id="2_ue6a3"]
+[ext_resource type="Script" uid="uid://b5653u7w56pqw" path="res://extras_sprites/scripts/sprite_3D_billboard.gd" id="3_8pbg2"]
+[ext_resource type="Script" uid="uid://b4m0sglcg4smw" path="res://extras_sprites/scripts/animatio_data.gd" id="4_vefwy"]
+[ext_resource type="Texture2D" uid="uid://cjn3bxmukh4fj" path="res://Sprites/ballybogIdle.png" id="5_8k40l"]
+[ext_resource type="Texture2D" uid="uid://d117rsf1rrxb6" path="res://Sprites/ballybogIdle_n.png" id="6_h15nr"]
+[ext_resource type="Texture2D" uid="uid://da55c2fwj7ox7" path="res://Sprites/ballyAttack_LBottom.png" id="7_igngk"]
+[ext_resource type="Texture2D" uid="uid://b45ckx6htx1bg" path="res://Sprites/ballyAttack_LBottom_n.png" id="8_ytf8k"]
+[ext_resource type="Texture2D" uid="uid://fohbvfmbnsw7" path="res://Sprites/ballyAttack_LMid.png" id="9_5o6sm"]
+[ext_resource type="Texture2D" uid="uid://d2eurcnwm514j" path="res://Sprites/ballyAttack_LMid_n.png" id="10_wkr8j"]
+[ext_resource type="Texture2D" uid="uid://c1t33lxeknsve" path="res://Sprites/ballyAttack_LTop.png" id="11_v5821"]
+[ext_resource type="Texture2D" uid="uid://p2iiihprajki" path="res://Sprites/ballyAttack_LTop_n.png" id="12_uqeqx"]
+[ext_resource type="Texture2D" uid="uid://d2i5outw16p5m" path="res://Sprites/ballyAttack_RBottom.png" id="13_0ahfl"]
+[ext_resource type="Texture2D" uid="uid://0meyt1eqowl" path="res://Sprites/ballyAttack_RBottom_n.png" id="14_apgct"]
+[ext_resource type="Texture2D" uid="uid://d32p1mrham4j6" path="res://Sprites/ballyAttack_RMid.png" id="15_4it74"]
+[ext_resource type="Texture2D" uid="uid://bjd7yeekbvmx0" path="res://Sprites/ballyAttack_RMid_n.png" id="16_ojd6j"]
+[ext_resource type="Texture2D" uid="uid://dqyfvagjygkha" path="res://Sprites/ballyAttack_RTop.png" id="17_bnyeu"]
+[ext_resource type="Texture2D" uid="uid://bnrfxmw0nk1dq" path="res://Sprites/ballyAttack_RTop_n.png" id="18_ppblj"]
+[ext_resource type="Script" uid="uid://c3fdtr0ieg5dj" path="res://EnemyStateMachine/sm_controller.gd" id="19_5a2e2"]
+[ext_resource type="Script" uid="uid://r7bhwy0jfpk7" path="res://EnemyStateMachine/StateMachine.gd" id="20_x42mn"]
+[ext_resource type="Script" uid="uid://dc3uc7qhwg03r" path="res://EnemyStateMachine/idle_state.gd" id="21_bl5uh"]
+[ext_resource type="Script" uid="uid://bg6gxealt4p8b" path="res://EnemyStateMachine/Fighting.gd" id="22_7os1t"]
+[ext_resource type="Script" uid="uid://cyctjxnvvlo47" path="res://EnemyStateMachine/Wander.gd" id="23_tbjf3"]
+[ext_resource type="Script" uid="uid://dlre0emi41dh1" path="res://EnemyStateMachine/Chase.gd" id="24_la572"]
+[ext_resource type="Animation" uid="uid://b6ga5k6b8stym" path="res://AnimationsBelly/Walk.res" id="25_n7bc2"]
 [ext_resource type="MeshLibrary" uid="uid://bu208a8l5866i" path="res://scenes/palettes/cairn/meshlibrary_cairn.tres" id="26_8pbg2"]
 [ext_resource type="Script" uid="uid://ubfk2a80dhfp" path="res://addons/grid_map_pathfinding/grid_map_pathfinding.gd" id="27_xmd6u"]
 [ext_resource type="PackedScene" uid="uid://bq86osdembn58" path="res://scenes/_player/_player_test.tscn" id="28_db0d0"]
@@ -8,6 +32,9 @@
 [ext_resource type="PackedScene" uid="uid://bm8kaq0ah5g7q" path="res://scenes/interactions/interactables/grabbable_items/torch/torch.tscn" id="29_w1u0h"]
 [ext_resource type="Texture2D" uid="uid://bgvylughro1va" path="res://PaperTexture/Texturelabs_Paper_304L.jpg" id="30_ue6a3"]
 [ext_resource type="PackedScene" uid="uid://dde66nwtb1gv1" path="res://scenes/interactions/triggers/item_receiver/torch_scont/torch_scont.tscn" id="32_vefwy"]
+[ext_resource type="PackedScene" uid="uid://dt13fur6twjep" path="res://scenes/interactions/receivers/gate/gate.tscn" id="33_8k40l"]
+[ext_resource type="PackedScene" uid="uid://qu5rxgbydmet" path="res://scenes/interactions/triggers/button/button.tscn" id="34_h15nr"]
+[ext_resource type="PackedScene" uid="uid://clnnqb1efkbei" path="res://scenes/interactions/prefabs/locked_door.tscn" id="35_igngk"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_vefwy"]
 sky_top_color = Color(0.47028, 0.44203204, 0.42579472, 1)
@@ -22,10 +49,494 @@ sky_material = SubResource("ProceduralSkyMaterial_vefwy")
 background_mode = 2
 background_energy_multiplier = 0.05
 sky = SubResource("Sky_8k40l")
-ambient_light_source = 2
-ambient_light_color = Color(0.5890956, 0.5890956, 0.5890956, 1)
 tonemap_mode = 2
 glow_enabled = true
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_abuop"]
+radius = 0.001
+height = 0.7416992
+
+[sub_resource type="Shader" id="Shader_igngk"]
+code = "shader_type spatial;
+render_mode diffuse_lambert_wrap,cull_disabled;
+
+uniform float rows:hint_range(1.0, 100.0, 1) = 1;
+uniform float columns:hint_range(1.0, 100.0, 1) = 1;
+uniform float frame:hint_range(0.0, 100.0, 1) = 0;
+uniform bool invert_rows_columns = false;
+uniform sampler2D sprite:filter_nearest_mipmap;
+uniform int mode:hint_range(0, 1, 1) = 1;
+varying vec3 look_dir;
+uniform sampler2D Normal;
+
+
+float billboard_mode_a(vec3 CAMERA_POSITION,vec3 NODE_POSITION, mat4 MODEL_MAT,float directions){
+	vec3 direction_to_camera = normalize(CAMERA_POSITION-NODE_POSITION);
+	float angle_to_camera = atan(direction_to_camera.x,direction_to_camera.z);
+	vec4 model_direction = MODEL_MAT*vec4(1.0,0.0,0.0,0.0);
+	float y_angle = atan(model_direction.x,model_direction.z)-PI/2.0;
+	float final_angle = angle_to_camera-y_angle;
+	float int_y_angle = round((final_angle / TAU) * float(directions)) / float(directions);
+	return int_y_angle;
+}
+float billboard_mobe_b(vec3 CAMERA_POSITION,mat4 MODEL_MAT,mat4 VIEW_MAT,float directions,int ret){
+
+    vec3 ray_origin = CAMERA_POSITION;
+
+    vec3 object_origin = (MODEL_MAT * vec4(0.0,0.0,0.0,1.0)).xyz;
+    vec3 cam_dir = object_origin - ray_origin;
+    cam_dir = normalize((VIEW_MAT * vec4(cam_dir, 0.0)).xyz);
+
+    float angle = 180.0 - degrees(acos(dot(normalize(cam_dir.xz), normalize(look_dir.xz))));
+    float _direction = round(angle/180.0 * directions);
+
+    float flip = sign((look_dir.x * cam_dir.z) - (look_dir.z * cam_dir.x));
+
+    flip = mix(flip, 1.0, max(step(_direction, 0.0), step(directions, _direction)));
+	float retu = ret == 0 ? _direction : flip;
+	return retu ;
+}
+void vertex() {
+		 MODELVIEW_MATRIX = VIEW_MATRIX * mat4(vec4(normalize(cross(vec3(0.0, 1.0, 0.0), INV_VIEW_MATRIX[2].xyz)), 0.0), vec4(0.0, 1.0, 0.0, 0.0), vec4(normalize(cross(INV_VIEW_MATRIX[0].xyz, vec3(0.0, 1.0, 0.0))), 0.0), MODEL_MATRIX[3]);
+		look_dir = MODELVIEW_NORMAL_MATRIX * NORMAL;
+		MODELVIEW_NORMAL_MATRIX = mat3(MODELVIEW_MATRIX);
+	switch (mode){
+		case 0:
+			float y = invert_rows_columns == true ? billboard_mode_a(CAMERA_POSITION_WORLD,NODE_POSITION_WORLD,MODEL_MATRIX,rows) : billboard_mode_a(CAMERA_POSITION_WORLD,NODE_POSITION_WORLD,MODEL_MATRIX,columns);
+			float x = invert_rows_columns == true ? frame/columns:frame/rows;
+			UV /= vec2(rows,columns);
+			UV += invert_rows_columns == true ?vec2(y,x):vec2(x,y);
+			break;
+		case 1:
+			float x = invert_rows_columns == true ? frame/columns:frame/rows;
+			float y = billboard_mobe_b(CAMERA_POSITION_WORLD,MODEL_MATRIX,VIEW_MATRIX,rows,0);
+			float f = billboard_mobe_b(CAMERA_POSITION_WORLD,MODEL_MATRIX,VIEW_MATRIX,rows,1);
+			if (invert_rows_columns){
+				y = billboard_mobe_b(CAMERA_POSITION_WORLD,MODEL_MATRIX,VIEW_MATRIX,columns,0);
+				f = billboard_mobe_b(CAMERA_POSITION_WORLD,MODEL_MATRIX,VIEW_MATRIX,columns,1);
+			}
+			UV.y += invert_rows_columns == true ? x:y;
+			UV /=vec2(rows,columns);
+			UV.x +=  invert_rows_columns == true ? y : x;
+			UV *= invert_rows_columns == true ? vec2(1.0,f):vec2(f,1.0);
+			break;
+	};
+}
+
+void fragment() {
+	vec3 VNormal = texture(Normal,UV).rgb;
+	vec4 sprite_texture;
+	sprite_texture = texture(sprite,UV);
+	ALBEDO = sprite_texture.rgb;
+	ALPHA = sprite_texture.a;
+	NORMAL_MAP = VNormal;
+}
+"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ytf8k"]
+render_priority = 0
+shader = SubResource("Shader_igngk")
+shader_parameter/rows = 5.0
+shader_parameter/columns = 8.0
+shader_parameter/frame = 1.0
+shader_parameter/invert_rows_columns = false
+shader_parameter/sprite = ExtResource("2_ue6a3")
+shader_parameter/mode = 0
+shader_parameter/Normal = ExtResource("1_gqaa3")
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_5o6sm"]
+material = SubResource("ShaderMaterial_ytf8k")
+size = Vector2(1.08, 1.08)
+orientation = 2
+
+[sub_resource type="Resource" id="Resource_wkr8j"]
+script = ExtResource("4_vefwy")
+name = "Attack_LTop"
+sprite = ExtResource("5_8k40l")
+texture_normal = ExtResource("6_h15nr")
+rows = 2.0
+columns = 8.0
+
+[sub_resource type="Resource" id="Resource_v5821"]
+script = ExtResource("4_vefwy")
+name = "walk"
+sprite = ExtResource("2_ue6a3")
+texture_normal = ExtResource("1_gqaa3")
+rows = 5.0
+columns = 8.0
+
+[sub_resource type="Resource" id="Resource_uqeqx"]
+script = ExtResource("4_vefwy")
+name = "Attack_LbBottom"
+sprite = ExtResource("7_igngk")
+texture_normal = ExtResource("8_ytf8k")
+rows = 2.0
+columns = 8.0
+
+[sub_resource type="Resource" id="Resource_0ahfl"]
+script = ExtResource("4_vefwy")
+name = "Attack_LMid"
+sprite = ExtResource("9_5o6sm")
+texture_normal = ExtResource("10_wkr8j")
+rows = 2.0
+columns = 8.0
+
+[sub_resource type="Resource" id="Resource_apgct"]
+script = ExtResource("4_vefwy")
+name = "Attack_LTop"
+sprite = ExtResource("11_v5821")
+texture_normal = ExtResource("12_uqeqx")
+rows = 2.0
+columns = 8.0
+
+[sub_resource type="Resource" id="Resource_4it74"]
+script = ExtResource("4_vefwy")
+name = "Attack_RBottom"
+sprite = ExtResource("13_0ahfl")
+texture_normal = ExtResource("14_apgct")
+rows = 2.0
+columns = 8.0
+
+[sub_resource type="Resource" id="Resource_ojd6j"]
+script = ExtResource("4_vefwy")
+name = "Attack_RMid"
+sprite = ExtResource("15_4it74")
+texture_normal = ExtResource("16_ojd6j")
+rows = 2.0
+columns = 8.0
+
+[sub_resource type="Resource" id="Resource_bnyeu"]
+script = ExtResource("4_vefwy")
+name = "Attack_RTop"
+sprite = ExtResource("17_bnyeu")
+texture_normal = ExtResource("18_ppblj")
+rows = 2.0
+columns = 8.0
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_f2srf"]
+radius = 1.0
+
+[sub_resource type="Animation" id="Animation_8sfa5"]
+resource_name = "AttackR_RTop"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:animation")
+tracks/0/interp = 0
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [4]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:frame")
+tracks/1/interp = 0
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 1.0]
+}
+
+[sub_resource type="Animation" id="Animation_7p6et"]
+resource_name = "Attack_LBottom"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:animation")
+tracks/0/interp = 0
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [4]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:frame")
+tracks/1/interp = 0
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 1.0]
+}
+
+[sub_resource type="Animation" id="Animation_om1c7"]
+resource_name = "Attack_RMid"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:animation")
+tracks/0/interp = 0
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [2]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:frame")
+tracks/1/interp = 0
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 1.0]
+}
+
+[sub_resource type="Animation" id="Animation_2jpox"]
+resource_name = "Attack_RTop"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:animation")
+tracks/0/interp = 0
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [2]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:frame")
+tracks/1/interp = 0
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 1.0]
+}
+
+[sub_resource type="Animation" id="Animation_e8ov3"]
+resource_name = "Idle"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:animation")
+tracks/0/interp = 0
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:frame")
+tracks/1/interp = 0
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_g8xqt"]
+resource_name = "test_walk"
+length = 1.1
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 0
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.26666668, 0.7, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 1.0, 2.0, 3.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_khln7"]
+_data = {
+&"AttackR_RTop": SubResource("Animation_8sfa5"),
+&"Attack_LBottom": SubResource("Animation_7p6et"),
+&"Attack_RMid": SubResource("Animation_om1c7"),
+&"Attack_RTop": SubResource("Animation_2jpox"),
+&"Idle": SubResource("Animation_e8ov3"),
+&"RESET": ExtResource("25_n7bc2"),
+&"test_walk": SubResource("Animation_g8xqt")
+}
+
+[sub_resource type="Shader" id="Shader_ppblj"]
+code = "shader_type spatial;
+render_mode diffuse_lambert_wrap,cull_disabled;
+
+uniform float rows:hint_range(1.0, 100.0, 1) = 1;
+uniform float columns:hint_range(1.0, 100.0, 1) = 1;
+uniform float frame:hint_range(0.0, 100.0, 1) = 0;
+uniform bool invert_rows_columns = false;
+uniform sampler2D sprite:filter_nearest_mipmap;
+uniform int mode:hint_range(0, 1, 1) = 1;
+varying vec3 look_dir;
+uniform sampler2D Normal;
+
+
+float billboard_mode_a(vec3 CAMERA_POSITION,vec3 NODE_POSITION, mat4 MODEL_MAT,float directions){
+	vec3 direction_to_camera = normalize(CAMERA_POSITION-NODE_POSITION);
+	float angle_to_camera = atan(direction_to_camera.x,direction_to_camera.z);
+	vec4 model_direction = MODEL_MAT*vec4(1.0,0.0,0.0,0.0);
+	float y_angle = atan(model_direction.x,model_direction.z)-PI/2.0;
+	float final_angle = angle_to_camera-y_angle;
+	float int_y_angle = round((final_angle / TAU) * float(directions)) / float(directions);
+	return int_y_angle;
+}
+float billboard_mobe_b(vec3 CAMERA_POSITION,mat4 MODEL_MAT,mat4 VIEW_MAT,float directions,int ret){
+
+    vec3 ray_origin = CAMERA_POSITION;
+
+    vec3 object_origin = (MODEL_MAT * vec4(0.0,0.0,0.0,1.0)).xyz;
+    vec3 cam_dir = object_origin - ray_origin;
+    cam_dir = normalize((VIEW_MAT * vec4(cam_dir, 0.0)).xyz);
+
+    float angle = 180.0 - degrees(acos(dot(normalize(cam_dir.xz), normalize(look_dir.xz))));
+    float _direction = round(angle/180.0 * directions);
+
+    float flip = sign((look_dir.x * cam_dir.z) - (look_dir.z * cam_dir.x));
+
+    flip = mix(flip, 1.0, max(step(_direction, 0.0), step(directions, _direction)));
+	float retu = ret == 0 ? _direction : flip;
+	return retu ;
+}
+void vertex() {
+		 MODELVIEW_MATRIX = VIEW_MATRIX * mat4(vec4(normalize(cross(vec3(0.0, 1.0, 0.0), INV_VIEW_MATRIX[2].xyz)), 0.0), vec4(0.0, 1.0, 0.0, 0.0), vec4(normalize(cross(INV_VIEW_MATRIX[0].xyz, vec3(0.0, 1.0, 0.0))), 0.0), MODEL_MATRIX[3]);
+		look_dir = MODELVIEW_NORMAL_MATRIX * NORMAL;
+		MODELVIEW_NORMAL_MATRIX = mat3(MODELVIEW_MATRIX);
+	switch (mode){
+		case 0:
+			float y = invert_rows_columns == true ? billboard_mode_a(CAMERA_POSITION_WORLD,NODE_POSITION_WORLD,MODEL_MATRIX,rows) : billboard_mode_a(CAMERA_POSITION_WORLD,NODE_POSITION_WORLD,MODEL_MATRIX,columns);
+			float x = invert_rows_columns == true ? frame/columns:frame/rows;
+			UV /= vec2(rows,columns);
+			UV += invert_rows_columns == true ?vec2(y,x):vec2(x,y);
+			break;
+		case 1:
+			float x = invert_rows_columns == true ? frame/columns:frame/rows;
+			float y = billboard_mobe_b(CAMERA_POSITION_WORLD,MODEL_MATRIX,VIEW_MATRIX,rows,0);
+			float f = billboard_mobe_b(CAMERA_POSITION_WORLD,MODEL_MATRIX,VIEW_MATRIX,rows,1);
+			if (invert_rows_columns){
+				y = billboard_mobe_b(CAMERA_POSITION_WORLD,MODEL_MATRIX,VIEW_MATRIX,columns,0);
+				f = billboard_mobe_b(CAMERA_POSITION_WORLD,MODEL_MATRIX,VIEW_MATRIX,columns,1);
+			}
+			UV.y += invert_rows_columns == true ? x:y;
+			UV /=vec2(rows,columns);
+			UV.x +=  invert_rows_columns == true ? y : x;
+			UV *= invert_rows_columns == true ? vec2(1.0,f):vec2(f,1.0);
+			break;
+	};
+}
+
+void fragment() {
+	vec3 VNormal = texture(Normal,UV).rgb;
+	vec4 sprite_texture;
+	sprite_texture = texture(sprite,UV);
+	ALBEDO = sprite_texture.rgb;
+	ALPHA = sprite_texture.a;
+	NORMAL_MAP = VNormal;
+}
+"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_5a2e2"]
+render_priority = 0
+shader = SubResource("Shader_ppblj")
+shader_parameter/rows = 5.0
+shader_parameter/columns = 8.0
+shader_parameter/frame = 1.0
+shader_parameter/invert_rows_columns = false
+shader_parameter/sprite = ExtResource("2_ue6a3")
+shader_parameter/mode = 0
+shader_parameter/Normal = ExtResource("1_gqaa3")
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_x42mn"]
+material = SubResource("ShaderMaterial_5a2e2")
+size = Vector2(1.08, 1.08)
+orientation = 2
+
+[sub_resource type="Resource" id="Resource_bl5uh"]
+script = ExtResource("4_vefwy")
+name = "Attack_LTop"
+sprite = ExtResource("5_8k40l")
+texture_normal = ExtResource("6_h15nr")
+rows = 2.0
+columns = 8.0
+
+[sub_resource type="Resource" id="Resource_7os1t"]
+script = ExtResource("4_vefwy")
+name = "walk"
+sprite = ExtResource("2_ue6a3")
+texture_normal = ExtResource("1_gqaa3")
+rows = 5.0
+columns = 8.0
+
+[sub_resource type="Resource" id="Resource_tbjf3"]
+script = ExtResource("4_vefwy")
+name = "Attack_LbBottom"
+sprite = ExtResource("7_igngk")
+texture_normal = ExtResource("8_ytf8k")
+rows = 2.0
+columns = 8.0
+
+[sub_resource type="Resource" id="Resource_la572"]
+script = ExtResource("4_vefwy")
+name = "Attack_LMid"
+sprite = ExtResource("9_5o6sm")
+texture_normal = ExtResource("10_wkr8j")
+rows = 2.0
+columns = 8.0
+
+[sub_resource type="Resource" id="Resource_n7bc2"]
+script = ExtResource("4_vefwy")
+name = "Attack_LTop"
+sprite = ExtResource("11_v5821")
+texture_normal = ExtResource("12_uqeqx")
+rows = 2.0
+columns = 8.0
+
+[sub_resource type="Resource" id="Resource_wtwml"]
+script = ExtResource("4_vefwy")
+name = "Attack_RBottom"
+sprite = ExtResource("13_0ahfl")
+texture_normal = ExtResource("14_apgct")
+rows = 2.0
+columns = 8.0
+
+[sub_resource type="Resource" id="Resource_xmd6u"]
+script = ExtResource("4_vefwy")
+name = "Attack_RMid"
+sprite = ExtResource("15_4it74")
+texture_normal = ExtResource("16_ojd6j")
+rows = 2.0
+columns = 8.0
+
+[sub_resource type="Resource" id="Resource_db0d0"]
+script = ExtResource("4_vefwy")
+name = "Attack_RTop"
+sprite = ExtResource("17_bnyeu")
+texture_normal = ExtResource("18_ppblj")
+rows = 2.0
+columns = 8.0
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_3ri2a"]
 size = Vector3(500, 0.1, 500)
@@ -46,27 +557,156 @@ environment = SubResource("Environment_h15nr")
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.98795986, -0.08873824, 0.12673134, 0, 0.81915206, 0.57357645, -0.1547104, -0.56667054, 0.80928934, 0, 0, 0)
 light_color = Color(0.26050597, 0.2605062, 0.26050603, 1)
-light_energy = 6.611
+light_energy = 1.389
 light_indirect_energy = 6.486
 shadow_enabled = true
 directional_shadow_max_distance = 190.0
 sky_mode = 1
 
-[node name="GridMapPathFinding" type="GridMap" parent="." groups=["GMPF"]]
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+transform = Transform3D(0.9659258, 0, -0.25881898, 0, 1, 0, 0.25881898, 0, 0.9659258, -6.6057453, 1.4111557, 0.5340462)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.6291504, 0)
+shape = SubResource("CapsuleShape3D_abuop")
+
+[node name="Sprite3DBillBoard" type="MeshInstance3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.54317766, 0)
+mesh = SubResource("PlaneMesh_5o6sm")
+script = ExtResource("3_8pbg2")
+animations_array = Array[ExtResource("4_vefwy")]([SubResource("Resource_wkr8j"), SubResource("Resource_v5821"), SubResource("Resource_uqeqx"), SubResource("Resource_0ahfl"), SubResource("Resource_apgct"), SubResource("Resource_4it74"), SubResource("Resource_ojd6j"), SubResource("Resource_bnyeu")])
+animation = 1
+frame = 1.0
+sprite_scale = 0.001
+metadata/_custom_type_script = "uid://b5653u7w56pqw"
+
+[node name="SM_controller" type="Node" parent="StaticBody3D" node_paths=PackedStringArray("node_StateMachine")]
+script = ExtResource("19_5a2e2")
+node_StateMachine = NodePath("../StateMachine")
+
+[node name="StateMachine" type="Node" parent="StaticBody3D" node_paths=PackedStringArray("Init_node_state")]
+script = ExtResource("20_x42mn")
+Init_node_state = NodePath("Wander")
+
+[node name="IdleState" type="Node" parent="StaticBody3D/StateMachine" node_paths=PackedStringArray("Body", "Sprite", "SM", "Animator")]
+script = ExtResource("21_bl5uh")
+Body = NodePath("../..")
+Sprite = NodePath("../../Sprite3DBillBoard")
+SM = NodePath("..")
+Animator = NodePath("../../AnimationPlayer")
+
+[node name="Fighting" type="Node" parent="StaticBody3D/StateMachine" node_paths=PackedStringArray("SM", "Animator")]
+script = ExtResource("22_7os1t")
+SM = NodePath("..")
+Animator = NodePath("../../AnimationPlayer")
+
+[node name="Wander" type="Node" parent="StaticBody3D/StateMachine" node_paths=PackedStringArray("Body", "Sprite", "SM", "Animator")]
+script = ExtResource("23_tbjf3")
+Body = NodePath("../..")
+Sprite = NodePath("../../Sprite3DBillBoard")
+SM = NodePath("..")
+Animator = NodePath("../../AnimationPlayer")
+
+[node name="Chase" type="Node" parent="StaticBody3D/StateMachine" node_paths=PackedStringArray("Body", "Sprite", "SM", "Animator")]
+script = ExtResource("24_la572")
+Body = NodePath("../..")
+Sprite = NodePath("../../Sprite3DBillBoard")
+SM = NodePath("..")
+Animator = NodePath("../../AnimationPlayer")
+
+[node name="Area3D" type="Area3D" parent="StaticBody3D" groups=["Player"]]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D/Area3D"]
+shape = SubResource("SphereShape3D_f2srf")
+debug_color = Color(0.88782513, 0.3293662, 1.92523e-07, 0.41960785)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="StaticBody3D"]
+root_node = NodePath("../Sprite3DBillBoard")
+libraries = {
+&"": SubResource("AnimationLibrary_khln7")
+}
+
+[node name="StaticBody3D3" type="StaticBody3D" parent="."]
+transform = Transform3D(0.9659258, 0, -0.25881898, 0, 1, 0, 0.25881898, 0, 0.9659258, -7.6057453, 1.4111557, 0.5340462)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.6291504, 0)
+shape = SubResource("CapsuleShape3D_abuop")
+
+[node name="Sprite3DBillBoard" type="MeshInstance3D" parent="StaticBody3D3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.54317766, 0)
+mesh = SubResource("PlaneMesh_x42mn")
+script = ExtResource("3_8pbg2")
+animations_array = Array[ExtResource("4_vefwy")]([SubResource("Resource_bl5uh"), SubResource("Resource_7os1t"), SubResource("Resource_tbjf3"), SubResource("Resource_la572"), SubResource("Resource_n7bc2"), SubResource("Resource_wtwml"), SubResource("Resource_xmd6u"), SubResource("Resource_db0d0")])
+animation = 1
+frame = 1.0
+sprite_scale = 0.001
+metadata/_custom_type_script = "uid://b5653u7w56pqw"
+
+[node name="SM_controller" type="Node" parent="StaticBody3D3" node_paths=PackedStringArray("node_StateMachine")]
+script = ExtResource("19_5a2e2")
+node_StateMachine = NodePath("../StateMachine")
+
+[node name="StateMachine" type="Node" parent="StaticBody3D3" node_paths=PackedStringArray("Init_node_state")]
+script = ExtResource("20_x42mn")
+Init_node_state = NodePath("Wander")
+
+[node name="IdleState" type="Node" parent="StaticBody3D3/StateMachine" node_paths=PackedStringArray("Body", "Sprite", "SM", "Animator")]
+script = ExtResource("21_bl5uh")
+Body = NodePath("../..")
+Sprite = NodePath("../../Sprite3DBillBoard")
+SM = NodePath("..")
+Animator = NodePath("../../AnimationPlayer")
+
+[node name="Fighting" type="Node" parent="StaticBody3D3/StateMachine" node_paths=PackedStringArray("SM", "Animator")]
+script = ExtResource("22_7os1t")
+SM = NodePath("..")
+Animator = NodePath("../../AnimationPlayer")
+
+[node name="Wander" type="Node" parent="StaticBody3D3/StateMachine" node_paths=PackedStringArray("Body", "Sprite", "SM", "Animator")]
+script = ExtResource("23_tbjf3")
+Body = NodePath("../..")
+Sprite = NodePath("../../Sprite3DBillBoard")
+SM = NodePath("..")
+Animator = NodePath("../../AnimationPlayer")
+
+[node name="Chase" type="Node" parent="StaticBody3D3/StateMachine" node_paths=PackedStringArray("Body", "Sprite", "SM", "Animator")]
+script = ExtResource("24_la572")
+Body = NodePath("../..")
+Sprite = NodePath("../../Sprite3DBillBoard")
+SM = NodePath("..")
+Animator = NodePath("../../AnimationPlayer")
+
+[node name="Area3D" type="Area3D" parent="StaticBody3D3" groups=["Player"]]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D3/Area3D"]
+shape = SubResource("SphereShape3D_f2srf")
+debug_color = Color(0.88782513, 0.3293662, 1.92523e-07, 0.41960785)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="StaticBody3D3"]
+root_node = NodePath("../Sprite3DBillBoard")
+libraries = {
+&"": SubResource("AnimationLibrary_khln7")
+}
+
+[node name="GridMapPathFinding" type="GridMap" parent="."]
 mesh_library = ExtResource("26_8pbg2")
 cell_size = Vector3(2, 0.7, 2)
 data = {
 "cells": PackedInt32Array(3, 65531, 1441792, 3, 65532, 655360, 3, 65526, 655365, 65531, 65529, 1441795, 65530, 65529, 655367, 65530, 65530, 655367, 65529, 0, 655363, 65528, 0, 6, 65530, 0, 655360, 65530, 1, 655360, 65531, 1, 655360, 65531, 2, 655360, 65530, 2, 1441795, 65529, 2, 6, 65529, 1, 1441795, 65528, 1, 6, 65527, 1, 6, 65528, 2, 6, 0, 0, 1441797, 3, 65534, 655362, 3, 65535, 655362, 3, 0, 3, 2, 0, 1441794, 1, 0, 1441796, 2, 65533, 1441795, 4, 65533, 3, 4, 65531, 1048579, 3, 65533, 655360, 5, 65532, 1048578, 6, 65532, 1441794, 7, 65532, 1048580, 4, 65532, 1441792, 3, 65530, 655362, 3, 65529, 655362, 3, 65528, 655362, 3, 65527, 1048579, 2, 65527, 1048578, 1, 65527, 655363, 1, 65528, 3, 0, 65528, 655363, 0, 65529, 3, 65535, 65529, 1441794, 65534, 65528, 1048579, 65534, 65530, 3, 65533, 65527, 1048579, 65533, 65531, 3, 65533, 65528, 655360, 65534, 65529, 655360, 65533, 65529, 655360, 65533, 65530, 655360, 65532, 65530, 1441793, 65532, 65527, 655363, 65532, 65528, 655360, 65532, 65529, 655360, 65531, 65528, 655363, 65532, 65532, 655362, 65532, 65533, 655362, 65531, 65534, 655363, 65531, 3, 1441795, 65532, 3, 3, 65531, 65535, 655360, 65532, 0, 655360, 65531, 0, 655360, 65532, 1, 655360, 65532, 2, 655360, 65530, 65535, 655363, 65532, 65535, 1048576, 65532, 65534, 1048576, 2, 65531, 655363, 65533, 2, 3, 65534, 1, 3, 65534, 0, 1048577, 65534, 65535, 1048579, 65533, 65533, 2, 65533, 65535, 0, 65533, 0, 0, 65533, 1, 0, 65533, 65534, 1048577, 65533, 65532, 655363, 65534, 65532, 1048578, 65535, 65532, 1048578, 0, 65532, 1048578, 1, 65532, 1048578, 2, 65532, 1048576, 65532, 65531, 1441793)
 }
 script = ExtResource("27_xmd6u")
-walkable_items = Array[int]([0, 1, 2, 3, 4, 5])
-debug_start_cell = Vector3i(3, 0, -2)
-debug_end_cell = Vector3i(3, 0, -9)
+walkable_items = Array[int]([3, 4, 5, 6, 7])
+debug_start_cell = Vector3i(4, 0, -4)
+debug_end_cell = Vector3i(1, 0, -5)
 metadata/_custom_type_script = "uid://ubfk2a80dhfp"
 metadata/_editor_floor_ = Vector3(0, 0, 0)
 
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(-0.2588191, 0, 0.9659258, 0, 1, 0, -0.9659258, 0, -0.2588191, 13.778312, 1.4893837, -11.459989)
+
 [node name="player_test" parent="." instance=ExtResource("28_db0d0")]
-transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 9, 1.376, -9)
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 3, 1.4, 1)
 
 [node name="StaticBody3D2" type="StaticBody3D" parent="."]
 
@@ -96,7 +736,29 @@ color = Color(0.5747226, 0.50857943, 0.49505764, 0.03529412)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 1, 1)
 
 [node name="TorchScont" parent="Torches" instance=ExtResource("32_vefwy")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 1, -9.87576)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 1.2814243, -9.617082)
 
-[node name="StaticBody3D" parent="." instance=ExtResource("8_66js1")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.932836, 1.390424, 0.9079447)
+[node name="Gates+devices" type="Node3D" parent="."]
+
+[node name="Gate_Entrance" parent="Gates+devices" instance=ExtResource("33_8k40l")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 0.375862, -3.9181042)
+
+[node name="Main_Gate" parent="Gates+devices" instance=ExtResource("33_8k40l")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 0.33038473, -10)
+
+[node name="Button_Front_Entrance" parent="Gates+devices" instance=ExtResource("34_h15nr")]
+transform = Transform3D(1.3113416e-07, 0, 1, 0, 1, 0, -1, 0, 1.3113416e-07, 7.7336555, 1.211202, -3.3211205)
+delay_before_reset = 5.0
+
+[node name="Button_MainGate" parent="Gates+devices" instance=ExtResource("34_h15nr")]
+transform = Transform3D(-1, 0, 8.940697e-08, 0, 1, 0, -8.940697e-08, 0, -1, 8.181404, 1.1323705, -9.74968)
+
+[node name="LockedDoor" parent="Gates+devices" instance=ExtResource("35_igngk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 1.3607478, -4)
+
+[connection signal="body_shape_entered" from="StaticBody3D/Area3D" to="StaticBody3D/SM_controller" method="_on_area_3d_body_shape_entered"]
+[connection signal="body_shape_exited" from="StaticBody3D/Area3D" to="StaticBody3D/SM_controller" method="_on_area_3d_body_shape_exited"]
+[connection signal="body_shape_entered" from="StaticBody3D3/Area3D" to="StaticBody3D3/SM_controller" method="_on_area_3d_body_shape_entered"]
+[connection signal="body_shape_exited" from="StaticBody3D3/Area3D" to="StaticBody3D3/SM_controller" method="_on_area_3d_body_shape_exited"]
+[connection signal="on_change" from="Gates+devices/Button_Front_Entrance" to="Gates+devices/Gate_Entrance" method="open_gate"]
+[connection signal="on_activated" from="Gates+devices/Button_MainGate" to="Gates+devices/Main_Gate" method="open_gate"]

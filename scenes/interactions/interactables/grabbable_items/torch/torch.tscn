@@ -1,8 +1,9 @@
-[gd_scene load_steps=10 format=3 uid="uid://bm8kaq0ah5g7q"]
+[gd_scene load_steps=11 format=3 uid="uid://bm8kaq0ah5g7q"]
 
 [ext_resource type="Script" uid="uid://b0nee5gqk8fwf" path="res://scenes/interactions/interactables/grabbable_items/torch/torch.gd" id="1_j22s6"]
 [ext_resource type="Texture2D" uid="uid://cek17ch4ko4ca" path="res://scenes/interactions/interactables/grabbable_items/torch/torch.png" id="2_20p6n"]
 [ext_resource type="Script" uid="uid://d3averdt6fuqm" path="res://scenes/interactions/interactables/grabbable_items/type/itemtype_torch.gd" id="2_t5i1y"]
+[ext_resource type="AudioStream" uid="uid://rc1825amqk33" path="res://assets/_not_ours_dontship/lego_mavelsuperheroes/FIRESML_LP.WAV" id="5_7yijt"]
 [ext_resource type="AudioStream" uid="uid://dutddyikwuiut" path="res://assets/misc/hittingsound_shorter.wav" id="5_j22s6"]
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_j22s6"]
@@ -27,7 +28,7 @@ height = 0.6900085
 radius = 0.10888672
 height = 0.9732544
 
-[node name="Torch" type="RigidBody3D" node_paths=PackedStringArray("idle_graphics", "grabbed_graphics")]
+[node name="Torch" type="RigidBody3D" node_paths=PackedStringArray("col", "grab_col", "idle_graphics", "grabbed_graphics")]
 collision_layer = 2
 axis_lock_angular_x = true
 axis_lock_angular_y = true
@@ -39,10 +40,12 @@ max_contacts_reported = 1
 script = ExtResource("1_j22s6")
 item_type = SubResource("Resource_d0jyt")
 item_weight = 1
+col = NodePath("CollisionShape3D")
+grab_col = NodePath("Area3D/CollisionShape3D")
 grabbed_offset = Vector2(-82.435, -112.81)
 grabbed_rotation = 0.785
 throwing_offset = Vector2(98.705, -112.81)
-throwing_rotation = 10.0
+throwing_rotation = 15.0
 idle_graphics = NodePath("Node3D/Idle")
 grabbed_graphics = NodePath("Node3D/Grabbed")
 interaction_type = 1
@@ -50,6 +53,7 @@ interaction_type = 1
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.14949343, 0)
 shape = SubResource("CapsuleShape3D_7yijt")
+debug_color = Color(0.76020277, 3.706068e-06, 4.813075e-07, 0.41960785)
 
 [node name="Area3D" type="Area3D" parent="." groups=["Interactables"]]
 collision_layer = 2
@@ -88,6 +92,17 @@ omni_range = 3.0
 [node name="AudioPlayer" type="AudioStreamPlayer3D" parent="."]
 stream = ExtResource("5_j22s6")
 max_distance = 22.38
+bus = &"items"
+
+[node name="TorchAudio" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("5_7yijt")
+attenuation_model = 1
+volume_db = -24.687
+max_db = -0.079
+autoplay = true
+max_distance = 231.41
+bus = &"pl_footsteps"
+doppler_tracking = 1
 
 [node name="RayCast3D" type="RayCast3D" parent="."]
 target_position = Vector3(0, -0.63, 0)

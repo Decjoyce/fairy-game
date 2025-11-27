@@ -7,6 +7,7 @@ var is_exiting: bool
 var tween: Tween
 
 @export var offset_helper: Control
+var offset_og_pos: Vector2
 
 var current_grab_prompt: String
 var current_hand_prompt: String
@@ -30,27 +31,37 @@ func update(_delta: float) -> void:
 	if is_charging and Input.is_action_just_released("action_" + hand_controller.stringed_hand_type):
 			end_charge()
 	
-	item_receiver = hand_controller.interact_checker_item_receiver()
-	if item_receiver: 
+	if !is_charging: item_receiver = hand_controller.interact_checker_item_receiver()
+	if item_receiver and item_receiver.check_if_need_item(grabbed_item):
 		if !hand_controller.anim_is_prompting:
 			hand_controller.anim_is_prompting = true
+			hand_controller.input_controls.enable_use_action(item_receiver.prompt_text)
 			hand_controller.anim_change_prompt_anim(item_receiver.hand_prompt)
 	else:
 		if hand_controller.anim_is_prompting:
 			hand_controller.anim_is_prompting = false
+			hand_controller.input_controls.disable_use_action()
 			hand_controller.anim_change_prompt_anim(anim_prompt)
 	
 	if !is_charging and Input.is_action_just_pressed("use_" + hand_controller.stringed_hand_type):
 		use()
 	
+	#if !item_receiver and Input.is_action_pressed("use_" + hand_controller.stringed_hand_type):
+		#use()
+	
 	if is_ready:
 		grabbing()
 
 func physics_update(_delta: float) -> void:
-	pass
+	if !item_receiver and Input.is_action_pressed("use_" + hand_controller.stringed_hand_type):
+		use()
 
 func enter(previous_state_path: String, data := {}) -> void:
 	grabbed_item = hand_controller.hovering_interactable
+	
+	hand_controller.input_controls.enable_interact_action("Hold to Throw")
+	
+	offset_og_pos = offset_helper.position
 	
 	current_item_type = grabbed_item.item_type
 	
@@ -84,6 +95,9 @@ func exit() -> void:
 	is_charging = false
 	charge_amount = 0
 	time_held_down = 0
+	offset_helper.position = offset_og_pos
+	hand_controller.input_controls.disable_interact_action()
+	t_bob = 0.0
 	#is_exiting = true
 	#grabbed_item = null
 
@@ -156,6 +170,12 @@ func use():
 				return
 			ItemType.ItemTypes.CONSUMABLE:
 				print("eat me")
+			ItemType.ItemTypes.INSTRUMENT:
+				var freq : float = remap(hand_controller.get_screen_position().x, 0, player_interact.size.x, grabbed_item.min_freq, grabbed_item.max_freq)
+				var octave: float = remap(hand_controller.get_screen_position().y/player_interact.size.y, 0, 1, 1, 3)
+				grabbed_item.using_item([freq, octave])
+			_:
+				return
 	
 
 # ↑ Using Stuff ↑
@@ -167,6 +187,10 @@ var charge_amount: float
 @export var delay_before_max_charge := 2.0
 var time_held_down: float = 0.0
 
+var BOB_FREQ: float = 0.75
+var BOB_AMP: float = 6.5
+var t_bob: float = 0.0
+
 func begin_charge() -> void:
 	is_charging = true
 	charge_amount = 0
@@ -174,6 +198,7 @@ func begin_charge() -> void:
 	hand_controller.anim_override_current_animation("a_hand_grab_item_charge", true)
 	hand_controller.anim_change_idle_anim("a_hand_grab_item_charge")
 	grabbed_item.rotation_degrees.z = -grabbed_item.throwing_rotation * hand_controller.hand_type_rotation_mult
+	hand_controller.input_controls.enable_interact_action("Release to Throw")
 	
 func charging(_delta: float) -> void:
 	if !is_charging: return
@@ -181,7 +206,10 @@ func charging(_delta: float) -> void:
 	var _charged_amount = time_held_down / delay_before_max_charge
 	
 	charge_amount = clampf(_charged_amount, 0.0, 1.0)
-	
+	t_bob += _delta * charge_amount * 50
+	if charge_amount > 0.1:
+		t_bob += _delta * charge_amount * 50
+		offset_helper.position = offset_og_pos + _headbob(t_bob)
 
 func end_charge() -> void:
 	hand_controller.anim_override_current_animation("a_hand_grab_item_charge", true)
@@ -195,6 +223,13 @@ func end_charge() -> void:
 	time_held_down = 0
 	
 	finished.emit(FREE)
+
+func _headbob(time: float) -> Vector2:
+	var pos = Vector2.ZERO
+	pos.x = sin(time * BOB_FREQ) * BOB_AMP
+	pos.y = cos(time * BOB_FREQ/4) * BOB_AMP
+	
+	return pos
 
 # ↑ State Stuff ↑
 # --------------------------------------------------------------------------------------------------
