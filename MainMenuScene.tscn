@@ -1,0 +1,79 @@
+[gd_scene load_steps=9 format=3 uid="uid://bw2ceq76kc2yc"]
+
+[ext_resource type="PackedScene" uid="uid://btcpx55r5ma3v" path="res://EnvironmentAssets/ObjTiles_Environment/ObjModels/Props/Menu/Moutainrocks5.glb" id="2_lrn60"]
+[ext_resource type="LightmapGIData" uid="uid://bqiy8iqbdsnh" path="res://LightMapBake/MainMenuScene.lmbake" id="2_sud0c"]
+
+[sub_resource type="Animation" id="Animation_47rn7"]
+resource_name = "CameraSlow"
+length = 10.0
+tracks/0/type = "position_3d"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = PackedFloat32Array(0, 1, 0.80260944, 1.8404503, -34.29502, 10, 1, 0.80260944, 1.8404503, 13.587135)
+
+[sub_resource type="Animation" id="Animation_mlkpy"]
+length = 0.001
+tracks/0/type = "position_3d"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = PackedFloat32Array(0, 1, 0, 0, -32.12275)
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_17sr7"]
+_data = {
+&"CameraSlow": SubResource("Animation_47rn7"),
+&"RESET": SubResource("Animation_mlkpy")
+}
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_o6rx4"]
+sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+ground_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+
+[sub_resource type="Sky" id="Sky_sud0c"]
+sky_material = SubResource("ProceduralSkyMaterial_o6rx4")
+
+[sub_resource type="Environment" id="Environment_lrn60"]
+background_mode = 1
+sky = SubResource("Sky_sud0c")
+ambient_light_source = 1
+ambient_light_color = Color(0.14462909, 4.8275142e-05, 0.5168402, 1)
+tonemap_mode = 4
+tonemap_exposure = 1.5
+ssao_radius = 43.0
+ssao_intensity = 9.15
+volumetric_fog_enabled = true
+volumetric_fog_density = 0.03
+volumetric_fog_emission = Color(0.09659197, 0.15662041, 0.19261205, 1)
+
+[node name="Node3D" type="Node3D"]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+root_node = NodePath("../Camera3D")
+libraries = {
+&"": SubResource("AnimationLibrary_17sr7")
+}
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 0, 0, -32.12275)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_lrn60")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.7121853, 0.70199156, 0, -0.70199156, 0.7121853, 0, 3.0698814, 0)
+light_color = Color(0.10974447, 0.2225518, 0.31551775, 1)
+light_energy = 3.0
+shadow_enabled = true
+shadow_bias = 0.125
+
+[node name="LightmapGI" type="LightmapGI" parent="."]
+quality = 2
+generate_probes_subdiv = 3
+light_data = ExtResource("2_sud0c")
+
+[node name="Moutainrocks5" parent="." instance=ExtResource("2_lrn60")]
