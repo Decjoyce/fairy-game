@@ -95,7 +95,7 @@ func check_item_is_specific(_item: Grabbable_Item, destroy_check: bool = true) -
 	if needed_items_left.size() <= 0:
 		on_change.emit(1)
 		all_items_received()
-	else: on_change.emit((specific_items_to_recieve.size() - needed_items_left.size()) / specific_items_to_recieve.size())
+	else: on_change.emit(float(specific_items_to_recieve.size() - needed_items_left.size()) / specific_items_to_recieve.size())
 	
 	return true
 
