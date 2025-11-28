@@ -21,6 +21,16 @@ var freeze : bool
 func _ready() -> void:
 	current_weight = PLAYER_WEIGHT
 
+func _process(delta: float) -> void:
+	if freeze: return
+	if Input.is_action_just_pressed("enter_combat_mode"):
+		toggle_combat()
+
+func toggle_combat() -> void:
+	in_combat = !in_combat
+	if in_combat: combat.enter_combat_mode()
+	else: combat.exit_combat_mode()
+
 func die():
 	Debug.play_death_player()
 	interaction.visible = false

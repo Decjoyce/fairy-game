@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=3 uid="uid://bq86osdembn58"]
+[gd_scene load_steps=39 format=3 uid="uid://bq86osdembn58"]
 
 [ext_resource type="Script" uid="uid://io22wsbhy73f" path="res://scenes/_player/player_test.gd" id="1_e0b2u"]
 [ext_resource type="Script" uid="uid://by88p7ijbixe5" path="res://scenes/_player/player_movement.gd" id="2_3jgj8"]
@@ -13,6 +13,7 @@
 [ext_resource type="AudioStream" uid="uid://b4uq3g7e1w535" path="res://assets/_not_ours_dontship/hl_footsteps/footstep_dirt4.wav" id="6_fafb0"]
 [ext_resource type="AudioStream" uid="uid://da4l7eb7yuxm" path="res://assets/misc/out-of-breath-male-176715.wav" id="7_nbsyt"]
 [ext_resource type="Script" uid="uid://cpomu5ts52mpj" path="res://scenes/_player/combat/player_combat.gd" id="12_gcklq"]
+[ext_resource type="Resource" uid="uid://ci23rrjojjvls" path="res://scenes/_player/combat/obselete/p_attacksq.tres" id="12_uus6m"]
 [ext_resource type="Script" uid="uid://cdsjqqs64jj3f" path="res://scenes/_player/combat/player_combathand.gd" id="13_s1g5w"]
 [ext_resource type="Script" uid="uid://c27axnnaakeuo" path="res://scenes/combat/combathand_attack.gd" id="14_uus6m"]
 [ext_resource type="Script" uid="uid://446bgqyk22na" path="res://scenes/combat/stance.gd" id="15_6jmgc"]
@@ -26,33 +27,6 @@ albedo_color = Color(1, 0.15294118, 1, 1)
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_1snfn"]
 radius = 0.2
 height = 1.25
-
-[sub_resource type="Animation" id="Animation_gcklq"]
-resource_name = "death_anim"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.56666666),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector3(0, 0, 0), Vector3(-0.5, -0.77, 0)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath(".:rotation")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.3),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector3(0, 0, 0), Vector3(0.34906584, 0, 1.2252212)]
-}
 
 [sub_resource type="Animation" id="Animation_s1g5w"]
 length = 0.001
@@ -81,6 +55,33 @@ tracks/1/keys = {
 "values": [Vector3(0, 0, 0)]
 }
 
+[sub_resource type="Animation" id="Animation_gcklq"]
+resource_name = "death_anim"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.56666666),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(-0.5, -0.77, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0.34906584, 0, 1.2252212)]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_uus6m"]
 _data = {
 &"RESET": SubResource("Animation_s1g5w"),
@@ -101,6 +102,16 @@ stream_0/stream = ExtResource("3_lerqh")
 stream_1/stream = ExtResource("4_vxplf")
 stream_2/stream = ExtResource("5_p786e")
 stream_3/stream = ExtResource("6_fafb0")
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_uus6m"]
+
+[sub_resource type="Animation" id="Animation_uus6m"]
+resource_name = "p_attck_TL"
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_6jmgc"]
+_data = {
+&"p_attck_TL": SubResource("Animation_uus6m")
+}
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_uus6m"]
 
@@ -164,8 +175,11 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
 target_position = Vector3(0, -5, 0)
 
 [node name="EnemyChecker" type="RayCast3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
-target_position = Vector3(0, -5, 0)
+target_position = Vector3(0, 0, -1.25)
+collision_mask = 131072
+collide_with_areas = true
+collide_with_bodies = false
+debug_shape_custom_color = Color(0.8729805, 0, 0, 1)
 script = ExtResource("2_s1g5w")
 metadata/_custom_type_script = "uid://jxohgxu3vshf"
 
@@ -219,15 +233,19 @@ combat_hands = [NodePath("CombatHand_Left"), NodePath("CombatHand_Right")]
 stats = NodePath("../Stats")
 incoming_attack_uis = [NodePath("Combat_UI/IncomingAttacks/R"), NodePath("Combat_UI/IncomingAttacks/BR"), NodePath("Combat_UI/IncomingAttacks/B"), NodePath("Combat_UI/IncomingAttacks/BL"), NodePath("Combat_UI/IncomingAttacks/L"), NodePath("Combat_UI/IncomingAttacks/TL"), NodePath("Combat_UI/IncomingAttacks/T"), NodePath("Combat_UI/IncomingAttacks/TR")]
 
-[node name="CombatHand_Left" type="Node" parent="Combat" node_paths=PackedStringArray("combat", "my_stance")]
+[node name="CombatHand_Left" type="Node" parent="Combat" node_paths=PackedStringArray("combat", "other_hand", "my_stance", "anim_player")]
 script = ExtResource("13_s1g5w")
 stringed_hand = "LEFT"
 combat = NodePath("..")
-restricted_slots = "00111110"
+other_hand = NodePath("../CombatHand_Right")
+restricted_slots = "00011100"
 my_stance = NodePath("../Stance")
+anim_player = NodePath("AnimationPlayer")
 
 [node name="Attack" type="Node" parent="Combat/CombatHand_Left"]
 script = ExtResource("14_uus6m")
+not_player = false
+player_current_attack = ExtResource("12_uus6m")
 metadata/_custom_type_script = "uid://c27axnnaakeuo"
 
 [node name="Timer_Telegraph" type="Timer" parent="Combat/CombatHand_Left/Attack"]
@@ -239,18 +257,34 @@ one_shot = true
 [node name="Timer_Recover" type="Timer" parent="Combat/CombatHand_Left/Attack"]
 one_shot = true
 
+[node name="AttackSFX" type="AudioStreamPlayer3D" parent="Combat/CombatHand_Left/Attack"]
+stream = SubResource("AudioStreamRandomizer_uus6m")
+
 [node name="Timer_Stagger" type="Timer" parent="Combat/CombatHand_Left"]
 
-[node name="CombatHand_Right" type="Node" parent="Combat" node_paths=PackedStringArray("combat", "my_stance")]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Combat/CombatHand_Left"]
+root_node = NodePath("../..")
+libraries = {
+&"": SubResource("AnimationLibrary_6jmgc")
+}
+
+[node name="BlockSfx" type="AudioStreamPlayer3D" parent="Combat/CombatHand_Left"]
+stream = SubResource("AudioStreamRandomizer_uus6m")
+
+[node name="CombatHand_Right" type="Node" parent="Combat" node_paths=PackedStringArray("combat", "other_hand", "my_stance", "anim_player")]
 script = ExtResource("13_s1g5w")
 stringed_hand = "RIGHT"
 combat = NodePath("..")
+other_hand = NodePath("../CombatHand_Left")
 index = 1
-restricted_slots = "11100011"
+restricted_slots = "11000001"
 my_stance = NodePath("../Stance")
+anim_player = NodePath("AnimationPlayer2")
 
 [node name="Attack" type="Node" parent="Combat/CombatHand_Right"]
 script = ExtResource("14_uus6m")
+not_player = false
+player_current_attack = ExtResource("12_uus6m")
 metadata/_custom_type_script = "uid://c27axnnaakeuo"
 
 [node name="Timer_Telegraph" type="Timer" parent="Combat/CombatHand_Right/Attack"]
@@ -262,7 +296,16 @@ one_shot = true
 [node name="Timer_Recover" type="Timer" parent="Combat/CombatHand_Right/Attack"]
 one_shot = true
 
+[node name="AttackSFX" type="AudioStreamPlayer3D" parent="Combat/CombatHand_Right/Attack"]
+stream = SubResource("AudioStreamRandomizer_uus6m")
+
 [node name="Timer_Stagger" type="Timer" parent="Combat/CombatHand_Right"]
+
+[node name="AnimationPlayer2" type="AnimationPlayer" parent="Combat/CombatHand_Right"]
+root_node = NodePath("../..")
+
+[node name="BlockSfx" type="AudioStreamPlayer3D" parent="Combat/CombatHand_Right"]
+stream = SubResource("AudioStreamRandomizer_uus6m")
 
 [node name="Combat_UI" type="Control" parent="Combat"]
 layout_mode = 3
@@ -281,6 +324,7 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="UI_Hand_Right" type="Control" parent="Combat/Combat_UI"]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -312,6 +356,7 @@ texture = SubResource("CanvasTexture_uus6m")
 metadata/_edit_use_anchors_ = true
 
 [node name="BR" type="TextureRect" parent="Combat/Combat_UI/IncomingAttacks"]
+visible = false
 modulate = Color(0.48764306, 0, 0.0039703054, 0.8784314)
 custom_minimum_size = Vector2(0, 200)
 layout_mode = 1
@@ -323,9 +368,9 @@ anchor_bottom = 1.1234568
 grow_horizontal = 0
 grow_vertical = 2
 texture = SubResource("CanvasTexture_uus6m")
-metadata/_edit_use_anchors_ = true
 
 [node name="B" type="TextureRect" parent="Combat/Combat_UI/IncomingAttacks"]
+visible = false
 modulate = Color(0.48764306, 0, 0.0039703054, 0.8784314)
 layout_mode = 1
 anchors_preset = -1
@@ -336,9 +381,9 @@ anchor_bottom = 0.9953704
 grow_horizontal = 2
 grow_vertical = 0
 texture = SubResource("CanvasTexture_uus6m")
-metadata/_edit_use_anchors_ = true
 
 [node name="BL" type="TextureRect" parent="Combat/Combat_UI/IncomingAttacks"]
+visible = false
 modulate = Color(0.48764306, 0, 0.0039703054, 0.8784314)
 custom_minimum_size = Vector2(0, 200)
 layout_mode = 1
@@ -350,9 +395,9 @@ anchor_bottom = 1.1095679
 grow_horizontal = 0
 grow_vertical = 2
 texture = SubResource("CanvasTexture_uus6m")
-metadata/_edit_use_anchors_ = true
 
 [node name="L" type="TextureRect" parent="Combat/Combat_UI/IncomingAttacks"]
+visible = false
 modulate = Color(0.48764306, 0, 0.0039703054, 0.8784314)
 custom_minimum_size = Vector2(0, 200)
 layout_mode = 1
@@ -366,6 +411,7 @@ grow_vertical = 2
 texture = SubResource("CanvasTexture_uus6m")
 
 [node name="TL" type="TextureRect" parent="Combat/Combat_UI/IncomingAttacks"]
+visible = false
 modulate = Color(0.48764306, 0, 0.0039703054, 0.8784314)
 custom_minimum_size = Vector2(0, 200)
 layout_mode = 1
@@ -377,9 +423,9 @@ anchor_bottom = 0.22551696
 grow_horizontal = 0
 grow_vertical = 2
 texture = SubResource("CanvasTexture_uus6m")
-metadata/_edit_use_anchors_ = true
 
 [node name="T" type="TextureRect" parent="Combat/Combat_UI/IncomingAttacks"]
+visible = false
 modulate = Color(0.48764306, 0, 0.0039703054, 0.8784314)
 layout_mode = 1
 anchors_preset = -1
@@ -389,9 +435,9 @@ anchor_right = 0.6059028
 anchor_bottom = 0.12654321
 grow_horizontal = 2
 texture = SubResource("CanvasTexture_uus6m")
-metadata/_edit_use_anchors_ = true
 
 [node name="TR" type="TextureRect" parent="Combat/Combat_UI/IncomingAttacks"]
+visible = false
 modulate = Color(0.48764306, 0, 0.0039703054, 0.8784314)
 custom_minimum_size = Vector2(0, 200)
 layout_mode = 1
@@ -403,7 +449,6 @@ anchor_bottom = 0.1712963
 grow_horizontal = 0
 grow_vertical = 2
 texture = SubResource("CanvasTexture_uus6m")
-metadata/_edit_use_anchors_ = true
 
 [node name="Timer" type="Timer" parent="Combat/Combat_UI/IncomingAttacks"]
 wait_time = 2.0
@@ -518,6 +563,8 @@ grow_horizontal = 2
 grow_vertical = 0
 text = "Return To Menu"
 
+[connection signal="on_body_entered" from="EnemyChecker" to="Combat" method="_on_enemy_checker_on_body_entered"]
+[connection signal="on_body_exit" from="EnemyChecker" to="Combat" method="_on_enemy_checker_on_body_exit"]
 [connection signal="timeout" from="Combat/CombatHand_Left/Attack/Timer_Telegraph" to="Combat/CombatHand_Left/Attack" method="end_telegraph"]
 [connection signal="timeout" from="Combat/CombatHand_Left/Attack/Timer_Attack" to="Combat/CombatHand_Left/Attack" method="end_attack"]
 [connection signal="timeout" from="Combat/CombatHand_Left/Attack/Timer_Recover" to="Combat/CombatHand_Left/Attack" method="end_recover"]

@@ -15,7 +15,7 @@ func enter():
 	noded = get_tree().get_first_node_in_group("Player")
 	if get_tree().get_first_node_in_group("Player"):
 		player = get_tree().get_first_node_in_group("Player")
-	combat.enter_combat_mode()
+	#combat.enter_combat_mode()
 	combat.enemy_stance = player.combat.stance
 
 func exit():

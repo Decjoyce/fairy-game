@@ -15,13 +15,15 @@ var current_combat_state: CombatHandStates
 
 @export var anim_player: AnimationPlayer
 
+@export var block_audio_player: AudioStreamPlayer3D
+
 func _process(delta: float) -> void:
 	if !is_in_combat: return
 	match current_combat_state:
 		1: # DEFENDING
 			defending()
 		2: # ATTACKING
-			attacking()
+			attacking(delta)
 		_: # STAGGERED
 			return
 
@@ -40,6 +42,9 @@ func move_into_slot(slot_to_occupy: int) -> void:
 	current_slot = slot_to_occupy
 
 func attack_enemy(dmg: float) -> void:
+	if enemy_stance == null:
+		print("hmm")
+		return
 	var enemy_slot := enemy_stance.check_slot_to_attack(current_slot)
 	if enemy_slot == null: # Can Damage
 		damage_enemy(enemy_slot, dmg)
@@ -91,7 +96,7 @@ func end_defending() -> void:
 func begin_attacking() -> void:
 	current_combat_state = CombatHandStates.ATTACKING
 
-func attacking() -> void:
+func attacking(delta: float) -> void:
 	pass
 
 func end_attacking() -> void:

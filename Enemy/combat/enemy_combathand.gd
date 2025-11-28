@@ -32,7 +32,7 @@ func begin_attacking() -> void:
 	current_attack_sequence = attack_sequences.pick_random()
 	hand_attack.start_attacking(current_attack_sequence)
 
-func attacking() -> void:
+func attacking(delta: float) -> void:
 	pass
 
 func end_attacking() -> void:

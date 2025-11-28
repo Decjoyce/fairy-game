@@ -1,4 +1,4 @@
-[gd_scene load_steps=81 format=3 uid="uid://fvgp74wr8y14"]
+[gd_scene load_steps=86 format=3 uid="uid://fvgp74wr8y14"]
 
 [ext_resource type="Texture2D" uid="uid://bajdgu88x35py" path="res://Sprites/ballyWalkSheet_n.png" id="1_auc6d"]
 [ext_resource type="Texture2D" uid="uid://dl3etwft2mhxm" path="res://Sprites/ballyWalkSheet.png" id="2_lxfqn"]
@@ -33,12 +33,14 @@
 [ext_resource type="Script" uid="uid://446bgqyk22na" path="res://scenes/combat/stance.gd" id="31_vx87h"]
 [ext_resource type="Script" uid="uid://46pp7aerorca" path="res://stats.gd" id="32_cangh"]
 [ext_resource type="Texture2D" uid="uid://2t1cw83o71dn" path="res://assets/ui/enemy_border.png" id="33_vx87h"]
+[ext_resource type="Script" uid="uid://gmvwnhalcf7" path="res://Enemy/enemy_hitbox_temp.gd" id="34_vx87h"]
+[ext_resource type="AudioStream" uid="uid://bx7heo47e14or" path="res://assets/misc/ugh.wav" id="35_5pe8i"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_abuop"]
 radius = 0.43391418
 height = 0.86782837
 
-[sub_resource type="Shader" id="Shader_tkkut"]
+[sub_resource type="Shader" id="Shader_cangh"]
 code = "shader_type spatial;
 render_mode diffuse_lambert_wrap,cull_disabled;
 
@@ -115,9 +117,9 @@ void fragment() {
 }
 "
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_pjoft"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_vx87h"]
 render_priority = 0
-shader = SubResource("Shader_tkkut")
+shader = SubResource("Shader_cangh")
 shader_parameter/rows = 5.0
 shader_parameter/columns = 8.0
 shader_parameter/frame = 1.0
@@ -126,18 +128,18 @@ shader_parameter/sprite = ExtResource("2_lxfqn")
 shader_parameter/mode = 0
 shader_parameter/Normal = ExtResource("1_auc6d")
 
-[sub_resource type="PlaneMesh" id="PlaneMesh_cangh"]
-material = SubResource("ShaderMaterial_pjoft")
+[sub_resource type="PlaneMesh" id="PlaneMesh_5pe8i"]
+material = SubResource("ShaderMaterial_vx87h")
 size = Vector2(1.08, 1.08)
 orientation = 2
 
-[sub_resource type="Resource" id="Resource_vx87h"]
+[sub_resource type="Resource" id="Resource_3o7nl"]
 script = ExtResource("4_116jw")
 sprite = ExtResource("5_huif7")
 texture_normal = ExtResource("6_gfr4v")
 columns = 8.0
 
-[sub_resource type="Resource" id="Resource_5pe8i"]
+[sub_resource type="Resource" id="Resource_r88ec"]
 script = ExtResource("4_116jw")
 name = "walk"
 sprite = ExtResource("2_lxfqn")
@@ -145,7 +147,7 @@ texture_normal = ExtResource("1_auc6d")
 rows = 5.0
 columns = 8.0
 
-[sub_resource type="Resource" id="Resource_3o7nl"]
+[sub_resource type="Resource" id="Resource_eex23"]
 script = ExtResource("4_116jw")
 name = "Attack_LbBottom"
 sprite = ExtResource("7_tkkut")
@@ -153,7 +155,7 @@ texture_normal = ExtResource("8_pjoft")
 rows = 2.0
 columns = 8.0
 
-[sub_resource type="Resource" id="Resource_r88ec"]
+[sub_resource type="Resource" id="Resource_ifeau"]
 script = ExtResource("4_116jw")
 name = "Attack_LMid"
 sprite = ExtResource("9_cangh")
@@ -161,7 +163,7 @@ texture_normal = ExtResource("10_vx87h")
 rows = 2.0
 columns = 8.0
 
-[sub_resource type="Resource" id="Resource_eex23"]
+[sub_resource type="Resource" id="Resource_v2g1a"]
 script = ExtResource("4_116jw")
 name = "Attack_LTop"
 sprite = ExtResource("11_5pe8i")
@@ -169,7 +171,7 @@ texture_normal = ExtResource("12_3o7nl")
 rows = 2.0
 columns = 8.0
 
-[sub_resource type="Resource" id="Resource_ifeau"]
+[sub_resource type="Resource" id="Resource_7o52w"]
 script = ExtResource("4_116jw")
 name = "Attack_RBottom"
 sprite = ExtResource("13_r88ec")
@@ -177,7 +179,7 @@ texture_normal = ExtResource("14_eex23")
 rows = 2.0
 columns = 8.0
 
-[sub_resource type="Resource" id="Resource_v2g1a"]
+[sub_resource type="Resource" id="Resource_3wbeg"]
 script = ExtResource("4_116jw")
 name = "Attack_RMid"
 sprite = ExtResource("15_ifeau")
@@ -185,7 +187,7 @@ texture_normal = ExtResource("16_v2g1a")
 rows = 2.0
 columns = 8.0
 
-[sub_resource type="Resource" id="Resource_7o52w"]
+[sub_resource type="Resource" id="Resource_84imu"]
 script = ExtResource("4_116jw")
 name = "Attack_RTop"
 sprite = ExtResource("17_7o52w")
@@ -846,6 +848,8 @@ _data = {
 &"test_walk": SubResource("Animation_g8xqt")
 }
 
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_5pe8i"]
+
 [sub_resource type="Gradient" id="Gradient_5pe8i"]
 offsets = PackedFloat32Array(0, 0.31578946, 1)
 colors = PackedColorArray(0.47993267, 0.07172013, 0.060350247, 1, 0.67502344, 0.12257505, 0.10578546, 1, 0.7764706, 0.14901961, 0.12941177, 1)
@@ -879,6 +883,16 @@ billboard_mode = 2
 resource_local_to_scene = true
 material = SubResource("StandardMaterial3D_vx87h")
 
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_hovqw"]
+radius = 0.3
+height = 1.0
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_3o7nl"]
+playback_mode = 1
+random_pitch = 1.1
+streams_count = 1
+stream_0/stream = ExtResource("35_5pe8i")
+
 [node name="Enemy_presset" type="CharacterBody3D"]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
@@ -887,9 +901,9 @@ shape = SubResource("CapsuleShape3D_abuop")
 
 [node name="Sprite3DBillBoard" type="MeshInstance3D" parent="."]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0.45682234, 0)
-mesh = SubResource("PlaneMesh_cangh")
+mesh = SubResource("PlaneMesh_5pe8i")
 script = ExtResource("3_txv2g")
-animations_array = Array[ExtResource("4_116jw")]([SubResource("Resource_vx87h"), SubResource("Resource_5pe8i"), SubResource("Resource_3o7nl"), SubResource("Resource_r88ec"), SubResource("Resource_eex23"), SubResource("Resource_ifeau"), SubResource("Resource_v2g1a"), SubResource("Resource_7o52w")])
+animations_array = Array[ExtResource("4_116jw")]([SubResource("Resource_3o7nl"), SubResource("Resource_r88ec"), SubResource("Resource_eex23"), SubResource("Resource_ifeau"), SubResource("Resource_v2g1a"), SubResource("Resource_7o52w"), SubResource("Resource_3wbeg"), SubResource("Resource_84imu")])
 animation = 1
 frame = 1.0
 sprite_scale = 0.001
@@ -987,18 +1001,27 @@ one_shot = true
 [node name="Timer_Recover" type="Timer" parent="Combat/CombatHand/Attack"]
 one_shot = true
 
+[node name="AttackSFX" type="AudioStreamPlayer3D" parent="Combat/CombatHand/Attack"]
+stream = SubResource("AudioStreamRandomizer_5pe8i")
+
 [node name="Timer_Stagger" type="Timer" parent="Combat/CombatHand"]
 
 [node name="Timer_Defence" type="Timer" parent="Combat/CombatHand"]
 one_shot = true
 
-[node name="Stance" type="Node" parent="Combat"]
+[node name="BlockSfx" type="AudioStreamPlayer3D" parent="Combat/CombatHand"]
+stream = SubResource("AudioStreamRandomizer_5pe8i")
+
+[node name="Stance" type="Node" parent="Combat" node_paths=PackedStringArray("stats")]
 script = ExtResource("31_vx87h")
+stats = NodePath("../../Stats")
 metadata/_custom_type_script = "uid://446bgqyk22na"
 
-[node name="Stats" type="Node" parent="." node_paths=PackedStringArray("health_bar", "stam_bar")]
+[node name="Stats" type="Node" parent="." node_paths=PackedStringArray("health_bar", "hit_sfx", "who_owns", "stam_bar")]
 script = ExtResource("32_cangh")
 health_bar = NodePath("Node3D/SubViewport/Control/Border/HealthBar")
+hit_sfx = NodePath("../HitSfx")
+who_owns = NodePath("..")
 stam_bar = NodePath("Node3D/SubViewport/Control/Border/StamBar")
 metadata/_custom_type_script = "uid://46pp7aerorca"
 
@@ -1070,6 +1093,21 @@ metadata/_edit_use_anchors_ = true
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Stats/Node3D"]
 mesh = SubResource("QuadMesh_ifeau")
+
+[node name="Hitbox" type="Area3D" parent="." node_paths=PackedStringArray("combat")]
+collision_layer = 131072
+collision_mask = 0
+script = ExtResource("34_vx87h")
+combat = NodePath("../Combat")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Hitbox"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+shape = SubResource("CapsuleShape3D_hovqw")
+
+[node name="HitSfx" type="AudioStreamPlayer3D" parent="."]
+stream = SubResource("AudioStreamRandomizer_3o7nl")
+pitch_scale = 0.97
+bus = &"items"
 
 [connection signal="timeout" from="StateMachine/Wander/Timer" to="StateMachine/Wander" method="_on_timer_timeout"]
 [connection signal="timeout" from="StateMachine/Chase/Timer" to="StateMachine/Chase" method="_on_timer_timeout"]

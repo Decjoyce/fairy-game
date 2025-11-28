@@ -3,6 +3,8 @@ extends Node
 
 var is_in_combat_mode: bool = true
 
+@onready var player: PlayerTest = owner
+
 @onready var combat_ui: Control = $Combat_UI
 
 @export var combat_hands: Array[CombatHand]
@@ -15,7 +17,7 @@ var enemy_stance: Stance
 @export var incoming_attack_uis: Array[TextureRect] 
 
 func _ready() -> void:
-	enter_combat_mode()
+	#enter_combat_mode()
 	stance.stats = stats
 	stance.hands = combat_hands
 	disable_all_inc_ui()
@@ -26,12 +28,16 @@ func _ready() -> void:
 func enter_combat_mode() -> void:
 	is_in_combat_mode = true
 	combat_ui.visible = true
+	player.in_combat = true
+	player.interaction.visible = false
 	combat_hands[0].become_active()
 	combat_hands[1].become_active()
 
 func exit_combat_mode() -> void:
 	is_in_combat_mode = false
 	combat_ui.visible = false
+	player.in_combat = false
+	player.interaction.visible = true
 	combat_hands[0].become_in_active()
 	combat_hands[1].become_in_active()
 
@@ -51,3 +57,13 @@ func disable_all_inc_ui() -> void:
 
 func _on_timer_timeout() -> void:
 	disable_all_inc_ui()
+
+
+func _on_enemy_checker_on_body_entered(obj: Object) -> void:
+	if obj is EnemyHitbox:
+		enemy_stance = obj.combat.stance
+
+
+func _on_enemy_checker_on_body_exit(obj: Object) -> void:
+	if obj is EnemyHitbox and enemy_stance == obj.combat.stance:
+		enemy_stance = null
