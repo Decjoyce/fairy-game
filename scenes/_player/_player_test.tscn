@@ -1,7 +1,9 @@
-[gd_scene load_steps=24 format=3 uid="uid://bq86osdembn58"]
+[gd_scene load_steps=35 format=3 uid="uid://bq86osdembn58"]
 
 [ext_resource type="Script" uid="uid://io22wsbhy73f" path="res://scenes/_player/player_test.gd" id="1_e0b2u"]
 [ext_resource type="Script" uid="uid://by88p7ijbixe5" path="res://scenes/_player/player_movement.gd" id="2_3jgj8"]
+[ext_resource type="Script" uid="uid://jxohgxu3vshf" path="res://scripts/improved_raycast.gd" id="2_s1g5w"]
+[ext_resource type="PackedScene" uid="uid://bs8ivnvddloci" path="res://scenes/_game.tscn" id="2_uus6m"]
 [ext_resource type="PackedScene" uid="uid://dqojmsc2q6wf4" path="res://scenes/_player/interaction/player_interaction.tscn" id="3_3jgj8"]
 [ext_resource type="AudioStream" uid="uid://y4myp6s6s2fm" path="res://assets/_not_ours_dontship/hl_footsteps/footstep_dirt1.wav" id="3_lerqh"]
 [ext_resource type="Script" uid="uid://46pp7aerorca" path="res://stats.gd" id="4_fhpxp"]
@@ -11,6 +13,10 @@
 [ext_resource type="AudioStream" uid="uid://bx7heo47e14or" path="res://assets/misc/ugh.wav" id="6_4lyfc"]
 [ext_resource type="AudioStream" uid="uid://b4uq3g7e1w535" path="res://assets/_not_ours_dontship/hl_footsteps/footstep_dirt4.wav" id="6_fafb0"]
 [ext_resource type="AudioStream" uid="uid://da4l7eb7yuxm" path="res://assets/misc/out-of-breath-male-176715.wav" id="7_nbsyt"]
+[ext_resource type="Script" uid="uid://cpomu5ts52mpj" path="res://scenes/_player/combat/player_combat.gd" id="12_gcklq"]
+[ext_resource type="Script" uid="uid://cdsjqqs64jj3f" path="res://scenes/_player/combat/player_combathand.gd" id="13_s1g5w"]
+[ext_resource type="Script" uid="uid://c27axnnaakeuo" path="res://scenes/combat/combathand_attack.gd" id="14_uus6m"]
+[ext_resource type="Script" uid="uid://446bgqyk22na" path="res://scenes/combat/stance.gd" id="15_6jmgc"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_3jgj8"]
 height = 1.3
@@ -21,6 +27,66 @@ albedo_color = Color(1, 0.15294118, 1, 1)
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_1snfn"]
 radius = 0.2
 height = 1.25
+
+[sub_resource type="Animation" id="Animation_gcklq"]
+resource_name = "death_anim"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.56666666),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(-0.5, -0.77, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0.34906584, 0, 1.2252212)]
+}
+
+[sub_resource type="Animation" id="Animation_s1g5w"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_uus6m"]
+_data = {
+&"RESET": SubResource("Animation_s1g5w"),
+&"death_anim": SubResource("Animation_gcklq")
+}
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_3jgj8"]
 size = Vector3(0.5, 0.9, 1.1)
@@ -56,9 +122,19 @@ gradient = SubResource("Gradient_bfirj")
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_4lyfc"]
 texture = SubResource("GradientTexture1D_imes0")
 
-[node name="player_test" type="Node3D" node_paths=PackedStringArray("combatUI") groups=["Player"]]
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_s1g5w"]
+playback_mode = 1
+random_pitch = 1.1
+streams_count = 1
+stream_0/stream = ExtResource("6_4lyfc")
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_gcklq"]
+
+[node name="player_test" type="Node3D" node_paths=PackedStringArray("combat", "death_ui") groups=["Player"]]
 script = ExtResource("1_e0b2u")
-combatUI = NodePath("Stats/UI")
+combat = NodePath("Combat")
+death_ui = NodePath("DeathUI")
+reset_scene = ExtResource("2_uus6m")
 
 [node name="Collision" type="Area3D" parent="." groups=["Player"]]
 collision_layer = 3
@@ -70,6 +146,7 @@ shape = SubResource("CapsuleShape3D_3jgj8")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.375, 0)
+visible = false
 material_override = SubResource("StandardMaterial3D_1snfn")
 mesh = SubResource("CapsuleMesh_1snfn")
 
@@ -77,9 +154,20 @@ mesh = SubResource("CapsuleMesh_1snfn")
 current = true
 fov = 80.0
 
+[node name="DeathAnimationPlayer" type="AnimationPlayer" parent="Camera3D"]
+libraries = {
+&"": SubResource("AnimationLibrary_uus6m")
+}
+
 [node name="FloorDetector" type="RayCast3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
 target_position = Vector3(0, -5, 0)
+
+[node name="EnemyChecker" type="RayCast3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+target_position = Vector3(0, -5, 0)
+script = ExtResource("2_s1g5w")
+metadata/_custom_type_script = "uid://jxohgxu3vshf"
 
 [node name="Movement" type="Node" parent="." node_paths=PackedStringArray("player", "floor_detector")]
 script = ExtResource("2_3jgj8")
@@ -125,9 +213,10 @@ bus = &"pl_footsteps"
 movement = NodePath("../Movement")
 cam = NodePath("../Camera3D")
 
-[node name="Stats" type="Node" parent="." node_paths=PackedStringArray("health_bar", "hit_sfx", "who_owns", "stam_bar", "stam_sfx")]
+[node name="Stats" type="Node" parent="." node_paths=PackedStringArray("health_bar", "death_anim", "hit_sfx", "who_owns", "stam_bar", "stam_sfx")]
 script = ExtResource("4_fhpxp")
 health_bar = NodePath("UI/Border/HealthBar")
+death_anim = NodePath("../Camera3D/DeathAnimationPlayer")
 hit_sfx = NodePath("../HitSfx")
 who_owns = NodePath("..")
 stam_bar = NodePath("UI/Border/StamBar")
@@ -139,7 +228,6 @@ metadata/_custom_type_script = "uid://46pp7aerorca"
 one_shot = true
 
 [node name="UI" type="Control" parent="Stats"]
-visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -186,9 +274,130 @@ show_percentage = false
 metadata/_edit_use_anchors_ = true
 
 [node name="HitSfx" type="AudioStreamPlayer3D" parent="."]
-stream = ExtResource("6_4lyfc")
+stream = SubResource("AudioStreamRandomizer_s1g5w")
+pitch_scale = 0.97
+bus = &"items"
 
 [node name="StamSfx" type="AudioStreamPlayer3D" parent="."]
 stream = ExtResource("7_nbsyt")
+bus = &"pl_footsteps"
+
+[node name="Combat" type="Node" parent="." node_paths=PackedStringArray("combat_hands", "stats")]
+script = ExtResource("12_gcklq")
+combat_hands = [NodePath("CombatHand_Left"), NodePath("CombatHand_Right")]
+stats = NodePath("../Stats")
+
+[node name="CombatHand_Left" type="Node" parent="Combat" node_paths=PackedStringArray("my_stance")]
+script = ExtResource("13_s1g5w")
+stringed_hand = "LEFT"
+restricted_slots = "00111110"
+my_stance = NodePath("../Stance")
+
+[node name="Attack" type="Node" parent="Combat/CombatHand_Left"]
+script = ExtResource("14_uus6m")
+metadata/_custom_type_script = "uid://c27axnnaakeuo"
+
+[node name="Timer_Telegraph" type="Timer" parent="Combat/CombatHand_Left/Attack"]
+one_shot = true
+
+[node name="Timer_Attack" type="Timer" parent="Combat/CombatHand_Left/Attack"]
+one_shot = true
+
+[node name="Timer_Recover" type="Timer" parent="Combat/CombatHand_Left/Attack"]
+one_shot = true
+
+[node name="Timer_Stagger" type="Timer" parent="Combat/CombatHand_Left"]
+
+[node name="CombatHand_Right" type="Node" parent="Combat" node_paths=PackedStringArray("my_stance")]
+script = ExtResource("13_s1g5w")
+stringed_hand = "RIGHT"
+index = 1
+restricted_slots = "11100011"
+my_stance = NodePath("../Stance")
+
+[node name="Attack" type="Node" parent="Combat/CombatHand_Right"]
+script = ExtResource("14_uus6m")
+metadata/_custom_type_script = "uid://c27axnnaakeuo"
+
+[node name="Timer_Telegraph" type="Timer" parent="Combat/CombatHand_Right/Attack"]
+one_shot = true
+
+[node name="Timer_Attack" type="Timer" parent="Combat/CombatHand_Right/Attack"]
+one_shot = true
+
+[node name="Timer_Recover" type="Timer" parent="Combat/CombatHand_Right/Attack"]
+one_shot = true
+
+[node name="Timer_Stagger" type="Timer" parent="Combat/CombatHand_Right"]
+
+[node name="Combat_UI" type="Control" parent="Combat"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="UI_Hand_Left" type="Control" parent="Combat/Combat_UI"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="UI_Hand_Right" type="Control" parent="Combat/Combat_UI"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Stance" type="Node" parent="Combat" node_paths=PackedStringArray("hands")]
+script = ExtResource("15_6jmgc")
+hands = [NodePath("../CombatHand_Left"), NodePath("../CombatHand_Right")]
+metadata/_custom_type_script = "uid://446bgqyk22na"
+
+[node name="DeathUI" type="Control" parent="."]
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="DeathUI"]
+modulate = Color(0.5136133, 0.0005868161, 0.00032151342, 0.3372549)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("CanvasTexture_gcklq")
+
+[node name="Button" type="Button" parent="DeathUI"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -4.0
+offset_top = -137.0
+offset_right = 4.0
+offset_bottom = -129.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "Return To Menu"
 
 [connection signal="timeout" from="Stats/Timer" to="Stats" method="begin_regen"]
+[connection signal="timeout" from="Combat/CombatHand_Left/Attack/Timer_Telegraph" to="Combat/CombatHand_Left/Attack" method="end_telegraph"]
+[connection signal="timeout" from="Combat/CombatHand_Left/Attack/Timer_Attack" to="Combat/CombatHand_Left/Attack" method="end_attack"]
+[connection signal="timeout" from="Combat/CombatHand_Left/Attack/Timer_Recover" to="Combat/CombatHand_Left/Attack" method="end_recover"]
+[connection signal="timeout" from="Combat/CombatHand_Right/Attack/Timer_Telegraph" to="Combat/CombatHand_Right/Attack" method="end_telegraph"]
+[connection signal="timeout" from="Combat/CombatHand_Right/Attack/Timer_Attack" to="Combat/CombatHand_Right/Attack" method="end_attack"]
+[connection signal="timeout" from="Combat/CombatHand_Right/Attack/Timer_Recover" to="Combat/CombatHand_Right/Attack" method="end_recover"]
+[connection signal="pressed" from="DeathUI/Button" to="." method="return_to_menu"]
