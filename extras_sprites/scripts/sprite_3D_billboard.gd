@@ -90,7 +90,7 @@ var mode:int= 0:  # Modo de renderizado
 		mode = value
 		mesh.material.set_shader_parameter("mode",value)
 
-var sprite_scale:float = 0.01:  # Escala del sprite
+var sprite_scale:float = 0.015:  # Escala del sprite
 	set(value):
 		sprite_scale = value
 		if is_node_ready():

@@ -642,8 +642,9 @@ stream_9/stream = ExtResource("58_f0ma5")
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_gcklq"]
 
-[node name="player_test" type="Node3D" node_paths=PackedStringArray("combat", "death_ui") groups=["Player"]]
+[node name="player_test" type="Node3D" node_paths=PackedStringArray("stats_ui", "combat", "death_ui") groups=["Player"]]
 script = ExtResource("1_e0b2u")
+stats_ui = NodePath("Stats/UI")
 combat = NodePath("Combat")
 death_ui = NodePath("DeathUI")
 
@@ -998,7 +999,6 @@ metadata/_custom_type_script = "uid://46pp7aerorca"
 one_shot = true
 
 [node name="UI" type="Control" parent="Stats"]
-visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0

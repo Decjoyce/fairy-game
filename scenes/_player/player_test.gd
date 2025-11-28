@@ -8,6 +8,7 @@ const PLAYER_WEIGHT: float = 5
 @onready var cam: Camera3D = $Camera3D
 
 @onready var stats: Stats = $Stats
+@export var stats_ui: Control
 
 var in_combat: bool
 @export var combat: PlayerCombat
@@ -33,9 +34,11 @@ func toggle_combat() -> void:
 
 func die():
 	Debug.play_death_player()
+	combat.exit_combat_mode()
 	interaction.visible = false
 	death_ui.visible = true
 	freeze = true
+	stats_ui.visible = false
 
 func return_to_menu() -> void:
 	get_tree().reload_current_scene()

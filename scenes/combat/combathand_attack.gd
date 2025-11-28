@@ -58,6 +58,7 @@ func player_start_attacking() -> void:
 	is_attacking = true
 	on_started_attacking.emit()
 	current_attack_data = player_current_attack.attack_order[my_hand.current_slot]
+	my_hand.my_stance.stats.take_stamina(current_attack_data.stam)
 	player_begin_telegraph()
 
 func player_stop_attacking() -> void:
