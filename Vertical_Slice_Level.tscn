@@ -96,7 +96,7 @@ shader_parameter/new_color = Color(0.82162356, 0.8358374, 0.854476, 0.9372549)
 radius = 0.43391418
 height = 0.86782837
 
-[sub_resource type="Shader" id="Shader_4it74"]
+[sub_resource type="Shader" id="Shader_uqeqx"]
 code = "shader_type spatial;
 render_mode diffuse_lambert_wrap,cull_disabled;
 
@@ -173,9 +173,9 @@ void fragment() {
 }
 "
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_ojd6j"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_0ahfl"]
 render_priority = 0
-shader = SubResource("Shader_4it74")
+shader = SubResource("Shader_uqeqx")
 shader_parameter/rows = 5.0
 shader_parameter/columns = 8.0
 shader_parameter/frame = 1.0
@@ -184,18 +184,18 @@ shader_parameter/sprite = ExtResource("12_ytf8k")
 shader_parameter/mode = 0
 shader_parameter/Normal = ExtResource("11_igngk")
 
-[sub_resource type="PlaneMesh" id="PlaneMesh_bnyeu"]
-material = SubResource("ShaderMaterial_ojd6j")
+[sub_resource type="PlaneMesh" id="PlaneMesh_apgct"]
+material = SubResource("ShaderMaterial_0ahfl")
 size = Vector2(1.7279999, 1.7279999)
 orientation = 2
 
-[sub_resource type="Resource" id="Resource_ppblj"]
+[sub_resource type="Resource" id="Resource_4it74"]
 script = ExtResource("14_wkr8j")
 sprite = ExtResource("15_v5821")
 texture_normal = ExtResource("16_uqeqx")
 columns = 8.0
 
-[sub_resource type="Resource" id="Resource_5a2e2"]
+[sub_resource type="Resource" id="Resource_ojd6j"]
 script = ExtResource("14_wkr8j")
 name = "walk"
 sprite = ExtResource("12_ytf8k")
@@ -203,7 +203,7 @@ texture_normal = ExtResource("11_igngk")
 rows = 5.0
 columns = 8.0
 
-[sub_resource type="Resource" id="Resource_x42mn"]
+[sub_resource type="Resource" id="Resource_bnyeu"]
 script = ExtResource("14_wkr8j")
 name = "Attack_LbBottom"
 sprite = ExtResource("17_0ahfl")
@@ -211,7 +211,7 @@ texture_normal = ExtResource("18_apgct")
 rows = 2.0
 columns = 8.0
 
-[sub_resource type="Resource" id="Resource_bl5uh"]
+[sub_resource type="Resource" id="Resource_ppblj"]
 script = ExtResource("14_wkr8j")
 name = "Attack_LMid"
 sprite = ExtResource("19_4it74")
@@ -219,7 +219,7 @@ texture_normal = ExtResource("20_ojd6j")
 rows = 2.0
 columns = 8.0
 
-[sub_resource type="Resource" id="Resource_7os1t"]
+[sub_resource type="Resource" id="Resource_5a2e2"]
 script = ExtResource("14_wkr8j")
 name = "Attack_LTop"
 sprite = ExtResource("21_bnyeu")
@@ -227,7 +227,7 @@ texture_normal = ExtResource("22_ppblj")
 rows = 2.0
 columns = 8.0
 
-[sub_resource type="Resource" id="Resource_tbjf3"]
+[sub_resource type="Resource" id="Resource_x42mn"]
 script = ExtResource("14_wkr8j")
 name = "Attack_RBottom"
 sprite = ExtResource("23_5a2e2")
@@ -235,7 +235,7 @@ texture_normal = ExtResource("24_x42mn")
 rows = 2.0
 columns = 8.0
 
-[sub_resource type="Resource" id="Resource_la572"]
+[sub_resource type="Resource" id="Resource_bl5uh"]
 script = ExtResource("14_wkr8j")
 name = "Attack_RMid"
 sprite = ExtResource("25_bl5uh")
@@ -243,7 +243,7 @@ texture_normal = ExtResource("26_7os1t")
 rows = 2.0
 columns = 8.0
 
-[sub_resource type="Resource" id="Resource_n7bc2"]
+[sub_resource type="Resource" id="Resource_7os1t"]
 script = ExtResource("14_wkr8j")
 name = "Attack_RTop"
 sprite = ExtResource("27_tbjf3")
@@ -426,7 +426,7 @@ _data = {
 radius = 0.43391418
 height = 1.4339142
 
-[sub_resource type="Shader" id="Shader_wtwml"]
+[sub_resource type="Shader" id="Shader_tbjf3"]
 code = "shader_type spatial;
 render_mode diffuse_lambert_wrap,cull_disabled;
 
@@ -503,9 +503,9 @@ void fragment() {
 }
 "
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_xmd6u"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_la572"]
 render_priority = 0
-shader = SubResource("Shader_wtwml")
+shader = SubResource("Shader_tbjf3")
 shader_parameter/rows = 5.0
 shader_parameter/columns = 8.0
 shader_parameter/frame = 1.0
@@ -514,18 +514,18 @@ shader_parameter/sprite = ExtResource("12_ytf8k")
 shader_parameter/mode = 0
 shader_parameter/Normal = ExtResource("11_igngk")
 
-[sub_resource type="PlaneMesh" id="PlaneMesh_db0d0"]
-material = SubResource("ShaderMaterial_xmd6u")
+[sub_resource type="PlaneMesh" id="PlaneMesh_n7bc2"]
+material = SubResource("ShaderMaterial_la572")
 size = Vector2(1.7279999, 1.7279999)
 orientation = 2
 
-[sub_resource type="Resource" id="Resource_w1u0h"]
+[sub_resource type="Resource" id="Resource_wtwml"]
 script = ExtResource("14_wkr8j")
 sprite = ExtResource("15_v5821")
 texture_normal = ExtResource("16_uqeqx")
 columns = 8.0
 
-[sub_resource type="Resource" id="Resource_ppupw"]
+[sub_resource type="Resource" id="Resource_xmd6u"]
 script = ExtResource("14_wkr8j")
 name = "walk"
 sprite = ExtResource("12_ytf8k")
@@ -533,7 +533,7 @@ texture_normal = ExtResource("11_igngk")
 rows = 5.0
 columns = 8.0
 
-[sub_resource type="Resource" id="Resource_spkxr"]
+[sub_resource type="Resource" id="Resource_db0d0"]
 script = ExtResource("14_wkr8j")
 name = "Attack_LbBottom"
 sprite = ExtResource("17_0ahfl")
@@ -541,7 +541,7 @@ texture_normal = ExtResource("18_apgct")
 rows = 2.0
 columns = 8.0
 
-[sub_resource type="Resource" id="Resource_by7b7"]
+[sub_resource type="Resource" id="Resource_w1u0h"]
 script = ExtResource("14_wkr8j")
 name = "Attack_LMid"
 sprite = ExtResource("19_4it74")
@@ -549,7 +549,7 @@ texture_normal = ExtResource("20_ojd6j")
 rows = 2.0
 columns = 8.0
 
-[sub_resource type="Resource" id="Resource_2aexi"]
+[sub_resource type="Resource" id="Resource_ppupw"]
 script = ExtResource("14_wkr8j")
 name = "Attack_LTop"
 sprite = ExtResource("21_bnyeu")
@@ -557,7 +557,7 @@ texture_normal = ExtResource("22_ppblj")
 rows = 2.0
 columns = 8.0
 
-[sub_resource type="Resource" id="Resource_6v1qy"]
+[sub_resource type="Resource" id="Resource_spkxr"]
 script = ExtResource("14_wkr8j")
 name = "Attack_RBottom"
 sprite = ExtResource("23_5a2e2")
@@ -565,7 +565,7 @@ texture_normal = ExtResource("24_x42mn")
 rows = 2.0
 columns = 8.0
 
-[sub_resource type="Resource" id="Resource_p4nyg"]
+[sub_resource type="Resource" id="Resource_by7b7"]
 script = ExtResource("14_wkr8j")
 name = "Attack_RMid"
 sprite = ExtResource("25_bl5uh")
@@ -573,7 +573,7 @@ texture_normal = ExtResource("26_7os1t")
 rows = 2.0
 columns = 8.0
 
-[sub_resource type="Resource" id="Resource_j7pf3"]
+[sub_resource type="Resource" id="Resource_2aexi"]
 script = ExtResource("14_wkr8j")
 name = "Attack_RTop"
 sprite = ExtResource("27_tbjf3")
@@ -874,9 +874,9 @@ shape = SubResource("CapsuleShape3D_abuop")
 
 [node name="Sprite3DBillBoard" type="MeshInstance3D" parent="Enemies/First Enemy"]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0.45682234, 0)
-mesh = SubResource("PlaneMesh_bnyeu")
+mesh = SubResource("PlaneMesh_apgct")
 script = ExtResource("13_5o6sm")
-animations_array = Array[ExtResource("14_wkr8j")]([SubResource("Resource_ppblj"), SubResource("Resource_5a2e2"), SubResource("Resource_x42mn"), SubResource("Resource_bl5uh"), SubResource("Resource_7os1t"), SubResource("Resource_tbjf3"), SubResource("Resource_la572"), SubResource("Resource_n7bc2")])
+animations_array = Array[ExtResource("14_wkr8j")]([SubResource("Resource_4it74"), SubResource("Resource_ojd6j"), SubResource("Resource_bnyeu"), SubResource("Resource_ppblj"), SubResource("Resource_5a2e2"), SubResource("Resource_x42mn"), SubResource("Resource_bl5uh"), SubResource("Resource_7os1t")])
 animation = 1
 frame = 1.0
 sprite_scale = 0.0016
@@ -954,9 +954,9 @@ shape = SubResource("CapsuleShape3D_wtwml")
 
 [node name="Sprite3DBillBoard" type="MeshInstance3D" parent="Enemies/BigScaryBossEnemy"]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0.45682234, 0)
-mesh = SubResource("PlaneMesh_db0d0")
+mesh = SubResource("PlaneMesh_n7bc2")
 script = ExtResource("13_5o6sm")
-animations_array = Array[ExtResource("14_wkr8j")]([SubResource("Resource_w1u0h"), SubResource("Resource_ppupw"), SubResource("Resource_spkxr"), SubResource("Resource_by7b7"), SubResource("Resource_2aexi"), SubResource("Resource_6v1qy"), SubResource("Resource_p4nyg"), SubResource("Resource_j7pf3")])
+animations_array = Array[ExtResource("14_wkr8j")]([SubResource("Resource_wtwml"), SubResource("Resource_xmd6u"), SubResource("Resource_db0d0"), SubResource("Resource_w1u0h"), SubResource("Resource_ppupw"), SubResource("Resource_spkxr"), SubResource("Resource_by7b7"), SubResource("Resource_2aexi")])
 animation = 1
 frame = 1.0
 sprite_scale = 0.0016

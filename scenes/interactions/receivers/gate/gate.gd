@@ -17,6 +17,8 @@ var closed_pos: float = 2
 
 var things_under: Array[Node3D]
 
+@export var stay_open: bool
+
 func open_gate(amount: float) -> void:
 	time_since_start = 0
 	is_opening = true
@@ -65,7 +67,3 @@ func _on_body_entered_under_checker(body: Node3D) -> void:
 func _on_body_exited_under_checker(body: Node3D) -> void:
 	if things_under.has(body):
 		things_under.erase(body)
-
-
-func _on_after_final_boss_pressure_plate_on_activated(sig: float) -> void:
-	pass # Replace with function body.

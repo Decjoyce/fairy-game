@@ -54,12 +54,12 @@ debug_color = Color(0.99607843, 0, 0, 0.41960785)
 
 [node name="Label3D" type="Label3D" parent="Graphics/Collision"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.19999999, 0)
+visible = false
 billboard = 1
 text = "Plate"
 font_size = 67
 
 [node name="Trigger" type="Area3D" parent="Graphics"]
-visible = false
 collision_mask = 3
 monitorable = false
 
@@ -69,7 +69,7 @@ shape = SubResource("BoxShape3D_qye5f")
 debug_color = Color(0.83023536, 0.46282655, 3.85046e-07, 1)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Graphics"]
-transform = Transform3D(0.2, 0, 0, 0, 0.45, 0, 0, 0, 0.2, 0, -0.042667944, 0)
+transform = Transform3D(0.2, 0, 0, 0, 0.45, 0, 0, 0, 0.2, 0, -0.040629927, 0)
 mesh = SubResource("ArrayMesh_jqphk")
 
 [connection signal="area_shape_entered" from="Graphics/Trigger" to="." method="_on_area_entered_trigger"]

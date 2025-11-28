@@ -1,4 +1,4 @@
-[gd_scene load_steps=89 format=3 uid="uid://bsaant7ye3d4r"]
+[gd_scene load_steps=31 format=3 uid="uid://bsaant7ye3d4r"]
 
 [ext_resource type="Script" uid="uid://ubfk2a80dhfp" path="res://addons/grid_map_pathfinding/grid_map_pathfinding.gd" id="1_gxrll"]
 [ext_resource type="MeshLibrary" uid="uid://bu208a8l5866i" path="res://scenes/palettes/cairn/meshlibrary_cairn.tres" id="2_3b0ht"]
@@ -11,32 +11,15 @@
 [ext_resource type="PackedScene" uid="uid://qu5rxgbydmet" path="res://scenes/interactions/triggers/button/button.tscn" id="9_8chx6"]
 [ext_resource type="PackedScene" uid="uid://clnnqb1efkbei" path="res://scenes/interactions/prefabs/locked_door.tscn" id="10_ooesu"]
 [ext_resource type="PackedScene" uid="uid://csot2mi7746ll" path="res://scenes/interactions/triggers/pressure_plate/pressure_plate.tscn" id="11_aep5l"]
-[ext_resource type="Texture2D" uid="uid://bajdgu88x35py" path="res://Sprites/ballyWalkSheet_n.png" id="12_gtgi4"]
-[ext_resource type="Texture2D" uid="uid://dl3etwft2mhxm" path="res://Sprites/ballyWalkSheet.png" id="13_hifqo"]
-[ext_resource type="Script" uid="uid://b5653u7w56pqw" path="res://extras_sprites/scripts/sprite_3D_billboard.gd" id="14_emaie"]
-[ext_resource type="Script" uid="uid://b4m0sglcg4smw" path="res://extras_sprites/scripts/animatio_data.gd" id="15_qekke"]
-[ext_resource type="Texture2D" uid="uid://cjn3bxmukh4fj" path="res://Sprites/ballybogIdle.png" id="16_eyld3"]
-[ext_resource type="Texture2D" uid="uid://d117rsf1rrxb6" path="res://Sprites/ballybogIdle_n.png" id="17_goudi"]
-[ext_resource type="Texture2D" uid="uid://da55c2fwj7ox7" path="res://Sprites/ballyAttack_LBottom.png" id="18_rjl32"]
-[ext_resource type="Texture2D" uid="uid://b45ckx6htx1bg" path="res://Sprites/ballyAttack_LBottom_n.png" id="19_gauef"]
-[ext_resource type="Texture2D" uid="uid://fohbvfmbnsw7" path="res://Sprites/ballyAttack_LMid.png" id="20_pgcrk"]
-[ext_resource type="Texture2D" uid="uid://d2eurcnwm514j" path="res://Sprites/ballyAttack_LMid_n.png" id="21_kd61g"]
-[ext_resource type="Texture2D" uid="uid://c1t33lxeknsve" path="res://Sprites/ballyAttack_LTop.png" id="22_ob5ck"]
-[ext_resource type="Texture2D" uid="uid://p2iiihprajki" path="res://Sprites/ballyAttack_LTop_n.png" id="23_36t4w"]
-[ext_resource type="Texture2D" uid="uid://d2i5outw16p5m" path="res://Sprites/ballyAttack_RBottom.png" id="24_m42h4"]
-[ext_resource type="Texture2D" uid="uid://0meyt1eqowl" path="res://Sprites/ballyAttack_RBottom_n.png" id="25_w8dd0"]
-[ext_resource type="Texture2D" uid="uid://d32p1mrham4j6" path="res://Sprites/ballyAttack_RMid.png" id="26_2tjk7"]
-[ext_resource type="Texture2D" uid="uid://bjd7yeekbvmx0" path="res://Sprites/ballyAttack_RMid_n.png" id="27_lxr37"]
-[ext_resource type="Texture2D" uid="uid://dqyfvagjygkha" path="res://Sprites/ballyAttack_RTop.png" id="28_ym7ic"]
-[ext_resource type="Texture2D" uid="uid://bnrfxmw0nk1dq" path="res://Sprites/ballyAttack_RTop_n.png" id="29_4csty"]
-[ext_resource type="Script" uid="uid://c3fdtr0ieg5dj" path="res://EnemyStateMachine/sm_controller.gd" id="30_5bkji"]
-[ext_resource type="Script" uid="uid://r7bhwy0jfpk7" path="res://EnemyStateMachine/StateMachine.gd" id="31_umn6q"]
-[ext_resource type="Script" uid="uid://dc3uc7qhwg03r" path="res://EnemyStateMachine/idle_state.gd" id="32_c8pig"]
-[ext_resource type="Script" uid="uid://bg6gxealt4p8b" path="res://EnemyStateMachine/Fighting.gd" id="33_ceh7k"]
-[ext_resource type="Script" uid="uid://cyctjxnvvlo47" path="res://EnemyStateMachine/Wander.gd" id="34_0hyvh"]
-[ext_resource type="Script" uid="uid://dlre0emi41dh1" path="res://EnemyStateMachine/Chase.gd" id="35_1e8xq"]
-[ext_resource type="Animation" uid="uid://b6ga5k6b8stym" path="res://AnimationsBelly/Walk.res" id="36_ws8dh"]
-[ext_resource type="PackedScene" uid="uid://bj8n80dbd408c" path="res://Enemy/First _Enemy.tscn" id="37_0lfq7"]
+[ext_resource type="PackedScene" uid="uid://drc8vg7njr5ui" path="res://Enemy/enemy_ballybog.tscn" id="17_5ujyx"]
+[ext_resource type="PackedScene" uid="uid://lxic7c72kvyt" path="res://scenes/interactions/interactables/grabbable_items/item_skull.tscn" id="38_3b0ht"]
+[ext_resource type="PackedScene" uid="uid://bw752cs1fru6w" path="res://scenes/interactions/interactables/grabbable_items/otherthing.tscn" id="39_pg3lp"]
+[ext_resource type="AudioStream" uid="uid://cq7dtkcnrtjyk" path="res://sfx_vertical/Ambience, Underground, Cave, Magic, Deep, Wind, Howling 01 SND46571.wav" id="39_rldp5"]
+[ext_resource type="AudioStream" uid="uid://cte56l5nhnq88" path="res://sfx_vertical/Ambience, Underground, Cave, Magic, Cold, Deep, Wind, Eerie SND46573.wav" id="40_o0daa"]
+[ext_resource type="AudioStream" uid="uid://bscs1lnw8crcv" path="res://sfx_vertical/Ambience, Underground, Cave, Magic, Dangling Metal SND46572.wav" id="41_2hss1"]
+[ext_resource type="PackedScene" uid="uid://dqh8lru4mt2ap" path="res://scenes/interactions/interactables/breakables/urn.tscn" id="42_ooesu"]
+[ext_resource type="PackedScene" uid="uid://cfkoaxhngk3gf" path="res://scenes/interactions/interactables/grabbable_items/item_key.tscn" id="44_fvksq"]
+[ext_resource type="Script" uid="uid://beaf3digx88d0" path="res://scenes/interactions/interactables/grabbable_items/type/itemtype_breakable.gd" id="46_emaie"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_vefwy"]
 sky_top_color = Color(0.47028, 0.44203204, 0.42579472, 1)
@@ -89,665 +72,11 @@ shader_parameter/contrast_boost = 1.08400005149
 shader_parameter/saturation = 0.822000039045
 shader_parameter/new_color = Color(0.82162356, 0.8358374, 0.854476, 0.9372549)
 
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_abuop"]
-radius = 0.43391418
-height = 0.86782837
-
-[sub_resource type="Shader" id="Shader_gxrll"]
-code = "shader_type spatial;
-render_mode diffuse_lambert_wrap,cull_disabled;
-
-uniform float rows:hint_range(1.0, 100.0, 1) = 1;
-uniform float columns:hint_range(1.0, 100.0, 1) = 1;
-uniform float frame:hint_range(0.0, 100.0, 1) = 0;
-uniform bool invert_rows_columns = false;
-uniform sampler2D sprite:filter_nearest_mipmap;
-uniform int mode:hint_range(0, 1, 1) = 1;
-varying vec3 look_dir;
-uniform sampler2D Normal;
-
-
-float billboard_mode_a(vec3 CAMERA_POSITION,vec3 NODE_POSITION, mat4 MODEL_MAT,float directions){
-	vec3 direction_to_camera = normalize(CAMERA_POSITION-NODE_POSITION);
-	float angle_to_camera = atan(direction_to_camera.x,direction_to_camera.z);
-	vec4 model_direction = MODEL_MAT*vec4(1.0,0.0,0.0,0.0);
-	float y_angle = atan(model_direction.x,model_direction.z)-PI/2.0;
-	float final_angle = angle_to_camera-y_angle;
-	float int_y_angle = round((final_angle / TAU) * float(directions)) / float(directions);
-	return int_y_angle;
-}
-float billboard_mobe_b(vec3 CAMERA_POSITION,mat4 MODEL_MAT,mat4 VIEW_MAT,float directions,int ret){
-
-    vec3 ray_origin = CAMERA_POSITION;
-
-    vec3 object_origin = (MODEL_MAT * vec4(0.0,0.0,0.0,1.0)).xyz;
-    vec3 cam_dir = object_origin - ray_origin;
-    cam_dir = normalize((VIEW_MAT * vec4(cam_dir, 0.0)).xyz);
-
-    float angle = 180.0 - degrees(acos(dot(normalize(cam_dir.xz), normalize(look_dir.xz))));
-    float _direction = round(angle/180.0 * directions);
-
-    float flip = sign((look_dir.x * cam_dir.z) - (look_dir.z * cam_dir.x));
-
-    flip = mix(flip, 1.0, max(step(_direction, 0.0), step(directions, _direction)));
-	float retu = ret == 0 ? _direction : flip;
-	return retu ;
-}
-void vertex() {
-		 MODELVIEW_MATRIX = VIEW_MATRIX * mat4(vec4(normalize(cross(vec3(0.0, 1.0, 0.0), INV_VIEW_MATRIX[2].xyz)), 0.0), vec4(0.0, 1.0, 0.0, 0.0), vec4(normalize(cross(INV_VIEW_MATRIX[0].xyz, vec3(0.0, 1.0, 0.0))), 0.0), MODEL_MATRIX[3]);
-		look_dir = MODELVIEW_NORMAL_MATRIX * NORMAL;
-		MODELVIEW_NORMAL_MATRIX = mat3(MODELVIEW_MATRIX);
-	switch (mode){
-		case 0:
-			float y = invert_rows_columns == true ? billboard_mode_a(CAMERA_POSITION_WORLD,NODE_POSITION_WORLD,MODEL_MATRIX,rows) : billboard_mode_a(CAMERA_POSITION_WORLD,NODE_POSITION_WORLD,MODEL_MATRIX,columns);
-			float x = invert_rows_columns == true ? frame/columns:frame/rows;
-			UV /= vec2(rows,columns);
-			UV += invert_rows_columns == true ?vec2(y,x):vec2(x,y);
-			break;
-		case 1:
-			float x = invert_rows_columns == true ? frame/columns:frame/rows;
-			float y = billboard_mobe_b(CAMERA_POSITION_WORLD,MODEL_MATRIX,VIEW_MATRIX,rows,0);
-			float f = billboard_mobe_b(CAMERA_POSITION_WORLD,MODEL_MATRIX,VIEW_MATRIX,rows,1);
-			if (invert_rows_columns){
-				y = billboard_mobe_b(CAMERA_POSITION_WORLD,MODEL_MATRIX,VIEW_MATRIX,columns,0);
-				f = billboard_mobe_b(CAMERA_POSITION_WORLD,MODEL_MATRIX,VIEW_MATRIX,columns,1);
-			}
-			UV.y += invert_rows_columns == true ? x:y;
-			UV /=vec2(rows,columns);
-			UV.x +=  invert_rows_columns == true ? y : x;
-			UV *= invert_rows_columns == true ? vec2(1.0,f):vec2(f,1.0);
-			break;
-	};
-}
-
-void fragment() {
-	vec3 VNormal = texture(Normal,UV).rgb;
-	vec4 sprite_texture;
-	sprite_texture = texture(sprite,UV);
-	ALBEDO = sprite_texture.rgb;
-	ALPHA = sprite_texture.a;
-	NORMAL_MAP = VNormal;
-}
-"
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_3b0ht"]
-render_priority = 0
-shader = SubResource("Shader_gxrll")
-shader_parameter/rows = 5.0
-shader_parameter/columns = 8.0
-shader_parameter/frame = 1.0
-shader_parameter/invert_rows_columns = false
-shader_parameter/sprite = ExtResource("13_hifqo")
-shader_parameter/mode = 0
-shader_parameter/Normal = ExtResource("12_gtgi4")
-
-[sub_resource type="PlaneMesh" id="PlaneMesh_pg3lp"]
-material = SubResource("ShaderMaterial_3b0ht")
-size = Vector2(1.7279999, 1.7279999)
-orientation = 2
-
-[sub_resource type="Resource" id="Resource_ne2s5"]
-script = ExtResource("15_qekke")
-sprite = ExtResource("16_eyld3")
-texture_normal = ExtResource("17_goudi")
-columns = 8.0
-
-[sub_resource type="Resource" id="Resource_rldp5"]
-script = ExtResource("15_qekke")
-name = "walk"
-sprite = ExtResource("13_hifqo")
-texture_normal = ExtResource("12_gtgi4")
-rows = 5.0
-columns = 8.0
-
-[sub_resource type="Resource" id="Resource_o0daa"]
-script = ExtResource("15_qekke")
-name = "Attack_LbBottom"
-sprite = ExtResource("18_rjl32")
-texture_normal = ExtResource("19_gauef")
-rows = 2.0
-columns = 8.0
-
-[sub_resource type="Resource" id="Resource_2hss1"]
-script = ExtResource("15_qekke")
-name = "Attack_LMid"
-sprite = ExtResource("20_pgcrk")
-texture_normal = ExtResource("21_kd61g")
-rows = 2.0
-columns = 8.0
-
-[sub_resource type="Resource" id="Resource_fvksq"]
-script = ExtResource("15_qekke")
-name = "Attack_LTop"
-sprite = ExtResource("22_ob5ck")
-texture_normal = ExtResource("23_36t4w")
-rows = 2.0
-columns = 8.0
-
-[sub_resource type="Resource" id="Resource_8chx6"]
-script = ExtResource("15_qekke")
-name = "Attack_RBottom"
-sprite = ExtResource("24_m42h4")
-texture_normal = ExtResource("25_w8dd0")
-rows = 2.0
-columns = 8.0
-
-[sub_resource type="Resource" id="Resource_ooesu"]
-script = ExtResource("15_qekke")
-name = "Attack_RMid"
-sprite = ExtResource("26_2tjk7")
-texture_normal = ExtResource("27_lxr37")
-rows = 2.0
-columns = 8.0
-
-[sub_resource type="Resource" id="Resource_aep5l"]
-script = ExtResource("15_qekke")
-name = "Attack_RTop"
-sprite = ExtResource("28_ym7ic")
-texture_normal = ExtResource("29_4csty")
-rows = 2.0
-columns = 8.0
-
-[sub_resource type="SphereShape3D" id="SphereShape3D_f2srf"]
-radius = 1.0
-
-[sub_resource type="CylinderShape3D" id="CylinderShape3D_om1c7"]
-radius = 3.0
-
-[sub_resource type="Animation" id="Animation_8sfa5"]
-resource_name = "AttackR_RTop"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:animation")
-tracks/0/interp = 0
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [4]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath(".:frame")
-tracks/1/interp = 0
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [0.0, 1.0]
-}
-
-[sub_resource type="Animation" id="Animation_7p6et"]
-resource_name = "Attack_LBottom"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:animation")
-tracks/0/interp = 0
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [4]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath(".:frame")
-tracks/1/interp = 0
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [0.0, 1.0]
-}
-
-[sub_resource type="Animation" id="Animation_om1c7"]
-resource_name = "Attack_RMid"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:animation")
-tracks/0/interp = 0
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [2]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath(".:frame")
-tracks/1/interp = 0
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [0.0, 1.0]
-}
-
-[sub_resource type="Animation" id="Animation_2jpox"]
-resource_name = "Attack_RTop"
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:animation")
-tracks/0/interp = 0
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [2]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath(".:frame")
-tracks/1/interp = 0
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [0.0, 1.0]
-}
-
-[sub_resource type="Animation" id="Animation_e8ov3"]
-resource_name = "Idle"
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:animation")
-tracks/0/interp = 0
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [0]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath(".:frame")
-tracks/1/interp = 0
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [0.0]
-}
-
-[sub_resource type="Animation" id="Animation_g8xqt"]
-resource_name = "test_walk"
-length = 1.1
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:frame")
-tracks/0/interp = 0
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.26666668, 0.7, 1),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 0,
-"values": [0.0, 1.0, 2.0, 3.0]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_khln7"]
-_data = {
-&"AttackR_RTop": SubResource("Animation_8sfa5"),
-&"Attack_LBottom": SubResource("Animation_7p6et"),
-&"Attack_RMid": SubResource("Animation_om1c7"),
-&"Attack_RTop": SubResource("Animation_2jpox"),
-&"Idle": SubResource("Animation_e8ov3"),
-&"RESET": ExtResource("36_ws8dh"),
-&"test_walk": SubResource("Animation_g8xqt")
-}
-
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_wtwml"]
-radius = 0.43391418
-height = 1.4339142
-
-[sub_resource type="Shader" id="Shader_gtgi4"]
-code = "shader_type spatial;
-render_mode diffuse_lambert_wrap,cull_disabled;
-
-uniform float rows:hint_range(1.0, 100.0, 1) = 1;
-uniform float columns:hint_range(1.0, 100.0, 1) = 1;
-uniform float frame:hint_range(0.0, 100.0, 1) = 0;
-uniform bool invert_rows_columns = false;
-uniform sampler2D sprite:filter_nearest_mipmap;
-uniform int mode:hint_range(0, 1, 1) = 1;
-varying vec3 look_dir;
-uniform sampler2D Normal;
-
-
-float billboard_mode_a(vec3 CAMERA_POSITION,vec3 NODE_POSITION, mat4 MODEL_MAT,float directions){
-	vec3 direction_to_camera = normalize(CAMERA_POSITION-NODE_POSITION);
-	float angle_to_camera = atan(direction_to_camera.x,direction_to_camera.z);
-	vec4 model_direction = MODEL_MAT*vec4(1.0,0.0,0.0,0.0);
-	float y_angle = atan(model_direction.x,model_direction.z)-PI/2.0;
-	float final_angle = angle_to_camera-y_angle;
-	float int_y_angle = round((final_angle / TAU) * float(directions)) / float(directions);
-	return int_y_angle;
-}
-float billboard_mobe_b(vec3 CAMERA_POSITION,mat4 MODEL_MAT,mat4 VIEW_MAT,float directions,int ret){
-
-    vec3 ray_origin = CAMERA_POSITION;
-
-    vec3 object_origin = (MODEL_MAT * vec4(0.0,0.0,0.0,1.0)).xyz;
-    vec3 cam_dir = object_origin - ray_origin;
-    cam_dir = normalize((VIEW_MAT * vec4(cam_dir, 0.0)).xyz);
-
-    float angle = 180.0 - degrees(acos(dot(normalize(cam_dir.xz), normalize(look_dir.xz))));
-    float _direction = round(angle/180.0 * directions);
-
-    float flip = sign((look_dir.x * cam_dir.z) - (look_dir.z * cam_dir.x));
-
-    flip = mix(flip, 1.0, max(step(_direction, 0.0), step(directions, _direction)));
-	float retu = ret == 0 ? _direction : flip;
-	return retu ;
-}
-void vertex() {
-		 MODELVIEW_MATRIX = VIEW_MATRIX * mat4(vec4(normalize(cross(vec3(0.0, 1.0, 0.0), INV_VIEW_MATRIX[2].xyz)), 0.0), vec4(0.0, 1.0, 0.0, 0.0), vec4(normalize(cross(INV_VIEW_MATRIX[0].xyz, vec3(0.0, 1.0, 0.0))), 0.0), MODEL_MATRIX[3]);
-		look_dir = MODELVIEW_NORMAL_MATRIX * NORMAL;
-		MODELVIEW_NORMAL_MATRIX = mat3(MODELVIEW_MATRIX);
-	switch (mode){
-		case 0:
-			float y = invert_rows_columns == true ? billboard_mode_a(CAMERA_POSITION_WORLD,NODE_POSITION_WORLD,MODEL_MATRIX,rows) : billboard_mode_a(CAMERA_POSITION_WORLD,NODE_POSITION_WORLD,MODEL_MATRIX,columns);
-			float x = invert_rows_columns == true ? frame/columns:frame/rows;
-			UV /= vec2(rows,columns);
-			UV += invert_rows_columns == true ?vec2(y,x):vec2(x,y);
-			break;
-		case 1:
-			float x = invert_rows_columns == true ? frame/columns:frame/rows;
-			float y = billboard_mobe_b(CAMERA_POSITION_WORLD,MODEL_MATRIX,VIEW_MATRIX,rows,0);
-			float f = billboard_mobe_b(CAMERA_POSITION_WORLD,MODEL_MATRIX,VIEW_MATRIX,rows,1);
-			if (invert_rows_columns){
-				y = billboard_mobe_b(CAMERA_POSITION_WORLD,MODEL_MATRIX,VIEW_MATRIX,columns,0);
-				f = billboard_mobe_b(CAMERA_POSITION_WORLD,MODEL_MATRIX,VIEW_MATRIX,columns,1);
-			}
-			UV.y += invert_rows_columns == true ? x:y;
-			UV /=vec2(rows,columns);
-			UV.x +=  invert_rows_columns == true ? y : x;
-			UV *= invert_rows_columns == true ? vec2(1.0,f):vec2(f,1.0);
-			break;
-	};
-}
-
-void fragment() {
-	vec3 VNormal = texture(Normal,UV).rgb;
-	vec4 sprite_texture;
-	sprite_texture = texture(sprite,UV);
-	ALBEDO = sprite_texture.rgb;
-	ALPHA = sprite_texture.a;
-	NORMAL_MAP = VNormal;
-}
-"
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_hifqo"]
-render_priority = 0
-shader = SubResource("Shader_gtgi4")
-shader_parameter/rows = 5.0
-shader_parameter/columns = 8.0
-shader_parameter/frame = 1.0
-shader_parameter/invert_rows_columns = false
-shader_parameter/sprite = ExtResource("13_hifqo")
-shader_parameter/mode = 0
-shader_parameter/Normal = ExtResource("12_gtgi4")
-
-[sub_resource type="PlaneMesh" id="PlaneMesh_emaie"]
-material = SubResource("ShaderMaterial_hifqo")
-size = Vector2(1.7279999, 1.7279999)
-orientation = 2
-
 [sub_resource type="Resource" id="Resource_qekke"]
-script = ExtResource("15_qekke")
-sprite = ExtResource("16_eyld3")
-texture_normal = ExtResource("17_goudi")
-columns = 8.0
-
-[sub_resource type="Resource" id="Resource_eyld3"]
-script = ExtResource("15_qekke")
-name = "walk"
-sprite = ExtResource("13_hifqo")
-texture_normal = ExtResource("12_gtgi4")
-rows = 5.0
-columns = 8.0
-
-[sub_resource type="Resource" id="Resource_goudi"]
-script = ExtResource("15_qekke")
-name = "Attack_LbBottom"
-sprite = ExtResource("18_rjl32")
-texture_normal = ExtResource("19_gauef")
-rows = 2.0
-columns = 8.0
-
-[sub_resource type="Resource" id="Resource_rjl32"]
-script = ExtResource("15_qekke")
-name = "Attack_LMid"
-sprite = ExtResource("20_pgcrk")
-texture_normal = ExtResource("21_kd61g")
-rows = 2.0
-columns = 8.0
-
-[sub_resource type="Resource" id="Resource_gauef"]
-script = ExtResource("15_qekke")
-name = "Attack_LTop"
-sprite = ExtResource("22_ob5ck")
-texture_normal = ExtResource("23_36t4w")
-rows = 2.0
-columns = 8.0
-
-[sub_resource type="Resource" id="Resource_pgcrk"]
-script = ExtResource("15_qekke")
-name = "Attack_RBottom"
-sprite = ExtResource("24_m42h4")
-texture_normal = ExtResource("25_w8dd0")
-rows = 2.0
-columns = 8.0
-
-[sub_resource type="Resource" id="Resource_kd61g"]
-script = ExtResource("15_qekke")
-name = "Attack_RMid"
-sprite = ExtResource("26_2tjk7")
-texture_normal = ExtResource("27_lxr37")
-rows = 2.0
-columns = 8.0
-
-[sub_resource type="Resource" id="Resource_ob5ck"]
-script = ExtResource("15_qekke")
-name = "Attack_RTop"
-sprite = ExtResource("28_ym7ic")
-texture_normal = ExtResource("29_4csty")
-rows = 2.0
-columns = 8.0
-
-[sub_resource type="SphereShape3D" id="SphereShape3D_xmd6u"]
-radius = 1.0
-
-[sub_resource type="CylinderShape3D" id="CylinderShape3D_db0d0"]
-radius = 6.0
-
-[sub_resource type="Animation" id="Animation_w1u0h"]
-resource_name = "AttackR_RTop"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:animation")
-tracks/0/interp = 0
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [4]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath(".:frame")
-tracks/1/interp = 0
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [0.0, 1.0]
-}
-
-[sub_resource type="Animation" id="Animation_ppupw"]
-resource_name = "Attack_LBottom"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:animation")
-tracks/0/interp = 0
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [4]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath(".:frame")
-tracks/1/interp = 0
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [0.0, 1.0]
-}
-
-[sub_resource type="Animation" id="Animation_spkxr"]
-resource_name = "Attack_RMid"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:animation")
-tracks/0/interp = 0
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [2]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath(".:frame")
-tracks/1/interp = 0
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [0.0, 1.0]
-}
-
-[sub_resource type="Animation" id="Animation_by7b7"]
-resource_name = "Attack_RTop"
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:animation")
-tracks/0/interp = 0
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [2]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath(".:frame")
-tracks/1/interp = 0
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [0.0, 1.0]
-}
-
-[sub_resource type="Animation" id="Animation_2aexi"]
-resource_name = "Idle"
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:animation")
-tracks/0/interp = 0
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [0]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath(".:frame")
-tracks/1/interp = 0
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [0.0]
-}
-
-[sub_resource type="Animation" id="Animation_6v1qy"]
-resource_name = "test_walk"
-length = 1.1
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:frame")
-tracks/0/interp = 0
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.26666668, 0.7, 1),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 0,
-"values": [0.0, 1.0, 2.0, 3.0]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_p4nyg"]
-_data = {
-&"AttackR_RTop": SubResource("Animation_w1u0h"),
-&"Attack_LBottom": SubResource("Animation_ppupw"),
-&"Attack_RMid": SubResource("Animation_spkxr"),
-&"Attack_RTop": SubResource("Animation_by7b7"),
-&"Idle": SubResource("Animation_2aexi"),
-&"RESET": ExtResource("36_ws8dh"),
-&"test_walk": SubResource("Animation_6v1qy")
-}
+script = ExtResource("46_emaie")
+specific_item_to_drop = ExtResource("44_fvksq")
+item_type = 4
+metadata/_custom_type_script = "uid://beaf3digx88d0"
 
 [node name="Vertical_Slice_Level" type="Node3D"]
 
@@ -810,10 +139,22 @@ color = Color(0.5747226, 0.50857943, 0.49505764, 0.03529412)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 1, 1)
 
 [node name="Torch2" parent="Torches" instance=ExtResource("6_o0daa")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.65, 1.36, -8.1)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.9500003, 1.06, -15.1)
+
+[node name="Torch3" parent="Torches" instance=ExtResource("6_o0daa")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.9500003, 1.06, -11.1)
 
 [node name="TorchScont" parent="Torches" instance=ExtResource("7_2hss1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 1.2814243, -9.617082)
+
+[node name="TorchScont2" parent="Torches" instance=ExtResource("7_2hss1")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -11.588686, 1.3814243, -13.180168)
+
+[node name="TorchScont4" parent="Torches" instance=ExtResource("7_2hss1")]
+transform = Transform3D(-1, 0, -8.940697e-08, 0, 1, 0, 8.940697e-08, 0, -1, -8.388686, 1.3814243, -8.380169)
+
+[node name="TorchScont5" parent="Torches" instance=ExtResource("7_2hss1")]
+transform = Transform3D(-1, 0, -8.940697e-08, 0, 1, 0, 8.940697e-08, 0, -1, -5.488686, 1.3814243, -8.380169)
 
 [node name="Gates+devices" type="Node3D" parent="."]
 
@@ -821,224 +162,181 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 1.2814243, -9.617082)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 0.375862, -3.9181042)
 
 [node name="Main_Gate" parent="Gates+devices" instance=ExtResource("8_fvksq")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 0.33038473, -10)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 4.3303847, -10)
 
 [node name="Button_Front_Entrance" parent="Gates+devices" instance=ExtResource("9_8chx6")]
 transform = Transform3D(1.3113416e-07, 0, 1, 0, 1, 0, -1, 0, 1.3113416e-07, 7.7336555, 1.211202, -3.3211205)
 delay_before_reset = 5.0
 
 [node name="Button_MainGate" parent="Gates+devices" instance=ExtResource("9_8chx6")]
-transform = Transform3D(-1, 0, 8.940697e-08, 0, 1, 0, -8.940697e-08, 0, -1, 8.181404, 1.1323705, -9.74968)
+transform = Transform3D(-1, 0, 8.940697e-08, 0, 1, 0, -8.940697e-08, 0, -1, 8.181404, 3.1323705, -9.74968)
 
 [node name="Locked_Door_1" parent="Gates+devices" instance=ExtResource("10_ooesu")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7, 1.38, -7)
+destroy_items_on_receive = true
 
 [node name="Locked_Door_2" parent="Gates+devices" instance=ExtResource("10_ooesu")]
-transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 10.09, 1.38, -7.025)
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 10.09, -1.62, -7.025)
 
 [node name="After_Final_Boss Gate" parent="Gates+devices" instance=ExtResource("8_fvksq")]
-transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 4, 0.4232512, -7)
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 4, 2.4232512, -7)
 
 [node name="Exit_Level_Gate" parent="Gates+devices" instance=ExtResource("8_fvksq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0.38137275, -6)
 
 [node name="After_Final_Boss_PressurePlate" parent="Gates+devices" instance=ExtResource("11_aep5l")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0.36582363, -7)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, -0.6341764, -7)
 
 [node name="Exit_Level_Button" parent="Gates+devices" instance=ExtResource("9_8chx6")]
 transform = Transform3D(-0.035213467, 0, 0.99937993, 0, 1, 0, -0.99937993, 0, -0.035213467, -4.2539444, 1.1119535, -5)
 
 [node name="Enemies" type="Node" parent="."]
 
-[node name="First Enemy" type="CharacterBody3D" parent="Enemies"]
-transform = Transform3D(-0.99415094, 0, -0.10799942, 0, 1, 0, 0.10799942, 0, -0.99415094, 7.00449, 0.44596887, -15.007294)
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Enemies/First Enemy"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.4198761, 0)
-shape = SubResource("CapsuleShape3D_abuop")
-
-[node name="Sprite3DBillBoard" type="MeshInstance3D" parent="Enemies/First Enemy"]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0.45682234, 0)
-mesh = SubResource("PlaneMesh_pg3lp")
-script = ExtResource("14_emaie")
-animations_array = Array[ExtResource("15_qekke")]([SubResource("Resource_ne2s5"), SubResource("Resource_rldp5"), SubResource("Resource_o0daa"), SubResource("Resource_2hss1"), SubResource("Resource_fvksq"), SubResource("Resource_8chx6"), SubResource("Resource_ooesu"), SubResource("Resource_aep5l")])
-animation = 1
-frame = 1.0
-sprite_scale = 0.0016
-metadata/_custom_type_script = "uid://b5653u7w56pqw"
-
-[node name="SM_controller" type="Node" parent="Enemies/First Enemy" node_paths=PackedStringArray("node_StateMachine")]
-script = ExtResource("30_5bkji")
-node_StateMachine = NodePath("../StateMachine")
-
-[node name="StateMachine" type="Node" parent="Enemies/First Enemy" node_paths=PackedStringArray("Init_node_state")]
-script = ExtResource("31_umn6q")
-Init_node_state = NodePath("Wander")
-
-[node name="IdleState" type="Node" parent="Enemies/First Enemy/StateMachine" node_paths=PackedStringArray("Body", "Sprite", "SM", "Animator")]
-script = ExtResource("32_c8pig")
-Body = NodePath("../..")
-Sprite = NodePath("../../Sprite3DBillBoard")
-SM = NodePath("..")
-Animator = NodePath("../../AnimationPlayer")
-
-[node name="Fighting" type="Node" parent="Enemies/First Enemy/StateMachine" node_paths=PackedStringArray("SM", "Animator")]
-script = ExtResource("33_ceh7k")
-SM = NodePath("..")
-Animator = NodePath("../../AnimationPlayer")
-
-[node name="Wander" type="Node" parent="Enemies/First Enemy/StateMachine" node_paths=PackedStringArray("Body", "Sprite", "SM", "Animator")]
-script = ExtResource("34_0hyvh")
-Body = NodePath("../..")
-Sprite = NodePath("../../Sprite3DBillBoard")
-SM = NodePath("..")
-Animator = NodePath("../../AnimationPlayer")
-
-[node name="Timer" type="Timer" parent="Enemies/First Enemy/StateMachine/Wander"]
-process_callback = 0
-wait_time = 7.0
-
-[node name="Chase" type="Node" parent="Enemies/First Enemy/StateMachine" node_paths=PackedStringArray("Body", "Sprite", "SM", "Animator")]
-script = ExtResource("35_1e8xq")
-Body = NodePath("../..")
-Sprite = NodePath("../../Sprite3DBillBoard")
-SM = NodePath("..")
-Animator = NodePath("../../AnimationPlayer")
-
-[node name="Timer" type="Timer" parent="Enemies/First Enemy/StateMachine/Chase"]
-process_callback = 0
-wait_time = 5.0
-
-[node name="Area3D" type="Area3D" parent="Enemies/First Enemy" groups=["Player"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.59447724, 0)
-
-[node name="Fight area" type="CollisionShape3D" parent="Enemies/First Enemy/Area3D"]
-shape = SubResource("SphereShape3D_f2srf")
-debug_color = Color(0.88782513, 0.3293662, 1.92523e-07, 0.41960785)
-
-[node name="Area3D2" type="Area3D" parent="Enemies/First Enemy"]
-transform = Transform3D(0.495, 0, 0, 0, 0.495, 0, 0, 0, 0.495, 0, 0.59447724, 0)
-
-[node name="Vision_Hearing" type="CollisionShape3D" parent="Enemies/First Enemy/Area3D2"]
-transform = Transform3D(0.99999815, 0, 2.3841858e-07, 0, 0.99999696, 0, -2.3841858e-07, 0, 0.99999815, 0, 0, 0)
-shape = SubResource("CylinderShape3D_om1c7")
-debug_color = Color(0.96061414, 2.117753e-06, 0.50728065, 0.41960785)
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Enemies/First Enemy"]
-root_node = NodePath("../Sprite3DBillBoard")
-libraries = {
-&"": SubResource("AnimationLibrary_khln7")
-}
-
-[node name="BigScaryBossEnemy" type="CharacterBody3D" parent="Enemies"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.996, 0.836, 1.993)
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Enemies/BigScaryBossEnemy"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.13683313, 0)
-shape = SubResource("CapsuleShape3D_wtwml")
-
-[node name="Sprite3DBillBoard" type="MeshInstance3D" parent="Enemies/BigScaryBossEnemy"]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0.45682234, 0)
-mesh = SubResource("PlaneMesh_emaie")
-script = ExtResource("14_emaie")
-animations_array = Array[ExtResource("15_qekke")]([SubResource("Resource_qekke"), SubResource("Resource_eyld3"), SubResource("Resource_goudi"), SubResource("Resource_rjl32"), SubResource("Resource_gauef"), SubResource("Resource_pgcrk"), SubResource("Resource_kd61g"), SubResource("Resource_ob5ck")])
-animation = 1
-frame = 1.0
-sprite_scale = 0.0016
-metadata/_custom_type_script = "uid://b5653u7w56pqw"
-
-[node name="SM_controller" type="Node" parent="Enemies/BigScaryBossEnemy" node_paths=PackedStringArray("node_StateMachine")]
-script = ExtResource("30_5bkji")
-node_StateMachine = NodePath("../StateMachine")
-
-[node name="StateMachine" type="Node" parent="Enemies/BigScaryBossEnemy" node_paths=PackedStringArray("Init_node_state")]
-script = ExtResource("31_umn6q")
-Init_node_state = NodePath("Wander")
-
-[node name="IdleState" type="Node" parent="Enemies/BigScaryBossEnemy/StateMachine" node_paths=PackedStringArray("Body", "Sprite", "SM", "Animator")]
-script = ExtResource("32_c8pig")
-Body = NodePath("../..")
-Sprite = NodePath("../../Sprite3DBillBoard")
-SM = NodePath("..")
-Animator = NodePath("../../AnimationPlayer")
-
-[node name="Fighting" type="Node" parent="Enemies/BigScaryBossEnemy/StateMachine" node_paths=PackedStringArray("SM", "Animator")]
-script = ExtResource("33_ceh7k")
-SM = NodePath("..")
-Animator = NodePath("../../AnimationPlayer")
-
-[node name="Wander" type="Node" parent="Enemies/BigScaryBossEnemy/StateMachine" node_paths=PackedStringArray("Body", "Sprite", "SM", "Animator")]
-script = ExtResource("34_0hyvh")
-Body = NodePath("../..")
-Sprite = NodePath("../../Sprite3DBillBoard")
-SM = NodePath("..")
-Animator = NodePath("../../AnimationPlayer")
-
-[node name="Timer" type="Timer" parent="Enemies/BigScaryBossEnemy/StateMachine/Wander"]
-process_callback = 0
-wait_time = 7.0
-
-[node name="Chase" type="Node" parent="Enemies/BigScaryBossEnemy/StateMachine" node_paths=PackedStringArray("Body", "Sprite", "SM", "Animator")]
-script = ExtResource("35_1e8xq")
-Body = NodePath("../..")
-Sprite = NodePath("../../Sprite3DBillBoard")
-SM = NodePath("..")
-Animator = NodePath("../../AnimationPlayer")
-
-[node name="Timer" type="Timer" parent="Enemies/BigScaryBossEnemy/StateMachine/Chase"]
-process_callback = 0
-wait_time = 5.0
-
-[node name="Area3D" type="Area3D" parent="Enemies/BigScaryBossEnemy" groups=["Player"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.59447724, 0)
-
-[node name="Fight area" type="CollisionShape3D" parent="Enemies/BigScaryBossEnemy/Area3D"]
-shape = SubResource("SphereShape3D_xmd6u")
-debug_color = Color(0.88782513, 0.3293662, 1.92523e-07, 0.41960785)
-
-[node name="Area3D2" type="Area3D" parent="Enemies/BigScaryBossEnemy"]
-transform = Transform3D(0.495, 0, 0, 0, 0.495, 0, 0, 0, 0.495, 0, 0.59447724, 0)
-
-[node name="Vision_Hearing" type="CollisionShape3D" parent="Enemies/BigScaryBossEnemy/Area3D2"]
-transform = Transform3D(0.99999696, 0, 0, 0, 0.99999696, 0, 0, 0, 0.99999696, 0, 0, 0)
-shape = SubResource("CylinderShape3D_db0d0")
-debug_color = Color(0.96061414, 2.117753e-06, 0.50728065, 0.41960785)
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Enemies/BigScaryBossEnemy"]
-root_node = NodePath("../Sprite3DBillBoard")
-libraries = {
-&"": SubResource("AnimationLibrary_p4nyg")
-}
-
-[node name="EnemyPuzzleRoom_1" parent="Enemies" instance=ExtResource("37_0lfq7")]
-transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -6.09916, 0.4639815, -14.800063)
-
-[node name="EnemyPuzzleRoom_2" parent="Enemies" instance=ExtResource("37_0lfq7")]
-transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -8.09916, 0.4639815, -12.800063)
-
 [node name="GridMap" type="GridMap" parent="."]
 mesh_library = ExtResource("2_3b0ht")
 cell_size = Vector3(2, 0.7, 2)
 data = {
-"cells": PackedInt32Array(1, 0, 1441796, 2, 0, 1441794, 3, 0, 3, 3, 65535, 2, 3, 65534, 2, 4, 65533, 3, 2, 65533, 1441795, 3, 65533, 1441792, 3, 65532, 1441792, 3, 65531, 1441792, 3, 65530, 2, 3, 65529, 2, 3, 65528, 2, 3, 65527, 1048579, 1, 65527, 655363, 1, 65528, 3, 0, 65528, 655363, 0, 65529, 3, 65535, 65529, 1048578, 2, 65527, 1048578, 1, 65532, 1048578, 7, 65532, 1048580, 6, 65532, 1048578, 5, 65532, 1048578, 4, 65531, 1048579, 2, 65531, 655363, 4, 65532, 655360, 2, 65532, 655360, 0, 65532, 1441796, 65533, 65531, 3, 65531, 65531, 1441795, 65534, 65530, 3, 65534, 65528, 1048579, 65533, 65527, 1048579, 65531, 65527, 655363, 65532, 65526, 655364, 65530, 65528, 655363, 65530, 65530, 1441795, 65530, 65529, 1441793, 65531, 65530, 1441792, 65531, 65529, 1441792, 65531, 65528, 1441792, 65532, 65528, 1441792, 65532, 65527, 1441792, 65532, 65529, 1441792, 65532, 65530, 1441792, 65532, 65531, 1441792, 65533, 65530, 1441792, 65533, 65529, 1441792, 65533, 65528, 1441792, 65534, 65529, 1441792, 65532, 65532, 655362, 65532, 65533, 655362, 65532, 65534, 655362, 65531, 65535, 655361, 65533, 65535, 655361, 65530, 65535, 655361, 65534, 65535, 655361, 65529, 65535, 655363, 65529, 0, 1441793, 65529, 1, 1441793, 65529, 2, 1441795, 65530, 2, 1, 65531, 2, 1, 65532, 2, 1, 65533, 2, 1, 65534, 2, 1, 65535, 65535, 1048579, 65535, 0, 1048577, 65535, 1, 1048577, 65535, 2, 3, 65532, 65535, 0, 65534, 0, 0, 65533, 0, 0, 65532, 0, 0, 65534, 1, 0, 65533, 1, 0, 65532, 1, 0, 65531, 1, 0, 65531, 0, 0, 65530, 0, 0, 65530, 1, 0)
+"cells": PackedInt32Array(1, 0, 1441796, 2, 0, 1441794, 3, 0, 3, 3, 65535, 2, 3, 65534, 2, 4, 65533, 3, 2, 65533, 1441795, 3, 65533, 1441792, 3, 65532, 1441792, 3, 65531, 1441792, 3, 65530, 2, 3, 65529, 2, 3, 65528, 2, 3, 65527, 1048579, 1, 65527, 655363, 1, 65528, 3, 0, 65528, 655363, 0, 65529, 3, 65535, 65529, 1048578, 2, 65527, 1048578, 1, 65532, 1048578, 7, 65532, 1048580, 6, 65532, 1048578, 5, 65532, 1048578, 4, 65531, 1048579, 2, 65531, 655363, 4, 65532, 655360, 2, 65532, 655360, 0, 65532, 1441796, 65533, 65531, 3, 65531, 65531, 1441795, 65534, 65530, 3, 65534, 65528, 1048579, 65533, 65527, 1048579, 65531, 65527, 655363, 65532, 65526, 655364, 65530, 65528, 655363, 65530, 65530, 1441795, 65530, 65529, 1441793, 65531, 65530, 1441792, 65531, 65529, 1441792, 65531, 65528, 1441792, 65532, 65528, 1441792, 65532, 65527, 1441792, 65532, 65529, 1441792, 65532, 65530, 1441792, 65532, 65531, 1441792, 65533, 65530, 1441792, 65533, 65529, 1441792, 65533, 65528, 1441792, 65534, 65529, 1441792, 65532, 65532, 655362, 65532, 65533, 655362, 65532, 65534, 655362, 65531, 65535, 655361, 65533, 65535, 655361, 65530, 65535, 655363, 65534, 65535, 1048579, 65530, 2, 1441795, 65531, 2, 1, 65532, 2, 1, 65533, 2, 1, 65534, 2, 3, 65532, 65535, 0, 65534, 0, 1048577, 65533, 0, 0, 65532, 0, 0, 65534, 1, 1048577, 65533, 1, 0, 65532, 1, 0, 65531, 1, 0, 65531, 0, 0, 65530, 0, 1441793, 65530, 1, 1441793)
 }
+
+[node name="Puzzles_01" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 0, -7)
+
+[node name="Node3D" type="Node3D" parent="Puzzles_01"]
+
+[node name="Gate_Left" parent="Puzzles_01/Node3D" instance=ExtResource("8_fvksq")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -3.1, 0.4, 0)
+
+[node name="Button" parent="Puzzles_01/Node3D" instance=ExtResource("9_8chx6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 1.4, 0.6975393)
+
+[node name="Node3D" type="Node3D" parent="Puzzles_01/Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.34555766, 0)
+
+[node name="Left_PressurePlate" parent="Puzzles_01/Node3D/Node3D" instance=ExtResource("11_aep5l")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0.05, 0)
+weight_to_activate = 4.0
+_lerp_speed = 900.0
+
+[node name="Node3D2" type="Node3D" parent="Puzzles_01"]
+
+[node name="Gate_Left2" parent="Puzzles_01/Node3D2" instance=ExtResource("8_fvksq")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 3.047738, 0.2807996, 0)
+
+[node name="Button2" parent="Puzzles_01/Node3D2" instance=ExtResource("9_8chx6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 1.4, 0.719)
+
+[node name="Node3D" type="Node3D" parent="Puzzles_01/Node3D2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.3456661, 0)
+
+[node name="Right_PressurePlate" parent="Puzzles_01/Node3D2/Node3D" instance=ExtResource("11_aep5l")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0.05, 0)
+weight_to_activate = 8.0
+
+[node name="Node3D3" type="Node3D" parent="Puzzles_01"]
+
+[node name="Gate_Left3" parent="Puzzles_01/Node3D3" instance=ExtResource("8_fvksq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.4, -3.1000004)
+
+[node name="Button3" parent="Puzzles_01/Node3D3" instance=ExtResource("9_8chx6")]
+transform = Transform3D(2.9802322e-08, 0, -1, 0, 1, 0, 1, 0, 2.9802322e-08, -0.6999998, 1.4, -4)
+
+[node name="Node3D" type="Node3D" parent="Puzzles_01/Node3D3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.34555766, 0)
+
+[node name="Main_PressurePlate" parent="Puzzles_01/Node3D3/Node3D" instance=ExtResource("11_aep5l")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.05, -2)
+weight_to_activate = 10.0
+
+[node name="skull" parent="Puzzles_01" instance=ExtResource("38_3b0ht")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0.6, 0)
+item_weight = 3
+
+[node name="drinkvessel" parent="Puzzles_01" instance=ExtResource("39_pg3lp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0.9, 0)
+item_weight = 3
+
+[node name="Node3D2" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.962071, 0.63938737, -19.482779)
+
+[node name="Urn" parent="Node3D2" instance=ExtResource("42_ooesu")]
+item_type = SubResource("Resource_qekke")
+
+[node name="Urn2" parent="Node3D2" instance=ExtResource("42_ooesu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.9999995, 0, 2.368)
+
+[node name="Urn3" parent="Node3D2" instance=ExtResource("42_ooesu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.9999995, 0, 4.368)
+
+[node name="Urn4" parent="Node3D2" instance=ExtResource("42_ooesu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.0000005, 0, 4.368)
+
+[node name="Urn5" parent="Node3D2" instance=ExtResource("42_ooesu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.0000005, 0, 2.368)
+
+[node name="Urn6" parent="Node3D2" instance=ExtResource("42_ooesu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.0000005, 0, 2.368)
+
+[node name="Urn7" parent="Node3D2" instance=ExtResource("42_ooesu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.9999995, 0, 2.368)
+
+[node name="Urn8" parent="Node3D2" instance=ExtResource("42_ooesu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.9999995, 0, 9.368)
+
+[node name="Urn9" parent="Node3D2" instance=ExtResource("42_ooesu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.0000005, 0, 8.368)
+
+[node name="Urn12" parent="Node3D2" instance=ExtResource("42_ooesu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.9999995, 0, 4.368)
+
+[node name="Urn13" parent="Node3D2" instance=ExtResource("42_ooesu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.0000005, 0, 5.368)
+
+[node name="Urn14" parent="Node3D2" instance=ExtResource("42_ooesu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.0000005, 0, 7.368)
+
+[node name="Urn18" parent="Node3D2" instance=ExtResource("42_ooesu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.9999995, 0, 6.368)
+
+[node name="Urn19" parent="Node3D2" instance=ExtResource("42_ooesu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.9999995, 0, 8.368)
+
+[node name="Enemy_presset" parent="Node3D2" node_paths=PackedStringArray("player") instance=ExtResource("17_5ujyx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.26096016, 22.632988)
+player = NodePath("../../player_test")
+
+[node name="Node3D" type="Node3D" parent="."]
+
+[node name="Ambient" type="AudioStreamPlayer3D" parent="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.877981, 3.6797314, -13.474785)
+stream = ExtResource("39_rldp5")
+volume_db = 0.2
+autoplay = true
+max_distance = 25.0
+
+[node name="Ambient2" type="AudioStreamPlayer3D" parent="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.600433, 3.6797295, -6.309743)
+stream = ExtResource("40_o0daa")
+volume_db = 0.5
+autoplay = true
+max_distance = 20.0
+
+[node name="Ambient3" type="AudioStreamPlayer3D" parent="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.067028, 3.6797295, 2.2755156)
+stream = ExtResource("41_2hss1")
+volume_db = 0.1
+pitch_scale = 0.2
+autoplay = true
+max_distance = 10.0
 
 [connection signal="on_activated" from="Gates+devices/Button_Front_Entrance" to="Gates+devices/Gate_Entrance" method="open_gate"]
 [connection signal="on_deactivated" from="Gates+devices/Button_Front_Entrance" to="Gates+devices/Gate_Entrance" method="open_gate"]
 [connection signal="on_activated" from="Gates+devices/Button_MainGate" to="Gates+devices/Main_Gate" method="open_gate"]
 [connection signal="on_activated" from="Gates+devices/After_Final_Boss_PressurePlate" to="Gates+devices/After_Final_Boss Gate" method="open_gate"]
 [connection signal="on_activated" from="Gates+devices/Exit_Level_Button" to="Gates+devices/Exit_Level_Gate" method="open_gate"]
-[connection signal="timeout" from="Enemies/First Enemy/StateMachine/Wander/Timer" to="Enemies/First Enemy/StateMachine/Wander" method="_on_timer_timeout"]
-[connection signal="timeout" from="Enemies/First Enemy/StateMachine/Chase/Timer" to="Enemies/First Enemy/StateMachine/Chase" method="_on_timer_timeout"]
-[connection signal="body_shape_entered" from="Enemies/First Enemy/Area3D" to="Enemies/First Enemy/SM_controller" method="_on_area_3d_body_shape_entered"]
-[connection signal="body_shape_exited" from="Enemies/First Enemy/Area3D" to="Enemies/First Enemy/SM_controller" method="_on_area_3d_body_shape_exited"]
-[connection signal="area_entered" from="Enemies/First Enemy/Area3D2" to="Enemies/First Enemy/StateMachine/Wander" method="_on_area_3d_2_area_entered"]
-[connection signal="area_entered" from="Enemies/First Enemy/Area3D2" to="Enemies/First Enemy/StateMachine/Chase" method="_on_area_3d_2_area_entered"]
-[connection signal="area_exited" from="Enemies/First Enemy/Area3D2" to="Enemies/First Enemy/StateMachine/Chase" method="_on_area_3d_2_area_exited"]
-[connection signal="timeout" from="Enemies/BigScaryBossEnemy/StateMachine/Wander/Timer" to="Enemies/BigScaryBossEnemy/StateMachine/Wander" method="_on_timer_timeout"]
-[connection signal="timeout" from="Enemies/BigScaryBossEnemy/StateMachine/Chase/Timer" to="Enemies/BigScaryBossEnemy/StateMachine/Chase" method="_on_timer_timeout"]
-[connection signal="body_shape_entered" from="Enemies/BigScaryBossEnemy/Area3D" to="Enemies/BigScaryBossEnemy/SM_controller" method="_on_area_3d_body_shape_entered"]
-[connection signal="body_shape_exited" from="Enemies/BigScaryBossEnemy/Area3D" to="Enemies/BigScaryBossEnemy/SM_controller" method="_on_area_3d_body_shape_exited"]
-[connection signal="area_entered" from="Enemies/BigScaryBossEnemy/Area3D2" to="Enemies/BigScaryBossEnemy/StateMachine/Wander" method="_on_area_3d_2_area_entered"]
-[connection signal="area_entered" from="Enemies/BigScaryBossEnemy/Area3D2" to="Enemies/BigScaryBossEnemy/StateMachine/Chase" method="_on_area_3d_2_area_entered"]
-[connection signal="area_exited" from="Enemies/BigScaryBossEnemy/Area3D2" to="Enemies/BigScaryBossEnemy/StateMachine/Chase" method="_on_area_3d_2_area_exited"]
+[connection signal="on_activated" from="Puzzles_01/Node3D/Button" to="Puzzles_01/Node3D/Gate_Left" method="open_gate"]
+[connection signal="on_change" from="Puzzles_01/Node3D/Node3D/Left_PressurePlate" to="Puzzles_01/Node3D/Gate_Left" method="open_gate"]
+[connection signal="on_activated" from="Puzzles_01/Node3D2/Button2" to="Puzzles_01/Node3D2/Gate_Left2" method="open_gate"]
+[connection signal="on_change" from="Puzzles_01/Node3D2/Node3D/Right_PressurePlate" to="Puzzles_01/Node3D2/Gate_Left2" method="open_gate"]
+[connection signal="on_activated" from="Puzzles_01/Node3D3/Button3" to="Puzzles_01/Node3D3/Gate_Left3" method="open_gate"]
+[connection signal="on_change" from="Puzzles_01/Node3D3/Node3D/Main_PressurePlate" to="Puzzles_01/Node3D3/Gate_Left3" method="open_gate"]
