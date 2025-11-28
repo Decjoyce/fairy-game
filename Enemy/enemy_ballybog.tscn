@@ -990,8 +990,9 @@ transform = Transform3D(0.99999696, 0, 0, 0, 0.99999696, 0, 0, 0, 0.99999696, 0,
 shape = SubResource("CylinderShape3D_3ixwq")
 debug_color = Color(0.62382853, 0.49057347, 0.55874586, 0.41960785)
 
-[node name="Combat" type="Node" parent="." node_paths=PackedStringArray("combat_hands", "stance")]
+[node name="Combat" type="Node" parent="." node_paths=PackedStringArray("combat_ui", "combat_hands", "stance")]
 script = ExtResource("26_jppkf")
+combat_ui = NodePath("../Stats/Node3D/SubViewport/Control")
 combat_hands = [NodePath("CombatHand")]
 stance = NodePath("Stance")
 
@@ -1110,6 +1111,7 @@ metadata/_edit_use_anchors_ = true
 
 [node name="HealthBar" type="ProgressBar" parent="Stats/Node3D/SubViewport/Control/Border"]
 show_behind_parent = true
+z_index = 1
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.008970727

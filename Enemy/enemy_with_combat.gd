@@ -2,5 +2,8 @@ extends CharacterBody3D
 
 @export var player: PlayerTest
 
+signal hey_joy(sig: float)
+
 func die() -> void:
+	hey_joy.emit(1.0)
 	queue_free()

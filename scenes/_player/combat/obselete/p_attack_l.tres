@@ -1,17 +1,23 @@
-[gd_resource type="Resource" script_class="AttackData" load_steps=3 format=3 uid="uid://6qj2s1dauggj"]
+[gd_resource type="Resource" script_class="AttackData" load_steps=5 format=3 uid="uid://6qj2s1dauggj"]
 
 [ext_resource type="Script" uid="uid://i6x8mkfibed4" path="res://scenes/combat/attack_data.gd" id="1_hkpl7"]
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_hkpl7"]
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_gw2dj"]
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_ef65v"]
 
 [resource]
 script = ExtResource("1_hkpl7")
 slot = 4
-dmg = 50.0
+dmg = 20.0
 telegraph_anim = "l_tele_m"
 attack_anim = "l_swing_m"
 recover_anim = "l_recover_m"
 telegraph_audio = SubResource("AudioStreamRandomizer_ef65v")
+attack_audio = SubResource("AudioStreamRandomizer_hkpl7")
+recover_audio = SubResource("AudioStreamRandomizer_gw2dj")
 attack_length = 0.8
 recover_length = 1.0
 metadata/_custom_type_script = "uid://i6x8mkfibed4"
