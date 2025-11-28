@@ -733,15 +733,17 @@ combat_hands = [NodePath("CombatHand_Left"), NodePath("CombatHand_Right")]
 stats = NodePath("../Stats")
 incoming_attack_uis = [NodePath("Combat_UI/IncomingAttacks/R"), NodePath("Combat_UI/IncomingAttacks/BR"), NodePath("Combat_UI/IncomingAttacks/B"), NodePath("Combat_UI/IncomingAttacks/BL"), NodePath("Combat_UI/IncomingAttacks/L"), NodePath("Combat_UI/IncomingAttacks/TL"), NodePath("Combat_UI/IncomingAttacks/T"), NodePath("Combat_UI/IncomingAttacks/TR")]
 
-[node name="CombatHand_Left" type="Node" parent="Combat" node_paths=PackedStringArray("combat", "other_hand", "my_stance", "anim_player")]
+[node name="CombatHand_Left" type="Node" parent="Combat" node_paths=PackedStringArray("combat", "other_hand", "incoming_attack_uis", "my_stance", "anim_player", "block_audio_player")]
 script = ExtResource("13_s1g5w")
 stringed_hand = "LEFT"
 combat = NodePath("..")
 other_hand = NodePath("../CombatHand_Right")
+incoming_attack_uis = [NodePath("../Combat_UI/IncomingAttacks/BL"), NodePath("../Combat_UI/IncomingAttacks/L"), NodePath("../Combat_UI/IncomingAttacks/TL")]
 current_slot = 0
 restricted_slots = "00011100"
 my_stance = NodePath("../Stance")
 anim_player = NodePath("AnimationPlayer")
+block_audio_player = NodePath("BlockSfx")
 
 [node name="Attack" type="Node" parent="Combat/CombatHand_Left"]
 script = ExtResource("14_uus6m")
@@ -772,16 +774,18 @@ libraries = {
 [node name="BlockSfx" type="AudioStreamPlayer3D" parent="Combat/CombatHand_Left"]
 stream = SubResource("AudioStreamRandomizer_uus6m")
 
-[node name="CombatHand_Right" type="Node" parent="Combat" node_paths=PackedStringArray("combat", "other_hand", "my_stance", "anim_player")]
+[node name="CombatHand_Right" type="Node" parent="Combat" node_paths=PackedStringArray("combat", "other_hand", "incoming_attack_uis", "my_stance", "anim_player", "block_audio_player")]
 script = ExtResource("13_s1g5w")
 stringed_hand = "RIGHT"
 combat = NodePath("..")
 other_hand = NodePath("../CombatHand_Left")
+incoming_attack_uis = [NodePath("../Combat_UI/IncomingAttacks/BR"), NodePath("../Combat_UI/IncomingAttacks/R"), NodePath("../Combat_UI/IncomingAttacks/TR")]
 index = 1
 current_slot = 5
 restricted_slots = "11000001"
 my_stance = NodePath("../Stance")
 anim_player = NodePath("AnimationPlayer2")
+block_audio_player = NodePath("BlockSfx")
 
 [node name="Attack" type="Node" parent="Combat/CombatHand_Right"]
 script = ExtResource("14_uus6m")
@@ -1086,6 +1090,10 @@ offset_bottom = -129.0
 grow_horizontal = 2
 grow_vertical = 0
 text = "Return To Menu"
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+light_color = Color(0.20314711, 0.27413306, 0.28956375, 1)
+omni_range = 0.75
 
 [connection signal="on_body_entered" from="EnemyChecker" to="Combat" method="_on_enemy_checker_on_body_entered"]
 [connection signal="on_body_exit" from="EnemyChecker" to="Combat" method="_on_enemy_checker_on_body_exit"]

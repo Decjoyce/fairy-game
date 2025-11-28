@@ -123,7 +123,9 @@ func begin_telegraph() -> void:
 		my_hand.current_slot = current_attack_data.slot
 	
 	my_hand.about_to_attack.emit(my_hand.current_slot)
-	audio_attack.play()
+	
+	if current_attack_data.telegraph_audio != null:
+		audio_attack.play()
 	
 	timer_telegraph.wait_time = current_attack_data.telegraph_length
 	timer_telegraph.start()
@@ -149,8 +151,9 @@ func begin_attack() -> void:
 	
 	my_hand.anim_player.play(current_attack_data.attack_anim)
 	
-	#audio_attack.stream = current_attack_data.attack_audio
-	audio_attack.play()
+	audio_attack.stream = current_attack_data.attack_audio
+	if current_attack_data.telegraph_audio != null:
+		audio_attack.play()
 	
 	timer_attack.wait_time = current_attack_data.attack_length
 	timer_attack.start()
@@ -178,8 +181,9 @@ func begin_recover() -> void:
 	my_hand.anim_player.play(current_attack_data.recover_anim, -1,  1 + current_attack_data.recover_length)
 	timer_recover.wait_time = current_attack_data.recover_length
 	
-	#audio_attack.stream = current_attack_data.recover_audio
-	audio_attack.play()
+	audio_attack.stream = current_attack_data.recover_audio
+	if current_attack_data.telegraph_audio != null:
+		audio_attack.play()
 	
 	timer_recover.start()
 
