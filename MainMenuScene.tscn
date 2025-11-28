@@ -1,5 +1,6 @@
-[gd_scene load_steps=15 format=4 uid="uid://bw2ceq76kc2yc"]
+[gd_scene load_steps=19 format=4 uid="uid://bw2ceq76kc2yc"]
 
+[ext_resource type="Script" uid="uid://bp08osynnpvb5" path="res://MainMenu.gd" id="1_47rn7"]
 [ext_resource type="PackedScene" uid="uid://btcpx55r5ma3v" path="res://EnvironmentAssets/ObjTiles_Environment/ObjModels/Props/Menu/Moutainrocks5.glb" id="2_lrn60"]
 [ext_resource type="LightmapGIData" uid="uid://bqiy8iqbdsnh" path="res://LightMapBake/MainMenuScene.lmbake" id="2_sud0c"]
 [ext_resource type="Material" uid="uid://dgrldudl0bdhu" path="res://EnvironmentAssets/ObjTiles_Environment/Materials/props/Rockpile/Rockpile.tres" id="3_lrn60"]
@@ -108,14 +109,14 @@ tracks/3/keys = {
 
 [sub_resource type="Animation" id="Animation_lrn60"]
 resource_name = "SpeedIntoCavee"
-length = 0.6
+length = 0.8
 tracks/0/type = "position_3d"
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/path = NodePath(".")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
-tracks/0/keys = PackedFloat32Array(0, 1, 0.80260944, 1.8404503, -34.29502, 0.6, 1, 0.80260944, 1.8404503, 5.204979)
+tracks/0/keys = PackedFloat32Array(0, 1, 0.80260944, 1.8404503, -34.29502, 0.8, 1, 0.80260944, 1.8404503, 5.204979)
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = false
@@ -142,10 +143,10 @@ tracks/3/path = NodePath(".:attributes:frustum_focal_length")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0, 0.6, 29.984974, 59.922073),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
+"times": PackedFloat32Array(0, 0.53333336, 0.6, 0.8, 29.984974, 59.922073),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
 "update": 0,
-"values": [113.86, 35.0, 71.03, 118.42]
+"values": [113.86, 9.43, 9.43, 153.42, 71.03, 118.42]
 }
 tracks/4/type = "value"
 tracks/4/imported = false
@@ -227,17 +228,49 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_vd8rh")
 
-[node name="Node3D" type="Node3D"]
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-root_node = NodePath("../Camera3D")
-libraries = {
-&"": SubResource("AnimationLibrary_17sr7")
+[sub_resource type="Animation" id="Animation_17sr7"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 0, 0, 0)]
 }
+
+[sub_resource type="Animation" id="Animation_o261h"]
+resource_name = "FadetoBlack"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 0), Color(0, 0, 0, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_0eexf"]
+_data = {
+&"FadetoBlack": SubResource("Animation_o261h"),
+&"RESET": SubResource("Animation_17sr7")
+}
+
+[node name="MainMenu" type="Node3D"]
+script = ExtResource("1_47rn7")
 
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, -32.12275)
 attributes = SubResource("CameraAttributesPhysical_lrn60")
+current = true
 
 [node name="SpotLight3D" type="SpotLight3D" parent="Camera3D"]
 transform = Transform3D(-1, -7.642742e-15, 8.742278e-08, 0, -1, -8.742278e-08, 8.742278e-08, -8.742278e-08, 1, 0.8026093, -1.8404503, -1.295021)
@@ -245,6 +278,11 @@ light_color = Color(0.21621478, 0.17514732, 0.17962053, 1)
 light_energy = 13.057
 spot_range = 9.0
 spot_angle = 50.91361
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Camera3D"]
+libraries = {
+&"": SubResource("AnimationLibrary_17sr7")
+}
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_lrn60")
@@ -263,13 +301,31 @@ light_data = ExtResource("2_sud0c")
 
 [node name="Moutainrocks5" parent="." instance=ExtResource("2_lrn60")]
 
-[node name="Rockpile2" type="MeshInstance3D" parent="."]
+[node name="Rockpile2" type="MeshInstance3D" parent="Moutainrocks5"]
 transform = Transform3D(3, -1.7320514, -2.0000002, 2.0000005, 3.4641018, 0, 1.7320507, -1.0000001, 3.4641016, 22.902035, -3.365284, -1.7683506)
 mesh = SubResource("ArrayMesh_47rn7")
 skeleton = NodePath("../Rockpile")
 surface_material_override/0 = ExtResource("3_lrn60")
 
-[node name="Rockpile" type="MeshInstance3D" parent="."]
+[node name="Rockpile" type="MeshInstance3D" parent="Moutainrocks5"]
 transform = Transform3D(1.9318516, -0.51763815, 0, 0.51763815, 1.9318516, 0, 0, 0, 2, 19.578766, 0, 3.2438831)
 mesh = SubResource("ArrayMesh_47rn7")
+skeleton = NodePath("../..")
 surface_material_override/0 = ExtResource("3_lrn60")
+
+[node name="FadeLayer" type="CanvasLayer" parent="."]
+
+[node name="ColorRect" type="ColorRect" parent="FadeLayer"]
+modulate = Color(0, 0, 0, 0)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="FadeLayer"]
+root_node = NodePath("../ColorRect")
+libraries = {
+&"": SubResource("AnimationLibrary_0eexf")
+}
