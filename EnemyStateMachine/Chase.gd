@@ -142,7 +142,8 @@ func DebugPath():
 
 
 func _on_area_3d_2_area_exited(area: Area3D) -> void:
-	SM.transition_to("Wander")
+	if area.owner is PlayerTest:
+		SM.transition_to("Wander")
 	pass # Replace with function body.
 
 
@@ -151,3 +152,8 @@ func _on_timer_timeout() -> void:
 	find_path()
 	$Timer.start()
 	
+
+
+func _on_area_3d_area_shape_entered(area_rid: RID, area: Area3D, area_shape_index: int, local_shape_index: int) -> void:
+	if area.owner is PlayerTest:
+		SM.transition_to("Fighting")

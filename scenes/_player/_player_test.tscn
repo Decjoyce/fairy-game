@@ -417,24 +417,8 @@ tracks/0/keys = {
 "values": [ExtResource("13_6jmgc")]
 }
 
-[sub_resource type="Animation" id="Animation_nnhvt"]
-resource_name = "r_tele_m"
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Combat_UI/UI_Hand_Right/hand:texture")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [ExtResource("31_6ysfn")]
-}
-
-[sub_resource type="Animation" id="Animation_i6b1s"]
-resource_name = "r_swing_m"
+[sub_resource type="Animation" id="Animation_1pnin"]
+resource_name = "r_recover_b"
 length = 0.6
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -443,10 +427,10 @@ tracks/0/path = NodePath("Combat_UI/UI_Hand_Right/hand:texture")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.033333335, 0.6),
-"transitions": PackedFloat32Array(1, 1, 1),
+"times": PackedFloat32Array(0, 0.6),
+"transitions": PackedFloat32Array(1, 1),
 "update": 1,
-"values": [ExtResource("32_nnhvt"), ExtResource("32_ahfqc"), ExtResource("32_ahfqc")]
+"values": [ExtResource("36_1pnin"), ExtResource("14_8q2h8")]
 }
 
 [sub_resource type="Animation" id="Animation_r52wq"]
@@ -465,6 +449,22 @@ tracks/0/keys = {
 "values": [ExtResource("32_ahfqc"), ExtResource("33_i6b1s"), ExtResource("14_w8oqj")]
 }
 
+[sub_resource type="Animation" id="Animation_t36l2"]
+resource_name = "r_recover_t"
+length = 0.6
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Combat_UI/UI_Hand_Right/hand:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [ExtResource("40_t36l2"), ExtResource("13_6jmgc")]
+}
+
 [sub_resource type="Animation" id="Animation_kdy7k"]
 resource_name = "r_swing_b"
 length = 0.6
@@ -481,24 +481,8 @@ tracks/0/keys = {
 "values": [ExtResource("35_r52wq"), ExtResource("36_1pnin")]
 }
 
-[sub_resource type="Animation" id="Animation_pmw4y"]
-resource_name = "r_tele_b"
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Combat_UI/UI_Hand_Right/hand:texture")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [ExtResource("37_1pnin")]
-}
-
-[sub_resource type="Animation" id="Animation_1pnin"]
-resource_name = "r_recover_b"
+[sub_resource type="Animation" id="Animation_i6b1s"]
+resource_name = "r_swing_m"
 length = 0.6
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -507,26 +491,10 @@ tracks/0/path = NodePath("Combat_UI/UI_Hand_Right/hand:texture")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.6),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(0, 0.033333335, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1),
 "update": 1,
-"values": [ExtResource("36_1pnin"), ExtResource("14_8q2h8")]
-}
-
-[sub_resource type="Animation" id="Animation_anjk0"]
-resource_name = "r_tele_t"
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Combat_UI/UI_Hand_Right/hand:texture")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [ExtResource("38_kdy7k")]
+"values": [ExtResource("32_nnhvt"), ExtResource("32_ahfqc"), ExtResource("32_ahfqc")]
 }
 
 [sub_resource type="Animation" id="Animation_wrv1e"]
@@ -545,9 +513,9 @@ tracks/0/keys = {
 "values": [ExtResource("39_anjk0"), ExtResource("40_t36l2")]
 }
 
-[sub_resource type="Animation" id="Animation_t36l2"]
-resource_name = "r_recover_t"
-length = 0.6
+[sub_resource type="Animation" id="Animation_pmw4y"]
+resource_name = "r_tele_b"
+length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -555,10 +523,42 @@ tracks/0/path = NodePath("Combat_UI/UI_Hand_Right/hand:texture")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.6),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("40_t36l2"), ExtResource("13_6jmgc")]
+"values": [ExtResource("37_1pnin")]
+}
+
+[sub_resource type="Animation" id="Animation_nnhvt"]
+resource_name = "r_tele_m"
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Combat_UI/UI_Hand_Right/hand:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("31_6ysfn")]
+}
+
+[sub_resource type="Animation" id="Animation_anjk0"]
+resource_name = "r_tele_t"
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Combat_UI/UI_Hand_Right/hand:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("38_kdy7k")]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_dc5qm"]
@@ -607,8 +607,9 @@ stream_0/stream = ExtResource("6_4lyfc")
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_gcklq"]
 
-[node name="player_test" type="Node3D" node_paths=PackedStringArray("combat", "death_ui") groups=["Player"]]
+[node name="player_test" type="Node3D" node_paths=PackedStringArray("stats_ui", "combat", "death_ui") groups=["Player"]]
 script = ExtResource("1_e0b2u")
+stats_ui = NodePath("Stats/UI")
 combat = NodePath("Combat")
 death_ui = NodePath("DeathUI")
 
@@ -963,7 +964,6 @@ metadata/_custom_type_script = "uid://46pp7aerorca"
 one_shot = true
 
 [node name="UI" type="Control" parent="Stats"]
-visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0

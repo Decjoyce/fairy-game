@@ -13,7 +13,7 @@ var is_in_combat_mode: bool = true
 var enemy_stance: Stance
 
 func _ready() -> void:
-	enter_combat_mode()
+	#enter_combat_mode()
 	stance.hands = combat_hands
 
 func enter_combat_mode() -> void:

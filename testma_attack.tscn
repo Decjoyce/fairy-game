@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://ubfk2a80dhfp" path="res://addons/grid_map_pathfinding/grid_map_pathfinding.gd" id="1_fssqj"]
 [ext_resource type="PackedScene" uid="uid://bq86osdembn58" path="res://scenes/_player/_player_test.tscn" id="2_0k4f4"]
-[ext_resource type="PackedScene" uid="uid://fvgp74wr8y14" path="res://Enemy/Enemy_With_Combat.tscn" id="4_fssqj"]
+[ext_resource type="PackedScene" uid="uid://drc8vg7njr5ui" path="res://Enemy/enemy_ballybog.tscn" id="4_fssqj"]
 [ext_resource type="MeshLibrary" uid="uid://bu208a8l5866i" path="res://scenes/palettes/cairn/meshlibrary_cairn.tres" id="4_ji2ed"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_cnpm0"]
@@ -54,5 +54,6 @@ data = {
 "cells": PackedInt32Array(65533, 4, 0, 65533, 3, 0, 65533, 2, 1441792, 65533, 1, 1441792, 65533, 0, 1441792, 65533, 65535, 0, 65532, 4, 1441793, 65532, 3, 1441793, 65532, 2, 1441792, 65532, 1, 1441792, 65532, 0, 1441793, 65532, 65535, 1441793, 65531, 4, 0, 65531, 3, 0, 65531, 2, 0, 65531, 1, 0, 65531, 0, 0, 65531, 65535, 0, 65530, 3, 1441793, 65530, 2, 1441793, 65530, 1, 1441793, 65530, 0, 1441793, 65530, 65535, 1441793, 65530, 4, 1441793)
 }
 
-[node name="Enemy_presset" parent="." instance=ExtResource("4_fssqj")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.2, 0)
+[node name="Enemy_presset" parent="." node_paths=PackedStringArray("player") instance=ExtResource("4_fssqj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 1, 4)
+player = NodePath("../player_test")

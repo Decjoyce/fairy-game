@@ -27,7 +27,9 @@ var rng = RandomNumberGenerator.new()
 func on_physics_process(delta: float) -> void:
 		if path.size() >= 1:
 			moveW(delta)
-			
+			if Animator.current_animation != "test_walk":
+				Animator.play("test_walk")
+		else: Animator.play("Idle")
 			
 			  
 
@@ -99,6 +101,7 @@ func get_next_target() -> void:
 	if path.size() <= 0:
 		return 
 	target_pos = path[0]
+	Animator.play("test_walk")
 	
 
 func exit():
@@ -109,9 +112,15 @@ func exit():
 
 func _on_timer_timeout() -> void:
 	RandomWander()
+	Animator.play("test_walk")
 	pass # Replace with function body.
 
 
 func _on_area_3d_2_area_entered(area: Area3D) -> void:
-	SM.transition_to("Chase")
+	if area.owner is PlayerTest:
+		SM.transition_to("Chase")
 	pass # Replace with function body.
+
+func _on_area_3d_area_shape_entered(area_rid: RID, area: Area3D, area_shape_index: int, local_shape_index: int) -> void:
+	if area.owner is PlayerTest:
+		SM.transition_to("Fighting")
