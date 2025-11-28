@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=4 uid="uid://dt13fur6twjep"]
+[gd_scene load_steps=9 format=4 uid="uid://dt13fur6twjep"]
 
 [ext_resource type="Script" uid="uid://42c4j0jtwejr" path="res://scenes/interactions/receivers/gate/gate.gd" id="1_cm4qh"]
 [ext_resource type="Material" uid="uid://c6ic70i7jpqeu" path="res://EnvironmentAssets/ObjTiles_Environment/Materials/props/Gate/Gate.tres" id="2_7y3tx"]
@@ -39,6 +39,12 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_wkugu")
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7y3tx"]
+albedo_color = Color(0.13333334, 0.24313726, 0.2784314, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_7y3tx"]
+material = SubResource("StandardMaterial3D_7y3tx")
+
 [sub_resource type="BoxShape3D" id="BoxShape3D_wx5q6"]
 size = Vector3(2, 0.2, 0.2)
 
@@ -54,6 +60,10 @@ shape = SubResource("BoxShape3D_i1hti")
 [node name="MeshInstance3D" type="MeshInstance3D" parent="gate"]
 transform = Transform3D(0.135, 0, 0, 0, 0.135, 0, 0, 0, 0.135, 0, -1, 0)
 mesh = SubResource("ArrayMesh_au34u")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="gate/MeshInstance3D"]
+transform = Transform3D(0.85508686, 0, 0, 0, 1.0905446, 0, 0, 0, 0.4890525, 0, 6.7462816, 0)
+mesh = SubResource("BoxMesh_7y3tx")
 
 [node name="_label" type="Label3D" parent="gate"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.2, -0.099999994)
