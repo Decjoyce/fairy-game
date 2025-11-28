@@ -1,4 +1,4 @@
-[gd_scene load_steps=88 format=3 uid="uid://drc8vg7njr5ui"]
+[gd_scene load_steps=89 format=3 uid="uid://drc8vg7njr5ui"]
 
 [ext_resource type="Script" uid="uid://bytcavpmi7t32" path="res://Enemy/enemy_with_combat.gd" id="1_3ixwq"]
 [ext_resource type="Texture2D" uid="uid://bajdgu88x35py" path="res://Sprites/ballyWalkSheet_n.png" id="1_mpywb"]
@@ -36,6 +36,7 @@
 [ext_resource type="AudioStream" uid="uid://bx7heo47e14or" path="res://assets/misc/ugh.wav" id="33_th4g8"]
 [ext_resource type="Script" uid="uid://46pp7aerorca" path="res://stats.gd" id="35_pydrg"]
 [ext_resource type="Texture2D" uid="uid://2t1cw83o71dn" path="res://assets/ui/enemy_border.png" id="36_me4q8"]
+[ext_resource type="Script" uid="uid://byyeneqtnv43x" path="res://Enemy/koko.gd" id="36_xnhkk"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_abuop"]
 radius = 0.43391418
@@ -891,6 +892,7 @@ resource_local_to_scene = true
 transparency = 1
 shading_mode = 0
 albedo_texture = SubResource("ViewportTexture_pydrg")
+billboard_mode = 1
 
 [sub_resource type="QuadMesh" id="QuadMesh_pydrg"]
 resource_local_to_scene = true
@@ -1030,10 +1032,11 @@ stream = SubResource("AudioStreamRandomizer_u7c7l")
 script = ExtResource("31_xnhkk")
 metadata/_custom_type_script = "uid://446bgqyk22na"
 
-[node name="Hitbox" type="Area3D" parent="."]
+[node name="Hitbox" type="Area3D" parent="." node_paths=PackedStringArray("combat")]
 collision_layer = 131072
 collision_mask = 0
 script = ExtResource("32_7kval")
+combat = NodePath("../Combat")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Hitbox"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
@@ -1059,8 +1062,9 @@ metadata/_custom_type_script = "uid://46pp7aerorca"
 [node name="Timer" type="Timer" parent="Stats"]
 one_shot = true
 
-[node name="Node3D" type="Node3D" parent="Stats"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.3, 0)
+[node name="Node3D" type="Node3D" parent="Stats" node_paths=PackedStringArray("par")]
+script = ExtResource("36_xnhkk")
+par = NodePath("../..")
 
 [node name="SubViewport" type="SubViewport" parent="Stats/Node3D"]
 disable_3d = true
@@ -1123,7 +1127,7 @@ show_percentage = false
 metadata/_edit_use_anchors_ = true
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Stats/Node3D"]
-transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 0, -0.9, 0)
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 0, 1.3, 0)
 mesh = SubResource("QuadMesh_pydrg")
 
 [connection signal="timeout" from="StateMachine/Wander/Timer" to="StateMachine/Wander" method="_on_timer_timeout"]

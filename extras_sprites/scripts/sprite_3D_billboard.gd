@@ -98,9 +98,11 @@ var sprite_scale:float = 0.015:  # Escala del sprite
 
 # Método llamado al inicio
 func _ready():
+	sprite_scale = 0.0016
 	setup_animations()  # Inicializa las animaciones
 	setup_mesh()  # Configura la malla
 	setup_shader()  # Configura el shader
+	
 
 # Configura las animaciones
 func setup_animations():
