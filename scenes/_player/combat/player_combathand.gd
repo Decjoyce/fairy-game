@@ -12,8 +12,20 @@ var current_angle: float
 # --------------------------------------------------------------------------------------------------
 # ↓ Defend Stuff ↓
 
+func get_into_anim() -> void:
+	match current_slot:
+		0: anim_player.play("r_idle_m")
+		1: anim_player.play("r_idle_b")
+		2: anim_player.play("r_idle_b")
+		3: anim_player.play("l_idle_b")
+		4: anim_player.play("l_idle_m")
+		5: anim_player.play("l_idle_t")
+		6: anim_player.play("l_idle_t")
+		7: anim_player.play("r_idle_t")
+
 func move_into_slot(slot_to_occupy: int) -> void:
 	if my_stance.occupy_slot(index, slot_to_occupy):
+		get_into_anim()
 		current_slot = slot_to_occupy
 
 func begin_defending() -> void:

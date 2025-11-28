@@ -1,4 +1,4 @@
-[gd_scene load_steps=39 format=3 uid="uid://bq86osdembn58"]
+[gd_scene load_steps=87 format=3 uid="uid://bq86osdembn58"]
 
 [ext_resource type="Script" uid="uid://io22wsbhy73f" path="res://scenes/_player/player_test.gd" id="1_e0b2u"]
 [ext_resource type="Script" uid="uid://by88p7ijbixe5" path="res://scenes/_player/player_movement.gd" id="2_3jgj8"]
@@ -14,9 +14,34 @@
 [ext_resource type="AudioStream" uid="uid://da4l7eb7yuxm" path="res://assets/misc/out-of-breath-male-176715.wav" id="7_nbsyt"]
 [ext_resource type="Script" uid="uid://cpomu5ts52mpj" path="res://scenes/_player/combat/player_combat.gd" id="12_gcklq"]
 [ext_resource type="Resource" uid="uid://ci23rrjojjvls" path="res://scenes/_player/combat/obselete/p_attacksq.tres" id="12_uus6m"]
+[ext_resource type="Texture2D" uid="uid://dlrbgxyxghidg" path="res://scenes/_player/combat/spirtes/r_t/r_idle_t.png" id="13_6jmgc"]
 [ext_resource type="Script" uid="uid://cdsjqqs64jj3f" path="res://scenes/_player/combat/player_combathand.gd" id="13_s1g5w"]
+[ext_resource type="Texture2D" uid="uid://cjmxtqiogbt5m" path="res://scenes/_player/combat/spirtes/r_b/r_idle_b.png" id="14_8q2h8"]
 [ext_resource type="Script" uid="uid://c27axnnaakeuo" path="res://scenes/combat/combathand_attack.gd" id="14_uus6m"]
+[ext_resource type="Texture2D" uid="uid://b7jsxy84tejdk" path="res://scenes/_player/combat/spirtes/r_m/r_idle_m.png" id="14_w8oqj"]
 [ext_resource type="Script" uid="uid://446bgqyk22na" path="res://scenes/combat/stance.gd" id="15_6jmgc"]
+[ext_resource type="Texture2D" uid="uid://dfrrhrmtmksem" path="res://scenes/_player/combat/spirtes/l_m/l_tele_m.png" id="16_dc5qm"]
+[ext_resource type="Texture2D" uid="uid://b3gc3w1tldgu5" path="res://scenes/_player/combat/spirtes/l_b/l_idle_b.png" id="16_q5an4"]
+[ext_resource type="Texture2D" uid="uid://j5fx8mqfuuty" path="res://scenes/_player/combat/spirtes/l_m/l_swing_m_01.png" id="17_37lig"]
+[ext_resource type="Texture2D" uid="uid://djuy5uvpcfsn5" path="res://scenes/_player/combat/spirtes/l_m/l_idle_m.png" id="17_oku8p"]
+[ext_resource type="Texture2D" uid="uid://c0suf3y8p1kny" path="res://scenes/_player/combat/spirtes/l_t/l_idle_t.png" id="18_5jit5"]
+[ext_resource type="Texture2D" uid="uid://bwvrkqh1paayo" path="res://scenes/_player/combat/spirtes/l_m/l_swing_m_02.png" id="18_nbbdq"]
+[ext_resource type="Texture2D" uid="uid://dkqvcrpdnvbcn" path="res://scenes/_player/combat/spirtes/l_m/l_swing_m_03.png" id="19_rr5c0"]
+[ext_resource type="Texture2D" uid="uid://bxy3bfqdpmvp7" path="res://scenes/_player/combat/spirtes/l_b/l_swing_b_02.png" id="20_rr5c0"]
+[ext_resource type="Texture2D" uid="uid://dn4jqrcbmb4o" path="res://scenes/_player/combat/spirtes/l_b/l_swing_b_03.png" id="21_uvuxl"]
+[ext_resource type="Texture2D" uid="uid://b61mimt2bfrxy" path="res://scenes/_player/combat/spirtes/l_b/l_swing_b_01.png" id="22_0528t"]
+[ext_resource type="Texture2D" uid="uid://pes72gy7e1vy" path="res://scenes/_player/combat/spirtes/l_t/l_swing_t_02.png" id="23_ebxv4"]
+[ext_resource type="Texture2D" uid="uid://tiey8sue1wes" path="res://scenes/_player/combat/spirtes/l_t/l_swing_t_03.png" id="24_tefnj"]
+[ext_resource type="Texture2D" uid="uid://d3ywkf6pcy35c" path="res://scenes/_player/combat/spirtes/l_t/l_swing_t_01.png" id="25_gmbf2"]
+[ext_resource type="Texture2D" uid="uid://cjfs3lr7rq2k1" path="res://scenes/_player/combat/spirtes/l_t/l_tele_t.png" id="26_0qmej"]
+[ext_resource type="Texture2D" uid="uid://dh300vjna71ho" path="res://scenes/_player/combat/spirtes/l_b/l_tele_b.png" id="27_0qmej"]
+[ext_resource type="Texture2D" uid="uid://be3ri0gbsy0ql" path="res://scenes/_player/combat/spirtes/r_m/r_tele_m.png" id="31_6ysfn"]
+[ext_resource type="Texture2D" uid="uid://c24xymk8d47rd" path="res://scenes/_player/combat/spirtes/r_m/r_swing_m_03.png" id="32_ahfqc"]
+[ext_resource type="Texture2D" uid="uid://byq8xadktrdft" path="res://scenes/_player/combat/spirtes/r_m/r_swing_m_01.png" id="32_nnhvt"]
+[ext_resource type="Texture2D" uid="uid://d30ctlpmiy2c0" path="res://scenes/_player/combat/spirtes/r_m/r_swing_m_02.png" id="33_i6b1s"]
+[ext_resource type="Texture2D" uid="uid://bbns83ajnyxwg" path="res://scenes/_player/combat/spirtes/r_b/r_recover_b.png" id="35_r52wq"]
+[ext_resource type="Texture2D" uid="uid://ir1f5ox0rw5k" path="res://scenes/_player/combat/spirtes/r_b/r_swing_b.png" id="36_1pnin"]
+[ext_resource type="Texture2D" uid="uid://tcrcidvjbd3s" path="res://scenes/_player/combat/spirtes/r_b/r_tele_b.png" id="37_1pnin"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_3jgj8"]
 height = 1.3
@@ -105,12 +130,395 @@ stream_3/stream = ExtResource("6_fafb0")
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_uus6m"]
 
-[sub_resource type="Animation" id="Animation_uus6m"]
-resource_name = "p_attck_TL"
+[sub_resource type="Animation" id="Animation_imd3c"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Combat_UI/UI_Hand_Left/hand:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("17_oku8p")]
+}
+
+[sub_resource type="Animation" id="Animation_k4i36"]
+resource_name = "l_idle_b"
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Combat_UI/UI_Hand_Left/hand:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("16_q5an4")]
+}
+
+[sub_resource type="Animation" id="Animation_dc5qm"]
+resource_name = "l_idle_m"
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Combat_UI/UI_Hand_Left/hand:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("17_oku8p")]
+}
+
+[sub_resource type="Animation" id="Animation_37lig"]
+resource_name = "l_idle_t"
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Combat_UI/UI_Hand_Left/hand:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("18_5jit5")]
+}
+
+[sub_resource type="Animation" id="Animation_tefnj"]
+resource_name = "l_recover_b"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Combat_UI/UI_Hand_Left/hand:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.46666667, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [ExtResource("21_uvuxl"), ExtResource("20_rr5c0"), ExtResource("22_0528t"), ExtResource("16_q5an4")]
+}
+
+[sub_resource type="Animation" id="Animation_rr5c0"]
+resource_name = "l_recover_m"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Combat_UI/UI_Hand_Left/hand:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.46666667, 0.73333335, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [ExtResource("19_rr5c0"), ExtResource("18_nbbdq"), ExtResource("17_37lig"), ExtResource("16_dc5qm"), ExtResource("17_oku8p")]
+}
+
+[sub_resource type="Animation" id="Animation_m230e"]
+resource_name = "l_recover_t"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Combat_UI/UI_Hand_Left/hand:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.46666667, 0.73333335, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [ExtResource("24_tefnj"), ExtResource("23_ebxv4"), ExtResource("25_gmbf2"), ExtResource("26_0qmej"), ExtResource("18_5jit5")]
+}
+
+[sub_resource type="Animation" id="Animation_0528t"]
+resource_name = "l_swing_b"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Combat_UI/UI_Hand_Left/hand:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.13333334, 0.73333335),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [ExtResource("20_rr5c0"), ExtResource("21_uvuxl"), ExtResource("21_uvuxl")]
+}
+
+[sub_resource type="Animation" id="Animation_uvuxl"]
+resource_name = "l_swing_m_01"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Combat_UI/UI_Hand_Left/hand:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.13333334, 0.73333335),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [ExtResource("18_nbbdq"), ExtResource("19_rr5c0"), ExtResource("19_rr5c0")]
+}
+
+[sub_resource type="Animation" id="Animation_gmbf2"]
+resource_name = "l_swing_t"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Combat_UI/UI_Hand_Left/hand:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.13333334, 0.73333335),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [ExtResource("23_ebxv4"), ExtResource("24_tefnj"), ExtResource("24_tefnj")]
+}
+
+[sub_resource type="Animation" id="Animation_6ysfn"]
+resource_name = "l_tele_b"
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Combat_UI/UI_Hand_Left/hand:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("27_0qmej")]
+}
+
+[sub_resource type="Animation" id="Animation_nbbdq"]
+resource_name = "l_tele_m"
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Combat_UI/UI_Hand_Left/hand:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("16_dc5qm")]
+}
+
+[sub_resource type="Animation" id="Animation_0qmej"]
+resource_name = "l_tele_t"
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Combat_UI/UI_Hand_Left/hand:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("26_0qmej")]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_6jmgc"]
 _data = {
-&"p_attck_TL": SubResource("Animation_uus6m")
+&"RESET": SubResource("Animation_imd3c"),
+&"l_idle_b": SubResource("Animation_k4i36"),
+&"l_idle_m": SubResource("Animation_dc5qm"),
+&"l_idle_t": SubResource("Animation_37lig"),
+&"l_recover_b": SubResource("Animation_tefnj"),
+&"l_recover_m": SubResource("Animation_rr5c0"),
+&"l_recover_t": SubResource("Animation_m230e"),
+&"l_swing_b": SubResource("Animation_0528t"),
+&"l_swing_m": SubResource("Animation_uvuxl"),
+&"l_swing_t": SubResource("Animation_gmbf2"),
+&"l_tele_b": SubResource("Animation_6ysfn"),
+&"l_tele_m": SubResource("Animation_nbbdq"),
+&"l_tele_t": SubResource("Animation_0qmej")
+}
+
+[sub_resource type="Animation" id="Animation_w8oqj"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Combat_UI/UI_Hand_Right/hand:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("14_w8oqj")]
+}
+
+[sub_resource type="Animation" id="Animation_5jit5"]
+resource_name = "r_idle_b"
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Combat_UI/UI_Hand_Right/hand:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("14_8q2h8")]
+}
+
+[sub_resource type="Animation" id="Animation_q5an4"]
+resource_name = "r_idle_m"
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Combat_UI/UI_Hand_Right/hand:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("14_w8oqj")]
+}
+
+[sub_resource type="Animation" id="Animation_oku8p"]
+resource_name = "r_idle_t"
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Combat_UI/UI_Hand_Right/hand:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("13_6jmgc")]
+}
+
+[sub_resource type="Animation" id="Animation_nnhvt"]
+resource_name = "r_tele_m"
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Combat_UI/UI_Hand_Right/hand:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("31_6ysfn")]
+}
+
+[sub_resource type="Animation" id="Animation_i6b1s"]
+resource_name = "r_swing_m"
+length = 0.6
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Combat_UI/UI_Hand_Right/hand:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.033333335, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [ExtResource("32_nnhvt"), ExtResource("32_ahfqc"), ExtResource("32_ahfqc")]
+}
+
+[sub_resource type="Animation" id="Animation_r52wq"]
+resource_name = "r_recover_m"
+length = 0.6
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Combat_UI/UI_Hand_Right/hand:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.26666668, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [ExtResource("32_ahfqc"), ExtResource("33_i6b1s"), ExtResource("14_w8oqj")]
+}
+
+[sub_resource type="Animation" id="Animation_kdy7k"]
+resource_name = "r_swing_b"
+length = 0.6
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Combat_UI/UI_Hand_Right/hand:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.03333334),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [ExtResource("35_r52wq"), ExtResource("36_1pnin")]
+}
+
+[sub_resource type="Animation" id="Animation_pmw4y"]
+resource_name = "r_tele_b"
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Combat_UI/UI_Hand_Right/hand:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("37_1pnin")]
+}
+
+[sub_resource type="Animation" id="Animation_1pnin"]
+resource_name = "r_recover_b"
+length = 0.6
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Combat_UI/UI_Hand_Right/hand:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [ExtResource("36_1pnin"), ExtResource("14_8q2h8")]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_dc5qm"]
+_data = {
+&"RESET": SubResource("Animation_w8oqj"),
+&"r_idle_b": SubResource("Animation_5jit5"),
+&"r_idle_m": SubResource("Animation_q5an4"),
+&"r_idle_t": SubResource("Animation_oku8p"),
+&"r_recover_b": SubResource("Animation_1pnin"),
+&"r_recover_m": SubResource("Animation_r52wq"),
+&"r_swing_b": SubResource("Animation_kdy7k"),
+&"r_swing_m": SubResource("Animation_i6b1s"),
+&"r_tele_b": SubResource("Animation_pmw4y"),
+&"r_tele_m": SubResource("Animation_nnhvt")
 }
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_uus6m"]
@@ -163,7 +571,6 @@ mesh = SubResource("CapsuleMesh_1snfn")
 
 [node name="Camera3D" type="Camera3D" parent="." groups=["MainCamera"]]
 current = true
-fov = 80.0
 
 [node name="DeathAnimationPlayer" type="AnimationPlayer" parent="Camera3D"]
 libraries = {
@@ -224,6 +631,7 @@ volume_db = -6.12
 bus = &"pl_footsteps"
 
 [node name="Interaction" parent="." node_paths=PackedStringArray("movement", "cam") instance=ExtResource("3_3jgj8")]
+visible = false
 movement = NodePath("../Movement")
 cam = NodePath("../Camera3D")
 
@@ -238,6 +646,7 @@ script = ExtResource("13_s1g5w")
 stringed_hand = "LEFT"
 combat = NodePath("..")
 other_hand = NodePath("../CombatHand_Right")
+current_slot = 0
 restricted_slots = "00011100"
 my_stance = NodePath("../Stance")
 anim_player = NodePath("AnimationPlayer")
@@ -277,6 +686,7 @@ stringed_hand = "RIGHT"
 combat = NodePath("..")
 other_hand = NodePath("../CombatHand_Left")
 index = 1
+current_slot = 5
 restricted_slots = "11000001"
 my_stance = NodePath("../Stance")
 anim_player = NodePath("AnimationPlayer2")
@@ -303,6 +713,9 @@ stream = SubResource("AudioStreamRandomizer_uus6m")
 
 [node name="AnimationPlayer2" type="AnimationPlayer" parent="Combat/CombatHand_Right"]
 root_node = NodePath("../..")
+libraries = {
+&"": SubResource("AnimationLibrary_dc5qm")
+}
 
 [node name="BlockSfx" type="AudioStreamPlayer3D" parent="Combat/CombatHand_Right"]
 stream = SubResource("AudioStreamRandomizer_uus6m")
@@ -323,8 +736,17 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
+[node name="hand" type="TextureRect" parent="Combat/Combat_UI/UI_Hand_Left"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("17_oku8p")
+expand_mode = 1
+
 [node name="UI_Hand_Right" type="Control" parent="Combat/Combat_UI"]
-visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -332,7 +754,18 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
+[node name="hand" type="TextureRect" parent="Combat/Combat_UI/UI_Hand_Right"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("14_w8oqj")
+expand_mode = 1
+
 [node name="IncomingAttacks" type="Control" parent="Combat/Combat_UI"]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0

@@ -1,5 +1,6 @@
-[gd_scene load_steps=86 format=3 uid="uid://fvgp74wr8y14"]
+[gd_scene load_steps=87 format=3 uid="uid://fvgp74wr8y14"]
 
+[ext_resource type="Script" uid="uid://bytcavpmi7t32" path="res://Enemy/enemy_with_combat.gd" id="1_3o7nl"]
 [ext_resource type="Texture2D" uid="uid://bajdgu88x35py" path="res://Sprites/ballyWalkSheet_n.png" id="1_auc6d"]
 [ext_resource type="Texture2D" uid="uid://dl3etwft2mhxm" path="res://Sprites/ballyWalkSheet.png" id="2_lxfqn"]
 [ext_resource type="Script" uid="uid://b5653u7w56pqw" path="res://extras_sprites/scripts/sprite_3D_billboard.gd" id="3_txv2g"]
@@ -40,7 +41,7 @@
 radius = 0.43391418
 height = 0.86782837
 
-[sub_resource type="Shader" id="Shader_cangh"]
+[sub_resource type="Shader" id="Shader_5pe8i"]
 code = "shader_type spatial;
 render_mode diffuse_lambert_wrap,cull_disabled;
 
@@ -117,9 +118,9 @@ void fragment() {
 }
 "
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_vx87h"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_3o7nl"]
 render_priority = 0
-shader = SubResource("Shader_cangh")
+shader = SubResource("Shader_5pe8i")
 shader_parameter/rows = 5.0
 shader_parameter/columns = 8.0
 shader_parameter/frame = 1.0
@@ -128,18 +129,18 @@ shader_parameter/sprite = ExtResource("2_lxfqn")
 shader_parameter/mode = 0
 shader_parameter/Normal = ExtResource("1_auc6d")
 
-[sub_resource type="PlaneMesh" id="PlaneMesh_5pe8i"]
-material = SubResource("ShaderMaterial_vx87h")
+[sub_resource type="PlaneMesh" id="PlaneMesh_r88ec"]
+material = SubResource("ShaderMaterial_3o7nl")
 size = Vector2(1.08, 1.08)
 orientation = 2
 
-[sub_resource type="Resource" id="Resource_3o7nl"]
+[sub_resource type="Resource" id="Resource_eex23"]
 script = ExtResource("4_116jw")
 sprite = ExtResource("5_huif7")
 texture_normal = ExtResource("6_gfr4v")
 columns = 8.0
 
-[sub_resource type="Resource" id="Resource_r88ec"]
+[sub_resource type="Resource" id="Resource_ifeau"]
 script = ExtResource("4_116jw")
 name = "walk"
 sprite = ExtResource("2_lxfqn")
@@ -147,7 +148,7 @@ texture_normal = ExtResource("1_auc6d")
 rows = 5.0
 columns = 8.0
 
-[sub_resource type="Resource" id="Resource_eex23"]
+[sub_resource type="Resource" id="Resource_v2g1a"]
 script = ExtResource("4_116jw")
 name = "Attack_LbBottom"
 sprite = ExtResource("7_tkkut")
@@ -155,7 +156,7 @@ texture_normal = ExtResource("8_pjoft")
 rows = 2.0
 columns = 8.0
 
-[sub_resource type="Resource" id="Resource_ifeau"]
+[sub_resource type="Resource" id="Resource_7o52w"]
 script = ExtResource("4_116jw")
 name = "Attack_LMid"
 sprite = ExtResource("9_cangh")
@@ -163,7 +164,7 @@ texture_normal = ExtResource("10_vx87h")
 rows = 2.0
 columns = 8.0
 
-[sub_resource type="Resource" id="Resource_v2g1a"]
+[sub_resource type="Resource" id="Resource_3wbeg"]
 script = ExtResource("4_116jw")
 name = "Attack_LTop"
 sprite = ExtResource("11_5pe8i")
@@ -171,7 +172,7 @@ texture_normal = ExtResource("12_3o7nl")
 rows = 2.0
 columns = 8.0
 
-[sub_resource type="Resource" id="Resource_7o52w"]
+[sub_resource type="Resource" id="Resource_84imu"]
 script = ExtResource("4_116jw")
 name = "Attack_RBottom"
 sprite = ExtResource("13_r88ec")
@@ -179,7 +180,7 @@ texture_normal = ExtResource("14_eex23")
 rows = 2.0
 columns = 8.0
 
-[sub_resource type="Resource" id="Resource_3wbeg"]
+[sub_resource type="Resource" id="Resource_hovqw"]
 script = ExtResource("4_116jw")
 name = "Attack_RMid"
 sprite = ExtResource("15_ifeau")
@@ -187,7 +188,7 @@ texture_normal = ExtResource("16_v2g1a")
 rows = 2.0
 columns = 8.0
 
-[sub_resource type="Resource" id="Resource_84imu"]
+[sub_resource type="Resource" id="Resource_rcnqh"]
 script = ExtResource("4_116jw")
 name = "Attack_RTop"
 sprite = ExtResource("17_7o52w")
@@ -894,6 +895,7 @@ streams_count = 1
 stream_0/stream = ExtResource("35_5pe8i")
 
 [node name="Enemy_presset" type="CharacterBody3D"]
+script = ExtResource("1_3o7nl")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.4198761, 0)
@@ -901,9 +903,9 @@ shape = SubResource("CapsuleShape3D_abuop")
 
 [node name="Sprite3DBillBoard" type="MeshInstance3D" parent="."]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0.45682234, 0)
-mesh = SubResource("PlaneMesh_5pe8i")
+mesh = SubResource("PlaneMesh_r88ec")
 script = ExtResource("3_txv2g")
-animations_array = Array[ExtResource("4_116jw")]([SubResource("Resource_3o7nl"), SubResource("Resource_r88ec"), SubResource("Resource_eex23"), SubResource("Resource_ifeau"), SubResource("Resource_v2g1a"), SubResource("Resource_7o52w"), SubResource("Resource_3wbeg"), SubResource("Resource_84imu")])
+animations_array = Array[ExtResource("4_116jw")]([SubResource("Resource_eex23"), SubResource("Resource_ifeau"), SubResource("Resource_v2g1a"), SubResource("Resource_7o52w"), SubResource("Resource_3wbeg"), SubResource("Resource_84imu"), SubResource("Resource_hovqw"), SubResource("Resource_rcnqh")])
 animation = 1
 frame = 1.0
 sprite_scale = 0.001
