@@ -48,22 +48,25 @@ func attack_enemy(dmg: float) -> void:
 	else:
 		damage_enemy(enemy_slot, dmg)
 
+signal about_to_attack(slot: int)
+
 func damage_enemy(enemy_hand: CombatHand, dmg: float) -> void:
 	print("dddamged")
 	enemy_stance.stats.take_damage(dmg)
+	on_damage_enemy.emit(current_slot)
 
 func block_enemy() -> void:
-	on_block_enemy.emit()
+	on_block_enemy.emit(current_slot)
 	#my_stance.stats.take_stamina(attack_data.dmg)
 
 func been_blocked(enemy_hand: CombatHand, dmg: float) -> void:
 	print("bblocked")
 	enemy_hand.block_enemy()
-	on_been_blocked.emit()
+	on_been_blocked.emit(current_slot)
 
-signal on_attack_enemy()
-signal on_been_blocked()
-signal on_block_enemy()
+signal on_damage_enemy(slot: int)
+signal on_been_blocked(slot: int)
+signal on_block_enemy(slot: int)
 
 # ↑ General Stuff ↑
 # --------------------------------------------------------------------------------------------------

@@ -964,7 +964,7 @@ script = ExtResource("28_tkkut")
 combat_hands = [NodePath("CombatHand")]
 stance = NodePath("Stance")
 
-[node name="CombatHand" type="Node" parent="Combat" node_paths=PackedStringArray("defense_timer", "my_stance", "anim_player")]
+[node name="CombatHand" type="Node" parent="Combat" node_paths=PackedStringArray("defense_timer", "my_stance", "anim_player") groups=["EnemyCombatHand"]]
 script = ExtResource("23_txv2g")
 defense_timer = NodePath("Timer_Defence")
 attack_sequences = Array[ExtResource("29_pjoft")]([ExtResource("30_cangh")])

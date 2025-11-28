@@ -78,6 +78,11 @@ func begin_telegraph() -> void:
 	
 	my_hand.anim_player.play(current_attack_data.telegraph_anim)
 	
+	my_hand.current_slot = current_attack_data.slot
+	
+	my_hand.about_to_attack.emit(my_hand.current_slot)
+	
+	
 	timer_telegraph.wait_time = current_attack_data.telegraph_length
 	timer_telegraph.start()
 

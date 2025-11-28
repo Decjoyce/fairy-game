@@ -16,7 +16,6 @@ var freeze : bool
 
 @export var death_ui: Control
 
-@export var reset_scene: PackedScene
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
