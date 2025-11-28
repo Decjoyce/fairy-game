@@ -7,19 +7,27 @@ var is_dead: bool
 @export var health_bar: ProgressBar
 @export var max_health: float = 100
 @export var current_health: float = -1
-
+@export var death_anim: AnimationPlayer
 @export var hit_sfx: AudioStreamPlayer3D
 
 @export var who_owns: Node3D
 
 func take_damage(amount: float) -> bool:
+	if is_dead: return true
 	current_health -= amount
 	if !is_dead and current_health <= 0:
 		is_dead = true
 		who_owns.die()
-		get_parent().queue_free() # change
-	hit_sfx.play()
+		if death_anim: death_anim.play("death_anim")
+		#get_parent().queue_free() # change
+	if !is_dead:
+		hit_sfx.play()
 	return is_dead
+
+func heal(amount: float) -> void:
+	if is_dead: return
+	current_health += amount
+
 
 @export_category("Stamina")
 @export var stam_bar: ProgressBar

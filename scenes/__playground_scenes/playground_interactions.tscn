@@ -1,4 +1,4 @@
-[gd_scene load_steps=94 format=4 uid="uid://dw2dbsjbocxi7"]
+[gd_scene load_steps=96 format=4 uid="uid://dw2dbsjbocxi7"]
 
 [ext_resource type="PackedScene" uid="uid://bq86osdembn58" path="res://scenes/_player/_player_test.tscn" id="2_3vnxs"]
 [ext_resource type="PackedScene" uid="uid://cafafqbxrlmdt" path="res://scenes/__prototyping/dev_tiles/open/dev_open_wall.tscn" id="2_cti4x"]
@@ -13,6 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://breoxrktuf13i" path="res://scenes/__prototyping/dev_tiles/open/dev_floor_guide.tscn" id="12_ir6gx"]
 [ext_resource type="PackedScene" uid="uid://6bfa5eai5wft" path="res://scenes/__prototyping/dev_tiles/open/dev_floor_guidemid.tscn" id="13_ojeeo"]
 [ext_resource type="PackedScene" uid="uid://bsr88kqaskqgh" path="res://scenes/interactions/triggers/teleporter/teleporter.tscn" id="14_6ords"]
+[ext_resource type="Script" uid="uid://dya4nmj5v2c3n" path="res://scenes/interactions/interactables/grabbable_items/type/itemtype_consumable.gd" id="14_bk0h7"]
 [ext_resource type="Script" uid="uid://s5cfdf85lm5g" path="res://scenes/interactions/interactables/grabbable_items/grabbable_item.gd" id="14_p1gsu"]
 [ext_resource type="Material" uid="uid://ioo51vym3k1d" path="res://scenes/interactions/triggers/teleporter/m_teleport.tres" id="15_50n8y"]
 [ext_resource type="Texture2D" uid="uid://bsduc3iepom6j" path="res://assets/misc/n64_sphere_sprite.png" id="15_a71ib"]
@@ -57,6 +58,12 @@ ambient_light_color = Color(0.8862616, 0.88626146, 0.8862615, 1)
 material = ExtResource("15_50n8y")
 radial_segments = 6
 rings = 6
+
+[sub_resource type="Resource" id="Resource_7ntu8"]
+script = ExtResource("14_bk0h7")
+heal_amount = 20.0
+item_type = 3
+metadata/_custom_type_script = "uid://dya4nmj5v2c3n"
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_p1gsu"]
 bounce = 1.0
@@ -475,31 +482,31 @@ height = 1.333
 offsets = PackedFloat32Array(0, 0.31578946, 1)
 colors = PackedColorArray(0.47993267, 0.07172013, 0.060350247, 1, 0.67502344, 0.12257505, 0.10578546, 1, 0.7764706, 0.14901961, 0.12941177, 1)
 
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_bu7wj"]
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_poavi"]
 gradient = SubResource("Gradient_irwb0")
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_dqn6g"]
-texture = SubResource("GradientTexture1D_bu7wj")
+texture = SubResource("GradientTexture1D_poavi")
 
 [sub_resource type="Gradient" id="Gradient_h5spb"]
 colors = PackedColorArray(0, 0.31764707, 0, 1, 0, 0.7294118, 0, 1)
 
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_dwg1c"]
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_15de5"]
 gradient = SubResource("Gradient_h5spb")
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_rhilf"]
-texture = SubResource("GradientTexture1D_dwg1c")
+texture = SubResource("GradientTexture1D_15de5")
 
 [sub_resource type="QuadMesh" id="QuadMesh_teo1q"]
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_thvja"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_gw50n"]
 viewport_path = NodePath("BoxingBag/Stats/Node3D/SubViewport")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1f7u1"]
 resource_local_to_scene = true
 transparency = 1
 shading_mode = 0
-albedo_texture = SubResource("ViewportTexture_thvja")
+albedo_texture = SubResource("ViewportTexture_gw50n")
 billboard_mode = 2
 
 [node name="Playground_Interactions" type="Node3D"]
@@ -898,6 +905,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.999, -1)
 [node name="TEST_Grabbable_item" parent="Room_Items" instance=ExtResource("16_3wul1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0.4, 0)
 gravity_scale = 1.0
+item_type = SubResource("Resource_7ntu8")
 item_weight = 3
 
 [node name="TEST_Grabbable_item2" parent="Room_Items" instance=ExtResource("16_3wul1")]

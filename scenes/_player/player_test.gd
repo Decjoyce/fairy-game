@@ -2,6 +2,7 @@ class_name PlayerTest
 extends Entity
 
 @onready var movement: PlayerMovement = $Movement
+@onready var interaction: PlayerInteract = $Interaction
 const PLAYER_HEIGHT: float = 1
 const PLAYER_WEIGHT: float = 5
 @onready var cam: Camera3D = $Camera3D
@@ -9,29 +10,35 @@ const PLAYER_WEIGHT: float = 5
 @onready var stats: Stats = $Stats
 
 var in_combat: bool
-@export var combatUI: Control
-var hands_in_combat: int
+@export var combat: PlayerCombat
 
 var freeze : bool
+
+@export var death_ui: Control
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	current_weight = PLAYER_WEIGHT
 
+func _process(delta: float) -> void:
+	if freeze: return
+	if Input.is_action_just_pressed("enter_combat_mode"):
+		toggle_combat()
+
+func toggle_combat() -> void:
+	in_combat = !in_combat
+	if in_combat: combat.enter_combat_mode()
+	else: combat.exit_combat_mode()
+
 func die():
 	Debug.play_death_player()
+	interaction.visible = false
+	death_ui.visible = true
+	freeze = true
 
-
-func change_to_combat()-> void:
-	hands_in_combat+=1
-	in_combat = true
-	combatUI.visible = true
-
-func exit_to_combat()-> void:
-	hands_in_combat-=1
-	if hands_in_combat <= 0:
-		in_combat = false
-		combatUI.visible = false
+func return_to_menu() -> void:
+	get_tree().reload_current_scene()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta: float) -> void:

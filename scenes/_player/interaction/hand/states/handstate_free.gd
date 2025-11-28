@@ -14,9 +14,9 @@ func update(_delta: float) -> void:
 		interact()
 		return
 	
-	if Input.is_action_just_pressed("enter_paint_mode_" + hand_controller.stringed_hand_type):
-		finished.emit(ATTACK)
-		return
+	#if Input.is_action_just_pressed("enter_paint_mode_" + hand_controller.stringed_hand_type):
+		#finished.emit(ATTACK)
+		#return
 	
 	var same_frame_check: int = 0
 	

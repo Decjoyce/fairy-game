@@ -21,6 +21,10 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	pass
 
+func make_hands_inactive() -> void:
+	hand_left.state.finished.emit(hand_left.state.FREE)
+	hand_right.state.finished.emit(hand_left.state.FREE)
+
 func get_other_hand(hand_index: int) -> PlayerHand:
 	if hand_index == 0: return hand_right
 	else: return hand_left

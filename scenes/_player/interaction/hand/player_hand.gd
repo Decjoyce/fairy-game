@@ -1,7 +1,7 @@
 class_name PlayerHand
 extends Control
 
-@onready var player: Node3D = get_parent().get_parent()
+@onready var player: PlayerTest = get_parent().get_parent()
 @onready var player_interact: PlayerInteract = get_parent()
 var cam: Camera3D
 
@@ -39,9 +39,11 @@ func _unhandled_input(event: InputEvent) -> void:
 	state.handle_input(event)
 
 func _process(delta: float) -> void:
+	if player.in_combat: return
 	state.update(delta)
 
 func _physics_process(delta: float) -> void:
+	if player.in_combat: return
 	state.physics_update(delta)
 
 func _transition_to_next_state(target_state_path: String, data: Dictionary = {}) -> void:

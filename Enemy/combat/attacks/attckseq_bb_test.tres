@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="AttackSequence" load_steps=6 format=3 uid="uid://bo6jynbmofv6l"]
+
+[ext_resource type="Script" uid="uid://i6x8mkfibed4" path="res://scenes/combat/attack_data.gd" id="1_ch51u"]
+[ext_resource type="Resource" uid="uid://csr2hh666w05y" path="res://Enemy/combat/attacks/attck_bb_test.tres" id="2_epvp6"]
+[ext_resource type="Script" uid="uid://cjssruwuxjia0" path="res://scenes/combat/attack_sequence.gd" id="2_rmw68"]
+[ext_resource type="Resource" uid="uid://bnj6ip71llxaq" path="res://Enemy/combat/attacks/attck_bb_test2.tres" id="3_epvp6"]
+[ext_resource type="Resource" uid="uid://lfbqs5kl15hj" path="res://Enemy/combat/attacks/attck_bb_test3.tres" id="4_0usod"]
+
+[resource]
+script = ExtResource("2_rmw68")
+attack_order = Array[ExtResource("1_ch51u")]([ExtResource("2_epvp6"), ExtResource("3_epvp6"), ExtResource("2_epvp6"), ExtResource("4_0usod"), ExtResource("4_0usod")])
+metadata/_custom_type_script = "uid://cjssruwuxjia0"
