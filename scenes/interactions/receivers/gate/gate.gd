@@ -65,3 +65,7 @@ func _on_body_entered_under_checker(body: Node3D) -> void:
 func _on_body_exited_under_checker(body: Node3D) -> void:
 	if things_under.has(body):
 		things_under.erase(body)
+
+
+func _on_after_final_boss_pressure_plate_on_activated(sig: float) -> void:
+	pass # Replace with function body.
