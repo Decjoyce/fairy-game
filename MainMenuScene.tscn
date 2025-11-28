@@ -1,19 +1,64 @@
-[gd_scene load_steps=13 format=4 uid="uid://bw2ceq76kc2yc"]
+[gd_scene load_steps=15 format=4 uid="uid://bw2ceq76kc2yc"]
 
 [ext_resource type="PackedScene" uid="uid://btcpx55r5ma3v" path="res://EnvironmentAssets/ObjTiles_Environment/ObjModels/Props/Menu/Moutainrocks5.glb" id="2_lrn60"]
 [ext_resource type="LightmapGIData" uid="uid://bqiy8iqbdsnh" path="res://LightMapBake/MainMenuScene.lmbake" id="2_sud0c"]
 [ext_resource type="Material" uid="uid://dgrldudl0bdhu" path="res://EnvironmentAssets/ObjTiles_Environment/Materials/props/Rockpile/Rockpile.tres" id="3_lrn60"]
 
+[sub_resource type="CameraAttributesPhysical" id="CameraAttributesPhysical_lrn60"]
+
 [sub_resource type="Animation" id="Animation_47rn7"]
 resource_name = "CameraSlow"
-length = 30.0
+length = 60.0
 tracks/0/type = "position_3d"
 tracks/0/imported = false
-tracks/0/enabled = true
+tracks/0/enabled = false
 tracks/0/path = NodePath(".")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = PackedFloat32Array(0, 1, 0.80260944, 1.8404503, -34.29502, 30, 1, 0.80260944, 1.8404503, 13.587135)
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = false
+tracks/1/path = NodePath(".:fov")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 29.903896),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [76.0, 1.0]
+}
+tracks/2/type = "position_3d"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = PackedFloat32Array(0, 1, 0.80260944, 1.8404503, -28.55979, 30, 1, 0.80260944, 1.8404503, -37.05979, 60.2, 1, 0.80260944, 1.8404503, -47.05979)
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".:attributes:frustum_focal_length")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 29.984974, 59.922073),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [35.0, 71.03, 118.42]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath(".:attributes")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 59.833332, 59.922073, 60),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [SubResource("CameraAttributesPhysical_lrn60"), SubResource("CameraAttributesPhysical_lrn60"), SubResource("CameraAttributesPhysical_lrn60"), SubResource("CameraAttributesPhysical_lrn60")]
+}
 
 [sub_resource type="Animation" id="Animation_mlkpy"]
 length = 0.001
@@ -24,11 +69,102 @@ tracks/0/path = NodePath(".")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = PackedFloat32Array(0, 1, 0, 0, -32.12275)
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:fov")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [76.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:attributes:frustum_focal_length")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [35.0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".:attributes")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [SubResource("CameraAttributesPhysical_lrn60")]
+}
+
+[sub_resource type="Animation" id="Animation_lrn60"]
+resource_name = "SpeedIntoCavee"
+length = 0.6
+tracks/0/type = "position_3d"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = PackedFloat32Array(0, 1, 0.80260944, 1.8404503, -34.29502, 0.6, 1, 0.80260944, 1.8404503, 5.204979)
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = false
+tracks/1/path = NodePath(".:fov")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 29.903896),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [76.0, 1.0]
+}
+tracks/2/type = "position_3d"
+tracks/2/imported = false
+tracks/2/enabled = false
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = PackedFloat32Array(0, 1, 0.80260944, 1.8404503, -28.55979, 30, 1, 0.80260944, 1.8404503, -37.05979, 60.2, 1, 0.80260944, 1.8404503, -47.05979)
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".:attributes:frustum_focal_length")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.6, 29.984974, 59.922073),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [113.86, 35.0, 71.03, 118.42]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = false
+tracks/4/path = NodePath(".:attributes")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 59.833332, 59.922073, 60),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [SubResource("CameraAttributesPhysical_lrn60"), SubResource("CameraAttributesPhysical_lrn60"), SubResource("CameraAttributesPhysical_lrn60"), SubResource("CameraAttributesPhysical_lrn60")]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_17sr7"]
 _data = {
 &"CameraSlow": SubResource("Animation_47rn7"),
-&"RESET": SubResource("Animation_mlkpy")
+&"RESET": SubResource("Animation_mlkpy"),
+&"SpeedIntoCavee": SubResource("Animation_lrn60")
 }
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_o6rx4"]
@@ -47,6 +183,7 @@ tonemap_mode = 4
 tonemap_exposure = 1.5
 ssao_radius = 43.0
 ssao_intensity = 9.15
+glow_enabled = true
 volumetric_fog_enabled = true
 volumetric_fog_density = 0.02
 volumetric_fog_albedo = Color(0.9533921, 0.90605986, 0.88663036, 1)
@@ -99,13 +236,21 @@ libraries = {
 }
 
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 0, 0, -32.12275)
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, -32.12275)
+attributes = SubResource("CameraAttributesPhysical_lrn60")
+
+[node name="SpotLight3D" type="SpotLight3D" parent="Camera3D"]
+transform = Transform3D(-1, -7.642742e-15, 8.742278e-08, 0, -1, -8.742278e-08, 8.742278e-08, -8.742278e-08, 1, 0.8026093, -1.8404503, -1.295021)
+light_color = Color(0.21621478, 0.17514732, 0.17962053, 1)
+light_energy = 13.057
+spot_range = 9.0
+spot_angle = 50.91361
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_lrn60")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.7121853, 0.70199156, 0, -0.70199156, 0.7121853, 0, 3.0698814, 0)
+transform = Transform3D(1, 0, 0, 0, 0.7121853, 0.7019915, 0, -0.7019915, 0.7121853, 0, 3.0698814, 0)
 light_color = Color(0.112546004, 0.20072627, 0.24275497, 1)
 light_energy = 3.0
 shadow_enabled = true
