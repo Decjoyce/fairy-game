@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://dqh8lru4mt2ap"]
+[gd_scene load_steps=23 format=3 uid="uid://dqh8lru4mt2ap"]
 
 [ext_resource type="Script" uid="uid://s5cfdf85lm5g" path="res://scenes/interactions/interactables/grabbable_items/grabbable_item.gd" id="1_q07k0"]
 [ext_resource type="Texture2D" uid="uid://ce58r2n0vi63r" path="res://assets/item_sprites/urn_item.png" id="3_bkq8s"]
@@ -6,9 +6,17 @@
 [ext_resource type="AudioStream" uid="uid://dutddyikwuiut" path="res://assets/misc/hittingsound_shorter.wav" id="4_8bfqv"]
 [ext_resource type="PackedScene" uid="uid://boygsguyqneek" path="res://scenes/interactions/interactables/grabbable_items/test_breakable.tscn" id="4_nlfav"]
 [ext_resource type="Script" uid="uid://beaf3digx88d0" path="res://scenes/interactions/interactables/grabbable_items/type/itemtype_breakable.gd" id="5_gpk4b"]
-[ext_resource type="AudioStream" uid="uid://7d1mk7isxr6j" path="res://assets/_not_ours_dontship/plate-break-1-36468.mp3" id="5_l8rrq"]
 [ext_resource type="PackedScene" uid="uid://civmqin21rnce" path="res://scenes/interactions/interactables/instruments/instrument_test.tscn" id="5_nlfav"]
 [ext_resource type="PackedScene" uid="uid://bm8kaq0ah5g7q" path="res://scenes/interactions/interactables/grabbable_items/torch/torch.tscn" id="6_cfbym"]
+[ext_resource type="AudioStream" uid="uid://bfj0nvx74o1sk" path="res://sfx_vertical/Pot_Break-001.wav" id="9_hgehc"]
+[ext_resource type="AudioStream" uid="uid://b05sd7acgid3n" path="res://sfx_vertical/Pot_Break-002.wav" id="10_18pev"]
+[ext_resource type="AudioStream" uid="uid://gg1eh8n03me0" path="res://sfx_vertical/Pot_Break-003.wav" id="11_8b3p7"]
+[ext_resource type="AudioStream" uid="uid://b6e4coaw6giu4" path="res://sfx_vertical/Pot_Break-004.wav" id="12_3fowp"]
+[ext_resource type="AudioStream" uid="uid://b2wyku3cc6qng" path="res://sfx_vertical/Pot_Break-005.wav" id="13_3n6cm"]
+[ext_resource type="AudioStream" uid="uid://dq7fnct8thxc1" path="res://sfx_vertical/Pot_Break-006.wav" id="14_lgujo"]
+[ext_resource type="AudioStream" uid="uid://fuh5gdonebeu" path="res://sfx_vertical/Pot_Break-007.wav" id="15_wuuoh"]
+[ext_resource type="AudioStream" uid="uid://mg4lgqchj0p5" path="res://sfx_vertical/Pot_Break-008.wav" id="16_tdwgv"]
+[ext_resource type="AudioStream" uid="uid://plsapuaavdu" path="res://sfx_vertical/Pot_Break-009.wav" id="17_7fac1"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_llc7q"]
 
@@ -27,8 +35,16 @@ size = Vector3(0.4, 0.49611816, 0.4)
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_52tl6"]
 random_pitch = 1.2
-streams_count = 1
-stream_0/stream = ExtResource("5_l8rrq")
+streams_count = 9
+stream_0/stream = ExtResource("9_hgehc")
+stream_1/stream = ExtResource("10_18pev")
+stream_2/stream = ExtResource("11_8b3p7")
+stream_3/stream = ExtResource("12_3fowp")
+stream_4/stream = ExtResource("13_3n6cm")
+stream_5/stream = ExtResource("14_lgujo")
+stream_6/stream = ExtResource("15_wuuoh")
+stream_7/stream = ExtResource("16_tdwgv")
+stream_8/stream = ExtResource("17_7fac1")
 
 [node name="Urn" type="RigidBody3D" node_paths=PackedStringArray("col", "grab_col", "destroyed_item", "destroyed_audio", "idle_graphics", "grabbed_graphics") groups=["debug_PickableObjects"]]
 collision_layer = 2

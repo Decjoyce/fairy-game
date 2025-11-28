@@ -62,6 +62,7 @@ func damage_enemy(enemy_hand: CombatHand, dmg: float) -> void:
 
 func block_enemy() -> void:
 	on_block_enemy.emit(current_slot)
+	block_audio_player.play()
 	#my_stance.stats.take_stamina(attack_data.dmg)
 
 func been_blocked(enemy_hand: CombatHand, dmg: float) -> void:

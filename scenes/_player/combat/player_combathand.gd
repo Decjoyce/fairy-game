@@ -8,6 +8,8 @@ var current_angle: float
 
 @export var other_hand: Player_CombatHand
 
+@export var incoming_attack_uis: Array[TextureRect] 
+
 # ↑ General Stuff ↑
 # --------------------------------------------------------------------------------------------------
 # ↓ Defend Stuff ↓
@@ -39,9 +41,9 @@ func defending() -> void:
 	var joystick_motion:= Input.get_vector(stringed_hand + "_joystick_left", stringed_hand + "_joystick_right", stringed_hand + "_joystick_down", stringed_hand + "_joystick_up")
 	if joystick_motion:
 		move_into_slot(get_stance_angle(joystick_motion))
-	if combat.slot_attack_coming_from == current_slot:
-		combat.incoming_attack_uis[current_slot].modulate = "eb98b1ac"
-	else: combat.incoming_attack_uis[current_slot].modulate = "7c0001e0"
+		for g: TextureRect in incoming_attack_uis:
+			if g == combat.incoming_attack_uis[current_slot]: g.modulate = "eb98b1ac"
+			else: g.modulate = "7c0001e0"
 	
 
 func end_defending() -> void:

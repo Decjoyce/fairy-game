@@ -1,4 +1,4 @@
-[gd_scene load_steps=89 format=3 uid="uid://drc8vg7njr5ui"]
+[gd_scene load_steps=88 format=3 uid="uid://drc8vg7njr5ui"]
 
 [ext_resource type="Script" uid="uid://bytcavpmi7t32" path="res://Enemy/enemy_with_combat.gd" id="1_3ixwq"]
 [ext_resource type="Texture2D" uid="uid://bajdgu88x35py" path="res://Sprites/ballyWalkSheet_n.png" id="1_mpywb"]
@@ -33,7 +33,6 @@
 [ext_resource type="Script" uid="uid://c27axnnaakeuo" path="res://scenes/combat/combathand_attack.gd" id="30_me4q8"]
 [ext_resource type="Script" uid="uid://446bgqyk22na" path="res://scenes/combat/stance.gd" id="31_xnhkk"]
 [ext_resource type="Script" uid="uid://gmvwnhalcf7" path="res://Enemy/enemy_hitbox_temp.gd" id="32_7kval"]
-[ext_resource type="AudioStream" uid="uid://bx7heo47e14or" path="res://assets/misc/ugh.wav" id="33_th4g8"]
 [ext_resource type="Script" uid="uid://46pp7aerorca" path="res://stats.gd" id="35_pydrg"]
 [ext_resource type="Texture2D" uid="uid://2t1cw83o71dn" path="res://assets/ui/enemy_border.png" id="36_me4q8"]
 [ext_resource type="Script" uid="uid://byyeneqtnv43x" path="res://Enemy/koko.gd" id="36_xnhkk"]
@@ -42,7 +41,7 @@
 radius = 0.43391418
 height = 0.86782837
 
-[sub_resource type="Shader" id="Shader_pydrg"]
+[sub_resource type="Shader" id="Shader_me4q8"]
 code = "shader_type spatial;
 render_mode diffuse_lambert_wrap,cull_disabled;
 
@@ -119,9 +118,9 @@ void fragment() {
 }
 "
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_me4q8"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_xnhkk"]
 render_priority = 0
-shader = SubResource("Shader_pydrg")
+shader = SubResource("Shader_me4q8")
 shader_parameter/rows = 5.0
 shader_parameter/columns = 8.0
 shader_parameter/frame = 1.0
@@ -130,18 +129,18 @@ shader_parameter/sprite = ExtResource("2_c8yoh")
 shader_parameter/mode = 0
 shader_parameter/Normal = ExtResource("1_mpywb")
 
-[sub_resource type="PlaneMesh" id="PlaneMesh_xnhkk"]
-material = SubResource("ShaderMaterial_me4q8")
-size = Vector2(1.08, 1.08)
+[sub_resource type="PlaneMesh" id="PlaneMesh_7kval"]
+material = SubResource("ShaderMaterial_xnhkk")
+size = Vector2(1.7279999, 1.7279999)
 orientation = 2
 
-[sub_resource type="Resource" id="Resource_7kval"]
+[sub_resource type="Resource" id="Resource_th4g8"]
 script = ExtResource("4_v1swk")
 sprite = ExtResource("5_ma74y")
 texture_normal = ExtResource("6_owush")
 columns = 8.0
 
-[sub_resource type="Resource" id="Resource_th4g8"]
+[sub_resource type="Resource" id="Resource_u7c7l"]
 script = ExtResource("4_v1swk")
 name = "walk"
 sprite = ExtResource("2_c8yoh")
@@ -149,7 +148,7 @@ texture_normal = ExtResource("1_mpywb")
 rows = 5.0
 columns = 8.0
 
-[sub_resource type="Resource" id="Resource_u7c7l"]
+[sub_resource type="Resource" id="Resource_nfjh2"]
 script = ExtResource("4_v1swk")
 name = "Attack_LbBottom"
 sprite = ExtResource("7_tvq6p")
@@ -157,7 +156,7 @@ texture_normal = ExtResource("8_mwxs5")
 rows = 2.0
 columns = 8.0
 
-[sub_resource type="Resource" id="Resource_nfjh2"]
+[sub_resource type="Resource" id="Resource_u7shv"]
 script = ExtResource("4_v1swk")
 name = "Attack_LMid"
 sprite = ExtResource("9_jppkf")
@@ -165,7 +164,7 @@ texture_normal = ExtResource("10_3ixwq")
 rows = 2.0
 columns = 8.0
 
-[sub_resource type="Resource" id="Resource_u7shv"]
+[sub_resource type="Resource" id="Resource_mv5lh"]
 script = ExtResource("4_v1swk")
 name = "Attack_LTop"
 sprite = ExtResource("11_3jwaj")
@@ -173,7 +172,7 @@ texture_normal = ExtResource("12_pydrg")
 rows = 2.0
 columns = 8.0
 
-[sub_resource type="Resource" id="Resource_mv5lh"]
+[sub_resource type="Resource" id="Resource_6mmou"]
 script = ExtResource("4_v1swk")
 name = "Attack_RBottom"
 sprite = ExtResource("13_me4q8")
@@ -181,7 +180,7 @@ texture_normal = ExtResource("14_xnhkk")
 rows = 2.0
 columns = 8.0
 
-[sub_resource type="Resource" id="Resource_6mmou"]
+[sub_resource type="Resource" id="Resource_dbqfk"]
 script = ExtResource("4_v1swk")
 name = "Attack_RMid"
 sprite = ExtResource("15_7kval")
@@ -189,7 +188,7 @@ texture_normal = ExtResource("16_th4g8")
 rows = 2.0
 columns = 8.0
 
-[sub_resource type="Resource" id="Resource_dbqfk"]
+[sub_resource type="Resource" id="Resource_3m1id"]
 script = ExtResource("4_v1swk")
 name = "Attack_RTop"
 sprite = ExtResource("17_u7c7l")
@@ -209,14 +208,13 @@ radius = 22.0
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_u7c7l"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_nfjh2"]
-radius = 0.3
-height = 1.0
+radius = 0.4
+height = 1.1
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_u7shv"]
 playback_mode = 1
 random_pitch = 1.1
 streams_count = 1
-stream_0/stream = ExtResource("33_th4g8")
 
 [sub_resource type="Animation" id="Animation_cangh"]
 resource_name = "Attack_LBottom"
@@ -907,12 +905,12 @@ shape = SubResource("CapsuleShape3D_abuop")
 
 [node name="Sprite3DBillBoard" type="MeshInstance3D" parent="."]
 transform = Transform3D(-1, 0, -1.509958e-07, 0, 1, 0, 1.509958e-07, 0, -1, 0, 0.75682235, 0)
-mesh = SubResource("PlaneMesh_xnhkk")
+mesh = SubResource("PlaneMesh_7kval")
 script = ExtResource("3_j08hu")
-animations_array = Array[ExtResource("4_v1swk")]([SubResource("Resource_7kval"), SubResource("Resource_th4g8"), SubResource("Resource_u7c7l"), SubResource("Resource_nfjh2"), SubResource("Resource_u7shv"), SubResource("Resource_mv5lh"), SubResource("Resource_6mmou"), SubResource("Resource_dbqfk")])
+animations_array = Array[ExtResource("4_v1swk")]([SubResource("Resource_th4g8"), SubResource("Resource_u7c7l"), SubResource("Resource_nfjh2"), SubResource("Resource_u7shv"), SubResource("Resource_mv5lh"), SubResource("Resource_6mmou"), SubResource("Resource_dbqfk"), SubResource("Resource_3m1id")])
 animation = 1
 frame = 1.0
-sprite_scale = 0.001
+sprite_scale = 0.0016
 metadata/_custom_type_script = "uid://b5653u7w56pqw"
 
 [node name="SM_controller" type="Node" parent="." node_paths=PackedStringArray("node_StateMachine")]
@@ -960,6 +958,7 @@ wait_time = 5.0
 
 [node name="Area3D" type="Area3D" parent="." groups=["Player"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.59447724, 0)
+monitorable = false
 
 [node name="Fight area" type="CollisionShape3D" parent="Area3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.4901161e-08, 0, 0)
@@ -973,6 +972,7 @@ debug_color = Color(0.95096534, 2.0214916e-06, 0.56154376, 0.41960785)
 
 [node name="Area3D2" type="Area3D" parent="."]
 transform = Transform3D(0.495, 0, 0, 0, 0.495, 0, 0, 0, 0.495, 0, 0.59447724, 0)
+monitorable = false
 
 [node name="Vision_Hearing" type="CollisionShape3D" parent="Area3D2"]
 transform = Transform3D(0.99999696, 0, 0, 0, 0.99999696, 0, 0, 0, 0.99999696, 0, 0, 0)
@@ -981,6 +981,7 @@ debug_color = Color(0.7989152, 0.38141474, 0.47244918, 0.41960785)
 
 [node name="Aggro" type="Area3D" parent="."]
 transform = Transform3D(0.495, 0, 0, 0, 0.495, 0, 0, 0, 0.495, 0, 0.59447724, 0)
+monitorable = false
 
 [node name="Vision_Hearing" type="CollisionShape3D" parent="Aggro"]
 transform = Transform3D(0.99999696, 0, 0, 0, 0.99999696, 0, 0, 0, 0.99999696, 0, 0, 0)
@@ -1028,18 +1029,22 @@ one_shot = true
 [node name="BlockSfx" type="AudioStreamPlayer3D" parent="Combat/CombatHand"]
 stream = SubResource("AudioStreamRandomizer_u7c7l")
 
-[node name="Stance" type="Node" parent="Combat"]
+[node name="Stance" type="Node" parent="Combat" node_paths=PackedStringArray("hands", "stats")]
 script = ExtResource("31_xnhkk")
+hands = [NodePath("../CombatHand")]
+stats = NodePath("../../Stats")
 metadata/_custom_type_script = "uid://446bgqyk22na"
 
 [node name="Hitbox" type="Area3D" parent="." node_paths=PackedStringArray("combat")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.1, 0)
 collision_layer = 131072
 collision_mask = 0
+monitoring = false
 script = ExtResource("32_7kval")
 combat = NodePath("../Combat")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Hitbox"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.55, 0)
 shape = SubResource("CapsuleShape3D_nfjh2")
 
 [node name="HitSfx" type="AudioStreamPlayer3D" parent="."]
@@ -1053,9 +1058,11 @@ libraries = {
 &"": SubResource("AnimationLibrary_khln7")
 }
 
-[node name="Stats" type="Node" parent="." node_paths=PackedStringArray("health_bar", "stam_bar")]
+[node name="Stats" type="Node" parent="." node_paths=PackedStringArray("health_bar", "hit_sfx", "who_owns", "stam_bar")]
 script = ExtResource("35_pydrg")
 health_bar = NodePath("Node3D/SubViewport/Control/Border/HealthBar")
+hit_sfx = NodePath("../HitSfx")
+who_owns = NodePath("..")
 stam_bar = NodePath("Node3D/SubViewport/Control/Border/StamBar")
 metadata/_custom_type_script = "uid://46pp7aerorca"
 
