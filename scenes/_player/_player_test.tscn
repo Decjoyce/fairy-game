@@ -1093,7 +1093,8 @@ text = "Return To Menu"
 
 [node name="OmniLight3D" type="OmniLight3D" parent="."]
 light_color = Color(0.20314711, 0.27413306, 0.28956375, 1)
-omni_range = 0.75
+light_energy = 0.3
+omni_range = 1.5
 
 [connection signal="on_body_entered" from="EnemyChecker" to="Combat" method="_on_enemy_checker_on_body_entered"]
 [connection signal="on_body_exit" from="EnemyChecker" to="Combat" method="_on_enemy_checker_on_body_exit"]
