@@ -39,6 +39,7 @@ func die():
 	death_ui.visible = true
 	freeze = true
 	stats_ui.visible = false
+	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 
 func return_to_menu() -> void:
 	get_tree().reload_current_scene()

@@ -31,7 +31,8 @@ signal on_move_left(target_position: Vector3)
 signal on_move_right(target_position: Vector3)
 
 func _ready() -> void:
-	var new_position := player.global_position.round()
+	var dd: =player.global_position.round()
+	var new_position := Vector3(dd.x, player.global_position.y, dd.z)
 	var new_rotation := player.global_rotation.y
 	
 	is_moving = false

@@ -13,9 +13,10 @@ const INT_RAY_LENGTH = 2.0
 @export var hand_right: PlayerHand # index = 1
 
 # Called when the node enters the scene tree for the first time.
-func _ready() -> void:
+func _ready() -> void:	
 	movement.on_move.connect(hand_left.on_player_moved)
 	movement.on_move.connect(hand_right.on_player_moved)
+	
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -24,6 +25,8 @@ func _process(delta: float) -> void:
 func make_hands_inactive() -> void:
 	hand_left.state.finished.emit(hand_left.state.FREE)
 	hand_right.state.finished.emit(hand_left.state.FREE)
+	if hand_left.current_interactable: hand_left.current_interactable.end_interact()
+	if hand_right.current_interactable: hand_right.current_interactable.end_interact()
 
 func get_other_hand(hand_index: int) -> PlayerHand:
 	if hand_index == 0: return hand_right

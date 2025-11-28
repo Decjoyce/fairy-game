@@ -75,6 +75,20 @@ shader_parameter/contrast_boost = 1.08400005149
 shader_parameter/saturation = 0.822000039045
 shader_parameter/new_color = Color(0.82162356, 0.8358374, 0.854476, 0.9372549)
 
+[sub_resource type="Resource" id="Resource_qekke"]
+script = ExtResource("46_emaie")
+specific_item_to_drop = ExtResource("44_fvksq")
+item_type = 4
+metadata/_custom_type_script = "uid://beaf3digx88d0"
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hk4ub"]
+albedo_color = Color(0, 0, 0, 1)
+metallic = 1.0
+
+[sub_resource type="QuadMesh" id="QuadMesh_hk4ub"]
+material = SubResource("StandardMaterial3D_hk4ub")
+size = Vector2(2, 2)
+
 [sub_resource type="BoxShape3D" id="BoxShape3D_6hp3v"]
 size = Vector3(1.6, 2, 0.3)
 
@@ -254,20 +268,6 @@ _data = {
 &"door_open": SubResource("Animation_c053m")
 }
 
-[sub_resource type="Resource" id="Resource_qekke"]
-script = ExtResource("46_emaie")
-specific_item_to_drop = ExtResource("44_fvksq")
-item_type = 4
-metadata/_custom_type_script = "uid://beaf3digx88d0"
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hk4ub"]
-albedo_color = Color(0, 0, 0, 1)
-metallic = 1.0
-
-[sub_resource type="QuadMesh" id="QuadMesh_hk4ub"]
-material = SubResource("StandardMaterial3D_hk4ub")
-size = Vector2(2, 2)
-
 [node name="Vertical_Slice_Level" type="Node3D"]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
@@ -328,31 +328,11 @@ color = Color(0.5747226, 0.50857943, 0.49505764, 0.03529412)
 [node name="Torch" parent="Torches" instance=ExtResource("6_o0daa")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 1, 1)
 
-[node name="Torch2" parent="Torches" instance=ExtResource("6_o0daa")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.9500003, 1.06, -15.1)
-
-[node name="Torch3" parent="Torches" instance=ExtResource("6_o0daa")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.9500003, 1.06, -11.1)
-
 [node name="TorchScont" parent="Torches" instance=ExtResource("7_2hss1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 1.2814243, -9.617082)
 
-[node name="TorchScont2" parent="Torches" instance=ExtResource("7_2hss1")]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -11.588686, 1.3814243, -13.180168)
-
-[node name="TorchScont4" parent="Torches" instance=ExtResource("7_2hss1")]
-transform = Transform3D(-1, 0, -8.940697e-08, 0, 1, 0, 8.940697e-08, 0, -1, -8.388686, 1.3814243, -8.380169)
-
-[node name="TorchScont5" parent="Torches" instance=ExtResource("7_2hss1")]
-transform = Transform3D(-1, 0, -8.940697e-08, 0, 1, 0, 8.940697e-08, 0, -1, -5.488686, 1.3814243, -8.380169)
-
-[node name="TorchScont6" parent="Torches" instance=ExtResource("7_2hss1")]
-transform = Transform3D(-1, 0, -8.940697e-08, 0, 1, 0, 8.940697e-08, 0, -1, -8.388686, 1.3814243, 5.59202)
-
-[node name="TorchScont7" parent="Torches" instance=ExtResource("7_2hss1")]
-transform = Transform3D(-1, 0, -8.940697e-08, 0, 1, 0, 8.940697e-08, 0, -1, -5.488686, 1.3814243, 5.59202)
-
 [node name="Gates+devices" type="Node3D" parent="."]
+visible = false
 
 [node name="Gate_Entrance" parent="Gates+devices" instance=ExtResource("8_fvksq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 0.375862, -3.9181042)
@@ -366,52 +346,6 @@ delay_before_reset = 5.0
 
 [node name="Button_MainGate" parent="Gates+devices" instance=ExtResource("9_8chx6")]
 transform = Transform3D(-1, 0, 8.940697e-08, 0, 1, 0, -8.940697e-08, 0, -1, 8.181404, 3.1323705, -9.74968)
-
-[node name="Locked_Door_1" parent="Gates+devices" instance=ExtResource("10_ooesu")]
-transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, -7, 1.38, -7)
-destroy_items_on_receive = true
-
-[node name="Locked_Door_3" type="Node3D" parent="Gates+devices" groups=["debug_PickableObjects"]]
-transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, -7, 1.38, 6.132872)
-
-[node name="Area3D" type="Area3D" parent="Gates+devices/Locked_Door_3"]
-collision_layer = 32
-monitoring = false
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Gates+devices/Locked_Door_3/Area3D"]
-shape = SubResource("BoxShape3D_6hp3v")
-
-[node name="StaticBody3D" type="StaticBody3D" parent="Gates+devices/Locked_Door_3"]
-
-[node name="L_Pivot" type="Node3D" parent="Gates+devices/Locked_Door_3/StaticBody3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.75, 0, 0)
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Gates+devices/Locked_Door_3/StaticBody3D/L_Pivot"]
-transform = Transform3D(0.15, 0, 0, 0, 0.15, 0, 0, 0, 0.15, 0.005, -1, 0)
-mesh = SubResource("ArrayMesh_8d8ch")
-skeleton = NodePath("../../../Area3D")
-
-[node name="R_Pivot" type="Node3D" parent="Gates+devices/Locked_Door_3/StaticBody3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.75, 0, 0)
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Gates+devices/Locked_Door_3/StaticBody3D/R_Pivot"]
-transform = Transform3D(-0.15, 0, -1.3113417e-08, 0, 0.15, 0, 1.3113417e-08, 0, -0.15, 0.015, -1, 0)
-mesh = SubResource("ArrayMesh_ffg0i")
-skeleton = NodePath("../../../Area3D")
-
-[node name="CollisionShape3D2" type="CollisionShape3D" parent="Gates+devices/Locked_Door_3/StaticBody3D"]
-shape = SubResource("BoxShape3D_c053m")
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Gates+devices/Locked_Door_3/StaticBody3D"]
-libraries = {
-&"": SubResource("AnimationLibrary_8d8ch")
-}
-
-[node name="AnimatedObject" type="Node" parent="Gates+devices/Locked_Door_3" node_paths=PackedStringArray("connnect_anim_player")]
-script = ExtResource("13_xahix")
-anim_to_play = "door_open"
-connnect_anim_player = NodePath("../StaticBody3D/AnimationPlayer")
-metadata/_custom_type_script = "uid://c4t3ko70ihpyy"
 
 [node name="Locked_Door_2" parent="Gates+devices" instance=ExtResource("10_ooesu")]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 10.09, -1.62, -7.025)
@@ -430,140 +364,209 @@ transform = Transform3D(-0.035213467, 0, 0.99937993, 0, 1, 0, -0.99937993, 0, -0
 
 [node name="Enemies" type="Node" parent="."]
 
-[node name="GridMap" type="GridMap" parent="."]
+[node name="Node3D3" type="Node3D" parent="."]
+
+[node name="GridMap" type="GridMap" parent="Node3D3"]
 mesh_library = ExtResource("2_3b0ht")
 cell_size = Vector3(2, 0.7, 2)
 data = {
 "cells": PackedInt32Array(1, 0, 1441796, 2, 0, 1441794, 3, 0, 3, 3, 65535, 2, 3, 65534, 2, 4, 65533, 3, 2, 65533, 1441795, 3, 65533, 1441792, 3, 65532, 1441792, 3, 65531, 1441792, 3, 65530, 2, 3, 65529, 2, 3, 65528, 2, 3, 65527, 1048579, 1, 65527, 655363, 1, 65528, 3, 0, 65528, 655363, 0, 65529, 3, 65535, 65529, 1048578, 2, 65527, 1048578, 1, 65532, 1048578, 7, 65532, 1048580, 6, 65532, 1048578, 5, 65532, 1048578, 4, 65531, 1048579, 2, 65531, 655363, 4, 65532, 655360, 2, 65532, 655360, 0, 65532, 1441796, 65533, 65531, 3, 65531, 65531, 1441795, 65534, 65530, 3, 65534, 65528, 1048579, 65533, 65527, 1048579, 65531, 65527, 655363, 65532, 65526, 655364, 65530, 65528, 655363, 65530, 65530, 1441795, 65530, 65529, 1441793, 65531, 65530, 1441792, 65531, 65529, 1441792, 65531, 65528, 1441792, 65532, 65528, 1441792, 65532, 65527, 1441792, 65532, 65529, 1441792, 65532, 65530, 1441792, 65532, 65531, 1441792, 65533, 65530, 1441792, 65533, 65529, 1441792, 65533, 65528, 1441792, 65534, 65529, 1441792, 65532, 65532, 655362, 65532, 65533, 655362, 65532, 65534, 655362, 65531, 65535, 655361, 65533, 65535, 655361, 65530, 65535, 655363, 65534, 65535, 1048579, 65530, 2, 1441795, 65531, 2, 1, 65532, 2, 1441792, 65533, 2, 1, 65534, 2, 3, 65532, 65535, 0, 65534, 0, 1048577, 65533, 0, 0, 65532, 0, 0, 65534, 1, 1048577, 65533, 1, 0, 65532, 1, 0, 65531, 1, 0, 65531, 0, 0, 65530, 0, 1441793, 65530, 1, 1441793, 65532, 3, 2, 65532, 4, 4)
 }
 
-[node name="Puzzles_01" type="Node3D" parent="."]
+[node name="Puzzles_01" type="Node3D" parent="Node3D3"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 0, -7)
 
-[node name="Node3D" type="Node3D" parent="Puzzles_01"]
+[node name="Node3D" type="Node3D" parent="Node3D3/Puzzles_01"]
 
-[node name="Gate_Left" parent="Puzzles_01/Node3D" instance=ExtResource("8_fvksq")]
+[node name="Gate_Left" parent="Node3D3/Puzzles_01/Node3D" instance=ExtResource("8_fvksq")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -3.1, 0.4, 0)
 
-[node name="Button" parent="Puzzles_01/Node3D" instance=ExtResource("9_8chx6")]
+[node name="Button" parent="Node3D3/Puzzles_01/Node3D" instance=ExtResource("9_8chx6")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 1.4, 0.6975393)
 
-[node name="Node3D" type="Node3D" parent="Puzzles_01/Node3D"]
+[node name="Node3D" type="Node3D" parent="Node3D3/Puzzles_01/Node3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.34555766, 0)
 
-[node name="Left_PressurePlate" parent="Puzzles_01/Node3D/Node3D" instance=ExtResource("11_aep5l")]
+[node name="Left_PressurePlate" parent="Node3D3/Puzzles_01/Node3D/Node3D" instance=ExtResource("11_aep5l")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0.05, 0)
 weight_to_activate = 4.0
 _lerp_speed = 900.0
 
-[node name="Node3D2" type="Node3D" parent="Puzzles_01"]
+[node name="Node3D2" type="Node3D" parent="Node3D3/Puzzles_01"]
 
-[node name="Gate_Left2" parent="Puzzles_01/Node3D2" instance=ExtResource("8_fvksq")]
+[node name="Gate_Left2" parent="Node3D3/Puzzles_01/Node3D2" instance=ExtResource("8_fvksq")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 3.047738, 0.2807996, 0)
 
-[node name="Button2" parent="Puzzles_01/Node3D2" instance=ExtResource("9_8chx6")]
+[node name="Button2" parent="Node3D3/Puzzles_01/Node3D2" instance=ExtResource("9_8chx6")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 1.4, 0.719)
 
-[node name="Node3D" type="Node3D" parent="Puzzles_01/Node3D2"]
+[node name="Node3D" type="Node3D" parent="Node3D3/Puzzles_01/Node3D2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.3456661, 0)
 
-[node name="Right_PressurePlate" parent="Puzzles_01/Node3D2/Node3D" instance=ExtResource("11_aep5l")]
+[node name="Right_PressurePlate" parent="Node3D3/Puzzles_01/Node3D2/Node3D" instance=ExtResource("11_aep5l")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0.05, 0)
 weight_to_activate = 8.0
 
-[node name="Node3D3" type="Node3D" parent="Puzzles_01"]
+[node name="Node3D3" type="Node3D" parent="Node3D3/Puzzles_01"]
 
-[node name="Gate_Left3" parent="Puzzles_01/Node3D3" instance=ExtResource("8_fvksq")]
+[node name="Gate_Left3" parent="Node3D3/Puzzles_01/Node3D3" instance=ExtResource("8_fvksq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.4, -3.1000004)
 
-[node name="Button3" parent="Puzzles_01/Node3D3" instance=ExtResource("9_8chx6")]
+[node name="Button3" parent="Node3D3/Puzzles_01/Node3D3" instance=ExtResource("9_8chx6")]
 transform = Transform3D(2.9802322e-08, 0, -1, 0, 1, 0, 1, 0, 2.9802322e-08, -0.6999998, 1.4, -4)
 
-[node name="Node3D" type="Node3D" parent="Puzzles_01/Node3D3"]
+[node name="Node3D" type="Node3D" parent="Node3D3/Puzzles_01/Node3D3"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.34555766, 0)
 
-[node name="Main_PressurePlate" parent="Puzzles_01/Node3D3/Node3D" instance=ExtResource("11_aep5l")]
+[node name="Main_PressurePlate" parent="Node3D3/Puzzles_01/Node3D3/Node3D" instance=ExtResource("11_aep5l")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.05, -2)
 weight_to_activate = 10.0
 
-[node name="skull" parent="Puzzles_01" instance=ExtResource("38_3b0ht")]
+[node name="skull" parent="Node3D3/Puzzles_01" instance=ExtResource("38_3b0ht")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0.6, 0)
 item_weight = 3
 
-[node name="drinkvessel" parent="Puzzles_01" instance=ExtResource("39_pg3lp")]
+[node name="drinkvessel" parent="Node3D3/Puzzles_01" instance=ExtResource("39_pg3lp")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0.9, 0)
 item_weight = 3
 
-[node name="Node3D2" type="Node3D" parent="."]
+[node name="TorchScont2" parent="Node3D3/Puzzles_01" instance=ExtResource("7_2hss1")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -18.588686, 1.3814243, -6.180168)
+
+[node name="TorchScont4" parent="Node3D3/Puzzles_01" instance=ExtResource("7_2hss1")]
+transform = Transform3D(-1, 0, -8.940697e-08, 0, 1, 0, 8.940697e-08, 0, -1, -15.388686, 1.3814243, -1.3801689)
+
+[node name="TorchScont5" parent="Node3D3/Puzzles_01" instance=ExtResource("7_2hss1")]
+transform = Transform3D(-1, 0, -8.940697e-08, 0, 1, 0, 8.940697e-08, 0, -1, -12.488686, 1.3814243, -1.3801689)
+
+[node name="TorchScont6" parent="Node3D3/Puzzles_01" instance=ExtResource("7_2hss1")]
+transform = Transform3D(-1, 0, -8.940697e-08, 0, 1, 0, 8.940697e-08, 0, -1, -15.388686, 1.3814243, 12.59202)
+
+[node name="TorchScont7" parent="Node3D3/Puzzles_01" instance=ExtResource("7_2hss1")]
+transform = Transform3D(-1, 0, -8.940697e-08, 0, 1, 0, 8.940697e-08, 0, -1, -12.488686, 1.3814243, 12.59202)
+
+[node name="Torch2" parent="Node3D3/Puzzles_01" instance=ExtResource("6_o0daa")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.950001, 1.06, -8.1)
+
+[node name="Torch3" parent="Node3D3/Puzzles_01" instance=ExtResource("6_o0daa")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.950001, 1.06, -4.1000004)
+
+[node name="Node3D2" type="Node3D" parent="Node3D3"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.962071, 0.63938737, -19.482779)
 
-[node name="Urn" parent="Node3D2" instance=ExtResource("42_ooesu")]
+[node name="Urn" parent="Node3D3/Node3D2" instance=ExtResource("42_ooesu")]
 item_type = SubResource("Resource_qekke")
 
-[node name="Urn2" parent="Node3D2" instance=ExtResource("42_ooesu")]
+[node name="Urn2" parent="Node3D3/Node3D2" instance=ExtResource("42_ooesu")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.9999995, 0, 2.368)
 
-[node name="Urn3" parent="Node3D2" instance=ExtResource("42_ooesu")]
+[node name="Urn3" parent="Node3D3/Node3D2" instance=ExtResource("42_ooesu")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.9999995, 0, 4.368)
 
-[node name="Urn4" parent="Node3D2" instance=ExtResource("42_ooesu")]
+[node name="Urn4" parent="Node3D3/Node3D2" instance=ExtResource("42_ooesu")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.0000005, 0, 4.368)
 
-[node name="Urn5" parent="Node3D2" instance=ExtResource("42_ooesu")]
+[node name="Urn5" parent="Node3D3/Node3D2" instance=ExtResource("42_ooesu")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.0000005, 0, 2.368)
 
-[node name="Urn6" parent="Node3D2" instance=ExtResource("42_ooesu")]
+[node name="Urn6" parent="Node3D3/Node3D2" instance=ExtResource("42_ooesu")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.0000005, 0, 2.368)
 
-[node name="Urn7" parent="Node3D2" instance=ExtResource("42_ooesu")]
+[node name="Urn7" parent="Node3D3/Node3D2" instance=ExtResource("42_ooesu")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.9999995, 0, 2.368)
 
-[node name="Urn8" parent="Node3D2" instance=ExtResource("42_ooesu")]
+[node name="Urn8" parent="Node3D3/Node3D2" instance=ExtResource("42_ooesu")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.9999995, 0, 9.368)
 
-[node name="Urn9" parent="Node3D2" instance=ExtResource("42_ooesu")]
+[node name="Urn9" parent="Node3D3/Node3D2" instance=ExtResource("42_ooesu")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.0000005, 0, 8.368)
 
-[node name="Urn12" parent="Node3D2" instance=ExtResource("42_ooesu")]
+[node name="Urn12" parent="Node3D3/Node3D2" instance=ExtResource("42_ooesu")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.9999995, 0, 4.368)
 
-[node name="Urn13" parent="Node3D2" instance=ExtResource("42_ooesu")]
+[node name="Urn13" parent="Node3D3/Node3D2" instance=ExtResource("42_ooesu")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.0000005, 0, 5.368)
 
-[node name="Urn14" parent="Node3D2" instance=ExtResource("42_ooesu")]
+[node name="Urn14" parent="Node3D3/Node3D2" instance=ExtResource("42_ooesu")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.0000005, 0, 7.368)
 
-[node name="Urn18" parent="Node3D2" instance=ExtResource("42_ooesu")]
+[node name="Urn18" parent="Node3D3/Node3D2" instance=ExtResource("42_ooesu")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.9999995, 0, 6.368)
 
-[node name="Urn19" parent="Node3D2" instance=ExtResource("42_ooesu")]
+[node name="Urn19" parent="Node3D3/Node3D2" instance=ExtResource("42_ooesu")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.9999995, 0, 8.368)
 
-[node name="Enemy_presset" parent="Node3D2" node_paths=PackedStringArray("player") instance=ExtResource("17_5ujyx")]
+[node name="Enemy_presset" parent="Node3D3/Node3D2" node_paths=PackedStringArray("player") instance=ExtResource("17_5ujyx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.26096016, 22.632988)
-player = NodePath("../../player_test")
+player = NodePath("../../../player_test")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Node3D2"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Node3D3/Node3D2"]
 transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 0, 0.38524485, 27.434818)
 mesh = SubResource("QuadMesh_hk4ub")
 
-[node name="Node3D" type="Node3D" parent="."]
+[node name="Locked_Door_1" parent="Node3D3/Node3D2" instance=ExtResource("10_ooesu")]
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, -0.037929058, 0.7406126, 12.482779)
+destroy_items_on_receive = true
 
-[node name="Ambient" type="AudioStreamPlayer3D" parent="Node3D"]
+[node name="Locked_Door_3" type="Node3D" parent="Node3D3/Node3D2" groups=["debug_PickableObjects"]]
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, -0.037929058, 0.7406126, 25.61565)
+
+[node name="Area3D" type="Area3D" parent="Node3D3/Node3D2/Locked_Door_3"]
+collision_layer = 32
+monitoring = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Node3D3/Node3D2/Locked_Door_3/Area3D"]
+shape = SubResource("BoxShape3D_6hp3v")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Node3D3/Node3D2/Locked_Door_3"]
+
+[node name="L_Pivot" type="Node3D" parent="Node3D3/Node3D2/Locked_Door_3/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.75, 0, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Node3D3/Node3D2/Locked_Door_3/StaticBody3D/L_Pivot"]
+transform = Transform3D(0.15, 0, 0, 0, 0.15, 0, 0, 0, 0.15, 0.005, -1, 0)
+mesh = SubResource("ArrayMesh_8d8ch")
+skeleton = NodePath("../../../Area3D")
+
+[node name="R_Pivot" type="Node3D" parent="Node3D3/Node3D2/Locked_Door_3/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.75, 0, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Node3D3/Node3D2/Locked_Door_3/StaticBody3D/R_Pivot"]
+transform = Transform3D(-0.15, 0, -1.3113417e-08, 0, 0.15, 0, 1.3113417e-08, 0, -0.15, 0.015, -1, 0)
+mesh = SubResource("ArrayMesh_ffg0i")
+skeleton = NodePath("../../../Area3D")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="Node3D3/Node3D2/Locked_Door_3/StaticBody3D"]
+shape = SubResource("BoxShape3D_c053m")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Node3D3/Node3D2/Locked_Door_3/StaticBody3D"]
+libraries = {
+&"": SubResource("AnimationLibrary_8d8ch")
+}
+
+[node name="AnimatedObject" type="Node" parent="Node3D3/Node3D2/Locked_Door_3" node_paths=PackedStringArray("connnect_anim_player")]
+script = ExtResource("13_xahix")
+anim_to_play = "door_open"
+connnect_anim_player = NodePath("../StaticBody3D/AnimationPlayer")
+metadata/_custom_type_script = "uid://c4t3ko70ihpyy"
+
+[node name="Node3D" type="Node3D" parent="Node3D3"]
+
+[node name="Ambient" type="AudioStreamPlayer3D" parent="Node3D3/Node3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.877981, 3.6797314, -13.474785)
 stream = ExtResource("39_rldp5")
 volume_db = 0.2
 autoplay = true
 max_distance = 25.0
 
-[node name="Ambient2" type="AudioStreamPlayer3D" parent="Node3D"]
+[node name="Ambient2" type="AudioStreamPlayer3D" parent="Node3D3/Node3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.600433, 3.6797295, -6.309743)
 stream = ExtResource("40_o0daa")
 volume_db = 0.5
 autoplay = true
 max_distance = 20.0
 
-[node name="Ambient3" type="AudioStreamPlayer3D" parent="Node3D"]
+[node name="Ambient3" type="AudioStreamPlayer3D" parent="Node3D3/Node3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.067028, 3.6797295, 2.2755156)
 stream = ExtResource("41_2hss1")
 volume_db = 0.1
@@ -576,10 +579,10 @@ max_distance = 10.0
 [connection signal="on_activated" from="Gates+devices/Button_MainGate" to="Gates+devices/Main_Gate" method="open_gate"]
 [connection signal="on_activated" from="Gates+devices/After_Final_Boss_PressurePlate" to="Gates+devices/After_Final_Boss Gate" method="open_gate"]
 [connection signal="on_activated" from="Gates+devices/Exit_Level_Button" to="Gates+devices/Exit_Level_Gate" method="open_gate"]
-[connection signal="on_activated" from="Puzzles_01/Node3D/Button" to="Puzzles_01/Node3D/Gate_Left" method="open_gate"]
-[connection signal="on_change" from="Puzzles_01/Node3D/Node3D/Left_PressurePlate" to="Puzzles_01/Node3D/Gate_Left" method="open_gate"]
-[connection signal="on_activated" from="Puzzles_01/Node3D2/Button2" to="Puzzles_01/Node3D2/Gate_Left2" method="open_gate"]
-[connection signal="on_change" from="Puzzles_01/Node3D2/Node3D/Right_PressurePlate" to="Puzzles_01/Node3D2/Gate_Left2" method="open_gate"]
-[connection signal="on_activated" from="Puzzles_01/Node3D3/Button3" to="Puzzles_01/Node3D3/Gate_Left3" method="open_gate"]
-[connection signal="on_change" from="Puzzles_01/Node3D3/Node3D/Main_PressurePlate" to="Puzzles_01/Node3D3/Gate_Left3" method="open_gate"]
-[connection signal="hey_joy" from="Node3D2/Enemy_presset" to="Gates+devices/Locked_Door_3/AnimatedObject" method="play_animation"]
+[connection signal="on_activated" from="Node3D3/Puzzles_01/Node3D/Button" to="Node3D3/Puzzles_01/Node3D/Gate_Left" method="open_gate"]
+[connection signal="on_change" from="Node3D3/Puzzles_01/Node3D/Node3D/Left_PressurePlate" to="Node3D3/Puzzles_01/Node3D/Gate_Left" method="open_gate"]
+[connection signal="on_activated" from="Node3D3/Puzzles_01/Node3D2/Button2" to="Node3D3/Puzzles_01/Node3D2/Gate_Left2" method="open_gate"]
+[connection signal="on_change" from="Node3D3/Puzzles_01/Node3D2/Node3D/Right_PressurePlate" to="Node3D3/Puzzles_01/Node3D2/Gate_Left2" method="open_gate"]
+[connection signal="on_activated" from="Node3D3/Puzzles_01/Node3D3/Button3" to="Node3D3/Puzzles_01/Node3D3/Gate_Left3" method="open_gate"]
+[connection signal="on_change" from="Node3D3/Puzzles_01/Node3D3/Node3D/Main_PressurePlate" to="Node3D3/Puzzles_01/Node3D3/Gate_Left3" method="open_gate"]
+[connection signal="hey_joy" from="Node3D3/Node3D2/Enemy_presset" to="Node3D3/Node3D2/Locked_Door_3/AnimatedObject" method="play_animation"]

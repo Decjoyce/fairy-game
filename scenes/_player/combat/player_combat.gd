@@ -30,6 +30,7 @@ func enter_combat_mode() -> void:
 	combat_ui.visible = true
 	player.in_combat = true
 	player.interaction.visible = false
+	player.interaction.make_hands_inactive()
 	combat_hands[0].become_active()
 	combat_hands[1].become_active()
 

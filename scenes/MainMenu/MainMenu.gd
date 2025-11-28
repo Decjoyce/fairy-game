@@ -5,8 +5,11 @@ extends Node
 
 var game_started := false
 
+@export var vs_scnee: PackedScene
+
 func _ready():
 	anim_player.play("CameraSlow")
+	Input.set_mouse_mode(Input.MOUSE_MODE_CONFINED_HIDDEN)
 
 func _process(delta):
 	if game_started:
@@ -24,4 +27,4 @@ func start_game():
 	fade_anim.play("FadetoBlack")
 	await fade_anim.animation_finished
 
-	get_tree().change_scene_to_file("")
+	get_tree().change_scene_to_packed(vs_scnee)
