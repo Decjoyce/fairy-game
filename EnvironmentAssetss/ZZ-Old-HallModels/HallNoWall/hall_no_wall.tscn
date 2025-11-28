@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://bhb1k7b82cibf"]
+
+[ext_resource type="PackedScene" uid="uid://b6f3o3mhprvg6" path="res://EnvironmentAssetss/ZZ-Old-HallModels/HallNoWall/HallNoWall.glb" id="1_g6ko4"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_g6ko4"]
+size = Vector3(15.937988, 2.027893, 16.136963)
+
+[node name="HallNoWall" instance=ExtResource("1_g6ko4")]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Roof" index="0"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Roof/StaticBody3D" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.06274414, -0.033355713, 0.013305664)
+shape = SubResource("BoxShape3D_g6ko4")

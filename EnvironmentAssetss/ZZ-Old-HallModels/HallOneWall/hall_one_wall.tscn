@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://cb16cor50f44t"]
+
+[ext_resource type="PackedScene" uid="uid://cjlwh7v1lxlhj" path="res://EnvironmentAssetss/ZZ-Old-HallModels/HallOneWall/HallOneWall.glb" id="1_pr3hv"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_pr3hv"]
+size = Vector3(15.996338, 2.105713, 16.061035)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_jt8b8"]
+size = Vector3(2.3835754, 11.737549, 16.093018)
+
+[node name="HallOneWall" instance=ExtResource("1_pr3hv")]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Roof" index="0"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Roof/StaticBody3D" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.023071289, -0.033569336, 0.021728516)
+shape = SubResource("BoxShape3D_pr3hv")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="WallR" index="0"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="WallR/StaticBody3D" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0012359619, 5.809819, 0.022583008)
+shape = SubResource("BoxShape3D_jt8b8")
