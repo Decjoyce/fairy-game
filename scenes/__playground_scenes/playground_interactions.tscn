@@ -1,4 +1,4 @@
-[gd_scene load_steps=96 format=4 uid="uid://dw2dbsjbocxi7"]
+[gd_scene load_steps=102 format=4 uid="uid://dw2dbsjbocxi7"]
 
 [ext_resource type="PackedScene" uid="uid://bq86osdembn58" path="res://scenes/_player/_player_test.tscn" id="2_3vnxs"]
 [ext_resource type="PackedScene" uid="uid://cafafqbxrlmdt" path="res://scenes/__prototyping/dev_tiles/open/dev_open_wall.tscn" id="2_cti4x"]
@@ -28,6 +28,7 @@
 [ext_resource type="PackedScene" uid="uid://da8jmxsuq7td1" path="res://scenes/interactions/triggers/item_trigger/item_trigger.tscn" id="24_1e1q4"]
 [ext_resource type="PackedScene" uid="uid://ccxmagyj4smfr" path="res://scenes/interactions/triggers/item_receiver/item_receiver.tscn" id="24_lwfn2"]
 [ext_resource type="PackedScene" uid="uid://clnnqb1efkbei" path="res://scenes/interactions/prefabs/locked_door.tscn" id="27_lfnjp"]
+[ext_resource type="Shader" uid="uid://bjcg6f61hwjaa" path="res://scenes/interactions/Drawing/shader_draw_board.tres" id="28_7ntu8"]
 [ext_resource type="PackedScene" uid="uid://boygsguyqneek" path="res://scenes/interactions/interactables/grabbable_items/test_breakable.tscn" id="28_po0fx"]
 [ext_resource type="Script" uid="uid://bjd0jmhcfi0pq" path="res://scenes/interactions/temp_enemy/tempp_enemy.gd" id="29_lryfm"]
 [ext_resource type="Script" uid="uid://46pp7aerorca" path="res://stats.gd" id="30_limx5"]
@@ -470,6 +471,44 @@ metadata/_custom_type_script = "uid://cqhq7vrwiw3m6"
 script = ExtResource("23_6a6ye")
 metadata/_custom_type_script = "uid://q0egps2wmpgo"
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_poavi"]
+resource_local_to_scene = true
+render_priority = 0
+shader = ExtResource("28_7ntu8")
+shader_parameter/emission = Color(1, 1, 1, 1)
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_qchyt"]
+_surfaces = [{
+"aabb": AABB(-1, -1, -0.016855, 2, 2, 0.03371),
+"format": 34896613377,
+"index_count": 36,
+"index_data": PackedByteArray("AAABAAIAAgABAAMAAQAAAAQAAQAEAAMABQAAAAIAAwAFAAIABAAAAAYABgAAAAUAAwAEAAcABAAGAAcABwAFAAMABwAGAAUA"),
+"name": "Cube",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 8,
+"vertex_data": PackedByteArray("AAAAAP//AAAAAAAAAAAAAAAA/////wAAAAD//wAAAAD//wAAAAAAAP///////wAA//8AAP//AAD/////AAAAAA==")
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_15de5"]
+resource_local_to_scene = true
+_surfaces = [{
+"aabb": AABB(-1, -1, -0.016855, 2, 2, 0.03371),
+"attribute_data": PackedByteArray("y6O7iv+hu4rLo0L1/6FC9UN1QvVDdbuKvApC9bwKu4rLo7wK/6G8CsujQ3X/oUN1Q3VDdUN1vAq8CkN1vAq8CoeMu4q7iruKh4xC9buKQvWHjLwKu4q8CoeMQ3W7ikN1"),
+"format": 34896613399,
+"index_count": 36,
+"index_data": PackedByteArray("AAABAAIAAgABAAMABAAFAAYABgAFAAcACAAJAAoACgAJAAsADAANAA4ADgANAA8AEAARABIAEgARABMAFAAVABYAFgAVABcA"),
+"material": SubResource("ShaderMaterial_poavi"),
+"name": "Cube",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 24,
+"vertex_data": PackedByteArray("AAAAAP///z8AAAAAAAD/PwAA//////8/AAD//wAA/z///wAA////PwAAAAD///8//////////z8AAP//////P///AAAAAP8///8AAP///z//////AAD/P/////////8/AAAAAAAAAAD//wAAAAAAAAAA//8AAAAA/////wAAAAAAAAAAAACqKgAAAAD//6oq//8AAAAAqir//wAA//+qKv////8AAKoq////////qioAAP//AACqKgAA/////6oq/3////9/////f////3////9//3//f/9//3//f/9//3//fwAA/38AAP9/AAD/fwAA/z//v/8//7//P/+//z//v1RVVFVUVVRVVFVUVVRVVFVU1aoqVNWqKlTVqipU1aoq")
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_qchyt")
+
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_limx5"]
 radius = 0.333
 height = 1.333
@@ -508,6 +547,30 @@ transparency = 1
 shading_mode = 0
 albedo_texture = SubResource("ViewportTexture_gw50n")
 billboard_mode = 2
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_gw50n"]
+resource_local_to_scene = true
+render_priority = 0
+shader = ExtResource("28_7ntu8")
+shader_parameter/emission = Color(1, 1, 1, 1)
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_temsp"]
+resource_local_to_scene = true
+_surfaces = [{
+"aabb": AABB(-1, -1, -0.016855, 2, 2, 0.03371),
+"attribute_data": PackedByteArray("y6O7iv+hu4rLo0L1/6FC9UN1QvVDdbuKvApC9bwKu4rLo7wK/6G8CsujQ3X/oUN1Q3VDdUN1vAq8CkN1vAq8CoeMu4q7iruKh4xC9buKQvWHjLwKu4q8CoeMQ3W7ikN1"),
+"format": 34896613399,
+"index_count": 36,
+"index_data": PackedByteArray("AAABAAIAAgABAAMABAAFAAYABgAFAAcACAAJAAoACgAJAAsADAANAA4ADgANAA8AEAARABIAEgARABMAFAAVABYAFgAVABcA"),
+"material": SubResource("ShaderMaterial_gw50n"),
+"name": "Cube",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 24,
+"vertex_data": PackedByteArray("AAAAAP///z8AAAAAAAD/PwAA//////8/AAD//wAA/z///wAA////PwAAAAD///8//////////z8AAP//////P///AAAAAP8///8AAP///z//////AAD/P/////////8/AAAAAAAAAAD//wAAAAAAAAAA//8AAAAA/////wAAAAAAAAAAAACqKgAAAAD//6oq//8AAAAAqir//wAA//+qKv////8AAKoq////////qioAAP//AACqKgAA/////6oq/3////9/////f////3////9//3//f/9//3//f/9//3//fwAA/38AAP9/AAD/fwAA/z//v/8//7//P/+//z//v1RVVFVUVVRVVFVUVVRVVFVU1aoqVNWqKlTVqipU1aoq")
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_qchyt")
 
 [node name="Playground_Interactions" type="Node3D"]
 
@@ -1666,7 +1729,8 @@ type_of_item = 0
 num_needed = 5
 
 [node name="DrawBoard" parent="." instance=ExtResource("23_rcrad")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3.3, -4)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.70000005, -4)
+mesh = SubResource("ArrayMesh_15de5")
 
 [node name="ItemTrigger" parent="." node_paths=PackedStringArray("specific_item") instance=ExtResource("24_1e1q4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.5, 0, -8.6)
@@ -1779,6 +1843,10 @@ stream = ExtResource("32_1f7u1")
 
 [node name="stam_sfx" type="AudioStreamPlayer3D" parent="BoxingBag/Stats"]
 stream = ExtResource("33_bk0h7")
+
+[node name="DrawBoard2" parent="." instance=ExtResource("23_rcrad")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 4, 1, -2)
+mesh = SubResource("ArrayMesh_temsp")
 
 [connection signal="area_entered" from="Room_Start/Teleporter_to_item/Trigger" to="Room_Start/Teleporter_to_item" method="_teleport_entity"]
 [connection signal="body_entered" from="Room_Start/Teleporter_to_item/Trigger" to="Room_Start/Teleporter_to_item" method="_teleport_item"]

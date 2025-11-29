@@ -960,6 +960,7 @@ wait_time = 5.0
 
 [node name="Area3D" type="Area3D" parent="." groups=["Player"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.59447724, 0)
+collision_layer = 0
 monitorable = false
 
 [node name="Fight area" type="CollisionShape3D" parent="Area3D"]
@@ -974,6 +975,7 @@ debug_color = Color(0.95096534, 2.0214916e-06, 0.56154376, 0.41960785)
 
 [node name="Area3D2" type="Area3D" parent="."]
 transform = Transform3D(0.495, 0, 0, 0, 0.495, 0, 0, 0, 0.495, 0, 0.59447724, 0)
+collision_layer = 0
 monitorable = false
 
 [node name="Vision_Hearing" type="CollisionShape3D" parent="Area3D2"]
@@ -983,6 +985,7 @@ debug_color = Color(0.7989152, 0.38141474, 0.47244918, 0.41960785)
 
 [node name="Aggro" type="Area3D" parent="."]
 transform = Transform3D(0.495, 0, 0, 0, 0.495, 0, 0, 0, 0.495, 0, 0.59447724, 0)
+collision_layer = 0
 monitorable = false
 
 [node name="Vision_Hearing" type="CollisionShape3D" parent="Aggro"]

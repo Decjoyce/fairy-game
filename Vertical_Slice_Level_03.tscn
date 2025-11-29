@@ -1,4 +1,4 @@
-[gd_scene load_steps=48 format=4 uid="uid://bssask2v64ogc"]
+[gd_scene load_steps=49 format=4 uid="uid://bssask2v64ogc"]
 
 [ext_resource type="Script" uid="uid://ubfk2a80dhfp" path="res://addons/grid_map_pathfinding/grid_map_pathfinding.gd" id="1_m1xuj"]
 [ext_resource type="MeshLibrary" uid="uid://bu208a8l5866i" path="res://scenes/palettes/cairn/meshlibrary_cairn.tres" id="2_grny0"]
@@ -12,6 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://clnnqb1efkbei" path="res://scenes/interactions/prefabs/locked_door.tscn" id="10_mjg86"]
 [ext_resource type="PackedScene" uid="uid://csot2mi7746ll" path="res://scenes/interactions/triggers/pressure_plate/pressure_plate.tscn" id="11_gvepk"]
 [ext_resource type="Script" uid="uid://c00pbq6pr77dd" path="res://dsdsds.gd" id="24_8o3kd"]
+[ext_resource type="PackedScene" uid="uid://bs8ivnvddloci" path="res://scenes/_game.tscn" id="25_e7sjl"]
 [ext_resource type="PackedScene" uid="uid://lxic7c72kvyt" path="res://scenes/interactions/interactables/grabbable_items/item_skull.tscn" id="38_j1tuy"]
 [ext_resource type="PackedScene" uid="uid://bw752cs1fru6w" path="res://scenes/interactions/interactables/grabbable_items/otherthing.tscn" id="39_8g5x3"]
 [ext_resource type="PackedScene" uid="uid://dqh8lru4mt2ap" path="res://scenes/interactions/interactables/breakables/urn.tscn" id="40_5jloq"]
@@ -286,6 +287,21 @@ _data = {
 &"door_open": SubResource("Animation_c053m")
 }
 
+[sub_resource type="Animation" id="Animation_8o3kd"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 0, 0, 0)]
+}
+
 [sub_resource type="Animation" id="Animation_j4a7u"]
 resource_name = "dd"
 tracks/0/type = "value"
@@ -300,20 +316,19 @@ tracks/0/keys = {
 "update": 0,
 "values": [Color(0, 0, 0, 0), Color(0, 0, 0, 1)]
 }
-
-[sub_resource type="Animation" id="Animation_8o3kd"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("ColorRect:color")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(1),
 "transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(0, 0, 0, 0)]
+"values": [{
+"args": [],
+"method": &"to_menu"
+}]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_e7sjl"]
@@ -599,11 +614,12 @@ pitch_scale = 0.2
 autoplay = true
 max_distance = 10.0
 
-[node name="Node3D" type="Node3D" parent="." node_paths=PackedStringArray("anim_pl")]
+[node name="Ender" type="Node3D" parent="." node_paths=PackedStringArray("anim_pl")]
 script = ExtResource("24_8o3kd")
 anim_pl = NodePath("AnimationPlayer")
+end_screen = ExtResource("25_e7sjl")
 
-[node name="ColorRect" type="ColorRect" parent="Node3D"]
+[node name="ColorRect" type="ColorRect" parent="Ender"]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -611,15 +627,15 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 0)
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Node3D"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Ender"]
 libraries = {
 &"": SubResource("AnimationLibrary_e7sjl")
 }
 
-[node name="Area3D" type="Area3D" parent="Node3D"]
+[node name="Area3D" type="Area3D" parent="Ender"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.033518, 0.5182469, 7.5514584)
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Node3D/Area3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Ender/Area3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5542221, 0)
 shape = SubResource("SphereShape3D_j4a7u")
 
@@ -631,4 +647,4 @@ shape = SubResource("SphereShape3D_j4a7u")
 [connection signal="on_change" from="Node3D3/Puzzles_01/Node3D3/Node3D/Main_PressurePlate" to="Node3D3/Puzzles_01/Node3D3/Gate_Left3" method="open_gate"]
 [connection signal="on_activated" from="Node3D3/Puzzles_01/Button4" to="Node3D3/Puzzles_01/Gate_Left4" method="open_gate"]
 [connection signal="hey_joy" from="Node3D3/Node3D2/Enemy_presset" to="Node3D3/Node3D2/Locked_Door_3/AnimatedObject" method="play_animation"]
-[connection signal="area_entered" from="Node3D/Area3D" to="Node3D" method="_on_area_3d_area_entered"]
+[connection signal="area_entered" from="Ender/Area3D" to="Ender" method="_on_area_3d_area_entered"]
