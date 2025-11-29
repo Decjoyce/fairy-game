@@ -1,4 +1,4 @@
-[gd_scene load_steps=49 format=4 uid="uid://bssask2v64ogc"]
+[gd_scene load_steps=50 format=4 uid="uid://bssask2v64ogc"]
 
 [ext_resource type="Script" uid="uid://ubfk2a80dhfp" path="res://addons/grid_map_pathfinding/grid_map_pathfinding.gd" id="1_m1xuj"]
 [ext_resource type="MeshLibrary" uid="uid://bu208a8l5866i" path="res://scenes/palettes/cairn/meshlibrary_cairn.tres" id="2_grny0"]
@@ -303,7 +303,7 @@ tracks/0/keys = {
 }
 
 [sub_resource type="Animation" id="Animation_j4a7u"]
-resource_name = "dd"
+resource_name = "fade_out"
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -331,10 +331,27 @@ tracks/1/keys = {
 }]
 }
 
+[sub_resource type="Animation" id="Animation_e7sjl"]
+resource_name = "fade_in"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 1), Color(0, 0, 0, 0)]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_e7sjl"]
 _data = {
 &"RESET": SubResource("Animation_8o3kd"),
-&"dd": SubResource("Animation_j4a7u")
+&"fade_in": SubResource("Animation_e7sjl"),
+&"fade_out": SubResource("Animation_j4a7u")
 }
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_j4a7u"]

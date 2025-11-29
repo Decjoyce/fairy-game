@@ -1,9 +1,5 @@
-[gd_scene load_steps=41 format=3 uid="uid://ds04v2o1xwpoj"]
+[gd_scene load_steps=37 format=3 uid="uid://ds04v2o1xwpoj"]
 
-[ext_resource type="Script" uid="uid://p5n042s60vyp" path="res://scenes/scene_controller.gd" id="1_yi6d1"]
-[ext_resource type="PackedScene" uid="uid://dugg6qnstestl" path="res://Vertical_Slice_Level.tscn" id="2_kpgvk"]
-[ext_resource type="PackedScene" uid="uid://dw2dbsjbocxi7" path="res://scenes/__playground_scenes/playground_interactions.tscn" id="3_vtd7h"]
-[ext_resource type="PackedScene" uid="uid://dacspddaimn4a" path="res://scenes/__playground_scenes/playground_lighting.tscn" id="4_s13id"]
 [ext_resource type="Texture2D" uid="uid://2t1cw83o71dn" path="res://assets/ui/enemy_border.png" id="5_c4yej"]
 [ext_resource type="MeshLibrary" uid="uid://bu208a8l5866i" path="res://scenes/palettes/cairn/meshlibrary_cairn.tres" id="6_kpgvk"]
 [ext_resource type="Texture2D" uid="uid://bajdgu88x35py" path="res://Sprites/ballyWalkSheet_n.png" id="7_t8lt0"]
@@ -27,6 +23,9 @@
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_m0l0g"]
 texture = ExtResource("5_c4yej")
+texture_margin_left = 13.0
+texture_margin_right = 79.0
+modulate_color = Color(0.26006752, 0.106126174, 0.106126174, 1)
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_qhysk"]
 sky_horizon_color = Color(0, 0.37292683, 0.8185948, 1)
@@ -229,8 +228,6 @@ volumetric_fog_emission = Color(0.13725491, 0.16862746, 0.1882353, 1)
 volumetric_fog_sky_affect = 0.0
 
 [node name="death_screen" type="Node3D"]
-script = ExtResource("1_yi6d1")
-the_scenes = Array[PackedScene]([ExtResource("2_kpgvk"), ExtResource("3_vtd7h"), ExtResource("4_s13id")])
 
 [node name="Control" type="Control" parent="."]
 layout_mode = 3
@@ -241,16 +238,15 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="MarginContainer" type="MarginContainer" parent="Control"]
-custom_minimum_size = Vector2(320, 286)
+custom_minimum_size = Vector2(320, 279.045)
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.35416666
-anchor_top = 0.4691358
-anchor_right = 0.6848958
-anchor_bottom = 0.91049385
-offset_right = -61.0
+anchor_left = 0.41666666
+anchor_top = 0.74162495
+anchor_right = 0.5833333
+anchor_bottom = 1.0
 grow_horizontal = 2
-grow_vertical = 2
+grow_vertical = 0
 metadata/_edit_use_anchors_ = true
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Control/MarginContainer"]
@@ -276,7 +272,7 @@ offset_bottom = -2.7050018
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
-color = Color(0.13069436, 0.20844203, 0.1573717, 1)
+color = Color(0.12156863, 0.16470589, 0.13725491, 1)
 
 [node name="RichTextLabel" type="RichTextLabel" parent="Control/MarginContainer/VBoxContainer/Button"]
 layout_mode = 1
@@ -288,7 +284,7 @@ grow_vertical = 2
 mouse_filter = 2
 theme_override_font_sizes/bold_font_size = 26
 bbcode_enabled = true
-text = "[b]Main Level [/b]"
+text = "[b]Replay[/b]"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -311,7 +307,7 @@ offset_bottom = -2.7050018
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
-color = Color(0.13069436, 0.20844203, 0.1573717, 1)
+color = Color(0.12053465, 0.16360441, 0.13638422, 1)
 
 [node name="RichTextLabel" type="RichTextLabel" parent="Control/MarginContainer/VBoxContainer/Button2"]
 layout_mode = 1
@@ -324,43 +320,7 @@ mouse_filter = 2
 theme_override_font_sizes/normal_font_size = 21
 theme_override_font_sizes/bold_font_size = 26
 bbcode_enabled = true
-text = "Interaction Playground"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Button3" type="Button" parent="Control/MarginContainer/VBoxContainer"]
-custom_minimum_size = Vector2(0, 50)
-layout_mode = 2
-theme_override_font_sizes/font_size = 21
-theme_override_styles/normal = SubResource("StyleBoxTexture_m0l0g")
-
-[node name="ColorRect" type="ColorRect" parent="Control/MarginContainer/VBoxContainer/Button3"]
-show_behind_parent = true
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 5.0
-offset_top = 4.0
-offset_right = -4.0
-offset_bottom = -2.7050018
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
-color = Color(0.13069436, 0.20844203, 0.1573717, 1)
-
-[node name="RichTextLabel" type="RichTextLabel" parent="Control/MarginContainer/VBoxContainer/Button3"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
-theme_override_font_sizes/normal_font_size = 21
-theme_override_font_sizes/bold_font_size = 26
-bbcode_enabled = true
-text = "Lighting Playground"
+text = "Exit To Menu"
 horizontal_alignment = 1
 vertical_alignment = 1
 
