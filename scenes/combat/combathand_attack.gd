@@ -152,7 +152,7 @@ func begin_attack() -> void:
 	my_hand.anim_player.play(current_attack_data.attack_anim)
 	
 	audio_attack.stream = current_attack_data.attack_audio
-	if current_attack_data.telegraph_audio != null:
+	if current_attack_data.attack_audio != null:
 		audio_attack.play()
 	
 	timer_attack.wait_time = current_attack_data.attack_length
@@ -182,7 +182,7 @@ func begin_recover() -> void:
 	timer_recover.wait_time = current_attack_data.recover_length
 	
 	audio_attack.stream = current_attack_data.recover_audio
-	if current_attack_data.telegraph_audio != null:
+	if current_attack_data.recover_audio != null:
 		audio_attack.play()
 	
 	timer_recover.start()
