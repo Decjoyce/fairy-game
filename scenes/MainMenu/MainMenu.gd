@@ -8,6 +8,10 @@ var game_started := false
 @export var vs_scnee: PackedScene
 
 func _ready():
+	anim_player.play("CameraSwoop")
+	
+	await anim_player.animation_finished
+	
 	anim_player.play("CameraSlow")
 	Input.set_mouse_mode(Input.MOUSE_MODE_CONFINED_HIDDEN)
 
