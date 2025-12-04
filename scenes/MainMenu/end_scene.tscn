@@ -54,7 +54,7 @@ volumetric_fog_density = 0.02
 volumetric_fog_emission = Color(0.13725491, 0.16862746, 0.1882353, 1)
 volumetric_fog_sky_affect = 0.0
 
-[sub_resource type="Shader" id="Shader_adnpn"]
+[sub_resource type="Shader" id="Shader_ljbau"]
 code = "shader_type spatial;
 render_mode diffuse_lambert_wrap,cull_disabled;
 
@@ -131,9 +131,9 @@ void fragment() {
 }
 "
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_hpydj"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_pp0p8"]
 render_priority = 0
-shader = SubResource("Shader_adnpn")
+shader = SubResource("Shader_ljbau")
 shader_parameter/rows = 5.0
 shader_parameter/columns = 8.0
 shader_parameter/frame = 0.0
@@ -142,18 +142,18 @@ shader_parameter/sprite = ExtResource("8_70w5w")
 shader_parameter/mode = 0
 shader_parameter/Normal = ExtResource("7_t8lt0")
 
-[sub_resource type="PlaneMesh" id="PlaneMesh_llth0"]
-material = SubResource("ShaderMaterial_hpydj")
+[sub_resource type="PlaneMesh" id="PlaneMesh_cxo10"]
+material = SubResource("ShaderMaterial_pp0p8")
 size = Vector2(1.7279999, 1.7279999)
 orientation = 2
 
-[sub_resource type="Resource" id="Resource_qyvar"]
+[sub_resource type="Resource" id="Resource_bhkb4"]
 script = ExtResource("10_dqj7s")
 sprite = ExtResource("11_apkxm")
 texture_normal = ExtResource("12_p5a78")
 columns = 8.0
 
-[sub_resource type="Resource" id="Resource_40y43"]
+[sub_resource type="Resource" id="Resource_t8lt0"]
 script = ExtResource("10_dqj7s")
 name = "walk"
 sprite = ExtResource("8_70w5w")
@@ -161,7 +161,7 @@ texture_normal = ExtResource("7_t8lt0")
 rows = 5.0
 columns = 8.0
 
-[sub_resource type="Resource" id="Resource_o1wry"]
+[sub_resource type="Resource" id="Resource_70w5w"]
 script = ExtResource("10_dqj7s")
 name = "Attack_LbBottom"
 sprite = ExtResource("13_33gup")
@@ -169,7 +169,7 @@ texture_normal = ExtResource("14_31lw2")
 rows = 2.0
 columns = 8.0
 
-[sub_resource type="Resource" id="Resource_bt4is"]
+[sub_resource type="Resource" id="Resource_0bgtr"]
 script = ExtResource("10_dqj7s")
 name = "Attack_LMid"
 sprite = ExtResource("15_05sg5")
@@ -177,7 +177,7 @@ texture_normal = ExtResource("16_2vaep")
 rows = 2.0
 columns = 8.0
 
-[sub_resource type="Resource" id="Resource_p0tte"]
+[sub_resource type="Resource" id="Resource_dqj7s"]
 script = ExtResource("10_dqj7s")
 name = "Attack_LTop"
 sprite = ExtResource("17_48cgf")
@@ -185,7 +185,7 @@ texture_normal = ExtResource("18_j1c5c")
 rows = 2.0
 columns = 8.0
 
-[sub_resource type="Resource" id="Resource_vogn5"]
+[sub_resource type="Resource" id="Resource_apkxm"]
 script = ExtResource("10_dqj7s")
 name = "Attack_RBottom"
 sprite = ExtResource("19_81hfk")
@@ -193,7 +193,7 @@ texture_normal = ExtResource("20_jxg4l")
 rows = 2.0
 columns = 8.0
 
-[sub_resource type="Resource" id="Resource_nbayt"]
+[sub_resource type="Resource" id="Resource_p5a78"]
 script = ExtResource("10_dqj7s")
 name = "Attack_RMid"
 sprite = ExtResource("21_61n7y")
@@ -201,7 +201,7 @@ texture_normal = ExtResource("22_c15ql")
 rows = 2.0
 columns = 8.0
 
-[sub_resource type="Resource" id="Resource_4j7a2"]
+[sub_resource type="Resource" id="Resource_33gup"]
 script = ExtResource("10_dqj7s")
 name = "Attack_RTop"
 sprite = ExtResource("23_l2i8b")
@@ -337,9 +337,9 @@ environment = SubResource("Environment_t8lt0")
 [node name="Sprite3DBillBoard" type="MeshInstance3D" parent="."]
 layers = 3
 sorting_offset = 1.0
-mesh = SubResource("PlaneMesh_llth0")
+mesh = SubResource("PlaneMesh_cxo10")
 script = ExtResource("9_0bgtr")
-animations_array = Array[ExtResource("10_dqj7s")]([SubResource("Resource_qyvar"), SubResource("Resource_40y43"), SubResource("Resource_o1wry"), SubResource("Resource_bt4is"), SubResource("Resource_p0tte"), SubResource("Resource_vogn5"), SubResource("Resource_nbayt"), SubResource("Resource_4j7a2")])
+animations_array = Array[ExtResource("10_dqj7s")]([SubResource("Resource_bhkb4"), SubResource("Resource_t8lt0"), SubResource("Resource_70w5w"), SubResource("Resource_0bgtr"), SubResource("Resource_dqj7s"), SubResource("Resource_apkxm"), SubResource("Resource_p5a78"), SubResource("Resource_33gup")])
 animation = 1
 frame = 1.0
 sprite_scale = 0.0016

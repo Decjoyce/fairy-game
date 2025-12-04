@@ -9,7 +9,7 @@ var game_started := false
 
 func _ready():
 	anim_player.play("CameraSlow")
-	Input.set_mouse_mode(Input.MOUSE_MODE_CONFINED_HIDDEN)
+	#Input.set_mouse_mode(Input.MOUSE_MODE_CONFINED_HIDDEN)
 
 func _process(delta):
 	if game_started:
