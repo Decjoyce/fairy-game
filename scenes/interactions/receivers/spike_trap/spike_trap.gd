@@ -9,6 +9,11 @@ func activate(sig: float) -> void:
 	for peep in people_inside:
 		peep.combat.stance.stats.take_damage(100)
 
+func deactivate(sig: float) -> void:
+	if anim.current_animation == "spike_down": return
+	anim.play("spike_down")
+	for peep in people_inside:
+		peep.combat.stance.stats.take_damage(100)
 
 func _on_area_3d_area_entered(area: Area3D) -> void:
 	if area is EnemyHitbox and !people_inside.has(area):

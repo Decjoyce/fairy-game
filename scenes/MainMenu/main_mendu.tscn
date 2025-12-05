@@ -23,10 +23,10 @@ tracks/0/path = NodePath(".:attributes:frustum_focal_length")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 4, 8.5),
-"transitions": PackedFloat32Array(1, 1, -2),
+"times": PackedFloat32Array(0, 8.5),
+"transitions": PackedFloat32Array(1, -2),
 "update": 0,
-"values": [30.0, 30.0, 35.0]
+"values": [30.0, 35.0]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -35,10 +35,10 @@ tracks/1/path = NodePath(".:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 6.75, 8.5),
-"transitions": PackedFloat32Array(1, 1, -2),
+"times": PackedFloat32Array(0, 8.5),
+"transitions": PackedFloat32Array(-2, -2),
 "update": 0,
-"values": [Vector3(0.803, 39.14, -28.56), Vector3(0.803, 9.178333, -28.56), Vector3(0.803, 4.63, -28.56)]
+"values": [Vector3(0.803, 4.63, -28.56), Vector3(0.803, 4.63, -28.56)]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -452,8 +452,8 @@ environment = SubResource("Environment_lrn60")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.7121853, 0.7019915, 0, -0.7019915, 0.7121853, 0, 3.0698814, 0)
-light_color = Color(0.112546004, 0.20072627, 0.24275497, 1)
-light_energy = 0.47
+light_color = Color(0.045084618, 0.04812911, 0.050138205, 1)
+light_energy = 16.0
 shadow_enabled = true
 shadow_bias = 0.125
 
@@ -516,5 +516,6 @@ metadata/_edit_use_anchors_ = true
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(-1, -3.2040553e-08, -8.133969e-08, 0, 0.9304176, -0.3665012, 8.742278e-08, -0.3665012, -0.9304176, 0.8830023, 2.3146381, 13.373848)
+visible = false
 mesh = SubResource("QuadMesh_v7r8i")
 skeleton = NodePath("../Camera3D/Y_ROT/X_ROT/SpotLight3D")

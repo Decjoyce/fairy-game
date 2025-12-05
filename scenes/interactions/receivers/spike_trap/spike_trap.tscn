@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://bmiljk53ks7e7"]
+[gd_scene load_steps=13 format=3 uid="uid://bmiljk53ks7e7"]
 
 [ext_resource type="Texture2D" uid="uid://ds2ryuxjpf5j1" path="res://Sprites/WeaponSprites/blackcircle_tran.png" id="1_23lq1"]
 [ext_resource type="Script" uid="uid://dcbg0ho5ff6uu" path="res://scenes/interactions/receivers/spike_trap/spike_trap.gd" id="1_oarp6"]
@@ -25,6 +25,21 @@ bottom_radius = 0.03
 height = 0.8
 radial_segments = 4
 
+[sub_resource type="Animation" id="Animation_oarp6"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Spikes:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+
 [sub_resource type="Animation" id="Animation_512if"]
 resource_name = "spike_up"
 length = 0.2
@@ -41,8 +56,9 @@ tracks/0/keys = {
 "values": [Vector3(0, 0, 0), Vector3(0, 1.3, 0)]
 }
 
-[sub_resource type="Animation" id="Animation_oarp6"]
-length = 0.001
+[sub_resource type="Animation" id="Animation_0k2xd"]
+resource_name = "spike_down"
+length = 0.2
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -50,15 +66,16 @@ tracks/0/path = NodePath("Spikes:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector3(0, 0, 0)]
+"values": [Vector3(0, 1.3, 0), Vector3(0, 0, 0)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_oarp6"]
 _data = {
 &"RESET": SubResource("Animation_oarp6"),
+&"spike_down": SubResource("Animation_0k2xd"),
 &"spike_up": SubResource("Animation_512if")
 }
 
