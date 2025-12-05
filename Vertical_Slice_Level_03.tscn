@@ -13,11 +13,11 @@
 [ext_resource type="PackedScene" uid="uid://csot2mi7746ll" path="res://scenes/interactions/triggers/pressure_plate/pressure_plate.tscn" id="11_gvepk"]
 [ext_resource type="Script" uid="uid://c00pbq6pr77dd" path="res://dsdsds.gd" id="24_8o3kd"]
 [ext_resource type="PackedScene" uid="uid://bs8ivnvddloci" path="res://scenes/_game.tscn" id="25_e7sjl"]
-[ext_resource type="PackedScene" uid="uid://lxic7c72kvyt" path="res://scenes/interactions/interactables/grabbable_items/item_skull.tscn" id="38_j1tuy"]
-[ext_resource type="PackedScene" uid="uid://bw752cs1fru6w" path="res://scenes/interactions/interactables/grabbable_items/otherthing.tscn" id="39_8g5x3"]
+[ext_resource type="PackedScene" path="res://scenes/interactions/interactables/grabbable_items/item_skull.tscn" id="38_j1tuy"]
+[ext_resource type="PackedScene" path="res://scenes/interactions/interactables/grabbable_items/otherthing.tscn" id="39_8g5x3"]
 [ext_resource type="PackedScene" uid="uid://dqh8lru4mt2ap" path="res://scenes/interactions/interactables/breakables/urn.tscn" id="40_5jloq"]
 [ext_resource type="Script" uid="uid://beaf3digx88d0" path="res://scenes/interactions/interactables/grabbable_items/type/itemtype_breakable.gd" id="41_76qsq"]
-[ext_resource type="PackedScene" uid="uid://cfkoaxhngk3gf" path="res://scenes/interactions/interactables/grabbable_items/item_key.tscn" id="42_vl6rh"]
+[ext_resource type="PackedScene" path="res://scenes/interactions/interactables/grabbable_items/item_key.tscn" id="42_vl6rh"]
 [ext_resource type="PackedScene" uid="uid://drc8vg7njr5ui" path="res://Enemy/enemy_ballybog.tscn" id="43_fawc0"]
 [ext_resource type="Material" uid="uid://f0qp2o0ip83p" path="res://EnvironmentAssets/ObjTiles_Environment/Materials/props/Wood_Door/Wood_Door.tres" id="44_uey7w"]
 [ext_resource type="Material" uid="uid://c17eub34k5hf8" path="res://EnvironmentAssets/ObjTiles_Environment/Materials/props/Wood_Door/Wood_Screw.tres" id="45_iytbe"]
@@ -557,6 +557,22 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.9999995, 0, 8.368)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.26096016, 22.632988)
 player = NodePath("../../../player_test")
 
+[node name="Enemy_presset2" parent="Node3D3/Node3D2" node_paths=PackedStringArray("player") instance=ExtResource("43_fawc0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.4999995, -0.26096016, 22.632988)
+player = NodePath("../../../player_test")
+
+[node name="Enemy_presset3" parent="Node3D3/Node3D2" node_paths=PackedStringArray("player") instance=ExtResource("43_fawc0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5000005, -0.26096016, 22.632988)
+player = NodePath("../../../player_test")
+
+[node name="Enemy_presset4" parent="Node3D3/Node3D2" node_paths=PackedStringArray("player") instance=ExtResource("43_fawc0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.49999952, -0.26096016, 20.632988)
+player = NodePath("../../../player_test")
+
+[node name="Enemy_presset5" parent="Node3D3/Node3D2" node_paths=PackedStringArray("player") instance=ExtResource("43_fawc0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.0000005, -0.26096016, 20.632988)
+player = NodePath("../../../player_test")
+
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Node3D3/Node3D2"]
 transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 0, 0.6654327, 27.434818)
 mesh = SubResource("QuadMesh_b5lof")
@@ -665,4 +681,8 @@ shape = SubResource("SphereShape3D_j4a7u")
 [connection signal="on_change" from="Node3D3/Puzzles_01/Node3D3/Node3D/Main_PressurePlate" to="Node3D3/Puzzles_01/Node3D3/Gate_Left3" method="open_gate"]
 [connection signal="on_activated" from="Node3D3/Puzzles_01/Button4" to="Node3D3/Puzzles_01/Gate_Left4" method="open_gate"]
 [connection signal="hey_joy" from="Node3D3/Node3D2/Enemy_presset" to="Node3D3/Node3D2/Locked_Door_3/AnimatedObject" method="play_animation"]
+[connection signal="hey_joy" from="Node3D3/Node3D2/Enemy_presset2" to="Node3D3/Node3D2/Locked_Door_3/AnimatedObject" method="play_animation"]
+[connection signal="hey_joy" from="Node3D3/Node3D2/Enemy_presset3" to="Node3D3/Node3D2/Locked_Door_3/AnimatedObject" method="play_animation"]
+[connection signal="hey_joy" from="Node3D3/Node3D2/Enemy_presset4" to="Node3D3/Node3D2/Locked_Door_3/AnimatedObject" method="play_animation"]
+[connection signal="hey_joy" from="Node3D3/Node3D2/Enemy_presset5" to="Node3D3/Node3D2/Locked_Door_3/AnimatedObject" method="play_animation"]
 [connection signal="area_entered" from="Ender/Area3D" to="Ender" method="_on_area_3d_area_entered"]
