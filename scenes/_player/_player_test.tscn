@@ -1,4 +1,4 @@
-[gd_scene load_steps=116 format=3 uid="uid://bq86osdembn58"]
+[gd_scene load_steps=119 format=3 uid="uid://bq86osdembn58"]
 
 [ext_resource type="Script" uid="uid://io22wsbhy73f" path="res://scenes/_player/player_test.gd" id="1_e0b2u"]
 [ext_resource type="Script" uid="uid://by88p7ijbixe5" path="res://scenes/_player/player_movement.gd" id="2_3jgj8"]
@@ -69,6 +69,8 @@
 [ext_resource type="AudioStream" uid="uid://ddyobjbv3wixm" path="res://sfx_vertical/Hit_Player-008.wav" id="56_ijyi7"]
 [ext_resource type="AudioStream" uid="uid://cakp7nh1yermg" path="res://sfx_vertical/Hit_Player-009.wav" id="57_l4n3m"]
 [ext_resource type="AudioStream" uid="uid://bqpl3gxdtep45" path="res://sfx_vertical/Hit_Player-010.wav" id="58_f0ma5"]
+[ext_resource type="Shader" uid="uid://4b4kstxm1aph" path="res://Shaders/Vertical_Slice_Level.gdshader" id="70_52e8e"]
+[ext_resource type="Texture2D" uid="uid://bgvylughro1va" path="res://PaperTexture/Texturelabs_Paper_304L.jpg" id="71_nkha6"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_3jgj8"]
 height = 1.3
@@ -646,6 +648,14 @@ stream_9/stream = ExtResource("58_f0ma5")
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_gcklq"]
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_52e8e"]
+shader = ExtResource("70_52e8e")
+shader_parameter/paper_texture = ExtResource("71_nkha6")
+shader_parameter/blend_strength = 0.250000011875
+shader_parameter/contrast_boost = 1.15
+shader_parameter/saturation = 0.7650000363375
+shader_parameter/new_color = Color(1, 1, 1, 1)
+
 [node name="player_test" type="Node3D" node_paths=PackedStringArray("stats_ui", "combat", "death_ui") groups=["Player"]]
 script = ExtResource("1_e0b2u")
 stats_ui = NodePath("Stats/UI")
@@ -1131,6 +1141,22 @@ text = "Return To Menu"
 light_color = Color(0.20314711, 0.27413306, 0.28956375, 1)
 light_energy = 0.3
 omni_range = 2.149
+
+[node name="PostProcessing" type="Node" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="PostProcessing"]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="PostProcessing"]
+layer = 0
+
+[node name="ColorRect" type="ColorRect" parent="PostProcessing/CanvasLayer"]
+material = SubResource("ShaderMaterial_52e8e")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.5747226, 0.50857943, 0.49505764, 0.03529412)
 
 [connection signal="on_body_entered" from="EnemyChecker" to="Combat" method="_on_enemy_checker_on_body_entered"]
 [connection signal="on_body_exit" from="EnemyChecker" to="Combat" method="_on_enemy_checker_on_body_exit"]

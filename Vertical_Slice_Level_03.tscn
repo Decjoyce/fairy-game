@@ -1,10 +1,8 @@
-[gd_scene load_steps=50 format=4 uid="uid://bssask2v64ogc"]
+[gd_scene load_steps=47 format=4 uid="uid://bssask2v64ogc"]
 
 [ext_resource type="Script" uid="uid://ubfk2a80dhfp" path="res://addons/grid_map_pathfinding/grid_map_pathfinding.gd" id="1_m1xuj"]
 [ext_resource type="MeshLibrary" uid="uid://bu208a8l5866i" path="res://scenes/palettes/cairn/meshlibrary_cairn.tres" id="2_grny0"]
 [ext_resource type="PackedScene" uid="uid://bq86osdembn58" path="res://scenes/_player/_player_test.tscn" id="3_lwsdr"]
-[ext_resource type="Shader" uid="uid://4b4kstxm1aph" path="res://Shaders/Vertical_Slice_Level.gdshader" id="4_rlhl8"]
-[ext_resource type="Texture2D" uid="uid://bgvylughro1va" path="res://PaperTexture/Texturelabs_Paper_304L.jpg" id="5_myuv0"]
 [ext_resource type="PackedScene" uid="uid://bm8kaq0ah5g7q" path="res://scenes/interactions/interactables/grabbable_items/torch/torch.tscn" id="6_bbkug"]
 [ext_resource type="PackedScene" uid="uid://dde66nwtb1gv1" path="res://scenes/interactions/triggers/item_receiver/torch_scont/torch_scont.tscn" id="7_l1kbb"]
 [ext_resource type="PackedScene" uid="uid://dt13fur6twjep" path="res://scenes/interactions/receivers/gate/gate.tscn" id="8_wxy46"]
@@ -85,14 +83,6 @@ item/1/navigation_layers = 1
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_3ri2a"]
 size = Vector3(500, 0.1, 500)
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_mitvi"]
-shader = ExtResource("4_rlhl8")
-shader_parameter/paper_texture = ExtResource("5_myuv0")
-shader_parameter/blend_strength = 0.250000011875
-shader_parameter/contrast_boost = 1.15
-shader_parameter/saturation = 0.7650000363375
-shader_parameter/new_color = Color(1, 1, 1, 1)
 
 [sub_resource type="Resource" id="Resource_qsjgh"]
 script = ExtResource("41_76qsq")
@@ -387,22 +377,6 @@ transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 3, 1
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.3, 0)
 shape = SubResource("BoxShape3D_3ri2a")
-
-[node name="PostProcessing" type="Node" parent="."]
-
-[node name="Sprite2D" type="Sprite2D" parent="PostProcessing"]
-
-[node name="CanvasLayer" type="CanvasLayer" parent="PostProcessing"]
-layer = 0
-
-[node name="ColorRect" type="ColorRect" parent="PostProcessing/CanvasLayer"]
-material = SubResource("ShaderMaterial_mitvi")
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0.5747226, 0.50857943, 0.49505764, 0.03529412)
 
 [node name="Torches" type="Node3D" parent="."]
 
