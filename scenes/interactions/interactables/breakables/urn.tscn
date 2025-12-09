@@ -1,10 +1,10 @@
-[gd_scene load_steps=23 format=3 uid="uid://dqh8lru4mt2ap"]
+[gd_scene load_steps=26 format=3 uid="uid://dqh8lru4mt2ap"]
 
 [ext_resource type="Script" uid="uid://s5cfdf85lm5g" path="res://scenes/interactions/interactables/grabbable_items/grabbable_item.gd" id="1_q07k0"]
 [ext_resource type="Texture2D" uid="uid://ce58r2n0vi63r" path="res://assets/item_sprites/urn_item.png" id="3_bkq8s"]
 [ext_resource type="AudioStream" uid="uid://dutddyikwuiut" path="res://assets/misc/hittingsound_shorter.wav" id="4_8bfqv"]
 [ext_resource type="PackedScene" uid="uid://lxic7c72kvyt" path="res://scenes/interactions/interactables/grabbable_items/item_skull.tscn" id="4_hgehc"]
-[ext_resource type="PackedScene" uid="uid://bw752cs1fru6w" path="res://scenes/interactions/interactables/grabbable_items/otherthing.tscn" id="5_18pev"]
+[ext_resource type="PackedScene" uid="uid://bw752cs1fru6w" path="res://scenes/interactions/interactables/grabbable_items/drinkvessel.tscn" id="5_18pev"]
 [ext_resource type="Script" uid="uid://beaf3digx88d0" path="res://scenes/interactions/interactables/grabbable_items/type/itemtype_breakable.gd" id="5_gpk4b"]
 [ext_resource type="PackedScene" uid="uid://civmqin21rnce" path="res://scenes/interactions/interactables/instruments/instrument_test.tscn" id="5_nlfav"]
 [ext_resource type="PackedScene" uid="uid://bm8kaq0ah5g7q" path="res://scenes/interactions/interactables/grabbable_items/torch/torch.tscn" id="6_cfbym"]
@@ -33,6 +33,28 @@ size = Vector3(0.5, 0.55810547, 0.5)
 [sub_resource type="BoxShape3D" id="BoxShape3D_234jp"]
 size = Vector3(0.4, 0.49611816, 0.4)
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hgehc"]
+render_priority = 2
+transparency = 1
+blend_mode = 1
+shading_mode = 0
+albedo_color = Color(1, 1, 1, 0.044000003)
+albedo_texture = ExtResource("3_bkq8s")
+billboard_mode = 1
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_hgehc"]
+load_path = "res://.godot/imported/urn_item.png-a865bb42c1dd5f9effd8c6077babc439.s3tc.ctex"
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_18pev"]
+render_priority = 3
+transparency = 1
+blend_mode = 1
+shading_mode = 0
+diffuse_mode = 3
+albedo_color = Color(0.69135684, 0.6913568, 0.69135684, 1)
+albedo_texture = SubResource("CompressedTexture2D_hgehc")
+billboard_mode = 1
+
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_52tl6"]
 random_pitch = 1.2
 streams_count = 9
@@ -57,6 +79,7 @@ contact_monitor = true
 max_contacts_reported = 1
 script = ExtResource("1_q07k0")
 item_type = SubResource("Resource_hvsc3")
+display_name = "Urn"
 col = NodePath("CollisionShape3D")
 grab_col = NodePath("Area3D/CollisionShape3D2")
 can_break = true
@@ -79,6 +102,7 @@ debug_color = Color(0.8442249, 0.37985525, 5.7756904e-07, 0.41960785)
 
 [node name="_idle_graphics" type="Sprite3D" parent="."]
 layers = 4
+material_overlay = SubResource("StandardMaterial3D_hgehc")
 pixel_size = 0.0006
 billboard = 1
 shaded = true
@@ -89,7 +113,9 @@ hframes = 2
 [node name="_grabbed_graphics" type="Sprite3D" parent="."]
 visible = false
 layers = 4
+material_overlay = SubResource("StandardMaterial3D_18pev")
 pixel_size = 0.0006
+shaded = true
 render_priority = 1
 texture = ExtResource("3_bkq8s")
 hframes = 2

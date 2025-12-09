@@ -7,6 +7,7 @@ var is_grabbed: bool = false
 
 @export_category("Item Type")
 @export var item_type: ItemType
+@export var display_name: String
 
 @export_category("Weight")
 enum item_weight_types {WEIGHTLESS, LIGHT, MEDIUM, HEAVY}
@@ -48,7 +49,7 @@ var has_been_picked_up: bool
 func _ready() -> void:
 	interaction_type = InteractTypes.GRAB_ITEM
 	rb.body_entered.connect(_on_collide)
-	prompt_text = "Grab " + name
+	prompt_text = "Grab " + display_name
 	if item_type is ItemType_Breakable:
 		var _item_to_spawn: PackedScene = item_type.get_item_to_spawn()
 		if _item_to_spawn == null: return

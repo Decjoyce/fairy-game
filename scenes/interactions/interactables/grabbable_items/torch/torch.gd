@@ -44,7 +44,7 @@ func _process(delta: float) -> void:
 	time_passed += delta
 	
 	var sampled_noise = abs(item_type.noise.noise.get_noise_1d(time_passed))
-	torch_light.light_energy = item_type.light_strength * (current_health / item_type.max_health) * (item_type.flicker_frequency + sampled_noise)
+	torch_light.light_energy = clamp(item_type.light_strength * (current_health / item_type.max_health) * (item_type.flicker_frequency + sampled_noise), 0, item_type.light_strength)
 	
 	if has_been_picked_up:
 		current_health -= delta

@@ -21,8 +21,17 @@ func _process(delta: float) -> void:
 		return
 	if Input.is_action_just_pressed("_debug_open_console"):
 		is_debugging = !is_debugging
-		if is_debugging: $Console.visible = true
-		else: $Console.visible = false
+		if is_debugging: 
+			$Console.visible = true
+			$Console.console_line.grab_focus()
+			$Console.console_line.text = ""
+			Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+		else: 
+			$Console.console_line.release_focus()
+			$Console.visible = false
+			Input.set_mouse_mode(Input.MOUSE_MODE_CONFINED_HIDDEN)
+	if Input.is_action_just_pressed("ui_cancel"):
+		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 
 func _init_me() -> void:
 	player = get_tree().get_first_node_in_group("Player") as PlayerTest

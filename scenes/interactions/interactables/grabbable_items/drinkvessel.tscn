@@ -1,14 +1,14 @@
 [gd_scene load_steps=9 format=3 uid="uid://bw752cs1fru6w"]
 
-[ext_resource type="Script" uid="uid://s5cfdf85lm5g" path="res://scenes/interactions/interactables/grabbable_items/grabbable_item.gd" id="1_ow6tx"]
-[ext_resource type="Script" uid="uid://cqhq7vrwiw3m6" path="res://scenes/interactions/interactables/grabbable_items/type/item_type.gd" id="2_i7gk6"]
-[ext_resource type="Texture2D" uid="uid://7lk2ld8qj3i0" path="res://assets/item_sprites/drinkingVessel_item.png" id="3_ow6tx"]
-[ext_resource type="AudioStream" uid="uid://dutddyikwuiut" path="res://assets/misc/hittingsound_shorter.wav" id="4_svnl6"]
+[ext_resource type="Script" uid="uid://s5cfdf85lm5g" path="res://scenes/interactions/interactables/grabbable_items/grabbable_item.gd" id="1_f2rkp"]
+[ext_resource type="Script" uid="uid://cqhq7vrwiw3m6" path="res://scenes/interactions/interactables/grabbable_items/type/item_type.gd" id="2_fnxl4"]
+[ext_resource type="Texture2D" uid="uid://7lk2ld8qj3i0" path="res://assets/item_sprites/drinkingVessel_item.png" id="3_cd30j"]
+[ext_resource type="AudioStream" uid="uid://dutddyikwuiut" path="res://assets/misc/hittingsound_shorter.wav" id="4_fpq24"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_llc7q"]
 
 [sub_resource type="Resource" id="Resource_yadgr"]
-script = ExtResource("2_i7gk6")
+script = ExtResource("2_fnxl4")
 metadata/_custom_type_script = "uid://cqhq7vrwiw3m6"
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_llc7q"]
@@ -26,8 +26,9 @@ physics_material_override = SubResource("PhysicsMaterial_llc7q")
 gravity_scale = 0.8
 contact_monitor = true
 max_contacts_reported = 1
-script = ExtResource("1_ow6tx")
+script = ExtResource("1_f2rkp")
 item_type = SubResource("Resource_yadgr")
+display_name = "Pitcher"
 col = NodePath("CollisionShape3D")
 grab_col = NodePath("Area3D/CollisionShape3D2")
 idle_graphics = NodePath("Sprite3D")
@@ -50,10 +51,10 @@ pixel_size = 0.0008
 billboard = 2
 shaded = true
 render_priority = 1
-texture = ExtResource("3_ow6tx")
+texture = ExtResource("3_cd30j")
 
 [node name="AudioPlayer" type="AudioStreamPlayer3D" parent="."]
-stream = ExtResource("4_svnl6")
+stream = ExtResource("4_fpq24")
 bus = &"items"
 
 [node name="RayCast3D" type="RayCast3D" parent="."]

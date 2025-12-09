@@ -39,6 +39,7 @@ contact_monitor = true
 max_contacts_reported = 1
 script = ExtResource("1_j22s6")
 item_type = SubResource("Resource_d0jyt")
+display_name = "Torch"
 item_weight = 1
 col = NodePath("CollisionShape3D")
 grab_col = NodePath("Area3D/CollisionShape3D")
@@ -85,10 +86,15 @@ texture = ExtResource("2_20p6n")
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.2236549, 0)
 light_color = Color(0.7468442, 0.34661883, 0, 1)
-light_size = 0.593
+light_size = 0.058
 light_cull_mask = 4294966271
-distance_fade_shadow = 46.75
-omni_range = 3.0
+shadow_blur = 0.0
+distance_fade_enabled = true
+distance_fade_begin = 20.0
+distance_fade_shadow = 30.0
+distance_fade_length = 3.0
+omni_range = 3.932
+omni_attenuation = 2.169
 
 [node name="AudioPlayer" type="AudioStreamPlayer3D" parent="."]
 stream = ExtResource("5_j22s6")

@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://dacspddaimn4a"]
+[gd_scene load_steps=31 format=3 uid="uid://dacspddaimn4a"]
 
 [ext_resource type="PackedScene" uid="uid://bwo817pko4lmy" path="res://scenes/__prototyping/dev_tiles/dev_hall.tscn" id="1_daejx"]
 [ext_resource type="Material" uid="uid://bk8gbrrgpacoj" path="res://assets/_dev/materials/_dev_m_source.tres" id="2_hoyov"]
@@ -15,9 +15,8 @@
 [ext_resource type="Texture2D" uid="uid://cek17ch4ko4ca" path="res://scenes/interactions/interactables/grabbable_items/torch/torch.png" id="13_vnihi"]
 [ext_resource type="AudioStream" uid="uid://dutddyikwuiut" path="res://assets/misc/hittingsound_shorter.wav" id="14_naykj"]
 [ext_resource type="AudioStream" uid="uid://rc1825amqk33" path="res://assets/_not_ours_dontship/lego_mavelsuperheroes/FIRESML_LP.WAV" id="15_exkgn"]
-
-[sub_resource type="Environment" id="Environment_7jqst"]
-background_mode = 1
+[ext_resource type="Shader" uid="uid://4b4kstxm1aph" path="res://Shaders/Vertical_Slice_Level.gdshader" id="16_vnihi"]
+[ext_resource type="Texture2D" uid="uid://bgvylughro1va" path="res://PaperTexture/Texturelabs_Paper_304L.jpg" id="17_naykj"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_cti4x"]
 size = Vector3(0.2, 2, 0.2)
@@ -62,15 +61,48 @@ height = 0.6900085
 radius = 0.10888672
 height = 0.9732544
 
+[sub_resource type="Environment" id="Environment_exkgn"]
+background_mode = 1
+ambient_light_source = 2
+ambient_light_color = Color(0.09926855, 0.09559325, 0.09191806, 1)
+ambient_light_energy = 1.57
+reflected_light_source = 1
+tonemap_mode = 4
+tonemap_exposure = 2.5
+ssao_radius = 4.96
+ssao_intensity = 6.85
+ssao_detail = 0.0
+sdfgi_enabled = true
+sdfgi_use_occlusion = true
+sdfgi_read_sky_light = false
+sdfgi_energy = 1.5
+glow_enabled = true
+glow_intensity = 0.19
+glow_strength = 0.79
+volumetric_fog_enabled = true
+volumetric_fog_density = 0.06
+volumetric_fog_emission = Color(0.06582664, 0.05450523, 0.039400138, 1)
+volumetric_fog_gi_inject = 0.0
+volumetric_fog_anisotropy = 0.65
+volumetric_fog_sky_affect = 0.0
+adjustment_enabled = true
+adjustment_contrast = 0.9
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_w06mr"]
+shader = ExtResource("16_vnihi")
+shader_parameter/paper_texture = ExtResource("17_naykj")
+shader_parameter/blend_strength = 0.250000011875
+shader_parameter/contrast_boost = 1.15
+shader_parameter/saturation = 0.7650000363375
+shader_parameter/new_color = Color(1, 1, 1, 1)
+
 [node name="PlaygroundLighting" type="Node3D"]
 
 [node name="env" type="Node3D" parent="."]
 
-[node name="WorldEnvironment" type="WorldEnvironment" parent="env"]
-environment = SubResource("Environment_7jqst")
-
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="env"]
 transform = Transform3D(1, 0, 0, 0, -0.5000001, 0.8660254, 0, -0.8660254, -0.5000001, 0, 0, 0)
+visible = false
 light_energy = 0.002
 sky_mode = 1
 
@@ -389,3 +421,22 @@ texture_filter = 0
 modulate = Color(0, 0, 0, 0.32941177)
 outline_modulate = Color(0, 0, 0, 0)
 text = "THIS PLACE IS CURS"
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_exkgn")
+
+[node name="PostProcessing" type="Node" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="PostProcessing"]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="PostProcessing"]
+layer = 0
+
+[node name="ColorRect" type="ColorRect" parent="PostProcessing/CanvasLayer"]
+material = SubResource("ShaderMaterial_w06mr")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.5747226, 0.50857943, 0.49505764, 0.03529412)
