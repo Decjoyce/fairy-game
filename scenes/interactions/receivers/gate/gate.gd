@@ -19,11 +19,16 @@ var things_under: Array[Node3D]
 
 @export var stay_open: bool
 
+var cur_value: float
+var last_value: float
+
 func open_gate(amount: float) -> void:
 	time_since_start = 0
 	is_opening = true
 	_start_position = graphics.position.y
 	prints("open: ", amount)
+	last_value = cur_value
+	cur_value = amount
 	_end_position = 1 + (closed_pos * amount)
 	
 	if _end_position >= closed_pos + height_to_toggle_player_barrier:
@@ -32,7 +37,8 @@ func open_gate(amount: float) -> void:
 		player_col.set_deferred("disabled",false)
 
 func _process(delta: float) -> void:
-	if is_opening and !things_under:
+	if is_opening:
+		if (things_under and cur_value <= last_value): return
 		#print(time_since_start)
 		time_since_start += delta
 		var percentage_complete = clamp(time_since_start / speed, 0, 1)

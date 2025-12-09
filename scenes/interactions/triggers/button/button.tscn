@@ -1,9 +1,13 @@
-[gd_scene load_steps=14 format=4 uid="uid://qu5rxgbydmet"]
+[gd_scene load_steps=16 format=4 uid="uid://qu5rxgbydmet"]
 
 [ext_resource type="Script" uid="uid://qtbq6ey4f3lb" path="res://scenes/interactions/triggers/button/button.gd" id="1_drqat"]
 [ext_resource type="Texture2D" uid="uid://cm7goh62m0nv2" path="res://assets/misc/TEMP_inv_slot.png" id="2_hacnr"]
 [ext_resource type="Material" uid="uid://c22pex7gucglg" path="res://EnvironmentAssets/ObjTiles_Environment/Materials/props/Button/Button/Button.tres" id="4_t7mcd"]
 [ext_resource type="Material" uid="uid://bhu52kgm23cmj" path="res://EnvironmentAssets/ObjTiles_Environment/Materials/props/Button/ButtonBack/ButtonBack.tres" id="4_wyfxs"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_t7mcd"]
+transparency = 1
+albedo_color = Color(0.59717584, 0.59717625, 0.5971761, 0.16470589)
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_sa4bo"]
 _surfaces = [{
@@ -96,6 +100,10 @@ _data = {
 &"button_reset": SubResource("Animation_xia2v")
 }
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wyfxs"]
+transparency = 1
+albedo_color = Color(0.32086813, 0.32086813, 0.32086813, 0.038000003)
+
 [sub_resource type="ArrayMesh" id="ArrayMesh_cx84f"]
 _surfaces = [{
 "aabb": AABB(-0.199999, 3e-06, -0.999616, 0.39999902, 2.0999868, 1.999627),
@@ -149,6 +157,7 @@ font_size = 22
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Node3D"]
 transform = Transform3D(-6.5567085e-09, 0, -0.15, 0, 0.15, 0, 0.15, 0, -6.5567085e-09, 0, -0.1, 0)
+material_overlay = SubResource("StandardMaterial3D_t7mcd")
 mesh = SubResource("ArrayMesh_q5woa")
 skeleton = NodePath("../..")
 
@@ -169,6 +178,7 @@ libraries = {
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(-6.5567085e-09, 0, -0.15, 0, 0.15, 0, 0.15, 0, -6.5567085e-09, 0, -0.135, 0.027638823)
+material_overlay = SubResource("StandardMaterial3D_wyfxs")
 mesh = SubResource("ArrayMesh_wyfxs")
 
 [connection signal="area_entered" from="Trigger" to="." method="_on_item_entered"]
