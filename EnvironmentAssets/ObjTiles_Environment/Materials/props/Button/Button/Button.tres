@@ -1,17 +1,17 @@
 [gd_resource type="StandardMaterial3D" load_steps=6 format=3 uid="uid://c22pex7gucglg"]
 
-[ext_resource type="Texture2D" uid="uid://c2ct2pcoqn64s" path="res://EnvironmentAssets/ObjTiles_Environment/ObjModels/Props/Button/Button/Button_Base_color.png" id="1_hk4le"]
+[ext_resource type="Texture2D" uid="uid://fl4lqtf0lpho" path="res://EnvironmentAssets/ObjTiles_Environment/ObjModels/Props/Button/Button/Textures/New/Button2_Base_color.png" id="1_mirf4"]
 [ext_resource type="Material" uid="uid://dyejtq23uplk4" path="res://EnvironmentAssets/ObjTiles_Environment/Materials/Outline/outline.tres" id="2_6koci"]
-[ext_resource type="Texture2D" uid="uid://bh5wagm35o8r3" path="res://EnvironmentAssets/ObjTiles_Environment/ObjModels/Props/Button/Button/Button_Normal_OpenGL.png" id="3_betel"]
-[ext_resource type="Texture2D" uid="uid://be8pbkv8e0vnb" path="res://EnvironmentAssets/ObjTiles_Environment/ObjModels/Props/Button/Button/Button_Roughness.png" id="4_oyb0t"]
-
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_g7uty"]
+[ext_resource type="Texture2D" uid="uid://cosmbbvgdcdu4" path="res://EnvironmentAssets/ObjTiles_Environment/ObjModels/Props/Button/Button/Textures/New/Button2_Metallic.png" id="2_ohtco"]
+[ext_resource type="Texture2D" uid="uid://24jneyfxjkwe" path="res://EnvironmentAssets/ObjTiles_Environment/ObjModels/Props/Button/Button/Textures/New/Button2_Normal_OpenGL.png" id="4_e5t5k"]
+[ext_resource type="Texture2D" uid="uid://dv0dq6e1ulbh5" path="res://EnvironmentAssets/ObjTiles_Environment/ObjModels/Props/Button/Button/Textures/New/Button2_Roughness.png" id="5_74y6s"]
 
 [resource]
 next_pass = ExtResource("2_6koci")
-albedo_texture = ExtResource("1_hk4le")
+albedo_color = Color(0.5890956, 0.5890956, 0.5890956, 1)
+albedo_texture = ExtResource("1_mirf4")
 metallic = 1.0
-metallic_texture = SubResource("CompressedTexture2D_g7uty")
-roughness_texture = ExtResource("4_oyb0t")
+metallic_texture = ExtResource("2_ohtco")
+roughness_texture = ExtResource("5_74y6s")
 normal_enabled = true
-normal_texture = ExtResource("3_betel")
+normal_texture = ExtResource("4_e5t5k")
