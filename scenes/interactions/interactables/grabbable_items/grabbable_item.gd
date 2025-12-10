@@ -78,6 +78,7 @@ func end_interact(sig: float = -1) -> void:
 	idle_graphics.visible = true
 	
 	rb.freeze = false
+	rb.force_update_transform()
 	rb.linear_velocity = Vector3.ZERO
 
 func enable_me() -> void:
@@ -122,6 +123,7 @@ func throw(_throw_mult: float) -> void:
 	throw_force = sqrt(throw_force * -2 * rb.get_gravity().y)
 	#prints(_throw_mult, throw_distance * _throw_mult, throw_force)
 	rb.apply_central_impulse(-basis.z * throw_force * rb.mass)
+	rb.force_update_transform()
 
 func _on_collide(body: Node) -> void:
 	if !init_impact:

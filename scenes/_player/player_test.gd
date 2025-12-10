@@ -17,6 +17,7 @@ var freeze : bool
 
 @export var death_ui: Control
 
+@export var post_processing: Shader
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:

@@ -26,6 +26,7 @@ func _ready() -> void:
 	if !is_dead and current_health == 0:
 		die()
 	if sconted:
+		rb.linear_velocity = Vector3.ZERO
 		grav_scale = rb.gravity_scale
 		rb.gravity_scale = 0
 
@@ -33,6 +34,8 @@ func begin_interact(sig: float = -1) -> void:
 	super()
 	if sconted:
 		rb.gravity_scale = grav_scale
+		rb.linear_velocity = Vector3.ZERO
+		rb.sleeping = false
 		visible = true
 		sconted = false
 		scont.disable_me()
