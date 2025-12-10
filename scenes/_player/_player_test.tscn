@@ -1049,13 +1049,13 @@ metadata/_custom_type_script = "uid://46pp7aerorca"
 one_shot = true
 
 [node name="UI" type="Control" parent="Stats"]
-visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 
 [node name="Border" type="TextureRect" parent="Stats/UI"]
 custom_minimum_size = Vector2(365, 73)
@@ -1157,6 +1157,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 color = Color(0.5747226, 0.50857943, 0.49505764, 0.03529412)
 
 [connection signal="on_body_entered" from="EnemyChecker" to="Combat" method="_on_enemy_checker_on_body_entered"]
