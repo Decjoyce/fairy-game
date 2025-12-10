@@ -28,10 +28,10 @@ item_type = 4
 metadata/_custom_type_script = "uid://beaf3digx88d0"
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_llc7q"]
-size = Vector3(0.5, 0.55810547, 0.5)
+size = Vector3(0.5, 0.71777344, 0.5)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_234jp"]
-size = Vector3(0.4, 0.49611816, 0.4)
+size = Vector3(0.4, 0.6667541, 0.4)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hgehc"]
 render_priority = 2
@@ -83,6 +83,7 @@ display_name = "Urn"
 col = NodePath("CollisionShape3D")
 grab_col = NodePath("Area3D/CollisionShape3D2")
 can_break = true
+break_force = 15.0
 destroyed_item = NodePath("Destroyed_Item_")
 destroyed_audio = NodePath("Destroyed_Item_/DestroyedAudio")
 idle_graphics = NodePath("_idle_graphics")
@@ -92,18 +93,18 @@ grabbed_graphics = NodePath("_grabbed_graphics")
 collision_layer = 2
 
 [node name="CollisionShape3D2" type="CollisionShape3D" parent="Area3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.029052734, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.032226563, 0)
 shape = SubResource("BoxShape3D_llc7q")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.030749507, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.041610733, 0)
 shape = SubResource("BoxShape3D_234jp")
 debug_color = Color(0.8442249, 0.37985525, 5.7756904e-07, 0.41960785)
 
 [node name="_idle_graphics" type="Sprite3D" parent="."]
 layers = 4
 material_overlay = SubResource("StandardMaterial3D_hgehc")
-pixel_size = 0.0006
+pixel_size = 0.0008
 billboard = 1
 shaded = true
 render_priority = 1
@@ -114,7 +115,7 @@ hframes = 2
 visible = false
 layers = 4
 material_overlay = SubResource("StandardMaterial3D_18pev")
-pixel_size = 0.0006
+pixel_size = 0.0007
 shaded = true
 render_priority = 1
 texture = ExtResource("3_bkq8s")

@@ -94,6 +94,7 @@ func disable_me()-> void:
 	col.set_deferred("disabled", true)
 	rb.freeze = true
 	rb.linear_velocity = Vector3.ZERO
+	$AudioPlayer.stop()
 
 # ↑ Interacting Stuff ↑
 # --------------------------------------------------------------------------------------------------

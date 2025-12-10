@@ -42,6 +42,20 @@ func die():
 	stats_ui.visible = false
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 
+var fake_dies: int
+func fake_die(fakestring: StringName):
+	if fake_dies == 0: 
+		fake_dies+=1
+		return
+	stats.death_anim.play("death_anim")
+	Debug.play_death_player()
+	combat.exit_combat_mode()
+	interaction.visible = false
+	death_ui.visible = true
+	freeze = true
+	stats_ui.visible = false
+	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+
 func return_to_menu() -> void:
 	get_tree().reload_current_scene()
 

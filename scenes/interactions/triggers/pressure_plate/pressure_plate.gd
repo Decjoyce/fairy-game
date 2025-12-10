@@ -55,16 +55,24 @@ func entity_entered_pressure_plate(entity: Entity) -> void:
 	if entities_on_plate.has(entity): return
 	print("entered")
 	entities_on_plate[entity] = entity.current_weight
+	entity.current_pressureplate = self
 	check_weight()
 
 func entity_exited_pressure_plate(entity: Entity) -> void:
+	prints(entity, entity.current_pressureplate, self)
+	if entity.current_pressureplate == self: entity.current_pressureplate = null
 	if entities_on_plate.has(entity): entities_on_plate.erase(entity)
 	print("exited")
+	
 	check_weight()
 
 # ↑ Triggering Stuff ↑
 # --------------------------------------------------------------------------------------------------
 # ↓ Checking Stuff ↓
+
+func update_weight_of_entity(entity: Entity) -> void:
+	entities_on_plate[entity] = entity.current_weight
+	check_weight()
 
 func check_weight() -> void:
 	update_total_weight()

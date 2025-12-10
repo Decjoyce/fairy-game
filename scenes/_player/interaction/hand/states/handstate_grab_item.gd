@@ -67,6 +67,8 @@ func enter(previous_state_path: String, data := {}) -> void:
 	
 	_space_state = hand_controller.cam.get_world_3d().direct_space_state
 	
+	player.current_weight += grabbed_item.item_weight
+	if player.current_pressureplate: player.current_pressureplate.update_weight_of_entity(player)
 	# Animation
 	hand_controller.anim_change_idle_anim(anim_idle)
 	hand_controller.anim_change_prompt_anim(anim_prompt)
@@ -220,6 +222,8 @@ func end_charge() -> void:
 	else: 
 		grabbed_item.throw(charge_amount)
 	
+	player.current_weight -= grabbed_item.item_weight
+	if player.current_pressureplate: player.current_pressureplate.update_weight_of_entity(player)
 	grabbed_item.rotation.z = 0
 	is_charging = false
 	charge_amount = 0
