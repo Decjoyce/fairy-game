@@ -1,6 +1,10 @@
 class_name Enemy_CombatHand
 extends CombatHand
 
+func become_in_active()-> void:
+	super()
+	defense_timer.stop()
+
 # ↑ General Stuff ↑
 # --------------------------------------------------------------------------------------------------
 # ↓ Defend Stuff ↓
@@ -17,7 +21,7 @@ func defending() -> void:
 	pass
 
 func end_defending() -> void:
-	pass
+	defense_timer.stop()
 
 # ↑ Defend Stuff ↑
 # --------------------------------------------------------------------------------------------------
@@ -29,6 +33,7 @@ var current_attack_sequence: AttackSequence
 
 func begin_attacking() -> void:
 	super()
+	print("KKJKJJFOISOFJSFJPSFJFSPOJFPSJ")
 	current_attack_sequence = attack_sequences.pick_random()
 	hand_attack.start_attacking(current_attack_sequence)
 

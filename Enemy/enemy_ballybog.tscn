@@ -119,7 +119,7 @@ void fragment() {
 "
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_me4q8"]
-render_priority = 1
+render_priority = 0
 shader = SubResource("Shader_pydrg")
 shader_parameter/rows = 5.0
 shader_parameter/columns = 8.0
@@ -930,9 +930,10 @@ Sprite = NodePath("../../Sprite3DBillBoard")
 SM = NodePath("..")
 Animator = NodePath("../../AnimationPlayer")
 
-[node name="Fighting" type="Node" parent="StateMachine" node_paths=PackedStringArray("combat", "SM", "Animator")]
+[node name="Fighting" type="Node" parent="StateMachine" node_paths=PackedStringArray("combat", "Body", "SM", "Animator")]
 script = ExtResource("22_dbqfk")
 combat = NodePath("../../Combat")
+Body = NodePath("../..")
 SM = NodePath("..")
 Animator = NodePath("../../AnimationPlayer")
 
@@ -946,6 +947,7 @@ Animator = NodePath("../../AnimationPlayer")
 [node name="Timer" type="Timer" parent="StateMachine/Wander"]
 process_callback = 0
 wait_time = 7.0
+one_shot = true
 
 [node name="Chase" type="Node" parent="StateMachine" node_paths=PackedStringArray("Body", "Sprite", "SM", "Animator")]
 script = ExtResource("24_q232k")
@@ -957,6 +959,7 @@ Animator = NodePath("../../AnimationPlayer")
 [node name="Timer" type="Timer" parent="StateMachine/Chase"]
 process_callback = 0
 wait_time = 5.0
+one_shot = true
 
 [node name="Area3D" type="Area3D" parent="." groups=["Player"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.59447724, 0)
