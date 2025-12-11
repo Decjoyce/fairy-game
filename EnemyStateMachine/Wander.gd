@@ -41,7 +41,7 @@ func on_process(delta : float):
 func enter():
 	grid_map =get_tree().get_first_node_in_group("GMPF")
 	grid_map.setup_astar_grid(grid_map.walkable_items)
-	prints(grid_map.walkable_items)
+	#prints(grid_map.walkable_items)
 	player = get_tree().get_first_node_in_group("Player")
 	Animator.play("RESET")
 	
@@ -58,8 +58,8 @@ func RandomWander():
 	var random_number = rng.randf_range(0, neigbours.size())
 	curr_TargetPoint = grid_map.astar.get_point_position(neigbours.get(random_number))
 	path = grid_map.find_path(curr_posV,curr_TargetPoint)
-	prints(path)
-	prints(neigbours)
+	#prints(path)
+	#prints(neigbours)
 	$Timer.start(8)
 		
 	##print(curr_posV, curr_posPlayerV, curr_posVi, curr_posPlayerVi)
@@ -69,7 +69,7 @@ func moveW(delta: float) -> void:
 	if path.size()<= 0:
 		return
 	target_pos = path[0]
-	prints(current_point, path.size())
+	#prints(current_point, path.size())
 	if current_point < path.size():
 		is_moving = true
 		

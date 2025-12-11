@@ -60,7 +60,7 @@ func _transition_to_next_state(target_state_path: String, data: Dictionary = {})
 # --------------------------------------------------------------------------------------------------
 # ↓ Hand Stuff ↓
 
-const min_speed: float = 500
+const min_speed: float = 750
 const mid_speed: float = 1000
 const max_speed: float = 1500
 var cur_speed_index: int = 2

@@ -91,6 +91,8 @@ func enter(previous_state_path: String, data := {}) -> void:
 	time_held_down = 0
 
 func exit() -> void:
+	player.current_weight -= grabbed_item.item_weight
+	if player.current_pressureplate: player.current_pressureplate.update_weight_of_entity(player)
 	hand_controller.hovering_interactable = null
 	is_ready = false
 	tween.kill()
@@ -100,6 +102,7 @@ func exit() -> void:
 	offset_helper.position = offset_og_pos
 	hand_controller.input_controls.disable_interact_action()
 	t_bob = 0.0
+	
 	#is_exiting = true
 	#grabbed_item = null
 
@@ -107,7 +110,7 @@ func exit() -> void:
 # --------------------------------------------------------------------------------------------------
 # ↓ Grabbing Stuff ↓
 
-const GRAB_DIST = 0.9
+const GRAB_DIST = 1.0
 var grabbed_item: Grabbable_Item
 var grab_position: Vector3
 @export_flags_2d_physics var grab_ray_collision_mask: int
@@ -222,8 +225,6 @@ func end_charge() -> void:
 	else: 
 		grabbed_item.throw(charge_amount)
 	
-	player.current_weight -= grabbed_item.item_weight
-	if player.current_pressureplate: player.current_pressureplate.update_weight_of_entity(player)
 	grabbed_item.rotation.z = 0
 	is_charging = false
 	charge_amount = 0

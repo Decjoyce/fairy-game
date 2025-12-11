@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://crov4wcff41jl"]
+[gd_scene load_steps=18 format=3 uid="uid://crov4wcff41jl"]
 
 [ext_resource type="Script" uid="uid://5ten54jh247y" path="res://scenes/__prototyping/debugger/debug.gd" id="1_dlc2y"]
 [ext_resource type="Script" uid="uid://dhafhdtxr8ei3" path="res://scenes/__prototyping/debugger/debug_console.gd" id="1_y4plv"]
@@ -7,6 +7,7 @@
 [ext_resource type="Script" uid="uid://3cgguqid851p" path="res://scenes/__prototyping/debugger/debug_context_menu.gd" id="3_2evvv"]
 [ext_resource type="PackedScene" uid="uid://dw2dbsjbocxi7" path="res://scenes/__playground_scenes/playground_interactions.tscn" id="3_mtxrl"]
 [ext_resource type="PackedScene" uid="uid://dacspddaimn4a" path="res://scenes/__playground_scenes/playground_lighting.tscn" id="4_bdnfw"]
+[ext_resource type="PackedScene" uid="uid://5s8itrlxcefc" path="res://scenes/__playground_scenes/playground_urn.tscn" id="6_82yx2"]
 [ext_resource type="AudioStream" uid="uid://cggjmntgy0kjh" path="res://assets/ui/menustartsound.wav" id="8_bdnfw"]
 [ext_resource type="AudioStream" uid="uid://ce2i1xg8pp6my" path="res://sfx_vertical/Fight, Bodyfall, Asphalt, Concrete 01 SND120897 1.wav" id="9_tnulk"]
 [ext_resource type="AudioStream" uid="uid://bi6sqd3a1q4it" path="res://sfx_vertical/Human, Breath, Male, Deep With Vocal Sighs, Slow, Tired, Fatigue, Weary, Inhale, Exhale SND130292.wav" id="10_82yx2"]
@@ -38,7 +39,7 @@ stream_1 = ExtResource("10_82yx2")
 
 [node name="_Debugger" type="CanvasLayer" node_paths=PackedStringArray("audio_player", "death_audio_player", "death_audio_enemy")]
 script = ExtResource("1_dlc2y")
-the_scenes = Array[PackedScene]([ExtResource("2_mtxrl"), ExtResource("2_xya3h"), ExtResource("3_mtxrl"), ExtResource("4_bdnfw")])
+the_scenes = Array[PackedScene]([ExtResource("2_mtxrl"), ExtResource("2_xya3h"), ExtResource("3_mtxrl"), ExtResource("4_bdnfw"), ExtResource("6_82yx2")])
 audio_player = NodePath("AudioStreamPlayer2D")
 death_audio_player = NodePath("AudioStreamPlayer2D2")
 death_audio_enemy = NodePath("AudioStreamPlayer3D")

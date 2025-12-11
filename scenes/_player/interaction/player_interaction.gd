@@ -4,7 +4,7 @@ extends Control
 @export var movement: PlayerMovement
 
 @export var cam: Camera3D
-const INT_RAY_LENGTH = 2.0
+const INT_RAY_LENGTH = 1.5
 @export_flags_2d_physics var interaction_collision_mask: int
 @export_flags_2d_physics var item_receiver_collision_mask: int
 @export_flags_2d_physics var enemy_collision_mask: int

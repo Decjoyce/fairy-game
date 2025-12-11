@@ -14,7 +14,7 @@ var entities_on_plate: Dictionary[Node3D, float]
 
 @onready var collision: StaticBody3D = $Graphics/Collision
 
-@export_range(1.0, 10, 0.5) var weight_to_activate: float = 2.0
+@export_range(1.0, 15, 0.5) var weight_to_activate: float = 2.0
 var current_weight: float
 
 
