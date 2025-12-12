@@ -34,7 +34,7 @@ func begin_defending() -> void:
 	super()
 
 func defending() -> void:
-	if other_hand.current_combat_state != CombatHandStates.ATTACKING and Input.is_action_just_pressed("action_" + stringed_hand):
+	if other_hand.current_combat_state != CombatHandStates.ATTACKING and Input.is_action_just_pressed("action_" + stringed_hand) and (combat.stats.current_stamina > 0):
 		begin_attacking()
 		return
 	

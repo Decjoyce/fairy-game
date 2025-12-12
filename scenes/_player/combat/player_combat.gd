@@ -6,6 +6,7 @@ var is_in_combat_mode: bool = true
 @onready var player: PlayerTest = owner
 
 @onready var combat_ui: Control = $Combat_UI
+@export var stats_ui: Control
 
 @export var combat_hands: Array[CombatHand]
 
@@ -26,6 +27,7 @@ func _ready() -> void:
 			i.about_to_attack.connect(set_enemy_telegraph_ui_active)
 
 func enter_combat_mode() -> void:
+	stats_ui.visible = true
 	is_in_combat_mode = true
 	combat_ui.visible = true
 	player.in_combat = true
@@ -35,6 +37,7 @@ func enter_combat_mode() -> void:
 	combat_hands[1].become_active()
 
 func exit_combat_mode() -> void:
+	stats_ui.visible = false
 	is_in_combat_mode = false
 	combat_ui.visible = false
 	player.in_combat = false

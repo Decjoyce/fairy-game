@@ -44,18 +44,20 @@ func check_if_can_use_stam(amount: float) -> bool:
 	if amount > current_stamina: return false
 	else: return true
 
+var out_of_stam: bool
 func take_stamina(amount: float) -> bool:
 	if current_stamina <= 0: return false
 	#if amount > current_stamina: return false
 	is_regen_stam = false
 	current_stamina -= amount
 	if current_stamina <= 0:
-		stam_timer.wait_time = 3
+		stam_timer.wait_time = 5
+		out_of_stam = true
 		stam_timer.start()
 		stam_sfx.play()
 		return false
 	else:
-		stam_timer.wait_time = 1.5
+		stam_timer.wait_time = 3
 		stam_timer.start()
 		return true
 
@@ -78,4 +80,5 @@ func _process(delta: float) -> void:
 	health_bar.value = current_health
 
 func begin_regen() -> void:
+	out_of_stam = false
 	is_regen_stam = true

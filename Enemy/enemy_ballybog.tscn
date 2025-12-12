@@ -202,8 +202,8 @@ size = Vector3(0.4, 1, 2)
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_om1c7"]
 radius = 5.0
 
-[sub_resource type="CylinderShape3D" id="CylinderShape3D_3ixwq"]
-radius = 22.0
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_pydrg"]
+radius = 11.020508
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_u7c7l"]
 
@@ -974,6 +974,7 @@ debug_color = Color(0.95096534, 2.0214916e-06, 0.56154376, 0.41960785)
 [node name="Fight area2" type="CollisionShape3D" parent="Area3D"]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -1.4901161e-08, 0, 0)
 shape = SubResource("BoxShape3D_3ixwq")
+disabled = true
 debug_color = Color(0.95096534, 2.0214916e-06, 0.56154376, 0.41960785)
 
 [node name="Area3D2" type="Area3D" parent="."]
@@ -993,7 +994,7 @@ monitorable = false
 
 [node name="Vision_Hearing" type="CollisionShape3D" parent="Aggro"]
 transform = Transform3D(0.99999696, 0, 0, 0, 0.99999696, 0, 0, 0, 0.99999696, 0, 0, 0)
-shape = SubResource("CylinderShape3D_3ixwq")
+shape = SubResource("CylinderShape3D_pydrg")
 debug_color = Color(0.62382853, 0.49057347, 0.55874586, 0.41960785)
 
 [node name="Combat" type="Node" parent="." node_paths=PackedStringArray("combat_ui", "combat_hands", "stance")]

@@ -45,7 +45,7 @@ func enter():
 	player = get_tree().get_first_node_in_group("Player")
 	Animator.play("RESET")
 	
-	RandomWander()
+	#RandomWander()
 
 	return path
 

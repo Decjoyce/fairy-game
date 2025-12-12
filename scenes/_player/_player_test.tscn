@@ -744,8 +744,9 @@ bus = &"pl_footsteps"
 movement = NodePath("../Movement")
 cam = NodePath("../Camera3D")
 
-[node name="Combat" type="Node" parent="." node_paths=PackedStringArray("combat_hands", "stats", "incoming_attack_uis")]
+[node name="Combat" type="Node" parent="." node_paths=PackedStringArray("stats_ui", "combat_hands", "stats", "incoming_attack_uis")]
 script = ExtResource("12_gcklq")
+stats_ui = NodePath("../Stats/UI")
 combat_hands = [NodePath("CombatHand_Left"), NodePath("CombatHand_Right")]
 stats = NodePath("../Stats")
 incoming_attack_uis = [NodePath("Combat_UI/IncomingAttacks/R"), NodePath("Combat_UI/IncomingAttacks/BR"), NodePath("Combat_UI/IncomingAttacks/B"), NodePath("Combat_UI/IncomingAttacks/BL"), NodePath("Combat_UI/IncomingAttacks/L"), NodePath("Combat_UI/IncomingAttacks/TL"), NodePath("Combat_UI/IncomingAttacks/T"), NodePath("Combat_UI/IncomingAttacks/TR")]
@@ -1049,6 +1050,7 @@ metadata/_custom_type_script = "uid://46pp7aerorca"
 one_shot = true
 
 [node name="UI" type="Control" parent="Stats"]
+visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0

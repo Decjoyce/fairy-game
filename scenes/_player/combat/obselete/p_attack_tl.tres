@@ -1,23 +1,17 @@
-[gd_resource type="Resource" script_class="AttackData" load_steps=5 format=3 uid="uid://b7lgn1kim5vuo"]
+[gd_resource type="Resource" script_class="AttackData" load_steps=3 format=3 uid="uid://b7lgn1kim5vuo"]
 
+[ext_resource type="AudioStream" uid="uid://ttl3vkbq03vs" path="res://scenes/_player/Sword_attack.tres" id="1_8tmdk"]
 [ext_resource type="Script" uid="uid://i6x8mkfibed4" path="res://scenes/combat/attack_data.gd" id="1_hi4gf"]
-
-[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_hi4gf"]
-
-[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_wxy2l"]
-
-[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_8tmdk"]
 
 [resource]
 script = ExtResource("1_hi4gf")
 slot = 5
 dmg = 20.0
+stam = 30.0
 telegraph_anim = "l_tele_t"
 attack_anim = "l_swing_t"
 recover_anim = "l_recover_t"
-telegraph_audio = SubResource("AudioStreamRandomizer_8tmdk")
-attack_audio = SubResource("AudioStreamRandomizer_hi4gf")
-recover_audio = SubResource("AudioStreamRandomizer_wxy2l")
-attack_length = 0.6
-recover_length = 0.6
+attack_audio = ExtResource("1_8tmdk")
+attack_length = 0.8
+recover_length = 1.0
 metadata/_custom_type_script = "uid://i6x8mkfibed4"

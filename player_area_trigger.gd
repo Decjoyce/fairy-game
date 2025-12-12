@@ -11,6 +11,7 @@ signal on_deactivated(sig: float)
 
 func _player_entered(area: Area3D) -> void:
 	if trig_once: return
+	print("loplp")
 	if area.get_parent() is PlayerTest:
 		if override_signal >= 0: on_activated.emit(override_signal)
 		else: on_activated.emit(1.0)
