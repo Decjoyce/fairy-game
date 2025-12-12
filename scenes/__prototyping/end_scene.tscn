@@ -1,8 +1,9 @@
-[gd_scene load_steps=84 format=4 uid="uid://2urw8kkhhaec"]
+[gd_scene load_steps=117 format=4 uid="uid://2urw8kkhhaec"]
 
 [ext_resource type="Script" uid="uid://b0jcws8fb057y" path="res://scenes/__prototyping/end_scene.gd" id="1_8qs0m"]
 [ext_resource type="PackedScene" uid="uid://bssask2v64ogc" path="res://Vertical_Slice_Level_03.tscn" id="2_ohqjl"]
 [ext_resource type="PackedScene" uid="uid://bm8kaq0ah5g7q" path="res://scenes/interactions/interactables/grabbable_items/torch/torch.tscn" id="3_pp2u7"]
+[ext_resource type="Script" uid="uid://d3averdt6fuqm" path="res://scenes/interactions/interactables/grabbable_items/type/itemtype_torch.gd" id="4_nhqle"]
 [ext_resource type="PackedScene" uid="uid://dde66nwtb1gv1" path="res://scenes/interactions/triggers/item_receiver/torch_scont/torch_scont.tscn" id="4_t2sp1"]
 [ext_resource type="Script" uid="uid://crwhy6uva7msm" path="res://scenes/interactions/triggers/item_receiver/torch_scont/torch_scont.gd" id="5_q5v0u"]
 [ext_resource type="Texture2D" uid="uid://bdv15pyviy4kf" path="res://scenes/interactions/interactables/grabbable_items/torch/ScontSprite/ScontFrontSide.png" id="6_8aquw"]
@@ -49,6 +50,24 @@
 [ext_resource type="Script" uid="uid://c00pbq6pr77dd" path="res://dsdsds.gd" id="45_o7q7p"]
 [ext_resource type="Shader" uid="uid://4b4kstxm1aph" path="res://Shaders/Vertical_Slice_Level.gdshader" id="47_1e8k0"]
 [ext_resource type="Texture2D" uid="uid://bgvylughro1va" path="res://PaperTexture/Texturelabs_Paper_304L.jpg" id="48_pp2u7"]
+[ext_resource type="Texture2D" uid="uid://bajdgu88x35py" path="res://Sprites/ballyWalkSheet_n.png" id="50_4xi4b"]
+[ext_resource type="Texture2D" uid="uid://dl3etwft2mhxm" path="res://Sprites/ballyWalkSheet.png" id="51_nhqle"]
+[ext_resource type="Script" uid="uid://b5653u7w56pqw" path="res://extras_sprites/scripts/sprite_3D_billboard.gd" id="52_fbcwi"]
+[ext_resource type="Script" uid="uid://b4m0sglcg4smw" path="res://extras_sprites/scripts/animatio_data.gd" id="53_b43h7"]
+[ext_resource type="Texture2D" uid="uid://cjn3bxmukh4fj" path="res://Sprites/ballybogIdle.png" id="54_juvur"]
+[ext_resource type="Texture2D" uid="uid://d117rsf1rrxb6" path="res://Sprites/ballybogIdle_n.png" id="55_36u6w"]
+[ext_resource type="Texture2D" uid="uid://da55c2fwj7ox7" path="res://Sprites/ballyAttack_LBottom.png" id="56_e1i07"]
+[ext_resource type="Texture2D" uid="uid://b45ckx6htx1bg" path="res://Sprites/ballyAttack_LBottom_n.png" id="57_4tonh"]
+[ext_resource type="Texture2D" uid="uid://fohbvfmbnsw7" path="res://Sprites/ballyAttack_LMid.png" id="58_qhokm"]
+[ext_resource type="Texture2D" uid="uid://d2eurcnwm514j" path="res://Sprites/ballyAttack_LMid_n.png" id="59_7bvpj"]
+[ext_resource type="Texture2D" uid="uid://c1t33lxeknsve" path="res://Sprites/ballyAttack_LTop.png" id="60_oy8hb"]
+[ext_resource type="Texture2D" uid="uid://p2iiihprajki" path="res://Sprites/ballyAttack_LTop_n.png" id="61_1oeiy"]
+[ext_resource type="Texture2D" uid="uid://d2i5outw16p5m" path="res://Sprites/ballyAttack_RBottom.png" id="62_aplly"]
+[ext_resource type="Texture2D" uid="uid://0meyt1eqowl" path="res://Sprites/ballyAttack_RBottom_n.png" id="63_3wk16"]
+[ext_resource type="Texture2D" uid="uid://d32p1mrham4j6" path="res://Sprites/ballyAttack_RMid.png" id="64_vajfy"]
+[ext_resource type="Texture2D" uid="uid://bjd7yeekbvmx0" path="res://Sprites/ballyAttack_RMid_n.png" id="65_cdcvb"]
+[ext_resource type="Texture2D" uid="uid://dqyfvagjygkha" path="res://Sprites/ballyAttack_RTop.png" id="66_pyvp0"]
+[ext_resource type="Texture2D" uid="uid://bnrfxmw0nk1dq" path="res://Sprites/ballyAttack_RTop_n.png" id="67_afmw1"]
 
 [sub_resource type="Environment" id="Environment_lwsdr"]
 background_mode = 1
@@ -79,6 +98,21 @@ adjustment_contrast = 0.9
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_3ri2a"]
 size = Vector3(500, 0.1, 500)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_j22s6"]
+noise_type = 5
+frequency = 1.0
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_7yijt"]
+noise = SubResource("FastNoiseLite_j22s6")
+
+[sub_resource type="Resource" id="Resource_d0jyt"]
+script = ExtResource("4_nhqle")
+noise = SubResource("NoiseTexture2D_7yijt")
+light_strength = 2.645
+flicker_frequency = 1.0
+item_type = 1
+metadata/_custom_type_script = "uid://d3averdt6fuqm"
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_bi0p3"]
 radius = 0.3
@@ -430,6 +464,161 @@ _data = {
 &"fade_out": SubResource("Animation_j4a7u")
 }
 
+[sub_resource type="Shader" id="Shader_fbcwi"]
+code = "shader_type spatial;
+render_mode diffuse_lambert_wrap,cull_disabled;
+
+uniform float rows:hint_range(1.0, 100.0, 1) = 1;
+uniform float columns:hint_range(1.0, 100.0, 1) = 1;
+uniform float frame:hint_range(0.0, 100.0, 1) = 0;
+uniform bool invert_rows_columns = false;
+uniform sampler2D sprite:filter_nearest_mipmap;
+uniform int mode:hint_range(0, 1, 1) = 1;
+varying vec3 look_dir;
+uniform sampler2D Normal;
+
+
+float billboard_mode_a(vec3 CAMERA_POSITION,vec3 NODE_POSITION, mat4 MODEL_MAT,float directions){
+	vec3 direction_to_camera = normalize(CAMERA_POSITION-NODE_POSITION);
+	float angle_to_camera = atan(direction_to_camera.x,direction_to_camera.z);
+	vec4 model_direction = MODEL_MAT*vec4(1.0,0.0,0.0,0.0);
+	float y_angle = atan(model_direction.x,model_direction.z)-PI/2.0;
+	float final_angle = angle_to_camera-y_angle;
+	float int_y_angle = round((final_angle / TAU) * float(directions)) / float(directions);
+	return int_y_angle;
+}
+float billboard_mobe_b(vec3 CAMERA_POSITION,mat4 MODEL_MAT,mat4 VIEW_MAT,float directions,int ret){
+
+    vec3 ray_origin = CAMERA_POSITION;
+
+    vec3 object_origin = (MODEL_MAT * vec4(0.0,0.0,0.0,1.0)).xyz;
+    vec3 cam_dir = object_origin - ray_origin;
+    cam_dir = normalize((VIEW_MAT * vec4(cam_dir, 0.0)).xyz);
+
+    float angle = 180.0 - degrees(acos(dot(normalize(cam_dir.xz), normalize(look_dir.xz))));
+    float _direction = round(angle/180.0 * directions);
+
+    float flip = sign((look_dir.x * cam_dir.z) - (look_dir.z * cam_dir.x));
+
+    flip = mix(flip, 1.0, max(step(_direction, 0.0), step(directions, _direction)));
+	float retu = ret == 0 ? _direction : flip;
+	return retu ;
+}
+void vertex() {
+		 MODELVIEW_MATRIX = VIEW_MATRIX * mat4(vec4(normalize(cross(vec3(0.0, 1.0, 0.0), INV_VIEW_MATRIX[2].xyz)), 0.0), vec4(0.0, 1.0, 0.0, 0.0), vec4(normalize(cross(INV_VIEW_MATRIX[0].xyz, vec3(0.0, 1.0, 0.0))), 0.0), MODEL_MATRIX[3]);
+		look_dir = MODELVIEW_NORMAL_MATRIX * NORMAL;
+		MODELVIEW_NORMAL_MATRIX = mat3(MODELVIEW_MATRIX);
+	switch (mode){
+		case 0:
+			float y = invert_rows_columns == true ? billboard_mode_a(CAMERA_POSITION_WORLD,NODE_POSITION_WORLD,MODEL_MATRIX,rows) : billboard_mode_a(CAMERA_POSITION_WORLD,NODE_POSITION_WORLD,MODEL_MATRIX,columns);
+			float x = invert_rows_columns == true ? frame/columns:frame/rows;
+			UV /= vec2(rows,columns);
+			UV += invert_rows_columns == true ?vec2(y,x):vec2(x,y);
+			break;
+		case 1:
+			float x = invert_rows_columns == true ? frame/columns:frame/rows;
+			float y = billboard_mobe_b(CAMERA_POSITION_WORLD,MODEL_MATRIX,VIEW_MATRIX,rows,0);
+			float f = billboard_mobe_b(CAMERA_POSITION_WORLD,MODEL_MATRIX,VIEW_MATRIX,rows,1);
+			if (invert_rows_columns){
+				y = billboard_mobe_b(CAMERA_POSITION_WORLD,MODEL_MATRIX,VIEW_MATRIX,columns,0);
+				f = billboard_mobe_b(CAMERA_POSITION_WORLD,MODEL_MATRIX,VIEW_MATRIX,columns,1);
+			}
+			UV.y += invert_rows_columns == true ? x:y;
+			UV /=vec2(rows,columns);
+			UV.x +=  invert_rows_columns == true ? y : x;
+			UV *= invert_rows_columns == true ? vec2(1.0,f):vec2(f,1.0);
+			break;
+	};
+}
+
+void fragment() {
+	vec3 VNormal = texture(Normal,UV).rgb;
+	vec4 sprite_texture;
+	sprite_texture = texture(sprite,UV);
+	ALBEDO = sprite_texture.rgb;
+	ALPHA = sprite_texture.a;
+	NORMAL_MAP = VNormal;
+}
+"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_b43h7"]
+render_priority = 0
+shader = SubResource("Shader_fbcwi")
+shader_parameter/rows = 5.0
+shader_parameter/columns = 8.0
+shader_parameter/frame = 0.0
+shader_parameter/invert_rows_columns = false
+shader_parameter/sprite = ExtResource("51_nhqle")
+shader_parameter/mode = 0
+shader_parameter/Normal = ExtResource("50_4xi4b")
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_juvur"]
+material = SubResource("ShaderMaterial_b43h7")
+size = Vector2(1.7279999, 1.7279999)
+orientation = 2
+
+[sub_resource type="Resource" id="Resource_36u6w"]
+script = ExtResource("53_b43h7")
+sprite = ExtResource("54_juvur")
+texture_normal = ExtResource("55_36u6w")
+columns = 8.0
+
+[sub_resource type="Resource" id="Resource_e1i07"]
+script = ExtResource("53_b43h7")
+name = "walk"
+sprite = ExtResource("51_nhqle")
+texture_normal = ExtResource("50_4xi4b")
+rows = 5.0
+columns = 8.0
+
+[sub_resource type="Resource" id="Resource_4tonh"]
+script = ExtResource("53_b43h7")
+name = "Attack_LbBottom"
+sprite = ExtResource("56_e1i07")
+texture_normal = ExtResource("57_4tonh")
+rows = 2.0
+columns = 8.0
+
+[sub_resource type="Resource" id="Resource_qhokm"]
+script = ExtResource("53_b43h7")
+name = "Attack_LMid"
+sprite = ExtResource("58_qhokm")
+texture_normal = ExtResource("59_7bvpj")
+rows = 2.0
+columns = 8.0
+
+[sub_resource type="Resource" id="Resource_7bvpj"]
+script = ExtResource("53_b43h7")
+name = "Attack_LTop"
+sprite = ExtResource("60_oy8hb")
+texture_normal = ExtResource("61_1oeiy")
+rows = 2.0
+columns = 8.0
+
+[sub_resource type="Resource" id="Resource_oy8hb"]
+script = ExtResource("53_b43h7")
+name = "Attack_RBottom"
+sprite = ExtResource("62_aplly")
+texture_normal = ExtResource("63_3wk16")
+rows = 2.0
+columns = 8.0
+
+[sub_resource type="Resource" id="Resource_1oeiy"]
+script = ExtResource("53_b43h7")
+name = "Attack_RMid"
+sprite = ExtResource("64_vajfy")
+texture_normal = ExtResource("65_cdcvb")
+rows = 2.0
+columns = 8.0
+
+[sub_resource type="Resource" id="Resource_aplly"]
+script = ExtResource("53_b43h7")
+name = "Attack_RTop"
+sprite = ExtResource("66_pyvp0")
+texture_normal = ExtResource("67_afmw1")
+rows = 2.0
+columns = 8.0
+
 [node name="end_scene" type="Node3D"]
 script = ExtResource("1_8qs0m")
 game_scene = ExtResource("2_ohqjl")
@@ -453,9 +642,11 @@ disabled = true
 
 [node name="Torch" parent="Torches" instance=ExtResource("3_pp2u7")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 1, 1)
+item_type = SubResource("Resource_d0jyt")
 
 [node name="Torch2" parent="Torches" instance=ExtResource("3_pp2u7")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.65, -1.1141912, -8.1)
+item_type = SubResource("Resource_d0jyt")
 
 [node name="TorchScont" parent="Torches" instance=ExtResource("4_t2sp1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.5, 1.2814243, -9.617082)
@@ -514,7 +705,7 @@ transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0.39
 mesh_library = ExtResource("8_raimf")
 cell_size = Vector3(2, 0.7, 2)
 data = {
-"cells": PackedInt32Array(1, 0, 1441796, 2, 0, 1441794, 3, 0, 3, 3, 65535, 2, 3, 65534, 2, 4, 65533, 3, 2, 65533, 1441795, 3, 65533, 1441792, 3, 65532, 1441792, 3, 65531, 1441792, 3, 65530, 2, 3, 65529, 2, 3, 65528, 2, 3, 65527, 1048579, 1, 65527, 1441794, 65535, 65529, 1048578, 2, 65527, 1048578, 1, 65532, 1048578, 7, 65532, 1048580, 6, 65532, 1048578, 5, 65532, 1048578, 4, 65531, 1048579, 2, 65531, 655363, 4, 65532, 655360, 2, 65532, 655360, 0, 65532, 1441796, 65533, 65531, 3, 65531, 65531, 1441795, 65534, 65530, 3, 65534, 65528, 1048579, 65533, 65527, 1048579, 65531, 65527, 655363, 65532, 65526, 655364, 65530, 65528, 655363, 65530, 65530, 1441795, 65530, 65529, 1441793, 65531, 65530, 1441792, 65531, 65529, 1441792, 65531, 65528, 1441792, 65532, 65528, 1441792, 65532, 65527, 1441792, 65532, 65529, 1441792, 65532, 65530, 1441792, 65532, 65531, 1441792, 65533, 65530, 1441792, 65533, 65529, 1441792, 65533, 65528, 1441792, 65534, 65529, 1441792, 65532, 65532, 655362, 65532, 65533, 655362, 65532, 65534, 655362, 65531, 65535, 655363, 65533, 65535, 1048579, 65530, 65535, 1441796, 65534, 65535, 1048580, 65530, 2, 1441796, 65531, 2, 1441795, 65532, 2, 1441792, 65533, 2, 3, 65534, 2, 1048580, 65532, 65535, 0, 65534, 0, 1048577, 65533, 0, 1048577, 65532, 0, 0, 65534, 1, 1048577, 65533, 1, 1048577, 65532, 1, 0, 65531, 1, 1441793, 65531, 0, 1441793, 65530, 0, 1441793, 65530, 1, 1441793, 65532, 3, 2, 65532, 4, 4, 0, 65527, 655363, 0, 65528, 2, 0, 65529, 1048577, 0, 65530, 2)
+"cells": PackedInt32Array(1, 0, 1441796, 2, 0, 1441794, 3, 0, 3, 3, 65535, 2, 3, 65534, 2, 4, 65533, 3, 2, 65533, 1441795, 3, 65533, 1441792, 3, 65532, 1441792, 3, 65531, 1441792, 3, 65530, 2, 3, 65529, 2, 3, 65528, 2, 3, 65527, 1048579, 1, 65527, 1441794, 65535, 65529, 1048578, 2, 65527, 1048578, 1, 65532, 1048578, 7, 65532, 1048580, 6, 65532, 1048578, 5, 65532, 1048578, 4, 65531, 1048579, 2, 65531, 655363, 4, 65532, 655360, 2, 65532, 655360, 0, 65532, 1441796, 65533, 65531, 3, 65531, 65531, 1441795, 65534, 65530, 3, 65534, 65528, 1048579, 65533, 65527, 1048579, 65531, 65527, 655363, 65532, 65526, 655364, 65530, 65528, 655363, 65530, 65530, 1441795, 65530, 65529, 1441793, 65531, 65530, 1441792, 65531, 65529, 1441792, 65531, 65528, 1441792, 65532, 65528, 1441792, 65532, 65527, 1441792, 65532, 65529, 1441792, 65532, 65530, 1441792, 65532, 65531, 1441792, 65533, 65530, 1441792, 65533, 65529, 1441792, 65533, 65528, 1441792, 65534, 65529, 1441792, 65532, 65532, 655362, 65532, 65533, 655362, 65532, 65534, 655362, 65531, 65535, 655363, 65533, 65535, 1048579, 65530, 65535, 1441796, 65534, 65535, 1048580, 65530, 2, 1441796, 65531, 2, 1441795, 65532, 2, 1441792, 65533, 2, 3, 65534, 2, 1048580, 65532, 65535, 0, 65534, 0, 1048577, 65533, 0, 1048577, 65532, 0, 0, 65534, 1, 1048577, 65533, 1, 1048577, 65532, 1, 0, 65531, 1, 1441793, 65531, 0, 1441793, 65530, 0, 1441793, 65530, 1, 1441793, 65532, 3, 2, 65532, 4, 2, 0, 65527, 655363, 0, 65528, 2, 0, 65529, 1048577, 0, 65530, 2, 65532, 5, 2, 65532, 6, 2, 65532, 7, 2, 65532, 8, 2)
 }
 
 [node name="Puzzles_01" type="Node3D" parent="Node3D3"]
@@ -619,6 +810,7 @@ texture = ExtResource("7_uo43y")
 visible = false
 sconted = true
 scont = NodePath("..")
+item_type = SubResource("Resource_d0jyt")
 item_weight = 0
 
 [node name="TorchLight" type="OmniLight3D" parent="Node3D3/Puzzles_01/TorchScont5"]
@@ -665,6 +857,7 @@ texture = ExtResource("7_uo43y")
 visible = false
 sconted = true
 scont = NodePath("..")
+item_type = SubResource("Resource_d0jyt")
 item_weight = 0
 
 [node name="TorchLight" type="OmniLight3D" parent="Node3D3/Puzzles_01/TorchScont6"]
@@ -681,6 +874,7 @@ visible = false
 
 [node name="Torch2" parent="Node3D3/Puzzles_01" instance=ExtResource("3_pp2u7")]
 transform = Transform3D(0.70710677, 0, -0.70710677, 0, 1, 0, 0.70710677, 0, 0.70710677, -9.455026, 1.06, -8.594975)
+item_type = SubResource("Resource_d0jyt")
 
 [node name="Gate_Left4" parent="Node3D3/Puzzles_01" instance=ExtResource("9_oj7ks")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.4, 2.8999996)
@@ -738,7 +932,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.9999995, 0.105477214, 8.36
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.75, 0.105, 6.5)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Node3D3/Node3D2"]
-transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 0, 0.6654327, 27.434818)
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 0, 0.6654327, 34.49665)
 mesh = SubResource("QuadMesh_b5lof")
 
 [node name="Locked_Door_1" parent="Node3D3/Node3D2" instance=ExtResource("17_7pe67")]
@@ -1105,6 +1299,18 @@ libraries = {
 &"": SubResource("AnimationLibrary_e7sjl")
 }
 
+[node name="Sprite3DBillBoard" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.0975481, 0, 0.9952308, 0, 1, 0, -0.9952308, 0, 0.0975481, -8.632547, 1.1772481, -17.09639)
+layers = 3
+sorting_offset = 1.0
+mesh = SubResource("PlaneMesh_juvur")
+script = ExtResource("52_fbcwi")
+animations_array = Array[ExtResource("53_b43h7")]([SubResource("Resource_36u6w"), SubResource("Resource_e1i07"), SubResource("Resource_4tonh"), SubResource("Resource_qhokm"), SubResource("Resource_7bvpj"), SubResource("Resource_oy8hb"), SubResource("Resource_1oeiy"), SubResource("Resource_aplly")])
+animation = 1
+frame = 1.0
+sprite_scale = 0.0016
+metadata/_custom_type_script = "uid://b5653u7w56pqw"
+
 [connection signal="on_activated" from="Node3D3/Puzzles_01/Node3D/Button" to="Node3D3/Puzzles_01/Node3D/Gate_Left" method="open_gate"]
 [connection signal="on_change" from="Node3D3/Puzzles_01/Node3D/Node3D/Left_PressurePlate" to="Node3D3/Puzzles_01/Node3D/Gate_Left" method="open_gate"]
 [connection signal="on_activated" from="Node3D3/Puzzles_01/Node3D2/Button2" to="Node3D3/Puzzles_01/Node3D2/Gate_Left2" method="open_gate"]
@@ -1116,3 +1322,4 @@ libraries = {
 [connection signal="on_activated" from="Node3D3/UrnBreakScene/PlayerAreaTrigger" to="Node3D3/UrnBreakScene/AudioStreamPlayer3D" method="play"]
 [connection signal="area_entered" from="Node3D3/UrnBreakScene/PlayerAreaTrigger/Area3D" to="Node3D3/UrnBreakScene/PlayerAreaTrigger" method="_player_entered"]
 [connection signal="area_exited" from="Node3D3/UrnBreakScene/PlayerAreaTrigger/Area3D" to="Node3D3/UrnBreakScene/PlayerAreaTrigger" method="_player_exited"]
+[connection signal="pressed" from="Control/Button" to="." method="play_game"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=83 format=4 uid="uid://bssask2v64ogc"]
+[gd_scene load_steps=84 format=4 uid="uid://bssask2v64ogc"]
 
 [ext_resource type="Script" uid="uid://ubfk2a80dhfp" path="res://addons/grid_map_pathfinding/grid_map_pathfinding.gd" id="1_m1xuj"]
 [ext_resource type="MeshLibrary" uid="uid://bu208a8l5866i" path="res://scenes/palettes/cairn/meshlibrary_cairn.tres" id="2_grny0"]
@@ -439,6 +439,8 @@ _data = {
 [sub_resource type="SphereShape3D" id="SphereShape3D_j4a7u"]
 radius = 1.7361357
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_gvepk"]
+
 [node name="Vertical_Slice_Level" type="Node3D"]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
@@ -450,7 +452,7 @@ mesh_library = SubResource("MeshLibrary_fniqw")
 cell_size = Vector3(1, 1, 1)
 cell_octant_size = 4
 data = {
-"cells": PackedInt32Array(65530, 65534, 1, 65530, 65533, 1, 65531, 65533, 1, 65532, 65533, 1, 65531, 65534, 1, 65532, 65534, 1, 65533, 65534, 1, 65533, 65535, 1, 65533, 0, 1, 65533, 1, 1, 65533, 2, 1, 65533, 3, 1, 65533, 4, 1, 65533, 5, 1, 65532, 5, 1, 65531, 5, 1, 65530, 5, 1, 65529, 5, 1, 65528, 5, 1, 65527, 5, 1, 65527, 6, 1, 65526, 5, 1, 65525, 5, 1, 65524, 5, 1, 65524, 4, 1, 65524, 3, 1, 65524, 2, 1, 65524, 1, 1, 65523, 1, 1, 65523, 0, 1, 65524, 0, 1, 65524, 65535, 1, 65524, 65534, 1, 65525, 65534, 1, 65526, 65534, 1, 65527, 65534, 1, 65528, 65534, 1, 65529, 65534, 1, 65528, 65533, 1, 65529, 65533, 1, 65526, 2, 0, 65525, 65535, 1, 65525, 0, 1, 65525, 1, 1, 65525, 2, 1, 65525, 3, 1, 65525, 4, 1, 65526, 65535, 0, 65526, 0, 0, 65526, 1, 0, 65526, 3, 0, 65526, 4, 0, 65527, 65535, 0, 65527, 0, 0, 65527, 1, 0, 65527, 2, 0, 65527, 3, 0, 65527, 4, 0, 65528, 65535, 1, 65528, 0, 0, 65528, 1, 0, 65528, 2, 0, 65528, 3, 0, 65528, 4, 0, 65529, 65535, 1, 65529, 0, 0, 65529, 1, 0, 65529, 2, 0, 65529, 3, 0, 65529, 4, 0, 65530, 65535, 0, 65530, 0, 0, 65530, 1, 0, 65530, 2, 0, 65530, 3, 0, 65530, 4, 0, 65531, 65535, 0, 65531, 0, 0, 65531, 1, 0, 65531, 2, 0, 65531, 3, 0, 65531, 4, 0, 65532, 65535, 1, 65532, 0, 1, 65532, 1, 1, 65532, 2, 1, 65532, 3, 1, 65532, 4, 1, -65540, 9, 655361, -65541, 65535, 917505)
+"cells": PackedInt32Array(65530, 65534, 1, 65530, 65533, 1, 65531, 65533, 1, 65532, 65533, 1, 65531, 65534, 1, 65532, 65534, 1, 65533, 65534, 1, 65533, 65535, 1, 65533, 0, 1, 65533, 1, 1, 65533, 2, 1, 65533, 3, 1, 65533, 4, 1, 65533, 5, 1, 65532, 5, 1, 65531, 5, 0, 65530, 5, 0, 65529, 5, 0, 65528, 5, 0, 65527, 5, 0, 65527, 6, 1, 65526, 5, 0, 65525, 5, 1, 65524, 5, 1, 65524, 4, 1, 65524, 3, 1, 65524, 2, 1, 65524, 1, 1, 65523, 1, 1, 65523, 0, 1, 65524, 0, 1, 65524, 65535, 1, 65524, 65534, 1, 65525, 65534, 1, 65526, 65534, 1, 65527, 65534, 1, 65528, 65534, 1, 65529, 65534, 1, 65528, 65533, 1, 65529, 65533, 1, 65526, 2, 0, 65525, 65535, 1, 65525, 0, 1, 65525, 1, 1, 65525, 2, 1, 65525, 3, 1, 65525, 4, 1, 65526, 65535, 0, 65526, 0, 0, 65526, 1, 0, 65526, 3, 0, 65526, 4, 0, 65527, 65535, 0, 65527, 0, 0, 65527, 1, 0, 65527, 2, 0, 65527, 3, 0, 65527, 4, 0, 65528, 65535, 1, 65528, 0, 0, 65528, 1, 0, 65528, 2, 0, 65528, 3, 0, 65528, 4, 0, 65529, 65535, 1, 65529, 0, 0, 65529, 1, 0, 65529, 2, 0, 65529, 3, 0, 65529, 4, 0, 65530, 65535, 0, 65530, 0, 0, 65530, 1, 0, 65530, 2, 0, 65530, 3, 0, 65530, 4, 0, 65531, 65535, 0, 65531, 0, 0, 65531, 1, 0, 65531, 2, 0, 65531, 3, 0, 65531, 4, 0, 65532, 65535, 1, 65532, 0, 1, 65532, 1, 1, 65532, 2, 1, 65532, 3, 1, 65532, 4, 1, -65540, 9, 655361, -65541, 65535, 917505, 65526, 6, 1, 65528, 6, 1, 65529, 6, 1, 65530, 6, 1, 65531, 6, 1, 65532, 6, 1, 65533, 6, 1)
 }
 script = ExtResource("1_m1xuj")
 walkable_items = Array[int]([0])
@@ -458,10 +460,7 @@ debug_start_cell = Vector3i(-2, 0, 6)
 debug_end_cell = Vector3i(2, 0, 2)
 metadata/_editor_floor_ = Vector3(0, 0, 0)
 
-[node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(-0.2588191, 0, 0.9659258, 0, 1, 0, -0.9659258, 0, -0.2588191, 13.778312, 1.4893837, -11.459989)
-
-[node name="player_test" parent="." instance=ExtResource("3_lwsdr")]
+[node name="player_test" parent="." groups=["fakeplayer"] instance=ExtResource("3_lwsdr")]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 3, 1.351, 1)
 
 [node name="StaticBody3D2" type="StaticBody3D" parent="."]
@@ -890,6 +889,7 @@ override_signal = 0.0
 
 [node name="Area3D" type="Area3D" parent="Node3D3/UrnBreakScene/PlayerAreaTrigger"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.13067532)
+collision_layer = 0
 monitorable = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Node3D3/UrnBreakScene/PlayerAreaTrigger/Area3D"]
@@ -948,6 +948,8 @@ libraries = {
 
 [node name="Area3D" type="Area3D" parent="Ender"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.033518, 0.5182469, 7.5514584)
+collision_layer = 0
+monitorable = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Ender/Area3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5542221, 0)
@@ -956,6 +958,35 @@ shape = SubResource("SphereShape3D_j4a7u")
 [node name="Enemy_presset" parent="." node_paths=PackedStringArray("player") instance=ExtResource("43_fawc0")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.962071, 0.3784272, 3.1502094)
 player = NodePath("../player_test")
+
+[node name="Gate" parent="." instance=ExtResource("8_wxy46")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7, 0.4, -2)
+
+[node name="PlayerAreaTrigger" parent="." instance=ExtResource("40_wxy46")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7, 1, -0.3)
+override_signal = 0.0
+
+[node name="Area3D" type="Area3D" parent="PlayerAreaTrigger"]
+collision_layer = 0
+monitorable = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="PlayerAreaTrigger/Area3D"]
+shape = SubResource("BoxShape3D_gvepk")
+
+[node name="PlayerAreaTrigger2" parent="." instance=ExtResource("40_wxy46")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7, 1, -7.3)
+override_signal = 1.0
+
+[node name="Area3D" type="Area3D" parent="PlayerAreaTrigger2"]
+collision_layer = 0
+monitorable = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="PlayerAreaTrigger2/Area3D"]
+shape = SubResource("BoxShape3D_gvepk")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="PlayerAreaTrigger2/Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14, 0, 8.3)
+shape = SubResource("BoxShape3D_gvepk")
 
 [connection signal="on_activated" from="Node3D3/Puzzles_01/Node3D/Button" to="Node3D3/Puzzles_01/Node3D/Gate_Left" method="open_gate"]
 [connection signal="on_change" from="Node3D3/Puzzles_01/Node3D/Node3D/Left_PressurePlate" to="Node3D3/Puzzles_01/Node3D/Gate_Left" method="open_gate"]
@@ -970,3 +1001,7 @@ player = NodePath("../player_test")
 [connection signal="area_exited" from="Node3D3/UrnBreakScene/PlayerAreaTrigger/Area3D" to="Node3D3/UrnBreakScene/PlayerAreaTrigger" method="_player_exited"]
 [connection signal="area_entered" from="Ender/Area3D" to="Ender" method="_on_area_3d_area_entered"]
 [connection signal="hey_joy" from="Enemy_presset" to="Node3D3/Node3D2/Locked_Door_3/AnimatedObject" method="play_animation"]
+[connection signal="on_activated" from="PlayerAreaTrigger" to="Gate" method="open_gate"]
+[connection signal="area_entered" from="PlayerAreaTrigger/Area3D" to="PlayerAreaTrigger" method="_player_entered"]
+[connection signal="on_activated" from="PlayerAreaTrigger2" to="Gate" method="open_gate"]
+[connection signal="area_entered" from="PlayerAreaTrigger2/Area3D" to="PlayerAreaTrigger2" method="_player_entered"]

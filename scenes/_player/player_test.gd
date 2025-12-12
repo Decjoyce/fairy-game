@@ -57,7 +57,7 @@ func fake_die(fakestring: StringName):
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 
 func return_to_menu() -> void:
-	get_tree().reload_current_scene()
+	get_tree().change_scene_to_file("res://scenes/MainMenu/death_scene.tscn")
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta: float) -> void:

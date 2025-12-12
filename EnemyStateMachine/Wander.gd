@@ -42,7 +42,7 @@ func enter():
 	grid_map =get_tree().get_first_node_in_group("GMPF")
 	grid_map.setup_astar_grid(grid_map.walkable_items)
 	#prints(grid_map.walkable_items)
-	player = get_tree().get_first_node_in_group("Player")
+	player = get_tree().get_first_node_in_group("fakeplayer")
 	Animator.play("RESET")
 	
 	#RandomWander()

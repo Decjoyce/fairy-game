@@ -1,4 +1,4 @@
-[gd_scene load_steps=88 format=3 uid="uid://drc8vg7njr5ui"]
+[gd_scene load_steps=89 format=3 uid="uid://drc8vg7njr5ui"]
 
 [ext_resource type="Script" uid="uid://bytcavpmi7t32" path="res://Enemy/enemy_with_combat.gd" id="1_3ixwq"]
 [ext_resource type="Texture2D" uid="uid://bajdgu88x35py" path="res://Sprites/ballyWalkSheet_n.png" id="1_mpywb"]
@@ -197,7 +197,10 @@ rows = 2.0
 columns = 8.0
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_3ixwq"]
-size = Vector3(0.4, 1, 2)
+size = Vector3(0.05, 1, 2)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_pydrg"]
+size = Vector3(0.05, 1, 2)
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_om1c7"]
 radius = 5.0
@@ -973,8 +976,7 @@ debug_color = Color(0.95096534, 2.0214916e-06, 0.56154376, 0.41960785)
 
 [node name="Fight area2" type="CollisionShape3D" parent="Area3D"]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -1.4901161e-08, 0, 0)
-shape = SubResource("BoxShape3D_3ixwq")
-disabled = true
+shape = SubResource("BoxShape3D_pydrg")
 debug_color = Color(0.95096534, 2.0214916e-06, 0.56154376, 0.41960785)
 
 [node name="Area3D2" type="Area3D" parent="."]
