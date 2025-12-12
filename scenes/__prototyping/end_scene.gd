@@ -1,9 +1,16 @@
 extends Node3D
 
-@export var game_scene: PackedScene
-
 func _ready() -> void:
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 
+@export var anim_player: AnimationPlayer
+@export var torches: Node3D
+
+func real_player_game()-> void:
+	get_tree().change_scene_to_file("res://scenes/MainMenu/MainMenuScene.tscn")
+
 func play_game() -> void:
-	get_tree().change_scene_to_packed(game_scene)
+	anim_player.play("fade_out")
+
+func kill_torches() -> void:
+	torches.queue_free()

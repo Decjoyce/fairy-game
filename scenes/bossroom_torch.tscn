@@ -1492,32 +1492,42 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 
-[node name="RichTextLabel" type="RichTextLabel" parent="Control"]
-custom_minimum_size = Vector2(604, 100)
+[node name="AspectRatioContainer" type="AspectRatioContainer" parent="Control"]
+custom_minimum_size = Vector2(659.88, 100)
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.34270832
-anchor_top = 0.7731481
-anchor_right = 0.65729165
-anchor_bottom = 0.8657407
+anchor_left = 0.32815626
+anchor_top = 0.7037037
+anchor_right = 0.6718437
+anchor_bottom = 0.7962963
+offset_left = 27.940002
+offset_right = -27.939941
 grow_horizontal = 2
 grow_vertical = 0
-mouse_filter = 2
-theme_override_font_sizes/normal_font_size = 61
-text = "To Enter Combat"
-horizontal_alignment = 2
-vertical_alignment = 1
 metadata/_edit_use_anchors_ = true
 
-[node name="TextureRect" type="TextureRect" parent="Control/RichTextLabel"]
-layout_mode = 1
-anchors_preset = -1
-anchor_right = 0.11000001
-anchor_bottom = 1.0
-offset_right = 0.22999573
-grow_vertical = 2
+[node name="HBoxContainer" type="HBoxContainer" parent="Control/AspectRatioContainer"]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="Control/AspectRatioContainer/HBoxContainer"]
+layout_mode = 2
 texture = ExtResource("13_kroup")
 stretch_mode = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Control/AspectRatioContainer/HBoxContainer"]
+custom_minimum_size = Vector2(503.75, 100)
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/line_separation = 45
+theme_override_constants/paragraph_separation = -80
+theme_override_font_sizes/normal_font_size = 61
+text = "
+To Enter Combat"
+scroll_active = false
+autowrap_trim_flags = 0
+horizontal_alignment = 2
+metadata/_edit_use_anchors_ = true
 
 [connection signal="on_activated" from="PlayerAreaTrigger" to="AnimatedObject" method="play_animation"]
 [connection signal="area_entered" from="PlayerAreaTrigger/Area3D" to="PlayerAreaTrigger" method="_player_entered"]
