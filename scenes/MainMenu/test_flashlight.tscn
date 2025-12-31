@@ -1,0 +1,83 @@
+[gd_scene load_steps=9 format=3 uid="uid://bfyqm0pchcwtx"]
+
+[sub_resource type="Environment" id="Environment_vaq1r"]
+background_mode = 1
+fog_enabled = true
+fog_light_color = Color(1, 1, 1, 1)
+fog_light_energy = 0.0
+volumetric_fog_enabled = true
+volumetric_fog_density = 0.015
+volumetric_fog_albedo = Color(0, 0, 0, 1)
+
+[sub_resource type="FogMaterial" id="FogMaterial_p02r6"]
+density = 0.0561
+emission = Color(0.9992309, 0.8927933, 0.65803593, 1)
+height_falloff = 1.5157153e-05
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_p02r6"]
+transparency = 1
+shading_mode = 0
+albedo_color = Color(1, 1, 0.9776916, 0.045)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_vpps2"]
+top_radius = 0.1
+bottom_radius = 15.0
+height = 50.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vpps2"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_royst"]
+material = SubResource("StandardMaterial3D_vpps2")
+size = Vector2(500, 500)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vaq1r"]
+albedo_color = Color(0, 0, 0, 1)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_p02r6"]
+material = SubResource("StandardMaterial3D_vaq1r")
+size = Vector2(500, 500)
+
+[node name="Node3D" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_vaq1r")
+
+[node name="Flashlight" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 33.325, 0)
+
+[node name="SpotLight3D" type="SpotLight3D" parent="Flashlight"]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 0)
+light_color = Color(0.9912446, 0.852257, 1.540184e-05, 1)
+light_energy = 34.745
+light_indirect_energy = 6.147
+shadow_enabled = true
+spot_range = 50.0
+spot_attenuation = 0.2
+spot_angle = 15.0
+spot_angle_attenuation = 2.8284266
+
+[node name="FogHolder" type="Node3D" parent="Flashlight"]
+transform = Transform3D(1.0000001, 0, 0, 0, 1, 0, 0, 0, 0.99998957, 0, 0, 0)
+visible = false
+
+[node name="FogVolume" type="FogVolume" parent="Flashlight/FogHolder"]
+transform = Transform3D(1.0000002, 0, 0, 0, 1, 0, 0, 0, 1.0000002, 0, -22, 0)
+size = Vector3(10, 44, 10)
+shape = 1
+material = SubResource("FogMaterial_p02r6")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Flashlight"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -25, 0)
+material_override = SubResource("StandardMaterial3D_p02r6")
+mesh = SubResource("CylinderMesh_vpps2")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1.0000001, 0, 0, 0, 1, 0, 0, 0, 0.99998957, 0, 0, 0)
+visible = false
+mesh = SubResource("PlaneMesh_royst")
+skeleton = NodePath("../Flashlight/FogHolder")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
+transform = Transform3D(1.0000001, 0, 0, 0, 1, 0, 0, 0, 0.99998957, 0, 0, 0)
+mesh = SubResource("PlaneMesh_p02r6")
+skeleton = NodePath("../Flashlight/FogHolder")
