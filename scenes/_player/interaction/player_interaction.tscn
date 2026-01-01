@@ -14,14 +14,13 @@
 [ext_resource type="Texture2D" uid="uid://x5o8gwlacxs1" path="res://assets/_not_ours_dontship/Xbox Series/XboxSeriesX_X.png" id="9_b33uu"]
 [ext_resource type="Script" uid="uid://bwjg44sotn0rj" path="res://scenes/_player/interaction/input_contexts.gd" id="9_pdn2y"]
 [ext_resource type="Texture2D" uid="uid://bj70dokyron4r" path="res://scenes/_player/interaction/hand/assets/hand_torch.png" id="10_434r6"]
-[ext_resource type="Texture2D" uid="uid://dee8ol82mg72l" path="res://assets/_not_ours_dontship/Xbox Series/XboxSeriesX_LT.png" id="10_c2wdf"]
 [ext_resource type="Texture2D" uid="uid://bf5kpbbhis3ra" path="res://scenes/_player/interaction/hand/assets/hand_extend_full.png" id="11_njhm0"]
 [ext_resource type="Texture2D" uid="uid://cfymwa08wvaqh" path="res://scenes/_player/interaction/hand/assets/hand_pick_two.png" id="12_jhcvy"]
 [ext_resource type="Texture2D" uid="uid://dehow8buqijkk" path="res://scenes/_player/interaction/hand/assets/hand_lever.png" id="12_pvvfk"]
 [ext_resource type="Texture2D" uid="uid://ck4of6qde1ymu" path="res://scenes/_player/interaction/hand/assets/hand_lever_two.png" id="14_aq8do"]
 [ext_resource type="Texture2D" uid="uid://dfa3alju8038l" path="res://scenes/_player/interaction/hand/assets/hand_torch_side.png" id="20_g8o0o"]
+[ext_resource type="Texture2D" uid="uid://be806hdo75i5p" path="res://scenes/_player/interaction/hand/assets/hand_receive.png" id="20_krqau"]
 [ext_resource type="Texture2D" uid="uid://bvp14xwrxbn3n" path="res://assets/_not_ours_dontship/Xbox Series/XboxSeriesX_B.png" id="20_x8mhs"]
-[ext_resource type="Texture2D" uid="uid://jub3n8100tqt" path="res://assets/_not_ours_dontship/Xbox Series/XboxSeriesX_RT.png" id="21_g8o0o"]
 
 [sub_resource type="Animation" id="Animation_434r6"]
 length = 0.001
@@ -286,6 +285,22 @@ tracks/0/keys = {
 "values": [ExtResource("20_g8o0o")]
 }
 
+[sub_resource type="Animation" id="Animation_3bhis"]
+resource_name = "hand_prompt_baby"
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("_hand_sprite:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("20_krqau")]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_3efos"]
 _data = {
 &"RESET": SubResource("Animation_434r6"),
@@ -297,6 +312,7 @@ _data = {
 &"hand_attack": SubResource("Animation_jhcvy"),
 &"hand_attack_idle": SubResource("Animation_b33uu"),
 &"hand_press": SubResource("Animation_sx4t2"),
+&"hand_prompt_baby": SubResource("Animation_3bhis"),
 &"hand_prompt_button": SubResource("Animation_3t2v1"),
 &"hand_prompt_default": SubResource("Animation_njhm0"),
 &"hand_prompt_door_locked": SubResource("Animation_pd1hw"),
@@ -437,6 +453,7 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="InputContexts" type="VBoxContainer" parent="Hand_Left/_hand_sprite"]
+visible = false
 layout_mode = 1
 anchors_preset = -1
 anchor_left = -2.6266668
@@ -450,6 +467,7 @@ script = ExtResource("9_pdn2y")
 metadata/_edit_use_anchors_ = true
 
 [node name="UseAction" type="HBoxContainer" parent="Hand_Left/_hand_sprite/InputContexts"]
+visible = false
 layout_mode = 2
 
 [node name="RichTextLabel" type="RichTextLabel" parent="Hand_Left/_hand_sprite/InputContexts/UseAction"]
@@ -471,6 +489,7 @@ texture = ExtResource("9_b33uu")
 expand_mode = 1
 
 [node name="InteractAction" type="HBoxContainer" parent="Hand_Left/_hand_sprite/InputContexts"]
+visible = false
 layout_mode = 2
 
 [node name="RichTextLabel" type="RichTextLabel" parent="Hand_Left/_hand_sprite/InputContexts/InteractAction"]
@@ -488,7 +507,6 @@ vertical_alignment = 1
 [node name="TextureRect" type="TextureRect" parent="Hand_Left/_hand_sprite/InputContexts/InteractAction"]
 custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
-texture = ExtResource("10_c2wdf")
 expand_mode = 1
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Hand_Left"]
@@ -594,6 +612,7 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="InputContexts" type="VBoxContainer" parent="Hand_Right/_hand_sprite"]
+visible = false
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.18
@@ -606,15 +625,18 @@ script = ExtResource("9_pdn2y")
 metadata/_edit_use_anchors_ = true
 
 [node name="UseAction" type="HBoxContainer" parent="Hand_Right/_hand_sprite/InputContexts"]
+visible = false
 layout_mode = 2
 
 [node name="TextureRect" type="TextureRect" parent="Hand_Right/_hand_sprite/InputContexts/UseAction"]
+visible = false
 custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
 texture = ExtResource("20_x8mhs")
 expand_mode = 1
 
 [node name="RichTextLabel" type="RichTextLabel" parent="Hand_Right/_hand_sprite/InputContexts/UseAction"]
+visible = false
 custom_minimum_size = Vector2(20, 0)
 layout_mode = 2
 size_flags_horizontal = 3
@@ -626,15 +648,17 @@ scroll_active = false
 vertical_alignment = 1
 
 [node name="InteractAction" type="HBoxContainer" parent="Hand_Right/_hand_sprite/InputContexts"]
+visible = false
 layout_mode = 2
 
 [node name="TextureRect" type="TextureRect" parent="Hand_Right/_hand_sprite/InputContexts/InteractAction"]
+visible = false
 custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
-texture = ExtResource("21_g8o0o")
 expand_mode = 1
 
 [node name="RichTextLabel" type="RichTextLabel" parent="Hand_Right/_hand_sprite/InputContexts/InteractAction"]
+visible = false
 custom_minimum_size = Vector2(20, 0)
 layout_mode = 2
 size_flags_horizontal = 3

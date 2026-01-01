@@ -631,6 +631,12 @@ transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -4, 
 [node name="_dev_open_hall3" parent="Room_Start/_env" instance=ExtResource("3_mlo6p")]
 transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 0, -1, -5)
 
+[node name="_dev_open_doorway5" parent="Room_Start/_env" instance=ExtResource("4_viu01")]
+transform = Transform3D(1, 0, 1.7484555e-07, 0, 1, 0, -1.7484555e-07, 0, 1, -8.742278e-08, 0, 1)
+
+[node name="_dev_open_hall5" parent="Room_Start/_env" instance=ExtResource("3_mlo6p")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.742278e-08, -1, 3)
+
 [node name="_dev_open_hall4" parent="Room_Start/_env" instance=ExtResource("3_mlo6p")]
 transform = Transform3D(1.3113416e-07, 0, 1, 0, 1, 0, -1, 0, 1.3113416e-07, 4, -1, -1)
 
@@ -763,7 +769,7 @@ collision_mask = 3
 shape = SubResource("SphereShape3D_3wul1")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Room_Start/Teleporter_to_item2/Trigger"]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -2.2, 0, 0)
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -2, 0, 0)
 mesh = SubResource("SphereMesh_hsji5")
 
 [node name="In" type="Node3D" parent="Room_Start/Teleporter_to_item2"]
@@ -807,19 +813,22 @@ transform = Transform3D(-1, 0, 5.9604645e-08, 0, 1, 0, -5.9604645e-08, 0, -1, 0,
 
 [node name="Label3D3" type="Label3D" parent="Room_Start"]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -2.7000003, 1.7, -1)
-text = "Triggers &
-Receivers"
+text = "LEFT"
 font_size = 52
 
 [node name="Label3D4" type="Label3D" parent="Room_Start"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.7, -4)
-text = "Items"
+text = "Forward"
 font_size = 52
 
 [node name="Label3D5" type="Label3D" parent="Room_Start"]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 2.8, 1.7, -1)
-text = "Animated
-Objects"
+text = "Right"
+font_size = 52
+
+[node name="Label3D6" type="Label3D" parent="Room_Start"]
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 0, 1.7, 2)
+text = "Back"
 font_size = 52
 
 [node name="Room_Items" type="Node3D" parent="."]
@@ -1171,7 +1180,11 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.999, -1)
 
 [node name="TEST_Grabbable_item" parent="Room_Interacting" instance=ExtResource("16_3wul1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0.4, -1)
-item_weight = 2
+item_weight = 3
+
+[node name="TEST_Grabbable_item2" parent="Room_Interacting" instance=ExtResource("16_3wul1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0.4, -0.2181375)
+item_weight = 3
 
 [node name="Showcase_PressurePlate2" type="Node3D" parent="Room_Interacting"]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -3, 0, 1)
@@ -1189,6 +1202,7 @@ transform = Transform3D(1.3113416e-07, 0, -1, 0, 1, 0, 1, 0, 1.3113416e-07, 1, 0
 
 [node name="PressurePlate" parent="Room_Interacting/Showcase_PressurePlate2" instance=ExtResource("15_fpxpw")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.05000019, 1)
+weight_to_activate = 8.0
 
 [node name="Showcase_Button" type="Node3D" parent="Room_Interacting"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 0, 15)
@@ -1197,7 +1211,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 0, 15)
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -13, 0, -18)
 
 [node name="Button" parent="Room_Interacting/Showcase_Button" groups=["Interactables"] instance=ExtResource("10_h40wo")]
-transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, -12, 0.8, -18.9)
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, -12, 0.8, -18.853664)
 
 [node name="_dev_open_doorway4" parent="Room_Interacting/Showcase_Button" instance=ExtResource("4_viu01")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -14, 0, -18)
@@ -1729,7 +1743,7 @@ type_of_item = 0
 num_needed = 5
 
 [node name="DrawBoard" parent="." instance=ExtResource("23_rcrad")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.70000005, -4)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -5.3, -4)
 mesh = SubResource("ArrayMesh_15de5")
 
 [node name="ItemTrigger" parent="." node_paths=PackedStringArray("specific_item") instance=ExtResource("24_1e1q4")]
