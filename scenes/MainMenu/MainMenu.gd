@@ -14,6 +14,15 @@ var game_started := false
 @export var light: Light3D
 
 func _process(delta):
+	if Input.is_action_just_pressed("ui_accept"):
+		anim_player.play("SpeedIntoCavee_2")
+	if Input.is_action_just_pressed("turn_left"):
+		anim_player.play("RESET")
+		#anim_player.play("CameraSlow")
+	if Input.is_action_just_pressed("turn_right"):
+		anim_player.play("CameraSlow")
+		#anim_player.play("CameraSlow")
+	
 	return
 	var space_state = get_world_3d().direct_space_state
 	var mousepos = get_viewport().get_mouse_position()
