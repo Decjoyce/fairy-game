@@ -1,0 +1,1178 @@
+[gd_scene load_steps=93 format=3 uid="uid://c2t344losqa6"]
+
+[ext_resource type="Script" uid="uid://bytcavpmi7t32" path="res://Enemy/enemy_with_combat.gd" id="1_fhuht"]
+[ext_resource type="Texture2D" uid="uid://bajdgu88x35py" path="res://Sprites/ballyWalkSheet_n.png" id="2_n5str"]
+[ext_resource type="Texture2D" uid="uid://dl3etwft2mhxm" path="res://Sprites/ballyWalkSheet.png" id="3_lrxhb"]
+[ext_resource type="Script" uid="uid://b5653u7w56pqw" path="res://extras_sprites/scripts/sprite_3D_billboard.gd" id="4_vc45h"]
+[ext_resource type="Script" uid="uid://b4m0sglcg4smw" path="res://extras_sprites/scripts/animatio_data.gd" id="5_sfpjg"]
+[ext_resource type="Texture2D" uid="uid://cjn3bxmukh4fj" path="res://Sprites/ballybogIdle.png" id="6_n6mir"]
+[ext_resource type="Texture2D" uid="uid://d117rsf1rrxb6" path="res://Sprites/ballybogIdle_n.png" id="7_xwhy5"]
+[ext_resource type="Texture2D" uid="uid://da55c2fwj7ox7" path="res://Sprites/ballyAttack_LBottom.png" id="8_io1mf"]
+[ext_resource type="Texture2D" uid="uid://b45ckx6htx1bg" path="res://Sprites/ballyAttack_LBottom_n.png" id="9_sbovb"]
+[ext_resource type="Texture2D" uid="uid://fohbvfmbnsw7" path="res://Sprites/ballyAttack_LMid.png" id="10_n4vgp"]
+[ext_resource type="Texture2D" uid="uid://d2eurcnwm514j" path="res://Sprites/ballyAttack_LMid_n.png" id="11_118ec"]
+[ext_resource type="Texture2D" uid="uid://c1t33lxeknsve" path="res://Sprites/ballyAttack_LTop.png" id="12_8r827"]
+[ext_resource type="Texture2D" uid="uid://p2iiihprajki" path="res://Sprites/ballyAttack_LTop_n.png" id="13_dfqun"]
+[ext_resource type="Texture2D" uid="uid://d2i5outw16p5m" path="res://Sprites/ballyAttack_RBottom.png" id="14_g2rnb"]
+[ext_resource type="Texture2D" uid="uid://0meyt1eqowl" path="res://Sprites/ballyAttack_RBottom_n.png" id="15_p3h6l"]
+[ext_resource type="Texture2D" uid="uid://d32p1mrham4j6" path="res://Sprites/ballyAttack_RMid.png" id="16_i1vdh"]
+[ext_resource type="Texture2D" uid="uid://bjd7yeekbvmx0" path="res://Sprites/ballyAttack_RMid_n.png" id="17_71ga0"]
+[ext_resource type="Texture2D" uid="uid://dqyfvagjygkha" path="res://Sprites/ballyAttack_RTop.png" id="18_e5frn"]
+[ext_resource type="Texture2D" uid="uid://bnrfxmw0nk1dq" path="res://Sprites/ballyAttack_RTop_n.png" id="19_1v170"]
+[ext_resource type="Script" uid="uid://c3fdtr0ieg5dj" path="res://EnemyStateMachine/sm_controller.gd" id="20_bd1k1"]
+[ext_resource type="Script" uid="uid://r7bhwy0jfpk7" path="res://EnemyStateMachine/StateMachine.gd" id="21_d1q44"]
+[ext_resource type="Script" uid="uid://dc3uc7qhwg03r" path="res://EnemyStateMachine/idle_state.gd" id="22_uqelm"]
+[ext_resource type="Script" uid="uid://bg6gxealt4p8b" path="res://EnemyStateMachine/Fighting.gd" id="23_1gsl7"]
+[ext_resource type="Script" uid="uid://cyctjxnvvlo47" path="res://EnemyStateMachine/Wander.gd" id="24_ckfbr"]
+[ext_resource type="Script" uid="uid://dlre0emi41dh1" path="res://EnemyStateMachine/Chase.gd" id="25_6xeya"]
+[ext_resource type="Script" uid="uid://mjv5xwl3wbdm" path="res://Enemy/combat/enemy_combat.gd" id="26_cg0uk"]
+[ext_resource type="Script" uid="uid://cjs7vohjf5dsq" path="res://Enemy/combat/enemy_combathand.gd" id="27_ubmt6"]
+[ext_resource type="Script" uid="uid://cjssruwuxjia0" path="res://scenes/combat/attack_sequence.gd" id="28_fnlvf"]
+[ext_resource type="Resource" uid="uid://bo6jynbmofv6l" path="res://Enemy/combat/attacks/attckseq_bb_test.tres" id="29_sm631"]
+[ext_resource type="Script" uid="uid://c27axnnaakeuo" path="res://scenes/combat/combathand_attack.gd" id="30_l8dqx"]
+[ext_resource type="Script" uid="uid://i6x8mkfibed4" path="res://scenes/combat/attack_data.gd" id="30_n5str"]
+[ext_resource type="Resource" uid="uid://cuio3wov5e7gh" path="res://Enemy/combat/attacks/attck_bb_tl.tres" id="30_vc45h"]
+[ext_resource type="Script" uid="uid://446bgqyk22na" path="res://scenes/combat/stance.gd" id="31_f3h1u"]
+[ext_resource type="Resource" uid="uid://csr2hh666w05y" path="res://Enemy/combat/attacks/attck_bb_test.tres" id="31_sfpjg"]
+[ext_resource type="Script" uid="uid://gmvwnhalcf7" path="res://Enemy/enemy_hitbox_temp.gd" id="32_ptq6r"]
+[ext_resource type="Animation" uid="uid://b6ga5k6b8stym" path="res://AnimationsBelly/Walk.res" id="33_bcl06"]
+[ext_resource type="Script" uid="uid://46pp7aerorca" path="res://stats.gd" id="34_mq0re"]
+[ext_resource type="Script" uid="uid://byyeneqtnv43x" path="res://Enemy/koko.gd" id="35_ecx3k"]
+[ext_resource type="Texture2D" uid="uid://2t1cw83o71dn" path="res://assets/ui/enemy_border.png" id="36_2p7it"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_abuop"]
+radius = 0.43391418
+height = 0.86782837
+
+[sub_resource type="Shader" id="Shader_fhuht"]
+code = "shader_type spatial;
+render_mode diffuse_lambert_wrap,cull_disabled;
+
+uniform float rows:hint_range(1.0, 100.0, 1) = 1;
+uniform float columns:hint_range(1.0, 100.0, 1) = 1;
+uniform float frame:hint_range(0.0, 100.0, 1) = 0;
+uniform bool invert_rows_columns = false;
+uniform sampler2D sprite:filter_nearest_mipmap;
+uniform int mode:hint_range(0, 1, 1) = 1;
+varying vec3 look_dir;
+uniform sampler2D Normal;
+
+
+float billboard_mode_a(vec3 CAMERA_POSITION,vec3 NODE_POSITION, mat4 MODEL_MAT,float directions){
+	vec3 direction_to_camera = normalize(CAMERA_POSITION-NODE_POSITION);
+	float angle_to_camera = atan(direction_to_camera.x,direction_to_camera.z);
+	vec4 model_direction = MODEL_MAT*vec4(1.0,0.0,0.0,0.0);
+	float y_angle = atan(model_direction.x,model_direction.z)-PI/2.0;
+	float final_angle = angle_to_camera-y_angle;
+	float int_y_angle = round((final_angle / TAU) * float(directions)) / float(directions);
+	return int_y_angle;
+}
+float billboard_mobe_b(vec3 CAMERA_POSITION,mat4 MODEL_MAT,mat4 VIEW_MAT,float directions,int ret){
+
+    vec3 ray_origin = CAMERA_POSITION;
+
+    vec3 object_origin = (MODEL_MAT * vec4(0.0,0.0,0.0,1.0)).xyz;
+    vec3 cam_dir = object_origin - ray_origin;
+    cam_dir = normalize((VIEW_MAT * vec4(cam_dir, 0.0)).xyz);
+
+    float angle = 180.0 - degrees(acos(dot(normalize(cam_dir.xz), normalize(look_dir.xz))));
+    float _direction = round(angle/180.0 * directions);
+
+    float flip = sign((look_dir.x * cam_dir.z) - (look_dir.z * cam_dir.x));
+
+    flip = mix(flip, 1.0, max(step(_direction, 0.0), step(directions, _direction)));
+	float retu = ret == 0 ? _direction : flip;
+	return retu ;
+}
+void vertex() {
+		 MODELVIEW_MATRIX = VIEW_MATRIX * mat4(vec4(normalize(cross(vec3(0.0, 1.0, 0.0), INV_VIEW_MATRIX[2].xyz)), 0.0), vec4(0.0, 1.0, 0.0, 0.0), vec4(normalize(cross(INV_VIEW_MATRIX[0].xyz, vec3(0.0, 1.0, 0.0))), 0.0), MODEL_MATRIX[3]);
+		look_dir = MODELVIEW_NORMAL_MATRIX * NORMAL;
+		MODELVIEW_NORMAL_MATRIX = mat3(MODELVIEW_MATRIX);
+	switch (mode){
+		case 0:
+			float y = invert_rows_columns == true ? billboard_mode_a(CAMERA_POSITION_WORLD,NODE_POSITION_WORLD,MODEL_MATRIX,rows) : billboard_mode_a(CAMERA_POSITION_WORLD,NODE_POSITION_WORLD,MODEL_MATRIX,columns);
+			float x = invert_rows_columns == true ? frame/columns:frame/rows;
+			UV /= vec2(rows,columns);
+			UV += invert_rows_columns == true ?vec2(y,x):vec2(x,y);
+			break;
+		case 1:
+			float x = invert_rows_columns == true ? frame/columns:frame/rows;
+			float y = billboard_mobe_b(CAMERA_POSITION_WORLD,MODEL_MATRIX,VIEW_MATRIX,rows,0);
+			float f = billboard_mobe_b(CAMERA_POSITION_WORLD,MODEL_MATRIX,VIEW_MATRIX,rows,1);
+			if (invert_rows_columns){
+				y = billboard_mobe_b(CAMERA_POSITION_WORLD,MODEL_MATRIX,VIEW_MATRIX,columns,0);
+				f = billboard_mobe_b(CAMERA_POSITION_WORLD,MODEL_MATRIX,VIEW_MATRIX,columns,1);
+			}
+			UV.y += invert_rows_columns == true ? x:y;
+			UV /=vec2(rows,columns);
+			UV.x +=  invert_rows_columns == true ? y : x;
+			UV *= invert_rows_columns == true ? vec2(1.0,f):vec2(f,1.0);
+			break;
+	};
+}
+
+void fragment() {
+	vec3 VNormal = texture(Normal,UV).rgb;
+	vec4 sprite_texture;
+	sprite_texture = texture(sprite,UV);
+	ALBEDO = sprite_texture.rgb;
+	ALPHA = sprite_texture.a;
+	NORMAL_MAP = VNormal;
+}
+"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_n5str"]
+render_priority = 0
+shader = SubResource("Shader_fhuht")
+shader_parameter/rows = 5.0
+shader_parameter/columns = 8.0
+shader_parameter/frame = 1.0
+shader_parameter/invert_rows_columns = false
+shader_parameter/sprite = ExtResource("3_lrxhb")
+shader_parameter/mode = 0
+shader_parameter/Normal = ExtResource("2_n5str")
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_lrxhb"]
+material = SubResource("ShaderMaterial_n5str")
+size = Vector2(1.7279999, 1.7279999)
+orientation = 2
+
+[sub_resource type="Resource" id="Resource_vc45h"]
+script = ExtResource("5_sfpjg")
+sprite = ExtResource("6_n6mir")
+texture_normal = ExtResource("7_xwhy5")
+columns = 8.0
+
+[sub_resource type="Resource" id="Resource_sfpjg"]
+script = ExtResource("5_sfpjg")
+name = "walk"
+sprite = ExtResource("3_lrxhb")
+texture_normal = ExtResource("2_n5str")
+rows = 5.0
+columns = 8.0
+
+[sub_resource type="Resource" id="Resource_n6mir"]
+script = ExtResource("5_sfpjg")
+name = "Attack_LbBottom"
+sprite = ExtResource("8_io1mf")
+texture_normal = ExtResource("9_sbovb")
+rows = 2.0
+columns = 8.0
+
+[sub_resource type="Resource" id="Resource_xwhy5"]
+script = ExtResource("5_sfpjg")
+name = "Attack_LMid"
+sprite = ExtResource("10_n4vgp")
+texture_normal = ExtResource("11_118ec")
+rows = 2.0
+columns = 8.0
+
+[sub_resource type="Resource" id="Resource_io1mf"]
+script = ExtResource("5_sfpjg")
+name = "Attack_LTop"
+sprite = ExtResource("12_8r827")
+texture_normal = ExtResource("13_dfqun")
+rows = 2.0
+columns = 8.0
+
+[sub_resource type="Resource" id="Resource_sbovb"]
+script = ExtResource("5_sfpjg")
+name = "Attack_RBottom"
+sprite = ExtResource("14_g2rnb")
+texture_normal = ExtResource("15_p3h6l")
+rows = 2.0
+columns = 8.0
+
+[sub_resource type="Resource" id="Resource_n4vgp"]
+script = ExtResource("5_sfpjg")
+name = "Attack_RMid"
+sprite = ExtResource("16_i1vdh")
+texture_normal = ExtResource("17_71ga0")
+rows = 2.0
+columns = 8.0
+
+[sub_resource type="Resource" id="Resource_118ec"]
+script = ExtResource("5_sfpjg")
+name = "Attack_RTop"
+sprite = ExtResource("18_e5frn")
+texture_normal = ExtResource("19_1v170")
+rows = 2.0
+columns = 8.0
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_3ixwq"]
+size = Vector3(0.05, 1, 2)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_pydrg"]
+size = Vector3(0.05, 1, 2)
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_om1c7"]
+radius = 11.0
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_pydrg"]
+radius = 11.020508
+
+[sub_resource type="Resource" id="Resource_8r827"]
+script = ExtResource("28_fnlvf")
+attack_order = Array[ExtResource("30_n5str")]([ExtResource("30_vc45h"), ExtResource("31_sfpjg")])
+metadata/_custom_type_script = "uid://cjssruwuxjia0"
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_u7c7l"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_nfjh2"]
+radius = 0.4
+height = 1.1
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_u7shv"]
+playback_mode = 1
+random_pitch = 1.1
+streams_count = 1
+
+[sub_resource type="Animation" id="Animation_cangh"]
+resource_name = "Attack_LBottom"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:animation")
+tracks/0/interp = 0
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [2]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:frame")
+tracks/1/interp = 0
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 1.0]
+}
+
+[sub_resource type="Animation" id="Animation_3o7nl"]
+resource_name = "Attack_LMid"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:animation")
+tracks/0/interp = 0
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [3]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:frame")
+tracks/1/interp = 0
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 1.0]
+}
+
+[sub_resource type="Animation" id="Animation_8sfa5"]
+resource_name = "Attack_LTop"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:animation")
+tracks/0/interp = 0
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [4]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:frame")
+tracks/1/interp = 0
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 1.0]
+}
+
+[sub_resource type="Animation" id="Animation_ifeau"]
+resource_name = "Attack_RBottom"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:animation")
+tracks/0/interp = 0
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [5]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:frame")
+tracks/1/interp = 0
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 1.0]
+}
+
+[sub_resource type="Animation" id="Animation_7o52w"]
+resource_name = "Attack_RMid"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:animation")
+tracks/0/interp = 0
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [6]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:frame")
+tracks/1/interp = 0
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 1.0]
+}
+
+[sub_resource type="Animation" id="Animation_v2g1a"]
+resource_name = "Attack_RTop"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:animation")
+tracks/0/interp = 0
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [7]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:frame")
+tracks/1/interp = 0
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 1.0]
+}
+
+[sub_resource type="Animation" id="Animation_e8ov3"]
+resource_name = "Idle"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:animation")
+tracks/0/interp = 0
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:frame")
+tracks/1/interp = 0
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_7p6et"]
+resource_name = "OLD__Attack_LBottom"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:animation")
+tracks/0/interp = 0
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [4]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:frame")
+tracks/1/interp = 0
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 1.0]
+}
+
+[sub_resource type="Animation" id="Animation_om1c7"]
+resource_name = "OLD__Attack_RMid"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:animation")
+tracks/0/interp = 0
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [2]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:frame")
+tracks/1/interp = 0
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 1.0]
+}
+
+[sub_resource type="Animation" id="Animation_2jpox"]
+resource_name = "OLD__Attack_RTop"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:animation")
+tracks/0/interp = 0
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [2]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:frame")
+tracks/1/interp = 0
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 1.0]
+}
+
+[sub_resource type="Animation" id="Animation_5pe8i"]
+resource_name = "Recover_LBottom"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:animation")
+tracks/0/interp = 0
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [2, 0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:frame")
+tracks/1/interp = 0
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [1.0, 0.0]
+}
+
+[sub_resource type="Animation" id="Animation_eex23"]
+resource_name = "Recover_LMid"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:animation")
+tracks/0/interp = 0
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [3, 0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:frame")
+tracks/1/interp = 0
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [1.0, 0.0]
+}
+
+[sub_resource type="Animation" id="Animation_pjoft"]
+resource_name = "Recover_LTop"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:animation")
+tracks/0/interp = 0
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [4, 0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:frame")
+tracks/1/interp = 0
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [1.0, 1.0]
+}
+
+[sub_resource type="Animation" id="Animation_3wbeg"]
+resource_name = "Recover_RBottom"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:animation")
+tracks/0/interp = 0
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [5, 0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:frame")
+tracks/1/interp = 0
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [1.0, 0.0]
+}
+
+[sub_resource type="Animation" id="Animation_84imu"]
+resource_name = "Recover_RMid"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:animation")
+tracks/0/interp = 0
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [6, 0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:frame")
+tracks/1/interp = 0
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [1.0, 0.0]
+}
+
+[sub_resource type="Animation" id="Animation_hovqw"]
+resource_name = "Recover_RTop"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:animation")
+tracks/0/interp = 0
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [7, 0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:frame")
+tracks/1/interp = 0
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [1.0, 1.0]
+}
+
+[sub_resource type="Animation" id="Animation_vx87h"]
+resource_name = "Telegraph_LBottom"
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:animation")
+tracks/0/interp = 0
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [2]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:frame")
+tracks/1/interp = 0
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_r88ec"]
+resource_name = "Telegraph_LMid"
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:animation")
+tracks/0/interp = 0
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [3]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:frame")
+tracks/1/interp = 0
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_tkkut"]
+resource_name = "Telegraph_LTop"
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:animation")
+tracks/0/interp = 0
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [4]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:frame")
+tracks/1/interp = 0
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_rcnqh"]
+resource_name = "Telegraph_RBottom"
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:animation")
+tracks/0/interp = 0
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [5]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:frame")
+tracks/1/interp = 0
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_w4frb"]
+resource_name = "Telegraph_RMid"
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:animation")
+tracks/0/interp = 0
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [6]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:frame")
+tracks/1/interp = 0
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_7kheq"]
+resource_name = "Telegraph_RTop"
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:animation")
+tracks/0/interp = 0
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [7]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:frame")
+tracks/1/interp = 0
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_g8xqt"]
+resource_name = "test_walk"
+length = 1.1
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 0
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.26666668, 0.7, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 1.0, 2.0, 3.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_khln7"]
+_data = {
+&"Attack_LBottom": SubResource("Animation_cangh"),
+&"Attack_LMid": SubResource("Animation_3o7nl"),
+&"Attack_LTop": SubResource("Animation_8sfa5"),
+&"Attack_RBottom": SubResource("Animation_ifeau"),
+&"Attack_RMid": SubResource("Animation_7o52w"),
+&"Attack_RTop": SubResource("Animation_v2g1a"),
+&"Idle": SubResource("Animation_e8ov3"),
+&"OLD__Attack_LBottom": SubResource("Animation_7p6et"),
+&"OLD__Attack_RMid": SubResource("Animation_om1c7"),
+&"OLD__Attack_RTop": SubResource("Animation_2jpox"),
+&"RESET": ExtResource("33_bcl06"),
+&"Recover_LBottom": SubResource("Animation_5pe8i"),
+&"Recover_LMid": SubResource("Animation_eex23"),
+&"Recover_LTop": SubResource("Animation_pjoft"),
+&"Recover_RBottom": SubResource("Animation_3wbeg"),
+&"Recover_RMid": SubResource("Animation_84imu"),
+&"Recover_RTop": SubResource("Animation_hovqw"),
+&"Telegraph_LBottom": SubResource("Animation_vx87h"),
+&"Telegraph_LMid": SubResource("Animation_r88ec"),
+&"Telegraph_LTop": SubResource("Animation_tkkut"),
+&"Telegraph_RBottom": SubResource("Animation_rcnqh"),
+&"Telegraph_RMid": SubResource("Animation_w4frb"),
+&"Telegraph_RTop": SubResource("Animation_7kheq"),
+&"test_walk": SubResource("Animation_g8xqt")
+}
+
+[sub_resource type="Gradient" id="Gradient_xnhkk"]
+offsets = PackedFloat32Array(0, 0.31578946, 1)
+colors = PackedColorArray(0.47993267, 0.07172013, 0.060350247, 1, 0.67502344, 0.12257505, 0.10578546, 1, 0.7764706, 0.14901961, 0.12941177, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_mkkaj"]
+gradient = SubResource("Gradient_xnhkk")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_7kval"]
+texture = SubResource("GradientTexture1D_mkkaj")
+
+[sub_resource type="Gradient" id="Gradient_th4g8"]
+colors = PackedColorArray(0, 0.31764707, 0, 1, 0, 0.7294118, 0, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_hbxst"]
+gradient = SubResource("Gradient_th4g8")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_u7c7l"]
+texture = SubResource("GradientTexture1D_hbxst")
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_r7hqd"]
+viewport_path = NodePath("Stats/Node3D/SubViewport")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_nb3sv"]
+resource_local_to_scene = true
+transparency = 1
+shading_mode = 0
+albedo_texture = SubResource("ViewportTexture_r7hqd")
+billboard_mode = 1
+
+[sub_resource type="QuadMesh" id="QuadMesh_gxsvd"]
+resource_local_to_scene = true
+material = SubResource("StandardMaterial3D_nb3sv")
+
+[node name="Enemy_presset" type="CharacterBody3D"]
+script = ExtResource("1_fhuht")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.4198761, 0)
+shape = SubResource("CapsuleShape3D_abuop")
+
+[node name="Sprite3DBillBoard" type="MeshInstance3D" parent="."]
+transform = Transform3D(-1, 0, -1.509958e-07, 0, 1, 0, 1.509958e-07, 0, -1, 0, 0.75682235, 0)
+layers = 3
+sorting_offset = 1.0
+mesh = SubResource("PlaneMesh_lrxhb")
+script = ExtResource("4_vc45h")
+animations_array = Array[ExtResource("5_sfpjg")]([SubResource("Resource_vc45h"), SubResource("Resource_sfpjg"), SubResource("Resource_n6mir"), SubResource("Resource_xwhy5"), SubResource("Resource_io1mf"), SubResource("Resource_sbovb"), SubResource("Resource_n4vgp"), SubResource("Resource_118ec")])
+animation = 1
+frame = 1.0
+sprite_scale = 0.0016
+metadata/_custom_type_script = "uid://b5653u7w56pqw"
+
+[node name="SM_controller" type="Node" parent="." node_paths=PackedStringArray("node_StateMachine")]
+script = ExtResource("20_bd1k1")
+node_StateMachine = NodePath("../StateMachine")
+
+[node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("Init_node_state")]
+script = ExtResource("21_d1q44")
+Init_node_state = NodePath("Wander")
+
+[node name="IdleState" type="Node" parent="StateMachine" node_paths=PackedStringArray("Body", "Sprite", "SM", "Animator")]
+script = ExtResource("22_uqelm")
+Body = NodePath("../..")
+Sprite = NodePath("../../Sprite3DBillBoard")
+SM = NodePath("..")
+Animator = NodePath("../../AnimationPlayer")
+
+[node name="Fighting" type="Node" parent="StateMachine" node_paths=PackedStringArray("combat", "Body", "SM", "Animator")]
+script = ExtResource("23_1gsl7")
+combat = NodePath("../../Combat")
+Body = NodePath("../..")
+SM = NodePath("..")
+Animator = NodePath("../../AnimationPlayer")
+
+[node name="Wander" type="Node" parent="StateMachine" node_paths=PackedStringArray("Body", "Sprite", "SM", "Animator")]
+script = ExtResource("24_ckfbr")
+Body = NodePath("../..")
+Sprite = NodePath("../../Sprite3DBillBoard")
+SM = NodePath("..")
+Animator = NodePath("../../AnimationPlayer")
+
+[node name="Timer" type="Timer" parent="StateMachine/Wander"]
+process_callback = 0
+wait_time = 7.0
+one_shot = true
+
+[node name="Chase" type="Node" parent="StateMachine" node_paths=PackedStringArray("Body", "Sprite", "SM", "Animator")]
+script = ExtResource("25_6xeya")
+Body = NodePath("../..")
+Sprite = NodePath("../../Sprite3DBillBoard")
+SM = NodePath("..")
+Animator = NodePath("../../AnimationPlayer")
+
+[node name="Timer" type="Timer" parent="StateMachine/Chase"]
+process_callback = 0
+wait_time = 5.0
+one_shot = true
+
+[node name="Area3D" type="Area3D" parent="." groups=["Player"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.59447724, 0)
+collision_layer = 0
+monitorable = false
+
+[node name="Fight area" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.4901161e-08, 0, 0)
+shape = SubResource("BoxShape3D_3ixwq")
+debug_color = Color(0.95096534, 2.0214916e-06, 0.56154376, 0.41960785)
+
+[node name="Fight area2" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -1.4901161e-08, 0, 0)
+shape = SubResource("BoxShape3D_pydrg")
+debug_color = Color(0.95096534, 2.0214916e-06, 0.56154376, 0.41960785)
+
+[node name="Area3D2" type="Area3D" parent="."]
+transform = Transform3D(0.495, 0, 0, 0, 0.495, 0, 0, 0, 0.495, 0, 0.59447724, 0)
+collision_layer = 0
+monitorable = false
+
+[node name="Vision_Hearing" type="CollisionShape3D" parent="Area3D2"]
+transform = Transform3D(0.99999696, 0, 0, 0, 0.99999696, 0, 0, 0, 0.99999696, 0, 0, 0)
+shape = SubResource("CylinderShape3D_om1c7")
+debug_color = Color(0.7989152, 0.38141474, 0.47244918, 0.41960785)
+
+[node name="Aggro" type="Area3D" parent="."]
+transform = Transform3D(0.495, 0, 0, 0, 0.495, 0, 0, 0, 0.495, 0, 0.59447724, 0)
+collision_layer = 0
+monitorable = false
+
+[node name="Vision_Hearing" type="CollisionShape3D" parent="Aggro"]
+transform = Transform3D(0.99999696, 0, 0, 0, 0.99999696, 0, 0, 0, 0.99999696, 0, 0, 0)
+shape = SubResource("CylinderShape3D_pydrg")
+debug_color = Color(0.62382853, 0.49057347, 0.55874586, 0.41960785)
+
+[node name="Combat" type="Node" parent="." node_paths=PackedStringArray("combat_ui", "combat_hands", "stance")]
+script = ExtResource("26_cg0uk")
+combat_ui = NodePath("../Stats/Node3D/SubViewport/Control")
+combat_hands = [NodePath("CombatHand")]
+stance = NodePath("Stance")
+
+[node name="CombatHand" type="Node" parent="Combat" node_paths=PackedStringArray("defense_timer", "my_stance", "anim_player", "block_audio_player") groups=["EnemyCombatHand"]]
+script = ExtResource("27_ubmt6")
+defense_timer = NodePath("Timer_Defence")
+attack_sequences = Array[ExtResource("28_fnlvf")]([SubResource("Resource_8r827")])
+current_slot = 1
+restricted_slots = "11111111"
+my_stance = NodePath("../Stance")
+anim_player = NodePath("../../AnimationPlayer")
+block_audio_player = NodePath("BlockSfx")
+metadata/_custom_type_script = "uid://cjs7vohjf5dsq"
+
+[node name="Attack" type="Node" parent="Combat/CombatHand"]
+script = ExtResource("30_l8dqx")
+player_current_attack = ExtResource("29_sm631")
+metadata/_custom_type_script = "uid://c27axnnaakeuo"
+
+[node name="Timer_Telegraph" type="Timer" parent="Combat/CombatHand/Attack"]
+one_shot = true
+
+[node name="Timer_Attack" type="Timer" parent="Combat/CombatHand/Attack"]
+one_shot = true
+
+[node name="Timer_Recover" type="Timer" parent="Combat/CombatHand/Attack"]
+one_shot = true
+
+[node name="AttackSFX" type="AudioStreamPlayer3D" parent="Combat/CombatHand/Attack"]
+stream = SubResource("AudioStreamRandomizer_u7c7l")
+
+[node name="Timer_Stagger" type="Timer" parent="Combat/CombatHand"]
+
+[node name="Timer_Defence" type="Timer" parent="Combat/CombatHand"]
+one_shot = true
+
+[node name="BlockSfx" type="AudioStreamPlayer3D" parent="Combat/CombatHand"]
+stream = SubResource("AudioStreamRandomizer_u7c7l")
+
+[node name="Stance" type="Node" parent="Combat" node_paths=PackedStringArray("hands", "stats")]
+script = ExtResource("31_f3h1u")
+hands = [NodePath("../CombatHand")]
+stats = NodePath("../../Stats")
+metadata/_custom_type_script = "uid://446bgqyk22na"
+
+[node name="Hitbox" type="Area3D" parent="." node_paths=PackedStringArray("combat")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.1, 0)
+collision_layer = 131072
+collision_mask = 0
+monitoring = false
+script = ExtResource("32_ptq6r")
+combat = NodePath("../Combat")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Hitbox"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.55, 0)
+shape = SubResource("CapsuleShape3D_nfjh2")
+
+[node name="HitSfx" type="AudioStreamPlayer3D" parent="."]
+stream = SubResource("AudioStreamRandomizer_u7shv")
+pitch_scale = 0.97
+bus = &"items"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+root_node = NodePath("../Sprite3DBillBoard")
+libraries = {
+&"": SubResource("AnimationLibrary_khln7")
+}
+
+[node name="Stats" type="Node" parent="." node_paths=PackedStringArray("health_bar", "hit_sfx", "who_owns", "stam_bar")]
+script = ExtResource("34_mq0re")
+health_bar = NodePath("Node3D/SubViewport/Control/Border/HealthBar")
+hit_sfx = NodePath("../HitSfx")
+who_owns = NodePath("..")
+stam_bar = NodePath("Node3D/SubViewport/Control/Border/StamBar")
+metadata/_custom_type_script = "uid://46pp7aerorca"
+
+[node name="Timer" type="Timer" parent="Stats"]
+one_shot = true
+
+[node name="Node3D" type="Node3D" parent="Stats" node_paths=PackedStringArray("par")]
+script = ExtResource("35_ecx3k")
+par = NodePath("../..")
+
+[node name="SubViewport" type="SubViewport" parent="Stats/Node3D"]
+disable_3d = true
+transparent_bg = true
+handle_input_locally = false
+gui_disable_input = true
+gui_embed_subwindows = true
+render_target_update_mode = 4
+
+[node name="Control" type="Control" parent="Stats/Node3D/SubViewport"]
+z_index = 2
+z_as_relative = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Border" type="TextureRect" parent="Stats/Node3D/SubViewport/Control"]
+z_index = 2
+custom_minimum_size = Vector2(501.7228, 57.799988)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.28223836
+anchor_top = 0.45540124
+anchor_right = 0.7177617
+anchor_bottom = 0.54459876
+offset_right = -6.1035156e-05
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("36_2p7it")
+expand_mode = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="HealthBar" type="ProgressBar" parent="Stats/Node3D/SubViewport/Control/Border"]
+show_behind_parent = true
+z_index = 2
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.008970727
+anchor_top = 0.122950785
+anchor_right = 0.9890411
+anchor_bottom = 0.90163934
+theme_override_styles/fill = SubResource("StyleBoxTexture_7kval")
+value = 100.0
+show_percentage = false
+metadata/_edit_use_anchors_ = true
+
+[node name="StamBar" type="ProgressBar" parent="Stats/Node3D/SubViewport/Control/Border"]
+visible = false
+show_behind_parent = true
+z_index = 2
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.17260274
+anchor_top = 0.5890411
+anchor_right = 0.9589041
+anchor_bottom = 0.6849315
+theme_override_styles/fill = SubResource("StyleBoxTexture_u7c7l")
+value = 100.0
+show_percentage = false
+metadata/_edit_use_anchors_ = true
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Stats/Node3D"]
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 0, 1.3, 0)
+mesh = SubResource("QuadMesh_gxsvd")
+
+[connection signal="timeout" from="StateMachine/Wander/Timer" to="StateMachine/Wander" method="_on_timer_timeout"]
+[connection signal="timeout" from="StateMachine/Chase/Timer" to="StateMachine/Chase" method="_on_timer_timeout"]
+[connection signal="area_shape_entered" from="Area3D" to="StateMachine/Chase" method="_on_area_3d_area_shape_entered"]
+[connection signal="area_shape_exited" from="Area3D" to="StateMachine/Fighting" method="_on_area_3d_area_shape_exited"]
+[connection signal="body_shape_entered" from="Area3D" to="SM_controller" method="_on_area_3d_body_shape_entered"]
+[connection signal="body_shape_exited" from="Area3D" to="SM_controller" method="_on_area_3d_body_shape_exited"]
+[connection signal="area_entered" from="Area3D2" to="StateMachine/Wander" method="_on_area_3d_2_area_entered"]
+[connection signal="area_entered" from="Area3D2" to="StateMachine/Chase" method="_on_area_3d_2_area_entered"]
+[connection signal="area_exited" from="Aggro" to="StateMachine/Chase" method="_on_area_3d_2_area_exited"]
+[connection signal="timeout" from="Combat/CombatHand/Attack/Timer_Telegraph" to="Combat/CombatHand/Attack" method="end_telegraph"]
+[connection signal="timeout" from="Combat/CombatHand/Attack/Timer_Attack" to="Combat/CombatHand/Attack" method="end_attack"]
+[connection signal="timeout" from="Combat/CombatHand/Attack/Timer_Recover" to="Combat/CombatHand/Attack" method="end_recover"]
+[connection signal="timeout" from="Combat/CombatHand/Timer_Stagger" to="Combat/CombatHand" method="end_staggered"]
+[connection signal="timeout" from="Combat/CombatHand/Timer_Defence" to="Combat/CombatHand" method="begin_attacking"]
