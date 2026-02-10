@@ -1,0 +1,39 @@
+[gd_scene load_steps=10 format=3 uid="uid://qp6lt5vvpqmw"]
+
+[ext_resource type="PackedScene" uid="uid://cafafqbxrlmdt" path="res://scenes/_levels/_palettes/__dev/source/open/dev_open_wall.tscn" id="1_f2tkq"]
+[ext_resource type="PackedScene" uid="uid://b26113vjudnhl" path="res://scenes/_levels/_palettes/__dev/source/open/dev_open_hall.tscn" id="2_qkwwe"]
+[ext_resource type="PackedScene" uid="uid://b06jwmfvcpsvx" path="res://scenes/_levels/_palettes/__dev/source/open/dev_open_doorway.tscn" id="3_wntnl"]
+[ext_resource type="PackedScene" uid="uid://c8bbyhj5yynyl" path="res://scenes/_levels/_palettes/__dev/source/open/dev_open_middle_b.tscn" id="4_wntnl"]
+[ext_resource type="PackedScene" uid="uid://dgcgp7tvg5dy8" path="res://scenes/_levels/_palettes/__dev/source/open/dev_open_corner.tscn" id="5_2o51s"]
+[ext_resource type="PackedScene" uid="uid://uf4k7k7pxj86" path="res://scenes/_levels/_palettes/__dev/source/open/dev_open_end.tscn" id="6_2o51s"]
+[ext_resource type="PackedScene" uid="uid://d2pk1l2expq4i" path="res://scenes/_levels/_palettes/__dev/source/open/dev_open_middle_a.tscn" id="6_qvop2"]
+[ext_resource type="PackedScene" uid="uid://breoxrktuf13i" path="res://scenes/_levels/_palettes/__dev/props/dev_floor_guide.tscn" id="8_qvop2"]
+[ext_resource type="PackedScene" uid="uid://6bfa5eai5wft" path="res://scenes/_levels/_palettes/__dev/props/dev_floor_guidemid.tscn" id="9_ekj4v"]
+
+[node name="dev_open_palette" type="Node3D"]
+
+[node name="_dev_open_wall" parent="." instance=ExtResource("1_f2tkq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 2)
+
+[node name="_dev_open_hall" parent="." instance=ExtResource("2_qkwwe")]
+
+[node name="_dev_open_doorway" parent="." instance=ExtResource("3_wntnl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2)
+
+[node name="_dev_open_middle_b" parent="." instance=ExtResource("4_wntnl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -4)
+
+[node name="_dev_open_corner" parent="." instance=ExtResource("5_2o51s")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 2)
+
+[node name="_dev_open_end" parent="." instance=ExtResource("6_2o51s")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 4)
+
+[node name="_dev_open_middle_a" parent="." instance=ExtResource("6_qvop2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2)
+
+[node name="_dev_floor_guide" parent="." instance=ExtResource("8_qvop2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -6)
+
+[node name="_dev_floor_guidemid" parent="." instance=ExtResource("9_ekj4v")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -8)
