@@ -1,0 +1,41 @@
+[gd_scene load_steps=6 format=3 uid="uid://b1mli67nii84n"]
+
+[ext_resource type="PackedScene" uid="uid://iao5uma7y1aw" path="res://assets/models/cairn/Z-Old-HallModels/HallEnd/HallEnd.glb" id="1_s5csa"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_s5csa"]
+size = Vector3(16.008545, 1.9753723, 16.133423)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ylvsr"]
+size = Vector3(2.36792, 11.864014, 16.166382)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_16qhm"]
+size = Vector3(2.3120117, 11.850525, 16.166992)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_mwmms"]
+size = Vector3(2.3237305, 11.797852, 16.166748)
+
+[node name="HallEnd" instance=ExtResource("1_s5csa")]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Roof" index="0"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Roof/StaticBody3D" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0018310547, -0.0315094, -0.010925293)
+shape = SubResource("BoxShape3D_s5csa")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="WallR" index="0"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="WallR/StaticBody3D" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.036254883, 5.86592, -0.0032348633)
+shape = SubResource("BoxShape3D_ylvsr")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="WallB" index="0"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="WallB/StaticBody3D" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.07739258, 5.835449, 0.022949219)
+shape = SubResource("BoxShape3D_16qhm")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="WallL" index="0"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="WallL/StaticBody3D" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.028564453, 5.7992916, -0.033081055)
+shape = SubResource("BoxShape3D_mwmms")

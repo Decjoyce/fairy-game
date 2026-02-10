@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://d2ict3hg28spx"]
+
+[ext_resource type="PackedScene" uid="uid://br01bblhowysi" path="res://assets/models/cairn/Z-Old-EnvironmentModels/Wall/Wall.glb" id="1_37p5w"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_37p5w"]
+size = Vector3(1.8, 1.3257813, 0.275)
+
+[node name="cairn_fake_wall" type="StaticBody3D"]
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.66265094, 0.0025000125)
+shape = SubResource("BoxShape3D_37p5w")
+
+[node name="Wall" parent="." instance=ExtResource("1_37p5w")]
+transform = Transform3D(-5.5950578e-09, 0, 0.128, 0, 0.128, 0, -0.128, 0, -5.5950578e-09, 0, 0, 0)

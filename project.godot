@@ -15,6 +15,10 @@ run/main_scene="uid://bw2ceq76kc2yc"
 config/features=PackedStringArray("4.5", "Forward Plus")
 config/icon="res://icon.svg"
 
+[audio]
+
+buses/default_bus_layout="res://assets/audio/_bus_layouts/default_bus_layout.tres"
+
 [autoload]
 
 GridMapPathfinding="res://addons/grid_map_pathfinding/grid_map_pathfinding.gd"
@@ -41,6 +45,19 @@ window/size/mode=3
 [editor_plugins]
 
 enabled=PackedStringArray("res://addons/grid_map_pathfinding/plugin.cfg")
+
+[file_customization]
+
+folder_colors={
+"res://addons/": "purple",
+"res://assets/": "red",
+"res://scenes/": "teal",
+"res://scenes/__playground_scenes/": "teal",
+"res://scenes/__prototyping/": "teal",
+"res://scenes/__testing_scenes/": "teal",
+"res://scripts/": "yellow",
+"res://zzz_GARBAGE/": "gray"
+}
 
 [filesystem]
 
