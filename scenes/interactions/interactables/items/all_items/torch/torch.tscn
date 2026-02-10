@@ -1,0 +1,118 @@
+[gd_scene load_steps=11 format=3 uid="uid://bm8kaq0ah5g7q"]
+
+[ext_resource type="Script" uid="uid://b0nee5gqk8fwf" path="res://scenes/interactions/interactables/items/all_items/torch/torch.gd" id="1_j22s6"]
+[ext_resource type="Texture2D" uid="uid://cek17ch4ko4ca" path="res://scenes/interactions/interactables/items/all_items/torch/torch.png" id="2_20p6n"]
+[ext_resource type="Script" uid="uid://d3averdt6fuqm" path="res://scenes/interactions/interactables/items/item_types/itemtype_torch.gd" id="2_t5i1y"]
+[ext_resource type="AudioStream" uid="uid://rc1825amqk33" path="res://assets/__not_ours_dontship/lego_mavelsuperheroes/FIRESML_LP.WAV" id="5_7yijt"]
+[ext_resource type="AudioStream" uid="uid://dutddyikwuiut" path="res://assets/audio/sfx/combat/misc/hittingsound_shorter.wav" id="5_j22s6"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_j22s6"]
+noise_type = 5
+frequency = 1.0
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_7yijt"]
+noise = SubResource("FastNoiseLite_j22s6")
+
+[sub_resource type="Resource" id="Resource_d0jyt"]
+script = ExtResource("2_t5i1y")
+stay_lit_forever = true
+noise = SubResource("NoiseTexture2D_7yijt")
+light_strength = 2.645
+flicker_frequency = 1.0
+item_type = 1
+metadata/_custom_type_script = "uid://d3averdt6fuqm"
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_7yijt"]
+radius = 0.09
+height = 0.6900085
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_j22s6"]
+radius = 0.10888672
+height = 0.9732544
+
+[node name="Torch" type="RigidBody3D" node_paths=PackedStringArray("col", "grab_col", "idle_graphics", "grabbed_graphics")]
+collision_layer = 2
+axis_lock_angular_x = true
+axis_lock_angular_y = true
+axis_lock_angular_z = true
+mass = 0.6
+gravity_scale = 0.7
+contact_monitor = true
+max_contacts_reported = 1
+script = ExtResource("1_j22s6")
+item_type = SubResource("Resource_d0jyt")
+display_name = "Torch"
+item_weight = 1
+col = NodePath("CollisionShape3D")
+grab_col = NodePath("Area3D/CollisionShape3D")
+grabbed_offset = Vector2(-74.79, -106.125)
+grabbed_rotation = 0.785
+throwing_offset = Vector2(113.195, -112.81)
+throwing_rotation = 15.0
+idle_graphics = NodePath("Node3D/Idle")
+grabbed_graphics = NodePath("Node3D/Grabbed")
+interaction_type = 1
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.14949343, 0)
+shape = SubResource("CapsuleShape3D_7yijt")
+debug_color = Color(0.76020277, 3.706068e-06, 4.813075e-07, 0.41960785)
+
+[node name="Area3D" type="Area3D" parent="." groups=["Interactables"]]
+collision_layer = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.027594477, 0)
+shape = SubResource("CapsuleShape3D_j22s6")
+
+[node name="Node3D" type="Node3D" parent="."]
+
+[node name="Idle" type="Sprite3D" parent="Node3D"]
+layers = 4
+pixel_size = 0.0013
+billboard = 1
+shaded = true
+render_priority = 1
+texture = ExtResource("2_20p6n")
+
+[node name="Grabbed" type="Sprite3D" parent="Node3D"]
+transform = Transform3D(0.99999994, 0, 0, 0, 0.99999994, 0, 0, 0, 1, 0, 0, 0)
+visible = false
+layers = 4
+pixel_size = 0.0013
+shaded = true
+render_priority = 1
+texture = ExtResource("2_20p6n")
+
+[node name="TorchLight" type="OmniLight3D" parent="."]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.2236549, 0)
+light_color = Color(0.7468442, 0.34661883, 0, 1)
+light_size = 0.058
+light_cull_mask = 4294966271
+shadow_blur = 0.0
+distance_fade_enabled = true
+distance_fade_begin = 20.0
+distance_fade_shadow = 30.0
+distance_fade_length = 3.0
+omni_range = 3.932
+omni_attenuation = 2.169
+
+[node name="AudioPlayer" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("5_j22s6")
+max_distance = 22.38
+bus = &"items"
+
+[node name="TorchAudio" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("5_7yijt")
+attenuation_model = 1
+volume_db = -39.151
+max_db = -6.061
+autoplay = true
+max_distance = 231.41
+bus = &"pl_footsteps"
+doppler_tracking = 1
+
+[node name="RayCast3D" type="RayCast3D" parent="."]
+target_position = Vector3(0, -0.63, 0)
+hit_from_inside = true
