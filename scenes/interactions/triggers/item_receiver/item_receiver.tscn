@@ -1,0 +1,27 @@
+[gd_scene load_steps=5 format=3 uid="uid://ccxmagyj4smfr"]
+
+[ext_resource type="Script" uid="uid://ejuiwwsmyrgi" path="res://scenes/interactions/triggers/item_receiver/item_receiver.gd" id="1_h73fw"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_l8cot"]
+resource_local_to_scene = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_l8cot"]
+transparency = 1
+albedo_color = Color(1, 1, 0, 0.39215687)
+
+[sub_resource type="SphereMesh" id="SphereMesh_l8cot"]
+material = SubResource("StandardMaterial3D_l8cot")
+
+[node name="ItemReceiver" type="Node3D" groups=["debug_PickableObjects"]]
+script = ExtResource("1_h73fw")
+metadata/_custom_type_script = "uid://ejuiwwsmyrgi"
+
+[node name="Area3D" type="Area3D" parent="."]
+collision_layer = 32
+monitoring = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+shape = SubResource("SphereShape3D_l8cot")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("SphereMesh_l8cot")

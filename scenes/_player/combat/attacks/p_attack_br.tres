@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="AttackData" load_steps=3 format=3 uid="uid://cq37tjoapeikb"]
+
+[ext_resource type="AudioStream" uid="uid://ttl3vkbq03vs" path="res://assets/audio/sfx/combat/_streams/sfx_sword_attack.tres" id="1_g7rxi"]
+[ext_resource type="Script" uid="uid://i6x8mkfibed4" path="res://scenes/combat/attack_data.gd" id="2_c8knd"]
+
+[resource]
+script = ExtResource("2_c8knd")
+slot = 1
+dmg = 20.0
+stam = 30.0
+telegraph_anim = "r_tele_b"
+attack_anim = "r_swing_b"
+recover_anim = "r_recover_b"
+attack_audio = ExtResource("1_g7rxi")
+attack_length = 0.6
+recover_length = 0.3
+metadata/_custom_type_script = "uid://i6x8mkfibed4"

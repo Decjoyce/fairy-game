@@ -1,0 +1,87 @@
+[gd_scene load_steps=5 format=3 uid="uid://d24kj8ko421p6"]
+
+[ext_resource type="Script" uid="uid://cpomu5ts52mpj" path="res://scenes/_player/combat/player_combat.gd" id="1_mom1y"]
+[ext_resource type="Script" uid="uid://cdsjqqs64jj3f" path="res://scenes/_player/combat/player_combathand.gd" id="2_e3okk"]
+[ext_resource type="Script" uid="uid://c27axnnaakeuo" path="res://scenes/combat/combathand_attack.gd" id="2_gcgt6"]
+[ext_resource type="Script" uid="uid://446bgqyk22na" path="res://scenes/combat/stance.gd" id="5_e3okk"]
+
+[node name="Combat" type="Node" node_paths=PackedStringArray("combat_hands")]
+script = ExtResource("1_mom1y")
+combat_hands = [NodePath("CombatHand_Left"), NodePath("CombatHand_Right")]
+
+[node name="CombatHand_Left" type="Node" parent="."]
+script = ExtResource("2_e3okk")
+stringed_hand = "LEFT"
+restricted_slots = "00111110"
+
+[node name="Attack" type="Node" parent="CombatHand_Left"]
+script = ExtResource("2_gcgt6")
+metadata/_custom_type_script = "uid://c27axnnaakeuo"
+
+[node name="Timer_Telegraph" type="Timer" parent="CombatHand_Left/Attack"]
+one_shot = true
+
+[node name="Timer_Attack" type="Timer" parent="CombatHand_Left/Attack"]
+one_shot = true
+
+[node name="Timer_Recover" type="Timer" parent="CombatHand_Left/Attack"]
+one_shot = true
+
+[node name="Timer_Stagger" type="Timer" parent="CombatHand_Left"]
+
+[node name="CombatHand_Right" type="Node" parent="."]
+script = ExtResource("2_e3okk")
+stringed_hand = "RIGHT"
+index = 1
+restricted_slots = "11100011"
+
+[node name="Attack" type="Node" parent="CombatHand_Right"]
+script = ExtResource("2_gcgt6")
+metadata/_custom_type_script = "uid://c27axnnaakeuo"
+
+[node name="Timer_Telegraph" type="Timer" parent="CombatHand_Right/Attack"]
+one_shot = true
+
+[node name="Timer_Attack" type="Timer" parent="CombatHand_Right/Attack"]
+one_shot = true
+
+[node name="Timer_Recover" type="Timer" parent="CombatHand_Right/Attack"]
+one_shot = true
+
+[node name="Timer_Stagger" type="Timer" parent="CombatHand_Right"]
+
+[node name="Combat_UI" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="UI_Hand_Left" type="Control" parent="Combat_UI"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="UI_Hand_Right" type="Control" parent="Combat_UI"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Stance" type="Node" parent="." node_paths=PackedStringArray("hands")]
+script = ExtResource("5_e3okk")
+hands = [NodePath("../CombatHand_Left"), NodePath("../CombatHand_Right")]
+metadata/_custom_type_script = "uid://446bgqyk22na"
+
+[connection signal="timeout" from="CombatHand_Left/Attack/Timer_Telegraph" to="CombatHand_Left/Attack" method="end_telegraph"]
+[connection signal="timeout" from="CombatHand_Left/Attack/Timer_Attack" to="CombatHand_Left/Attack" method="end_attack"]
+[connection signal="timeout" from="CombatHand_Left/Attack/Timer_Recover" to="CombatHand_Left/Attack" method="end_recover"]
+[connection signal="timeout" from="CombatHand_Right/Attack/Timer_Telegraph" to="CombatHand_Right/Attack" method="end_telegraph"]
+[connection signal="timeout" from="CombatHand_Right/Attack/Timer_Attack" to="CombatHand_Right/Attack" method="end_attack"]
+[connection signal="timeout" from="CombatHand_Right/Attack/Timer_Recover" to="CombatHand_Right/Attack" method="end_recover"]

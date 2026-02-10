@@ -1,0 +1,59 @@
+[gd_scene load_steps=9 format=3 uid="uid://h3b7e5r20lrw"]
+
+[ext_resource type="Material" uid="uid://cfsra4dny0m23" path="res://assets/_dev/materials/_dev_m_white.tres" id="1_fwnjy"]
+[ext_resource type="Material" uid="uid://bmx5kbkw1qnpa" path="res://assets/_dev/materials/_dev_m_grey.tres" id="2_t1lk0"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_xtqac"]
+size = Vector3(0.1, 2, 2)
+
+[sub_resource type="BoxMesh" id="BoxMesh_25we5"]
+material = ExtResource("1_fwnjy")
+size = Vector3(0.1, 2, 2)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_65s44"]
+size = Vector3(2, 0.1, 2)
+
+[sub_resource type="BoxMesh" id="BoxMesh_xtqac"]
+material = ExtResource("2_t1lk0")
+size = Vector3(2, 0.1, 2)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_25we5"]
+size = Vector3(2, 0.1, 2)
+
+[sub_resource type="BoxMesh" id="BoxMesh_65s44"]
+material = ExtResource("2_t1lk0")
+size = Vector3(2, 0.1, 2)
+
+[node name="_dev_corner" type="StaticBody3D"]
+
+[node name="_wall_left" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.95, 1, 0)
+shape = SubResource("BoxShape3D_xtqac")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="_wall_left"]
+layers = 3
+mesh = SubResource("BoxMesh_25we5")
+
+[node name="_wall_back" type="CollisionShape3D" parent="."]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 1, 0.95)
+shape = SubResource("BoxShape3D_xtqac")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="_wall_back"]
+layers = 3
+mesh = SubResource("BoxMesh_25we5")
+
+[node name="_wall_roof" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.05, 0)
+shape = SubResource("BoxShape3D_65s44")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="_wall_roof"]
+layers = 3
+mesh = SubResource("BoxMesh_xtqac")
+
+[node name="_wall_floor" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.05, 0)
+shape = SubResource("BoxShape3D_25we5")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="_wall_floor"]
+layers = 3
+mesh = SubResource("BoxMesh_65s44")

@@ -1,0 +1,78 @@
+class_name DEBUG
+extends Node
+
+const DEBUGGER_ENABLED: bool = true
+var is_debugging: bool
+
+var player: PlayerTest
+var cam: Camera3D
+
+@export var the_scenes: Array[PackedScene]
+
+@export var audio_player: AudioStreamPlayer2D
+@export var death_audio_player: AudioStreamPlayer2D
+@export var death_audio_enemy: AudioStreamPlayer3D
+
+func _ready() -> void:
+	_init_me()
+
+func _process(delta: float) -> void:
+	if !DEBUGGER_ENABLED:
+		return
+	if Input.is_action_just_pressed("_debug_open_console"):
+		is_debugging = !is_debugging
+		if is_debugging: 
+			$Console.visible = true
+			$Console.console_line.grab_focus()
+			$Console.console_line.text = ""
+			Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+		else: 
+			$Console.console_line.release_focus()
+			$Console.visible = false
+			Input.set_mouse_mode(Input.MOUSE_MODE_CONFINED_HIDDEN)
+			
+	if Input.is_action_just_pressed("ui_cancel"):
+		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+		
+	if Input.is_action_just_pressed("reset_vs"):
+		get_tree().reload_current_scene()
+
+func _init_me() -> void:
+	player = get_tree().get_first_node_in_group("Player") as PlayerTest
+	print(get_tree().get_nodes_in_group("MainCamera"))
+	cam = get_tree().get_first_node_in_group("MainCamera") as Camera3D
+
+func freeze_player() -> void:
+	if !player: return
+	player.freeze = true
+
+func unfreeze_player() -> void:
+	if !player: return
+	player.freeze = false
+
+func teleport_player_to_coord(x: float, y: float, z: float) -> void:
+	if !player: return
+	player.movement.teleport_player_by_coords(Vector3(x, y, z))
+
+func teleport_player_to_node(node_to_teleport_to : Node3D) -> void:
+	if !player: return
+	player.movement.teleport_player(node_to_teleport_to)
+
+func change_scene(index: int) -> void:
+	get_tree().change_scene_to_packed(the_scenes[index])
+
+func play_death_player() -> void:
+	death_audio_player.play()
+
+func play_death_enemy(loc: Vector3) -> void:
+	death_audio_enemy.global_position = loc
+	death_audio_enemy.play()
+
+# ↑ General Stuff ↑
+# --------------------------------------------------------------------------------------------------
+# ↓ Commands Stuff ↓
+
+var noclip_enabled: bool
+
+func noclip() -> void:
+	noclip_enabled = !noclip_enabled

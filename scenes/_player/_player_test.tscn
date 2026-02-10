@@ -1,0 +1,1192 @@
+[gd_scene load_steps=106 format=3 uid="uid://bq86osdembn58"]
+
+[ext_resource type="Script" uid="uid://io22wsbhy73f" path="res://scenes/_player/player_test.gd" id="1_e0b2u"]
+[ext_resource type="Script" uid="uid://by88p7ijbixe5" path="res://scenes/_player/player_movement.gd" id="2_3jgj8"]
+[ext_resource type="Script" uid="uid://jxohgxu3vshf" path="res://scripts/improved_raycast.gd" id="2_s1g5w"]
+[ext_resource type="PackedScene" uid="uid://dqojmsc2q6wf4" path="res://scenes/_player/interaction/player_interaction.tscn" id="3_3jgj8"]
+[ext_resource type="Script" uid="uid://46pp7aerorca" path="res://scripts/stats.gd" id="4_fhpxp"]
+[ext_resource type="AudioStream" uid="uid://ca0atvq7vv2dq" path="res://assets/audio/sfx/player/footsteps/FootStep-001.wav" id="4_ux48r"]
+[ext_resource type="AudioStream" uid="uid://bf6k8q7kypf7l" path="res://assets/audio/sfx/player/footsteps/FootStep-002.wav" id="5_7hjlp"]
+[ext_resource type="Texture2D" uid="uid://drwif87vii7ya" path="res://assets/ui/player/stats/HealthStaminaUI_border.png" id="5_bfirj"]
+[ext_resource type="AudioStream" uid="uid://5sd44cpi12dv" path="res://assets/audio/sfx/player/footsteps/FootStep-003.wav" id="6_j3cqb"]
+[ext_resource type="AudioStream" uid="uid://bbmyi8k0bkkjd" path="res://assets/audio/sfx/player/footsteps/FootStep-004.wav" id="7_ijyi7"]
+[ext_resource type="AudioStream" uid="uid://da4l7eb7yuxm" path="res://assets/audio/sfx/combat/misc/out-of-breath-male-176715.wav" id="7_nbsyt"]
+[ext_resource type="AudioStream" uid="uid://bkk7jrgij205s" path="res://assets/audio/sfx/player/footsteps/FootStep-005.wav" id="8_l4n3m"]
+[ext_resource type="AudioStream" uid="uid://dlc0dgjoyycuv" path="res://assets/audio/sfx/player/footsteps/FootStep-006.wav" id="9_f0ma5"]
+[ext_resource type="AudioStream" uid="uid://lmda00v3x2ll" path="res://assets/audio/sfx/player/footsteps/FootStep-007.wav" id="10_qv24e"]
+[ext_resource type="AudioStream" uid="uid://c2oqvd4e4tsyv" path="res://assets/audio/sfx/player/footsteps/FootStep-008.wav" id="11_qxkv7"]
+[ext_resource type="Script" uid="uid://cpomu5ts52mpj" path="res://scenes/_player/combat/player_combat.gd" id="12_gcklq"]
+[ext_resource type="Resource" uid="uid://ci23rrjojjvls" path="res://scenes/_player/combat/attacks/p_attacksq.tres" id="12_uus6m"]
+[ext_resource type="Texture2D" uid="uid://dlrbgxyxghidg" path="res://scenes/_player/combat/assets/r_t/r_idle_t.png" id="13_6jmgc"]
+[ext_resource type="Script" uid="uid://cdsjqqs64jj3f" path="res://scenes/_player/combat/player_combathand.gd" id="13_s1g5w"]
+[ext_resource type="Texture2D" uid="uid://cjmxtqiogbt5m" path="res://scenes/_player/combat/assets/r_b/r_idle_b.png" id="14_8q2h8"]
+[ext_resource type="Script" uid="uid://c27axnnaakeuo" path="res://scenes/combat/combathand_attack.gd" id="14_uus6m"]
+[ext_resource type="Texture2D" uid="uid://b7jsxy84tejdk" path="res://scenes/_player/combat/assets/r_m/r_idle_m.png" id="14_w8oqj"]
+[ext_resource type="Script" uid="uid://446bgqyk22na" path="res://scenes/combat/stance.gd" id="15_6jmgc"]
+[ext_resource type="Texture2D" uid="uid://dfrrhrmtmksem" path="res://scenes/_player/combat/assets/l_m/l_tele_m.png" id="16_dc5qm"]
+[ext_resource type="Texture2D" uid="uid://b3gc3w1tldgu5" path="res://scenes/_player/combat/assets/l_b/l_idle_b.png" id="16_q5an4"]
+[ext_resource type="Texture2D" uid="uid://j5fx8mqfuuty" path="res://scenes/_player/combat/assets/l_m/l_swing_m_01.png" id="17_37lig"]
+[ext_resource type="Texture2D" uid="uid://djuy5uvpcfsn5" path="res://scenes/_player/combat/assets/l_m/l_idle_m.png" id="17_oku8p"]
+[ext_resource type="Texture2D" uid="uid://c0suf3y8p1kny" path="res://scenes/_player/combat/assets/l_t/l_idle_t.png" id="18_5jit5"]
+[ext_resource type="Texture2D" uid="uid://bwvrkqh1paayo" path="res://scenes/_player/combat/assets/l_m/l_swing_m_02.png" id="18_nbbdq"]
+[ext_resource type="Texture2D" uid="uid://dkqvcrpdnvbcn" path="res://scenes/_player/combat/assets/l_m/l_swing_m_03.png" id="19_rr5c0"]
+[ext_resource type="Texture2D" uid="uid://bxy3bfqdpmvp7" path="res://scenes/_player/combat/assets/l_b/l_swing_b_02.png" id="20_rr5c0"]
+[ext_resource type="Texture2D" uid="uid://dn4jqrcbmb4o" path="res://scenes/_player/combat/assets/l_b/l_swing_b_03.png" id="21_uvuxl"]
+[ext_resource type="Texture2D" uid="uid://b61mimt2bfrxy" path="res://scenes/_player/combat/assets/l_b/l_swing_b_01.png" id="22_0528t"]
+[ext_resource type="Texture2D" uid="uid://pes72gy7e1vy" path="res://scenes/_player/combat/assets/l_t/l_swing_t_02.png" id="23_ebxv4"]
+[ext_resource type="Texture2D" uid="uid://tiey8sue1wes" path="res://scenes/_player/combat/assets/l_t/l_swing_t_03.png" id="24_tefnj"]
+[ext_resource type="Texture2D" uid="uid://d3ywkf6pcy35c" path="res://scenes/_player/combat/assets/l_t/l_swing_t_01.png" id="25_gmbf2"]
+[ext_resource type="Texture2D" uid="uid://cjfs3lr7rq2k1" path="res://scenes/_player/combat/assets/l_t/l_tele_t.png" id="26_0qmej"]
+[ext_resource type="Texture2D" uid="uid://dh300vjna71ho" path="res://scenes/_player/combat/assets/l_b/l_tele_b.png" id="27_0qmej"]
+[ext_resource type="AudioStream" uid="uid://ttl3vkbq03vs" path="res://assets/audio/sfx/combat/_streams/sfx_sword_attack.tres" id="31_5hwbc"]
+[ext_resource type="Texture2D" uid="uid://be3ri0gbsy0ql" path="res://scenes/_player/combat/assets/r_m/r_tele_m.png" id="31_6ysfn"]
+[ext_resource type="Texture2D" uid="uid://c24xymk8d47rd" path="res://scenes/_player/combat/assets/r_m/r_swing_m_03.png" id="32_ahfqc"]
+[ext_resource type="Texture2D" uid="uid://byq8xadktrdft" path="res://scenes/_player/combat/assets/r_m/r_swing_m_01.png" id="32_nnhvt"]
+[ext_resource type="Texture2D" uid="uid://d30ctlpmiy2c0" path="res://scenes/_player/combat/assets/r_m/r_swing_m_02.png" id="33_i6b1s"]
+[ext_resource type="AudioStream" uid="uid://bbl7dke2rpp5q" path="res://assets/audio/sfx/combat/_streams/sfx_shield_block.tres" id="33_qxkv7"]
+[ext_resource type="Texture2D" uid="uid://bbns83ajnyxwg" path="res://scenes/_player/combat/assets/r_b/r_recover_b.png" id="35_r52wq"]
+[ext_resource type="Texture2D" uid="uid://ir1f5ox0rw5k" path="res://scenes/_player/combat/assets/r_b/r_swing_b.png" id="36_1pnin"]
+[ext_resource type="Texture2D" uid="uid://tcrcidvjbd3s" path="res://scenes/_player/combat/assets/r_b/r_tele_b.png" id="37_1pnin"]
+[ext_resource type="Texture2D" uid="uid://csue6tvslanbx" path="res://scenes/_player/combat/assets/r_t/r_tele_t.png" id="38_kdy7k"]
+[ext_resource type="Texture2D" uid="uid://hb4erogn6pl8" path="res://scenes/_player/combat/assets/r_t/r_recover_t.png" id="39_anjk0"]
+[ext_resource type="Texture2D" uid="uid://dl4tjgvrh4dqm" path="res://scenes/_player/combat/assets/r_t/r_swing_t.png" id="40_t36l2"]
+[ext_resource type="AudioStream" uid="uid://dwwqtvkr2v5h6" path="res://assets/audio/sfx/combat/_streams/sfx_sword_block.tres" id="45_j3784"]
+[ext_resource type="Texture2D" uid="uid://b7tla18sb0248" path="res://assets/ui/player/attack_indicators/RMid.png" id="50_7hjlp"]
+[ext_resource type="Texture2D" uid="uid://km2pn1e1elmt" path="res://assets/ui/player/attack_indicators/LBottom.png" id="51_f0ma5"]
+[ext_resource type="Texture2D" uid="uid://cfxgl04ja2bnl" path="res://assets/ui/player/attack_indicators/topL.png" id="51_ijyi7"]
+[ext_resource type="Texture2D" uid="uid://b3yr563ecebd1" path="res://assets/ui/player/attack_indicators/RTop.png" id="51_j3cqb"]
+[ext_resource type="Texture2D" uid="uid://c7lfp47776dxr" path="res://assets/ui/player/attack_indicators/Lmid.png" id="51_l4n3m"]
+[ext_resource type="Texture2D" uid="uid://dbv7iuucvwfao" path="res://assets/ui/player/attack_indicators/Rlow.png" id="51_qv24e"]
+[ext_resource type="AudioStream" uid="uid://bvotk6pyl3sjh" path="res://assets/audio/sfx/player/_streams/sfx_player_hit.tres" id="58_svbpy"]
+[ext_resource type="Shader" uid="uid://4b4kstxm1aph" path="res://assets/shaders/post_processing/post_processing.gdshader" id="70_52e8e"]
+[ext_resource type="Texture2D" uid="uid://bgvylughro1va" path="res://assets/sprites/PaperTexture/Texturelabs_Paper_304L.jpg" id="71_nkha6"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_3jgj8"]
+height = 1.3
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1snfn"]
+albedo_color = Color(1, 0.15294118, 1, 1)
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_1snfn"]
+radius = 0.2
+height = 1.25
+
+[sub_resource type="Animation" id="Animation_s1g5w"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../DeathUI/ColorRect:color")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_gcklq"]
+resource_name = "death_anim"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.56666666),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(-0.5, -0.77, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0.34906584, 0, 1.2252212)]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("..")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(1.9666667),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"return_to_menu"
+}]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../DeathUI/ColorRect:color")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.8666667, 1.9666667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 0), Color(0, 0, 0, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_uus6m"]
+_data = {
+&"RESET": SubResource("Animation_s1g5w"),
+&"death_anim": SubResource("Animation_gcklq")
+}
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_3jgj8"]
+size = Vector3(0.5, 0.9, 1.1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_xwuyi"]
+size = Vector3(1.1, 0.9, 0.5)
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_gcklq"]
+random_pitch = 1.17
+random_volume_offset_db = 0.22
+streams_count = 8
+stream_0/stream = ExtResource("4_ux48r")
+stream_1/stream = ExtResource("5_7hjlp")
+stream_2/stream = ExtResource("6_j3cqb")
+stream_3/stream = ExtResource("7_ijyi7")
+stream_4/stream = ExtResource("8_l4n3m")
+stream_5/stream = ExtResource("9_f0ma5")
+stream_6/stream = ExtResource("10_qv24e")
+stream_7/stream = ExtResource("11_qxkv7")
+
+[sub_resource type="Animation" id="Animation_imd3c"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Combat_UI/UI_Hand_Left/hand:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("17_oku8p")]
+}
+
+[sub_resource type="Animation" id="Animation_k4i36"]
+resource_name = "l_idle_b"
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Combat_UI/UI_Hand_Left/hand:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("16_q5an4")]
+}
+
+[sub_resource type="Animation" id="Animation_dc5qm"]
+resource_name = "l_idle_m"
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Combat_UI/UI_Hand_Left/hand:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("17_oku8p")]
+}
+
+[sub_resource type="Animation" id="Animation_37lig"]
+resource_name = "l_idle_t"
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Combat_UI/UI_Hand_Left/hand:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("18_5jit5")]
+}
+
+[sub_resource type="Animation" id="Animation_tefnj"]
+resource_name = "l_recover_b"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Combat_UI/UI_Hand_Left/hand:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.46666667, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [ExtResource("21_uvuxl"), ExtResource("20_rr5c0"), ExtResource("22_0528t"), ExtResource("16_q5an4")]
+}
+
+[sub_resource type="Animation" id="Animation_rr5c0"]
+resource_name = "l_recover_m"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Combat_UI/UI_Hand_Left/hand:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.46666667, 0.73333335, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [ExtResource("19_rr5c0"), ExtResource("18_nbbdq"), ExtResource("17_37lig"), ExtResource("16_dc5qm"), ExtResource("17_oku8p")]
+}
+
+[sub_resource type="Animation" id="Animation_m230e"]
+resource_name = "l_recover_t"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Combat_UI/UI_Hand_Left/hand:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.46666667, 0.73333335, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [ExtResource("24_tefnj"), ExtResource("23_ebxv4"), ExtResource("25_gmbf2"), ExtResource("26_0qmej"), ExtResource("18_5jit5")]
+}
+
+[sub_resource type="Animation" id="Animation_0528t"]
+resource_name = "l_swing_b"
+length = 0.8
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Combat_UI/UI_Hand_Left/hand:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.13333334, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [ExtResource("20_rr5c0"), ExtResource("21_uvuxl"), ExtResource("21_uvuxl")]
+}
+
+[sub_resource type="Animation" id="Animation_uvuxl"]
+resource_name = "l_swing_m_01"
+length = 0.8
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Combat_UI/UI_Hand_Left/hand:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.13333334, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [ExtResource("18_nbbdq"), ExtResource("19_rr5c0"), ExtResource("19_rr5c0")]
+}
+
+[sub_resource type="Animation" id="Animation_gmbf2"]
+resource_name = "l_swing_t"
+length = 0.8
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Combat_UI/UI_Hand_Left/hand:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.13333334, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [ExtResource("23_ebxv4"), ExtResource("24_tefnj"), ExtResource("24_tefnj")]
+}
+
+[sub_resource type="Animation" id="Animation_6ysfn"]
+resource_name = "l_tele_b"
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Combat_UI/UI_Hand_Left/hand:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("27_0qmej")]
+}
+
+[sub_resource type="Animation" id="Animation_nbbdq"]
+resource_name = "l_tele_m"
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Combat_UI/UI_Hand_Left/hand:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("16_dc5qm")]
+}
+
+[sub_resource type="Animation" id="Animation_0qmej"]
+resource_name = "l_tele_t"
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Combat_UI/UI_Hand_Left/hand:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("26_0qmej")]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_6jmgc"]
+_data = {
+&"RESET": SubResource("Animation_imd3c"),
+&"l_idle_b": SubResource("Animation_k4i36"),
+&"l_idle_m": SubResource("Animation_dc5qm"),
+&"l_idle_t": SubResource("Animation_37lig"),
+&"l_recover_b": SubResource("Animation_tefnj"),
+&"l_recover_m": SubResource("Animation_rr5c0"),
+&"l_recover_t": SubResource("Animation_m230e"),
+&"l_swing_b": SubResource("Animation_0528t"),
+&"l_swing_m": SubResource("Animation_uvuxl"),
+&"l_swing_t": SubResource("Animation_gmbf2"),
+&"l_tele_b": SubResource("Animation_6ysfn"),
+&"l_tele_m": SubResource("Animation_nbbdq"),
+&"l_tele_t": SubResource("Animation_0qmej")
+}
+
+[sub_resource type="Animation" id="Animation_w8oqj"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Combat_UI/UI_Hand_Right/hand:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("14_w8oqj")]
+}
+
+[sub_resource type="Animation" id="Animation_5jit5"]
+resource_name = "r_idle_b"
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Combat_UI/UI_Hand_Right/hand:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("14_8q2h8")]
+}
+
+[sub_resource type="Animation" id="Animation_q5an4"]
+resource_name = "r_idle_m"
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Combat_UI/UI_Hand_Right/hand:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("14_w8oqj")]
+}
+
+[sub_resource type="Animation" id="Animation_oku8p"]
+resource_name = "r_idle_t"
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Combat_UI/UI_Hand_Right/hand:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("13_6jmgc")]
+}
+
+[sub_resource type="Animation" id="Animation_1pnin"]
+resource_name = "r_recover_b"
+length = 0.6
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Combat_UI/UI_Hand_Right/hand:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [ExtResource("36_1pnin"), ExtResource("14_8q2h8")]
+}
+
+[sub_resource type="Animation" id="Animation_r52wq"]
+resource_name = "r_recover_m"
+length = 0.6
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Combat_UI/UI_Hand_Right/hand:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.26666668, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [ExtResource("32_ahfqc"), ExtResource("33_i6b1s"), ExtResource("14_w8oqj")]
+}
+
+[sub_resource type="Animation" id="Animation_t36l2"]
+resource_name = "r_recover_t"
+length = 0.6
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Combat_UI/UI_Hand_Right/hand:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [ExtResource("40_t36l2"), ExtResource("13_6jmgc")]
+}
+
+[sub_resource type="Animation" id="Animation_kdy7k"]
+resource_name = "r_swing_b"
+length = 0.6
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Combat_UI/UI_Hand_Right/hand:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.03333334),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [ExtResource("35_r52wq"), ExtResource("36_1pnin")]
+}
+
+[sub_resource type="Animation" id="Animation_i6b1s"]
+resource_name = "r_swing_m"
+length = 0.6
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Combat_UI/UI_Hand_Right/hand:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.033333335, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [ExtResource("32_nnhvt"), ExtResource("32_ahfqc"), ExtResource("32_ahfqc")]
+}
+
+[sub_resource type="Animation" id="Animation_wrv1e"]
+resource_name = "r_swing_t"
+length = 0.6
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Combat_UI/UI_Hand_Right/hand:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.03333334),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [ExtResource("39_anjk0"), ExtResource("40_t36l2")]
+}
+
+[sub_resource type="Animation" id="Animation_pmw4y"]
+resource_name = "r_tele_b"
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Combat_UI/UI_Hand_Right/hand:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("37_1pnin")]
+}
+
+[sub_resource type="Animation" id="Animation_nnhvt"]
+resource_name = "r_tele_m"
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Combat_UI/UI_Hand_Right/hand:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("31_6ysfn")]
+}
+
+[sub_resource type="Animation" id="Animation_anjk0"]
+resource_name = "r_tele_t"
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Combat_UI/UI_Hand_Right/hand:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("38_kdy7k")]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_dc5qm"]
+_data = {
+&"RESET": SubResource("Animation_w8oqj"),
+&"r_idle_b": SubResource("Animation_5jit5"),
+&"r_idle_m": SubResource("Animation_q5an4"),
+&"r_idle_t": SubResource("Animation_oku8p"),
+&"r_recover_b": SubResource("Animation_1pnin"),
+&"r_recover_m": SubResource("Animation_r52wq"),
+&"r_recover_t": SubResource("Animation_t36l2"),
+&"r_swing_b": SubResource("Animation_kdy7k"),
+&"r_swing_m": SubResource("Animation_i6b1s"),
+&"r_swing_t": SubResource("Animation_wrv1e"),
+&"r_tele_b": SubResource("Animation_pmw4y"),
+&"r_tele_m": SubResource("Animation_nnhvt"),
+&"r_tele_t": SubResource("Animation_anjk0")
+}
+
+[sub_resource type="Gradient" id="Gradient_imes0"]
+offsets = PackedFloat32Array(0, 0.31578946, 1)
+colors = PackedColorArray(0.47993267, 0.07172013, 0.060350247, 1, 0.67502344, 0.12257505, 0.10578546, 1, 0.7764706, 0.14901961, 0.12941177, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_4lyfc"]
+gradient = SubResource("Gradient_imes0")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_nbsyt"]
+texture = SubResource("GradientTexture1D_4lyfc")
+
+[sub_resource type="Gradient" id="Gradient_bfirj"]
+colors = PackedColorArray(0, 0.31764707, 0, 1, 0, 0.7294118, 0, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_imes0"]
+gradient = SubResource("Gradient_bfirj")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_4lyfc"]
+texture = SubResource("GradientTexture1D_imes0")
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_gcklq"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_52e8e"]
+resource_local_to_scene = true
+shader = ExtResource("70_52e8e")
+shader_parameter/paper_texture = ExtResource("71_nkha6")
+shader_parameter/blend_strength = 0.250000011875
+shader_parameter/contrast_boost = 1.15
+shader_parameter/saturation = 0.7650000363375
+shader_parameter/new_color = Color(1, 1, 1, 1)
+
+[node name="player_test" type="Node3D" node_paths=PackedStringArray("stats_ui", "combat", "death_ui") groups=["Player"]]
+script = ExtResource("1_e0b2u")
+stats_ui = NodePath("Stats/UI")
+combat = NodePath("Combat")
+death_ui = NodePath("DeathUI")
+
+[node name="Collision" type="Area3D" parent="." groups=["Player"]]
+collision_layer = 3
+monitoring = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Collision"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.35000002, 0)
+shape = SubResource("CapsuleShape3D_3jgj8")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.375, 0)
+visible = false
+material_override = SubResource("StandardMaterial3D_1snfn")
+mesh = SubResource("CapsuleMesh_1snfn")
+
+[node name="Camera3D" type="Camera3D" parent="." groups=["MainCamera"]]
+current = true
+fov = 100.0
+
+[node name="DeathAnimationPlayer" type="AnimationPlayer" parent="Camera3D"]
+libraries = {
+&"": SubResource("AnimationLibrary_uus6m")
+}
+
+[node name="FloorDetector" type="RayCast3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+target_position = Vector3(0, -5, 0)
+
+[node name="EnemyChecker" type="RayCast3D" parent="."]
+target_position = Vector3(0, 0, -1.25)
+collision_mask = 131072
+collide_with_areas = true
+collide_with_bodies = false
+debug_shape_custom_color = Color(0.8729805, 0, 0, 1)
+script = ExtResource("2_s1g5w")
+metadata/_custom_type_script = "uid://jxohgxu3vshf"
+
+[node name="Movement" type="Node" parent="." node_paths=PackedStringArray("player", "interact", "floor_detector")]
+script = ExtResource("2_3jgj8")
+player = NodePath("..")
+interact = NodePath("../Interaction")
+floor_detector = NodePath("../FloorDetector")
+BOB_FREQ = 5.0
+BOB_AMP = 0.04
+metadata/_custom_type_script = "uid://by88p7ijbixe5"
+
+[node name="Compass" type="Node3D" parent="Movement"]
+
+[node name="North" type="ShapeCast3D" parent="Movement/Compass"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.1, -0.55)
+shape = SubResource("BoxShape3D_3jgj8")
+target_position = Vector3(0, 0, 0)
+debug_shape_custom_color = Color(0.32798007, 0.4496488, 0.99998206, 1)
+
+[node name="East" type="ShapeCast3D" parent="Movement/Compass"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.55, -0.1, 0)
+shape = SubResource("BoxShape3D_xwuyi")
+target_position = Vector3(0, 0, 0)
+debug_shape_custom_color = Color(1, 0.64589864, 0.7194342, 1)
+
+[node name="South" type="ShapeCast3D" parent="Movement/Compass"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.1, 0.55)
+shape = SubResource("BoxShape3D_3jgj8")
+target_position = Vector3(0, 0, 0)
+debug_shape_custom_color = Color(1, 0.8018582, 0.08261081, 1)
+
+[node name="West" type="ShapeCast3D" parent="Movement/Compass"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.55, -0.1, 0)
+shape = SubResource("BoxShape3D_xwuyi")
+target_position = Vector3(0, 0, 0)
+debug_shape_custom_color = Color(0, 0.79870725, 0.7254093, 1)
+
+[node name="FootstepAudio" type="AudioStreamPlayer3D" parent="."]
+unique_name_in_owner = true
+stream = SubResource("AudioStreamRandomizer_gcklq")
+volume_db = 15.0
+bus = &"pl_footsteps"
+
+[node name="Interaction" parent="." node_paths=PackedStringArray("movement", "cam") instance=ExtResource("3_3jgj8")]
+movement = NodePath("../Movement")
+cam = NodePath("../Camera3D")
+
+[node name="Combat" type="Node" parent="." node_paths=PackedStringArray("stats_ui", "combat_hands", "stats", "incoming_attack_uis")]
+script = ExtResource("12_gcklq")
+stats_ui = NodePath("../Stats/UI")
+combat_hands = [NodePath("CombatHand_Left"), NodePath("CombatHand_Right")]
+stats = NodePath("../Stats")
+incoming_attack_uis = [NodePath("Combat_UI/IncomingAttacks/R"), NodePath("Combat_UI/IncomingAttacks/BR"), NodePath("Combat_UI/IncomingAttacks/B"), NodePath("Combat_UI/IncomingAttacks/BL"), NodePath("Combat_UI/IncomingAttacks/L"), NodePath("Combat_UI/IncomingAttacks/TL"), NodePath("Combat_UI/IncomingAttacks/T"), NodePath("Combat_UI/IncomingAttacks/TR")]
+
+[node name="CombatHand_Left" type="Node" parent="Combat" node_paths=PackedStringArray("combat", "other_hand", "incoming_attack_uis", "my_stance", "anim_player", "block_audio_player")]
+script = ExtResource("13_s1g5w")
+stringed_hand = "LEFT"
+combat = NodePath("..")
+other_hand = NodePath("../CombatHand_Right")
+incoming_attack_uis = [NodePath("../Combat_UI/IncomingAttacks/BL"), NodePath("../Combat_UI/IncomingAttacks/L"), NodePath("../Combat_UI/IncomingAttacks/TL")]
+current_slot = 0
+restricted_slots = "00011100"
+my_stance = NodePath("../Stance")
+anim_player = NodePath("AnimationPlayer")
+block_audio_player = NodePath("BlockSfx")
+
+[node name="Attack" type="Node" parent="Combat/CombatHand_Left"]
+script = ExtResource("14_uus6m")
+not_player = false
+player_current_attack = ExtResource("12_uus6m")
+metadata/_custom_type_script = "uid://c27axnnaakeuo"
+
+[node name="Timer_Telegraph" type="Timer" parent="Combat/CombatHand_Left/Attack"]
+one_shot = true
+
+[node name="Timer_Attack" type="Timer" parent="Combat/CombatHand_Left/Attack"]
+one_shot = true
+
+[node name="Timer_Recover" type="Timer" parent="Combat/CombatHand_Left/Attack"]
+one_shot = true
+
+[node name="AttackSFX" type="AudioStreamPlayer3D" parent="Combat/CombatHand_Left/Attack"]
+stream = ExtResource("31_5hwbc")
+
+[node name="Timer_Stagger" type="Timer" parent="Combat/CombatHand_Left"]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Combat/CombatHand_Left"]
+root_node = NodePath("../..")
+libraries = {
+&"": SubResource("AnimationLibrary_6jmgc")
+}
+
+[node name="BlockSfx" type="AudioStreamPlayer3D" parent="Combat/CombatHand_Left"]
+stream = ExtResource("33_qxkv7")
+
+[node name="CombatHand_Right" type="Node" parent="Combat" node_paths=PackedStringArray("combat", "other_hand", "incoming_attack_uis", "my_stance", "anim_player", "block_audio_player")]
+script = ExtResource("13_s1g5w")
+stringed_hand = "RIGHT"
+combat = NodePath("..")
+other_hand = NodePath("../CombatHand_Left")
+incoming_attack_uis = [NodePath("../Combat_UI/IncomingAttacks/BR"), NodePath("../Combat_UI/IncomingAttacks/R"), NodePath("../Combat_UI/IncomingAttacks/TR")]
+index = 1
+current_slot = 5
+restricted_slots = "11000001"
+my_stance = NodePath("../Stance")
+anim_player = NodePath("AnimationPlayer2")
+block_audio_player = NodePath("BlockSfx")
+
+[node name="Attack" type="Node" parent="Combat/CombatHand_Right"]
+script = ExtResource("14_uus6m")
+not_player = false
+player_current_attack = ExtResource("12_uus6m")
+metadata/_custom_type_script = "uid://c27axnnaakeuo"
+
+[node name="Timer_Telegraph" type="Timer" parent="Combat/CombatHand_Right/Attack"]
+one_shot = true
+
+[node name="Timer_Attack" type="Timer" parent="Combat/CombatHand_Right/Attack"]
+one_shot = true
+
+[node name="Timer_Recover" type="Timer" parent="Combat/CombatHand_Right/Attack"]
+one_shot = true
+
+[node name="AttackSFX" type="AudioStreamPlayer3D" parent="Combat/CombatHand_Right/Attack"]
+stream = ExtResource("31_5hwbc")
+
+[node name="Timer_Stagger" type="Timer" parent="Combat/CombatHand_Right"]
+
+[node name="AnimationPlayer2" type="AnimationPlayer" parent="Combat/CombatHand_Right"]
+root_node = NodePath("../..")
+libraries = {
+&"": SubResource("AnimationLibrary_dc5qm")
+}
+
+[node name="BlockSfx" type="AudioStreamPlayer3D" parent="Combat/CombatHand_Right"]
+stream = ExtResource("45_j3784")
+
+[node name="Combat_UI" type="Control" parent="Combat"]
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+metadata/_edit_use_anchors_ = true
+
+[node name="UI_Hand_Left" type="Control" parent="Combat/Combat_UI"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="hand" type="TextureRect" parent="Combat/Combat_UI/UI_Hand_Left"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("17_oku8p")
+expand_mode = 1
+
+[node name="UI_Hand_Right" type="Control" parent="Combat/Combat_UI"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="hand" type="TextureRect" parent="Combat/Combat_UI/UI_Hand_Right"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("14_w8oqj")
+expand_mode = 1
+
+[node name="IncomingAttacks" type="Control" parent="Combat/Combat_UI"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="R" type="TextureRect" parent="Combat/Combat_UI/IncomingAttacks"]
+visible = false
+modulate = Color(0.48764306, 0, 0.0039703054, 0.8784314)
+custom_minimum_size = Vector2(354, 354)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.7796875
+anchor_top = 0.31944445
+anchor_right = 1.0553725
+anchor_bottom = 0.68099326
+offset_right = 36.41101
+offset_bottom = 119.71637
+grow_horizontal = 0
+grow_vertical = 2
+scale = Vector2(0.8971441, 0.6618182)
+texture = ExtResource("50_7hjlp")
+expand_mode = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="BR" type="TextureRect" parent="Combat/Combat_UI/IncomingAttacks"]
+visible = false
+modulate = Color(0.48764306, 0, 0.0039703054, 0.8784314)
+custom_minimum_size = Vector2(1152, 647.9999)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.796875
+anchor_top = 0.6259259
+anchor_right = 1.0228763
+anchor_bottom = 1.0368513
+offset_right = 957.5698
+offset_bottom = 424.89978
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.31183955, 0.5108782)
+texture = ExtResource("51_qv24e")
+metadata/_edit_use_anchors_ = true
+
+[node name="B" type="TextureRect" parent="Combat/Combat_UI/IncomingAttacks"]
+visible = false
+modulate = Color(0.48764306, 0, 0.0039703054, 0.8784314)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("51_qv24e")
+expand_mode = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="BL" type="TextureRect" parent="Combat/Combat_UI/IncomingAttacks"]
+visible = false
+modulate = Color(0.48764306, 0, 0.0039703054, 0.8784314)
+custom_minimum_size = Vector2(1152, 647.9999)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -0.008333332
+anchor_top = 0.76203704
+anchor_right = 0.16147505
+anchor_bottom = 1.061665
+offset_right = 1012.96765
+offset_bottom = 495.1444
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.24348927, 0.39523807)
+texture = ExtResource("51_f0ma5")
+expand_mode = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="L" type="TextureRect" parent="Combat/Combat_UI/IncomingAttacks"]
+visible = false
+modulate = Color(0.48764306, 0, 0.0039703054, 0.8784314)
+custom_minimum_size = Vector2(1152, 648.00006)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.0017361119
+anchor_top = 0.28703704
+anchor_right = 0.18289647
+anchor_bottom = 0.6290175
+offset_right = 1002.0635
+offset_bottom = 468.98633
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.25767103, 0.44056752)
+texture = ExtResource("51_l4n3m")
+expand_mode = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="TL" type="TextureRect" parent="Combat/Combat_UI/IncomingAttacks"]
+visible = false
+modulate = Color(0.48764306, 0, 0.0039703054, 0.8784314)
+custom_minimum_size = Vector2(1152, 647.9999)
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.13946418
+anchor_bottom = 0.2798501
+offset_right = 1041.321
+offset_bottom = 507.08948
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.20454726, 0.37344348)
+texture = ExtResource("51_ijyi7")
+expand_mode = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="T" type="TextureRect" parent="Combat/Combat_UI/IncomingAttacks"]
+visible = false
+modulate = Color(0.48764306, 0, 0.0039703054, 0.8784314)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+expand_mode = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="TR" type="TextureRect" parent="Combat/Combat_UI/IncomingAttacks"]
+visible = false
+modulate = Color(0.48764306, 0, 0.0039703054, 0.8784314)
+custom_minimum_size = Vector2(1152, 647.9999)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.81822914
+anchor_top = -0.013888888
+anchor_right = 1.0327734
+anchor_bottom = 0.35760757
+offset_right = 969.14294
+offset_bottom = 450.32666
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.29826558, 0.47116378)
+texture = ExtResource("51_j3cqb")
+expand_mode = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="Timer" type="Timer" parent="Combat/Combat_UI/IncomingAttacks"]
+wait_time = 2.0
+one_shot = true
+
+[node name="Stance" type="Node" parent="Combat" node_paths=PackedStringArray("hands")]
+script = ExtResource("15_6jmgc")
+hands = [NodePath("../CombatHand_Left"), NodePath("../CombatHand_Right")]
+metadata/_custom_type_script = "uid://446bgqyk22na"
+
+[node name="Stats" type="Node" parent="." node_paths=PackedStringArray("health_bar", "death_anim", "hit_sfx", "who_owns", "stam_bar", "stam_sfx")]
+script = ExtResource("4_fhpxp")
+health_bar = NodePath("UI/Border/HealthBar")
+death_anim = NodePath("../Camera3D/DeathAnimationPlayer")
+hit_sfx = NodePath("../HitSfx")
+who_owns = NodePath("..")
+stam_bar = NodePath("UI/Border/StamBar")
+stamina_regen_rate = 20.0
+stam_sfx = NodePath("../StamSfx")
+metadata/_custom_type_script = "uid://46pp7aerorca"
+
+[node name="Timer" type="Timer" parent="Stats"]
+one_shot = true
+
+[node name="UI" type="Control" parent="Stats"]
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Border" type="TextureRect" parent="Stats/UI"]
+custom_minimum_size = Vector2(365, 73)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.021701388
+anchor_top = 0.86728394
+anchor_right = 0.33854166
+anchor_bottom = 0.97993827
+grow_vertical = 0
+texture = ExtResource("5_bfirj")
+expand_mode = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="HealthBar" type="ProgressBar" parent="Stats/UI/Border"]
+show_behind_parent = true
+layout_mode = 0
+anchor_left = 0.17534247
+anchor_top = 0.41095892
+anchor_right = 0.9890411
+anchor_bottom = 0.5753425
+theme_override_styles/fill = SubResource("StyleBoxTexture_nbsyt")
+value = 100.0
+show_percentage = false
+metadata/_edit_use_anchors_ = true
+
+[node name="StamBar" type="ProgressBar" parent="Stats/UI/Border"]
+show_behind_parent = true
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.17260274
+anchor_top = 0.5890411
+anchor_right = 0.9589041
+anchor_bottom = 0.6849315
+theme_override_styles/fill = SubResource("StyleBoxTexture_4lyfc")
+value = 100.0
+show_percentage = false
+metadata/_edit_use_anchors_ = true
+
+[node name="HitSfx" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("58_svbpy")
+pitch_scale = 0.97
+bus = &"items"
+
+[node name="StamSfx" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("7_nbsyt")
+bus = &"pl_footsteps"
+
+[node name="DeathUI" type="Control" parent="."]
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="DeathUI"]
+modulate = Color(0.5136133, 0.0005868161, 0.00032151342, 0.3372549)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("CanvasTexture_gcklq")
+
+[node name="Button" type="Button" parent="DeathUI"]
+visible = false
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -4.0
+offset_top = -137.0
+offset_right = 4.0
+offset_bottom = -129.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "Return To Menu"
+
+[node name="ColorRect" type="ColorRect" parent="DeathUI"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0)
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+light_color = Color(0.20314711, 0.27413306, 0.28956375, 1)
+light_energy = 0.3
+omni_range = 2.149
+
+[node name="PostProcessing" type="Node" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="PostProcessing"]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="PostProcessing"]
+layer = 0
+
+[node name="ColorRect" type="ColorRect" parent="PostProcessing/CanvasLayer"]
+material = SubResource("ShaderMaterial_52e8e")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0.5747226, 0.50857943, 0.49505764, 0.03529412)
+
+[connection signal="on_body_entered" from="EnemyChecker" to="Combat" method="_on_enemy_checker_on_body_entered"]
+[connection signal="on_body_exit" from="EnemyChecker" to="Combat" method="_on_enemy_checker_on_body_exit"]
+[connection signal="timeout" from="Combat/CombatHand_Left/Attack/Timer_Telegraph" to="Combat/CombatHand_Left/Attack" method="end_telegraph"]
+[connection signal="timeout" from="Combat/CombatHand_Left/Attack/Timer_Attack" to="Combat/CombatHand_Left/Attack" method="end_attack"]
+[connection signal="timeout" from="Combat/CombatHand_Left/Attack/Timer_Recover" to="Combat/CombatHand_Left/Attack" method="end_recover"]
+[connection signal="timeout" from="Combat/CombatHand_Right/Attack/Timer_Telegraph" to="Combat/CombatHand_Right/Attack" method="end_telegraph"]
+[connection signal="timeout" from="Combat/CombatHand_Right/Attack/Timer_Attack" to="Combat/CombatHand_Right/Attack" method="end_attack"]
+[connection signal="timeout" from="Combat/CombatHand_Right/Attack/Timer_Recover" to="Combat/CombatHand_Right/Attack" method="end_recover"]
+[connection signal="timeout" from="Combat/Combat_UI/IncomingAttacks/Timer" to="Combat" method="_on_timer_timeout"]
+[connection signal="timeout" from="Stats/Timer" to="Stats" method="begin_regen"]
+[connection signal="pressed" from="DeathUI/Button" to="." method="return_to_menu"]
