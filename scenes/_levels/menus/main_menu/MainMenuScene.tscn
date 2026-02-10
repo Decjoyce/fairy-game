@@ -1,12 +1,12 @@
 [gd_scene load_steps=23 format=4 uid="uid://bw2ceq76kc2yc"]
 
-[ext_resource type="Script" uid="uid://bp08osynnpvb5" path="res://scenes/_levels/menus/MainMenu.gd" id="1_4ybol"]
-[ext_resource type="LightmapGIData" uid="uid://bqiy8iqbdsnh" path="res://scenes/_levels/environment/LightMapBake/MainMenuScene.lmbake" id="2_jcxab"]
-[ext_resource type="PackedScene" uid="uid://bssask2v64ogc" path="res://scenes/_levels/Vertical Slice/_vertical_slice.tscn" id="2_pugpc"]
-[ext_resource type="PackedScene" uid="uid://btcpx55r5ma3v" path="res://assets/models/cairn/Props/Menu/Moutainrocks5.glb" id="3_pugpc"]
-[ext_resource type="Material" uid="uid://dgrldudl0bdhu" path="res://assets/models/cairn/Materials/props/Rockpile/Rockpile.tres" id="4_70f01"]
-[ext_resource type="AudioStream" uid="uid://20521ngpj5gh" path="res://assets/audio/music/menu/MainMenu_mixdown.mp3" id="5_jcxab"]
-[ext_resource type="Texture2D" uid="uid://wpx72pcpea8n" path="res://assets/_not_ours_dontship/Xbox Series/XboxSeriesX_A.png" id="7_70f01"]
+[ext_resource type="Script" uid="uid://bp08osynnpvb5" path="res://scenes/_levels/menus/main_menu/MainMenu.gd" id="1_87mw1"]
+[ext_resource type="PackedScene" uid="uid://bssask2v64ogc" path="res://scenes/_levels/Vertical Slice/_vertical_slice.tscn" id="2_fyijj"]
+[ext_resource type="LightmapGIData" uid="uid://bqiy8iqbdsnh" path="res://scenes/_levels/environment/LightMapBake/MainMenuScene.lmbake" id="3_2skw6"]
+[ext_resource type="PackedScene" uid="uid://btcpx55r5ma3v" path="res://assets/models/cairn/Props/Menu/Moutainrocks5.glb" id="4_a5ug4"]
+[ext_resource type="Material" uid="uid://dgrldudl0bdhu" path="res://assets/models/cairn/Materials/props/Rockpile/Rockpile.tres" id="5_3xsiu"]
+[ext_resource type="AudioStream" uid="uid://20521ngpj5gh" path="res://assets/audio/music/menu/MainMenu_mixdown.mp3" id="6_x5fcr"]
+[ext_resource type="Texture2D" uid="uid://wpx72pcpea8n" path="res://assets/_not_ours_dontship/Xbox Series/XboxSeriesX_A.png" id="7_qcq43"]
 
 [sub_resource type="CameraAttributesPhysical" id="CameraAttributesPhysical_lrn60"]
 
@@ -333,8 +333,8 @@ _data = {
 }
 
 [node name="MainMenu" type="Node3D"]
-script = ExtResource("1_4ybol")
-vs_scnee = ExtResource("2_pugpc")
+script = ExtResource("1_87mw1")
+vs_scnee = ExtResource("2_fyijj")
 
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, -32.12275)
@@ -366,21 +366,21 @@ shadow_bias = 0.125
 [node name="LightmapGI" type="LightmapGI" parent="."]
 quality = 2
 generate_probes_subdiv = 3
-light_data = ExtResource("2_jcxab")
+light_data = ExtResource("3_2skw6")
 
-[node name="Moutainrocks5" parent="." instance=ExtResource("3_pugpc")]
+[node name="Moutainrocks5" parent="." instance=ExtResource("4_a5ug4")]
 
 [node name="Rockpile2" type="MeshInstance3D" parent="Moutainrocks5"]
 transform = Transform3D(3, -1.7320514, -2.0000002, 2.0000005, 3.4641018, 0, 1.7320507, -1.0000001, 3.4641016, 22.902035, -3.365284, -1.7683506)
 mesh = SubResource("ArrayMesh_47rn7")
 skeleton = NodePath("../Rockpile")
-surface_material_override/0 = ExtResource("4_70f01")
+surface_material_override/0 = ExtResource("5_3xsiu")
 
 [node name="Rockpile" type="MeshInstance3D" parent="Moutainrocks5"]
 transform = Transform3D(1.9318516, -0.51763815, 0, 0.51763815, 1.9318516, 0, 0, 0, 2, 19.578766, 0, 3.2438831)
 mesh = SubResource("ArrayMesh_47rn7")
 skeleton = NodePath("../..")
-surface_material_override/0 = ExtResource("4_70f01")
+surface_material_override/0 = ExtResource("5_3xsiu")
 
 [node name="FadeLayer" type="CanvasLayer" parent="."]
 visible = false
@@ -401,7 +401,7 @@ libraries = {
 }
 
 [node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
-stream = ExtResource("5_jcxab")
+stream = ExtResource("6_x5fcr")
 volume_db = 0.001
 autoplay = true
 max_distance = 100.0
@@ -417,6 +417,6 @@ anchor_bottom = 0.89537036
 offset_right = 6.1035156e-05
 grow_horizontal = 2
 grow_vertical = 0
-texture = ExtResource("7_70f01")
+texture = ExtResource("7_qcq43")
 stretch_mode = 4
 metadata/_edit_use_anchors_ = true
