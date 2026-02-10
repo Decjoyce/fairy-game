@@ -7,7 +7,7 @@ func _ready() -> void:
 @export var torches: Node3D
 
 func real_player_game()-> void:
-	get_tree().change_scene_to_file("res://scenes/MainMenu/MainMenuScene.tscn")
+	get_tree().change_scene_to_file("res://scenes/_levels/menus/main_menu/MainMenuScene.tscn")
 
 func play_game() -> void:
 	anim_player.play("fade_out")
