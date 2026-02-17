@@ -1,4 +1,4 @@
-[gd_resource type="VisualShader" load_steps=8 format=3 uid="uid://bjcg6f61hwjaa"]
+[gd_resource type="VisualShader" format=3 uid="uid://bjcg6f61hwjaa"]
 
 [sub_resource type="VisualShaderNodeColorParameter" id="VisualShaderNodeColorParameter_ucfq7"]
 parameter_name = "emission"
@@ -22,40 +22,6 @@ source = 5
 [sub_resource type="VisualShaderNodeFloatConstant" id="VisualShaderNodeFloatConstant_ucfq7"]
 
 [resource]
-code = "shader_type spatial;
-render_mode blend_mix, depth_draw_opaque, depth_test_default, cull_back, diffuse_lambert, specular_schlick_ggx;
-
-uniform sampler2D Paint;
-uniform vec4 emission : source_color = vec4(1.000000, 1.000000, 1.000000, 1.000000);
-
-
-
-void fragment() {
-// Input:2
-	vec2 n_out2p0 = UV;
-
-
-	vec4 n_out5p0;
-// Texture2D:5
-	n_out5p0 = texture(Paint, n_out2p0);
-	float n_out5p4 = n_out5p0.a;
-
-
-// ColorParameter:10
-	vec4 n_out10p0 = emission;
-
-
-// FloatOp:11
-	float n_out11p0 = n_out5p0.x * n_out10p0.x;
-
-
-// Output:0
-	ALBEDO = vec3(n_out5p0.xyz);
-	EMISSION = vec3(n_out11p0);
-
-
-}
-"
 nodes/vertex/0/position = Vector2(880, -40)
 nodes/fragment/2/node = SubResource("VisualShaderNodeInput_ucfq7")
 nodes/fragment/2/position = Vector2(-1175.415, 494.2994)

@@ -1,4 +1,4 @@
-[gd_scene load_steps=102 format=4 uid="uid://dw2dbsjbocxi7"]
+[gd_scene format=4 uid="uid://dw2dbsjbocxi7"]
 
 [ext_resource type="PackedScene" uid="uid://bq86osdembn58" path="res://scenes/_player/_player_test.tscn" id="2_3vnxs"]
 [ext_resource type="PackedScene" uid="uid://cafafqbxrlmdt" path="res://scenes/_levels/_palettes/__dev/source/open/dev_open_wall.tscn" id="2_cti4x"]
@@ -491,7 +491,7 @@ _surfaces = [{
 }]
 blend_shape_mode = 0
 
-[sub_resource type="ArrayMesh" id="ArrayMesh_15de5"]
+[sub_resource type="ArrayMesh" id="ArrayMesh_7ntu8"]
 resource_local_to_scene = true
 _surfaces = [{
 "aabb": AABB(-1, -1, -0.016855, 2, 2, 0.03371),
@@ -554,7 +554,7 @@ render_priority = 0
 shader = ExtResource("28_7ntu8")
 shader_parameter/emission = Color(1, 1, 1, 1)
 
-[sub_resource type="ArrayMesh" id="ArrayMesh_temsp"]
+[sub_resource type="ArrayMesh" id="ArrayMesh_poavi"]
 resource_local_to_scene = true
 _surfaces = [{
 "aabb": AABB(-1, -1, -0.016855, 2, 2, 0.03371),
@@ -572,410 +572,410 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_qchyt")
 
-[node name="Playground_Interactions" type="Node3D"]
+[node name="Playground_Interactions" type="Node3D" unique_id=1575969752]
 
-[node name="player_test" parent="." instance=ExtResource("2_3vnxs")]
+[node name="player_test" parent="." unique_id=1435944439 instance=ExtResource("2_3vnxs")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -4)
 
-[node name="_environment" type="Node3D" parent="."]
+[node name="_environment" type="Node3D" parent="." unique_id=252215379]
 
-[node name="WorldEnvironment" type="WorldEnvironment" parent="_environment"]
+[node name="WorldEnvironment" type="WorldEnvironment" parent="_environment" unique_id=2118052846]
 environment = SubResource("Environment_rdknj")
 
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="_environment"]
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="_environment" unique_id=2049780029]
 transform = Transform3D(1, 0, 0, 0, -0.25881898, 0.9659258, 0, -0.9659258, -0.25881898, 0, 0, 0)
 
-[node name="dev_open_palette" type="Node3D" parent="_environment"]
+[node name="dev_open_palette" type="Node3D" parent="_environment" unique_id=848592302]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -6, 0)
 
-[node name="_dev_open_wall" parent="_environment/dev_open_palette" instance=ExtResource("2_cti4x")]
+[node name="_dev_open_wall" parent="_environment/dev_open_palette" unique_id=912125866 instance=ExtResource("2_cti4x")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 2)
 
-[node name="_dev_open_hall" parent="_environment/dev_open_palette" instance=ExtResource("3_mlo6p")]
+[node name="_dev_open_hall" parent="_environment/dev_open_palette" unique_id=609634830 instance=ExtResource("3_mlo6p")]
 
-[node name="_dev_open_doorway" parent="_environment/dev_open_palette" instance=ExtResource("4_viu01")]
+[node name="_dev_open_doorway" parent="_environment/dev_open_palette" unique_id=1121988601 instance=ExtResource("4_viu01")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2)
 
-[node name="_dev_open_doorway2" parent="_environment/dev_open_palette" instance=ExtResource("4_viu01")]
+[node name="_dev_open_doorway2" parent="_environment/dev_open_palette" unique_id=680459711 instance=ExtResource("4_viu01")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 6, -10)
 
-[node name="_dev_open_doorway3" parent="_environment/dev_open_palette" instance=ExtResource("4_viu01")]
+[node name="_dev_open_doorway3" parent="_environment/dev_open_palette" unique_id=1259706734 instance=ExtResource("4_viu01")]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 12, 6, -8)
 
-[node name="_dev_open_middle_b" parent="_environment/dev_open_palette" instance=ExtResource("5_h40wo")]
+[node name="_dev_open_middle_b" parent="_environment/dev_open_palette" unique_id=1620508173 instance=ExtResource("5_h40wo")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -6)
 
-[node name="_dev_open_corner" parent="_environment/dev_open_palette" instance=ExtResource("6_fnuid")]
+[node name="_dev_open_corner" parent="_environment/dev_open_palette" unique_id=1107526597 instance=ExtResource("6_fnuid")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 2)
 
-[node name="_dev_open_middle_a" parent="_environment/dev_open_palette" instance=ExtResource("7_ir6gx")]
+[node name="_dev_open_middle_a" parent="_environment/dev_open_palette" unique_id=1852428598 instance=ExtResource("7_ir6gx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2)
 
-[node name="Room_Start" type="Node3D" parent="."]
+[node name="Room_Start" type="Node3D" parent="." unique_id=79733749]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -3)
 
-[node name="_env" type="Node3D" parent="Room_Start"]
+[node name="_env" type="Node3D" parent="Room_Start" unique_id=366484190]
 
-[node name="_dev_open_doorway2" parent="Room_Start/_env" instance=ExtResource("4_viu01")]
+[node name="_dev_open_doorway2" parent="Room_Start/_env" unique_id=1474431513 instance=ExtResource("4_viu01")]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, -3)
 
-[node name="_dev_open_doorway3" parent="Room_Start/_env" instance=ExtResource("4_viu01")]
+[node name="_dev_open_doorway3" parent="Room_Start/_env" unique_id=883495484 instance=ExtResource("4_viu01")]
 transform = Transform3D(1.3113416e-07, 0, -1, 0, 1, 0, 1, 0, 1.3113416e-07, -2, 0, -1)
 
-[node name="_dev_open_doorway4" parent="Room_Start/_env" instance=ExtResource("4_viu01")]
+[node name="_dev_open_doorway4" parent="Room_Start/_env" unique_id=1367976576 instance=ExtResource("4_viu01")]
 transform = Transform3D(-2.1855693e-07, 0, 1, 0, 1, 0, -1, 0, -2.1855693e-07, 2, 0, -1)
 
-[node name="_dev_open_hall2" parent="Room_Start/_env" instance=ExtResource("3_mlo6p")]
+[node name="_dev_open_hall2" parent="Room_Start/_env" unique_id=780100212 instance=ExtResource("3_mlo6p")]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -4, -1, -1)
 
-[node name="_dev_open_hall3" parent="Room_Start/_env" instance=ExtResource("3_mlo6p")]
+[node name="_dev_open_hall3" parent="Room_Start/_env" unique_id=659685567 instance=ExtResource("3_mlo6p")]
 transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 0, -1, -5)
 
-[node name="_dev_open_hall4" parent="Room_Start/_env" instance=ExtResource("3_mlo6p")]
+[node name="_dev_open_hall4" parent="Room_Start/_env" unique_id=342916761 instance=ExtResource("3_mlo6p")]
 transform = Transform3D(1.3113416e-07, 0, 1, 0, 1, 0, -1, 0, 1.3113416e-07, 4, -1, -1)
 
-[node name="_floor" type="Node3D" parent="Room_Start/_env"]
+[node name="_floor" type="Node3D" parent="Room_Start/_env" unique_id=72031564]
 
-[node name="_dev_open_middle_a5" parent="Room_Start/_env/_floor" instance=ExtResource("7_ir6gx")]
+[node name="_dev_open_middle_a5" parent="Room_Start/_env/_floor" unique_id=1418615461 instance=ExtResource("7_ir6gx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1)
 
-[node name="_dev_open_middle_a13" parent="Room_Start/_env/_floor" instance=ExtResource("7_ir6gx")]
+[node name="_dev_open_middle_a13" parent="Room_Start/_env/_floor" unique_id=81445908 instance=ExtResource("7_ir6gx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1)
 
-[node name="_dev_open_middle_a6" parent="Room_Start/_env/_floor" instance=ExtResource("7_ir6gx")]
+[node name="_dev_open_middle_a6" parent="Room_Start/_env/_floor" unique_id=1004869663 instance=ExtResource("7_ir6gx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 1)
 
-[node name="_dev_open_middle_a7" parent="Room_Start/_env/_floor" instance=ExtResource("7_ir6gx")]
+[node name="_dev_open_middle_a7" parent="Room_Start/_env/_floor" unique_id=2020295858 instance=ExtResource("7_ir6gx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 1)
 
-[node name="_dev_open_middle_a15" parent="Room_Start/_env/_floor" instance=ExtResource("7_ir6gx")]
+[node name="_dev_open_middle_a15" parent="Room_Start/_env/_floor" unique_id=111457014 instance=ExtResource("7_ir6gx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, -3)
 
-[node name="_dev_open_middle_a8" parent="Room_Start/_env/_floor" instance=ExtResource("7_ir6gx")]
+[node name="_dev_open_middle_a8" parent="Room_Start/_env/_floor" unique_id=1426682547 instance=ExtResource("7_ir6gx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1)
 
-[node name="_dev_open_middle_a9" parent="Room_Start/_env/_floor" instance=ExtResource("7_ir6gx")]
+[node name="_dev_open_middle_a9" parent="Room_Start/_env/_floor" unique_id=985677792 instance=ExtResource("7_ir6gx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 1)
 
-[node name="_dev_open_middle_a14" parent="Room_Start/_env/_floor" instance=ExtResource("7_ir6gx")]
+[node name="_dev_open_middle_a14" parent="Room_Start/_env/_floor" unique_id=1509244732 instance=ExtResource("7_ir6gx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, -3)
 
-[node name="_dev_open_middle_a10" parent="Room_Start/_env/_floor" instance=ExtResource("7_ir6gx")]
+[node name="_dev_open_middle_a10" parent="Room_Start/_env/_floor" unique_id=1871839621 instance=ExtResource("7_ir6gx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 1)
 
-[node name="_wall" type="Node3D" parent="Room_Start/_env"]
+[node name="_wall" type="Node3D" parent="Room_Start/_env" unique_id=75540538]
 
-[node name="_dev_open_wall2" parent="Room_Start/_env/_wall" instance=ExtResource("2_cti4x")]
+[node name="_dev_open_wall2" parent="Room_Start/_env/_wall" unique_id=2092239278 instance=ExtResource("2_cti4x")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 3)
 
-[node name="_dev_open_wall3" parent="Room_Start/_env/_wall" instance=ExtResource("2_cti4x")]
+[node name="_dev_open_wall3" parent="Room_Start/_env/_wall" unique_id=1419261088 instance=ExtResource("2_cti4x")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 3)
 
-[node name="_dev_open_wall4" parent="Room_Start/_env/_wall" instance=ExtResource("2_cti4x")]
+[node name="_dev_open_wall4" parent="Room_Start/_env/_wall" unique_id=1696377984 instance=ExtResource("2_cti4x")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 3)
 
-[node name="_dev_open_wall5" parent="Room_Start/_env/_wall" instance=ExtResource("2_cti4x")]
+[node name="_dev_open_wall5" parent="Room_Start/_env/_wall" unique_id=643393441 instance=ExtResource("2_cti4x")]
 transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 0, 0, -5)
 
-[node name="_dev_open_wall7" parent="Room_Start/_env/_wall" instance=ExtResource("2_cti4x")]
+[node name="_dev_open_wall7" parent="Room_Start/_env/_wall" unique_id=1129081218 instance=ExtResource("2_cti4x")]
 transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, -2, 0, -5)
 
-[node name="_dev_open_wall9" parent="Room_Start/_env/_wall" instance=ExtResource("2_cti4x")]
+[node name="_dev_open_wall9" parent="Room_Start/_env/_wall" unique_id=1612464096 instance=ExtResource("2_cti4x")]
 transform = Transform3D(-8.940697e-08, 0, -0.99999994, 0, 1, 0, 0.99999994, 0, -8.940697e-08, -4, 0, -1)
 
-[node name="_dev_open_wall14" parent="Room_Start/_env/_wall" instance=ExtResource("2_cti4x")]
+[node name="_dev_open_wall14" parent="Room_Start/_env/_wall" unique_id=838682029 instance=ExtResource("2_cti4x")]
 transform = Transform3D(-8.940697e-08, 0, -0.99999994, 0, 1, 0, 0.99999994, 0, -8.940697e-08, -4, 0, -3)
 
-[node name="_dev_open_wall10" parent="Room_Start/_env/_wall" instance=ExtResource("2_cti4x")]
+[node name="_dev_open_wall10" parent="Room_Start/_env/_wall" unique_id=624995990 instance=ExtResource("2_cti4x")]
 transform = Transform3D(-8.940697e-08, 0, -0.99999994, 0, 1, 0, 0.99999994, 0, -8.940697e-08, -4, 0, 1)
 
-[node name="_dev_open_wall11" parent="Room_Start/_env/_wall" instance=ExtResource("2_cti4x")]
+[node name="_dev_open_wall11" parent="Room_Start/_env/_wall" unique_id=2133245876 instance=ExtResource("2_cti4x")]
 transform = Transform3D(1.7682972e-07, 0, 0.9999999, 0, 1, 0, -0.9999999, 0, 1.7682972e-07, 4, 0, 1)
 
-[node name="_dev_open_wall12" parent="Room_Start/_env/_wall" instance=ExtResource("2_cti4x")]
+[node name="_dev_open_wall12" parent="Room_Start/_env/_wall" unique_id=1303102614 instance=ExtResource("2_cti4x")]
 transform = Transform3D(1.7682972e-07, 0, 0.9999999, 0, 1, 0, -0.9999999, 0, 1.7682972e-07, 4, 0, -1)
 
-[node name="_dev_open_wall13" parent="Room_Start/_env/_wall" instance=ExtResource("2_cti4x")]
+[node name="_dev_open_wall13" parent="Room_Start/_env/_wall" unique_id=693305970 instance=ExtResource("2_cti4x")]
 transform = Transform3D(1.7682972e-07, 0, 0.9999999, 0, 1, 0, -0.9999999, 0, 1.7682972e-07, 4, 0, -3)
 
-[node name="_dev_open_wall8" parent="Room_Start/_env/_wall" instance=ExtResource("2_cti4x")]
+[node name="_dev_open_wall8" parent="Room_Start/_env/_wall" unique_id=369541325 instance=ExtResource("2_cti4x")]
 transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 2, 0, -5)
 
-[node name="_corner" type="Node3D" parent="Room_Start/_env"]
+[node name="_corner" type="Node3D" parent="Room_Start/_env" unique_id=2000518435]
 
-[node name="_dev_open_corner2" parent="Room_Start/_env/_corner" instance=ExtResource("6_fnuid")]
+[node name="_dev_open_corner2" parent="Room_Start/_env/_corner" unique_id=719474431 instance=ExtResource("6_fnuid")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, 3)
 
-[node name="_dev_open_corner3" parent="Room_Start/_env/_corner" instance=ExtResource("6_fnuid")]
+[node name="_dev_open_corner3" parent="Room_Start/_env/_corner" unique_id=199174364 instance=ExtResource("6_fnuid")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 4, 0, -5)
 
-[node name="_dev_open_corner4" parent="Room_Start/_env/_corner" instance=ExtResource("6_fnuid")]
+[node name="_dev_open_corner4" parent="Room_Start/_env/_corner" unique_id=211728711 instance=ExtResource("6_fnuid")]
 transform = Transform3D(-1.0000001, 0, 0, 0, 1, 0, 0, 0, -1.0000001, -4, 0, -5)
 
-[node name="_dev_open_corner5" parent="Room_Start/_env/_corner" instance=ExtResource("6_fnuid")]
+[node name="_dev_open_corner5" parent="Room_Start/_env/_corner" unique_id=1887798030 instance=ExtResource("6_fnuid")]
 transform = Transform3D(4.3711392e-08, 0, -1.0000001, 0, 1, 0, 1.0000001, 0, 4.3711392e-08, -4, 0, 3)
 
-[node name="_dev_floor_guide" parent="Room_Start/_env" instance=ExtResource("12_ir6gx")]
+[node name="_dev_floor_guide" parent="Room_Start/_env" unique_id=60434095 instance=ExtResource("12_ir6gx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 3)
 
-[node name="_dev_floor_guide2" parent="Room_Start/_env" instance=ExtResource("12_ir6gx")]
+[node name="_dev_floor_guide2" parent="Room_Start/_env" unique_id=174482086 instance=ExtResource("12_ir6gx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1)
 
-[node name="_dev_floor_guide4" parent="Room_Start/_env" instance=ExtResource("12_ir6gx")]
+[node name="_dev_floor_guide4" parent="Room_Start/_env" unique_id=1404448681 instance=ExtResource("12_ir6gx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -3)
 
-[node name="_dev_floor_guide3" parent="Room_Start/_env" instance=ExtResource("12_ir6gx")]
+[node name="_dev_floor_guide3" parent="Room_Start/_env" unique_id=540501981 instance=ExtResource("12_ir6gx")]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 2, 0, -1)
 
-[node name="_dev_floor_guide5" parent="Room_Start/_env" instance=ExtResource("12_ir6gx")]
+[node name="_dev_floor_guide5" parent="Room_Start/_env" unique_id=622100887 instance=ExtResource("12_ir6gx")]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -2, 0, -1)
 
-[node name="_dev_floor_guidemid" parent="Room_Start/_env" instance=ExtResource("13_ojeeo")]
+[node name="_dev_floor_guidemid" parent="Room_Start/_env" unique_id=1984044678 instance=ExtResource("13_ojeeo")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1)
 
-[node name="Teleporter_to_item" parent="Room_Start" node_paths=PackedStringArray("out_pos") instance=ExtResource("14_6ords")]
+[node name="Teleporter_to_item" parent="Room_Start" unique_id=2048437873 node_paths=PackedStringArray("out_pos") instance=ExtResource("14_6ords")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -5)
 out_pos = NodePath("../../Room_Items/Teleporter/In")
 
-[node name="Trigger" type="Area3D" parent="Room_Start/Teleporter_to_item"]
+[node name="Trigger" type="Area3D" parent="Room_Start/Teleporter_to_item" unique_id=806715789]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, -0.3)
 collision_mask = 3
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Room_Start/Teleporter_to_item/Trigger"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Room_Start/Teleporter_to_item/Trigger" unique_id=526698958]
 shape = SubResource("SphereShape3D_3wul1")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Room_Start/Teleporter_to_item/Trigger"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Room_Start/Teleporter_to_item/Trigger" unique_id=1225181682]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 0, 0)
 mesh = SubResource("SphereMesh_hsji5")
 
-[node name="In" type="Node3D" parent="Room_Start/Teleporter_to_item"]
+[node name="In" type="Node3D" parent="Room_Start/Teleporter_to_item" unique_id=171597948]
 transform = Transform3D(-1, 0, 5.9604645e-08, 0, 1, 0, -5.9604645e-08, 0, -1, 0, 1, 1)
 
-[node name="Teleporter_to_item2" parent="Room_Start" node_paths=PackedStringArray("out_pos") instance=ExtResource("14_6ords")]
+[node name="Teleporter_to_item2" parent="Room_Start" unique_id=1623932000 node_paths=PackedStringArray("out_pos") instance=ExtResource("14_6ords")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 3.2)
 out_pos = NodePath("../../Room_Receiver/Teleporter/In")
 
-[node name="Trigger" type="Area3D" parent="Room_Start/Teleporter_to_item2"]
+[node name="Trigger" type="Area3D" parent="Room_Start/Teleporter_to_item2" unique_id=2123289816]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, -0.3)
 collision_mask = 3
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Room_Start/Teleporter_to_item2/Trigger"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Room_Start/Teleporter_to_item2/Trigger" unique_id=1645724160]
 shape = SubResource("SphereShape3D_3wul1")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Room_Start/Teleporter_to_item2/Trigger"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Room_Start/Teleporter_to_item2/Trigger" unique_id=1007164336]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -2.2, 0, 0)
 mesh = SubResource("SphereMesh_hsji5")
 
-[node name="In" type="Node3D" parent="Room_Start/Teleporter_to_item2"]
+[node name="In" type="Node3D" parent="Room_Start/Teleporter_to_item2" unique_id=1370240763]
 transform = Transform3D(-1, 0, 5.9604645e-08, 0, 1, 0, -5.9604645e-08, 0, -1, 0, 1, 1)
 
-[node name="Teleporter_to_interactions" parent="Room_Start" node_paths=PackedStringArray("out_pos") instance=ExtResource("14_6ords")]
+[node name="Teleporter_to_interactions" parent="Room_Start" unique_id=1030722665 node_paths=PackedStringArray("out_pos") instance=ExtResource("14_6ords")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -4, 0, -1)
 out_pos = NodePath("../../Room_Interacting/Teleporter/In")
 
-[node name="Trigger" type="Area3D" parent="Room_Start/Teleporter_to_interactions"]
+[node name="Trigger" type="Area3D" parent="Room_Start/Teleporter_to_interactions" unique_id=545213268]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, -0.3)
 collision_mask = 3
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Room_Start/Teleporter_to_interactions/Trigger"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Room_Start/Teleporter_to_interactions/Trigger" unique_id=1288398019]
 shape = SubResource("SphereShape3D_3wul1")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Room_Start/Teleporter_to_interactions/Trigger"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Room_Start/Teleporter_to_interactions/Trigger" unique_id=1214783018]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 0, 0)
 mesh = SubResource("SphereMesh_hsji5")
 
-[node name="In" type="Node3D" parent="Room_Start/Teleporter_to_interactions"]
+[node name="In" type="Node3D" parent="Room_Start/Teleporter_to_interactions" unique_id=1174985240]
 transform = Transform3D(-1, 0, 5.9604645e-08, 0, 1, 0, -5.9604645e-08, 0, -1, 0, 1, 1)
 
-[node name="Teleporter_to_anim" parent="Room_Start" node_paths=PackedStringArray("out_pos") instance=ExtResource("14_6ords")]
+[node name="Teleporter_to_anim" parent="Room_Start" unique_id=398703130 node_paths=PackedStringArray("out_pos") instance=ExtResource("14_6ords")]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 4, 0, -1)
 out_pos = NodePath("../../Room_Animation/Teleporter/In")
 
-[node name="Trigger" type="Area3D" parent="Room_Start/Teleporter_to_anim"]
+[node name="Trigger" type="Area3D" parent="Room_Start/Teleporter_to_anim" unique_id=119713121]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, -0.3)
 collision_mask = 3
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Room_Start/Teleporter_to_anim/Trigger"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Room_Start/Teleporter_to_anim/Trigger" unique_id=435046471]
 shape = SubResource("SphereShape3D_3wul1")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Room_Start/Teleporter_to_anim/Trigger"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Room_Start/Teleporter_to_anim/Trigger" unique_id=517758305]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 0, 0)
 mesh = SubResource("SphereMesh_hsji5")
 
-[node name="In" type="Node3D" parent="Room_Start/Teleporter_to_anim"]
+[node name="In" type="Node3D" parent="Room_Start/Teleporter_to_anim" unique_id=1910480512]
 transform = Transform3D(-1, 0, 5.9604645e-08, 0, 1, 0, -5.9604645e-08, 0, -1, 0, 1, 1)
 
-[node name="Label3D3" type="Label3D" parent="Room_Start"]
+[node name="Label3D3" type="Label3D" parent="Room_Start" unique_id=810318915]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -2.7000003, 1.7, -1)
 text = "Triggers &
 Receivers"
 font_size = 52
 
-[node name="Label3D4" type="Label3D" parent="Room_Start"]
+[node name="Label3D4" type="Label3D" parent="Room_Start" unique_id=955022644]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.7, -4)
 text = "Items"
 font_size = 52
 
-[node name="Label3D5" type="Label3D" parent="Room_Start"]
+[node name="Label3D5" type="Label3D" parent="Room_Start" unique_id=562025725]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 2.8, 1.7, -1)
 text = "Animated
 Objects"
 font_size = 52
 
-[node name="Room_Items" type="Node3D" parent="."]
+[node name="Room_Items" type="Node3D" parent="." unique_id=1081374339]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -13)
 
-[node name="_env" type="Node3D" parent="Room_Items"]
+[node name="_env" type="Node3D" parent="Room_Items" unique_id=813070773]
 
-[node name="_floor" type="Node3D" parent="Room_Items/_env"]
+[node name="_floor" type="Node3D" parent="Room_Items/_env" unique_id=914528754]
 
-[node name="_dev_open_middle_a5" parent="Room_Items/_env/_floor" instance=ExtResource("7_ir6gx")]
+[node name="_dev_open_middle_a5" parent="Room_Items/_env/_floor" unique_id=981568250 instance=ExtResource("7_ir6gx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1)
 
-[node name="_dev_open_middle_a6" parent="Room_Items/_env/_floor" instance=ExtResource("7_ir6gx")]
+[node name="_dev_open_middle_a6" parent="Room_Items/_env/_floor" unique_id=817356895 instance=ExtResource("7_ir6gx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 1)
 
-[node name="_dev_open_middle_a7" parent="Room_Items/_env/_floor" instance=ExtResource("7_ir6gx")]
+[node name="_dev_open_middle_a7" parent="Room_Items/_env/_floor" unique_id=1474286190 instance=ExtResource("7_ir6gx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 1)
 
-[node name="_dev_open_middle_a15" parent="Room_Items/_env/_floor" instance=ExtResource("7_ir6gx")]
+[node name="_dev_open_middle_a15" parent="Room_Items/_env/_floor" unique_id=1868544067 instance=ExtResource("7_ir6gx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, -3)
 
-[node name="_dev_open_middle_a8" parent="Room_Items/_env/_floor" instance=ExtResource("7_ir6gx")]
+[node name="_dev_open_middle_a8" parent="Room_Items/_env/_floor" unique_id=1097760691 instance=ExtResource("7_ir6gx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1)
 
-[node name="_dev_open_middle_a9" parent="Room_Items/_env/_floor" instance=ExtResource("7_ir6gx")]
+[node name="_dev_open_middle_a9" parent="Room_Items/_env/_floor" unique_id=1650086455 instance=ExtResource("7_ir6gx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 1)
 
-[node name="_dev_open_middle_a14" parent="Room_Items/_env/_floor" instance=ExtResource("7_ir6gx")]
+[node name="_dev_open_middle_a14" parent="Room_Items/_env/_floor" unique_id=2021255530 instance=ExtResource("7_ir6gx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, -3)
 
-[node name="_dev_open_middle_a16" parent="Room_Items/_env/_floor" instance=ExtResource("7_ir6gx")]
+[node name="_dev_open_middle_a16" parent="Room_Items/_env/_floor" unique_id=1118739586 instance=ExtResource("7_ir6gx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, -1)
 
-[node name="_dev_open_middle_a17" parent="Room_Items/_env/_floor" instance=ExtResource("7_ir6gx")]
+[node name="_dev_open_middle_a17" parent="Room_Items/_env/_floor" unique_id=843274290 instance=ExtResource("7_ir6gx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1)
 
-[node name="_dev_open_middle_a18" parent="Room_Items/_env/_floor" instance=ExtResource("7_ir6gx")]
+[node name="_dev_open_middle_a18" parent="Room_Items/_env/_floor" unique_id=1995619219 instance=ExtResource("7_ir6gx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, -1)
 
-[node name="_dev_open_middle_a19" parent="Room_Items/_env/_floor" instance=ExtResource("7_ir6gx")]
+[node name="_dev_open_middle_a19" parent="Room_Items/_env/_floor" unique_id=290464525 instance=ExtResource("7_ir6gx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -3)
 
-[node name="_dev_open_middle_a10" parent="Room_Items/_env/_floor" instance=ExtResource("7_ir6gx")]
+[node name="_dev_open_middle_a10" parent="Room_Items/_env/_floor" unique_id=41498821 instance=ExtResource("7_ir6gx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 1)
 
-[node name="_wall" type="Node3D" parent="Room_Items/_env"]
+[node name="_wall" type="Node3D" parent="Room_Items/_env" unique_id=133744398]
 
-[node name="_dev_open_wall2" parent="Room_Items/_env/_wall" instance=ExtResource("2_cti4x")]
+[node name="_dev_open_wall2" parent="Room_Items/_env/_wall" unique_id=1166985020 instance=ExtResource("2_cti4x")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 3)
 
-[node name="_dev_open_wall3" parent="Room_Items/_env/_wall" instance=ExtResource("2_cti4x")]
+[node name="_dev_open_wall3" parent="Room_Items/_env/_wall" unique_id=611171727 instance=ExtResource("2_cti4x")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 3)
 
-[node name="_dev_open_wall4" parent="Room_Items/_env/_wall" instance=ExtResource("2_cti4x")]
+[node name="_dev_open_wall4" parent="Room_Items/_env/_wall" unique_id=2043816016 instance=ExtResource("2_cti4x")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 3)
 
-[node name="_dev_open_wall5" parent="Room_Items/_env/_wall" instance=ExtResource("2_cti4x")]
+[node name="_dev_open_wall5" parent="Room_Items/_env/_wall" unique_id=1829627861 instance=ExtResource("2_cti4x")]
 transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 0, 0, -5)
 
-[node name="_dev_open_wall7" parent="Room_Items/_env/_wall" instance=ExtResource("2_cti4x")]
+[node name="_dev_open_wall7" parent="Room_Items/_env/_wall" unique_id=265172699 instance=ExtResource("2_cti4x")]
 transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, -2, 0, -5)
 
-[node name="_dev_open_wall9" parent="Room_Items/_env/_wall" instance=ExtResource("2_cti4x")]
+[node name="_dev_open_wall9" parent="Room_Items/_env/_wall" unique_id=34154040 instance=ExtResource("2_cti4x")]
 transform = Transform3D(-8.940697e-08, 0, -0.99999994, 0, 1, 0, 0.99999994, 0, -8.940697e-08, -4, 0, -1)
 
-[node name="_dev_open_wall14" parent="Room_Items/_env/_wall" instance=ExtResource("2_cti4x")]
+[node name="_dev_open_wall14" parent="Room_Items/_env/_wall" unique_id=1479789915 instance=ExtResource("2_cti4x")]
 transform = Transform3D(-8.940697e-08, 0, -0.99999994, 0, 1, 0, 0.99999994, 0, -8.940697e-08, -4, 0, -3)
 
-[node name="_dev_open_wall10" parent="Room_Items/_env/_wall" instance=ExtResource("2_cti4x")]
+[node name="_dev_open_wall10" parent="Room_Items/_env/_wall" unique_id=452159503 instance=ExtResource("2_cti4x")]
 transform = Transform3D(-8.940697e-08, 0, -0.99999994, 0, 1, 0, 0.99999994, 0, -8.940697e-08, -4, 0, 1)
 
-[node name="_dev_open_wall11" parent="Room_Items/_env/_wall" instance=ExtResource("2_cti4x")]
+[node name="_dev_open_wall11" parent="Room_Items/_env/_wall" unique_id=515440190 instance=ExtResource("2_cti4x")]
 transform = Transform3D(1.7682972e-07, 0, 0.9999999, 0, 1, 0, -0.9999999, 0, 1.7682972e-07, 4, 0, 1)
 
-[node name="_dev_open_wall12" parent="Room_Items/_env/_wall" instance=ExtResource("2_cti4x")]
+[node name="_dev_open_wall12" parent="Room_Items/_env/_wall" unique_id=346809172 instance=ExtResource("2_cti4x")]
 transform = Transform3D(1.7682972e-07, 0, 0.9999999, 0, 1, 0, -0.9999999, 0, 1.7682972e-07, 4, 0, -1)
 
-[node name="_dev_open_wall13" parent="Room_Items/_env/_wall" instance=ExtResource("2_cti4x")]
+[node name="_dev_open_wall13" parent="Room_Items/_env/_wall" unique_id=1688810281 instance=ExtResource("2_cti4x")]
 transform = Transform3D(1.7682972e-07, 0, 0.9999999, 0, 1, 0, -0.9999999, 0, 1.7682972e-07, 4, 0, -3)
 
-[node name="_dev_open_wall8" parent="Room_Items/_env/_wall" instance=ExtResource("2_cti4x")]
+[node name="_dev_open_wall8" parent="Room_Items/_env/_wall" unique_id=1935570531 instance=ExtResource("2_cti4x")]
 transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 2, 0, -5)
 
-[node name="_corner" type="Node3D" parent="Room_Items/_env"]
+[node name="_corner" type="Node3D" parent="Room_Items/_env" unique_id=155789361]
 
-[node name="_dev_open_corner2" parent="Room_Items/_env/_corner" instance=ExtResource("6_fnuid")]
+[node name="_dev_open_corner2" parent="Room_Items/_env/_corner" unique_id=790926239 instance=ExtResource("6_fnuid")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, 3)
 
-[node name="_dev_open_corner3" parent="Room_Items/_env/_corner" instance=ExtResource("6_fnuid")]
+[node name="_dev_open_corner3" parent="Room_Items/_env/_corner" unique_id=613909310 instance=ExtResource("6_fnuid")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 4, 0, -5)
 
-[node name="_dev_open_corner4" parent="Room_Items/_env/_corner" instance=ExtResource("6_fnuid")]
+[node name="_dev_open_corner4" parent="Room_Items/_env/_corner" unique_id=1292060795 instance=ExtResource("6_fnuid")]
 transform = Transform3D(-1.0000001, 0, 0, 0, 1, 0, 0, 0, -1.0000001, -4, 0, -5)
 
-[node name="_dev_open_corner5" parent="Room_Items/_env/_corner" instance=ExtResource("6_fnuid")]
+[node name="_dev_open_corner5" parent="Room_Items/_env/_corner" unique_id=1808893507 instance=ExtResource("6_fnuid")]
 transform = Transform3D(4.3711392e-08, 0, -1.0000001, 0, 1, 0, 1.0000001, 0, 4.3711392e-08, -4, 0, 3)
 
-[node name="_dev_floor_guide" parent="Room_Items/_env" instance=ExtResource("12_ir6gx")]
+[node name="_dev_floor_guide" parent="Room_Items/_env" unique_id=1726663292 instance=ExtResource("12_ir6gx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 3)
 
-[node name="_dev_floor_guidemid" parent="Room_Items/_env" instance=ExtResource("13_ojeeo")]
+[node name="_dev_floor_guidemid" parent="Room_Items/_env" unique_id=314630879 instance=ExtResource("13_ojeeo")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1)
 
-[node name="_dev_floor_guidemid3" parent="Room_Items/_env" instance=ExtResource("13_ojeeo")]
+[node name="_dev_floor_guidemid3" parent="Room_Items/_env" unique_id=1904103214 instance=ExtResource("13_ojeeo")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1)
 
-[node name="_dev_floor_guidemid4" parent="Room_Items/_env" instance=ExtResource("13_ojeeo")]
+[node name="_dev_floor_guidemid4" parent="Room_Items/_env" unique_id=2031726592 instance=ExtResource("13_ojeeo")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 1)
 
-[node name="_dev_floor_guidemid5" parent="Room_Items/_env" instance=ExtResource("13_ojeeo")]
+[node name="_dev_floor_guidemid5" parent="Room_Items/_env" unique_id=423129413 instance=ExtResource("13_ojeeo")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 1)
 
-[node name="_dev_floor_guidemid6" parent="Room_Items/_env" instance=ExtResource("13_ojeeo")]
+[node name="_dev_floor_guidemid6" parent="Room_Items/_env" unique_id=238911964 instance=ExtResource("13_ojeeo")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, -1)
 
-[node name="_dev_floor_guidemid2" parent="Room_Items/_env" instance=ExtResource("13_ojeeo")]
+[node name="_dev_floor_guidemid2" parent="Room_Items/_env" unique_id=1840930621 instance=ExtResource("13_ojeeo")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, -1)
 
-[node name="_dev_floor_guidemid7" parent="Room_Items/_env" instance=ExtResource("13_ojeeo")]
+[node name="_dev_floor_guidemid7" parent="Room_Items/_env" unique_id=1369518113 instance=ExtResource("13_ojeeo")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -3)
 
-[node name="_dev_floor_guidemid8" parent="Room_Items/_env" instance=ExtResource("13_ojeeo")]
+[node name="_dev_floor_guidemid8" parent="Room_Items/_env" unique_id=1177067259 instance=ExtResource("13_ojeeo")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, -3)
 
-[node name="_dev_floor_guidemid9" parent="Room_Items/_env" instance=ExtResource("13_ojeeo")]
+[node name="_dev_floor_guidemid9" parent="Room_Items/_env" unique_id=1010304906 instance=ExtResource("13_ojeeo")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, -3)
 
-[node name="Teleporter" parent="Room_Items" node_paths=PackedStringArray("out_pos") instance=ExtResource("14_6ords")]
+[node name="Teleporter" parent="Room_Items" unique_id=1478194894 node_paths=PackedStringArray("out_pos") instance=ExtResource("14_6ords")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 3)
 out_pos = NodePath("../../Room_Start/Teleporter_to_item/In")
 
-[node name="Trigger" type="Area3D" parent="Room_Items/Teleporter"]
+[node name="Trigger" type="Area3D" parent="Room_Items/Teleporter" unique_id=72822040]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0.3)
 collision_mask = 3
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Room_Items/Teleporter/Trigger"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Room_Items/Teleporter/Trigger" unique_id=418742773]
 shape = SubResource("SphereShape3D_3wul1")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Room_Items/Teleporter/Trigger"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Room_Items/Teleporter/Trigger" unique_id=1828071771]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 0, 0)
 mesh = SubResource("SphereMesh_hsji5")
 
-[node name="In" type="Node3D" parent="Room_Items/Teleporter"]
+[node name="In" type="Node3D" parent="Room_Items/Teleporter" unique_id=873712773]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.999, -1)
 
-[node name="TEST_Grabbable_item" parent="Room_Items" instance=ExtResource("16_3wul1")]
+[node name="TEST_Grabbable_item" parent="Room_Items" unique_id=364450795 instance=ExtResource("16_3wul1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0.4, 0)
 gravity_scale = 1.0
 item_type = SubResource("Resource_7ntu8")
 item_weight = 3
 
-[node name="TEST_Grabbable_item2" parent="Room_Items" instance=ExtResource("16_3wul1")]
+[node name="TEST_Grabbable_item2" parent="Room_Items" unique_id=1765908162 instance=ExtResource("16_3wul1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0.4, 0)
 item_weight = 3
 
-[node name="TEST_Grabbable_item3" type="RigidBody3D" parent="Room_Items" node_paths=PackedStringArray("idle_graphics")]
+[node name="TEST_Grabbable_item3" type="RigidBody3D" parent="Room_Items" unique_id=2042661560 node_paths=PackedStringArray("idle_graphics")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0.4, -2)
 collision_layer = 2
 axis_lock_angular_x = true
@@ -988,34 +988,34 @@ item_type = SubResource("Resource_lfnjp")
 item_weight = 3
 idle_graphics = NodePath("Sprite3D")
 
-[node name="Area3D" type="Area3D" parent="Room_Items/TEST_Grabbable_item3"]
+[node name="Area3D" type="Area3D" parent="Room_Items/TEST_Grabbable_item3" unique_id=1905360444]
 collision_layer = 2
 
-[node name="CollisionShape3D2" type="CollisionShape3D" parent="Room_Items/TEST_Grabbable_item3/Area3D"]
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="Room_Items/TEST_Grabbable_item3/Area3D" unique_id=539161687]
 shape = SubResource("BoxShape3D_llc7q")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Room_Items/TEST_Grabbable_item3"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Room_Items/TEST_Grabbable_item3" unique_id=1710130103]
 shape = SubResource("BoxShape3D_234jp")
 debug_color = Color(0.8442249, 0.37985525, 5.7756904e-07, 0.41960785)
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Room_Items/TEST_Grabbable_item3"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Room_Items/TEST_Grabbable_item3" unique_id=706633891]
 visible = false
 mesh = SubResource("SphereMesh_234jp")
 
-[node name="Sprite3D" type="Sprite3D" parent="Room_Items/TEST_Grabbable_item3"]
+[node name="Sprite3D" type="Sprite3D" parent="Room_Items/TEST_Grabbable_item3" unique_id=703344784]
 pixel_size = 0.0064
 billboard = 1
 texture_filter = 0
 texture = ExtResource("15_a71ib")
 
-[node name="AudioPlayer" type="AudioStreamPlayer3D" parent="Room_Items/TEST_Grabbable_item3"]
+[node name="AudioPlayer" type="AudioStreamPlayer3D" parent="Room_Items/TEST_Grabbable_item3" unique_id=1739266396]
 stream = ExtResource("32_1f7u1")
 
-[node name="RayCast3D" type="RayCast3D" parent="Room_Items/TEST_Grabbable_item3"]
+[node name="RayCast3D" type="RayCast3D" parent="Room_Items/TEST_Grabbable_item3" unique_id=886432112]
 target_position = Vector3(0, -0.4, 0)
 hit_from_inside = true
 
-[node name="TEST_Grabbable_item4" type="RigidBody3D" parent="Room_Items" node_paths=PackedStringArray("idle_graphics")]
+[node name="TEST_Grabbable_item4" type="RigidBody3D" parent="Room_Items" unique_id=1324425894 node_paths=PackedStringArray("idle_graphics")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0.4, -2)
 collision_layer = 2
 axis_lock_angular_x = true
@@ -1028,585 +1028,583 @@ item_type = SubResource("Resource_po0fx")
 item_weight = 3
 idle_graphics = NodePath("Sprite3D")
 
-[node name="Area3D" type="Area3D" parent="Room_Items/TEST_Grabbable_item4"]
+[node name="Area3D" type="Area3D" parent="Room_Items/TEST_Grabbable_item4" unique_id=1805916587]
 collision_layer = 2
 
-[node name="CollisionShape3D2" type="CollisionShape3D" parent="Room_Items/TEST_Grabbable_item4/Area3D"]
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="Room_Items/TEST_Grabbable_item4/Area3D" unique_id=1247005864]
 shape = SubResource("BoxShape3D_llc7q")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Room_Items/TEST_Grabbable_item4"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Room_Items/TEST_Grabbable_item4" unique_id=1085030966]
 shape = SubResource("BoxShape3D_234jp")
 debug_color = Color(0.8442249, 0.37985525, 5.7756904e-07, 0.41960785)
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Room_Items/TEST_Grabbable_item4"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Room_Items/TEST_Grabbable_item4" unique_id=479825898]
 visible = false
 mesh = SubResource("SphereMesh_234jp")
 
-[node name="Sprite3D" type="Sprite3D" parent="Room_Items/TEST_Grabbable_item4"]
+[node name="Sprite3D" type="Sprite3D" parent="Room_Items/TEST_Grabbable_item4" unique_id=1079746018]
 modulate = Color(18.892157, 0, 18.892157, 1)
 pixel_size = 0.0064
 billboard = 1
 texture_filter = 0
 texture = ExtResource("15_a71ib")
 
-[node name="AudioPlayer" type="AudioStreamPlayer3D" parent="Room_Items/TEST_Grabbable_item4"]
+[node name="AudioPlayer" type="AudioStreamPlayer3D" parent="Room_Items/TEST_Grabbable_item4" unique_id=115245431]
 stream = ExtResource("32_1f7u1")
 
-[node name="RayCast3D" type="RayCast3D" parent="Room_Items/TEST_Grabbable_item4"]
+[node name="RayCast3D" type="RayCast3D" parent="Room_Items/TEST_Grabbable_item4" unique_id=383765750]
 target_position = Vector3(0, -0.4, 0)
 hit_from_inside = true
 
-[node name="Label3D3" type="Label3D" parent="Room_Items"]
+[node name="Label3D3" type="Label3D" parent="Room_Items" unique_id=1536094540]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 0, 2.7, -3)
 billboard = 1
 text = "Items"
 font_size = 97
 
-[node name="Room_Interacting" type="Node3D" parent="."]
+[node name="Room_Interacting" type="Node3D" parent="." unique_id=892307492]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 0, -3)
 
-[node name="_env" type="Node3D" parent="Room_Interacting"]
+[node name="_env" type="Node3D" parent="Room_Interacting" unique_id=998923137]
 
-[node name="_floor" type="Node3D" parent="Room_Interacting/_env"]
+[node name="_floor" type="Node3D" parent="Room_Interacting/_env" unique_id=338318847]
 
-[node name="_dev_open_middle_a5" parent="Room_Interacting/_env/_floor" instance=ExtResource("7_ir6gx")]
+[node name="_dev_open_middle_a5" parent="Room_Interacting/_env/_floor" unique_id=693125662 instance=ExtResource("7_ir6gx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1)
 
-[node name="_dev_open_middle_a6" parent="Room_Interacting/_env/_floor" instance=ExtResource("7_ir6gx")]
+[node name="_dev_open_middle_a6" parent="Room_Interacting/_env/_floor" unique_id=571329536 instance=ExtResource("7_ir6gx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 1)
 
-[node name="_dev_open_middle_a8" parent="Room_Interacting/_env/_floor" instance=ExtResource("7_ir6gx")]
+[node name="_dev_open_middle_a8" parent="Room_Interacting/_env/_floor" unique_id=1494109898 instance=ExtResource("7_ir6gx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1)
 
-[node name="_dev_open_middle_a9" parent="Room_Interacting/_env/_floor" instance=ExtResource("7_ir6gx")]
+[node name="_dev_open_middle_a9" parent="Room_Interacting/_env/_floor" unique_id=180177267 instance=ExtResource("7_ir6gx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 1)
 
-[node name="_dev_open_middle_a14" parent="Room_Interacting/_env/_floor" instance=ExtResource("7_ir6gx")]
+[node name="_dev_open_middle_a14" parent="Room_Interacting/_env/_floor" unique_id=1069159738 instance=ExtResource("7_ir6gx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, -3)
 
-[node name="_dev_open_middle_a16" parent="Room_Interacting/_env/_floor" instance=ExtResource("7_ir6gx")]
+[node name="_dev_open_middle_a16" parent="Room_Interacting/_env/_floor" unique_id=1743576684 instance=ExtResource("7_ir6gx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, -1)
 
-[node name="_dev_open_middle_a17" parent="Room_Interacting/_env/_floor" instance=ExtResource("7_ir6gx")]
+[node name="_dev_open_middle_a17" parent="Room_Interacting/_env/_floor" unique_id=766252805 instance=ExtResource("7_ir6gx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1)
 
-[node name="_dev_open_middle_a18" parent="Room_Interacting/_env/_floor" instance=ExtResource("7_ir6gx")]
+[node name="_dev_open_middle_a18" parent="Room_Interacting/_env/_floor" unique_id=941013734 instance=ExtResource("7_ir6gx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, -1)
 
-[node name="_dev_open_middle_a19" parent="Room_Interacting/_env/_floor" instance=ExtResource("7_ir6gx")]
+[node name="_dev_open_middle_a19" parent="Room_Interacting/_env/_floor" unique_id=616665679 instance=ExtResource("7_ir6gx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -3)
 
-[node name="_wall" type="Node3D" parent="Room_Interacting/_env"]
+[node name="_wall" type="Node3D" parent="Room_Interacting/_env" unique_id=263551374]
 
-[node name="_dev_open_wall2" parent="Room_Interacting/_env/_wall" instance=ExtResource("2_cti4x")]
+[node name="_dev_open_wall2" parent="Room_Interacting/_env/_wall" unique_id=1486930874 instance=ExtResource("2_cti4x")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 3)
 
-[node name="_dev_open_wall3" parent="Room_Interacting/_env/_wall" instance=ExtResource("2_cti4x")]
+[node name="_dev_open_wall3" parent="Room_Interacting/_env/_wall" unique_id=1010258547 instance=ExtResource("2_cti4x")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 3)
 
-[node name="_dev_open_wall4" parent="Room_Interacting/_env/_wall" instance=ExtResource("2_cti4x")]
+[node name="_dev_open_wall4" parent="Room_Interacting/_env/_wall" unique_id=930775006 instance=ExtResource("2_cti4x")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 3)
 
-[node name="_dev_open_wall5" parent="Room_Interacting/_env/_wall" instance=ExtResource("2_cti4x")]
+[node name="_dev_open_wall5" parent="Room_Interacting/_env/_wall" unique_id=1340730082 instance=ExtResource("2_cti4x")]
 transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 0, 0, -5)
 
-[node name="_dev_open_wall7" parent="Room_Interacting/_env/_wall" instance=ExtResource("2_cti4x")]
+[node name="_dev_open_wall7" parent="Room_Interacting/_env/_wall" unique_id=1550853636 instance=ExtResource("2_cti4x")]
 transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, -2, 0, -5)
 
-[node name="_dev_open_wall9" parent="Room_Interacting/_env/_wall" instance=ExtResource("2_cti4x")]
+[node name="_dev_open_wall9" parent="Room_Interacting/_env/_wall" unique_id=1019850478 instance=ExtResource("2_cti4x")]
 transform = Transform3D(-8.940695e-08, 0, -0.9999999, 0, 1, 0, 0.9999999, 0, -8.940695e-08, -4, 0, -1)
 
-[node name="_dev_open_wall14" parent="Room_Interacting/_env/_wall" instance=ExtResource("2_cti4x")]
+[node name="_dev_open_wall14" parent="Room_Interacting/_env/_wall" unique_id=796204746 instance=ExtResource("2_cti4x")]
 transform = Transform3D(-8.940697e-08, 0, -0.99999994, 0, 1, 0, 0.99999994, 0, -8.940697e-08, -4, 0, -3)
 
-[node name="_dev_open_wall10" parent="Room_Interacting/_env/_wall" instance=ExtResource("2_cti4x")]
+[node name="_dev_open_wall10" parent="Room_Interacting/_env/_wall" unique_id=242711676 instance=ExtResource("2_cti4x")]
 transform = Transform3D(-8.940697e-08, 0, -0.99999994, 0, 1, 0, 0.99999994, 0, -8.940697e-08, -4, 0, 1)
 
-[node name="_dev_open_wall11" parent="Room_Interacting/_env/_wall" instance=ExtResource("2_cti4x")]
+[node name="_dev_open_wall11" parent="Room_Interacting/_env/_wall" unique_id=725677266 instance=ExtResource("2_cti4x")]
 transform = Transform3D(1.7682972e-07, 0, 0.9999999, 0, 1, 0, -0.9999999, 0, 1.7682972e-07, 4, 0, 1)
 
-[node name="_dev_open_wall12" parent="Room_Interacting/_env/_wall" instance=ExtResource("2_cti4x")]
+[node name="_dev_open_wall12" parent="Room_Interacting/_env/_wall" unique_id=608325690 instance=ExtResource("2_cti4x")]
 transform = Transform3D(1.7682972e-07, 0, 0.9999999, 0, 1, 0, -0.9999999, 0, 1.7682972e-07, 4, 0, -1)
 
-[node name="_dev_open_wall13" parent="Room_Interacting/_env/_wall" instance=ExtResource("2_cti4x")]
+[node name="_dev_open_wall13" parent="Room_Interacting/_env/_wall" unique_id=2065991752 instance=ExtResource("2_cti4x")]
 transform = Transform3D(1.7682972e-07, 0, 0.9999999, 0, 1, 0, -0.9999999, 0, 1.7682972e-07, 4, 0, -3)
 
-[node name="_dev_open_wall8" parent="Room_Interacting/_env/_wall" instance=ExtResource("2_cti4x")]
+[node name="_dev_open_wall8" parent="Room_Interacting/_env/_wall" unique_id=2058372279 instance=ExtResource("2_cti4x")]
 transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 2, 0, -5)
 
-[node name="_corner" type="Node3D" parent="Room_Interacting/_env"]
+[node name="_corner" type="Node3D" parent="Room_Interacting/_env" unique_id=738031106]
 
-[node name="_dev_open_corner2" parent="Room_Interacting/_env/_corner" instance=ExtResource("6_fnuid")]
+[node name="_dev_open_corner2" parent="Room_Interacting/_env/_corner" unique_id=368903104 instance=ExtResource("6_fnuid")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, 3)
 
-[node name="_dev_open_corner3" parent="Room_Interacting/_env/_corner" instance=ExtResource("6_fnuid")]
+[node name="_dev_open_corner3" parent="Room_Interacting/_env/_corner" unique_id=400564386 instance=ExtResource("6_fnuid")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 4, 0, -5)
 
-[node name="_dev_open_corner4" parent="Room_Interacting/_env/_corner" instance=ExtResource("6_fnuid")]
+[node name="_dev_open_corner4" parent="Room_Interacting/_env/_corner" unique_id=164681199 instance=ExtResource("6_fnuid")]
 transform = Transform3D(-1.0000001, 0, 0, 0, 1, 0, 0, 0, -1.0000001, -4, 0, -5)
 
-[node name="_dev_open_corner5" parent="Room_Interacting/_env/_corner" instance=ExtResource("6_fnuid")]
+[node name="_dev_open_corner5" parent="Room_Interacting/_env/_corner" unique_id=14992527 instance=ExtResource("6_fnuid")]
 transform = Transform3D(4.3711392e-08, 0, -1.0000001, 0, 1, 0, 1.0000001, 0, 4.3711392e-08, -4, 0, 3)
 
-[node name="_dev_floor_guide6" parent="Room_Interacting/_env" instance=ExtResource("12_ir6gx")]
+[node name="_dev_floor_guide6" parent="Room_Interacting/_env" unique_id=2006117960 instance=ExtResource("12_ir6gx")]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 4, 0, -1)
 
-[node name="Teleporter" parent="Room_Interacting" node_paths=PackedStringArray("out_pos") instance=ExtResource("14_6ords")]
+[node name="Teleporter" parent="Room_Interacting" unique_id=351499889 node_paths=PackedStringArray("out_pos") instance=ExtResource("14_6ords")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 4, 0, -1)
 out_pos = NodePath("../../Room_Start/Teleporter_to_interactions/In")
 
-[node name="Trigger" type="Area3D" parent="Room_Interacting/Teleporter"]
+[node name="Trigger" type="Area3D" parent="Room_Interacting/Teleporter" unique_id=1782181430]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0.3)
 collision_mask = 3
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Room_Interacting/Teleporter/Trigger"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Room_Interacting/Teleporter/Trigger" unique_id=142191509]
 shape = SubResource("SphereShape3D_3wul1")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Room_Interacting/Teleporter/Trigger"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Room_Interacting/Teleporter/Trigger" unique_id=1841200414]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 0, 0)
 mesh = SubResource("SphereMesh_hsji5")
 
-[node name="In" type="Node3D" parent="Room_Interacting/Teleporter"]
+[node name="In" type="Node3D" parent="Room_Interacting/Teleporter" unique_id=734223404]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.999, -1)
 
-[node name="TEST_Grabbable_item" parent="Room_Interacting" instance=ExtResource("16_3wul1")]
+[node name="TEST_Grabbable_item" parent="Room_Interacting" unique_id=1143276948 instance=ExtResource("16_3wul1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0.4, -1)
-item_weight = 2
+item_weight = 1
 
-[node name="Showcase_PressurePlate2" type="Node3D" parent="Room_Interacting"]
+[node name="Showcase_PressurePlate2" type="Node3D" parent="Room_Interacting" unique_id=29790673]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -3, 0, 1)
 
-[node name="Env" type="Node3D" parent="Room_Interacting/Showcase_PressurePlate2"]
+[node name="Env" type="Node3D" parent="Room_Interacting/Showcase_PressurePlate2" unique_id=1631005503]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 0, 0)
 
-[node name="_dev_open_doorway2" parent="Room_Interacting/Showcase_PressurePlate2/Env" instance=ExtResource("4_viu01")]
+[node name="_dev_open_doorway2" parent="Room_Interacting/Showcase_PressurePlate2/Env" unique_id=1544425096 instance=ExtResource("4_viu01")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -1, 0, 4.371139e-08)
 
-[node name="_dev_open_doorway3" parent="Room_Interacting/Showcase_PressurePlate2/Env" instance=ExtResource("4_viu01")]
+[node name="_dev_open_doorway3" parent="Room_Interacting/Showcase_PressurePlate2/Env" unique_id=275837134 instance=ExtResource("4_viu01")]
 transform = Transform3D(1.3113416e-07, 0, -1, 0, 1, 0, 1, 0, 1.3113416e-07, 1, 0, -4.371139e-08)
 
-[node name="Gate" parent="Room_Interacting/Showcase_PressurePlate2" instance=ExtResource("8_mlo6p")]
+[node name="Gate" parent="Room_Interacting/Showcase_PressurePlate2" unique_id=1512952900 instance=ExtResource("8_mlo6p")]
 
-[node name="PressurePlate" parent="Room_Interacting/Showcase_PressurePlate2" instance=ExtResource("15_fpxpw")]
+[node name="PressurePlate" parent="Room_Interacting/Showcase_PressurePlate2" unique_id=1363681306 instance=ExtResource("15_fpxpw")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.05000019, 1)
 
-[node name="Showcase_Button" type="Node3D" parent="Room_Interacting"]
+[node name="Showcase_Button" type="Node3D" parent="Room_Interacting" unique_id=1980811690]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 0, 15)
 
-[node name="Gate_Button" parent="Room_Interacting/Showcase_Button" instance=ExtResource("8_mlo6p")]
+[node name="Gate_Button" parent="Room_Interacting/Showcase_Button" unique_id=2123423469 instance=ExtResource("8_mlo6p")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -13, 0, -18)
 
-[node name="Button" parent="Room_Interacting/Showcase_Button" groups=["Interactables"] instance=ExtResource("10_h40wo")]
+[node name="Button" parent="Room_Interacting/Showcase_Button" unique_id=280342398 groups=["Interactables"] instance=ExtResource("10_h40wo")]
 transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, -12, 0.8, -18.9)
 
-[node name="_dev_open_doorway4" parent="Room_Interacting/Showcase_Button" instance=ExtResource("4_viu01")]
+[node name="_dev_open_doorway4" parent="Room_Interacting/Showcase_Button" unique_id=1439002797 instance=ExtResource("4_viu01")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -14, 0, -18)
 
-[node name="_dev_open_wall26" type="StaticBody3D" parent="Room_Interacting/Showcase_Button"]
+[node name="_dev_open_wall26" type="StaticBody3D" parent="Room_Interacting/Showcase_Button" unique_id=396036663]
 transform = Transform3D(-1, 0, 2.6226832e-07, 0, 1, 0, -2.6226832e-07, 0, -1, -12, -0.8, -18)
 
-[node name="_wall_back" type="CollisionShape3D" parent="Room_Interacting/Showcase_Button/_dev_open_wall26"]
+[node name="_wall_back" type="CollisionShape3D" parent="Room_Interacting/Showcase_Button/_dev_open_wall26" unique_id=301889489]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 1, 0.95)
 shape = SubResource("BoxShape3D_fpxpw")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Room_Interacting/Showcase_Button/_dev_open_wall26/_wall_back"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Room_Interacting/Showcase_Button/_dev_open_wall26/_wall_back" unique_id=619726745]
 mesh = SubResource("BoxMesh_o5rkc")
 
-[node name="_wall_floor" type="CollisionShape3D" parent="Room_Interacting/Showcase_Button/_dev_open_wall26"]
+[node name="_wall_floor" type="CollisionShape3D" parent="Room_Interacting/Showcase_Button/_dev_open_wall26" unique_id=2101294709]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.05, 0)
 shape = SubResource("BoxShape3D_25we5")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Room_Interacting/Showcase_Button/_dev_open_wall26/_wall_floor"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Room_Interacting/Showcase_Button/_dev_open_wall26/_wall_floor" unique_id=677793546]
 mesh = SubResource("BoxMesh_65s44")
 
-[node name="_dev_open_doorway5" parent="Room_Interacting/Showcase_Button" instance=ExtResource("4_viu01")]
+[node name="_dev_open_doorway5" parent="Room_Interacting/Showcase_Button" unique_id=887510236 instance=ExtResource("4_viu01")]
 transform = Transform3D(1.3113416e-07, 0, -1, 0, 1, 0, 1, 0, 1.3113416e-07, -12, 0, -18)
 
-[node name="Label3D2" type="Label3D" parent="Room_Interacting"]
+[node name="Label3D2" type="Label3D" parent="Room_Interacting" unique_id=2048676244]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -4, 2.7, -1)
 billboard = 1
 text = "Triggers &
 Receivers"
 font_size = 97
 
-[node name="Decal" type="Decal" parent="Room_Interacting"]
+[node name="Decal" type="Decal" parent="Room_Interacting" unique_id=137048819]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 1.5, 2.9802322e-08, 1.6999998)
 size = Vector3(0.1, 0.1, 0.1)
 texture_albedo = ExtResource("2_fnuid")
 
-[node name="Room_Animation" type="Node3D" parent="."]
+[node name="Room_Animation" type="Node3D" parent="." unique_id=810238694]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 0, -3)
 
-[node name="_env" type="Node3D" parent="Room_Animation"]
+[node name="_env" type="Node3D" parent="Room_Animation" unique_id=1014600624]
 
-[node name="_floor" type="Node3D" parent="Room_Animation/_env"]
+[node name="_floor" type="Node3D" parent="Room_Animation/_env" unique_id=1370361773]
 
-[node name="_dev_open_middle_a5" parent="Room_Animation/_env/_floor" instance=ExtResource("7_ir6gx")]
+[node name="_dev_open_middle_a5" parent="Room_Animation/_env/_floor" unique_id=1125669282 instance=ExtResource("7_ir6gx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1)
 
-[node name="_dev_open_middle_a6" parent="Room_Animation/_env/_floor" instance=ExtResource("7_ir6gx")]
+[node name="_dev_open_middle_a6" parent="Room_Animation/_env/_floor" unique_id=1347489796 instance=ExtResource("7_ir6gx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 1)
 
-[node name="_dev_open_middle_a7" parent="Room_Animation/_env/_floor" instance=ExtResource("7_ir6gx")]
+[node name="_dev_open_middle_a7" parent="Room_Animation/_env/_floor" unique_id=1608447263 instance=ExtResource("7_ir6gx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 1)
 
-[node name="_dev_open_middle_a15" parent="Room_Animation/_env/_floor" instance=ExtResource("7_ir6gx")]
+[node name="_dev_open_middle_a15" parent="Room_Animation/_env/_floor" unique_id=6031498 instance=ExtResource("7_ir6gx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, -3)
 
-[node name="_dev_open_middle_a8" parent="Room_Animation/_env/_floor" instance=ExtResource("7_ir6gx")]
+[node name="_dev_open_middle_a8" parent="Room_Animation/_env/_floor" unique_id=689260522 instance=ExtResource("7_ir6gx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1)
 
-[node name="_dev_open_middle_a9" parent="Room_Animation/_env/_floor" instance=ExtResource("7_ir6gx")]
+[node name="_dev_open_middle_a9" parent="Room_Animation/_env/_floor" unique_id=1770949937 instance=ExtResource("7_ir6gx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 1)
 
-[node name="_dev_open_middle_a14" parent="Room_Animation/_env/_floor" instance=ExtResource("7_ir6gx")]
+[node name="_dev_open_middle_a14" parent="Room_Animation/_env/_floor" unique_id=464433105 instance=ExtResource("7_ir6gx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, -3)
 
-[node name="_dev_open_middle_a16" parent="Room_Animation/_env/_floor" instance=ExtResource("7_ir6gx")]
+[node name="_dev_open_middle_a16" parent="Room_Animation/_env/_floor" unique_id=408735825 instance=ExtResource("7_ir6gx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, -1)
 
-[node name="_dev_open_middle_a17" parent="Room_Animation/_env/_floor" instance=ExtResource("7_ir6gx")]
+[node name="_dev_open_middle_a17" parent="Room_Animation/_env/_floor" unique_id=1695515379 instance=ExtResource("7_ir6gx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1)
 
-[node name="_dev_open_middle_a18" parent="Room_Animation/_env/_floor" instance=ExtResource("7_ir6gx")]
+[node name="_dev_open_middle_a18" parent="Room_Animation/_env/_floor" unique_id=1099580492 instance=ExtResource("7_ir6gx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, -1)
 
-[node name="_dev_open_middle_a19" parent="Room_Animation/_env/_floor" instance=ExtResource("7_ir6gx")]
+[node name="_dev_open_middle_a19" parent="Room_Animation/_env/_floor" unique_id=434213934 instance=ExtResource("7_ir6gx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -3)
 
-[node name="_dev_open_middle_a10" parent="Room_Animation/_env/_floor" instance=ExtResource("7_ir6gx")]
+[node name="_dev_open_middle_a10" parent="Room_Animation/_env/_floor" unique_id=563364117 instance=ExtResource("7_ir6gx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 1)
 
-[node name="_wall" type="Node3D" parent="Room_Animation/_env"]
+[node name="_wall" type="Node3D" parent="Room_Animation/_env" unique_id=1942309273]
 
-[node name="_dev_open_wall2" parent="Room_Animation/_env/_wall" instance=ExtResource("2_cti4x")]
+[node name="_dev_open_wall2" parent="Room_Animation/_env/_wall" unique_id=1371204454 instance=ExtResource("2_cti4x")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 3)
 
-[node name="_dev_open_wall3" parent="Room_Animation/_env/_wall" instance=ExtResource("2_cti4x")]
+[node name="_dev_open_wall3" parent="Room_Animation/_env/_wall" unique_id=1763979417 instance=ExtResource("2_cti4x")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 3)
 
-[node name="_dev_open_wall4" parent="Room_Animation/_env/_wall" instance=ExtResource("2_cti4x")]
+[node name="_dev_open_wall4" parent="Room_Animation/_env/_wall" unique_id=1995236485 instance=ExtResource("2_cti4x")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 3)
 
-[node name="_dev_open_wall5" parent="Room_Animation/_env/_wall" instance=ExtResource("2_cti4x")]
+[node name="_dev_open_wall5" parent="Room_Animation/_env/_wall" unique_id=1326235185 instance=ExtResource("2_cti4x")]
 transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 0, 0, -5)
 
-[node name="_dev_open_wall7" parent="Room_Animation/_env/_wall" instance=ExtResource("2_cti4x")]
+[node name="_dev_open_wall7" parent="Room_Animation/_env/_wall" unique_id=1937874219 instance=ExtResource("2_cti4x")]
 transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, -2, 0, -5)
 
-[node name="_dev_open_wall9" parent="Room_Animation/_env/_wall" instance=ExtResource("2_cti4x")]
+[node name="_dev_open_wall9" parent="Room_Animation/_env/_wall" unique_id=1404707910 instance=ExtResource("2_cti4x")]
 transform = Transform3D(-8.940697e-08, 0, -0.99999994, 0, 1, 0, 0.99999994, 0, -8.940697e-08, -4, 0, -1)
 
-[node name="_dev_open_wall14" parent="Room_Animation/_env/_wall" instance=ExtResource("2_cti4x")]
+[node name="_dev_open_wall14" parent="Room_Animation/_env/_wall" unique_id=53937862 instance=ExtResource("2_cti4x")]
 transform = Transform3D(-8.940697e-08, 0, -0.99999994, 0, 1, 0, 0.99999994, 0, -8.940697e-08, -4, 0, -3)
 
-[node name="_dev_open_wall10" parent="Room_Animation/_env/_wall" instance=ExtResource("2_cti4x")]
+[node name="_dev_open_wall10" parent="Room_Animation/_env/_wall" unique_id=1512343317 instance=ExtResource("2_cti4x")]
 transform = Transform3D(-8.940697e-08, 0, -0.99999994, 0, 1, 0, 0.99999994, 0, -8.940697e-08, -4, 0, 1)
 
-[node name="_dev_open_wall11" parent="Room_Animation/_env/_wall" instance=ExtResource("2_cti4x")]
+[node name="_dev_open_wall11" parent="Room_Animation/_env/_wall" unique_id=1199120606 instance=ExtResource("2_cti4x")]
 transform = Transform3D(1.7682972e-07, 0, 0.9999999, 0, 1, 0, -0.9999999, 0, 1.7682972e-07, 4, 0, 1)
 
-[node name="_dev_open_wall12" parent="Room_Animation/_env/_wall" instance=ExtResource("2_cti4x")]
+[node name="_dev_open_wall12" parent="Room_Animation/_env/_wall" unique_id=667307294 instance=ExtResource("2_cti4x")]
 transform = Transform3D(1.7682972e-07, 0, 0.9999999, 0, 1, 0, -0.9999999, 0, 1.7682972e-07, 4, 0, -1)
 
-[node name="_dev_open_wall13" parent="Room_Animation/_env/_wall" instance=ExtResource("2_cti4x")]
+[node name="_dev_open_wall13" parent="Room_Animation/_env/_wall" unique_id=133129694 instance=ExtResource("2_cti4x")]
 transform = Transform3D(1.7682972e-07, 0, 0.9999999, 0, 1, 0, -0.9999999, 0, 1.7682972e-07, 4, 0, -3)
 
-[node name="_corner" type="Node3D" parent="Room_Animation/_env"]
+[node name="_corner" type="Node3D" parent="Room_Animation/_env" unique_id=2099999955]
 
-[node name="_dev_open_corner2" parent="Room_Animation/_env/_corner" instance=ExtResource("6_fnuid")]
+[node name="_dev_open_corner2" parent="Room_Animation/_env/_corner" unique_id=1402512058 instance=ExtResource("6_fnuid")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, 3)
 
-[node name="_dev_open_corner3" parent="Room_Animation/_env/_corner" instance=ExtResource("6_fnuid")]
+[node name="_dev_open_corner3" parent="Room_Animation/_env/_corner" unique_id=561806109 instance=ExtResource("6_fnuid")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 4, 0, -5)
 
-[node name="_dev_open_corner4" parent="Room_Animation/_env/_corner" instance=ExtResource("6_fnuid")]
+[node name="_dev_open_corner4" parent="Room_Animation/_env/_corner" unique_id=300410027 instance=ExtResource("6_fnuid")]
 transform = Transform3D(-1.0000001, 0, 0, 0, 1, 0, 0, 0, -1.0000001, -4, 0, -5)
 
-[node name="_dev_open_corner5" parent="Room_Animation/_env/_corner" instance=ExtResource("6_fnuid")]
+[node name="_dev_open_corner5" parent="Room_Animation/_env/_corner" unique_id=651994144 instance=ExtResource("6_fnuid")]
 transform = Transform3D(4.3711392e-08, 0, -1.0000001, 0, 1, 0, 1.0000001, 0, 4.3711392e-08, -4, 0, 3)
 
-[node name="_dev_floor_guide7" parent="Room_Animation/_env" instance=ExtResource("12_ir6gx")]
+[node name="_dev_floor_guide7" parent="Room_Animation/_env" unique_id=1957239208 instance=ExtResource("12_ir6gx")]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -4, 0, -1)
 
-[node name="Teleporter" parent="Room_Animation" node_paths=PackedStringArray("out_pos") instance=ExtResource("14_6ords")]
+[node name="Teleporter" parent="Room_Animation" unique_id=356717836 node_paths=PackedStringArray("out_pos") instance=ExtResource("14_6ords")]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -4, 0, -1)
 out_pos = NodePath("../../Room_Start/Teleporter_to_anim/In")
 
-[node name="Trigger" type="Area3D" parent="Room_Animation/Teleporter"]
+[node name="Trigger" type="Area3D" parent="Room_Animation/Teleporter" unique_id=107407010]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0.3)
 collision_mask = 3
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Room_Animation/Teleporter/Trigger"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Room_Animation/Teleporter/Trigger" unique_id=1934899107]
 shape = SubResource("SphereShape3D_3wul1")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Room_Animation/Teleporter/Trigger"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Room_Animation/Teleporter/Trigger" unique_id=561849562]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 0, 0)
 mesh = SubResource("SphereMesh_hsji5")
 
-[node name="In" type="Node3D" parent="Room_Animation/Teleporter"]
+[node name="In" type="Node3D" parent="Room_Animation/Teleporter" unique_id=46944052]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.999, -1)
 
-[node name="TEST_Grabbable_item" parent="Room_Animation" instance=ExtResource("16_3wul1")]
+[node name="TEST_Grabbable_item" parent="Room_Animation" unique_id=2053044359 instance=ExtResource("16_3wul1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0.3, -2)
 item_type = SubResource("Resource_6a6ye")
 item_weight = 1
 
-[node name="TEST_Grabbable_item2" parent="Room_Animation" instance=ExtResource("16_3wul1")]
+[node name="TEST_Grabbable_item2" parent="Room_Animation" unique_id=1493879244 instance=ExtResource("16_3wul1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0.3, 0)
 item_type = SubResource("Resource_6a6ye")
 item_weight = 1
 
-[node name="TEST_Grabbable_item3" parent="Room_Animation" instance=ExtResource("16_3wul1")]
+[node name="TEST_Grabbable_item3" parent="Room_Animation" unique_id=2129515792 instance=ExtResource("16_3wul1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0.3, 1)
 item_type = SubResource("Resource_6a6ye")
 item_weight = 1
 
-[node name="TEST_Grabbable_item4" parent="Room_Animation" instance=ExtResource("16_3wul1")]
+[node name="TEST_Grabbable_item4" parent="Room_Animation" unique_id=1242858864 instance=ExtResource("16_3wul1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0.3, -3)
 item_type = SubResource("Resource_6a6ye")
 item_weight = 1
 
-[node name="Rotator" type="Node3D" parent="Room_Animation"]
+[node name="Rotator" type="Node3D" parent="Room_Animation" unique_id=913131806]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1)
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Room_Animation/Rotator"]
-libraries = {
-&"": SubResource("AnimationLibrary_f8tpx")
-}
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Room_Animation/Rotator" unique_id=1552255047]
+libraries/ = SubResource("AnimationLibrary_f8tpx")
 
-[node name="ballybog4" type="Node3D" parent="Room_Animation/Rotator"]
+[node name="ballybog4" type="Node3D" parent="Room_Animation/Rotator" unique_id=1011649056]
 transform = Transform3D(1.9106855e-15, -4.371139e-08, -1, -1, -4.371139e-08, 0, -4.371139e-08, 1, -4.371139e-08, 4, 0.81, -0.6)
 
-[node name="Body_002" type="MeshInstance3D" parent="Room_Animation/Rotator/ballybog4"]
+[node name="Body_002" type="MeshInstance3D" parent="Room_Animation/Rotator/ballybog4" unique_id=1633176630]
 transform = Transform3D(29.075987, 0, 0, 0, 1.7330639e-06, 29.075987, 0, -29.075987, 1.7330639e-06, 0, 0.49739084, 0)
 material_override = SubResource("StandardMaterial3D_a71ib")
 mesh = SubResource("ArrayMesh_hg3m7")
 skeleton = NodePath("")
 
-[node name="Eyebrow_002" type="MeshInstance3D" parent="Room_Animation/Rotator/ballybog4"]
+[node name="Eyebrow_002" type="MeshInstance3D" parent="Room_Animation/Rotator/ballybog4" unique_id=945428274]
 transform = Transform3D(-2.08496, -0.2860651, -0.05223859, 0.29079565, -2.0510437, -0.3745378, -6.822768e-07, -0.37816322, 2.0708966, -0.0661158, 0.95222974, 0.14952783)
 material_override = SubResource("StandardMaterial3D_a71ib")
 mesh = SubResource("ArrayMesh_yrk8p")
 skeleton = NodePath("")
 
-[node name="Eyelid_002" type="MeshInstance3D" parent="Room_Animation/Rotator/ballybog4"]
+[node name="Eyelid_002" type="MeshInstance3D" parent="Room_Animation/Rotator/ballybog4" unique_id=323193497]
 transform = Transform3D(-2.08496, -0.2860651, -0.05223859, 0.29079565, -2.0510437, -0.3745378, -6.822768e-07, -0.37816322, 2.0708966, -0.0661158, 0.8936223, 0.18629807)
 material_override = SubResource("StandardMaterial3D_a71ib")
 mesh = SubResource("ArrayMesh_8qku3")
 skeleton = NodePath("")
 
-[node name="Eyes_002" type="MeshInstance3D" parent="Room_Animation/Rotator/ballybog4"]
+[node name="Eyes_002" type="MeshInstance3D" parent="Room_Animation/Rotator/ballybog4" unique_id=844830783]
 transform = Transform3D(4.2868576, 0, 0, 0, -5.1103325e-07, 4.286857, 0, -4.286857, -5.1103325e-07, -0.055950318, 0.8578316, 0.16650148)
 material_override = SubResource("StandardMaterial3D_a71ib")
 mesh = SubResource("ArrayMesh_nfba8")
 skeleton = NodePath("")
 
-[node name="Head_002" type="MeshInstance3D" parent="Room_Animation/Rotator/ballybog4"]
+[node name="Head_002" type="MeshInstance3D" parent="Room_Animation/Rotator/ballybog4" unique_id=220138953]
 transform = Transform3D(19.155224, 0, 0, 0, -2.2834806e-06, 19.155222, 0, -19.155222, -2.2834806e-06, 0, 0.8110459, 0.031125193)
 material_override = SubResource("StandardMaterial3D_a71ib")
 mesh = SubResource("ArrayMesh_5xdol")
 skeleton = NodePath("")
 
-[node name="Mouth_002" type="MeshInstance3D" parent="Room_Animation/Rotator/ballybog4/Head_002"]
+[node name="Mouth_002" type="MeshInstance3D" parent="Room_Animation/Rotator/ballybog4/Head_002" unique_id=1609329963]
 transform = Transform3D(0.38372126, 0, 0, 0, 0.38372126, 0, 0, 0, 0.38372126, 0, -0.009714185, -0.0041797473)
 material_override = SubResource("StandardMaterial3D_a71ib")
 mesh = SubResource("ArrayMesh_7g8w1")
 skeleton = NodePath("")
 
-[node name="Teeth_002" type="MeshInstance3D" parent="Room_Animation/Rotator/ballybog4/Head_002"]
+[node name="Teeth_002" type="MeshInstance3D" parent="Room_Animation/Rotator/ballybog4/Head_002" unique_id=1837791893]
 transform = Transform3D(0.04453404, 0, 0, 0, -5.308871e-09, -0.044534035, 0, 0.044534035, -5.308871e-09, 0, -0.01085723, -0.0045020077)
 material_override = SubResource("StandardMaterial3D_a71ib")
 mesh = SubResource("ArrayMesh_yj17t")
 skeleton = NodePath("")
 
-[node name="Nose_002" type="MeshInstance3D" parent="Room_Animation/Rotator/ballybog4"]
+[node name="Nose_002" type="MeshInstance3D" parent="Room_Animation/Rotator/ballybog4" unique_id=1655485044]
 transform = Transform3D(4.817356, 0, 0, 0, -3.9625886e-07, 6.373525, 0, -3.32406, -7.5978346e-07, 0, 0.8223168, 0.2425429)
 material_override = SubResource("StandardMaterial3D_a71ib")
 mesh = SubResource("ArrayMesh_h628t")
 skeleton = NodePath("")
 
-[node name="AnimatedObject" type="Node" parent="Room_Animation" node_paths=PackedStringArray("connnect_anim_player")]
+[node name="AnimatedObject" type="Node" parent="Room_Animation" unique_id=1586042156 node_paths=PackedStringArray("connnect_anim_player")]
 script = ExtResource("21_a71ib")
 anim_to_play = "playground_rotation_test"
 connnect_anim_player = NodePath("../Rotator/AnimationPlayer")
 metadata/_custom_type_script = "uid://c4t3ko70ihpyy"
 
-[node name="PressurePlate" parent="Room_Animation" instance=ExtResource("15_fpxpw")]
+[node name="PressurePlate" parent="Room_Animation" unique_id=1189574603 instance=ExtResource("15_fpxpw")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1)
 weight_to_activate = 4.0
 
-[node name="Label3D" type="Label3D" parent="Room_Animation"]
+[node name="Label3D" type="Label3D" parent="Room_Animation" unique_id=2140149182]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 0, 2.7, -1)
 billboard = 1
 text = "Animated Objects"
 font_size = 97
 
-[node name="Room_Receiver" type="Node3D" parent="."]
+[node name="Room_Receiver" type="Node3D" parent="." unique_id=717716335]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, 5)
 
-[node name="_env" type="Node3D" parent="Room_Receiver"]
+[node name="_env" type="Node3D" parent="Room_Receiver" unique_id=1843267945]
 
-[node name="_floor" type="Node3D" parent="Room_Receiver/_env"]
+[node name="_floor" type="Node3D" parent="Room_Receiver/_env" unique_id=252279526]
 
-[node name="_dev_open_middle_a5" parent="Room_Receiver/_env/_floor" instance=ExtResource("7_ir6gx")]
+[node name="_dev_open_middle_a5" parent="Room_Receiver/_env/_floor" unique_id=483802654 instance=ExtResource("7_ir6gx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1)
 
-[node name="_dev_open_middle_a6" parent="Room_Receiver/_env/_floor" instance=ExtResource("7_ir6gx")]
+[node name="_dev_open_middle_a6" parent="Room_Receiver/_env/_floor" unique_id=1618231885 instance=ExtResource("7_ir6gx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 1)
 
-[node name="_dev_open_middle_a7" parent="Room_Receiver/_env/_floor" instance=ExtResource("7_ir6gx")]
+[node name="_dev_open_middle_a7" parent="Room_Receiver/_env/_floor" unique_id=1513646473 instance=ExtResource("7_ir6gx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 1)
 
-[node name="_dev_open_middle_a15" parent="Room_Receiver/_env/_floor" instance=ExtResource("7_ir6gx")]
+[node name="_dev_open_middle_a15" parent="Room_Receiver/_env/_floor" unique_id=2092568196 instance=ExtResource("7_ir6gx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, -3)
 
-[node name="_dev_open_middle_a8" parent="Room_Receiver/_env/_floor" instance=ExtResource("7_ir6gx")]
+[node name="_dev_open_middle_a8" parent="Room_Receiver/_env/_floor" unique_id=2047049354 instance=ExtResource("7_ir6gx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1)
 
-[node name="_dev_open_middle_a9" parent="Room_Receiver/_env/_floor" instance=ExtResource("7_ir6gx")]
+[node name="_dev_open_middle_a9" parent="Room_Receiver/_env/_floor" unique_id=129065951 instance=ExtResource("7_ir6gx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 1)
 
-[node name="_dev_open_middle_a14" parent="Room_Receiver/_env/_floor" instance=ExtResource("7_ir6gx")]
+[node name="_dev_open_middle_a14" parent="Room_Receiver/_env/_floor" unique_id=1319321397 instance=ExtResource("7_ir6gx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, -3)
 
-[node name="_dev_open_middle_a16" parent="Room_Receiver/_env/_floor" instance=ExtResource("7_ir6gx")]
+[node name="_dev_open_middle_a16" parent="Room_Receiver/_env/_floor" unique_id=1672318780 instance=ExtResource("7_ir6gx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, -1)
 
-[node name="_dev_open_middle_a17" parent="Room_Receiver/_env/_floor" instance=ExtResource("7_ir6gx")]
+[node name="_dev_open_middle_a17" parent="Room_Receiver/_env/_floor" unique_id=195698246 instance=ExtResource("7_ir6gx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1)
 
-[node name="_dev_open_middle_a18" parent="Room_Receiver/_env/_floor" instance=ExtResource("7_ir6gx")]
+[node name="_dev_open_middle_a18" parent="Room_Receiver/_env/_floor" unique_id=1978022766 instance=ExtResource("7_ir6gx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, -1)
 
-[node name="_dev_open_middle_a19" parent="Room_Receiver/_env/_floor" instance=ExtResource("7_ir6gx")]
+[node name="_dev_open_middle_a19" parent="Room_Receiver/_env/_floor" unique_id=926553069 instance=ExtResource("7_ir6gx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -3)
 
-[node name="_dev_open_middle_a10" parent="Room_Receiver/_env/_floor" instance=ExtResource("7_ir6gx")]
+[node name="_dev_open_middle_a10" parent="Room_Receiver/_env/_floor" unique_id=1274985402 instance=ExtResource("7_ir6gx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 1)
 
-[node name="_dev_floor_guide" parent="Room_Receiver/_env/_floor" instance=ExtResource("12_ir6gx")]
+[node name="_dev_floor_guide" parent="Room_Receiver/_env/_floor" unique_id=794138161 instance=ExtResource("12_ir6gx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.842171e-14, 0, 3)
 
-[node name="_dev_floor_guidemid" parent="Room_Receiver/_env/_floor" instance=ExtResource("13_ojeeo")]
+[node name="_dev_floor_guidemid" parent="Room_Receiver/_env/_floor" unique_id=499287495 instance=ExtResource("13_ojeeo")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.684342e-14, 0, -1)
 
-[node name="_dev_floor_guidemid3" parent="Room_Receiver/_env/_floor" instance=ExtResource("13_ojeeo")]
+[node name="_dev_floor_guidemid3" parent="Room_Receiver/_env/_floor" unique_id=1808743104 instance=ExtResource("13_ojeeo")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1)
 
-[node name="_dev_floor_guidemid4" parent="Room_Receiver/_env/_floor" instance=ExtResource("13_ojeeo")]
+[node name="_dev_floor_guidemid4" parent="Room_Receiver/_env/_floor" unique_id=855780042 instance=ExtResource("13_ojeeo")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 1)
 
-[node name="_dev_floor_guidemid5" parent="Room_Receiver/_env/_floor" instance=ExtResource("13_ojeeo")]
+[node name="_dev_floor_guidemid5" parent="Room_Receiver/_env/_floor" unique_id=557746859 instance=ExtResource("13_ojeeo")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.9999998, 0, 1.0000002)
 
-[node name="_dev_floor_guidemid6" parent="Room_Receiver/_env/_floor" instance=ExtResource("13_ojeeo")]
+[node name="_dev_floor_guidemid6" parent="Room_Receiver/_env/_floor" unique_id=1794679556 instance=ExtResource("13_ojeeo")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, -1)
 
-[node name="_dev_floor_guidemid2" parent="Room_Receiver/_env/_floor" instance=ExtResource("13_ojeeo")]
+[node name="_dev_floor_guidemid2" parent="Room_Receiver/_env/_floor" unique_id=848155506 instance=ExtResource("13_ojeeo")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, -1)
 
-[node name="_dev_floor_guidemid7" parent="Room_Receiver/_env/_floor" instance=ExtResource("13_ojeeo")]
+[node name="_dev_floor_guidemid7" parent="Room_Receiver/_env/_floor" unique_id=1849263943 instance=ExtResource("13_ojeeo")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -3)
 
-[node name="_dev_floor_guidemid8" parent="Room_Receiver/_env/_floor" instance=ExtResource("13_ojeeo")]
+[node name="_dev_floor_guidemid8" parent="Room_Receiver/_env/_floor" unique_id=1951014401 instance=ExtResource("13_ojeeo")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, -3)
 
-[node name="_dev_floor_guidemid9" parent="Room_Receiver/_env/_floor" instance=ExtResource("13_ojeeo")]
+[node name="_dev_floor_guidemid9" parent="Room_Receiver/_env/_floor" unique_id=262631877 instance=ExtResource("13_ojeeo")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, -3)
 
-[node name="_wall" type="Node3D" parent="Room_Receiver/_env"]
+[node name="_wall" type="Node3D" parent="Room_Receiver/_env" unique_id=2075688485]
 
-[node name="_dev_open_wall2" parent="Room_Receiver/_env/_wall" instance=ExtResource("2_cti4x")]
+[node name="_dev_open_wall2" parent="Room_Receiver/_env/_wall" unique_id=2045080290 instance=ExtResource("2_cti4x")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 3)
 
-[node name="_dev_open_wall3" parent="Room_Receiver/_env/_wall" instance=ExtResource("2_cti4x")]
+[node name="_dev_open_wall3" parent="Room_Receiver/_env/_wall" unique_id=905127614 instance=ExtResource("2_cti4x")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 3)
 
-[node name="_dev_open_wall4" parent="Room_Receiver/_env/_wall" instance=ExtResource("2_cti4x")]
+[node name="_dev_open_wall4" parent="Room_Receiver/_env/_wall" unique_id=1505509190 instance=ExtResource("2_cti4x")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 3)
 
-[node name="_dev_open_wall5" parent="Room_Receiver/_env/_wall" instance=ExtResource("2_cti4x")]
+[node name="_dev_open_wall5" parent="Room_Receiver/_env/_wall" unique_id=990270752 instance=ExtResource("2_cti4x")]
 transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 0, 0, -5)
 
-[node name="_dev_open_wall7" parent="Room_Receiver/_env/_wall" instance=ExtResource("2_cti4x")]
+[node name="_dev_open_wall7" parent="Room_Receiver/_env/_wall" unique_id=587867584 instance=ExtResource("2_cti4x")]
 transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, -2, 0, -5)
 
-[node name="_dev_open_wall9" parent="Room_Receiver/_env/_wall" instance=ExtResource("2_cti4x")]
+[node name="_dev_open_wall9" parent="Room_Receiver/_env/_wall" unique_id=315900641 instance=ExtResource("2_cti4x")]
 transform = Transform3D(-8.940697e-08, 0, -0.99999994, 0, 1, 0, 0.99999994, 0, -8.940697e-08, -4, 0, -1)
 
-[node name="_dev_open_wall14" parent="Room_Receiver/_env/_wall" instance=ExtResource("2_cti4x")]
+[node name="_dev_open_wall14" parent="Room_Receiver/_env/_wall" unique_id=1806447715 instance=ExtResource("2_cti4x")]
 transform = Transform3D(-8.940697e-08, 0, -0.99999994, 0, 1, 0, 0.99999994, 0, -8.940697e-08, -4, 0, -3)
 
-[node name="_dev_open_wall10" parent="Room_Receiver/_env/_wall" instance=ExtResource("2_cti4x")]
+[node name="_dev_open_wall10" parent="Room_Receiver/_env/_wall" unique_id=983356110 instance=ExtResource("2_cti4x")]
 transform = Transform3D(-8.940697e-08, 0, -0.99999994, 0, 1, 0, 0.99999994, 0, -8.940697e-08, -4, 0, 1)
 
-[node name="_dev_open_wall11" parent="Room_Receiver/_env/_wall" instance=ExtResource("2_cti4x")]
+[node name="_dev_open_wall11" parent="Room_Receiver/_env/_wall" unique_id=1299766230 instance=ExtResource("2_cti4x")]
 transform = Transform3D(1.7682972e-07, 0, 0.9999999, 0, 1, 0, -0.9999999, 0, 1.7682972e-07, 4, 0, 1)
 
-[node name="_dev_open_wall12" parent="Room_Receiver/_env/_wall" instance=ExtResource("2_cti4x")]
+[node name="_dev_open_wall12" parent="Room_Receiver/_env/_wall" unique_id=206575676 instance=ExtResource("2_cti4x")]
 transform = Transform3D(1.7682972e-07, 0, 0.9999999, 0, 1, 0, -0.9999999, 0, 1.7682972e-07, 4, 0, -1)
 
-[node name="_dev_open_wall13" parent="Room_Receiver/_env/_wall" instance=ExtResource("2_cti4x")]
+[node name="_dev_open_wall13" parent="Room_Receiver/_env/_wall" unique_id=375627259 instance=ExtResource("2_cti4x")]
 transform = Transform3D(1.7682972e-07, 0, 0.9999999, 0, 1, 0, -0.9999999, 0, 1.7682972e-07, 4, 0, -3)
 
-[node name="_dev_open_wall8" parent="Room_Receiver/_env/_wall" instance=ExtResource("2_cti4x")]
+[node name="_dev_open_wall8" parent="Room_Receiver/_env/_wall" unique_id=1242172653 instance=ExtResource("2_cti4x")]
 transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 2, 0, -5)
 
-[node name="_corner" type="Node3D" parent="Room_Receiver/_env"]
+[node name="_corner" type="Node3D" parent="Room_Receiver/_env" unique_id=765077769]
 
-[node name="_dev_open_corner2" parent="Room_Receiver/_env/_corner" instance=ExtResource("6_fnuid")]
+[node name="_dev_open_corner2" parent="Room_Receiver/_env/_corner" unique_id=1912374166 instance=ExtResource("6_fnuid")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, 3)
 
-[node name="_dev_open_corner3" parent="Room_Receiver/_env/_corner" instance=ExtResource("6_fnuid")]
+[node name="_dev_open_corner3" parent="Room_Receiver/_env/_corner" unique_id=1559535971 instance=ExtResource("6_fnuid")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 4, 0, -5)
 
-[node name="_dev_open_corner4" parent="Room_Receiver/_env/_corner" instance=ExtResource("6_fnuid")]
+[node name="_dev_open_corner4" parent="Room_Receiver/_env/_corner" unique_id=933640422 instance=ExtResource("6_fnuid")]
 transform = Transform3D(-1.0000001, 0, 0, 0, 1, 0, 0, 0, -1.0000001, -4, 0, -5)
 
-[node name="_dev_open_corner5" parent="Room_Receiver/_env/_corner" instance=ExtResource("6_fnuid")]
+[node name="_dev_open_corner5" parent="Room_Receiver/_env/_corner" unique_id=1522111684 instance=ExtResource("6_fnuid")]
 transform = Transform3D(4.3711392e-08, 0, -1.0000001, 0, 1, 0, 1.0000001, 0, 4.3711392e-08, -4, 0, 3)
 
-[node name="Teleporter" parent="Room_Receiver" node_paths=PackedStringArray("out_pos") instance=ExtResource("14_6ords")]
+[node name="Teleporter" parent="Room_Receiver" unique_id=1369607379 node_paths=PackedStringArray("out_pos") instance=ExtResource("14_6ords")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 3)
 out_pos = NodePath("../../Room_Start/Teleporter_to_item/In")
 
-[node name="Trigger" type="Area3D" parent="Room_Receiver/Teleporter"]
+[node name="Trigger" type="Area3D" parent="Room_Receiver/Teleporter" unique_id=1367490992]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0.3)
 collision_mask = 3
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Room_Receiver/Teleporter/Trigger"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Room_Receiver/Teleporter/Trigger" unique_id=749033643]
 shape = SubResource("SphereShape3D_3wul1")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Room_Receiver/Teleporter/Trigger"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Room_Receiver/Teleporter/Trigger" unique_id=298787672]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 0, 0)
 mesh = SubResource("SphereMesh_hsji5")
 
-[node name="In" type="Node3D" parent="Room_Receiver/Teleporter"]
+[node name="In" type="Node3D" parent="Room_Receiver/Teleporter" unique_id=1925340496]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.999, -1)
 
-[node name="TEST_Grabbable_item" parent="Room_Receiver" instance=ExtResource("16_3wul1")]
+[node name="TEST_Grabbable_item" parent="Room_Receiver" unique_id=1541818228 instance=ExtResource("16_3wul1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0.4, 0)
 gravity_scale = 1.0
 item_type = SubResource("Resource_teo1q")
 item_weight = 3
 
-[node name="TEST_Grabbable_item2" parent="Room_Receiver" instance=ExtResource("16_3wul1")]
+[node name="TEST_Grabbable_item2" parent="Room_Receiver" unique_id=1689046980 instance=ExtResource("16_3wul1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0.4, 0)
 item_type = SubResource("Resource_limx5")
 item_weight = 3
 
-[node name="TEST_Grabbable_item5" parent="Room_Receiver" instance=ExtResource("16_3wul1")]
+[node name="TEST_Grabbable_item5" parent="Room_Receiver" unique_id=151887747 instance=ExtResource("16_3wul1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0.4, 4.7683716e-07)
 item_type = SubResource("Resource_limx5")
 item_weight = 3
 
-[node name="TEST_Grabbable_item6" parent="Room_Receiver" instance=ExtResource("16_3wul1")]
+[node name="TEST_Grabbable_item6" parent="Room_Receiver" unique_id=1688992762 instance=ExtResource("16_3wul1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.9999998, 0.4, 1.0000002)
 item_type = SubResource("Resource_limx5")
 item_weight = 3
 
-[node name="TEST_Grabbable_item3" type="RigidBody3D" parent="Room_Receiver" node_paths=PackedStringArray("idle_graphics")]
+[node name="TEST_Grabbable_item3" type="RigidBody3D" parent="Room_Receiver" unique_id=514173499 node_paths=PackedStringArray("idle_graphics")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0.4, -2)
 collision_layer = 2
 axis_lock_angular_x = true
@@ -1619,34 +1617,34 @@ item_type = SubResource("Resource_lryfm")
 item_weight = 3
 idle_graphics = NodePath("Sprite3D")
 
-[node name="Area3D" type="Area3D" parent="Room_Receiver/TEST_Grabbable_item3"]
+[node name="Area3D" type="Area3D" parent="Room_Receiver/TEST_Grabbable_item3" unique_id=1135002417]
 collision_layer = 2
 
-[node name="CollisionShape3D2" type="CollisionShape3D" parent="Room_Receiver/TEST_Grabbable_item3/Area3D"]
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="Room_Receiver/TEST_Grabbable_item3/Area3D" unique_id=1772873854]
 shape = SubResource("BoxShape3D_llc7q")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Room_Receiver/TEST_Grabbable_item3"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Room_Receiver/TEST_Grabbable_item3" unique_id=1472524404]
 shape = SubResource("BoxShape3D_234jp")
 debug_color = Color(0.8442249, 0.37985525, 5.7756904e-07, 0.41960785)
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Room_Receiver/TEST_Grabbable_item3"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Room_Receiver/TEST_Grabbable_item3" unique_id=1560036228]
 visible = false
 mesh = SubResource("SphereMesh_234jp")
 
-[node name="Sprite3D" type="Sprite3D" parent="Room_Receiver/TEST_Grabbable_item3"]
+[node name="Sprite3D" type="Sprite3D" parent="Room_Receiver/TEST_Grabbable_item3" unique_id=382331106]
 pixel_size = 0.0064
 billboard = 1
 texture_filter = 0
 texture = ExtResource("15_a71ib")
 
-[node name="AudioPlayer" type="AudioStreamPlayer3D" parent="Room_Receiver/TEST_Grabbable_item3"]
+[node name="AudioPlayer" type="AudioStreamPlayer3D" parent="Room_Receiver/TEST_Grabbable_item3" unique_id=1851377891]
 stream = ExtResource("32_1f7u1")
 
-[node name="RayCast3D" type="RayCast3D" parent="Room_Receiver/TEST_Grabbable_item3"]
+[node name="RayCast3D" type="RayCast3D" parent="Room_Receiver/TEST_Grabbable_item3" unique_id=2026130393]
 target_position = Vector3(0, -0.4, 0)
 hit_from_inside = true
 
-[node name="TEST_Grabbable_item4" type="RigidBody3D" parent="Room_Receiver" node_paths=PackedStringArray("idle_graphics")]
+[node name="TEST_Grabbable_item4" type="RigidBody3D" parent="Room_Receiver" unique_id=1663629976 node_paths=PackedStringArray("idle_graphics")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.4305903e-07, 0.4, -3)
 collision_layer = 2
 axis_lock_angular_x = true
@@ -1659,107 +1657,107 @@ item_type = SubResource("Resource_lryfm")
 item_weight = 3
 idle_graphics = NodePath("Sprite3D")
 
-[node name="Area3D" type="Area3D" parent="Room_Receiver/TEST_Grabbable_item4"]
+[node name="Area3D" type="Area3D" parent="Room_Receiver/TEST_Grabbable_item4" unique_id=231235448]
 collision_layer = 2
 
-[node name="CollisionShape3D2" type="CollisionShape3D" parent="Room_Receiver/TEST_Grabbable_item4/Area3D"]
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="Room_Receiver/TEST_Grabbable_item4/Area3D" unique_id=1586643976]
 shape = SubResource("BoxShape3D_llc7q")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Room_Receiver/TEST_Grabbable_item4"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Room_Receiver/TEST_Grabbable_item4" unique_id=1002876828]
 shape = SubResource("BoxShape3D_234jp")
 debug_color = Color(0.8442249, 0.37985525, 5.7756904e-07, 0.41960785)
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Room_Receiver/TEST_Grabbable_item4"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Room_Receiver/TEST_Grabbable_item4" unique_id=1042173856]
 visible = false
 mesh = SubResource("SphereMesh_234jp")
 
-[node name="Sprite3D" type="Sprite3D" parent="Room_Receiver/TEST_Grabbable_item4"]
+[node name="Sprite3D" type="Sprite3D" parent="Room_Receiver/TEST_Grabbable_item4" unique_id=505882111]
 modulate = Color(18.892157, 0, 18.892157, 1)
 pixel_size = 0.0064
 billboard = 1
 texture_filter = 0
 texture = ExtResource("15_a71ib")
 
-[node name="AudioPlayer" type="AudioStreamPlayer3D" parent="Room_Receiver/TEST_Grabbable_item4"]
+[node name="AudioPlayer" type="AudioStreamPlayer3D" parent="Room_Receiver/TEST_Grabbable_item4" unique_id=188791578]
 stream = ExtResource("32_1f7u1")
 
-[node name="RayCast3D" type="RayCast3D" parent="Room_Receiver/TEST_Grabbable_item4"]
+[node name="RayCast3D" type="RayCast3D" parent="Room_Receiver/TEST_Grabbable_item4" unique_id=706138849]
 target_position = Vector3(0, -0.4, 0)
 hit_from_inside = true
 
-[node name="Label3D3" type="Label3D" parent="Room_Receiver"]
+[node name="Label3D3" type="Label3D" parent="Room_Receiver" unique_id=1054129592]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 0, 2.7, -3)
 billboard = 1
 text = "Items"
 font_size = 97
 
-[node name="Gate2" parent="Room_Receiver" instance=ExtResource("8_mlo6p")]
+[node name="Gate2" parent="Room_Receiver" unique_id=2015909701 instance=ExtResource("8_mlo6p")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.5000024, 0, -4.999998)
 
-[node name="ItemReceiver" parent="Room_Receiver" instance=ExtResource("24_lwfn2")]
+[node name="ItemReceiver" parent="Room_Receiver" unique_id=1918131802 instance=ExtResource("24_lwfn2")]
 transform = Transform3D(-0.6, 0, 9.059749e-08, 0, 0.6, 0, -9.059749e-08, 0, -0.6, -3.6, 0.6, -3.6000004)
 type_of_item = 0
 num_needed = 1
 
-[node name="Gate3" parent="Room_Receiver" instance=ExtResource("8_mlo6p")]
+[node name="Gate3" parent="Room_Receiver" unique_id=574564908 instance=ExtResource("8_mlo6p")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.423909e-06, 0, -4.999998)
 
-[node name="ItemReceiver2" parent="Room_Receiver" node_paths=PackedStringArray("specific_items_to_recieve") instance=ExtResource("24_lwfn2")]
+[node name="ItemReceiver2" parent="Room_Receiver" unique_id=1348114616 node_paths=PackedStringArray("specific_items_to_recieve") instance=ExtResource("24_lwfn2")]
 transform = Transform3D(-1.115, 0, 1.6836032e-07, 0, 1.115, 0, -1.6836032e-07, 0, -1.115, 1.2001482e-07, 0.6, -4.1000004)
 receiver_type = 1
 specific_items_to_recieve = [NodePath("../TEST_Grabbable_item4")]
 
-[node name="Gate4" parent="Room_Receiver" instance=ExtResource("8_mlo6p")]
+[node name="Gate4" parent="Room_Receiver" unique_id=499706546 instance=ExtResource("8_mlo6p")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.9999976, 0, -4.999998)
 
-[node name="ItemReceiver3" parent="Room_Receiver" node_paths=PackedStringArray("specific_items_to_recieve") instance=ExtResource("24_lwfn2")]
+[node name="ItemReceiver3" parent="Room_Receiver" unique_id=1913902272 node_paths=PackedStringArray("specific_items_to_recieve") instance=ExtResource("24_lwfn2")]
 transform = Transform3D(-0.755, 0, 1.1400183e-07, 0, 0.755, 0, -1.1400183e-07, 0, -0.755, 3, 0.6, -4.1000004)
 receiver_type = 2
 type_of_item = 3
 num_needed = 3
 specific_items_to_recieve = [NodePath("../../Room_Items/TEST_Grabbable_item3"), NodePath("../../Room_Items/TEST_Grabbable_item4"), NodePath("../../Room_Items/TEST_Grabbable_item2"), NodePath("../../Room_Items/TEST_Grabbable_item")]
 
-[node name="Gate5" parent="Room_Receiver" instance=ExtResource("8_mlo6p")]
+[node name="Gate5" parent="Room_Receiver" unique_id=458394966 instance=ExtResource("8_mlo6p")]
 transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 3.4999983, 0, 3.3)
 
-[node name="ItemReceiver4" parent="Room_Receiver" instance=ExtResource("24_lwfn2")]
+[node name="ItemReceiver4" parent="Room_Receiver" unique_id=563543589 instance=ExtResource("24_lwfn2")]
 transform = Transform3D(0.36500004, 0, -7.66128e-08, 0, 0.36499998, 0, 7.66128e-08, 0, 0.36500004, 3.4999967, 0.6, 2.4000018)
 receiver_type = 3
 type_of_item = 0
 num_needed = 5
 
-[node name="DrawBoard" parent="." instance=ExtResource("23_rcrad")]
+[node name="DrawBoard" parent="." unique_id=1347121487 instance=ExtResource("23_rcrad")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.70000005, -4)
-mesh = SubResource("ArrayMesh_15de5")
+mesh = SubResource("ArrayMesh_7ntu8")
 
-[node name="ItemTrigger" parent="." node_paths=PackedStringArray("specific_item") instance=ExtResource("24_1e1q4")]
+[node name="ItemTrigger" parent="." unique_id=989640349 node_paths=PackedStringArray("specific_item") instance=ExtResource("24_1e1q4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.5, 0, -8.6)
 do_once = true
 specific_item = NodePath("../Room_Animation/TEST_Grabbable_item4")
 delete_obj_after_use = true
 
-[node name="ItemReceiver" parent="." instance=ExtResource("27_lfnjp")]
+[node name="ItemReceiver" parent="." unique_id=50145449 instance=ExtResource("27_lfnjp")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 1, -9)
 
-[node name="Breakable_Item" parent="." instance=ExtResource("28_po0fx")]
+[node name="Breakable_Item" parent="." unique_id=1056773272 instance=ExtResource("28_po0fx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.28214455, 0.7, -16.968552)
 
-[node name="BoxingBag" type="Node3D" parent="." node_paths=PackedStringArray("stats")]
+[node name="BoxingBag" type="Node3D" parent="." unique_id=1764020903 node_paths=PackedStringArray("stats")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.7, 0, -2)
 script = ExtResource("29_lryfm")
 stats = NodePath("Stats")
 metadata/_custom_type_script = "uid://bjd0jmhcfi0pq"
 
-[node name="Area3D" type="Area3D" parent="BoxingBag"]
+[node name="Area3D" type="Area3D" parent="BoxingBag" unique_id=2100803877]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.8, 0)
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="BoxingBag/Area3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="BoxingBag/Area3D" unique_id=55424185]
 shape = SubResource("CapsuleShape3D_limx5")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="BoxingBag/Area3D"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="BoxingBag/Area3D" unique_id=300521909]
 mesh = SubResource("CapsuleMesh_lryfm")
 
-[node name="Stats" type="Node" parent="BoxingBag" node_paths=PackedStringArray("health_bar", "hit_sfx", "who_owns", "stam_bar", "stam_sfx")]
+[node name="Stats" type="Node" parent="BoxingBag" unique_id=1272771433 node_paths=PackedStringArray("health_bar", "hit_sfx", "who_owns", "stam_bar", "stam_sfx")]
 script = ExtResource("30_limx5")
 health_bar = NodePath("Node3D/SubViewport/Control/Border/HealthBar")
 hit_sfx = NodePath("hit_sfx")
@@ -1768,13 +1766,13 @@ stam_bar = NodePath("Node3D/SubViewport/Control/Border/StamBar")
 stam_sfx = NodePath("stam_sfx")
 metadata/_custom_type_script = "uid://46pp7aerorca"
 
-[node name="Timer" type="Timer" parent="BoxingBag/Stats"]
+[node name="Timer" type="Timer" parent="BoxingBag/Stats" unique_id=747649518]
 one_shot = true
 
-[node name="Node3D" type="Node3D" parent="BoxingBag/Stats"]
+[node name="Node3D" type="Node3D" parent="BoxingBag/Stats" unique_id=2145295044]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.6, 1.6, -2)
 
-[node name="SubViewport" type="SubViewport" parent="BoxingBag/Stats/Node3D"]
+[node name="SubViewport" type="SubViewport" parent="BoxingBag/Stats/Node3D" unique_id=894699390]
 disable_3d = true
 transparent_bg = true
 handle_input_locally = false
@@ -1782,7 +1780,7 @@ gui_disable_input = true
 gui_embed_subwindows = true
 render_target_update_mode = 4
 
-[node name="Control" type="Control" parent="BoxingBag/Stats/Node3D/SubViewport"]
+[node name="Control" type="Control" parent="BoxingBag/Stats/Node3D/SubViewport" unique_id=1514440349]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -1792,7 +1790,7 @@ grow_vertical = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="Border" type="TextureRect" parent="BoxingBag/Stats/Node3D/SubViewport/Control"]
+[node name="Border" type="TextureRect" parent="BoxingBag/Stats/Node3D/SubViewport/Control" unique_id=1113028076]
 custom_minimum_size = Vector2(501.7228, 57.799988)
 layout_mode = 1
 anchors_preset = -1
@@ -1807,7 +1805,7 @@ texture = ExtResource("31_teo1q")
 expand_mode = 1
 metadata/_edit_use_anchors_ = true
 
-[node name="HealthBar" type="ProgressBar" parent="BoxingBag/Stats/Node3D/SubViewport/Control/Border"]
+[node name="HealthBar" type="ProgressBar" parent="BoxingBag/Stats/Node3D/SubViewport/Control/Border" unique_id=2124863669]
 show_behind_parent = true
 layout_mode = 1
 anchors_preset = -1
@@ -1820,7 +1818,7 @@ value = 100.0
 show_percentage = false
 metadata/_edit_use_anchors_ = true
 
-[node name="StamBar" type="ProgressBar" parent="BoxingBag/Stats/Node3D/SubViewport/Control/Border"]
+[node name="StamBar" type="ProgressBar" parent="BoxingBag/Stats/Node3D/SubViewport/Control/Border" unique_id=1465305432]
 visible = false
 show_behind_parent = true
 layout_mode = 1
@@ -1834,19 +1832,19 @@ value = 100.0
 show_percentage = false
 metadata/_edit_use_anchors_ = true
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="BoxingBag/Stats/Node3D"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="BoxingBag/Stats/Node3D" unique_id=1641013941]
 mesh = SubResource("QuadMesh_teo1q")
 surface_material_override/0 = SubResource("StandardMaterial3D_1f7u1")
 
-[node name="hit_sfx" type="AudioStreamPlayer3D" parent="BoxingBag/Stats"]
+[node name="hit_sfx" type="AudioStreamPlayer3D" parent="BoxingBag/Stats" unique_id=1513714113]
 stream = ExtResource("32_1f7u1")
 
-[node name="stam_sfx" type="AudioStreamPlayer3D" parent="BoxingBag/Stats"]
+[node name="stam_sfx" type="AudioStreamPlayer3D" parent="BoxingBag/Stats" unique_id=478135236]
 stream = ExtResource("33_bk0h7")
 
-[node name="DrawBoard2" parent="." instance=ExtResource("23_rcrad")]
+[node name="DrawBoard2" parent="." unique_id=494913825 instance=ExtResource("23_rcrad")]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 4, 1, -2)
-mesh = SubResource("ArrayMesh_temsp")
+mesh = SubResource("ArrayMesh_poavi")
 
 [connection signal="area_entered" from="Room_Start/Teleporter_to_item/Trigger" to="Room_Start/Teleporter_to_item" method="_teleport_entity"]
 [connection signal="body_entered" from="Room_Start/Teleporter_to_item/Trigger" to="Room_Start/Teleporter_to_item" method="_teleport_item"]
