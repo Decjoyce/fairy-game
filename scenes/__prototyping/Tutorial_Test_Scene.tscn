@@ -395,6 +395,13 @@ mesh = SubResource("BoxMesh_65s44")
 [node name="_dev_middle_b2" parent="Tutorial_Room" unique_id=1967695034 instance=ExtResource("4_2d0gr")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.39058685, 0, -3.1971784)
 
+[node name="Crouch_Points" type="CollisionShape3D" parent="Tutorial_Room" unique_id=1277853997]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.39058685, 1.05, 4.8028216)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Tutorial_Room/Crouch_Points" unique_id=2028444985]
+layers = 3
+mesh = SubResource("BoxMesh_xtqac")
+
 [node name="Torches" type="Node3D" parent="." unique_id=1073021904]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.37721205, 1, -2.0954456)
 
@@ -429,16 +436,8 @@ item_weight = 2
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.767098, 0.6459893, -5.6712904)
 item_weight = 1
 
-[node name="TEST_Grabbable_item3" parent="Weighted Items" unique_id=627461560 instance=ExtResource("13_2d0gr")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.23290205, 0.6459893, -3.6712904)
-item_weight = 1
-
-[node name="TEST_Grabbable_item4" parent="Weighted Items" unique_id=1479586234 instance=ExtResource("13_2d0gr")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.232902, 0.6459893, -1.6712904)
-item_weight = 1
-
 [node name="TEST_Grabbable_item5" parent="Weighted Items" unique_id=1779357604 instance=ExtResource("13_2d0gr")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.767098, 0.6459893, -1.6712904)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.76709795, 0.6459893, -0.6712904)
 item_weight = 1
 
 [node name="TEST_Grabbable_item6" parent="Weighted Items" unique_id=991819546 instance=ExtResource("13_2d0gr")]
@@ -447,6 +446,14 @@ item_weight = 2
 
 [node name="Urn" parent="Weighted Items" unique_id=38004987 instance=ExtResource("15_t0mv0")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.44446087, -3)
+item_weight = 1
+
+[node name="Urn2" parent="Weighted Items" unique_id=1424324911 instance=ExtResource("15_t0mv0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0.44446087, -2)
+item_weight = 1
+
+[node name="Urn3" parent="Weighted Items" unique_id=1308464607 instance=ExtResource("15_t0mv0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0.44446087, 0)
 item_weight = 1
 
 [connection signal="on_activated" from="Buttons_&_PressurePlates/First_Button" to="Gates/First_Gate" method="open_gate"]
