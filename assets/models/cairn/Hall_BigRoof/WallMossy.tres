@@ -1,12 +1,20 @@
 [gd_resource type="StandardMaterial3D" format=3 uid="uid://8h2x3qki3e6s"]
 
-[ext_resource type="Texture2D" uid="uid://duwgmhtnui13t" path="res://assets/models/cairn/Z-Old-EnvironmentModels/Wall/Wall_texture_Wall_Base_color-texture_Wall_Opacity.png" id="1_diq2p"]
+[ext_resource type="Texture2D" uid="uid://ba022lsk1mxk3" path="res://assets/models/cairn/Hall_BigRoof/Wall+Roof_Textures/Wall_Mossy/Wall_Mossy_Base_color.png" id="1_nw602"]
 [ext_resource type="Material" uid="uid://dyejtq23uplk4" path="res://assets/shaders/Outline/outline.tres" id="2_fcyde"]
-[ext_resource type="Texture2D" uid="uid://c31nsbevwkkgc" path="res://assets/models/cairn/Z-Old-EnvironmentModels/Wall/Wall_texture_Wall_Normal_OpenGL.png" id="3_tshwq"]
+[ext_resource type="Texture2D" uid="uid://yjjq83rr3h37" path="res://assets/models/cairn/Hall_BigRoof/Wall+Roof_Textures/Wall_Mossy/Wall_Mossy_Mixed_AO.png" id="2_xs50s"]
+[ext_resource type="Texture2D" uid="uid://bb0o4pkprwx11" path="res://assets/models/cairn/Hall_BigRoof/Wall+Roof_Textures/Wall_Mossy/Wall_Mossy_Metallic.png" id="3_a1jqu"]
+[ext_resource type="Texture2D" uid="uid://b76nu61v04y0n" path="res://assets/models/cairn/Hall_BigRoof/Wall+Roof_Textures/Wall_Mossy/Wall_Mossy_Normal.png" id="5_lkwlx"]
+[ext_resource type="Texture2D" uid="uid://xo4v5cnx3emg" path="res://assets/models/cairn/Hall_BigRoof/Wall+Roof_Textures/Wall_Mossy/Wall_Mossy_Roughness.png" id="6_yomf6"]
 
 [resource]
 next_pass = ExtResource("2_fcyde")
-albedo_texture = ExtResource("1_diq2p")
+albedo_texture = ExtResource("1_nw602")
+metallic = 1.0
 metallic_specular = 1.0
+metallic_texture = ExtResource("3_a1jqu")
+roughness_texture = ExtResource("6_yomf6")
 normal_enabled = true
-normal_texture = ExtResource("3_tshwq")
+normal_texture = ExtResource("5_lkwlx")
+ao_enabled = true
+ao_texture = ExtResource("2_xs50s")
