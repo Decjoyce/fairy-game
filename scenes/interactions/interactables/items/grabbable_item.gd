@@ -1,3 +1,4 @@
+@icon("res://assets/_editor_icons/icon_item.svg")
 class_name Grabbable_Item
 extends Interactable
 

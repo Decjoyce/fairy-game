@@ -1,4 +1,4 @@
-[gd_scene load_steps=40 format=3 uid="uid://dqojmsc2q6wf4"]
+[gd_scene format=3 uid="uid://dqojmsc2q6wf4"]
 
 [ext_resource type="Script" uid="uid://bkcxym5jqdgg4" path="res://scenes/_player/interaction/player_interaction.gd" id="1_ebye2"]
 [ext_resource type="Script" uid="uid://bvrebn6ao2hvn" path="res://scenes/_player/interaction/hand/player_hand.gd" id="2_f78vs"]
@@ -22,6 +22,7 @@
 [ext_resource type="Texture2D" uid="uid://dfa3alju8038l" path="res://scenes/_player/interaction/hand/assets/hand_torch_side.png" id="20_g8o0o"]
 [ext_resource type="Texture2D" uid="uid://bvp14xwrxbn3n" path="res://assets/__not_ours_dontship/Xbox Series/XboxSeriesX_B.png" id="20_x8mhs"]
 [ext_resource type="Texture2D" uid="uid://jub3n8100tqt" path="res://assets/__not_ours_dontship/Xbox Series/XboxSeriesX_RT.png" id="21_g8o0o"]
+[ext_resource type="Script" uid="uid://cefly351moegl" path="res://scenes/_player/interaction/hand/states/handstate_lever.gd" id="21_krqau"]
 
 [sub_resource type="Animation" id="Animation_434r6"]
 length = 0.001
@@ -306,7 +307,7 @@ _data = {
 &"hand_torch_side": SubResource("Animation_krqau")
 }
 
-[node name="Interaction" type="Control" node_paths=PackedStringArray("hand_left", "hand_right")]
+[node name="Interaction" type="Control" unique_id=1977560016 node_paths=PackedStringArray("hand_left", "hand_right")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -323,7 +324,7 @@ enemy_collision_mask = 1
 hand_left = NodePath("Hand_Left")
 hand_right = NodePath("Hand_Right")
 
-[node name="Hand_Left" type="Control" parent="." node_paths=PackedStringArray("initial_state")]
+[node name="Hand_Left" type="Control" parent="." unique_id=342954462 node_paths=PackedStringArray("initial_state")]
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 1
 anchor_left = 0.379
@@ -343,39 +344,44 @@ anim_prompting_default = "a_hand_idle"
 anim_idle_default = "hand_prompt_default"
 metadata/_edit_use_anchors_ = true
 
-[node name="States" type="Node" parent="Hand_Left"]
+[node name="States" type="Node" parent="Hand_Left" unique_id=797793001]
 
-[node name="FREE" type="Node" parent="Hand_Left/States"]
+[node name="FREE" type="Node" parent="Hand_Left/States" unique_id=1391622457]
 script = ExtResource("3_7baq5")
 anim_idle = "a_hand_idle"
 anim_prompt = "hand_prompt_default"
 
-[node name="GRAB_ITEM" type="Node" parent="Hand_Left/States" node_paths=PackedStringArray("offset_helper")]
+[node name="GRAB_ITEM" type="Node" parent="Hand_Left/States" unique_id=105231820 node_paths=PackedStringArray("offset_helper")]
 script = ExtResource("4_r26r4")
 offset_helper = NodePath("../../_hand_sprite/_pickup_pos")
 grab_ray_collision_mask = 1
 anim_idle = "a_hand_idle_grab_item"
 anim_prompt = "hand_prompt_key"
 
-[node name="GRAB_OBJ" type="Node" parent="Hand_Left/States"]
+[node name="GRAB_OBJ" type="Node" parent="Hand_Left/States" unique_id=1707230627]
 script = ExtResource("5_wcvr7")
 moving_breaks_free = true
 
-[node name="CHALK" type="Node" parent="Hand_Left/States" node_paths=PackedStringArray("offset_helper")]
+[node name="CHALK" type="Node" parent="Hand_Left/States" unique_id=1045067497 node_paths=PackedStringArray("offset_helper")]
 script = ExtResource("6_4ojao")
 offset_helper = NodePath("../../_hand_sprite/_draw_pos")
 metadata/_custom_type_script = "uid://dpsgaiv5m7n21"
 
-[node name="ATTACK" type="Node" parent="Hand_Left/States"]
+[node name="LEVER" type="Node" parent="Hand_Left/States" unique_id=136764758]
+script = ExtResource("21_krqau")
+moving_breaks_free = true
+metadata/_custom_type_script = "uid://cefly351moegl"
+
+[node name="ATTACK" type="Node" parent="Hand_Left/States" unique_id=1683072651]
 script = ExtResource("7_b33uu")
 anim_idle = "hand_attack_idle"
 anim_prompt = "hand_prompt_door_locked"
 metadata/_custom_type_script = "uid://cbiffyiwdsd26"
 
-[node name="Timer" type="Timer" parent="Hand_Left/States/ATTACK"]
+[node name="Timer" type="Timer" parent="Hand_Left/States/ATTACK" unique_id=794095824]
 one_shot = true
 
-[node name="_hand_sprite" type="TextureRect" parent="Hand_Left"]
+[node name="_hand_sprite" type="TextureRect" parent="Hand_Left" unique_id=4964372]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = -0.671875
@@ -391,7 +397,7 @@ grow_vertical = 2
 texture = ExtResource("6_ft4o3")
 metadata/_edit_use_anchors_ = true
 
-[node name="_pickup_pos" type="Control" parent="Hand_Left/_hand_sprite"]
+[node name="_pickup_pos" type="Control" parent="Hand_Left/_hand_sprite" unique_id=1168834700]
 layout_mode = 1
 anchors_preset = 6
 anchor_left = 1.0
@@ -405,7 +411,7 @@ offset_bottom = 10.0
 grow_horizontal = 0
 grow_vertical = 2
 
-[node name="_draw_pos" type="Control" parent="Hand_Left/_hand_sprite"]
+[node name="_draw_pos" type="Control" parent="Hand_Left/_hand_sprite" unique_id=444410425]
 layout_mode = 1
 anchors_preset = 6
 anchor_left = 1.0
@@ -419,7 +425,7 @@ offset_bottom = -16.0
 grow_horizontal = 0
 grow_vertical = 2
 
-[node name="EatingAnim" type="Control" parent="Hand_Left/_hand_sprite"]
+[node name="EatingAnim" type="Control" parent="Hand_Left/_hand_sprite" unique_id=357956599]
 visible = false
 layout_mode = 1
 anchors_preset = 15
@@ -428,7 +434,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="TextureRect" type="TextureRect" parent="Hand_Left/_hand_sprite/EatingAnim"]
+[node name="TextureRect" type="TextureRect" parent="Hand_Left/_hand_sprite/EatingAnim" unique_id=1540726405]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -436,7 +442,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="InputContexts" type="VBoxContainer" parent="Hand_Left/_hand_sprite"]
+[node name="InputContexts" type="VBoxContainer" parent="Hand_Left/_hand_sprite" unique_id=848777301]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = -2.6266668
@@ -449,10 +455,10 @@ grow_vertical = 2
 script = ExtResource("9_pdn2y")
 metadata/_edit_use_anchors_ = true
 
-[node name="UseAction" type="HBoxContainer" parent="Hand_Left/_hand_sprite/InputContexts"]
+[node name="UseAction" type="HBoxContainer" parent="Hand_Left/_hand_sprite/InputContexts" unique_id=35182550]
 layout_mode = 2
 
-[node name="RichTextLabel" type="RichTextLabel" parent="Hand_Left/_hand_sprite/InputContexts/UseAction"]
+[node name="RichTextLabel" type="RichTextLabel" parent="Hand_Left/_hand_sprite/InputContexts/UseAction" unique_id=1824180123]
 custom_minimum_size = Vector2(20, 0)
 layout_mode = 2
 size_flags_horizontal = 3
@@ -464,16 +470,16 @@ scroll_active = false
 horizontal_alignment = 2
 vertical_alignment = 1
 
-[node name="TextureRect" type="TextureRect" parent="Hand_Left/_hand_sprite/InputContexts/UseAction"]
+[node name="TextureRect" type="TextureRect" parent="Hand_Left/_hand_sprite/InputContexts/UseAction" unique_id=913696231]
 custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
 texture = ExtResource("9_b33uu")
 expand_mode = 1
 
-[node name="InteractAction" type="HBoxContainer" parent="Hand_Left/_hand_sprite/InputContexts"]
+[node name="InteractAction" type="HBoxContainer" parent="Hand_Left/_hand_sprite/InputContexts" unique_id=1460052473]
 layout_mode = 2
 
-[node name="RichTextLabel" type="RichTextLabel" parent="Hand_Left/_hand_sprite/InputContexts/InteractAction"]
+[node name="RichTextLabel" type="RichTextLabel" parent="Hand_Left/_hand_sprite/InputContexts/InteractAction" unique_id=2016785132]
 custom_minimum_size = Vector2(20, 0)
 layout_mode = 2
 size_flags_horizontal = 3
@@ -485,19 +491,17 @@ scroll_active = false
 horizontal_alignment = 2
 vertical_alignment = 1
 
-[node name="TextureRect" type="TextureRect" parent="Hand_Left/_hand_sprite/InputContexts/InteractAction"]
+[node name="TextureRect" type="TextureRect" parent="Hand_Left/_hand_sprite/InputContexts/InteractAction" unique_id=1769870286]
 custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
 texture = ExtResource("10_c2wdf")
 expand_mode = 1
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Hand_Left"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Hand_Left" unique_id=669244343]
 callback_mode_method = 1
-libraries = {
-&"": SubResource("AnimationLibrary_3efos")
-}
+libraries/ = SubResource("AnimationLibrary_3efos")
 
-[node name="Hand_Right" type="Control" parent="." node_paths=PackedStringArray("initial_state")]
+[node name="Hand_Right" type="Control" parent="." unique_id=2015924242 node_paths=PackedStringArray("initial_state")]
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 1
 anchor_left = 0.6032986
@@ -514,39 +518,46 @@ anim_prompting_default = "a_hand_idle"
 anim_idle_default = "hand_prompt_default"
 metadata/_edit_use_anchors_ = true
 
-[node name="States" type="Node" parent="Hand_Right"]
+[node name="States" type="Node" parent="Hand_Right" unique_id=600845926]
 
-[node name="FREE" type="Node" parent="Hand_Right/States"]
+[node name="FREE" type="Node" parent="Hand_Right/States" unique_id=2058095872]
 script = ExtResource("3_7baq5")
 anim_idle = "a_hand_idle"
 anim_prompt = "hand_prompt_default"
 
-[node name="GRAB_ITEM" type="Node" parent="Hand_Right/States" node_paths=PackedStringArray("offset_helper")]
+[node name="GRAB_ITEM" type="Node" parent="Hand_Right/States" unique_id=1525565664 node_paths=PackedStringArray("offset_helper")]
 script = ExtResource("4_r26r4")
 offset_helper = NodePath("../../_hand_sprite/_pickup_pos")
 grab_ray_collision_mask = 1
 anim_idle = "a_hand_idle_grab_item"
 anim_prompt = "hand_prompt_key"
 
-[node name="GRAB_OBJ" type="Node" parent="Hand_Right/States"]
+[node name="GRAB_OBJ" type="Node" parent="Hand_Right/States" unique_id=1637633524]
 script = ExtResource("5_wcvr7")
 moving_breaks_free = true
 
-[node name="CHALK" type="Node" parent="Hand_Right/States" node_paths=PackedStringArray("offset_helper")]
+[node name="CHALK" type="Node" parent="Hand_Right/States" unique_id=539766623 node_paths=PackedStringArray("offset_helper")]
 script = ExtResource("6_4ojao")
 offset_helper = NodePath("../../_hand_sprite/_draw_pos")
 metadata/_custom_type_script = "uid://dpsgaiv5m7n21"
 
-[node name="ATTACK" type="Node" parent="Hand_Right/States"]
+[node name="LEVER" type="Node" parent="Hand_Right/States" unique_id=2018788044]
+script = ExtResource("21_krqau")
+moving_breaks_free = true
+anim_idle = "a_hand_idle_grab_item"
+anim_prompt = "hand_prompt_key"
+metadata/_custom_type_script = "uid://cefly351moegl"
+
+[node name="ATTACK" type="Node" parent="Hand_Right/States" unique_id=1032528826]
 script = ExtResource("7_b33uu")
 anim_idle = "hand_attack_idle"
 anim_prompt = "hand_prompt_door_locked"
 metadata/_custom_type_script = "uid://cbiffyiwdsd26"
 
-[node name="Timer" type="Timer" parent="Hand_Right/States/ATTACK"]
+[node name="Timer" type="Timer" parent="Hand_Right/States/ATTACK" unique_id=1251242932]
 one_shot = true
 
-[node name="_hand_sprite" type="TextureRect" parent="Hand_Right"]
+[node name="_hand_sprite" type="TextureRect" parent="Hand_Right" unique_id=2143479765]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = -0.671875
@@ -563,7 +574,7 @@ texture = ExtResource("6_ft4o3")
 flip_h = true
 metadata/_edit_use_anchors_ = true
 
-[node name="_pickup_pos" type="Control" parent="Hand_Right/_hand_sprite"]
+[node name="_pickup_pos" type="Control" parent="Hand_Right/_hand_sprite" unique_id=1210147141]
 layout_mode = 1
 anchors_preset = 4
 anchor_top = 0.5
@@ -574,7 +585,7 @@ offset_right = 36.0
 offset_bottom = 10.0
 grow_vertical = 2
 
-[node name="_draw_pos" type="Control" parent="Hand_Right/_hand_sprite"]
+[node name="_draw_pos" type="Control" parent="Hand_Right/_hand_sprite" unique_id=1399254237]
 layout_mode = 1
 anchors_preset = 4
 anchor_top = 0.5
@@ -585,7 +596,7 @@ offset_right = 33.0
 offset_bottom = -16.0
 grow_vertical = 2
 
-[node name="EatingAnim" type="Control" parent="Hand_Right/_hand_sprite"]
+[node name="EatingAnim" type="Control" parent="Hand_Right/_hand_sprite" unique_id=784956616]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -593,7 +604,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="InputContexts" type="VBoxContainer" parent="Hand_Right/_hand_sprite"]
+[node name="InputContexts" type="VBoxContainer" parent="Hand_Right/_hand_sprite" unique_id=596981118]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.18
@@ -605,16 +616,16 @@ grow_vertical = 2
 script = ExtResource("9_pdn2y")
 metadata/_edit_use_anchors_ = true
 
-[node name="UseAction" type="HBoxContainer" parent="Hand_Right/_hand_sprite/InputContexts"]
+[node name="UseAction" type="HBoxContainer" parent="Hand_Right/_hand_sprite/InputContexts" unique_id=1110406165]
 layout_mode = 2
 
-[node name="TextureRect" type="TextureRect" parent="Hand_Right/_hand_sprite/InputContexts/UseAction"]
+[node name="TextureRect" type="TextureRect" parent="Hand_Right/_hand_sprite/InputContexts/UseAction" unique_id=1880049258]
 custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
 texture = ExtResource("20_x8mhs")
 expand_mode = 1
 
-[node name="RichTextLabel" type="RichTextLabel" parent="Hand_Right/_hand_sprite/InputContexts/UseAction"]
+[node name="RichTextLabel" type="RichTextLabel" parent="Hand_Right/_hand_sprite/InputContexts/UseAction" unique_id=513190547]
 custom_minimum_size = Vector2(20, 0)
 layout_mode = 2
 size_flags_horizontal = 3
@@ -625,16 +636,16 @@ text = "Refill Torch
 scroll_active = false
 vertical_alignment = 1
 
-[node name="InteractAction" type="HBoxContainer" parent="Hand_Right/_hand_sprite/InputContexts"]
+[node name="InteractAction" type="HBoxContainer" parent="Hand_Right/_hand_sprite/InputContexts" unique_id=420501613]
 layout_mode = 2
 
-[node name="TextureRect" type="TextureRect" parent="Hand_Right/_hand_sprite/InputContexts/InteractAction"]
+[node name="TextureRect" type="TextureRect" parent="Hand_Right/_hand_sprite/InputContexts/InteractAction" unique_id=1688826455]
 custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
 texture = ExtResource("21_g8o0o")
 expand_mode = 1
 
-[node name="RichTextLabel" type="RichTextLabel" parent="Hand_Right/_hand_sprite/InputContexts/InteractAction"]
+[node name="RichTextLabel" type="RichTextLabel" parent="Hand_Right/_hand_sprite/InputContexts/InteractAction" unique_id=1571963150]
 custom_minimum_size = Vector2(20, 0)
 layout_mode = 2
 size_flags_horizontal = 3
@@ -645,8 +656,6 @@ text = "Hold to Throw
 scroll_active = false
 vertical_alignment = 1
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Hand_Right"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Hand_Right" unique_id=415381061]
 callback_mode_method = 1
-libraries = {
-&"": SubResource("AnimationLibrary_3efos")
-}
+libraries/ = SubResource("AnimationLibrary_3efos")

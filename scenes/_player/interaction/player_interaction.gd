@@ -40,6 +40,15 @@ func get_other_hand_current_interactable(hand_index: int) -> Interactable:
 	if hand_index == 0: return hand_right.current_interactable
 	else: return hand_left.current_interactable
 
+func force_stop_interacting() -> void:
+	hand_right.force_stop_interacting()
+	hand_left.force_stop_interacting()
+
 func free_interaction_on_other_hand(hand_index: int) -> void:
 	if hand_index == 0: hand_right.force_stop_interacting()
 	elif hand_index == 1: hand_left.force_stop_interacting()
+
+func test_player_moved()-> void:
+	hand_right.on_player_moved(Vector3.ZERO, Vector3.ZERO)
+	hand_left.on_player_moved(Vector3.ZERO, Vector3.ZERO)
+	

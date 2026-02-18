@@ -1,0 +1,53 @@
+[gd_scene format=3 uid="uid://8nvgihejkvnw"]
+
+[ext_resource type="PackedScene" uid="uid://ck1b6l8s7xnxi" path="res://scenes/interactions/triggers/lever/lever.tscn" id="1_vplke"]
+[ext_resource type="PackedScene" uid="uid://bq86osdembn58" path="res://scenes/_player/_player_test.tscn" id="2_5vvke"]
+[ext_resource type="PackedScene" uid="uid://dt13fur6twjep" path="res://scenes/interactions/receivers/gate/gate.tscn" id="3_mkmlb"]
+[ext_resource type="Script" uid="uid://cgb0bi0gumby6" path="res://scenes/interactions/receivers/skybox_changer/skybox_changer.gd" id="4_2rnw6"]
+[ext_resource type="Environment" uid="uid://co42tppomh8j3" path="res://assets/skyboxes/skyboxes_testing_dark.tres" id="5_m1ocg"]
+
+[sub_resource type="Environment" id="Environment_vu50v"]
+
+[sub_resource type="Environment" id="Environment_2rnw6"]
+
+[node name="LeverTesting" type="Node3D" unique_id=1969717916]
+
+[node name="Lever" parent="." unique_id=1692381032 instance=ExtResource("1_vplke")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.6, 0.93050265, 0.3)
+
+[node name="Lever3" parent="." unique_id=828735417 instance=ExtResource("1_vplke")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.4, 0.93050265, 0.3)
+use_intervals = true
+
+[node name="Lever2" parent="." unique_id=1105726599 instance=ExtResource("1_vplke")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.4, 0.93050265, 0.3)
+use_intervals = true
+intervals = 1.0
+
+[node name="player_test" parent="." unique_id=725727541 instance=ExtResource("2_5vvke")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 1)
+
+[node name="Gate" parent="." unique_id=1033176324 instance=ExtResource("3_mkmlb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2.4)
+
+[node name="Gate2" parent="." unique_id=1292899736 instance=ExtResource("3_mkmlb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 0, -2.4)
+
+[node name="skybox_changer" type="Node" parent="." unique_id=724843259 node_paths=PackedStringArray("world_environment")]
+script = ExtResource("4_2rnw6")
+world_environment = NodePath("WorldEnvironment")
+skybox_a = SubResource("Environment_vu50v")
+skybox_b = ExtResource("5_m1ocg")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="skybox_changer" unique_id=593557997]
+environment = SubResource("Environment_2rnw6")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="." unique_id=450762206]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, 0, -1)
+use_collision = true
+size = Vector3(34, 0.001, 13)
+
+[connection signal="on_change" from="Lever" to="Gate" method="open_gate"]
+[connection signal="on_change" from="Lever3" to="Gate2" method="open_gate"]
+[connection signal="on_activated" from="Lever2" to="skybox_changer" method="change_to_a"]
+[connection signal="on_deactivated" from="Lever2" to="skybox_changer" method="change_to_b"]

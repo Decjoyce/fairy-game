@@ -1,0 +1,21 @@
+[gd_resource type="Environment" format=3 uid="uid://co42tppomh8j3"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_jedut"]
+load_path = "res://.godot/imported/cat-standing-on-a-chair-leoch-studio.png-f7af42dc593ed91ae3cd74f65a559802.s3tc.ctex"
+
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_r7joo"]
+panorama = SubResource("CompressedTexture2D_jedut")
+filter = false
+
+[sub_resource type="Sky" id="Sky_17o1i"]
+sky_material = SubResource("PanoramaSkyMaterial_r7joo")
+radiance_size = 0
+
+[resource]
+background_mode = 2
+background_color = Color(1, 1, 1, 1)
+sky = SubResource("Sky_17o1i")
+sky_custom_fov = 63.5
+sky_rotation = Vector3(0.5270894, -2.3492131, 0.6230825)
+ambient_light_source = 1
+ambient_light_color = Color(0, 0, 0.31521547, 1)

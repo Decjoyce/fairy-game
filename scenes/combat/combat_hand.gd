@@ -112,12 +112,13 @@ signal on_begin_staggered(hand_index:int, stagger_amount: float)
 signal on_end_staggered(hand_index:int)
 
 func begin_stagger(stagger_amount: int) -> void:
-	if stagger_amount == 0: return
-	var _stag_amount: float = 1 / stagger_amount
-	timer_stagger.wait_time = _stag_amount
-	on_begin_staggered.emit(index, _stag_amount)
-	current_combat_state = CombatHandStates.STAGGERED
-	hand_attack.stop_attacking()
+	pass
+	#if stagger_amount == 0: return
+	#var _stag_amount: float = 1 / stagger_amount
+	#timer_stagger.wait_time = _stag_amount
+	#on_begin_staggered.emit(index, _stag_amount)
+	#current_combat_state = CombatHandStates.STAGGERED
+	#hand_attack.stop_attacking()
 
 func end_staggered() -> void:
 	current_combat_state = CombatHandStates.DEFENDING

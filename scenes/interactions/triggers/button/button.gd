@@ -1,3 +1,4 @@
+@icon("res://assets/_editor_icons/icon_button.svg")
 class_name InteractableButton
 extends InteractableInstant
 
@@ -22,7 +23,7 @@ func begin_interact(sig: float = -1) -> void:
 	activate_button()
 
 func _process(delta: float) -> void:
-	if activated and !timer.is_stopped():
+	if trigger_while_activated and activated and !timer.is_stopped():
 		var mapped_time_left := timer.time_left / timer.wait_time
 		on_change.emit(mapped_time_left)
 
@@ -34,9 +35,9 @@ func activate_button() -> void:
 	
 	anim.play("button_activated")
 	
-	if delay_before_reset <= 0: 
-		manual_reset = true
-	else:
+	if delay_before_reset <= 0: manual_reset = true
+	
+	if !manual_reset:
 		timer.wait_time = delay_before_reset
 		timer.start()
 

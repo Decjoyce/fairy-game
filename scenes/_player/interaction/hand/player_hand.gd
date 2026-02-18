@@ -95,6 +95,7 @@ var grabbed_obj: Interactable
 func begin_interact() -> void:
 	if !hovering_interactable:
 		return
+	if hovering_interactable.interaction_type == hovering_interactable.InteractTypes.GRAB_OBJ and player.movement.dist_to_target <= 0.6: return
 	anim_is_prompting = false
 	current_interactable = hovering_interactable
 	current_interactable.begin_interact()
@@ -115,7 +116,7 @@ func begin_interact() -> void:
 			pass
 			
 		hovering_interactable.InteractTypes.LEVER:
-			pass
+			state.finished.emit(state.LEVER)
 
 func on_player_moved(direction: Vector3, target: Vector3) -> void:
 	if !state.moving_breaks_free:
