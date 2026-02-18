@@ -548,6 +548,9 @@ transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 1.22
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.41749752, 0.048332393, -7)
 weight_to_activate = 12.0
 
+[node name="Open_Level Door Gate" parent="Buttons_&_PressurePlates" unique_id=1926074976 instance=ExtResource("11_kqxud")]
+transform = Transform3D(-1, 0, -2.9802322e-08, 0, 1, 0, 2.9802322e-08, 0, -1, 0.34740353, 1, -10.035606)
+
 [node name="Gates" type="Node3D" parent="." unique_id=1968183095]
 
 [node name="First_Gate" parent="Gates" unique_id=1014394241 instance=ExtResource("12_iqvfj")]
@@ -557,7 +560,7 @@ speed = 4.0
 [node name="Weight_Puzzle_Gate" parent="Gates" unique_id=1047793231 instance=ExtResource("12_iqvfj")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.3864329, 0, -7.9681745)
 
-[node name="Gate" parent="Gates" unique_id=932569186 instance=ExtResource("12_iqvfj")]
+[node name="Lever_Gate" parent="Gates" unique_id=932569186 instance=ExtResource("12_iqvfj")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 5.390748, 0, -3.19248)
 
 [node name="Weighted Items" type="Node3D" parent="." unique_id=1772242532]
@@ -592,3 +595,4 @@ item_weight = 1
 
 [connection signal="on_activated" from="Buttons_&_PressurePlates/First_Button" to="Gates/First_Gate" method="open_gate"]
 [connection signal="on_change" from="Buttons_&_PressurePlates/Tutorial_Weight_Puzzle" to="Gates/Weight_Puzzle_Gate" method="open_gate"]
+[connection signal="on_activated" from="Buttons_&_PressurePlates/Open_Level Door Gate" to="Gates/Weight_Puzzle_Gate" method="open_gate"]
