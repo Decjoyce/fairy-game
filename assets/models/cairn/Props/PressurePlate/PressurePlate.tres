@@ -1,0 +1,17 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://beaom2cndegce"]
+
+[ext_resource type="Texture2D" uid="uid://w325vyms2ucx" path="res://assets/models/cairn/Props/PressurePlate/PressurePlate_Textures/PressurePlate_BaseColor.png" id="1_tko8w"]
+[ext_resource type="Material" uid="uid://dyejtq23uplk4" path="res://assets/shaders/Outline/outline.tres" id="3_0x5y1"]
+[ext_resource type="Texture2D" uid="uid://c41lw8x87b0bk" path="res://assets/models/cairn/Props/PressurePlate/PressurePlate_Textures/PressurePlate_Normal.png" id="4_3igbl"]
+[ext_resource type="Texture2D" uid="uid://1em78y6d7snb" path="res://assets/models/cairn/Props/PressurePlate/PressurePlate_Textures/PressurePlate_Roughness.png" id="5_3bnc1"]
+
+[resource]
+next_pass = ExtResource("3_0x5y1")
+albedo_texture = ExtResource("1_tko8w")
+metallic = 1.0
+metallic_texture_channel = 4
+roughness_texture = ExtResource("5_3bnc1")
+roughness_texture_channel = 4
+normal_enabled = true
+normal_texture = ExtResource("4_3igbl")
+ao_enabled = true

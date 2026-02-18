@@ -1,0 +1,17 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://co027k13v1rg5"]
+
+[ext_resource type="Texture2D" uid="uid://f0ff3a1hrrjc" path="res://assets/models/cairn/Props/Rocks/Rock_Textures/Rock/Rock_BaseColor.png" id="1_77y8x"]
+[ext_resource type="Texture2D" uid="uid://5qdvkufdumo1" path="res://assets/models/cairn/Props/Rocks/Rock_Textures/Rock/Rock_Metallic.png" id="2_omlbs"]
+[ext_resource type="Material" uid="uid://dyejtq23uplk4" path="res://assets/shaders/Outline/outline.tres" id="3_ajsl2"]
+[ext_resource type="Texture2D" uid="uid://ciibqhd3a8dbi" path="res://assets/models/cairn/Props/Rocks/Rock_Textures/Rock/Rock_Normal.png" id="4_hbvop"]
+[ext_resource type="Texture2D" uid="uid://t7grmh20tut6" path="res://assets/models/cairn/Props/Rocks/Rock_Textures/Rock/Rock_Roughness.png" id="5_e67uo"]
+
+[resource]
+next_pass = ExtResource("3_ajsl2")
+albedo_texture = ExtResource("1_77y8x")
+metallic = 1.0
+metallic_specular = 1.0
+metallic_texture = ExtResource("2_omlbs")
+roughness_texture = ExtResource("5_e67uo")
+normal_enabled = true
+normal_texture = ExtResource("4_hbvop")
