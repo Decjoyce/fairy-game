@@ -20,6 +20,7 @@ func _ready() -> void:
 	timer.wait_time = delay_before_reset
 
 func begin_interact(sig: float = -1) -> void:
+	if disabled: return
 	activate_button()
 
 func _process(delta: float) -> void:
@@ -28,6 +29,7 @@ func _process(delta: float) -> void:
 		on_change.emit(mapped_time_left)
 
 func activate_button() -> void:
+	if disabled: return
 	if activated: return
 	activated = true
 	
@@ -42,6 +44,7 @@ func activate_button() -> void:
 		timer.start()
 
 func deactivate_button(emit_a_signal: bool = true): 
+	if disabled: return
 	activated = false
 	
 	if emit_signal:

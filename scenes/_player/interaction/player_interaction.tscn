@@ -10,19 +10,26 @@
 [ext_resource type="Script" uid="uid://cbiffyiwdsd26" path="res://scenes/_player/interaction/hand/states/handstate_attack.gd" id="7_b33uu"]
 [ext_resource type="Texture2D" uid="uid://bf54ba5wmnwv7" path="res://scenes/_player/interaction/hand/assets/hand_pick.png" id="7_h6x2d"]
 [ext_resource type="Texture2D" uid="uid://dtjkym227bqie" path="res://scenes/_player/interaction/hand/assets/hand_extend.png" id="8_3efos"]
-[ext_resource type="Texture2D" uid="uid://mca3ko5edbht" path="res://scenes/_player/interaction/hand/assets/hand_hover.png" id="9_3efos"]
+[ext_resource type="Texture2D" uid="uid://fiyfylw4oy02" path="res://scenes/_player/interaction/hand/assets/new/handFist.png" id="9_8icoj"]
 [ext_resource type="Texture2D" uid="uid://x5o8gwlacxs1" path="res://assets/__not_ours_dontship/Xbox Series/XboxSeriesX_X.png" id="9_b33uu"]
 [ext_resource type="Script" uid="uid://bwjg44sotn0rj" path="res://scenes/_player/interaction/input_contexts.gd" id="9_pdn2y"]
-[ext_resource type="Texture2D" uid="uid://bj70dokyron4r" path="res://scenes/_player/interaction/hand/assets/hand_torch.png" id="10_434r6"]
 [ext_resource type="Texture2D" uid="uid://dee8ol82mg72l" path="res://assets/__not_ours_dontship/Xbox Series/XboxSeriesX_LT.png" id="10_c2wdf"]
-[ext_resource type="Texture2D" uid="uid://bf5kpbbhis3ra" path="res://scenes/_player/interaction/hand/assets/hand_extend_full.png" id="11_njhm0"]
-[ext_resource type="Texture2D" uid="uid://cfymwa08wvaqh" path="res://scenes/_player/interaction/hand/assets/hand_pick_two.png" id="12_jhcvy"]
 [ext_resource type="Texture2D" uid="uid://dehow8buqijkk" path="res://scenes/_player/interaction/hand/assets/hand_lever.png" id="12_pvvfk"]
-[ext_resource type="Texture2D" uid="uid://ck4of6qde1ymu" path="res://scenes/_player/interaction/hand/assets/hand_lever_two.png" id="14_aq8do"]
-[ext_resource type="Texture2D" uid="uid://dfa3alju8038l" path="res://scenes/_player/interaction/hand/assets/hand_torch_side.png" id="20_g8o0o"]
+[ext_resource type="Texture2D" uid="uid://dou0xes0jegud" path="res://scenes/_player/interaction/hand/assets/new/handThrowCharge.png" id="13_g103e"]
+[ext_resource type="Texture2D" uid="uid://5u5xfynp8cio" path="res://scenes/_player/interaction/hand/assets/new/handTorch.png" id="13_j5qgs"]
+[ext_resource type="Texture2D" uid="uid://bac1td5bs4tmp" path="res://scenes/_player/interaction/hand/assets/new/handThrowRelease.png" id="14_adext"]
+[ext_resource type="Texture2D" uid="uid://2k4dl70eoi6v" path="res://scenes/_player/interaction/hand/assets/new/handGrab.png" id="18_adext"]
+[ext_resource type="Texture2D" uid="uid://ip3mcc0c48rf" path="res://scenes/_player/interaction/hand/assets/new/handPick.png" id="20_j5qgs"]
 [ext_resource type="Texture2D" uid="uid://bvp14xwrxbn3n" path="res://assets/__not_ours_dontship/Xbox Series/XboxSeriesX_B.png" id="20_x8mhs"]
+[ext_resource type="Texture2D" uid="uid://d0drddxwl5w86" path="res://scenes/_player/interaction/hand/assets/new/handButton.png" id="21_f0odu"]
 [ext_resource type="Texture2D" uid="uid://jub3n8100tqt" path="res://assets/__not_ours_dontship/Xbox Series/XboxSeriesX_RT.png" id="21_g8o0o"]
 [ext_resource type="Script" uid="uid://cefly351moegl" path="res://scenes/_player/interaction/hand/states/handstate_lever.gd" id="21_krqau"]
+[ext_resource type="Texture2D" uid="uid://by4r3xp6u2qur" path="res://scenes/_player/interaction/hand/assets/new/handOut.png" id="22_6q41x"]
+[ext_resource type="Texture2D" uid="uid://bsneap2rk48wi" path="res://scenes/_player/interaction/hand/assets/new/handHover.png" id="22_f0odu"]
+[ext_resource type="Texture2D" uid="uid://bckoo5g7d6dkd" path="res://scenes/_player/interaction/hand/assets/new/handLeverUp.png" id="25_8icoj"]
+[ext_resource type="Texture2D" uid="uid://cjg2tybwcwyps" path="res://scenes/_player/interaction/hand/assets/new/handLeverMid.png" id="25_j5qgs"]
+[ext_resource type="Texture2D" uid="uid://c2peaf4lponuk" path="res://scenes/_player/interaction/hand/assets/new/handLeverDown.png" id="26_8icoj"]
+[ext_resource type="Texture2D" uid="uid://ie2qwgyt82t5" path="res://scenes/_player/interaction/hand/assets/new/handKey.png" id="26_g103e"]
 
 [sub_resource type="Animation" id="Animation_434r6"]
 length = 0.001
@@ -36,7 +43,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("6_ft4o3")]
+"values": [ExtResource("9_8icoj")]
 }
 
 [sub_resource type="Animation" id="Animation_pvvfk"]
@@ -52,7 +59,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("10_434r6")]
+"values": [ExtResource("25_8icoj")]
 }
 
 [sub_resource type="Animation" id="Animation_mxdlv"]
@@ -65,10 +72,10 @@ tracks/0/path = NodePath("_hand_sprite:texture")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.36666667, 0.96666664),
-"transitions": PackedFloat32Array(1, 1, 1),
+"times": PackedFloat32Array(0.033333335, 0.36666667, 0.96666664, 2.45),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 1,
-"values": [ExtResource("14_aq8do"), ExtResource("9_3efos"), ExtResource("12_jhcvy")]
+"values": [ExtResource("13_g103e"), ExtResource("14_adext"), ExtResource("22_f0odu"), ExtResource("22_f0odu")]
 }
 
 [sub_resource type="Animation" id="Animation_h6x2d"]
@@ -84,7 +91,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("6_ft4o3")]
+"values": [ExtResource("9_8icoj")]
 }
 
 [sub_resource type="Animation" id="Animation_3efos"]
@@ -101,7 +108,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("8_3efos")]
+"values": [ExtResource("18_adext")]
 }
 
 [sub_resource type="Animation" id="Animation_ft4o3"]
@@ -117,7 +124,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.099999994),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
-"values": [ExtResource("7_h6x2d"), ExtResource("8_3efos")]
+"values": [ExtResource("22_6q41x"), ExtResource("20_j5qgs")]
 }
 
 [sub_resource type="Animation" id="Animation_jhcvy"]
@@ -152,6 +159,57 @@ tracks/0/keys = {
 "values": [ExtResource("7_h6x2d")]
 }
 
+[sub_resource type="Animation" id="Animation_8icoj"]
+resource_name = "hand_lever_down"
+length = 0.001
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("_hand_sprite:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("26_8icoj")]
+}
+
+[sub_resource type="Animation" id="Animation_j5qgs"]
+resource_name = "hand_lever_mid"
+length = 0.001
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("_hand_sprite:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("25_j5qgs")]
+}
+
+[sub_resource type="Animation" id="Animation_g103e"]
+resource_name = "hand_lever_up"
+length = 0.001
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("_hand_sprite:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("25_8icoj")]
+}
+
 [sub_resource type="Animation" id="Animation_sx4t2"]
 resource_name = "hand_press"
 length = 0.001
@@ -166,7 +224,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("8_3efos")]
+"values": [ExtResource("21_f0odu")]
 }
 
 [sub_resource type="Animation" id="Animation_3t2v1"]
@@ -183,7 +241,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("11_njhm0")]
+"values": [ExtResource("22_6q41x")]
 }
 
 [sub_resource type="Animation" id="Animation_njhm0"]
@@ -199,7 +257,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("9_3efos")]
+"values": [ExtResource("22_f0odu")]
 }
 
 [sub_resource type="Animation" id="Animation_pd1hw"]
@@ -216,7 +274,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("12_pvvfk")]
+"values": [ExtResource("13_g103e")]
 }
 
 [sub_resource type="Animation" id="Animation_gulgn"]
@@ -233,7 +291,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("14_aq8do")]
+"values": [ExtResource("26_g103e")]
 }
 
 [sub_resource type="Animation" id="Animation_rbe5j"]
@@ -250,7 +308,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("10_434r6")]
+"values": [ExtResource("22_f0odu")]
 }
 
 [sub_resource type="Animation" id="Animation_c2wdf"]
@@ -267,7 +325,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("14_aq8do")]
+"values": [ExtResource("13_j5qgs")]
 }
 
 [sub_resource type="Animation" id="Animation_krqau"]
@@ -284,7 +342,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("20_g8o0o")]
+"values": [ExtResource("13_j5qgs")]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_3efos"]
@@ -297,6 +355,9 @@ _data = {
 &"a_hand_pickup": SubResource("Animation_ft4o3"),
 &"hand_attack": SubResource("Animation_jhcvy"),
 &"hand_attack_idle": SubResource("Animation_b33uu"),
+&"hand_lever_down": SubResource("Animation_8icoj"),
+&"hand_lever_mid": SubResource("Animation_j5qgs"),
+&"hand_lever_up": SubResource("Animation_g103e"),
 &"hand_press": SubResource("Animation_sx4t2"),
 &"hand_prompt_button": SubResource("Animation_3t2v1"),
 &"hand_prompt_default": SubResource("Animation_njhm0"),
@@ -394,7 +455,7 @@ offset_right = -43.0
 offset_bottom = -43.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("6_ft4o3")
+texture = ExtResource("9_8icoj")
 metadata/_edit_use_anchors_ = true
 
 [node name="_pickup_pos" type="Control" parent="Hand_Left/_hand_sprite" unique_id=1168834700]
@@ -570,7 +631,7 @@ offset_right = -43.0
 offset_bottom = -43.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("6_ft4o3")
+texture = ExtResource("9_8icoj")
 flip_h = true
 metadata/_edit_use_anchors_ = true
 

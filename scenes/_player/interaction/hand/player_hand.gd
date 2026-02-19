@@ -95,7 +95,8 @@ var grabbed_obj: Interactable
 func begin_interact() -> void:
 	if !hovering_interactable:
 		return
-	if hovering_interactable.interaction_type == hovering_interactable.InteractTypes.GRAB_OBJ and player.movement.dist_to_target <= 0.6: return
+	if hovering_interactable.interaction_type == hovering_interactable.InteractTypes.GRAB_OBJ and player.movement.dist_to_target <= 0.6: 
+		return
 	anim_is_prompting = false
 	current_interactable = hovering_interactable
 	current_interactable.begin_interact()
@@ -124,7 +125,8 @@ func on_player_moved(direction: Vector3, target: Vector3) -> void:
 	force_stop_interacting()
 
 func force_stop_interacting(next_state: String = "FREE", call_end_func_on_interactable: bool = true, call_end_func_on_state: bool = true) -> void:
-	state.finished.emit(next_state)
+	if call_end_func_on_state: state.finished.emit(next_state)
+	if current_interactable and call_end_func_on_interactable: current_interactable.end_interact()
 	current_interactable = null
 
 func interact_checker(): # -> Interactable:
@@ -148,7 +150,7 @@ func interact_checker(): # -> Interactable:
 	
 	var _interactable: Interactable = result.collider.get_parent() as Interactable
 	
-	#prints(_interactable)
+	if _interactable.disabled: return null
 	
 	return _interactable
 
@@ -168,6 +170,7 @@ func interact_checker_item_receiver(): # -> Interactable:
 	
 	var _interactable: ItemReceiver = result.collider.get_parent() as ItemReceiver
 	
+	if _interactable.disabled: return null
 	
 	return _interactable
 

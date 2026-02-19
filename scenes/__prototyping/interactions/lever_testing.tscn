@@ -30,6 +30,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 1)
 [node name="Gate" parent="." unique_id=1033176324 instance=ExtResource("3_mkmlb")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2.4)
 
+[node name="Gate3" parent="." unique_id=445072765 instance=ExtResource("3_mkmlb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, -2.4)
+
 [node name="Gate2" parent="." unique_id=1292899736 instance=ExtResource("3_mkmlb")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 0, -2.4)
 
@@ -53,5 +56,6 @@ size = Vector3(34, 0.001, 13)
 
 [connection signal="on_change" from="Lever" to="Gate" method="open_gate"]
 [connection signal="on_activated" from="Lever2" to="skybox_changer" method="change_to_a"]
+[connection signal="on_change" from="Lever2" to="Gate3" method="open_gate"]
 [connection signal="on_deactivated" from="Lever2" to="skybox_changer" method="change_to_b"]
 [connection signal="on_change" from="Lever3" to="Gate2" method="open_gate"]

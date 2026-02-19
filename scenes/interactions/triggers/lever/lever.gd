@@ -16,6 +16,7 @@ signal on_deactivated(sig: float)
 var current_value: float = 0
 @onready var pivot: Node3D = %Pivot
 @onready var hand_pos_top: Node3D = %pos_top
+@onready var hand_pos_mid: Node3D = %pos_middle
 @onready var hand_pos_bottom: Node3D = %pos_bottom
 
 func _ready() -> void:
@@ -39,6 +40,7 @@ func end_interact(sig: float = -1) -> void:
 # ↓ Calc Stuff ↓
 
 func update_value(amount: float) -> void:
+	if disabled: return
 	current_value = amount
 	
 	if use_intervals: 
