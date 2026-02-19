@@ -14,7 +14,8 @@
 [ext_resource type="PackedScene" uid="uid://dt13fur6twjep" path="res://scenes/interactions/receivers/gate/gate.tscn" id="12_iqvfj"]
 [ext_resource type="PackedScene" uid="uid://dfe565flkjwxt" path="res://scenes/interactions/interactables/items/all_items/test_grabbable_item.tscn" id="13_2d0gr"]
 [ext_resource type="PackedScene" uid="uid://csot2mi7746ll" path="res://scenes/interactions/triggers/pressure_plate/pressure_plate.tscn" id="13_22y2j"]
-[ext_resource type="PackedScene" uid="uid://dqh8lru4mt2ap" path="res://scenes/interactions/interactables/items/all_items/breakables/urn.tscn" id="15_t0mv0"]
+[ext_resource type="PackedScene" uid="uid://dqh8lru4mt2ap" path="res://scenes/interactions/interactables/items/all_items/breakables/item_urn.tscn" id="15_t0mv0"]
+[ext_resource type="MeshLibrary" uid="uid://bu208a8l5866i" path="res://scenes/_levels/_palettes/cairn/meshlibrary_cairn.tres" id="16_1ktrc"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_xunri"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
@@ -179,373 +180,19 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2)
 
 [node name="----------------" type="Node" parent="_dev_palette" unique_id=1124874655]
 
-[node name="player_test" parent="." unique_id=1298426834 instance=ExtResource("9_d5tbl")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.622788, 1, 12.904554)
-
-[node name="Tutorial_Room" type="Node3D" parent="." unique_id=2008737277]
-
-[node name="_dev_wall3" parent="Tutorial_Room" unique_id=534493429 instance=ExtResource("6_1ktrc")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.6094131, 0, 0.80282164)
-
-[node name="_dev_wall8" parent="Tutorial_Room" unique_id=1771983418 instance=ExtResource("6_1ktrc")]
-transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -3.6094131, 0, -1.1971784)
-
-[node name="_dev_wall9" parent="Tutorial_Room" unique_id=1360218447 instance=ExtResource("6_1ktrc")]
-transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -3.6094131, 0, -3.1971784)
-
-[node name="_dev_wall10" parent="Tutorial_Room" unique_id=1277148613 instance=ExtResource("6_1ktrc")]
-transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -3.6094131, 0, -5.1971784)
-
-[node name="_dev_wall11" parent="Tutorial_Room" unique_id=1211969526 instance=ExtResource("6_1ktrc")]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 4.390587, 0, -5.197179)
-
-[node name="_dev_wall13" parent="Tutorial_Room" unique_id=1616899416 instance=ExtResource("6_1ktrc")]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 4.390587, 0, -1.1971788)
-
-[node name="_dev_wall4" parent="Tutorial_Room" unique_id=244053095 instance=ExtResource("6_1ktrc")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.3905869, 0, 0.80282164)
-
-[node name="_dev_corner2" parent="Tutorial_Room" unique_id=1899852901 instance=ExtResource("5_t0mv0")]
-transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -3.6094131, 0, 0.80282164)
-
-[node name="_dev_corner3" parent="Tutorial_Room" unique_id=1198654156 instance=ExtResource("5_t0mv0")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.390587, 0, 0.80282164)
-
-[node name="_dev_wall6" parent="Tutorial_Room" unique_id=1070385898 instance=ExtResource("6_1ktrc")]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 2.3905869, 0, -7.1971784)
-
-[node name="_dev_wall7" parent="Tutorial_Room" unique_id=935737238 instance=ExtResource("6_1ktrc")]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -1.6094131, 0, -7.1971784)
-
-[node name="_dev_corner4" parent="Tutorial_Room" unique_id=853953990 instance=ExtResource("5_t0mv0")]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 4.390587, 0, -7.197179)
-
-[node name="_dev_corner5" parent="Tutorial_Room" unique_id=1826935612 instance=ExtResource("5_t0mv0")]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -3.6094131, 0, -7.197178)
-
-[node name="_dev_middle_a2" parent="Tutorial_Room" unique_id=874930453 instance=ExtResource("8_lpkc0")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.6094131, 0, -5.1971784)
-
-[node name="_dev_middle_a3" parent="Tutorial_Room" unique_id=2133033242 instance=ExtResource("8_lpkc0")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.39058685, 0, -5.1971784)
-
-[node name="_dev_middle_a4" parent="Tutorial_Room" unique_id=1359934574 instance=ExtResource("8_lpkc0")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.3905869, 0, -5.1971784)
-
-[node name="_dev_middle_a5" parent="Tutorial_Room" unique_id=1532070181 instance=ExtResource("8_lpkc0")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.3905869, 0, -3.1971784)
-
-[node name="_dev_middle_a7" parent="Tutorial_Room" unique_id=556169058 instance=ExtResource("8_lpkc0")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.6094131, 0, -3.1971784)
-
-[node name="_dev_middle_a8" parent="Tutorial_Room" unique_id=1156628679 instance=ExtResource("8_lpkc0")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.6094131, 0, -1.1971784)
-
-[node name="_dev_middle_a9" parent="Tutorial_Room" unique_id=2089093992 instance=ExtResource("8_lpkc0")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.39058685, 0, -1.1971784)
-
-[node name="_dev_middle_a10" parent="Tutorial_Room" unique_id=1244659736 instance=ExtResource("8_lpkc0")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.3905869, 0, -1.1971784)
-
-[node name="_dev_corner6" parent="Tutorial_Room" unique_id=2131931985 instance=ExtResource("5_t0mv0")]
-transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, -5.609413, 0, 8.802822)
-
-[node name="_dev_corner8" parent="Tutorial_Room" unique_id=2009391252 instance=ExtResource("5_t0mv0")]
-transform = Transform3D(1, 0, -1.7484555e-07, 0, 1, 0, 1.7484555e-07, 0, 1, 0.39058685, 0, 8.802822)
-
-[node name="_dev_corner7" parent="Tutorial_Room" unique_id=2039500053 instance=ExtResource("5_t0mv0")]
-transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, -5.609413, 0, 8.802822)
-
-[node name="_dev_wall_end2" type="StaticBody3D" parent="Tutorial_Room" unique_id=586350224]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.609413, 0, 11.802822)
-
-[node name="_wall_back" type="CollisionShape3D" parent="Tutorial_Room/_dev_wall_end2" unique_id=1953144310]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 1, 1, 1.9499998)
-shape = SubResource("BoxShape3D_xtqac")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Tutorial_Room/_dev_wall_end2/_wall_back" unique_id=971402609]
-layers = 3
-mesh = SubResource("BoxMesh_25we5")
-
-[node name="_wall_back2" type="CollisionShape3D" parent="Tutorial_Room/_dev_wall_end2" unique_id=27116586]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0.9792967)
-shape = SubResource("BoxShape3D_xtqac")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Tutorial_Room/_dev_wall_end2/_wall_back2" unique_id=1334289330]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.04522705, 0, 0.045454025)
-layers = 3
-mesh = SubResource("BoxMesh_25we5")
-
-[node name="_wall_back3" type="CollisionShape3D" parent="Tutorial_Room/_dev_wall_end2" unique_id=980627297]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.9011726, 1, 0.9499998)
-shape = SubResource("BoxShape3D_xtqac")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Tutorial_Room/_dev_wall_end2/_wall_back3" unique_id=1094628662]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.04522705, 0, 0.045454025)
-layers = 3
-mesh = SubResource("BoxMesh_25we5")
-
-[node name="_wall_roof" type="CollisionShape3D" parent="Tutorial_Room/_dev_wall_end2" unique_id=1761565655]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 2.05, 1)
-shape = SubResource("BoxShape3D_rsqa1")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Tutorial_Room/_dev_wall_end2/_wall_roof" unique_id=1456808614]
-layers = 3
-mesh = SubResource("BoxMesh_kl6u1")
-
-[node name="_wall_floor" type="CollisionShape3D" parent="Tutorial_Room/_dev_wall_end2" unique_id=1942738393]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, -0.05, 1)
-shape = SubResource("BoxShape3D_0cdsj")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Tutorial_Room/_dev_wall_end2/_wall_floor" unique_id=1526216199]
-layers = 3
-mesh = SubResource("BoxMesh_u8pyj")
-
-[node name="_dev_wall_end3" type="StaticBody3D" parent="Tutorial_Room" unique_id=2008017353]
-transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 1.3905869, 0, -8.197178)
-
-[node name="_wall_back" type="CollisionShape3D" parent="Tutorial_Room/_dev_wall_end3" unique_id=1105194070]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 1, 1, 1.9499998)
-shape = SubResource("BoxShape3D_xtqac")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Tutorial_Room/_dev_wall_end3/_wall_back" unique_id=1695418312]
-layers = 3
-mesh = SubResource("BoxMesh_25we5")
-
-[node name="_wall_back2" type="CollisionShape3D" parent="Tutorial_Room/_dev_wall_end3" unique_id=899273645]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0.9792967)
-shape = SubResource("BoxShape3D_xtqac")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Tutorial_Room/_dev_wall_end3/_wall_back2" unique_id=619760340]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.04522705, 0, 0.045454025)
-layers = 3
-mesh = SubResource("BoxMesh_25we5")
-
-[node name="_wall_back3" type="CollisionShape3D" parent="Tutorial_Room/_dev_wall_end3" unique_id=991939921]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.9011726, 1, 0.9499998)
-shape = SubResource("BoxShape3D_xtqac")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Tutorial_Room/_dev_wall_end3/_wall_back3" unique_id=1409609344]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.04522705, 0, 0.045454025)
-layers = 3
-mesh = SubResource("BoxMesh_25we5")
-
-[node name="_wall_roof" type="CollisionShape3D" parent="Tutorial_Room/_dev_wall_end3" unique_id=1828972869]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 2.05, 1)
-shape = SubResource("BoxShape3D_rsqa1")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Tutorial_Room/_dev_wall_end3/_wall_roof" unique_id=1489392144]
-layers = 3
-mesh = SubResource("BoxMesh_kl6u1")
-
-[node name="_wall_floor" type="CollisionShape3D" parent="Tutorial_Room/_dev_wall_end3" unique_id=330262835]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, -0.05, 1)
-shape = SubResource("BoxShape3D_0cdsj")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Tutorial_Room/_dev_wall_end3/_wall_floor" unique_id=1496876403]
-layers = 3
-mesh = SubResource("BoxMesh_u8pyj")
-
-[node name="_dev_wall_end4" type="StaticBody3D" parent="Tutorial_Room" unique_id=1165607653]
-transform = Transform3D(1.3113416e-07, 0, 1, 0, 1, 0, -1, 0, 1.3113416e-07, 11.390587, 0, -2.197178)
-
-[node name="_wall_back" type="CollisionShape3D" parent="Tutorial_Room/_dev_wall_end4" unique_id=882379292]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 1, 1, 1.9499998)
-shape = SubResource("BoxShape3D_xtqac")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Tutorial_Room/_dev_wall_end4/_wall_back" unique_id=1509551799]
-layers = 3
-mesh = SubResource("BoxMesh_25we5")
-
-[node name="_wall_back2" type="CollisionShape3D" parent="Tutorial_Room/_dev_wall_end4" unique_id=1152077808]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0.9792967)
-shape = SubResource("BoxShape3D_xtqac")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Tutorial_Room/_dev_wall_end4/_wall_back2" unique_id=113185571]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.04522705, 0, 0.045454025)
-layers = 3
-mesh = SubResource("BoxMesh_25we5")
-
-[node name="_wall_back3" type="CollisionShape3D" parent="Tutorial_Room/_dev_wall_end4" unique_id=2123486554]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.9011726, 1, 0.9499998)
-shape = SubResource("BoxShape3D_xtqac")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Tutorial_Room/_dev_wall_end4/_wall_back3" unique_id=1297288179]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.04522705, 0, 0.045454025)
-layers = 3
-mesh = SubResource("BoxMesh_25we5")
-
-[node name="_wall_roof" type="CollisionShape3D" parent="Tutorial_Room/_dev_wall_end4" unique_id=1263737355]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 2.05, 1)
-shape = SubResource("BoxShape3D_rsqa1")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Tutorial_Room/_dev_wall_end4/_wall_roof" unique_id=1874231182]
-layers = 3
-mesh = SubResource("BoxMesh_kl6u1")
-
-[node name="_wall_floor" type="CollisionShape3D" parent="Tutorial_Room/_dev_wall_end4" unique_id=1886113306]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, -0.05, 1)
-shape = SubResource("BoxShape3D_0cdsj")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Tutorial_Room/_dev_wall_end4/_wall_floor" unique_id=1347429821]
-layers = 3
-mesh = SubResource("BoxMesh_u8pyj")
-
-[node name="_dev_hall3" parent="Tutorial_Room" unique_id=886136712 instance=ExtResource("1_mbj5w")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.609413, 0, 10.802822)
-
-[node name="_dev_hall4" parent="Tutorial_Room" unique_id=1875326454 instance=ExtResource("1_mbj5w")]
-transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -3.6094131, 0, 8.802822)
-
-[node name="_dev_hall5" parent="Tutorial_Room" unique_id=356903988 instance=ExtResource("1_mbj5w")]
-transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -1.6094131, 0, 8.802822)
-
-[node name="_dev_hall6" parent="Tutorial_Room" unique_id=1063058218 instance=ExtResource("1_mbj5w")]
-transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 0.39058685, 0, 6.802822)
-
-[node name="_dev_hall7" parent="Tutorial_Room" unique_id=329079065 instance=ExtResource("1_mbj5w")]
-transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 0.39058685, 0, 4.802822)
-
-[node name="_dev_hall10" parent="Tutorial_Room" unique_id=234405264 instance=ExtResource("1_mbj5w")]
-transform = Transform3D(1.3113416e-07, 0, 1, 0, 1, 0, -1, 0, 1.3113416e-07, 8.390587, 0, -3.197178)
-
-[node name="_dev_hall12" parent="Tutorial_Room" unique_id=1339707243 instance=ExtResource("1_mbj5w")]
-transform = Transform3D(1.3113416e-07, 0, 1, 0, 1, 0, -1, 0, 1.3113416e-07, 6.390587, 0, -3.197178)
-
-[node name="_dev_hall11" parent="Tutorial_Room" unique_id=1342164844 instance=ExtResource("1_mbj5w")]
-transform = Transform3D(1.3113416e-07, 0, 1, 0, 1, 0, -1, 0, 1.3113416e-07, 10.390587, 0, -3.197178)
-
-[node name="_dev_hall8" parent="Tutorial_Room" unique_id=524118995 instance=ExtResource("1_mbj5w")]
-transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 0.39058685, 0, 2.802822)
-
-[node name="_dev_doorway2" type="StaticBody3D" parent="Tutorial_Room" unique_id=28113672]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.39058685, 0, 0.80282164)
-
-[node name="_wall_back_l" type="CollisionShape3D" parent="Tutorial_Room/_dev_doorway2" unique_id=1920449198]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0.9, 1, 0.9)
-shape = SubResource("BoxShape3D_cti4x")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Tutorial_Room/_dev_doorway2/_wall_back_l" unique_id=1904538994]
-layers = 3
-mesh = SubResource("BoxMesh_mlo6p")
-
-[node name="_wall_back_r" type="CollisionShape3D" parent="Tutorial_Room/_dev_doorway2" unique_id=756694837]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -0.9000001, 1, 0.9)
-shape = SubResource("BoxShape3D_cti4x")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Tutorial_Room/_dev_doorway2/_wall_back_r" unique_id=1349236496]
-layers = 3
-mesh = SubResource("BoxMesh_mlo6p")
-
-[node name="_wall_roof" type="CollisionShape3D" parent="Tutorial_Room/_dev_doorway2" unique_id=973446703]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.05, 0)
-shape = SubResource("BoxShape3D_65s44")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Tutorial_Room/_dev_doorway2/_wall_roof" unique_id=170951241]
-layers = 3
-mesh = SubResource("BoxMesh_xtqac")
-
-[node name="_wall_floor" type="CollisionShape3D" parent="Tutorial_Room/_dev_doorway2" unique_id=68680012]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.05, 0)
-shape = SubResource("BoxShape3D_25we5")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Tutorial_Room/_dev_doorway2/_wall_floor" unique_id=1171723217]
-layers = 3
-mesh = SubResource("BoxMesh_65s44")
-
-[node name="_dev_doorway3" type="StaticBody3D" parent="Tutorial_Room" unique_id=1890352375]
-transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 0.39058685, 0, -7.1971784)
-
-[node name="_wall_back_l" type="CollisionShape3D" parent="Tutorial_Room/_dev_doorway3" unique_id=277715144]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0.9, 1, 0.9)
-shape = SubResource("BoxShape3D_cti4x")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Tutorial_Room/_dev_doorway3/_wall_back_l" unique_id=187593208]
-layers = 3
-mesh = SubResource("BoxMesh_mlo6p")
-
-[node name="_wall_back_r" type="CollisionShape3D" parent="Tutorial_Room/_dev_doorway3" unique_id=1780216562]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -0.9000001, 1, 0.9)
-shape = SubResource("BoxShape3D_cti4x")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Tutorial_Room/_dev_doorway3/_wall_back_r" unique_id=1791273783]
-layers = 3
-mesh = SubResource("BoxMesh_mlo6p")
-
-[node name="_wall_roof" type="CollisionShape3D" parent="Tutorial_Room/_dev_doorway3" unique_id=281343674]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.05, 0)
-shape = SubResource("BoxShape3D_65s44")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Tutorial_Room/_dev_doorway3/_wall_roof" unique_id=863833505]
-layers = 3
-mesh = SubResource("BoxMesh_xtqac")
-
-[node name="_wall_floor" type="CollisionShape3D" parent="Tutorial_Room/_dev_doorway3" unique_id=1787855901]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.05, 0)
-shape = SubResource("BoxShape3D_25we5")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Tutorial_Room/_dev_doorway3/_wall_floor" unique_id=1007811424]
-layers = 3
-mesh = SubResource("BoxMesh_65s44")
-
-[node name="_dev_middle_b2" parent="Tutorial_Room" unique_id=1967695034 instance=ExtResource("4_2d0gr")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.39058685, 0, -3.1971784)
-
-[node name="Crouch_Points" type="CollisionShape3D" parent="Tutorial_Room" unique_id=1277853997]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.39058685, 1.05, 4.8028216)
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Tutorial_Room/Crouch_Points" unique_id=2028444985]
-layers = 3
-mesh = SubResource("BoxMesh_xtqac")
-
-[node name="_dev_doorway4" type="StaticBody3D" parent="Tutorial_Room" unique_id=1840478918]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 4.390587, 0, -3.1971784)
-
-[node name="_wall_back_l" type="CollisionShape3D" parent="Tutorial_Room/_dev_doorway4" unique_id=1688572749]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0.9, 1, 0.9)
-shape = SubResource("BoxShape3D_cti4x")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Tutorial_Room/_dev_doorway4/_wall_back_l" unique_id=401843952]
-layers = 3
-mesh = SubResource("BoxMesh_mlo6p")
-
-[node name="_wall_back_r" type="CollisionShape3D" parent="Tutorial_Room/_dev_doorway4" unique_id=90250278]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -0.9000001, 1, 0.9)
-shape = SubResource("BoxShape3D_cti4x")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Tutorial_Room/_dev_doorway4/_wall_back_r" unique_id=227274430]
-layers = 3
-mesh = SubResource("BoxMesh_mlo6p")
-
-[node name="_wall_roof" type="CollisionShape3D" parent="Tutorial_Room/_dev_doorway4" unique_id=1261411903]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.05, 0)
-shape = SubResource("BoxShape3D_65s44")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Tutorial_Room/_dev_doorway4/_wall_roof" unique_id=2091092943]
-layers = 3
-mesh = SubResource("BoxMesh_xtqac")
-
-[node name="_wall_floor" type="CollisionShape3D" parent="Tutorial_Room/_dev_doorway4" unique_id=1501866740]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.05, 0)
-shape = SubResource("BoxShape3D_25we5")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Tutorial_Room/_dev_doorway4/_wall_floor" unique_id=2002234482]
-layers = 3
-mesh = SubResource("BoxMesh_65s44")
-
 [node name="Torches" type="Node3D" parent="." unique_id=1073021904]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.37721205, 1, -2.0954456)
 
 [node name="TorchScont" parent="Torches" unique_id=1256554101 instance=ExtResource("10_wkpon")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0.22518706, 10.183968)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 1.2251871, -1.5430648)
 
 [node name="Buttons_&_PressurePlates" type="Node3D" parent="." unique_id=251072707]
 
 [node name="First_Button" parent="Buttons_&_PressurePlates" unique_id=1598172844 instance=ExtResource("11_kqxud")]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 1.2253826, 1, 9)
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 5.69701, 2, -3)
 
 [node name="Tutorial_Weight_Puzzle" parent="Buttons_&_PressurePlates" unique_id=2079007304 instance=ExtResource("13_22y2j")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.41749752, 0.048332393, -7)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.0175343, 1.0595207, -23.131546)
 weight_to_activate = 12.0
 
 [node name="Open_Level Door Gate" parent="Buttons_&_PressurePlates" unique_id=1926074976 instance=ExtResource("11_kqxud")]
@@ -554,24 +201,25 @@ transform = Transform3D(-1, 0, -2.9802322e-08, 0, 1, 0, 2.9802322e-08, 0, -1, 0.
 [node name="Gates" type="Node3D" parent="." unique_id=1968183095]
 
 [node name="First_Gate" parent="Gates" unique_id=1014394241 instance=ExtResource("12_iqvfj")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.37562752, 0, 1.5985558)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.0216956, 1, -9.93321)
 speed = 4.0
 
 [node name="Weight_Puzzle_Gate" parent="Gates" unique_id=1047793231 instance=ExtResource("12_iqvfj")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.3864329, 0, -7.9681745)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.9864693, 1, -24.09972)
 
 [node name="Lever_Gate" parent="Gates" unique_id=932569186 instance=ExtResource("12_iqvfj")]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 5.390748, 0, -3.19248)
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 13.997283, 1, -17.062824)
 
 [node name="Weighted Items" type="Node3D" parent="." unique_id=1772242532]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0.94546914, -13)
 
 [node name="TEST_Grabbable_item" parent="Weighted Items" unique_id=134365272 instance=ExtResource("13_2d0gr")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.23290205, 0.6459893, -6.6712904)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.8329387, 1.6459893, -22.802837)
 item_weight = 2
 
 [node name="TEST_Grabbable_item2" parent="Weighted Items" unique_id=1208973395 instance=ExtResource("13_2d0gr")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.767098, 0.6459893, -5.6712904)
-item_weight = 1
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.9840517, 0.6459893, -9.960543)
+item_weight = 3
 
 [node name="TEST_Grabbable_item5" parent="Weighted Items" unique_id=1779357604 instance=ExtResource("13_2d0gr")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.76709795, 0.6459893, -0.6712904)
@@ -592,6 +240,16 @@ item_weight = 1
 [node name="Urn3" parent="Weighted Items" unique_id=1308464607 instance=ExtResource("15_t0mv0")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0.44446087, 0)
 item_weight = 1
+
+[node name="GridMap" type="GridMap" parent="." unique_id=977673662]
+mesh_library = ExtResource("16_1ktrc")
+data = {
+"cells": PackedInt32Array(0, 0, 4, 0, 65535, 2, 0, 65534, 655373, 1, 65534, 1441794, 2, 65534, 3, 2, 65533, 2, 2, 65532, 2, 2, 65531, 2, 3, 65530, 1, 1, 65530, 1, 4, 65530, 1, 5, 65529, 1048577, 65535, 65529, 1441793, 65535, 65528, 1441793, 65535, 65527, 1441793, 5, 65530, 3, 65535, 65530, 1441795, 6, 65527, 1441804, 65535, 65526, 1441793, 65535, 65525, 655363, 0, 65524, 655363, 1, 65524, 655361, 5, 65526, 1048577, 5, 65524, 1048579, 5, 65525, 1048577, 4, 65524, 655361, 3, 65524, 655361, 2, 65523, 655362, 4, 65529, 655360, 3, 65529, 655360, 2, 65530, 655360, 2, 65529, 655360, 1, 65529, 655360, 0, 65529, 655360, 0, 65528, 655360, 0, 65527, 655360, 1, 65527, 655360, 1, 65528, 655360, 2, 65528, 655360, 3, 65528, 655360, 4, 65528, 655360, 5, 65527, 655360, 4, 65527, 655360, 3, 65527, 655360, 2, 65527, 655360, 1, 65526, 655360, 0, 65526, 655360, 2, 65526, 655360, 3, 65526, 655360, 4, 65526, 655360, 5, 65528, 1048577, 0, 65530, 1, 2, 65522, 655364, 3, 65525, 655360, 4, 65525, 655360, 2, 65524, 655360, 2, 65525, 655360, 1, 65525, 655360, 0, 65525, 655360)
+}
+metadata/_editor_floor_ = Vector3(0, 0, 0)
+
+[node name="player_test" parent="." unique_id=725727541 instance=ExtResource("9_d5tbl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 2, 1)
 
 [connection signal="on_activated" from="Buttons_&_PressurePlates/First_Button" to="Gates/First_Gate" method="open_gate"]
 [connection signal="on_change" from="Buttons_&_PressurePlates/Tutorial_Weight_Puzzle" to="Gates/Weight_Puzzle_Gate" method="open_gate"]
