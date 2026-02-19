@@ -18,6 +18,8 @@ extends Node
 
 var is_moving: bool
 var target_pos: Vector3
+const SPEED_MAX: float = 4
+const SPEED_CROUCH: float = 2.5
 var speed: float = 4
 var dist_to_target: float
 
@@ -92,6 +94,9 @@ func movement_input() -> void:
 		on_move.emit(Vector3.RIGHT, target_pos)
 		on_move_right.emit(target_pos)
 	
+	if Input.is_action_just_pressed("toggle_crouch") and dist_to_target <= 0.6:
+		toggle_crouch()
+	
 	target_pos.round() 
 	target_pos.y = player.global_position.y
 	compass.global_position = target_pos
@@ -108,7 +113,7 @@ func movement(delta: float) -> void:
 		player.global_position.z = lerpf(player.global_position.z, target_pos.z, weight)
 		
 		if floor_detector.get_collision_point():
-			player.global_position.y = floor_detector.get_collision_point().y + player.PLAYER_HEIGHT
+			player.global_position.y = floor_detector.get_collision_point().y + player.current_player_height
 		
 		t_bob += delta * ((target_pos - player.global_position).length() * speed)
 		var bob := _headbob(t_bob)
@@ -164,6 +169,30 @@ func rotate(delta: float):
 	player.rotation.y = lerp_angle(player.rotation.y, target_rotation, weight)
 
 # ↑ Rotating Stuff ↑
+# --------------------------------------------------------------------------------------------------
+# ↓ Crouching Stuff ↓
+
+var is_crouching: bool
+
+func toggle_crouch() -> void:
+	if is_crouching: uncrouch()
+	else: crouch()
+
+func crouch() -> void:
+	is_crouching = true
+	player.current_player_height = player.PLAYER_HEIGHT_CROUCHED
+	speed = SPEED_CROUCH
+	if floor_detector.get_collision_point():
+			player.global_position.y = floor_detector.get_collision_point().y + player.current_player_height
+
+func uncrouch() -> void:
+	is_crouching = false
+	player.current_player_height = player.PLAYER_HEIGHT
+	speed = SPEED_MAX
+	if floor_detector.get_collision_point():
+			player.global_position.y = floor_detector.get_collision_point().y + player.current_player_height
+
+# ↑ Crouching Stuff ↑
 # --------------------------------------------------------------------------------------------------
 # ↓ Grabbing Stuff ↓
 

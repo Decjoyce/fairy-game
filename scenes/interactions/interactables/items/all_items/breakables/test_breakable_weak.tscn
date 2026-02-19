@@ -1,0 +1,77 @@
+[gd_scene format=3 uid="uid://7vsus2skkd52"]
+
+[ext_resource type="Script" uid="uid://s5cfdf85lm5g" path="res://scenes/interactions/interactables/items/grabbable_item.gd" id="1_0kpif"]
+[ext_resource type="Script" uid="uid://cqhq7vrwiw3m6" path="res://scenes/interactions/interactables/items/item_types/item_type.gd" id="2_naygb"]
+[ext_resource type="Texture2D" uid="uid://hfd6qbmx87rr" path="res://assets/__not_ours_dontship/cat-standing-on-a-chair-leoch-studio.png" id="3_jk2j7"]
+[ext_resource type="AudioStream" uid="uid://dutddyikwuiut" path="res://assets/audio/sfx/combat/misc/hittingsound_shorter.wav" id="4_16uba"]
+[ext_resource type="AudioStream" uid="uid://bpe8oyerrhdif" path="res://assets/__not_ours_dontship/lego-breaking.mp3" id="5_kg2dy"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_llc7q"]
+
+[sub_resource type="Resource" id="Resource_13cxb"]
+script = ExtResource("2_naygb")
+item_type = 4
+metadata/_custom_type_script = "uid://cqhq7vrwiw3m6"
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_llc7q"]
+size = Vector3(0.5, 0.5, 0.5)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_234jp"]
+size = Vector3(0.4, 0.4, 0.4)
+
+[sub_resource type="SphereMesh" id="SphereMesh_234jp"]
+radius = 0.25
+height = 0.5
+
+[node name="Breakable_Item_Weak" type="RigidBody3D" unique_id=577504107 node_paths=PackedStringArray("col", "grab_col", "destroyed_item", "destroyed_audio", "idle_graphics") groups=["debug_PickableObjects"]]
+collision_layer = 2
+axis_lock_angular_x = true
+axis_lock_angular_z = true
+mass = 0.5
+physics_material_override = SubResource("PhysicsMaterial_llc7q")
+gravity_scale = 0.8
+contact_monitor = true
+max_contacts_reported = 1
+script = ExtResource("1_0kpif")
+item_type = SubResource("Resource_13cxb")
+display_name = "Weak Breakable"
+col = NodePath("CollisionShape3D")
+grab_col = NodePath("Area3D/CollisionShape3D2")
+can_break = true
+break_force = 5.0
+destroyed_item = NodePath("Destroyed_Items")
+destroyed_audio = NodePath("Destroyed_Items/AudioPlayer_Break")
+idle_graphics = NodePath("Sprite3D")
+
+[node name="Area3D" type="Area3D" parent="." unique_id=1059278251]
+collision_layer = 2
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="Area3D" unique_id=1083576176]
+shape = SubResource("BoxShape3D_llc7q")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1871719920]
+shape = SubResource("BoxShape3D_234jp")
+debug_color = Color(0.8442249, 0.37985525, 5.7756904e-07, 0.41960785)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=583092534]
+visible = false
+layers = 4
+mesh = SubResource("SphereMesh_234jp")
+
+[node name="Sprite3D" type="Sprite3D" parent="." unique_id=1576808071]
+layers = 4
+modulate = Color(0, 1, 1, 1)
+pixel_size = 0.0005175
+billboard = 2
+texture = ExtResource("3_jk2j7")
+
+[node name="AudioPlayer" type="AudioStreamPlayer3D" parent="." unique_id=2015591261]
+stream = ExtResource("4_16uba")
+
+[node name="RayCast3D" type="RayCast3D" parent="." unique_id=627285529]
+
+[node name="Destroyed_Items" type="Node3D" parent="." unique_id=431472770]
+
+[node name="AudioPlayer_Break" type="AudioStreamPlayer3D" parent="Destroyed_Items" unique_id=1153811370]
+stream = ExtResource("5_kg2dy")
+max_distance = 4.0

@@ -1,4 +1,4 @@
-[gd_scene load_steps=106 format=3 uid="uid://bq86osdembn58"]
+[gd_scene format=3 uid="uid://bq86osdembn58"]
 
 [ext_resource type="Script" uid="uid://io22wsbhy73f" path="res://scenes/_player/player_test.gd" id="1_e0b2u"]
 [ext_resource type="Script" uid="uid://by88p7ijbixe5" path="res://scenes/_player/player_movement.gd" id="2_3jgj8"]
@@ -664,40 +664,38 @@ shader_parameter/contrast_boost = 1.15
 shader_parameter/saturation = 0.7650000363375
 shader_parameter/new_color = Color(1, 1, 1, 1)
 
-[node name="player_test" type="Node3D" node_paths=PackedStringArray("stats_ui", "combat", "death_ui") groups=["Player"]]
+[node name="player_test" type="Node3D" unique_id=725727541 node_paths=PackedStringArray("stats_ui", "combat", "death_ui") groups=["Player"]]
 script = ExtResource("1_e0b2u")
 stats_ui = NodePath("Stats/UI")
 combat = NodePath("Combat")
 death_ui = NodePath("DeathUI")
 
-[node name="Collision" type="Area3D" parent="." groups=["Player"]]
+[node name="Collision" type="Area3D" parent="." unique_id=457696524 groups=["Player"]]
 collision_layer = 3
 monitoring = false
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Collision"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Collision" unique_id=1237718893]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.35000002, 0)
 shape = SubResource("CapsuleShape3D_3jgj8")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1223838266]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.375, 0)
 visible = false
 material_override = SubResource("StandardMaterial3D_1snfn")
 mesh = SubResource("CapsuleMesh_1snfn")
 
-[node name="Camera3D" type="Camera3D" parent="." groups=["MainCamera"]]
+[node name="Camera3D" type="Camera3D" parent="." unique_id=321688860 groups=["MainCamera"]]
 current = true
 fov = 100.0
 
-[node name="DeathAnimationPlayer" type="AnimationPlayer" parent="Camera3D"]
-libraries = {
-&"": SubResource("AnimationLibrary_uus6m")
-}
+[node name="DeathAnimationPlayer" type="AnimationPlayer" parent="Camera3D" unique_id=482069440]
+libraries/ = SubResource("AnimationLibrary_uus6m")
 
-[node name="FloorDetector" type="RayCast3D" parent="."]
+[node name="FloorDetector" type="RayCast3D" parent="." unique_id=1907868752]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
 target_position = Vector3(0, -5, 0)
 
-[node name="EnemyChecker" type="RayCast3D" parent="."]
+[node name="EnemyChecker" type="RayCast3D" parent="." unique_id=784899576]
 target_position = Vector3(0, 0, -1.25)
 collision_mask = 131072
 collide_with_areas = true
@@ -706,7 +704,7 @@ debug_shape_custom_color = Color(0.8729805, 0, 0, 1)
 script = ExtResource("2_s1g5w")
 metadata/_custom_type_script = "uid://jxohgxu3vshf"
 
-[node name="Movement" type="Node" parent="." node_paths=PackedStringArray("player", "interact", "floor_detector")]
+[node name="Movement" type="Node" parent="." unique_id=1505445123 node_paths=PackedStringArray("player", "interact", "floor_detector")]
 script = ExtResource("2_3jgj8")
 player = NodePath("..")
 interact = NodePath("../Interaction")
@@ -715,50 +713,50 @@ BOB_FREQ = 5.0
 BOB_AMP = 0.04
 metadata/_custom_type_script = "uid://by88p7ijbixe5"
 
-[node name="Compass" type="Node3D" parent="Movement"]
+[node name="Compass" type="Node3D" parent="Movement" unique_id=1229802818]
 
-[node name="North" type="ShapeCast3D" parent="Movement/Compass"]
+[node name="North" type="ShapeCast3D" parent="Movement/Compass" unique_id=1707693672]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.1, -0.55)
 shape = SubResource("BoxShape3D_3jgj8")
 target_position = Vector3(0, 0, 0)
 debug_shape_custom_color = Color(0.32798007, 0.4496488, 0.99998206, 1)
 
-[node name="East" type="ShapeCast3D" parent="Movement/Compass"]
+[node name="East" type="ShapeCast3D" parent="Movement/Compass" unique_id=1092941304]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.55, -0.1, 0)
 shape = SubResource("BoxShape3D_xwuyi")
 target_position = Vector3(0, 0, 0)
 debug_shape_custom_color = Color(1, 0.64589864, 0.7194342, 1)
 
-[node name="South" type="ShapeCast3D" parent="Movement/Compass"]
+[node name="South" type="ShapeCast3D" parent="Movement/Compass" unique_id=538684290]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.1, 0.55)
 shape = SubResource("BoxShape3D_3jgj8")
 target_position = Vector3(0, 0, 0)
 debug_shape_custom_color = Color(1, 0.8018582, 0.08261081, 1)
 
-[node name="West" type="ShapeCast3D" parent="Movement/Compass"]
+[node name="West" type="ShapeCast3D" parent="Movement/Compass" unique_id=69390728]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.55, -0.1, 0)
 shape = SubResource("BoxShape3D_xwuyi")
 target_position = Vector3(0, 0, 0)
 debug_shape_custom_color = Color(0, 0.79870725, 0.7254093, 1)
 
-[node name="FootstepAudio" type="AudioStreamPlayer3D" parent="."]
+[node name="FootstepAudio" type="AudioStreamPlayer3D" parent="." unique_id=1340962626]
 unique_name_in_owner = true
 stream = SubResource("AudioStreamRandomizer_gcklq")
 volume_db = 15.0
 bus = &"pl_footsteps"
 
-[node name="Interaction" parent="." node_paths=PackedStringArray("movement", "cam") instance=ExtResource("3_3jgj8")]
+[node name="Interaction" parent="." unique_id=336913977 node_paths=PackedStringArray("movement", "cam") instance=ExtResource("3_3jgj8")]
 movement = NodePath("../Movement")
 cam = NodePath("../Camera3D")
 
-[node name="Combat" type="Node" parent="." node_paths=PackedStringArray("stats_ui", "combat_hands", "stats", "incoming_attack_uis")]
+[node name="Combat" type="Node" parent="." unique_id=2004242347 node_paths=PackedStringArray("stats_ui", "combat_hands", "stats", "incoming_attack_uis")]
 script = ExtResource("12_gcklq")
 stats_ui = NodePath("../Stats/UI")
 combat_hands = [NodePath("CombatHand_Left"), NodePath("CombatHand_Right")]
 stats = NodePath("../Stats")
 incoming_attack_uis = [NodePath("Combat_UI/IncomingAttacks/R"), NodePath("Combat_UI/IncomingAttacks/BR"), NodePath("Combat_UI/IncomingAttacks/B"), NodePath("Combat_UI/IncomingAttacks/BL"), NodePath("Combat_UI/IncomingAttacks/L"), NodePath("Combat_UI/IncomingAttacks/TL"), NodePath("Combat_UI/IncomingAttacks/T"), NodePath("Combat_UI/IncomingAttacks/TR")]
 
-[node name="CombatHand_Left" type="Node" parent="Combat" node_paths=PackedStringArray("combat", "other_hand", "incoming_attack_uis", "my_stance", "anim_player", "block_audio_player")]
+[node name="CombatHand_Left" type="Node" parent="Combat" unique_id=1572011050 node_paths=PackedStringArray("combat", "other_hand", "incoming_attack_uis", "my_stance", "anim_player", "block_audio_player")]
 script = ExtResource("13_s1g5w")
 stringed_hand = "LEFT"
 combat = NodePath("..")
@@ -770,36 +768,34 @@ my_stance = NodePath("../Stance")
 anim_player = NodePath("AnimationPlayer")
 block_audio_player = NodePath("BlockSfx")
 
-[node name="Attack" type="Node" parent="Combat/CombatHand_Left"]
+[node name="Attack" type="Node" parent="Combat/CombatHand_Left" unique_id=1905678492]
 script = ExtResource("14_uus6m")
 not_player = false
 player_current_attack = ExtResource("12_uus6m")
 metadata/_custom_type_script = "uid://c27axnnaakeuo"
 
-[node name="Timer_Telegraph" type="Timer" parent="Combat/CombatHand_Left/Attack"]
+[node name="Timer_Telegraph" type="Timer" parent="Combat/CombatHand_Left/Attack" unique_id=1569925022]
 one_shot = true
 
-[node name="Timer_Attack" type="Timer" parent="Combat/CombatHand_Left/Attack"]
+[node name="Timer_Attack" type="Timer" parent="Combat/CombatHand_Left/Attack" unique_id=462743840]
 one_shot = true
 
-[node name="Timer_Recover" type="Timer" parent="Combat/CombatHand_Left/Attack"]
+[node name="Timer_Recover" type="Timer" parent="Combat/CombatHand_Left/Attack" unique_id=1555279854]
 one_shot = true
 
-[node name="AttackSFX" type="AudioStreamPlayer3D" parent="Combat/CombatHand_Left/Attack"]
+[node name="AttackSFX" type="AudioStreamPlayer3D" parent="Combat/CombatHand_Left/Attack" unique_id=1053604295]
 stream = ExtResource("31_5hwbc")
 
-[node name="Timer_Stagger" type="Timer" parent="Combat/CombatHand_Left"]
+[node name="Timer_Stagger" type="Timer" parent="Combat/CombatHand_Left" unique_id=385407835]
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Combat/CombatHand_Left"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Combat/CombatHand_Left" unique_id=1303034063]
 root_node = NodePath("../..")
-libraries = {
-&"": SubResource("AnimationLibrary_6jmgc")
-}
+libraries/ = SubResource("AnimationLibrary_6jmgc")
 
-[node name="BlockSfx" type="AudioStreamPlayer3D" parent="Combat/CombatHand_Left"]
+[node name="BlockSfx" type="AudioStreamPlayer3D" parent="Combat/CombatHand_Left" unique_id=742787071]
 stream = ExtResource("33_qxkv7")
 
-[node name="CombatHand_Right" type="Node" parent="Combat" node_paths=PackedStringArray("combat", "other_hand", "incoming_attack_uis", "my_stance", "anim_player", "block_audio_player")]
+[node name="CombatHand_Right" type="Node" parent="Combat" unique_id=1779203130 node_paths=PackedStringArray("combat", "other_hand", "incoming_attack_uis", "my_stance", "anim_player", "block_audio_player")]
 script = ExtResource("13_s1g5w")
 stringed_hand = "RIGHT"
 combat = NodePath("..")
@@ -812,36 +808,34 @@ my_stance = NodePath("../Stance")
 anim_player = NodePath("AnimationPlayer2")
 block_audio_player = NodePath("BlockSfx")
 
-[node name="Attack" type="Node" parent="Combat/CombatHand_Right"]
+[node name="Attack" type="Node" parent="Combat/CombatHand_Right" unique_id=1695675872]
 script = ExtResource("14_uus6m")
 not_player = false
 player_current_attack = ExtResource("12_uus6m")
 metadata/_custom_type_script = "uid://c27axnnaakeuo"
 
-[node name="Timer_Telegraph" type="Timer" parent="Combat/CombatHand_Right/Attack"]
+[node name="Timer_Telegraph" type="Timer" parent="Combat/CombatHand_Right/Attack" unique_id=286707761]
 one_shot = true
 
-[node name="Timer_Attack" type="Timer" parent="Combat/CombatHand_Right/Attack"]
+[node name="Timer_Attack" type="Timer" parent="Combat/CombatHand_Right/Attack" unique_id=1523017305]
 one_shot = true
 
-[node name="Timer_Recover" type="Timer" parent="Combat/CombatHand_Right/Attack"]
+[node name="Timer_Recover" type="Timer" parent="Combat/CombatHand_Right/Attack" unique_id=1435812154]
 one_shot = true
 
-[node name="AttackSFX" type="AudioStreamPlayer3D" parent="Combat/CombatHand_Right/Attack"]
+[node name="AttackSFX" type="AudioStreamPlayer3D" parent="Combat/CombatHand_Right/Attack" unique_id=1622616244]
 stream = ExtResource("31_5hwbc")
 
-[node name="Timer_Stagger" type="Timer" parent="Combat/CombatHand_Right"]
+[node name="Timer_Stagger" type="Timer" parent="Combat/CombatHand_Right" unique_id=1603957357]
 
-[node name="AnimationPlayer2" type="AnimationPlayer" parent="Combat/CombatHand_Right"]
+[node name="AnimationPlayer2" type="AnimationPlayer" parent="Combat/CombatHand_Right" unique_id=1199927879]
 root_node = NodePath("../..")
-libraries = {
-&"": SubResource("AnimationLibrary_dc5qm")
-}
+libraries/ = SubResource("AnimationLibrary_dc5qm")
 
-[node name="BlockSfx" type="AudioStreamPlayer3D" parent="Combat/CombatHand_Right"]
+[node name="BlockSfx" type="AudioStreamPlayer3D" parent="Combat/CombatHand_Right" unique_id=1772507460]
 stream = ExtResource("45_j3784")
 
-[node name="Combat_UI" type="Control" parent="Combat"]
+[node name="Combat_UI" type="Control" parent="Combat" unique_id=1807508483]
 visible = false
 layout_mode = 3
 anchors_preset = 15
@@ -853,7 +847,7 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 metadata/_edit_use_anchors_ = true
 
-[node name="UI_Hand_Left" type="Control" parent="Combat/Combat_UI"]
+[node name="UI_Hand_Left" type="Control" parent="Combat/Combat_UI" unique_id=276648123]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -861,7 +855,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="hand" type="TextureRect" parent="Combat/Combat_UI/UI_Hand_Left"]
+[node name="hand" type="TextureRect" parent="Combat/Combat_UI/UI_Hand_Left" unique_id=1363753981]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -871,7 +865,7 @@ grow_vertical = 2
 texture = ExtResource("17_oku8p")
 expand_mode = 1
 
-[node name="UI_Hand_Right" type="Control" parent="Combat/Combat_UI"]
+[node name="UI_Hand_Right" type="Control" parent="Combat/Combat_UI" unique_id=1982850933]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -879,7 +873,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="hand" type="TextureRect" parent="Combat/Combat_UI/UI_Hand_Right"]
+[node name="hand" type="TextureRect" parent="Combat/Combat_UI/UI_Hand_Right" unique_id=743696514]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -889,7 +883,7 @@ grow_vertical = 2
 texture = ExtResource("14_w8oqj")
 expand_mode = 1
 
-[node name="IncomingAttacks" type="Control" parent="Combat/Combat_UI"]
+[node name="IncomingAttacks" type="Control" parent="Combat/Combat_UI" unique_id=1618629546]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -897,7 +891,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="R" type="TextureRect" parent="Combat/Combat_UI/IncomingAttacks"]
+[node name="R" type="TextureRect" parent="Combat/Combat_UI/IncomingAttacks" unique_id=1769496666]
 visible = false
 modulate = Color(0.48764306, 0, 0.0039703054, 0.8784314)
 custom_minimum_size = Vector2(354, 354)
@@ -916,7 +910,7 @@ texture = ExtResource("50_7hjlp")
 expand_mode = 1
 metadata/_edit_use_anchors_ = true
 
-[node name="BR" type="TextureRect" parent="Combat/Combat_UI/IncomingAttacks"]
+[node name="BR" type="TextureRect" parent="Combat/Combat_UI/IncomingAttacks" unique_id=82427984]
 visible = false
 modulate = Color(0.48764306, 0, 0.0039703054, 0.8784314)
 custom_minimum_size = Vector2(1152, 647.9999)
@@ -934,7 +928,7 @@ scale = Vector2(0.31183955, 0.5108782)
 texture = ExtResource("51_qv24e")
 metadata/_edit_use_anchors_ = true
 
-[node name="B" type="TextureRect" parent="Combat/Combat_UI/IncomingAttacks"]
+[node name="B" type="TextureRect" parent="Combat/Combat_UI/IncomingAttacks" unique_id=1699527611]
 visible = false
 modulate = Color(0.48764306, 0, 0.0039703054, 0.8784314)
 layout_mode = 1
@@ -947,7 +941,7 @@ texture = ExtResource("51_qv24e")
 expand_mode = 1
 metadata/_edit_use_anchors_ = true
 
-[node name="BL" type="TextureRect" parent="Combat/Combat_UI/IncomingAttacks"]
+[node name="BL" type="TextureRect" parent="Combat/Combat_UI/IncomingAttacks" unique_id=1866994350]
 visible = false
 modulate = Color(0.48764306, 0, 0.0039703054, 0.8784314)
 custom_minimum_size = Vector2(1152, 647.9999)
@@ -966,7 +960,7 @@ texture = ExtResource("51_f0ma5")
 expand_mode = 1
 metadata/_edit_use_anchors_ = true
 
-[node name="L" type="TextureRect" parent="Combat/Combat_UI/IncomingAttacks"]
+[node name="L" type="TextureRect" parent="Combat/Combat_UI/IncomingAttacks" unique_id=1942376433]
 visible = false
 modulate = Color(0.48764306, 0, 0.0039703054, 0.8784314)
 custom_minimum_size = Vector2(1152, 648.00006)
@@ -985,7 +979,7 @@ texture = ExtResource("51_l4n3m")
 expand_mode = 1
 metadata/_edit_use_anchors_ = true
 
-[node name="TL" type="TextureRect" parent="Combat/Combat_UI/IncomingAttacks"]
+[node name="TL" type="TextureRect" parent="Combat/Combat_UI/IncomingAttacks" unique_id=1412517902]
 visible = false
 modulate = Color(0.48764306, 0, 0.0039703054, 0.8784314)
 custom_minimum_size = Vector2(1152, 647.9999)
@@ -1002,7 +996,7 @@ texture = ExtResource("51_ijyi7")
 expand_mode = 1
 metadata/_edit_use_anchors_ = true
 
-[node name="T" type="TextureRect" parent="Combat/Combat_UI/IncomingAttacks"]
+[node name="T" type="TextureRect" parent="Combat/Combat_UI/IncomingAttacks" unique_id=359860878]
 visible = false
 modulate = Color(0.48764306, 0, 0.0039703054, 0.8784314)
 layout_mode = 1
@@ -1014,7 +1008,7 @@ grow_vertical = 2
 expand_mode = 1
 metadata/_edit_use_anchors_ = true
 
-[node name="TR" type="TextureRect" parent="Combat/Combat_UI/IncomingAttacks"]
+[node name="TR" type="TextureRect" parent="Combat/Combat_UI/IncomingAttacks" unique_id=1073296159]
 visible = false
 modulate = Color(0.48764306, 0, 0.0039703054, 0.8784314)
 custom_minimum_size = Vector2(1152, 647.9999)
@@ -1033,16 +1027,16 @@ texture = ExtResource("51_j3cqb")
 expand_mode = 1
 metadata/_edit_use_anchors_ = true
 
-[node name="Timer" type="Timer" parent="Combat/Combat_UI/IncomingAttacks"]
+[node name="Timer" type="Timer" parent="Combat/Combat_UI/IncomingAttacks" unique_id=440269188]
 wait_time = 2.0
 one_shot = true
 
-[node name="Stance" type="Node" parent="Combat" node_paths=PackedStringArray("hands")]
+[node name="Stance" type="Node" parent="Combat" unique_id=748966111 node_paths=PackedStringArray("hands")]
 script = ExtResource("15_6jmgc")
 hands = [NodePath("../CombatHand_Left"), NodePath("../CombatHand_Right")]
 metadata/_custom_type_script = "uid://446bgqyk22na"
 
-[node name="Stats" type="Node" parent="." node_paths=PackedStringArray("health_bar", "death_anim", "hit_sfx", "who_owns", "stam_bar", "stam_sfx")]
+[node name="Stats" type="Node" parent="." unique_id=1718418828 node_paths=PackedStringArray("health_bar", "death_anim", "hit_sfx", "who_owns", "stam_bar", "stam_sfx")]
 script = ExtResource("4_fhpxp")
 health_bar = NodePath("UI/Border/HealthBar")
 death_anim = NodePath("../Camera3D/DeathAnimationPlayer")
@@ -1053,10 +1047,10 @@ stamina_regen_rate = 20.0
 stam_sfx = NodePath("../StamSfx")
 metadata/_custom_type_script = "uid://46pp7aerorca"
 
-[node name="Timer" type="Timer" parent="Stats"]
+[node name="Timer" type="Timer" parent="Stats" unique_id=486626692]
 one_shot = true
 
-[node name="UI" type="Control" parent="Stats"]
+[node name="UI" type="Control" parent="Stats" unique_id=668554115]
 visible = false
 layout_mode = 3
 anchors_preset = 15
@@ -1066,7 +1060,7 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 
-[node name="Border" type="TextureRect" parent="Stats/UI"]
+[node name="Border" type="TextureRect" parent="Stats/UI" unique_id=666045793]
 custom_minimum_size = Vector2(365, 73)
 layout_mode = 1
 anchors_preset = -1
@@ -1079,7 +1073,7 @@ texture = ExtResource("5_bfirj")
 expand_mode = 1
 metadata/_edit_use_anchors_ = true
 
-[node name="HealthBar" type="ProgressBar" parent="Stats/UI/Border"]
+[node name="HealthBar" type="ProgressBar" parent="Stats/UI/Border" unique_id=1941502162]
 show_behind_parent = true
 layout_mode = 0
 anchor_left = 0.17534247
@@ -1091,7 +1085,7 @@ value = 100.0
 show_percentage = false
 metadata/_edit_use_anchors_ = true
 
-[node name="StamBar" type="ProgressBar" parent="Stats/UI/Border"]
+[node name="StamBar" type="ProgressBar" parent="Stats/UI/Border" unique_id=1145080506]
 show_behind_parent = true
 layout_mode = 1
 anchors_preset = -1
@@ -1104,16 +1098,16 @@ value = 100.0
 show_percentage = false
 metadata/_edit_use_anchors_ = true
 
-[node name="HitSfx" type="AudioStreamPlayer3D" parent="."]
+[node name="HitSfx" type="AudioStreamPlayer3D" parent="." unique_id=1207998084]
 stream = ExtResource("58_svbpy")
 pitch_scale = 0.97
 bus = &"items"
 
-[node name="StamSfx" type="AudioStreamPlayer3D" parent="."]
+[node name="StamSfx" type="AudioStreamPlayer3D" parent="." unique_id=965614490]
 stream = ExtResource("7_nbsyt")
 bus = &"pl_footsteps"
 
-[node name="DeathUI" type="Control" parent="."]
+[node name="DeathUI" type="Control" parent="." unique_id=201181463]
 visible = false
 layout_mode = 3
 anchors_preset = 15
@@ -1122,7 +1116,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="TextureRect" type="TextureRect" parent="DeathUI"]
+[node name="TextureRect" type="TextureRect" parent="DeathUI" unique_id=1125980285]
 modulate = Color(0.5136133, 0.0005868161, 0.00032151342, 0.3372549)
 layout_mode = 1
 anchors_preset = 15
@@ -1132,7 +1126,7 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = SubResource("CanvasTexture_gcklq")
 
-[node name="Button" type="Button" parent="DeathUI"]
+[node name="Button" type="Button" parent="DeathUI" unique_id=1751689764]
 visible = false
 layout_mode = 1
 anchors_preset = 7
@@ -1148,7 +1142,7 @@ grow_horizontal = 2
 grow_vertical = 0
 text = "Return To Menu"
 
-[node name="ColorRect" type="ColorRect" parent="DeathUI"]
+[node name="ColorRect" type="ColorRect" parent="DeathUI" unique_id=426420072]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -1157,19 +1151,19 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 0)
 
-[node name="OmniLight3D" type="OmniLight3D" parent="."]
+[node name="OmniLight3D" type="OmniLight3D" parent="." unique_id=1178815366]
 light_color = Color(0.20314711, 0.27413306, 0.28956375, 1)
 light_energy = 0.3
 omni_range = 2.149
 
-[node name="PostProcessing" type="Node" parent="."]
+[node name="PostProcessing" type="Node" parent="." unique_id=1157661822]
 
-[node name="Sprite2D" type="Sprite2D" parent="PostProcessing"]
+[node name="Sprite2D" type="Sprite2D" parent="PostProcessing" unique_id=359931708]
 
-[node name="CanvasLayer" type="CanvasLayer" parent="PostProcessing"]
+[node name="CanvasLayer" type="CanvasLayer" parent="PostProcessing" unique_id=274380558]
 layer = 0
 
-[node name="ColorRect" type="ColorRect" parent="PostProcessing/CanvasLayer"]
+[node name="ColorRect" type="ColorRect" parent="PostProcessing/CanvasLayer" unique_id=1334518288]
 material = SubResource("ShaderMaterial_52e8e")
 anchors_preset = 15
 anchor_right = 1.0

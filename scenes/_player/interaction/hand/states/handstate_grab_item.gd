@@ -144,9 +144,10 @@ func grabbing() -> void:
 	#if grabbed_item is Torch:
 		#if hand_controller.get_screen_position().x < player_interact.size.x * 0.2 or hand_controller.get_screen_position().x > player_interact.size.x * 0.8:
 			#if !item_at_edge_of_screen:
-				#grabbed_item.rotation_degrees.z = -5 * hand_controller.hand_type_rotation_mult
+				##grabbed_item.rotation_degrees.z = -5 * hand_controller.hand_type_rotation_mult
+				#grabbed_item.rotation_degrees.z = -grabbed_item.throwing_rotation * hand_controller.hand_type_rotation_mult
 				#item_at_edge_of_screen = true
-				#hand_controller.anim_change_idle_anim("hand_prompt_lever")
+				#hand_controller.anim_change_idle_anim("hand_torch_side")
 		#else:
 			#if item_at_edge_of_screen:
 				#grabbed_item.rotation.z = grabbed_item.grabbed_rotation * hand_controller.hand_type_rotation_mult

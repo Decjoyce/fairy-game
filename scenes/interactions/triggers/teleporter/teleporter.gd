@@ -13,3 +13,7 @@ func _teleport_entity(area: Area3D) -> void:
 		if area.get_parent() is PlayerTest:
 			var p = area.get_parent() as PlayerTest
 			p.movement.teleport_player(out_pos)
+
+func teleport_player(sig: float) -> void:
+	Debug.player.movement.teleport_player(out_pos)
+	#Debug.player.interaction.force_stop_interacting()

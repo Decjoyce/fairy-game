@@ -1,3 +1,4 @@
+@icon("res://assets/_editor_icons/icon_pressureplate.svg")
 class_name PressurePlate
 extends Node3D
 

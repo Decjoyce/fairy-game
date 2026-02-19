@@ -44,13 +44,13 @@ func _process(delta: float) -> void:
 		var percentage_complete = clamp(time_since_start / speed, 0, 1)
 		#prints(length_to_complete, percentage_complete)
 		
-		graphics.position.y = plate_lerp(_start_position, _end_position, percentage_complete)
+		graphics.position.y = gate_lerp(_start_position, _end_position, percentage_complete)
 		
 		if percentage_complete >= 1:
 			is_opening = false
 			#time_since_start = 0
 
-func plate_lerp(start: float, finish: float, percentage: float):
+func gate_lerp(start: float, finish: float, percentage: float):
 	var _percentage = clampf(percentage, 0.0, 1.0)
 	return (1-_percentage) * start + _percentage * finish
 
