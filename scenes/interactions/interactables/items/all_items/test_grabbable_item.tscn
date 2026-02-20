@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://dfe565flkjwxt"]
+[gd_scene format=3 uid="uid://dfe565flkjwxt"]
 
 [ext_resource type="Script" uid="uid://s5cfdf85lm5g" path="res://scenes/interactions/interactables/items/grabbable_item.gd" id="1_llc7q"]
 [ext_resource type="Texture2D" uid="uid://fn4v0r2yystc" path="res://icon.svg" id="2_3c3r3"]
@@ -21,7 +21,7 @@ size = Vector3(0.4, 0.4, 0.4)
 radius = 0.25
 height = 0.5
 
-[node name="TEST_Grabbable_item" type="RigidBody3D" node_paths=PackedStringArray("col", "grab_col", "idle_graphics") groups=["debug_PickableObjects"]]
+[node name="TEST_Grabbable_item" type="RigidBody3D" unique_id=1410329549 node_paths=PackedStringArray("col", "grab_col", "idle_graphics") groups=["PERSISTENT", "debug_PickableObjects"]]
 collision_layer = 2
 axis_lock_angular_x = true
 axis_lock_angular_z = true
@@ -36,31 +36,31 @@ col = NodePath("CollisionShape3D")
 grab_col = NodePath("Area3D/CollisionShape3D2")
 idle_graphics = NodePath("Sprite3D")
 
-[node name="Area3D" type="Area3D" parent="."]
+[node name="Area3D" type="Area3D" parent="." unique_id=168612997]
 collision_layer = 2
 
-[node name="CollisionShape3D2" type="CollisionShape3D" parent="Area3D"]
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="Area3D" unique_id=488463436]
 shape = SubResource("BoxShape3D_llc7q")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=411077916]
 shape = SubResource("BoxShape3D_234jp")
 debug_color = Color(0.8442249, 0.37985525, 5.7756904e-07, 0.41960785)
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=250005442]
 visible = false
 layers = 4
 mesh = SubResource("SphereMesh_234jp")
 
-[node name="Sprite3D" type="Sprite3D" parent="."]
+[node name="Sprite3D" type="Sprite3D" parent="." unique_id=1854963383]
 layers = 4
 pixel_size = 0.003
 billboard = 2
 texture = ExtResource("2_3c3r3")
 
-[node name="AudioPlayer" type="AudioStreamPlayer3D" parent="."]
+[node name="AudioPlayer" type="AudioStreamPlayer3D" parent="." unique_id=301494796]
 stream = ExtResource("4_yadgr")
 bus = &"items"
 
-[node name="RayCast3D" type="RayCast3D" parent="."]
+[node name="RayCast3D" type="RayCast3D" parent="." unique_id=1796343794]
 target_position = Vector3(0, -0.4, 0)
 hit_from_inside = true

@@ -50,6 +50,7 @@
 [ext_resource type="PackedScene" uid="uid://uf4k7k7pxj86" path="res://scenes/_levels/_palettes/__dev/source/open/dev_open_end.tscn" id="45_l1j80"]
 [ext_resource type="Script" uid="uid://bcl2qlj5bu34x" path="res://scenes/interactions/receivers/_logic/signal_converter/converter_bool.gd" id="45_n5cca"]
 [ext_resource type="PackedScene" uid="uid://ci2extimpt5xl" path="res://scenes/interactions/interactables/items/all_items/breakables/item_urn_key.tscn" id="47_p0tt5"]
+[ext_resource type="PackedScene" uid="uid://dbvkujqn4ge1b" path="res://scripts/saving/save_game_handler.tscn" id="51_p0tt5"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_3wul1"]
 
@@ -551,7 +552,7 @@ specific_item_to_drop = ExtResource("43_wchr0")
 item_type = 4
 metadata/_custom_type_script = "uid://beaf3digx88d0"
 
-[node name="Playground_Interactions" type="Node3D" unique_id=1592069120]
+[node name="Playground_Interactions" type="Node3D" unique_id=1592069120 groups=["mainscenetest"]]
 
 [node name="player_test" parent="." unique_id=87981919 instance=ExtResource("2_3vnxs")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
@@ -904,22 +905,22 @@ mesh = SubResource("SphereMesh_hsji5")
 [node name="In" type="Node3D" parent="Bin/Room_Animation/Teleporter" unique_id=1913809859]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.999, -1)
 
-[node name="TEST_Grabbable_item" parent="Bin/Room_Animation" unique_id=1816743248 instance=ExtResource("16_3wul1")]
+[node name="TEST_Grabbable_item" parent="Bin/Room_Animation" unique_id=1816743248 groups=["PERSISTENT"] instance=ExtResource("16_3wul1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0.3, -2)
 item_type = SubResource("Resource_6a6ye")
 item_weight = 1
 
-[node name="TEST_Grabbable_item2" parent="Bin/Room_Animation" unique_id=247412980 instance=ExtResource("16_3wul1")]
+[node name="TEST_Grabbable_item2" parent="Bin/Room_Animation" unique_id=247412980 groups=["PERSISTENT"] instance=ExtResource("16_3wul1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0.3, 0)
 item_type = SubResource("Resource_6a6ye")
 item_weight = 1
 
-[node name="TEST_Grabbable_item3" parent="Bin/Room_Animation" unique_id=2100105720 instance=ExtResource("16_3wul1")]
+[node name="TEST_Grabbable_item3" parent="Bin/Room_Animation" unique_id=2100105720 groups=["PERSISTENT"] instance=ExtResource("16_3wul1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0.3, 1)
 item_type = SubResource("Resource_6a6ye")
 item_weight = 1
 
-[node name="TEST_Grabbable_item4" parent="Bin/Room_Animation" unique_id=2076711991 instance=ExtResource("16_3wul1")]
+[node name="TEST_Grabbable_item4" parent="Bin/Room_Animation" unique_id=2076711991 groups=["PERSISTENT"] instance=ExtResource("16_3wul1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0.3, -3)
 item_type = SubResource("Resource_6a6ye")
 item_weight = 1
@@ -1119,7 +1120,7 @@ mesh = SubResource("SphereMesh_hsji5")
 [node name="In" type="Node3D" parent="Bin/Room_Interacting_old/Teleporter" unique_id=1824616512]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.999, -1)
 
-[node name="TEST_Grabbable_item" parent="Bin/Room_Interacting_old" unique_id=403185921 instance=ExtResource("16_3wul1")]
+[node name="TEST_Grabbable_item" parent="Bin/Room_Interacting_old" unique_id=403185921 groups=["PERSISTENT"] instance=ExtResource("16_3wul1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0.4, -1)
 item_weight = 2
 
@@ -1939,7 +1940,7 @@ to interact
 font_size = 19
 autowrap_mode = 1
 
-[node name="TEST_Grabbable_item" parent="Room_Interactions/Button_Room/Sec_1_b" unique_id=850033198 instance=ExtResource("16_3wul1")]
+[node name="TEST_Grabbable_item" parent="Room_Interactions/Button_Room/Sec_1_b" unique_id=850033198 groups=["PERSISTENT"] instance=ExtResource("16_3wul1")]
 transform = Transform3D(1.1924868e-08, 0, 1, 0, 1, 0, -1, 0, 1.1924868e-08, 0.049999237, -0.39999998, -0.84999704)
 
 [node name="Sec_2_a" type="Node3D" parent="Room_Interactions/Button_Room" unique_id=1291428797]
@@ -2303,7 +2304,7 @@ mesh = SubResource("BoxMesh_o5rkc")
 [node name="Button2" parent="Room_Items/Sections/Sec_Default/But_switch" unique_id=1119245790 groups=["Interactables"] instance=ExtResource("10_h40wo")]
 transform = Transform3D(-4.371138e-08, 0, 1, 0, 1, 0, -1, 0, -4.371138e-08, 0.90000045, 0.6999992, 1.5)
 
-[node name="TEST_Grabbable_item" parent="Room_Items/Sections/Sec_Default" unique_id=1008805268 instance=ExtResource("16_3wul1")]
+[node name="TEST_Grabbable_item" parent="Room_Items/Sections/Sec_Default" unique_id=1008805268 groups=["PERSISTENT"] instance=ExtResource("16_3wul1")]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 1.9073486e-06, 0.4, 2.299999)
 
 [node name="But_SpawnRanItem" type="Node3D" parent="Room_Items/Sections/Sec_Default" unique_id=1025660281]
@@ -2397,7 +2398,7 @@ font_size = 52
 [node name="Items" type="Node3D" parent="Room_Items/Sections/Sec_Vessel" unique_id=200875150]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 0, 0, 0)
 
-[node name="drinkvessel" parent="Room_Items/Sections/Sec_Vessel/Items" unique_id=1354406032 instance=ExtResource("35_15de5")]
+[node name="drinkvessel" parent="Room_Items/Sections/Sec_Vessel/Items" unique_id=1354406032 groups=["PERSISTENT"] instance=ExtResource("35_15de5")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 1, -2.3841858e-07)
 
 [node name="Sec_Breakable" type="Node3D" parent="Room_Items/Sections" unique_id=509965618]
@@ -2545,13 +2546,13 @@ font_size = 52
 [node name="Urn" parent="Room_Items/Sections/Sec_Breakable/Items" unique_id=1891994863 instance=ExtResource("35_7ntu8")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0.39999998, 1.5)
 
-[node name="Breakable_Item_Weak" parent="Room_Items/Sections/Sec_Breakable/Items" unique_id=577504107 instance=ExtResource("41_leo15")]
+[node name="Breakable_Item_Weak" parent="Room_Items/Sections/Sec_Breakable/Items" unique_id=577504107 groups=["PERSISTENT"] instance=ExtResource("41_leo15")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.6999989, 0.70000005, 1.7)
 
-[node name="Breakable_Item_Mid" parent="Room_Items/Sections/Sec_Breakable/Items" unique_id=1828156528 instance=ExtResource("41_3agfk")]
+[node name="Breakable_Item_Mid" parent="Room_Items/Sections/Sec_Breakable/Items" unique_id=1828156528 groups=["PERSISTENT"] instance=ExtResource("41_3agfk")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.6999989, 0.70000005, 3.6999998)
 
-[node name="Breakable_Item_Strong" parent="Room_Items/Sections/Sec_Breakable/Items" unique_id=1366129378 instance=ExtResource("28_po0fx")]
+[node name="Breakable_Item_Strong" parent="Room_Items/Sections/Sec_Breakable/Items" unique_id=1366129378 groups=["PERSISTENT"] instance=ExtResource("28_po0fx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.6999989, 0.70000005, 5.7)
 
 [node name="SpawnBreakable_Weak" type="Node3D" parent="Room_Items/Sections/Sec_Breakable" unique_id=506004405]
@@ -2769,6 +2770,9 @@ transform = Transform3D(0.7071069, 0, 0.70710665, 0, 1, 0, -0.70710665, 0, 0.707
 
 [node name="Button_Return4" parent="Room_Items/ReturnButtons" unique_id=920529653 groups=["Interactables"] instance=ExtResource("10_h40wo")]
 transform = Transform3D(0.7071066, 0, -0.70710695, 0, 1, 0, 0.70710695, 0, 0.7071066, -1.0292892, 0.9, 0.02928944)
+
+[node name="SaveGameHandler" parent="." unique_id=1850737233 node_paths=PackedStringArray("world_root") instance=ExtResource("51_p0tt5")]
+world_root = NodePath("..")
 
 [connection signal="area_entered" from="Bin/Room_Items/Teleporter/Trigger" to="Bin/Room_Items/Teleporter" method="_teleport_entity"]
 [connection signal="body_entered" from="Bin/Room_Items/Teleporter/Trigger" to="Bin/Room_Items/Teleporter" method="_teleport_item"]

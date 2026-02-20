@@ -46,6 +46,7 @@ var prev_velocity: Vector3
 @onready var raycast: RayCast3D = $RayCast3D
 
 var has_been_picked_up: bool
+var non_scene_native: bool
 
 func _ready() -> void:
 	interaction_type = InteractTypes.GRAB_ITEM
@@ -158,3 +159,28 @@ func break_item() -> void:
 			item_spawn_on_destroyed.enable_me()
 			item_spawn_on_destroyed.reparent(get_tree().current_scene)
 	queue_free()
+
+# ↑ Item Stuff ↑
+# --------------------------------------------------------------------------------------------------
+# ↓ Saving Stuff ↓
+
+func on_save_game(saved_data: Array[SavedData]):
+	var my_data = SavedDataItem.new()
+	my_data.position = global_position
+	my_data.scene_path = scene_file_path
+	my_data.velocity = rb.linear_velocity
+	
+	print("yo ho a pritaes life forme")
+	saved_data.append(my_data)
+
+func on_before_load_game() -> void:
+	get_parent().remove_child(self)
+	queue_free()
+
+func on_load_game(saved_data: SavedData):
+	global_position = saved_data.position
+	print("loading = " + name)
+	if saved_data is SavedDataItem: 
+		print("data is SavedDataItem")
+		var my_data: SavedDataItem = saved_data as SavedDataItem
+		rb.linear_velocity = my_data.velocity

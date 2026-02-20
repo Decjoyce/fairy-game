@@ -22,8 +22,25 @@ func interacting(sig: float = -1) -> void:
 func end_interact(sig: float = -1) -> void:
 	pass
 
+# ↑ Interacting Stuff ↑
+# --------------------------------------------------------------------------------------------------
+# ↓ Enabling Stuff ↓
+
 func enable() -> void:
 	pass
 
 func disable() -> void:
+	pass
+
+# ↑ Enabling Stuff ↑
+# --------------------------------------------------------------------------------------------------
+# ↓ Saving Stuff ↓
+
+func on_save_game(saved_data: Array[SavedData]) -> void:
+	pass
+
+func on_before_load_game() -> void:
+	pass
+
+func on_load_game(saved_data: SavedData) -> void:
 	pass
