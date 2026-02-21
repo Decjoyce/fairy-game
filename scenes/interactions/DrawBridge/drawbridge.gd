@@ -2,7 +2,7 @@ extends Node3D
 
 @export var drawbridge_lever: Lever
 @export var max_rotation: float = 180.0
-@export var rotation_speed: float = 2.0   # Higher = faster movement
+@export var rotation_speed: float = 0.5   # Higher = faster
 
 var target_rotation: float = 0.0
 
