@@ -59,7 +59,7 @@ func physics_update(_delta: float) -> void:
 func enter(previous_state_path: String, data := {}) -> void:
 	grabbed_item = hand_controller.hovering_interactable
 	
-	hand_controller.input_controls.enable_interact_action("Hold to Throw")
+	hand_controller.input_controls.enable_interact_action(tr("HOLD_TO_THROW"))
 	
 	offset_og_pos = offset_helper.position
 	
@@ -207,7 +207,7 @@ func begin_charge() -> void:
 	hand_controller.anim_override_current_animation("a_hand_grab_item_charge", true)
 	hand_controller.anim_change_idle_anim("a_hand_grab_item_charge")
 	grabbed_item.rotation_degrees.z = -grabbed_item.throwing_rotation * hand_controller.hand_type_rotation_mult
-	hand_controller.input_controls.enable_interact_action("Release to Throw")
+	hand_controller.input_controls.enable_interact_action(tr("RELEASE_TO_THROW"))
 	
 func charging(_delta: float) -> void:
 	if !is_charging: return
