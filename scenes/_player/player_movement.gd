@@ -12,18 +12,25 @@ extends Node
 @onready var ray_west: ShapeCast3D = $Compass/West ## Checks if player can move left
 @export var floor_detector: RayCast3D ## Checks if player can move left
 
+@export var disable_gravity: bool = false
+
 # ↑ General Stuff ↑
 # --------------------------------------------------------------------------------------------------
 # ↓ Moving Stuff ↓
 
 var is_moving: bool
 var target_pos: Vector3
-const SPEED_MAX: float = 4
+const SPEED_MAX: float = 4.0
 const SPEED_CROUCH: float = 2.5
 var speed: float = 4
+
+const FALL_SPEED: float = 10.0
+var current_fall_speed: float = 0
+var start_fall_height: float = 0
+
 var dist_to_target: float
 
-enum MoveDirections {NOT_MOVING, VERTICAL, HORIZONTAL}
+enum MoveDirections {NOT_MOVING, VERTICAL, HORIZONTAL, FALLING}
 var current_direction: MoveDirections
 
 signal on_move(direction: Vector2, target_position: Vector3)
@@ -103,6 +110,23 @@ func movement_input() -> void:
 
 func movement(delta: float) -> void:
 	target_pos.round() 
+	
+	#print(floor_detector.is_colliding())
+	
+	if !disable_gravity and !floor_detector.is_colliding():
+		if current_direction != MoveDirections.FALLING:
+			current_direction = MoveDirections.FALLING
+			start_fall_height = player.global_position.y
+		current_fall_speed = clampf(current_fall_speed + 4, 0.1, FALL_SPEED)
+		player.global_position.y -= current_fall_speed * delta
+		
+	elif current_direction == MoveDirections.FALLING:
+		if abs(player.global_position.y - start_fall_height) >= 4:
+			player.stats.take_damage(10000)
+		player.global_position.y = floor_detector.get_collision_point().y + player.current_player_height
+		current_direction = MoveDirections.NOT_MOVING
+		current_fall_speed = 0
+	
 	target_pos.y = player.global_position.y
 	dist_to_target = player.global_position.distance_to(target_pos)
 	
@@ -112,7 +136,7 @@ func movement(delta: float) -> void:
 		player.global_position.x = lerpf(player.global_position.x, target_pos.x, weight)
 		player.global_position.z = lerpf(player.global_position.z, target_pos.z, weight)
 		
-		if floor_detector.get_collision_point():
+		if floor_detector.is_colliding():
 			player.global_position.y = floor_detector.get_collision_point().y + player.current_player_height
 		
 		t_bob += delta * ((target_pos - player.global_position).length() * speed)
@@ -129,25 +153,25 @@ func check_can_move_up() -> bool:
 	if Debug.noclip_enabled: return true
 	if check_grabbed_obj_direction(0): return false
 	ray_north.force_shapecast_update()
-	return !ray_north.is_colliding() and (dist_to_target <= 0.6 or current_direction != MoveDirections.HORIZONTAL)
+	return !ray_north.is_colliding() and (dist_to_target <= 0.6 or current_direction != MoveDirections.HORIZONTAL) and current_direction != MoveDirections.FALLING
 
 func check_can_move_down() -> bool:
 	if Debug.noclip_enabled: return true
 	if check_grabbed_obj_direction(1): return false
 	ray_south.force_shapecast_update()
-	return !ray_south.is_colliding() and (dist_to_target <= 0.6 or current_direction != MoveDirections.HORIZONTAL)
+	return !ray_south.is_colliding() and (dist_to_target <= 0.6 or current_direction != MoveDirections.HORIZONTAL) and current_direction != MoveDirections.FALLING
 
 func check_can_move_left() -> bool:
 	if Debug.noclip_enabled: return true
 	if check_grabbed_obj_direction(2): return false
 	ray_west.force_shapecast_update()
-	return !ray_west.is_colliding() and (dist_to_target <= 0.6 or current_direction != MoveDirections.VERTICAL)
+	return !ray_west.is_colliding() and (dist_to_target <= 0.6 or current_direction != MoveDirections.VERTICAL) and current_direction != MoveDirections.FALLING
 
 func check_can_move_right() -> bool:
 	if Debug.noclip_enabled: return true
 	if check_grabbed_obj_direction(3): return false
 	ray_east.force_shapecast_update()
-	return !ray_east.is_colliding() and (dist_to_target <= 0.6 or current_direction != MoveDirections.VERTICAL)
+	return !ray_east.is_colliding() and (dist_to_target <= 0.6 or current_direction != MoveDirections.VERTICAL) and current_direction != MoveDirections.FALLING
 
 # ↑ Moving Stuff ↑
 # --------------------------------------------------------------------------------------------------
@@ -179,18 +203,18 @@ func toggle_crouch() -> void:
 	else: crouch()
 
 func crouch() -> void:
+	if !floor_detector.get_collision_point(): return
 	is_crouching = true
 	player.current_player_height = player.PLAYER_HEIGHT_CROUCHED
 	speed = SPEED_CROUCH
-	if floor_detector.get_collision_point():
-			player.global_position.y = floor_detector.get_collision_point().y + player.current_player_height
+	player.global_position.y = floor_detector.get_collision_point().y + player.current_player_height
 
 func uncrouch() -> void:
+	if !floor_detector.get_collision_point(): return
 	is_crouching = false
 	player.current_player_height = player.PLAYER_HEIGHT
 	speed = SPEED_MAX
-	if floor_detector.get_collision_point():
-			player.global_position.y = floor_detector.get_collision_point().y + player.current_player_height
+	player.global_position.y = floor_detector.get_collision_point().y + player.current_player_height
 
 # ↑ Crouching Stuff ↑
 # --------------------------------------------------------------------------------------------------
