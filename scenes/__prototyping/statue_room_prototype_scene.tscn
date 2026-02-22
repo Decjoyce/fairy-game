@@ -3,7 +3,7 @@
 [ext_resource type="MeshLibrary" uid="uid://bu208a8l5866i" path="res://scenes/_levels/_palettes/cairn/meshlibrary_cairn.tres" id="1_b0u5g"]
 [ext_resource type="PackedScene" uid="uid://bq86osdembn58" path="res://scenes/_player/_player_test.tscn" id="2_nqpss"]
 [ext_resource type="Material" uid="uid://bmx5kbkw1qnpa" path="res://assets/_dev/materials/_dev_m_grey.tres" id="3_aj4pl"]
-[ext_resource type="Script" uid="uid://dd1m0o5pknq0j" path="res://scenes/interactions/DrawBridge/drawbridge.gd" id="4_aj4pl"]
+[ext_resource type="PackedScene" uid="uid://hfs60jv7nqbo" path="res://scenes/interactions/DrawBridge/draw_bridge.tscn" id="5_1lpa3"]
 [ext_resource type="PackedScene" uid="uid://ck1b6l8s7xnxi" path="res://scenes/interactions/triggers/lever/lever.tscn" id="5_aj4pl"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_b0u5g"]
@@ -425,16 +425,11 @@ size = Vector3(1.982, 0.5, 1.98)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.001831, -5.753418, -8.998047)
 size = Vector3(1.982, 0.5, 1.98)
 
-[node name="DrawBridge" type="Node3D" parent="." unique_id=172773469 node_paths=PackedStringArray("drawbridge_lever")]
-transform = Transform3D(3.335, 0, 0, 0, 3.335, 0, 0, 0, 3.335, 1, 1, -12.375605)
-script = ExtResource("4_aj4pl")
-drawbridge_lever = NodePath("../Lever")
-
-[node name="CSGBox3D" type="CSGBox3D" parent="DrawBridge" unique_id=870869976]
-transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 1.8973014, 0.0014952421, 0.04893565)
-size = Vector3(4, 0.1, 0.49816895)
-
 [node name="Lever" parent="." unique_id=1692381032 instance=ExtResource("5_aj4pl")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -2, 2, -7)
 use_intervals = true
 intervals = 0.5
+
+[node name="DrawBridge" parent="." unique_id=172773469 node_paths=PackedStringArray("drawbridge_lever") instance=ExtResource("5_1lpa3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 1, -12.498962)
+drawbridge_lever = NodePath("../Lever")
