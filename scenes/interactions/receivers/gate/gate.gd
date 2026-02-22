@@ -8,7 +8,7 @@ var is_opening: bool
 var time_since_start: float = 0.0
 var _start_position: float
 var _end_position: float
-var closed_pos: float = 2
+var open_pos: float = 1.8
 @export var speed: float = 0.5
 @onready var graphics: Node3D = $gate
 @onready var player_col: CollisionShape3D = $PlayerCollision/CollisionShape3D
@@ -29,9 +29,9 @@ func open_gate(amount: float) -> void:
 	prints("open: ", amount)
 	last_value = cur_value
 	cur_value = amount
-	_end_position = 1 + (closed_pos * amount)
+	_end_position = 1 + (open_pos * amount)
 	
-	if _end_position >= closed_pos + height_to_toggle_player_barrier:
+	if _end_position >= open_pos + height_to_toggle_player_barrier:
 		player_col.set_deferred("disabled",true)
 	else:
 		player_col.set_deferred("disabled",false)

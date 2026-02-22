@@ -1,7 +1,7 @@
 [gd_scene format=4 uid="uid://csot2mi7746ll"]
 
 [ext_resource type="Script" uid="uid://c7ghu7bwjvv0k" path="res://scenes/interactions/triggers/pressure_plate/pressure_plate.gd" id="1_i6vjq"]
-[ext_resource type="Material" uid="uid://beaom2cndegce" path="res://assets/models/cairn/Materials/props/PressurePlate/PressurePlate.tres" id="2_237o0"]
+[ext_resource type="Material" uid="uid://beaom2cndegce" path="res://assets/models/cairn/Props/PressurePlate/PressurePlate.tres" id="2_237o0"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_i6vjq"]
 size = Vector3(1, 0.1, 1)
@@ -47,6 +47,7 @@ metadata/_custom_type_script = "uid://c7ghu7bwjvv0k"
 [node name="Graphics" type="MeshInstance3D" parent="." unique_id=1995532405]
 
 [node name="Collision" type="StaticBody3D" parent="Graphics" unique_id=664387629]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.037968785, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Graphics/Collision" unique_id=932949238]
 shape = SubResource("BoxShape3D_i6vjq")
@@ -60,16 +61,18 @@ text = "Plate"
 font_size = 67
 
 [node name="Trigger" type="Area3D" parent="Graphics" unique_id=1012212312]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.037968785, 0)
 collision_mask = 3
 monitorable = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Graphics/Trigger" unique_id=1396841565]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.049999997, 0)
+visible = false
 shape = SubResource("BoxShape3D_qye5f")
 debug_color = Color(0.83023536, 0.46282655, 3.85046e-07, 1)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Graphics" unique_id=784396263]
-transform = Transform3D(0.2, 0, 0, 0, 0.45, 0, 0, 0, 0.2, 0, -0.040629927, 0)
+transform = Transform3D(0.2, 0, 0, 0, 0.45, 0, 0, 0, 0.2, 0, -0.0026611425, 0)
 mesh = SubResource("ArrayMesh_jqphk")
 
 [connection signal="area_shape_entered" from="Graphics/Trigger" to="." method="_on_area_entered_trigger"]

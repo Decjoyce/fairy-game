@@ -9,22 +9,23 @@ signal on_deactivated(sig: float)
 @onready var timer: Timer = $Timer
 @onready var anim: AnimationPlayer = $AnimationPlayer
 
-@export var trigger_while_activated: bool
-@export var manual_reset: bool
 @export var delay_before_reset: float = 1.0
+@export var manual_reset: bool
+@export var start_activated: bool = false
 
 var activated: bool
 
 func _ready() -> void:
 	interaction_type = InteractTypes.INSTANT
 	timer.wait_time = delay_before_reset
+	if start_activated: activate_button()
 
 func begin_interact(sig: float = -1) -> void:
 	if disabled: return
 	activate_button()
 
 func _process(delta: float) -> void:
-	if trigger_while_activated and activated and !timer.is_stopped():
+	if activated and !timer.is_stopped():
 		var mapped_time_left := timer.time_left / timer.wait_time
 		on_change.emit(mapped_time_left)
 
@@ -51,6 +52,13 @@ func deactivate_button(emit_a_signal: bool = true):
 		on_deactivated.emit(0)
 	
 	anim.play("button_reset")
+
+func reset_button(sig: float = -1) -> void:
+	deactivate_button()
+
+func change_delay(new_delay: float) -> void:
+	delay_before_reset = new_delay
+	timer.wait_time = new_delay
 
 func _on_timer_timeout() -> void:
 	deactivate_button()

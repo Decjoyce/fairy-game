@@ -14,6 +14,9 @@ extends Node
 
 @export var disable_gravity: bool = false
 
+@export var col: CollisionShape3D
+@export var col_crouched: CollisionShape3D
+
 # ↑ General Stuff ↑
 # --------------------------------------------------------------------------------------------------
 # ↓ Moving Stuff ↓
@@ -205,6 +208,8 @@ func toggle_crouch() -> void:
 func crouch() -> void:
 	if !floor_detector.get_collision_point(): return
 	is_crouching = true
+	col_crouched.set_deferred("disabled", false)
+	col.set_deferred("disabled", true)
 	player.current_player_height = player.PLAYER_HEIGHT_CROUCHED
 	speed = SPEED_CROUCH
 	player.global_position.y = floor_detector.get_collision_point().y + player.current_player_height
@@ -212,6 +217,8 @@ func crouch() -> void:
 func uncrouch() -> void:
 	if !floor_detector.get_collision_point(): return
 	is_crouching = false
+	col_crouched.set_deferred("disabled", true)
+	col.set_deferred("disabled", false)
 	player.current_player_height = player.PLAYER_HEIGHT
 	speed = SPEED_MAX
 	player.global_position.y = floor_detector.get_collision_point().y + player.current_player_height

@@ -7,7 +7,7 @@ signal on_change(sig: float)
 signal on_deactivated(sig: float)
 
 @export_category("Settings")
-@export_range(0, 1.0, 0.1) var starting_value: float = 0.0
+@export_range(0, 1.0, 0.05) var starting_value: float = 0.0
 
 @export_category("Intervals")
 @export var use_intervals: bool = false
@@ -63,3 +63,11 @@ func update_value(amount: float) -> void:
 func update_graphics() -> void:
 	var new_rot: float = remap(current_value, 0, 1.0, 0, 120)
 	pivot.rotation_degrees.x = new_rot
+
+# ↑ Graphics Stuff ↑
+# --------------------------------------------------------------------------------------------------
+# ↓ Other Stuff ↓
+
+func change_interval_value(sig: float) -> void:
+	intervals = sig
+	update_value(current_value)

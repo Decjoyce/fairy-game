@@ -6,7 +6,7 @@ extends Entity
 const PLAYER_HEIGHT: float = 1
 const PLAYER_HEIGHT_CROUCHED: float = 0.65
 @onready var current_player_height: float = PLAYER_HEIGHT
-const PLAYER_WEIGHT: float = 5
+const PLAYER_WEIGHT: float = 10
 @onready var cam: Camera3D = $Camera3D
 
 @onready var stats: Stats = $Stats

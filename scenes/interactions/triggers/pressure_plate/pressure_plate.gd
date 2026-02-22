@@ -10,14 +10,14 @@ signal on_deactivated(sig: float)
 enum plate_states {DEACTIVATED, ACTIVATED, INBETWEEN}
 var current_state: plate_states
 
-var items_on_plate: Dictionary[Grabbable_Item, int]
+var items_on_plate: Dictionary[Grabbable_Item, float]
 var entities_on_plate: Dictionary[Node3D, float]
 
 @onready var collision: StaticBody3D = $Graphics/Collision
 
-@export_range(1.0, 15, 0.5) var weight_to_activate: float = 2.0
+@export_range(1.0, 25, 0.5) var weight_to_activate: float = 2.0
 var current_weight: float
-
+@export var always_emit_on_change: bool = false
 
 
 # ↑ General Stuff ↑
@@ -44,13 +44,15 @@ func _on_area_exited_trigger(area_rid: RID, area: Area3D, area_shape_index: int,
 func item_entered_pressure_plate(item: Grabbable_Item) -> void:
 	if items_on_plate.has(item): return
 	print("entered")
-	items_on_plate[item] = item.item_weight
+	items_on_plate[item] = item.get_weight()
 	check_weight()
+	if always_emit_on_change: emit_on_change()
 
 func item_exited_pressure_plate(item: Grabbable_Item) -> void:
 	if items_on_plate.has(item): items_on_plate.erase(item)
 	print("exited")
 	check_weight()
+	if always_emit_on_change: emit_on_change()
 
 func entity_entered_pressure_plate(entity: Entity) -> void:
 	if entities_on_plate.has(entity): return
@@ -58,18 +60,23 @@ func entity_entered_pressure_plate(entity: Entity) -> void:
 	entities_on_plate[entity] = entity.current_weight
 	entity.current_pressureplate = self
 	check_weight()
+	if always_emit_on_change: emit_on_change()
 
 func entity_exited_pressure_plate(entity: Entity) -> void:
 	prints(entity, entity.current_pressureplate, self)
 	if entity.current_pressureplate == self: entity.current_pressureplate = null
 	if entities_on_plate.has(entity): entities_on_plate.erase(entity)
 	print("exited")
-	
 	check_weight()
+	if always_emit_on_change: emit_on_change()
 
 # ↑ Triggering Stuff ↑
 # --------------------------------------------------------------------------------------------------
 # ↓ Checking Stuff ↓
+
+func change_weight_to_activate(new_weight: float) -> void:
+	weight_to_activate = clampf(new_weight, 1, 25)
+	check_weight()
 
 func update_weight_of_entity(entity: Entity) -> void:
 	entities_on_plate[entity] = entity.current_weight
@@ -110,9 +117,12 @@ func deactivate() -> void:
 	current_state = plate_states.DEACTIVATED
 
 func inbetween() -> void:
+	if !always_emit_on_change: emit_on_change()
+	current_state = plate_states.INBETWEEN
+
+func emit_on_change() -> void:
 	var weight_percent: float = clampf(current_weight / weight_to_activate, 0, 1)
 	on_change.emit(weight_percent)
-	current_state = plate_states.INBETWEEN
 
 # ↑ Activating Stuff ↑
 # --------------------------------------------------------------------------------------------------
@@ -122,19 +132,19 @@ var is_lerping: bool
 var time_move_started: float 
 var _start_position: float
 var _end_position: float
-var deactivated_pos: float
-@export_range(800, 1500, 100) var _lerp_speed: float = 1000
+const DEACTIVATED_HEIGHT: float = -0.05
+@export_range(100, 1500, 100) var _lerp_speed: float = 1000
 @onready var graphics: Node3D = $Graphics
 
 func _ready() -> void:
-	deactivated_pos = -position.y
+	pass
 
 func animate_plate() -> void:
 	time_move_started = Time.get_ticks_msec()
 	is_lerping = true
 	_start_position = graphics.position.y
 	var move_amount : float = clampf(current_weight / weight_to_activate, 0, 1)
-	_end_position = deactivated_pos * move_amount
+	_end_position = DEACTIVATED_HEIGHT * move_amount
 	prints(current_weight, weight_to_activate, move_amount, _end_position)
 
 func _process(delta: float) -> void:

@@ -12,7 +12,7 @@ var is_grabbed: bool = false
 
 @export_category("Weight")
 enum item_weight_types {WEIGHTLESS, LIGHT, MEDIUM, HEAVY}
-@export var item_weight: item_weight_types
+@export var item_weight: item_weight_types ## Weightless = 0; Light = 1; Medium = 3; Heavy = 8
 
 @export_category("Collision")
 @export var col: CollisionShape3D
@@ -158,3 +158,11 @@ func break_item() -> void:
 			item_spawn_on_destroyed.enable_me()
 			item_spawn_on_destroyed.reparent(get_tree().current_scene)
 	queue_free()
+
+func get_weight() -> float:
+	match item_weight:
+		0: return 0 # weightless
+		1: return 1 # light
+		2: return 3 # medium
+		3: return 8 # heavy
+		_: return 0
