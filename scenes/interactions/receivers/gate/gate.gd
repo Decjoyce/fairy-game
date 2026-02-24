@@ -23,6 +23,7 @@ var cur_value: float
 var last_value: float
 
 func open_gate(amount: float) -> void:
+	if stay_open and cur_value >= 1.0: return
 	time_since_start = 0
 	is_opening = true
 	_start_position = graphics.position.y
@@ -35,6 +36,36 @@ func open_gate(amount: float) -> void:
 		player_col.set_deferred("disabled",true)
 	else:
 		player_col.set_deferred("disabled",false)
+
+func fully_open_gate(sig: float = -1) -> void:
+	time_since_start = 0
+	is_opening = true
+	_start_position = graphics.position.y
+	last_value = cur_value
+	cur_value = 1
+	_end_position = 1 + (open_pos * 1)
+	
+	if _end_position >= open_pos + height_to_toggle_player_barrier:
+		player_col.set_deferred("disabled",true)
+	else:
+		player_col.set_deferred("disabled",false)
+
+func close_gate(sig: float = -1) -> void:
+	time_since_start = 0
+	is_opening = true
+	_start_position = graphics.position.y
+	last_value = cur_value
+	cur_value = 0
+	_end_position = 1 + (open_pos * 0)
+	
+	if _end_position >= open_pos + height_to_toggle_player_barrier:
+		player_col.set_deferred("disabled",true)
+	else:
+		player_col.set_deferred("disabled",false)
+
+func toggle_gate(sig: float = -1) -> void:
+	if cur_value > 0.5: close_gate()
+	else: fully_open_gate()
 
 func _process(delta: float) -> void:
 	if is_opening:

@@ -1,10 +1,10 @@
-[gd_scene load_steps=16 format=4 uid="uid://clnnqb1efkbei"]
+[gd_scene format=4 uid="uid://clnnqb1efkbei"]
 
 [ext_resource type="Script" uid="uid://ejuiwwsmyrgi" path="res://scenes/interactions/triggers/item_receiver/item_receiver.gd" id="1_6hp3v"]
-[ext_resource type="Material" uid="uid://f0qp2o0ip83p" path="res://assets/models/cairn/Materials/props/Wood_Door/Wood_Door.tres" id="2_6x0ya"]
+[ext_resource type="Material" uid="uid://f0qp2o0ip83p" path="res://assets/models/cairn/Props/Wood_Door/Wood_Door.tres" id="2_6x0ya"]
 [ext_resource type="Script" uid="uid://c4t3ko70ihpyy" path="res://scenes/interactions/receivers/animated_object/animated_object.gd" id="2_c053m"]
-[ext_resource type="Material" uid="uid://c17eub34k5hf8" path="res://assets/models/cairn/Materials/props/Wood_Door/Wood_Screw.tres" id="3_8d8ch"]
-[ext_resource type="Material" uid="uid://c57e6lcor8yqp" path="res://assets/models/cairn/Materials/props/Wood_Door/KeyHold.tres" id="4_ffg0i"]
+[ext_resource type="Material" uid="uid://c17eub34k5hf8" path="res://assets/models/cairn/Props/Wood_Door/Wood_Screw.tres" id="3_8d8ch"]
+[ext_resource type="Material" uid="uid://c57e6lcor8yqp" path="res://assets/models/cairn/Props/Wood_Door/KeyHold.tres" id="4_ffg0i"]
 [ext_resource type="AudioStream" uid="uid://bp3lie48u35pl" path="res://assets/audio/sfx/interactions/Rocks, Movement, Stone, Slab, Scrape SND18188.wav" id="6_yopue"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_6hp3v"]
@@ -264,54 +264,52 @@ _data = {
 &"door_open": SubResource("Animation_c053m")
 }
 
-[node name="ItemReceiver" type="Node3D" groups=["debug_PickableObjects"]]
+[node name="ItemReceiver" type="Node3D" unique_id=1820735957 groups=["debug_PickableObjects"]]
 script = ExtResource("1_6hp3v")
-num_needed = 1
 prompt_text = "Unlock Door"
 metadata/_custom_type_script = "uid://ejuiwwsmyrgi"
 
-[node name="Area3D" type="Area3D" parent="."]
+[node name="Trigger" type="Area3D" parent="." unique_id=1676383445]
 collision_layer = 32
 monitoring = false
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+[node name="_col" type="CollisionShape3D" parent="Trigger" unique_id=433827360]
+unique_name_in_owner = true
 shape = SubResource("BoxShape3D_6hp3v")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="."]
+[node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=1879105638]
 
-[node name="L_Pivot" type="Node3D" parent="StaticBody3D"]
+[node name="L_Pivot" type="Node3D" parent="StaticBody3D" unique_id=2068414417]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.75, 0, 0)
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D/L_Pivot"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D/L_Pivot" unique_id=1731891162]
 transform = Transform3D(-0.15, 0, -1.3113417e-08, 0, 0.15, 0, 1.3113417e-08, 0, -0.15, 0.761, -1, 0)
 mesh = SubResource("ArrayMesh_yopue")
-skeleton = NodePath("../../../Area3D")
+skeleton = NodePath("../../../Trigger")
 
-[node name="R_Pivot" type="Node3D" parent="StaticBody3D"]
+[node name="R_Pivot" type="Node3D" parent="StaticBody3D" unique_id=625853267]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.75, 0, 0)
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D/R_Pivot"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D/R_Pivot" unique_id=1378709831]
 transform = Transform3D(-0.15, 0, -1.3113417e-08, 0, 0.15, 0, 1.3113417e-08, 0, -0.15, 0.015, -1, 0)
 mesh = SubResource("ArrayMesh_ffg0i")
-skeleton = NodePath("../../../Area3D")
+skeleton = NodePath("../../../Trigger")
 
-[node name="CollisionShape3D2" type="CollisionShape3D" parent="StaticBody3D"]
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="StaticBody3D" unique_id=2138741904]
 shape = SubResource("BoxShape3D_c053m")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="StaticBody3D"]
-libraries = {
-&"": SubResource("AnimationLibrary_8d8ch")
-}
+[node name="AnimationPlayer" type="AnimationPlayer" parent="StaticBody3D" unique_id=1969302934]
+libraries/ = SubResource("AnimationLibrary_8d8ch")
 
-[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="StaticBody3D"]
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="StaticBody3D" unique_id=1450183258]
 stream = ExtResource("6_yopue")
 pitch_scale = 0.7
 
-[node name="AudioStreamPlayer3D2" type="AudioStreamPlayer3D" parent="StaticBody3D"]
+[node name="AudioStreamPlayer3D2" type="AudioStreamPlayer3D" parent="StaticBody3D" unique_id=91015138]
 stream = ExtResource("6_yopue")
 pitch_scale = 0.7
 
-[node name="AnimatedObject" type="Node" parent="." node_paths=PackedStringArray("connnect_anim_player")]
+[node name="AnimatedObject" type="Node" parent="." unique_id=1798934806 node_paths=PackedStringArray("connnect_anim_player")]
 script = ExtResource("2_c053m")
 anim_to_play = "door_open"
 connnect_anim_player = NodePath("../StaticBody3D/AnimationPlayer")

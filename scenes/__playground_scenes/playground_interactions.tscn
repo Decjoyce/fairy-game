@@ -26,7 +26,7 @@
 [ext_resource type="Script" uid="uid://c4t3ko70ihpyy" path="res://scenes/interactions/receivers/animated_object/animated_object.gd" id="21_a71ib"]
 [ext_resource type="Script" uid="uid://cqhq7vrwiw3m6" path="res://scenes/interactions/interactables/items/item_types/item_type.gd" id="21_lwfn2"]
 [ext_resource type="PackedScene" uid="uid://da8jmxsuq7td1" path="res://scenes/interactions/triggers/item_trigger/item_trigger.tscn" id="24_1e1q4"]
-[ext_resource type="PackedScene" uid="uid://clnnqb1efkbei" path="res://scenes/interactions/prefabs/locked_door.tscn" id="27_lfnjp"]
+[ext_resource type="PackedScene" uid="uid://clnnqb1efkbei" path="res://scenes/interactions/receivers/door/locked_door.tscn" id="27_lfnjp"]
 [ext_resource type="PackedScene" uid="uid://boygsguyqneek" path="res://scenes/interactions/interactables/items/all_items/breakables/test_breakable_strong.tscn" id="28_po0fx"]
 [ext_resource type="PackedScene" uid="uid://bm8kaq0ah5g7q" path="res://scenes/interactions/interactables/items/all_items/torch/torch.tscn" id="29_lryfm"]
 [ext_resource type="Script" uid="uid://dw8dsgwd7ev71" path="res://scenes/interactions/triggers/teleporter/teleporter.gd" id="30_fksdy"]
@@ -55,6 +55,9 @@
 [ext_resource type="Script" uid="uid://dd3bv1fxmfdkj" path="res://scenes/interactions/receivers/_logic/signal_remapper/signal_remapper.gd" id="45_dbr6f"]
 [ext_resource type="PackedScene" uid="uid://uf4k7k7pxj86" path="res://scenes/_levels/_palettes/__dev/source/open/dev_open_end.tscn" id="45_l1j80"]
 [ext_resource type="Script" uid="uid://bcl2qlj5bu34x" path="res://scenes/interactions/receivers/_logic/signal_converter/converter_bool.gd" id="45_n5cca"]
+[ext_resource type="Script" uid="uid://dlp4t12abx3j3" path="res://scenes/interactions/receivers/_logic/signal_brancher/signal_brancher.gd" id="46_2b8gu"]
+[ext_resource type="PackedScene" uid="uid://d05m47luutny6" path="res://scenes/interactions/receivers/door/door.tscn" id="46_fg0yb"]
+[ext_resource type="Texture2D" uid="uid://cm7goh62m0nv2" path="res://assets/ui/misc/TEMP_inv_slot.png" id="46_qk0f6"]
 [ext_resource type="PackedScene" uid="uid://ci2extimpt5xl" path="res://scenes/interactions/interactables/items/all_items/breakables/item_urn_key.tscn" id="47_p0tt5"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_3wul1"]
@@ -861,6 +864,14 @@ _data = {
 &"Head_002|metarig_001Action": SubResource("Animation_1v355")
 }
 
+[sub_resource type="BoxMesh" id="BoxMesh_teo1q"]
+material = ExtResource("17_fpxpw")
+size = Vector3(0.64, 2, 0.125)
+
+[sub_resource type="BoxMesh" id="BoxMesh_fg0yb"]
+material = ExtResource("17_fpxpw")
+size = Vector3(0.775, 0.1, 0.365)
+
 [sub_resource type="BoxShape3D" id="BoxShape3D_xtqac"]
 size = Vector3(0.1, 2, 2)
 
@@ -874,10 +885,6 @@ size = Vector3(2, 0.1, 2)
 [sub_resource type="BoxMesh" id="BoxMesh_limx5"]
 material = ExtResource("18_o5rkc")
 size = Vector3(2, 0.1, 2)
-
-[sub_resource type="BoxMesh" id="BoxMesh_teo1q"]
-material = ExtResource("17_fpxpw")
-size = Vector3(0.64, 2, 0.125)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_d0nk1"]
 size = Vector3(0.2, 2, 0.2)
@@ -924,7 +931,7 @@ metadata/_custom_type_script = "uid://beaf3digx88d0"
 [node name="Playground_Interactions" type="Node3D" unique_id=1592069120]
 
 [node name="player_test" parent="." unique_id=87981919 instance=ExtResource("2_3vnxs")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -1)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -104, 1, 0)
 
 [node name="_environment" type="Node3D" parent="." unique_id=1714868412]
 
@@ -1471,9 +1478,8 @@ transform = Transform3D(4.3711392e-08, 0, -1.0000001, 0, 1, 0, 1.0000001, 0, 4.3
 [node name="_dev_floor_guide6" parent="Bin/Room_Interacting_old/_env" unique_id=1689393903 instance=ExtResource("12_ir6gx")]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 4, 0, -1)
 
-[node name="Teleporter" parent="Bin/Room_Interacting_old" unique_id=106109864 node_paths=PackedStringArray("out_pos") instance=ExtResource("14_6ords")]
+[node name="Teleporter" parent="Bin/Room_Interacting_old" unique_id=106109864 instance=ExtResource("14_6ords")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 4, 0, -1)
-out_pos = NodePath("")
 
 [node name="Trigger" type="Area3D" parent="Bin/Room_Interacting_old/Teleporter" unique_id=1194092769]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0.3)
@@ -4083,6 +4089,600 @@ transform = Transform3D(-1.6292066e-07, 0, 1, 0, 1, 0, -1, 0, -1.6292066e-07, -0
 text = "Signal = 0"
 horizontal_alignment = 2
 
+[node name="SignalReceiver_Room" type="Node3D" parent="Room_Interactions" unique_id=1867204595]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -88, 0, 0)
+
+[node name="Tiles" type="Node3D" parent="Room_Interactions/SignalReceiver_Room" unique_id=700689162]
+
+[node name="_start_doorway" type="Node3D" parent="Room_Interactions/SignalReceiver_Room/Tiles" unique_id=798370539]
+
+[node name="_dev_open_middle_a" parent="Room_Interactions/SignalReceiver_Room/Tiles/_start_doorway" unique_id=1140574448 instance=ExtResource("7_ir6gx")]
+
+[node name="_dev_open_middle_a6" parent="Room_Interactions/SignalReceiver_Room/Tiles/_start_doorway" unique_id=1479323745 instance=ExtResource("7_ir6gx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 0)
+
+[node name="_dev_open_middle_a7" parent="Room_Interactions/SignalReceiver_Room/Tiles/_start_doorway" unique_id=1534630983 instance=ExtResource("7_ir6gx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 2)
+
+[node name="_dev_open_middle_a8" parent="Room_Interactions/SignalReceiver_Room/Tiles/_start_doorway" unique_id=1039675135 instance=ExtResource("7_ir6gx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2)
+
+[node name="_dev_open_middle_a9" parent="Room_Interactions/SignalReceiver_Room/Tiles/_start_doorway" unique_id=1588509396 instance=ExtResource("7_ir6gx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 2)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Room_Interactions/SignalReceiver_Room/Tiles/_start_doorway" unique_id=579301024]
+transform = Transform3D(0.70710677, 0, 0.70710677, 0, 1, 0, -0.70710677, 0, 0.70710677, 1.1292877, 1, 1.1292894)
+mesh = SubResource("BoxMesh_teo1q")
+skeleton = NodePath("../../Sections")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Room_Interactions/SignalReceiver_Room/Tiles/_start_doorway" unique_id=516029412]
+transform = Transform3D(0.7071067, 0, -0.7071067, 0, 1, 0, 0.7071067, 0, 0.7071067, -1.1707153, 1, 1.1292894)
+mesh = SubResource("BoxMesh_teo1q")
+skeleton = NodePath("../../Sections")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="Room_Interactions/SignalReceiver_Room/Tiles/_start_doorway" unique_id=1567357975]
+transform = Transform3D(-0.7071068, 0, -0.7071067, 0, 1, 0, 0.7071067, 0, -0.7071068, -1.1707077, 1, -1.1707108)
+mesh = SubResource("BoxMesh_teo1q")
+skeleton = NodePath("../../Sections")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="Room_Interactions/SignalReceiver_Room/Tiles/_start_doorway" unique_id=906639828]
+transform = Transform3D(-0.70710665, 0, 0.70710677, 0, 1, 0, -0.70710677, 0, -0.70710665, 1.1292877, 1, -1.1707106)
+mesh = SubResource("BoxMesh_teo1q")
+skeleton = NodePath("../../Sections")
+
+[node name="Label3D5" type="Label3D" parent="Room_Interactions/SignalReceiver_Room/Tiles/_start_doorway" unique_id=914897268]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.7, -1.3999999)
+text = "Objects"
+font_size = 52
+
+[node name="Label3D6" type="Label3D" parent="Room_Interactions/SignalReceiver_Room/Tiles/_start_doorway" unique_id=1519375772]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -1.5, 1.7, 1.1920929e-07)
+text = "Other"
+font_size = 52
+
+[node name="Label3D7" type="Label3D" parent="Room_Interactions/SignalReceiver_Room/Tiles/_start_doorway" unique_id=514351981]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 1.5, 1.7, 1.1920929e-07)
+text = "Logic
+Receivers"
+font_size = 52
+
+[node name="_dev_open_middle_a3" parent="Room_Interactions/SignalReceiver_Room/Tiles/_start_doorway" unique_id=1478155045 instance=ExtResource("7_ir6gx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, -2)
+
+[node name="_dev_open_middle_a5" parent="Room_Interactions/SignalReceiver_Room/Tiles/_start_doorway" unique_id=743450585 instance=ExtResource("7_ir6gx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, -2)
+
+[node name="_dev_open_end" parent="Room_Interactions/SignalReceiver_Room/Tiles/_start_doorway" unique_id=1236269779 instance=ExtResource("45_l1j80")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2.5)
+
+[node name="_dev_open_doorway" parent="Room_Interactions/SignalReceiver_Room/Tiles/_start_doorway" unique_id=1394130848 instance=ExtResource("4_viu01")]
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 0, 0, -0.49999994)
+
+[node name="_dev_open_doorway2" parent="Room_Interactions/SignalReceiver_Room/Tiles/_start_doorway" unique_id=1801032697 instance=ExtResource("4_viu01")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -0.5, 0, 5.9604645e-08)
+
+[node name="_dev_open_doorway3" parent="Room_Interactions/SignalReceiver_Room/Tiles/_start_doorway" unique_id=696173217 instance=ExtResource("4_viu01")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.50000006)
+
+[node name="_dev_open_doorway4" parent="Room_Interactions/SignalReceiver_Room/Tiles/_start_doorway" unique_id=517206342 instance=ExtResource("4_viu01")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0.5, 0, 5.9604645e-08)
+
+[node name="ObjectsSection" type="Node3D" parent="Room_Interactions/SignalReceiver_Room/Tiles" unique_id=43408272]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, -5)
+
+[node name="_dev_open_middle_a10" parent="Room_Interactions/SignalReceiver_Room/Tiles/ObjectsSection" unique_id=656493364 instance=ExtResource("7_ir6gx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, 1)
+
+[node name="_dev_open_middle_a11" parent="Room_Interactions/SignalReceiver_Room/Tiles/ObjectsSection" unique_id=551773470 instance=ExtResource("7_ir6gx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 1)
+
+[node name="_dev_open_middle_a13" parent="Room_Interactions/SignalReceiver_Room/Tiles/ObjectsSection" unique_id=461777868 instance=ExtResource("7_ir6gx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 0)
+
+[node name="_dev_open_middle_a14" parent="Room_Interactions/SignalReceiver_Room/Tiles/ObjectsSection" unique_id=466537004 instance=ExtResource("7_ir6gx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, -2)
+
+[node name="_dev_open_middle_a16" parent="Room_Interactions/SignalReceiver_Room/Tiles/ObjectsSection" unique_id=187998885 instance=ExtResource("7_ir6gx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2)
+
+[node name="_dev_open_middle_a34" parent="Room_Interactions/SignalReceiver_Room/Tiles/ObjectsSection" unique_id=22019632 instance=ExtResource("7_ir6gx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, -2)
+
+[node name="_dev_open_middle_a18" parent="Room_Interactions/SignalReceiver_Room/Tiles/ObjectsSection" unique_id=99314749 instance=ExtResource("7_ir6gx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, -2)
+
+[node name="_dev_open_middle_a15" parent="Room_Interactions/SignalReceiver_Room/Tiles/ObjectsSection" unique_id=2070539695 instance=ExtResource("7_ir6gx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, -2)
+
+[node name="_dev_open_middle_a17" parent="Room_Interactions/SignalReceiver_Room/Tiles/ObjectsSection" unique_id=751259442 instance=ExtResource("7_ir6gx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, -2)
+
+[node name="_dev_open_middle_a19" parent="Room_Interactions/SignalReceiver_Room/Tiles/ObjectsSection" unique_id=2022826062 instance=ExtResource("7_ir6gx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, -4)
+
+[node name="_dev_open_middle_a20" parent="Room_Interactions/SignalReceiver_Room/Tiles/ObjectsSection" unique_id=1246697847 instance=ExtResource("7_ir6gx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -4)
+
+[node name="_dev_open_middle_a21" parent="Room_Interactions/SignalReceiver_Room/Tiles/ObjectsSection" unique_id=2139338144 instance=ExtResource("7_ir6gx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, -4)
+
+[node name="_dev_open_middle_a22" parent="Room_Interactions/SignalReceiver_Room/Tiles/ObjectsSection" unique_id=1664809366 instance=ExtResource("7_ir6gx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, -4)
+
+[node name="_dev_open_middle_a23" parent="Room_Interactions/SignalReceiver_Room/Tiles/ObjectsSection" unique_id=913406138 instance=ExtResource("7_ir6gx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, -4)
+
+[node name="_dev_open_middle_a12" parent="Room_Interactions/SignalReceiver_Room/Tiles/ObjectsSection" unique_id=842537094 instance=ExtResource("7_ir6gx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1)
+
+[node name="_dev_open_hall" parent="Room_Interactions/SignalReceiver_Room/Tiles/ObjectsSection" unique_id=199529499 instance=ExtResource("3_mlo6p")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 2.6)
+
+[node name="_dev_open_hall2" parent="Room_Interactions/SignalReceiver_Room/Tiles/ObjectsSection" unique_id=972079382 instance=ExtResource("3_mlo6p")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 1.9000001)
+
+[node name="_dev_open_wall" parent="Room_Interactions/SignalReceiver_Room/Tiles/ObjectsSection" unique_id=1000613779 instance=ExtResource("2_cti4x")]
+
+[node name="_dev_open_wall2" parent="Room_Interactions/SignalReceiver_Room/Tiles/ObjectsSection" unique_id=2074811386 instance=ExtResource("2_cti4x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 0)
+
+[node name="_dev_open_wall3" parent="Room_Interactions/SignalReceiver_Room/Tiles/ObjectsSection" unique_id=1137397330 instance=ExtResource("2_cti4x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, 0)
+
+[node name="_dev_open_wall4" parent="Room_Interactions/SignalReceiver_Room/Tiles/ObjectsSection" unique_id=910445812 instance=ExtResource("2_cti4x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, 0)
+
+[node name="_dev_open_wall5" parent="Room_Interactions/SignalReceiver_Room/Tiles/ObjectsSection" unique_id=1464958639 instance=ExtResource("2_cti4x")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 10, 0, -2)
+
+[node name="_dev_open_wall6" parent="Room_Interactions/SignalReceiver_Room/Tiles/ObjectsSection" unique_id=856705006 instance=ExtResource("2_cti4x")]
+transform = Transform3D(1.3113416e-07, 0, -1, 0, 1, 0, 1, 0, 1.3113416e-07, -6, 0, -2)
+
+[node name="_dev_open_wall7" parent="Room_Interactions/SignalReceiver_Room/Tiles/ObjectsSection" unique_id=1696507391 instance=ExtResource("2_cti4x")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 10, 0, -4)
+
+[node name="_dev_open_wall8" parent="Room_Interactions/SignalReceiver_Room/Tiles/ObjectsSection" unique_id=1253720928 instance=ExtResource("2_cti4x")]
+transform = Transform3D(1.3113416e-07, 0, -1, 0, 1, 0, 1, 0, 1.3113416e-07, -6, 0, -4)
+
+[node name="_dev_open_middle_a24" parent="Room_Interactions/SignalReceiver_Room/Tiles/ObjectsSection" unique_id=1345726808 instance=ExtResource("7_ir6gx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, -6)
+
+[node name="_dev_open_middle_a25" parent="Room_Interactions/SignalReceiver_Room/Tiles/ObjectsSection" unique_id=1467458449 instance=ExtResource("7_ir6gx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -6)
+
+[node name="_dev_open_middle_a26" parent="Room_Interactions/SignalReceiver_Room/Tiles/ObjectsSection" unique_id=763609387 instance=ExtResource("7_ir6gx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, -6)
+
+[node name="_dev_open_middle_a32" parent="Room_Interactions/SignalReceiver_Room/Tiles/ObjectsSection" unique_id=1023799101 instance=ExtResource("7_ir6gx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, -4)
+
+[node name="_dev_open_wall12" parent="Room_Interactions/SignalReceiver_Room/Tiles/ObjectsSection" unique_id=1192668693 instance=ExtResource("2_cti4x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, 0)
+
+[node name="_dev_open_middle_a33" parent="Room_Interactions/SignalReceiver_Room/Tiles/ObjectsSection" unique_id=903939524 instance=ExtResource("7_ir6gx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, -6)
+
+[node name="_dev_open_middle_a27" parent="Room_Interactions/SignalReceiver_Room/Tiles/ObjectsSection" unique_id=738353002 instance=ExtResource("7_ir6gx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, -6)
+
+[node name="_dev_open_middle_a28" parent="Room_Interactions/SignalReceiver_Room/Tiles/ObjectsSection" unique_id=2068508330 instance=ExtResource("7_ir6gx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, -6)
+
+[node name="_dev_open_middle_a29" parent="Room_Interactions/SignalReceiver_Room/Tiles/ObjectsSection" unique_id=1975665400 instance=ExtResource("7_ir6gx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, -2)
+
+[node name="_dev_open_middle_a30" parent="Room_Interactions/SignalReceiver_Room/Tiles/ObjectsSection" unique_id=374123752 instance=ExtResource("7_ir6gx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, -4)
+
+[node name="_dev_open_wall11" parent="Room_Interactions/SignalReceiver_Room/Tiles/ObjectsSection" unique_id=1155708404 instance=ExtResource("2_cti4x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, 0)
+
+[node name="_dev_open_middle_a31" parent="Room_Interactions/SignalReceiver_Room/Tiles/ObjectsSection" unique_id=1189292523 instance=ExtResource("7_ir6gx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, -6)
+
+[node name="_dev_open_wall9" parent="Room_Interactions/SignalReceiver_Room/Tiles/ObjectsSection" unique_id=1721265589 instance=ExtResource("2_cti4x")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 10, 0, -6)
+
+[node name="_dev_open_wall10" parent="Room_Interactions/SignalReceiver_Room/Tiles/ObjectsSection" unique_id=490321169 instance=ExtResource("2_cti4x")]
+transform = Transform3D(1.3113416e-07, 0, -1, 0, 1, 0, 1, 0, 1.3113416e-07, -6, 0, -6)
+
+[node name="_dev_open_corner" parent="Room_Interactions/SignalReceiver_Room/Tiles/ObjectsSection" unique_id=1512082009 instance=ExtResource("6_fnuid")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 0, 0)
+
+[node name="_dev_open_corner2" parent="Room_Interactions/SignalReceiver_Room/Tiles/ObjectsSection" unique_id=274290232 instance=ExtResource("6_fnuid")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -6, 0, 0)
+
+[node name="_dev_open_middle_a4" parent="Room_Interactions/SignalReceiver_Room/Tiles/ObjectsSection" unique_id=1960051644 instance=ExtResource("7_ir6gx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 3)
+
+[node name="LogicSection" type="Node3D" parent="Room_Interactions/SignalReceiver_Room/Tiles" unique_id=135737335]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, 0)
+
+[node name="_dev_open_middle_a29" parent="Room_Interactions/SignalReceiver_Room/Tiles/LogicSection" unique_id=356862303 instance=ExtResource("7_ir6gx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 0, -1.748449e-07)
+
+[node name="_dev_open_middle_a2" parent="Room_Interactions/SignalReceiver_Room/Tiles/LogicSection" unique_id=1276657069 instance=ExtResource("7_ir6gx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, -1.748449e-07)
+
+[node name="_dev_open_hall3" parent="Room_Interactions/SignalReceiver_Room/Tiles/LogicSection" unique_id=157212127 instance=ExtResource("3_mlo6p")]
+transform = Transform3D(-4.371138e-08, 0, 1, 0, 1, 0, -1, 0, -4.371138e-08, -6.5, 0, -1.748449e-07)
+
+[node name="_dev_open_hall5" parent="Room_Interactions/SignalReceiver_Room/Tiles/LogicSection" unique_id=464159920 instance=ExtResource("3_mlo6p")]
+transform = Transform3D(-4.371138e-08, 0, 1, 0, 1, 0, -1, 0, -4.371138e-08, -8.099998, 0, -1.748449e-07)
+
+[node name="_dev_open_wall16" parent="Room_Interactions/SignalReceiver_Room/Tiles/LogicSection" unique_id=1749266648 instance=ExtResource("2_cti4x")]
+transform = Transform3D(-4.371138e-08, 0, 1, 0, 1, 0, -1, 0, -4.371138e-08, -10, 0, -2)
+
+[node name="_dev_open_wall18" parent="Room_Interactions/SignalReceiver_Room/Tiles/LogicSection" unique_id=1951420470 instance=ExtResource("2_cti4x")]
+transform = Transform3D(-4.371138e-08, 0, 1, 0, 1, 0, -1, 0, -4.371138e-08, -10, 0, -4.0000005)
+
+[node name="_dev_open_wall20" parent="Room_Interactions/SignalReceiver_Room/Tiles/LogicSection" unique_id=1613456078 instance=ExtResource("2_cti4x")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -12, 0, -6)
+
+[node name="_dev_open_wall21" parent="Room_Interactions/SignalReceiver_Room/Tiles/LogicSection" unique_id=1606651890 instance=ExtResource("2_cti4x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 0, 6)
+
+[node name="_dev_open_wall17" parent="Room_Interactions/SignalReceiver_Room/Tiles/LogicSection" unique_id=994342280 instance=ExtResource("2_cti4x")]
+transform = Transform3D(-4.371138e-08, 0, 1, 0, 1, 0, -1, 0, -4.371138e-08, -10, 0, 1.9999998)
+
+[node name="_dev_open_wall19" parent="Room_Interactions/SignalReceiver_Room/Tiles/LogicSection" unique_id=1549077630 instance=ExtResource("2_cti4x")]
+transform = Transform3D(-4.371138e-08, 0, 1, 0, 1, 0, -1, 0, -4.371138e-08, -10, 0, 3.9999995)
+
+[node name="_dev_open_corner5" parent="Room_Interactions/SignalReceiver_Room/Tiles/LogicSection" unique_id=2095331079 instance=ExtResource("6_fnuid")]
+transform = Transform3D(1.3113416e-07, 0, 1, 0, 1, 0, -1, 0, 1.3113416e-07, -10, 0, -6.0000005)
+
+[node name="_dev_open_corner6" parent="Room_Interactions/SignalReceiver_Room/Tiles/LogicSection" unique_id=167233149 instance=ExtResource("6_fnuid")]
+transform = Transform3D(0.9999999, 0, -1.3411045e-07, 0, 1, 0, 1.3411045e-07, 0, 0.9999999, -10, 0, 5.9999995)
+
+[node name="_dev_open_hall4" parent="Room_Interactions/SignalReceiver_Room/Tiles/LogicSection" unique_id=1762572093 instance=ExtResource("3_mlo6p")]
+transform = Transform3D(-4.371138e-08, 0, 1, 0, 1, 0, -1, 0, -4.371138e-08, -4.5, 0, -1.748449e-07)
+
+[node name="_dev_open_hall6" parent="Room_Interactions/SignalReceiver_Room/Tiles/LogicSection" unique_id=1349592624 instance=ExtResource("3_mlo6p")]
+transform = Transform3D(-4.371138e-08, 0, 1, 0, 1, 0, -1, 0, -4.371138e-08, -2.5, 0, 9.094947e-13)
+
+[node name="_dev_open_middle_a" parent="Room_Interactions/SignalReceiver_Room/Tiles/LogicSection" unique_id=1917576165 instance=ExtResource("7_ir6gx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 0, -1.748449e-07)
+
+[node name="_dev_open_middle_a3" parent="Room_Interactions/SignalReceiver_Room/Tiles/LogicSection" unique_id=603268815 instance=ExtResource("7_ir6gx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 0, -2.0000005)
+
+[node name="_dev_open_middle_a4" parent="Room_Interactions/SignalReceiver_Room/Tiles/LogicSection" unique_id=236604148 instance=ExtResource("7_ir6gx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 0, -4)
+
+[node name="_dev_open_middle_a5" parent="Room_Interactions/SignalReceiver_Room/Tiles/LogicSection" unique_id=141003775 instance=ExtResource("7_ir6gx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 0, 2)
+
+[node name="_dev_open_middle_a6" parent="Room_Interactions/SignalReceiver_Room/Tiles/LogicSection" unique_id=1270920447 instance=ExtResource("7_ir6gx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 0, 4)
+
+[node name="_dev_open_wall22" parent="Room_Interactions/SignalReceiver_Room/Tiles/LogicSection" unique_id=1049184640 instance=ExtResource("2_cti4x")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -14, 0, -6)
+
+[node name="_dev_open_wall23" parent="Room_Interactions/SignalReceiver_Room/Tiles/LogicSection" unique_id=410459399 instance=ExtResource("2_cti4x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14, 0, 6.0000005)
+
+[node name="_dev_open_middle_a7" parent="Room_Interactions/SignalReceiver_Room/Tiles/LogicSection" unique_id=452986785 instance=ExtResource("7_ir6gx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14, 0, -1.748449e-07)
+
+[node name="_dev_open_middle_a8" parent="Room_Interactions/SignalReceiver_Room/Tiles/LogicSection" unique_id=437198675 instance=ExtResource("7_ir6gx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14, 0, -2)
+
+[node name="_dev_open_middle_a9" parent="Room_Interactions/SignalReceiver_Room/Tiles/LogicSection" unique_id=855271378 instance=ExtResource("7_ir6gx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14, 0, -4.0000005)
+
+[node name="_dev_open_middle_a10" parent="Room_Interactions/SignalReceiver_Room/Tiles/LogicSection" unique_id=1677612767 instance=ExtResource("7_ir6gx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14, 0, 1.9999998)
+
+[node name="_dev_open_middle_a11" parent="Room_Interactions/SignalReceiver_Room/Tiles/LogicSection" unique_id=1591210031 instance=ExtResource("7_ir6gx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14, 0, 4)
+
+[node name="OtherSection" type="Node3D" parent="Room_Interactions/SignalReceiver_Room/Tiles" unique_id=1295932625]
+
+[node name="_dev_open_middle_a29" parent="Room_Interactions/SignalReceiver_Room/Tiles/OtherSection" unique_id=1269230621 instance=ExtResource("7_ir6gx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 0, 0)
+
+[node name="_dev_open_middle_a2" parent="Room_Interactions/SignalReceiver_Room/Tiles/OtherSection" unique_id=638852115 instance=ExtResource("7_ir6gx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, 0)
+
+[node name="_dev_open_hall3" parent="Room_Interactions/SignalReceiver_Room/Tiles/OtherSection" unique_id=1842271555 instance=ExtResource("3_mlo6p")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -6.5, 0, 0)
+
+[node name="_dev_open_hall5" parent="Room_Interactions/SignalReceiver_Room/Tiles/OtherSection" unique_id=1781773577 instance=ExtResource("3_mlo6p")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -8.099998, 0, 0)
+
+[node name="_dev_open_wall16" parent="Room_Interactions/SignalReceiver_Room/Tiles/OtherSection" unique_id=863158586 instance=ExtResource("2_cti4x")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -10, 0, -2)
+
+[node name="_dev_open_wall18" parent="Room_Interactions/SignalReceiver_Room/Tiles/OtherSection" unique_id=1124501856 instance=ExtResource("2_cti4x")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -10, 0, -4)
+
+[node name="_dev_open_wall20" parent="Room_Interactions/SignalReceiver_Room/Tiles/OtherSection" unique_id=1679983521 instance=ExtResource("2_cti4x")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -12, 0, -6)
+
+[node name="_dev_open_wall21" parent="Room_Interactions/SignalReceiver_Room/Tiles/OtherSection" unique_id=1439017217 instance=ExtResource("2_cti4x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 0, 6)
+
+[node name="_dev_open_wall17" parent="Room_Interactions/SignalReceiver_Room/Tiles/OtherSection" unique_id=571925681 instance=ExtResource("2_cti4x")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -10, 0, 2)
+
+[node name="_dev_open_wall19" parent="Room_Interactions/SignalReceiver_Room/Tiles/OtherSection" unique_id=1339724827 instance=ExtResource("2_cti4x")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -10, 0, 4)
+
+[node name="_dev_open_corner5" parent="Room_Interactions/SignalReceiver_Room/Tiles/OtherSection" unique_id=1556030260 instance=ExtResource("6_fnuid")]
+transform = Transform3D(1.3113416e-07, 0, 1, 0, 1, 0, -1, 0, 1.3113416e-07, -10, 0, -6)
+
+[node name="_dev_open_corner6" parent="Room_Interactions/SignalReceiver_Room/Tiles/OtherSection" unique_id=513254388 instance=ExtResource("6_fnuid")]
+transform = Transform3D(0.99999994, 0, -1.3411045e-07, 0, 1, 0, 1.3411045e-07, 0, 0.99999994, -10, 0, 6)
+
+[node name="_dev_open_hall4" parent="Room_Interactions/SignalReceiver_Room/Tiles/OtherSection" unique_id=181050245 instance=ExtResource("3_mlo6p")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -4.5, 0, 0)
+
+[node name="_dev_open_hall6" parent="Room_Interactions/SignalReceiver_Room/Tiles/OtherSection" unique_id=611026921 instance=ExtResource("3_mlo6p")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -2.5, 0, 0)
+
+[node name="_dev_open_middle_a" parent="Room_Interactions/SignalReceiver_Room/Tiles/OtherSection" unique_id=670374939 instance=ExtResource("7_ir6gx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 0, 0)
+
+[node name="_dev_open_middle_a3" parent="Room_Interactions/SignalReceiver_Room/Tiles/OtherSection" unique_id=117852287 instance=ExtResource("7_ir6gx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 0, -2)
+
+[node name="_dev_open_middle_a4" parent="Room_Interactions/SignalReceiver_Room/Tiles/OtherSection" unique_id=1221552686 instance=ExtResource("7_ir6gx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 0, -4)
+
+[node name="_dev_open_middle_a5" parent="Room_Interactions/SignalReceiver_Room/Tiles/OtherSection" unique_id=890121164 instance=ExtResource("7_ir6gx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 0, 2)
+
+[node name="_dev_open_middle_a6" parent="Room_Interactions/SignalReceiver_Room/Tiles/OtherSection" unique_id=1678397172 instance=ExtResource("7_ir6gx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 0, 4)
+
+[node name="_dev_open_wall22" parent="Room_Interactions/SignalReceiver_Room/Tiles/OtherSection" unique_id=1116863919 instance=ExtResource("2_cti4x")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -14, 0, -6)
+
+[node name="_dev_open_wall23" parent="Room_Interactions/SignalReceiver_Room/Tiles/OtherSection" unique_id=369006888 instance=ExtResource("2_cti4x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14, 0, 6)
+
+[node name="_dev_open_middle_a7" parent="Room_Interactions/SignalReceiver_Room/Tiles/OtherSection" unique_id=1916229449 instance=ExtResource("7_ir6gx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14, 0, 0)
+
+[node name="_dev_open_middle_a8" parent="Room_Interactions/SignalReceiver_Room/Tiles/OtherSection" unique_id=1504394095 instance=ExtResource("7_ir6gx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14, 0, -2)
+
+[node name="_dev_open_middle_a9" parent="Room_Interactions/SignalReceiver_Room/Tiles/OtherSection" unique_id=182423553 instance=ExtResource("7_ir6gx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14, 0, -4)
+
+[node name="_dev_open_middle_a10" parent="Room_Interactions/SignalReceiver_Room/Tiles/OtherSection" unique_id=638031780 instance=ExtResource("7_ir6gx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14, 0, 2)
+
+[node name="_dev_open_middle_a11" parent="Room_Interactions/SignalReceiver_Room/Tiles/OtherSection" unique_id=770694338 instance=ExtResource("7_ir6gx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14, 0, 4)
+
+[node name="TP_SR2Start" parent="Room_Interactions/SignalReceiver_Room" unique_id=71714055 node_paths=PackedStringArray("out_pos") instance=ExtResource("14_6ords")]
+transform = Transform3D(-0.9999999, 0, 1.589326e-08, 0, 1, 0, -1.589326e-08, 0, -0.9999999, 0, 0, 2.8)
+out_pos = NodePath("../../Start_Room/Enter_Start")
+
+[node name="Trigger" type="Area3D" parent="Room_Interactions/SignalReceiver_Room/TP_SR2Start" unique_id=422543716]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, -0.20000005)
+collision_mask = 3
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Room_Interactions/SignalReceiver_Room/TP_SR2Start/Trigger" unique_id=970732162]
+shape = SubResource("SphereShape3D_3wul1")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Room_Interactions/SignalReceiver_Room/TP_SR2Start/Trigger" unique_id=612208307]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 0, 0)
+mesh = SubResource("SphereMesh_hsji5")
+
+[node name="Enter_Plate" type="Node3D" parent="Room_Interactions/SignalReceiver_Room/TP_SR2Start" unique_id=1702554739]
+transform = Transform3D(-0.99999976, 0, 5.9604623e-08, 0, 1, 0, -5.9604623e-08, 0, -0.99999976, 0, 0, 2.8)
+
+[node name="ObjectsSection" type="Node3D" parent="Room_Interactions/SignalReceiver_Room" unique_id=1337322196]
+
+[node name="Sec_Gate" type="Node3D" parent="Room_Interactions/SignalReceiver_Room/ObjectsSection" unique_id=416660235]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -8)
+
+[node name="Label3D9" type="Label3D" parent="Room_Interactions/SignalReceiver_Room/ObjectsSection/Sec_Gate" unique_id=1908805971]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -1.300003, 1.7, 0)
+billboard = 2
+text = "Gate"
+font_size = 52
+
+[node name="Gate_Button" type="Node3D" parent="Room_Interactions/SignalReceiver_Room/ObjectsSection/Sec_Gate" unique_id=1408396953]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7, 0, 0)
+
+[node name="Gate" parent="Room_Interactions/SignalReceiver_Room/ObjectsSection/Sec_Gate/Gate_Button" unique_id=2047962319 instance=ExtResource("8_mlo6p")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0.099998474, 0, 0)
+
+[node name="_dev_open_doorway" parent="Room_Interactions/SignalReceiver_Room/ObjectsSection/Sec_Gate/Gate_Button" unique_id=2107543410 instance=ExtResource("4_viu01")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 1, 0, 0)
+
+[node name="_decor" type="StaticBody3D" parent="Room_Interactions/SignalReceiver_Room/ObjectsSection/Sec_Gate/Gate_Button" unique_id=1644707535]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.59999084, 0.4, 1)
+
+[node name="_wall_back" type="CollisionShape3D" parent="Room_Interactions/SignalReceiver_Room/ObjectsSection/Sec_Gate/Gate_Button/_decor" unique_id=1093076276]
+transform = Transform3D(-4.3711395e-08, 0, 1, 0, 1, 0, -1, 0, -4.3711395e-08, 0, 0, 0)
+shape = SubResource("BoxShape3D_fpxpw")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Room_Interactions/SignalReceiver_Room/ObjectsSection/Sec_Gate/Gate_Button/_decor/_wall_back" unique_id=877368060]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.3, -0.19999695)
+material_override = ExtResource("41_vxgp0")
+mesh = SubResource("BoxMesh_o5rkc")
+
+[node name="Button" parent="Room_Interactions/SignalReceiver_Room/ObjectsSection/Sec_Gate/Gate_Button" unique_id=508998922 instance=ExtResource("10_h40wo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.40000153, 0.7, 0.9000001)
+
+[node name="_decor2" type="StaticBody3D" parent="Room_Interactions/SignalReceiver_Room/ObjectsSection/Sec_Gate/Gate_Button" unique_id=1128370125]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.6293945e-06, 0.4, 1)
+
+[node name="_wall_back" type="CollisionShape3D" parent="Room_Interactions/SignalReceiver_Room/ObjectsSection/Sec_Gate/Gate_Button/_decor2" unique_id=1603780509]
+transform = Transform3D(-4.3711395e-08, 0, 1, 0, 1, 0, -1, 0, -4.3711395e-08, 0, 0, 0)
+shape = SubResource("BoxShape3D_fpxpw")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Room_Interactions/SignalReceiver_Room/ObjectsSection/Sec_Gate/Gate_Button/_decor2/_wall_back" unique_id=137661837]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.3, -0.19999695)
+material_override = ExtResource("41_vxgp0")
+mesh = SubResource("BoxMesh_o5rkc")
+
+[node name="Button2" parent="Room_Interactions/SignalReceiver_Room/ObjectsSection/Sec_Gate/Gate_Button" unique_id=1528694243 instance=ExtResource("10_h40wo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.19999695, 0.7, 0.9000001)
+
+[node name="Gate_Lever" type="Node3D" parent="Room_Interactions/SignalReceiver_Room/ObjectsSection/Sec_Gate" unique_id=291803237]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7, 0, -2)
+
+[node name="Gate" parent="Room_Interactions/SignalReceiver_Room/ObjectsSection/Sec_Gate/Gate_Lever" unique_id=436637209 instance=ExtResource("8_mlo6p")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0.099998474, 0, 0)
+
+[node name="_dev_open_doorway" parent="Room_Interactions/SignalReceiver_Room/ObjectsSection/Sec_Gate/Gate_Lever" unique_id=1179608173 instance=ExtResource("4_viu01")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 1, 0, 0)
+
+[node name="_decor" type="StaticBody3D" parent="Room_Interactions/SignalReceiver_Room/ObjectsSection/Sec_Gate/Gate_Lever" unique_id=311539711]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.59999084, 0.4, 1)
+
+[node name="_wall_back" type="CollisionShape3D" parent="Room_Interactions/SignalReceiver_Room/ObjectsSection/Sec_Gate/Gate_Lever/_decor" unique_id=622026619]
+transform = Transform3D(-4.3711395e-08, 0, 1, 0, 1, 0, -1, 0, -4.3711395e-08, 0, 0, 0)
+shape = SubResource("BoxShape3D_fpxpw")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Room_Interactions/SignalReceiver_Room/ObjectsSection/Sec_Gate/Gate_Lever/_decor/_wall_back" unique_id=1422235016]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.3, -0.19999695)
+material_override = ExtResource("41_vxgp0")
+mesh = SubResource("BoxMesh_o5rkc")
+
+[node name="Button" parent="Room_Interactions/SignalReceiver_Room/ObjectsSection/Sec_Gate/Gate_Lever" unique_id=1832935198 instance=ExtResource("10_h40wo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.40000153, 0.7, 0.9000001)
+
+[node name="_decor2" type="StaticBody3D" parent="Room_Interactions/SignalReceiver_Room/ObjectsSection/Sec_Gate/Gate_Lever" unique_id=1614038294]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.6293945e-06, 0.4, 1)
+
+[node name="_wall_back" type="CollisionShape3D" parent="Room_Interactions/SignalReceiver_Room/ObjectsSection/Sec_Gate/Gate_Lever/_decor2" unique_id=400967790]
+transform = Transform3D(-4.3711395e-08, 0, 1, 0, 1, 0, -1, 0, -4.3711395e-08, 0, 0, 0)
+shape = SubResource("BoxShape3D_fpxpw")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Room_Interactions/SignalReceiver_Room/ObjectsSection/Sec_Gate/Gate_Lever/_decor2/_wall_back" unique_id=983365832]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.3, -0.19999695)
+material_override = ExtResource("41_vxgp0")
+mesh = SubResource("BoxMesh_o5rkc")
+
+[node name="Button2" parent="Room_Interactions/SignalReceiver_Room/ObjectsSection/Sec_Gate/Gate_Lever" unique_id=349048006 instance=ExtResource("10_h40wo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.19999695, 0.7, 0.9000001)
+
+[node name="Helpers" type="Node3D" parent="Room_Interactions/SignalReceiver_Room/ObjectsSection/Sec_Gate" unique_id=1572650156]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, 3)
+
+[node name="ButtonHolder" type="MeshInstance3D" parent="Room_Interactions/SignalReceiver_Room/ObjectsSection/Sec_Gate/Helpers" unique_id=856376396]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.0000076, 0.5, -0.4000001)
+material_override = ExtResource("41_vxgp0")
+mesh = SubResource("BoxMesh_fg0yb")
+skeleton = NodePath("")
+
+[node name="prev_page" parent="Room_Interactions/SignalReceiver_Room/ObjectsSection/Sec_Gate/Helpers/ButtonHolder" unique_id=997256189 instance=ExtResource("10_h40wo")]
+transform = Transform3D(1, 5.960461e-08, -3.5527137e-14, 3.2026693e-23, -8.742279e-08, -1, -5.9604645e-08, 1, -8.742278e-08, 0.19999695, 0.07190883, 0)
+
+[node name="next_page" parent="Room_Interactions/SignalReceiver_Room/ObjectsSection/Sec_Gate/Helpers/ButtonHolder" unique_id=1268615074 instance=ExtResource("10_h40wo")]
+transform = Transform3D(1, 5.9604613e-08, -3.1974423e-14, 3.2026667e-23, -8.742279e-08, -1, -5.9604645e-08, 1, -8.742278e-08, -0.19999695, 0.07190883, 0)
+
+[node name="prev_sec" parent="Room_Interactions/SignalReceiver_Room/ObjectsSection/Sec_Gate/Helpers/ButtonHolder" unique_id=1047203513 instance=ExtResource("10_h40wo")]
+transform = Transform3D(0.5735762, 0.409576, 0.7094065, -1.4901163e-08, 0.8660254, -0.49999997, -0.819152, 0.28678817, 0.49673158, 0.69999695, 0.17190886, 0)
+
+[node name="next_sec" parent="Room_Interactions/SignalReceiver_Room/ObjectsSection/Sec_Gate/Helpers/ButtonHolder" unique_id=1137785221 instance=ExtResource("10_h40wo")]
+transform = Transform3D(0.57357633, -0.409576, -0.70940644, 0, 0.8660253, -0.49999994, 0.81915194, 0.2867882, 0.4967317, -0.69999695, 0.17199999, 0)
+
+[node name="Node" type="Node" parent="Room_Interactions/SignalReceiver_Room/ObjectsSection/Sec_Gate/Helpers/ButtonHolder" unique_id=235995968]
+script = ExtResource("46_2b8gu")
+
+[node name="Sprite3D" type="Sprite3D" parent="Room_Interactions/SignalReceiver_Room/ObjectsSection/Sec_Gate/Helpers" unique_id=1827833322]
+transform = Transform3D(4.48, 0, 0, 0, 5.625, 0, 0, 0, 1, -1, 0.6, 0.8000002)
+texture = ExtResource("46_qk0f6")
+
+[node name="Functions" type="Node3D" parent="Room_Interactions/SignalReceiver_Room/ObjectsSection/Sec_Gate/Helpers" unique_id=1859747150]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 0)
+
+[node name="Title" type="Label3D" parent="Room_Interactions/SignalReceiver_Room/ObjectsSection/Sec_Gate/Helpers/Functions" unique_id=1994233223]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 1.8, 0.78931)
+render_priority = 1
+text = "Functions"
+font_size = 52
+
+[node name="func_01" type="Label3D" parent="Room_Interactions/SignalReceiver_Room/ObjectsSection/Sec_Gate/Helpers/Functions" unique_id=1526646319]
+transform = Transform3D(-0.7, 0, -8.742278e-08, 0, 1, 0, 6.119594e-08, 0, -1, 0, 1.0999999, 0.78931)
+render_priority = 1
+text = "open_gate (float):
+[Note: the name of this func will be changed in future]
+This function moves the gate up or down according to the value
+passed into it. 
+0.0 means gate is closed
+1.0 means gate is open
+0.5 means gate is half open"
+font_size = 18
+outline_size = 8
+
+[node name="func_02" type="Label3D" parent="Room_Interactions/SignalReceiver_Room/ObjectsSection/Sec_Gate/Helpers/Functions" unique_id=886679211]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 1.0999999, 0.78931)
+visible = false
+render_priority = 1
+text = "fully_open_gate (float):
+--------
+[Note: the name of this func will be changed in future]
+Fully opens the gate.
+The signal value passed in does not do anything"
+font_size = 14
+outline_size = 8
+
+[node name="func_03" type="Label3D" parent="Room_Interactions/SignalReceiver_Room/ObjectsSection/Sec_Gate/Helpers/Functions" unique_id=47122860]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 1.0999999, 0.78931)
+visible = false
+render_priority = 1
+text = "close_gate (float):
+--------
+Fully closes the gate.
+The signal value passed in does not do anything"
+font_size = 14
+outline_size = 8
+
+[node name="func_04" type="Label3D" parent="Room_Interactions/SignalReceiver_Room/ObjectsSection/Sec_Gate/Helpers/Functions" unique_id=1526130042]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 1.0999999, 0.78931)
+visible = false
+render_priority = 1
+text = "toggle_gate (float):
+--------
+Toggles between open and closed.
+The signal value passed in does not do anything."
+font_size = 14
+outline_size = 8
+
+[node name="func_05" type="Label3D" parent="Room_Interactions/SignalReceiver_Room/ObjectsSection/Sec_Gate/Helpers/Functions" unique_id=613587051]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 1.0999999, 0.78931)
+visible = false
+render_priority = 1
+text = "toggle_gate (float):
+--------
+Toggles between open and closed.
+The signal value passed in does not do anything."
+font_size = 14
+outline_size = 8
+
+[node name="Sec_Door" type="Node3D" parent="Room_Interactions/SignalReceiver_Room/ObjectsSection" unique_id=1806372486]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, -8)
+
+[node name="Label3D9" type="Label3D" parent="Room_Interactions/SignalReceiver_Room/ObjectsSection/Sec_Door" unique_id=1771569987]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -1.3, 1.7, 0)
+billboard = 2
+text = "Door
+"
+font_size = 52
+
+[node name="_dev_open_doorway" parent="Room_Interactions/SignalReceiver_Room/ObjectsSection/Sec_Door" unique_id=1149817800 instance=ExtResource("4_viu01")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -5, 0, 0)
+
+[node name="Door" parent="Room_Interactions/SignalReceiver_Room/ObjectsSection/Sec_Door" unique_id=1438010018 instance=ExtResource("46_fg0yb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, -9.536743e-07)
+
+[node name="_dev_floor_guide" parent="Room_Interactions/SignalReceiver_Room/ObjectsSection" unique_id=2104892163 instance=ExtResource("12_ir6gx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -5)
+
+[node name="_dev_floor_guide2" parent="Room_Interactions/SignalReceiver_Room/ObjectsSection" unique_id=536291653 instance=ExtResource("12_ir6gx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -6)
+
+[node name="_dev_floor_guidemid" parent="Room_Interactions/SignalReceiver_Room/ObjectsSection" unique_id=1707291881 instance=ExtResource("13_ojeeo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -8)
+
 [node name="Room_Items" type="Node3D" parent="." unique_id=1959764177]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -31, 0, 0)
 
@@ -4913,6 +5513,12 @@ transform = Transform3D(0.7071066, 0, -0.70710695, 0, 1, 0, 0.70710695, 0, 0.707
 [connection signal="on_change" from="Room_Interactions/PressurePlate_Room/Sec_2/Sec_2_d/Lever" to="Room_Interactions/PressurePlate_Room/Sec_2/Sec_2_d/SignalRemapper" method="remap_signal"]
 [connection signal="remapped_sig" from="Room_Interactions/PressurePlate_Room/Sec_2/Sec_2_d/SignalRemapper" to="Room_Interactions/PressurePlate_Room/Sec_2/Sec_2_d/PressurePlate" method="change_weight_to_activate"]
 [connection signal="remapped_sig" from="Room_Interactions/PressurePlate_Room/Sec_2/Sec_2_d/SignalRemapper" to="Room_Interactions/PressurePlate_Room/Sec_2/Sec_2_d/VarDisplayer_wta" method="update_text"]
+[connection signal="area_entered" from="Room_Interactions/SignalReceiver_Room/TP_SR2Start/Trigger" to="Room_Interactions/SignalReceiver_Room/TP_SR2Start" method="_teleport_entity"]
+[connection signal="body_entered" from="Room_Interactions/SignalReceiver_Room/TP_SR2Start/Trigger" to="Room_Interactions/SignalReceiver_Room/TP_SR2Start" method="_teleport_item"]
+[connection signal="on_activated" from="Room_Interactions/SignalReceiver_Room/ObjectsSection/Sec_Gate/Gate_Button/Button" to="Room_Interactions/SignalReceiver_Room/ObjectsSection/Sec_Gate/Gate_Button/Gate" method="toggle_gate"]
+[connection signal="on_activated" from="Room_Interactions/SignalReceiver_Room/ObjectsSection/Sec_Gate/Gate_Button/Button2" to="Room_Interactions/SignalReceiver_Room/ObjectsSection/Sec_Gate/Gate_Button/Gate" method="toggle_gate"]
+[connection signal="on_activated" from="Room_Interactions/SignalReceiver_Room/ObjectsSection/Sec_Gate/Gate_Lever/Button" to="Room_Interactions/SignalReceiver_Room/ObjectsSection/Sec_Gate/Gate_Lever/Gate" method="toggle_gate"]
+[connection signal="on_activated" from="Room_Interactions/SignalReceiver_Room/ObjectsSection/Sec_Gate/Gate_Lever/Button2" to="Room_Interactions/SignalReceiver_Room/ObjectsSection/Sec_Gate/Gate_Lever/Gate" method="toggle_gate"]
 [connection signal="on_activated" from="Room_Items/Sections/Sec_Default/counter_light" to="Room_Items/Sections/Sec_Default/skybox_switcher" method="change_to_b"]
 [connection signal="on_deactivated" from="Room_Items/Sections/Sec_Default/counter_light" to="Room_Items/Sections/Sec_Default/skybox_switcher" method="change_to_a"]
 [connection signal="on_activated" from="Room_Items/Sections/Sec_Default/But_switch/Button2" to="Room_Items/Sections/Sec_Default/enabler_light" method="toggle_visibilty"]

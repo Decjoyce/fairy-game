@@ -1,0 +1,39 @@
+[gd_scene format=3 uid="uid://bg3e8trp0vy58"]
+
+[ext_resource type="Script" uid="uid://ejuiwwsmyrgi" path="res://scenes/interactions/triggers/item_receiver/item_receiver.gd" id="1_vsmdw"]
+[ext_resource type="Material" uid="uid://bmx5kbkw1qnpa" path="res://assets/_dev/materials/_dev_m_grey.tres" id="2_c2a1d"]
+[ext_resource type="Script" uid="uid://cb04xjhu5ksor" path="res://scenes/interactions/receivers/enabler_disabler_v1/visibility_enabler.gd" id="2_p7kfh"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_p7kfh"]
+material = ExtResource("2_c2a1d")
+size = Vector3(0.2, 0.5, 0.08)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_n15gq"]
+size = Vector3(0.223, 0.53, 0.218)
+
+[node name="BrokenLever" type="Node3D" unique_id=525346541]
+script = ExtResource("1_vsmdw")
+receiver_type = 1
+type_of_item = 0
+keywords_needed = "LEVER"
+num_needed_by_keyword = 1
+destroy_items_on_receive = true
+prompt_text = "ATTACHLEVER"
+
+[node name="_graphics" type="Node3D" parent="." unique_id=653912539 node_paths=PackedStringArray("linked_node")]
+script = ExtResource("2_p7kfh")
+linked_node = NodePath(".")
+
+[node name="_holder" type="MeshInstance3D" parent="_graphics" unique_id=2078845205]
+mesh = SubResource("BoxMesh_p7kfh")
+skeleton = NodePath("../..")
+
+[node name="Trigger" type="Area3D" parent="." unique_id=1330617102]
+collision_layer = 32
+monitoring = false
+
+[node name="_col" type="CollisionShape3D" parent="Trigger" unique_id=1700911913]
+unique_name_in_owner = true
+shape = SubResource("BoxShape3D_n15gq")
+
+[connection signal="on_activated" from="." to="_graphics" method="disable_obj"]

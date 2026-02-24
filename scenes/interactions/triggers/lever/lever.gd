@@ -20,6 +20,7 @@ var current_value: float = 0
 @onready var hand_pos_bottom: Node3D = %pos_bottom
 
 func _ready() -> void:
+	super()
 	current_value = starting_value
 	if use_intervals: 
 		current_value = snappedf(current_value, intervals)
@@ -71,3 +72,18 @@ func update_graphics() -> void:
 func change_interval_value(sig: float) -> void:
 	intervals = sig
 	update_value(current_value)
+
+# ↑ Other Stuff ↑
+# --------------------------------------------------------------------------------------------------
+# ↓ Enabling/Disabling Stuff ↓
+
+func enable(sig: float = -1) -> void:
+	print("Fiddlesticks")
+	visible = true
+	$Trigger/CollisionShape3D.set_deferred("disabled", false)
+	disabled = false
+
+func disable(sig: float = -1) -> void:
+	visible = false
+	$Trigger/CollisionShape3D.set_deferred("disabled", true)
+	disabled = true
