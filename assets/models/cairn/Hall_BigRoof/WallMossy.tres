@@ -1,20 +1,17 @@
 [gd_resource type="StandardMaterial3D" format=3 uid="uid://8h2x3qki3e6s"]
 
-[ext_resource type="Texture2D" uid="uid://ba022lsk1mxk3" path="res://assets/models/cairn/Hall_BigRoof/Wall+Roof_Textures/Wall_Mossy/Wall_Mossy_Base_color.png" id="1_nw602"]
+[ext_resource type="Texture2D" uid="uid://cytsjjce3e32" path="res://assets/models/cairn/Hall_BigRoof/Wall+Roof_Textures/Wall_Mossy/texture_Wall_Base_color.png" id="1_bf401"]
 [ext_resource type="Material" uid="uid://dyejtq23uplk4" path="res://assets/shaders/Outline/outline.tres" id="2_fcyde"]
-[ext_resource type="Texture2D" uid="uid://yjjq83rr3h37" path="res://assets/models/cairn/Hall_BigRoof/Wall+Roof_Textures/Wall_Mossy/Wall_Mossy_Mixed_AO.png" id="2_xs50s"]
-[ext_resource type="Texture2D" uid="uid://bb0o4pkprwx11" path="res://assets/models/cairn/Hall_BigRoof/Wall+Roof_Textures/Wall_Mossy/Wall_Mossy_Metallic.png" id="3_a1jqu"]
-[ext_resource type="Texture2D" uid="uid://b76nu61v04y0n" path="res://assets/models/cairn/Hall_BigRoof/Wall+Roof_Textures/Wall_Mossy/Wall_Mossy_Normal.png" id="5_lkwlx"]
-[ext_resource type="Texture2D" uid="uid://xo4v5cnx3emg" path="res://assets/models/cairn/Hall_BigRoof/Wall+Roof_Textures/Wall_Mossy/Wall_Mossy_Roughness.png" id="6_yomf6"]
+[ext_resource type="Texture2D" uid="uid://cwxbxrub6cjsi" path="res://assets/models/cairn/Hall_BigRoof/Wall+Roof_Textures/Wall_Mossy/texture_Wall_Mixed_AO.png" id="2_nw602"]
+[ext_resource type="Texture2D" uid="uid://602ruejix4wq" path="res://assets/models/cairn/Hall_BigRoof/Wall+Roof_Textures/Wall_Mossy/texture_Wall_Normal_OpenGL.png" id="4_xs50s"]
+[ext_resource type="Texture2D" uid="uid://tnku2kflxc14" path="res://assets/models/cairn/Hall_BigRoof/Wall+Roof_Textures/Wall_Mossy/texture_Wall_Roughness.png" id="5_a1jqu"]
 
 [resource]
 next_pass = ExtResource("2_fcyde")
-albedo_texture = ExtResource("1_nw602")
-metallic = 1.0
-metallic_specular = 1.0
-metallic_texture = ExtResource("3_a1jqu")
-roughness_texture = ExtResource("6_yomf6")
+albedo_texture = ExtResource("1_bf401")
+metallic_specular = 0.0
+roughness_texture = ExtResource("5_a1jqu")
 normal_enabled = true
-normal_texture = ExtResource("5_lkwlx")
+normal_texture = ExtResource("4_xs50s")
 ao_enabled = true
-ao_texture = ExtResource("2_xs50s")
+ao_texture = ExtResource("2_nw602")
