@@ -1471,9 +1471,8 @@ transform = Transform3D(4.3711392e-08, 0, -1.0000001, 0, 1, 0, 1.0000001, 0, 4.3
 [node name="_dev_floor_guide6" parent="Bin/Room_Interacting_old/_env" unique_id=1689393903 instance=ExtResource("12_ir6gx")]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 4, 0, -1)
 
-[node name="Teleporter" parent="Bin/Room_Interacting_old" unique_id=106109864 node_paths=PackedStringArray("out_pos") instance=ExtResource("14_6ords")]
+[node name="Teleporter" parent="Bin/Room_Interacting_old" unique_id=106109864 instance=ExtResource("14_6ords")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 4, 0, -1)
-out_pos = NodePath("")
 
 [node name="Trigger" type="Area3D" parent="Bin/Room_Interacting_old/Teleporter" unique_id=1194092769]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0.3)
@@ -4421,6 +4420,7 @@ material_override = ExtResource("41_vxgp0")
 mesh = SubResource("BoxMesh_o5rkc")
 
 [node name="Button3" parent="Room_Items/Sections/Sec_Default/But_SpawnItem" unique_id=1954125307 groups=["Interactables"] instance=ExtResource("10_h40wo")]
+manual_reset = true
 
 [node name="Label3D8" type="Label3D" parent="Room_Items/Sections/Sec_Default/But_SpawnItem" unique_id=2091304310]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 2.3841858e-07, 0.40000004, 0)
