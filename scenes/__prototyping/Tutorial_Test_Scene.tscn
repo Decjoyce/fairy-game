@@ -1,13 +1,15 @@
 [gd_scene format=3 uid="uid://ckuw7ho3cogrs"]
 
 [ext_resource type="PackedScene" uid="uid://bq86osdembn58" path="res://scenes/_player/_player_test.tscn" id="9_d5tbl"]
+[ext_resource type="PackedScene" path="res://scenes/interactions/prefabs/broken_lever.tscn" id="10_iqvfj"]
 [ext_resource type="PackedScene" uid="uid://dde66nwtb1gv1" path="res://scenes/interactions/triggers/item_receiver/torch_scont/torch_scont.tscn" id="10_wkpon"]
 [ext_resource type="PackedScene" uid="uid://qu5rxgbydmet" path="res://scenes/interactions/triggers/button/button.tscn" id="11_kqxud"]
 [ext_resource type="PackedScene" uid="uid://ck1b6l8s7xnxi" path="res://scenes/interactions/triggers/lever/lever.tscn" id="11_mbj5w"]
+[ext_resource type="PackedScene" path="res://scenes/interactions/interactables/items/all_items/keys/item_leverhandle.tscn" id="12_22y2j"]
 [ext_resource type="PackedScene" uid="uid://dt13fur6twjep" path="res://scenes/interactions/receivers/gate/gate.tscn" id="12_iqvfj"]
 [ext_resource type="PackedScene" uid="uid://dfe565flkjwxt" path="res://scenes/interactions/interactables/items/all_items/test_grabbable_item.tscn" id="13_2d0gr"]
 [ext_resource type="PackedScene" uid="uid://csot2mi7746ll" path="res://scenes/interactions/triggers/pressure_plate/pressure_plate.tscn" id="13_22y2j"]
-[ext_resource type="PackedScene" uid="uid://clnnqb1efkbei" path="res://scenes/interactions/prefabs/locked_door.tscn" id="15_1ktrc"]
+[ext_resource type="PackedScene" path="res://scenes/interactions/prefabs/locked_door.tscn" id="15_1ktrc"]
 [ext_resource type="PackedScene" uid="uid://dqh8lru4mt2ap" path="res://scenes/interactions/interactables/items/all_items/breakables/item_urn.tscn" id="15_t0mv0"]
 [ext_resource type="MeshLibrary" uid="uid://bu208a8l5866i" path="res://scenes/_levels/_palettes/cairn/meshlibrary_cairn.tres" id="16_1ktrc"]
 
@@ -36,9 +38,6 @@ shadow_enabled = true
 [node name="Torches" type="Node3D" parent="." unique_id=1073021904]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.37721205, 0, -2.0954456)
 
-[node name="TorchScont" parent="Torches" unique_id=1256554101 instance=ExtResource("10_wkpon")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 1.2251871, -1.5430648)
-
 [node name="Buttons_&_PressurePlates" type="Node3D" parent="." unique_id=251072707]
 
 [node name="First_Button" parent="Buttons_&_PressurePlates" unique_id=1598172844 instance=ExtResource("11_kqxud")]
@@ -50,9 +49,6 @@ weight_to_activate = 12.0
 
 [node name="Open_Level Door Gate" parent="Buttons_&_PressurePlates" unique_id=1926074976 instance=ExtResource("11_kqxud")]
 transform = Transform3D(1.3909066e-08, 0, 1, 0, 1, 0, -1, 0, 1.3909066e-08, 5.714222, 1, -26.035606)
-
-[node name="Lever" parent="Buttons_&_PressurePlates" unique_id=1692381032 instance=ExtResource("11_mbj5w")]
-transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 11.71567, 1, -16)
 
 [node name="Gates" type="Node3D" parent="." unique_id=1968183095]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
@@ -115,7 +111,28 @@ transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 38, 
 [node name="PressurePlate" parent="." unique_id=247380468 instance=ExtResource("13_22y2j")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 33, 0, -11)
 
+[node name="BrokenLeverExample" type="Node3D" parent="PressurePlate" unique_id=1336726938]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -25.148994, 1.0864971, -4)
+
+[node name="BrokenLever" parent="PressurePlate/BrokenLeverExample" unique_id=525346541 instance=ExtResource("10_iqvfj")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 3.876789, 0, -0.8704729)
+keywords_needed = "LEVER;"
+
+[node name="Lever_Fixed" parent="PressurePlate/BrokenLeverExample" unique_id=1692381032 instance=ExtResource("11_mbj5w")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 3.876789, 0, -0.8704729)
+use_intervals = true
+hand_prompt = "hand_prompt_lever"
+disabled = true
+
+[node name="LeverHandle" parent="PressurePlate/BrokenLeverExample" unique_id=1226645142 instance=ExtResource("12_22y2j")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, -0.7798259, -12.456398)
+keywords = "LEVER;"
+
+[node name="TorchScont" parent="." unique_id=799079126 instance=ExtResource("10_wkpon")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 1, -3.6176867)
+
 [connection signal="on_activated" from="Buttons_&_PressurePlates/First_Button" to="Gates/First_Gate" method="open_gate"]
 [connection signal="on_change" from="Buttons_&_PressurePlates/Tutorial_Weight_Puzzle" to="Gates/Weight_Puzzle_Gate" method="open_gate"]
 [connection signal="on_activated" from="Buttons_&_PressurePlates/Open_Level Door Gate" to="Gates/Weight_Puzzle_Gate" method="open_gate"]
-[connection signal="on_change" from="Buttons_&_PressurePlates/Lever" to="Gates/Lever_Gate" method="open_gate"]
+[connection signal="on_activated" from="PressurePlate/BrokenLeverExample/BrokenLever" to="PressurePlate/BrokenLeverExample/Lever_Fixed" method="enable"]
+[connection signal="on_change" from="PressurePlate/BrokenLeverExample/Lever_Fixed" to="Gates/Lever_Gate" method="open_gate"]
