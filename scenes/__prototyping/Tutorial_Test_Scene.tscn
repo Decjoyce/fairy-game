@@ -1,8 +1,14 @@
 [gd_scene format=3 uid="uid://ckuw7ho3cogrs"]
 
 [ext_resource type="PackedScene" uid="uid://bq86osdembn58" path="res://scenes/_player/_player_test.tscn" id="9_d5tbl"]
+[ext_resource type="ArrayMesh" uid="uid://twu6vneukch1" path="res://assets/Key_Items/Quick_Cage.obj" id="9_jwj6o"]
+[ext_resource type="Material" uid="uid://cfsra4dny0m23" path="res://assets/_dev/materials/_dev_m_white.tres" id="10_2d0gr"]
+[ext_resource type="PackedScene" uid="uid://cfkoaxhngk3gf" path="res://scenes/interactions/interactables/items/all_items/keys/item_key.tscn" id="10_r1i77"]
 [ext_resource type="PackedScene" uid="uid://dde66nwtb1gv1" path="res://scenes/interactions/triggers/item_receiver/torch_scont/torch_scont.tscn" id="10_wkpon"]
 [ext_resource type="PackedScene" uid="uid://qu5rxgbydmet" path="res://scenes/interactions/triggers/button/button.tscn" id="11_kqxud"]
+[ext_resource type="PackedScene" uid="uid://ck1b6l8s7xnxi" path="res://scenes/interactions/triggers/lever/lever.tscn" id="11_mbj5w"]
+[ext_resource type="Material" uid="uid://bk8gbrrgpacoj" path="res://assets/_dev/materials/_dev_m_source.tres" id="11_t0mv0"]
+[ext_resource type="Material" uid="uid://bmx5kbkw1qnpa" path="res://assets/_dev/materials/_dev_m_grey.tres" id="12_1ktrc"]
 [ext_resource type="PackedScene" uid="uid://dt13fur6twjep" path="res://scenes/interactions/receivers/gate/gate.tscn" id="12_iqvfj"]
 [ext_resource type="PackedScene" uid="uid://dfe565flkjwxt" path="res://scenes/interactions/interactables/items/all_items/test_grabbable_item.tscn" id="13_2d0gr"]
 [ext_resource type="PackedScene" uid="uid://csot2mi7746ll" path="res://scenes/interactions/triggers/pressure_plate/pressure_plate.tscn" id="13_22y2j"]
@@ -22,6 +28,9 @@ sky = SubResource("Sky_rj5h8")
 tonemap_mode = 2
 glow_enabled = true
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_r1i77"]
+size = Vector3(1, 0.15551758, 1)
+
 [node name="Tutorial_Area" type="Node3D" unique_id=872925716]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=672850743]
@@ -32,7 +41,7 @@ transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545
 shadow_enabled = true
 
 [node name="Torches" type="Node3D" parent="." unique_id=1073021904]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.37721205, 1, -2.0954456)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.37721205, 0, -2.0954456)
 
 [node name="TorchScont" parent="Torches" unique_id=1256554101 instance=ExtResource("10_wkpon")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 1.2251871, -1.5430648)
@@ -40,16 +49,17 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 1.2251871, -1.5430648)
 [node name="Buttons_&_PressurePlates" type="Node3D" parent="." unique_id=251072707]
 
 [node name="First_Button" parent="Buttons_&_PressurePlates" unique_id=1598172844 instance=ExtResource("11_kqxud")]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 5.69701, 2, -3)
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 5.69701, 1, -3)
 
 [node name="Tutorial_Weight_Puzzle" parent="Buttons_&_PressurePlates" unique_id=2079007304 instance=ExtResource("13_22y2j")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.0175343, 1.2595735, -23.131546)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.018, 0, -23.132)
 weight_to_activate = 12.0
 
 [node name="Open_Level Door Gate" parent="Buttons_&_PressurePlates" unique_id=1926074976 instance=ExtResource("11_kqxud")]
-transform = Transform3D(-1, 0, -2.9802322e-08, 0, 1, 0, 2.9802322e-08, 0, -1, 0.34740353, 1, -10.035606)
+transform = Transform3D(1.3909066e-08, 0, 1, 0, 1, 0, -1, 0, 1.3909066e-08, 5.714222, 1, -26.035606)
 
 [node name="Gates" type="Node3D" parent="." unique_id=1968183095]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
 
 [node name="First_Gate" parent="Gates" unique_id=1014394241 instance=ExtResource("12_iqvfj")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.0216956, 1, -9.93321)
@@ -62,7 +72,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.9864693, 1, -24.09972)
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 13.997283, 1, -17.062824)
 
 [node name="Weighted Items" type="Node3D" parent="." unique_id=1772242532]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0.94546914, -13)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, -0.09852874, -13)
 
 [node name="TEST_Grabbable_item" parent="Weighted Items" unique_id=134365272 instance=ExtResource("13_2d0gr")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.8329387, 1.6459893, -22.802837)
@@ -70,7 +80,7 @@ item_weight = 2
 
 [node name="TEST_Grabbable_item2" parent="Weighted Items" unique_id=1208973395 instance=ExtResource("13_2d0gr")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.9840517, 0.6459893, -9.960543)
-item_weight = 1
+item_weight = 3
 
 [node name="TEST_Grabbable_item5" parent="Weighted Items" unique_id=1779357604 instance=ExtResource("13_2d0gr")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.76709795, 0.6459893, -0.6712904)
@@ -93,14 +103,34 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0.44446087, 0)
 item_weight = 1
 
 [node name="GridMap" type="GridMap" parent="." unique_id=977673662]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.03, 0)
 mesh_library = ExtResource("16_1ktrc")
 data = {
-"cells": PackedInt32Array(0, 0, 4, 0, 65535, 2, 0, 65534, 655373, 1, 65534, 1441794, 2, 65534, 3, 2, 65533, 2, 2, 65532, 2, 2, 65531, 2, 3, 65530, 1, 1, 65530, 1, 65535, 65528, 1441793, 65535, 65527, 1441793, 6, 65527, 1441804, 65535, 65526, 1441793, 1, 65524, 655361, 5, 65526, 1048577, 2, 65523, 655362, 4, 65529, 655360, 3, 65529, 655360, 2, 65530, 655360, 2, 65529, 655360, 1, 65529, 655360, 0, 65529, 655360, 0, 65528, 655360, 0, 65527, 655360, 1, 65527, 655360, 1, 65528, 655360, 2, 65528, 655360, 3, 65528, 655360, 4, 65528, 655360, 5, 65527, 655360, 4, 65527, 655360, 3, 65527, 655360, 2, 65527, 655360, 1, 65526, 655360, 0, 65526, 655360, 2, 65526, 655360, 3, 65526, 655360, 4, 65526, 655360, 5, 65528, 1048577, 2, 65522, 655364, 3, 65525, 655360, 4, 65525, 655360, 2, 65525, 655360, 1, 65525, 655360, 0, 65525, 655360, 0, 65524, 655363, 65535, 65525, 655363, 4, 65524, 1048579, 5, 65525, 1048579, 0, 65530, 1441795, 65535, 65529, 1441795, 5, 65529, 3, 4, 65530, 3, 3, 65524, 655361, 2, 65524, 10)
+"cells": PackedInt32Array(0, 0, 4, 0, 65535, 2, 0, 65534, 655373, 1, 65534, 1441794, 2, 65534, 3, 2, 65533, 2, 2, 65532, 2, 2, 65531, 2, 3, 65530, 1, 1, 65530, 1, 65535, 65528, 1441793, 65535, 65527, 1441793, 6, 65527, 1441804, 65535, 65526, 1441793, 1, 65524, 655361, 5, 65526, 1048577, 2, 65523, 655362, 4, 65529, 655360, 3, 65529, 655360, 2, 65530, 655360, 2, 65529, 655360, 1, 65529, 655360, 0, 65529, 655360, 0, 65528, 655360, 0, 65527, 655360, 1, 65527, 655360, 1, 65528, 655360, 2, 65528, 655360, 3, 65528, 655360, 4, 65528, 655360, 5, 65527, 655360, 4, 65527, 655360, 3, 65527, 655360, 2, 65527, 655360, 1, 65526, 655360, 0, 65526, 655360, 2, 65526, 655360, 3, 65526, 655360, 4, 65526, 655360, 5, 65528, 1048577, 2, 65522, 655364, 3, 65525, 655360, 4, 65525, 655360, 2, 65525, 655360, 1, 65525, 655360, 0, 65525, 655360, 0, 65524, 655363, 65535, 65525, 655363, 4, 65524, 1048579, 5, 65525, 1048579, 0, 65530, 1441795, 65535, 65529, 1441795, 5, 65529, 3, 4, 65530, 3, 3, 65524, 655361, 2, 65524, 10, 7, 65527, 1441794, 8, 65527, 1441794, 9, 65527, 1441794, 10, 65527, 1048579, 10, 65528, 2, 10, 65529, 2, 10, 65530, 1441795, 11, 65530, 1441794, 12, 65530, 1441794, 13, 65530, 1441794, 15, 65531, 655376, 15, 65530, 655376, 15, 65529, 655376, 16, 65531, 655376, 16, 65530, 655376, 16, 65529, 655376, 17, 65529, 655376, 17, 65530, 655376, 17, 65531, 655376, 18, 65529, 655376, 18, 65530, 655376, 18, 65531, 655376, 19, 65530, 655376, 20, 65530, 655376, 14, 65530, 655376, 14, 65531, 655378, 14, 65529, 655378, 14, 65532, 1441809, 14, 65528, 655377, 15, 65528, 1048594, 16, 65528, 1048594, 17, 65528, 1048594, 18, 65528, 1048594, 15, 65532, 1441810, 16, 65532, 1441810, 17, 65532, 1441810, 18, 65532, 1441810, 19, 65532, 17, 19, 65528, 1048593, 20, 65531, 17, 20, 65529, 1048593, 19, 65531, 1048592, 19, 65529, 1048592)
 }
 metadata/_editor_floor_ = Vector3(0, 0, 0)
 
 [node name="player_test" parent="." unique_id=725727541 instance=ExtResource("9_d5tbl")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 2, 1)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 1, 1)
+
+[node name="QuickCage" type="MeshInstance3D" parent="." unique_id=412281997]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 37, 4, -11)
+mesh = ExtResource("9_jwj6o")
+surface_material_override/0 = ExtResource("10_2d0gr")
+surface_material_override/1 = ExtResource("11_t0mv0")
+surface_material_override/2 = ExtResource("12_1ktrc")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="QuickCage" unique_id=1426593237]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="QuickCage/StaticBody3D" unique_id=1968027606]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.008133411, 0)
+shape = SubResource("BoxShape3D_r1i77")
+
+[node name="key" parent="." unique_id=451440735 instance=ExtResource("10_r1i77")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 37, 4.546558, -11)
+
+[node name="Lever" parent="." unique_id=1692381032 instance=ExtResource("11_mbj5w")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 11.71567, 1, -16)
 
 [connection signal="on_activated" from="Buttons_&_PressurePlates/First_Button" to="Gates/First_Gate" method="open_gate"]
 [connection signal="on_change" from="Buttons_&_PressurePlates/Tutorial_Weight_Puzzle" to="Gates/Weight_Puzzle_Gate" method="open_gate"]
