@@ -864,7 +864,7 @@ _data = {
 &"Head_002|metarig_001Action": SubResource("Animation_1v355")
 }
 
-[sub_resource type="BoxMesh" id="BoxMesh_teo1q"]
+[sub_resource type="BoxMesh" id="BoxMesh_2b8gu"]
 material = ExtResource("17_fpxpw")
 size = Vector3(0.64, 2, 0.125)
 
@@ -885,6 +885,10 @@ size = Vector3(2, 0.1, 2)
 [sub_resource type="BoxMesh" id="BoxMesh_limx5"]
 material = ExtResource("18_o5rkc")
 size = Vector3(2, 0.1, 2)
+
+[sub_resource type="BoxMesh" id="BoxMesh_teo1q"]
+material = ExtResource("17_fpxpw")
+size = Vector3(0.64, 2, 0.125)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_d0nk1"]
 size = Vector3(0.2, 2, 0.2)
@@ -931,7 +935,7 @@ metadata/_custom_type_script = "uid://beaf3digx88d0"
 [node name="Playground_Interactions" type="Node3D" unique_id=1592069120]
 
 [node name="player_test" parent="." unique_id=87981919 instance=ExtResource("2_3vnxs")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -104, 1, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -34, 1, 0)
 
 [node name="_environment" type="Node3D" parent="." unique_id=1714868412]
 
@@ -1963,6 +1967,24 @@ Listeners
 "
 font_size = 52
 
+[node name="TP2_SR" parent="Room_Interactions/Start_Room/Doorways/Door_SignalReceivers" unique_id=313544992 node_paths=PackedStringArray("out_pos") instance=ExtResource("14_6ords")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, 0)
+out_pos = NodePath("../../../../SignalReceiver_Room/TP_SR2Start/Enter_SR")
+
+[node name="Trigger" type="Area3D" parent="Room_Interactions/Start_Room/Doorways/Door_SignalReceivers/TP2_SR" unique_id=965850536]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, -0.3)
+collision_mask = 3
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Room_Interactions/Start_Room/Doorways/Door_SignalReceivers/TP2_SR/Trigger" unique_id=1921819560]
+shape = SubResource("SphereShape3D_3wul1")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Room_Interactions/Start_Room/Doorways/Door_SignalReceivers/TP2_SR/Trigger" unique_id=1259058811]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 0, 0)
+mesh = SubResource("SphereMesh_hsji5")
+
+[node name="Return_SR" type="Node3D" parent="Room_Interactions/Start_Room/Doorways/Door_SignalReceivers/TP2_SR" unique_id=1039263241]
+transform = Transform3D(-1, 0, 5.9604645e-08, 0, 1, 0, -5.9604645e-08, 0, -1, 0, 1, 1)
+
 [node name="Door_Button" type="Node3D" parent="Room_Interactions/Start_Room/Doorways" unique_id=2097848871]
 transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, -1, 0, -4)
 
@@ -2749,7 +2771,7 @@ text = "<=====
 font_size = 52
 outline_size = 0
 
-[node name="TP_Lever2Start" parent="Room_Interactions/Lever_Room" unique_id=313544992 node_paths=PackedStringArray("out_pos") instance=ExtResource("14_6ords")]
+[node name="TP_Lever2Start" parent="Room_Interactions/Lever_Room" unique_id=340189061 node_paths=PackedStringArray("out_pos") instance=ExtResource("14_6ords")]
 transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 0, 0, 1.9999971)
 out_pos = NodePath("../../Start_Room/Enter_Start")
 
@@ -4112,22 +4134,22 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 2)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Room_Interactions/SignalReceiver_Room/Tiles/_start_doorway" unique_id=579301024]
 transform = Transform3D(0.70710677, 0, 0.70710677, 0, 1, 0, -0.70710677, 0, 0.70710677, 1.1292877, 1, 1.1292894)
-mesh = SubResource("BoxMesh_teo1q")
+mesh = SubResource("BoxMesh_2b8gu")
 skeleton = NodePath("../../Sections")
 
 [node name="MeshInstance3D2" type="MeshInstance3D" parent="Room_Interactions/SignalReceiver_Room/Tiles/_start_doorway" unique_id=516029412]
 transform = Transform3D(0.7071067, 0, -0.7071067, 0, 1, 0, 0.7071067, 0, 0.7071067, -1.1707153, 1, 1.1292894)
-mesh = SubResource("BoxMesh_teo1q")
+mesh = SubResource("BoxMesh_2b8gu")
 skeleton = NodePath("../../Sections")
 
 [node name="MeshInstance3D3" type="MeshInstance3D" parent="Room_Interactions/SignalReceiver_Room/Tiles/_start_doorway" unique_id=1567357975]
 transform = Transform3D(-0.7071068, 0, -0.7071067, 0, 1, 0, 0.7071067, 0, -0.7071068, -1.1707077, 1, -1.1707108)
-mesh = SubResource("BoxMesh_teo1q")
+mesh = SubResource("BoxMesh_2b8gu")
 skeleton = NodePath("../../Sections")
 
 [node name="MeshInstance3D4" type="MeshInstance3D" parent="Room_Interactions/SignalReceiver_Room/Tiles/_start_doorway" unique_id=906639828]
 transform = Transform3D(-0.70710665, 0, 0.70710677, 0, 1, 0, -0.70710677, 0, -0.70710665, 1.1292877, 1, -1.1707106)
-mesh = SubResource("BoxMesh_teo1q")
+mesh = SubResource("BoxMesh_2b8gu")
 skeleton = NodePath("../../Sections")
 
 [node name="Label3D5" type="Label3D" parent="Room_Interactions/SignalReceiver_Room/Tiles/_start_doorway" unique_id=914897268]
@@ -4471,7 +4493,7 @@ shape = SubResource("SphereShape3D_3wul1")
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 0, 0)
 mesh = SubResource("SphereMesh_hsji5")
 
-[node name="Enter_Plate" type="Node3D" parent="Room_Interactions/SignalReceiver_Room/TP_SR2Start" unique_id=1702554739]
+[node name="Enter_SR" type="Node3D" parent="Room_Interactions/SignalReceiver_Room/TP_SR2Start" unique_id=1702554739]
 transform = Transform3D(-0.99999976, 0, 5.9604623e-08, 0, 1, 0, -5.9604623e-08, 0, -0.99999976, 0, 0, 2.8)
 
 [node name="ObjectsSection" type="Node3D" parent="Room_Interactions/SignalReceiver_Room" unique_id=1337322196]
@@ -5464,6 +5486,8 @@ transform = Transform3D(0.7071066, 0, -0.70710695, 0, 1, 0, 0.70710695, 0, 0.707
 [connection signal="body_entered" from="Room_Start/TP2_Interactions/Trigger" to="Room_Start/TP2_Interactions" method="_teleport_item"]
 [connection signal="area_entered" from="Room_Interactions/Start_Room/Doorways/Door_Items/Teleporter_to_item/Trigger" to="Room_Interactions/Start_Room/Doorways/Door_Items/Teleporter_to_item" method="_teleport_entity"]
 [connection signal="body_entered" from="Room_Interactions/Start_Room/Doorways/Door_Items/Teleporter_to_item/Trigger" to="Room_Interactions/Start_Room/Doorways/Door_Items/Teleporter_to_item" method="_teleport_item"]
+[connection signal="area_entered" from="Room_Interactions/Start_Room/Doorways/Door_SignalReceivers/TP2_SR/Trigger" to="Room_Interactions/Start_Room/Doorways/Door_SignalReceivers/TP2_SR" method="_teleport_entity"]
+[connection signal="body_entered" from="Room_Interactions/Start_Room/Doorways/Door_SignalReceivers/TP2_SR/Trigger" to="Room_Interactions/Start_Room/Doorways/Door_SignalReceivers/TP2_SR" method="_teleport_item"]
 [connection signal="area_entered" from="Room_Interactions/Start_Room/Doorways/Door_Button/TP2_Button/Trigger" to="Room_Interactions/Start_Room/Doorways/Door_Button/TP2_Button" method="_teleport_entity"]
 [connection signal="body_entered" from="Room_Interactions/Start_Room/Doorways/Door_Button/TP2_Button/Trigger" to="Room_Interactions/Start_Room/Doorways/Door_Button/TP2_Button" method="_teleport_item"]
 [connection signal="area_entered" from="Room_Interactions/Start_Room/Doorways/Door_Lever/TP2_Lever/Trigger" to="Room_Interactions/Start_Room/Doorways/Door_Lever/TP2_Lever" method="_teleport_entity"]

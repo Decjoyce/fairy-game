@@ -12,7 +12,7 @@
 [ext_resource type="Texture2D" uid="uid://dtjkym227bqie" path="res://scenes/_player/interaction/hand/assets/hand_extend.png" id="8_3efos"]
 [ext_resource type="Texture2D" uid="uid://fiyfylw4oy02" path="res://scenes/_player/interaction/hand/assets/new/handFist.png" id="9_8icoj"]
 [ext_resource type="Texture2D" uid="uid://x5o8gwlacxs1" path="res://assets/__not_ours_dontship/Xbox Series/XboxSeriesX_X.png" id="9_b33uu"]
-[ext_resource type="Script" path="res://scenes/_player/interaction/input_contexts.gd" id="9_pdn2y"]
+[ext_resource type="Script" uid="uid://bwjg44sotn0rj" path="res://scenes/_player/interaction/input_contexts.gd" id="9_pdn2y"]
 [ext_resource type="Texture2D" uid="uid://dee8ol82mg72l" path="res://assets/__not_ours_dontship/Xbox Series/XboxSeriesX_LT.png" id="10_c2wdf"]
 [ext_resource type="Texture2D" uid="uid://dehow8buqijkk" path="res://scenes/_player/interaction/hand/assets/hand_lever.png" id="12_pvvfk"]
 [ext_resource type="Texture2D" uid="uid://dou0xes0jegud" path="res://scenes/_player/interaction/hand/assets/new/handThrowCharge.png" id="13_g103e"]
@@ -26,10 +26,13 @@
 [ext_resource type="Script" uid="uid://cefly351moegl" path="res://scenes/_player/interaction/hand/states/handstate_lever.gd" id="21_krqau"]
 [ext_resource type="Texture2D" uid="uid://by4r3xp6u2qur" path="res://scenes/_player/interaction/hand/assets/new/handOut.png" id="22_6q41x"]
 [ext_resource type="Texture2D" uid="uid://bsneap2rk48wi" path="res://scenes/_player/interaction/hand/assets/new/handHover.png" id="22_f0odu"]
+[ext_resource type="Texture2D" uid="uid://dug1nta4aw3qf" path="res://scenes/_player/interaction/hand/assets/new/handLeverDown_side.png" id="25_1y63c"]
 [ext_resource type="Texture2D" uid="uid://bckoo5g7d6dkd" path="res://scenes/_player/interaction/hand/assets/new/handLeverUp.png" id="25_8icoj"]
 [ext_resource type="Texture2D" uid="uid://cjg2tybwcwyps" path="res://scenes/_player/interaction/hand/assets/new/handLeverMid.png" id="25_j5qgs"]
 [ext_resource type="Texture2D" uid="uid://c2peaf4lponuk" path="res://scenes/_player/interaction/hand/assets/new/handLeverDown.png" id="26_8icoj"]
 [ext_resource type="Texture2D" uid="uid://ie2qwgyt82t5" path="res://scenes/_player/interaction/hand/assets/new/handKey.png" id="26_g103e"]
+[ext_resource type="Texture2D" uid="uid://caig263otkgib" path="res://scenes/_player/interaction/hand/assets/new/handLeverMid_side.png" id="27_rjeyo"]
+[ext_resource type="Texture2D" uid="uid://bjr37otryvvbb" path="res://scenes/_player/interaction/hand/assets/new/handLeverUp_side.png" id="28_onote"]
 
 [sub_resource type="Animation" id="Animation_434r6"]
 length = 0.001
@@ -176,6 +179,23 @@ tracks/0/keys = {
 "values": [ExtResource("26_8icoj")]
 }
 
+[sub_resource type="Animation" id="Animation_rjeyo"]
+resource_name = "hand_lever_down_side"
+length = 0.001
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("_hand_sprite:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("25_1y63c")]
+}
+
 [sub_resource type="Animation" id="Animation_j5qgs"]
 resource_name = "hand_lever_mid"
 length = 0.001
@@ -193,6 +213,23 @@ tracks/0/keys = {
 "values": [ExtResource("25_j5qgs")]
 }
 
+[sub_resource type="Animation" id="Animation_onote"]
+resource_name = "hand_lever_mid_side"
+length = 0.001
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("_hand_sprite:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("27_rjeyo")]
+}
+
 [sub_resource type="Animation" id="Animation_g103e"]
 resource_name = "hand_lever_up"
 length = 0.001
@@ -208,6 +245,23 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [ExtResource("25_8icoj")]
+}
+
+[sub_resource type="Animation" id="Animation_v48pp"]
+resource_name = "hand_lever_up_side"
+length = 0.001
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("_hand_sprite:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("28_onote")]
 }
 
 [sub_resource type="Animation" id="Animation_sx4t2"]
@@ -356,8 +410,11 @@ _data = {
 &"hand_attack": SubResource("Animation_jhcvy"),
 &"hand_attack_idle": SubResource("Animation_b33uu"),
 &"hand_lever_down": SubResource("Animation_8icoj"),
+&"hand_lever_down_side": SubResource("Animation_rjeyo"),
 &"hand_lever_mid": SubResource("Animation_j5qgs"),
+&"hand_lever_mid_side": SubResource("Animation_onote"),
 &"hand_lever_up": SubResource("Animation_g103e"),
+&"hand_lever_up_side": SubResource("Animation_v48pp"),
 &"hand_press": SubResource("Animation_sx4t2"),
 &"hand_prompt_button": SubResource("Animation_3t2v1"),
 &"hand_prompt_default": SubResource("Animation_njhm0"),
@@ -431,6 +488,9 @@ metadata/_custom_type_script = "uid://dpsgaiv5m7n21"
 [node name="LEVER" type="Node" parent="Hand_Left/States" unique_id=136764758]
 script = ExtResource("21_krqau")
 moving_breaks_free = true
+turning_breaks_free = true
+anim_idle = "a_hand_idle_grab_item"
+anim_prompt = "hand_prompt_key"
 metadata/_custom_type_script = "uid://cefly351moegl"
 
 [node name="ATTACK" type="Node" parent="Hand_Left/States" unique_id=1683072651]
@@ -605,6 +665,7 @@ metadata/_custom_type_script = "uid://dpsgaiv5m7n21"
 [node name="LEVER" type="Node" parent="Hand_Right/States" unique_id=2018788044]
 script = ExtResource("21_krqau")
 moving_breaks_free = true
+turning_breaks_free = true
 anim_idle = "a_hand_idle_grab_item"
 anim_prompt = "hand_prompt_key"
 metadata/_custom_type_script = "uid://cefly351moegl"

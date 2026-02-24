@@ -42,6 +42,10 @@ signal on_move_down(target_position: Vector3)
 signal on_move_left(target_position: Vector3)
 signal on_move_right(target_position: Vector3)
 
+signal on_turn(target_rotation: float)
+signal on_turn_left(target_rotation: float)
+signal on_turn_right(target_rotation: float)
+
 func _ready() -> void:
 	var dd: =player.global_position.round()
 	var new_position := Vector3(dd.x, player.global_position.y, dd.z)
@@ -116,7 +120,7 @@ func movement(delta: float) -> void:
 	
 	#print(floor_detector.is_colliding())
 	
-	if !disable_gravity and !floor_detector.is_colliding():
+	if !disable_gravity and !Debug.noclip_enabled and !floor_detector.is_colliding():
 		if current_direction != MoveDirections.FALLING:
 			current_direction = MoveDirections.FALLING
 			start_fall_height = player.global_position.y
@@ -187,9 +191,13 @@ func rotate_input() -> void:
 	if Input.is_action_just_pressed("turn_left"):
 		target_rotation = target_rotation + 1.5708
 		compass.global_rotation.y = target_rotation
+		on_turn.emit(target_rotation)
+		on_turn_left.emit(target_rotation)
 	elif Input.is_action_just_pressed("turn_right"):
 		target_rotation = target_rotation - 1.5708
 		compass.global_rotation.y = target_rotation
+		on_turn.emit(target_rotation)
+		on_turn_right.emit(target_rotation)
 
 func rotate(delta: float):
 	var weight = 1 - exp(-rotation_speed * delta)

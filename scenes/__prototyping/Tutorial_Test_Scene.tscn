@@ -4,17 +4,17 @@
 [ext_resource type="Script" uid="uid://42c4j0jtwejr" path="res://scenes/interactions/receivers/gate/gate.gd" id="3_t0mv0"]
 [ext_resource type="Material" uid="uid://c6ic70i7jpqeu" path="res://assets/models/cairn/Props/Gate/Gate.tres" id="3_wkpon"]
 [ext_resource type="PackedScene" uid="uid://bq86osdembn58" path="res://scenes/_player/_player_test.tscn" id="9_d5tbl"]
-[ext_resource type="PackedScene" path="res://scenes/interactions/prefabs/broken_lever.tscn" id="10_iqvfj"]
+[ext_resource type="PackedScene" uid="uid://bg3e8trp0vy58" path="res://scenes/interactions/prefabs/broken_lever.tscn" id="10_iqvfj"]
 [ext_resource type="PackedScene" uid="uid://cfkoaxhngk3gf" path="res://scenes/interactions/interactables/items/all_items/keys/item_key.tscn" id="10_r1i77"]
 [ext_resource type="PackedScene" uid="uid://dde66nwtb1gv1" path="res://scenes/interactions/triggers/item_receiver/torch_scont/torch_scont.tscn" id="10_wkpon"]
 [ext_resource type="PackedScene" uid="uid://qu5rxgbydmet" path="res://scenes/interactions/triggers/button/button.tscn" id="11_kqxud"]
 [ext_resource type="PackedScene" uid="uid://ck1b6l8s7xnxi" path="res://scenes/interactions/triggers/lever/lever.tscn" id="11_mbj5w"]
 [ext_resource type="Material" uid="uid://bk8gbrrgpacoj" path="res://assets/_dev/materials/_dev_m_source.tres" id="11_t0mv0"]
-[ext_resource type="PackedScene" path="res://scenes/interactions/interactables/items/all_items/keys/item_leverhandle.tscn" id="12_22y2j"]
+[ext_resource type="PackedScene" uid="uid://d13vdgis1uvvv" path="res://scenes/interactions/interactables/items/all_items/keys/item_leverhandle.tscn" id="12_22y2j"]
 [ext_resource type="PackedScene" uid="uid://dt13fur6twjep" path="res://scenes/interactions/receivers/gate/gate.tscn" id="12_iqvfj"]
 [ext_resource type="PackedScene" uid="uid://dfe565flkjwxt" path="res://scenes/interactions/interactables/items/all_items/test_grabbable_item.tscn" id="13_2d0gr"]
 [ext_resource type="PackedScene" uid="uid://csot2mi7746ll" path="res://scenes/interactions/triggers/pressure_plate/pressure_plate.tscn" id="13_22y2j"]
-[ext_resource type="PackedScene" path="res://scenes/interactions/prefabs/locked_door.tscn" id="15_1ktrc"]
+[ext_resource type="PackedScene" uid="uid://clnnqb1efkbei" path="res://scenes/interactions/receivers/door/locked_door.tscn" id="15_1ktrc"]
 [ext_resource type="PackedScene" uid="uid://dqh8lru4mt2ap" path="res://scenes/interactions/interactables/items/all_items/breakables/item_urn.tscn" id="15_t0mv0"]
 [ext_resource type="MeshLibrary" uid="uid://bu208a8l5866i" path="res://scenes/_levels/_palettes/cairn/meshlibrary_cairn.tres" id="16_1ktrc"]
 [ext_resource type="Script" uid="uid://dr3eeef0cxnnt" path="res://scenes/interactions/receivers/item_spawners/item_spawner.gd" id="16_lpkc0"]
@@ -408,7 +408,7 @@ holder = NodePath("../Items_Default")
 spawn_point = NodePath("spawnpoint")
 
 [node name="spawnpoint" type="Node3D" parent="item_spawner_default" unique_id=4134811]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 33, -0.84493804, -4.837657)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 33, 0.55506194, -4.837657)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="item_spawner_default/spawnpoint" unique_id=343643381]
 transform = Transform3D(1.1924867e-08, 0, 0.99999994, 0, 1, 0, -0.99999994, 0, 1.1924867e-08, 0, 0.9, 0.24462128)
@@ -426,7 +426,7 @@ transform = Transform3D(7.54979e-08, 0, -1, 0, 1, 0, 1, 0, 7.54979e-08, -0.5, 1,
 [node name="Torch4" parent="Items_Default" unique_id=226247953 instance=ExtResource("19_d5tbl")]
 transform = Transform3D(7.54979e-08, 0, -1, 0, 1, 0, 1, 0, 7.54979e-08, 1.150547, 1, -3.9277177)
 
-[connection signal="on_change" from="Item_Spawner_Buttons/Item_Spawn_Button1" to="item_spawner_default" method="spawn_item"]
+[connection signal="on_activated" from="Item_Spawner_Buttons/Item_Spawn_Button1" to="item_spawner_default" method="spawn_item"]
 [connection signal="area_entered" from="Secret Walls/Wall_oneLight/gate/UnderChecker" to="Secret Walls/Wall_oneLight" method="_on_area_entered_under_checker"]
 [connection signal="area_exited" from="Secret Walls/Wall_oneLight/gate/UnderChecker" to="Secret Walls/Wall_oneLight" method="_on_area_exited_under_checker"]
 [connection signal="body_entered" from="Secret Walls/Wall_oneLight/gate/UnderChecker" to="Secret Walls/Wall_oneLight" method="_on_body_entered_under_checker"]

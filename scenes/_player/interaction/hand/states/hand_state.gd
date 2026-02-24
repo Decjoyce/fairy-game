@@ -14,6 +14,7 @@ var player_interact: PlayerInteract
 var other_hand: PlayerHand
 
 @export var moving_breaks_free: bool
+@export var turning_breaks_free: bool
 
 @export var anim_idle: String
 @export var anim_prompt: String
