@@ -42,7 +42,7 @@
 radius = 0.43391418
 height = 0.86782837
 
-[sub_resource type="Shader" id="Shader_lgmkq"]
+[sub_resource type="Shader" id="Shader_28ajc"]
 code = "shader_type spatial;
 render_mode diffuse_lambert_wrap,cull_disabled;
 
@@ -119,9 +119,9 @@ void fragment() {
 }
 "
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_28ajc"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_2g7uo"]
 render_priority = 0
-shader = SubResource("Shader_lgmkq")
+shader = SubResource("Shader_28ajc")
 shader_parameter/rows = 5.0
 shader_parameter/columns = 8.0
 shader_parameter/frame = 1.0
@@ -130,18 +130,18 @@ shader_parameter/sprite = ExtResource("2_c8yoh")
 shader_parameter/mode = 0
 shader_parameter/Normal = ExtResource("1_mpywb")
 
-[sub_resource type="PlaneMesh" id="PlaneMesh_2g7uo"]
-material = SubResource("ShaderMaterial_28ajc")
+[sub_resource type="PlaneMesh" id="PlaneMesh_k3ua6"]
+material = SubResource("ShaderMaterial_2g7uo")
 size = Vector2(1.7279999, 1.7279999)
 orientation = 2
 
-[sub_resource type="Resource" id="Resource_k3ua6"]
+[sub_resource type="Resource" id="Resource_pts2q"]
 script = ExtResource("4_v1swk")
 sprite = ExtResource("5_ma74y")
 texture_normal = ExtResource("6_owush")
 columns = 8.0
 
-[sub_resource type="Resource" id="Resource_pts2q"]
+[sub_resource type="Resource" id="Resource_phxqg"]
 script = ExtResource("4_v1swk")
 name = "walk"
 sprite = ExtResource("2_c8yoh")
@@ -149,7 +149,7 @@ texture_normal = ExtResource("1_mpywb")
 rows = 5.0
 columns = 8.0
 
-[sub_resource type="Resource" id="Resource_phxqg"]
+[sub_resource type="Resource" id="Resource_86kpf"]
 script = ExtResource("4_v1swk")
 name = "Attack_LbBottom"
 sprite = ExtResource("7_tvq6p")
@@ -157,7 +157,7 @@ texture_normal = ExtResource("8_mwxs5")
 rows = 2.0
 columns = 8.0
 
-[sub_resource type="Resource" id="Resource_86kpf"]
+[sub_resource type="Resource" id="Resource_pkfog"]
 script = ExtResource("4_v1swk")
 name = "Attack_LMid"
 sprite = ExtResource("9_jppkf")
@@ -165,7 +165,7 @@ texture_normal = ExtResource("10_3ixwq")
 rows = 2.0
 columns = 8.0
 
-[sub_resource type="Resource" id="Resource_pkfog"]
+[sub_resource type="Resource" id="Resource_d7tla"]
 script = ExtResource("4_v1swk")
 name = "Attack_LTop"
 sprite = ExtResource("11_3jwaj")
@@ -173,7 +173,7 @@ texture_normal = ExtResource("12_pydrg")
 rows = 2.0
 columns = 8.0
 
-[sub_resource type="Resource" id="Resource_d7tla"]
+[sub_resource type="Resource" id="Resource_8vrwc"]
 script = ExtResource("4_v1swk")
 name = "Attack_RBottom"
 sprite = ExtResource("13_me4q8")
@@ -181,7 +181,7 @@ texture_normal = ExtResource("14_xnhkk")
 rows = 2.0
 columns = 8.0
 
-[sub_resource type="Resource" id="Resource_8vrwc"]
+[sub_resource type="Resource" id="Resource_iaicr"]
 script = ExtResource("4_v1swk")
 name = "Attack_RMid"
 sprite = ExtResource("15_7kval")
@@ -189,7 +189,7 @@ texture_normal = ExtResource("16_th4g8")
 rows = 2.0
 columns = 8.0
 
-[sub_resource type="Resource" id="Resource_iaicr"]
+[sub_resource type="Resource" id="Resource_600hx"]
 script = ExtResource("4_v1swk")
 name = "Attack_RTop"
 sprite = ExtResource("17_u7c7l")
@@ -911,9 +911,9 @@ shape = SubResource("CapsuleShape3D_abuop")
 transform = Transform3D(-1, 0, -1.509958e-07, 0, 1, 0, 1.509958e-07, 0, -1, 0, 0.75682235, 0)
 layers = 3
 sorting_offset = 1.0
-mesh = SubResource("PlaneMesh_2g7uo")
+mesh = SubResource("PlaneMesh_k3ua6")
 script = ExtResource("3_j08hu")
-animations_array = Array[ExtResource("4_v1swk")]([SubResource("Resource_k3ua6"), SubResource("Resource_pts2q"), SubResource("Resource_phxqg"), SubResource("Resource_86kpf"), SubResource("Resource_pkfog"), SubResource("Resource_d7tla"), SubResource("Resource_8vrwc"), SubResource("Resource_iaicr")])
+animations_array = Array[ExtResource("4_v1swk")]([SubResource("Resource_pts2q"), SubResource("Resource_phxqg"), SubResource("Resource_86kpf"), SubResource("Resource_pkfog"), SubResource("Resource_d7tla"), SubResource("Resource_8vrwc"), SubResource("Resource_iaicr"), SubResource("Resource_600hx")])
 animation = 1
 frame = 1.0
 sprite_scale = 0.0016
@@ -970,6 +970,7 @@ one_shot = true
 script = ExtResource("26_28ajc")
 Body = NodePath("../..")
 Sprite = NodePath("../../Sprite3DBillBoard")
+Debug_draw = true
 SM = NodePath("..")
 Animator = NodePath("../../AnimationPlayer")
 

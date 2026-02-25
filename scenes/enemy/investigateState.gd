@@ -60,7 +60,7 @@ func get_pos_item():
 	#curr_posVi = Body.global_position
 	#curr_posPlayerVi = player.global_position
 	## PLAYER IN THIS CASE IS ITEM THAT MADE THE NOISE!!!!
-	curr_posPlayerV = grid_map.astar.get_closest_position_in_segment(interest.get_child(1).global_position)      #Vector3(player.position.x,0,player.position.z)
+	curr_posPlayerV = grid_map.astar.get_closest_position_in_segment(interest.get_child(0).global_position)      #Vector3(player.position.x,0,player.position.z)
 	#curr_pos = grid_map.astar.get_closest_point(Body.global_position)
 	curr_posV = grid_map.astar.get_closest_position_in_segment(Body.global_position)
 	prints(curr_posV, curr_posPlayerV,)
