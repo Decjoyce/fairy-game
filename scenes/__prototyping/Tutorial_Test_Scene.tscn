@@ -19,6 +19,7 @@
 [ext_resource type="MeshLibrary" uid="uid://bu208a8l5866i" path="res://scenes/_levels/_palettes/cairn/meshlibrary_cairn.tres" id="16_1ktrc"]
 [ext_resource type="Script" uid="uid://dr3eeef0cxnnt" path="res://scenes/interactions/receivers/item_spawners/item_spawner.gd" id="16_lpkc0"]
 [ext_resource type="Material" uid="uid://c1s48fevcaqy3" path="res://assets/_dev/materials/_dev_m_aquamarine.tres" id="18_d5tbl"]
+[ext_resource type="PackedScene" uid="uid://bw752cs1fru6w" path="res://scenes/interactions/interactables/items/all_items/consumables/drinkvessel.tscn" id="18_kqxud"]
 [ext_resource type="PackedScene" uid="uid://bm8kaq0ah5g7q" path="res://scenes/interactions/interactables/items/all_items/torch/torch.tscn" id="19_d5tbl"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_xunri"]
@@ -143,6 +144,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22, 0, 14)
 [node name="Wall_oneLight" type="Node3D" parent="Secret Walls" unique_id=1549416915 groups=["debug_PickableObjects"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.062336, 0, -20)
 script = ExtResource("3_t0mv0")
+stay_open = true
+override_signal_range = true
+ovr_signal_max = 0.5
 
 [node name="gate" type="StaticBody3D" parent="Secret Walls/Wall_oneLight" unique_id=1709349300]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
@@ -196,6 +200,9 @@ shape = SubResource("BoxShape3D_i1hti")
 [node name="Wall_TwoMedium" type="Node3D" parent="Secret Walls" unique_id=571077275 groups=["debug_PickableObjects"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.062336, 0, -30.176998)
 script = ExtResource("3_t0mv0")
+override_signal_range = true
+ovr_signal_min = 0.4
+ovr_signal_max = 0.6
 
 [node name="gate" type="StaticBody3D" parent="Secret Walls/Wall_TwoMedium" unique_id=119199826]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
@@ -249,6 +256,10 @@ shape = SubResource("BoxShape3D_i1hti")
 [node name="Ceiling_heavy" type="Node3D" parent="Secret Walls" unique_id=958802310 groups=["debug_PickableObjects"]]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 13.062336, 2.1068313, -26.176998)
 script = ExtResource("3_t0mv0")
+stay_open = true
+override_signal_range = true
+ovr_signal_min = 0.5
+ovr_signal_max = 0.85
 
 [node name="gate" type="StaticBody3D" parent="Secret Walls/Ceiling_heavy" unique_id=1439991202]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
@@ -325,6 +336,7 @@ transform = Transform3D(1.3909066e-08, 0, 1, 0, 1, 0, -1, 0, 1.3909066e-08, 5.71
 
 [node name="Puzzle_Room_Pressure_plate" parent="Buttons_&_PressurePlates" unique_id=247380468 instance=ExtResource("13_22y2j")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 33, 0, -11)
+weight_to_activate = 20.0
 
 [node name="Gates" type="Node3D" parent="." unique_id=1968183095]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
@@ -379,7 +391,7 @@ data = {
 metadata/_editor_floor_ = Vector3(0, 0, 0)
 
 [node name="player_test" parent="." unique_id=725727541 instance=ExtResource("9_d5tbl")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 1, 1)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 32, 1, -10)
 
 [node name="ItemReceiver" parent="." unique_id=1205913056 instance=ExtResource("15_1ktrc")]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 38, 1, -11)
@@ -403,7 +415,7 @@ keywords = "LEVER;"
 
 [node name="item_spawner_default" type="Node" parent="." unique_id=795370431 node_paths=PackedStringArray("holder", "spawn_point")]
 script = ExtResource("16_lpkc0")
-item = ExtResource("13_2d0gr")
+item = ExtResource("18_kqxud")
 holder = NodePath("../Items_Default")
 spawn_point = NodePath("spawnpoint")
 

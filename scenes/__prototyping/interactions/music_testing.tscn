@@ -5,7 +5,10 @@
 [ext_resource type="Script" uid="uid://cgb0bi0gumby6" path="res://scenes/interactions/receivers/skybox_changer/skybox_changer.gd" id="4_8x6fc"]
 [ext_resource type="Environment" uid="uid://co42tppomh8j3" path="res://assets/skyboxes/skyboxes_testing_dark.tres" id="5_75y8e"]
 [ext_resource type="PackedScene" uid="uid://c5kh7hs6fp6go" path="res://scenes/interactions/triggers/music_trigger/music_trigger.tscn" id="5_a3p8y"]
+[ext_resource type="Script" uid="uid://b46j43ho84wfj" path="res://scenes/interactions/triggers/music_trigger/melodies/melody.gd" id="6_2gnfs"]
 [ext_resource type="PackedScene" uid="uid://civmqin21rnce" path="res://scenes/interactions/interactables/items/all_items/instruments/instrument_test.tscn" id="6_tyyse"]
+[ext_resource type="Resource" uid="uid://b5bs0jgbt263j" path="res://scenes/interactions/triggers/music_trigger/melodies/melody_test.tres" id="7_vj51q"]
+[ext_resource type="Texture2D" uid="uid://crxiied1mq25" path="res://assets/sprites/_dev/divided.png" id="9_vj51q"]
 
 [sub_resource type="Environment" id="Environment_vu50v"]
 
@@ -18,6 +21,12 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 1)
 
 [node name="Gate" parent="." unique_id=1033176324 instance=ExtResource("3_vj51q")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -4.4)
+
+[node name="Gate2" parent="." unique_id=1177506036 instance=ExtResource("3_vj51q")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, -4.4)
+
+[node name="Gate3" parent="." unique_id=1709236270 instance=ExtResource("3_vj51q")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, -4.4)
 
 [node name="skybox_changer" type="Node" parent="." unique_id=724843259 node_paths=PackedStringArray("world_environment")]
 script = ExtResource("4_8x6fc")
@@ -38,8 +47,23 @@ use_collision = true
 size = Vector3(34, 0.001, 13)
 
 [node name="MusicReceiver" parent="." unique_id=1647442715 instance=ExtResource("5_a3p8y")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.8, -2)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2)
 debug_mode = true
+melodies = Array[ExtResource("6_2gnfs")]([ExtResource("7_vj51q")])
 
 [node name="TEST_Instrument" parent="." unique_id=130412758 instance=ExtResource("6_tyyse")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=547538479]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("9_vj51q")
+expand_mode = 1
+metadata/_edit_use_anchors_ = true
+
+[connection signal="on_activated" from="MusicReceiver" to="Gate2" method="fully_open_gate"]
+[connection signal="on_change" from="MusicReceiver" to="Gate" method="open_gate"]
+[connection signal="on_change" from="MusicReceiver" to="Gate3" method="toggle_gate"]

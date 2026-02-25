@@ -22,12 +22,22 @@ var things_under: Array[Node3D]
 var cur_value: float
 var last_value: float
 
+@export_category("Override Signal Range")
+@export var override_signal_range: bool = false
+@export_range(0, 0.9, 0.01) var ovr_signal_min: float = 0
+@export_range(0, 1.0, 0.01) var ovr_signal_max: float = 1.0
+
 func open_gate(amount: float) -> void:
-	if stay_open and cur_value >= 1.0: return
+	if stay_open and cur_value >= 1: return
+	if override_signal_range: 
+		if amount < ovr_signal_min: amount = ovr_signal_min
+		elif amount > ovr_signal_max: amount = ovr_signal_max
+		#prints("before", amount)
+		amount = remap(amount, ovr_signal_min, ovr_signal_max, 0, 1.0)
 	time_since_start = 0
 	is_opening = true
 	_start_position = graphics.position.y
-	prints("open: ", amount)
+	#prints("open: ", amount)
 	last_value = cur_value
 	cur_value = amount
 	_end_position = 1 + (open_pos * amount)

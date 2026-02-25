@@ -26,6 +26,8 @@ size = Vector3(0.5, 0.5, 0.5)
 [sub_resource type="BoxShape3D" id="BoxShape3D_234jp"]
 size = Vector3(0.4, 0.4, 0.4)
 
+[sub_resource type="SphereShape3D" id="SphereShape3D_m3m7e"]
+
 [node name="TEST_Instrument" type="RigidBody3D" unique_id=130412758 node_paths=PackedStringArray("music_player", "col", "grab_col", "idle_graphics") groups=["debug_PickableObjects"]]
 collision_layer = 2
 axis_lock_angular_x = true
@@ -77,3 +79,11 @@ bus = &"pl_footsteps"
 [node name="Timer" type="Timer" parent="." unique_id=1910888342]
 wait_time = 0.5
 one_shot = true
+
+[node name="MusicCol" type="Area3D" parent="." unique_id=1546735738]
+collision_layer = 256
+collision_mask = 0
+monitoring = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MusicCol" unique_id=1875582206]
+shape = SubResource("SphereShape3D_m3m7e")

@@ -67,7 +67,7 @@ func enter(previous_state_path: String, data := {}) -> void:
 	
 	_space_state = hand_controller.cam.get_world_3d().direct_space_state
 	
-	player.current_weight += grabbed_item.item_weight
+	player.current_weight += grabbed_item.get_weight()
 	if player.current_pressureplate: player.current_pressureplate.update_weight_of_entity(player)
 	# Animation
 	hand_controller.anim_change_idle_anim(anim_idle)
@@ -91,7 +91,7 @@ func enter(previous_state_path: String, data := {}) -> void:
 	time_held_down = 0
 
 func exit() -> void:
-	player.current_weight -= grabbed_item.item_weight
+	player.current_weight -= grabbed_item.get_weight()
 	if player.current_pressureplate: player.current_pressureplate.update_weight_of_entity(player)
 	hand_controller.hovering_interactable = null
 	is_ready = false

@@ -1,6 +1,10 @@
 class_name MusicReceiver
 extends Node3D
 
+signal on_activated(sig: float)
+signal on_change(sig: float)
+signal on_deactivated(sig: float)
+
 @onready var default_trigger: Area3D = $Trigger
 
 @export var debug_mode: bool
@@ -8,27 +12,69 @@ extends Node3D
 
 var cur_instruments: Array[Instrument]
 
+@export var melodies: Array[Melody]
+var current_melody: int
+var cur_sequence: Array[int]
+var cur_note: int
+var needed_note: int
+
 func _ready() -> void:
 	var trig: Area3D
 	if overwrite_trigger: 
-		overwrite_trigger.body_entered.connect(_on_instrument_entered)
-		overwrite_trigger.body_exited.connect(_on_instrument_exited)
+		overwrite_trigger.area_entered.connect(_on_instrument_entered)
+		overwrite_trigger.area_exited.connect(_on_instrument_exited)
 	else: 
-		default_trigger.body_entered.connect(_on_instrument_entered)
-		default_trigger.body_exited.connect(_on_instrument_exited)
+		default_trigger.area_entered.connect(_on_instrument_entered)
+		default_trigger.area_exited.connect(_on_instrument_exited)
+	update_current_sequence()
+	update_needed_note()
+
+func update_needed_note() -> void:
+	needed_note = cur_sequence[cur_note]
+
+func update_current_sequence() -> void:
+	cur_sequence = melodies[current_melody].sequence
 
 func on_note_heard(note: int, instrument: Instrument) -> void:
-	prints("Heard Note - ", note, "from", instrument)
+	prints("nn:", note, needed_note)
+	if note == needed_note:
+		correct_note()
+	else: incorrect_note()
+	on_change.emit(float(cur_note) / float(cur_sequence.size()))
 
-func _on_instrument_entered(body: Node3D) -> void:
-	if body is not Instrument: return
+func correct_note() -> void:
+	prints("c_1", cur_note)
+	cur_note += 1
+	if cur_note >= cur_sequence.size() :
+		print("c_2")
+		current_melody += 1
+		if current_melody >= melodies.size(): 
+			print("c_3")
+			activate()
+			return
+		cur_note = 0
+		update_current_sequence()
+	update_needed_note()
+
+func incorrect_note() -> void:
+	prints("ic_1", cur_note)
+	cur_note = 0
+	update_needed_note()
+
+func activate() -> void:
+	on_activated.emit(1.0)
+
+
+func _on_instrument_entered(body: Area3D) -> void:
+	if body.get_parent() is not Grabbable_Item: return
 	prints(body.name, "has entered")
-	var instr: Instrument = body as Instrument
+	var instr: Instrument = body.get_parent() as Instrument
 	cur_instruments.append(instr)
 	instr.on_played_note.connect(on_note_heard)
 
 func _on_instrument_exited(body: Node3D) -> void:
-	if !cur_instruments.has(body): return
-	prints(body.name, "has entered")
+	if body.get_parent() is not Grabbable_Item: return
+	if !cur_instruments.has(body.get_parent()): return
+	prints(body.name, "has exited")
 	var instr: Instrument = cur_instruments[cur_instruments.find(body)]
 	instr.on_played_note.disconnect(on_note_heard)
