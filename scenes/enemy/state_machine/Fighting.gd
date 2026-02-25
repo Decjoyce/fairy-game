@@ -18,7 +18,7 @@ var noded
 
 func enter():
 	player = owner.player
-	combat.enemy_stance = player.combat.stance
+	##combat.enemy_stance = player.combat.stance
 	combat.enter_combat_mode()
 	Animator.play("Idle")
 

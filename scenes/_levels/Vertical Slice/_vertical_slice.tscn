@@ -13,12 +13,12 @@
 [ext_resource type="PackedScene" uid="uid://csot2mi7746ll" path="res://scenes/interactions/triggers/pressure_plate/pressure_plate.tscn" id="11_k374e"]
 [ext_resource type="PackedScene" uid="uid://lxic7c72kvyt" path="res://scenes/interactions/interactables/items/all_items/misc/item_skull.tscn" id="12_020vy"]
 [ext_resource type="PackedScene" uid="uid://bw752cs1fru6w" path="res://scenes/interactions/interactables/items/all_items/consumables/drinkvessel.tscn" id="13_fe3wq"]
-[ext_resource type="PackedScene" uid="uid://dqh8lru4mt2ap" path="res://scenes/interactions/interactables/items/all_items/breakables/urn.tscn" id="14_tnfif"]
+[ext_resource type="PackedScene" uid="uid://dqh8lru4mt2ap" path="res://scenes/interactions/interactables/items/all_items/breakables/item_urn.tscn" id="14_tnfif"]
 [ext_resource type="Script" uid="uid://beaf3digx88d0" path="res://scenes/interactions/interactables/items/item_types/itemtype_breakable.gd" id="15_rqu3y"]
 [ext_resource type="PackedScene" uid="uid://cfkoaxhngk3gf" path="res://scenes/interactions/interactables/items/all_items/keys/item_key.tscn" id="16_fkwc6"]
 [ext_resource type="PackedScene" uid="uid://clnnqb1efkbei" path="res://scenes/interactions/prefabs/locked_door.tscn" id="17_8a45e"]
-[ext_resource type="Material" uid="uid://f0qp2o0ip83p" path="res://assets/models/cairn/Materials/props/Wood_Door/Wood_Door.tres" id="18_xg0xq"]
-[ext_resource type="Material" uid="uid://c17eub34k5hf8" path="res://assets/models/cairn/Materials/props/Wood_Door/Wood_Screw.tres" id="19_6n8bx"]
+[ext_resource type="Material" uid="uid://f0qp2o0ip83p" path="res://assets/models/cairn/Props/Wood_Door/Wood_Door.tres" id="18_xg0xq"]
+[ext_resource type="Material" uid="uid://c17eub34k5hf8" path="res://assets/models/cairn/Props/Wood_Door/Wood_Screw.tres" id="19_6n8bx"]
 [ext_resource type="Script" uid="uid://c4t3ko70ihpyy" path="res://scenes/interactions/receivers/animated_object/animated_object.gd" id="20_y5ils"]
 [ext_resource type="PackedScene" uid="uid://chqox5wu7wm4q" path="res://scenes/_levels/_palettes/cairn/props/cairn_exit_pillars.tscn" id="21_8q313"]
 [ext_resource type="PackedScene" uid="uid://bh7tcs2xgbni1" path="res://scenes/_levels/_palettes/cairn/props/cairn_doorway_wall.tscn" id="22_8mwic"]
@@ -76,12 +76,11 @@ adjustment_enabled = true
 adjustment_contrast = 0.9
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_j4a7u"]
-transparency = 1
 shading_mode = 0
 diffuse_mode = 3
 albedo_color = Color(1, 1, 1, 0)
 
-[sub_resource type="BoxMesh" id="BoxMesh_cnpm0"]
+[sub_resource type="BoxMesh" id="BoxMesh_vugc7"]
 material = SubResource("StandardMaterial3D_j4a7u")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3cs1p"]
@@ -90,19 +89,19 @@ shading_mode = 0
 diffuse_mode = 3
 albedo_color = Color(0.8782205, 0, 0.012920001, 0)
 
-[sub_resource type="BoxMesh" id="BoxMesh_qhbkd"]
+[sub_resource type="BoxMesh" id="BoxMesh_cns1u"]
 material = SubResource("StandardMaterial3D_3cs1p")
 
 [sub_resource type="MeshLibrary" id="MeshLibrary_fniqw"]
 item/0/name = "WLKE"
-item/0/mesh = SubResource("BoxMesh_cnpm0")
+item/0/mesh = SubResource("BoxMesh_vugc7")
 item/0/mesh_transform = Transform3D(1, 0, 0, 0, 0.09, 0, 0, 0, 1, 0, 0, 0)
 item/0/mesh_cast_shadow = 1
 item/0/shapes = []
 item/0/navigation_mesh_transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 item/0/navigation_layers = 1
 item/1/name = "NO WALKE"
-item/1/mesh = SubResource("BoxMesh_qhbkd")
+item/1/mesh = SubResource("BoxMesh_cns1u")
 item/1/mesh_transform = Transform3D(1, 0, 0, 0, 0.09, 0, 0, 0, 1, 0, 0, 0)
 item/1/mesh_cast_shadow = 1
 item/1/shapes = []
@@ -452,7 +451,7 @@ mesh_library = SubResource("MeshLibrary_fniqw")
 cell_size = Vector3(1, 1, 1)
 cell_octant_size = 4
 data = {
-"cells": PackedInt32Array(65530, 65534, 1, 65530, 65533, 1, 65531, 65533, 1, 65532, 65533, 1, 65531, 65534, 1, 65532, 65534, 1, 65533, 65534, 1, 65533, 65535, 1, 65533, 0, 1, 65533, 1, 1, 65533, 2, 1, 65533, 3, 1, 65533, 4, 1, 65533, 5, 1, 65532, 5, 1, 65531, 5, 0, 65530, 5, 0, 65529, 5, 0, 65528, 5, 0, 65527, 5, 0, 65527, 6, 1, 65526, 5, 0, 65525, 5, 1, 65524, 5, 1, 65524, 4, 1, 65524, 3, 1, 65524, 2, 1, 65524, 1, 1, 65523, 1, 1, 65523, 0, 1, 65524, 0, 1, 65524, 65535, 1, 65524, 65534, 1, 65525, 65534, 1, 65526, 65534, 1, 65527, 65534, 1, 65528, 65534, 1, 65529, 65534, 1, 65528, 65533, 1, 65529, 65533, 1, 65526, 2, 0, 65525, 65535, 1, 65525, 0, 1, 65525, 1, 1, 65525, 2, 1, 65525, 3, 1, 65525, 4, 1, 65526, 65535, 0, 65526, 0, 0, 65526, 1, 0, 65526, 3, 0, 65526, 4, 0, 65527, 65535, 0, 65527, 0, 0, 65527, 1, 0, 65527, 2, 0, 65527, 3, 0, 65527, 4, 0, 65528, 65535, 1, 65528, 0, 0, 65528, 1, 0, 65528, 2, 0, 65528, 3, 0, 65528, 4, 0, 65529, 65535, 1, 65529, 0, 0, 65529, 1, 0, 65529, 2, 0, 65529, 3, 0, 65529, 4, 0, 65530, 65535, 0, 65530, 0, 0, 65530, 1, 0, 65530, 2, 0, 65530, 3, 0, 65530, 4, 0, 65531, 65535, 0, 65531, 0, 0, 65531, 1, 0, 65531, 2, 0, 65531, 3, 0, 65531, 4, 0, 65532, 65535, 1, 65532, 0, 1, 65532, 1, 1, 65532, 2, 1, 65532, 3, 1, 65532, 4, 1, -65540, 9, 655361, -65541, 65535, 917505, 65526, 6, 1, 65528, 6, 1, 65529, 6, 1, 65530, 6, 1, 65531, 6, 1, 65532, 6, 1, 65533, 6, 1)
+"cells": PackedInt32Array(65530, 65534, 1, 65530, 65533, 1, 65531, 65533, 1, 65532, 65533, 1, 65531, 65534, 1, 65532, 65534, 1, 65533, 65534, 1, 65533, 65535, 1, 65533, 0, 1, 65533, 1, 1, 65533, 2, 1, 65533, 3, 1, 65533, 4, 1, 65533, 5, 1, 65532, 5, 1, 65531, 5, 0, 65530, 5, 0, 65529, 5, 0, 65528, 5, 0, 65527, 5, 0, 65527, 6, 1, 65526, 5, 0, 65525, 5, 1, 65524, 5, 1, 65524, 4, 1, 65524, 3, 1, 65524, 2, 1, 65524, 1, 1, 65523, 1, 1, 65523, 0, 1, 65524, 0, 1, 65524, 65535, 1, 65524, 65534, 1, 65525, 65534, 1, 65526, 65534, 1, 65527, 65534, 1, 65528, 65534, 1, 65529, 65534, 1, 65528, 65533, 1, 65529, 65533, 1, 65526, 2, 0, 65525, 65535, 1, 65525, 0, 1, 65525, 1, 1, 65525, 2, 1, 65525, 3, 1, 65525, 4, 1, 65526, 65535, 0, 65526, 0, 0, 65526, 1, 0, 65526, 3, 0, 65526, 4, 0, 65527, 65535, 0, 65527, 0, 0, 65527, 1, 0, 65527, 2, 0, 65527, 3, 0, 65527, 4, 0, 65528, 65535, 1, 65528, 0, 0, 65528, 1, 0, 65528, 2, 0, 65528, 3, 0, 65528, 4, 0, 65529, 65535, 1, 65529, 0, 0, 65529, 1, 0, 65529, 2, 0, 65529, 3, 0, 65529, 4, 0, 65530, 65535, 0, 65530, 0, 0, 65530, 1, 0, 65530, 2, 0, 65530, 3, 0, 65530, 4, 0, 65531, 65535, 0, 65531, 0, 0, 65531, 1, 0, 65531, 2, 0, 65531, 3, 0, 65531, 4, 0, 65532, 65535, 1, 65532, 0, 1, 65532, 1, 1, 65532, 2, 1, 65532, 3, 1, 65532, 4, 1, -65540, 9, 655361, -65541, 65535, 917505, 65526, 6, 1, 65528, 6, 1, 65529, 6, 1, 65530, 6, 1, 65531, 6, 1, 65532, 6, 1, 65533, 6, 1, 23, 18, 0)
 }
 script = ExtResource("1_4ngw2")
 walkable_items = Array[int]([0])

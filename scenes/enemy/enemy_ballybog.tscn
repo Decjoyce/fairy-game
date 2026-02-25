@@ -1,4 +1,4 @@
-[gd_scene load_steps=89 format=3 uid="uid://drc8vg7njr5ui"]
+[gd_scene format=3 uid="uid://drc8vg7njr5ui"]
 
 [ext_resource type="Script" uid="uid://bytcavpmi7t32" path="res://scenes/enemy/enemy_with_combat.gd" id="1_3ixwq"]
 [ext_resource type="Texture2D" uid="uid://bajdgu88x35py" path="res://scenes/enemy/Sprites/ballybog/walk/ballyWalkSheet_n.png" id="1_mpywb"]
@@ -26,6 +26,7 @@
 [ext_resource type="Script" uid="uid://cyctjxnvvlo47" path="res://scenes/enemy/state_machine/Wander.gd" id="23_3m1id"]
 [ext_resource type="Script" uid="uid://dlre0emi41dh1" path="res://scenes/enemy/state_machine/Chase.gd" id="24_q232k"]
 [ext_resource type="Animation" uid="uid://b6ga5k6b8stym" path="res://scenes/enemy/animations/Walk.res" id="25_nsc4k"]
+[ext_resource type="Script" uid="uid://d0y2am1bnroqw" path="res://scenes/enemy/investigateState.gd" id="26_28ajc"]
 [ext_resource type="Script" uid="uid://mjv5xwl3wbdm" path="res://scenes/enemy/combat/enemy_combat.gd" id="26_jppkf"]
 [ext_resource type="Script" uid="uid://cjs7vohjf5dsq" path="res://scenes/enemy/combat/enemy_combathand.gd" id="27_3ixwq"]
 [ext_resource type="Script" uid="uid://cjssruwuxjia0" path="res://scenes/combat/attack_sequence.gd" id="28_3jwaj"]
@@ -899,14 +900,14 @@ billboard_mode = 1
 resource_local_to_scene = true
 material = SubResource("StandardMaterial3D_pydrg")
 
-[node name="Enemy_presset" type="CharacterBody3D"]
+[node name="Enemy_presset" type="CharacterBody3D" unique_id=1712475425]
 script = ExtResource("1_3ixwq")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1647824731]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.4198761, 0)
 shape = SubResource("CapsuleShape3D_abuop")
 
-[node name="Sprite3DBillBoard" type="MeshInstance3D" parent="."]
+[node name="Sprite3DBillBoard" type="MeshInstance3D" parent="." unique_id=589909567]
 transform = Transform3D(-1, 0, -1.509958e-07, 0, 1, 0, 1.509958e-07, 0, -1, 0, 0.75682235, 0)
 layers = 3
 sorting_offset = 1.0
@@ -918,94 +919,107 @@ frame = 1.0
 sprite_scale = 0.0016
 metadata/_custom_type_script = "uid://b5653u7w56pqw"
 
-[node name="SM_controller" type="Node" parent="." node_paths=PackedStringArray("node_StateMachine")]
+[node name="SM_controller" type="Node" parent="." unique_id=2065948807 node_paths=PackedStringArray("node_StateMachine")]
 script = ExtResource("19_u7shv")
 node_StateMachine = NodePath("../StateMachine")
 
-[node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("Init_node_state")]
+[node name="StateMachine" type="Node" parent="." unique_id=175799109 node_paths=PackedStringArray("Init_node_state")]
 script = ExtResource("20_mv5lh")
 Init_node_state = NodePath("Wander")
 
-[node name="IdleState" type="Node" parent="StateMachine" node_paths=PackedStringArray("Body", "Sprite", "SM", "Animator")]
+[node name="IdleState" type="Node" parent="StateMachine" unique_id=1009443271 node_paths=PackedStringArray("Body", "Sprite", "SM", "Animator")]
 script = ExtResource("21_6mmou")
 Body = NodePath("../..")
 Sprite = NodePath("../../Sprite3DBillBoard")
 SM = NodePath("..")
 Animator = NodePath("../../AnimationPlayer")
 
-[node name="Fighting" type="Node" parent="StateMachine" node_paths=PackedStringArray("combat", "Body", "SM", "Animator")]
+[node name="Fighting" type="Node" parent="StateMachine" unique_id=771065481 node_paths=PackedStringArray("combat", "Body", "SM", "Animator")]
 script = ExtResource("22_dbqfk")
 combat = NodePath("../../Combat")
 Body = NodePath("../..")
 SM = NodePath("..")
 Animator = NodePath("../../AnimationPlayer")
 
-[node name="Wander" type="Node" parent="StateMachine" node_paths=PackedStringArray("Body", "Sprite", "SM", "Animator")]
+[node name="Wander" type="Node" parent="StateMachine" unique_id=223225635 node_paths=PackedStringArray("Body", "Sprite", "SM", "Animator")]
 script = ExtResource("23_3m1id")
 Body = NodePath("../..")
 Sprite = NodePath("../../Sprite3DBillBoard")
 SM = NodePath("..")
 Animator = NodePath("../../AnimationPlayer")
 
-[node name="Timer" type="Timer" parent="StateMachine/Wander"]
+[node name="Timer" type="Timer" parent="StateMachine/Wander" unique_id=848685568]
 process_callback = 0
 wait_time = 7.0
 one_shot = true
 
-[node name="Chase" type="Node" parent="StateMachine" node_paths=PackedStringArray("Body", "Sprite", "SM", "Animator")]
+[node name="Chase" type="Node" parent="StateMachine" unique_id=1073349157 node_paths=PackedStringArray("Body", "Sprite", "SM", "Animator")]
 script = ExtResource("24_q232k")
+Body = NodePath("../..")
+Sprite = NodePath("../../Sprite3DBillBoard")
+Debug_draw = true
+SM = NodePath("..")
+Animator = NodePath("../../AnimationPlayer")
+
+[node name="Timer" type="Timer" parent="StateMachine/Chase" unique_id=1875391046]
+process_callback = 0
+wait_time = 5.0
+one_shot = true
+
+[node name="Investegate" type="Node" parent="StateMachine" unique_id=1316965168 node_paths=PackedStringArray("Body", "Sprite", "SM", "Animator")]
+script = ExtResource("26_28ajc")
 Body = NodePath("../..")
 Sprite = NodePath("../../Sprite3DBillBoard")
 SM = NodePath("..")
 Animator = NodePath("../../AnimationPlayer")
 
-[node name="Timer" type="Timer" parent="StateMachine/Chase"]
+[node name="Timer" type="Timer" parent="StateMachine/Investegate" unique_id=509255129]
 process_callback = 0
-wait_time = 5.0
+wait_time = 10.0
 one_shot = true
 
-[node name="Area3D" type="Area3D" parent="." groups=["Player"]]
+[node name="Area3D" type="Area3D" parent="." unique_id=1416647770 groups=["Player"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.59447724, 0)
 collision_layer = 0
 monitorable = false
 
-[node name="Fight area" type="CollisionShape3D" parent="Area3D"]
+[node name="Fight area" type="CollisionShape3D" parent="Area3D" unique_id=52286080]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.4901161e-08, 0, 0)
 shape = SubResource("BoxShape3D_3ixwq")
 debug_color = Color(0.95096534, 2.0214916e-06, 0.56154376, 0.41960785)
 
-[node name="Fight area2" type="CollisionShape3D" parent="Area3D"]
+[node name="Fight area2" type="CollisionShape3D" parent="Area3D" unique_id=391521035]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -1.4901161e-08, 0, 0)
 shape = SubResource("BoxShape3D_pydrg")
 debug_color = Color(0.95096534, 2.0214916e-06, 0.56154376, 0.41960785)
 
-[node name="Area3D2" type="Area3D" parent="."]
+[node name="Area3D2(Close)" type="Area3D" parent="." unique_id=1081450715]
 transform = Transform3D(0.495, 0, 0, 0, 0.495, 0, 0, 0, 0.495, 0, 0.59447724, 0)
 collision_layer = 0
 monitorable = false
 
-[node name="Vision_Hearing" type="CollisionShape3D" parent="Area3D2"]
+[node name="Vision_Hearing" type="CollisionShape3D" parent="Area3D2(Close)" unique_id=294735946]
 transform = Transform3D(0.99999696, 0, 0, 0, 0.99999696, 0, 0, 0, 0.99999696, 0, 0, 0)
 shape = SubResource("CylinderShape3D_om1c7")
 debug_color = Color(0.7989152, 0.38141474, 0.47244918, 0.41960785)
 
-[node name="Aggro" type="Area3D" parent="."]
+[node name="Aggro(Far)" type="Area3D" parent="." unique_id=1322448997]
 transform = Transform3D(0.495, 0, 0, 0, 0.495, 0, 0, 0, 0.495, 0, 0.59447724, 0)
 collision_layer = 0
 monitorable = false
 
-[node name="Vision_Hearing" type="CollisionShape3D" parent="Aggro"]
+[node name="Vision_Hearing" type="CollisionShape3D" parent="Aggro(Far)" unique_id=693395566]
 transform = Transform3D(0.99999696, 0, 0, 0, 0.99999696, 0, 0, 0, 0.99999696, 0, 0, 0)
 shape = SubResource("CylinderShape3D_pydrg")
 debug_color = Color(0.62382853, 0.49057347, 0.55874586, 0.41960785)
 
-[node name="Combat" type="Node" parent="." node_paths=PackedStringArray("combat_ui", "combat_hands", "stance")]
+[node name="Combat" type="Node" parent="." unique_id=2133089730 node_paths=PackedStringArray("combat_ui", "combat_hands", "stance")]
 script = ExtResource("26_jppkf")
 combat_ui = NodePath("../Stats/Node3D/SubViewport/Control")
 combat_hands = [NodePath("CombatHand")]
 stance = NodePath("Stance")
 
-[node name="CombatHand" type="Node" parent="Combat" node_paths=PackedStringArray("defense_timer", "my_stance", "anim_player", "block_audio_player") groups=["EnemyCombatHand"]]
+[node name="CombatHand" type="Node" parent="Combat" unique_id=247325064 node_paths=PackedStringArray("defense_timer", "my_stance", "anim_player", "block_audio_player") groups=["EnemyCombatHand"]]
 script = ExtResource("27_3ixwq")
 defense_timer = NodePath("Timer_Defence")
 attack_sequences = Array[ExtResource("28_3jwaj")]([ExtResource("29_pydrg")])
@@ -1016,38 +1030,38 @@ anim_player = NodePath("../../AnimationPlayer")
 block_audio_player = NodePath("BlockSfx")
 metadata/_custom_type_script = "uid://cjs7vohjf5dsq"
 
-[node name="Attack" type="Node" parent="Combat/CombatHand"]
+[node name="Attack" type="Node" parent="Combat/CombatHand" unique_id=1521673840]
 script = ExtResource("30_me4q8")
 player_current_attack = ExtResource("29_pydrg")
 metadata/_custom_type_script = "uid://c27axnnaakeuo"
 
-[node name="Timer_Telegraph" type="Timer" parent="Combat/CombatHand/Attack"]
+[node name="Timer_Telegraph" type="Timer" parent="Combat/CombatHand/Attack" unique_id=171242386]
 one_shot = true
 
-[node name="Timer_Attack" type="Timer" parent="Combat/CombatHand/Attack"]
+[node name="Timer_Attack" type="Timer" parent="Combat/CombatHand/Attack" unique_id=1960170157]
 one_shot = true
 
-[node name="Timer_Recover" type="Timer" parent="Combat/CombatHand/Attack"]
+[node name="Timer_Recover" type="Timer" parent="Combat/CombatHand/Attack" unique_id=1790592525]
 one_shot = true
 
-[node name="AttackSFX" type="AudioStreamPlayer3D" parent="Combat/CombatHand/Attack"]
+[node name="AttackSFX" type="AudioStreamPlayer3D" parent="Combat/CombatHand/Attack" unique_id=1027872838]
 stream = SubResource("AudioStreamRandomizer_u7c7l")
 
-[node name="Timer_Stagger" type="Timer" parent="Combat/CombatHand"]
+[node name="Timer_Stagger" type="Timer" parent="Combat/CombatHand" unique_id=1815438931]
 
-[node name="Timer_Defence" type="Timer" parent="Combat/CombatHand"]
+[node name="Timer_Defence" type="Timer" parent="Combat/CombatHand" unique_id=192912541]
 one_shot = true
 
-[node name="BlockSfx" type="AudioStreamPlayer3D" parent="Combat/CombatHand"]
+[node name="BlockSfx" type="AudioStreamPlayer3D" parent="Combat/CombatHand" unique_id=1445686899]
 stream = SubResource("AudioStreamRandomizer_u7c7l")
 
-[node name="Stance" type="Node" parent="Combat" node_paths=PackedStringArray("hands", "stats")]
+[node name="Stance" type="Node" parent="Combat" unique_id=2121410562 node_paths=PackedStringArray("hands", "stats")]
 script = ExtResource("31_xnhkk")
 hands = [NodePath("../CombatHand")]
 stats = NodePath("../../Stats")
 metadata/_custom_type_script = "uid://446bgqyk22na"
 
-[node name="Hitbox" type="Area3D" parent="." node_paths=PackedStringArray("combat")]
+[node name="Hitbox" type="Area3D" parent="." unique_id=165606757 node_paths=PackedStringArray("combat")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.1, 0)
 collision_layer = 131072
 collision_mask = 0
@@ -1055,22 +1069,20 @@ monitoring = false
 script = ExtResource("32_7kval")
 combat = NodePath("../Combat")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Hitbox"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Hitbox" unique_id=1410370259]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.55, 0)
 shape = SubResource("CapsuleShape3D_nfjh2")
 
-[node name="HitSfx" type="AudioStreamPlayer3D" parent="."]
+[node name="HitSfx" type="AudioStreamPlayer3D" parent="." unique_id=1621843565]
 stream = SubResource("AudioStreamRandomizer_u7shv")
 pitch_scale = 0.97
 bus = &"items"
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1554846371]
 root_node = NodePath("../Sprite3DBillBoard")
-libraries = {
-&"": SubResource("AnimationLibrary_khln7")
-}
+libraries/ = SubResource("AnimationLibrary_khln7")
 
-[node name="Stats" type="Node" parent="." node_paths=PackedStringArray("health_bar", "hit_sfx", "who_owns", "stam_bar")]
+[node name="Stats" type="Node" parent="." unique_id=1131594280 node_paths=PackedStringArray("health_bar", "hit_sfx", "who_owns", "stam_bar")]
 script = ExtResource("35_pydrg")
 health_bar = NodePath("Node3D/SubViewport/Control/Border/HealthBar")
 hit_sfx = NodePath("../HitSfx")
@@ -1078,14 +1090,14 @@ who_owns = NodePath("..")
 stam_bar = NodePath("Node3D/SubViewport/Control/Border/StamBar")
 metadata/_custom_type_script = "uid://46pp7aerorca"
 
-[node name="Timer" type="Timer" parent="Stats"]
+[node name="Timer" type="Timer" parent="Stats" unique_id=1927817739]
 one_shot = true
 
-[node name="Node3D" type="Node3D" parent="Stats" node_paths=PackedStringArray("thing_to_follow")]
+[node name="Node3D" type="Node3D" parent="Stats" unique_id=705331015 node_paths=PackedStringArray("thing_to_follow")]
 script = ExtResource("36_xnhkk")
 thing_to_follow = NodePath("../..")
 
-[node name="SubViewport" type="SubViewport" parent="Stats/Node3D"]
+[node name="SubViewport" type="SubViewport" parent="Stats/Node3D" unique_id=1046520364]
 disable_3d = true
 transparent_bg = true
 handle_input_locally = false
@@ -1093,7 +1105,7 @@ gui_disable_input = true
 gui_embed_subwindows = true
 render_target_update_mode = 4
 
-[node name="Control" type="Control" parent="Stats/Node3D/SubViewport"]
+[node name="Control" type="Control" parent="Stats/Node3D/SubViewport" unique_id=1050279257]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -1103,7 +1115,7 @@ grow_vertical = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="Border" type="TextureRect" parent="Stats/Node3D/SubViewport/Control"]
+[node name="Border" type="TextureRect" parent="Stats/Node3D/SubViewport/Control" unique_id=623842342]
 custom_minimum_size = Vector2(501.7228, 57.799988)
 layout_mode = 1
 anchors_preset = -1
@@ -1118,7 +1130,7 @@ texture = ExtResource("36_me4q8")
 expand_mode = 1
 metadata/_edit_use_anchors_ = true
 
-[node name="HealthBar" type="ProgressBar" parent="Stats/Node3D/SubViewport/Control/Border"]
+[node name="HealthBar" type="ProgressBar" parent="Stats/Node3D/SubViewport/Control/Border" unique_id=206664893]
 show_behind_parent = true
 z_index = 1
 layout_mode = 1
@@ -1132,7 +1144,7 @@ value = 100.0
 show_percentage = false
 metadata/_edit_use_anchors_ = true
 
-[node name="StamBar" type="ProgressBar" parent="Stats/Node3D/SubViewport/Control/Border"]
+[node name="StamBar" type="ProgressBar" parent="Stats/Node3D/SubViewport/Control/Border" unique_id=461389161]
 visible = false
 show_behind_parent = true
 layout_mode = 1
@@ -1146,7 +1158,7 @@ value = 100.0
 show_percentage = false
 metadata/_edit_use_anchors_ = true
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Stats/Node3D"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Stats/Node3D" unique_id=1954259503]
 transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 0, 1.3, 0)
 mesh = SubResource("QuadMesh_pydrg")
 
@@ -1156,9 +1168,10 @@ mesh = SubResource("QuadMesh_pydrg")
 [connection signal="area_shape_exited" from="Area3D" to="StateMachine/Fighting" method="_on_area_3d_area_shape_exited"]
 [connection signal="body_shape_entered" from="Area3D" to="SM_controller" method="_on_area_3d_body_shape_entered"]
 [connection signal="body_shape_exited" from="Area3D" to="SM_controller" method="_on_area_3d_body_shape_exited"]
-[connection signal="area_entered" from="Area3D2" to="StateMachine/Wander" method="_on_area_3d_2_area_entered"]
-[connection signal="area_entered" from="Area3D2" to="StateMachine/Chase" method="_on_area_3d_2_area_entered"]
-[connection signal="area_exited" from="Aggro" to="StateMachine/Chase" method="_on_area_3d_2_area_exited"]
+[connection signal="area_entered" from="Area3D2(Close)" to="StateMachine/Wander" method="_on_area_3d_2_area_entered"]
+[connection signal="area_entered" from="Area3D2(Close)" to="StateMachine/Chase" method="_on_area_3d_2_area_entered"]
+[connection signal="area_entered" from="Aggro(Far)" to="StateMachine/Wander" method="_on_aggro_far_area_entered"]
+[connection signal="area_exited" from="Aggro(Far)" to="StateMachine/Chase" method="_on_area_3d_2_area_exited"]
 [connection signal="timeout" from="Combat/CombatHand/Attack/Timer_Telegraph" to="Combat/CombatHand/Attack" method="end_telegraph"]
 [connection signal="timeout" from="Combat/CombatHand/Attack/Timer_Attack" to="Combat/CombatHand/Attack" method="end_attack"]
 [connection signal="timeout" from="Combat/CombatHand/Attack/Timer_Recover" to="Combat/CombatHand/Attack" method="end_recover"]

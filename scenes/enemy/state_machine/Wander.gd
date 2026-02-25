@@ -117,10 +117,19 @@ func _on_timer_timeout() -> void:
 
 
 func _on_area_3d_2_area_entered(area: Area3D) -> void:
+	print(area, "entered")
 	if area.owner is PlayerTest:
 		SM.transition_to("Chase")
+	
 	pass # Replace with function body.
 
 func _on_area_3d_area_shape_entered(area_rid: RID, area: Area3D, area_shape_index: int, local_shape_index: int) -> void:
 	if area.owner is PlayerTest:
 		SM.transition_to("Fighting")
+
+
+func _on_aggro_far_area_entered(area: Area3D) -> void:
+	print("something in", area)
+	if area.is_in_group("Investegate"):
+		SM.transition_to("Investegate")
+	pass # Replace with function body.

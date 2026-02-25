@@ -11,7 +11,7 @@ func on_process(delta : float):
 	pass
 
 func enter():
-	print_debug("huhe")
+	print_debug("idleState")
 	Animator.play("Idle")
 	pass
 
