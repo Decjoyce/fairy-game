@@ -23,14 +23,15 @@ glow_enabled = true
 environment = SubResource("Environment_ufr1r")
 
 [node name="player_test" parent="." unique_id=725727541 instance=ExtResource("1_jcrp4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 
 [node name="Lever" parent="." unique_id=1692381032 instance=ExtResource("2_knj1e")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2)
-use_intervals = true
 intervals = 1.0
 
 [node name="Floor" type="CSGBox3D" parent="." unique_id=860049652]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.5, -1, -3)
+use_collision = true
 size = Vector3(18, 1, 15)
 
 [node name="DrawBridge" parent="." unique_id=172773469 node_paths=PackedStringArray("drawbridge_lever") instance=ExtResource("3_knj1e")]

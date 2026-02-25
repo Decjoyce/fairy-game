@@ -4,17 +4,17 @@
 [ext_resource type="Script" uid="uid://42c4j0jtwejr" path="res://scenes/interactions/receivers/gate/gate.gd" id="3_t0mv0"]
 [ext_resource type="Material" uid="uid://c6ic70i7jpqeu" path="res://assets/models/cairn/Props/Gate/Gate.tres" id="3_wkpon"]
 [ext_resource type="PackedScene" uid="uid://bq86osdembn58" path="res://scenes/_player/_player_test.tscn" id="9_d5tbl"]
-[ext_resource type="PackedScene" uid="uid://bg3e8trp0vy58" path="res://scenes/interactions/prefabs/broken_lever.tscn" id="10_iqvfj"]
+[ext_resource type="PackedScene" path="res://scenes/interactions/prefabs/broken_lever.tscn" id="10_iqvfj"]
 [ext_resource type="PackedScene" uid="uid://cfkoaxhngk3gf" path="res://scenes/interactions/interactables/items/all_items/keys/item_key.tscn" id="10_r1i77"]
 [ext_resource type="PackedScene" uid="uid://dde66nwtb1gv1" path="res://scenes/interactions/triggers/item_receiver/torch_scont/torch_scont.tscn" id="10_wkpon"]
 [ext_resource type="PackedScene" uid="uid://qu5rxgbydmet" path="res://scenes/interactions/triggers/button/button.tscn" id="11_kqxud"]
 [ext_resource type="PackedScene" uid="uid://ck1b6l8s7xnxi" path="res://scenes/interactions/triggers/lever/lever.tscn" id="11_mbj5w"]
 [ext_resource type="Material" uid="uid://bk8gbrrgpacoj" path="res://assets/_dev/materials/_dev_m_source.tres" id="11_t0mv0"]
-[ext_resource type="PackedScene" uid="uid://d13vdgis1uvvv" path="res://scenes/interactions/interactables/items/all_items/keys/item_leverhandle.tscn" id="12_22y2j"]
+[ext_resource type="PackedScene" path="res://scenes/interactions/interactables/items/all_items/keys/item_leverhandle.tscn" id="12_22y2j"]
 [ext_resource type="PackedScene" uid="uid://dt13fur6twjep" path="res://scenes/interactions/receivers/gate/gate.tscn" id="12_iqvfj"]
 [ext_resource type="PackedScene" uid="uid://dfe565flkjwxt" path="res://scenes/interactions/interactables/items/all_items/test_grabbable_item.tscn" id="13_2d0gr"]
 [ext_resource type="PackedScene" uid="uid://csot2mi7746ll" path="res://scenes/interactions/triggers/pressure_plate/pressure_plate.tscn" id="13_22y2j"]
-[ext_resource type="PackedScene" uid="uid://clnnqb1efkbei" path="res://scenes/interactions/receivers/door/locked_door.tscn" id="15_1ktrc"]
+[ext_resource type="PackedScene" path="res://scenes/interactions/receivers/door/locked_door.tscn" id="15_1ktrc"]
 [ext_resource type="PackedScene" uid="uid://dqh8lru4mt2ap" path="res://scenes/interactions/interactables/items/all_items/breakables/item_urn.tscn" id="15_t0mv0"]
 [ext_resource type="MeshLibrary" uid="uid://bu208a8l5866i" path="res://scenes/_levels/_palettes/cairn/meshlibrary_cairn.tres" id="16_1ktrc"]
 [ext_resource type="Script" uid="uid://dr3eeef0cxnnt" path="res://scenes/interactions/receivers/item_spawners/item_spawner.gd" id="16_lpkc0"]
@@ -22,6 +22,7 @@
 [ext_resource type="Material" uid="uid://c1s48fevcaqy3" path="res://assets/_dev/materials/_dev_m_aquamarine.tres" id="18_d5tbl"]
 [ext_resource type="PackedScene" uid="uid://bw752cs1fru6w" path="res://scenes/interactions/interactables/items/all_items/consumables/drinkvessel.tscn" id="18_kqxud"]
 [ext_resource type="PackedScene" uid="uid://bm8kaq0ah5g7q" path="res://scenes/interactions/interactables/items/all_items/torch/torch.tscn" id="19_d5tbl"]
+[ext_resource type="PackedScene" uid="uid://brxr85hbqpapm" path="res://scenes/interactions/interactables/items/all_items/breakables/item_baby.tscn" id="23_4v2ph"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_xunri"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
@@ -454,6 +455,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.1489944, -1.0864971, -2)
 [node name="CollisionShape3D" type="CollisionShape3D" parent="BrokenLeverExample/PlayerAreaTrigger/Area3D" unique_id=1204675380]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0.8254594, 0)
 shape = SubResource("SphereShape3D_4v2ph")
+disabled = true
 
 [node name="item_spawner_default" type="Node" parent="." unique_id=795370431 node_paths=PackedStringArray("holder", "spawn_point")]
 script = ExtResource("16_lpkc0")
@@ -507,6 +509,9 @@ transform = Transform3D(-0.9155608, 0.20104486, -0.3483238, -0.3819344, -0.16331
 light_color = Color(0.45662987, 0.51663107, 0.61929846, 1)
 light_energy = 3.126
 light_volumetric_fog_energy = 2.0
+
+[node name="BabyDude" parent="." unique_id=1376443271 instance=ExtResource("23_4v2ph")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 40, 0.8, -10.999999)
 
 [connection signal="on_activated" from="Item_Spawner_Buttons/Item_Spawn_Button1" to="item_spawner_default" method="spawn_item"]
 [connection signal="on_activated" from="Item_Spawner_Buttons/Item_Spawn_Button2" to="item_spawner_default2" method="spawn_item"]

@@ -29,6 +29,7 @@ enum item_weight_types {WEIGHTLESS, LIGHT, MEDIUM, HEAVY}
 @export var throwing_rotation: float = 0.0
 @export var can_break: bool
 @export var break_force: float = 35.0
+@export var impact_type: int
 @export var destroyed_item: Node3D
 var item_spawn_on_destroyed: Grabbable_Item
 @export var destroyed_audio: AudioStreamPlayer3D
@@ -142,8 +143,8 @@ func _on_collide(body: Node) -> void:
 	
 	
 	if raycast.is_colliding():
-		Impact_Manager.play_impact_at(raycast.get_collision_point(), 0, 0.5)
-	else: Impact_Manager.play_impact_at(global_position, 0, 0.5)
+		Impact_Manager.play_impact_at(raycast.get_collision_point(), impact_type, 0.5)
+	else: Impact_Manager.play_impact_at(global_position, impact_type, 0.5)
 	
 	if can_break and current_force >= break_force:
 		break_item()
