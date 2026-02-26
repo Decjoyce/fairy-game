@@ -16,6 +16,7 @@ func play_sound(note: int, octave: float) -> void:
 	music_player.pitch_scale = (octave + 1)/2
 	if item_type is ItemType_Instrument:
 		music_player.stream = item_type.get_note(note)
+	
 	music_player.play()
 	on_played_note.emit(note, self)
 

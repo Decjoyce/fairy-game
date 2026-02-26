@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://cav4snc3vfoyx"]
+[gd_scene format=3 uid="uid://cav4snc3vfoyx"]
 
 [ext_resource type="Script" uid="uid://dhbxpwwddj3md" path="res://scenes/_managers/impact_manager/impact_manager.gd" id="1_gn4s5"]
 
@@ -41,23 +41,33 @@ billboard_mode = 1
 [sub_resource type="QuadMesh" id="QuadMesh_8dvc6"]
 material = SubResource("StandardMaterial3D_v2yan")
 
-[node name="ImpactManager" type="Node3D" node_paths=PackedStringArray("holders")]
+[sub_resource type="Gradient" id="Gradient_wavs6"]
+offsets = PackedFloat32Array(0.3034826, 0.7064677, 1)
+colors = PackedColorArray(0.79607844, 0, 0.043137256, 1, 0.27195406, 0.04846979, 0.16186619, 0.6901961, 0, 0, 0, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_0s3ai"]
+gradient = SubResource("Gradient_wavs6")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.94, 0.43)
+
+[node name="ImpactManager" type="Node3D" unique_id=1944881525 node_paths=PackedStringArray("holders")]
 script = ExtResource("1_gn4s5")
-holders = [NodePath("Ground")]
+holders = [NodePath("Ground"), NodePath("Blood")]
 metadata/_custom_type_script = "uid://dhbxpwwddj3md"
 
-[node name="Ground" type="Node3D" parent="."]
+[node name="Ground" type="Node3D" parent="." unique_id=732785566]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -100, 0)
 
-[node name="GroundDecal_01" type="Node3D" parent="Ground"]
+[node name="GroundDecal_01" type="Node3D" parent="Ground" unique_id=1089020217]
 visible = false
 
-[node name="Decal" type="Decal" parent="Ground/GroundDecal_01"]
+[node name="Decal" type="Decal" parent="Ground/GroundDecal_01" unique_id=1130796189]
 size = Vector3(0.3, 0.1, 0.3)
 texture_albedo = SubResource("GradientTexture2D_8dvc6")
 cull_mask = 1048571
 
-[node name="Particles" type="GPUParticles3D" parent="Ground/GroundDecal_01"]
+[node name="Particles" type="GPUParticles3D" parent="Ground/GroundDecal_01" unique_id=890444439]
 emitting = false
 amount = 3
 amount_ratio = 0.9126
@@ -68,15 +78,15 @@ fixed_fps = 12
 process_material = SubResource("ParticleProcessMaterial_gn4s5")
 draw_pass_1 = SubResource("QuadMesh_8dvc6")
 
-[node name="GroundDecal_02" type="Node3D" parent="Ground"]
+[node name="GroundDecal_02" type="Node3D" parent="Ground" unique_id=447342383]
 visible = false
 
-[node name="Decal" type="Decal" parent="Ground/GroundDecal_02"]
+[node name="Decal" type="Decal" parent="Ground/GroundDecal_02" unique_id=1527087697]
 size = Vector3(0.3, 0.1, 0.3)
 texture_albedo = SubResource("GradientTexture2D_8dvc6")
 cull_mask = 1048571
 
-[node name="Particles" type="GPUParticles3D" parent="Ground/GroundDecal_02"]
+[node name="Particles" type="GPUParticles3D" parent="Ground/GroundDecal_02" unique_id=1548155469]
 emitting = false
 amount = 3
 amount_ratio = 0.9126
@@ -87,15 +97,15 @@ fixed_fps = 12
 process_material = SubResource("ParticleProcessMaterial_gn4s5")
 draw_pass_1 = SubResource("QuadMesh_8dvc6")
 
-[node name="GroundDecal_03" type="Node3D" parent="Ground"]
+[node name="GroundDecal_03" type="Node3D" parent="Ground" unique_id=1997374981]
 visible = false
 
-[node name="Decal" type="Decal" parent="Ground/GroundDecal_03"]
+[node name="Decal" type="Decal" parent="Ground/GroundDecal_03" unique_id=1922810902]
 size = Vector3(0.3, 0.1, 0.3)
 texture_albedo = SubResource("GradientTexture2D_8dvc6")
 cull_mask = 1048571
 
-[node name="Particles" type="GPUParticles3D" parent="Ground/GroundDecal_03"]
+[node name="Particles" type="GPUParticles3D" parent="Ground/GroundDecal_03" unique_id=1193313500]
 emitting = false
 amount = 3
 amount_ratio = 0.9126
@@ -106,15 +116,15 @@ fixed_fps = 12
 process_material = SubResource("ParticleProcessMaterial_gn4s5")
 draw_pass_1 = SubResource("QuadMesh_8dvc6")
 
-[node name="GroundDecal_04" type="Node3D" parent="Ground"]
+[node name="GroundDecal_04" type="Node3D" parent="Ground" unique_id=2079111443]
 visible = false
 
-[node name="Decal" type="Decal" parent="Ground/GroundDecal_04"]
+[node name="Decal" type="Decal" parent="Ground/GroundDecal_04" unique_id=841990749]
 size = Vector3(0.3, 0.1, 0.3)
 texture_albedo = SubResource("GradientTexture2D_8dvc6")
 cull_mask = 1048571
 
-[node name="Particles" type="GPUParticles3D" parent="Ground/GroundDecal_04"]
+[node name="Particles" type="GPUParticles3D" parent="Ground/GroundDecal_04" unique_id=1774374593]
 emitting = false
 amount = 3
 amount_ratio = 0.9126
@@ -125,15 +135,56 @@ fixed_fps = 12
 process_material = SubResource("ParticleProcessMaterial_gn4s5")
 draw_pass_1 = SubResource("QuadMesh_8dvc6")
 
-[node name="GroundDecal_05" type="Node3D" parent="Ground"]
+[node name="GroundDecal_05" type="Node3D" parent="Ground" unique_id=432663134]
 visible = false
 
-[node name="Decal" type="Decal" parent="Ground/GroundDecal_05"]
+[node name="Decal" type="Decal" parent="Ground/GroundDecal_05" unique_id=952507422]
 size = Vector3(0.3, 0.1, 0.3)
 texture_albedo = SubResource("GradientTexture2D_8dvc6")
 cull_mask = 1048571
 
-[node name="Particles" type="GPUParticles3D" parent="Ground/GroundDecal_05"]
+[node name="Particles" type="GPUParticles3D" parent="Ground/GroundDecal_05" unique_id=1555400578]
+emitting = false
+amount = 3
+amount_ratio = 0.9126
+one_shot = true
+preprocess = 0.01
+speed_scale = 2.0
+fixed_fps = 12
+process_material = SubResource("ParticleProcessMaterial_gn4s5")
+draw_pass_1 = SubResource("QuadMesh_8dvc6")
+
+[node name="Blood" type="Node3D" parent="." unique_id=373173353]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -100, 0)
+
+[node name="GroundDecal_01" type="Node3D" parent="Blood" unique_id=630002505]
+visible = false
+
+[node name="Decal" type="Decal" parent="Blood/GroundDecal_01" unique_id=173641621]
+size = Vector3(0.3, 0.1, 0.3)
+texture_albedo = SubResource("GradientTexture2D_0s3ai")
+cull_mask = 1048571
+
+[node name="Particles" type="GPUParticles3D" parent="Blood/GroundDecal_01" unique_id=1266735256]
+emitting = false
+amount = 3
+amount_ratio = 0.9126
+one_shot = true
+preprocess = 0.01
+speed_scale = 2.0
+fixed_fps = 12
+process_material = SubResource("ParticleProcessMaterial_gn4s5")
+draw_pass_1 = SubResource("QuadMesh_8dvc6")
+
+[node name="GroundDecal_02" type="Node3D" parent="Blood" unique_id=1278838713]
+visible = false
+
+[node name="Decal" type="Decal" parent="Blood/GroundDecal_02" unique_id=889391569]
+size = Vector3(0.3, 0.1, 0.3)
+texture_albedo = SubResource("GradientTexture2D_0s3ai")
+cull_mask = 1048571
+
+[node name="Particles" type="GPUParticles3D" parent="Blood/GroundDecal_02" unique_id=1237813165]
 emitting = false
 amount = 3
 amount_ratio = 0.9126

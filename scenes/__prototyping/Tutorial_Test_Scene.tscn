@@ -4,36 +4,41 @@
 [ext_resource type="Script" uid="uid://42c4j0jtwejr" path="res://scenes/interactions/receivers/gate/gate.gd" id="3_t0mv0"]
 [ext_resource type="Material" uid="uid://c6ic70i7jpqeu" path="res://assets/models/cairn/Props/Gate/Gate.tres" id="3_wkpon"]
 [ext_resource type="PackedScene" uid="uid://bq86osdembn58" path="res://scenes/_player/_player_test.tscn" id="9_d5tbl"]
-[ext_resource type="PackedScene" uid="uid://bg3e8trp0vy58" path="res://scenes/interactions/prefabs/broken_lever.tscn" id="10_iqvfj"]
+[ext_resource type="PackedScene" path="res://scenes/interactions/prefabs/broken_lever.tscn" id="10_iqvfj"]
 [ext_resource type="PackedScene" uid="uid://cfkoaxhngk3gf" path="res://scenes/interactions/interactables/items/all_items/keys/item_key.tscn" id="10_r1i77"]
 [ext_resource type="PackedScene" uid="uid://dde66nwtb1gv1" path="res://scenes/interactions/triggers/item_receiver/torch_scont/torch_scont.tscn" id="10_wkpon"]
 [ext_resource type="PackedScene" uid="uid://qu5rxgbydmet" path="res://scenes/interactions/triggers/button/button.tscn" id="11_kqxud"]
 [ext_resource type="PackedScene" uid="uid://ck1b6l8s7xnxi" path="res://scenes/interactions/triggers/lever/lever.tscn" id="11_mbj5w"]
 [ext_resource type="Material" uid="uid://bk8gbrrgpacoj" path="res://assets/_dev/materials/_dev_m_source.tres" id="11_t0mv0"]
-[ext_resource type="PackedScene" uid="uid://d13vdgis1uvvv" path="res://scenes/interactions/interactables/items/all_items/keys/item_leverhandle.tscn" id="12_22y2j"]
+[ext_resource type="PackedScene" path="res://scenes/interactions/interactables/items/all_items/keys/item_leverhandle.tscn" id="12_22y2j"]
 [ext_resource type="PackedScene" uid="uid://dt13fur6twjep" path="res://scenes/interactions/receivers/gate/gate.tscn" id="12_iqvfj"]
 [ext_resource type="PackedScene" uid="uid://dfe565flkjwxt" path="res://scenes/interactions/interactables/items/all_items/test_grabbable_item.tscn" id="13_2d0gr"]
 [ext_resource type="PackedScene" uid="uid://csot2mi7746ll" path="res://scenes/interactions/triggers/pressure_plate/pressure_plate.tscn" id="13_22y2j"]
-[ext_resource type="PackedScene" uid="uid://clnnqb1efkbei" path="res://scenes/interactions/receivers/door/locked_door.tscn" id="15_1ktrc"]
+[ext_resource type="PackedScene" path="res://scenes/interactions/receivers/door/locked_door.tscn" id="15_1ktrc"]
 [ext_resource type="PackedScene" uid="uid://dqh8lru4mt2ap" path="res://scenes/interactions/interactables/items/all_items/breakables/item_urn.tscn" id="15_t0mv0"]
 [ext_resource type="MeshLibrary" uid="uid://bu208a8l5866i" path="res://scenes/_levels/_palettes/cairn/meshlibrary_cairn.tres" id="16_1ktrc"]
 [ext_resource type="Script" uid="uid://dr3eeef0cxnnt" path="res://scenes/interactions/receivers/item_spawners/item_spawner.gd" id="16_lpkc0"]
+[ext_resource type="PackedScene" uid="uid://bsdlm8rcrt2j" path="res://scenes/interactions/triggers/area_triggers/player_area_trigger.tscn" id="17_axkww"]
 [ext_resource type="Material" uid="uid://c1s48fevcaqy3" path="res://assets/_dev/materials/_dev_m_aquamarine.tres" id="18_d5tbl"]
 [ext_resource type="PackedScene" uid="uid://bw752cs1fru6w" path="res://scenes/interactions/interactables/items/all_items/consumables/drinkvessel.tscn" id="18_kqxud"]
 [ext_resource type="PackedScene" uid="uid://bm8kaq0ah5g7q" path="res://scenes/interactions/interactables/items/all_items/torch/torch.tscn" id="19_d5tbl"]
+[ext_resource type="PackedScene" uid="uid://brxr85hbqpapm" path="res://scenes/interactions/interactables/items/all_items/breakables/item_baby.tscn" id="23_4v2ph"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_xunri"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+sky_curve = 0.13058276
 ground_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
 
 [sub_resource type="Sky" id="Sky_rj5h8"]
 sky_material = SubResource("ProceduralSkyMaterial_xunri")
 
 [sub_resource type="Environment" id="Environment_rbu3s"]
-background_mode = 2
+background_mode = 1
+background_color = Color(0.044557855, 0.044557847, 0.044557847, 1)
 sky = SubResource("Sky_rj5h8")
 tonemap_mode = 2
 glow_enabled = true
+volumetric_fog_enabled = true
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_i1hti"]
 size = Vector3(2, 2, 0.2)
@@ -118,6 +123,8 @@ shadow_mesh = SubResource("ArrayMesh_o88vc")
 [sub_resource type="BoxShape3D" id="BoxShape3D_jt8b8"]
 size = Vector3(2.3835754, 11.737549, 16.093018)
 
+[sub_resource type="SphereShape3D" id="SphereShape3D_4v2ph"]
+
 [sub_resource type="CylinderMesh" id="CylinderMesh_wkpon"]
 material = ExtResource("18_d5tbl")
 top_radius = 0.1
@@ -130,19 +137,25 @@ height = 0.1
 environment = SubResource("Environment_rbu3s")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1362444198]
-transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545, -0.50000006, 0.75, -0.43301266, 0, 0, 0)
+transform = Transform3D(0.03349372, 0.99102545, -0.12940946, 0.019242018, 0.1288187, 0.9914814, 0.99925363, -0.03569847, -0.014754742, 3.5, 12.124357, -6.0621777)
+light_color = Color(0.3227734, 0.33385244, 0.3646147, 1)
 shadow_enabled = true
 
 [node name="Item_Spawner_Buttons" type="Node3D" parent="." unique_id=432313351]
 
 [node name="Item_Spawn_Button1" parent="Item_Spawner_Buttons" unique_id=1164325605 instance=ExtResource("11_kqxud")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 33, 1, -4.302515)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 33, 1, -6.302515)
+manual_reset = true
+
+[node name="Item_Spawn_Button2" parent="Item_Spawner_Buttons" unique_id=633781123 instance=ExtResource("11_kqxud")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 33, 1, -15.699364)
+manual_reset = true
 
 [node name="Secret Walls" type="Node3D" parent="." unique_id=665548667]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22, 0, 14)
 
 [node name="Wall_oneLight" type="Node3D" parent="Secret Walls" unique_id=1549416915 groups=["debug_PickableObjects"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.062336, 0, -20)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.062336, 0, -22)
 script = ExtResource("3_t0mv0")
 stay_open = true
 override_signal_range = true
@@ -198,8 +211,9 @@ collision_mask = 0
 shape = SubResource("BoxShape3D_i1hti")
 
 [node name="Wall_TwoMedium" type="Node3D" parent="Secret Walls" unique_id=571077275 groups=["debug_PickableObjects"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.062336, 0, -30.176998)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.062336, 0, -28.176998)
 script = ExtResource("3_t0mv0")
+stay_open = true
 override_signal_range = true
 ovr_signal_min = 0.4
 ovr_signal_max = 0.6
@@ -311,7 +325,7 @@ collision_mask = 0
 shape = SubResource("BoxShape3D_i1hti")
 
 [node name="key" parent="Secret Walls" unique_id=451440735 instance=ExtResource("10_r1i77")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13, 2.3041577, -25)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13, 2.3041577, -25.393528)
 
 [node name="Torches" type="Node3D" parent="." unique_id=1073021904]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.37721205, 0, -2.0954456)
@@ -319,8 +333,23 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.37721205, 0, -2.0954456)
 [node name="TorchScont" parent="Torches" unique_id=799079126 instance=ExtResource("10_wkpon")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.62278795, 1, -1.5222411)
 
+[node name="TorchScont5" parent="Torches" unique_id=813345400 instance=ExtResource("10_wkpon")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 5.23729, 1.2112281, -1.5222411)
+
+[node name="TorchScont6" parent="Torches" unique_id=1187993774 instance=ExtResource("10_wkpon")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 37.23729, 1.2112281, -7.5222416)
+
+[node name="TorchScont7" parent="Torches" unique_id=626736877 instance=ExtResource("10_wkpon")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 37.23729, 1.2112281, -10.522242)
+
 [node name="TorchScont2" parent="Torches" unique_id=134845992 instance=ExtResource("10_wkpon")]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 11.234432, 1.2788017, -13.223978)
+
+[node name="TorchScont3" parent="Torches" unique_id=1220965294 instance=ExtResource("10_wkpon")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.9128966, 1.2788017, -21.556007)
+
+[node name="TorchScont4" parent="Torches" unique_id=818549058 instance=ExtResource("10_wkpon")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.1981192, 1.2788017, -21.556007)
 
 [node name="Buttons_&_PressurePlates" type="Node3D" parent="." unique_id=251072707]
 
@@ -370,6 +399,10 @@ item_weight = 1
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.767098, 0.6459893, -6.6712914)
 item_weight = 1
 
+[node name="TEST_Grabbable_item7" parent="Weighted Items" unique_id=715895192 instance=ExtResource("13_2d0gr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 26.232903, 0.6459893, 2.3287086)
+item_weight = 1
+
 [node name="Urn" parent="Weighted Items" unique_id=38004987 instance=ExtResource("15_t0mv0")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.44446087, -3)
 item_weight = 2
@@ -386,15 +419,16 @@ item_weight = 2
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.03, 0)
 mesh_library = ExtResource("16_1ktrc")
 data = {
-"cells": PackedInt32Array(0, 0, 4, 0, 65535, 2, 0, 65534, 655373, 1, 65534, 1441794, 2, 65534, 3, 2, 65533, 2, 2, 65532, 2, 2, 65531, 2, 3, 65530, 1, 1, 65530, 1, 65535, 65528, 1441793, 65535, 65527, 1441793, 6, 65527, 1441804, 65535, 65526, 1441793, 1, 65524, 655361, 5, 65526, 1048577, 2, 65523, 655362, 4, 65529, 655360, 3, 65529, 655360, 2, 65530, 655360, 2, 65529, 655360, 1, 65529, 655360, 0, 65529, 655360, 0, 65528, 655360, 0, 65527, 655360, 1, 65527, 655360, 1, 65528, 655360, 2, 65528, 655360, 3, 65528, 655360, 4, 65528, 655360, 5, 65527, 655360, 4, 65527, 655360, 3, 65527, 655360, 2, 65527, 655360, 1, 65526, 655360, 0, 65526, 655360, 2, 65526, 655360, 3, 65526, 655360, 4, 65526, 655360, 5, 65528, 1048577, 2, 65522, 655364, 3, 65525, 655360, 4, 65525, 655360, 2, 65525, 655360, 1, 65525, 655360, 0, 65525, 655360, 0, 65524, 655363, 65535, 65525, 655363, 4, 65524, 1048579, 5, 65525, 1048579, 0, 65530, 1441795, 65535, 65529, 1441795, 5, 65529, 3, 4, 65530, 3, 3, 65524, 655361, 2, 65524, 10, 7, 65527, 1441794, 8, 65527, 1441794, 9, 65527, 1441794, 10, 65527, 1048579, 10, 65528, 2, 10, 65529, 2, 10, 65530, 1441795, 11, 65530, 1441794, 12, 65530, 1441794, 13, 65530, 1441794, 14, 65531, 1441793, 14, 65529, 1441793, 18, 65531, 1048577, 18, 65529, 1048577, 19, 65530, 1048578, 14, 65530, 1048576, 16, 65528, 1048576, 18, 65530, 1048576, 17, 65529, 1048576, 16, 65529, 1048576, 15, 65529, 1048576, 15, 65530, 1048576, 16, 65530, 1048576, 15, 65531, 1048576, 16, 65531, 1048576, 17, 65531, 1048576, 16, 65532, 1048576, 16, 65533, 4, 16, 65527, 655364, 17, 65530, 1048592, 14, 65532, 1441795, 18, 65532, 3, 15, 65532, 1, 17, 65532, 1, 14, 65528, 655363, 18, 65528, 1048579, 17, 65528, 655361, 15, 65528, 655361)
+"cells": PackedInt32Array(0, 0, 4, 0, 65535, 2, 0, 65534, 655373, 1, 65534, 1441794, 2, 65534, 3, 2, 65533, 2, 2, 65532, 2, 2, 65531, 2, 3, 65530, 1, 1, 65530, 1, 65535, 65528, 1441793, 65535, 65527, 1441793, 6, 65527, 1441804, 65535, 65526, 1441793, 1, 65524, 655361, 5, 65526, 1048577, 2, 65523, 655362, 4, 65529, 655360, 3, 65529, 655360, 2, 65530, 655360, 2, 65529, 655360, 1, 65529, 655360, 0, 65529, 655360, 0, 65528, 655360, 0, 65527, 655360, 1, 65527, 655360, 1, 65528, 655360, 2, 65528, 655360, 3, 65528, 655360, 4, 65528, 655360, 5, 65527, 655360, 4, 65527, 655360, 3, 65527, 655360, 2, 65527, 655360, 1, 65526, 655360, 0, 65526, 655360, 2, 65526, 655360, 3, 65526, 655360, 4, 65526, 655360, 5, 65528, 1048577, 2, 65522, 655364, 3, 65525, 655360, 4, 65525, 655360, 2, 65525, 655360, 1, 65525, 655360, 0, 65525, 655360, 0, 65524, 655363, 65535, 65525, 655363, 4, 65524, 1048579, 5, 65525, 1048579, 0, 65530, 1441795, 65535, 65529, 1441795, 5, 65529, 3, 4, 65530, 3, 3, 65524, 655361, 2, 65524, 10, 7, 65527, 1441794, 8, 65527, 1441794, 9, 65527, 1441794, 10, 65527, 1048579, 10, 65528, 2, 10, 65529, 2, 10, 65530, 1441795, 11, 65530, 1441794, 12, 65530, 1441794, 13, 65530, 1441794, 14, 65531, 1441793, 14, 65529, 1441793, 18, 65531, 1048577, 18, 65529, 1048577, 19, 65530, 1048578, 14, 65530, 1048576, 18, 65530, 1048576, 17, 65529, 1048576, 16, 65529, 1048576, 15, 65529, 1048576, 15, 65530, 1048576, 16, 65530, 1048576, 15, 65531, 1048576, 16, 65531, 1048576, 17, 65531, 1048576, 17, 65530, 1048592, 16, 65532, 4, 16, 65528, 655364, 18, 65528, 1048579, 14, 65528, 655363, 17, 65528, 655363, 15, 65528, 1048579, 17, 65532, 1441795, 15, 65532, 3, 14, 65532, 1441795, 18, 65532, 3, 20, 65530, 1048590)
 }
 metadata/_editor_floor_ = Vector3(0, 0, 0)
 
 [node name="player_test" parent="." unique_id=725727541 instance=ExtResource("9_d5tbl")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 32, 1, -10)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.9697981, 1, 0.6848365)
 
 [node name="ItemReceiver" parent="." unique_id=1205913056 instance=ExtResource("15_1ktrc")]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 38, 1, -11)
+destroy_items_on_receive = true
 
 [node name="BrokenLeverExample" type="Node3D" parent="." unique_id=1336726938]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.8510056, 1.0864971, -15)
@@ -413,6 +447,16 @@ disabled = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, -0.7798259, -12.456398)
 keywords = "LEVER;"
 
+[node name="PlayerAreaTrigger" parent="BrokenLeverExample" unique_id=1859553680 instance=ExtResource("17_axkww")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.1489944, -1.0864971, -2)
+
+[node name="Area3D" type="Area3D" parent="BrokenLeverExample/PlayerAreaTrigger" unique_id=126841654]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="BrokenLeverExample/PlayerAreaTrigger/Area3D" unique_id=1204675380]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0.8254594, 0)
+shape = SubResource("SphereShape3D_4v2ph")
+disabled = true
+
 [node name="item_spawner_default" type="Node" parent="." unique_id=795370431 node_paths=PackedStringArray("holder", "spawn_point")]
 script = ExtResource("16_lpkc0")
 item = ExtResource("18_kqxud")
@@ -420,9 +464,25 @@ holder = NodePath("../Items_Default")
 spawn_point = NodePath("spawnpoint")
 
 [node name="spawnpoint" type="Node3D" parent="item_spawner_default" unique_id=4134811]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 33, 0.55506194, -4.837657)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 33, 0.55506194, -6.837657)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="item_spawner_default/spawnpoint" unique_id=343643381]
+transform = Transform3D(1.1924867e-08, 0, 0.99999994, 0, 1, 0, -0.99999994, 0, 1.1924867e-08, 0, 0.9, 0.24462128)
+visible = false
+material_override = ExtResource("11_t0mv0")
+mesh = SubResource("CylinderMesh_wkpon")
+skeleton = NodePath("")
+
+[node name="item_spawner_default2" type="Node" parent="." unique_id=1124884572 node_paths=PackedStringArray("holder", "spawn_point")]
+script = ExtResource("16_lpkc0")
+item = ExtResource("18_kqxud")
+holder = NodePath("../Items_Default")
+spawn_point = NodePath("spawnpoint2")
+
+[node name="spawnpoint2" type="Node3D" parent="item_spawner_default2" unique_id=1516587277]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 33, 0.55506194, -15.753386)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="item_spawner_default2/spawnpoint2" unique_id=1852300529]
 transform = Transform3D(1.1924867e-08, 0, 0.99999994, 0, 1, 0, -0.99999994, 0, 1.1924867e-08, 0, 0.9, 0.24462128)
 visible = false
 material_override = ExtResource("11_t0mv0")
@@ -433,12 +493,28 @@ skeleton = NodePath("")
 transform = Transform3D(-1, 0, 3.1786513e-08, 0, 1, 0, -3.1786513e-08, 0, -1, 33.281044, 0, -8.915215)
 
 [node name="Torch3" parent="Items_Default" unique_id=1479203938 instance=ExtResource("19_d5tbl")]
-transform = Transform3D(7.54979e-08, 0, -1, 0, 1, 0, 1, 0, 7.54979e-08, -0.5, 1, -3.9277177)
+transform = Transform3D(7.54979e-08, 0, -1, 0, 1, 0, 1, 0, 7.54979e-08, -0.5, 1, -1.9277177)
 
 [node name="Torch4" parent="Items_Default" unique_id=226247953 instance=ExtResource("19_d5tbl")]
-transform = Transform3D(7.54979e-08, 0, -1, 0, 1, 0, 1, 0, 7.54979e-08, 1.150547, 1, -3.9277177)
+transform = Transform3D(7.54979e-08, 0, -1, 0, 1, 0, 1, 0, 7.54979e-08, 1.150547, 1, -1.9277177)
+
+[node name="Torch5" parent="Items_Default" unique_id=513923909 instance=ExtResource("19_d5tbl")]
+transform = Transform3D(7.54979e-08, 0, -1, 0, 1, 0, 1, 0, 7.54979e-08, -0.5, 1, 6.0722847)
+
+[node name="Torch6" parent="Items_Default" unique_id=130959029 instance=ExtResource("19_d5tbl")]
+transform = Transform3D(7.54979e-08, 0, -1, 0, 1, 0, 1, 0, 7.54979e-08, 1.150547, 1, 6.0722847)
+
+[node name="SpotLight3D" type="SpotLight3D" parent="." unique_id=444810339]
+transform = Transform3D(-0.9155608, 0.20104486, -0.3483238, -0.3819344, -0.16331092, 0.9096459, 0.12599456, 0.96587294, 0.226307, 34.887627, 4.195576, -10.943814)
+light_color = Color(0.45662987, 0.51663107, 0.61929846, 1)
+light_energy = 3.126
+light_volumetric_fog_energy = 2.0
+
+[node name="BabyDude" parent="." unique_id=1376443271 instance=ExtResource("23_4v2ph")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 40, 0.8, -10.999999)
 
 [connection signal="on_activated" from="Item_Spawner_Buttons/Item_Spawn_Button1" to="item_spawner_default" method="spawn_item"]
+[connection signal="on_activated" from="Item_Spawner_Buttons/Item_Spawn_Button2" to="item_spawner_default2" method="spawn_item"]
 [connection signal="area_entered" from="Secret Walls/Wall_oneLight/gate/UnderChecker" to="Secret Walls/Wall_oneLight" method="_on_area_entered_under_checker"]
 [connection signal="area_exited" from="Secret Walls/Wall_oneLight/gate/UnderChecker" to="Secret Walls/Wall_oneLight" method="_on_area_exited_under_checker"]
 [connection signal="body_entered" from="Secret Walls/Wall_oneLight/gate/UnderChecker" to="Secret Walls/Wall_oneLight" method="_on_body_entered_under_checker"]
@@ -459,3 +535,4 @@ transform = Transform3D(7.54979e-08, 0, -1, 0, 1, 0, 1, 0, 7.54979e-08, 1.150547
 [connection signal="on_change" from="Buttons_&_PressurePlates/Puzzle_Room_Pressure_plate" to="Secret Walls/Ceiling_heavy" method="open_gate"]
 [connection signal="on_activated" from="BrokenLeverExample/BrokenLever" to="BrokenLeverExample/Lever_Fixed" method="enable"]
 [connection signal="on_change" from="BrokenLeverExample/Lever_Fixed" to="Gates/Lever_Gate" method="open_gate"]
+[connection signal="on_activated" from="BrokenLeverExample/PlayerAreaTrigger" to="Gates/Lever_Gate" method="close_gate"]
