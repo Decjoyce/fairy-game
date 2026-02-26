@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://dde66nwtb1gv1"]
+[gd_scene format=3 uid="uid://dde66nwtb1gv1"]
 
 [ext_resource type="Script" uid="uid://crwhy6uva7msm" path="res://scenes/interactions/triggers/item_receiver/torch_scont/torch_scont.gd" id="1_qpg1p"]
 [ext_resource type="Texture2D" uid="uid://bdv15pyviy4kf" path="res://scenes/interactions/interactables/items/all_items/torch/ScontSprite/ScontFrontSide.png" id="2_bi0p3"]
@@ -8,7 +8,7 @@
 [sub_resource type="SphereShape3D" id="SphereShape3D_bi0p3"]
 radius = 0.3
 
-[node name="TorchScont" type="Node3D"]
+[node name="TorchScont" type="Node3D" unique_id=813345400]
 script = ExtResource("1_qpg1p")
 infinite_use = true
 type_of_item = 1
@@ -17,13 +17,14 @@ prompt_text = "Refill Torch"
 func_to_call = "relight"
 metadata/_custom_type_script = "uid://ejuiwwsmyrgi"
 
-[node name="Area3D" type="Area3D" parent="."]
+[node name="Area3D" type="Area3D" parent="." unique_id=1742802240]
 collision_layer = 32
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+[node name="_col" type="CollisionShape3D" parent="Area3D" unique_id=1949344626]
+unique_name_in_owner = true
 shape = SubResource("SphereShape3D_bi0p3")
 
-[node name="Sprite3D" type="Sprite3D" parent="."]
+[node name="Sprite3D" type="Sprite3D" parent="." unique_id=1625843668]
 transform = Transform3D(0.73, 0, 0, 0, 0.6321986, -0.365, 0, 0.365, 0.6321986, 0, 0, 0)
 layers = 2
 pixel_size = 0.0013
@@ -31,7 +32,7 @@ shaded = true
 render_priority = 1
 texture = ExtResource("2_bi0p3")
 
-[node name="Sprite3D2" type="Sprite3D" parent="Sprite3D"]
+[node name="Sprite3D2" type="Sprite3D" parent="Sprite3D" unique_id=49823889]
 transform = Transform3D(0, 0, 0.99999994, 0, 1, 0, -0.99999994, 0, 0, 0.006, 0.009, 0)
 layers = 2
 pixel_size = 0.0013
@@ -39,13 +40,13 @@ shaded = true
 render_priority = 1
 texture = ExtResource("3_4fy06")
 
-[node name="Torch" parent="." node_paths=PackedStringArray("scont") instance=ExtResource("3_qpg1p")]
+[node name="Torch" parent="." unique_id=1935006489 node_paths=PackedStringArray("scont") instance=ExtResource("3_qpg1p")]
 visible = false
 sconted = true
 scont = NodePath("..")
 item_weight = 0
 
-[node name="TorchLight" type="OmniLight3D" parent="."]
+[node name="TorchLight" type="OmniLight3D" parent="." unique_id=328799854]
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.123654895, 0.2)
 light_color = Color(0.7468442, 0.34661883, 0, 1)

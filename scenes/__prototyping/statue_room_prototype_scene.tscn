@@ -1,0 +1,435 @@
+[gd_scene format=3 uid="uid://bpqnok6xsq0qg"]
+
+[ext_resource type="MeshLibrary" uid="uid://bu208a8l5866i" path="res://scenes/_levels/_palettes/cairn/meshlibrary_cairn.tres" id="1_b0u5g"]
+[ext_resource type="PackedScene" uid="uid://bq86osdembn58" path="res://scenes/_player/_player_test.tscn" id="2_nqpss"]
+[ext_resource type="Material" uid="uid://bmx5kbkw1qnpa" path="res://assets/_dev/materials/_dev_m_grey.tres" id="3_aj4pl"]
+[ext_resource type="PackedScene" uid="uid://hfs60jv7nqbo" path="res://scenes/interactions/DrawBridge/draw_bridge.tscn" id="5_1lpa3"]
+[ext_resource type="PackedScene" uid="uid://ck1b6l8s7xnxi" path="res://scenes/interactions/triggers/lever/lever.tscn" id="5_aj4pl"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_b0u5g"]
+sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+ground_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+
+[sub_resource type="Sky" id="Sky_nqpss"]
+sky_material = SubResource("ProceduralSkyMaterial_b0u5g")
+
+[sub_resource type="Environment" id="Environment_aj4pl"]
+background_mode = 2
+sky = SubResource("Sky_nqpss")
+tonemap_mode = 2
+glow_enabled = true
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_8ykal"]
+size = Vector3(2, 0.1, 2)
+
+[sub_resource type="BoxMesh" id="BoxMesh_hty2g"]
+material = ExtResource("3_aj4pl")
+size = Vector3(2, 0.1, 2)
+
+[node name="StatueRoom_PrototypeScene" type="Node3D" unique_id=1590028557]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1337682447]
+environment = SubResource("Environment_aj4pl")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=529021382]
+transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545, -0.50000006, 0.75, -0.43301266, 0, 0, 0)
+shadow_enabled = true
+
+[node name="GridMap" type="GridMap" parent="." unique_id=2081510934]
+mesh_library = ExtResource("1_b0u5g")
+data = {
+"cells": PackedInt32Array(0, 0, 4, 0, 65535, 2, 0, 65534, 2, 0, 65533, 2, 7, 65529, 1048576, 7, 65530, 1048576, 8, 65530, 1048576, 8, 65529, 1048576, 7, 65528, 1048576, 8, 65528, 1048576, 7, 65531, 1048576, 8, 65531, 1048576, 65529, 65528, 1048576, 65529, 65529, 1048576, 65529, 65530, 1048576, 65529, 65531, 1048576, 65528, 65531, 1048576, 65528, 65530, 1048576, 65528, 65529, 1048576, 65528, 65528, 1048576, 0, 65523, 1048576, 65535, 65523, 1048576, 1, 65523, 1048576, 2, 65523, 1048576, 65534, 65523, 1048576, 65534, 65522, 1048576, 65535, 65522, 1048576, 0, 65522, 1048576, 2, 65522, 1048576, 1, 65522, 1048576, 0, 65521, 12, 0, 65520, 12, 0, 65518, 12, 0, 65519, 12, 0, 65517, 12, 0, 65516, 12, 0, 65515, 5, 1, 65515, 5, 65535, 65515, 5, 65535, 65514, 5, 0, 65514, 5, 1, 65514, 5)
+}
+metadata/_editor_floor_ = Vector3(0, 0, 0)
+
+[node name="player_test" parent="." unique_id=725727541 instance=ExtResource("2_nqpss")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 2, 1)
+
+[node name="Floor Assets Top Level" type="StaticBody3D" parent="." unique_id=1002250499]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, -9)
+
+[node name="_wall_floor" type="CollisionShape3D" parent="Floor Assets Top Level" unique_id=1064350988]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0.95, 2)
+shape = SubResource("BoxShape3D_8ykal")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Floor Assets Top Level/_wall_floor" unique_id=1946593610]
+mesh = SubResource("BoxMesh_hty2g")
+
+[node name="_wall_floor8" type="CollisionShape3D" parent="Floor Assets Top Level" unique_id=1928790852]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0.95, 0)
+shape = SubResource("BoxShape3D_8ykal")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Floor Assets Top Level/_wall_floor8" unique_id=743764598]
+mesh = SubResource("BoxMesh_hty2g")
+
+[node name="_wall_floor9" type="CollisionShape3D" parent="Floor Assets Top Level" unique_id=1320416023]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0.95, -2)
+shape = SubResource("BoxShape3D_8ykal")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Floor Assets Top Level/_wall_floor9" unique_id=1718297098]
+mesh = SubResource("BoxMesh_hty2g")
+
+[node name="_wall_floor16" type="CollisionShape3D" parent="Floor Assets Top Level" unique_id=2056182021]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0.95, -2)
+shape = SubResource("BoxShape3D_8ykal")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Floor Assets Top Level/_wall_floor16" unique_id=1187047205]
+mesh = SubResource("BoxMesh_hty2g")
+
+[node name="_wall_floor18" type="CollisionShape3D" parent="Floor Assets Top Level" unique_id=1138094127]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 0.95, -2)
+shape = SubResource("BoxShape3D_8ykal")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Floor Assets Top Level/_wall_floor18" unique_id=1425682093]
+mesh = SubResource("BoxMesh_hty2g")
+
+[node name="_wall_floor2" type="CollisionShape3D" parent="Floor Assets Top Level" unique_id=516273780]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0.95, 2)
+shape = SubResource("BoxShape3D_8ykal")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Floor Assets Top Level/_wall_floor2" unique_id=877498432]
+mesh = SubResource("BoxMesh_hty2g")
+
+[node name="_wall_floor3" type="CollisionShape3D" parent="Floor Assets Top Level" unique_id=1161801075]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0.95, 2)
+shape = SubResource("BoxShape3D_8ykal")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Floor Assets Top Level/_wall_floor3" unique_id=1007197398]
+mesh = SubResource("BoxMesh_hty2g")
+
+[node name="_wall_floor4" type="CollisionShape3D" parent="Floor Assets Top Level" unique_id=618948975]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0.95, 2)
+shape = SubResource("BoxShape3D_8ykal")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Floor Assets Top Level/_wall_floor4" unique_id=748437751]
+mesh = SubResource("BoxMesh_hty2g")
+
+[node name="_wall_floor5" type="CollisionShape3D" parent="Floor Assets Top Level" unique_id=153091305]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0.95, 0)
+shape = SubResource("BoxShape3D_8ykal")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Floor Assets Top Level/_wall_floor5" unique_id=3505727]
+mesh = SubResource("BoxMesh_hty2g")
+
+[node name="_wall_floor6" type="CollisionShape3D" parent="Floor Assets Top Level" unique_id=988098812]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0.95, -2)
+shape = SubResource("BoxShape3D_8ykal")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Floor Assets Top Level/_wall_floor6" unique_id=708653886]
+mesh = SubResource("BoxMesh_hty2g")
+
+[node name="_wall_floor11" type="CollisionShape3D" parent="Floor Assets Top Level" unique_id=1044520886]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11, 0.95, 2)
+shape = SubResource("BoxShape3D_8ykal")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Floor Assets Top Level/_wall_floor11" unique_id=864947650]
+mesh = SubResource("BoxMesh_hty2g")
+
+[node name="_wall_floor19" type="CollisionShape3D" parent="Floor Assets Top Level" unique_id=98213028]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11, 0.95, 0)
+shape = SubResource("BoxShape3D_8ykal")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Floor Assets Top Level/_wall_floor19" unique_id=126079810]
+mesh = SubResource("BoxMesh_hty2g")
+
+[node name="_wall_floor20" type="CollisionShape3D" parent="Floor Assets Top Level" unique_id=1414639325]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11, 0.95, -2)
+shape = SubResource("BoxShape3D_8ykal")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Floor Assets Top Level/_wall_floor20" unique_id=1528917345]
+mesh = SubResource("BoxMesh_hty2g")
+
+[node name="_wall_floor12" type="CollisionShape3D" parent="Floor Assets Top Level" unique_id=1978822892]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 0.95, 2)
+shape = SubResource("BoxShape3D_8ykal")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Floor Assets Top Level/_wall_floor12" unique_id=1288915703]
+mesh = SubResource("BoxMesh_hty2g")
+
+[node name="_wall_floor13" type="CollisionShape3D" parent="Floor Assets Top Level" unique_id=699727857]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 0.95, 2)
+shape = SubResource("BoxShape3D_8ykal")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Floor Assets Top Level/_wall_floor13" unique_id=2075220979]
+mesh = SubResource("BoxMesh_hty2g")
+
+[node name="_wall_floor14" type="CollisionShape3D" parent="Floor Assets Top Level" unique_id=1057726858]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0.95, 2)
+shape = SubResource("BoxShape3D_8ykal")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Floor Assets Top Level/_wall_floor14" unique_id=2081363191]
+mesh = SubResource("BoxMesh_hty2g")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Floor Assets Top Level/_wall_floor14" unique_id=245334331]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2)
+mesh = SubResource("BoxMesh_hty2g")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="Floor Assets Top Level/_wall_floor14" unique_id=793423252]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -4)
+mesh = SubResource("BoxMesh_hty2g")
+
+[node name="_wall_floor15" type="CollisionShape3D" parent="Floor Assets Top Level" unique_id=271249485]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0.95, 2)
+shape = SubResource("BoxShape3D_8ykal")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Floor Assets Top Level/_wall_floor15" unique_id=42568804]
+mesh = SubResource("BoxMesh_hty2g")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Floor Assets Top Level/_wall_floor15" unique_id=509428720]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2)
+mesh = SubResource("BoxMesh_hty2g")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="Floor Assets Top Level/_wall_floor15" unique_id=1131231577]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -4)
+mesh = SubResource("BoxMesh_hty2g")
+
+[node name="Floor Assets Bottom Level" type="StaticBody3D" parent="." unique_id=805086309]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, -7, -9)
+
+[node name="_wall_floor" type="CollisionShape3D" parent="Floor Assets Bottom Level" unique_id=474230028]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0.95, 2)
+shape = SubResource("BoxShape3D_8ykal")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Floor Assets Bottom Level/_wall_floor" unique_id=689542983]
+mesh = SubResource("BoxMesh_hty2g")
+
+[node name="_wall_floor8" type="CollisionShape3D" parent="Floor Assets Bottom Level" unique_id=669826054]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0.95, 0)
+shape = SubResource("BoxShape3D_8ykal")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Floor Assets Bottom Level/_wall_floor8" unique_id=393150518]
+mesh = SubResource("BoxMesh_hty2g")
+
+[node name="_wall_floor9" type="CollisionShape3D" parent="Floor Assets Bottom Level" unique_id=1264826750]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0.95, -2)
+shape = SubResource("BoxShape3D_8ykal")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Floor Assets Bottom Level/_wall_floor9" unique_id=907857376]
+mesh = SubResource("BoxMesh_hty2g")
+
+[node name="_wall_floor19" type="CollisionShape3D" parent="Floor Assets Bottom Level" unique_id=950740117]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0.9499998, -2)
+shape = SubResource("BoxShape3D_8ykal")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Floor Assets Bottom Level/_wall_floor19" unique_id=1544712748]
+mesh = SubResource("BoxMesh_hty2g")
+
+[node name="_wall_floor20" type="CollisionShape3D" parent="Floor Assets Bottom Level" unique_id=1522596867]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0.9499998, 0)
+shape = SubResource("BoxShape3D_8ykal")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Floor Assets Bottom Level/_wall_floor20" unique_id=1066450674]
+mesh = SubResource("BoxMesh_hty2g")
+
+[node name="_wall_floor21" type="CollisionShape3D" parent="Floor Assets Bottom Level" unique_id=1956066619]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0.9499998, -4)
+shape = SubResource("BoxShape3D_8ykal")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Floor Assets Bottom Level/_wall_floor21" unique_id=761720319]
+mesh = SubResource("BoxMesh_hty2g")
+
+[node name="_wall_floor22" type="CollisionShape3D" parent="Floor Assets Bottom Level" unique_id=1962081609]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0.9499998, -4)
+shape = SubResource("BoxShape3D_8ykal")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Floor Assets Bottom Level/_wall_floor22" unique_id=577654949]
+mesh = SubResource("BoxMesh_hty2g")
+
+[node name="_wall_floor23" type="CollisionShape3D" parent="Floor Assets Bottom Level" unique_id=132565675]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0.9499998, -4)
+shape = SubResource("BoxShape3D_8ykal")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Floor Assets Bottom Level/_wall_floor23" unique_id=1031365176]
+mesh = SubResource("BoxMesh_hty2g")
+
+[node name="_wall_floor24" type="CollisionShape3D" parent="Floor Assets Bottom Level" unique_id=95657702]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0.9499998, -4)
+shape = SubResource("BoxShape3D_8ykal")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Floor Assets Bottom Level/_wall_floor24" unique_id=736824353]
+mesh = SubResource("BoxMesh_hty2g")
+
+[node name="_wall_floor25" type="CollisionShape3D" parent="Floor Assets Bottom Level" unique_id=913638162]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0.9499998, -4)
+shape = SubResource("BoxShape3D_8ykal")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Floor Assets Bottom Level/_wall_floor25" unique_id=1698252279]
+mesh = SubResource("BoxMesh_hty2g")
+
+[node name="_wall_floor26" type="CollisionShape3D" parent="Floor Assets Bottom Level" unique_id=1648433203]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 0.9499998, -4)
+shape = SubResource("BoxShape3D_8ykal")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Floor Assets Bottom Level/_wall_floor26" unique_id=2080584277]
+mesh = SubResource("BoxMesh_hty2g")
+
+[node name="_wall_floor27" type="CollisionShape3D" parent="Floor Assets Bottom Level" unique_id=1662438261]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 0.9499998, -4)
+shape = SubResource("BoxShape3D_8ykal")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Floor Assets Bottom Level/_wall_floor27" unique_id=1495457658]
+mesh = SubResource("BoxMesh_hty2g")
+
+[node name="_wall_floor28" type="CollisionShape3D" parent="Floor Assets Bottom Level" unique_id=837475285]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 0.9499998, -2)
+shape = SubResource("BoxShape3D_8ykal")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Floor Assets Bottom Level/_wall_floor28" unique_id=1981139742]
+mesh = SubResource("BoxMesh_hty2g")
+
+[node name="_wall_floor29" type="CollisionShape3D" parent="Floor Assets Bottom Level" unique_id=727267813]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 0.9499998, 0)
+shape = SubResource("BoxShape3D_8ykal")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Floor Assets Bottom Level/_wall_floor29" unique_id=933708496]
+mesh = SubResource("BoxMesh_hty2g")
+
+[node name="_wall_floor10" type="CollisionShape3D" parent="Floor Assets Bottom Level" unique_id=1781589114]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0.95, 0)
+shape = SubResource("BoxShape3D_8ykal")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Floor Assets Bottom Level/_wall_floor10" unique_id=1888092814]
+mesh = SubResource("BoxMesh_hty2g")
+
+[node name="_wall_floor16" type="CollisionShape3D" parent="Floor Assets Bottom Level" unique_id=1286461551]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0.95, -2)
+shape = SubResource("BoxShape3D_8ykal")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Floor Assets Bottom Level/_wall_floor16" unique_id=159011173]
+mesh = SubResource("BoxMesh_hty2g")
+
+[node name="_wall_floor17" type="CollisionShape3D" parent="Floor Assets Bottom Level" unique_id=979343786]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 0.95, 0)
+shape = SubResource("BoxShape3D_8ykal")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Floor Assets Bottom Level/_wall_floor17" unique_id=630508292]
+mesh = SubResource("BoxMesh_hty2g")
+
+[node name="_wall_floor18" type="CollisionShape3D" parent="Floor Assets Bottom Level" unique_id=535068493]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 0.95, -2)
+shape = SubResource("BoxShape3D_8ykal")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Floor Assets Bottom Level/_wall_floor18" unique_id=542152698]
+mesh = SubResource("BoxMesh_hty2g")
+
+[node name="_wall_floor2" type="CollisionShape3D" parent="Floor Assets Bottom Level" unique_id=1483166507]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0.95, 2)
+shape = SubResource("BoxShape3D_8ykal")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Floor Assets Bottom Level/_wall_floor2" unique_id=463921395]
+mesh = SubResource("BoxMesh_hty2g")
+
+[node name="_wall_floor3" type="CollisionShape3D" parent="Floor Assets Bottom Level" unique_id=260852287]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0.95, 2)
+shape = SubResource("BoxShape3D_8ykal")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Floor Assets Bottom Level/_wall_floor3" unique_id=184726913]
+mesh = SubResource("BoxMesh_hty2g")
+
+[node name="_wall_floor4" type="CollisionShape3D" parent="Floor Assets Bottom Level" unique_id=1751869855]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0.95, 2)
+shape = SubResource("BoxShape3D_8ykal")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Floor Assets Bottom Level/_wall_floor4" unique_id=1491451389]
+mesh = SubResource("BoxMesh_hty2g")
+
+[node name="_wall_floor5" type="CollisionShape3D" parent="Floor Assets Bottom Level" unique_id=1382157627]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0.95, 0)
+shape = SubResource("BoxShape3D_8ykal")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Floor Assets Bottom Level/_wall_floor5" unique_id=1439544472]
+mesh = SubResource("BoxMesh_hty2g")
+
+[node name="_wall_floor6" type="CollisionShape3D" parent="Floor Assets Bottom Level" unique_id=1396769014]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0.95, -2)
+shape = SubResource("BoxShape3D_8ykal")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Floor Assets Bottom Level/_wall_floor6" unique_id=1966781205]
+mesh = SubResource("BoxMesh_hty2g")
+
+[node name="_wall_floor7" type="CollisionShape3D" parent="Floor Assets Bottom Level" unique_id=340943274]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0.95, -4)
+shape = SubResource("BoxShape3D_8ykal")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Floor Assets Bottom Level/_wall_floor7" unique_id=1417994897]
+mesh = SubResource("BoxMesh_hty2g")
+
+[node name="_wall_floor11" type="CollisionShape3D" parent="Floor Assets Bottom Level" unique_id=1882909953]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11, 0.95, 2)
+shape = SubResource("BoxShape3D_8ykal")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Floor Assets Bottom Level/_wall_floor11" unique_id=2075149815]
+mesh = SubResource("BoxMesh_hty2g")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Floor Assets Bottom Level/_wall_floor11" unique_id=967636607]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2)
+mesh = SubResource("BoxMesh_hty2g")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="Floor Assets Bottom Level/_wall_floor11" unique_id=910353187]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -4)
+mesh = SubResource("BoxMesh_hty2g")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="Floor Assets Bottom Level/_wall_floor11" unique_id=417043100]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -6)
+mesh = SubResource("BoxMesh_hty2g")
+
+[node name="_wall_floor12" type="CollisionShape3D" parent="Floor Assets Bottom Level" unique_id=1588740409]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 0.95, 2)
+shape = SubResource("BoxShape3D_8ykal")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Floor Assets Bottom Level/_wall_floor12" unique_id=974725660]
+mesh = SubResource("BoxMesh_hty2g")
+
+[node name="_wall_floor13" type="CollisionShape3D" parent="Floor Assets Bottom Level" unique_id=1814481191]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 0.95, 2)
+shape = SubResource("BoxShape3D_8ykal")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Floor Assets Bottom Level/_wall_floor13" unique_id=1346007418]
+mesh = SubResource("BoxMesh_hty2g")
+
+[node name="_wall_floor14" type="CollisionShape3D" parent="Floor Assets Bottom Level" unique_id=682830916]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0.95, 2)
+shape = SubResource("BoxShape3D_8ykal")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Floor Assets Bottom Level/_wall_floor14" unique_id=1945326641]
+mesh = SubResource("BoxMesh_hty2g")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Floor Assets Bottom Level/_wall_floor14" unique_id=203149637]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2)
+mesh = SubResource("BoxMesh_hty2g")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="Floor Assets Bottom Level/_wall_floor14" unique_id=1149113941]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -4)
+mesh = SubResource("BoxMesh_hty2g")
+
+[node name="_wall_floor15" type="CollisionShape3D" parent="Floor Assets Bottom Level" unique_id=298660530]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0.95, 2)
+shape = SubResource("BoxShape3D_8ykal")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Floor Assets Bottom Level/_wall_floor15" unique_id=1233805048]
+mesh = SubResource("BoxMesh_hty2g")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Floor Assets Bottom Level/_wall_floor15" unique_id=665146381]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2)
+mesh = SubResource("BoxMesh_hty2g")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="Floor Assets Bottom Level/_wall_floor15" unique_id=1981384174]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -4)
+mesh = SubResource("BoxMesh_hty2g")
+
+[node name="Elevator" type="CSGBox3D" parent="." unique_id=378389225]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.998169, -5.753418, -8.998047)
+size = Vector3(1.982, 0.5, 1.98)
+
+[node name="Elevator2" type="CSGBox3D" parent="." unique_id=2029249313]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.001831, -5.753418, -8.998047)
+size = Vector3(1.982, 0.5, 1.98)
+
+[node name="Lever" parent="." unique_id=1692381032 instance=ExtResource("5_aj4pl")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -2, 2, -7)
+use_intervals = true
+intervals = 0.5
+
+[node name="DrawBridge" parent="." unique_id=172773469 node_paths=PackedStringArray("drawbridge_lever") instance=ExtResource("5_1lpa3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 1, -12.498962)
+drawbridge_lever = NodePath("../Lever")

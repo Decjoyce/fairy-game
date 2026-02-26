@@ -1,0 +1,301 @@
+[gd_scene format=3 uid="uid://bmiljk53ks7e7"]
+
+[ext_resource type="Texture2D" uid="uid://ds2ryuxjpf5j1" path="res://scenes/interactions/receivers/spike_trap/blackcircle_tran.png" id="1_23lq1"]
+[ext_resource type="Script" uid="uid://dcbg0ho5ff6uu" path="res://scenes/interactions/receivers/spike_trap/spike_trap.gd" id="1_oarp6"]
+[ext_resource type="Material" uid="uid://dyejtq23uplk4" path="res://assets/shaders/Outline/outline.tres" id="2_512if"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ypdmq"]
+albedo_color = Color(0.29582244, 0.28200856, 0.27378577, 1)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_23lq1"]
+material = SubResource("StandardMaterial3D_ypdmq")
+top_radius = 0.0
+bottom_radius = 0.05
+height = 0.5
+radial_segments = 4
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xbtjy"]
+albedo_color = Color(0.38039216, 0.28627452, 0.19215687, 1)
+metallic = 0.5
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_ypdmq"]
+material = SubResource("StandardMaterial3D_xbtjy")
+top_radius = 0.03
+bottom_radius = 0.03
+height = 0.8
+radial_segments = 4
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_oarp6"]
+size = Vector3(1.5, 1.39, 1.5)
+
+[sub_resource type="Animation" id="Animation_oarp6"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Spikes:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_0k2xd"]
+resource_name = "spike_down"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Spikes:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 1.3, 0), Vector3(0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_512if"]
+resource_name = "spike_up"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Spikes:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 1.3, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_oarp6"]
+_data = {
+&"RESET": SubResource("Animation_oarp6"),
+&"spike_down": SubResource("Animation_0k2xd"),
+&"spike_up": SubResource("Animation_512if")
+}
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_512if"]
+size = Vector3(1.75, 2, 1.75)
+
+[node name="SpikeTrap" type="Node3D" unique_id=610712147]
+script = ExtResource("1_oarp6")
+
+[node name="Holes" type="Node3D" parent="." unique_id=452673624]
+
+[node name="Sprite3D" type="Sprite3D" parent="Holes" unique_id=1166511973]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0)
+modulate = Color(0.60784316, 0.5568628, 0.5176471, 1)
+pixel_size = 0.002
+texture = ExtResource("1_23lq1")
+
+[node name="Sprite3D2" type="Sprite3D" parent="Holes" unique_id=2118355787]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, -0.6003717, 0, -0.23743492)
+modulate = Color(0.60784316, 0.5568628, 0.5176471, 1)
+pixel_size = 0.002
+texture = ExtResource("1_23lq1")
+
+[node name="Sprite3D3" type="Sprite3D" parent="Holes" unique_id=73406283]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, -0.6053808, -5.9604645e-08, 0.2264297)
+modulate = Color(0.60784316, 0.5568628, 0.5176471, 1)
+pixel_size = 0.002
+texture = ExtResource("1_23lq1")
+
+[node name="Sprite3D4" type="Sprite3D" parent="Holes" unique_id=619578571]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0.2867295, -5.9604645e-08, 0.580924)
+modulate = Color(0.60784316, 0.5568628, 0.5176471, 1)
+pixel_size = 0.002
+texture = ExtResource("1_23lq1")
+
+[node name="Sprite3D9" type="Sprite3D" parent="Holes" unique_id=115875837]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0.5867295, -5.9604645e-08, 0.28092396)
+modulate = Color(0.60784316, 0.5568628, 0.5176471, 1)
+pixel_size = 0.002
+texture = ExtResource("1_23lq1")
+
+[node name="Sprite3D5" type="Sprite3D" parent="Holes" unique_id=1115010344]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0.3347944, -1.1920929e-07, -0.56844777)
+modulate = Color(0.60784316, 0.5568628, 0.5176471, 1)
+pixel_size = 0.002
+texture = ExtResource("1_23lq1")
+
+[node name="Sprite3D6" type="Sprite3D" parent="Holes" unique_id=1785191186]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0.58432895, -1.1920929e-07, -0.12357813)
+modulate = Color(0.60784316, 0.5568628, 0.5176471, 1)
+pixel_size = 0.002
+texture = ExtResource("1_23lq1")
+
+[node name="Sprite3D7" type="Sprite3D" parent="Holes" unique_id=1746395867]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, -0.27399936, -1.1920929e-07, 0.5361426)
+modulate = Color(0.60784316, 0.5568628, 0.5176471, 1)
+pixel_size = 0.002
+texture = ExtResource("1_23lq1")
+
+[node name="Sprite3D8" type="Sprite3D" parent="Holes" unique_id=1941335071]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, -0.30325577, -1.1920929e-07, -0.5908227)
+modulate = Color(0.60784316, 0.5568628, 0.5176471, 1)
+pixel_size = 0.002
+texture = ExtResource("1_23lq1")
+
+[node name="Spikes" type="Node3D" parent="." unique_id=1888461165]
+
+[node name="Spike" type="Node3D" parent="Spikes" unique_id=631357871]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, -1.321132, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Spikes/Spike" unique_id=1825238414]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, -1.1920929e-07, -1.0353832)
+material_overlay = ExtResource("2_512if")
+mesh = SubResource("CylinderMesh_23lq1")
+skeleton = NodePath("../../../Holes/Sprite3D")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Spikes/Spike" unique_id=748604932]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, -2.3841858e-07, -0.38961193)
+material_overlay = ExtResource("2_512if")
+mesh = SubResource("CylinderMesh_ypdmq")
+skeleton = NodePath("../../../Holes/Sprite3D")
+
+[node name="Spike2" type="Node3D" parent="Spikes" unique_id=1502990083]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, -0.6003717, -1.4360068, -0.23743492)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Spikes/Spike2" unique_id=1513003414]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, -1.1920929e-07, -1.0353832)
+material_overlay = ExtResource("2_512if")
+mesh = SubResource("CylinderMesh_23lq1")
+skeleton = NodePath("../../../Holes/Sprite3D2")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Spikes/Spike2" unique_id=532384745]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, -2.3841858e-07, -0.38961193)
+material_overlay = ExtResource("2_512if")
+mesh = SubResource("CylinderMesh_ypdmq")
+skeleton = NodePath("../../../Holes/Sprite3D2")
+
+[node name="Spike3" type="Node3D" parent="Spikes" unique_id=1014222293]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, -0.6053808, -1.3635471, 0.2264297)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Spikes/Spike3" unique_id=1285117857]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, -1.1920929e-07, -1.0353832)
+material_overlay = ExtResource("2_512if")
+mesh = SubResource("CylinderMesh_23lq1")
+skeleton = NodePath("../../../Holes/Sprite3D3")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Spikes/Spike3" unique_id=1717394245]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, -2.3841858e-07, -0.38961193)
+material_overlay = ExtResource("2_512if")
+mesh = SubResource("CylinderMesh_ypdmq")
+skeleton = NodePath("../../../Holes/Sprite3D3")
+
+[node name="Spike4" type="Node3D" parent="Spikes" unique_id=1490250625]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0.2867295, -1.348794, 0.580924)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Spikes/Spike4" unique_id=1552632135]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, -1.1920929e-07, -1.0353832)
+material_overlay = ExtResource("2_512if")
+mesh = SubResource("CylinderMesh_23lq1")
+skeleton = NodePath("../../../Holes/Sprite3D4")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Spikes/Spike4" unique_id=643309860]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, -2.3841858e-07, -0.38961193)
+material_overlay = ExtResource("2_512if")
+mesh = SubResource("CylinderMesh_ypdmq")
+skeleton = NodePath("../../../Holes/Sprite3D4")
+
+[node name="Spike9" type="Node3D" parent="Spikes" unique_id=894697479]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0.5867295, -1.348794, 0.28092396)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Spikes/Spike9" unique_id=2121925813]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, -1.1920929e-07, -1.0353832)
+material_overlay = ExtResource("2_512if")
+mesh = SubResource("CylinderMesh_23lq1")
+skeleton = NodePath("../../../Holes/Sprite3D4")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Spikes/Spike9" unique_id=1715512581]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, -2.3841858e-07, -0.38961193)
+material_overlay = ExtResource("2_512if")
+mesh = SubResource("CylinderMesh_ypdmq")
+skeleton = NodePath("../../../Holes/Sprite3D4")
+
+[node name="Spike5" type="Node3D" parent="Spikes" unique_id=1097048778]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0.3347944, -1.4575983, -0.56844777)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Spikes/Spike5" unique_id=1180402773]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, -1.1920929e-07, -1.0353832)
+material_overlay = ExtResource("2_512if")
+mesh = SubResource("CylinderMesh_23lq1")
+skeleton = NodePath("../../../Holes/Sprite3D5")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Spikes/Spike5" unique_id=1207627863]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, -2.3841858e-07, -0.38961193)
+material_overlay = ExtResource("2_512if")
+mesh = SubResource("CylinderMesh_ypdmq")
+skeleton = NodePath("../../../Holes/Sprite3D5")
+
+[node name="Spike6" type="Node3D" parent="Spikes" unique_id=269644892]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0.58432895, -1.3985858, -0.12357813)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Spikes/Spike6" unique_id=1409134979]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, -1.1920929e-07, -1.0353832)
+material_overlay = ExtResource("2_512if")
+mesh = SubResource("CylinderMesh_23lq1")
+skeleton = NodePath("../../../Holes/Sprite3D6")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Spikes/Spike6" unique_id=1878534641]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, -2.3841858e-07, -0.38961193)
+material_overlay = ExtResource("2_512if")
+mesh = SubResource("CylinderMesh_ypdmq")
+skeleton = NodePath("../../../Holes/Sprite3D6")
+
+[node name="Spike7" type="Node3D" parent="Spikes" unique_id=614917241]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, -0.27399936, -1.3211321, 0.5361426)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Spikes/Spike7" unique_id=1132519358]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, -1.1920929e-07, -1.0353832)
+material_overlay = ExtResource("2_512if")
+mesh = SubResource("CylinderMesh_23lq1")
+skeleton = NodePath("../../../Holes/Sprite3D7")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Spikes/Spike7" unique_id=249676132]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, -2.3841858e-07, -0.38961193)
+material_overlay = ExtResource("2_512if")
+mesh = SubResource("CylinderMesh_ypdmq")
+skeleton = NodePath("../../../Holes/Sprite3D7")
+
+[node name="Spike8" type="Node3D" parent="Spikes" unique_id=200123306]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, -0.30325577, -1.3211321, -0.5908227)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Spikes/Spike8" unique_id=1809317903]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, -1.1920929e-07, -1.0353832)
+material_overlay = ExtResource("2_512if")
+mesh = SubResource("CylinderMesh_23lq1")
+skeleton = NodePath("../../../Holes/Sprite3D8")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Spikes/Spike8" unique_id=901724347]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, -2.3841858e-07, -0.38961193)
+material_overlay = ExtResource("2_512if")
+mesh = SubResource("CylinderMesh_ypdmq")
+skeleton = NodePath("../../../Holes/Sprite3D8")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Spikes" unique_id=803726999]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.7, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Spikes/StaticBody3D" unique_id=109602190]
+shape = SubResource("BoxShape3D_oarp6")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1300958917]
+libraries/ = SubResource("AnimationLibrary_oarp6")
+
+[node name="Area3D" type="Area3D" parent="." unique_id=1233380376]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" unique_id=788205735]
+shape = SubResource("BoxShape3D_512if")
+disabled = true
+
+[connection signal="area_entered" from="Area3D" to="." method="_on_area_3d_area_entered"]
+[connection signal="area_exited" from="Area3D" to="." method="_on_area_3d_area_exited"]

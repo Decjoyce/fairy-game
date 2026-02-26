@@ -1,11 +1,10 @@
 class_name ImpactManager
 extends Node3D
 
-enum ImpactTypes {GROUND}
+enum ImpactTypes {GROUND, BLOOD}
 
 @export var holders: Array[Node3D]
-var holder_indexes: Array[int] = [1]
-
+var holder_indexes: Array[int] = [3]
 
 func play_impact_at(location: Vector3, impact_type: int, impact_size: float):
 	var holder := holders[impact_type]

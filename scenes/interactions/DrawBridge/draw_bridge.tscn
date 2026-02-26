@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://hfs60jv7nqbo"]
+
+[ext_resource type="Script" uid="uid://dd1m0o5pknq0j" path="res://scenes/interactions/DrawBridge/drawbridge.gd" id="1_7t4qe"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_7t4qe"]
+size = Vector3(6.000763, 0.099868774, 1)
+
+[node name="DrawBridge" type="Node3D" unique_id=172773469]
+script = ExtResource("1_7t4qe")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="." unique_id=870869976]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7, 0.0014952421, 0)
+size = Vector3(15, 0.1, 1)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CSGBox3D" unique_id=301091666]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0002593994, -2.2888184e-05, 0)
+shape = SubResource("BoxShape3D_7t4qe")

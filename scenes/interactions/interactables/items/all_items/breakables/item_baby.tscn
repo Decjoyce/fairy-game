@@ -1,0 +1,102 @@
+[gd_scene format=3 uid="uid://brxr85hbqpapm"]
+
+[ext_resource type="Script" uid="uid://s5cfdf85lm5g" path="res://scenes/interactions/interactables/items/grabbable_item.gd" id="1_mj7bn"]
+[ext_resource type="Texture2D" uid="uid://byg0u435xhja5" path="res://assets/sprites/baby/baby.png" id="4_jgox5"]
+[ext_resource type="PackedScene" uid="uid://lxic7c72kvyt" path="res://scenes/interactions/interactables/items/all_items/misc/item_skull.tscn" id="4_wtb4y"]
+[ext_resource type="Texture2D" uid="uid://dvabrw72twnlt" path="res://assets/sprites/baby/dababy.png" id="5_jgox5"]
+[ext_resource type="Script" uid="uid://beaf3digx88d0" path="res://scenes/interactions/interactables/items/item_types/itemtype_breakable.gd" id="6_bmiso"]
+[ext_resource type="AudioStream" uid="uid://dpv5f1hi48dtp" path="res://assets/__not_ours_dontship/death_fortnite.mp3" id="7_uk0c6"]
+[ext_resource type="AudioStream" uid="uid://vx653pqd2bno" path="res://assets/__not_ours_dontship/death_yoda.mp3" id="8_bwyit"]
+[ext_resource type="AudioStream" uid="uid://dutddyikwuiut" path="res://assets/audio/sfx/combat/misc/hittingsound_shorter.wav" id="8_hick6"]
+[ext_resource type="Texture2D" uid="uid://hfd6qbmx87rr" path="res://assets/__not_ours_dontship/cat-standing-on-a-chair-leoch-studio.png" id="18_71cdv"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_llc7q"]
+bounce = 1.0
+
+[sub_resource type="Resource" id="Resource_t7cb3"]
+script = ExtResource("6_bmiso")
+use_random_item = true
+specific_item_to_drop = ExtResource("4_wtb4y")
+item_type = 4
+metadata/_custom_type_script = "uid://beaf3digx88d0"
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_llc7q"]
+size = Vector3(0.5, 0.71777344, 0.5)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_234jp"]
+size = Vector3(0.4, 0.6667541, 0.4)
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_52tl6"]
+random_pitch = 1.2
+streams_count = 2
+stream_0/stream = ExtResource("7_uk0c6")
+stream_1/stream = ExtResource("8_bwyit")
+
+[node name="BabyDude" type="RigidBody3D" unique_id=1376443271 node_paths=PackedStringArray("col", "grab_col", "destroyed_item", "destroyed_audio", "idle_graphics", "grabbed_graphics") groups=["debug_PickableObjects"]]
+collision_layer = 2
+axis_lock_angular_x = true
+axis_lock_angular_z = true
+mass = 0.5
+physics_material_override = SubResource("PhysicsMaterial_llc7q")
+gravity_scale = 0.8
+contact_monitor = true
+max_contacts_reported = 1
+script = ExtResource("1_mj7bn")
+item_type = SubResource("Resource_t7cb3")
+display_name = "BABY"
+col = NodePath("CollisionShape3D")
+grab_col = NodePath("Area3D/CollisionShape3D2")
+can_break = true
+break_force = 120.0
+destroyed_item = NodePath("Destroyed_Item_")
+destroyed_audio = NodePath("Destroyed_Item_/DestroyedAudio")
+idle_graphics = NodePath("_idle_graphics")
+grabbed_graphics = NodePath("_grabbed_graphics")
+
+[node name="Area3D" type="Area3D" parent="." unique_id=732745121]
+collision_layer = 2
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="Area3D" unique_id=2043633409]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.032226563, 0)
+shape = SubResource("BoxShape3D_llc7q")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1677695004]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.041610733, 0)
+shape = SubResource("BoxShape3D_234jp")
+debug_color = Color(0.8442249, 0.37985525, 5.7756904e-07, 0.41960785)
+
+[node name="_idle_graphics" type="Sprite3D" parent="." unique_id=1676432995]
+layers = 4
+pixel_size = 0.0015
+billboard = 1
+render_priority = 1
+texture = ExtResource("4_jgox5")
+
+[node name="_grabbed_graphics" type="Sprite3D" parent="." unique_id=1144728069]
+visible = false
+layers = 4
+pixel_size = 0.0015
+render_priority = 1
+texture = ExtResource("5_jgox5")
+
+[node name="AudioPlayer" type="AudioStreamPlayer3D" parent="." unique_id=1254263574]
+stream = ExtResource("8_hick6")
+bus = &"items"
+
+[node name="RayCast3D" type="RayCast3D" parent="." unique_id=1771069672]
+target_position = Vector3(0, -2, 0)
+hit_from_inside = true
+
+[node name="Destroyed_Item_" type="Node3D" parent="." unique_id=819911073]
+visible = false
+
+[node name="DestroyedAudio" type="AudioStreamPlayer3D" parent="Destroyed_Item_" unique_id=90759868]
+stream = SubResource("AudioStreamRandomizer_52tl6")
+bus = &"pl_footsteps"
+
+[node name="_destroyed_graphics" type="Sprite3D" parent="Destroyed_Item_" unique_id=922354745]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.2, 0)
+pixel_size = 0.0006
+billboard = 1
+render_priority = 1
+texture = ExtResource("18_71cdv")

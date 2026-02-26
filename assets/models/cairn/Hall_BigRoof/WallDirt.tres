@@ -1,0 +1,17 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://dfihik13b8xmx"]
+
+[ext_resource type="Texture2D" uid="uid://bpfshvd62so82" path="res://assets/models/cairn/Hall_BigRoof/Wall+Roof_Textures/Wall_Dirt/texture_Wall_Base_color.png" id="1_k8p3w"]
+[ext_resource type="Texture2D" uid="uid://c0tbdyjk53mn2" path="res://assets/models/cairn/Hall_BigRoof/Wall+Roof_Textures/Wall_Dirt/texture_Wall_Mixed_AO.png" id="2_im7vb"]
+[ext_resource type="Material" uid="uid://dyejtq23uplk4" path="res://assets/shaders/Outline/outline.tres" id="3_ljlxn"]
+[ext_resource type="Texture2D" uid="uid://bno1c1f1027nw" path="res://assets/models/cairn/Hall_BigRoof/Wall+Roof_Textures/Wall_Dirt/texture_Wall_Normal_OpenGL.png" id="4_ljlxn"]
+[ext_resource type="Texture2D" uid="uid://cw4dqutkbdmse" path="res://assets/models/cairn/Hall_BigRoof/Wall+Roof_Textures/Wall_Dirt/texture_Wall_Roughness.png" id="5_f4rdr"]
+
+[resource]
+next_pass = ExtResource("3_ljlxn")
+albedo_texture = ExtResource("1_k8p3w")
+metallic_specular = 0.0
+roughness_texture = ExtResource("5_f4rdr")
+normal_enabled = true
+normal_texture = ExtResource("4_ljlxn")
+ao_enabled = true
+ao_texture = ExtResource("2_im7vb")

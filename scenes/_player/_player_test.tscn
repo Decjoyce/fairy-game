@@ -64,6 +64,10 @@
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_3jgj8"]
 height = 1.3
 
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ru0ho"]
+radius = 0.43
+height = 0.95
+
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1snfn"]
 albedo_color = Color(1, 0.15294118, 1, 1)
 
@@ -677,6 +681,12 @@ monitoring = false
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Collision" unique_id=1237718893]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.35000002, 0)
 shape = SubResource("CapsuleShape3D_3jgj8")
+debug_color = Color(0.86076874, 0, 0.8756056, 1)
+
+[node name="_col_crouched" type="CollisionShape3D" parent="Collision" unique_id=1657962446]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.165, 0)
+shape = SubResource("CapsuleShape3D_ru0ho")
+debug_color = Color(0, 0.6438376, 0.2737116, 1)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1223838266]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.375, 0)
@@ -693,7 +703,7 @@ libraries/ = SubResource("AnimationLibrary_uus6m")
 
 [node name="FloorDetector" type="RayCast3D" parent="." unique_id=1907868752]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
-target_position = Vector3(0, -5, 0)
+target_position = Vector3(0, -1.1, 0)
 
 [node name="EnemyChecker" type="RayCast3D" parent="." unique_id=784899576]
 target_position = Vector3(0, 0, -1.25)
@@ -704,11 +714,13 @@ debug_shape_custom_color = Color(0.8729805, 0, 0, 1)
 script = ExtResource("2_s1g5w")
 metadata/_custom_type_script = "uid://jxohgxu3vshf"
 
-[node name="Movement" type="Node" parent="." unique_id=1505445123 node_paths=PackedStringArray("player", "interact", "floor_detector")]
+[node name="Movement" type="Node" parent="." unique_id=1505445123 node_paths=PackedStringArray("player", "interact", "floor_detector", "col", "col_crouched")]
 script = ExtResource("2_3jgj8")
 player = NodePath("..")
 interact = NodePath("../Interaction")
 floor_detector = NodePath("../FloorDetector")
+col = NodePath("../Collision/CollisionShape3D")
+col_crouched = NodePath("../Collision/_col_crouched")
 BOB_FREQ = 5.0
 BOB_AMP = 0.04
 metadata/_custom_type_script = "uid://by88p7ijbixe5"
@@ -743,7 +755,6 @@ debug_shape_custom_color = Color(0, 0.79870725, 0.7254093, 1)
 unique_name_in_owner = true
 stream = SubResource("AudioStreamRandomizer_gcklq")
 volume_db = 15.0
-bus = &"pl_footsteps"
 
 [node name="Interaction" parent="." unique_id=336913977 node_paths=PackedStringArray("movement", "cam") instance=ExtResource("3_3jgj8")]
 movement = NodePath("../Movement")
@@ -1101,11 +1112,9 @@ metadata/_edit_use_anchors_ = true
 [node name="HitSfx" type="AudioStreamPlayer3D" parent="." unique_id=1207998084]
 stream = ExtResource("58_svbpy")
 pitch_scale = 0.97
-bus = &"items"
 
 [node name="StamSfx" type="AudioStreamPlayer3D" parent="." unique_id=965614490]
 stream = ExtResource("7_nbsyt")
-bus = &"pl_footsteps"
 
 [node name="DeathUI" type="Control" parent="." unique_id=201181463]
 visible = false

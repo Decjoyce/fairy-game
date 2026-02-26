@@ -1,0 +1,41 @@
+[gd_scene format=3 uid="uid://dw3hwfs14jref"]
+
+[ext_resource type="PackedScene" uid="uid://bq86osdembn58" path="res://scenes/_player/_player_test.tscn" id="1_jcrp4"]
+[ext_resource type="PackedScene" uid="uid://ck1b6l8s7xnxi" path="res://scenes/interactions/triggers/lever/lever.tscn" id="2_knj1e"]
+[ext_resource type="PackedScene" uid="uid://hfs60jv7nqbo" path="res://scenes/interactions/DrawBridge/draw_bridge.tscn" id="3_knj1e"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_jcrp4"]
+sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+ground_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+
+[sub_resource type="Sky" id="Sky_knj1e"]
+sky_material = SubResource("ProceduralSkyMaterial_jcrp4")
+
+[sub_resource type="Environment" id="Environment_ufr1r"]
+background_mode = 2
+sky = SubResource("Sky_knj1e")
+tonemap_mode = 2
+glow_enabled = true
+
+[node name="DrawBridge_Test" type="Node3D" unique_id=2064193091]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1195609857]
+environment = SubResource("Environment_ufr1r")
+
+[node name="player_test" parent="." unique_id=725727541 instance=ExtResource("1_jcrp4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+
+[node name="Lever" parent="." unique_id=1692381032 instance=ExtResource("2_knj1e")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2)
+intervals = 1.0
+
+[node name="Floor" type="CSGBox3D" parent="." unique_id=860049652]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.5, -1, -3)
+use_collision = true
+size = Vector3(18, 1, 15)
+
+[node name="DrawBridge" parent="." unique_id=172773469 node_paths=PackedStringArray("drawbridge_lever") instance=ExtResource("3_knj1e")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0.55160534, -5)
+drawbridge_lever = NodePath("../Lever")
+
+[connection signal="on_change" from="Lever" to="DrawBridge" method="_on_lever_on_change"]

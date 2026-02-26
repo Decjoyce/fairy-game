@@ -67,7 +67,7 @@ func enter(previous_state_path: String, data := {}) -> void:
 	
 	_space_state = hand_controller.cam.get_world_3d().direct_space_state
 	
-	player.current_weight += grabbed_item.item_weight
+	player.current_weight += grabbed_item.get_weight()
 	if player.current_pressureplate: player.current_pressureplate.update_weight_of_entity(player)
 	# Animation
 	hand_controller.anim_change_idle_anim(anim_idle)
@@ -78,20 +78,21 @@ func enter(previous_state_path: String, data := {}) -> void:
 	var item_rot_z: float = grabbed_item.grabbed_rotation
 	if hand_controller.hand_type == 0: item_rot_z *= -1
 	
-	var new_rot: Quaternion = Quaternion.from_euler(Vector3(0, player.rotation.y, item_rot_z))
-	#player.quaternion
+	#var new_rot: Quaternion = Quaternion.from_euler(Vector3(0, player.global_rotation.y, item_rot_z))
+	var new_rot: Vector3 = Vector3(0.0, player.global_rotation.y, item_rot_z)
 	set_grab_position()
 	tween = get_tree().create_tween().bind_node(self).set_trans(Tween.TRANS_LINEAR)
 	tween.set_parallel(true)
 	tween.tween_property(grabbed_item, "global_position", grab_position, 0.075)
-	tween.tween_property(grabbed_item, "quaternion", new_rot, 0.1)
+	tween.tween_property(grabbed_item, "global_rotation", new_rot, 0.1)
 	
 	await tween.finished
+	grabbed_item.global_rotation = new_rot
 	is_ready = true
 	time_held_down = 0
 
 func exit() -> void:
-	player.current_weight -= grabbed_item.item_weight
+	player.current_weight -= grabbed_item.get_weight()
 	if player.current_pressureplate: player.current_pressureplate.update_weight_of_entity(player)
 	hand_controller.hovering_interactable = null
 	is_ready = false
@@ -140,7 +141,7 @@ func set_grab_position() -> void:
 
 func grabbing() -> void:
 	grabbed_item.global_position = grab_position
-	grabbed_item.rotation.y = hand_controller.player.rotation.y
+	grabbed_item.global_rotation.y = hand_controller.player.rotation.y
 	#if grabbed_item is Torch:
 		#if hand_controller.get_screen_position().x < player_interact.size.x * 0.2 or hand_controller.get_screen_position().x > player_interact.size.x * 0.8:
 			#if !item_at_edge_of_screen:
@@ -180,8 +181,8 @@ func use():
 				finished.emit(FREE)
 				grabbed_item.queue_free()
 			ItemType.ItemTypes.INSTRUMENT:
-				var freq : float = remap(hand_controller.get_screen_position().x, 0, player_interact.size.x, grabbed_item.min_freq, grabbed_item.max_freq)
-				var octave: float = remap(hand_controller.get_screen_position().y/player_interact.size.y, 0, 1, 1, 3)
+				var freq : int = int(remap(hand_controller.get_screen_position().x/player_interact.size.x, 0, 1, 0, 7))
+				var octave: int = int(remap(hand_controller.get_screen_position().y/player_interact.size.y, 0, 1, 0, 3))
 				grabbed_item.using_item([freq, octave])
 			_:
 				return

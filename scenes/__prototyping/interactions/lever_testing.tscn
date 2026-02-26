@@ -5,6 +5,9 @@
 [ext_resource type="PackedScene" uid="uid://dt13fur6twjep" path="res://scenes/interactions/receivers/gate/gate.tscn" id="3_mkmlb"]
 [ext_resource type="Script" uid="uid://cgb0bi0gumby6" path="res://scenes/interactions/receivers/skybox_changer/skybox_changer.gd" id="4_2rnw6"]
 [ext_resource type="Environment" uid="uid://co42tppomh8j3" path="res://assets/skyboxes/skyboxes_testing_dark.tres" id="5_m1ocg"]
+[ext_resource type="PackedScene" uid="uid://bg3e8trp0vy58" path="res://scenes/interactions/prefabs/broken_lever.tscn" id="6_vu50v"]
+[ext_resource type="PackedScene" uid="uid://d13vdgis1uvvv" path="res://scenes/interactions/interactables/items/all_items/keys/item_leverhandle.tscn" id="7_2j4yl"]
+[ext_resource type="PackedScene" uid="uid://bmiljk53ks7e7" path="res://scenes/interactions/receivers/spike_trap/spike_trap.tscn" id="8_uyxk5"]
 
 [sub_resource type="Environment" id="Environment_vu50v"]
 
@@ -54,8 +57,29 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, 0, -1)
 use_collision = true
 size = Vector3(34, 0.001, 13)
 
+[node name="BrokenLeverExample" type="Node3D" parent="." unique_id=993794206]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.851005, 1.0864971, 0)
+
+[node name="BrokenLever" parent="BrokenLeverExample" unique_id=525346541 instance=ExtResource("6_vu50v")]
+keywords_needed = "LEVER;"
+
+[node name="Lever_Fixed" parent="BrokenLeverExample" unique_id=2103435250 instance=ExtResource("1_vplke")]
+use_intervals = true
+hand_prompt = "hand_prompt_lever"
+disabled = true
+
+[node name="LeverHandle" parent="BrokenLeverExample" unique_id=1226645142 instance=ExtResource("7_2j4yl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.2396591)
+keywords = "LEVER;"
+
+[node name="SpikeTrap" parent="." unique_id=610712147 instance=ExtResource("8_uyxk5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.00061232597, 1)
+
+[connection signal="on_activated" from="Lever" to="SpikeTrap" method="activate"]
 [connection signal="on_change" from="Lever" to="Gate" method="open_gate"]
 [connection signal="on_activated" from="Lever2" to="skybox_changer" method="change_to_a"]
 [connection signal="on_change" from="Lever2" to="Gate3" method="open_gate"]
 [connection signal="on_deactivated" from="Lever2" to="skybox_changer" method="change_to_b"]
 [connection signal="on_change" from="Lever3" to="Gate2" method="open_gate"]
+[connection signal="on_activated" from="BrokenLeverExample/BrokenLever" to="BrokenLeverExample/Lever_Fixed" method="enable"]
+[connection signal="on_change" from="BrokenLeverExample/Lever_Fixed" to="Gate2" method="open_gate"]

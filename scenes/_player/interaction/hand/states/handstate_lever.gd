@@ -9,6 +9,8 @@ func handle_input(_event: InputEvent) -> void:
 
 ## Called by the state machine on the engine's main loop tick.
 func update(_delta: float) -> void:
+	if player.movement.dist_to_target > 0:
+		update_graphics()
 	
 	if Input.is_action_just_pressed("action_" + hand_controller.stringed_hand_type): 
 		finished.emit(FREE)
@@ -51,6 +53,8 @@ func controls(_delta: float) -> void:
 # --------------------------------------------------------------------------------------------------
 # ↓ Graphics Stuff ↓
 
+var dir_string: String # for animation
+
 func update_graphics() -> void:
 	#print(calc_hand_pos())
 	if get_viewport().get_camera_3d().is_position_behind(calc_hand_pos()): return
@@ -60,12 +64,18 @@ func update_graphics() -> void:
 	
 
 func update_hand_sprite() -> void:
+	update_lever_direction()
 	if lever.current_value < 0.2:
-		hand_controller.anim_change_idle_anim("hand_lever_up")
+		hand_controller.anim_change_idle_anim("hand_lever_up" + dir_string)
 	elif lever.current_value <= 0.8:
-		hand_controller.anim_change_idle_anim("hand_lever_mid")
+		hand_controller.anim_change_idle_anim("hand_lever_mid" + dir_string)
 	else:
-		hand_controller.anim_change_idle_anim("hand_lever_down")
+		hand_controller.anim_change_idle_anim("hand_lever_down" + dir_string)
+
+func update_lever_direction() -> void:
+	var rot_dif: float = abs(player.movement.compass.global_rotation_degrees.y - lever.global_rotation_degrees.y)
+	if (rot_dif < 45 and rot_dif > -45) or (rot_dif < 225 and rot_dif > 135): dir_string = ""
+	else: dir_string = "_side"
 
 func calc_hand_pos() -> Vector3:
 	#var y_pos = remap(current_value, 0, 1, lever.hand_pos_bottom.global_position.y, lever.hand_pos_top.global_position.y)

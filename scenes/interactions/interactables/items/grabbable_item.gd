@@ -9,10 +9,11 @@ var is_grabbed: bool = false
 @export_category("Item Type")
 @export var item_type: ItemType
 @export var display_name: String
+@export var keywords: String ## Separate keywords with ,
 
 @export_category("Weight")
 enum item_weight_types {WEIGHTLESS, LIGHT, MEDIUM, HEAVY}
-@export var item_weight: item_weight_types
+@export var item_weight: item_weight_types ## Weightless = 0; Light = 1; Medium = 3; Heavy = 8
 
 @export_category("Collision")
 @export var col: CollisionShape3D
@@ -28,6 +29,7 @@ enum item_weight_types {WEIGHTLESS, LIGHT, MEDIUM, HEAVY}
 @export var throwing_rotation: float = 0.0
 @export var can_break: bool
 @export var break_force: float = 35.0
+@export var impact_type: int
 @export var destroyed_item: Node3D
 var item_spawn_on_destroyed: Grabbable_Item
 @export var destroyed_audio: AudioStreamPlayer3D
@@ -82,6 +84,10 @@ func end_interact(sig: float = -1) -> void:
 	rb.force_update_transform()
 	rb.linear_velocity = Vector3.ZERO
 
+# ↑ Interacting Stuff ↑
+# --------------------------------------------------------------------------------------------------
+# ↓ Enabling/Disabling Stuff ↓
+
 func enable_me() -> void:
 	grab_col.set_deferred("disabled", false)
 	col.set_deferred("disabled", false)
@@ -97,7 +103,7 @@ func disable_me()-> void:
 	rb.linear_velocity = Vector3.ZERO
 	$AudioPlayer.stop()
 
-# ↑ Interacting Stuff ↑
+# ↑ Enabling/Disabling Stuff ↑
 # --------------------------------------------------------------------------------------------------
 # ↓ Use Stuff ↓
 
@@ -112,7 +118,7 @@ func end_using_item() -> void:
 
 # ↑ Use Stuff ↑
 # --------------------------------------------------------------------------------------------------
-# ↓ Item Stuff ↓
+# ↓ Throw Stuff ↓
 
 var init_impact: bool
 
@@ -124,7 +130,7 @@ func throw(_throw_mult: float) -> void:
 	var throw_force := throw_distance * _throw_mult
 	throw_force = sqrt(throw_force * -2 * rb.get_gravity().y)
 	#prints(_throw_mult, throw_distance * _throw_mult, throw_force)
-	rb.apply_central_impulse(-basis.z * throw_force * rb.mass)
+	rb.apply_central_impulse(-global_basis.z * throw_force * rb.mass)
 	rb.force_update_transform()
 
 func _on_collide(body: Node) -> void:
@@ -136,13 +142,12 @@ func _on_collide(body: Node) -> void:
 	if current_force <= 0.5: return
 	
 	audio_player.volume_linear = current_force/120
-	print(audio_player.volume_linear)
 	audio_player.play()
 	
 	
 	if raycast.is_colliding():
-		Impact_Manager.play_impact_at(raycast.get_collision_point(), 0, 0.5)
-	else: Impact_Manager.play_impact_at(global_position, 0, 0.5)
+		Impact_Manager.play_impact_at(raycast.get_collision_point(), impact_type, 0.5)
+	else: Impact_Manager.play_impact_at(global_position, impact_type, 0.5)
 	
 	if can_break and current_force >= break_force:
 		break_item()
@@ -158,3 +163,42 @@ func break_item() -> void:
 			item_spawn_on_destroyed.enable_me()
 			item_spawn_on_destroyed.reparent(get_tree().current_scene)
 	queue_free()
+
+# ↑ Use Stuff ↑
+# --------------------------------------------------------------------------------------------------
+# ↓ Ballybog Stuff ↓
+
+var tween: Tween
+
+func ballybog_throw(throw_force: float, hand_position: Vector3, direction: Vector3) -> void:
+	begin_interact()
+	
+	tween = get_tree().create_tween().bind_node(self).set_trans(Tween.TRANS_LINEAR)
+	tween.set_parallel(true)
+	tween.tween_property(self, "global_position", hand_position, 0.075)
+	tween.tween_property(self, "global_rotation", direction, 0.1)
+	await tween.finished
+	
+	throw(throw_force)
+
+# ↑ Use Stuff ↑
+# --------------------------------------------------------------------------------------------------
+# ↓ Item Stuff ↓
+
+func get_weight() -> float:
+	match item_weight:
+		0: return 0 # weightless
+		1: return 1 # light
+		2: return 3 # medium
+		3: return 8 # heavy
+		_: return 0
+
+# ↑ Item Stuff ↑
+# --------------------------------------------------------------------------------------------------
+# ↓ Debug Stuff ↓
+
+func dbg_move_to_player() -> void:
+	tween = get_tree().create_tween().bind_node(self).set_trans(Tween.TRANS_LINEAR)
+	tween.set_parallel(true)
+	tween.tween_property(self, "global_position", Debug.player.global_position, 0.075)
+	tween.tween_property(self, "global_rotation", Debug.player.global_rotation, 0.1)

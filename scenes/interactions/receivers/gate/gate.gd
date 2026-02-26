@@ -8,7 +8,7 @@ var is_opening: bool
 var time_since_start: float = 0.0
 var _start_position: float
 var _end_position: float
-var closed_pos: float = 2
+var open_pos: float = 1.8
 @export var speed: float = 0.5
 @onready var graphics: Node3D = $gate
 @onready var player_col: CollisionShape3D = $PlayerCollision/CollisionShape3D
@@ -22,19 +22,60 @@ var things_under: Array[Node3D]
 var cur_value: float
 var last_value: float
 
+@export_category("Override Signal Range")
+@export var override_signal_range: bool = false
+@export_range(0, 0.9, 0.01) var ovr_signal_min: float = 0
+@export_range(0, 1.0, 0.01) var ovr_signal_max: float = 1.0
+
 func open_gate(amount: float) -> void:
+	if stay_open and cur_value >= 1: return
+	if override_signal_range: 
+		if amount < ovr_signal_min: amount = ovr_signal_min
+		elif amount > ovr_signal_max: amount = ovr_signal_max
+		#prints("before", amount)
+		amount = remap(amount, ovr_signal_min, ovr_signal_max, 0, 1.0)
 	time_since_start = 0
 	is_opening = true
 	_start_position = graphics.position.y
-	prints("open: ", amount)
+	#prints("open: ", amount)
 	last_value = cur_value
 	cur_value = amount
-	_end_position = 1 + (closed_pos * amount)
+	_end_position = 1 + (open_pos * amount)
 	
-	if _end_position >= closed_pos + height_to_toggle_player_barrier:
+	if _end_position >= open_pos + height_to_toggle_player_barrier:
 		player_col.set_deferred("disabled",true)
 	else:
 		player_col.set_deferred("disabled",false)
+
+func fully_open_gate(sig: float = -1) -> void:
+	time_since_start = 0
+	is_opening = true
+	_start_position = graphics.position.y
+	last_value = cur_value
+	cur_value = 1
+	_end_position = 1 + (open_pos * 1)
+	
+	if _end_position >= open_pos + height_to_toggle_player_barrier:
+		player_col.set_deferred("disabled",true)
+	else:
+		player_col.set_deferred("disabled",false)
+
+func close_gate(sig: float = -1) -> void:
+	time_since_start = 0
+	is_opening = true
+	_start_position = graphics.position.y
+	last_value = cur_value
+	cur_value = 0
+	_end_position = 1 + (open_pos * 0)
+	
+	if _end_position >= open_pos + height_to_toggle_player_barrier:
+		player_col.set_deferred("disabled",true)
+	else:
+		player_col.set_deferred("disabled",false)
+
+func toggle_gate(sig: float = -1) -> void:
+	if cur_value > 0.5: close_gate()
+	else: fully_open_gate()
 
 func _process(delta: float) -> void:
 	if is_opening:

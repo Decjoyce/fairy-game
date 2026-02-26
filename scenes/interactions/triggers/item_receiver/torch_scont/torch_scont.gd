@@ -3,7 +3,7 @@ extends ItemReceiver
 
 @onready var torch: Torch
 
-var disabled: bool
+#var disabled: bool
 
 
 func disable_me() -> void:

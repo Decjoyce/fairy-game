@@ -1,8 +1,7 @@
 @icon("res://assets/_editor_icons/icon_logic.svg")
 extends Node
 
-signal on_activated(sig: bool)
-signal on_deactivated(sig: bool)
+signal on_signal_converted(sig: bool)
 
 func convert_to_bool(sig: float) -> void:
-	on_activated.emit(bool(sig))
+	on_signal_converted.emit(bool(sig))
