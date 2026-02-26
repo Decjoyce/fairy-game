@@ -83,6 +83,10 @@ func end_interact(sig: float = -1) -> void:
 	rb.force_update_transform()
 	rb.linear_velocity = Vector3.ZERO
 
+# ↑ Interacting Stuff ↑
+# --------------------------------------------------------------------------------------------------
+# ↓ Enabling/Disabling Stuff ↓
+
 func enable_me() -> void:
 	grab_col.set_deferred("disabled", false)
 	col.set_deferred("disabled", false)
@@ -98,7 +102,7 @@ func disable_me()-> void:
 	rb.linear_velocity = Vector3.ZERO
 	$AudioPlayer.stop()
 
-# ↑ Interacting Stuff ↑
+# ↑ Enabling/Disabling Stuff ↑
 # --------------------------------------------------------------------------------------------------
 # ↓ Use Stuff ↓
 
@@ -113,7 +117,7 @@ func end_using_item() -> void:
 
 # ↑ Use Stuff ↑
 # --------------------------------------------------------------------------------------------------
-# ↓ Item Stuff ↓
+# ↓ Throw Stuff ↓
 
 var init_impact: bool
 
@@ -160,6 +164,27 @@ func break_item() -> void:
 			item_spawn_on_destroyed.reparent(get_tree().current_scene)
 	queue_free()
 
+# ↑ Use Stuff ↑
+# --------------------------------------------------------------------------------------------------
+# ↓ Ballybog Stuff ↓
+
+var tween: Tween
+
+func ballybog_throw(throw_force: float, hand_position: Vector3, direction: Vector3) -> void:
+	begin_interact()
+	
+	tween = get_tree().create_tween().bind_node(self).set_trans(Tween.TRANS_LINEAR)
+	tween.set_parallel(true)
+	tween.tween_property(self, "global_position", hand_position, 0.075)
+	tween.tween_property(self, "global_rotation", direction, 0.1)
+	await tween.finished
+	
+	throw(throw_force)
+
+# ↑ Use Stuff ↑
+# --------------------------------------------------------------------------------------------------
+# ↓ Item Stuff ↓
+
 func get_weight() -> float:
 	match item_weight:
 		0: return 0 # weightless
@@ -167,3 +192,13 @@ func get_weight() -> float:
 		2: return 3 # medium
 		3: return 8 # heavy
 		_: return 0
+
+# ↑ Item Stuff ↑
+# --------------------------------------------------------------------------------------------------
+# ↓ Debug Stuff ↓
+
+func dbg_move_to_player() -> void:
+	tween = get_tree().create_tween().bind_node(self).set_trans(Tween.TRANS_LINEAR)
+	tween.set_parallel(true)
+	tween.tween_property(self, "global_position", Debug.player.global_position, 0.075)
+	tween.tween_property(self, "global_rotation", Debug.player.global_rotation, 0.1)

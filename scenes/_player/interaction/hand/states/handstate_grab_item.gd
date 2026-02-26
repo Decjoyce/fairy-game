@@ -78,7 +78,7 @@ func enter(previous_state_path: String, data := {}) -> void:
 	var item_rot_z: float = grabbed_item.grabbed_rotation
 	if hand_controller.hand_type == 0: item_rot_z *= -1
 	
-	var new_rot: Quaternion = Quaternion.from_euler(Vector3(0, player.rotation.y, item_rot_z))
+	var new_rot: Quaternion = Quaternion.from_euler(Vector3(0, player.global_rotation.y, item_rot_z))
 	#player.quaternion
 	set_grab_position()
 	tween = get_tree().create_tween().bind_node(self).set_trans(Tween.TRANS_LINEAR)
