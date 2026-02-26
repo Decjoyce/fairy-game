@@ -1,6 +1,8 @@
 class_name PlayerTest
 extends Entity
 
+@export var testing_mode: bool
+
 @onready var movement: PlayerMovement = $Movement
 @onready var interaction: PlayerInteract = $Interaction
 const PLAYER_HEIGHT: float = 1
@@ -47,12 +49,12 @@ func die():
 
 var fake_dies: int
 func fake_die(fakestring: StringName):
-	if fake_dies == 0: 
-		fake_dies+=1
-		return
+	#if fake_dies == 0: 
+		#fake_dies+=1
+	#	return
 	stats.death_anim.play("death_anim")
 	Debug.play_death_player()
-	combat.exit_combat_mode()
+	#combat.exit_combat_mode()
 	interaction.visible = false
 	death_ui.visible = true
 	freeze = true

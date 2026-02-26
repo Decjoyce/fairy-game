@@ -17,7 +17,8 @@ func take_damage(amount: float) -> bool:
 	current_health -= amount
 	if !is_dead and current_health <= 0:
 		is_dead = true
-		who_owns.die()
+		if who_owns.testing_mode: who_owns.fake_die("d")
+		else: who_owns.die()
 		if death_anim: death_anim.play("death_anim")
 		#get_parent().queue_free() # change
 	if !is_dead:
