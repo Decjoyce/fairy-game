@@ -755,7 +755,6 @@ debug_shape_custom_color = Color(0, 0.79870725, 0.7254093, 1)
 unique_name_in_owner = true
 stream = SubResource("AudioStreamRandomizer_gcklq")
 volume_db = 15.0
-bus = &"pl_footsteps"
 
 [node name="Interaction" parent="." unique_id=336913977 node_paths=PackedStringArray("movement", "cam") instance=ExtResource("3_3jgj8")]
 movement = NodePath("../Movement")
@@ -1113,11 +1112,9 @@ metadata/_edit_use_anchors_ = true
 [node name="HitSfx" type="AudioStreamPlayer3D" parent="." unique_id=1207998084]
 stream = ExtResource("58_svbpy")
 pitch_scale = 0.97
-bus = &"items"
 
 [node name="StamSfx" type="AudioStreamPlayer3D" parent="." unique_id=965614490]
 stream = ExtResource("7_nbsyt")
-bus = &"pl_footsteps"
 
 [node name="DeathUI" type="Control" parent="." unique_id=201181463]
 visible = false
