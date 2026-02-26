@@ -130,7 +130,7 @@ func throw(_throw_mult: float) -> void:
 	var throw_force := throw_distance * _throw_mult
 	throw_force = sqrt(throw_force * -2 * rb.get_gravity().y)
 	#prints(_throw_mult, throw_distance * _throw_mult, throw_force)
-	rb.apply_central_impulse(-basis.z * throw_force * rb.mass)
+	rb.apply_central_impulse(-global_basis.z * throw_force * rb.mass)
 	rb.force_update_transform()
 
 func _on_collide(body: Node) -> void:
@@ -142,7 +142,6 @@ func _on_collide(body: Node) -> void:
 	if current_force <= 0.5: return
 	
 	audio_player.volume_linear = current_force/120
-	print(audio_player.volume_linear)
 	audio_player.play()
 	
 	

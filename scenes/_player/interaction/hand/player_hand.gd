@@ -62,7 +62,7 @@ func _transition_to_next_state(target_state_path: String, data: Dictionary = {})
 
 const min_speed: float = 750
 const mid_speed: float = 1000
-const max_speed: float = 3000
+const max_speed: float = 2000
 var cur_speed_index: int = 2
 @onready var current_speed: float = max_speed
 
