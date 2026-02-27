@@ -42,10 +42,21 @@ tracks/0/keys = {
 "update": 0,
 "values": [Vector3(0, 0, 0)]
 }
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Spikes:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
 
 [sub_resource type="Animation" id="Animation_0k2xd"]
 resource_name = "spike_down"
-length = 0.2
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -53,10 +64,22 @@ tracks/0/path = NodePath("Spikes:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.2),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(0, 0.16666667, 0.56666666),
+"transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
-"values": [Vector3(0, 1.3, 0), Vector3(0, 0, 0)]
+"values": [Vector3(0, 1.3, 0), Vector3(0, 1.3, 0), Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Spikes:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.73333335),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
 }
 
 [sub_resource type="Animation" id="Animation_512if"]
@@ -74,6 +97,18 @@ tracks/0/keys = {
 "update": 0,
 "values": [Vector3(0, 0, 0), Vector3(0, 1.3, 0)]
 }
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Spikes:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_oarp6"]
 _data = {
@@ -83,7 +118,7 @@ _data = {
 }
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_512if"]
-size = Vector3(1.75, 2, 1.75)
+size = Vector3(1, 0.083, 1)
 
 [node name="SpikeTrap" type="Node3D" unique_id=610712147]
 script = ExtResource("1_oarp6")
@@ -91,60 +126,61 @@ script = ExtResource("1_oarp6")
 [node name="Holes" type="Node3D" parent="." unique_id=452673624]
 
 [node name="Sprite3D" type="Sprite3D" parent="Holes" unique_id=1166511973]
-transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0)
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0.01, 0)
 modulate = Color(0.60784316, 0.5568628, 0.5176471, 1)
 pixel_size = 0.002
 texture = ExtResource("1_23lq1")
 
 [node name="Sprite3D2" type="Sprite3D" parent="Holes" unique_id=2118355787]
-transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, -0.6003717, 0, -0.23743492)
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, -0.6003717, 0.01, -0.23743492)
 modulate = Color(0.60784316, 0.5568628, 0.5176471, 1)
 pixel_size = 0.002
 texture = ExtResource("1_23lq1")
 
 [node name="Sprite3D3" type="Sprite3D" parent="Holes" unique_id=73406283]
-transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, -0.6053808, -5.9604645e-08, 0.2264297)
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, -0.6053808, 0.01, 0.2264297)
 modulate = Color(0.60784316, 0.5568628, 0.5176471, 1)
 pixel_size = 0.002
 texture = ExtResource("1_23lq1")
 
 [node name="Sprite3D4" type="Sprite3D" parent="Holes" unique_id=619578571]
-transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0.2867295, -5.9604645e-08, 0.580924)
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0.2867295, 0.01, 0.580924)
 modulate = Color(0.60784316, 0.5568628, 0.5176471, 1)
 pixel_size = 0.002
 texture = ExtResource("1_23lq1")
 
 [node name="Sprite3D9" type="Sprite3D" parent="Holes" unique_id=115875837]
-transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0.5867295, -5.9604645e-08, 0.28092396)
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0.5867295, 0.01, 0.28092396)
 modulate = Color(0.60784316, 0.5568628, 0.5176471, 1)
 pixel_size = 0.002
 texture = ExtResource("1_23lq1")
 
 [node name="Sprite3D5" type="Sprite3D" parent="Holes" unique_id=1115010344]
-transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0.3347944, -1.1920929e-07, -0.56844777)
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0.3347944, 0.01, -0.56844777)
 modulate = Color(0.60784316, 0.5568628, 0.5176471, 1)
 pixel_size = 0.002
 texture = ExtResource("1_23lq1")
 
 [node name="Sprite3D6" type="Sprite3D" parent="Holes" unique_id=1785191186]
-transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0.58432895, -1.1920929e-07, -0.12357813)
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0.58432895, 0.01, -0.12357813)
 modulate = Color(0.60784316, 0.5568628, 0.5176471, 1)
 pixel_size = 0.002
 texture = ExtResource("1_23lq1")
 
 [node name="Sprite3D7" type="Sprite3D" parent="Holes" unique_id=1746395867]
-transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, -0.27399936, -1.1920929e-07, 0.5361426)
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, -0.27399936, 0.01, 0.5361426)
 modulate = Color(0.60784316, 0.5568628, 0.5176471, 1)
 pixel_size = 0.002
 texture = ExtResource("1_23lq1")
 
 [node name="Sprite3D8" type="Sprite3D" parent="Holes" unique_id=1941335071]
-transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, -0.30325577, -1.1920929e-07, -0.5908227)
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, -0.30325577, 0.01, -0.5908227)
 modulate = Color(0.60784316, 0.5568628, 0.5176471, 1)
 pixel_size = 0.002
 texture = ExtResource("1_23lq1")
 
 [node name="Spikes" type="Node3D" parent="." unique_id=1888461165]
+visible = false
 
 [node name="Spike" type="Node3D" parent="Spikes" unique_id=631357871]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, -1.321132, 0)
@@ -292,10 +328,14 @@ libraries/ = SubResource("AnimationLibrary_oarp6")
 
 [node name="Area3D" type="Area3D" parent="." unique_id=1233380376]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+collision_mask = 3
+monitorable = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" unique_id=788205735]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.9367798, 0)
 shape = SubResource("BoxShape3D_512if")
-disabled = true
 
 [connection signal="area_entered" from="Area3D" to="." method="_on_area_3d_area_entered"]
 [connection signal="area_exited" from="Area3D" to="." method="_on_area_3d_area_exited"]
+[connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
+[connection signal="body_exited" from="Area3D" to="." method="_on_area_3d_body_exited"]

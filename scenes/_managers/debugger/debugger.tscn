@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://crov4wcff41jl"]
+[gd_scene format=3 uid="uid://crov4wcff41jl"]
 
 [ext_resource type="Script" uid="uid://5ten54jh247y" path="res://scenes/_managers/debugger/debug.gd" id="1_dlc2y"]
 [ext_resource type="Script" uid="uid://dhafhdtxr8ei3" path="res://scenes/_managers/debugger/debug_console.gd" id="1_y4plv"]
@@ -37,14 +37,14 @@ stream_count = 2
 stream_0 = ExtResource("9_tnulk")
 stream_1 = ExtResource("10_82yx2")
 
-[node name="_Debugger" type="CanvasLayer" node_paths=PackedStringArray("audio_player", "death_audio_player", "death_audio_enemy")]
+[node name="_Debugger" type="CanvasLayer" unique_id=1204526855 node_paths=PackedStringArray("audio_player", "death_audio_player", "death_audio_enemy")]
 script = ExtResource("1_dlc2y")
 the_scenes = Array[PackedScene]([ExtResource("2_mtxrl"), ExtResource("2_xya3h"), ExtResource("3_mtxrl"), ExtResource("4_bdnfw"), ExtResource("6_82yx2")])
 audio_player = NodePath("AudioStreamPlayer2D")
 death_audio_player = NodePath("AudioStreamPlayer2D2")
 death_audio_enemy = NodePath("AudioStreamPlayer3D")
 
-[node name="Console" type="MarginContainer" parent="."]
+[node name="Console" type="MarginContainer" parent="." unique_id=430076699]
 visible = false
 anchors_preset = -1
 anchor_right = 1.0
@@ -53,15 +53,15 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_y4plv")
 
-[node name="bg" type="ColorRect" parent="Console"]
+[node name="bg" type="ColorRect" parent="Console" unique_id=1432089459]
 layout_mode = 2
 color = Color(0.14117648, 0.14117648, 0.14117648, 0.6627451)
 
-[node name="contents" type="VBoxContainer" parent="Console"]
+[node name="contents" type="VBoxContainer" parent="Console" unique_id=1894814768]
 layout_mode = 2
 theme_override_constants/separation = 0
 
-[node name="History" type="RichTextLabel" parent="Console/contents"]
+[node name="History" type="RichTextLabel" parent="Console/contents" unique_id=1481057525]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 3
@@ -70,7 +70,7 @@ bbcode_enabled = true
 scroll_following = true
 vertical_alignment = 2
 
-[node name="ConsoleLine" type="LineEdit" parent="Console/contents"]
+[node name="ConsoleLine" type="LineEdit" parent="Console/contents" unique_id=1040707463]
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_colors/font_color = Color(1, 1, 1, 1)
@@ -78,7 +78,7 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_a8f6k")
 theme_override_styles/focus = SubResource("StyleBoxFlat_a8f6k")
 clear_button_enabled = true
 
-[node name="Autocomplete" type="RichTextLabel" parent="Console/contents/ConsoleLine"]
+[node name="Autocomplete" type="RichTextLabel" parent="Console/contents/ConsoleLine" unique_id=766812868]
 unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 15
@@ -95,37 +95,37 @@ bbcode_enabled = true
 scroll_active = false
 vertical_alignment = 1
 
-[node name="CurrentSelected" type="RichTextLabel" parent="Console/contents"]
+[node name="CurrentSelected" type="RichTextLabel" parent="Console/contents" unique_id=845399748]
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_styles/normal = SubResource("StyleBoxFlat_h15fk")
 bbcode_enabled = true
 fit_content = true
 
-[node name="AltSelected" type="RichTextLabel" parent="Console/contents"]
+[node name="AltSelected" type="RichTextLabel" parent="Console/contents" unique_id=1933275825]
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_styles/normal = SubResource("StyleBoxFlat_h15fk")
 bbcode_enabled = true
 fit_content = true
 
-[node name="node3dhelper" type="Node3D" parent="Console"]
+[node name="node3dhelper" type="Node3D" parent="Console" unique_id=1035867046]
 
-[node name="ContextMenu" type="MarginContainer" parent="."]
+[node name="ContextMenu" type="MarginContainer" parent="." unique_id=1356492866]
 visible = false
 custom_minimum_size = Vector2(150, 200)
 offset_right = 150.0
 offset_bottom = 200.0
 script = ExtResource("3_2evvv")
 
-[node name="bg" type="ColorRect" parent="ContextMenu"]
+[node name="bg" type="ColorRect" parent="ContextMenu" unique_id=298365825]
 layout_mode = 2
 color = Color(0.14117648, 0.14117648, 0.14117648, 0.6627451)
 
-[node name="VBoxContainer" type="VBoxContainer" parent="ContextMenu"]
+[node name="VBoxContainer" type="VBoxContainer" parent="ContextMenu" unique_id=263554172]
 layout_mode = 2
 
-[node name="title" type="RichTextLabel" parent="ContextMenu/VBoxContainer"]
+[node name="title" type="RichTextLabel" parent="ContextMenu/VBoxContainer" unique_id=1629371889]
 custom_minimum_size = Vector2(0, 25.1)
 layout_mode = 2
 theme_override_font_sizes/bold_font_size = 18
@@ -137,28 +137,28 @@ fit_content = true
 scroll_active = false
 horizontal_alignment = 1
 
-[node name="ScrollContainer" type="ScrollContainer" parent="ContextMenu/VBoxContainer"]
+[node name="ScrollContainer" type="ScrollContainer" parent="ContextMenu/VBoxContainer" unique_id=842727082]
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="contents" type="VBoxContainer" parent="ContextMenu/VBoxContainer/ScrollContainer"]
+[node name="contents" type="VBoxContainer" parent="ContextMenu/VBoxContainer/ScrollContainer" unique_id=1956623957]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="button_prefab" type="Button" parent="ContextMenu/VBoxContainer/ScrollContainer/contents"]
+[node name="button_prefab" type="Button" parent="ContextMenu/VBoxContainer/ScrollContainer/contents" unique_id=1439956220]
 layout_mode = 2
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_colors/font_hover_color = Color(0.32156864, 0.9490196, 0.9490196, 1)
 text = "dss"
 
-[node name="node3dhelper" type="Node3D" parent="ContextMenu"]
+[node name="node3dhelper" type="Node3D" parent="ContextMenu" unique_id=1369093198]
 
-[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=1522216884]
 stream = ExtResource("8_bdnfw")
 
-[node name="AudioStreamPlayer2D2" type="AudioStreamPlayer2D" parent="."]
+[node name="AudioStreamPlayer2D2" type="AudioStreamPlayer2D" parent="." unique_id=2083270621]
 stream = SubResource("AudioStreamPlaylist_ydof4")
 
-[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="." unique_id=1659302750]
 stream = ExtResource("10_fjuju")
