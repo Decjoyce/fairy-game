@@ -1,17 +1,23 @@
 [gd_resource type="StandardMaterial3D" format=3 uid="uid://c22pex7gucglg"]
 
-[ext_resource type="Texture2D" uid="uid://fl4lqtf0lpho" path="res://assets/models/cairn/Props/Button/Button/Textures/New/Button2_Base_color.png" id="1_mirf4"]
+[ext_resource type="Texture2D" uid="uid://b36724mxkrpgu" path="res://assets/models/cairn/Props/Button/Button/Textures/Gold/Button_Base_color.png" id="1_evarv"]
 [ext_resource type="Material" uid="uid://dyejtq23uplk4" path="res://assets/shaders/Outline/outline.tres" id="2_6koci"]
-[ext_resource type="Texture2D" uid="uid://cosmbbvgdcdu4" path="res://assets/models/cairn/Props/Button/Button/Textures/New/Button2_Metallic.png" id="2_ohtco"]
-[ext_resource type="Texture2D" uid="uid://24jneyfxjkwe" path="res://assets/models/cairn/Props/Button/Button/Textures/New/Button2_Normal_OpenGL.png" id="4_e5t5k"]
-[ext_resource type="Texture2D" uid="uid://dv0dq6e1ulbh5" path="res://assets/models/cairn/Props/Button/Button/Textures/New/Button2_Roughness.png" id="5_74y6s"]
+[ext_resource type="Texture2D" uid="uid://bawqviqortn34" path="res://assets/models/cairn/Props/Button/Button/Textures/Gold/Button_Metallic.png" id="3_hq2kx"]
+[ext_resource type="Texture2D" uid="uid://xvbjdj86ycnx" path="res://assets/models/cairn/Props/Button/Button/Textures/Gold/Button_Normal_OpenGL.png" id="5_k5lmn"]
+[ext_resource type="Texture2D" uid="uid://u8swuibo7cj1" path="res://assets/models/cairn/Props/Button/Button/Textures/Gold/Button_Roughness.png" id="6_beul6"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_itay1"]
+load_path = "res://.godot/imported/Button_Mixed_AO.png-96084747013a2ecfb152d4261541b364.s3tc.ctex"
 
 [resource]
 next_pass = ExtResource("2_6koci")
 albedo_color = Color(0.5890956, 0.5890956, 0.5890956, 1)
-albedo_texture = ExtResource("1_mirf4")
+albedo_texture = ExtResource("1_evarv")
 metallic = 1.0
-metallic_texture = ExtResource("2_ohtco")
-roughness_texture = ExtResource("5_74y6s")
+metallic_specular = 0.1
+metallic_texture = ExtResource("3_hq2kx")
+roughness_texture = ExtResource("6_beul6")
 normal_enabled = true
-normal_texture = ExtResource("4_e5t5k")
+normal_texture = ExtResource("5_k5lmn")
+ao_enabled = true
+ao_texture = SubResource("CompressedTexture2D_itay1")

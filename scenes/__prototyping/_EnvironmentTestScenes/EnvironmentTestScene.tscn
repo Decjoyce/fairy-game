@@ -1,5 +1,10 @@
 [gd_scene format=3 uid="uid://cdra8lh1m5gpy"]
 
+[ext_resource type="MeshLibrary" uid="uid://bu208a8l5866i" path="res://scenes/_levels/_palettes/cairn/meshlibrary_cairn.tres" id="1_g7o2r"]
+[ext_resource type="PackedScene" uid="uid://dde66nwtb1gv1" path="res://scenes/interactions/_triggers/item_receiver/torch_scont/torch_scont.tscn" id="2_u2ore"]
+[ext_resource type="PackedScene" uid="uid://bq86osdembn58" path="res://scenes/_player/_player_test.tscn" id="3_3geps"]
+[ext_resource type="PackedScene" uid="uid://qu5rxgbydmet" path="res://scenes/interactions/_triggers/button/button.tscn" id="4_u2ore"]
+
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_kuxx7"]
 sky_horizon_color = Color(0, 0.37292683, 0.8185948, 1)
 sky_curve = 0.23537512
@@ -12,16 +17,50 @@ sky_material = SubResource("ProceduralSkyMaterial_kuxx7")
 [sub_resource type="Environment" id="Environment_p577t"]
 sky = SubResource("Sky_uqgcp")
 ambient_light_source = 2
+ambient_light_color = Color(0, 0.046818696, 0.12593761, 1)
+ambient_light_energy = 6.0
 reflected_light_source = 1
 tonemap_mode = 4
-tonemap_exposure = 1.5
+tonemap_exposure = 2.0
 ssao_enabled = true
+ssao_radius = 0.05
+ssao_intensity = 1.0
+sdfgi_read_sky_light = false
+sdfgi_bounce_feedback = 1.99
+sdfgi_cascades = 8
+sdfgi_min_cell_size = 19.315624
+sdfgi_energy = 4.035
+sdfgi_normal_bias = 6.215
+sdfgi_probe_bias = 2.94
+glow_enabled = true
+glow_intensity = 0.2
+glow_strength = 0.4
 volumetric_fog_enabled = true
-volumetric_fog_density = 0.02
-volumetric_fog_emission = Color(0.13725491, 0.16862746, 0.1882353, 1)
+volumetric_fog_density = 0.015
+volumetric_fog_albedo = Color(0.74509805, 0.34509805, 0, 1)
+volumetric_fog_emission = Color(0.117735185, 0.20947376, 0.3003329, 1)
+volumetric_fog_emission_energy = 0.5
 volumetric_fog_sky_affect = 0.0
 
 [node name="EnvironmentSetup" type="Node3D" unique_id=215592801]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=576276488]
 environment = SubResource("Environment_p577t")
+
+[node name="GridMap" type="GridMap" parent="." unique_id=466132932]
+mesh_library = ExtResource("1_g7o2r")
+data = {
+"cells": PackedInt32Array(0, 0, 4, 0, 65535, 2, 0, 65534, 2, 0, 65533, 2, 0, 65532, 0, 1, 65532, 3, 65535, 65532, 1441795, 65535, 65531, 655363, 1, 65531, 1048579, 0, 65531, 1048576, 0, 65530, 2, 0, 65529, 0, 1, 65529, 3, 65535, 65529, 1441795, 65535, 65528, 655361, 1, 65528, 655361, 0, 65528, 655361, 65534, 65528, 1048578, 65533, 65528, 1048578, 65532, 65528, 655363, 65532, 65529, 3, 65531, 65529, 1441794, 2, 65528, 1441794, 3, 65528, 1048580, 65530, 65529, 1441796)
+}
+
+[node name="TorchScont2" parent="." unique_id=813345400 instance=ExtResource("2_u2ore")]
+transform = Transform3D(-0.03912039, 0, -0.99923456, 0, 1, 0, 0.99923456, 0, -0.03912039, 1.616734, 2.3182886, -2.8815718)
+
+[node name="TorchScont" parent="." unique_id=1097045021 instance=ExtResource("2_u2ore")]
+transform = Transform3D(-0.044212274, 0, -0.9990222, 0, 1, 0, 0.9990222, 0, -0.044212274, 1.6593219, 2.2352676, -4.606783)
+
+[node name="player_test" parent="." unique_id=725727541 instance=ExtResource("3_3geps")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.0277461, 1.9428852, 0.65809643)
+
+[node name="Button" parent="." unique_id=1164325605 instance=ExtResource("4_u2ore")]
+transform = Transform3D(-0.99972975, 0, 0.023245776, 0, 1, 0, -0.023245776, 0, -0.99972975, 1.0176426, 1.9946045, -15.740329)
