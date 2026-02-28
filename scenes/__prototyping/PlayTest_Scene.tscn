@@ -4,7 +4,6 @@
 [ext_resource type="Script" uid="uid://42c4j0jtwejr" path="res://scenes/interactions/_receivers/gate/gate.gd" id="2_ogbox"]
 [ext_resource type="Material" uid="uid://c6ic70i7jpqeu" path="res://assets/models/cairn/Props/Gate/Gate.tres" id="3_bm6s2"]
 [ext_resource type="Material" uid="uid://c6lv8pfrvktb8" path="res://assets/models/cairn/Hall_BigRoof/Wall.tres" id="4_snoiu"]
-[ext_resource type="PackedScene" uid="uid://cfkoaxhngk3gf" path="res://scenes/interactions/interactables/items/all_items/keys/item_key.tscn" id="5_rqxab"]
 [ext_resource type="PackedScene" uid="uid://dde66nwtb1gv1" path="res://scenes/interactions/_triggers/item_receiver/torch_scont/torch_scont.tscn" id="6_677wr"]
 [ext_resource type="PackedScene" uid="uid://csot2mi7746ll" path="res://scenes/interactions/_triggers/pressure_plate/pressure_plate.tscn" id="7_bsnhk"]
 [ext_resource type="PackedScene" uid="uid://dt13fur6twjep" path="res://scenes/interactions/_receivers/gate/gate.tscn" id="8_l401g"]
@@ -17,11 +16,10 @@
 [ext_resource type="PackedScene" uid="uid://bw752cs1fru6w" path="res://scenes/interactions/interactables/items/all_items/consumables/item_pitcher.tscn" id="15_h7wgt"]
 [ext_resource type="Material" uid="uid://bk8gbrrgpacoj" path="res://assets/_dev/materials/_dev_m_source.tres" id="16_ht8qd"]
 [ext_resource type="Material" uid="uid://c1s48fevcaqy3" path="res://assets/_dev/materials/_dev_m_aquamarine.tres" id="17_puwyg"]
-[ext_resource type="PackedScene" uid="uid://bm8kaq0ah5g7q" path="res://scenes/interactions/interactables/items/all_items/torch/torch.tscn" id="18_qadhr"]
-[ext_resource type="PackedScene" uid="uid://brxr85hbqpapm" path="res://scenes/interactions/interactables/items/all_items/breakables/item_baby.tscn" id="19_1agos"]
 [ext_resource type="PackedScene" uid="uid://bg3e8trp0vy58" path="res://scenes/interactions/prefabs/broken_lever.tscn" id="20_3j7on"]
 [ext_resource type="PackedScene" uid="uid://ck1b6l8s7xnxi" path="res://scenes/interactions/_triggers/lever/lever.tscn" id="21_ds25k"]
-[ext_resource type="PackedScene" uid="uid://d13vdgis1uvvv" path="res://scenes/interactions/interactables/items/all_items/keys/item_leverhandle.tscn" id="22_r8grq"]
+[ext_resource type="PackedScene" uid="uid://ci2extimpt5xl" path="res://scenes/interactions/interactables/items/all_items/breakables/item_urn_key.tscn" id="21_iwtqd"]
+[ext_resource type="PackedScene" path="res://scenes/interactions/interactables/items/all_items/keys/item_leverhandle.tscn" id="22_r8grq"]
 [ext_resource type="PackedScene" uid="uid://bry8rqyr2pf37" path="res://assets/models/cairn/Z-Old-EnvironmentModels/Rocks/Rocks.glb" id="23_rbqtc"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_xunri"]
@@ -37,6 +35,15 @@ background_mode = 2
 background_color = Color(0.044557855, 0.044557847, 0.044557847, 1)
 sky = SubResource("Sky_rj5h8")
 tonemap_mode = 2
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_wkpon"]
+material = ExtResource("17_puwyg")
+top_radius = 0.1
+bottom_radius = 0.2
+height = 0.1
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_4v2ph"]
+size = Vector3(1.3928223, 1, 0.9602661)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_i1hti"]
 size = Vector3(2, 2, 0.2)
@@ -121,15 +128,6 @@ shadow_mesh = SubResource("ArrayMesh_o88vc")
 [sub_resource type="BoxShape3D" id="BoxShape3D_jt8b8"]
 size = Vector3(2.3835754, 11.737549, 16.093018)
 
-[sub_resource type="CylinderMesh" id="CylinderMesh_wkpon"]
-material = ExtResource("17_puwyg")
-top_radius = 0.1
-bottom_radius = 0.2
-height = 0.1
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_4v2ph"]
-size = Vector3(1.3928223, 1, 0.9602661)
-
 [node name="Tutorial_Area" type="Node3D" unique_id=872925716]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=672850743]
@@ -142,207 +140,20 @@ shadow_enabled = true
 
 [node name="Item_Spawner_Buttons" type="Node3D" parent="." unique_id=432313351]
 
-[node name="Item_Spawn_Button1" parent="Item_Spawner_Buttons" unique_id=1164325605 instance=ExtResource("1_rjk7r")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 33, 1, -6.302515)
-manual_reset = true
-
-[node name="Item_Spawn_Button2" parent="Item_Spawner_Buttons" unique_id=633781123 instance=ExtResource("1_rjk7r")]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 33, 1, -15.699364)
-manual_reset = true
-
-[node name="Secret Walls" type="Node3D" parent="." unique_id=665548667]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22, 0, 14)
-
-[node name="Wall_oneLight" type="Node3D" parent="Secret Walls" unique_id=1549416915 groups=["debug_PickableObjects"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.062336, 0, -22)
-script = ExtResource("2_ogbox")
-stay_open = true
-override_signal_range = true
-ovr_signal_max = 0.5
-
-[node name="gate" type="StaticBody3D" parent="Secret Walls/Wall_oneLight" unique_id=1709349300]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Secret Walls/Wall_oneLight/gate" unique_id=720338858]
-shape = SubResource("BoxShape3D_i1hti")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Secret Walls/Wall_oneLight/gate" unique_id=760274874]
-transform = Transform3D(0.135, 0, 0, 0, 0.135, 0, 0, 0, 0.135, 0, -1, 0)
-mesh = SubResource("ArrayMesh_au34u")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Secret Walls/Wall_oneLight/gate/MeshInstance3D" unique_id=1260253057]
-transform = Transform3D(0.85508686, 0, 0, 0, 1.0905446, 0, 0, 0, 0.4890525, 0, 6.7462816, 0)
-mesh = SubResource("BoxMesh_7y3tx")
-
-[node name="_label" type="Label3D" parent="Secret Walls/Wall_oneLight/gate" unique_id=66564653]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.2, -0.099999994)
-visible = false
-billboard = 1
-text = "GATE"
-font_size = 67
-
-[node name="UnderChecker" type="Area3D" parent="Secret Walls/Wall_oneLight/gate" unique_id=1603659547]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.2, 0)
-collision_layer = 256
-collision_mask = 2
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Secret Walls/Wall_oneLight/gate/UnderChecker" unique_id=1322725375]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.1, 0)
-shape = SubResource("BoxShape3D_wx5q6")
-
-[node name="Wall_One_Light" type="MeshInstance3D" parent="Secret Walls/Wall_oneLight/gate" unique_id=169748384]
-transform = Transform3D(2.6749597e-16, 0.14, 6.119594e-09, 6.119594e-09, -6.119594e-09, 0.14, 0.14, 0, -6.119594e-09, -0.8645706, 0, 0)
-mesh = SubResource("ArrayMesh_xu1si")
-skeleton = NodePath("")
-
-[node name="StaticBody3D" type="StaticBody3D" parent="Secret Walls/Wall_oneLight/gate/Wall_One_Light" unique_id=187532358]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Secret Walls/Wall_oneLight/gate/Wall_One_Light/StaticBody3D" unique_id=1253420985]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0012359619, 5.809819, 0.022583008)
-shape = SubResource("BoxShape3D_jt8b8")
-
-[node name="PlayerCollision" type="StaticBody3D" parent="Secret Walls/Wall_oneLight" unique_id=285829123]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
-collision_layer = 8
-collision_mask = 0
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Secret Walls/Wall_oneLight/PlayerCollision" unique_id=860706266]
-shape = SubResource("BoxShape3D_i1hti")
-
-[node name="Wall_TwoMedium" type="Node3D" parent="Secret Walls" unique_id=571077275 groups=["debug_PickableObjects"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.062336, 0, -28.176998)
-script = ExtResource("2_ogbox")
-stay_open = true
-override_signal_range = true
-ovr_signal_min = 0.4
-ovr_signal_max = 0.6
-
-[node name="gate" type="StaticBody3D" parent="Secret Walls/Wall_TwoMedium" unique_id=119199826]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Secret Walls/Wall_TwoMedium/gate" unique_id=867769875]
-shape = SubResource("BoxShape3D_i1hti")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Secret Walls/Wall_TwoMedium/gate" unique_id=640941190]
-transform = Transform3D(0.135, 0, 0, 0, 0.135, 0, 0, 0, 0.135, 0, -1, 0)
-mesh = SubResource("ArrayMesh_au34u")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Secret Walls/Wall_TwoMedium/gate/MeshInstance3D" unique_id=377550226]
-transform = Transform3D(0.85508686, 0, 0, 0, 1.0905446, 0, 0, 0, 0.4890525, 0, 6.7462816, 0)
-mesh = SubResource("BoxMesh_7y3tx")
-
-[node name="_label" type="Label3D" parent="Secret Walls/Wall_TwoMedium/gate" unique_id=467934164]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.2, -0.099999994)
-visible = false
-billboard = 1
-text = "GATE"
-font_size = 67
-
-[node name="UnderChecker" type="Area3D" parent="Secret Walls/Wall_TwoMedium/gate" unique_id=734980763]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.2, 0)
-collision_layer = 256
-collision_mask = 2
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Secret Walls/Wall_TwoMedium/gate/UnderChecker" unique_id=927551517]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.1, 0)
-shape = SubResource("BoxShape3D_wx5q6")
-
-[node name="Wall_TwoMedium" type="MeshInstance3D" parent="Secret Walls/Wall_TwoMedium/gate" unique_id=1674736618]
-transform = Transform3D(2.6749597e-16, 0.14, 6.119594e-09, 6.119594e-09, -6.119594e-09, 0.14, 0.14, 0, -6.119594e-09, -0.8645706, 0, 0)
-mesh = SubResource("ArrayMesh_xu1si")
-skeleton = NodePath("")
-
-[node name="StaticBody3D" type="StaticBody3D" parent="Secret Walls/Wall_TwoMedium/gate/Wall_TwoMedium" unique_id=2065148412]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Secret Walls/Wall_TwoMedium/gate/Wall_TwoMedium/StaticBody3D" unique_id=1827954549]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0012359619, 5.809819, 0.022583008)
-shape = SubResource("BoxShape3D_jt8b8")
-
-[node name="PlayerCollision" type="StaticBody3D" parent="Secret Walls/Wall_TwoMedium" unique_id=1577362312]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
-collision_layer = 8
-collision_mask = 0
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Secret Walls/Wall_TwoMedium/PlayerCollision" unique_id=278714912]
-shape = SubResource("BoxShape3D_i1hti")
-
-[node name="Ceiling_heavy" type="Node3D" parent="Secret Walls" unique_id=958802310 groups=["debug_PickableObjects"]]
-transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 13.062336, 2.1068313, -26.176998)
-script = ExtResource("2_ogbox")
-stay_open = true
-override_signal_range = true
-ovr_signal_min = 0.5
-ovr_signal_max = 0.85
-
-[node name="gate" type="StaticBody3D" parent="Secret Walls/Ceiling_heavy" unique_id=1439991202]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Secret Walls/Ceiling_heavy/gate" unique_id=1144299924]
-shape = SubResource("BoxShape3D_i1hti")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Secret Walls/Ceiling_heavy/gate" unique_id=1348775609]
-transform = Transform3D(0.135, 0, 0, 0, 0.135, 0, 0, 0, 0.135, 0, -1, 0)
-mesh = SubResource("ArrayMesh_au34u")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Secret Walls/Ceiling_heavy/gate/MeshInstance3D" unique_id=405021729]
-transform = Transform3D(0.85508686, 0, 0, 0, 1.0905446, 0, 0, 0, 0.4890525, 0, 6.7462816, 0)
-mesh = SubResource("BoxMesh_7y3tx")
-
-[node name="_label" type="Label3D" parent="Secret Walls/Ceiling_heavy/gate" unique_id=227768700]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.2, -0.099999994)
-visible = false
-billboard = 1
-text = "GATE"
-font_size = 67
-
-[node name="UnderChecker" type="Area3D" parent="Secret Walls/Ceiling_heavy/gate" unique_id=1660121062]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.2, 0)
-collision_layer = 256
-collision_mask = 2
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Secret Walls/Ceiling_heavy/gate/UnderChecker" unique_id=1516516845]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.1, 0)
-shape = SubResource("BoxShape3D_wx5q6")
-
-[node name="Wall_TwoMedium3" type="MeshInstance3D" parent="Secret Walls/Ceiling_heavy/gate" unique_id=164284370]
-transform = Transform3D(-6.119594e-09, 0.165, 6.119594e-09, 6.1195946e-09, -7.2123787e-09, 0.14, 0.14, 7.2123796e-09, -6.119594e-09, -1.12537, 0, 0.10683131)
-mesh = SubResource("ArrayMesh_xu1si")
-skeleton = NodePath("")
-
-[node name="StaticBody3D" type="StaticBody3D" parent="Secret Walls/Ceiling_heavy/gate/Wall_TwoMedium3" unique_id=691309431]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Secret Walls/Ceiling_heavy/gate/Wall_TwoMedium3/StaticBody3D" unique_id=515641799]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0012359619, 5.809819, 0.022583008)
-shape = SubResource("BoxShape3D_jt8b8")
-
-[node name="PlayerCollision" type="StaticBody3D" parent="Secret Walls/Ceiling_heavy" unique_id=1828422398]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
-collision_layer = 8
-collision_mask = 0
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Secret Walls/Ceiling_heavy/PlayerCollision" unique_id=225017250]
-shape = SubResource("BoxShape3D_i1hti")
-
-[node name="key" parent="Secret Walls" unique_id=451440735 instance=ExtResource("5_rqxab")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13, 2.3041577, -25.393528)
-
 [node name="Torches" type="Node3D" parent="." unique_id=1073021904]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.37721205, 0, -2.0954456)
 
 [node name="TorchScont" parent="Torches" unique_id=799079126 instance=ExtResource("6_677wr")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.377212, 1, 12.477758)
 
-[node name="TorchScont5" parent="Torches" unique_id=813345400 instance=ExtResource("6_677wr")]
+[node name="TorchScont6" parent="Torches" unique_id=813345400 instance=ExtResource("6_677wr")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 25.155218, 1.6028705, -2.893865)
+
+[node name="TorchScont5" parent="Torches" unique_id=1705786496 instance=ExtResource("6_677wr")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.23729, 1.2112281, 2.477759)
 
 [node name="TorchScont8" parent="Torches" unique_id=775428599 instance=ExtResource("6_677wr")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.2372899, 1.2112281, 2.477759)
-
-[node name="TorchScont6" parent="Torches" unique_id=1187993774 instance=ExtResource("6_677wr")]
-transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 37.23729, 1.2112281, -7.5222416)
-
-[node name="TorchScont7" parent="Torches" unique_id=626736877 instance=ExtResource("6_677wr")]
-transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 37.23729, 1.2112281, -10.522242)
 
 [node name="TorchScont2" parent="Torches" unique_id=134845992 instance=ExtResource("6_677wr")]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 7.2344327, 1.2788017, -9.223978)
@@ -354,10 +165,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.91289663, 1.2788017, -15.55
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.198119, 1.2788017, -15.556007)
 
 [node name="Buttons_&_PressurePlates" type="Node3D" parent="." unique_id=251072707]
-
-[node name="Puzzle_Room_Pressure_plate" parent="Buttons_&_PressurePlates" unique_id=247380468 instance=ExtResource("7_bsnhk")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 33, 0, -11)
-weight_to_activate = 20.0
 
 [node name="First Gate&Button" type="Node3D" parent="." unique_id=1968183095]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
@@ -393,7 +200,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.767098, 0.6459893, -6.6712
 item_weight = 1
 
 [node name="TEST_Grabbable_item7" parent="Weighted Items" unique_id=715895192 instance=ExtResource("9_7acmg")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 26.232903, 0.6459893, 2.3287086)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.232903, 0.6459893, 8.328709)
 item_weight = 1
 
 [node name="Urn" parent="Weighted Items" unique_id=38004987 instance=ExtResource("10_ox1qx")]
@@ -412,15 +219,15 @@ item_weight = 2
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.03, 0)
 mesh_library = ExtResource("11_h4c7c")
 data = {
-"cells": PackedInt32Array(65535, 5, 655373, 65535, 6, 2, 65535, 7, 4, 0, 5, 1441794, 1, 2, 2, 1, 3, 2, 1, 4, 2, 1, 5, 3, 2, 1, 1, 1, 65535, 2, 65535, 0, 655363, 65535, 1, 1441795, 0, 1, 1, 3, 1, 3, 3, 0, 1048579, 2, 0, 655361, 0, 0, 655361, 1, 1, 655360, 1, 0, 655360, 1, 65534, 655362, 1, 65533, 655362, 1, 65532, 655362, 0, 65531, 1441795, 65535, 65530, 1441795, 65535, 65529, 1441793, 65535, 65528, 655363, 0, 65527, 655363, 3, 65530, 3, 3, 65528, 1048579, 2, 65527, 1048579, 1, 65526, 655364, 1, 65527, 1441792, 0, 65528, 1441792, 1, 65528, 1441792, 2, 65528, 1441792, 2, 65529, 1441792, 1, 65529, 1441792, 0, 65529, 1441792, 2, 65530, 1441792, 1, 65530, 1441792, 0, 65530, 1441792, 1, 65531, 1441792, 2, 65531, 3, 4, 65529, 1441794, 3, 65529, 1441792, 5, 65529, 1441804, 6, 65529, 1441794, 7, 65529, 1441794, 8, 65528, 655362, 8, 65527, 655364, 8, 65529, 1048579, 8, 65530, 2, 8, 65531, 2, 8, 65532, 2, 17, 65530, 1048592, 8, 65533, 1441795, 9, 65533, 1048578, 10, 65533, 1048578, 9, 65527, 1048593, 9, 65528, 19, 9, 65529, 19, 9, 65530, 19, 9, 65531, 20)
+"cells": PackedInt32Array(65535, 5, 655373, 65535, 6, 2, 65535, 7, 4, 0, 5, 1441794, 1, 2, 2, 1, 3, 2, 1, 4, 2, 1, 5, 3, 2, 1, 1, 1, 65535, 2, 65535, 0, 655363, 65535, 1, 1441795, 0, 1, 1, 3, 1, 3, 3, 0, 1048579, 2, 0, 655361, 0, 0, 655361, 1, 1, 655360, 1, 0, 655360, 1, 65534, 655362, 1, 65533, 655362, 1, 65532, 655362, 0, 65531, 1441795, 65535, 65530, 1441795, 65535, 65529, 1441793, 65535, 65528, 655363, 0, 65527, 655363, 3, 65530, 3, 3, 65528, 1048579, 2, 65527, 1048579, 1, 65526, 655364, 1, 65527, 1441792, 0, 65528, 1441792, 1, 65528, 1441792, 2, 65528, 1441792, 2, 65529, 1441792, 1, 65529, 1441792, 0, 65529, 1441792, 2, 65530, 1441792, 1, 65530, 1441792, 0, 65530, 1441792, 1, 65531, 1441792, 2, 65531, 3, 4, 65529, 1441794, 3, 65529, 1441792, 5, 65529, 1441804, 6, 65529, 1441794, 7, 65529, 1441794, 8, 65528, 655362, 8, 65527, 655364, 8, 65529, 1048579, 8, 65530, 2, 8, 65531, 2, 8, 65532, 2, 8, 65533, 1441795, 9, 65527, 1048593, 9, 65528, 19, 9, 65529, 19, 9, 65530, 19, 9, 65531, 20, 12, 65533, 1048580, 11, 65533, 1048578, -65526, 65533, 1441811, -65525, 65533, 1441811, -65524, 65533, 1441811, -65527, 65533, 1441812, 9, 65533, 1441804, -65523, 65534, 1441795, -65523, 65532, 655363, -65522, 65531, 655363, -65522, 65535, 1441795, -65521, 65535, 3, -65520, 65534, 3, -65521, 65531, 1048579, -65520, 65532, 1048579, -65519, 65533, 1048578, -65520, 65533, 1048576, -65521, 65532, 1048576, -65521, 65533, 1048576, -65521, 65534, 1048576, -65522, 65534, 1048576, -65522, 65533, 1048576, -65522, 65532, 1048576, -65523, 65533, 1048576)
 }
-metadata/_editor_floor_ = Vector3(0, 0, 0)
+metadata/_editor_floor_ = Vector3(0, -1, 0)
 
 [node name="player_test" parent="." unique_id=725727541 instance=ExtResource("12_djejk")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.0302019, 1, 14.684836)
 
 [node name="ItemReceiver" parent="." unique_id=1205913056 instance=ExtResource("13_gji15")]
-transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 31, 1, -11)
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 36, -1, -5)
 destroy_items_on_receive = true
 
 [node name="item_spawner_default" type="Node" parent="." unique_id=795370431 node_paths=PackedStringArray("holder", "spawn_point")]
@@ -458,26 +265,11 @@ skeleton = NodePath("")
 [node name="Items_Default" type="Node3D" parent="." unique_id=1672894383]
 transform = Transform3D(-1, 0, 3.1786513e-08, 0, 1, 0, -3.1786513e-08, 0, -1, 33.281044, 0, -8.915215)
 
-[node name="Torch3" parent="Items_Default" unique_id=1479203938 instance=ExtResource("18_qadhr")]
-transform = Transform3D(7.54979e-08, 0, -1, 0, 1, 0, 1, 0, 7.54979e-08, -0.5, 1, -1.9277177)
-
-[node name="Torch4" parent="Items_Default" unique_id=226247953 instance=ExtResource("18_qadhr")]
-transform = Transform3D(7.54979e-08, 0, -1, 0, 1, 0, 1, 0, 7.54979e-08, 1.150547, 1, -1.9277177)
-
-[node name="Torch5" parent="Items_Default" unique_id=513923909 instance=ExtResource("18_qadhr")]
-transform = Transform3D(7.54979e-08, 0, -1, 0, 1, 0, 1, 0, 7.54979e-08, -0.5, 1, 6.0722847)
-
-[node name="Torch6" parent="Items_Default" unique_id=130959029 instance=ExtResource("18_qadhr")]
-transform = Transform3D(7.54979e-08, 0, -1, 0, 1, 0, 1, 0, 7.54979e-08, 1.150547, 1, 6.0722847)
-
 [node name="SpotLight3D" type="SpotLight3D" parent="." unique_id=444810339]
 transform = Transform3D(-0.9155608, 0.20104486, -0.3483238, -0.3819344, -0.16331092, 0.9096459, 0.12599456, 0.96587294, 0.226307, 34.887627, 4.195576, -10.943814)
 light_color = Color(0.45662987, 0.51663107, 0.61929846, 1)
 light_energy = 3.126
 light_volumetric_fog_energy = 2.0
-
-[node name="BabyDude" parent="." unique_id=1376443271 instance=ExtResource("19_1agos")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 40, 0.8, -10.999999)
 
 [node name="Weighted_Gate_Puzzle" type="Node3D" parent="." unique_id=1077849353]
 
@@ -535,24 +327,77 @@ goes here"
 
 [node name="Doorways" type="Node3D" parent="Decoration" unique_id=1299658400]
 
-[connection signal="on_activated" from="Item_Spawner_Buttons/Item_Spawn_Button1" to="item_spawner_default" method="spawn_item"]
-[connection signal="on_activated" from="Item_Spawner_Buttons/Item_Spawn_Button2" to="item_spawner_default2" method="spawn_item"]
-[connection signal="area_entered" from="Secret Walls/Wall_oneLight/gate/UnderChecker" to="Secret Walls/Wall_oneLight" method="_on_area_entered_under_checker"]
-[connection signal="area_exited" from="Secret Walls/Wall_oneLight/gate/UnderChecker" to="Secret Walls/Wall_oneLight" method="_on_area_exited_under_checker"]
-[connection signal="body_entered" from="Secret Walls/Wall_oneLight/gate/UnderChecker" to="Secret Walls/Wall_oneLight" method="_on_body_entered_under_checker"]
-[connection signal="body_exited" from="Secret Walls/Wall_oneLight/gate/UnderChecker" to="Secret Walls/Wall_oneLight" method="_on_body_exited_under_checker"]
-[connection signal="area_entered" from="Secret Walls/Wall_TwoMedium/gate/UnderChecker" to="Secret Walls/Wall_TwoMedium" method="_on_area_entered_under_checker"]
-[connection signal="area_exited" from="Secret Walls/Wall_TwoMedium/gate/UnderChecker" to="Secret Walls/Wall_TwoMedium" method="_on_area_exited_under_checker"]
-[connection signal="body_entered" from="Secret Walls/Wall_TwoMedium/gate/UnderChecker" to="Secret Walls/Wall_TwoMedium" method="_on_body_entered_under_checker"]
-[connection signal="body_exited" from="Secret Walls/Wall_TwoMedium/gate/UnderChecker" to="Secret Walls/Wall_TwoMedium" method="_on_body_exited_under_checker"]
-[connection signal="area_entered" from="Secret Walls/Ceiling_heavy/gate/UnderChecker" to="Secret Walls/Ceiling_heavy" method="_on_area_entered_under_checker"]
-[connection signal="area_exited" from="Secret Walls/Ceiling_heavy/gate/UnderChecker" to="Secret Walls/Ceiling_heavy" method="_on_area_exited_under_checker"]
-[connection signal="body_entered" from="Secret Walls/Ceiling_heavy/gate/UnderChecker" to="Secret Walls/Ceiling_heavy" method="_on_body_entered_under_checker"]
-[connection signal="body_exited" from="Secret Walls/Ceiling_heavy/gate/UnderChecker" to="Secret Walls/Ceiling_heavy" method="_on_body_exited_under_checker"]
-[connection signal="on_change" from="Buttons_&_PressurePlates/Puzzle_Room_Pressure_plate" to="Secret Walls/Wall_oneLight" method="open_gate"]
-[connection signal="on_change" from="Buttons_&_PressurePlates/Puzzle_Room_Pressure_plate" to="Secret Walls/Wall_TwoMedium" method="open_gate"]
-[connection signal="on_change" from="Buttons_&_PressurePlates/Puzzle_Room_Pressure_plate" to="Secret Walls/Ceiling_heavy" method="open_gate"]
+[node name="Trap_Door" type="Node3D" parent="." unique_id=676814290]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 25.7004, 1, -5)
+
+[node name="TrapDoor_Button" parent="Trap_Door" unique_id=1164325605 instance=ExtResource("1_rjk7r")]
+
+[node name="Trap_Door_Door" type="Node3D" parent="Trap_Door" unique_id=958802310 groups=["debug_PickableObjects"]]
+transform = Transform3D(-4.371139e-08, -1, 4.371139e-08, 0, -4.371139e-08, -1, 1, -4.371139e-08, 1.9106855e-15, 0.9729061, -0.8931687, -4.6380634)
+script = ExtResource("2_ogbox")
+stay_open = true
+override_signal_range = true
+ovr_signal_min = 0.5
+ovr_signal_max = 0.85
+
+[node name="gate" type="StaticBody3D" parent="Trap_Door/Trap_Door_Door" unique_id=1439991202]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Trap_Door/Trap_Door_Door/gate" unique_id=1144299924]
+shape = SubResource("BoxShape3D_i1hti")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Trap_Door/Trap_Door_Door/gate" unique_id=1348775609]
+transform = Transform3D(0.135, 0, 0, 0, 0.135, 0, 0, 0, 0.135, 0, -1, 0)
+mesh = SubResource("ArrayMesh_au34u")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Trap_Door/Trap_Door_Door/gate/MeshInstance3D" unique_id=405021729]
+transform = Transform3D(0.85508686, 0, 0, 0, 1.0905446, 0, 0, 0, 0.4890525, 0, 6.7462816, 0)
+mesh = SubResource("BoxMesh_7y3tx")
+
+[node name="_label" type="Label3D" parent="Trap_Door/Trap_Door_Door/gate" unique_id=227768700]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.2, -0.099999994)
+visible = false
+billboard = 1
+text = "GATE"
+font_size = 67
+
+[node name="UnderChecker" type="Area3D" parent="Trap_Door/Trap_Door_Door/gate" unique_id=1660121062]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.2, 0)
+collision_layer = 256
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Trap_Door/Trap_Door_Door/gate/UnderChecker" unique_id=1516516845]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.1, 0)
+shape = SubResource("BoxShape3D_wx5q6")
+
+[node name="Wall_TwoMedium3" type="MeshInstance3D" parent="Trap_Door/Trap_Door_Door/gate" unique_id=164284370]
+transform = Transform3D(-6.119594e-09, 0.165, 6.119594e-09, 6.1195946e-09, -7.2123787e-09, 0.14, 0.14, 7.2123796e-09, -6.119594e-09, -1.12537, 0, 0.10683131)
+mesh = SubResource("ArrayMesh_xu1si")
+skeleton = NodePath("")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Trap_Door/Trap_Door_Door/gate/Wall_TwoMedium3" unique_id=691309431]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Trap_Door/Trap_Door_Door/gate/Wall_TwoMedium3/StaticBody3D" unique_id=515641799]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0012359619, 5.809819, 0.022583008)
+shape = SubResource("BoxShape3D_jt8b8")
+
+[node name="PlayerCollision" type="StaticBody3D" parent="Trap_Door/Trap_Door_Door" unique_id=1828422398]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+collision_layer = 8
+collision_mask = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Trap_Door/Trap_Door_Door/PlayerCollision" unique_id=225017250]
+shape = SubResource("BoxShape3D_i1hti")
+
+[node name="Urn" parent="." unique_id=530447260 instance=ExtResource("21_iwtqd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 29.703974, -1.6309984, -5)
+
 [connection signal="on_activated" from="First Gate&Button/First_Button" to="First Gate&Button/First_Gate" method="open_gate"]
 [connection signal="on_change" from="Weighted_Gate_Puzzle/Tutorial_Weight_Puzzle" to="Weighted_Gate_Puzzle/Weight_Puzzle_Gate" method="open_gate"]
 [connection signal="on_activated" from="Lever_Puzzle/BrokenLeverExample/BrokenLever" to="Lever_Puzzle/BrokenLeverExample/Lever_Fixed" method="enable"]
 [connection signal="on_change" from="Lever_Puzzle/BrokenLeverExample/Lever_Fixed" to="Lever_Puzzle/Lever_Gate" method="open_gate"]
+[connection signal="on_activated" from="Trap_Door/TrapDoor_Button" to="Trap_Door/Trap_Door_Door" method="open_gate"]
+[connection signal="area_entered" from="Trap_Door/Trap_Door_Door/gate/UnderChecker" to="Trap_Door/Trap_Door_Door" method="_on_area_entered_under_checker"]
+[connection signal="area_exited" from="Trap_Door/Trap_Door_Door/gate/UnderChecker" to="Trap_Door/Trap_Door_Door" method="_on_area_exited_under_checker"]
+[connection signal="body_entered" from="Trap_Door/Trap_Door_Door/gate/UnderChecker" to="Trap_Door/Trap_Door_Door" method="_on_body_entered_under_checker"]
+[connection signal="body_exited" from="Trap_Door/Trap_Door_Door/gate/UnderChecker" to="Trap_Door/Trap_Door_Door" method="_on_body_exited_under_checker"]
