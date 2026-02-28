@@ -5,6 +5,9 @@
 [ext_resource type="PackedScene" uid="uid://bq86osdembn58" path="res://scenes/_player/_player_test.tscn" id="3_3geps"]
 [ext_resource type="PackedScene" uid="uid://qu5rxgbydmet" path="res://scenes/interactions/_triggers/button/button.tscn" id="4_u2ore"]
 [ext_resource type="PackedScene" uid="uid://dt13fur6twjep" path="res://scenes/interactions/_receivers/gate/gate.tscn" id="5_3geps"]
+[ext_resource type="PackedScene" uid="uid://nvcmdf0r6jkl" path="res://assets/models/cairn/Props/Lever/lever_base.tscn" id="6_n0kqe"]
+[ext_resource type="PackedScene" uid="uid://u7q5sl5gc4r8" path="res://assets/models/cairn/Props/Lever/lever.tscn" id="7_lfv7p"]
+[ext_resource type="PackedScene" uid="uid://clnnqb1efkbei" path="res://scenes/interactions/_receivers/door/locked_door.tscn" id="8_lfv7p"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_kuxx7"]
 sky_horizon_color = Color(0, 0.37292683, 0.8185948, 1)
@@ -68,3 +71,30 @@ transform = Transform3D(-0.023245752, 0, -0.9997297, 0, 1, 0, 0.9997297, 0, -0.0
 
 [node name="Gate" parent="." unique_id=1546153533 instance=ExtResource("5_3geps")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -2.108418, 0.9981097, -15.004935)
+
+[node name="LeverBase" parent="." unique_id=899388370 instance=ExtResource("6_n0kqe")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.91498256, 2, -6.235546)
+
+[node name="Lever" parent="." unique_id=1604271373 instance=ExtResource("7_lfv7p")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.9132798, 2.0318716, -6.338052)
+
+[node name="LeverBase3" parent="." unique_id=1540924312 instance=ExtResource("6_n0kqe")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -1.7621346, 2, -13.194623)
+
+[node name="Lever3" parent="." unique_id=1101730831 instance=ExtResource("7_lfv7p")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -1.6596298, 2.0318716, -13.19292)
+
+[node name="LeverBase4" parent="." unique_id=1914217889 instance=ExtResource("6_n0kqe")]
+transform = Transform3D(1.3113416e-07, 0, 1, 0, 1, 0, -1, 0, 1.3113416e-07, 3.7731915, 2, -13.828406)
+
+[node name="Lever4" parent="." unique_id=1945435473 instance=ExtResource("7_lfv7p")]
+transform = Transform3D(1.3113416e-07, 0, 1, 0, 1, 0, -1, 0, 1.3113416e-07, 3.6706867, 2.0318716, -13.83011)
+
+[node name="LeverBase2" parent="." unique_id=811898427 instance=ExtResource("6_n0kqe")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.1826496, 2, -6.235546)
+
+[node name="Lever2" parent="." unique_id=675995023 instance=ExtResource("7_lfv7p")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.1809473, 2.0318716, -6.338052)
+
+[node name="ItemReceiver" parent="." unique_id=1820735957 instance=ExtResource("8_lfv7p")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 4.1551237, 2.0012808, -15.009898)
