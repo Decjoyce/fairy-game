@@ -104,7 +104,8 @@ func begin_interact() -> void:
 	match hovering_interactable.interaction_type:
 		hovering_interactable.InteractTypes.INSTANT:
 			if animation_player.has_animation(current_interactable.interact_animation):
-				animation_player.play(current_interactable.interact_animation)
+				#animation_player.play(current_interactable.interact_animation)
+				anim_override_current_animation(current_interactable.interact_animation)
 			
 		hovering_interactable.InteractTypes.GRAB_ITEM:
 			if player_interact.get_other_hand_state(hand_type) is HandState_Grab_Item:
@@ -256,8 +257,10 @@ func anim_override_current_animation(_new_anim: String, restart_if_performing_an
 	animation_player.play(_new_anim)
 	animation_player.animation_finished.connect(_on_anim_override_finished)
 	anim_override_animation = _new_anim
+	print(animation_player.animation_finished.get_connections())
  
 func _on_anim_override_finished(_anim_name: String) -> void:
+	print("R")
 	anim_is_overriding = false
 	animation_player.animation_finished.disconnect(_on_anim_override_finished)
 	anim_update_animations()

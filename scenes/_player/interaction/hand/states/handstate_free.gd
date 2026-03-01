@@ -21,6 +21,7 @@ func update(_delta: float) -> void:
 	var same_frame_check: int = 0
 	
 	hand_controller.hovering_interactable = hand_controller.interact_checker()
+	if hand_controller.anim_is_overriding: print("e")
 	if hand_controller.hovering_interactable:
 		if hand_controller.anim_is_prompting: return
 		hand_controller.anim_is_prompting = true

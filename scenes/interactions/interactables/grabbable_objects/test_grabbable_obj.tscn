@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://bpt8x64124p81"]
+[gd_scene format=3 uid="uid://bpt8x64124p81"]
 
 [ext_resource type="Script" uid="uid://pp7itc6y5bw" path="res://scenes/interactions/interactables/grabbable_objects/grabbable_obj.gd" id="1_w2q8g"]
 
@@ -8,41 +8,41 @@ size = Vector3(1, 0.65, 1)
 [sub_resource type="BoxMesh" id="BoxMesh_w2q8g"]
 size = Vector3(1, 0.65, 1)
 
-[node name="TEST_Grabbable_Obj" type="Node3D"]
+[node name="TEST_Grabbable_Obj" type="Node3D" unique_id=386273012]
 script = ExtResource("1_w2q8g")
 interaction_type = 2
 metadata/_custom_type_script = "uid://pp7itc6y5bw"
 
-[node name="Collision" type="StaticBody3D" parent="."]
+[node name="Collision" type="StaticBody3D" parent="." unique_id=12379911]
 collision_layer = 3
 
-[node name="CollisionShape3D2" type="CollisionShape3D" parent="Collision"]
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="Collision" unique_id=962769829]
 shape = SubResource("BoxShape3D_v1u7r")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=977487705]
 mesh = SubResource("BoxMesh_w2q8g")
 
-[node name="Detecters" type="Node3D" parent="."]
+[node name="Detecters" type="Node3D" parent="." unique_id=252598711]
 
-[node name="North" type="ShapeCast3D" parent="Detecters"]
+[node name="North" type="ShapeCast3D" parent="Detecters" unique_id=1713464740]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.01)
 enabled = false
 shape = SubResource("BoxShape3D_v1u7r")
 target_position = Vector3(0, 0, 0)
 
-[node name="East" type="ShapeCast3D" parent="Detecters"]
+[node name="East" type="ShapeCast3D" parent="Detecters" unique_id=2016462719]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.01, 0, 0)
 enabled = false
 shape = SubResource("BoxShape3D_v1u7r")
 target_position = Vector3(0, 0, 0)
 
-[node name="South" type="ShapeCast3D" parent="Detecters"]
+[node name="South" type="ShapeCast3D" parent="Detecters" unique_id=621049573]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.01)
 enabled = false
 shape = SubResource("BoxShape3D_v1u7r")
 target_position = Vector3(0, 0, 0)
 
-[node name="West" type="ShapeCast3D" parent="Detecters"]
+[node name="West" type="ShapeCast3D" parent="Detecters" unique_id=721272593]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.01, 0, 0)
 enabled = false
 shape = SubResource("BoxShape3D_v1u7r")

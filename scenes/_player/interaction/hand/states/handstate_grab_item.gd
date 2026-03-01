@@ -178,13 +178,9 @@ func use():
 			ItemType.ItemTypes.TORCH:
 				return
 			ItemType.ItemTypes.CONSUMABLE:
-				print("DD")
-				player.stats.heal(grabbed_item.item_type.heal_amount)
-				finished.emit(FREE)
-				grabbed_item.queue_free()
+				return
 			ItemType.ItemTypes.INSTRUMENT:
 				var freq : int = int(remap(hand_controller.get_screen_position().x/player_interact.size.x, 0, 1, 0, 7))
-				#var octave: int = int(remap(hand_controller.get_screen_position().y/player_interact.size.y, 0, 1, 0, 3))
 				grabbed_item.using_item([freq])
 			_:
 				return

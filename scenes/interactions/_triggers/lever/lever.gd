@@ -62,7 +62,7 @@ func update_value(amount: float) -> void:
 # ↓ Graphics Stuff ↓
 
 func update_graphics() -> void:
-	var new_rot: float = remap(current_value, 0, 1.0, 0, 120)
+	var new_rot: float = remap(current_value, 0, 1.0, -45, 45)
 	pivot.rotation_degrees.x = new_rot
 
 # ↑ Graphics Stuff ↑
