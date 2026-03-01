@@ -46,14 +46,17 @@ func enter():
 	grid_map.setup_astar_grid(grid_map.walkable_items)
 	prints(grid_map.walkable_items)
 	interest = get_tree().get_first_node_in_group("Investegate")
-	Animator.play("RESET",-1,0.5)
+	Animator.play("Alert")
+	await get_tree().create_timer(1.5).timeout
+	Animator.play("Walk2")#-1,0.5)
 	get_pos_item()
 	find_path()
+	$Timer.start(8)
 	return path
 
 func exit():
 	Animator.stop()
-	##$Timer.stop()
+	$Timer.stop()
 	pass
 	
 func get_pos_item():
@@ -147,10 +150,8 @@ func _on_area_3d_2_area_entered(area: Area3D) -> void:
 		SM.transition_to("Chase")
 	pass # Replace with function body.
 
-##func _on_timer_timeout() -> void:
-	##get_pos_item()
-	##find_path()
-	##$Timer.start()
+func _on_timer_timeout() -> void:
+	SM.transition_to("Wander")
 	
 
 

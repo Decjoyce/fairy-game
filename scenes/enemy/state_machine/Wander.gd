@@ -12,6 +12,7 @@ var target_pos: Vector3
 @export var speed: float = 4
 var dist_to_target: float
 var path := []
+var WanderR: float
 var points: PackedVector3Array
 var curr_pos : int
 var curr_posV : Vector3
@@ -27,9 +28,9 @@ var rng = RandomNumberGenerator.new()
 func on_physics_process(delta: float) -> void:
 		if path.size() >= 1:
 			moveW(delta)
-			if Animator.current_animation != "test_walk":
-				Animator.play("test_walk")
-		else: Animator.play("Idle")
+			if Animator.current_animation != "Walk2":
+				Animator.play("Walk2")
+		else: Animator.play("Idle2")
 			
 			  
 
@@ -43,9 +44,9 @@ func enter():
 	grid_map.setup_astar_grid(grid_map.walkable_items)
 	#prints(grid_map.walkable_items)
 	player = get_tree().get_first_node_in_group("fakeplayer")
-	Animator.play("RESET")
+	Animator.play("Walk2")
 	
-	#RandomWander()
+	RandomWander()
 
 	return path
 
@@ -101,8 +102,21 @@ func get_next_target() -> void:
 	if path.size() <= 0:
 		return 
 	target_pos = path[0]
-	Animator.play("test_walk")
+	Animator.play("Walk2")
 	
+func RandomIdle():
+	var random_float = randf()
+	if random_float < 0.5:
+		RandomWander()
+		Animator.play("Walk2")
+	elif random_float < 0.6:
+		##SM.transition_to("IdleState")
+		RandomWander()
+		Animator.play("Walk2")
+	
+	pass
+
+
 
 func exit():
 	Animator.stop()
@@ -111,8 +125,8 @@ func exit():
 
 
 func _on_timer_timeout() -> void:
-	RandomWander()
-	Animator.play("test_walk")
+	RandomIdle()
+
 	pass # Replace with function body.
 
 

@@ -45,7 +45,7 @@ func enter():
 	grid_map.setup_astar_grid(grid_map.walkable_items)
 	prints(grid_map.walkable_items)
 	player = get_tree().get_first_node_in_group("Player")
-	Animator.play("RESET",-1,0.5)
+	Animator.play("Walk2",-1,0.5)
 	get_pos()
 	find_path()
 	return path

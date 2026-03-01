@@ -12,9 +12,21 @@ func on_process(delta : float):
 
 func enter():
 	print_debug("idleState")
-	Animator.play("Idle")
+	Animator.play("Idle2")
+	await get_tree().create_timer(2).timeout
+	RandomIdle()
 	pass
 
 func exit():
 	Animator.stop()
+	pass
+
+func RandomIdle():
+	var random_float = randf()
+	if random_float < 0.5:
+		SM.transition_to("wander")
+	elif random_float < 0.6:
+		await get_tree().create_timer(2).timeout
+		RandomIdle()
+	
 	pass
