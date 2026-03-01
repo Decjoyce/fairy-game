@@ -1,0 +1,32 @@
+[gd_scene format=3 uid="uid://b7svh6muowjde"]
+
+[ext_resource type="Script" uid="uid://c2k5253sj3phs" path="res://scenes/interactions/_special/main_quest_stage_indicator.gd" id="1_ru1df"]
+
+[sub_resource type="Gradient" id="Gradient_fv00s"]
+interpolation_mode = 2
+offsets = PackedFloat32Array(0.3402556, 0.53355706, 1)
+colors = PackedColorArray(0.17184411, 0.11207495, 0.06100855, 0, 0, 1.9492192, 2.0330758, 0.69000006, 0, 0, 0, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_ru1df"]
+gradient = SubResource("Gradient_fv00s")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.94, 0.43)
+
+[node name="MainQuest_StageIndicator" type="Node3D" unique_id=1974754505 node_paths=PackedStringArray("stage_indicators")]
+script = ExtResource("1_ru1df")
+stage_indicators = [NodePath("A"), NodePath("B"), NodePath("C")]
+
+[node name="A" type="Sprite3D" parent="." unique_id=1813784870]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 0)
+double_sided = false
+texture = SubResource("GradientTexture2D_ru1df")
+
+[node name="B" type="Sprite3D" parent="." unique_id=1424103459]
+double_sided = false
+texture = SubResource("GradientTexture2D_ru1df")
+
+[node name="C" type="Sprite3D" parent="." unique_id=414538899]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 0)
+double_sided = false
+texture = SubResource("GradientTexture2D_ru1df")

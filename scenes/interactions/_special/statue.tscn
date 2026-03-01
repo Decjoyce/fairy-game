@@ -1,0 +1,102 @@
+[gd_scene format=3 uid="uid://b6yxusckbk4fk"]
+
+[ext_resource type="Script" uid="uid://djy3mmt6h4b4v" path="res://scenes/interactions/_special/statue_quest.gd" id="3_hdmdk"]
+[ext_resource type="Texture2D" uid="uid://cb7xd0q6n858t" path="res://assets/sprites/item_sprites/statue/statue_broken.png" id="3_is1r3"]
+[ext_resource type="Texture2D" uid="uid://bg1fprga403xf" path="res://assets/sprites/item_sprites/statue/statue_piece_base.png" id="4_is1r3"]
+[ext_resource type="Texture2D" uid="uid://drpai4o2ys0ws" path="res://assets/sprites/item_sprites/statue/statue_complete.png" id="4_js227"]
+[ext_resource type="Texture2D" uid="uid://cs7hb6d4m7ofv" path="res://assets/sprites/item_sprites/statue/statue_piece_head.png" id="5_ijdkn"]
+[ext_resource type="Texture2D" uid="uid://708dtid1lpq2" path="res://assets/sprites/item_sprites/statue/statue_piece_arm.png" id="5_w1v47"]
+[ext_resource type="Script" uid="uid://dsp7b0nc36qiw" path="res://scenes/interactions/_special/statue_receiver.gd" id="7_w1v47"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_w1v47"]
+render_priority = 2
+transparency = 1
+albedo_color = Color(2.201223, 2.201223, 2.201223, 1)
+albedo_texture = ExtResource("4_js227")
+billboard_mode = 2
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_w1v47"]
+size = Vector3(1.5, 2.4, 1)
+
+[node name="Statue" type="Node3D" unique_id=296240778 node_paths=PackedStringArray("temp_graphics__pieces", "temp_graphics__unfinished_statue", "temp_graphics__finished_statue")]
+script = ExtResource("3_hdmdk")
+temp_graphics__pieces = [NodePath("Statue_States/Unfinished/Pieces/base_piece"), NodePath("Statue_States/Unfinished/Pieces/head_piece"), NodePath("Statue_States/Unfinished/Pieces/arm_piece")]
+temp_graphics__unfinished_statue = NodePath("Statue_States/Unfinished")
+temp_graphics__finished_statue = NodePath("Statue_States/Finished")
+
+[node name="Statue_States" type="Node3D" parent="." unique_id=177232572]
+
+[node name="Unfinished" type="Node3D" parent="Statue_States" unique_id=935710233]
+
+[node name="Sprite3D" type="Sprite3D" parent="Statue_States/Unfinished" unique_id=862002889]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.99999994, 0)
+pixel_size = 0.005
+billboard = 2
+double_sided = false
+texture_filter = 5
+render_priority = 1
+texture = ExtResource("3_is1r3")
+
+[node name="Pieces" type="Node3D" parent="Statue_States/Unfinished" unique_id=2030852864]
+
+[node name="base_piece" type="Sprite3D" parent="Statue_States/Unfinished/Pieces" unique_id=830941077]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.15746611, -0.3248101)
+visible = false
+pixel_size = 0.0013545
+billboard = 2
+double_sided = false
+texture_filter = 5
+render_priority = 1
+texture = ExtResource("4_is1r3")
+
+[node name="arm_piece" type="Sprite3D" parent="Statue_States/Unfinished/Pieces" unique_id=1449308656]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.2955716, 0.26722282)
+visible = false
+pixel_size = 0.0013545
+billboard = 2
+double_sided = false
+texture_filter = 5
+render_priority = 1
+texture = ExtResource("5_w1v47")
+
+[node name="head_piece" type="Sprite3D" parent="Statue_States/Unfinished/Pieces" unique_id=1154146575]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.009177685, 2.009207, -0.0027031004)
+visible = false
+pixel_size = 0.0013545
+billboard = 2
+double_sided = false
+texture_filter = 5
+render_priority = 1
+texture = ExtResource("5_ijdkn")
+
+[node name="Finished" type="Node3D" parent="Statue_States" unique_id=708535293]
+visible = false
+
+[node name="Sprite3D" type="Sprite3D" parent="Statue_States/Finished" unique_id=1497632368]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.99999994, 0)
+material_overlay = SubResource("StandardMaterial3D_w1v47")
+pixel_size = 0.005
+billboard = 2
+double_sided = false
+texture_filter = 5
+render_priority = 1
+texture = ExtResource("4_js227")
+
+[node name="ItemReceiver" type="Node3D" parent="." unique_id=1763736643]
+script = ExtResource("7_w1v47")
+receiver_type = 1
+keywords_needed = "BASE;HEAD;ARM"
+num_needed_by_keyword = 3
+destroy_items_on_receive = true
+prompt_text = "STATUEPROMPT"
+
+[node name="Trigger" type="Area3D" parent="ItemReceiver" unique_id=978927815]
+collision_layer = 32
+monitoring = false
+
+[node name="_col" type="CollisionShape3D" parent="ItemReceiver/Trigger" unique_id=969169536]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.05000007, 1.0000001, 0)
+shape = SubResource("BoxShape3D_w1v47")
+
+[connection signal="statue_piece_received" from="ItemReceiver" to="." method="insert_piece"]

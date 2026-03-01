@@ -182,8 +182,8 @@ func use():
 				grabbed_item.queue_free()
 			ItemType.ItemTypes.INSTRUMENT:
 				var freq : int = int(remap(hand_controller.get_screen_position().x/player_interact.size.x, 0, 1, 0, 7))
-				var octave: int = int(remap(hand_controller.get_screen_position().y/player_interact.size.y, 0, 1, 0, 3))
-				grabbed_item.using_item([freq, octave])
+				#var octave: int = int(remap(hand_controller.get_screen_position().y/player_interact.size.y, 0, 1, 0, 3))
+				grabbed_item.using_item([freq])
 			_:
 				return
 	

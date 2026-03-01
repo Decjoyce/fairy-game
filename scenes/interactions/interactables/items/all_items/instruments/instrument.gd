@@ -8,12 +8,11 @@ signal on_played_note(note: int, instrument: Instrument)
 
 func using_item(arg) -> void:
 	if timer.is_stopped():
-		play_sound(arg[0], arg[1])
+		play_sound(arg[0])
 		timer.start()
 
-func play_sound(note: int, octave: float) -> void:
-	prints(note, octave)
-	music_player.pitch_scale = (octave + 1)/2
+func play_sound(note: int) -> void:
+	prints(note)
 	if item_type is ItemType_Instrument:
 		music_player.stream = item_type.get_note(note)
 	

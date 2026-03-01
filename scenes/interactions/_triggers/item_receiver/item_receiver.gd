@@ -15,7 +15,7 @@ enum ItemReceiverStyle {BY_TYPE, BY_KEYWORD, SPECIFIC_ITEMS, EITHER, ANY_ITEM}
 var num_have_by_type: int
 
 @export_category("If BY_KEYWORD or EITHER")
-@export var keywords_needed: String ## Separate keywords with ; . Do not include spaces
+@export var keywords_needed: String ## Separate keywords with ";" . Do not include spaces
 @export var num_needed_by_keyword: int
 var num_have_by_keyword: int
 
@@ -123,6 +123,8 @@ func check_item_by_keyword(_item: Grabbable_Item, destroy_check: bool = true) ->
 func keyword_checker(_item: Grabbable_Item) -> bool:
 	var split_keywords_needed := keywords_needed.split(";", false)
 	var split_keywords_items := _item.keywords.split(";", false)
+	
+	print(split_keywords_needed)
 	
 	var checker: int = 0
 	for kw in split_keywords_items:

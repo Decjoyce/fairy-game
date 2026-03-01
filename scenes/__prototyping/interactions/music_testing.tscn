@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://civmqin21rnce" path="res://scenes/interactions/interactables/items/all_items/instruments/instrument_test.tscn" id="6_tyyse"]
 [ext_resource type="Resource" uid="uid://b5bs0jgbt263j" path="res://scenes/interactions/_triggers/music_trigger/melodies/melody_test.tres" id="7_vj51q"]
 [ext_resource type="Texture2D" uid="uid://crxiied1mq25" path="res://assets/sprites/_dev/divided.png" id="9_vj51q"]
+[ext_resource type="PackedScene" uid="uid://dpm2ettl06ilt" path="res://scenes/interactions/interactables/items/all_items/instruments/item_flute.tscn" id="10_8x6fc"]
 
 [sub_resource type="Environment" id="Environment_vu50v"]
 
@@ -63,6 +64,9 @@ grow_vertical = 2
 texture = ExtResource("9_vj51q")
 expand_mode = 1
 metadata/_edit_use_anchors_ = true
+
+[node name="Flute" parent="." unique_id=454630447 instance=ExtResource("10_8x6fc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0.4, 0)
 
 [connection signal="on_activated" from="MusicReceiver" to="Gate2" method="fully_open_gate"]
 [connection signal="on_change" from="MusicReceiver" to="Gate" method="open_gate"]
