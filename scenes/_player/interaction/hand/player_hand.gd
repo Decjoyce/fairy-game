@@ -130,6 +130,11 @@ func on_player_turned(target_rot: float) -> void:
 		return
 	force_stop_interacting()
 
+func on_player_crouched(crouched: bool) -> void:
+	if !state.crouching_breaks_free:
+		return
+	force_stop_interacting()
+
 func force_stop_interacting(next_state: String = "FREE", call_end_func_on_interactable: bool = true, call_end_func_on_state: bool = true) -> void:
 	if call_end_func_on_state: state.finished.emit(next_state)
 	if current_interactable and call_end_func_on_interactable: current_interactable.end_interact()

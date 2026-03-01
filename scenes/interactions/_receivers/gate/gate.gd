@@ -12,7 +12,7 @@ var open_pos: float = 1.8
 @export var speed: float = 0.5
 @onready var graphics: Node3D = $gate
 @onready var player_col: CollisionShape3D = $PlayerCollision/CollisionShape3D
-@export var height_to_toggle_player_barrier: float = 0.01
+@export var height_to_toggle_player_barrier: float = 0.7
 @onready var under_checker: Area3D = $gate/UnderChecker
 
 var things_under: Array[Node3D]
@@ -42,7 +42,7 @@ func open_gate(amount: float) -> void:
 	cur_value = amount
 	_end_position = 1 + (open_pos * amount)
 	
-	if cur_value <= height_to_toggle_player_barrier:
+	if cur_value >= height_to_toggle_player_barrier:
 		player_col.set_deferred("disabled",true)
 	else:
 		player_col.set_deferred("disabled",false)

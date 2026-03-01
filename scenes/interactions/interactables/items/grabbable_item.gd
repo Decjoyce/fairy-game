@@ -162,7 +162,14 @@ func break_item() -> void:
 		if item_spawn_on_destroyed: 
 			item_spawn_on_destroyed.enable_me()
 			item_spawn_on_destroyed.reparent(get_tree().current_scene)
-	queue_free()
+	#disable_me()
+	call_deferred("send_to_either")
+
+func send_to_either() -> void:
+	reparent(Debug.destroyed_item_cell)
+	position = Vector3.ZERO
+	print("Dead")
+	#call_deferred("queue_free")
 
 # ↑ Use Stuff ↑
 # --------------------------------------------------------------------------------------------------

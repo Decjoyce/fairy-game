@@ -13,6 +13,8 @@ var cam: Camera3D
 @export var death_audio_player: AudioStreamPlayer2D
 @export var death_audio_enemy: AudioStreamPlayer3D
 
+@export var destroyed_item_cell: Node3D
+
 func _ready() -> void:
 	_init_me()
 

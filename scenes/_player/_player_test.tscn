@@ -2,7 +2,9 @@
 
 [ext_resource type="Script" uid="uid://io22wsbhy73f" path="res://scenes/_player/player_test.gd" id="1_e0b2u"]
 [ext_resource type="Script" uid="uid://by88p7ijbixe5" path="res://scenes/_player/player_movement.gd" id="2_3jgj8"]
+[ext_resource type="Shape3D" uid="uid://fpddyf5ita81" path="res://scenes/_player/movement/p_col_shape.tres" id="2_4f8kv"]
 [ext_resource type="Script" uid="uid://jxohgxu3vshf" path="res://scripts/improved_raycast.gd" id="2_s1g5w"]
+[ext_resource type="Shape3D" uid="uid://s7dtgfwvmtwe" path="res://scenes/_player/movement/p_col_shape_crouched.tres" id="2_svbpy"]
 [ext_resource type="PackedScene" uid="uid://dqojmsc2q6wf4" path="res://scenes/_player/interaction/player_interaction.tscn" id="3_3jgj8"]
 [ext_resource type="Script" uid="uid://46pp7aerorca" path="res://scripts/stats.gd" id="4_fhpxp"]
 [ext_resource type="AudioStream" uid="uid://ca0atvq7vv2dq" path="res://assets/audio/sfx/player/footsteps/FootStep-001.wav" id="4_ux48r"]
@@ -60,13 +62,6 @@
 [ext_resource type="AudioStream" uid="uid://bvotk6pyl3sjh" path="res://assets/audio/sfx/player/_streams/sfx_player_hit.tres" id="58_svbpy"]
 [ext_resource type="Shader" uid="uid://4b4kstxm1aph" path="res://assets/shaders/post_processing/post_processing.gdshader" id="70_52e8e"]
 [ext_resource type="Texture2D" uid="uid://bgvylughro1va" path="res://assets/sprites/PaperTexture/Texturelabs_Paper_304L.jpg" id="71_nkha6"]
-
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_3jgj8"]
-height = 1.3
-
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ru0ho"]
-radius = 0.43
-height = 0.95
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1snfn"]
 albedo_color = Color(1, 0.15294118, 1, 1)
@@ -680,12 +675,19 @@ monitoring = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Collision" unique_id=1237718893]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.35000002, 0)
-shape = SubResource("CapsuleShape3D_3jgj8")
+shape = ExtResource("2_4f8kv")
 debug_color = Color(0.86076874, 0, 0.8756056, 1)
 
-[node name="_col_crouched" type="CollisionShape3D" parent="Collision" unique_id=1657962446]
+[node name="_col_helper_uncrouched" type="CollisionShape3D" parent="Collision" unique_id=1218727483]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.35000002, 0)
+shape = ExtResource("2_4f8kv")
+disabled = true
+debug_color = Color(0.86076874, 0, 0.8756056, 1)
+
+[node name="_col_helper_crouched" type="CollisionShape3D" parent="Collision" unique_id=1657962446]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.165, 0)
-shape = SubResource("CapsuleShape3D_ru0ho")
+shape = ExtResource("2_svbpy")
+disabled = true
 debug_color = Color(0, 0.6438376, 0.2737116, 1)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1223838266]
@@ -714,13 +716,14 @@ debug_shape_custom_color = Color(0.8729805, 0, 0, 1)
 script = ExtResource("2_s1g5w")
 metadata/_custom_type_script = "uid://jxohgxu3vshf"
 
-[node name="Movement" type="Node" parent="." unique_id=1505445123 node_paths=PackedStringArray("player", "interact", "floor_detector", "col", "col_crouched")]
+[node name="Movement" type="Node" parent="." unique_id=1505445123 node_paths=PackedStringArray("player", "interact", "floor_detector", "col", "col_helper_uncrouched", "col_helper_crouched")]
 script = ExtResource("2_3jgj8")
 player = NodePath("..")
 interact = NodePath("../Interaction")
 floor_detector = NodePath("../FloorDetector")
 col = NodePath("../Collision/CollisionShape3D")
-col_crouched = NodePath("../Collision/_col_crouched")
+col_helper_uncrouched = NodePath("../Collision/_col_helper_uncrouched")
+col_helper_crouched = NodePath("../Collision/_col_helper_crouched")
 BOB_FREQ = 5.0
 BOB_AMP = 0.04
 metadata/_custom_type_script = "uid://by88p7ijbixe5"
@@ -731,24 +734,28 @@ metadata/_custom_type_script = "uid://by88p7ijbixe5"
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.1, -0.55)
 shape = SubResource("BoxShape3D_3jgj8")
 target_position = Vector3(0, 0, 0)
+collision_mask = 9
 debug_shape_custom_color = Color(0.32798007, 0.4496488, 0.99998206, 1)
 
 [node name="East" type="ShapeCast3D" parent="Movement/Compass" unique_id=1092941304]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.55, -0.1, 0)
 shape = SubResource("BoxShape3D_xwuyi")
 target_position = Vector3(0, 0, 0)
+collision_mask = 9
 debug_shape_custom_color = Color(1, 0.64589864, 0.7194342, 1)
 
 [node name="South" type="ShapeCast3D" parent="Movement/Compass" unique_id=538684290]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.1, 0.55)
 shape = SubResource("BoxShape3D_3jgj8")
 target_position = Vector3(0, 0, 0)
+collision_mask = 9
 debug_shape_custom_color = Color(1, 0.8018582, 0.08261081, 1)
 
 [node name="West" type="ShapeCast3D" parent="Movement/Compass" unique_id=69390728]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.55, -0.1, 0)
 shape = SubResource("BoxShape3D_xwuyi")
 target_position = Vector3(0, 0, 0)
+collision_mask = 9
 debug_shape_custom_color = Color(0, 0.79870725, 0.7254093, 1)
 
 [node name="FootstepAudio" type="AudioStreamPlayer3D" parent="." unique_id=1340962626]
