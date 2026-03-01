@@ -1,0 +1,26 @@
+[gd_scene format=3 uid="uid://crnrdh5wu8ooa"]
+
+[ext_resource type="Texture2D" uid="uid://ds2ryuxjpf5j1" path="res://scenes/interactions/_receivers/wip_spike_trap/blackcircle_tran.png" id="1_27q8t"]
+[ext_resource type="Script" uid="uid://r8vvnup14amn" path="res://scenes/interactions/_receivers/traps/projectile/trap_projectile.gd" id="1_fuppk"]
+[ext_resource type="PackedScene" uid="uid://bwii7dbg7wd7s" path="res://scenes/interactions/_receivers/traps/projectile/arrow_projectile.tscn" id="2_qehb0"]
+
+[node name="trap_projectile" type="Node3D" unique_id=937661216 node_paths=PackedStringArray("projectile_pool")]
+script = ExtResource("1_fuppk")
+projectile_pool = [NodePath("_projectiles/ArrowProjectile"), NodePath("_projectiles/ArrowProjectile2"), NodePath("_projectiles/ArrowProjectile3"), NodePath("_projectiles/ArrowProjectile4"), NodePath("_projectiles/ArrowProjectile5")]
+
+[node name="_graphics" type="Sprite3D" parent="." unique_id=1919992750]
+pixel_size = 0.001306
+texture = ExtResource("1_27q8t")
+
+[node name="_projectiles" type="Node3D" parent="." unique_id=714481185]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.06977692)
+
+[node name="ArrowProjectile" parent="_projectiles" unique_id=321342299 instance=ExtResource("2_qehb0")]
+
+[node name="ArrowProjectile2" parent="_projectiles" unique_id=1497164146 instance=ExtResource("2_qehb0")]
+
+[node name="ArrowProjectile3" parent="_projectiles" unique_id=660170205 instance=ExtResource("2_qehb0")]
+
+[node name="ArrowProjectile4" parent="_projectiles" unique_id=1750565942 instance=ExtResource("2_qehb0")]
+
+[node name="ArrowProjectile5" parent="_projectiles" unique_id=522591875 instance=ExtResource("2_qehb0")]

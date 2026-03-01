@@ -1,0 +1,41 @@
+class_name ArrowProjectiles
+extends CharacterBody3D
+
+var graphics: Node3D
+var shot: bool
+var speed: float = 20
+var dir: Vector3
+@export var offset: float = 0.01
+
+func _ready() -> void:
+	graphics = $_graphics
+	reset_proj()
+
+func shoot() -> void:
+	print("shot: proj")
+	graphics.visible = true
+	shot = true
+	process_mode = Node.PROCESS_MODE_ALWAYS
+	var ran: RandomNumberGenerator = RandomNumberGenerator.new()
+	var ran_dir: Vector3 = Vector3(ran.randf_range(-offset, offset), ran.randf_range(-offset, offset), ran.randf_range(-offset, offset))
+	dir = (-global_basis.z + ran_dir)
+
+func reset_proj(reset_pos: bool = true, hide_me: bool = true) -> void:
+	print("reset: proj")
+	if reset_pos: position = Vector3.ZERO
+	if hide_me: graphics.visible = false
+	shot = false
+	process_mode = Node.PROCESS_MODE_INHERIT
+
+func _physics_process(delta: float) -> void:
+	if !shot: return
+	move_and_collide((dir * speed) * delta)
+
+func _on_improved_raycast_on_body_entered(obj: Object) -> void:
+	if obj.get_parent() is Entity:
+		var stats: Stats = obj.get_parent().get_node("Stats") as Stats
+		stats.take_damage(50)
+		reset_proj()
+	else:
+		print(obj.name)
+		reset_proj(false, false)
