@@ -57,7 +57,7 @@ func fake_die(fakestring: StringName):
 	#combat.exit_combat_mode()
 	interaction.visible = false
 	death_ui.visible = true
-	freeze = true
+	freeze = false
 	stats_ui.visible = false
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 
