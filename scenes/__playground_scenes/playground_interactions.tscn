@@ -4671,8 +4671,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.3, -0.19999695)
 material_override = ExtResource("41_vxgp0")
 mesh = SubResource("BoxMesh_o5rkc")
 
-[node name="Button" parent="Room_Interactions/SignalReceiver_Room/ObjectsSection/Sec_Gate/Gate_Lever" unique_id=1832935198 instance=ExtResource("10_h40wo")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.40000153, 0.7, 0.9000001)
+[node name="Lever" parent="Room_Interactions/SignalReceiver_Room/ObjectsSection/Sec_Gate/Gate_Lever" unique_id=647058611 instance=ExtResource("37_533sc")]
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 0.40000153, 0.7, 0.8999996)
 
 [node name="_decor2" type="StaticBody3D" parent="Room_Interactions/SignalReceiver_Room/ObjectsSection/Sec_Gate/Gate_Lever" unique_id=1614038294]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.6293945e-06, 0.4, 1)
@@ -4686,8 +4686,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.3, -0.19999695)
 material_override = ExtResource("41_vxgp0")
 mesh = SubResource("BoxMesh_o5rkc")
 
-[node name="Button2" parent="Room_Interactions/SignalReceiver_Room/ObjectsSection/Sec_Gate/Gate_Lever" unique_id=349048006 instance=ExtResource("10_h40wo")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.19999695, 0.7, 0.9000001)
+[node name="Lever2" parent="Room_Interactions/SignalReceiver_Room/ObjectsSection/Sec_Gate/Gate_Lever" unique_id=33020721 instance=ExtResource("37_533sc")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -0.19999695, 0.7, 0.8999996)
 
 [node name="Helpers" type="Node3D" parent="Room_Interactions/SignalReceiver_Room/ObjectsSection/Sec_Gate" unique_id=1572650156]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, 3)
@@ -5694,8 +5694,8 @@ transform = Transform3D(0.7071066, 0, -0.70710695, 0, 1, 0, 0.70710695, 0, 0.707
 [connection signal="body_entered" from="Room_Interactions/SignalReceiver_Room/TP_SR2Start/Trigger" to="Room_Interactions/SignalReceiver_Room/TP_SR2Start" method="_teleport_item"]
 [connection signal="on_activated" from="Room_Interactions/SignalReceiver_Room/ObjectsSection/Sec_Gate/Gate_Button/Button" to="Room_Interactions/SignalReceiver_Room/ObjectsSection/Sec_Gate/Gate_Button/Gate" method="toggle_gate"]
 [connection signal="on_activated" from="Room_Interactions/SignalReceiver_Room/ObjectsSection/Sec_Gate/Gate_Button/Button2" to="Room_Interactions/SignalReceiver_Room/ObjectsSection/Sec_Gate/Gate_Button/Gate" method="toggle_gate"]
-[connection signal="on_activated" from="Room_Interactions/SignalReceiver_Room/ObjectsSection/Sec_Gate/Gate_Lever/Button" to="Room_Interactions/SignalReceiver_Room/ObjectsSection/Sec_Gate/Gate_Lever/Gate" method="toggle_gate"]
-[connection signal="on_activated" from="Room_Interactions/SignalReceiver_Room/ObjectsSection/Sec_Gate/Gate_Lever/Button2" to="Room_Interactions/SignalReceiver_Room/ObjectsSection/Sec_Gate/Gate_Lever/Gate" method="toggle_gate"]
+[connection signal="on_change" from="Room_Interactions/SignalReceiver_Room/ObjectsSection/Sec_Gate/Gate_Lever/Lever" to="Room_Interactions/SignalReceiver_Room/ObjectsSection/Sec_Gate/Gate_Lever/Gate" method="open_gate"]
+[connection signal="on_change" from="Room_Interactions/SignalReceiver_Room/ObjectsSection/Sec_Gate/Gate_Lever/Lever2" to="Room_Interactions/SignalReceiver_Room/ObjectsSection/Sec_Gate/Gate_Lever/Gate" method="open_gate"]
 [connection signal="on_activated" from="Room_Interactions/SignalReceiver_Room/ObjectsSection/Sec_Traps/PressurePlate" to="Room_Interactions/SignalReceiver_Room/ObjectsSection/Sec_Traps/trap_projectile" method="trigger_trap"]
 [connection signal="on_stage_completed" from="Room_Interactions/SignalReceiver_Room/ObjectsSection/Sec_Statue/Statue" to="Room_Interactions/SignalReceiver_Room/ObjectsSection/Sec_Statue/MainQuest_StageIndicator" method="stage_completed"]
 [connection signal="on_activated" from="Room_Items/Sections/Sec_Default/counter_light" to="Room_Items/Sections/Sec_Default/skybox_switcher" method="change_to_b"]

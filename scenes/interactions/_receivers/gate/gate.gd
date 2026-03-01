@@ -42,7 +42,7 @@ func open_gate(amount: float) -> void:
 	cur_value = amount
 	_end_position = 1 + (open_pos * amount)
 	
-	if _end_position >= open_pos + height_to_toggle_player_barrier:
+	if cur_value <= height_to_toggle_player_barrier:
 		player_col.set_deferred("disabled",true)
 	else:
 		player_col.set_deferred("disabled",false)
@@ -97,7 +97,7 @@ func gate_lerp(start: float, finish: float, percentage: float):
 
 
 func _on_area_entered_under_checker(area: Area3D) -> void:
-	if area.get_parent() is Grabbable_Item or area.get_parent() is Entity:
+	if  area.get_parent() is Entity: # removed:: = area.get_parent() is Grabbable_Item or
 		things_under.append(area.get_parent())
 
 func _on_area_exited_under_checker(area: Area3D) -> void:
@@ -108,6 +108,7 @@ func _on_area_exited_under_checker(area: Area3D) -> void:
 func _on_body_entered_under_checker(body: Node3D) -> void:
 	if body is Grabbable_Item or body is Entity:
 		if body is Grabbable_Item:
+			print("s")
 			if body.is_grabbed: return
 		things_under.append(body)
 

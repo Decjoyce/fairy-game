@@ -36,6 +36,8 @@ func _on_improved_raycast_on_body_entered(obj: Object) -> void:
 		var stats: Stats = obj.get_parent().get_node("Stats") as Stats
 		stats.take_damage(50)
 		reset_proj()
+	elif obj.get_parent() is Grabbable_Item: 
+		reset_proj()
 	else:
 		print(obj.name)
 		reset_proj(false, false)

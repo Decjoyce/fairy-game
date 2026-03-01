@@ -40,10 +40,11 @@ blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_cw6yt")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_wx5q6"]
-size = Vector3(2, 0.2, 0.135)
+size = Vector3(2, 0.2, 0.03)
 
 [node name="Gate" type="Node3D" unique_id=132524367 groups=["debug_PickableObjects"]]
 script = ExtResource("1_cm4qh")
+height_to_toggle_player_barrier = 0.7
 
 [node name="gate" type="StaticBody3D" parent="." unique_id=316557696]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)

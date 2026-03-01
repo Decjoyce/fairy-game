@@ -58,6 +58,7 @@ func physics_update(_delta: float) -> void:
 
 func enter(previous_state_path: String, data := {}) -> void:
 	grabbed_item = hand_controller.hovering_interactable
+	grabbed_item.is_grabbed = true
 	
 	hand_controller.input_controls.enable_interact_action(tr("HOLD_TO_THROW"))
 	
@@ -88,6 +89,7 @@ func enter(previous_state_path: String, data := {}) -> void:
 	
 	await tween.finished
 	grabbed_item.global_rotation = new_rot
+	
 	is_ready = true
 	time_held_down = 0
 
@@ -231,7 +233,7 @@ func end_charge() -> void:
 	is_charging = false
 	charge_amount = 0
 	time_held_down = 0
-	
+	grabbed_item.is_grabbed = false
 	finished.emit(FREE)
 
 func _headbob(time: float) -> Vector2:
