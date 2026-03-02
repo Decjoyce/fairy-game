@@ -21,7 +21,6 @@
 [ext_resource type="Texture2D" uid="uid://2k4dl70eoi6v" path="res://scenes/_player/interaction/hand/assets/new/handGrab.png" id="18_adext"]
 [ext_resource type="Texture2D" uid="uid://ip3mcc0c48rf" path="res://scenes/_player/interaction/hand/assets/new/handPick.png" id="20_j5qgs"]
 [ext_resource type="Texture2D" uid="uid://bvp14xwrxbn3n" path="res://assets/__not_ours_dontship/Xbox Series/XboxSeriesX_B.png" id="20_x8mhs"]
-[ext_resource type="Texture2D" uid="uid://d0drddxwl5w86" path="res://scenes/_player/interaction/hand/assets/new/handButton.png" id="21_f0odu"]
 [ext_resource type="Texture2D" uid="uid://jub3n8100tqt" path="res://assets/__not_ours_dontship/Xbox Series/XboxSeriesX_RT.png" id="21_g8o0o"]
 [ext_resource type="Script" uid="uid://cefly351moegl" path="res://scenes/_player/interaction/hand/states/handstate_lever.gd" id="21_krqau"]
 [ext_resource type="Texture2D" uid="uid://by4r3xp6u2qur" path="res://scenes/_player/interaction/hand/assets/new/handOut.png" id="22_6q41x"]
@@ -266,8 +265,7 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id="Animation_sx4t2"]
 resource_name = "hand_press"
-length = 0.001
-loop_mode = 1
+length = 0.2
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -275,10 +273,10 @@ tracks/0/path = NodePath("_hand_sprite:texture")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
 "update": 1,
-"values": [ExtResource("21_f0odu")]
+"values": [ExtResource("22_6q41x"), ExtResource("27_rjeyo")]
 }
 
 [sub_resource type="Animation" id="Animation_3t2v1"]
@@ -489,6 +487,7 @@ metadata/_custom_type_script = "uid://dpsgaiv5m7n21"
 script = ExtResource("21_krqau")
 moving_breaks_free = true
 turning_breaks_free = true
+crouching_breaks_free = true
 anim_idle = "a_hand_idle_grab_item"
 anim_prompt = "hand_prompt_key"
 metadata/_custom_type_script = "uid://cefly351moegl"
@@ -666,6 +665,7 @@ metadata/_custom_type_script = "uid://dpsgaiv5m7n21"
 script = ExtResource("21_krqau")
 moving_breaks_free = true
 turning_breaks_free = true
+crouching_breaks_free = true
 anim_idle = "a_hand_idle_grab_item"
 anim_prompt = "hand_prompt_key"
 metadata/_custom_type_script = "uid://cefly351moegl"

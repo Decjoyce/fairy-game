@@ -1,0 +1,62 @@
+[gd_scene format=3 uid="uid://ciak43nkaxomm"]
+
+[ext_resource type="Script" uid="uid://s5cfdf85lm5g" path="res://scenes/interactions/interactables/items/grabbable_item.gd" id="1_ajkq4"]
+[ext_resource type="Script" uid="uid://cqhq7vrwiw3m6" path="res://scenes/interactions/interactables/items/item_types/item_type.gd" id="2_8go1c"]
+[ext_resource type="Texture2D" uid="uid://cs7hb6d4m7ofv" path="res://assets/sprites/item_sprites/statue/statue_piece_head.png" id="3_ajkq4"]
+[ext_resource type="AudioStream" uid="uid://dutddyikwuiut" path="res://assets/audio/sfx/combat/misc/hittingsound_shorter.wav" id="4_r3poj"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_llc7q"]
+
+[sub_resource type="Resource" id="Resource_yadgr"]
+script = ExtResource("2_8go1c")
+metadata/_custom_type_script = "uid://cqhq7vrwiw3m6"
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_llc7q"]
+size = Vector3(0.5, 0.5, 0.5)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_234jp"]
+size = Vector3(0.4, 0.4, 0.4)
+
+[node name="StatuePiece_Head" type="RigidBody3D" unique_id=234370081 node_paths=PackedStringArray("col", "grab_col", "idle_graphics") groups=["debug_PickableObjects"]]
+collision_layer = 2
+axis_lock_angular_x = true
+axis_lock_angular_z = true
+mass = 0.5
+physics_material_override = SubResource("PhysicsMaterial_llc7q")
+gravity_scale = 0.8
+contact_monitor = true
+max_contacts_reported = 1
+script = ExtResource("1_ajkq4")
+item_type = SubResource("Resource_yadgr")
+display_name = "STATUE_PIECE_HEAD"
+keywords = "HEAD"
+item_weight = 3
+col = NodePath("CollisionShape3D")
+grab_col = NodePath("Area3D/CollisionShape3D2")
+idle_graphics = NodePath("_g_idle")
+
+[node name="Area3D" type="Area3D" parent="." unique_id=1092598886]
+collision_layer = 2
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="Area3D" unique_id=376822119]
+shape = SubResource("BoxShape3D_llc7q")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1619528994]
+shape = SubResource("BoxShape3D_234jp")
+debug_color = Color(0.8442249, 0.37985525, 5.7756904e-07, 0.41960785)
+
+[node name="_g_idle" type="Sprite3D" parent="." unique_id=553540307]
+layers = 4
+pixel_size = 0.0015
+billboard = 2
+double_sided = false
+render_priority = 1
+texture = ExtResource("3_ajkq4")
+
+[node name="AudioPlayer" type="AudioStreamPlayer3D" parent="." unique_id=20800557]
+stream = ExtResource("4_r3poj")
+bus = &"items"
+
+[node name="RayCast3D" type="RayCast3D" parent="." unique_id=1070737100]
+target_position = Vector3(0, -0.4, 0)
+hit_from_inside = true

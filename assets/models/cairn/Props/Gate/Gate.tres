@@ -1,21 +1,23 @@
 [gd_resource type="StandardMaterial3D" format=3 uid="uid://c6ic70i7jpqeu"]
 
-[ext_resource type="Texture2D" uid="uid://ct576hg5ji7mw" path="res://assets/models/cairn/Props/Gate/GateTextures/Gatee_Base_color.png" id="1_e3pj3"]
+[ext_resource type="Texture2D" uid="uid://y2ljhtvob306" path="res://assets/models/cairn/Props/Gate/GateTextures/Gate2_Base_color.png" id="1_adr2b"]
 [ext_resource type="Material" uid="uid://dyejtq23uplk4" path="res://assets/shaders/Outline/outline.tres" id="2_rpyn3"]
-[ext_resource type="Texture2D" uid="uid://d35di3kw5ukm0" path="res://assets/models/cairn/Props/Gate/GateTextures/Gatee_Metallic.png" id="2_yg75g"]
-[ext_resource type="Texture2D" uid="uid://bd2fxfs07rphm" path="res://assets/models/cairn/Props/Gate/GateTextures/Gatee_world_space_normals.png" id="4_csv7o"]
-[ext_resource type="Texture2D" uid="uid://cqtogekngvi1t" path="res://assets/models/cairn/Props/Gate/GateTextures/Gatee_Roughness.png" id="5_t0v6g"]
+[ext_resource type="Texture2D" uid="uid://cy4nv3osgud0v" path="res://assets/models/cairn/Props/Gate/GateTextures/Gate2_Mixed_AO.png" id="2_xbsah"]
+[ext_resource type="Texture2D" uid="uid://vgmcit64p2h" path="res://assets/models/cairn/Props/Gate/GateTextures/Gate2_Metallic.png" id="3_twqxg"]
+[ext_resource type="Texture2D" uid="uid://dg8qg36crnylw" path="res://assets/models/cairn/Props/Gate/GateTextures/Gate2_Roughness.png" id="5_3sf6m"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_8k0en"]
 
 [resource]
 next_pass = ExtResource("2_rpyn3")
-albedo_texture = ExtResource("1_e3pj3")
+albedo_texture = ExtResource("1_adr2b")
 metallic = 1.0
-metallic_texture = ExtResource("2_yg75g")
+metallic_specular = 0.1
+metallic_texture = ExtResource("3_twqxg")
 metallic_texture_channel = 4
-roughness_texture = ExtResource("5_t0v6g")
+roughness_texture = ExtResource("5_3sf6m")
 roughness_texture_channel = 4
 normal_enabled = true
-normal_texture = ExtResource("4_csv7o")
+ao_enabled = true
+ao_texture = ExtResource("2_xbsah")
 heightmap_texture = SubResource("CompressedTexture2D_8k0en")

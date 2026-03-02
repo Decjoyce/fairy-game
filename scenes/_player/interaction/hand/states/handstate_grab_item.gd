@@ -58,6 +58,7 @@ func physics_update(_delta: float) -> void:
 
 func enter(previous_state_path: String, data := {}) -> void:
 	grabbed_item = hand_controller.hovering_interactable
+	grabbed_item.is_grabbed = true
 	
 	hand_controller.input_controls.enable_interact_action(tr("HOLD_TO_THROW"))
 	
@@ -88,6 +89,7 @@ func enter(previous_state_path: String, data := {}) -> void:
 	
 	await tween.finished
 	grabbed_item.global_rotation = new_rot
+	
 	is_ready = true
 	time_held_down = 0
 
@@ -176,14 +178,10 @@ func use():
 			ItemType.ItemTypes.TORCH:
 				return
 			ItemType.ItemTypes.CONSUMABLE:
-				print("DD")
-				player.stats.heal(grabbed_item.item_type.heal_amount)
-				finished.emit(FREE)
-				grabbed_item.queue_free()
+				return
 			ItemType.ItemTypes.INSTRUMENT:
 				var freq : int = int(remap(hand_controller.get_screen_position().x/player_interact.size.x, 0, 1, 0, 7))
-				var octave: int = int(remap(hand_controller.get_screen_position().y/player_interact.size.y, 0, 1, 0, 3))
-				grabbed_item.using_item([freq, octave])
+				grabbed_item.using_item([freq])
 			_:
 				return
 	
@@ -231,7 +229,7 @@ func end_charge() -> void:
 	is_charging = false
 	charge_amount = 0
 	time_held_down = 0
-	
+	grabbed_item.is_grabbed = false
 	finished.emit(FREE)
 
 func _headbob(time: float) -> Vector2:

@@ -27,6 +27,8 @@ enum item_weight_types {WEIGHTLESS, LIGHT, MEDIUM, HEAVY}
 @export var throw_distance : float = 8.0
 @export var throwing_offset: Vector2 = Vector2.ZERO
 @export var throwing_rotation: float = 0.0
+
+@export_category("Breaking")
 @export var can_break: bool
 @export var break_force: float = 35.0
 @export var impact_type: int
@@ -162,7 +164,14 @@ func break_item() -> void:
 		if item_spawn_on_destroyed: 
 			item_spawn_on_destroyed.enable_me()
 			item_spawn_on_destroyed.reparent(get_tree().current_scene)
-	queue_free()
+	#disable_me()
+	call_deferred("send_to_either")
+
+func send_to_either() -> void:
+	reparent(Debug.destroyed_item_cell)
+	position = Vector3.ZERO
+	print("Dead")
+	#call_deferred("queue_free")
 
 # ↑ Use Stuff ↑
 # --------------------------------------------------------------------------------------------------

@@ -1,14 +1,15 @@
 [gd_scene format=3 uid="uid://chm66jxh5el1f"]
 
 [ext_resource type="PackedScene" uid="uid://bq86osdembn58" path="res://scenes/_player/_player_test.tscn" id="2_2gnfs"]
-[ext_resource type="PackedScene" uid="uid://dt13fur6twjep" path="res://scenes/interactions/receivers/gate/gate.tscn" id="3_vj51q"]
-[ext_resource type="Script" uid="uid://cgb0bi0gumby6" path="res://scenes/interactions/receivers/skybox_changer/skybox_changer.gd" id="4_8x6fc"]
+[ext_resource type="PackedScene" uid="uid://dt13fur6twjep" path="res://scenes/interactions/_receivers/gate/gate.tscn" id="3_vj51q"]
+[ext_resource type="Script" uid="uid://cgb0bi0gumby6" path="res://scenes/interactions/_receivers/skybox_changer/skybox_changer.gd" id="4_8x6fc"]
 [ext_resource type="Environment" uid="uid://co42tppomh8j3" path="res://assets/skyboxes/skyboxes_testing_dark.tres" id="5_75y8e"]
-[ext_resource type="PackedScene" uid="uid://c5kh7hs6fp6go" path="res://scenes/interactions/triggers/music_trigger/music_trigger.tscn" id="5_a3p8y"]
-[ext_resource type="Script" uid="uid://b46j43ho84wfj" path="res://scenes/interactions/triggers/music_trigger/melodies/melody.gd" id="6_2gnfs"]
+[ext_resource type="PackedScene" uid="uid://c5kh7hs6fp6go" path="res://scenes/interactions/_triggers/music_trigger/music_trigger.tscn" id="5_a3p8y"]
+[ext_resource type="Script" uid="uid://b46j43ho84wfj" path="res://scenes/interactions/_triggers/music_trigger/melodies/melody.gd" id="6_2gnfs"]
 [ext_resource type="PackedScene" uid="uid://civmqin21rnce" path="res://scenes/interactions/interactables/items/all_items/instruments/instrument_test.tscn" id="6_tyyse"]
-[ext_resource type="Resource" uid="uid://b5bs0jgbt263j" path="res://scenes/interactions/triggers/music_trigger/melodies/melody_test.tres" id="7_vj51q"]
+[ext_resource type="Resource" uid="uid://b5bs0jgbt263j" path="res://scenes/interactions/_triggers/music_trigger/melodies/melody_test.tres" id="7_vj51q"]
 [ext_resource type="Texture2D" uid="uid://crxiied1mq25" path="res://assets/sprites/_dev/divided.png" id="9_vj51q"]
+[ext_resource type="PackedScene" uid="uid://dpm2ettl06ilt" path="res://scenes/interactions/interactables/items/all_items/instruments/item_flute.tscn" id="10_8x6fc"]
 
 [sub_resource type="Environment" id="Environment_vu50v"]
 
@@ -63,6 +64,9 @@ grow_vertical = 2
 texture = ExtResource("9_vj51q")
 expand_mode = 1
 metadata/_edit_use_anchors_ = true
+
+[node name="Flute" parent="." unique_id=454630447 instance=ExtResource("10_8x6fc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0.4, 0)
 
 [connection signal="on_activated" from="MusicReceiver" to="Gate2" method="fully_open_gate"]
 [connection signal="on_change" from="MusicReceiver" to="Gate" method="open_gate"]

@@ -18,6 +18,8 @@ func _ready() -> void:
 	movement.on_move.connect(hand_right.on_player_moved)
 	movement.on_turn.connect(hand_left.on_player_turned)
 	movement.on_turn.connect(hand_right.on_player_turned)
+	movement.on_crouch.connect(hand_left.on_player_crouched)
+	movement.on_crouch.connect(hand_right.on_player_crouched)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:

@@ -1,0 +1,68 @@
+[gd_scene format=3 uid="uid://bwii7dbg7wd7s"]
+
+[ext_resource type="Script" uid="uid://do3wy5irrt8bc" path="res://scenes/interactions/_receivers/traps/projectile/arrow_projectile.gd" id="1_bwo3n"]
+[ext_resource type="Material" uid="uid://dyejtq23uplk4" path="res://assets/shaders/Outline/outline.tres" id="1_o0p1b"]
+[ext_resource type="Script" uid="uid://jxohgxu3vshf" path="res://scripts/improved_raycast.gd" id="3_ueblh"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_o0p1b"]
+radius = 0.06542969
+height = 0.3743164
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ypdmq"]
+albedo_color = Color(0.29582244, 0.28200856, 0.27378577, 1)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_bwo3n"]
+material = SubResource("StandardMaterial3D_ypdmq")
+top_radius = 0.0
+bottom_radius = 0.05
+height = 0.5
+radial_segments = 4
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xbtjy"]
+albedo_color = Color(0.38039216, 0.28627452, 0.19215687, 1)
+metallic = 0.5
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_ueblh"]
+material = SubResource("StandardMaterial3D_xbtjy")
+top_radius = 0.03
+bottom_radius = 0.03
+height = 0.8
+radial_segments = 4
+
+[node name="ArrowProjectile" type="CharacterBody3D" unique_id=36937432]
+collision_layer = 0
+collision_mask = 0
+slide_on_ceiling = false
+floor_stop_on_slope = false
+floor_block_on_wall = false
+script = ExtResource("1_bwo3n")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1615753294]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 8.180945e-09, -0.1871582)
+shape = SubResource("CapsuleShape3D_o0p1b")
+disabled = true
+debug_color = Color(0.46446157, 0, 0.2021952, 0.48235294)
+
+[node name="_graphics" type="Node3D" parent="." unique_id=993755155]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0.40952814)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="_graphics" unique_id=931489720]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, -1.2525717e-07, -0.5679159)
+material_overlay = ExtResource("1_o0p1b")
+mesh = SubResource("CylinderMesh_bwo3n")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="_graphics" unique_id=1101599646]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, -2.1964206e-07, 0)
+material_overlay = ExtResource("1_o0p1b")
+mesh = SubResource("CylinderMesh_ueblh")
+
+[node name="_col" type="RayCast3D" parent="." unique_id=1663911956]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.48863298)
+target_position = Vector3(0, 0, -0.485)
+collision_mask = 3
+hit_from_inside = true
+collide_with_areas = true
+script = ExtResource("3_ueblh")
+metadata/_custom_type_script = "uid://jxohgxu3vshf"
+
+[connection signal="on_body_entered" from="_col" to="." method="_on_improved_raycast_on_body_entered"]
