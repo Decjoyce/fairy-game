@@ -1,0 +1,40 @@
+[gd_scene format=4 uid="uid://cfhacobhksnxe"]
+
+[ext_resource type="Material" uid="uid://rbnbiylju0f0" path="res://assets/models/cairn/Hall_BigRoof/Dirtcube.tres" id="1_nps61"]
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_yiss6"]
+_surfaces = [{
+"aabb": AABB(7.708918, -1.14554, -8, 0.2910819, 18.668196, 16),
+"format": 34896613377,
+"index_count": 24,
+"index_data": PackedByteArray("AAABAAIAAwABAAAAAgABAAQABQABAAMABAAGAAIAAwAHAAUABwAGAAQABgAHAAMA"),
+"name": "DirtCube",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 8,
+"vertex_data": PackedByteArray("/v///wAAAAD+/wAAAAAAAP///////wAAAAAB/PUEAAD//wAA//8AAAAA/QP1BAAAAAAB/P//AAAAAP0D//8AAA==")
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_rpmsr"]
+_surfaces = [{
+"aabb": AABB(7.708918, -1.14554, -8, 0.2910819, 18.668196, 16),
+"attribute_data": PackedByteArray("RYvObq7Fzm5Fi1C2rsVQtkWLDydpww8nRYtcbWnDXG3bdZsptz2bKf12eSiVPHkouQBQttBGRf9Fi1xtQ0hF/w=="),
+"format": 34896613399,
+"index_count": 24,
+"index_data": PackedByteArray("AAABAAIAAgABAAMABAAFAAYABgAFAAcACAAJAAoACgAJAAsADAANAA4ADgANAA8A"),
+"material": ExtResource("1_nps61"),
+"name": "DirtCube",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 16,
+"vertex_data": PackedByteArray("/v///wAAVNX+/wAAAABU1f///////1TV//8AAP//VNUAAAH8//9U1QAA/QP//1TVAAAB/PUEVNUAAP0D9QRU1QAA/QP///+/AAAB/P///7///wAA////v/////////+/AAD9A/UE6Bb+/wAAAADqFgAAAfz1BDEX/v///wAAMReqqlRVqqpUVaqqVFWqqlRVVFWqqlRVqqpUVaqqVFWqqv9//3//f/9//3//f/9//38ezN3KGszgymPLYMthy2HL")
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_yiss6")
+
+[node name="Dirt Wall" type="Node3D" unique_id=1855664681]
+
+[node name="WallDirt" type="MeshInstance3D" parent="." unique_id=1925172731]
+transform = Transform3D(0.128, 0, 0, 0, 0.128, 0, 0, 0, 0.128, 0, 0, 0)
+mesh = SubResource("ArrayMesh_rpmsr")
