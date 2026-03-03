@@ -66,7 +66,7 @@ func RandomWander():
 	path = grid_map.find_path(curr_posV,curr_TargetPoint)
 	#prints(path)
 	#prints(neigbours)
-	$Timer.start(8)
+	$Timer.start(6)
 		
 	##print(curr_posV, curr_posPlayerV, curr_posVi, curr_posPlayerVi)
 	pass
@@ -78,7 +78,7 @@ func moveW(delta: float) -> void:
 	#prints(current_point, path.size())
 	if current_point < path.size():
 		is_moving = true
-		footstep_audio.play()
+		##footstep_audio.play()
 		target_pos.y = Body.global_position.y
 		dist_to_target = Body.global_position.distance_to(target_pos)
 		
@@ -114,7 +114,7 @@ func RandomIdle():
 	if random_float < 0.5:
 		RandomWander()
 		Animator.play("Walk2")
-	elif random_float < 0.6:
+	elif random_float < 0.5:
 		##SM.transition_to("IdleState")
 		RandomWander()
 		Animator.play("Walk2")

@@ -83,7 +83,7 @@ func movement(delta: float) -> void:
 	prints(current_point, path.size())
 	if current_point < path.size():
 		is_moving = true
-		footstep_audio.play()
+		##footstep_audio.play()
 		target_pos.y = Body.global_position.y
 		dist_to_target = Body.global_position.distance_to(target_pos)
 		

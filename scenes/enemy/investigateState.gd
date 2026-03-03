@@ -52,7 +52,7 @@ func enter():
 	Animator.play("Walk2")#-1,0.5)
 	get_pos_item()
 	find_path()
-	$Timer.start(8)
+	$Timer.start(6)
 	return path
 
 func exit():
@@ -89,7 +89,7 @@ func movement(delta: float) -> void:
 	prints(current_point, path.size())
 	if current_point < path.size():
 		is_moving = true
-		footstep_audio.play()
+		##footstep_audio.play()
 		target_pos.y = Body.global_position.y
 		dist_to_target = Body.global_position.distance_to(target_pos)
 		
@@ -113,6 +113,7 @@ func get_next_target() -> void:
 	if path.size() <= 0:
 		return 
 	target_pos = path[0]
+	Animator.play("Walk2")
 	##$Timer.start()
 	
 

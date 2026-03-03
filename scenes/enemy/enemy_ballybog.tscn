@@ -9,19 +9,11 @@
 [ext_resource type="Texture2D" uid="uid://bjlsyaal4awd1" path="res://scenes/enemy/Sprites/ballybog_new/walk/bally_walk_n.png" id="7_lngu7"]
 [ext_resource type="Texture2D" uid="uid://04lgkaffi6nf" path="res://scenes/enemy/Sprites/ballybog_new/stunned/bally_stunned.png" id="12_l3c6t"]
 [ext_resource type="Texture2D" uid="uid://da1va2x3xe8dm" path="res://scenes/enemy/Sprites/ballybog_new/stunned/bally_stunned_n.png" id="13_lngu7"]
-[ext_resource type="AudioStream" uid="uid://ca0atvq7vv2dq" path="res://assets/audio/sfx/player/footsteps/FootStep-001.wav" id="14_k3ua6"]
-[ext_resource type="AudioStream" uid="uid://bf6k8q7kypf7l" path="res://assets/audio/sfx/player/footsteps/FootStep-002.wav" id="15_pts2q"]
-[ext_resource type="AudioStream" uid="uid://5sd44cpi12dv" path="res://assets/audio/sfx/player/footsteps/FootStep-003.wav" id="16_phxqg"]
-[ext_resource type="AudioStream" uid="uid://bbmyi8k0bkkjd" path="res://assets/audio/sfx/player/footsteps/FootStep-004.wav" id="17_86kpf"]
-[ext_resource type="AudioStream" uid="uid://bkk7jrgij205s" path="res://assets/audio/sfx/player/footsteps/FootStep-005.wav" id="18_pkfog"]
-[ext_resource type="AudioStream" uid="uid://dlc0dgjoyycuv" path="res://assets/audio/sfx/player/footsteps/FootStep-006.wav" id="19_d7tla"]
 [ext_resource type="Script" uid="uid://c3fdtr0ieg5dj" path="res://scenes/enemy/state_machine/sm_controller.gd" id="19_u7shv"]
-[ext_resource type="AudioStream" uid="uid://lmda00v3x2ll" path="res://assets/audio/sfx/player/footsteps/FootStep-007.wav" id="20_8vrwc"]
 [ext_resource type="Script" uid="uid://r7bhwy0jfpk7" path="res://scenes/enemy/state_machine/StateMachine.gd" id="20_mv5lh"]
 [ext_resource type="Texture2D" uid="uid://drd32dydartq7" path="res://scenes/enemy/Sprites/ballybog_new/idle/bally_bellyrub.png" id="20_phxqg"]
 [ext_resource type="Script" uid="uid://dc3uc7qhwg03r" path="res://scenes/enemy/state_machine/idle_state.gd" id="21_6mmou"]
 [ext_resource type="Texture2D" uid="uid://cahysgebfxaqb" path="res://scenes/enemy/Sprites/ballybog_new/idle/bally_bellyrub_n.png" id="21_86kpf"]
-[ext_resource type="AudioStream" uid="uid://c2oqvd4e4tsyv" path="res://assets/audio/sfx/player/footsteps/FootStep-008.wav" id="21_iaicr"]
 [ext_resource type="Script" uid="uid://bg6gxealt4p8b" path="res://scenes/enemy/state_machine/Fighting.gd" id="22_dbqfk"]
 [ext_resource type="Texture2D" uid="uid://vqyj6bqstkc6" path="res://scenes/enemy/Sprites/ballybog_new/alert/bally_alert.png" id="22_pkfog"]
 [ext_resource type="Script" uid="uid://cyctjxnvvlo47" path="res://scenes/enemy/state_machine/Wander.gd" id="23_3m1id"]
@@ -45,13 +37,16 @@
 [ext_resource type="AudioStream" uid="uid://c3t7pm5ip3juj" path="res://assets/audio/sfx/enemy/ballybog/Rub/Objects, Fashion, Makeup, Sponge, Beautyblender, Single Strokes On Skin SND123478.wav" id="33_phxqg"]
 [ext_resource type="Script" uid="uid://46pp7aerorca" path="res://scripts/stats.gd" id="35_pydrg"]
 [ext_resource type="Texture2D" uid="uid://2t1cw83o71dn" path="res://assets/ui/combat/enemy_border.png" id="36_me4q8"]
+[ext_resource type="AudioStream" uid="uid://p3o4k8rp7ftf" path="res://assets/audio/sfx/enemy/ballybog/steps/Footsteps, Human, Rock, Run, Isolated Steps SND62098 1.wav" id="36_pts2q"]
 [ext_resource type="Script" uid="uid://byyeneqtnv43x" path="res://scripts/match_pos.gd" id="36_xnhkk"]
+[ext_resource type="AudioStream" uid="uid://bmd6rswroi41h" path="res://assets/audio/sfx/enemy/ballybog/steps/Footsteps, Human, Rock, Run, Isolated Steps SND62098 1 2.wav" id="37_phxqg"]
+[ext_resource type="AudioStream" uid="uid://cw1wrqpqkcpox" path="res://assets/audio/sfx/enemy/ballybog/steps/Footsteps, Human, Rock, Run, Isolated Steps SND62098 5.wav" id="38_phxqg"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_abuop"]
 radius = 0.43391418
 height = 0.86782837
 
-[sub_resource type="Shader" id="Shader_8vrwc"]
+[sub_resource type="Shader" id="Shader_86kpf"]
 code = "shader_type spatial;
 render_mode diffuse_lambert_wrap,cull_disabled;
 
@@ -128,23 +123,23 @@ void fragment() {
 }
 "
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_iaicr"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_pkfog"]
 render_priority = 0
-shader = SubResource("Shader_8vrwc")
-shader_parameter/rows = 2.0
+shader = SubResource("Shader_86kpf")
+shader_parameter/rows = 1.0
 shader_parameter/columns = 8.0
 shader_parameter/frame = 1.0
 shader_parameter/invert_rows_columns = false
-shader_parameter/sprite = ExtResource("12_l3c6t")
+shader_parameter/sprite = ExtResource("22_pkfog")
 shader_parameter/mode = 0
-shader_parameter/Normal = ExtResource("13_lngu7")
+shader_parameter/Normal = ExtResource("23_d7tla")
 
-[sub_resource type="PlaneMesh" id="PlaneMesh_600hx"]
-material = SubResource("ShaderMaterial_iaicr")
+[sub_resource type="PlaneMesh" id="PlaneMesh_d7tla"]
+material = SubResource("ShaderMaterial_pkfog")
 size = Vector2(1.62, 1.62)
 orientation = 2
 
-[sub_resource type="Resource" id="Resource_gefnw"]
+[sub_resource type="Resource" id="Resource_8vrwc"]
 script = ExtResource("4_v1swk")
 name = "walk"
 sprite = ExtResource("6_l3c6t")
@@ -152,7 +147,7 @@ texture_normal = ExtResource("7_lngu7")
 rows = 5.0
 columns = 8.0
 
-[sub_resource type="Resource" id="Resource_77qgr"]
+[sub_resource type="Resource" id="Resource_iaicr"]
 script = ExtResource("4_v1swk")
 name = "Attack"
 sprite = ExtResource("3_5ussm")
@@ -160,7 +155,7 @@ texture_normal = ExtResource("2_p6ydp")
 rows = 2.0
 columns = 8.0
 
-[sub_resource type="Resource" id="Resource_bwaij"]
+[sub_resource type="Resource" id="Resource_600hx"]
 script = ExtResource("4_v1swk")
 name = "idle_rub"
 sprite = ExtResource("20_phxqg")
@@ -168,32 +163,20 @@ texture_normal = ExtResource("21_86kpf")
 rows = 3.0
 columns = 8.0
 
-[sub_resource type="Resource" id="Resource_dlkub"]
+[sub_resource type="Resource" id="Resource_gefnw"]
 script = ExtResource("4_v1swk")
 name = "Alert"
 sprite = ExtResource("22_pkfog")
 texture_normal = ExtResource("23_d7tla")
 columns = 8.0
 
-[sub_resource type="Resource" id="Resource_3tlv5"]
+[sub_resource type="Resource" id="Resource_77qgr"]
 script = ExtResource("4_v1swk")
 name = "Stunned"
 sprite = ExtResource("12_l3c6t")
 texture_normal = ExtResource("13_lngu7")
 rows = 2.0
 columns = 8.0
-
-[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_600hx"]
-streams_count = 9
-stream_0/stream = ExtResource("14_k3ua6")
-stream_1/stream = ExtResource("15_pts2q")
-stream_2/stream = ExtResource("16_phxqg")
-stream_3/stream = ExtResource("17_86kpf")
-stream_4/stream = ExtResource("18_pkfog")
-stream_5/stream = ExtResource("18_pkfog")
-stream_6/stream = ExtResource("19_d7tla")
-stream_7/stream = ExtResource("20_8vrwc")
-stream_8/stream = ExtResource("21_iaicr")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_3ixwq"]
 size = Vector3(0.05, 1, 2)
@@ -1013,6 +996,29 @@ tracks/1/keys = {
 "update": 0,
 "values": [1.0, 2.0, 3.0, 4.0, 0.0]
 }
+tracks/2/type = "audio"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../SoundsWalkAndIdle")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("36_pts2q")
+}, {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("37_phxqg")
+}, {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("38_phxqg")
+}],
+"times": PackedFloat32Array(0.016666668, 0.45, 0.9)
+}
+tracks/2/use_blend = true
 
 [sub_resource type="Animation" id="Animation_g8xqt"]
 resource_name = "test_walk"
@@ -1108,20 +1114,27 @@ shape = SubResource("CapsuleShape3D_abuop")
 transform = Transform3D(-1, 0, -1.509958e-07, 0, 1, 0, 1.509958e-07, 0, -1, 0, 0.6596855, 0)
 layers = 3
 sorting_offset = 1.0
-mesh = SubResource("PlaneMesh_600hx")
+mesh = SubResource("PlaneMesh_d7tla")
 script = ExtResource("3_j08hu")
-animations_array = Array[ExtResource("4_v1swk")]([SubResource("Resource_gefnw"), SubResource("Resource_77qgr"), SubResource("Resource_bwaij"), SubResource("Resource_dlkub"), SubResource("Resource_3tlv5")])
-animation = 4
+animations_array = Array[ExtResource("4_v1swk")]([SubResource("Resource_8vrwc"), SubResource("Resource_iaicr"), SubResource("Resource_600hx"), SubResource("Resource_gefnw"), SubResource("Resource_77qgr")])
+animation = 3
 frame = 1.0
 sprite_scale = 0.003
 metadata/_custom_type_script = "uid://b5653u7w56pqw"
 
 [node name="SoundsWalkAndIdle" type="AudioStreamPlayer3D" parent="." unique_id=1181251130]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.06243205, 0)
-stream = SubResource("AudioStreamRandomizer_600hx")
+volume_db = -5.0
+max_distance = 10.0
+max_polyphony = 5
+bus = &"pl_footsteps"
 
 [node name="Scratch_audio" type="AudioStreamPlayer3D" parent="." unique_id=736477142]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.06243205, 0)
+volume_db = -5.008
+max_distance = 10.0
+max_polyphony = 5
+bus = &"pl_footsteps"
 
 [node name="SM_controller" type="Node" parent="." unique_id=2065948807 node_paths=PackedStringArray("node_StateMachine")]
 script = ExtResource("19_u7shv")
