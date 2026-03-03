@@ -1,38 +1,47 @@
-[gd_scene load_steps=89 format=3 uid="uid://drc8vg7njr5ui"]
+[gd_scene format=3 uid="uid://drc8vg7njr5ui"]
 
 [ext_resource type="Script" uid="uid://bytcavpmi7t32" path="res://scenes/enemy/enemy_with_combat.gd" id="1_3ixwq"]
-[ext_resource type="Texture2D" uid="uid://bajdgu88x35py" path="res://scenes/enemy/Sprites/ballybog/walk/ballyWalkSheet_n.png" id="1_mpywb"]
-[ext_resource type="Texture2D" uid="uid://dl3etwft2mhxm" path="res://scenes/enemy/Sprites/ballybog/walk/ballyWalkSheet.png" id="2_c8yoh"]
+[ext_resource type="Texture2D" uid="uid://c3wp34r7rytko" path="res://scenes/enemy/Sprites/ballybog_new/attack/bally_attack_n.png" id="2_p6ydp"]
+[ext_resource type="Texture2D" uid="uid://c02du17ak7gdq" path="res://scenes/enemy/Sprites/ballybog_new/attack/bally_attack.png" id="3_5ussm"]
 [ext_resource type="Script" uid="uid://b5653u7w56pqw" path="res://addons/extras_sprites/scripts/sprite_3D_billboard.gd" id="3_j08hu"]
 [ext_resource type="Script" uid="uid://b4m0sglcg4smw" path="res://addons/extras_sprites/scripts/animatio_data.gd" id="4_v1swk"]
-[ext_resource type="Texture2D" uid="uid://cjn3bxmukh4fj" path="res://scenes/enemy/Sprites/ballybog/idle/ballybogIdle.png" id="5_ma74y"]
-[ext_resource type="Texture2D" uid="uid://d117rsf1rrxb6" path="res://scenes/enemy/Sprites/ballybog/idle/ballybogIdle_n.png" id="6_owush"]
-[ext_resource type="Texture2D" uid="uid://da55c2fwj7ox7" path="res://scenes/enemy/Sprites/ballybog/attacks/ballyAttack_LBottom.png" id="7_tvq6p"]
-[ext_resource type="Texture2D" uid="uid://b45ckx6htx1bg" path="res://scenes/enemy/Sprites/ballybog/attacks/ballyAttack_LBottom_n.png" id="8_mwxs5"]
-[ext_resource type="Texture2D" uid="uid://fohbvfmbnsw7" path="res://scenes/enemy/Sprites/ballybog/attacks/ballyAttack_LMid.png" id="9_jppkf"]
-[ext_resource type="Texture2D" uid="uid://d2eurcnwm514j" path="res://scenes/enemy/Sprites/ballybog/attacks/ballyAttack_LMid_n.png" id="10_3ixwq"]
-[ext_resource type="Texture2D" uid="uid://c1t33lxeknsve" path="res://scenes/enemy/Sprites/ballybog/attacks/ballyAttack_LTop.png" id="11_3jwaj"]
-[ext_resource type="Texture2D" uid="uid://p2iiihprajki" path="res://scenes/enemy/Sprites/ballybog/attacks/ballyAttack_LTop_n.png" id="12_pydrg"]
-[ext_resource type="Texture2D" uid="uid://d2i5outw16p5m" path="res://scenes/enemy/Sprites/ballybog/attacks/ballyAttack_RBottom.png" id="13_me4q8"]
-[ext_resource type="Texture2D" uid="uid://0meyt1eqowl" path="res://scenes/enemy/Sprites/ballybog/attacks/ballyAttack_RBottom_n.png" id="14_xnhkk"]
-[ext_resource type="Texture2D" uid="uid://d32p1mrham4j6" path="res://scenes/enemy/Sprites/ballybog/attacks/ballyAttack_RMid.png" id="15_7kval"]
-[ext_resource type="Texture2D" uid="uid://bjd7yeekbvmx0" path="res://scenes/enemy/Sprites/ballybog/attacks/ballyAttack_RMid_n.png" id="16_th4g8"]
-[ext_resource type="Texture2D" uid="uid://dqyfvagjygkha" path="res://scenes/enemy/Sprites/ballybog/attacks/ballyAttack_RTop.png" id="17_u7c7l"]
-[ext_resource type="Texture2D" uid="uid://bnrfxmw0nk1dq" path="res://scenes/enemy/Sprites/ballybog/attacks/ballyAttack_RTop_n.png" id="18_nfjh2"]
+[ext_resource type="Texture2D" uid="uid://cshw8doe2356i" path="res://scenes/enemy/Sprites/ballybog_new/walk/bally_walk.png" id="6_l3c6t"]
+[ext_resource type="Texture2D" uid="uid://bjlsyaal4awd1" path="res://scenes/enemy/Sprites/ballybog_new/walk/bally_walk_n.png" id="7_lngu7"]
+[ext_resource type="Texture2D" uid="uid://04lgkaffi6nf" path="res://scenes/enemy/Sprites/ballybog_new/stunned/bally_stunned.png" id="12_l3c6t"]
+[ext_resource type="Texture2D" uid="uid://da1va2x3xe8dm" path="res://scenes/enemy/Sprites/ballybog_new/stunned/bally_stunned_n.png" id="13_lngu7"]
+[ext_resource type="AudioStream" uid="uid://ca0atvq7vv2dq" path="res://assets/audio/sfx/player/footsteps/FootStep-001.wav" id="14_k3ua6"]
+[ext_resource type="AudioStream" uid="uid://bf6k8q7kypf7l" path="res://assets/audio/sfx/player/footsteps/FootStep-002.wav" id="15_pts2q"]
+[ext_resource type="AudioStream" uid="uid://5sd44cpi12dv" path="res://assets/audio/sfx/player/footsteps/FootStep-003.wav" id="16_phxqg"]
+[ext_resource type="AudioStream" uid="uid://bbmyi8k0bkkjd" path="res://assets/audio/sfx/player/footsteps/FootStep-004.wav" id="17_86kpf"]
+[ext_resource type="AudioStream" uid="uid://bkk7jrgij205s" path="res://assets/audio/sfx/player/footsteps/FootStep-005.wav" id="18_pkfog"]
+[ext_resource type="AudioStream" uid="uid://dlc0dgjoyycuv" path="res://assets/audio/sfx/player/footsteps/FootStep-006.wav" id="19_d7tla"]
 [ext_resource type="Script" uid="uid://c3fdtr0ieg5dj" path="res://scenes/enemy/state_machine/sm_controller.gd" id="19_u7shv"]
+[ext_resource type="AudioStream" uid="uid://lmda00v3x2ll" path="res://assets/audio/sfx/player/footsteps/FootStep-007.wav" id="20_8vrwc"]
 [ext_resource type="Script" uid="uid://r7bhwy0jfpk7" path="res://scenes/enemy/state_machine/StateMachine.gd" id="20_mv5lh"]
+[ext_resource type="Texture2D" uid="uid://drd32dydartq7" path="res://scenes/enemy/Sprites/ballybog_new/idle/bally_bellyrub.png" id="20_phxqg"]
 [ext_resource type="Script" uid="uid://dc3uc7qhwg03r" path="res://scenes/enemy/state_machine/idle_state.gd" id="21_6mmou"]
+[ext_resource type="Texture2D" uid="uid://cahysgebfxaqb" path="res://scenes/enemy/Sprites/ballybog_new/idle/bally_bellyrub_n.png" id="21_86kpf"]
+[ext_resource type="AudioStream" uid="uid://c2oqvd4e4tsyv" path="res://assets/audio/sfx/player/footsteps/FootStep-008.wav" id="21_iaicr"]
 [ext_resource type="Script" uid="uid://bg6gxealt4p8b" path="res://scenes/enemy/state_machine/Fighting.gd" id="22_dbqfk"]
+[ext_resource type="Texture2D" uid="uid://vqyj6bqstkc6" path="res://scenes/enemy/Sprites/ballybog_new/alert/bally_alert.png" id="22_pkfog"]
 [ext_resource type="Script" uid="uid://cyctjxnvvlo47" path="res://scenes/enemy/state_machine/Wander.gd" id="23_3m1id"]
+[ext_resource type="Texture2D" uid="uid://c4n44m5bobhg4" path="res://scenes/enemy/Sprites/ballybog_new/alert/bally_alert_n.png" id="23_d7tla"]
 [ext_resource type="Script" uid="uid://dlre0emi41dh1" path="res://scenes/enemy/state_machine/Chase.gd" id="24_q232k"]
 [ext_resource type="Animation" uid="uid://b6ga5k6b8stym" path="res://scenes/enemy/animations/Walk.res" id="25_nsc4k"]
+[ext_resource type="Script" uid="uid://d0y2am1bnroqw" path="res://scenes/enemy/investigateState.gd" id="26_28ajc"]
 [ext_resource type="Script" uid="uid://mjv5xwl3wbdm" path="res://scenes/enemy/combat/enemy_combat.gd" id="26_jppkf"]
 [ext_resource type="Script" uid="uid://cjs7vohjf5dsq" path="res://scenes/enemy/combat/enemy_combathand.gd" id="27_3ixwq"]
 [ext_resource type="Script" uid="uid://cjssruwuxjia0" path="res://scenes/combat/attack_sequence.gd" id="28_3jwaj"]
+[ext_resource type="AudioStream" uid="uid://78nk0cnbd7w0" path="res://assets/audio/sfx/enemy/ballybog/huh/Voices, Reaction, Huh, Suprised, Shocked, Loud, Meme Redesign SND140141.wav" id="29_2g7uo"]
+[ext_resource type="AudioStream" uid="uid://0xpm0o2jyheg" path="res://assets/audio/sfx/enemy/ballybog/Rub/Objects, Fashion, Makeup, Sponge, Beautyblender, Single Strokes On Skin SND123478 1.wav" id="29_28ajc"]
 [ext_resource type="Resource" uid="uid://bo6jynbmofv6l" path="res://scenes/enemy/combat/attacks/attckseq_bb_test.tres" id="29_pydrg"]
+[ext_resource type="AudioStream" uid="uid://bv4qewq6vcxos" path="res://assets/audio/sfx/enemy/ballybog/Rub/Objects, Fashion, Makeup, Sponge, Beautyblender, Single Strokes On Skin SND123478 2.wav" id="30_2g7uo"]
 [ext_resource type="Script" uid="uid://c27axnnaakeuo" path="res://scenes/combat/combathand_attack.gd" id="30_me4q8"]
+[ext_resource type="AudioStream" uid="uid://cq8qurbwpxf5m" path="res://assets/audio/sfx/enemy/ballybog/Rub/Objects, Fashion, Makeup, Sponge, Beautyblender, Single Strokes On Skin SND123478 3.wav" id="31_k3ua6"]
 [ext_resource type="Script" uid="uid://446bgqyk22na" path="res://scenes/combat/stance.gd" id="31_xnhkk"]
 [ext_resource type="Script" uid="uid://gmvwnhalcf7" path="res://scenes/enemy/enemy_hitbox_temp.gd" id="32_7kval"]
+[ext_resource type="AudioStream" uid="uid://dw0b6scbtxfkk" path="res://assets/audio/sfx/enemy/ballybog/Rub/Objects, Fashion, Makeup, Sponge, Beautyblender, Single Strokes On Skin SND123478 4.wav" id="32_pts2q"]
+[ext_resource type="AudioStream" uid="uid://c3t7pm5ip3juj" path="res://assets/audio/sfx/enemy/ballybog/Rub/Objects, Fashion, Makeup, Sponge, Beautyblender, Single Strokes On Skin SND123478.wav" id="33_phxqg"]
 [ext_resource type="Script" uid="uid://46pp7aerorca" path="res://scripts/stats.gd" id="35_pydrg"]
 [ext_resource type="Texture2D" uid="uid://2t1cw83o71dn" path="res://assets/ui/combat/enemy_border.png" id="36_me4q8"]
 [ext_resource type="Script" uid="uid://byyeneqtnv43x" path="res://scripts/match_pos.gd" id="36_xnhkk"]
@@ -41,7 +50,7 @@
 radius = 0.43391418
 height = 0.86782837
 
-[sub_resource type="Shader" id="Shader_lgmkq"]
+[sub_resource type="Shader" id="Shader_l3c6t"]
 code = "shader_type spatial;
 render_mode diffuse_lambert_wrap,cull_disabled;
 
@@ -118,83 +127,72 @@ void fragment() {
 }
 "
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_28ajc"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_lngu7"]
 render_priority = 0
-shader = SubResource("Shader_lgmkq")
-shader_parameter/rows = 5.0
+shader = SubResource("Shader_l3c6t")
+shader_parameter/rows = 1.0
 shader_parameter/columns = 8.0
 shader_parameter/frame = 1.0
 shader_parameter/invert_rows_columns = false
-shader_parameter/sprite = ExtResource("2_c8yoh")
+shader_parameter/sprite = ExtResource("22_pkfog")
 shader_parameter/mode = 0
-shader_parameter/Normal = ExtResource("1_mpywb")
+shader_parameter/Normal = ExtResource("23_d7tla")
 
-[sub_resource type="PlaneMesh" id="PlaneMesh_2g7uo"]
-material = SubResource("ShaderMaterial_28ajc")
-size = Vector2(1.7279999, 1.7279999)
+[sub_resource type="PlaneMesh" id="PlaneMesh_fe3o4"]
+material = SubResource("ShaderMaterial_lngu7")
+size = Vector2(0.86399996, 0.86399996)
 orientation = 2
 
-[sub_resource type="Resource" id="Resource_k3ua6"]
-script = ExtResource("4_v1swk")
-sprite = ExtResource("5_ma74y")
-texture_normal = ExtResource("6_owush")
-columns = 8.0
-
-[sub_resource type="Resource" id="Resource_pts2q"]
+[sub_resource type="Resource" id="Resource_njbw1"]
 script = ExtResource("4_v1swk")
 name = "walk"
-sprite = ExtResource("2_c8yoh")
-texture_normal = ExtResource("1_mpywb")
+sprite = ExtResource("6_l3c6t")
+texture_normal = ExtResource("7_lngu7")
 rows = 5.0
 columns = 8.0
 
-[sub_resource type="Resource" id="Resource_phxqg"]
+[sub_resource type="Resource" id="Resource_hu1w4"]
 script = ExtResource("4_v1swk")
-name = "Attack_LbBottom"
-sprite = ExtResource("7_tvq6p")
-texture_normal = ExtResource("8_mwxs5")
+name = "Attack"
+sprite = ExtResource("3_5ussm")
+texture_normal = ExtResource("2_p6ydp")
 rows = 2.0
 columns = 8.0
 
-[sub_resource type="Resource" id="Resource_86kpf"]
+[sub_resource type="Resource" id="Resource_lgmkq"]
 script = ExtResource("4_v1swk")
-name = "Attack_LMid"
-sprite = ExtResource("9_jppkf")
-texture_normal = ExtResource("10_3ixwq")
+name = "idle_rub"
+sprite = ExtResource("20_phxqg")
+texture_normal = ExtResource("21_86kpf")
+rows = 3.0
+columns = 8.0
+
+[sub_resource type="Resource" id="Resource_28ajc"]
+script = ExtResource("4_v1swk")
+name = "Alert"
+sprite = ExtResource("22_pkfog")
+texture_normal = ExtResource("23_d7tla")
+columns = 8.0
+
+[sub_resource type="Resource" id="Resource_2g7uo"]
+script = ExtResource("4_v1swk")
+name = "Stunned"
+sprite = ExtResource("12_l3c6t")
+texture_normal = ExtResource("13_lngu7")
 rows = 2.0
 columns = 8.0
 
-[sub_resource type="Resource" id="Resource_pkfog"]
-script = ExtResource("4_v1swk")
-name = "Attack_LTop"
-sprite = ExtResource("11_3jwaj")
-texture_normal = ExtResource("12_pydrg")
-rows = 2.0
-columns = 8.0
-
-[sub_resource type="Resource" id="Resource_d7tla"]
-script = ExtResource("4_v1swk")
-name = "Attack_RBottom"
-sprite = ExtResource("13_me4q8")
-texture_normal = ExtResource("14_xnhkk")
-rows = 2.0
-columns = 8.0
-
-[sub_resource type="Resource" id="Resource_8vrwc"]
-script = ExtResource("4_v1swk")
-name = "Attack_RMid"
-sprite = ExtResource("15_7kval")
-texture_normal = ExtResource("16_th4g8")
-rows = 2.0
-columns = 8.0
-
-[sub_resource type="Resource" id="Resource_iaicr"]
-script = ExtResource("4_v1swk")
-name = "Attack_RTop"
-sprite = ExtResource("17_u7c7l")
-texture_normal = ExtResource("18_nfjh2")
-rows = 2.0
-columns = 8.0
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_600hx"]
+streams_count = 9
+stream_0/stream = ExtResource("14_k3ua6")
+stream_1/stream = ExtResource("15_pts2q")
+stream_2/stream = ExtResource("16_phxqg")
+stream_3/stream = ExtResource("17_86kpf")
+stream_4/stream = ExtResource("18_pkfog")
+stream_5/stream = ExtResource("18_pkfog")
+stream_6/stream = ExtResource("19_d7tla")
+stream_7/stream = ExtResource("20_8vrwc")
+stream_8/stream = ExtResource("21_iaicr")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_3ixwq"]
 size = Vector3(0.05, 1, 2)
@@ -218,6 +216,75 @@ height = 1.1
 playback_mode = 1
 random_pitch = 1.1
 streams_count = 1
+
+[sub_resource type="Animation" id="Animation_njbw1"]
+resource_name = "Alert"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 0
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:animation")
+tracks/1/interp = 0
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [3]
+}
+tracks/2/type = "audio"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../Scratch_audio")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("29_2g7uo")
+}],
+"times": PackedFloat32Array(0.033333335)
+}
+tracks/2/use_blend = true
+
+[sub_resource type="Animation" id="Animation_l3c6t"]
+resource_name = "AttackN"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:animation")
+tracks/0/interp = 0
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:frame")
+tracks/1/interp = 0
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 1.0]
+}
 
 [sub_resource type="Animation" id="Animation_cangh"]
 resource_name = "Attack_LBottom"
@@ -408,6 +475,71 @@ tracks/1/keys = {
 "update": 0,
 "values": [0.0]
 }
+
+[sub_resource type="Animation" id="Animation_p6ydp"]
+resource_name = "Idle2"
+length = 2.5
+loop_mode = 1
+step = 0.0167
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 0
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1, 1.5, 2, 2.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [1.0, 2.0, 0.0, 1.0, 2.0, 0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:animation")
+tracks/1/interp = 0
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [2]
+}
+tracks/2/type = "audio"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../Scratch_audio")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("29_28ajc")
+}, {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("30_2g7uo")
+}, {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("31_k3ua6")
+}, {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("32_pts2q")
+}, {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("33_phxqg")
+}, {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("30_2g7uo")
+}],
+"times": PackedFloat32Array(0, 0.55, 1.0166667, 1.4166666, 2.0333333, 2.4166667)
+}
+tracks/2/use_blend = true
 
 [sub_resource type="Animation" id="Animation_7p6et"]
 resource_name = "OLD__Attack_LBottom"
@@ -653,6 +785,34 @@ tracks/1/keys = {
 "values": [1.0, 1.0]
 }
 
+[sub_resource type="Animation" id="Animation_hu1w4"]
+resource_name = "Stunned"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:animation")
+tracks/0/interp = 0
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [4]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:frame")
+tracks/1/interp = 0
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.26666668),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 1.0]
+}
+
 [sub_resource type="Animation" id="Animation_vx87h"]
 resource_name = "Telegraph_LBottom"
 length = 0.001
@@ -821,6 +981,36 @@ tracks/1/keys = {
 "values": [0.0]
 }
 
+[sub_resource type="Animation" id="Animation_lgmkq"]
+resource_name = "Walk2"
+length = 1.5
+loop_mode = 1
+step = 0.016666668
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:animation")
+tracks/0/interp = 0
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:frame")
+tracks/1/interp = 0
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.6, 0.9, 1.2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [1.0, 2.0, 3.0, 4.0, 0.0]
+}
+
 [sub_resource type="Animation" id="Animation_g8xqt"]
 resource_name = "test_walk"
 length = 1.1
@@ -840,6 +1030,8 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_khln7"]
 _data = {
+&"Alert": SubResource("Animation_njbw1"),
+&"AttackN": SubResource("Animation_l3c6t"),
 &"Attack_LBottom": SubResource("Animation_cangh"),
 &"Attack_LMid": SubResource("Animation_3o7nl"),
 &"Attack_LTop": SubResource("Animation_8sfa5"),
@@ -847,6 +1039,7 @@ _data = {
 &"Attack_RMid": SubResource("Animation_7o52w"),
 &"Attack_RTop": SubResource("Animation_v2g1a"),
 &"Idle": SubResource("Animation_e8ov3"),
+&"Idle2": SubResource("Animation_p6ydp"),
 &"OLD__Attack_LBottom": SubResource("Animation_7p6et"),
 &"OLD__Attack_RMid": SubResource("Animation_om1c7"),
 &"OLD__Attack_RTop": SubResource("Animation_2jpox"),
@@ -857,12 +1050,14 @@ _data = {
 &"Recover_RBottom": SubResource("Animation_3wbeg"),
 &"Recover_RMid": SubResource("Animation_84imu"),
 &"Recover_RTop": SubResource("Animation_hovqw"),
+&"Stunned": SubResource("Animation_hu1w4"),
 &"Telegraph_LBottom": SubResource("Animation_vx87h"),
 &"Telegraph_LMid": SubResource("Animation_r88ec"),
 &"Telegraph_LTop": SubResource("Animation_tkkut"),
 &"Telegraph_RBottom": SubResource("Animation_rcnqh"),
 &"Telegraph_RMid": SubResource("Animation_w4frb"),
 &"Telegraph_RTop": SubResource("Animation_7kheq"),
+&"Walk2": SubResource("Animation_lgmkq"),
 &"test_walk": SubResource("Animation_g8xqt")
 }
 
@@ -899,113 +1094,137 @@ billboard_mode = 1
 resource_local_to_scene = true
 material = SubResource("StandardMaterial3D_pydrg")
 
-[node name="Enemy_presset" type="CharacterBody3D"]
+[node name="Enemy_presset" type="CharacterBody3D" unique_id=1712475425]
 script = ExtResource("1_3ixwq")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.4198761, 0)
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1647824731]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.3947841, 0)
 shape = SubResource("CapsuleShape3D_abuop")
 
-[node name="Sprite3DBillBoard" type="MeshInstance3D" parent="."]
-transform = Transform3D(-1, 0, -1.509958e-07, 0, 1, 0, 1.509958e-07, 0, -1, 0, 0.75682235, 0)
+[node name="Sprite3DBillBoard" type="MeshInstance3D" parent="." unique_id=589909567]
+transform = Transform3D(-1, 0, -1.509958e-07, 0, 1, 0, 1.509958e-07, 0, -1, 0, 0.41404969, 0)
 layers = 3
 sorting_offset = 1.0
-mesh = SubResource("PlaneMesh_2g7uo")
+mesh = SubResource("PlaneMesh_fe3o4")
 script = ExtResource("3_j08hu")
-animations_array = Array[ExtResource("4_v1swk")]([SubResource("Resource_k3ua6"), SubResource("Resource_pts2q"), SubResource("Resource_phxqg"), SubResource("Resource_86kpf"), SubResource("Resource_pkfog"), SubResource("Resource_d7tla"), SubResource("Resource_8vrwc"), SubResource("Resource_iaicr")])
-animation = 1
+animations_array = Array[ExtResource("4_v1swk")]([SubResource("Resource_njbw1"), SubResource("Resource_hu1w4"), SubResource("Resource_lgmkq"), SubResource("Resource_28ajc"), SubResource("Resource_2g7uo")])
+animation = 3
 frame = 1.0
 sprite_scale = 0.0016
 metadata/_custom_type_script = "uid://b5653u7w56pqw"
 
-[node name="SM_controller" type="Node" parent="." node_paths=PackedStringArray("node_StateMachine")]
+[node name="SoundsWalkAndIdle" type="AudioStreamPlayer3D" parent="." unique_id=1181251130]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.06243205, 0)
+stream = SubResource("AudioStreamRandomizer_600hx")
+
+[node name="Scratch_audio" type="AudioStreamPlayer3D" parent="." unique_id=736477142]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.06243205, 0)
+
+[node name="SM_controller" type="Node" parent="." unique_id=2065948807 node_paths=PackedStringArray("node_StateMachine")]
 script = ExtResource("19_u7shv")
 node_StateMachine = NodePath("../StateMachine")
 
-[node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("Init_node_state")]
+[node name="StateMachine" type="Node" parent="." unique_id=175799109 node_paths=PackedStringArray("Init_node_state")]
 script = ExtResource("20_mv5lh")
 Init_node_state = NodePath("Wander")
 
-[node name="IdleState" type="Node" parent="StateMachine" node_paths=PackedStringArray("Body", "Sprite", "SM", "Animator")]
+[node name="IdleState" type="Node" parent="StateMachine" unique_id=1009443271 node_paths=PackedStringArray("Body", "Sprite", "SM", "Animator")]
 script = ExtResource("21_6mmou")
 Body = NodePath("../..")
 Sprite = NodePath("../../Sprite3DBillBoard")
 SM = NodePath("..")
 Animator = NodePath("../../AnimationPlayer")
 
-[node name="Fighting" type="Node" parent="StateMachine" node_paths=PackedStringArray("combat", "Body", "SM", "Animator")]
+[node name="Fighting" type="Node" parent="StateMachine" unique_id=771065481 node_paths=PackedStringArray("combat", "Body", "SM", "Animator")]
 script = ExtResource("22_dbqfk")
 combat = NodePath("../../Combat")
 Body = NodePath("../..")
 SM = NodePath("..")
 Animator = NodePath("../../AnimationPlayer")
 
-[node name="Wander" type="Node" parent="StateMachine" node_paths=PackedStringArray("Body", "Sprite", "SM", "Animator")]
+[node name="Wander" type="Node" parent="StateMachine" unique_id=223225635 node_paths=PackedStringArray("Body", "Sprite", "footstep_audio", "SM", "Animator")]
 script = ExtResource("23_3m1id")
 Body = NodePath("../..")
 Sprite = NodePath("../../Sprite3DBillBoard")
+footstep_audio = NodePath("../../SoundsWalkAndIdle")
 SM = NodePath("..")
 Animator = NodePath("../../AnimationPlayer")
 
-[node name="Timer" type="Timer" parent="StateMachine/Wander"]
+[node name="Timer" type="Timer" parent="StateMachine/Wander" unique_id=848685568]
 process_callback = 0
 wait_time = 7.0
 one_shot = true
 
-[node name="Chase" type="Node" parent="StateMachine" node_paths=PackedStringArray("Body", "Sprite", "SM", "Animator")]
+[node name="Chase" type="Node" parent="StateMachine" unique_id=1073349157 node_paths=PackedStringArray("Body", "Sprite", "footstep_audio", "SM", "Animator")]
 script = ExtResource("24_q232k")
 Body = NodePath("../..")
 Sprite = NodePath("../../Sprite3DBillBoard")
+footstep_audio = NodePath("../../SoundsWalkAndIdle")
+Debug_draw = true
 SM = NodePath("..")
 Animator = NodePath("../../AnimationPlayer")
 
-[node name="Timer" type="Timer" parent="StateMachine/Chase"]
+[node name="Timer" type="Timer" parent="StateMachine/Chase" unique_id=1875391046]
 process_callback = 0
 wait_time = 5.0
 one_shot = true
 
-[node name="Area3D" type="Area3D" parent="." groups=["Player"]]
+[node name="Investegate" type="Node" parent="StateMachine" unique_id=1316965168 node_paths=PackedStringArray("Body", "Sprite", "footstep_audio", "SM", "Animator")]
+script = ExtResource("26_28ajc")
+Body = NodePath("../..")
+Sprite = NodePath("../../Sprite3DBillBoard")
+footstep_audio = NodePath("../../SoundsWalkAndIdle")
+Debug_draw = true
+SM = NodePath("..")
+Animator = NodePath("../../AnimationPlayer")
+
+[node name="Timer" type="Timer" parent="StateMachine/Investegate" unique_id=509255129]
+process_callback = 0
+wait_time = 10.0
+one_shot = true
+
+[node name="Area3D" type="Area3D" parent="." unique_id=1416647770 groups=["Player"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.59447724, 0)
 collision_layer = 0
 monitorable = false
 
-[node name="Fight area" type="CollisionShape3D" parent="Area3D"]
+[node name="Fight area" type="CollisionShape3D" parent="Area3D" unique_id=52286080]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.4901161e-08, 0, 0)
 shape = SubResource("BoxShape3D_3ixwq")
 debug_color = Color(0.95096534, 2.0214916e-06, 0.56154376, 0.41960785)
 
-[node name="Fight area2" type="CollisionShape3D" parent="Area3D"]
+[node name="Fight area2" type="CollisionShape3D" parent="Area3D" unique_id=391521035]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -1.4901161e-08, 0, 0)
 shape = SubResource("BoxShape3D_pydrg")
 debug_color = Color(0.95096534, 2.0214916e-06, 0.56154376, 0.41960785)
 
-[node name="Area3D2" type="Area3D" parent="."]
+[node name="Area3D2(Close)" type="Area3D" parent="." unique_id=1081450715]
 transform = Transform3D(0.495, 0, 0, 0, 0.495, 0, 0, 0, 0.495, 0, 0.59447724, 0)
 collision_layer = 0
 monitorable = false
 
-[node name="Vision_Hearing" type="CollisionShape3D" parent="Area3D2"]
+[node name="Vision_Hearing" type="CollisionShape3D" parent="Area3D2(Close)" unique_id=294735946]
 transform = Transform3D(0.99999696, 0, 0, 0, 0.99999696, 0, 0, 0, 0.99999696, 0, 0, 0)
 shape = SubResource("CylinderShape3D_om1c7")
 debug_color = Color(0.7989152, 0.38141474, 0.47244918, 0.41960785)
 
-[node name="Aggro" type="Area3D" parent="."]
+[node name="Aggro(Far)" type="Area3D" parent="." unique_id=1322448997]
 transform = Transform3D(0.495, 0, 0, 0, 0.495, 0, 0, 0, 0.495, 0, 0.59447724, 0)
 collision_layer = 0
 monitorable = false
 
-[node name="Vision_Hearing" type="CollisionShape3D" parent="Aggro"]
+[node name="Vision_Hearing" type="CollisionShape3D" parent="Aggro(Far)" unique_id=693395566]
 transform = Transform3D(0.99999696, 0, 0, 0, 0.99999696, 0, 0, 0, 0.99999696, 0, 0, 0)
 shape = SubResource("CylinderShape3D_pydrg")
 debug_color = Color(0.62382853, 0.49057347, 0.55874586, 0.41960785)
 
-[node name="Combat" type="Node" parent="." node_paths=PackedStringArray("combat_ui", "combat_hands", "stance")]
+[node name="Combat" type="Node" parent="." unique_id=2133089730 node_paths=PackedStringArray("combat_ui", "combat_hands", "stance")]
 script = ExtResource("26_jppkf")
 combat_ui = NodePath("../Stats/Node3D/SubViewport/Control")
 combat_hands = [NodePath("CombatHand")]
 stance = NodePath("Stance")
 
-[node name="CombatHand" type="Node" parent="Combat" node_paths=PackedStringArray("defense_timer", "my_stance", "anim_player", "block_audio_player") groups=["EnemyCombatHand"]]
+[node name="CombatHand" type="Node" parent="Combat" unique_id=247325064 node_paths=PackedStringArray("defense_timer", "my_stance", "anim_player", "block_audio_player") groups=["EnemyCombatHand"]]
 script = ExtResource("27_3ixwq")
 defense_timer = NodePath("Timer_Defence")
 attack_sequences = Array[ExtResource("28_3jwaj")]([ExtResource("29_pydrg")])
@@ -1016,38 +1235,38 @@ anim_player = NodePath("../../AnimationPlayer")
 block_audio_player = NodePath("BlockSfx")
 metadata/_custom_type_script = "uid://cjs7vohjf5dsq"
 
-[node name="Attack" type="Node" parent="Combat/CombatHand"]
+[node name="Attack" type="Node" parent="Combat/CombatHand" unique_id=1521673840]
 script = ExtResource("30_me4q8")
 player_current_attack = ExtResource("29_pydrg")
 metadata/_custom_type_script = "uid://c27axnnaakeuo"
 
-[node name="Timer_Telegraph" type="Timer" parent="Combat/CombatHand/Attack"]
+[node name="Timer_Telegraph" type="Timer" parent="Combat/CombatHand/Attack" unique_id=171242386]
 one_shot = true
 
-[node name="Timer_Attack" type="Timer" parent="Combat/CombatHand/Attack"]
+[node name="Timer_Attack" type="Timer" parent="Combat/CombatHand/Attack" unique_id=1960170157]
 one_shot = true
 
-[node name="Timer_Recover" type="Timer" parent="Combat/CombatHand/Attack"]
+[node name="Timer_Recover" type="Timer" parent="Combat/CombatHand/Attack" unique_id=1790592525]
 one_shot = true
 
-[node name="AttackSFX" type="AudioStreamPlayer3D" parent="Combat/CombatHand/Attack"]
+[node name="AttackSFX" type="AudioStreamPlayer3D" parent="Combat/CombatHand/Attack" unique_id=1027872838]
 stream = SubResource("AudioStreamRandomizer_u7c7l")
 
-[node name="Timer_Stagger" type="Timer" parent="Combat/CombatHand"]
+[node name="Timer_Stagger" type="Timer" parent="Combat/CombatHand" unique_id=1815438931]
 
-[node name="Timer_Defence" type="Timer" parent="Combat/CombatHand"]
+[node name="Timer_Defence" type="Timer" parent="Combat/CombatHand" unique_id=192912541]
 one_shot = true
 
-[node name="BlockSfx" type="AudioStreamPlayer3D" parent="Combat/CombatHand"]
+[node name="BlockSfx" type="AudioStreamPlayer3D" parent="Combat/CombatHand" unique_id=1445686899]
 stream = SubResource("AudioStreamRandomizer_u7c7l")
 
-[node name="Stance" type="Node" parent="Combat" node_paths=PackedStringArray("hands", "stats")]
+[node name="Stance" type="Node" parent="Combat" unique_id=2121410562 node_paths=PackedStringArray("hands", "stats")]
 script = ExtResource("31_xnhkk")
 hands = [NodePath("../CombatHand")]
 stats = NodePath("../../Stats")
 metadata/_custom_type_script = "uid://446bgqyk22na"
 
-[node name="Hitbox" type="Area3D" parent="." node_paths=PackedStringArray("combat")]
+[node name="Hitbox" type="Area3D" parent="." unique_id=165606757 node_paths=PackedStringArray("combat")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.1, 0)
 collision_layer = 131072
 collision_mask = 0
@@ -1055,22 +1274,20 @@ monitoring = false
 script = ExtResource("32_7kval")
 combat = NodePath("../Combat")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Hitbox"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Hitbox" unique_id=1410370259]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.55, 0)
 shape = SubResource("CapsuleShape3D_nfjh2")
 
-[node name="HitSfx" type="AudioStreamPlayer3D" parent="."]
+[node name="HitSfx" type="AudioStreamPlayer3D" parent="." unique_id=1621843565]
 stream = SubResource("AudioStreamRandomizer_u7shv")
 pitch_scale = 0.97
 bus = &"items"
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1554846371]
 root_node = NodePath("../Sprite3DBillBoard")
-libraries = {
-&"": SubResource("AnimationLibrary_khln7")
-}
+libraries/ = SubResource("AnimationLibrary_khln7")
 
-[node name="Stats" type="Node" parent="." node_paths=PackedStringArray("health_bar", "hit_sfx", "who_owns", "stam_bar")]
+[node name="Stats" type="Node" parent="." unique_id=1131594280 node_paths=PackedStringArray("health_bar", "hit_sfx", "who_owns", "stam_bar")]
 script = ExtResource("35_pydrg")
 health_bar = NodePath("Node3D/SubViewport/Control/Border/HealthBar")
 hit_sfx = NodePath("../HitSfx")
@@ -1078,14 +1295,14 @@ who_owns = NodePath("..")
 stam_bar = NodePath("Node3D/SubViewport/Control/Border/StamBar")
 metadata/_custom_type_script = "uid://46pp7aerorca"
 
-[node name="Timer" type="Timer" parent="Stats"]
+[node name="Timer" type="Timer" parent="Stats" unique_id=1927817739]
 one_shot = true
 
-[node name="Node3D" type="Node3D" parent="Stats" node_paths=PackedStringArray("thing_to_follow")]
+[node name="Node3D" type="Node3D" parent="Stats" unique_id=705331015 node_paths=PackedStringArray("thing_to_follow")]
 script = ExtResource("36_xnhkk")
 thing_to_follow = NodePath("../..")
 
-[node name="SubViewport" type="SubViewport" parent="Stats/Node3D"]
+[node name="SubViewport" type="SubViewport" parent="Stats/Node3D" unique_id=1046520364]
 disable_3d = true
 transparent_bg = true
 handle_input_locally = false
@@ -1093,7 +1310,7 @@ gui_disable_input = true
 gui_embed_subwindows = true
 render_target_update_mode = 4
 
-[node name="Control" type="Control" parent="Stats/Node3D/SubViewport"]
+[node name="Control" type="Control" parent="Stats/Node3D/SubViewport" unique_id=1050279257]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -1103,7 +1320,7 @@ grow_vertical = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="Border" type="TextureRect" parent="Stats/Node3D/SubViewport/Control"]
+[node name="Border" type="TextureRect" parent="Stats/Node3D/SubViewport/Control" unique_id=623842342]
 custom_minimum_size = Vector2(501.7228, 57.799988)
 layout_mode = 1
 anchors_preset = -1
@@ -1118,7 +1335,7 @@ texture = ExtResource("36_me4q8")
 expand_mode = 1
 metadata/_edit_use_anchors_ = true
 
-[node name="HealthBar" type="ProgressBar" parent="Stats/Node3D/SubViewport/Control/Border"]
+[node name="HealthBar" type="ProgressBar" parent="Stats/Node3D/SubViewport/Control/Border" unique_id=206664893]
 show_behind_parent = true
 z_index = 1
 layout_mode = 1
@@ -1132,7 +1349,7 @@ value = 100.0
 show_percentage = false
 metadata/_edit_use_anchors_ = true
 
-[node name="StamBar" type="ProgressBar" parent="Stats/Node3D/SubViewport/Control/Border"]
+[node name="StamBar" type="ProgressBar" parent="Stats/Node3D/SubViewport/Control/Border" unique_id=461389161]
 visible = false
 show_behind_parent = true
 layout_mode = 1
@@ -1146,8 +1363,8 @@ value = 100.0
 show_percentage = false
 metadata/_edit_use_anchors_ = true
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Stats/Node3D"]
-transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 0, 1.3, 0)
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Stats/Node3D" unique_id=1954259503]
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 0, 1.3992093, 0)
 mesh = SubResource("QuadMesh_pydrg")
 
 [connection signal="timeout" from="StateMachine/Wander/Timer" to="StateMachine/Wander" method="_on_timer_timeout"]
@@ -1156,9 +1373,10 @@ mesh = SubResource("QuadMesh_pydrg")
 [connection signal="area_shape_exited" from="Area3D" to="StateMachine/Fighting" method="_on_area_3d_area_shape_exited"]
 [connection signal="body_shape_entered" from="Area3D" to="SM_controller" method="_on_area_3d_body_shape_entered"]
 [connection signal="body_shape_exited" from="Area3D" to="SM_controller" method="_on_area_3d_body_shape_exited"]
-[connection signal="area_entered" from="Area3D2" to="StateMachine/Wander" method="_on_area_3d_2_area_entered"]
-[connection signal="area_entered" from="Area3D2" to="StateMachine/Chase" method="_on_area_3d_2_area_entered"]
-[connection signal="area_exited" from="Aggro" to="StateMachine/Chase" method="_on_area_3d_2_area_exited"]
+[connection signal="area_entered" from="Area3D2(Close)" to="StateMachine/Wander" method="_on_area_3d_2_area_entered"]
+[connection signal="area_entered" from="Area3D2(Close)" to="StateMachine/Chase" method="_on_area_3d_2_area_entered"]
+[connection signal="area_entered" from="Aggro(Far)" to="StateMachine/Wander" method="_on_aggro_far_area_entered"]
+[connection signal="area_exited" from="Aggro(Far)" to="StateMachine/Chase" method="_on_area_3d_2_area_exited"]
 [connection signal="timeout" from="Combat/CombatHand/Attack/Timer_Telegraph" to="Combat/CombatHand/Attack" method="end_telegraph"]
 [connection signal="timeout" from="Combat/CombatHand/Attack/Timer_Attack" to="Combat/CombatHand/Attack" method="end_attack"]
 [connection signal="timeout" from="Combat/CombatHand/Attack/Timer_Recover" to="Combat/CombatHand/Attack" method="end_recover"]

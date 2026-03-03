@@ -8,6 +8,7 @@ extends NodeState
 @export var player_tile: Vector3i = Vector3i(-2,0,18)
 @onready var grid_map: GridMapPathFinding 
 @export var footstep_audio: AudioStreamPlayer3D
+
 @export var Debug_draw: bool
 
 # Animator for what to play
@@ -22,6 +23,7 @@ var curr_pos : int
 var curr_posV : Vector3
 var curr_posPlayerV: Vector3
 var player : PlayerTest
+var interest
 var inVision : bool
 var current_point: int
 
@@ -35,7 +37,7 @@ func on_process(delta : float):
 	#get_pos()
 	if Debug_draw :
 		if Input.is_key_pressed(KEY_0): 
-			get_pos()
+			get_pos_item()
 			find_path()
 		DebugPath()
 
@@ -44,10 +46,13 @@ func enter():
 	grid_map =get_tree().get_first_node_in_group("GMPF")
 	grid_map.setup_astar_grid(grid_map.walkable_items)
 	prints(grid_map.walkable_items)
-	player = get_tree().get_first_node_in_group("Player")
-	Animator.play("Walk2",-1,0.5)
-	get_pos()
+	interest = get_tree().get_first_node_in_group("Investegate")
+	Animator.play("Alert")
+	await get_tree().create_timer(1.5).timeout
+	Animator.play("Walk2")#-1,0.5)
+	get_pos_item()
 	find_path()
+	$Timer.start(8)
 	return path
 
 func exit():
@@ -55,10 +60,11 @@ func exit():
 	$Timer.stop()
 	pass
 	
-func get_pos():
+func get_pos_item():
 	#curr_posVi = Body.global_position
 	#curr_posPlayerVi = player.global_position
-	curr_posPlayerV = grid_map.astar.get_closest_position_in_segment(player.get_child(1).global_position)      #Vector3(player.position.x,0,player.position.z)
+	## PLAYER IN THIS CASE IS ITEM THAT MADE THE NOISE!!!!
+	curr_posPlayerV = grid_map.astar.get_closest_position_in_segment(interest.get_child(0).global_position)      #Vector3(player.position.x,0,player.position.z)
 	#curr_pos = grid_map.astar.get_closest_point(Body.global_position)
 	curr_posV = grid_map.astar.get_closest_position_in_segment(Body.global_position)
 	prints(curr_posV, curr_posPlayerV,)
@@ -107,7 +113,7 @@ func get_next_target() -> void:
 	if path.size() <= 0:
 		return 
 	target_pos = path[0]
-	$Timer.start()
+	##$Timer.start()
 	
 
 func DebugPath():
@@ -140,17 +146,13 @@ func DebugPath():
 	#
 		
 
-
-func _on_area_3d_2_area_exited(area: Area3D) -> void:
+func _on_area_3d_2_area_entered(area: Area3D) -> void:
 	if area.owner is PlayerTest:
-		SM.transition_to("Wander")
+		SM.transition_to("Chase")
 	pass # Replace with function body.
 
-
 func _on_timer_timeout() -> void:
-	get_pos()
-	find_path()
-	$Timer.start()
+	SM.transition_to("Wander")
 	
 
 
