@@ -2,8 +2,10 @@
 
 [ext_resource type="Script" uid="uid://s5cfdf85lm5g" path="res://scenes/interactions/interactables/items/grabbable_item.gd" id="1_ajkq4"]
 [ext_resource type="Script" uid="uid://cqhq7vrwiw3m6" path="res://scenes/interactions/interactables/items/item_types/item_type.gd" id="2_8go1c"]
-[ext_resource type="Texture2D" uid="uid://cs7hb6d4m7ofv" path="res://assets/sprites/item_sprites/statue/statue_piece_head.png" id="3_ajkq4"]
+[ext_resource type="Texture2D" uid="uid://ckrk6cppausoy" path="res://assets/sprites/item_sprites/statue/statue_spritesheets/statue_piece_head_n.png" id="3_rci7l"]
 [ext_resource type="AudioStream" uid="uid://dutddyikwuiut" path="res://assets/audio/sfx/combat/misc/hittingsound_shorter.wav" id="4_r3poj"]
+[ext_resource type="Texture2D" uid="uid://ccrwcq4ub7lyd" path="res://assets/sprites/item_sprites/statue/statue_spritesheets/statue_piece_head.png" id="4_st7xe"]
+[ext_resource type="Script" uid="uid://dk36d8kuwrwnv" path="res://addons/extras_sprites/scripts/simple_sprite_3D_billboard.gd" id="5_8dsw0"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_llc7q"]
 
@@ -16,6 +18,99 @@ size = Vector3(0.5, 0.5, 0.5)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_234jp"]
 size = Vector3(0.4, 0.4, 0.4)
+
+[sub_resource type="Shader" id="Shader_l2co8"]
+code = "shader_type spatial;
+render_mode diffuse_lambert_wrap,cull_disabled;
+
+uniform float rows:hint_range(1.0, 100.0, 1) = 1;
+uniform float columns:hint_range(1.0, 100.0, 1) = 1;
+uniform float frame:hint_range(0.0, 100.0, 1) = 0;
+uniform bool invert_rows_columns = false;
+uniform sampler2D sprite:filter_nearest_mipmap;
+uniform int mode:hint_range(0, 1, 1) = 1;
+varying vec3 look_dir;
+uniform sampler2D Normal;
+
+
+float billboard_mode_a(vec3 CAMERA_POSITION,vec3 NODE_POSITION, mat4 MODEL_MAT,float directions){
+	vec3 direction_to_camera = normalize(CAMERA_POSITION-NODE_POSITION);
+	float angle_to_camera = atan(direction_to_camera.x,direction_to_camera.z);
+	vec4 model_direction = MODEL_MAT*vec4(1.0,0.0,0.0,0.0);
+	float y_angle = atan(model_direction.x,model_direction.z)-PI/2.0;
+	float final_angle = angle_to_camera-y_angle;
+	float int_y_angle = round((final_angle / TAU) * float(directions)) / float(directions);
+	return int_y_angle;
+}
+float billboard_mobe_b(vec3 CAMERA_POSITION,mat4 MODEL_MAT,mat4 VIEW_MAT,float directions,int ret){
+
+    vec3 ray_origin = CAMERA_POSITION;
+
+    vec3 object_origin = (MODEL_MAT * vec4(0.0,0.0,0.0,1.0)).xyz;
+    vec3 cam_dir = object_origin - ray_origin;
+    cam_dir = normalize((VIEW_MAT * vec4(cam_dir, 0.0)).xyz);
+
+    float angle = 180.0 - degrees(acos(dot(normalize(cam_dir.xz), normalize(look_dir.xz))));
+    float _direction = round(angle/180.0 * directions);
+
+    float flip = sign((look_dir.x * cam_dir.z) - (look_dir.z * cam_dir.x));
+
+    flip = mix(flip, 1.0, max(step(_direction, 0.0), step(directions, _direction)));
+	float retu = ret == 0 ? _direction : flip;
+	return retu ;
+}
+void vertex() {
+		 MODELVIEW_MATRIX = VIEW_MATRIX * mat4(vec4(normalize(cross(vec3(0.0, 1.0, 0.0), INV_VIEW_MATRIX[2].xyz)), 0.0), vec4(0.0, 1.0, 0.0, 0.0), vec4(normalize(cross(INV_VIEW_MATRIX[0].xyz, vec3(0.0, 1.0, 0.0))), 0.0), MODEL_MATRIX[3]);
+		look_dir = MODELVIEW_NORMAL_MATRIX * NORMAL;
+		MODELVIEW_NORMAL_MATRIX = mat3(MODELVIEW_MATRIX);
+	switch (mode){
+		case 0:
+			float y = invert_rows_columns == true ? billboard_mode_a(CAMERA_POSITION_WORLD,NODE_POSITION_WORLD,MODEL_MATRIX,rows) : billboard_mode_a(CAMERA_POSITION_WORLD,NODE_POSITION_WORLD,MODEL_MATRIX,columns);
+			float x = invert_rows_columns == true ? frame/columns:frame/rows;
+			UV /= vec2(rows,columns);
+			UV += invert_rows_columns == true ?vec2(y,x):vec2(x,y);
+			break;
+		case 1:
+			float x = invert_rows_columns == true ? frame/columns:frame/rows;
+			float y = billboard_mobe_b(CAMERA_POSITION_WORLD,MODEL_MATRIX,VIEW_MATRIX,rows,0);
+			float f = billboard_mobe_b(CAMERA_POSITION_WORLD,MODEL_MATRIX,VIEW_MATRIX,rows,1);
+			if (invert_rows_columns){
+				y = billboard_mobe_b(CAMERA_POSITION_WORLD,MODEL_MATRIX,VIEW_MATRIX,columns,0);
+				f = billboard_mobe_b(CAMERA_POSITION_WORLD,MODEL_MATRIX,VIEW_MATRIX,columns,1);
+			}
+			UV.y += invert_rows_columns == true ? x:y;
+			UV /=vec2(rows,columns);
+			UV.x +=  invert_rows_columns == true ? y : x;
+			UV *= invert_rows_columns == true ? vec2(1.0,f):vec2(f,1.0);
+			break;
+	};
+}
+
+void fragment() {
+	vec3 VNormal = texture(Normal,UV).rgb;
+	vec4 sprite_texture;
+	sprite_texture = texture(sprite,UV);
+	ALBEDO = sprite_texture.rgb;
+	ALPHA = sprite_texture.a;
+	NORMAL_MAP = VNormal;
+}
+"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ifrky"]
+render_priority = 0
+shader = SubResource("Shader_l2co8")
+shader_parameter/rows = 1.0
+shader_parameter/columns = 8.0
+shader_parameter/frame = 0.0
+shader_parameter/invert_rows_columns = false
+shader_parameter/sprite = ExtResource("4_st7xe")
+shader_parameter/mode = 0
+shader_parameter/Normal = ExtResource("3_rci7l")
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_3owfn"]
+material = SubResource("ShaderMaterial_ifrky")
+size = Vector2(0.512, 0.512)
+orientation = 2
 
 [node name="StatuePiece_Head" type="RigidBody3D" unique_id=234370081 node_paths=PackedStringArray("col", "grab_col", "idle_graphics") groups=["debug_PickableObjects"]]
 collision_layer = 2
@@ -33,7 +128,7 @@ keywords = "HEAD"
 item_weight = 3
 col = NodePath("CollisionShape3D")
 grab_col = NodePath("Area3D/CollisionShape3D2")
-idle_graphics = NodePath("_g_idle")
+idle_graphics = NodePath("")
 
 [node name="Area3D" type="Area3D" parent="." unique_id=1092598886]
 collision_layer = 2
@@ -45,13 +140,19 @@ shape = SubResource("BoxShape3D_llc7q")
 shape = SubResource("BoxShape3D_234jp")
 debug_color = Color(0.8442249, 0.37985525, 5.7756904e-07, 0.41960785)
 
-[node name="_g_idle" type="Sprite3D" parent="." unique_id=553540307]
+[node name="_g_idle" type="MeshInstance3D" parent="." unique_id=1013544370]
 layers = 4
-pixel_size = 0.0015
-billboard = 2
-double_sided = false
-render_priority = 1
-texture = ExtResource("3_ajkq4")
+mesh = SubResource("PlaneMesh_3owfn")
+script = ExtResource("5_8dsw0")
+sprite = ExtResource("4_st7xe")
+sprite_scale = 0.001
+texture_normal = ExtResource("3_rci7l")
+rows = 1.0
+columns = 8.0
+invert_rows_columns = false
+mode = 0
+frame = 0.0
+metadata/_custom_type_script = "uid://dk36d8kuwrwnv"
 
 [node name="AudioPlayer" type="AudioStreamPlayer3D" parent="." unique_id=20800557]
 stream = ExtResource("4_r3poj")

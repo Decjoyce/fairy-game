@@ -1,12 +1,435 @@
 [gd_scene format=3 uid="uid://b6yxusckbk4fk"]
 
+[ext_resource type="Texture2D" uid="uid://vahl7u1og8ht" path="res://assets/sprites/item_sprites/statue/statue_spritesheets/statue_broken_n.png" id="2_13x82"]
+[ext_resource type="Texture2D" uid="uid://bkotqhx10wian" path="res://assets/sprites/item_sprites/statue/statue_spritesheets/statue_broken.png" id="3_hcu48"]
 [ext_resource type="Script" uid="uid://djy3mmt6h4b4v" path="res://scenes/interactions/_special/statue_quest.gd" id="3_hdmdk"]
 [ext_resource type="Texture2D" uid="uid://cb7xd0q6n858t" path="res://assets/sprites/item_sprites/statue/statue_broken.png" id="3_is1r3"]
+[ext_resource type="Script" uid="uid://b5653u7w56pqw" path="res://addons/extras_sprites/scripts/sprite_3D_billboard.gd" id="4_84nn4"]
 [ext_resource type="Texture2D" uid="uid://bg1fprga403xf" path="res://assets/sprites/item_sprites/statue/statue_piece_base.png" id="4_is1r3"]
 [ext_resource type="Texture2D" uid="uid://drpai4o2ys0ws" path="res://assets/sprites/item_sprites/statue/statue_complete.png" id="4_js227"]
+[ext_resource type="Script" uid="uid://b4m0sglcg4smw" path="res://addons/extras_sprites/scripts/animatio_data.gd" id="5_2qsbx"]
 [ext_resource type="Texture2D" uid="uid://cs7hb6d4m7ofv" path="res://assets/sprites/item_sprites/statue/statue_piece_head.png" id="5_ijdkn"]
 [ext_resource type="Texture2D" uid="uid://708dtid1lpq2" path="res://assets/sprites/item_sprites/statue/statue_piece_arm.png" id="5_w1v47"]
+[ext_resource type="Texture2D" uid="uid://d26atksj8e8yj" path="res://assets/sprites/item_sprites/statue/statue_spritesheets/statue_complete.png" id="6_p27kb"]
+[ext_resource type="Texture2D" uid="uid://bji3q3mntuxdf" path="res://assets/sprites/item_sprites/statue/statue_spritesheets/statue_complete_n.png" id="7_qsil5"]
 [ext_resource type="Script" uid="uid://dsp7b0nc36qiw" path="res://scenes/interactions/_special/statue_receiver.gd" id="7_w1v47"]
+[ext_resource type="Texture2D" uid="uid://45unr26com5s" path="res://assets/sprites/item_sprites/statue/statue_spritesheets/statue_piece_arm_n.png" id="12_y3qa0"]
+[ext_resource type="Texture2D" uid="uid://cqvplgp1sfvfm" path="res://assets/sprites/item_sprites/statue/statue_spritesheets/statue_piece_arm.png" id="13_8gujr"]
+[ext_resource type="Texture2D" uid="uid://ckrk6cppausoy" path="res://assets/sprites/item_sprites/statue/statue_spritesheets/statue_piece_head_n.png" id="14_p27kb"]
+[ext_resource type="Texture2D" uid="uid://ccrwcq4ub7lyd" path="res://assets/sprites/item_sprites/statue/statue_spritesheets/statue_piece_head.png" id="15_qsil5"]
+[ext_resource type="Texture2D" uid="uid://d2qswsfpmfb18" path="res://assets/sprites/item_sprites/statue/statue_spritesheets/statue_piece_base_n.png" id="16_y3qa0"]
+[ext_resource type="Texture2D" uid="uid://cjjtpfsrqunad" path="res://assets/sprites/item_sprites/statue/statue_spritesheets/statue_piece_base.png" id="17_8gujr"]
+
+[sub_resource type="Shader" id="Shader_cxgkg"]
+code = "shader_type spatial;
+render_mode diffuse_lambert_wrap,cull_disabled;
+
+uniform float rows:hint_range(1.0, 100.0, 1) = 1;
+uniform float columns:hint_range(1.0, 100.0, 1) = 1;
+uniform float frame:hint_range(0.0, 100.0, 1) = 0;
+uniform bool invert_rows_columns = false;
+uniform sampler2D sprite:filter_nearest_mipmap;
+uniform int mode:hint_range(0, 1, 1) = 1;
+varying vec3 look_dir;
+uniform sampler2D Normal;
+
+
+float billboard_mode_a(vec3 CAMERA_POSITION,vec3 NODE_POSITION, mat4 MODEL_MAT,float directions){
+	vec3 direction_to_camera = normalize(CAMERA_POSITION-NODE_POSITION);
+	float angle_to_camera = atan(direction_to_camera.x,direction_to_camera.z);
+	vec4 model_direction = MODEL_MAT*vec4(1.0,0.0,0.0,0.0);
+	float y_angle = atan(model_direction.x,model_direction.z)-PI/2.0;
+	float final_angle = angle_to_camera-y_angle;
+	float int_y_angle = round((final_angle / TAU) * float(directions)) / float(directions);
+	return int_y_angle;
+}
+float billboard_mobe_b(vec3 CAMERA_POSITION,mat4 MODEL_MAT,mat4 VIEW_MAT,float directions,int ret){
+
+    vec3 ray_origin = CAMERA_POSITION;
+
+    vec3 object_origin = (MODEL_MAT * vec4(0.0,0.0,0.0,1.0)).xyz;
+    vec3 cam_dir = object_origin - ray_origin;
+    cam_dir = normalize((VIEW_MAT * vec4(cam_dir, 0.0)).xyz);
+
+    float angle = 180.0 - degrees(acos(dot(normalize(cam_dir.xz), normalize(look_dir.xz))));
+    float _direction = round(angle/180.0 * directions);
+
+    float flip = sign((look_dir.x * cam_dir.z) - (look_dir.z * cam_dir.x));
+
+    flip = mix(flip, 1.0, max(step(_direction, 0.0), step(directions, _direction)));
+	float retu = ret == 0 ? _direction : flip;
+	return retu ;
+}
+void vertex() {
+		 MODELVIEW_MATRIX = VIEW_MATRIX * mat4(vec4(normalize(cross(vec3(0.0, 1.0, 0.0), INV_VIEW_MATRIX[2].xyz)), 0.0), vec4(0.0, 1.0, 0.0, 0.0), vec4(normalize(cross(INV_VIEW_MATRIX[0].xyz, vec3(0.0, 1.0, 0.0))), 0.0), MODEL_MATRIX[3]);
+		look_dir = MODELVIEW_NORMAL_MATRIX * NORMAL;
+		MODELVIEW_NORMAL_MATRIX = mat3(MODELVIEW_MATRIX);
+	switch (mode){
+		case 0:
+			float y = invert_rows_columns == true ? billboard_mode_a(CAMERA_POSITION_WORLD,NODE_POSITION_WORLD,MODEL_MATRIX,rows) : billboard_mode_a(CAMERA_POSITION_WORLD,NODE_POSITION_WORLD,MODEL_MATRIX,columns);
+			float x = invert_rows_columns == true ? frame/columns:frame/rows;
+			UV /= vec2(rows,columns);
+			UV += invert_rows_columns == true ?vec2(y,x):vec2(x,y);
+			break;
+		case 1:
+			float x = invert_rows_columns == true ? frame/columns:frame/rows;
+			float y = billboard_mobe_b(CAMERA_POSITION_WORLD,MODEL_MATRIX,VIEW_MATRIX,rows,0);
+			float f = billboard_mobe_b(CAMERA_POSITION_WORLD,MODEL_MATRIX,VIEW_MATRIX,rows,1);
+			if (invert_rows_columns){
+				y = billboard_mobe_b(CAMERA_POSITION_WORLD,MODEL_MATRIX,VIEW_MATRIX,columns,0);
+				f = billboard_mobe_b(CAMERA_POSITION_WORLD,MODEL_MATRIX,VIEW_MATRIX,columns,1);
+			}
+			UV.y += invert_rows_columns == true ? x:y;
+			UV /=vec2(rows,columns);
+			UV.x +=  invert_rows_columns == true ? y : x;
+			UV *= invert_rows_columns == true ? vec2(1.0,f):vec2(f,1.0);
+			break;
+	};
+}
+
+void fragment() {
+	vec3 VNormal = texture(Normal,UV).rgb;
+	vec4 sprite_texture;
+	sprite_texture = texture(sprite,UV);
+	ALBEDO = sprite_texture.rgb;
+	ALPHA = sprite_texture.a;
+	NORMAL_MAP = VNormal;
+}
+"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_qqre5"]
+render_priority = 0
+shader = SubResource("Shader_cxgkg")
+shader_parameter/rows = 1.0
+shader_parameter/columns = 8.0
+shader_parameter/frame = 1.0
+shader_parameter/invert_rows_columns = false
+shader_parameter/sprite = ExtResource("3_hcu48")
+shader_parameter/mode = 0
+shader_parameter/Normal = ExtResource("2_13x82")
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_a6gt7"]
+material = SubResource("ShaderMaterial_qqre5")
+size = Vector2(3.072, 3.072)
+orientation = 2
+
+[sub_resource type="Resource" id="Resource_ggmr3"]
+script = ExtResource("5_2qsbx")
+name = "Unfinished"
+sprite = ExtResource("3_hcu48")
+texture_normal = ExtResource("2_13x82")
+columns = 8.0
+
+[sub_resource type="Resource" id="Resource_g0o23"]
+script = ExtResource("5_2qsbx")
+sprite = ExtResource("6_p27kb")
+texture_normal = ExtResource("7_qsil5")
+columns = 8.0
+
+[sub_resource type="Shader" id="Shader_mnpf4"]
+code = "shader_type spatial;
+render_mode diffuse_lambert_wrap,cull_disabled;
+
+uniform float rows:hint_range(1.0, 100.0, 1) = 1;
+uniform float columns:hint_range(1.0, 100.0, 1) = 1;
+uniform float frame:hint_range(0.0, 100.0, 1) = 0;
+uniform bool invert_rows_columns = false;
+uniform sampler2D sprite:filter_nearest_mipmap;
+uniform int mode:hint_range(0, 1, 1) = 1;
+varying vec3 look_dir;
+uniform sampler2D Normal;
+
+
+float billboard_mode_a(vec3 CAMERA_POSITION,vec3 NODE_POSITION, mat4 MODEL_MAT,float directions){
+	vec3 direction_to_camera = normalize(CAMERA_POSITION-NODE_POSITION);
+	float angle_to_camera = atan(direction_to_camera.x,direction_to_camera.z);
+	vec4 model_direction = MODEL_MAT*vec4(1.0,0.0,0.0,0.0);
+	float y_angle = atan(model_direction.x,model_direction.z)-PI/2.0;
+	float final_angle = angle_to_camera-y_angle;
+	float int_y_angle = round((final_angle / TAU) * float(directions)) / float(directions);
+	return int_y_angle;
+}
+float billboard_mobe_b(vec3 CAMERA_POSITION,mat4 MODEL_MAT,mat4 VIEW_MAT,float directions,int ret){
+
+    vec3 ray_origin = CAMERA_POSITION;
+
+    vec3 object_origin = (MODEL_MAT * vec4(0.0,0.0,0.0,1.0)).xyz;
+    vec3 cam_dir = object_origin - ray_origin;
+    cam_dir = normalize((VIEW_MAT * vec4(cam_dir, 0.0)).xyz);
+
+    float angle = 180.0 - degrees(acos(dot(normalize(cam_dir.xz), normalize(look_dir.xz))));
+    float _direction = round(angle/180.0 * directions);
+
+    float flip = sign((look_dir.x * cam_dir.z) - (look_dir.z * cam_dir.x));
+
+    flip = mix(flip, 1.0, max(step(_direction, 0.0), step(directions, _direction)));
+	float retu = ret == 0 ? _direction : flip;
+	return retu ;
+}
+void vertex() {
+		 MODELVIEW_MATRIX = VIEW_MATRIX * mat4(vec4(normalize(cross(vec3(0.0, 1.0, 0.0), INV_VIEW_MATRIX[2].xyz)), 0.0), vec4(0.0, 1.0, 0.0, 0.0), vec4(normalize(cross(INV_VIEW_MATRIX[0].xyz, vec3(0.0, 1.0, 0.0))), 0.0), MODEL_MATRIX[3]);
+		look_dir = MODELVIEW_NORMAL_MATRIX * NORMAL;
+		MODELVIEW_NORMAL_MATRIX = mat3(MODELVIEW_MATRIX);
+	switch (mode){
+		case 0:
+			float y = invert_rows_columns == true ? billboard_mode_a(CAMERA_POSITION_WORLD,NODE_POSITION_WORLD,MODEL_MATRIX,rows) : billboard_mode_a(CAMERA_POSITION_WORLD,NODE_POSITION_WORLD,MODEL_MATRIX,columns);
+			float x = invert_rows_columns == true ? frame/columns:frame/rows;
+			UV /= vec2(rows,columns);
+			UV += invert_rows_columns == true ?vec2(y,x):vec2(x,y);
+			break;
+		case 1:
+			float x = invert_rows_columns == true ? frame/columns:frame/rows;
+			float y = billboard_mobe_b(CAMERA_POSITION_WORLD,MODEL_MATRIX,VIEW_MATRIX,rows,0);
+			float f = billboard_mobe_b(CAMERA_POSITION_WORLD,MODEL_MATRIX,VIEW_MATRIX,rows,1);
+			if (invert_rows_columns){
+				y = billboard_mobe_b(CAMERA_POSITION_WORLD,MODEL_MATRIX,VIEW_MATRIX,columns,0);
+				f = billboard_mobe_b(CAMERA_POSITION_WORLD,MODEL_MATRIX,VIEW_MATRIX,columns,1);
+			}
+			UV.y += invert_rows_columns == true ? x:y;
+			UV /=vec2(rows,columns);
+			UV.x +=  invert_rows_columns == true ? y : x;
+			UV *= invert_rows_columns == true ? vec2(1.0,f):vec2(f,1.0);
+			break;
+	};
+}
+
+void fragment() {
+	vec3 VNormal = texture(Normal,UV).rgb;
+	vec4 sprite_texture;
+	sprite_texture = texture(sprite,UV);
+	ALBEDO = sprite_texture.rgb;
+	ALPHA = sprite_texture.a;
+	NORMAL_MAP = VNormal;
+}
+"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_784dv"]
+render_priority = 0
+shader = SubResource("Shader_mnpf4")
+shader_parameter/rows = 1.0
+shader_parameter/columns = 8.0
+shader_parameter/frame = 1.0
+shader_parameter/invert_rows_columns = false
+shader_parameter/sprite = ExtResource("13_8gujr")
+shader_parameter/mode = 0
+shader_parameter/Normal = ExtResource("12_y3qa0")
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_ooyj6"]
+material = SubResource("ShaderMaterial_784dv")
+size = Vector2(1.024, 1.024)
+orientation = 2
+
+[sub_resource type="Resource" id="Resource_8otom"]
+script = ExtResource("5_2qsbx")
+sprite = ExtResource("13_8gujr")
+texture_normal = ExtResource("12_y3qa0")
+columns = 8.0
+
+[sub_resource type="Shader" id="Shader_n2avn"]
+code = "shader_type spatial;
+render_mode diffuse_lambert_wrap,cull_disabled;
+
+uniform float rows:hint_range(1.0, 100.0, 1) = 1;
+uniform float columns:hint_range(1.0, 100.0, 1) = 1;
+uniform float frame:hint_range(0.0, 100.0, 1) = 0;
+uniform bool invert_rows_columns = false;
+uniform sampler2D sprite:filter_nearest_mipmap;
+uniform int mode:hint_range(0, 1, 1) = 1;
+varying vec3 look_dir;
+uniform sampler2D Normal;
+
+
+float billboard_mode_a(vec3 CAMERA_POSITION,vec3 NODE_POSITION, mat4 MODEL_MAT,float directions){
+	vec3 direction_to_camera = normalize(CAMERA_POSITION-NODE_POSITION);
+	float angle_to_camera = atan(direction_to_camera.x,direction_to_camera.z);
+	vec4 model_direction = MODEL_MAT*vec4(1.0,0.0,0.0,0.0);
+	float y_angle = atan(model_direction.x,model_direction.z)-PI/2.0;
+	float final_angle = angle_to_camera-y_angle;
+	float int_y_angle = round((final_angle / TAU) * float(directions)) / float(directions);
+	return int_y_angle;
+}
+float billboard_mobe_b(vec3 CAMERA_POSITION,mat4 MODEL_MAT,mat4 VIEW_MAT,float directions,int ret){
+
+    vec3 ray_origin = CAMERA_POSITION;
+
+    vec3 object_origin = (MODEL_MAT * vec4(0.0,0.0,0.0,1.0)).xyz;
+    vec3 cam_dir = object_origin - ray_origin;
+    cam_dir = normalize((VIEW_MAT * vec4(cam_dir, 0.0)).xyz);
+
+    float angle = 180.0 - degrees(acos(dot(normalize(cam_dir.xz), normalize(look_dir.xz))));
+    float _direction = round(angle/180.0 * directions);
+
+    float flip = sign((look_dir.x * cam_dir.z) - (look_dir.z * cam_dir.x));
+
+    flip = mix(flip, 1.0, max(step(_direction, 0.0), step(directions, _direction)));
+	float retu = ret == 0 ? _direction : flip;
+	return retu ;
+}
+void vertex() {
+		 MODELVIEW_MATRIX = VIEW_MATRIX * mat4(vec4(normalize(cross(vec3(0.0, 1.0, 0.0), INV_VIEW_MATRIX[2].xyz)), 0.0), vec4(0.0, 1.0, 0.0, 0.0), vec4(normalize(cross(INV_VIEW_MATRIX[0].xyz, vec3(0.0, 1.0, 0.0))), 0.0), MODEL_MATRIX[3]);
+		look_dir = MODELVIEW_NORMAL_MATRIX * NORMAL;
+		MODELVIEW_NORMAL_MATRIX = mat3(MODELVIEW_MATRIX);
+	switch (mode){
+		case 0:
+			float y = invert_rows_columns == true ? billboard_mode_a(CAMERA_POSITION_WORLD,NODE_POSITION_WORLD,MODEL_MATRIX,rows) : billboard_mode_a(CAMERA_POSITION_WORLD,NODE_POSITION_WORLD,MODEL_MATRIX,columns);
+			float x = invert_rows_columns == true ? frame/columns:frame/rows;
+			UV /= vec2(rows,columns);
+			UV += invert_rows_columns == true ?vec2(y,x):vec2(x,y);
+			break;
+		case 1:
+			float x = invert_rows_columns == true ? frame/columns:frame/rows;
+			float y = billboard_mobe_b(CAMERA_POSITION_WORLD,MODEL_MATRIX,VIEW_MATRIX,rows,0);
+			float f = billboard_mobe_b(CAMERA_POSITION_WORLD,MODEL_MATRIX,VIEW_MATRIX,rows,1);
+			if (invert_rows_columns){
+				y = billboard_mobe_b(CAMERA_POSITION_WORLD,MODEL_MATRIX,VIEW_MATRIX,columns,0);
+				f = billboard_mobe_b(CAMERA_POSITION_WORLD,MODEL_MATRIX,VIEW_MATRIX,columns,1);
+			}
+			UV.y += invert_rows_columns == true ? x:y;
+			UV /=vec2(rows,columns);
+			UV.x +=  invert_rows_columns == true ? y : x;
+			UV *= invert_rows_columns == true ? vec2(1.0,f):vec2(f,1.0);
+			break;
+	};
+}
+
+void fragment() {
+	vec3 VNormal = texture(Normal,UV).rgb;
+	vec4 sprite_texture;
+	sprite_texture = texture(sprite,UV);
+	ALBEDO = sprite_texture.rgb;
+	ALPHA = sprite_texture.a;
+	NORMAL_MAP = VNormal;
+}
+"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_qgi2v"]
+render_priority = 0
+shader = SubResource("Shader_n2avn")
+shader_parameter/rows = 1.0
+shader_parameter/columns = 8.0
+shader_parameter/frame = 1.0
+shader_parameter/invert_rows_columns = false
+shader_parameter/sprite = ExtResource("15_qsil5")
+shader_parameter/mode = 0
+shader_parameter/Normal = ExtResource("14_p27kb")
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_cbvg7"]
+material = SubResource("ShaderMaterial_qgi2v")
+size = Vector2(1.024, 1.024)
+orientation = 2
+
+[sub_resource type="Resource" id="Resource_cxgkg"]
+script = ExtResource("5_2qsbx")
+sprite = ExtResource("15_qsil5")
+texture_normal = ExtResource("14_p27kb")
+columns = 8.0
+
+[sub_resource type="Resource" id="Resource_qqre5"]
+script = ExtResource("5_2qsbx")
+name = "idlew"
+
+[sub_resource type="Shader" id="Shader_cv7br"]
+code = "shader_type spatial;
+render_mode diffuse_lambert_wrap,cull_disabled;
+
+uniform float rows:hint_range(1.0, 100.0, 1) = 1;
+uniform float columns:hint_range(1.0, 100.0, 1) = 1;
+uniform float frame:hint_range(0.0, 100.0, 1) = 0;
+uniform bool invert_rows_columns = false;
+uniform sampler2D sprite:filter_nearest_mipmap;
+uniform int mode:hint_range(0, 1, 1) = 1;
+varying vec3 look_dir;
+uniform sampler2D Normal;
+
+
+float billboard_mode_a(vec3 CAMERA_POSITION,vec3 NODE_POSITION, mat4 MODEL_MAT,float directions){
+	vec3 direction_to_camera = normalize(CAMERA_POSITION-NODE_POSITION);
+	float angle_to_camera = atan(direction_to_camera.x,direction_to_camera.z);
+	vec4 model_direction = MODEL_MAT*vec4(1.0,0.0,0.0,0.0);
+	float y_angle = atan(model_direction.x,model_direction.z)-PI/2.0;
+	float final_angle = angle_to_camera-y_angle;
+	float int_y_angle = round((final_angle / TAU) * float(directions)) / float(directions);
+	return int_y_angle;
+}
+float billboard_mobe_b(vec3 CAMERA_POSITION,mat4 MODEL_MAT,mat4 VIEW_MAT,float directions,int ret){
+
+    vec3 ray_origin = CAMERA_POSITION;
+
+    vec3 object_origin = (MODEL_MAT * vec4(0.0,0.0,0.0,1.0)).xyz;
+    vec3 cam_dir = object_origin - ray_origin;
+    cam_dir = normalize((VIEW_MAT * vec4(cam_dir, 0.0)).xyz);
+
+    float angle = 180.0 - degrees(acos(dot(normalize(cam_dir.xz), normalize(look_dir.xz))));
+    float _direction = round(angle/180.0 * directions);
+
+    float flip = sign((look_dir.x * cam_dir.z) - (look_dir.z * cam_dir.x));
+
+    flip = mix(flip, 1.0, max(step(_direction, 0.0), step(directions, _direction)));
+	float retu = ret == 0 ? _direction : flip;
+	return retu ;
+}
+void vertex() {
+		 MODELVIEW_MATRIX = VIEW_MATRIX * mat4(vec4(normalize(cross(vec3(0.0, 1.0, 0.0), INV_VIEW_MATRIX[2].xyz)), 0.0), vec4(0.0, 1.0, 0.0, 0.0), vec4(normalize(cross(INV_VIEW_MATRIX[0].xyz, vec3(0.0, 1.0, 0.0))), 0.0), MODEL_MATRIX[3]);
+		look_dir = MODELVIEW_NORMAL_MATRIX * NORMAL;
+		MODELVIEW_NORMAL_MATRIX = mat3(MODELVIEW_MATRIX);
+	switch (mode){
+		case 0:
+			float y = invert_rows_columns == true ? billboard_mode_a(CAMERA_POSITION_WORLD,NODE_POSITION_WORLD,MODEL_MATRIX,rows) : billboard_mode_a(CAMERA_POSITION_WORLD,NODE_POSITION_WORLD,MODEL_MATRIX,columns);
+			float x = invert_rows_columns == true ? frame/columns:frame/rows;
+			UV /= vec2(rows,columns);
+			UV += invert_rows_columns == true ?vec2(y,x):vec2(x,y);
+			break;
+		case 1:
+			float x = invert_rows_columns == true ? frame/columns:frame/rows;
+			float y = billboard_mobe_b(CAMERA_POSITION_WORLD,MODEL_MATRIX,VIEW_MATRIX,rows,0);
+			float f = billboard_mobe_b(CAMERA_POSITION_WORLD,MODEL_MATRIX,VIEW_MATRIX,rows,1);
+			if (invert_rows_columns){
+				y = billboard_mobe_b(CAMERA_POSITION_WORLD,MODEL_MATRIX,VIEW_MATRIX,columns,0);
+				f = billboard_mobe_b(CAMERA_POSITION_WORLD,MODEL_MATRIX,VIEW_MATRIX,columns,1);
+			}
+			UV.y += invert_rows_columns == true ? x:y;
+			UV /=vec2(rows,columns);
+			UV.x +=  invert_rows_columns == true ? y : x;
+			UV *= invert_rows_columns == true ? vec2(1.0,f):vec2(f,1.0);
+			break;
+	};
+}
+
+void fragment() {
+	vec3 VNormal = texture(Normal,UV).rgb;
+	vec4 sprite_texture;
+	sprite_texture = texture(sprite,UV);
+	ALBEDO = sprite_texture.rgb;
+	ALPHA = sprite_texture.a;
+	NORMAL_MAP = VNormal;
+}
+"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_p2vhy"]
+render_priority = 0
+shader = SubResource("Shader_cv7br")
+shader_parameter/rows = 1.0
+shader_parameter/columns = 8.0
+shader_parameter/frame = 0.0
+shader_parameter/invert_rows_columns = false
+shader_parameter/sprite = ExtResource("17_8gujr")
+shader_parameter/mode = 0
+shader_parameter/Normal = ExtResource("16_y3qa0")
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_182wg"]
+material = SubResource("ShaderMaterial_p2vhy")
+size = Vector2(1.024, 1.024)
+orientation = 2
+
+[sub_resource type="Resource" id="Resource_a6gt7"]
+script = ExtResource("5_2qsbx")
+name = "idlew"
+sprite = ExtResource("17_8gujr")
+texture_normal = ExtResource("16_y3qa0")
+columns = 8.0
+
+[sub_resource type="Resource" id="Resource_mnpf4"]
+script = ExtResource("5_2qsbx")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_w1v47"]
 render_priority = 2
@@ -15,12 +438,118 @@ albedo_color = Color(2.201223, 2.201223, 2.201223, 1)
 albedo_texture = ExtResource("4_js227")
 billboard_mode = 2
 
+[sub_resource type="Shader" id="Shader_p27kb"]
+code = "shader_type spatial;
+render_mode diffuse_lambert_wrap,cull_disabled;
+
+uniform float rows:hint_range(1.0, 100.0, 1) = 1;
+uniform float columns:hint_range(1.0, 100.0, 1) = 1;
+uniform float frame:hint_range(0.0, 100.0, 1) = 0;
+uniform bool invert_rows_columns = false;
+uniform sampler2D sprite:filter_nearest_mipmap;
+uniform int mode:hint_range(0, 1, 1) = 1;
+varying vec3 look_dir;
+uniform sampler2D Normal;
+
+
+float billboard_mode_a(vec3 CAMERA_POSITION,vec3 NODE_POSITION, mat4 MODEL_MAT,float directions){
+	vec3 direction_to_camera = normalize(CAMERA_POSITION-NODE_POSITION);
+	float angle_to_camera = atan(direction_to_camera.x,direction_to_camera.z);
+	vec4 model_direction = MODEL_MAT*vec4(1.0,0.0,0.0,0.0);
+	float y_angle = atan(model_direction.x,model_direction.z)-PI/2.0;
+	float final_angle = angle_to_camera-y_angle;
+	float int_y_angle = round((final_angle / TAU) * float(directions)) / float(directions);
+	return int_y_angle;
+}
+float billboard_mobe_b(vec3 CAMERA_POSITION,mat4 MODEL_MAT,mat4 VIEW_MAT,float directions,int ret){
+
+    vec3 ray_origin = CAMERA_POSITION;
+
+    vec3 object_origin = (MODEL_MAT * vec4(0.0,0.0,0.0,1.0)).xyz;
+    vec3 cam_dir = object_origin - ray_origin;
+    cam_dir = normalize((VIEW_MAT * vec4(cam_dir, 0.0)).xyz);
+
+    float angle = 180.0 - degrees(acos(dot(normalize(cam_dir.xz), normalize(look_dir.xz))));
+    float _direction = round(angle/180.0 * directions);
+
+    float flip = sign((look_dir.x * cam_dir.z) - (look_dir.z * cam_dir.x));
+
+    flip = mix(flip, 1.0, max(step(_direction, 0.0), step(directions, _direction)));
+	float retu = ret == 0 ? _direction : flip;
+	return retu ;
+}
+void vertex() {
+		 MODELVIEW_MATRIX = VIEW_MATRIX * mat4(vec4(normalize(cross(vec3(0.0, 1.0, 0.0), INV_VIEW_MATRIX[2].xyz)), 0.0), vec4(0.0, 1.0, 0.0, 0.0), vec4(normalize(cross(INV_VIEW_MATRIX[0].xyz, vec3(0.0, 1.0, 0.0))), 0.0), MODEL_MATRIX[3]);
+		look_dir = MODELVIEW_NORMAL_MATRIX * NORMAL;
+		MODELVIEW_NORMAL_MATRIX = mat3(MODELVIEW_MATRIX);
+	switch (mode){
+		case 0:
+			float y = invert_rows_columns == true ? billboard_mode_a(CAMERA_POSITION_WORLD,NODE_POSITION_WORLD,MODEL_MATRIX,rows) : billboard_mode_a(CAMERA_POSITION_WORLD,NODE_POSITION_WORLD,MODEL_MATRIX,columns);
+			float x = invert_rows_columns == true ? frame/columns:frame/rows;
+			UV /= vec2(rows,columns);
+			UV += invert_rows_columns == true ?vec2(y,x):vec2(x,y);
+			break;
+		case 1:
+			float x = invert_rows_columns == true ? frame/columns:frame/rows;
+			float y = billboard_mobe_b(CAMERA_POSITION_WORLD,MODEL_MATRIX,VIEW_MATRIX,rows,0);
+			float f = billboard_mobe_b(CAMERA_POSITION_WORLD,MODEL_MATRIX,VIEW_MATRIX,rows,1);
+			if (invert_rows_columns){
+				y = billboard_mobe_b(CAMERA_POSITION_WORLD,MODEL_MATRIX,VIEW_MATRIX,columns,0);
+				f = billboard_mobe_b(CAMERA_POSITION_WORLD,MODEL_MATRIX,VIEW_MATRIX,columns,1);
+			}
+			UV.y += invert_rows_columns == true ? x:y;
+			UV /=vec2(rows,columns);
+			UV.x +=  invert_rows_columns == true ? y : x;
+			UV *= invert_rows_columns == true ? vec2(1.0,f):vec2(f,1.0);
+			break;
+	};
+}
+
+void fragment() {
+	vec3 VNormal = texture(Normal,UV).rgb;
+	vec4 sprite_texture;
+	sprite_texture = texture(sprite,UV);
+	ALBEDO = sprite_texture.rgb;
+	ALPHA = sprite_texture.a;
+	NORMAL_MAP = VNormal;
+}
+"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_qsil5"]
+render_priority = 0
+shader = SubResource("Shader_p27kb")
+shader_parameter/rows = 1.0
+shader_parameter/columns = 8.0
+shader_parameter/frame = 0.0
+shader_parameter/invert_rows_columns = false
+shader_parameter/sprite = ExtResource("6_p27kb")
+shader_parameter/mode = 0
+shader_parameter/Normal = ExtResource("7_qsil5")
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_y3qa0"]
+material = SubResource("ShaderMaterial_qsil5")
+size = Vector2(3.072, 3.072)
+orientation = 2
+
+[sub_resource type="Resource" id="Resource_8gujr"]
+script = ExtResource("5_2qsbx")
+name = "Unfinished"
+sprite = ExtResource("3_hcu48")
+texture_normal = ExtResource("2_13x82")
+columns = 8.0
+
+[sub_resource type="Resource" id="Resource_784dv"]
+script = ExtResource("5_2qsbx")
+sprite = ExtResource("6_p27kb")
+texture_normal = ExtResource("7_qsil5")
+columns = 8.0
+
 [sub_resource type="BoxShape3D" id="BoxShape3D_w1v47"]
 size = Vector3(1.5, 2.4, 1)
 
 [node name="Statue" type="Node3D" unique_id=296240778 node_paths=PackedStringArray("temp_graphics__pieces", "temp_graphics__unfinished_statue", "temp_graphics__finished_statue")]
 script = ExtResource("3_hdmdk")
-temp_graphics__pieces = [NodePath("Statue_States/Unfinished/Pieces/base_piece"), NodePath("Statue_States/Unfinished/Pieces/head_piece"), NodePath("Statue_States/Unfinished/Pieces/arm_piece")]
+temp_graphics__pieces = [NodePath("Statue_States/Unfinished/Pieces/base"), NodePath("Statue_States/Unfinished/Pieces/Head"), NodePath("Statue_States/Unfinished/Pieces/hand")]
 temp_graphics__unfinished_statue = NodePath("Statue_States/Unfinished")
 temp_graphics__finished_statue = NodePath("Statue_States/Finished")
 
@@ -28,8 +557,21 @@ temp_graphics__finished_statue = NodePath("Statue_States/Finished")
 
 [node name="Unfinished" type="Node3D" parent="Statue_States" unique_id=935710233]
 
+[node name="StatOff" type="MeshInstance3D" parent="Statue_States/Unfinished" unique_id=1440207988]
+transform = Transform3D(-1, 0, -1.509958e-07, 0, 1, 0, 1.509958e-07, 0, -1, 0, 0.6596855, 0.24888021)
+layers = 3
+sorting_offset = 1.0
+mesh = SubResource("PlaneMesh_a6gt7")
+script = ExtResource("4_84nn4")
+animations_array = Array[ExtResource("5_2qsbx")]([SubResource("Resource_ggmr3"), SubResource("Resource_g0o23")])
+animation = 0
+frame = 1.0
+sprite_scale = 0.003
+metadata/_custom_type_script = "uid://b5653u7w56pqw"
+
 [node name="Sprite3D" type="Sprite3D" parent="Statue_States/Unfinished" unique_id=862002889]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.99999994, 0)
+visible = false
 pixel_size = 0.005
 billboard = 2
 double_sided = false
@@ -38,6 +580,7 @@ render_priority = 1
 texture = ExtResource("3_is1r3")
 
 [node name="Pieces" type="Node3D" parent="Statue_States/Unfinished" unique_id=2030852864]
+visible = false
 
 [node name="base_piece" type="Sprite3D" parent="Statue_States/Unfinished/Pieces" unique_id=830941077]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.15746611, -0.3248101)
@@ -69,11 +612,51 @@ texture_filter = 5
 render_priority = 1
 texture = ExtResource("5_ijdkn")
 
+[node name="hand" type="MeshInstance3D" parent="Statue_States/Unfinished/Pieces" unique_id=214627078]
+transform = Transform3D(-0.99701643, 0, -0.07718904, 0, 1, 0, 0.07718904, 0, -0.99701643, 0.2891978, 0.87082183, 0.2643348)
+layers = 3
+sorting_offset = 1.0
+mesh = SubResource("PlaneMesh_ooyj6")
+skeleton = NodePath("../..")
+script = ExtResource("4_84nn4")
+animations_array = Array[ExtResource("5_2qsbx")]([SubResource("Resource_8otom")])
+animation = 0
+frame = 1.0
+sprite_scale = 0.002
+metadata/_custom_type_script = "uid://b5653u7w56pqw"
+
+[node name="Head" type="MeshInstance3D" parent="Statue_States/Unfinished/Pieces" unique_id=1569686988]
+transform = Transform3D(-0.5653558, 0, 0.8248471, 0, 1, 0, -0.8248471, 0, -0.5653558, -0.31185, 1.8287548, 0.37056893)
+layers = 3
+sorting_offset = 1.0
+mesh = SubResource("PlaneMesh_cbvg7")
+skeleton = NodePath("../..")
+script = ExtResource("4_84nn4")
+animations_array = Array[ExtResource("5_2qsbx")]([SubResource("Resource_cxgkg"), SubResource("Resource_qqre5")])
+animation = 0
+frame = 1.0
+sprite_scale = 0.002
+metadata/_custom_type_script = "uid://b5653u7w56pqw"
+
+[node name="base" type="MeshInstance3D" parent="Statue_States/Unfinished/Pieces" unique_id=1357974957]
+transform = Transform3D(-0.9999999, 0, 8.742277e-08, 0, 1, 0, -8.742277e-08, 0, -0.9999999, -0.4449403, -0.32385477, -0.18330759)
+layers = 3
+sorting_offset = 1.0
+mesh = SubResource("PlaneMesh_182wg")
+skeleton = NodePath("../..")
+script = ExtResource("4_84nn4")
+animations_array = Array[ExtResource("5_2qsbx")]([SubResource("Resource_a6gt7"), SubResource("Resource_mnpf4")])
+animation = 0
+frame = 1.0
+sprite_scale = 0.002
+metadata/_custom_type_script = "uid://b5653u7w56pqw"
+
 [node name="Finished" type="Node3D" parent="Statue_States" unique_id=708535293]
 visible = false
 
 [node name="Sprite3D" type="Sprite3D" parent="Statue_States/Finished" unique_id=1497632368]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.99999994, 0)
+visible = false
 material_overlay = SubResource("StandardMaterial3D_w1v47")
 pixel_size = 0.005
 billboard = 2
@@ -81,6 +664,19 @@ double_sided = false
 texture_filter = 5
 render_priority = 1
 texture = ExtResource("4_js227")
+
+[node name="StatOn" type="MeshInstance3D" parent="Statue_States/Finished" unique_id=520643466]
+transform = Transform3D(1, 0, 3.019916e-07, 0, 1, 0, -3.019916e-07, 0, 1, -3.7579866e-08, 1.319371, 0)
+layers = 3
+sorting_offset = 1.0
+mesh = SubResource("PlaneMesh_y3qa0")
+skeleton = NodePath("../../Unfinished/StatOff")
+script = ExtResource("4_84nn4")
+animations_array = Array[ExtResource("5_2qsbx")]([SubResource("Resource_8gujr"), SubResource("Resource_784dv")])
+animation = 1
+frame = 1.0
+sprite_scale = 0.003
+metadata/_custom_type_script = "uid://b5653u7w56pqw"
 
 [node name="ItemReceiver" type="Node3D" parent="." unique_id=1763736643]
 script = ExtResource("7_w1v47")
