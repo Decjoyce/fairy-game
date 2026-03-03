@@ -1,0 +1,56 @@
+[gd_scene format=3 uid="uid://38yo6y6rg7ak"]
+
+[ext_resource type="PackedScene" uid="uid://bq86osdembn58" path="res://scenes/_player/_player_test.tscn" id="1_33mfq"]
+[ext_resource type="MeshLibrary" uid="uid://bu208a8l5866i" path="res://scenes/_levels/_palettes/cairn/meshlibrary_cairn.tres" id="2_phv6h"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_2vnbd"]
+sky_horizon_color = Color(0, 0.37292683, 0.8185948, 1)
+sky_curve = 0.23537512
+ground_horizon_color = Color(0.3529412, 0.30588236, 0.2509804, 1)
+ground_curve = 0.060628746
+
+[sub_resource type="Sky" id="Sky_18d3f"]
+sky_material = SubResource("ProceduralSkyMaterial_2vnbd")
+
+[sub_resource type="Environment" id="Environment_ldimk"]
+sky = SubResource("Sky_18d3f")
+ambient_light_source = 2
+ambient_light_color = Color(0, 0.046818696, 0.12593761, 1)
+ambient_light_energy = 6.0
+reflected_light_source = 1
+tonemap_mode = 4
+tonemap_exposure = 2.0
+ssao_enabled = true
+ssao_radius = 0.05
+ssao_intensity = 1.0
+sdfgi_read_sky_light = false
+sdfgi_bounce_feedback = 1.99
+sdfgi_cascades = 8
+sdfgi_min_cell_size = 19.315624
+sdfgi_energy = 4.035
+sdfgi_normal_bias = 6.215
+sdfgi_probe_bias = 2.94
+glow_enabled = true
+glow_intensity = 0.2
+glow_strength = 0.4
+volumetric_fog_enabled = true
+volumetric_fog_density = 0.015
+volumetric_fog_albedo = Color(0.74509805, 0.34509805, 0, 1)
+volumetric_fog_emission = Color(0.117735185, 0.20947376, 0.3003329, 1)
+volumetric_fog_emission_energy = 0.5
+volumetric_fog_sky_affect = 0.0
+
+[node name="Puzzle01" type="Node3D" unique_id=2140837292]
+
+[node name="player_test" parent="." unique_id=725727541 instance=ExtResource("1_33mfq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 2.1000001, 3)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=654468544]
+environment = SubResource("Environment_ldimk")
+
+[node name="GridMap" type="GridMap" parent="." unique_id=694687736]
+mesh_library = ExtResource("2_phv6h")
+data = {
+"cells": PackedInt32Array(65535, 1, 4, 65534, 0, 1441795)
+}
+metadata/_editor_floor_ = Vector3(0, 0, 0)

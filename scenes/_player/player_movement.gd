@@ -73,6 +73,8 @@ func _ready() -> void:
 	ray_east.force_shapecast_update()
 	ray_west.force_shapecast_update()
 	
+	crouch()
+	uncrouch()
 
 func movement_input() -> void:
 	

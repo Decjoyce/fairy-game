@@ -1,0 +1,43 @@
+[gd_scene format=3 uid="uid://dk6krumrxes6x"]
+
+[ext_resource type="Material" uid="uid://bmx5kbkw1qnpa" path="res://assets/_dev/materials/_dev_m_grey.tres" id="1_du0st"]
+[ext_resource type="PackedScene" uid="uid://ca3w10h1t5332" path="res://scenes/interactions/_triggers/keyhole/keyhole.tscn" id="2_6jfoc"]
+[ext_resource type="PackedScene" uid="uid://bq86osdembn58" path="res://scenes/_player/_player_test.tscn" id="3_cdbnv"]
+[ext_resource type="PackedScene" uid="uid://oqosqgdkwcrb" path="res://scenes/interactions/_receivers/door/door_new.tscn" id="4_d0ohw"]
+
+[sub_resource type="Environment" id="Environment_d0ohw"]
+background_mode = 1
+background_color = Color(1, 1, 1, 1)
+
+[node name="DoorTesting" type="Node3D" unique_id=935010750]
+
+[node name="_env" type="Node3D" parent="." unique_id=1166213138]
+
+[node name="CSGBox3D" type="CSGBox3D" parent="_env" unique_id=1807627627]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.25, -2)
+use_collision = true
+size = Vector3(10, 0.5, 6)
+material = ExtResource("1_du0st")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="_env" unique_id=2116786980]
+environment = SubResource("Environment_d0ohw")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="_env" unique_id=31654209]
+transform = Transform3D(1, 0, 0, 0, -0.50000006, 0.8660254, 0, -0.8660254, -0.50000006, 0, 1.8000001, 0)
+shadow_enabled = true
+
+[node name="Keyhole" parent="." unique_id=2028671977 instance=ExtResource("2_6jfoc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.059424497, 0.9732478, -2.887958)
+
+[node name="Keyhole2" parent="." unique_id=1154505401 instance=ExtResource("2_6jfoc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0.7, -2)
+use_intervals = true
+intervals = 0.5
+
+[node name="player_test" parent="." unique_id=725727541 instance=ExtResource("3_cdbnv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+
+[node name="Door" parent="." unique_id=1273201646 instance=ExtResource("4_d0ohw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -3)
+
+[connection signal="on_activated" from="Keyhole" to="Door" method="open_door"]

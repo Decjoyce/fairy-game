@@ -15,7 +15,7 @@ func _ready() -> void:
 	anim_player.play_section(anim_to_play, 0, 0.001)
 
 func play_animation(sig: float) -> void:
-	print(sig)
+	#print(sig)
 	var mapped_time: float = remap(sig, 0, 1, 0, anim_player.get_animation(anim_to_play).length)
 	
 	if mapped_time > anim_player.current_animation_position:

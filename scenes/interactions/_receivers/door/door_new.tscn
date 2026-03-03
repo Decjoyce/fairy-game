@@ -1,13 +1,10 @@
 [gd_scene format=4 uid="uid://oqosqgdkwcrb"]
 
+[ext_resource type="Script" uid="uid://dd1tijnlux7j" path="res://scenes/interactions/_receivers/door/door.gd" id="1_mpx86"]
 [ext_resource type="Material" uid="uid://f0qp2o0ip83p" path="res://assets/models/cairn/Props/Wood_Door/Wood_Door.tres" id="2_k4rlk"]
 [ext_resource type="Material" uid="uid://c17eub34k5hf8" path="res://assets/models/cairn/Props/Wood_Door/Wood_Screw.tres" id="3_7c41o"]
 [ext_resource type="Material" uid="uid://c57e6lcor8yqp" path="res://assets/models/cairn/Props/Wood_Door/KeyHold.tres" id="4_y7ll1"]
 [ext_resource type="AudioStream" uid="uid://bp3lie48u35pl" path="res://assets/audio/sfx/interactions/Rocks, Movement, Stone, Slab, Scrape SND18188.wav" id="5_nihpw"]
-[ext_resource type="Script" uid="uid://c4t3ko70ihpyy" path="res://scenes/interactions/_receivers/animated_object/animated_object.gd" id="6_gc251"]
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_6hp3v"]
-size = Vector3(1.6, 2, 0.3)
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_mbfle"]
 _surfaces = [{
@@ -263,17 +260,11 @@ _data = {
 &"door_open": SubResource("Animation_c053m")
 }
 
-[node name="ItemReceiver" type="Node3D" unique_id=1273201646 groups=["debug_PickableObjects"]]
-script = ExtResource("6_gc251")
-
-[node name="Area3D" type="Area3D" parent="." unique_id=1125164961]
-collision_layer = 32
-monitoring = false
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" unique_id=1362446442]
-shape = SubResource("BoxShape3D_6hp3v")
+[node name="Door" type="Node3D" unique_id=1273201646 groups=["debug_PickableObjects"]]
+script = ExtResource("1_mpx86")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=1188364149]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 
 [node name="L_Pivot" type="Node3D" parent="StaticBody3D" unique_id=1097689499]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.75, 0, 0)
@@ -281,7 +272,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.75, 0, 0)
 [node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D/L_Pivot" unique_id=2100968781]
 transform = Transform3D(-0.15, 0, -1.3113417e-08, 0, 0.15, 0, 1.3113417e-08, 0, -0.15, 0.761, -1, 0)
 mesh = SubResource("ArrayMesh_yopue")
-skeleton = NodePath("../../../Area3D")
+skeleton = NodePath("")
 
 [node name="R_Pivot" type="Node3D" parent="StaticBody3D" unique_id=109226670]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.75, 0, 0)
@@ -289,7 +280,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.75, 0, 0)
 [node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D/R_Pivot" unique_id=70003402]
 transform = Transform3D(-0.15, 0, -1.3113417e-08, 0, 0.15, 0, 1.3113417e-08, 0, -0.15, 0.015, -1, 0)
 mesh = SubResource("ArrayMesh_ffg0i")
-skeleton = NodePath("../../../Area3D")
+skeleton = NodePath("")
 
 [node name="CollisionShape3D2" type="CollisionShape3D" parent="StaticBody3D" unique_id=1225378386]
 shape = SubResource("BoxShape3D_c053m")
@@ -304,9 +295,3 @@ pitch_scale = 0.7
 [node name="AudioStreamPlayer3D2" type="AudioStreamPlayer3D" parent="StaticBody3D" unique_id=1771122033]
 stream = ExtResource("5_nihpw")
 pitch_scale = 0.7
-
-[node name="AnimatedObject" type="Node" parent="." unique_id=1920007359 node_paths=PackedStringArray("connnect_anim_player")]
-script = ExtResource("6_gc251")
-anim_to_play = "door_open"
-connnect_anim_player = NodePath("../StaticBody3D/AnimationPlayer")
-metadata/_custom_type_script = "uid://c4t3ko70ihpyy"

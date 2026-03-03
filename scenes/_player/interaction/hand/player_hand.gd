@@ -1,6 +1,21 @@
 class_name PlayerHand
 extends Control
 
+var test_handlimit: bool
+var test_screen_limit_x_min: float 
+var test_screen_limit_x_max: float 
+
+func calc_limit() -> void:
+	if hand_type == HandTypes.LEFT:
+		test_screen_limit_x_min = 0
+		test_screen_limit_x_max = (player_interact.size.x - (player_interact.size.x/3.0)) - size.x
+	else:
+		test_screen_limit_x_min = player_interact.size.x/3.0
+		test_screen_limit_x_max = player_interact.size.x - size.x
+
+# ↑ A/B TESTING Stuff ↑
+# --------------------------------------------------------------------------------------------------
+
 @onready var player: PlayerTest = get_parent().get_parent()
 @onready var player_interact: PlayerInteract = get_parent()
 var cam: Camera3D
@@ -18,6 +33,7 @@ func _ready() -> void:
 	#animation_player.animation_finished.connect(play_queued_animation)
 	if hand_type == 0: hand_type_rotation_mult = -1
 	else: hand_type_rotation_mult = 1
+	
 	_init_states()
 
 # ↑ General Stuff ↑
@@ -40,6 +56,8 @@ func _unhandled_input(event: InputEvent) -> void:
 
 func _process(delta: float) -> void:
 	if player.in_combat: return
+	if Input.is_action_just_pressed("testing_handlimit"):
+		test_handlimit = !test_handlimit
 	state.update(delta)
 
 func _physics_process(delta: float) -> void:
@@ -73,7 +91,13 @@ func joystick_movement(delta: float) -> void:
 
 func move_hand(dir: Vector2, delta: float) -> void:
 	position += Vector2(dir.x, -dir.y) * current_speed * delta
-	position.x = clampf(position.x, 0, player_interact.size.x - size.x)
+	
+	if !test_handlimit: ## ----- [-] TESTING A/B
+		position.x = clampf(position.x, 0, player_interact.size.x - size.x)
+	else:
+		calc_limit()
+		position.x = clampf(position.x, test_screen_limit_x_min, test_screen_limit_x_max)
+	
 	position.y = clampf(position.y, 0, player_interact.size.y - size.y * 1.4)
 
 func change_hand_speed() -> void:
@@ -120,6 +144,8 @@ func begin_interact() -> void:
 			
 		hovering_interactable.InteractTypes.LEVER:
 			state.finished.emit(state.LEVER)
+		hovering_interactable.InteractTypes.TEMP_KEYHOLE:
+			state.finished.emit(state.KEY)
 
 func on_player_moved(direction: Vector3, target: Vector3) -> void:
 	if !state.moving_breaks_free:

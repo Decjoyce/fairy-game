@@ -3,6 +3,8 @@ extends Node3D
 @onready var anim: AnimationPlayer = $AnimationPlayer
 @onready var col: CollisionShape3D = $Spikes/StaticBody3D/CollisionShape3D
 
+@export var trigger_when_in: bool = true
+
 var people_inside: Array[Entity]
 var itms_inside: Array[Grabbable_Item]
 var weighted_things_inside: int
@@ -37,12 +39,11 @@ func dmg_things_inide() -> void:
 			itms_inside.erase(itm)
 
 func _on_area_3d_area_entered(area: Area3D) -> void:
-	print("ho")
 	if area.get_parent() is Entity and !people_inside.has(area.get_parent()):
 		people_inside.append(area.get_parent())
 		weighted_things_inside += 1
 		print("ho")
-		activate(-1)
+		if trigger_when_in: activate(-1)
 
 func _on_area_3d_area_exited(area: Area3D) -> void:
 	if area.get_parent() is not Entity: return
@@ -51,7 +52,7 @@ func _on_area_3d_area_exited(area: Area3D) -> void:
 	print(people_inside)
 	weighted_things_inside -= 1
 	if weighted_things_inside <= 0:
-		deactivate(-1)
+		if trigger_when_in: deactivate(-1)
 
 
 func _on_area_3d_body_entered(body: Node3D) -> void:
@@ -65,7 +66,7 @@ func _on_area_3d_body_entered(body: Node3D) -> void:
 		print(itms_inside)
 		if body.item_weight == Grabbable_Item.item_weight_types.HEAVY:
 			weighted_things_inside += 1
-			activate(-1) 
+			if trigger_when_in: activate(-1) 
 
 
 func _on_area_3d_body_exited(body: Node3D) -> void:
@@ -76,4 +77,4 @@ func _on_area_3d_body_exited(body: Node3D) -> void:
 			weighted_things_inside -= 1
 	itms_inside.erase(body)
 	if weighted_things_inside <= 0:
-		deactivate(-1)
+		if trigger_when_in: deactivate(-1)

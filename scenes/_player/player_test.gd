@@ -1,3 +1,4 @@
+@icon("res://assets/_editor_icons/icon_player_b.svg")
 class_name PlayerTest
 extends Entity
 

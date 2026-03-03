@@ -1,4 +1,4 @@
-@icon("res://assets/_editor_icons/icon_item.svg")
+@icon("res://assets/_editor_icons/icon_torch.svg")
 class_name Torch
 extends Grabbable_Item
 
@@ -44,17 +44,19 @@ func begin_interact(sig: float = -1) -> void:
 		reparent(get_tree().current_scene)
 
 func _process(delta: float) -> void:
-	if is_dead or item_type.stay_lit_forever: return
+	if is_dead: return
 	time_passed += delta
 	
 	var sampled_noise = abs(item_type.noise.noise.get_noise_1d(time_passed))
-	torch_light.light_energy = clamp(item_type.light_strength * (current_health / item_type.max_health) * (item_type.flicker_frequency + sampled_noise), 0, item_type.light_strength)
+	#torch_light.light_energy = clamp(item_type.light_strength * (current_health / item_type.max_health) * (item_type.flicker_frequency + sampled_noise), 0, item_type.light_strength)
 	
-	if has_been_picked_up:
-		current_health -= delta
-	
-	if !is_dead and current_health <= 0:
-		die()
+	torch_light.light_energy = item_type.light_strength * (item_type.flicker_frequency + sampled_noise)
+	#print(item_type.light_strength * (item_type.flicker_frequency + sampled_noise))
+	#if has_been_picked_up:
+		#current_health -= delta
+	#
+	#if !is_dead and current_health <= 0:
+		#die()
 
 func relight() -> void:
 	current_health = item_type.max_health
