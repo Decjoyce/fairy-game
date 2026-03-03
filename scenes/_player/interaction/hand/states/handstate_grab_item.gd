@@ -1,7 +1,7 @@
 class_name HandState_Grab_Item
 extends HandState
 
-var _testing_throw_alt: bool = true
+var _testing_throw_alt: bool = false
 # ↑ A/B TESTING Stuff ↑
 # -
 
