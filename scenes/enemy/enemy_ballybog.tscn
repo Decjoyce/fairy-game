@@ -34,6 +34,7 @@
 [ext_resource type="Script" uid="uid://cjssruwuxjia0" path="res://scenes/combat/attack_sequence.gd" id="28_3jwaj"]
 [ext_resource type="AudioStream" uid="uid://78nk0cnbd7w0" path="res://assets/audio/sfx/enemy/ballybog/huh/Voices, Reaction, Huh, Suprised, Shocked, Loud, Meme Redesign SND140141.wav" id="29_2g7uo"]
 [ext_resource type="AudioStream" uid="uid://0xpm0o2jyheg" path="res://assets/audio/sfx/enemy/ballybog/Rub/Objects, Fashion, Makeup, Sponge, Beautyblender, Single Strokes On Skin SND123478 1.wav" id="29_28ajc"]
+[ext_resource type="Script" uid="uid://1bkpo4brfafu" path="res://scenes/enemy/stunned.gd" id="29_iaicr"]
 [ext_resource type="Resource" uid="uid://bo6jynbmofv6l" path="res://scenes/enemy/combat/attacks/attckseq_bb_test.tres" id="29_pydrg"]
 [ext_resource type="AudioStream" uid="uid://bv4qewq6vcxos" path="res://assets/audio/sfx/enemy/ballybog/Rub/Objects, Fashion, Makeup, Sponge, Beautyblender, Single Strokes On Skin SND123478 2.wav" id="30_2g7uo"]
 [ext_resource type="Script" uid="uid://c27axnnaakeuo" path="res://scenes/combat/combathand_attack.gd" id="30_me4q8"]
@@ -50,7 +51,7 @@
 radius = 0.43391418
 height = 0.86782837
 
-[sub_resource type="Shader" id="Shader_l3c6t"]
+[sub_resource type="Shader" id="Shader_8vrwc"]
 code = "shader_type spatial;
 render_mode diffuse_lambert_wrap,cull_disabled;
 
@@ -127,23 +128,23 @@ void fragment() {
 }
 "
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_lngu7"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_iaicr"]
 render_priority = 0
-shader = SubResource("Shader_l3c6t")
-shader_parameter/rows = 1.0
+shader = SubResource("Shader_8vrwc")
+shader_parameter/rows = 2.0
 shader_parameter/columns = 8.0
 shader_parameter/frame = 1.0
 shader_parameter/invert_rows_columns = false
-shader_parameter/sprite = ExtResource("22_pkfog")
+shader_parameter/sprite = ExtResource("12_l3c6t")
 shader_parameter/mode = 0
-shader_parameter/Normal = ExtResource("23_d7tla")
+shader_parameter/Normal = ExtResource("13_lngu7")
 
-[sub_resource type="PlaneMesh" id="PlaneMesh_fe3o4"]
-material = SubResource("ShaderMaterial_lngu7")
-size = Vector2(0.86399996, 0.86399996)
+[sub_resource type="PlaneMesh" id="PlaneMesh_600hx"]
+material = SubResource("ShaderMaterial_iaicr")
+size = Vector2(1.62, 1.62)
 orientation = 2
 
-[sub_resource type="Resource" id="Resource_njbw1"]
+[sub_resource type="Resource" id="Resource_gefnw"]
 script = ExtResource("4_v1swk")
 name = "walk"
 sprite = ExtResource("6_l3c6t")
@@ -151,7 +152,7 @@ texture_normal = ExtResource("7_lngu7")
 rows = 5.0
 columns = 8.0
 
-[sub_resource type="Resource" id="Resource_hu1w4"]
+[sub_resource type="Resource" id="Resource_77qgr"]
 script = ExtResource("4_v1swk")
 name = "Attack"
 sprite = ExtResource("3_5ussm")
@@ -159,7 +160,7 @@ texture_normal = ExtResource("2_p6ydp")
 rows = 2.0
 columns = 8.0
 
-[sub_resource type="Resource" id="Resource_lgmkq"]
+[sub_resource type="Resource" id="Resource_bwaij"]
 script = ExtResource("4_v1swk")
 name = "idle_rub"
 sprite = ExtResource("20_phxqg")
@@ -167,14 +168,14 @@ texture_normal = ExtResource("21_86kpf")
 rows = 3.0
 columns = 8.0
 
-[sub_resource type="Resource" id="Resource_28ajc"]
+[sub_resource type="Resource" id="Resource_dlkub"]
 script = ExtResource("4_v1swk")
 name = "Alert"
 sprite = ExtResource("22_pkfog")
 texture_normal = ExtResource("23_d7tla")
 columns = 8.0
 
-[sub_resource type="Resource" id="Resource_2g7uo"]
+[sub_resource type="Resource" id="Resource_3tlv5"]
 script = ExtResource("4_v1swk")
 name = "Stunned"
 sprite = ExtResource("12_l3c6t")
@@ -219,6 +220,7 @@ streams_count = 1
 
 [sub_resource type="Animation" id="Animation_njbw1"]
 resource_name = "Alert"
+step = 0.0167
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -788,6 +790,7 @@ tracks/1/keys = {
 [sub_resource type="Animation" id="Animation_hu1w4"]
 resource_name = "Stunned"
 length = 0.5
+step = 0.0167
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -1102,15 +1105,15 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.3947841, 0)
 shape = SubResource("CapsuleShape3D_abuop")
 
 [node name="Sprite3DBillBoard" type="MeshInstance3D" parent="." unique_id=589909567]
-transform = Transform3D(-1, 0, -1.509958e-07, 0, 1, 0, 1.509958e-07, 0, -1, 0, 0.41404969, 0)
+transform = Transform3D(-1, 0, -1.509958e-07, 0, 1, 0, 1.509958e-07, 0, -1, 0, 0.6596855, 0)
 layers = 3
 sorting_offset = 1.0
-mesh = SubResource("PlaneMesh_fe3o4")
+mesh = SubResource("PlaneMesh_600hx")
 script = ExtResource("3_j08hu")
-animations_array = Array[ExtResource("4_v1swk")]([SubResource("Resource_njbw1"), SubResource("Resource_hu1w4"), SubResource("Resource_lgmkq"), SubResource("Resource_28ajc"), SubResource("Resource_2g7uo")])
-animation = 3
+animations_array = Array[ExtResource("4_v1swk")]([SubResource("Resource_gefnw"), SubResource("Resource_77qgr"), SubResource("Resource_bwaij"), SubResource("Resource_dlkub"), SubResource("Resource_3tlv5")])
+animation = 4
 frame = 1.0
-sprite_scale = 0.0016
+sprite_scale = 0.003
 metadata/_custom_type_script = "uid://b5653u7w56pqw"
 
 [node name="SoundsWalkAndIdle" type="AudioStreamPlayer3D" parent="." unique_id=1181251130]
@@ -1182,6 +1185,11 @@ Animator = NodePath("../../AnimationPlayer")
 process_callback = 0
 wait_time = 10.0
 one_shot = true
+
+[node name="Stunned" type="Node" parent="StateMachine" unique_id=1137882621 node_paths=PackedStringArray("SM", "Animator")]
+script = ExtResource("29_iaicr")
+SM = NodePath("..")
+Animator = NodePath("../../AnimationPlayer")
 
 [node name="Area3D" type="Area3D" parent="." unique_id=1416647770 groups=["Player"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.59447724, 0)
