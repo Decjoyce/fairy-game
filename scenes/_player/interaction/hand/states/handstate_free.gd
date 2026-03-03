@@ -21,7 +21,6 @@ func update(_delta: float) -> void:
 	var same_frame_check: int = 0
 	
 	hand_controller.hovering_interactable = hand_controller.interact_checker()
-	if hand_controller.anim_is_overriding: print("e")
 	if hand_controller.hovering_interactable:
 		if hand_controller.anim_is_prompting: return
 		hand_controller.anim_is_prompting = true
@@ -37,7 +36,6 @@ func physics_update(_delta: float) -> void:
 	pass
 
 func enter(previous_state_path: String, data := {}) -> void:
-	prints(anim_idle, anim_prompt)
 	hand_controller.anim_change_idle_anim(anim_idle)
 	hand_controller.anim_change_prompt_anim(anim_prompt)
 	hand_controller.input_controls.disable_interact_action()

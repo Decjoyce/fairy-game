@@ -135,6 +135,18 @@ func throw(_throw_mult: float) -> void:
 	rb.apply_central_impulse(-global_basis.z * throw_force * rb.mass)
 	rb.force_update_transform()
 
+func throw_alt(_throw_mult: float, dir: Vector3) -> void:##[-]
+	if grabbed_graphics: grabbed_graphics.visible = false
+	#global_rotation = dir
+	idle_graphics.visible = true
+	rb.linear_velocity = Vector3.ZERO
+	rb.freeze = false
+	var throw_force := throw_distance * _throw_mult
+	throw_force = sqrt(throw_force * -2 * rb.get_gravity().y)
+	#prints(_throw_mult, throw_distance * _throw_mult, throw_force)
+	rb.apply_central_impulse(dir * (throw_force/1.25) * rb.mass)
+	rb.force_update_transform()
+
 func _on_collide(body: Node) -> void:
 	if !init_impact:
 		init_impact = true
@@ -165,12 +177,12 @@ func break_item() -> void:
 			item_spawn_on_destroyed.enable_me()
 			item_spawn_on_destroyed.reparent(get_tree().current_scene)
 	#disable_me()
-	call_deferred("send_to_either")
+	call_deferred("send_to_ether")
 
-func send_to_either() -> void:
+func send_to_ether() -> void:
 	reparent(Debug.destroyed_item_cell)
 	position = Vector3.ZERO
-	print("Dead")
+	#print("Dead")
 	#call_deferred("queue_free")
 
 # ↑ Use Stuff ↑

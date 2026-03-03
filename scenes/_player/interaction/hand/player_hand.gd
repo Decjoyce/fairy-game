@@ -4,13 +4,15 @@ extends Control
 var test_handlimit: bool
 var test_screen_limit_x_min: float 
 var test_screen_limit_x_max: float 
+var test_screen_fraction: float = 3.0
+
 
 func calc_limit() -> void:
 	if hand_type == HandTypes.LEFT:
 		test_screen_limit_x_min = 0
-		test_screen_limit_x_max = (player_interact.size.x - (player_interact.size.x/3.0)) - size.x
+		test_screen_limit_x_max = (player_interact.size.x - (player_interact.size.x/test_screen_fraction)) - size.x
 	else:
-		test_screen_limit_x_min = player_interact.size.x/3.0
+		test_screen_limit_x_min = player_interact.size.x/test_screen_fraction
 		test_screen_limit_x_max = player_interact.size.x - size.x
 
 # ↑ A/B TESTING Stuff ↑
@@ -58,6 +60,9 @@ func _process(delta: float) -> void:
 	if player.in_combat: return
 	if Input.is_action_just_pressed("testing_handlimit"):
 		test_handlimit = !test_handlimit
+	if Input.is_action_just_pressed("testing_handlimit_change"):
+		if test_screen_fraction == 3.0: test_screen_fraction = 5.0
+		elif test_screen_fraction == 5.0: test_screen_fraction = 3.0
 	state.update(delta)
 
 func _physics_process(delta: float) -> void:
@@ -120,31 +125,37 @@ func begin_interact() -> void:
 	if !hovering_interactable:
 		return
 	if hovering_interactable.interaction_type == hovering_interactable.InteractTypes.LEVER and player.movement.dist_to_target >= 0.6: 
-		print("dko")
 		return
 	anim_is_prompting = false
 	current_interactable = hovering_interactable
-	current_interactable.begin_interact()
+	#current_interactable.begin_interact()
 	match hovering_interactable.interaction_type:
 		hovering_interactable.InteractTypes.INSTANT:
 			if animation_player.has_animation(current_interactable.interact_animation):
-				#animation_player.play(current_interactable.interact_animation)
+				current_interactable.begin_interact()
 				anim_override_current_animation(current_interactable.interact_animation)
 			
 		hovering_interactable.InteractTypes.GRAB_ITEM:
 			if player_interact.get_other_hand_state(hand_type) is HandState_Grab_Item:
 				if player_interact.get_other_hand_current_interactable(hand_type) == current_interactable:
 					player_interact.free_interaction_on_other_hand(hand_type) # replace with signal
-			
+			current_interactable.begin_interact()
 			state.finished.emit(state.GRAB_ITEM)
 			
 		hovering_interactable.InteractTypes.GRAB_OBJ:
+			current_interactable.begin_interact()
 			state.finished.emit(state.GRAB_OBJ)
 			pass
 			
 		hovering_interactable.InteractTypes.LEVER:
+			if player_interact.get_other_hand_current_interactable(hand_type) == current_interactable:
+					player_interact.free_interaction_on_other_hand(hand_type) # replace with signal
+			current_interactable.begin_interact()
 			state.finished.emit(state.LEVER)
 		hovering_interactable.InteractTypes.TEMP_KEYHOLE:
+			if player_interact.get_other_hand_current_interactable(hand_type) == current_interactable:
+					player_interact.free_interaction_on_other_hand(hand_type) # replace with signal
+			current_interactable.begin_interact()
 			state.finished.emit(state.KEY)
 
 func on_player_moved(direction: Vector3, target: Vector3) -> void:
@@ -283,10 +294,8 @@ func anim_override_current_animation(_new_anim: String, restart_if_performing_an
 	animation_player.play(_new_anim)
 	animation_player.animation_finished.connect(_on_anim_override_finished)
 	anim_override_animation = _new_anim
-	print(animation_player.animation_finished.get_connections())
  
 func _on_anim_override_finished(_anim_name: String) -> void:
-	print("R")
 	anim_is_overriding = false
 	animation_player.animation_finished.disconnect(_on_anim_override_finished)
 	anim_update_animations()

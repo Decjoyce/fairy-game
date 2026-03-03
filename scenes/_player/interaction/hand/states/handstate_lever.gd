@@ -4,6 +4,19 @@ extends HandState
 var current_value: float = 0
 var lever: Lever
 
+func enter(previous_state_path: String, data := {}) -> void:
+	hand_controller.hovering_interactable = null
+	lever = hand_controller.current_interactable
+	current_value = lever.current_value
+	#hand_controller.anim_change_idle_anim("hand_prompt_lever")
+	update_graphics()
+
+## Called by the state machine before changing the active state. Use this function
+## to clean up the state.
+func exit() -> void:
+	current_value = 0
+	hand_controller.anim_change_idle_anim("a_hand_idle")
+
 func handle_input(_event: InputEvent) -> void:
 	pass
 
@@ -21,18 +34,7 @@ func physics_update(_delta: float) -> void:
 
 ## Called by the state machine upon changing the active state. The `data` parameter
 ## is a dictionary with arbitrary data the state can use to initialize itself.
-func enter(previous_state_path: String, data := {}) -> void:
-	hand_controller.hovering_interactable = null
-	lever = hand_controller.current_interactable
-	current_value = lever.current_value
-	#hand_controller.anim_change_idle_anim("hand_prompt_lever")
-	update_graphics()
 
-## Called by the state machine before changing the active state. Use this function
-## to clean up the state.
-func exit() -> void:
-	current_value = 0
-	pass
 
 # ↑ State Stuff ↑
 # --------------------------------------------------------------------------------------------------

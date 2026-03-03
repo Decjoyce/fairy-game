@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://ca3w10h1t5332"]
 
 [ext_resource type="Script" uid="uid://dh3yr8p4ftmp1" path="res://scenes/interactions/_triggers/keyhole/keyhole.gd" id="1_b75yv"]
+[ext_resource type="Texture2D" uid="uid://biy3t3vfmpuoh" path="res://assets/sprites/item_sprites/metal_key.png" id="2_xf4ep"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_b75yv"]
 radius = 0.1
@@ -12,8 +13,6 @@ height = 0.2
 [node name="Keyhole" type="Node3D" unique_id=2028671977]
 script = ExtResource("1_b75yv")
 interaction_type = 5
-hand_prompt = "hand_prompt_key"
-prompt_text = "USEKEY"
 
 [node name="Area3D" type="Area3D" parent="." unique_id=649819025]
 
@@ -22,3 +21,13 @@ shape = SubResource("SphereShape3D_b75yv")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Area3D" unique_id=1276140192]
 mesh = SubResource("SphereMesh_b75yv")
+
+[node name="hand_pos" type="Node3D" parent="." unique_id=1782579648]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.1)
+
+[node name="Sprite3D" type="Sprite3D" parent="." unique_id=586187459]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 0, 0.2)
+pixel_size = 0.001
+shaded = true
+render_priority = 1
+texture = ExtResource("2_xf4ep")

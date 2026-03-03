@@ -11,6 +11,7 @@ extends Node
 @onready var ray_south: ShapeCast3D = $Compass/South ## Checks if player can move back
 @onready var ray_west: ShapeCast3D = $Compass/West ## Checks if player can move left
 @export var floor_detector: RayCast3D ## Checks if player can move left
+@export var roof_detector: RayCast3D ## Checks if player can move left
 
 @export var disable_gravity: bool = false
 
@@ -114,7 +115,7 @@ func movement_input() -> void:
 		on_move.emit(Vector3.RIGHT, target_pos)
 		on_move_right.emit(target_pos)
 	
-	if Input.is_action_just_pressed("toggle_crouch") and dist_to_target <= 0.6:
+	if floor_detector.is_colliding() and Input.is_action_just_pressed("toggle_crouch") and dist_to_target <= 0.6:
 		toggle_crouch()
 	
 	target_pos.round() 
@@ -132,7 +133,6 @@ func movement(delta: float) -> void:
 			start_fall_height = player.global_position.y
 		current_fall_speed = clampf(current_fall_speed + 4, 0.1, FALL_SPEED)
 		player.global_position.y -= current_fall_speed * delta
-		
 	elif current_direction == MoveDirections.FALLING:
 		if abs(player.global_position.y - start_fall_height) >= 4:
 			player.stats.take_damage(10000)
@@ -231,9 +231,11 @@ func crouch() -> void:
 	player.current_player_height = player.PLAYER_HEIGHT_CROUCHED
 	speed = SPEED_CROUCH
 	player.global_position.y = floor_detector.get_collision_point().y + player.current_player_height
+	roof_detector.enabled = true
 
 func uncrouch() -> void:
-	if !floor_detector.get_collision_point(): return
+	if !floor_detector.is_colliding(): return
+	if roof_detector.is_colliding(): return
 	is_crouching = false
 	
 	on_crouch.emit(false)
@@ -244,6 +246,8 @@ func uncrouch() -> void:
 	player.current_player_height = player.PLAYER_HEIGHT
 	speed = SPEED_MAX
 	player.global_position.y = floor_detector.get_collision_point().y + player.current_player_height
+	
+	roof_detector.enabled = false
 
 # ↑ Crouching Stuff ↑
 # --------------------------------------------------------------------------------------------------

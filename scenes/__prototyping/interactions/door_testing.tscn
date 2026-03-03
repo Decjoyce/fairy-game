@@ -26,9 +26,6 @@ environment = SubResource("Environment_d0ohw")
 transform = Transform3D(1, 0, 0, 0, -0.50000006, 0.8660254, 0, -0.8660254, -0.50000006, 0, 1.8000001, 0)
 shadow_enabled = true
 
-[node name="Keyhole" parent="." unique_id=2028671977 instance=ExtResource("2_6jfoc")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.059424497, 0.9732478, -2.887958)
-
 [node name="Keyhole2" parent="." unique_id=1154505401 instance=ExtResource("2_6jfoc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0.7, -2)
 use_intervals = true
@@ -40,4 +37,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 [node name="Door" parent="." unique_id=1273201646 instance=ExtResource("4_d0ohw")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -3)
 
-[connection signal="on_activated" from="Keyhole" to="Door" method="open_door"]
+[node name="Keyhole" parent="Door" unique_id=2028671977 instance=ExtResource("2_6jfoc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.059424497, 0.9732478, 0.11204195)
+
+[connection signal="on_activated" from="Door/Keyhole" to="Door" method="open_door"]

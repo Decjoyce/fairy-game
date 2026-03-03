@@ -1,6 +1,10 @@
 class_name HandState_Grab_Item
 extends HandState
 
+var _testing_throw_alt: bool = true
+# ↑ A/B TESTING Stuff ↑
+# -
+
 var is_ready: bool
 var is_exiting: bool
 
@@ -12,6 +16,7 @@ var offset_og_pos: Vector2
 var current_grab_prompt: String
 var current_hand_prompt: String
 
+
 func handle_input(_event: InputEvent) -> void:
 	pass
 
@@ -19,6 +24,8 @@ func update(_delta: float) -> void:
 	if is_exiting: return
 	
 	set_grab_position()
+	
+	if Input.is_action_just_pressed("testing_altthrow"): _testing_throw_alt = !_testing_throw_alt
 	
 	hand_controller.joystick_movement(_delta)
 	if Input.is_action_just_pressed("change_hand_speed_" + hand_controller.stringed_hand_type): hand_controller.change_hand_speed()
@@ -228,7 +235,13 @@ func end_charge() -> void:
 	hand_controller.anim_override_current_animation("a_hand_grab_item_charge", true)
 	if charge_amount < 0.1: grabbed_item.end_interact()
 	else: 
-		grabbed_item.throw(charge_amount)
+		if !_testing_throw_alt:
+			grabbed_item.throw(charge_amount)
+		else:
+			var origin := hand_controller.cam.project_ray_origin(player_interact.get_rect().get_center())
+			var end := origin + hand_controller.cam.project_ray_normal(offset_helper.global_position) * GRAB_DIST
+			var dir: Vector3 = origin.direction_to(end)
+			grabbed_item.throw_alt(charge_amount, dir)
 	
 	grabbed_item.rotation.z = 0
 	is_charging = false

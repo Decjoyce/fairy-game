@@ -19,7 +19,6 @@
 [ext_resource type="Texture2D" uid="uid://dou0xes0jegud" path="res://scenes/_player/interaction/hand/assets/new/handThrowCharge.png" id="13_g103e"]
 [ext_resource type="Texture2D" uid="uid://5u5xfynp8cio" path="res://scenes/_player/interaction/hand/assets/new/handTorch.png" id="13_j5qgs"]
 [ext_resource type="Texture2D" uid="uid://bac1td5bs4tmp" path="res://scenes/_player/interaction/hand/assets/new/handThrowRelease.png" id="14_adext"]
-[ext_resource type="Texture2D" uid="uid://c13thpnkpuk2u" path="res://scenes/_player/interaction/hand/assets/new/handIdle.png" id="17_onote"]
 [ext_resource type="Texture2D" uid="uid://2k4dl70eoi6v" path="res://scenes/_player/interaction/hand/assets/new/handGrab.png" id="18_adext"]
 [ext_resource type="Texture2D" uid="uid://ip3mcc0c48rf" path="res://scenes/_player/interaction/hand/assets/new/handPick.png" id="20_j5qgs"]
 [ext_resource type="Texture2D" uid="uid://bvp14xwrxbn3n" path="res://assets/__not_ours_dontship/Xbox Series/XboxSeriesX_B.png" id="20_x8mhs"]
@@ -86,6 +85,7 @@ tracks/0/keys = {
 [sub_resource type="Animation" id="Animation_h6x2d"]
 resource_name = "a_hand_idle"
 length = 0.001
+loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -96,7 +96,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("17_onote")]
+"values": [ExtResource("9_8icoj")]
 }
 
 [sub_resource type="Animation" id="Animation_3efos"]
@@ -166,6 +166,23 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id="Animation_u1dts"]
 resource_name = "hand_key_down"
+length = 0.001
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("_hand_sprite:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("25_1y63c")]
+}
+
+[sub_resource type="Animation" id="Animation_bxsda"]
+resource_name = "hand_key_mid"
 length = 0.001
 loop_mode = 1
 tracks/0/type = "value"
@@ -445,6 +462,7 @@ _data = {
 &"hand_attack": SubResource("Animation_jhcvy"),
 &"hand_attack_idle": SubResource("Animation_b33uu"),
 &"hand_key_down": SubResource("Animation_u1dts"),
+&"hand_key_mid": SubResource("Animation_bxsda"),
 &"hand_key_up": SubResource("Animation_um574"),
 &"hand_lever_down": SubResource("Animation_8icoj"),
 &"hand_lever_down_side": SubResource("Animation_rjeyo"),
