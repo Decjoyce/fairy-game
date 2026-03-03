@@ -1,7 +1,7 @@
 extends Node3D
 
 @export var drawbridge_lever: Lever
-@export var max_rotation: float = 180.0
+@export var max_rotation: float = -90
 @export var rotation_speed: float = 0.5   # Higher = faster
 
 var target_rotation: float = 0.0
@@ -14,8 +14,8 @@ func _ready():
 
 func _process(delta):
   
-	rotation_degrees.y = lerp(
-		rotation_degrees.y,
+	rotation_degrees.z = lerp(
+		rotation_degrees.z,
 		target_rotation,
 		rotation_speed * delta
 	)
