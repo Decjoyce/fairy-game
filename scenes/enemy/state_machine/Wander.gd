@@ -2,7 +2,8 @@ extends NodeState
 
 @export var Body : CharacterBody3D # for shmoovment
 @export var Sprite : Sprite3DBillBoard #For animation control i hope
-
+@export var footstep_audio: AudioStreamPlayer3D
+@export var scrach_audio: AudioStreamPlayer3D
 @onready var grid_map: GridMapPathFinding 
 # Animator for what to play
 # SM for state change
@@ -25,12 +26,15 @@ var rng = RandomNumberGenerator.new()
 
 
 
+
 func on_physics_process(delta: float) -> void:
 		if path.size() >= 1:
 			moveW(delta)
 			if Animator.current_animation != "Walk2":
 				Animator.play("Walk2")
-		else: Animator.play("Idle2")
+		else: 
+			Animator.play("Idle2")
+			
 			
 			  
 
@@ -45,6 +49,7 @@ func enter():
 	#prints(grid_map.walkable_items)
 	player = get_tree().get_first_node_in_group("fakeplayer")
 	Animator.play("Walk2")
+	
 	
 	RandomWander()
 
@@ -73,7 +78,7 @@ func moveW(delta: float) -> void:
 	#prints(current_point, path.size())
 	if current_point < path.size():
 		is_moving = true
-		
+		footstep_audio.play()
 		target_pos.y = Body.global_position.y
 		dist_to_target = Body.global_position.distance_to(target_pos)
 		

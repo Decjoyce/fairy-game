@@ -7,6 +7,7 @@ extends NodeState
 @export var goal_tile: Vector3i = Vector3i(2,0, -6)
 @export var player_tile: Vector3i = Vector3i(-2,0,18)
 @onready var grid_map: GridMapPathFinding 
+@export var footstep_audio: AudioStreamPlayer3D
 
 @export var Debug_draw: bool
 
@@ -88,7 +89,7 @@ func movement(delta: float) -> void:
 	prints(current_point, path.size())
 	if current_point < path.size():
 		is_moving = true
-		
+		footstep_audio.play()
 		target_pos.y = Body.global_position.y
 		dist_to_target = Body.global_position.distance_to(target_pos)
 		
