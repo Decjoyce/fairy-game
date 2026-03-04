@@ -26,7 +26,7 @@
 [ext_resource type="Script" uid="uid://cjssruwuxjia0" path="res://scenes/combat/attack_sequence.gd" id="28_3jwaj"]
 [ext_resource type="AudioStream" uid="uid://78nk0cnbd7w0" path="res://assets/audio/sfx/enemy/ballybog/huh/Voices, Reaction, Huh, Suprised, Shocked, Loud, Meme Redesign SND140141.wav" id="29_2g7uo"]
 [ext_resource type="AudioStream" uid="uid://0xpm0o2jyheg" path="res://assets/audio/sfx/enemy/ballybog/Rub/Objects, Fashion, Makeup, Sponge, Beautyblender, Single Strokes On Skin SND123478 1.wav" id="29_28ajc"]
-[ext_resource type="Script" uid="uid://1bkpo4brfafu" path="res://scenes/enemy/stunned.gd" id="29_iaicr"]
+[ext_resource type="Script" path="res://scenes/enemy/stunned.gd" id="29_iaicr"]
 [ext_resource type="Resource" uid="uid://bo6jynbmofv6l" path="res://scenes/enemy/combat/attacks/attckseq_bb_test.tres" id="29_pydrg"]
 [ext_resource type="AudioStream" uid="uid://bv4qewq6vcxos" path="res://assets/audio/sfx/enemy/ballybog/Rub/Objects, Fashion, Makeup, Sponge, Beautyblender, Single Strokes On Skin SND123478 2.wav" id="30_2g7uo"]
 [ext_resource type="Script" uid="uid://c27axnnaakeuo" path="res://scenes/combat/combathand_attack.gd" id="30_me4q8"]
@@ -46,7 +46,7 @@
 radius = 0.43391418
 height = 0.86782837
 
-[sub_resource type="Shader" id="Shader_86kpf"]
+[sub_resource type="Shader" id="Shader_phxqg"]
 code = "shader_type spatial;
 render_mode diffuse_lambert_wrap,cull_disabled;
 
@@ -123,23 +123,23 @@ void fragment() {
 }
 "
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_pkfog"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_86kpf"]
 render_priority = 0
-shader = SubResource("Shader_86kpf")
-shader_parameter/rows = 1.0
+shader = SubResource("Shader_phxqg")
+shader_parameter/rows = 2.0
 shader_parameter/columns = 8.0
 shader_parameter/frame = 1.0
 shader_parameter/invert_rows_columns = false
-shader_parameter/sprite = ExtResource("22_pkfog")
+shader_parameter/sprite = ExtResource("3_5ussm")
 shader_parameter/mode = 0
-shader_parameter/Normal = ExtResource("23_d7tla")
+shader_parameter/Normal = ExtResource("2_p6ydp")
 
-[sub_resource type="PlaneMesh" id="PlaneMesh_d7tla"]
-material = SubResource("ShaderMaterial_pkfog")
+[sub_resource type="PlaneMesh" id="PlaneMesh_pkfog"]
+material = SubResource("ShaderMaterial_86kpf")
 size = Vector2(1.62, 1.62)
 orientation = 2
 
-[sub_resource type="Resource" id="Resource_8vrwc"]
+[sub_resource type="Resource" id="Resource_d7tla"]
 script = ExtResource("4_v1swk")
 name = "walk"
 sprite = ExtResource("6_l3c6t")
@@ -147,7 +147,7 @@ texture_normal = ExtResource("7_lngu7")
 rows = 5.0
 columns = 8.0
 
-[sub_resource type="Resource" id="Resource_iaicr"]
+[sub_resource type="Resource" id="Resource_8vrwc"]
 script = ExtResource("4_v1swk")
 name = "Attack"
 sprite = ExtResource("3_5ussm")
@@ -155,7 +155,7 @@ texture_normal = ExtResource("2_p6ydp")
 rows = 2.0
 columns = 8.0
 
-[sub_resource type="Resource" id="Resource_600hx"]
+[sub_resource type="Resource" id="Resource_iaicr"]
 script = ExtResource("4_v1swk")
 name = "idle_rub"
 sprite = ExtResource("20_phxqg")
@@ -163,14 +163,14 @@ texture_normal = ExtResource("21_86kpf")
 rows = 3.0
 columns = 8.0
 
-[sub_resource type="Resource" id="Resource_gefnw"]
+[sub_resource type="Resource" id="Resource_600hx"]
 script = ExtResource("4_v1swk")
 name = "Alert"
 sprite = ExtResource("22_pkfog")
 texture_normal = ExtResource("23_d7tla")
 columns = 8.0
 
-[sub_resource type="Resource" id="Resource_77qgr"]
+[sub_resource type="Resource" id="Resource_gefnw"]
 script = ExtResource("4_v1swk")
 name = "Stunned"
 sprite = ExtResource("12_l3c6t")
@@ -772,7 +772,7 @@ tracks/1/keys = {
 
 [sub_resource type="Animation" id="Animation_hu1w4"]
 resource_name = "Stunned"
-length = 0.5
+length = 1.1833333
 step = 0.0167
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -798,6 +798,17 @@ tracks/1/keys = {
 "update": 0,
 "values": [0.0, 1.0]
 }
+tracks/2/type = "audio"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../Scratch_audio")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"clips": [],
+"times": PackedFloat32Array()
+}
+tracks/2/use_blend = true
 
 [sub_resource type="Animation" id="Animation_vx87h"]
 resource_name = "Telegraph_LBottom"
@@ -1114,10 +1125,10 @@ shape = SubResource("CapsuleShape3D_abuop")
 transform = Transform3D(-1, 0, -1.509958e-07, 0, 1, 0, 1.509958e-07, 0, -1, 0, 0.6596855, 0)
 layers = 3
 sorting_offset = 1.0
-mesh = SubResource("PlaneMesh_d7tla")
+mesh = SubResource("PlaneMesh_pkfog")
 script = ExtResource("3_j08hu")
-animations_array = Array[ExtResource("4_v1swk")]([SubResource("Resource_8vrwc"), SubResource("Resource_iaicr"), SubResource("Resource_600hx"), SubResource("Resource_gefnw"), SubResource("Resource_77qgr")])
-animation = 3
+animations_array = Array[ExtResource("4_v1swk")]([SubResource("Resource_d7tla"), SubResource("Resource_8vrwc"), SubResource("Resource_iaicr"), SubResource("Resource_600hx"), SubResource("Resource_gefnw")])
+animation = 1
 frame = 1.0
 sprite_scale = 0.003
 metadata/_custom_type_script = "uid://b5653u7w56pqw"

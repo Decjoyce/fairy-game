@@ -29,6 +29,7 @@
 [ext_resource type="Material" uid="uid://c17eub34k5hf8" path="res://assets/models/cairn/Props/Wood_Door/Wood_Screw.tres" id="25_rqxab"]
 [ext_resource type="Script" uid="uid://c4t3ko70ihpyy" path="res://scenes/interactions/_receivers/animated_object/animated_object.gd" id="26_677wr"]
 [ext_resource type="PackedScene" uid="uid://b6yxusckbk4fk" path="res://scenes/interactions/_special/statue.tscn" id="26_bsnhk"]
+[ext_resource type="PackedScene" uid="uid://bm8kaq0ah5g7q" path="res://scenes/interactions/interactables/items/all_items/torch/torch.tscn" id="26_puwyg"]
 [ext_resource type="PackedScene" uid="uid://cpnmun20lswr" path="res://scenes/_levels/_palettes/cairn/props/cairn_pillar.tscn" id="30_7acmg"]
 [ext_resource type="Texture2D" uid="uid://1m8e2skdgkex" path="res://assets/sprites/item_sprites/skull_item.png" id="30_l401g"]
 [ext_resource type="Script" uid="uid://dd1m0o5pknq0j" path="res://scenes/interactions/DrawBridge/drawbridge.gd" id="30_ox1qx"]
@@ -351,7 +352,7 @@ shadow_enabled = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.37721205, 0, -2.0954456)
 
 [node name="TorchScont" parent="Torches" unique_id=799079126 instance=ExtResource("6_677wr")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.377212, 1, 12.477758)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.377212, -7, 9.477758)
 
 [node name="TorchScont6" parent="Torches" unique_id=813345400 instance=ExtResource("6_677wr")]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 25.155218, 1.6028705, -2.893865)
@@ -393,7 +394,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.1670609, 0.6459893, 15.197
 item_weight = 1
 
 [node name="TEST_Grabbable_item2" parent="Weighted Items" unique_id=1208973395 instance=ExtResource("9_7acmg")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.0159483, 0.6459893, -2.9605427)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.0159483, 0.6459893, -0.9605427)
 item_weight = 2
 
 [node name="Urn" parent="Weighted Items" unique_id=38004987 instance=ExtResource("10_ox1qx")]
@@ -433,7 +434,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.9864693, 0, -18.09972)
 stay_open = true
 
 [node name="Tutorial_Weight_Puzzle" parent="Weighted_Gate_Puzzle" unique_id=2079007304 instance=ExtResource("7_bsnhk")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.0180001, 0, -16.132)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.0180001, 0, -14.132)
 weight_to_activate = 20.0
 
 [node name="Lever_Puzzle" type="Node3D" parent="." unique_id=914674146]
@@ -620,15 +621,15 @@ item_weight = 1
 [node name="Urn_key_puzzle" type="Node3D" parent="." unique_id=67300331]
 
 [node name="QuickCage" type="MeshInstance3D" parent="Urn_key_puzzle" unique_id=1024437671]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30, 1.3436376, -5)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 32, 1.3436376, -5)
 mesh = ExtResource("22_botww")
 skeleton = NodePath("../..")
 
 [node name="Key_Urn" parent="Urn_key_puzzle" unique_id=530447260 instance=ExtResource("21_iwtqd")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 29.988064, 1.7126392, -5)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 31.988064, 1.7126392, -5)
 
 [node name="Slate_Door" type="Node3D" parent="Urn_key_puzzle" unique_id=2100226170 groups=["debug_PickableObjects"]]
-transform = Transform3D(-1, 8.742278e-08, -3.821371e-15, 0, -4.371139e-08, -1, -8.742278e-08, -1, 4.371139e-08, 30.062336, 1.3030984, -4.3087273)
+transform = Transform3D(-1, 8.742278e-08, -3.821371e-15, 0, -4.371139e-08, -1, -8.742278e-08, -1, 4.371139e-08, 32.062336, 1.3030984, -4.3087273)
 script = ExtResource("2_ogbox")
 override_signal_range = true
 ovr_signal_min = 0.5
@@ -684,12 +685,15 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.007080078, -0.26222706, -0
 shape = SubResource("BoxShape3D_i1hti")
 
 [node name="Urn_puzzle_Pressure_Plate" parent="Urn_key_puzzle" unique_id=247380468 instance=ExtResource("7_bsnhk")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 28, -2, -5)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 27, -2, -5)
 weight_to_activate = 25.0
 
 [node name="TEST_Grabbable_item4" parent="Urn_key_puzzle" unique_id=2055066079 instance=ExtResource("9_7acmg")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 26.982273, -1.5406365, -1)
 item_weight = 3
+
+[node name="Torch" parent="Urn_key_puzzle" unique_id=1479203938 instance=ExtResource("26_puwyg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 1, 10.9)
 
 [node name="Bridges" type="Node3D" parent="." unique_id=2095891951]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 40, 0, -2)

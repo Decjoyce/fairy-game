@@ -66,6 +66,7 @@
 [ext_resource type="PackedScene" uid="uid://bq5fylqfw1ru7" path="res://scenes/interactions/_special/item_statue_arm.tscn" id="51_x485q"]
 [ext_resource type="PackedScene" uid="uid://ciak43nkaxomm" path="res://scenes/interactions/_special/item_statue_head.tscn" id="53_fl0xw"]
 [ext_resource type="PackedScene" uid="uid://b7svh6muowjde" path="res://scenes/interactions/_special/main_quest_stage_indicator.tscn" id="54_fl0xw"]
+[ext_resource type="PackedScene" uid="uid://brxr85hbqpapm" path="res://scenes/interactions/interactables/items/all_items/breakables/item_baby.tscn" id="60_7evwh"]
 [ext_resource type="PackedScene" uid="uid://br35er4x4b6av" path="res://scenes/interactions/_triggers/torch_sconce/torch_sconce_unlit.tscn" id="65_tefph"]
 [ext_resource type="PackedScene" uid="uid://xuo5buj0odhi" path="res://scenes/interactions/_triggers/torch_sconce/torch_sconce_lit.tscn" id="66_aomhw"]
 
@@ -5275,6 +5276,9 @@ transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 2.38
 text = "Spawn Item
 "
 font_size = 26
+
+[node name="BabyDude" parent="Room_Items/Sections/Sec_Default/But_SpawnItem" unique_id=1376443271 instance=ExtResource("60_7evwh")]
+transform = Transform3D(-1, 0, -3.1786513e-08, 0, 1, 0, 3.1786513e-08, 0, -1, 74.41902, -0.3159998, 5.416399)
 
 [node name="item_spawner_ranitem" type="Node" parent="Room_Items/Sections/Sec_Default" unique_id=1119505886 node_paths=PackedStringArray("holder", "spawn_point")]
 script = ExtResource("37_gw50n")
