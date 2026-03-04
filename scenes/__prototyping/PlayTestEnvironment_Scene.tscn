@@ -40,6 +40,9 @@
 [ext_resource type="PackedScene" uid="uid://cnkngeiaucgql" path="res://scenes/_levels/_palettes/cairn/props/Rocks/cairn_rock_2.tscn" id="38_ts17l"]
 [ext_resource type="PackedScene" uid="uid://cfhacobhksnxe" path="res://scenes/_levels/_palettes/cairn/props/cairn_dirtwall.tscn" id="39_3awqm"]
 [ext_resource type="PackedScene" uid="uid://cfusjb3qjgawr" path="res://scenes/_levels/_palettes/cairn/props/cairn_wall_single.tscn" id="40_7rlee"]
+[ext_resource type="AudioStream" uid="uid://cq7dtkcnrtjyk" path="res://assets/audio/sfx/environment/ambient/Ambience, Underground, Cave, Magic, Deep, Wind, Howling 01 SND46571.wav" id="41_n84wi"]
+[ext_resource type="AudioStream" uid="uid://cte56l5nhnq88" path="res://assets/audio/sfx/environment/ambient/Ambience, Underground, Cave, Magic, Cold, Deep, Wind, Eerie SND46573.wav" id="42_s1tcs"]
+[ext_resource type="AudioStream" uid="uid://bscs1lnw8crcv" path="res://assets/audio/sfx/environment/ambient/Ambience, Underground, Cave, Magic, Dangling Metal SND46572.wav" id="43_t1xg4"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_vor1c"]
 sky_horizon_color = Color(0, 0.37292683, 0.8185948, 1)
@@ -1333,6 +1336,45 @@ transform = Transform3D(1, 0, 0, 0, 1.3047572, 0, 0, 0, 1, 25.17332, -0.1865086,
 
 [node name="Cairn_Wall_Single4" parent="Extradirtwalls" unique_id=1032064671 instance=ExtResource("40_7rlee")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0.28368065, 0.9589188, 1.2400074e-08, -0.9589188, 0.28368065, -4.1915673e-08, 27.123453, -2.2670946, -1.982436)
+
+[node name="Node3D" type="Node3D" parent="." unique_id=1226310613]
+
+[node name="Ambient" type="AudioStreamPlayer3D" parent="Node3D" unique_id=1055973786]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.993005, 4.119623, -22.374477)
+stream = ExtResource("41_n84wi")
+volume_db = 0.2
+autoplay = true
+max_distance = 25.0
+
+[node name="Ambient2" type="AudioStreamPlayer3D" parent="Node3D" unique_id=1967793408]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.361237, 3.6797285, -2.8930435)
+stream = ExtResource("42_s1tcs")
+volume_db = 0.5
+autoplay = true
+max_distance = 20.0
+
+[node name="Ambient4" type="AudioStreamPlayer3D" parent="Node3D" unique_id=819636537]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30.260918, 5.7079, -4.7948236)
+stream = ExtResource("42_s1tcs")
+volume_db = 0.5
+autoplay = true
+max_distance = 20.0
+
+[node name="Ambient3" type="AudioStreamPlayer3D" parent="Node3D" unique_id=1767732082]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.067028, 3.6797295, 2.2755156)
+stream = ExtResource("43_t1xg4")
+volume_db = 0.1
+pitch_scale = 0.2
+autoplay = true
+max_distance = 10.0
+
+[node name="Ambient5" type="AudioStreamPlayer3D" parent="Node3D" unique_id=1588647207]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 52.143078, 3.6797295, -4.7244844)
+stream = ExtResource("43_t1xg4")
+volume_db = 0.1
+pitch_scale = 0.2
+autoplay = true
+max_distance = 10.0
 
 [connection signal="on_activated" from="First Gate&Button/First_Button" to="First Gate&Button/First_Gate" method="open_gate"]
 [connection signal="on_change" from="Weighted_Gate_Puzzle/Tutorial_Weight_Puzzle" to="Weighted_Gate_Puzzle/Weight_Puzzle_Gate" method="open_gate"]
