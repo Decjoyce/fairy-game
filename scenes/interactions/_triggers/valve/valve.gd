@@ -33,7 +33,7 @@ func update_value(amount: float, emit_sigs: bool = true) -> void:
 		on_deactivated.emit(0.0)
 
 func update_graphics() -> void:
-	pivot.global_rotation_degrees.z = remap(current_value, 0, 1.0, 360, 0)
+	pivot.global_rotation_degrees.z = remap(current_value, 0, 1.0, -1080, 0)
 
 func enable(sig: float = -1) -> void:
 	visible = true
