@@ -49,7 +49,6 @@ func physics_update(_delta: float) -> void:
 # ↓ Controls Stuff ↓
 
 func controls(_delta: float) -> void:
-	
 	var cur_incr: float = 0
 	if Input.is_action_pressed(hand_controller.stringed_hand_type + "_joystick_down"):
 		if !has_reached_limit_end():

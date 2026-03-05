@@ -15,6 +15,7 @@
 [ext_resource type="Texture2D" uid="uid://x5o8gwlacxs1" path="res://assets/__not_ours_dontship/Xbox Series/XboxSeriesX_X.png" id="9_b33uu"]
 [ext_resource type="Script" uid="uid://bwjg44sotn0rj" path="res://scenes/_player/interaction/input_contexts.gd" id="9_pdn2y"]
 [ext_resource type="Script" uid="uid://bh1jjddc0xgfi" path="res://scenes/_player/interaction/hand/states/handstate_key.gd" id="9_v48pp"]
+[ext_resource type="Script" uid="uid://oentb1btlj35" path="res://scenes/_player/interaction/hand/states/handstate_valve.gd" id="10_bxsda"]
 [ext_resource type="Texture2D" uid="uid://dee8ol82mg72l" path="res://assets/__not_ours_dontship/Xbox Series/XboxSeriesX_LT.png" id="10_c2wdf"]
 [ext_resource type="Texture2D" uid="uid://dehow8buqijkk" path="res://scenes/_player/interaction/hand/assets/hand_lever.png" id="12_pvvfk"]
 [ext_resource type="Texture2D" uid="uid://dou0xes0jegud" path="res://scenes/_player/interaction/hand/assets/new/handThrowCharge.png" id="13_g103e"]
@@ -468,6 +469,40 @@ tracks/0/keys = {
 "values": [ExtResource("13_j5qgs")]
 }
 
+[sub_resource type="Animation" id="Animation_6uakc"]
+resource_name = "hand_valve"
+length = 0.001
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("_hand_sprite:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("25_j5qgs")]
+}
+
+[sub_resource type="Animation" id="Animation_4266y"]
+resource_name = "hand_valve_side"
+length = 0.001
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("_hand_sprite:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("27_rjeyo")]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_3efos"]
 _data = {
 &"RESET": SubResource("Animation_434r6"),
@@ -495,7 +530,9 @@ _data = {
 &"hand_prompt_key": SubResource("Animation_gulgn"),
 &"hand_prompt_lever": SubResource("Animation_rbe5j"),
 &"hand_prompt_torch_2": SubResource("Animation_c2wdf"),
-&"hand_torch_side": SubResource("Animation_krqau")
+&"hand_torch_side": SubResource("Animation_krqau"),
+&"hand_valve": SubResource("Animation_6uakc"),
+&"hand_valve_side": SubResource("Animation_4266y")
 }
 
 [node name="Interaction" type="Control" unique_id=1977560016 node_paths=PackedStringArray("hand_left", "hand_right")]
@@ -592,6 +629,13 @@ crouching_breaks_free = true
 anim_idle = "hand_chain"
 anim_prompt = "hand_prompt_default"
 metadata/_custom_type_script = "uid://cpddtckjbcr7r"
+
+[node name="VALVE" type="Node" parent="Hand_Left/States" unique_id=607682682]
+script = ExtResource("10_bxsda")
+moving_breaks_free = true
+turning_breaks_free = true
+crouching_breaks_free = true
+metadata/_custom_type_script = "uid://oentb1btlj35"
 
 [node name="_hand_sprite" type="TextureRect" parent="Hand_Left" unique_id=4964372]
 layout_mode = 1
@@ -787,6 +831,13 @@ crouching_breaks_free = true
 anim_idle = "hand_chain"
 anim_prompt = "hand_prompt_default"
 metadata/_custom_type_script = "uid://cpddtckjbcr7r"
+
+[node name="VALVE" type="Node" parent="Hand_Right/States" unique_id=1978708977]
+script = ExtResource("10_bxsda")
+moving_breaks_free = true
+turning_breaks_free = true
+crouching_breaks_free = true
+metadata/_custom_type_script = "uid://oentb1btlj35"
 
 [node name="_hand_sprite" type="TextureRect" parent="Hand_Right" unique_id=2143479765]
 layout_mode = 1

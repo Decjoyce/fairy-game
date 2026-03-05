@@ -162,6 +162,11 @@ func begin_interact() -> void:
 				player_interact.free_interaction_on_other_hand(hand_type) # replace with signal
 			current_interactable.begin_interact()
 			state.finished.emit(state.CHAIN)
+		hovering_interactable.InteractTypes.TEMP_VALVE:
+			if player_interact.get_other_hand_current_interactable(hand_type) == current_interactable:
+				player_interact.free_interaction_on_other_hand(hand_type) # replace with signal
+			current_interactable.begin_interact()
+			state.finished.emit(state.VALVE)
 
 func on_player_moved(direction: Vector3, target: Vector3) -> void:
 	if !state.moving_breaks_free:
