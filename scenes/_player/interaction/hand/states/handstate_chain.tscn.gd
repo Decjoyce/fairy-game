@@ -68,7 +68,7 @@ var end_pos: float
 
 func has_reached_limit_end() -> bool:
 	prints("BOTTOM", hand_controller.get_screen_position().y, end_pos)
-	return hand_controller.get_screen_position().y > end_pos
+	return hand_controller.get_screen_position().y > end_pos - hand_controller.size.y
 
 func has_reached_limit_top() -> bool:
 	prints("TOP", hand_controller.get_screen_position().y, top_pos)
