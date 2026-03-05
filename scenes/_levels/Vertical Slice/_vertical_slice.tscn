@@ -329,7 +329,7 @@ albedo_color = Color(0.7585879, 0.81178766, 1, 1)
 albedo_texture = ExtResource("29_tml3r")
 billboard_mode = 1
 
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_hgehc"]
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_vugc7"]
 load_path = "res://.godot/imported/urn_item.png-a865bb42c1dd5f9effd8c6077babc439.s3tc.ctex"
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_18pev"]
@@ -339,7 +339,7 @@ blend_mode = 1
 shading_mode = 0
 diffuse_mode = 3
 albedo_color = Color(0.69135684, 0.6913568, 0.69135684, 1)
-albedo_texture = SubResource("CompressedTexture2D_hgehc")
+albedo_texture = SubResource("CompressedTexture2D_vugc7")
 billboard_mode = 1
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_52tl6"]
@@ -590,7 +590,6 @@ weight_to_activate = 14.0
 
 [node name="skull" parent="Node3D3/Puzzles_01" unique_id=1769907026 instance=ExtResource("12_020vy")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0.6, 0)
-item_weight = 3
 
 [node name="drinkvessel" parent="Node3D3/Puzzles_01" unique_id=558374551 instance=ExtResource("13_fe3wq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.9999843, 0.9, 0)
@@ -883,7 +882,6 @@ col = NodePath("../Area3D/CollisionShape3D")
 
 [node name="PlayerAreaTrigger" parent="Node3D3/UrnBreakScene" unique_id=1320606159 instance=ExtResource("41_eott8")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0.706, -15.255)
-override_signal = 0.0
 
 [node name="Area3D" type="Area3D" parent="Node3D3/UrnBreakScene/PlayerAreaTrigger" unique_id=1038693647]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.13067532)
@@ -960,7 +958,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7, 0.4, -2)
 
 [node name="PlayerAreaTrigger" parent="." unique_id=729021418 instance=ExtResource("41_eott8")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7, 1, -0.3)
-override_signal = 0.0
 
 [node name="Area3D" type="Area3D" parent="PlayerAreaTrigger" unique_id=1141923240]
 collision_layer = 0
@@ -971,7 +968,6 @@ shape = SubResource("BoxShape3D_gvepk")
 
 [node name="PlayerAreaTrigger2" parent="." unique_id=1888837821 instance=ExtResource("41_eott8")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7, 1, -7.3)
-override_signal = 1.0
 
 [node name="Area3D" type="Area3D" parent="PlayerAreaTrigger2" unique_id=1791395508]
 collision_layer = 0
