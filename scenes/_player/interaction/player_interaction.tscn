@@ -9,6 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://doii0wm4ij7ms" path="res://scenes/_player/interaction/hand/assets/hand_hold.png" id="6_ft4o3"]
 [ext_resource type="Script" uid="uid://cbiffyiwdsd26" path="res://scenes/_player/interaction/hand/states/handstate_attack.gd" id="7_b33uu"]
 [ext_resource type="Texture2D" uid="uid://bf54ba5wmnwv7" path="res://scenes/_player/interaction/hand/assets/hand_pick.png" id="7_h6x2d"]
+[ext_resource type="Script" uid="uid://cpddtckjbcr7r" path="res://scenes/_player/interaction/hand/states/handstate_chain.tscn.gd" id="7_v48pp"]
 [ext_resource type="Texture2D" uid="uid://dtjkym227bqie" path="res://scenes/_player/interaction/hand/assets/hand_extend.png" id="8_3efos"]
 [ext_resource type="Texture2D" uid="uid://fiyfylw4oy02" path="res://scenes/_player/interaction/hand/assets/new/handFist.png" id="9_8icoj"]
 [ext_resource type="Texture2D" uid="uid://x5o8gwlacxs1" path="res://assets/__not_ours_dontship/Xbox Series/XboxSeriesX_X.png" id="9_b33uu"]
@@ -23,7 +24,6 @@
 [ext_resource type="Texture2D" uid="uid://ip3mcc0c48rf" path="res://scenes/_player/interaction/hand/assets/new/handPick.png" id="20_j5qgs"]
 [ext_resource type="Texture2D" uid="uid://bvp14xwrxbn3n" path="res://assets/__not_ours_dontship/Xbox Series/XboxSeriesX_B.png" id="20_x8mhs"]
 [ext_resource type="Texture2D" uid="uid://jub3n8100tqt" path="res://assets/__not_ours_dontship/Xbox Series/XboxSeriesX_RT.png" id="21_g8o0o"]
-[ext_resource type="Script" uid="uid://cefly351moegl" path="res://scenes/_player/interaction/hand/states/handstate_lever.gd" id="21_krqau"]
 [ext_resource type="Texture2D" uid="uid://by4r3xp6u2qur" path="res://scenes/_player/interaction/hand/assets/new/handOut.png" id="22_6q41x"]
 [ext_resource type="Texture2D" uid="uid://bsneap2rk48wi" path="res://scenes/_player/interaction/hand/assets/new/handHover.png" id="22_f0odu"]
 [ext_resource type="Texture2D" uid="uid://dug1nta4aw3qf" path="res://scenes/_player/interaction/hand/assets/new/handLeverDown_side.png" id="25_1y63c"]
@@ -162,6 +162,23 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [ExtResource("7_h6x2d")]
+}
+
+[sub_resource type="Animation" id="Animation_uwauf"]
+resource_name = "hand_chain"
+length = 0.001
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("_hand_sprite:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("13_j5qgs")]
 }
 
 [sub_resource type="Animation" id="Animation_u1dts"]
@@ -461,6 +478,7 @@ _data = {
 &"a_hand_pickup": SubResource("Animation_ft4o3"),
 &"hand_attack": SubResource("Animation_jhcvy"),
 &"hand_attack_idle": SubResource("Animation_b33uu"),
+&"hand_chain": SubResource("Animation_uwauf"),
 &"hand_key_down": SubResource("Animation_u1dts"),
 &"hand_key_mid": SubResource("Animation_bxsda"),
 &"hand_key_up": SubResource("Animation_um574"),
@@ -541,7 +559,7 @@ offset_helper = NodePath("../../_hand_sprite/_draw_pos")
 metadata/_custom_type_script = "uid://dpsgaiv5m7n21"
 
 [node name="LEVER" type="Node" parent="Hand_Left/States" unique_id=136764758]
-script = ExtResource("21_krqau")
+script = ExtResource("7_v48pp")
 moving_breaks_free = true
 turning_breaks_free = true
 crouching_breaks_free = true
@@ -565,6 +583,15 @@ turning_breaks_free = true
 crouching_breaks_free = true
 anim_idle = "hand_prompt_key"
 metadata/_custom_type_script = "uid://bh1jjddc0xgfi"
+
+[node name="CHAIN" type="Node" parent="Hand_Left/States" unique_id=1107743316]
+script = ExtResource("7_v48pp")
+moving_breaks_free = true
+turning_breaks_free = true
+crouching_breaks_free = true
+anim_idle = "hand_chain"
+anim_prompt = "hand_prompt_default"
+metadata/_custom_type_script = "uid://cpddtckjbcr7r"
 
 [node name="_hand_sprite" type="TextureRect" parent="Hand_Left" unique_id=4964372]
 layout_mode = 1
@@ -727,7 +754,7 @@ offset_helper = NodePath("../../_hand_sprite/_draw_pos")
 metadata/_custom_type_script = "uid://dpsgaiv5m7n21"
 
 [node name="LEVER" type="Node" parent="Hand_Right/States" unique_id=2018788044]
-script = ExtResource("21_krqau")
+script = ExtResource("7_v48pp")
 moving_breaks_free = true
 turning_breaks_free = true
 crouching_breaks_free = true
@@ -751,6 +778,15 @@ turning_breaks_free = true
 crouching_breaks_free = true
 anim_idle = "hand_prompt_key"
 metadata/_custom_type_script = "uid://bh1jjddc0xgfi"
+
+[node name="CHAIN" type="Node" parent="Hand_Right/States" unique_id=1007749441]
+script = ExtResource("7_v48pp")
+moving_breaks_free = true
+turning_breaks_free = true
+crouching_breaks_free = true
+anim_idle = "hand_chain"
+anim_prompt = "hand_prompt_default"
+metadata/_custom_type_script = "uid://cpddtckjbcr7r"
 
 [node name="_hand_sprite" type="TextureRect" parent="Hand_Right" unique_id=2143479765]
 layout_mode = 1

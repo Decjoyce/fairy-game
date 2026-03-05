@@ -8,6 +8,7 @@ const GRAB_OBJ = "GRAB_OBJ"
 const LEVER = "LEVER"
 const ATTACK = "ATTACK"
 const KEY = "KEY"
+const CHAIN = "CHAIN"
 
 var hand_controller: PlayerHand
 var player: PlayerTest

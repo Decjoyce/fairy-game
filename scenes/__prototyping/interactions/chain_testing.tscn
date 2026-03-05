@@ -1,0 +1,63 @@
+[gd_scene format=3 uid="uid://cn21rb7do4pgk"]
+
+[ext_resource type="PackedScene" uid="uid://bq86osdembn58" path="res://scenes/_player/_player_test.tscn" id="2_wd405"]
+[ext_resource type="PackedScene" uid="uid://dt13fur6twjep" path="res://scenes/interactions/_receivers/gate/gate.tscn" id="3_b7cjw"]
+[ext_resource type="Script" uid="uid://cgb0bi0gumby6" path="res://scenes/interactions/_receivers/skybox_changer/skybox_changer.gd" id="4_glw7d"]
+[ext_resource type="PackedScene" uid="uid://dcbfb4frwgj7c" path="res://scenes/interactions/_triggers/chain/chain.tscn" id="5_4crat"]
+[ext_resource type="Environment" uid="uid://co42tppomh8j3" path="res://assets/skyboxes/skyboxes_testing_dark.tres" id="5_s4w87"]
+
+[sub_resource type="Environment" id="Environment_vu50v"]
+
+[sub_resource type="Environment" id="Environment_2rnw6"]
+
+[node name="LeverTesting" type="Node3D" unique_id=1969717916]
+
+[node name="player_test" parent="." unique_id=725727541 instance=ExtResource("2_wd405")]
+transform = Transform3D(1, 0, -1.7484555e-07, 0, 1, 0, 1.7484555e-07, 0, 1, 0, 1, 1)
+
+[node name="Gate" parent="." unique_id=1033176324 instance=ExtResource("3_b7cjw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2.4)
+
+[node name="Gate3" parent="." unique_id=445072765 instance=ExtResource("3_b7cjw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, -2.4)
+
+[node name="Gate2" parent="." unique_id=1292899736 instance=ExtResource("3_b7cjw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 0, -2.4)
+
+[node name="skybox_changer" type="Node" parent="." unique_id=724843259 node_paths=PackedStringArray("world_environment")]
+script = ExtResource("4_glw7d")
+world_environment = NodePath("WorldEnvironment")
+skybox_a = SubResource("Environment_vu50v")
+skybox_b = ExtResource("5_s4w87")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="skybox_changer" unique_id=593557997]
+environment = SubResource("Environment_2rnw6")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="skybox_changer" unique_id=706274120]
+transform = Transform3D(1, 0, 0, 0, -0.50000006, 0.8660254, 0, -0.8660254, -0.50000006, 0, 1.8000001, 0)
+shadow_enabled = true
+
+[node name="_env" type="Node3D" parent="." unique_id=1143340956]
+
+[node name="CSGBox3D" type="CSGBox3D" parent="_env" unique_id=450762206]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, 0, -1)
+use_collision = true
+size = Vector3(34, 0.001, 13)
+
+[node name="Chain" parent="." unique_id=691524357 instance=ExtResource("5_4crat")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.1, 0)
+debug_mode = true
+
+[node name="Chain3" parent="." unique_id=1693509440 instance=ExtResource("5_4crat")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 1.1, 0)
+debug_mode = true
+starting_value = 1.0
+
+[node name="Chain2" parent="." unique_id=697626459 instance=ExtResource("5_4crat")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 1.1, 0)
+debug_mode = true
+
+[connection signal="on_change" from="Chain" to="Gate" method="open_gate"]
+[connection signal="on_change" from="Chain3" to="Gate" method="open_gate"]
+[connection signal="on_activated" from="Chain2" to="skybox_changer" method="change_to_a"]
+[connection signal="on_deactivated" from="Chain2" to="skybox_changer" method="change_to_b"]
