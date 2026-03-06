@@ -1,3 +1,4 @@
+@icon("res://assets/_editor_icons/icon_chain.svg")
 class_name Chain
 extends Interactable
 
