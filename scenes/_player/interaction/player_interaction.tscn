@@ -9,6 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://doii0wm4ij7ms" path="res://scenes/_player/interaction/hand/assets/hand_hold.png" id="6_ft4o3"]
 [ext_resource type="Script" uid="uid://cbiffyiwdsd26" path="res://scenes/_player/interaction/hand/states/handstate_attack.gd" id="7_b33uu"]
 [ext_resource type="Texture2D" uid="uid://bf54ba5wmnwv7" path="res://scenes/_player/interaction/hand/assets/hand_pick.png" id="7_h6x2d"]
+[ext_resource type="Script" uid="uid://cefly351moegl" path="res://scenes/_player/interaction/hand/states/handstate_lever.gd" id="7_u1dts"]
 [ext_resource type="Script" uid="uid://cpddtckjbcr7r" path="res://scenes/_player/interaction/hand/states/handstate_chain.tscn.gd" id="7_v48pp"]
 [ext_resource type="Texture2D" uid="uid://dtjkym227bqie" path="res://scenes/_player/interaction/hand/assets/hand_extend.png" id="8_3efos"]
 [ext_resource type="Texture2D" uid="uid://fiyfylw4oy02" path="res://scenes/_player/interaction/hand/assets/new/handFist.png" id="9_8icoj"]
@@ -596,12 +597,11 @@ offset_helper = NodePath("../../_hand_sprite/_draw_pos")
 metadata/_custom_type_script = "uid://dpsgaiv5m7n21"
 
 [node name="LEVER" type="Node" parent="Hand_Left/States" unique_id=136764758]
-script = ExtResource("7_v48pp")
+script = ExtResource("7_u1dts")
 moving_breaks_free = true
 turning_breaks_free = true
 crouching_breaks_free = true
 anim_idle = "a_hand_idle_grab_item"
-anim_prompt = "hand_prompt_key"
 metadata/_custom_type_script = "uid://cefly351moegl"
 
 [node name="ATTACK" type="Node" parent="Hand_Left/States" unique_id=1683072651]
@@ -798,12 +798,11 @@ offset_helper = NodePath("../../_hand_sprite/_draw_pos")
 metadata/_custom_type_script = "uid://dpsgaiv5m7n21"
 
 [node name="LEVER" type="Node" parent="Hand_Right/States" unique_id=2018788044]
-script = ExtResource("7_v48pp")
+script = ExtResource("7_u1dts")
 moving_breaks_free = true
 turning_breaks_free = true
 crouching_breaks_free = true
 anim_idle = "a_hand_idle_grab_item"
-anim_prompt = "hand_prompt_key"
 metadata/_custom_type_script = "uid://cefly351moegl"
 
 [node name="ATTACK" type="Node" parent="Hand_Right/States" unique_id=1032528826]

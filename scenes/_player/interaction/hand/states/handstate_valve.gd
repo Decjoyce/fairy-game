@@ -49,7 +49,7 @@ func controls(_delta: float) -> void:
 	if input_vec.length_squared() < deadzone: 
 		prev_angle = -1
 		return
-	if input_vec.distance_squared_to(prev_input) <= 0.01: return
+	if input_vec.distance_squared_to(prev_input) <= 0.005: return
 	var new_angle := ceilf((rad_to_deg(input_vec.angle()) + 180))
 	var cur_incr: float = 0
 	if abs(new_angle - prev_angle) <= 0.1: return

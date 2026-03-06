@@ -4,7 +4,7 @@ extends Control
 var test_handlimit: bool
 var test_screen_limit_x_min: float 
 var test_screen_limit_x_max: float 
-var test_screen_fraction: float = 3.0
+var test_screen_fraction: float = 5.0
 
 
 func calc_limit() -> void:
