@@ -30,15 +30,15 @@ func update(_delta: float) -> void:
 	if player.movement.dist_to_target > 0:
 		update_graphics()
 	
-	controls(_delta)
+	#controls(_delta)
 	
 	if Input.is_action_just_pressed("action_" + hand_controller.stringed_hand_type): 
 		finished.emit(FREE)
 
 func physics_update(_delta: float) -> void:
-	#controls(_delta)
+	controls(_delta)
 	#controls_alt_alt(_delta)
-	pass
+	
 
 # ↑ State Stuff ↑
 # --------------------------------------------------------------------------------------------------
@@ -54,9 +54,9 @@ func controls(_delta: float) -> void:
 	var cur_incr: float = 0
 	if abs(new_angle - prev_angle) <= 0.1: return
 	if new_angle > prev_angle:
-		cur_incr -= 1 - exp(-7.5 * _delta)
+		cur_incr += 1 - exp(-0.375 * _delta)
 	elif new_angle < prev_angle:
-		cur_incr += 1 - exp(-7.5 * _delta)
+		cur_incr -= 1 - exp(-0.375 * _delta)
 	else: return
 	
 	current_value = clampf(current_value+cur_incr, 0, 1.0)
