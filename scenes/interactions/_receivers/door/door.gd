@@ -6,7 +6,7 @@ extends Node3D
 @export var opened: bool
 
 func _ready() -> void:
-	if opened: open_door(1.0)
+	if opened: start_opened()
 
 func open_door(sig: float) -> void:
 	anim_player.play("door_open")
@@ -19,6 +19,9 @@ func close_door(sig: float) -> void:
 func toggle_door(sig: float) -> void:
 	if opened: close_door(0)
 	else: open_door(1.0)
+
+func start_opened() -> void:
+	anim_player.play("door_open", -1, 20)
 
 #func open_door(sig: float) -> void:
 	#var mapped_time: float = remap(sig, 0, 1, 0, anim_player.get_animation("door_open").length)
