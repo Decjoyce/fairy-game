@@ -26,8 +26,8 @@
 [ext_resource type="ArrayMesh" uid="uid://hh3rgr5ljsbh" path="res://assets/Key_Items/Slate.obj" id="23_rjk7r"]
 [ext_resource type="Material" uid="uid://f0qp2o0ip83p" path="res://assets/models/cairn/Props/Wood_Door/Wood_Door.tres" id="24_snoiu"]
 [ext_resource type="Material" uid="uid://c17eub34k5hf8" path="res://assets/models/cairn/Props/Wood_Door/Wood_Screw.tres" id="25_rqxab"]
-[ext_resource type="Script" uid="uid://c4t3ko70ihpyy" path="res://scenes/interactions/_receivers/animated_object/animated_object.gd" id="26_677wr"]
 [ext_resource type="PackedScene" uid="uid://bm8kaq0ah5g7q" path="res://scenes/interactions/interactables/items/all_items/torch/torch.tscn" id="26_puwyg"]
+[ext_resource type="Script" uid="uid://dd1m0o5pknq0j" path="res://scenes/interactions/DrawBridge/drawbridge.gd" id="27_ywmxo"]
 [ext_resource type="Texture2D" uid="uid://1m8e2skdgkex" path="res://assets/sprites/item_sprites/skull_item.png" id="30_l401g"]
 [ext_resource type="Texture2D" uid="uid://bhs3fvxrmdp4o" path="res://assets/sprites/item_sprites/bone_flute.png" id="31_7acmg"]
 [ext_resource type="PackedScene" uid="uid://xuo5buj0odhi" path="res://scenes/interactions/_triggers/torch_sconce/torch_sconce_lit.tscn" id="33_h4c7c"]
@@ -44,6 +44,8 @@
 [ext_resource type="AudioStream" uid="uid://b2wyku3cc6qng" path="res://assets/audio/sfx/items/urn/Pot_Break-005.wav" id="47_y35hk"]
 [ext_resource type="AudioStream" uid="uid://dq7fnct8thxc1" path="res://assets/audio/sfx/items/urn/Pot_Break-006.wav" id="48_hy1oc"]
 [ext_resource type="AudioStream" uid="uid://fuh5gdonebeu" path="res://assets/audio/sfx/items/urn/Pot_Break-007.wav" id="49_2youk"]
+[ext_resource type="PackedScene" uid="uid://ug0eek4wmkkj" path="res://assets/models/cairn/Z-Old-EnvironmentModels/WallDoor/Walldoor.glb" id="50_hcljr"]
+[ext_resource type="PackedScene" uid="uid://b6yxusckbk4fk" path="res://scenes/interactions/_special/statue.tscn" id="50_rqpeq"]
 [ext_resource type="AudioStream" uid="uid://mg4lgqchj0p5" path="res://assets/audio/sfx/items/urn/Pot_Break-008.wav" id="50_xsp3k"]
 [ext_resource type="AudioStream" uid="uid://plsapuaavdu" path="res://assets/audio/sfx/items/urn/Pot_Break-009.wav" id="51_t4adt"]
 [ext_resource type="PackedScene" uid="uid://bsdlm8rcrt2j" path="res://scenes/interactions/_triggers/area_triggers/player_area_trigger.tscn" id="52_fj6xp"]
@@ -229,6 +231,59 @@ size = Vector3(1, 1.1561279, 0.07299805)
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_rjk7r"]
 height = 0.05001068
 
+[sub_resource type="SphereShape3D" id="SphereShape3D_sc7xq"]
+radius = 1.0
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ym2x2"]
+size = Vector3(1.9891357, 2.0736084, 0.2929077)
+
+[sub_resource type="Resource" id="Resource_bhdn7"]
+script = ExtResource("7_l401g")
+specific_item_to_drop = ExtResource("6_bsnhk")
+item_type = 4
+metadata/_custom_type_script = "uid://beaf3digx88d0"
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_iu7h4"]
+size = Vector3(0.5, 0.71777344, 0.5)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_1mmfd"]
+size = Vector3(0.4, 0.6667541, 0.4)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mf8ps"]
+render_priority = 1
+transparency = 1
+blend_mode = 1
+shading_mode = 0
+albedo_color = Color(0.7585879, 0.81178766, 1, 1)
+albedo_texture = ExtResource("41_fj6xp")
+billboard_mode = 1
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_hgehc"]
+load_path = "res://.godot/imported/urn_item.png-a865bb42c1dd5f9effd8c6077babc439.s3tc.ctex"
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_i3v7e"]
+render_priority = 3
+transparency = 1
+blend_mode = 1
+shading_mode = 0
+diffuse_mode = 3
+albedo_color = Color(0.69135684, 0.6913568, 0.69135684, 1)
+albedo_texture = SubResource("CompressedTexture2D_hgehc")
+billboard_mode = 1
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_60h8r"]
+random_pitch = 1.2
+streams_count = 9
+stream_0/stream = ExtResource("43_271h0")
+stream_1/stream = ExtResource("44_ym2x2")
+stream_2/stream = ExtResource("45_86y0k")
+stream_3/stream = ExtResource("46_braxj")
+stream_4/stream = ExtResource("47_y35hk")
+stream_5/stream = ExtResource("48_hy1oc")
+stream_6/stream = ExtResource("49_2youk")
+stream_7/stream = ExtResource("50_xsp3k")
+stream_8/stream = ExtResource("51_t4adt")
+
 [sub_resource type="ArrayMesh" id="ArrayMesh_aov26"]
 _surfaces = [{
 "aabb": AABB(-0.021397, -5e-06, -0.518934, 5.113565, 12.752319, 1.03022),
@@ -287,7 +342,7 @@ blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_aov26")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_l401g"]
-size = Vector3(4.5, 2, 0.2)
+size = Vector3(4.5219727, 1.9272461, 0.2)
 
 [sub_resource type="Animation" id="Animation_8g5h0"]
 length = 0.06666667
@@ -344,59 +399,6 @@ _data = {
 &"bridge_open_2": SubResource("Animation_24qxk"),
 &"bridge_open_alt": SubResource("Animation_d1q18")
 }
-
-[sub_resource type="SphereShape3D" id="SphereShape3D_sc7xq"]
-radius = 1.0
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_ym2x2"]
-size = Vector3(1.9891357, 2.0736084, 0.2929077)
-
-[sub_resource type="Resource" id="Resource_bhdn7"]
-script = ExtResource("7_l401g")
-specific_item_to_drop = ExtResource("6_bsnhk")
-item_type = 4
-metadata/_custom_type_script = "uid://beaf3digx88d0"
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_iu7h4"]
-size = Vector3(0.5, 0.71777344, 0.5)
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_1mmfd"]
-size = Vector3(0.4, 0.6667541, 0.4)
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mf8ps"]
-render_priority = 1
-transparency = 1
-blend_mode = 1
-shading_mode = 0
-albedo_color = Color(0.7585879, 0.81178766, 1, 1)
-albedo_texture = ExtResource("41_fj6xp")
-billboard_mode = 1
-
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_hgehc"]
-load_path = "res://.godot/imported/urn_item.png-a865bb42c1dd5f9effd8c6077babc439.s3tc.ctex"
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_i3v7e"]
-render_priority = 3
-transparency = 1
-blend_mode = 1
-shading_mode = 0
-diffuse_mode = 3
-albedo_color = Color(0.69135684, 0.6913568, 0.69135684, 1)
-albedo_texture = SubResource("CompressedTexture2D_hgehc")
-billboard_mode = 1
-
-[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_60h8r"]
-random_pitch = 1.2
-streams_count = 9
-stream_0/stream = ExtResource("43_271h0")
-stream_1/stream = ExtResource("44_ym2x2")
-stream_2/stream = ExtResource("45_86y0k")
-stream_3/stream = ExtResource("46_braxj")
-stream_4/stream = ExtResource("47_y35hk")
-stream_5/stream = ExtResource("48_hy1oc")
-stream_6/stream = ExtResource("49_2youk")
-stream_7/stream = ExtResource("50_xsp3k")
-stream_8/stream = ExtResource("51_t4adt")
 
 [node name="Tutorial_Area" type="Node3D" unique_id=872925716]
 
@@ -457,12 +459,12 @@ item_type = SubResource("Resource_bsnhk")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.03, 0)
 mesh_library = ExtResource("11_h4c7c")
 data = {
-"cells": PackedInt32Array(65535, 5, 655373, 65535, 6, 2, 65535, 7, 4, 0, 5, 1441794, 1, 2, 2, 1, 3, 2, 1, 4, 2, 1, 5, 3, 2, 1, 1, 1, 65535, 2, 65535, 1, 1441795, 0, 1, 1, 3, 1, 3, 3, 0, 1048579, 2, 0, 655361, 1, 1, 655360, 1, 0, 655360, 1, 65534, 655362, 1, 65533, 655362, 1, 65532, 655362, 0, 65531, 1441795, 65535, 65530, 1441795, 65535, 65529, 1441793, 65535, 65528, 655363, 0, 65527, 655363, 3, 65530, 3, 3, 65528, 1048579, 2, 65527, 1048579, 1, 65526, 655364, 1, 65527, 1441792, 0, 65528, 1441792, 1, 65528, 1441792, 2, 65528, 1441792, 2, 65529, 1441792, 1, 65529, 1441792, 0, 65529, 1441792, 2, 65530, 1441792, 1, 65530, 1441792, 0, 65530, 1441792, 1, 65531, 1441792, 2, 65531, 3, 4, 65529, 1441794, 3, 65529, 1441792, 5, 65529, 1441804, 6, 65529, 1441794, 7, 65529, 1441794, 8, 65528, 655362, 8, 65527, 655364, 8, 65529, 1048579, 8, 65530, 2, 8, 65531, 2, 8, 65532, 2, 8, 65533, 1441795, 9, 65527, 1048593, 9, 65528, 19, 9, 65529, 19, 9, 65530, 19, 9, 65531, 20, 12, 65533, 1048580, 11, 65533, 1048578, -65526, 65533, 1441811, -65525, 65533, 1441811, -65524, 65533, 1441811, -65527, 65533, 1441812, 9, 65533, 1441804, -65523, 65534, 1441809, -65523, 65532, 655377, -65522, 65531, 655377, -65520, 65534, 17, -65521, 65531, 1048593, -65520, 65532, 1048593, -65519, 65533, 1048578, -65520, 65533, 1441808, -65521, 65532, 1441808, -65521, 65533, 1441808, -65521, 65534, 1441808, -65522, 65534, 1441808, -65522, 65533, 1441808, -65522, 65532, 1441808, -65523, 65533, 1441808, -65518, 65533, 1441794, -65517, 65533, 1441794, -65521, 0, 8, -65522, 0, 1441799, -65523, 0, 1441800, -65523, 65535, 655368, -65522, 65535, 1441809, -65521, 65535, 18, 65535, 0, 655373, 0, 0, 655376, -65516, 65533, 1048595)
+"cells": PackedInt32Array(65535, 5, 655373, 65535, 6, 2, 65535, 7, 4, 0, 5, 1441794, 1, 2, 2, 1, 3, 2, 1, 4, 2, 1, 5, 3, 2, 1, 1, 1, 65535, 2, 65535, 1, 1441795, 0, 1, 1, 3, 1, 3, 3, 0, 1048579, 2, 0, 655361, 1, 1, 655360, 1, 0, 655360, 1, 65534, 655362, 1, 65533, 655362, 1, 65532, 655362, 0, 65531, 1441795, 65535, 65530, 1441795, 65535, 65529, 1441793, 65535, 65528, 655363, 0, 65527, 655363, 3, 65530, 3, 3, 65528, 1048579, 2, 65527, 1048579, 1, 65526, 655364, 1, 65527, 1441792, 0, 65528, 1441792, 1, 65528, 1441792, 2, 65528, 1441792, 2, 65529, 1441792, 1, 65529, 1441792, 0, 65529, 1441792, 2, 65530, 1441792, 1, 65530, 1441792, 0, 65530, 1441792, 1, 65531, 1441792, 2, 65531, 3, 4, 65529, 1441794, 3, 65529, 1441792, 5, 65529, 1441804, 6, 65529, 1441794, 7, 65529, 1441794, 8, 65528, 655362, 8, 65527, 655364, 8, 65529, 1048579, 8, 65530, 2, 8, 65531, 2, 8, 65532, 2, 8, 65533, 1441795, 9, 65527, 1048593, 9, 65528, 19, 9, 65529, 19, 9, 65530, 19, 9, 65531, 20, 12, 65533, 1048580, 11, 65533, 1048578, -65526, 65533, 1441811, -65525, 65533, 1441811, -65524, 65533, 1441811, -65527, 65533, 1441812, 9, 65533, 1441804, -65523, 65534, 1441809, -65523, 65532, 655377, -65522, 65531, 655377, -65520, 65534, 17, -65521, 65531, 1048593, -65520, 65532, 1048593, -65519, 65533, 1048578, -65520, 65533, 1441808, -65521, 65532, 1441808, -65521, 65533, 1441808, -65521, 65534, 1441808, -65522, 65534, 1441808, -65522, 65533, 1441808, -65522, 65532, 1441808, -65523, 65533, 1441808, -65518, 65533, 1441794, -65517, 65533, 1441794, -65521, 0, 8, -65522, 0, 1441799, -65523, 0, 1441800, -65523, 65535, 655368, -65522, 65535, 1441809, -65521, 65535, 18, 65535, 0, 655373, 0, 0, 655376, -65516, 65533, 1048595, -65511, 65533, 16, -65510, 65533, 16, -65511, 65532, 16, -65510, 65532, 16, -65511, 65534, 16, -65510, 65534, 16, -65511, 65529, 16, -65510, 65529, 16, -65510, 65528, 16, -65511, 65528, 16, -65511, 1, 16, -65510, 1, 16, -65510, 2, 16, -65511, 2, 16, -65509, 65533, 1441811, -65508, 65533, 1441811, -65507, 65533, 1441811, -65506, 65533, 1441811, -65505, 65533, 1441811, -65504, 65533, 1441811, -65503, 65533, 1441808, -65503, 65532, 1441808, -65503, 65534, 1441808, -65502, 65534, 1441808, -65502, 65533, 1441808, -65502, 65532, 1441808)
 }
 metadata/_editor_floor_ = Vector3(0, -1, 0)
 
 [node name="player_test" parent="." unique_id=725727541 instance=ExtResource("12_djejk")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.030201, 1, 15.001396)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 37.9698, -1, -4.998604)
 
 [node name="Gate" parent="." unique_id=1205913056 instance=ExtResource("13_gji15")]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 34, -1, -5)
@@ -559,17 +561,22 @@ shape = SubResource("SphereShape3D_ywmxo")
 disabled = true
 
 [node name="Label3D2" type="Label3D" parent="3d Text" unique_id=184535043]
-transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 94, -1, -7)
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 52, -1, -5)
 pixel_size = 0.01
 text = "Statue Goes Here"
 
+[node name="Label3D5" type="Label3D" parent="3d Text" unique_id=991751644]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 68, -1, -5)
+pixel_size = 0.01
+text = "Baby Here"
+
 [node name="Label3D3" type="Label3D" parent="3d Text" unique_id=1130491894]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 93, -1, -14)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 52, -1, -14)
 pixel_size = 0.01
 text = "Area 1"
 
 [node name="Label3D4" type="Label3D" parent="3d Text" unique_id=1796776557]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 93, -1, -1)
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 52, -1, 4)
 pixel_size = 0.01
 text = "Area 2"
 
@@ -747,142 +754,6 @@ item_weight = 3
 
 [node name="Torch" parent="Urn_key_puzzle" unique_id=1479203938 instance=ExtResource("26_puwyg")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 1, 10.9)
-
-[node name="Bridges" type="Node3D" parent="." unique_id=2095891951]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 89, 0, -7)
-
-[node name="Real_Bridge" type="Node3D" parent="Bridges" unique_id=283795868]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -38, -1.9484606, 1)
-
-[node name="Bridge2" type="StaticBody3D" parent="Bridges/Real_Bridge" unique_id=1405538781]
-transform = Transform3D(6.3785464e-08, 1, -8.742278e-08, 0, -8.742278e-08, -1, -1, 6.3785464e-08, 1.0425053e-15, 0, -0.05153942, 2.75)
-
-[node name="L_Pivot" type="Node3D" parent="Bridges/Real_Bridge/Bridge2" unique_id=543409548]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.75, 0, 0)
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Bridges/Real_Bridge/Bridge2/L_Pivot" unique_id=1699543639]
-transform = Transform3D(-0.15, 0, -1.3113417e-08, 0, 0.15, 0, 1.3113417e-08, 0, -0.15, 0.76100016, -1, 0)
-mesh = SubResource("ArrayMesh_bsnhk")
-skeleton = NodePath("../../../Area3D")
-
-[node name="R_Pivot" type="Node3D" parent="Bridges/Real_Bridge/Bridge2" unique_id=1629706476]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.75, 0, 0)
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Bridges/Real_Bridge/Bridge2/R_Pivot" unique_id=20553462]
-transform = Transform3D(-0.15, 0, -1.3113417e-08, 0, 0.15, 0, 1.3113417e-08, 0, -0.15, 0.01499939, -1, 0)
-mesh = SubResource("ArrayMesh_bsnhk")
-skeleton = NodePath("../../../Area3D")
-
-[node name="L_Pivot2" type="Node3D" parent="Bridges/Real_Bridge/Bridge2" unique_id=939288983]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.25, 0, 0)
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Bridges/Real_Bridge/Bridge2/L_Pivot2" unique_id=1663540202]
-transform = Transform3D(-0.15, 0, -1.3113417e-08, 0, 0.15, 0, 1.3113417e-08, 0, -0.15, 0.76100016, -1, 0)
-mesh = SubResource("ArrayMesh_bsnhk")
-skeleton = NodePath("../../../Area3D")
-
-[node name="R_Pivot2" type="Node3D" parent="Bridges/Real_Bridge/Bridge2" unique_id=786452092]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.75, 0, 0)
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Bridges/Real_Bridge/Bridge2/R_Pivot2" unique_id=2099333842]
-transform = Transform3D(-0.15, 0, -1.3113417e-08, 0, 0.15, 0, 1.3113417e-08, 0, -0.15, 0.015000105, -1, 0)
-mesh = SubResource("ArrayMesh_bsnhk")
-skeleton = NodePath("../../../Area3D")
-
-[node name="L_Pivot3" type="Node3D" parent="Bridges/Real_Bridge/Bridge2" unique_id=334393506]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.75, 0, 0)
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Bridges/Real_Bridge/Bridge2/L_Pivot3" unique_id=826952939]
-transform = Transform3D(-0.15, 0, -1.3113417e-08, 0, 0.15, 0, 1.3113417e-08, 0, -0.15, 0.7609999, -1, 0)
-mesh = SubResource("ArrayMesh_bsnhk")
-skeleton = NodePath("../../../Area3D")
-
-[node name="R_Pivot3" type="Node3D" parent="Bridges/Real_Bridge/Bridge2" unique_id=190220444]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.25, 0, 0)
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Bridges/Real_Bridge/Bridge2/R_Pivot3" unique_id=851454797]
-transform = Transform3D(-0.15, 0, -1.3113417e-08, 0, 0.15, 0, 1.3113417e-08, 0, -0.15, 0.015000105, -1, 0)
-mesh = SubResource("ArrayMesh_bsnhk")
-skeleton = NodePath("../../../Area3D")
-
-[node name="CollisionShape3D2" type="CollisionShape3D" parent="Bridges/Real_Bridge/Bridge2" unique_id=2017338420]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, 0, 0)
-shape = SubResource("BoxShape3D_l401g")
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Bridges/Real_Bridge/Bridge2" unique_id=5187]
-libraries/ = SubResource("AnimationLibrary_7acmg")
-
-[node name="AnimatedObject" type="Node" parent="Bridges/Real_Bridge" unique_id=775170803 node_paths=PackedStringArray("connnect_anim_player")]
-script = ExtResource("26_677wr")
-connnect_anim_player = NodePath("../Bridge2/AnimationPlayer")
-metadata/_custom_type_script = "uid://c4t3ko70ihpyy"
-
-[node name="Real_Bridge2" type="Node3D" parent="Bridges" unique_id=514973036]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -38, -1.9484606, 3)
-
-[node name="Bridge3" type="StaticBody3D" parent="Bridges/Real_Bridge2" unique_id=2069654570]
-transform = Transform3D(-3.1998965e-08, -1, 8.742278e-08, 0, -8.742278e-08, -1, 1, -3.1998965e-08, -3.8213705e-15, 0, -0.05153942, -2.7500002)
-
-[node name="L_Pivot" type="Node3D" parent="Bridges/Real_Bridge2/Bridge3" unique_id=1362462960]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.75, 0, 0)
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Bridges/Real_Bridge2/Bridge3/L_Pivot" unique_id=14686493]
-transform = Transform3D(-0.15, 0, -1.3113417e-08, 0, 0.15, 0, 1.3113417e-08, 0, -0.15, 0.76100016, -1, 0)
-mesh = SubResource("ArrayMesh_bsnhk")
-skeleton = NodePath("../../../Area3D")
-
-[node name="R_Pivot" type="Node3D" parent="Bridges/Real_Bridge2/Bridge3" unique_id=674325749]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.75, 0, 0)
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Bridges/Real_Bridge2/Bridge3/R_Pivot" unique_id=768518955]
-transform = Transform3D(-0.15, 0, -1.3113417e-08, 0, 0.15, 0, 1.3113417e-08, 0, -0.15, 0.01499939, -1, 0)
-mesh = SubResource("ArrayMesh_bsnhk")
-skeleton = NodePath("../../../Area3D")
-
-[node name="L_Pivot2" type="Node3D" parent="Bridges/Real_Bridge2/Bridge3" unique_id=1694307302]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.25, 0, 0)
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Bridges/Real_Bridge2/Bridge3/L_Pivot2" unique_id=380914707]
-transform = Transform3D(-0.15, 0, -1.3113417e-08, 0, 0.15, 0, 1.3113417e-08, 0, -0.15, 0.76100016, -1, 0)
-mesh = SubResource("ArrayMesh_bsnhk")
-skeleton = NodePath("../../../Area3D")
-
-[node name="R_Pivot2" type="Node3D" parent="Bridges/Real_Bridge2/Bridge3" unique_id=1232061490]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.75, 0, 0)
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Bridges/Real_Bridge2/Bridge3/R_Pivot2" unique_id=1779252242]
-transform = Transform3D(-0.15, 0, -1.3113417e-08, 0, 0.15, 0, 1.3113417e-08, 0, -0.15, 0.015000105, -1, 0)
-mesh = SubResource("ArrayMesh_bsnhk")
-skeleton = NodePath("../../../Area3D")
-
-[node name="L_Pivot3" type="Node3D" parent="Bridges/Real_Bridge2/Bridge3" unique_id=1340453232]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.75, 0, 0)
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Bridges/Real_Bridge2/Bridge3/L_Pivot3" unique_id=196999131]
-transform = Transform3D(-0.15, 0, -1.3113417e-08, 0, 0.15, 0, 1.3113417e-08, 0, -0.15, 0.7609999, -1, 0)
-mesh = SubResource("ArrayMesh_bsnhk")
-skeleton = NodePath("../../../Area3D")
-
-[node name="R_Pivot3" type="Node3D" parent="Bridges/Real_Bridge2/Bridge3" unique_id=1232317216]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.25, 0, 0)
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Bridges/Real_Bridge2/Bridge3/R_Pivot3" unique_id=506468460]
-transform = Transform3D(-0.15, 0, -1.3113417e-08, 0, 0.15, 0, 1.3113417e-08, 0, -0.15, 0.015000105, -1, 0)
-mesh = SubResource("ArrayMesh_bsnhk")
-skeleton = NodePath("../../../Area3D")
-
-[node name="CollisionShape3D2" type="CollisionShape3D" parent="Bridges/Real_Bridge2/Bridge3" unique_id=1786555201]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, 0, 0)
-shape = SubResource("BoxShape3D_l401g")
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Bridges/Real_Bridge2/Bridge3" unique_id=75464146]
-libraries/ = SubResource("AnimationLibrary_7acmg")
-
-[node name="AnimatedObject2" type="Node" parent="Bridges/Real_Bridge2" unique_id=230533710 node_paths=PackedStringArray("connnect_anim_player")]
-script = ExtResource("26_677wr")
-anim_to_play = "RESET"
-connnect_anim_player = NodePath("../Bridge3/AnimationPlayer")
-metadata/_custom_type_script = "uid://c4t3ko70ihpyy"
 
 [node name="Walls_Parent" type="Node3D" parent="." unique_id=777706606]
 
@@ -1218,6 +1089,272 @@ frame = 1
 
 [node name="cairn_fake_wall4" parent="UrnBreak_Area" unique_id=1222842326 instance=ExtResource("55_ym2x2")]
 transform = Transform3D(1.1, 0, 0, 0, -6.119594e-08, 1, 0, -1.4, -4.371139e-08, 1, 2, 2)
+
+[node name="Statue_Section" type="Node3D" parent="." unique_id=1433623348]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 54, -2, -5)
+
+[node name="Bridges" type="Node3D" parent="Statue_Section" unique_id=2095891951]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 35, 2, -2)
+
+[node name="Big_Bridge" type="Node3D" parent="Statue_Section/Bridges" unique_id=283795868 node_paths=PackedStringArray("drawbridge_lever")]
+transform = Transform3D(1.0000001, 0, 0, 0, 1.0000001, 0, 0, 0, 1, -46.953056, -1.9484606, 1.9971948)
+script = ExtResource("27_ywmxo")
+drawbridge_lever = NodePath("../Levers/Lever_Big_Bridge")
+
+[node name="Bridge2" type="StaticBody3D" parent="Statue_Section/Bridges/Big_Bridge" unique_id=1405538781]
+transform = Transform3D(1.39090695e-08, 8.742277e-08, 0.9999999, -0.9999999, 2.0074076e-08, 1.3909073e-08, -2.0074076e-08, -1, 8.742278e-08, 0.051540375, 5.258407, -0.03999567)
+
+[node name="L_Pivot" type="Node3D" parent="Statue_Section/Bridges/Big_Bridge/Bridge2" unique_id=543409548]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.75, 0, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Statue_Section/Bridges/Big_Bridge/Bridge2/L_Pivot" unique_id=1699543639]
+transform = Transform3D(-0.15, 0, -1.3113417e-08, 0, 0.15, 0, 1.3113417e-08, 0, -0.15, 0.76100016, -1, 0)
+mesh = SubResource("ArrayMesh_bsnhk")
+skeleton = NodePath("../../../Area3D")
+
+[node name="R_Pivot" type="Node3D" parent="Statue_Section/Bridges/Big_Bridge/Bridge2" unique_id=1629706476]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.75, 0, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Statue_Section/Bridges/Big_Bridge/Bridge2/R_Pivot" unique_id=20553462]
+transform = Transform3D(-0.15, 0, -1.3113417e-08, 0, 0.15, 0, 1.3113417e-08, 0, -0.15, 0.01499939, -1, 0)
+mesh = SubResource("ArrayMesh_bsnhk")
+skeleton = NodePath("../../../Area3D")
+
+[node name="L_Pivot2" type="Node3D" parent="Statue_Section/Bridges/Big_Bridge/Bridge2" unique_id=939288983]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.25, 0, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Statue_Section/Bridges/Big_Bridge/Bridge2/L_Pivot2" unique_id=1663540202]
+transform = Transform3D(-0.15, 0, -1.3113417e-08, 0, 0.15, 0, 1.3113417e-08, 0, -0.15, 0.76100016, -1, 0)
+mesh = SubResource("ArrayMesh_bsnhk")
+skeleton = NodePath("../../../Area3D")
+
+[node name="R_Pivot2" type="Node3D" parent="Statue_Section/Bridges/Big_Bridge/Bridge2" unique_id=786452092]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.75, 0, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Statue_Section/Bridges/Big_Bridge/Bridge2/R_Pivot2" unique_id=2099333842]
+transform = Transform3D(-0.15, 0, -1.3113417e-08, 0, 0.15, 0, 1.3113417e-08, 0, -0.15, 0.015000105, -1, 0)
+mesh = SubResource("ArrayMesh_bsnhk")
+skeleton = NodePath("../../../Area3D")
+
+[node name="L_Pivot3" type="Node3D" parent="Statue_Section/Bridges/Big_Bridge/Bridge2" unique_id=334393506]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.75, 0, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Statue_Section/Bridges/Big_Bridge/Bridge2/L_Pivot3" unique_id=826952939]
+transform = Transform3D(-0.15, 0, -1.3113417e-08, 0, 0.15, 0, 1.3113417e-08, 0, -0.15, 0.7609999, -1, 0)
+mesh = SubResource("ArrayMesh_bsnhk")
+skeleton = NodePath("../../../Area3D")
+
+[node name="R_Pivot3" type="Node3D" parent="Statue_Section/Bridges/Big_Bridge/Bridge2" unique_id=190220444]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.25, 0, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Statue_Section/Bridges/Big_Bridge/Bridge2/R_Pivot3" unique_id=851454797]
+transform = Transform3D(-0.15, 0, -1.3113417e-08, 0, 0.15, 0, 1.3113417e-08, 0, -0.15, 0.015000105, -1, 0)
+mesh = SubResource("ArrayMesh_bsnhk")
+skeleton = NodePath("../../../Area3D")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="Statue_Section/Bridges/Big_Bridge/Bridge2" unique_id=2017338420]
+transform = Transform3D(1, 0, 1.0587912e-22, 0, 1, 0, 0, 0, 1, -1.4890137, -0.051513672, 0)
+shape = SubResource("BoxShape3D_l401g")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Statue_Section/Bridges/Big_Bridge/Bridge2" unique_id=5187]
+libraries/ = SubResource("AnimationLibrary_7acmg")
+
+[node name="Bridge3" type="StaticBody3D" parent="Statue_Section/Bridges/Big_Bridge" unique_id=2069654570]
+transform = Transform3D(-1.39090695e-08, 8.742277e-08, 0.9999999, 0.9999999, 1.1712422e-08, 1.3909062e-08, -1.1712423e-08, 1, -8.742278e-08, 0.051540375, 3.7289004, 0.062105656)
+
+[node name="L_Pivot" type="Node3D" parent="Statue_Section/Bridges/Big_Bridge/Bridge3" unique_id=1362462960]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.75, 0, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Statue_Section/Bridges/Big_Bridge/Bridge3/L_Pivot" unique_id=14686493]
+transform = Transform3D(-0.15, 0, -1.3113417e-08, 0, 0.15, 0, 1.3113417e-08, 0, -0.15, 0.76100016, -1, 0)
+mesh = SubResource("ArrayMesh_bsnhk")
+skeleton = NodePath("../../../Area3D")
+
+[node name="R_Pivot" type="Node3D" parent="Statue_Section/Bridges/Big_Bridge/Bridge3" unique_id=674325749]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.75, 0, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Statue_Section/Bridges/Big_Bridge/Bridge3/R_Pivot" unique_id=768518955]
+transform = Transform3D(-0.15, 0, -1.3113417e-08, 0, 0.15, 0, 1.3113417e-08, 0, -0.15, 0.01499939, -1, 0)
+mesh = SubResource("ArrayMesh_bsnhk")
+skeleton = NodePath("../../../Area3D")
+
+[node name="L_Pivot2" type="Node3D" parent="Statue_Section/Bridges/Big_Bridge/Bridge3" unique_id=1694307302]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.25, 0, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Statue_Section/Bridges/Big_Bridge/Bridge3/L_Pivot2" unique_id=380914707]
+transform = Transform3D(-0.15, 0, -1.3113417e-08, 0, 0.15, 0, 1.3113417e-08, 0, -0.15, 0.76100016, -1, 0)
+mesh = SubResource("ArrayMesh_bsnhk")
+skeleton = NodePath("../../../Area3D")
+
+[node name="R_Pivot2" type="Node3D" parent="Statue_Section/Bridges/Big_Bridge/Bridge3" unique_id=1232061490]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.75, 0, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Statue_Section/Bridges/Big_Bridge/Bridge3/R_Pivot2" unique_id=1779252242]
+transform = Transform3D(-0.15, 0, -1.3113417e-08, 0, 0.15, 0, 1.3113417e-08, 0, -0.15, 0.015000105, -1, 0)
+mesh = SubResource("ArrayMesh_bsnhk")
+skeleton = NodePath("../../../Area3D")
+
+[node name="L_Pivot3" type="Node3D" parent="Statue_Section/Bridges/Big_Bridge/Bridge3" unique_id=1340453232]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.75, 0, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Statue_Section/Bridges/Big_Bridge/Bridge3/L_Pivot3" unique_id=196999131]
+transform = Transform3D(-0.15, 0, -1.3113417e-08, 0, 0.15, 0, 1.3113417e-08, 0, -0.15, 0.7609999, -1, 0)
+mesh = SubResource("ArrayMesh_bsnhk")
+skeleton = NodePath("../../../Area3D")
+
+[node name="R_Pivot3" type="Node3D" parent="Statue_Section/Bridges/Big_Bridge/Bridge3" unique_id=1232317216]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.25, 0, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Statue_Section/Bridges/Big_Bridge/Bridge3/R_Pivot3" unique_id=506468460]
+transform = Transform3D(-0.15, 0, -1.3113417e-08, 0, 0.15, 0, 1.3113417e-08, 0, -0.15, 0.015000105, -1, 0)
+mesh = SubResource("ArrayMesh_bsnhk")
+skeleton = NodePath("../../../Area3D")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="Statue_Section/Bridges/Big_Bridge/Bridge3" unique_id=1786555201]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, 0, 0)
+shape = SubResource("BoxShape3D_l401g")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Statue_Section/Bridges/Big_Bridge/Bridge3" unique_id=75464146]
+libraries/ = SubResource("AnimationLibrary_7acmg")
+
+[node name="Area_One_Bridge" type="Node3D" parent="Statue_Section/Bridges" unique_id=701579154 node_paths=PackedStringArray("drawbridge_lever")]
+transform = Transform3D(-4.3711392e-08, 7.1054274e-15, -1, 0, 1.0000001, 0, 1.0000001, 0, -4.371138e-08, -36.953056, -2.1434762, -1.0028057)
+script = ExtResource("27_ywmxo")
+drawbridge_lever = NodePath("../Levers/Area_One_Lever")
+max_rotation = 90.0
+
+[node name="Bridge3" type="StaticBody3D" parent="Statue_Section/Bridges/Area_One_Bridge" unique_id=1524021187]
+transform = Transform3D(-4.3711378e-08, 1.0000002, -4.3711374e-08, -0.9999999, -4.3711395e-08, 4.3711374e-08, 4.3711392e-08, 4.3711406e-08, 0.99999964, 0.051539898, 0.72889984, 0.062107086)
+
+[node name="L_Pivot" type="Node3D" parent="Statue_Section/Bridges/Area_One_Bridge/Bridge3" unique_id=877362215]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, -0.75, 0, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Statue_Section/Bridges/Area_One_Bridge/Bridge3/L_Pivot" unique_id=302521921]
+transform = Transform3D(-0.15, 0, -1.3113417e-08, 0, 0.15, 0, 1.3113417e-08, 0, -0.15, 0.76100016, -1, 0)
+mesh = SubResource("ArrayMesh_bsnhk")
+skeleton = NodePath("../../../Area3D")
+
+[node name="R_Pivot" type="Node3D" parent="Statue_Section/Bridges/Area_One_Bridge/Bridge3" unique_id=1908728749]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0.75, 0, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Statue_Section/Bridges/Area_One_Bridge/Bridge3/R_Pivot" unique_id=1527596241]
+transform = Transform3D(-0.15, 0, -1.3113417e-08, 0, 0.15, 0, 1.3113417e-08, 0, -0.15, 0.01499939, -1, 0)
+mesh = SubResource("ArrayMesh_bsnhk")
+skeleton = NodePath("../../../Area3D")
+
+[node name="L_Pivot2" type="Node3D" parent="Statue_Section/Bridges/Area_One_Bridge/Bridge3" unique_id=2005402236]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, -2.25, 0, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Statue_Section/Bridges/Area_One_Bridge/Bridge3/L_Pivot2" unique_id=34554321]
+transform = Transform3D(-0.15, 0, -1.3113417e-08, 0, 0.15, 0, 1.3113417e-08, 0, -0.15, 0.76100016, -1, 0)
+mesh = SubResource("ArrayMesh_bsnhk")
+skeleton = NodePath("../../../Area3D")
+
+[node name="R_Pivot2" type="Node3D" parent="Statue_Section/Bridges/Area_One_Bridge/Bridge3" unique_id=2041747304]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, -0.75, 0, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Statue_Section/Bridges/Area_One_Bridge/Bridge3/R_Pivot2" unique_id=646945581]
+transform = Transform3D(-0.15, 0, -1.3113417e-08, 0, 0.15, 0, 1.3113417e-08, 0, -0.15, 0.015000105, -1, 0)
+mesh = SubResource("ArrayMesh_bsnhk")
+skeleton = NodePath("../../../Area3D")
+
+[node name="L_Pivot3" type="Node3D" parent="Statue_Section/Bridges/Area_One_Bridge/Bridge3" unique_id=122249402]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, -3.75, 0, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Statue_Section/Bridges/Area_One_Bridge/Bridge3/L_Pivot3" unique_id=1994371850]
+transform = Transform3D(-0.15, 0, -1.3113417e-08, 0, 0.15, 0, 1.3113417e-08, 0, -0.15, 0.7609999, -1, 0)
+mesh = SubResource("ArrayMesh_bsnhk")
+skeleton = NodePath("../../../Area3D")
+
+[node name="R_Pivot3" type="Node3D" parent="Statue_Section/Bridges/Area_One_Bridge/Bridge3" unique_id=2012216007]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, -2.25, 0, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Statue_Section/Bridges/Area_One_Bridge/Bridge3/R_Pivot3" unique_id=528253343]
+transform = Transform3D(-0.15, 0, -1.3113417e-08, 0, 0.15, 0, 1.3113417e-08, 0, -0.15, 0.015000105, -1, 0)
+mesh = SubResource("ArrayMesh_bsnhk")
+skeleton = NodePath("../../../Area3D")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="Statue_Section/Bridges/Area_One_Bridge/Bridge3" unique_id=656364505]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, -1.5, 0, 0)
+shape = SubResource("BoxShape3D_l401g")
+
+[node name="Area_One_Bridge2" type="Node3D" parent="Statue_Section/Bridges" unique_id=1534515841 node_paths=PackedStringArray("drawbridge_lever")]
+transform = Transform3D(-4.3711392e-08, 7.1054274e-15, -1, 0, 1.0000001, 0, 1.0000001, 0, -4.371138e-08, -36.953056, -2.1482012, 8.997195)
+script = ExtResource("27_ywmxo")
+drawbridge_lever = NodePath("../Levers/Area_Two_lever")
+max_rotation = 90.0
+
+[node name="Bridge3" type="StaticBody3D" parent="Statue_Section/Bridges/Area_One_Bridge2" unique_id=1318930207]
+transform = Transform3D(-4.3711378e-08, 1.0000002, -4.3711374e-08, -0.9999999, -4.3711395e-08, 4.3711374e-08, 4.3711392e-08, 4.3711406e-08, 0.99999964, 0.051539898, 0.72889984, 0.062107086)
+
+[node name="L_Pivot" type="Node3D" parent="Statue_Section/Bridges/Area_One_Bridge2/Bridge3" unique_id=1904838248]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, -0.75, 0, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Statue_Section/Bridges/Area_One_Bridge2/Bridge3/L_Pivot" unique_id=1510992090]
+transform = Transform3D(-0.15, 0, -1.3113417e-08, 0, 0.15, 0, 1.3113417e-08, 0, -0.15, 0.76100016, -1, 0)
+mesh = SubResource("ArrayMesh_bsnhk")
+skeleton = NodePath("../../../Area3D")
+
+[node name="R_Pivot" type="Node3D" parent="Statue_Section/Bridges/Area_One_Bridge2/Bridge3" unique_id=1181434178]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0.75, 0, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Statue_Section/Bridges/Area_One_Bridge2/Bridge3/R_Pivot" unique_id=1179825390]
+transform = Transform3D(-0.15, 0, -1.3113417e-08, 0, 0.15, 0, 1.3113417e-08, 0, -0.15, 0.01499939, -1, 0)
+mesh = SubResource("ArrayMesh_bsnhk")
+skeleton = NodePath("../../../Area3D")
+
+[node name="L_Pivot2" type="Node3D" parent="Statue_Section/Bridges/Area_One_Bridge2/Bridge3" unique_id=1212904034]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, -2.25, 0, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Statue_Section/Bridges/Area_One_Bridge2/Bridge3/L_Pivot2" unique_id=1708628220]
+transform = Transform3D(-0.15, 0, -1.3113417e-08, 0, 0.15, 0, 1.3113417e-08, 0, -0.15, 0.76100016, -1, 0)
+mesh = SubResource("ArrayMesh_bsnhk")
+skeleton = NodePath("../../../Area3D")
+
+[node name="R_Pivot2" type="Node3D" parent="Statue_Section/Bridges/Area_One_Bridge2/Bridge3" unique_id=2104111833]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, -0.75, 0, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Statue_Section/Bridges/Area_One_Bridge2/Bridge3/R_Pivot2" unique_id=1433284164]
+transform = Transform3D(-0.15, 0, -1.3113417e-08, 0, 0.15, 0, 1.3113417e-08, 0, -0.15, 0.015000105, -1, 0)
+mesh = SubResource("ArrayMesh_bsnhk")
+skeleton = NodePath("../../../Area3D")
+
+[node name="L_Pivot3" type="Node3D" parent="Statue_Section/Bridges/Area_One_Bridge2/Bridge3" unique_id=1569359964]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, -3.75, 0, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Statue_Section/Bridges/Area_One_Bridge2/Bridge3/L_Pivot3" unique_id=822899979]
+transform = Transform3D(-0.15, 0, -1.3113417e-08, 0, 0.15, 0, 1.3113417e-08, 0, -0.15, 0.7609999, -1, 0)
+mesh = SubResource("ArrayMesh_bsnhk")
+skeleton = NodePath("../../../Area3D")
+
+[node name="R_Pivot3" type="Node3D" parent="Statue_Section/Bridges/Area_One_Bridge2/Bridge3" unique_id=1709410388]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, -2.25, 0, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Statue_Section/Bridges/Area_One_Bridge2/Bridge3/R_Pivot3" unique_id=302238063]
+transform = Transform3D(-0.15, 0, -1.3113417e-08, 0, 0.15, 0, 1.3113417e-08, 0, -0.15, 0.015000105, -1, 0)
+mesh = SubResource("ArrayMesh_bsnhk")
+skeleton = NodePath("../../../Area3D")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="Statue_Section/Bridges/Area_One_Bridge2/Bridge3" unique_id=1945858227]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, -1.5, 0, 0)
+shape = SubResource("BoxShape3D_l401g")
+
+[node name="Levers" type="Node3D" parent="Statue_Section/Bridges" unique_id=200655121]
+
+[node name="Lever_Big_Bridge" parent="Statue_Section/Bridges/Levers" unique_id=196449073 instance=ExtResource("21_ds25k")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -48, -1, 1.2447262)
+
+[node name="Area_One_Lever" parent="Statue_Section/Bridges/Levers" unique_id=1345286650 instance=ExtResource("21_ds25k")]
+transform = Transform3D(1, 0, 1.4210855e-14, 0, 1, 0, -1.4210855e-14, 0, 1, -35.000004, -1, -0.9999981)
+
+[node name="Area_Two_lever" parent="Statue_Section/Bridges/Levers" unique_id=1934170343 instance=ExtResource("21_ds25k")]
+transform = Transform3D(1, 0, 3.5527137e-15, 0, 1, 0, -3.5527137e-15, 0, 1, -35, -1, 9)
+
+[node name="Walldoor" parent="Statue_Section" unique_id=698162630 instance=ExtResource("50_hcljr")]
+transform = Transform3D(-8.52372e-09, 0, 0.195, 0, 0.195, 0, -0.195, 0, -8.52372e-09, -2.0249996, 0.05000013, -7.415)
+
+[node name="Statue" parent="Statue_Section" unique_id=296240778 instance=ExtResource("50_rqpeq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0.7334566, 0)
 
 [connection signal="on_activated" from="First Gate&Button/First_Button" to="First Gate&Button/First_Gate" method="open_gate"]
 [connection signal="on_change" from="Weighted_Gate_Puzzle/Tutorial_Weight_Puzzle" to="Weighted_Gate_Puzzle/Weight_Puzzle_Gate" method="open_gate"]
