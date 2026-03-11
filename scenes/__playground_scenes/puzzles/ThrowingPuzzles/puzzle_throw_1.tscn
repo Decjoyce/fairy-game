@@ -18,6 +18,8 @@
 [ext_resource type="Texture2D" uid="uid://cnrilqb3unyf6" path="res://assets/models/cairn/Z-Old-EnvironmentModels/Dirtfloor/Dirtfloor_texture_Floordirt_Normal_OpenGL.png" id="13_ldimk"]
 [ext_resource type="Material" uid="uid://rbnbiylju0f0" path="res://assets/models/cairn/Hall_BigRoof/Dirtcube.tres" id="14_37gbc"]
 [ext_resource type="Material" uid="uid://c6lv8pfrvktb8" path="res://assets/models/cairn/Hall_BigRoof/Wall.tres" id="15_ntrdj"]
+[ext_resource type="PackedScene" uid="uid://cpnmun20lswr" path="res://scenes/_levels/_palettes/cairn/props/cairn_pillar.tscn" id="19_37gbc"]
+[ext_resource type="PackedScene" uid="uid://br35er4x4b6av" path="res://scenes/interactions/_triggers/torch_sconce/torch_sconce_unlit.tscn" id="20_ntrdj"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_2vnbd"]
 sky_horizon_color = Color(0, 0.37292683, 0.8185948, 1)
@@ -176,7 +178,7 @@ shadow_mesh = SubResource("ArrayMesh_mdfrn")
 [node name="Puzzle01" type="Node3D" unique_id=2140837292]
 
 [node name="player_test" parent="." unique_id=725727541 instance=ExtResource("1_vcj7m")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 2.1000001, 3)
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -12, 2.1, -7)
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=654468544]
 environment = SubResource("Environment_ldimk")
@@ -184,9 +186,17 @@ environment = SubResource("Environment_ldimk")
 [node name="GridMap" type="GridMap" parent="." unique_id=694687736]
 mesh_library = ExtResource("2_cqdjp")
 data = {
-"cells": PackedInt32Array(0, 0, 3, 0, 65535, 1048577, 65535, 0, 1441792, 65534, 0, 1441795, 65534, 65535, 1441793, 65534, 65534, 655363, 0, 65534, 1048579, 65535, 65534, 655360, 65535, 65535, 655360, 65535, 65533, 655362, 65535, 65532, 1048577, 65535, 65531, 655362, 0, 65530, 1441793, -1, 65530, 655380, -1, 65531, 1441809, -65536, 65531, 1048593, -65536, 65532, 20, 65534, 65532, 1048578, 65533, 65532, 1441796, 65534, 65530, 1048577, 65535, 65529, 655364, 65535, 65530, 655380, 65535, 1, 4)
+"cells": PackedInt32Array(0, 0, 3, 0, 65535, 1048577, 65535, 0, 1441792, 65534, 0, 1441795, 65534, 65535, 1441793, 65534, 65534, 655363, 0, 65534, 1048579, 65535, 65534, 655360, 65535, 65535, 655360, 65535, 65533, 655362, 65535, 65532, 1048577, 65535, 65531, 655362, 0, 65530, 1441793, -1, 65530, 655380, -1, 65531, 1441809, -65536, 65531, 1048593, -65536, 65532, 20, 65534, 65532, 1048578, 65533, 65532, 1441794, 65534, 65530, 1048577, 65535, 65529, 655364, 65535, 65530, 655380, 65535, 1, 4, 65532, 65532, 1441795, 65532, 65531, 1048579, 65531, 65531, 655363, 65531, 65532, 3, 65530, 65532, 1441794, 65529, 65532, 1441794, 65528, 65531, 1048593, 65526, 65531, 655377, 65526, 65532, 655378, 65528, 65533, 17, 65528, 65532, 16, 65526, 65533, 1441809, 65527, 65531, 1441808, 65527, 65532, 16, 65527, 65533, 16, 65527, 65534, 12, 65527, 65535, 3, 65526, 65535, 1441811, 65525, 65535, 1441811, 65524, 65535, 1441809, 65524, 65534, 655380, 262133, 65532, 1310740, 65523, 65530, 1310736, 65527, 65530, 655362)
 }
 metadata/_editor_floor_ = Vector3(0, 0, 0)
+
+[node name="GridMap_L2" type="GridMap" parent="." unique_id=2022857545]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.25, 0)
+mesh_library = ExtResource("2_cqdjp")
+data = {
+"cells": PackedInt32Array(131061, 65531, 655360, 131061, 65532, 1048596, 131061, 65533, 655360, 131061, 65534, 1441795, 131062, 65534, 1, 131063, 65534, 1, 131063, 65530, 655361, 131061, 65530, 655363, 131062, 65530, 655361, 131065, 65534, 3, 131064, 65534, 1, 131065, 65531, 1048577, 131065, 65533, 1048577, 131065, 65532, 16, 131066, 65532, 1441811, 131067, 65532, 1048596, 196604, 65532, 1048578, 131060, 65533, 655363, 131064, 65529, 1048580, 131064, 65530, 655361, 131065, 65530, 1048579, 131060, 65534, 2)
+}
+metadata/_editor_floor_ = Vector3(0, 4, 0)
 
 [node name="_env" type="Node3D" parent="." unique_id=272361928]
 
@@ -267,6 +277,12 @@ mesh = SubResource("ArrayMesh_5hc0a")
 
 [node name="cairn_fake_wall" parent="Room01/_decor" unique_id=417780720 instance=ExtResource("3_m6iax")]
 transform = Transform3D(-4.1942624e-08, 0.9595355, -0.28158793, -1, -4.3711392e-08, -1.6240656e-15, -1.2308602e-08, 0.28158793, 0.9595355, -3.1503358, 0.9, -0.7)
+
+[node name="cairn_fake_wall3" parent="Room01/_decor" unique_id=422653726 instance=ExtResource("3_m6iax")]
+transform = Transform3D(-4.4583494e-08, 0.9979772, 0.06357437, -0.99999994, -5.961582e-08, -6.9423e-12, 3.3232934e-09, -0.06357437, 0.9979772, -3.350336, 0.9, -0.29999998)
+
+[node name="cairn_fake_wall4" parent="Room01/_decor" unique_id=145469577 instance=ExtResource("3_m6iax")]
+transform = Transform3D(-4.337441e-08, 0.99229103, -0.12393056, -0.99999994, -4.3711392e-08, 2.2160648e-16, -5.4171756e-09, 0.12393056, 0.99229103, -3.350336, 0.9, -1.8279362)
 
 [node name="cairn_fake_wall2" parent="Room01/_decor" unique_id=1380292183 instance=ExtResource("3_m6iax")]
 transform = Transform3D(-4.267773e-08, 0.9763527, 0.21618402, -1, -4.3711385e-08, 1.7042523e-15, 9.449704e-09, -0.21618402, 0.9763527, -3.1503358, 0.9, -1.4)
@@ -362,7 +378,284 @@ transform = Transform3D(-1.3, 0, -1.9629454e-07, 0, 1.3, 0, 1.9629454e-07, 0, -1
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -0.9, 0, -0.9999995)
 stay_open = true
 
+[node name="Room03" type="Node3D" parent="." unique_id=1635108421]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17, 1, -7)
+
+[node name="_decor" type="Node3D" parent="Room03" unique_id=35278953]
+
+[node name="cairn_exit_pillars" parent="Room03/_decor" unique_id=227972972 instance=ExtResource("4_8sigo")]
+transform = Transform3D(-4.0651592e-08, 0, 0.93, 0, 0.93, 0, -0.93, 0, -4.0651592e-08, 0.9140004, 2.3, 3.8999999)
+
+[node name="cairn_exit_pillars2" parent="Room03/_decor" unique_id=581551294 instance=ExtResource("4_8sigo")]
+transform = Transform3D(-4.0651592e-08, 0, 0.93, 0, 0.93, 0, -0.93, 0, -4.0651592e-08, 0.91400003, 2.3, -3.9120002)
+
+[node name="cairn_exit_pillars3" parent="Room03/_decor" unique_id=836984488 instance=ExtResource("4_8sigo")]
+transform = Transform3D(1.2232947, 0, -1.2232947, 0, 1.73, 0, 1.2232947, 0, 1.2232947, 3.8270555, 0.98449075, 3.827055)
+
+[node name="cairn_exit_pillars4" parent="Room03/_decor" unique_id=1869706580 instance=ExtResource("4_8sigo")]
+transform = Transform3D(1.2232947, 0, -1.2232947, 0, 1.73, 0, 1.2232947, 0, 1.2232947, 3.8270555, -2.1295094, 3.827055)
+
+[node name="cairn_exit_pillars5" parent="Room03/_decor" unique_id=1271801408 instance=ExtResource("4_8sigo")]
+transform = Transform3D(1.2232947, 0, 1.2232947, 0, 1.73, 0, -1.2232947, 0, 1.2232947, 3.8744226, 0.98449075, -3.9255776)
+
+[node name="cairn_exit_pillars6" parent="Room03/_decor" unique_id=338546188 instance=ExtResource("4_8sigo")]
+transform = Transform3D(1.2232947, 0, 1.2232947, 0, 1.73, 0, -1.2232947, 0, 1.2232947, 3.8744226, -2.1295094, -3.9255776)
+
+[node name="cairn_exit_pillars11" parent="Room03/_decor" unique_id=998755879 instance=ExtResource("4_8sigo")]
+transform = Transform3D(-1.2232949, 0, 1.2232946, 0, 1.73, 0, -1.2232946, 0, -1.2232949, -3.866806, 0.9844909, -3.8586817)
+
+[node name="cairn_exit_pillars12" parent="Room03/_decor" unique_id=1674207265 instance=ExtResource("4_8sigo")]
+transform = Transform3D(-1.2232949, 0, 1.2232946, 0, 1.73, 0, -1.2232946, 0, -1.2232949, -3.866806, -2.1295094, -3.8586817)
+
+[node name="cairn_exit_pillars13" parent="Room03/_decor" unique_id=1406669459 instance=ExtResource("4_8sigo")]
+transform = Transform3D(-1.2232946, 0, -1.2232949, 0, 1.73, 0, 1.2232949, 0, -1.2232946, -3.9141731, 0.9844909, 3.8939505)
+
+[node name="cairn_exit_pillars14" parent="Room03/_decor" unique_id=1157501615 instance=ExtResource("4_8sigo")]
+transform = Transform3D(-1.2232946, 0, -1.2232949, 0, 1.73, 0, 1.2232949, 0, -1.2232946, -3.9141731, -2.1295094, 3.8939505)
+
+[node name="cairn_fake_wall" parent="Room03/_decor" unique_id=110123369 instance=ExtResource("3_m6iax")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.6, 1, -3)
+
+[node name="cairn_fake_wall4" parent="Room03/_decor" unique_id=193602355 instance=ExtResource("3_m6iax")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.1000004, 1, -3)
+
+[node name="cairn_fake_wall10" parent="Room03/_decor" unique_id=301826917 instance=ExtResource("3_m6iax")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -1.9584007, 1, 2.9387212)
+
+[node name="cairn_fake_wall11" parent="Room03/_decor" unique_id=1176674296 instance=ExtResource("3_m6iax")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 1.8415995, 1, 2.9387212)
+
+[node name="cairn_fake_wall12" parent="Room03/_decor" unique_id=500945828 instance=ExtResource("3_m6iax")]
+transform = Transform3D(1.3113416e-07, 0, -1, 0, 1, 0, 1, 0, 1.3113416e-07, 2.8415995, 1.0999999, 1.8387213)
+
+[node name="cairn_fake_wall13" parent="Room03/_decor" unique_id=2125462147 instance=ExtResource("3_m6iax")]
+transform = Transform3D(1.3113416e-07, 0, -1, 0, 1, 0, 1, 0, 1.3113416e-07, 2.8415995, 1.0999999, -1.8612785)
+
+[node name="cairn_fake_wall5" parent="Room03/_decor" unique_id=164812916 instance=ExtResource("3_m6iax")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.7000004, 1, -2.963315)
+
+[node name="cairn_fake_wall6" parent="Room03/_decor" unique_id=1026643817 instance=ExtResource("3_m6iax")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -2.910553, 1, -2.0683146)
+
+[node name="cairn_fake_wall7" parent="Room03/_decor" unique_id=677613489 instance=ExtResource("3_m6iax")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -2.910553, 1, -0.36831474)
+
+[node name="cairn_fake_wall8" parent="Room03/_decor" unique_id=510113044 instance=ExtResource("3_m6iax")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -2.9114857, 1, 0.5529299)
+
+[node name="cairn_fake_wall9" parent="Room03/_decor" unique_id=1830120129 instance=ExtResource("3_m6iax")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -2.910553, 1, 2.0316849)
+
+[node name="cairn_fake_wall2" parent="Room03/_decor" unique_id=1217161428 instance=ExtResource("3_m6iax")]
+transform = Transform3D(0.9396926, -0.34202012, 0, 0.34202012, 0.9396926, 0, 0, 0, 1, 2.0999994, 1.4000001, -3)
+
+[node name="cairn_fake_wall3" parent="Room03/_decor" unique_id=240869118 instance=ExtResource("3_m6iax")]
+transform = Transform3D(0.98167676, 0.1730961, 0.07967699, -0.17364818, 0.9848077, 0, -0.07846653, -0.013835767, 0.99682075, 1.5999994, 1.5999999, -3.034873)
+
+[node name="cairnPillar" parent="Room03/_decor" unique_id=607460616 instance=ExtResource("19_37gbc")]
+transform = Transform3D(1.1153578, -1.2245213e-08, 0.2801378, -0.2801378, -4.8753837e-08, 1.1153578, 0, -1.15, -5.02681e-08, 2.8549576, 2.2387886, 1.0999999)
+
+[node name="cairnPillar5" parent="Room03/_decor" unique_id=962341407 instance=ExtResource("19_37gbc")]
+transform = Transform3D(0.88540184, 2.2793019e-08, -0.46482635, 0.46482635, -3.2857848e-08, 0.88540184, 4.9077897e-09, -1, -3.9687198e-08, -2.9938684, 2.3976104, 0.9685621)
+
+[node name="cairnPillar2" parent="Room03/_decor" unique_id=222094211 instance=ExtResource("19_37gbc")]
+transform = Transform3D(1.1059968, 1.3772251e-08, -0.31507242, 0.31507242, -4.8344656e-08, 1.1059968, 0, -1.1499999, -5.0268092e-08, 2.8549576, 2.0387886, 1.0999999)
+
+[node name="cairnPillar3" parent="Room03/_decor" unique_id=521588744 instance=ExtResource("19_37gbc")]
+transform = Transform3D(-4.8753833e-08, 1.1499999, 3.8022876e-08, -0.28013775, -4.8753826e-08, 1.1153576, 1.1153576, 3.8022883e-08, 0.28013775, -1.1450424, 2.2387886, 3)
+
+[node name="cairnPillar4" parent="Room03/_decor" unique_id=1791202304 instance=ExtResource("19_37gbc")]
+transform = Transform3D(-4.8344653e-08, 1.1499997, 6.404034e-08, 0.31507242, -4.8344656e-08, 1.1059967, 1.1059967, 6.4040336e-08, -0.31507242, -1.1450424, 2.0387886, 3)
+
+[node name="cairn_exit_pillars7" parent="Room03/_decor" unique_id=945949586 instance=ExtResource("4_8sigo")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 2.8999996, 0.20000005, 0)
+
+[node name="cairn_exit_pillars9" parent="Room03/_decor" unique_id=2061840542 instance=ExtResource("4_8sigo")]
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 0, 0.20000005, 3)
+
+[node name="cairnPillar6" parent="Room03/_decor" unique_id=1219375620 instance=ExtResource("19_37gbc")]
+transform = Transform3D(1.462615e-07, -1.1499999, -1.3532452e-08, -0.28013775, -4.8753822e-08, 1.1153576, -1.1153576, -1.3855907e-07, -0.28013775, 1.127594, 2.2387886, -2.8759336)
+
+[node name="cairnPillar7" parent="Room03/_decor" unique_id=1427040291 instance=ExtResource("19_37gbc")]
+transform = Transform3D(1.4503397e-07, -1.1499999, -9.1584866e-08, 0.31507245, -4.8344667e-08, 1.1059968, -1.1059968, -1.6457653e-07, 0.31507245, 1.127594, 2.0387886, -2.8759336)
+
+[node name="cairn_exit_pillars15" parent="Room03/_decor" unique_id=904562417 instance=ExtResource("4_8sigo")]
+transform = Transform3D(1, 0, -1.7484555e-07, 0, 1, 0, 1.7484555e-07, 0, 1, -0.017448425, 0.20000005, -2.8759336)
+
+[node name="cairn_exit_pillars16" parent="Room03/_decor" unique_id=631992438 instance=ExtResource("4_8sigo")]
+transform = Transform3D(1, 0, -1.7484555e-07, 0, 1, 0, 1.7484555e-07, 0, 1, -0.017448425, -1.7564516, -2.8759336)
+
+[node name="cairn_exit_pillars10" parent="Room03/_decor" unique_id=1383350874 instance=ExtResource("4_8sigo")]
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 0, -1.6, 3)
+
+[node name="cairn_exit_pillars8" parent="Room03/_decor" unique_id=555419111 instance=ExtResource("4_8sigo")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 2.8999996, -1.6999999, 0)
+
+[node name="cairn_fake_wall14" parent="Room03/_decor" unique_id=1629386949 instance=ExtResource("3_m6iax")]
+transform = Transform3D(1.5, 0, 0, 0, 1.0606601, 1.0606601, 0, -1.0606601, 1.0606601, 2.3999996, 4.3, 3.2)
+
+[node name="cairn_fake_wall15" parent="Room03/_decor" unique_id=902848447 instance=ExtResource("3_m6iax")]
+transform = Transform3D(1.5, 0, 0, 0, 1.0606601, 1.0606601, 0, -1.0606601, 1.0606601, -0.19999886, 4.3, 3.2)
+
+[node name="cairn_fake_wall16" parent="Room03/_decor" unique_id=730359379 instance=ExtResource("3_m6iax")]
+transform = Transform3D(1.5, 0, 0, 0, 1.0606601, 1.0606601, 0, -1.0606601, 1.0606601, -2.7999992, 4.3, 3.2)
+
+[node name="cairn_fake_wall17" parent="Room03/_decor" unique_id=563605288 instance=ExtResource("3_m6iax")]
+transform = Transform3D(-1.5, 9.2725855e-08, -9.2725855e-08, 0, 1.0606601, 1.0606601, 1.3113416e-07, 1.0606601, -1.0606601, -2.7999973, 4.3, -3.1000004)
+
+[node name="cairn_fake_wall18" parent="Room03/_decor" unique_id=1623314924 instance=ExtResource("3_m6iax")]
+transform = Transform3D(-1.5, 9.2725855e-08, -9.2725855e-08, 0, 1.0606601, 1.0606601, 1.3113416e-07, 1.0606601, -1.0606601, -0.19999886, 4.3, -3.1000004)
+
+[node name="cairn_fake_wall19" parent="Room03/_decor" unique_id=1713686076 instance=ExtResource("3_m6iax")]
+transform = Transform3D(-1.5, 9.2725855e-08, -9.2725855e-08, 0, 1.0606601, 1.0606601, 1.3113416e-07, 1.0606601, -1.0606601, 2.4000015, 4.3, -3.1000004)
+
+[node name="cairn_fake_wall35" parent="Room03/_decor" unique_id=2103116987 instance=ExtResource("3_m6iax")]
+transform = Transform3D(-1.4210855e-14, -6.556707e-08, 1.4999999, -1.5, -6.556708e-08, -7.1054274e-15, 6.556709e-08, -1.4999999, -6.5567065e-08, 3.1500015, 5.65, -1.0000004)
+
+[node name="cairn_fake_wall36" parent="Room03/_decor" unique_id=81146336 instance=ExtResource("3_m6iax")]
+transform = Transform3D(-1.4210855e-14, -1.4999999, -1.3113414e-07, -1.5, 2.842171e-14, -6.556708e-08, 6.556709e-08, 1.3113414e-07, -1.4999999, 4.9500017, 5.65, -1.0000005)
+
+[node name="cairn_fake_wall39" parent="Room03/_decor" unique_id=1735831487 instance=ExtResource("3_m6iax")]
+transform = Transform3D(0.5368675, -6.5567065e-08, 1.4006331, -1.4006332, -6.556708e-08, 0.5368675, 3.775641e-08, -1.4999999, -8.469084e-08, 4.4794936, 5.303554, 1.052962)
+
+[node name="cairn_fake_wall40" parent="Room03/_decor" unique_id=1589377279 instance=ExtResource("3_m6iax")]
+transform = Transform3D(0.5368675, -6.5567065e-08, 1.4006331, -1.4006332, -6.556708e-08, 0.5368675, 3.775641e-08, -1.4999999, -8.469084e-08, 3.880561, 6.8661084, 1.052962)
+
+[node name="cairn_fake_wall37" parent="Room03/_decor" unique_id=1811710885 instance=ExtResource("3_m6iax")]
+transform = Transform3D(-1.4210855e-14, -1.4999999, -1.3113414e-07, -1.5, 2.842171e-14, -6.556708e-08, 6.556709e-08, 1.3113414e-07, -1.4999999, 4.9500017, 5.65, 1.0999994)
+
+[node name="cairn_fake_wall38" parent="Room03/_decor" unique_id=349417691 instance=ExtResource("3_m6iax")]
+transform = Transform3D(-1.4210855e-14, -6.5567065e-08, 1.4999999, -1.5, -6.5567086e-08, -1.4210855e-14, 6.556709e-08, -1.4999999, -6.556707e-08, 3.0000017, 5.65, 3.0499992)
+
+[node name="cairn_fake_wall20" parent="Room03/_decor" unique_id=184970434 instance=ExtResource("3_m6iax")]
+transform = Transform3D(1.5, 0, 0, 0, 1.0606601, 1.0606601, 0, -1.0606601, 1.0606601, 2.3999996, 5.5727925, 1.9272078)
+
+[node name="cairn_fake_wall21" parent="Room03/_decor" unique_id=1709449859 instance=ExtResource("3_m6iax")]
+transform = Transform3D(1.5, 0, 0, 0, 1.0606601, 1.0606601, 0, -1.0606601, 1.0606601, -0.19999886, 5.5727925, 1.9272078)
+
+[node name="cairn_fake_wall22" parent="Room03/_decor" unique_id=1599614840 instance=ExtResource("3_m6iax")]
+transform = Transform3D(1.5, 0, 0, 0, 1.0606601, 1.0606601, 0, -1.0606601, 1.0606601, -2.7999992, 5.5727925, 1.9272078)
+
+[node name="cairn_fake_wall32" parent="Room03/_decor" unique_id=1589165075 instance=ExtResource("3_m6iax")]
+transform = Transform3D(-6.556708e-08, 0, -1.4999999, 0, 1.4999999, 0, 1.5, 0, -6.556708e-08, -3.0999992, 5.5727925, -0.022792086)
+
+[node name="cairn_fake_wall33" parent="Room03/_decor" unique_id=1460058868 instance=ExtResource("3_m6iax")]
+transform = Transform3D(-6.3332934e-08, 1.6970008e-08, -1.4999999, 0.38822857, 1.4488887, -1.7763568e-15, 1.4488888, -0.38822854, -6.556708e-08, -3.0999992, 3.9330149, 1.4048536)
+
+[node name="cairn_fake_wall34" parent="Room03/_decor" unique_id=313905738 instance=ExtResource("3_m6iax")]
+transform = Transform3D(-6.3332934e-08, -1.6970008e-08, -1.4999999, -0.38822857, 1.4488887, 1.7763568e-15, 1.4488888, 0.38822854, -6.556708e-08, -3.099999, 3.9330149, -1.6004376)
+
+[node name="cairn_fake_wall23" parent="Room03/_decor" unique_id=892896110 instance=ExtResource("3_m6iax")]
+transform = Transform3D(-1.5, 9.2725855e-08, -9.2725855e-08, 0, 1.0606601, 1.0606601, 1.3113416e-07, 1.0606601, -1.0606601, -2.7999973, 5.5727925, -1.8272082)
+
+[node name="cairn_fake_wall24" parent="Room03/_decor" unique_id=1021105718 instance=ExtResource("3_m6iax")]
+transform = Transform3D(-1.5, 9.2725855e-08, -9.2725855e-08, 0, 1.0606601, 1.0606601, 1.3113416e-07, 1.0606601, -1.0606601, -0.19999875, 5.5727925, -1.8272082)
+
+[node name="cairn_fake_wall25" parent="Room03/_decor" unique_id=23062726 instance=ExtResource("3_m6iax")]
+transform = Transform3D(-1.5, 9.2725855e-08, -9.2725855e-08, 0, 1.0606601, 1.0606601, 1.3113416e-07, 1.0606601, -1.0606601, 2.4000015, 5.5727925, -1.8272082)
+
+[node name="cairn_fake_wall26" parent="Room03/_decor" unique_id=953908960 instance=ExtResource("3_m6iax")]
+transform = Transform3D(1.5, 0, 0, 0, 1.0606601, 1.0606601, 0, -1.0606601, 1.0606601, 2.3999996, 6.6334524, 0.8665477)
+
+[node name="cairn_fake_wall27" parent="Room03/_decor" unique_id=2058454361 instance=ExtResource("3_m6iax")]
+transform = Transform3D(1.5, 0, 0, 0, 1.0606601, 1.0606601, 0, -1.0606601, 1.0606601, -0.19999886, 6.6334524, 0.8665477)
+
+[node name="cairn_fake_wall28" parent="Room03/_decor" unique_id=828951148 instance=ExtResource("3_m6iax")]
+transform = Transform3D(1.5, 0, 0, 0, 1.0606601, 1.0606601, 0, -1.0606601, 1.0606601, -2.7999992, 6.6334524, 0.8665477)
+
+[node name="cairn_fake_wall29" parent="Room03/_decor" unique_id=491890823 instance=ExtResource("3_m6iax")]
+transform = Transform3D(-1.5, 9.2725855e-08, -9.2725855e-08, 0, 1.0606601, 1.0606601, 1.3113416e-07, 1.0606601, -1.0606601, -2.7999973, 6.6334524, -0.76654804)
+
+[node name="cairn_fake_wall30" parent="Room03/_decor" unique_id=1800933553 instance=ExtResource("3_m6iax")]
+transform = Transform3D(-1.5, 9.2725855e-08, -9.2725855e-08, 0, 1.0606601, 1.0606601, 1.3113416e-07, 1.0606601, -1.0606601, -0.19999866, 6.6334524, -0.76654804)
+
+[node name="cairn_fake_wall31" parent="Room03/_decor" unique_id=1285053448 instance=ExtResource("3_m6iax")]
+transform = Transform3D(-1.5, 9.2725855e-08, -9.2725855e-08, 0, 1.0606601, 1.0606601, 1.3113416e-07, 1.0606601, -1.0606601, 2.4000015, 6.6334524, -0.76654804)
+
+[node name="_structure" type="Node3D" parent="Room03" unique_id=1046455888]
+
+[node name="cairn_fake_wall" parent="Room03/_structure" unique_id=1609991046 instance=ExtResource("3_m6iax")]
+transform = Transform3D(1.0998522, 0, 0.635, 0.635, -5.551346e-08, -1.0998522, 2.7756732e-08, 1.27, -4.8076068e-08, 6.17247, 2.5569558, -0.88900006)
+collision_layer = 4096
+
+[node name="cairn_fake_wall2" parent="Room03/_structure" unique_id=1429056705 instance=ExtResource("3_m6iax")]
+transform = Transform3D(1.0998522, 0, 0.635, 0.635, -5.551346e-08, -1.0998522, 2.7756732e-08, 1.27, -4.8076068e-08, 8.042219, 3.6364558, -0.889)
+collision_layer = 4096
+
+[node name="cairn_fake_wall3" parent="Room03/_structure" unique_id=301488676 instance=ExtResource("3_m6iax")]
+transform = Transform3D(-1.0648218, -1.512159e-07, -0.6921377, 0.6921378, -3.779276e-08, -1.0648218, 2.980233e-08, -1.2700001, 5.960465e-08, -2.5269222, 0.33286035, 6.811)
+collision_layer = 4096
+
+[node name="cairn_fake_wall4" parent="Room03/_structure" unique_id=726862456 instance=ExtResource("3_m6iax")]
+transform = Transform3D(-1.0648218, -1.512159e-07, -0.6921377, 0.6921378, -3.779276e-08, -1.0648218, 2.980233e-08, -1.2700001, 5.960465e-08, -4.3371143, 1.5094936, 6.8109994)
+collision_layer = 4096
+
+[node name="cairn_fake_wall5" parent="Room03/_structure" unique_id=1785012810 instance=ExtResource("3_m6iax")]
+transform = Transform3D(-5.5513468e-08, 0, 1.27, 1.2700001, -5.5513468e-08, 5.5513464e-08, 5.5513468e-08, 1.2700001, 2.4265707e-15, -7, 3.0000005, 4.9)
+
+[node name="cairn_fake_wall6" parent="Room03/_structure" unique_id=1373412609 instance=ExtResource("3_m6iax")]
+transform = Transform3D(-5.5513468e-08, 0, 1.27, 1.2700001, -5.5513468e-08, 5.5513464e-08, 5.5513468e-08, 1.2700001, 2.4265707e-15, -7, 3.0000005, 6.5)
+
+[node name="cairn_fake_wall7" parent="Room03/_structure" unique_id=1310577809 instance=ExtResource("3_m6iax")]
+transform = Transform3D(5.551347e-08, 1.2700001, -5.551346e-08, 1.2700001, -5.5513468e-08, 5.5513464e-08, 5.5513464e-08, -5.5513468e-08, -1.27, -7, 3.0000005, 6.9)
+
+[node name="cairn_fake_wall8" parent="Room03/_structure" unique_id=814277798 instance=ExtResource("3_m6iax")]
+transform = Transform3D(5.5513468e-08, 1.2700001, -5.551346e-08, -7.1054274e-15, -5.551347e-08, -1.27, -1.2700001, 5.5513475e-08, -7.1054274e-15, -6.799999, 2.1862462, 5.7)
+collision_layer = 4096
+
+[node name="_lights" type="Node3D" parent="Room03" unique_id=1340347768]
+
+[node name="TorchSconce" parent="Room03/_lights" unique_id=1398646111 instance=ExtResource("7_18d3f")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -2.8999996, 3.4229527, 0)
+
+[node name="TorchSconce2" parent="Room03/_lights" unique_id=2136770569 instance=ExtResource("7_18d3f")]
+transform = Transform3D(-0.7071068, 0, 0.7071067, 0, 1, 0, -0.7071067, 0, -0.7071068, -2.617157, 1.3229525, 2.6000004)
+
+[node name="TorchSconce6" parent="Room03/_lights" unique_id=945488960 instance=ExtResource("20_ntrdj")]
+transform = Transform3D(0.70710665, 0, 0.70710677, 0, 1, 0, -0.70710677, 0, 0.70710665, -2.5464458, 1.3229525, -2.5292902)
+
+[node name="TorchSconce3" parent="Room03/_lights" unique_id=1523174574 instance=ExtResource("20_ntrdj")]
+transform = Transform3D(-0.7071068, 0, 0.7071067, 0, 1, 0, -0.7071067, 0, -0.7071068, -2.617157, 3.5229526, 2.6000004)
+
+[node name="TorchSconce5" parent="Room03/_lights" unique_id=1301123229 instance=ExtResource("7_18d3f")]
+transform = Transform3D(0.70710665, 0, 0.70710677, 0, 1, 0, -0.70710677, 0, 0.70710665, -2.5464463, 3.5229526, -2.5292888)
+
+[node name="TorchSconce11" parent="Room03/_lights" unique_id=440338442 instance=ExtResource("7_18d3f")]
+transform = Transform3D(0.9999999, 0, 5.9604645e-08, 0, 1, 0, -5.9604645e-08, 0, 0.9999999, 0.017938614, 3.4759007, -4.6663694)
+
+[node name="TorchSconce10" parent="Room03/_lights" unique_id=359485601 instance=ExtResource("20_ntrdj")]
+transform = Transform3D(0.70710677, 0, -0.70710677, 0, 1, 0, 0.70710677, 0, 0.70710677, 2.5535517, 1.3229525, -2.6292896)
+
+[node name="TorchSconce7" parent="Room03/_lights" unique_id=1198063315 instance=ExtResource("7_18d3f")]
+transform = Transform3D(-0.7071067, 0, -0.7071067, 0, 1, 0, 0.7071067, 0, -0.7071067, 2.4828405, 1.3229525, 2.5000005)
+
+[node name="TorchSconce8" parent="Room03/_lights" unique_id=972353709 instance=ExtResource("7_18d3f")]
+transform = Transform3D(0.70710677, 0, -0.70710677, 0, 1, 0, 0.70710677, 0, 0.70710677, 2.5535517, 3.5229526, -2.6292896)
+
+[node name="TorchSconce9" parent="Room03/_lights" unique_id=1936995745 instance=ExtResource("7_18d3f")]
+transform = Transform3D(-0.7071067, 0, -0.7071067, 0, 1, 0, 0.7071067, 0, -0.7071067, 2.4828405, 3.5229526, 2.5000005)
+
+[node name="PressurePlate_L" parent="Room03" unique_id=1206040788 instance=ExtResource("10_5hc0a")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.2570415, 3.9)
+
+[node name="Gate_L" parent="Room03" unique_id=1250930695 instance=ExtResource("4_qd8o2")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0.90000004, 2.2, 3.9)
+
+[node name="PressurePlate_R" parent="Room03" unique_id=1199643590 instance=ExtResource("10_5hc0a")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.2543468, -3.8999996)
+
+[node name="Gate_RT" parent="Room03" unique_id=974221747 instance=ExtResource("4_qd8o2")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0.8999997, 2.2, -4)
+
+[node name="Gate_RB" parent="Room03" unique_id=1008092371 instance=ExtResource("4_qd8o2")]
+transform = Transform3D(-1, -8.742278e-08, 0, 8.742278e-08, -1, 0, 0, 0, 1, 0, 2, -2.8000002)
+
+[node name="skull" parent="Room03" unique_id=2126113278 instance=ExtResource("7_6emgk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.4326153, 2.5511937, 4.0778875)
+
 [connection signal="on_activated" from="Room01/Button" to="Room01/Gate" method="open_gate"]
 [connection signal="on_change" from="Room01/PressurePlate" to="Room01/Gate2" method="open_gate"]
 [connection signal="on_activated" from="Room02/Button" to="Room02/SpikeTrap" method="activate"]
 [connection signal="on_activated" from="Room02/Button" to="Room02/Gate" method="fully_open_gate"]
+[connection signal="on_change" from="Room03/PressurePlate_L" to="Room03/Gate_RT" method="open_gate"]
+[connection signal="on_change" from="Room03/PressurePlate_R" to="Room03/Gate_RB" method="open_gate"]
