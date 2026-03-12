@@ -20,6 +20,7 @@
 [ext_resource type="PackedScene" uid="uid://7vsus2skkd52" path="res://scenes/interactions/interactables/items/all_items/breakables/test_breakable_weak.tscn" id="18_2w57q"]
 [ext_resource type="PackedScene" uid="uid://qu5rxgbydmet" path="res://scenes/interactions/_triggers/button/button.tscn" id="19_qjn1s"]
 [ext_resource type="Script" uid="uid://cfmswqnu6u0bl" path="res://scenes/interactions/_receivers/_logic/counter/counter.gd" id="20_7ghgf"]
+[ext_resource type="PackedScene" uid="uid://pfsmibp55qi" path="res://scenes/interactions/_receivers/bridge/bridge.tscn" id="21_h0f0v"]
 
 [sub_resource type="Environment" id="Environment_vu50v"]
 
@@ -81,7 +82,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.851005, 1.0864971, 0)
 keywords_needed = "LEVER;"
 
 [node name="Lever_Fixed" parent="BrokenLeverExample" unique_id=2103435250 instance=ExtResource("1_vplke")]
-use_intervals = true
 hand_prompt = "hand_prompt_lever"
 disabled = true
 
@@ -92,129 +92,135 @@ keywords = "LEVER;"
 [node name="SpikeTrap" parent="." unique_id=610712147 instance=ExtResource("8_uyxk5")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.3651237, 0.00061232597, 1)
 
-[node name="ITM_MOVER" type="Node3D" parent="." unique_id=1073128612 node_paths=PackedStringArray("itms_2_move")]
+[node name="ITMMOVERSTUFF" type="Node3D" parent="." unique_id=464698885]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 0, 0)
+
+[node name="ITM_MOVER" type="Node3D" parent="ITMMOVERSTUFF" unique_id=1073128612 node_paths=PackedStringArray("itms_2_move")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0.4, 3)
 script = ExtResource("9_ndqll")
 itms_2_move = [NodePath("../Itms/key"), NodePath("../Itms/LeverHandle"), NodePath("../Itms/Urn"), NodePath("../Itms/Urn2"), NodePath("../Itms/BabyDude"), NodePath("../Itms/TEST_Grabbable_item"), NodePath("../Itms/Breakable_Item_Mid"), NodePath("../Itms/Breakable_Item_Strong"), NodePath("../Itms/Breakable_Item_Weak")]
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="ITM_MOVER" unique_id=899236439]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="ITMMOVERSTUFF/ITM_MOVER" unique_id=899236439]
 mesh = SubResource("SphereMesh_ndqll")
 
-[node name="MeshInstance3D2" type="MeshInstance3D" parent="ITM_MOVER" unique_id=930370052]
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="ITMMOVERSTUFF/ITM_MOVER" unique_id=930370052]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 0)
 mesh = SubResource("SphereMesh_ndqll")
 
-[node name="MeshInstance3D3" type="MeshInstance3D" parent="ITM_MOVER" unique_id=843065737]
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="ITMMOVERSTUFF/ITM_MOVER" unique_id=843065737]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 0)
 mesh = SubResource("SphereMesh_ndqll")
 
-[node name="MeshInstance3D4" type="MeshInstance3D" parent="ITM_MOVER" unique_id=1147053417]
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="ITMMOVERSTUFF/ITM_MOVER" unique_id=1147053417]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1)
 mesh = SubResource("SphereMesh_ndqll")
 
-[node name="MeshInstance3D5" type="MeshInstance3D" parent="ITM_MOVER" unique_id=2133158304]
+[node name="MeshInstance3D5" type="MeshInstance3D" parent="ITMMOVERSTUFF/ITM_MOVER" unique_id=2133158304]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 1)
 mesh = SubResource("SphereMesh_ndqll")
 
-[node name="MeshInstance3D6" type="MeshInstance3D" parent="ITM_MOVER" unique_id=410692400]
+[node name="MeshInstance3D6" type="MeshInstance3D" parent="ITMMOVERSTUFF/ITM_MOVER" unique_id=410692400]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 1)
 mesh = SubResource("SphereMesh_ndqll")
 
-[node name="MeshInstance3D7" type="MeshInstance3D" parent="ITM_MOVER" unique_id=1568572103]
+[node name="MeshInstance3D7" type="MeshInstance3D" parent="ITMMOVERSTUFF/ITM_MOVER" unique_id=1568572103]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2)
 mesh = SubResource("SphereMesh_ndqll")
 
-[node name="MeshInstance3D8" type="MeshInstance3D" parent="ITM_MOVER" unique_id=472424784]
+[node name="MeshInstance3D8" type="MeshInstance3D" parent="ITMMOVERSTUFF/ITM_MOVER" unique_id=472424784]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 2)
 mesh = SubResource("SphereMesh_ndqll")
 
-[node name="MeshInstance3D9" type="MeshInstance3D" parent="ITM_MOVER" unique_id=1807723371]
+[node name="MeshInstance3D9" type="MeshInstance3D" parent="ITMMOVERSTUFF/ITM_MOVER" unique_id=1807723371]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 2)
 mesh = SubResource("SphereMesh_ndqll")
 
-[node name="ITM_MOVER2" type="Node3D" parent="." unique_id=1317438460 node_paths=PackedStringArray("itms_2_move")]
+[node name="ITM_MOVER2" type="Node3D" parent="ITMMOVERSTUFF" unique_id=1317438460 node_paths=PackedStringArray("itms_2_move")]
 transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 1, 0.4, -4)
 script = ExtResource("9_ndqll")
 itms_2_move = [NodePath("../Itms/key"), NodePath("../Itms/LeverHandle"), NodePath("../Itms/Urn"), NodePath("../Itms/Urn2"), NodePath("../Itms/BabyDude"), NodePath("../Itms/TEST_Grabbable_item"), NodePath("../Itms/Breakable_Item_Mid"), NodePath("../Itms/Breakable_Item_Strong"), NodePath("../Itms/Breakable_Item_Weak")]
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="ITM_MOVER2" unique_id=1670500186]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="ITMMOVERSTUFF/ITM_MOVER2" unique_id=1670500186]
 mesh = SubResource("SphereMesh_ndqll")
 
-[node name="MeshInstance3D2" type="MeshInstance3D" parent="ITM_MOVER2" unique_id=769522942]
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="ITMMOVERSTUFF/ITM_MOVER2" unique_id=769522942]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 0)
 mesh = SubResource("SphereMesh_ndqll")
 
-[node name="MeshInstance3D3" type="MeshInstance3D" parent="ITM_MOVER2" unique_id=591578136]
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="ITMMOVERSTUFF/ITM_MOVER2" unique_id=591578136]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 0)
 mesh = SubResource("SphereMesh_ndqll")
 
-[node name="MeshInstance3D4" type="MeshInstance3D" parent="ITM_MOVER2" unique_id=826883462]
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="ITMMOVERSTUFF/ITM_MOVER2" unique_id=826883462]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1)
 mesh = SubResource("SphereMesh_ndqll")
 
-[node name="MeshInstance3D5" type="MeshInstance3D" parent="ITM_MOVER2" unique_id=34408811]
+[node name="MeshInstance3D5" type="MeshInstance3D" parent="ITMMOVERSTUFF/ITM_MOVER2" unique_id=34408811]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 1)
 mesh = SubResource("SphereMesh_ndqll")
 
-[node name="MeshInstance3D6" type="MeshInstance3D" parent="ITM_MOVER2" unique_id=1521824592]
+[node name="MeshInstance3D6" type="MeshInstance3D" parent="ITMMOVERSTUFF/ITM_MOVER2" unique_id=1521824592]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 1)
 mesh = SubResource("SphereMesh_ndqll")
 
-[node name="MeshInstance3D7" type="MeshInstance3D" parent="ITM_MOVER2" unique_id=1096112866]
+[node name="MeshInstance3D7" type="MeshInstance3D" parent="ITMMOVERSTUFF/ITM_MOVER2" unique_id=1096112866]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2)
 mesh = SubResource("SphereMesh_ndqll")
 
-[node name="MeshInstance3D8" type="MeshInstance3D" parent="ITM_MOVER2" unique_id=643968962]
+[node name="MeshInstance3D8" type="MeshInstance3D" parent="ITMMOVERSTUFF/ITM_MOVER2" unique_id=643968962]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 2)
 mesh = SubResource("SphereMesh_ndqll")
 
-[node name="MeshInstance3D9" type="MeshInstance3D" parent="ITM_MOVER2" unique_id=261569403]
+[node name="MeshInstance3D9" type="MeshInstance3D" parent="ITMMOVERSTUFF/ITM_MOVER2" unique_id=261569403]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 2)
 mesh = SubResource("SphereMesh_ndqll")
 
-[node name="Itms" type="Node3D" parent="." unique_id=1535881409]
+[node name="Itms" type="Node3D" parent="ITMMOVERSTUFF" unique_id=1535881409]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0.4, 0)
 
-[node name="key" parent="Itms" unique_id=451440735 instance=ExtResource("11_vo06l")]
+[node name="key" parent="ITMMOVERSTUFF/Itms" unique_id=451440735 instance=ExtResource("11_vo06l")]
 
-[node name="LeverHandle" parent="Itms" unique_id=1779357928 instance=ExtResource("7_2j4yl")]
+[node name="LeverHandle" parent="ITMMOVERSTUFF/Itms" unique_id=1779357928 instance=ExtResource("7_2j4yl")]
 
-[node name="Urn" parent="Itms" unique_id=1376443271 instance=ExtResource("12_qjn1s")]
+[node name="Urn" parent="ITMMOVERSTUFF/Itms" unique_id=1376443271 instance=ExtResource("12_qjn1s")]
 
-[node name="Urn2" parent="Itms" unique_id=530447260 instance=ExtResource("13_7ghgf")]
+[node name="Urn2" parent="ITMMOVERSTUFF/Itms" unique_id=530447260 instance=ExtResource("13_7ghgf")]
 
-[node name="BabyDude" parent="Itms" unique_id=1730501094 instance=ExtResource("14_h0f0v")]
+[node name="BabyDude" parent="ITMMOVERSTUFF/Itms" unique_id=1730501094 instance=ExtResource("14_h0f0v")]
 
-[node name="TEST_Grabbable_item" parent="Itms" unique_id=78367368 instance=ExtResource("15_xvh5g")]
+[node name="TEST_Grabbable_item" parent="ITMMOVERSTUFF/Itms" unique_id=78367368 instance=ExtResource("15_xvh5g")]
 
-[node name="Breakable_Item_Mid" parent="Itms" unique_id=577504107 instance=ExtResource("16_0ff0n")]
+[node name="Breakable_Item_Mid" parent="ITMMOVERSTUFF/Itms" unique_id=577504107 instance=ExtResource("16_0ff0n")]
 
-[node name="Breakable_Item_Strong" parent="Itms" unique_id=34502412 instance=ExtResource("17_miusb")]
+[node name="Breakable_Item_Strong" parent="ITMMOVERSTUFF/Itms" unique_id=34502412 instance=ExtResource("17_miusb")]
 
-[node name="Breakable_Item_Weak" parent="Itms" unique_id=1147168707 instance=ExtResource("18_2w57q")]
+[node name="Breakable_Item_Weak" parent="ITMMOVERSTUFF/Itms" unique_id=1147168707 instance=ExtResource("18_2w57q")]
 
-[node name="Button" parent="." unique_id=1164325605 instance=ExtResource("19_qjn1s")]
+[node name="Button" parent="ITMMOVERSTUFF" unique_id=1164325605 instance=ExtResource("19_qjn1s")]
 transform = Transform3D(1, 0, 0, 0, 0.49999997, -0.8660254, 0, 0.8660254, 0.49999997, 0.6, 0.40000004, 1.6)
 
-[node name="Button5" parent="." unique_id=366984251 instance=ExtResource("19_qjn1s")]
+[node name="Button5" parent="ITMMOVERSTUFF" unique_id=366984251 instance=ExtResource("19_qjn1s")]
 transform = Transform3D(-4.371139e-08, 0.8660254, 0.49999997, 0, 0.49999997, -0.8660254, -1, -3.7855173e-08, -2.1855692e-08, 1, 0.40000004, 0.6)
 
-[node name="Button6" parent="." unique_id=1909244573 instance=ExtResource("19_qjn1s")]
+[node name="Button6" parent="ITMMOVERSTUFF" unique_id=1909244573 instance=ExtResource("19_qjn1s")]
 transform = Transform3D(-4.371139e-08, 0.8660254, 0.49999997, 0, 0.49999997, -0.8660254, -1, -3.7855173e-08, -2.1855692e-08, 1, 0.40000004, 1)
 
-[node name="Button4" parent="." unique_id=324266653 instance=ExtResource("19_qjn1s")]
+[node name="Button4" parent="ITMMOVERSTUFF" unique_id=324266653 instance=ExtResource("19_qjn1s")]
 transform = Transform3D(1, 0, 0, 0, 0.49999997, -0.8660254, 0, 0.8660254, 0.49999997, 0.20000002, 0.40000004, 1.6)
 
-[node name="Button3" parent="." unique_id=550564207 instance=ExtResource("19_qjn1s")]
+[node name="Button3" parent="ITMMOVERSTUFF" unique_id=550564207 instance=ExtResource("19_qjn1s")]
 transform = Transform3D(1, 0, 0, 0, 0.49999997, -0.8660254, 0, 0.8660254, 0.49999997, -0.20000002, 0.40000004, 1.6)
 
-[node name="Button2" parent="." unique_id=477784822 instance=ExtResource("19_qjn1s")]
+[node name="Button2" parent="ITMMOVERSTUFF" unique_id=477784822 instance=ExtResource("19_qjn1s")]
 transform = Transform3D(1, 0, 0, 0, 0.49999997, -0.8660254, 0, 0.8660254, 0.49999997, -0.6, 0.40000004, 1.6)
 
-[node name="Counter" type="Node" parent="." unique_id=1911529811]
+[node name="Counter" type="Node" parent="ITMMOVERSTUFF" unique_id=1911529811]
 script = ExtResource("20_7ghgf")
 max_count = 8
 metadata/_custom_type_script = "uid://cfmswqnu6u0bl"
+
+[node name="Bridge" parent="." unique_id=2088177992 instance=ExtResource("21_h0f0v")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 0, -3)
 
 [connection signal="on_activated" from="Lever" to="SpikeTrap" method="activate"]
 [connection signal="on_change" from="Lever" to="Gate" method="open_gate"]
@@ -223,11 +229,11 @@ metadata/_custom_type_script = "uid://cfmswqnu6u0bl"
 [connection signal="on_deactivated" from="Lever2" to="skybox_changer" method="change_to_b"]
 [connection signal="on_change" from="Lever3" to="Gate2" method="open_gate"]
 [connection signal="on_activated" from="BrokenLeverExample/BrokenLever" to="BrokenLeverExample/Lever_Fixed" method="enable"]
-[connection signal="on_change" from="BrokenLeverExample/Lever_Fixed" to="Gate2" method="open_gate"]
-[connection signal="on_activated" from="Button" to="ITM_MOVER" method="move_item_from_index"]
-[connection signal="on_activated" from="Button5" to="ITM_MOVER2" method="smooth_move_all_items"]
-[connection signal="on_activated" from="Button6" to="Counter" method="add_count"]
-[connection signal="on_activated" from="Button4" to="ITM_MOVER" method="smooth_move_item_from_index"]
-[connection signal="on_activated" from="Button3" to="ITM_MOVER" method="move_all_items"]
-[connection signal="on_activated" from="Button2" to="ITM_MOVER" method="smooth_move_all_items"]
-[connection signal="on_change_use_current_count_as_int" from="Counter" to="ITM_MOVER" method="set_current_index"]
+[connection signal="on_change" from="BrokenLeverExample/Lever_Fixed" to="Bridge" method="open_bridge"]
+[connection signal="on_activated" from="ITMMOVERSTUFF/Button" to="ITMMOVERSTUFF/ITM_MOVER" method="move_item_from_index"]
+[connection signal="on_activated" from="ITMMOVERSTUFF/Button5" to="ITMMOVERSTUFF/ITM_MOVER2" method="smooth_move_all_items"]
+[connection signal="on_activated" from="ITMMOVERSTUFF/Button6" to="ITMMOVERSTUFF/Counter" method="add_count"]
+[connection signal="on_activated" from="ITMMOVERSTUFF/Button4" to="ITMMOVERSTUFF/ITM_MOVER" method="smooth_move_item_from_index"]
+[connection signal="on_activated" from="ITMMOVERSTUFF/Button3" to="ITMMOVERSTUFF/ITM_MOVER" method="move_all_items"]
+[connection signal="on_activated" from="ITMMOVERSTUFF/Button2" to="ITMMOVERSTUFF/ITM_MOVER" method="smooth_move_all_items"]
+[connection signal="on_change_use_current_count_as_int" from="ITMMOVERSTUFF/Counter" to="ITMMOVERSTUFF/ITM_MOVER" method="set_current_index"]
