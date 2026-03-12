@@ -312,3 +312,11 @@ func _on_anim_override_finished(_anim_name: String) -> void:
 
 # ↑ Animating Stuff ↑
 # --------------------------------------------------------------------------------------------------
+
+func force_grab_item(itm: Grabbable_Item) -> void:
+	itm = current_interactable
+	if player_interact.get_other_hand_state(hand_type) is HandState_Grab_Item:
+		if player_interact.get_other_hand_current_interactable(hand_type) == current_interactable:
+			player_interact.free_interaction_on_other_hand(hand_type) # replace with signal
+	current_interactable.begin_interact()
+	state.finished.emit(state.GRAB_ITEM)

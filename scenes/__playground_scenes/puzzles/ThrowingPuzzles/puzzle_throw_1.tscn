@@ -1,5 +1,6 @@
 [gd_scene format=4 uid="uid://deq6xwcfpykga"]
 
+[ext_resource type="Script" uid="uid://c3qlhg6btpxc" path="res://scenes/_managers/level_manager.gd" id="1_owq6r"]
 [ext_resource type="PackedScene" uid="uid://bq86osdembn58" path="res://scenes/_player/_player_test.tscn" id="1_vcj7m"]
 [ext_resource type="MeshLibrary" uid="uid://bu208a8l5866i" path="res://scenes/_levels/_palettes/cairn/meshlibrary_cairn.tres" id="2_cqdjp"]
 [ext_resource type="PackedScene" uid="uid://d2ict3hg28spx" path="res://scenes/_levels/_palettes/cairn/props/cairn_fake_wall.tscn" id="3_m6iax"]
@@ -20,6 +21,8 @@
 [ext_resource type="Material" uid="uid://c6lv8pfrvktb8" path="res://assets/models/cairn/Hall_BigRoof/Wall.tres" id="15_ntrdj"]
 [ext_resource type="PackedScene" uid="uid://cpnmun20lswr" path="res://scenes/_levels/_palettes/cairn/props/cairn_pillar.tscn" id="19_37gbc"]
 [ext_resource type="PackedScene" uid="uid://br35er4x4b6av" path="res://scenes/interactions/_triggers/torch_sconce/torch_sconce_unlit.tscn" id="20_ntrdj"]
+[ext_resource type="PackedScene" uid="uid://cjmys4ssiclk5" path="res://scripts/checkpoint_manager/checkpoint.tscn" id="21_lufm1"]
+[ext_resource type="Script" uid="uid://oq8j5fypv13a" path="res://scenes/interactions/_triggers/area_triggers/player_area_trigger.gd" id="23_xfits"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_2vnbd"]
 sky_horizon_color = Color(0, 0.37292683, 0.8185948, 1)
@@ -175,10 +178,16 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_mdfrn")
 
-[node name="Puzzle01" type="Node3D" unique_id=2140837292]
+[sub_resource type="SphereShape3D" id="SphereShape3D_owq6r"]
+radius = 0.1
+
+[node name="Puzzle01" type="Node3D" unique_id=2140837292 node_paths=PackedStringArray("player", "checkpoints") groups=["Level"]]
+script = ExtResource("1_owq6r")
+player = NodePath("player_test")
+checkpoints = [NodePath("CP_0"), NodePath("CP_1")]
 
 [node name="player_test" parent="." unique_id=725727541 instance=ExtResource("1_vcj7m")]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -12, 2.1, -7)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 2.1, 3)
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=654468544]
 environment = SubResource("Environment_ldimk")
@@ -653,9 +662,34 @@ transform = Transform3D(-1, -8.742278e-08, 0, 8.742278e-08, -1, 0, 0, 0, 1, 0, 2
 [node name="skull" parent="Room03" unique_id=2126113278 instance=ExtResource("7_6emgk")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.4326153, 2.5511937, 4.0778875)
 
+[node name="CP_0" parent="." unique_id=1899616095 node_paths=PackedStringArray("spawn_pos") instance=ExtResource("21_lufm1")]
+spawn_pos = NodePath("sp")
+
+[node name="sp" type="Node3D" parent="CP_0" unique_id=156156790]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 2, 3)
+
+[node name="CP_1" parent="." unique_id=2022102153 node_paths=PackedStringArray("spawn_pos") instance=ExtResource("21_lufm1")]
+spawn_pos = NodePath("sp")
+
+[node name="sp" type="Node3D" parent="CP_1" unique_id=1487525959]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -13, 2, -7)
+
+[node name="_checkpoint_trig" type="Area3D" parent="CP_1" unique_id=1790786682]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.5, 1.7, -7)
+monitorable = false
+script = ExtResource("23_xfits")
+trig_once = true
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CP_1/_checkpoint_trig" unique_id=262578095]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.39999962, 0, 0)
+shape = SubResource("SphereShape3D_owq6r")
+
 [connection signal="on_activated" from="Room01/Button" to="Room01/Gate" method="open_gate"]
 [connection signal="on_change" from="Room01/PressurePlate" to="Room01/Gate2" method="open_gate"]
 [connection signal="on_activated" from="Room02/Button" to="Room02/SpikeTrap" method="activate"]
 [connection signal="on_activated" from="Room02/Button" to="Room02/Gate" method="fully_open_gate"]
 [connection signal="on_change" from="Room03/PressurePlate_L" to="Room03/Gate_RT" method="open_gate"]
 [connection signal="on_change" from="Room03/PressurePlate_R" to="Room03/Gate_RB" method="open_gate"]
+[connection signal="on_loaded_checkpoint" from="CP_1" to="Room02/Gate" method="close_gate"]
+[connection signal="area_entered" from="CP_1/_checkpoint_trig" to="CP_1/_checkpoint_trig" method="_player_entered"]
+[connection signal="on_activated" from="CP_1/_checkpoint_trig" to="CP_1" method="reached_this_checkpoint"]

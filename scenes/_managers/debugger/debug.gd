@@ -36,8 +36,6 @@ func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("ui_cancel"):
 		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 		
-	if Input.is_action_just_pressed("reset_vs"):
-		get_tree().reload_current_scene()
 
 func _init_me() -> void:
 	player = get_tree().get_first_node_in_group("Player") as PlayerTest
