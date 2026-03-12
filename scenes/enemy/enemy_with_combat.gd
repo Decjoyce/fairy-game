@@ -14,5 +14,5 @@ func die() -> void:
 func _on_hitbox_body_entered(body: Node3D) -> void:
 	print("ji")
 	if body is Grabbable_Item:
-		if body.prev_velocity.length() > 1:
+		if body.prev_velocity.length() > 5:
 			sm.transition_to("stunned")
