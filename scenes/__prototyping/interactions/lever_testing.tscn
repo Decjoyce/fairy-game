@@ -5,24 +5,32 @@
 [ext_resource type="PackedScene" uid="uid://dt13fur6twjep" path="res://scenes/interactions/receivers/gate/gate.tscn" id="3_mkmlb"]
 [ext_resource type="Script" uid="uid://cgb0bi0gumby6" path="res://scenes/interactions/receivers/skybox_changer/skybox_changer.gd" id="4_2rnw6"]
 [ext_resource type="Environment" uid="uid://co42tppomh8j3" path="res://assets/skyboxes/skyboxes_testing_dark.tres" id="5_m1ocg"]
+[ext_resource type="PackedScene" uid="uid://dbvkujqn4ge1b" path="res://scripts/saving/save_game_handler.tscn" id="6_vu50v"]
+[ext_resource type="Script" uid="uid://cjoyim8m0s7c8" path="res://uid_generator.gd" id="7_2j4yl"]
 
 [sub_resource type="Environment" id="Environment_vu50v"]
 
 [sub_resource type="Environment" id="Environment_2rnw6"]
 
-[node name="LeverTesting" type="Node3D" unique_id=1969717916]
+[node name="LeverTesting" type="Node3D" unique_id=1969717916 groups=["MainLevel"]]
 
 [node name="Lever" parent="." unique_id=1692381032 instance=ExtResource("1_vplke")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.6, 0.93050265, 0.3)
+lock_uid = true
+uid = "7aa352b4-0080-4bac-8de9-c8fec0d8e916"
 
 [node name="Lever2" parent="." unique_id=1105726599 instance=ExtResource("1_vplke")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.4, 0.93050265, 0.3)
 use_intervals = true
 intervals = 1.0
+lock_uid = true
+uid = "34c7a40a-c8df-47d4-91e5-fef80bd7649f"
 
 [node name="Lever3" parent="." unique_id=828735417 instance=ExtResource("1_vplke")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.4, 0.93050265, 0.3)
 use_intervals = true
+lock_uid = true
+uid = "97e2bc82-c96d-43ea-b6c9-7d6e5c1eadd7"
 
 [node name="player_test" parent="." unique_id=725727541 instance=ExtResource("2_5vvke")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 1)
@@ -53,6 +61,14 @@ shadow_enabled = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, 0, -1)
 use_collision = true
 size = Vector3(34, 0.001, 13)
+
+[node name="SaveGameHandler" parent="." unique_id=1850737233 instance=ExtResource("6_vu50v")]
+
+[node name="UIDGenerator" type="Node" parent="." unique_id=1156521139]
+script = ExtResource("7_2j4yl")
+
+[node name="Lever4" parent="." unique_id=1886887808 instance=ExtResource("1_vplke")]
+uid = "86c2f8f0-5037-4801-918b-07b3fe9fd7c3"
 
 [connection signal="on_change" from="Lever" to="Gate" method="open_gate"]
 [connection signal="on_activated" from="Lever2" to="skybox_changer" method="change_to_a"]

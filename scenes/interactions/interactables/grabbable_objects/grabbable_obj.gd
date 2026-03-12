@@ -1,3 +1,4 @@
+@tool
 class_name Grabbable_Obj
 extends Interactable
 

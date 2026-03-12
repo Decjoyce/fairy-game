@@ -1,3 +1,4 @@
+@tool
 class_name Instrument
 extends Grabbable_Item
 

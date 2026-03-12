@@ -1,4 +1,5 @@
 @icon("res://assets/_editor_icons/icon_item.svg")
+@tool
 class_name Grabbable_Item
 extends Interactable
 
@@ -90,6 +91,7 @@ func enable_me() -> void:
 	rb.linear_velocity = Vector3.ZERO
 	col.force_update_transform()
 	rb.force_update_transform()
+	super()
 
 func disable_me()-> void:
 	grab_col.set_deferred("disabled", true)
@@ -97,6 +99,7 @@ func disable_me()-> void:
 	rb.freeze = true
 	rb.linear_velocity = Vector3.ZERO
 	$AudioPlayer.stop()
+	super()
 
 # ↑ Interacting Stuff ↑
 # --------------------------------------------------------------------------------------------------
@@ -170,7 +173,7 @@ func on_save_game(saved_data: Array[SavedData]):
 	my_data.scene_path = scene_file_path
 	my_data.velocity = rb.linear_velocity
 	
-	print("yo ho a pritaes life forme")
+	
 	saved_data.append(my_data)
 
 func on_before_load_game() -> void:
@@ -179,8 +182,6 @@ func on_before_load_game() -> void:
 
 func on_load_game(saved_data: SavedData):
 	global_position = saved_data.position
-	print("loading = " + name)
 	if saved_data is SavedDataItem: 
-		print("data is SavedDataItem")
 		var my_data: SavedDataItem = saved_data as SavedDataItem
 		rb.linear_velocity = my_data.velocity

@@ -23,7 +23,7 @@ size = Vector3(0.4, 0.4, 0.4)
 radius = 0.25
 height = 0.5
 
-[node name="Breakable_Item_Weak" type="RigidBody3D" unique_id=577504107 node_paths=PackedStringArray("col", "grab_col", "destroyed_item", "destroyed_audio", "idle_graphics") groups=["debug_PickableObjects"]]
+[node name="Breakable_Item_Weak" type="RigidBody3D" unique_id=577504107 node_paths=PackedStringArray("col", "grab_col", "destroyed_item", "destroyed_audio", "idle_graphics") groups=["PERSISTENT", "debug_PickableObjects"]]
 collision_layer = 2
 axis_lock_angular_x = true
 axis_lock_angular_z = true
@@ -42,6 +42,8 @@ break_force = 5.0
 destroyed_item = NodePath("Destroyed_Items")
 destroyed_audio = NodePath("Destroyed_Items/AudioPlayer_Break")
 idle_graphics = NodePath("Sprite3D")
+interaction_type = 1
+prompt_text = "GRABWeak Breakable"
 
 [node name="Area3D" type="Area3D" parent="." unique_id=1059278251]
 collision_layer = 2

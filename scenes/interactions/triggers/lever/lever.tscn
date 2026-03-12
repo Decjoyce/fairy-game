@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://ojog2sye6yhg" path="res://scenes/interactions/triggers/lever/lever.gd" id="1_00osh"]
 [ext_resource type="Material" uid="uid://bmx5kbkw1qnpa" path="res://assets/_dev/materials/_dev_m_grey.tres" id="2_thwll"]
 [ext_resource type="Material" uid="uid://bk8gbrrgpacoj" path="res://assets/_dev/materials/_dev_m_source.tres" id="3_qcf4t"]
+[ext_resource type="Script" uid="uid://d1t35ei766nom" path="res://scenes/interactions/triggers/lever/quick_test_uid.gd" id="4_thwll"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_4o6sw"]
 size = Vector3(0.223, 0.53, 0.218)
@@ -15,7 +16,7 @@ size = Vector3(0.2, 0.5, 0.08)
 material = ExtResource("3_qcf4t")
 size = Vector3(0.04, 0.5, 0.04)
 
-[node name="Lever" type="Node3D" unique_id=1692381032]
+[node name="Lever" type="Node3D" unique_id=1692381032 groups=["UIDs"]]
 script = ExtResource("1_00osh")
 interaction_type = 3
 prompt_text = "PULL_LEVER"
@@ -54,3 +55,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.15)
 [node name="pos_bottom" type="Node3D" parent="HandPositions" unique_id=1705502395]
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.25, 0)
+
+[node name="Node" type="Node" parent="." unique_id=129579462]
+script = ExtResource("4_thwll")

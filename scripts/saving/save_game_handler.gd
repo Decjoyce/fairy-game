@@ -25,16 +25,13 @@ func save_game() -> void:
 func load_game() -> void:
 	var saved_game: SavedGame = load("user://savegame.tres") as SavedGame
 	
-	print("loading_game")
-	
 	get_tree().call_group("PERSISTENT", "on_before_load_game")
 	
 	for obj in saved_game.saved_data:
-		print("dayman")
-		var scene = load(obj.scene_path) as PackedScene
-		var restored_node = scene.instantiate()
-		world_root.add_child(restored_node)
-		
-		if restored_node.has_method("on_load_game"):
-			restored_node.on_load_game(obj)
-	print("loaded_game")
+		if obj is SavedDataItem:
+			var scene = load(obj.scene_path) as PackedScene
+			var restored_node = scene.instantiate()
+			world_root.add_child(restored_node)
+			
+			if restored_node.has_method("on_load_game"):
+				restored_node.on_load_game(obj)

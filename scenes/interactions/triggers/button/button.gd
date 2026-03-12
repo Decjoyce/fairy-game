@@ -1,4 +1,5 @@
 @icon("res://assets/_editor_icons/icon_button.svg")
+@tool
 class_name InteractableButton
 extends InteractableInstant
 
@@ -63,3 +64,28 @@ func _on_item_entered(area: Area3D) -> void:
 		print(rb.linear_velocity.length_squared())
 		if rb.linear_velocity.length_squared() > 1:
 			activate_button()
+
+# --------------------------------------------------------------------------------------------------
+#region ↓ Saving Stuff ↓
+
+func on_save_game(saved_data: Array[SavedData]) -> void:
+	#var my_data = SavedDataButton.new()
+	#my_data.uid = uid
+	#my_data.scene_path = scene_file_path
+	#my_data.is_disabled = disabled
+	#my_data.activated = activated
+	#my_data.time_left = timer.time_left
+	#
+	#saved_data.append(my_data)
+	pass
+
+func on_before_load_game() -> void:
+	pass
+
+func on_load_game(saved_data: SavedData) -> void:
+	#if saved_data is SavedDataButton: 
+		#var my_data: SavedDataButton = saved_data as SavedDataButton
+	pass
+
+#endregion ↑ Saving Stuff ↑
+# --------------------------------------------------------------------------------------------------

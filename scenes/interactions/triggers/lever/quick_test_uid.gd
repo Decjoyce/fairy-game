@@ -1,74 +1,11 @@
-class_name Interactable
-extends Node3D
-
-signal on_begin_interact(sig: float)
-signal on_interacting(sig: float)
-signal on_end_interact(sig: float)
-
-enum InteractTypes {INSTANT, GRAB_ITEM, GRAB_OBJ, LEVER, TEMP_ATTACK} # might move all the enums to a global class
-@export var interaction_type : InteractTypes
-
-@export var hand_prompt : String = "hand_prompt_default"
-@export var prompt_text: String = ""
-
-@export var disabled: bool
-
-func begin_interact(sig: float = -1) -> void:
-	pass
-
-func interacting(sig: float = -1) -> void:
-	pass
-
-func end_interact(sig: float = -1) -> void:
-	pass
-
-# ↑ Interacting Stuff ↑
-# --------------------------------------------------------------------------------------------------
-#region ↓ Enabling Stuff ↓
-
-func enable_me() -> void:
-	disabled = false
-
-func disable_me() -> void:
-	disabled = true
-
-#endregion ↑ Enabling Stuff ↑
-# --------------------------------------------------------------------------------------------------
-#region ↓ Saving Stuff ↓
-
-func on_save_game(saved_data: Array[SavedData]) -> void:
-	pass
-
-func on_before_load_game() -> void:
-	pass
-
-func on_load_game(saved_data: SavedData) -> void:
-	pass
-
-#endregion ↑ Saving Stuff ↑
-# --------------------------------------------------------------------------------------------------
-#region ↓ UID Stuff ↓
-
-@export_category("**UID - Generate For Each OBJ**")
-
-@export var lock_uid: bool = false
-
-@export var recreate_uid = false:
-	set(value):
-		if Engine.is_editor_hint() and !lock_uid:
-			print("UID Changed")
-			recreate_uid = false
-			uid = Persistent_Object.create_uid();
-
-func hello():
-	print("Hello world!")
-
-func gene_uid():
-	if !lock_uid: uid = Persistent_Object.create_uid();
-	
-@export var uid = "";
+@tool
+extends Node
 
 
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	if Engine.is_editor_hint():
+		get_parent().uid = create_uid()
 
 ####################################################################
 # UID GENERATOR FROM https://github.com/binogure-studio/godot-uuid #

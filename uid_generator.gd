@@ -1,74 +1,32 @@
-class_name Interactable
-extends Node3D
+@tool
+extends Node
 
-signal on_begin_interact(sig: float)
-signal on_interacting(sig: float)
-signal on_end_interact(sig: float)
+#func _run() -> void:
+	#if !EditorInterface.get_edited_scene_root().is_in_group("MainLevel"): return
+	#for i in EditorInterface.get_edited_scene_root().get_tree().get_nodes_in_group("UIDs"):
+		#if i.lockuid: conit
+			#
 
-enum InteractTypes {INSTANT, GRAB_ITEM, GRAB_OBJ, LEVER, TEMP_ATTACK} # might move all the enums to a global class
-@export var interaction_type : InteractTypes
+@export_tool_button("Generate UIDs", "2DNodes") var generate_uid := generate_uids
+@export_tool_button("Check Duplicate UIDs", "2DNodes") var duplicate_uid := check_for_duplicate_uids
 
-@export var hand_prompt : String = "hand_prompt_default"
-@export var prompt_text: String = ""
+func generate_uids() -> void:
+	var don := get_tree().get_first_node_in_group("MainLevel")
+	for i in get_tree().get_nodes_in_group("UIDs"):
+		if i.lock_uid: continue
+		i.uid = create_uid()
+		i.lock_uid = true
+		print(i.uid)
 
-@export var disabled: bool
-
-func begin_interact(sig: float = -1) -> void:
-	pass
-
-func interacting(sig: float = -1) -> void:
-	pass
-
-func end_interact(sig: float = -1) -> void:
-	pass
-
-# ↑ Interacting Stuff ↑
-# --------------------------------------------------------------------------------------------------
-#region ↓ Enabling Stuff ↓
-
-func enable_me() -> void:
-	disabled = false
-
-func disable_me() -> void:
-	disabled = true
-
-#endregion ↑ Enabling Stuff ↑
-# --------------------------------------------------------------------------------------------------
-#region ↓ Saving Stuff ↓
-
-func on_save_game(saved_data: Array[SavedData]) -> void:
-	pass
-
-func on_before_load_game() -> void:
-	pass
-
-func on_load_game(saved_data: SavedData) -> void:
-	pass
-
-#endregion ↑ Saving Stuff ↑
-# --------------------------------------------------------------------------------------------------
-#region ↓ UID Stuff ↓
-
-@export_category("**UID - Generate For Each OBJ**")
-
-@export var lock_uid: bool = false
-
-@export var recreate_uid = false:
-	set(value):
-		if Engine.is_editor_hint() and !lock_uid:
-			print("UID Changed")
-			recreate_uid = false
-			uid = Persistent_Object.create_uid();
-
-func hello():
-	print("Hello world!")
-
-func gene_uid():
-	if !lock_uid: uid = Persistent_Object.create_uid();
-	
-@export var uid = "";
-
-
+func check_for_duplicate_uids() -> void:
+	var dupe_list: Array[String] = []
+	var num_dupes: int = 0
+	for i in get_tree().get_nodes_in_group("UIDs"):
+		if dupe_list.has(i.uid):
+			print("dude")
+			num_dupes+=1
+		dupe_list.append(i.uid)
+	if num_dupes == 0: print("D")
 
 ####################################################################
 # UID GENERATOR FROM https://github.com/binogure-studio/godot-uuid #
