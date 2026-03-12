@@ -1,5 +1,6 @@
 extends NodeState
 
+@onready var timer: Timer = $_timer_stunned
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -13,10 +14,12 @@ func _process(delta: float) -> void:
 func enter():
 	print_debug("BONK!")
 	Animator.play("Stunned")
-	await get_tree().create_timer(1).timeout
-	SM.transition_to("Chase")
-	pass
+	timer.start()
 
 func exit():
 	Animator.stop()
 	pass
+
+
+func _on__timer_stunned_timeout() -> void:
+	SM.transition_to("Chase")

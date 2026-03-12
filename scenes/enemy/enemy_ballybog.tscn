@@ -26,7 +26,7 @@
 [ext_resource type="Script" uid="uid://cjssruwuxjia0" path="res://scenes/combat/attack_sequence.gd" id="28_3jwaj"]
 [ext_resource type="AudioStream" uid="uid://78nk0cnbd7w0" path="res://assets/audio/sfx/enemy/ballybog/huh/Voices, Reaction, Huh, Suprised, Shocked, Loud, Meme Redesign SND140141.wav" id="29_2g7uo"]
 [ext_resource type="AudioStream" uid="uid://0xpm0o2jyheg" path="res://assets/audio/sfx/enemy/ballybog/Rub/Objects, Fashion, Makeup, Sponge, Beautyblender, Single Strokes On Skin SND123478 1.wav" id="29_28ajc"]
-[ext_resource type="Script" path="res://scenes/enemy/stunned.gd" id="29_iaicr"]
+[ext_resource type="Script" uid="uid://1bkpo4brfafu" path="res://scenes/enemy/stunned.gd" id="29_iaicr"]
 [ext_resource type="Resource" uid="uid://bo6jynbmofv6l" path="res://scenes/enemy/combat/attacks/attckseq_bb_test.tres" id="29_pydrg"]
 [ext_resource type="AudioStream" uid="uid://bv4qewq6vcxos" path="res://assets/audio/sfx/enemy/ballybog/Rub/Objects, Fashion, Makeup, Sponge, Beautyblender, Single Strokes On Skin SND123478 2.wav" id="30_2g7uo"]
 [ext_resource type="Script" uid="uid://c27axnnaakeuo" path="res://scenes/combat/combathand_attack.gd" id="30_me4q8"]
@@ -124,15 +124,15 @@ void fragment() {
 "
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_86kpf"]
-render_priority = 0
+render_priority = 1
 shader = SubResource("Shader_phxqg")
 shader_parameter/rows = 2.0
 shader_parameter/columns = 8.0
 shader_parameter/frame = 1.0
 shader_parameter/invert_rows_columns = false
-shader_parameter/sprite = ExtResource("3_5ussm")
+shader_parameter/sprite = ExtResource("12_l3c6t")
 shader_parameter/mode = 0
-shader_parameter/Normal = ExtResource("2_p6ydp")
+shader_parameter/Normal = ExtResource("13_lngu7")
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_pkfog"]
 material = SubResource("ShaderMaterial_86kpf")
@@ -773,6 +773,7 @@ tracks/1/keys = {
 [sub_resource type="Animation" id="Animation_hu1w4"]
 resource_name = "Stunned"
 length = 1.1833333
+loop_mode = 1
 step = 0.0167
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -793,10 +794,10 @@ tracks/1/path = NodePath(".:frame")
 tracks/1/interp = 0
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.26666668),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [0.0, 1.0]
+"values": [0.0]
 }
 tracks/2/type = "audio"
 tracks/2/imported = false
@@ -1120,6 +1121,7 @@ script = ExtResource("1_3ixwq")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1647824731]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.3947841, 0)
 shape = SubResource("CapsuleShape3D_abuop")
+disabled = true
 
 [node name="Sprite3DBillBoard" type="MeshInstance3D" parent="." unique_id=589909567]
 transform = Transform3D(-1, 0, -1.509958e-07, 0, 1, 0, 1.509958e-07, 0, -1, 0, 0.6596855, 0)
@@ -1128,7 +1130,7 @@ sorting_offset = 1.0
 mesh = SubResource("PlaneMesh_pkfog")
 script = ExtResource("3_j08hu")
 animations_array = Array[ExtResource("4_v1swk")]([SubResource("Resource_d7tla"), SubResource("Resource_8vrwc"), SubResource("Resource_iaicr"), SubResource("Resource_600hx"), SubResource("Resource_gefnw")])
-animation = 1
+animation = 4
 frame = 1.0
 sprite_scale = 0.003
 metadata/_custom_type_script = "uid://b5653u7w56pqw"
@@ -1214,6 +1216,9 @@ one_shot = true
 script = ExtResource("29_iaicr")
 SM = NodePath("..")
 Animator = NodePath("../../AnimationPlayer")
+
+[node name="_timer_stunned" type="Timer" parent="StateMachine/Stunned" unique_id=2133530117]
+one_shot = true
 
 [node name="Area3D" type="Area3D" parent="." unique_id=1416647770 groups=["Player"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.59447724, 0)
@@ -1309,6 +1314,18 @@ combat = NodePath("../Combat")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Hitbox" unique_id=1410370259]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.55, 0)
 shape = SubResource("CapsuleShape3D_nfjh2")
+debug_color = Color(0.56169415, 0.56031287, 0, 0.41960785)
+
+[node name="ITMHitbox" type="Area3D" parent="." unique_id=100919352]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.1, 0)
+collision_layer = 131072
+collision_mask = 3
+monitorable = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ITMHitbox" unique_id=141735222]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.55, 0)
+shape = SubResource("CapsuleShape3D_nfjh2")
+debug_color = Color(0.56169415, 0.56031287, 0, 0.41960785)
 
 [node name="HitSfx" type="AudioStreamPlayer3D" parent="." unique_id=1621843565]
 stream = SubResource("AudioStreamRandomizer_u7shv")
@@ -1401,6 +1418,7 @@ mesh = SubResource("QuadMesh_pydrg")
 
 [connection signal="timeout" from="StateMachine/Wander/Timer" to="StateMachine/Wander" method="_on_timer_timeout"]
 [connection signal="timeout" from="StateMachine/Chase/Timer" to="StateMachine/Chase" method="_on_timer_timeout"]
+[connection signal="timeout" from="StateMachine/Stunned/_timer_stunned" to="StateMachine/Stunned" method="_on__timer_stunned_timeout"]
 [connection signal="area_shape_entered" from="Area3D" to="StateMachine/Chase" method="_on_area_3d_area_shape_entered"]
 [connection signal="area_shape_exited" from="Area3D" to="StateMachine/Fighting" method="_on_area_3d_area_shape_exited"]
 [connection signal="body_shape_entered" from="Area3D" to="SM_controller" method="_on_area_3d_body_shape_entered"]
@@ -1414,3 +1432,5 @@ mesh = SubResource("QuadMesh_pydrg")
 [connection signal="timeout" from="Combat/CombatHand/Attack/Timer_Recover" to="Combat/CombatHand/Attack" method="end_recover"]
 [connection signal="timeout" from="Combat/CombatHand/Timer_Stagger" to="Combat/CombatHand" method="end_staggered"]
 [connection signal="timeout" from="Combat/CombatHand/Timer_Defence" to="Combat/CombatHand" method="begin_attacking"]
+[connection signal="body_entered" from="Hitbox" to="." method="_on_hitbox_body_entered"]
+[connection signal="body_entered" from="ITMHitbox" to="." method="_on_hitbox_body_entered"]

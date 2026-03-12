@@ -13,6 +13,8 @@ var spr_mesh :PlaneMesh
 var material:ShaderMaterial
 var shader:Shader
 
+#@export var render_priority
+
 # Propiedades exportadas
 @export var animations_array:Array[AnimationData]:  # Array de datos de animación
 	set(value):

@@ -13,6 +13,8 @@ var node_states : Dictionary = {}
 var current_node_state : NodeState
 var current_node_state_name : String
  
+var last_state_name: String
+
 # Called when the node enters the scene tree for the first time.
 func _ready() :
 	set_process_input(true) 
@@ -41,6 +43,7 @@ func _process(delta: float) :
 
 
 func transition_to(node_state_name : String):
+	print(current_node_state_name)
 	if node_state_name == current_node_state.name.to_lower():
 		return
 		
@@ -54,5 +57,7 @@ func transition_to(node_state_name : String):
 	
 	new_node_state.enter()
 	
+	last_state_name = current_node_state_name
+	print(current_node_state_name)
 	current_node_state = new_node_state
 	current_node_state_name = current_node_state_name.to_lower()
