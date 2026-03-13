@@ -4,6 +4,7 @@
 [ext_resource type="Script" uid="uid://cqhq7vrwiw3m6" path="res://scenes/interactions/interactables/items/item_types/item_type.gd" id="2_i0ofu"]
 [ext_resource type="Texture2D" uid="uid://1m8e2skdgkex" path="res://assets/sprites/item_sprites/skull_item.png" id="3_jhrhg"]
 [ext_resource type="AudioStream" uid="uid://dutddyikwuiut" path="res://assets/audio/sfx/combat/misc/hittingsound_shorter.wav" id="4_citxp"]
+[ext_resource type="Script" uid="uid://bhf6r6nw14krj" path="res://scripts/saving/persistent_objs/po_item.gd" id="5_lkkmc"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_llc7q"]
 
@@ -59,3 +60,7 @@ bus = &"items"
 [node name="RayCast3D" type="RayCast3D" parent="." unique_id=1070737100]
 target_position = Vector3(0, -0.4, 0)
 hit_from_inside = true
+
+[node name="PO_Item" type="Node" parent="." unique_id=2095926710 groups=["PO"]]
+script = ExtResource("5_lkkmc")
+metadata/_custom_type_script = "uid://bhf6r6nw14krj"

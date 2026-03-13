@@ -1,4 +1,4 @@
 class_name SavedDataInteractable
 extends SavedData
 
-@export var is_disabled: bool 
+@export var disabled: bool 

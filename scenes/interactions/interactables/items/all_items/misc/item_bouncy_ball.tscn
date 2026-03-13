@@ -4,6 +4,7 @@
 [ext_resource type="Script" uid="uid://cqhq7vrwiw3m6" path="res://scenes/interactions/interactables/items/item_types/item_type.gd" id="2_o5q4f"]
 [ext_resource type="Texture2D" uid="uid://bsduc3iepom6j" path="res://assets/__not_ours_dontship/n64_sphere_sprite.png" id="3_uwq0t"]
 [ext_resource type="AudioStream" uid="uid://dutddyikwuiut" path="res://assets/audio/sfx/combat/misc/hittingsound_shorter.wav" id="4_5mh5c"]
+[ext_resource type="Script" uid="uid://bhf6r6nw14krj" path="res://scripts/saving/persistent_objs/po_item.gd" id="5_d6rsq"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_a71ib"]
 bounce = 0.55
@@ -63,3 +64,7 @@ stream = ExtResource("4_5mh5c")
 [node name="RayCast3D" type="RayCast3D" parent="." unique_id=955759660]
 target_position = Vector3(0, -0.4, 0)
 hit_from_inside = true
+
+[node name="PO_Item" type="Node" parent="." unique_id=1114825548 groups=["PO"]]
+script = ExtResource("5_d6rsq")
+metadata/_custom_type_script = "uid://bhf6r6nw14krj"

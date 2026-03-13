@@ -21,6 +21,7 @@
 [ext_resource type="PackedScene" uid="uid://qu5rxgbydmet" path="res://scenes/interactions/_triggers/button/button.tscn" id="19_qjn1s"]
 [ext_resource type="Script" uid="uid://cfmswqnu6u0bl" path="res://scenes/interactions/_receivers/_logic/counter/counter.gd" id="20_7ghgf"]
 [ext_resource type="PackedScene" uid="uid://pfsmibp55qi" path="res://scenes/interactions/_receivers/bridge/bridge.tscn" id="21_h0f0v"]
+[ext_resource type="Script" uid="uid://bul4myvyhnpjc" path="res://scripts/saving/uid_generator.gd" id="23_0ff0n"]
 
 [sub_resource type="Environment" id="Environment_vu50v"]
 
@@ -31,19 +32,28 @@ material = ExtResource("10_rc6n0")
 radius = 0.14
 height = 0.105
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_xvh5g"]
+size = Vector3(5, 0.13, 5)
+
 [node name="LeverTesting" type="Node3D" unique_id=1969717916]
 
 [node name="Lever" parent="." unique_id=1692381032 instance=ExtResource("1_vplke")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.6, 0.93050265, 0.3)
+metadata/lock_uid = true
+metadata/uid = "c71135b7-627f-4001-a133-afc0a12a06f3"
 
 [node name="Lever2" parent="." unique_id=1105726599 instance=ExtResource("1_vplke")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.4, 0.93050265, 0.3)
 use_intervals = true
 intervals = 1.0
+metadata/lock_uid = true
+metadata/uid = "e858d4d3-6b1a-46ad-9e6f-c411f914adbd"
 
 [node name="Lever3" parent="." unique_id=828735417 instance=ExtResource("1_vplke")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.4, 0.93050265, 0.3)
 use_intervals = true
+metadata/lock_uid = true
+metadata/uid = "df00b9df-06c8-4bea-866e-0ecdb03c438d"
 
 [node name="player_test" parent="." unique_id=725727541 instance=ExtResource("2_5vvke")]
 transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 0, 1, 1)
@@ -84,10 +94,14 @@ keywords_needed = "LEVER;"
 [node name="Lever_Fixed" parent="BrokenLeverExample" unique_id=2103435250 instance=ExtResource("1_vplke")]
 hand_prompt = "hand_prompt_lever"
 disabled = true
+metadata/lock_uid = true
+metadata/uid = "e604148d-d26c-40cf-bcec-2baa1911efb5"
 
 [node name="LeverHandle" parent="BrokenLeverExample" unique_id=1226645142 instance=ExtResource("7_2j4yl")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.2396591)
 keywords = "LEVER;"
+metadata/uid = "bf821fd5-9b57-43e6-a57f-31cbf3f5cdda"
+metadata/lock_uid = true
 
 [node name="SpikeTrap" parent="." unique_id=610712147 instance=ExtResource("8_uyxk5")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.3651237, 0.00061232597, 1)
@@ -179,22 +193,40 @@ mesh = SubResource("SphereMesh_ndqll")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0.4, 0)
 
 [node name="key" parent="ITMMOVERSTUFF/Itms" unique_id=451440735 instance=ExtResource("11_vo06l")]
+metadata/uid = "24aff4b0-3e71-4d14-b4a7-56ccb686c98c"
+metadata/lock_uid = true
 
 [node name="LeverHandle" parent="ITMMOVERSTUFF/Itms" unique_id=1779357928 instance=ExtResource("7_2j4yl")]
+metadata/uid = "87046be5-8e16-402f-9bf4-f5a1cfc1c822"
+metadata/lock_uid = true
 
 [node name="Urn" parent="ITMMOVERSTUFF/Itms" unique_id=1376443271 instance=ExtResource("12_qjn1s")]
+metadata/uid = "59df1324-021d-433d-93a0-cd30df953687"
+metadata/lock_uid = true
 
 [node name="Urn2" parent="ITMMOVERSTUFF/Itms" unique_id=530447260 instance=ExtResource("13_7ghgf")]
+metadata/uid = "9e691517-af2b-4126-84f7-056b2e03e3e4"
+metadata/lock_uid = true
 
 [node name="BabyDude" parent="ITMMOVERSTUFF/Itms" unique_id=1730501094 instance=ExtResource("14_h0f0v")]
+metadata/uid = "6904a3b4-9a88-413a-a6b2-da074da33211"
+metadata/lock_uid = true
 
 [node name="TEST_Grabbable_item" parent="ITMMOVERSTUFF/Itms" unique_id=78367368 instance=ExtResource("15_xvh5g")]
+metadata/uid = "8a941826-42a5-4546-be3c-0b774a898a20"
+metadata/lock_uid = true
 
 [node name="Breakable_Item_Mid" parent="ITMMOVERSTUFF/Itms" unique_id=577504107 instance=ExtResource("16_0ff0n")]
+metadata/uid = "27a68d23-5b7b-4286-a252-f37fe2380788"
+metadata/lock_uid = true
 
 [node name="Breakable_Item_Strong" parent="ITMMOVERSTUFF/Itms" unique_id=34502412 instance=ExtResource("17_miusb")]
+metadata/uid = "9f313259-3560-424b-bfd0-52bf92c97939"
+metadata/lock_uid = true
 
 [node name="Breakable_Item_Weak" parent="ITMMOVERSTUFF/Itms" unique_id=1147168707 instance=ExtResource("18_2w57q")]
+metadata/uid = "d51e6366-cfde-45f3-94bb-35be2d8e94f6"
+metadata/lock_uid = true
 
 [node name="Button" parent="ITMMOVERSTUFF" unique_id=1164325605 instance=ExtResource("19_qjn1s")]
 transform = Transform3D(1, 0, 0, 0, 0.49999997, -0.8660254, 0, 0.8660254, 0.49999997, 0.6, 0.40000004, 1.6)
@@ -221,6 +253,25 @@ metadata/_custom_type_script = "uid://cfmswqnu6u0bl"
 
 [node name="Bridge" parent="." unique_id=2088177992 instance=ExtResource("21_h0f0v")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 0, -3)
+
+[node name="Lever4" parent="." unique_id=1189795630 instance=ExtResource("1_vplke")]
+metadata/lock_uid = true
+metadata/uid = "32fcb5f3-dbe6-4bc2-8206-9ce89c416881"
+
+[node name="UID_Generator" type="Node" parent="." unique_id=1339389628]
+script = ExtResource("23_0ff0n")
+
+[node name="Node" type="Node" parent="." unique_id=430454402]
+
+[node name="DestroyedItemCell" type="Node3D" parent="Node" unique_id=1067420585]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 50000, 0, 0)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Node/DestroyedItemCell" unique_id=159244266]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.1, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Node/DestroyedItemCell/StaticBody3D" unique_id=226337730]
+shape = SubResource("BoxShape3D_xvh5g")
 
 [connection signal="on_activated" from="Lever" to="SpikeTrap" method="activate"]
 [connection signal="on_change" from="Lever" to="Gate" method="open_gate"]

@@ -4,6 +4,7 @@
 [ext_resource type="Script" uid="uid://cqhq7vrwiw3m6" path="res://scenes/interactions/interactables/items/item_types/item_type.gd" id="2_fnxl4"]
 [ext_resource type="Texture2D" uid="uid://7lk2ld8qj3i0" path="res://assets/sprites/item_sprites/drinkingVessel_item.png" id="3_cd30j"]
 [ext_resource type="AudioStream" uid="uid://dutddyikwuiut" path="res://assets/audio/sfx/combat/misc/hittingsound_shorter.wav" id="4_fpq24"]
+[ext_resource type="Script" uid="uid://bhf6r6nw14krj" path="res://scripts/saving/persistent_objs/po_item.gd" id="4_vhdm2"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_llc7q"]
 
@@ -62,3 +63,7 @@ bus = &"items"
 [node name="RayCast3D" type="RayCast3D" parent="." unique_id=1146106517]
 target_position = Vector3(0, -0.4, 0)
 hit_from_inside = true
+
+[node name="PO_Item" type="Node" parent="." unique_id=611978815 groups=["PO"]]
+script = ExtResource("4_vhdm2")
+metadata/_custom_type_script = "uid://bhf6r6nw14krj"

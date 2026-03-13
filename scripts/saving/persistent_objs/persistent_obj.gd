@@ -2,31 +2,36 @@
 class_name PersistentObject
 extends Node
 
-@export var lock_uid: bool
-@export var uid: String
-
 func _ready() -> void:
 	if Engine.is_editor_hint():
-		var p = get_parent()
+		var p := get_parent()
 		for c in p.get_children(true):
 			if p is PersistentObject: 
 				queue_free()
 				return
-		if lock_uid: return
-		uid = create_uid()
-		lock_uid = true
-	print(uid)
 
-func on_save_game(sd: SavedData) -> void:
+func gen_uid() -> void:
+	if !Engine.is_editor_hint(): return
+	if get_parent().has_meta("lock_uid") and get_parent().get_meta("lock_uid") == true: return
+	get_parent().set_meta("uid", create_uid())
+	get_parent().set_meta("lock_uid", true)
+	prints(get_parent().name, get_uid())
+
+func get_uid() -> String:
+	return get_parent().get_meta("uid")
+
+
+func on_save_game(saved_data: Array[SavedData]) -> void:
 	if Engine.is_editor_hint(): return
 	pass
 
 func on_before_load_game() -> void:
 	if Engine.is_editor_hint(): return
 
-func on_load_game(sd: SavedData) -> void:
+func on_load_game(saved_data: SavedData) -> void:
 	if Engine.is_editor_hint(): return
 
+#region ui_generator
 ####################################################################
 # UID GENERATOR FROM https://github.com/binogure-studio/godot-uuid #
 ####################################################################

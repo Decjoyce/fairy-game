@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://s5cfdf85lm5g" path="res://scenes/interactions/interactables/items/grabbable_item.gd" id="1_y2o28"]
 [ext_resource type="Script" uid="uid://q0egps2wmpgo" path="res://scenes/interactions/interactables/items/item_types/itemtype_key.gd" id="2_v4fsc"]
+[ext_resource type="Script" uid="uid://bhf6r6nw14krj" path="res://scripts/saving/persistent_objs/po_item.gd" id="3_m5t5s"]
 [ext_resource type="Texture2D" uid="uid://pfvkojgoyar6" path="res://assets/sprites/item_sprites/lever_handle.png" id="3_v4fsc"]
 [ext_resource type="AudioStream" uid="uid://dutddyikwuiut" path="res://assets/audio/sfx/combat/misc/hittingsound_shorter.wav" id="4_rdj2p"]
 
@@ -73,3 +74,7 @@ bus = &"items"
 [node name="RayCast3D" type="RayCast3D" parent="." unique_id=1834338369]
 target_position = Vector3(0, -0.4, 0)
 hit_from_inside = true
+
+[node name="PO_Item" type="Node" parent="." unique_id=1556005205 groups=["PO"]]
+script = ExtResource("3_m5t5s")
+metadata/_custom_type_script = "uid://bhf6r6nw14krj"

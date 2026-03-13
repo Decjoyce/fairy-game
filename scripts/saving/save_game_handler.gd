@@ -16,32 +16,55 @@ func save_game() -> void:
 	var saved_game: SavedGame = SavedGame.new()
 	
 	var saved_data: Array[SavedData] = []
-	get_tree().call_group("PERSISTENT", "on_save_game", saved_data)
+	get_tree().call_group("PO", "on_save_game", saved_data)
 	saved_game.saved_data = saved_data
 	
 	ResourceSaver.save(saved_game, "user://savegame.tres")
 	print("saved_game")
+	print(OS.get_data_dir())
 
 func load_game() -> void:
 	var saved_game: SavedGame = load("user://savegame.tres") as SavedGame
+	
+	get_tree().reload_current_scene()
+	await get_tree().node_added
+	world_root = get_tree().current_scene
+	if !world_root.is_node_ready():
+		await world_root.ready
 	
 	get_tree().call_group("PERSISTENT", "on_before_load_game")
 	
 	var uid_list: Dictionary[String, Node] = {}
 	
-	for i in get_tree().get_nodes_in_group("PERSISTENT"):
-		assert(i.has("uid"), "A node was marked as PERSISTENT despite not containing a uid var -- NOTIFY DECLAN ASAP")
-		uid_list[i.uid] = i
+	print(get_tree().get_nodes_in_group("PO"))
+	
+	for i in get_tree().get_nodes_in_group("PO"):
+		assert(i is PersistentObject, "A node was marked as PO despite not being of type PersistentObject -- NOTIFY DECLAN ASAP")
+		if i.get_parent().has_meta("uid"):
+			uid_list[i.get_uid()] = i
 	
 	print(uid_list)
 	
 	for obj in saved_game.saved_data:
-		if obj is SavedDataItem:
-			if !uid_list[obj.uid]:
-				printerr("AN UID - RIGHT A PROPER ERROR BRO - in SAVEGAMEHANDLER")
-				continue
+		if !uid_list[obj.uid]:
+			printerr("AN UID - RIGHT A PROPER ERROR BRO - in SAVEGAMEHANDLER")
+			continue
+		if obj.uid != "[NONNATIVE]":
 			if uid_list[obj.uid].has_method("on_load_game"):
 				uid_list[obj.uid].on_load_game(obj)
+		else:
+			prints(obj.uid, obj.scene_path)
+			var scene = load(obj.scene_path) as PackedScene
+			print(scene)
+			var restored_node = scene.instantiate()
+			get_tree().current_scene.add_child(restored_node)
+			
+			for i in restored_node.get_children():
+				if i is not PersistentObject: continue
+				i.has_method("on_load_game")
+				i.on_load_game(obj)
+			
+
 
 
 

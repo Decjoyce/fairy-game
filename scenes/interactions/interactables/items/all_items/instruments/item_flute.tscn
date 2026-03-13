@@ -11,6 +11,7 @@
 [ext_resource type="Script" uid="uid://cfxwq2a75x5r4" path="res://scenes/interactions/interactables/items/item_types/itemtype_instrument.gd" id="9_b4jvk"]
 [ext_resource type="Texture2D" uid="uid://bhs3fvxrmdp4o" path="res://assets/sprites/item_sprites/bone_flute.png" id="10_agl8n"]
 [ext_resource type="AudioStream" uid="uid://dutddyikwuiut" path="res://assets/audio/sfx/combat/misc/hittingsound_shorter.wav" id="11_k286w"]
+[ext_resource type="Script" uid="uid://bhf6r6nw14krj" path="res://scripts/saving/persistent_objs/po_item.gd" id="12_byysy"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_llc7q"]
 
@@ -86,3 +87,7 @@ monitoring = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="MusicCol" unique_id=1875582206]
 shape = SubResource("SphereShape3D_m3m7e")
+
+[node name="PO_Item" type="Node" parent="." unique_id=1485825816 groups=["PO"]]
+script = ExtResource("12_byysy")
+metadata/_custom_type_script = "uid://bhf6r6nw14krj"
