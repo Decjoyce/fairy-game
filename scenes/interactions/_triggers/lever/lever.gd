@@ -8,6 +8,7 @@ signal on_deactivated(sig: float)
 
 @export_category("Settings")
 @export_range(0, 1.0, 0.05) var starting_value: float = 0.0
+@export var emit_sig_when_using_start_value: bool
 
 @export_category("Intervals")
 @export var use_intervals: bool = false
@@ -21,11 +22,7 @@ var current_value: float = 0
 
 func _ready() -> void:
 	super()
-	current_value = starting_value
-	if use_intervals: 
-		current_value = snappedf(current_value, intervals)
-		print(current_value)
-	update_graphics()
+	update_value(starting_value, emit_sig_when_using_start_value, true)
 
 func begin_interact(sig: float = -1) -> void:
 	pass
@@ -40,8 +37,8 @@ func end_interact(sig: float = -1) -> void:
 # --------------------------------------------------------------------------------------------------
 # ↓ Calc Stuff ↓
 
-func update_value(amount: float) -> void:
-	if disabled: return
+func update_value(amount: float, emit_sigs: bool = true, override_disabled: bool = false) -> void:
+	if !override_disabled and disabled: return
 	current_value = amount
 	
 	if use_intervals: 
@@ -49,12 +46,12 @@ func update_value(amount: float) -> void:
 		print(current_value)
 	
 	update_graphics()
-	
-	on_change.emit(current_value)
-	if current_value >= 1.0:
-		on_activated.emit(1.0)
-	elif current_value <= 0:
-		on_deactivated.emit(0.0)
+	if emit_sigs:
+		on_change.emit(current_value)
+		if current_value >= 1.0:
+			on_activated.emit(1.0)
+		elif current_value <= 0:
+			on_deactivated.emit(0.0)
 		
 
 # ↑ Calc Stuff ↑
