@@ -4,7 +4,7 @@
 [ext_resource type="Script" uid="uid://c4t3ko70ihpyy" path="res://scenes/interactions/_receivers/animated_object/animated_object.gd" id="2_mjtog"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_3wrpf"]
-radius = 0.1
+radius = 0.14990234
 height = 1.5
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3omk6"]
@@ -16,7 +16,7 @@ albedo_color = Color(0.7152409, 0.463739, 0, 0.091000006)
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_mjtog"]
 material = SubResource("StandardMaterial3D_3omk6")
-radius = 0.1
+radius = 0.15
 height = 1.5
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mjtog"]
@@ -140,6 +140,7 @@ interaction_type = 6
 prompt_text = "PULLCHAIN"
 
 [node name="Trigger" type="Area3D" parent="." unique_id=41374325]
+collision_mask = 0
 monitoring = false
 
 [node name="_col" type="CollisionShape3D" parent="Trigger" unique_id=999562289]
