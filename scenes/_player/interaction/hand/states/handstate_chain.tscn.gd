@@ -24,12 +24,14 @@ func enter(previous_state_path: String, data := {}) -> void:
 ## Called by the state machine before changing the active state. Use this function
 ## to clean up the state.
 func exit() -> void:
+	chain.end_interact()
 	current_value = 0
 	y_offset = 0
 	x_pos = 0
 	end_pos = 0
 	top_pos = 0
 	hand_controller.anim_change_idle_anim("a_hand_idle")
+	chain = null
 
 func handle_input(_event: InputEvent) -> void:
 	pass

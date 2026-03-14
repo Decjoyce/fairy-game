@@ -13,16 +13,20 @@ enum InteractTypes {INSTANT, GRAB_ITEM, GRAB_OBJ, LEVER, TEMP_ATTACK, TEMP_KEYHO
 
 @export var disabled: bool
 
+var being_interacted_with: bool
+
 func _ready() -> void:
 	if disabled: disable()
 
 func begin_interact(sig: float = -1) -> void:
+	being_interacted_with = true
 	pass
 
 func interacting(sig: float = -1) -> void:
 	pass
 
 func end_interact(sig: float = -1) -> void:
+	being_interacted_with = false
 	pass
 
 func enable(sig: float = -1) -> void:

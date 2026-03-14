@@ -10,6 +10,11 @@ signal on_deactivated(sig: float)
 @export var debug_mode: bool 
 @export_range(0, 1.0, 0.05) var starting_value: float = 0.0
 
+@export_category("Resetting When Not Used")
+@export var slowly_reset_when_not_used: bool
+@export var no_reset_if_activated: bool ## The chain will not reset if it is in the activated position
+@export_range(0.1, 2.0, 0.1) var reset_speed: float = 1.0
+
 @onready var graphics: Node3D = $temp_graphics
 @onready var animated_object: AnimatedObject = $AnimatedObject
 @onready var col: CollisionShape3D = $Trigger/_col
@@ -26,6 +31,11 @@ func _ready() -> void:
 	if debug_mode: $Trigger/_debugmesh.visible = true
 	else: $Trigger/_debugmesh.visible = false
 
+func _process(delta: float) -> void:
+	if !being_interacted_with and slowly_reset_when_not_used and current_value > 0:
+		if no_reset_if_activated and current_value == 1.0: return
+		slowly_reset_chain(delta)
+
 func update_value(amount: float, emit_sigs: bool = true) -> void:
 	if disabled: return
 	current_value = amount
@@ -38,6 +48,12 @@ func update_value(amount: float, emit_sigs: bool = true) -> void:
 		on_activated.emit(1.0)
 	elif current_value <= 0:
 		on_deactivated.emit(0.0)
+
+func slowly_reset_chain(_delta: float) -> void:
+	var new_value = current_value - (reset_speed * _delta)
+	update_value(new_value)
+	if current_value < 0: current_value = 0
+
 
 func calc_top_n_end_points() -> void:
 	point_top = col.global_position + (Vector3.UP * col.shape.mid_height/2)
