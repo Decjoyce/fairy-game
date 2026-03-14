@@ -72,7 +72,6 @@ func activate() -> void:
 func _on_instrument_entered(body: Area3D) -> void:
 	if activated: return
 	if body.get_parent() is not Grabbable_Item: return
-	prints(body.name, "has entered")
 	var instr: Instrument = body.get_parent() as Instrument
 	cur_instruments.append(instr)
 	instr.on_played_note.connect(on_note_heard)
@@ -80,6 +79,6 @@ func _on_instrument_entered(body: Area3D) -> void:
 func _on_instrument_exited(body: Node3D) -> void:
 	if body.get_parent() is not Grabbable_Item: return
 	if !cur_instruments.has(body.get_parent()): return
-	prints(body.name, "has exited")
-	var instr: Instrument = cur_instruments[cur_instruments.find(body)]
+	var instr: Instrument = cur_instruments[cur_instruments.find(body.get_parent())]
 	instr.on_played_note.disconnect(on_note_heard)
+	cur_instruments.erase(instr)
