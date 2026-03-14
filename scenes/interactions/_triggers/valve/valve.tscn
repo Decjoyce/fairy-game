@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://dtqx357rvm12g" path="res://scenes/interactions/_triggers/valve/valve.gd" id="1_ipp5a"]
 [ext_resource type="Material" uid="uid://bk8gbrrgpacoj" path="res://assets/_dev/materials/_dev_m_source.tres" id="2_idfjw"]
 [ext_resource type="Texture2D" uid="uid://yitwxvaex81d" path="res://assets/_dev/textures/prototype_512x512_grey3.png" id="2_ipp5a"]
+[ext_resource type="Script" uid="uid://bdyjv0nvh5xde" path="res://scripts/saving/persistent_objs/po_intvalue.gd" id="4_jnmsv"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_3o5rc"]
 height = 0.15
@@ -51,3 +52,7 @@ mesh = SubResource("CylinderMesh_3o5rc")
 [node name="handle" type="MeshInstance3D" parent="Pivot/_graphics/_temp_graphics" unique_id=2124772266]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.2, 0.024999999, -2.220446e-16)
 mesh = SubResource("CylinderMesh_7qxfl")
+
+[node name="PO_IntValue" type="Node" parent="." unique_id=1303978534 groups=["PO"]]
+script = ExtResource("4_jnmsv")
+metadata/_custom_type_script = "uid://bdyjv0nvh5xde"

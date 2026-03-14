@@ -27,7 +27,6 @@ var freeze : bool
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	current_weight = PLAYER_WEIGHT
-	print("player is ready yo")
 
 func _process(delta: float) -> void:
 	pass
@@ -94,7 +93,6 @@ func on_before_load_game() -> void:
 	pass
 
 func on_load_game(saved_data: SavedData_Player) -> void:
-	print("player is trying load")
 	#region General Data
 	current_weight = saved_data.current_weight
 	freeze = saved_data.freeze

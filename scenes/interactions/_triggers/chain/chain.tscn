@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://b5ie6mkdmekm5" path="res://scenes/interactions/_triggers/chain/chain.gd" id="1_3omk6"]
 [ext_resource type="Script" uid="uid://c4t3ko70ihpyy" path="res://scenes/interactions/_receivers/animated_object/animated_object.gd" id="2_mjtog"]
+[ext_resource type="Script" uid="uid://bdyjv0nvh5xde" path="res://scripts/saving/persistent_objs/po_intvalue.gd" id="3_73686"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_3wrpf"]
 radius = 0.1
@@ -191,3 +192,7 @@ script = ExtResource("2_mjtog")
 anim_to_play = "pull_chain"
 connnect_anim_player = NodePath("../AnimationPlayer")
 metadata/_custom_type_script = "uid://c4t3ko70ihpyy"
+
+[node name="PO_IntValue" type="Node" parent="." unique_id=657416658 groups=["PO"]]
+script = ExtResource("3_73686")
+metadata/_custom_type_script = "uid://bdyjv0nvh5xde"

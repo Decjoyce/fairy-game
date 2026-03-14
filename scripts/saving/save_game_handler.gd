@@ -71,10 +71,7 @@ func reload_cur_scene() -> void:
 	await get_tree().node_added
 	world_root = get_tree().current_scene
 	if !world_root.is_node_ready():
-		print("im not ready")
 		await world_root.ready
-		print("but im ready now")
-	else: print("i was already ready")
 
 
 
