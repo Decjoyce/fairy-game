@@ -1,3 +1,4 @@
+class_name TrapProj
 extends Node3D
 
 @export var projectile_pool: Array[ArrowProjectiles]

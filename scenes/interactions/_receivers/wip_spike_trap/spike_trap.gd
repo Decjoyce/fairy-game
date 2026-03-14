@@ -1,3 +1,4 @@
+class_name SpikeTrap
 extends Node3D
 
 @onready var anim: AnimationPlayer = $AnimationPlayer
