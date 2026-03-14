@@ -5,6 +5,7 @@
 [ext_resource type="Material" uid="uid://c17eub34k5hf8" path="res://assets/models/cairn/Props/Wood_Door/Wood_Screw.tres" id="3_7c41o"]
 [ext_resource type="Material" uid="uid://c57e6lcor8yqp" path="res://assets/models/cairn/Props/Wood_Door/KeyHold.tres" id="4_y7ll1"]
 [ext_resource type="AudioStream" uid="uid://bp3lie48u35pl" path="res://assets/audio/sfx/interactions/Rocks, Movement, Stone, Slab, Scrape SND18188.wav" id="5_nihpw"]
+[ext_resource type="Script" uid="uid://bjetkulhipi6e" path="res://scripts/saving/persistent_objs/po_door.gd" id="6_ujkw6"]
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_mbfle"]
 _surfaces = [{
@@ -309,7 +310,7 @@ tracks/3/keys = {
 }
 tracks/4/type = "method"
 tracks/4/imported = false
-tracks/4/enabled = true
+tracks/4/enabled = false
 tracks/4/path = NodePath("AudioStreamPlayer3D2")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
@@ -331,7 +332,6 @@ _data = {
 
 [node name="Door" type="Node3D" unique_id=1273201646 groups=["debug_PickableObjects"]]
 script = ExtResource("1_mpx86")
-opened = true
 
 [node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=1188364149]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
@@ -365,3 +365,7 @@ pitch_scale = 0.7
 [node name="AudioStreamPlayer3D2" type="AudioStreamPlayer3D" parent="StaticBody3D" unique_id=1771122033]
 stream = ExtResource("5_nihpw")
 pitch_scale = 0.7
+
+[node name="PO_Door" type="Node" parent="." unique_id=1319517448 groups=["PO"]]
+script = ExtResource("6_ujkw6")
+metadata/_custom_type_script = "uid://bjetkulhipi6e"
