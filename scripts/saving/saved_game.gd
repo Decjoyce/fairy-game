@@ -1,7 +1,5 @@
 class_name SavedGame
 extends Resource
 
-## Player
-@export var player_position: Vector3
-@export var player_crouched: bool
+@export var player_data: SavedData_Player
 @export var saved_data:Array[SavedData]

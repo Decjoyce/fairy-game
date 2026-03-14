@@ -15,6 +15,7 @@ func gen_uid() -> void:
 	if get_parent().has_meta("lock_uid") and get_parent().get_meta("lock_uid") == true: return
 	get_parent().set_meta("uid", create_uid())
 	get_parent().set_meta("lock_uid", true)
+	get_parent().set_meta("date_generated", Time.get_datetime_string_from_system())
 	prints(get_parent().name, get_uid())
 
 func get_uid() -> String:

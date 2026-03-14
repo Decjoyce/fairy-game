@@ -15,6 +15,10 @@ func _process(delta: float) -> void:
 func save_game() -> void:
 	var saved_game: SavedGame = SavedGame.new()
 	
+	var player_data: SavedData_Player = SavedData_Player.new()
+	get_tree().call_group("Player", "on_save_game", player_data) 
+	saved_game.player_data = player_data
+	
 	var saved_data: Array[SavedData] = []
 	get_tree().call_group("PO", "on_save_game", saved_data)
 	saved_game.saved_data = saved_data
@@ -26,47 +30,51 @@ func save_game() -> void:
 func load_game() -> void:
 	var saved_game: SavedGame = load("user://savegame.tres") as SavedGame
 	
-	get_tree().reload_current_scene()
-	await get_tree().node_added
-	world_root = get_tree().current_scene
-	if !world_root.is_node_ready():
-		await world_root.ready
+	await reload_cur_scene()
 	
-	get_tree().call_group("PERSISTENT", "on_before_load_game")
+	get_tree().call_group("Player", "on_before_load_game") 
+	get_tree().call_group("Player", "on_load_game", saved_game.player_data) 
+	
+	get_tree().call_group("PO", "on_before_load_game")
 	
 	var uid_list: Dictionary[String, Node] = {}
-	
-	print(get_tree().get_nodes_in_group("PO"))
-	
 	for i in get_tree().get_nodes_in_group("PO"):
 		assert(i is PersistentObject, "A node was marked as PO despite not being of type PersistentObject -- NOTIFY DECLAN ASAP")
 		if i.get_parent().has_meta("uid"):
 			uid_list[i.get_uid()] = i
 	
-	print(uid_list)
+	#print(uid_list)
 	
 	for obj in saved_game.saved_data:
 		if !uid_list[obj.uid]:
-			printerr("AN UID - RIGHT A PROPER ERROR BRO - in SAVEGAMEHANDLER")
+			printerr("AN UID - Write A PROPER ERROR BRO - in SAVEGAMEHANDLER")
 			continue
-		if obj.uid != "[NONNATIVE]":
+		if obj.uid == "[NONNATIVE]": # Nodes that were not placed in scene but spawned in after 
+			_load_non_native_objs(obj)
+		else: # Nodes that were originally placed in the scene
 			if uid_list[obj.uid].has_method("on_load_game"):
 				uid_list[obj.uid].on_load_game(obj)
-		else:
-			prints(obj.uid, obj.scene_path)
-			var scene = load(obj.scene_path) as PackedScene
-			print(scene)
-			var restored_node = scene.instantiate()
-			get_tree().current_scene.add_child(restored_node)
-			
-			for i in restored_node.get_children():
-				if i is not PersistentObject: continue
-				i.has_method("on_load_game")
-				i.on_load_game(obj)
-			
+		
 
+func _load_non_native_objs(obj: SavedData) -> void:
+	#prints(obj.uid, obj.scene_path)
+	var scene = load(obj.scene_path) as PackedScene
+	var restored_node = scene.instantiate()
+	get_tree().current_scene.add_child(restored_node)
+	for i in restored_node.get_children():
+		if i is not PersistentObject: continue
+		i.has_method("on_load_game")
+		i.on_load_game(obj)
 
-
+func reload_cur_scene() -> void:
+	get_tree().reload_current_scene()
+	await get_tree().node_added
+	world_root = get_tree().current_scene
+	if !world_root.is_node_ready():
+		print("im not ready")
+		await world_root.ready
+		print("but im ready now")
+	else: print("i was already ready")
 
 
 

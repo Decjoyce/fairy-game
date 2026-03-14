@@ -76,6 +76,7 @@ func _ready() -> void:
 	
 	crouch()
 	uncrouch()
+	print("da movement be ready")
 
 func movement_input() -> void:
 	
@@ -219,8 +220,12 @@ func toggle_crouch() -> void:
 	if is_crouching: uncrouch()
 	else: crouch()
 
-func crouch() -> void:
-	if !floor_detector.get_collision_point(): return
+func crouch(bypass_floor_detection: bool = false) -> void:
+	print("trying to crouched")
+	if !bypass_floor_detection and !floor_detector.get_collision_point(): 
+		print("unabletocrouch")
+		return
+	print("crouched")
 	is_crouching = true
 	
 	on_crouch.emit(true)

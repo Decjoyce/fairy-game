@@ -38,8 +38,8 @@ grab_col = NodePath("Area3D/CollisionShape3D2")
 grabbed_offset = Vector2(-1.83, -36.2)
 grabbed_rotation = 0.785
 throwing_offset = Vector2(22.645, -92.545)
-idle_graphics = NodePath("Sprite3D")
-grabbed_graphics = NodePath("Sprite3D2")
+idle_graphics = NodePath("_g_idle")
+grabbed_graphics = NodePath("_g_grabbed")
 interaction_type = 1
 
 [node name="Area3D" type="Area3D" parent="." unique_id=573738291]
@@ -54,14 +54,15 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.014937744, 0)
 shape = SubResource("BoxShape3D_234jp")
 debug_color = Color(0.8442249, 0.37985525, 5.7756904e-07, 0.41960785)
 
-[node name="Sprite3D" type="Sprite3D" parent="." unique_id=2028378886]
+[node name="_g_idle" type="Sprite3D" parent="." unique_id=2028378886]
 layers = 4
 pixel_size = 0.0007
 billboard = 2
 shaded = true
 texture = ExtResource("3_v4fsc")
 
-[node name="Sprite3D2" type="Sprite3D" parent="." unique_id=1589841817]
+[node name="_g_grabbed" type="Sprite3D" parent="." unique_id=1589841817]
+visible = false
 layers = 4
 pixel_size = 0.0007
 shaded = true

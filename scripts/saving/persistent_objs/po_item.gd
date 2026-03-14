@@ -5,9 +5,13 @@ extends PersistentObject
 @onready var parent_item: Grabbable_Item = get_parent()
 
 func on_save_game(saved_data: Array[SavedData]) -> void:
-	if parent_item.starting_pos == parent_item.global_position: return
-	if parent_item.non_scene_native and parent_item.is_pooled: return
 	super(saved_data)
+	if parent_item.starting_pos == parent_item.global_position: 
+		#prints(parent_item.name, "i didnt save bc sp == gp")
+		return
+	if parent_item.non_scene_native and parent_item.is_pooled: 
+		#prints(parent_item.name, "i didnt save bc either; non_scene_native ==", parent_item.non_scene_native, "; or; is_pooled ==", parent_item.is_pooled)
+		return
 	
 	var my_data := SavedDataItem.new()
 	if parent_item.non_scene_native:
@@ -35,7 +39,7 @@ func on_before_load_game() -> void:
 func on_load_game(saved_data: SavedData) -> void:
 	super(saved_data)
 	if saved_data is SavedDataItem:
-		print(saved_data)
+		#print(saved_data)
 		if saved_data.non_scene_native and saved_data.is_pooled: 
 			print("kill me")
 			queue_free()
