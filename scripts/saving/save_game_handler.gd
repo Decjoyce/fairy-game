@@ -1,10 +1,11 @@
 class_name SaveGameHandler
 extends Node
 
-@export var world_root: Node3D
+signal on_saved_game
+signal on_before_load_game
+signal on_loaded_game
 
-#func _ready() -> void:
-	#world_root = get_tree().get_first_node_in_group("mainscenetest")
+var world_root: Node3D
 
 func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("save_game"):
@@ -23,6 +24,8 @@ func save_game() -> void:
 	get_tree().call_group("PO", "on_save_game", saved_data)
 	saved_game.saved_data = saved_data
 	
+	on_saved_game.emit()
+	
 	ResourceSaver.save(saved_game, "user://savegame.tres")
 	print("saved_game")
 	print(OS.get_data_dir())
@@ -37,6 +40,7 @@ func load_game() -> void:
 	get_tree().call_group("Player", "on_before_load_game") 
 	get_tree().call_group("Player", "on_load_game", saved_game.player_data) 
 	
+	on_before_load_game.emit()
 	get_tree().call_group("PO", "on_before_load_game")
 	
 	uid_list.clear()
@@ -56,7 +60,7 @@ func load_game() -> void:
 		else: # Nodes that were originally placed in the scene
 			if uid_list[obj.uid].has_method("on_load_game"):
 				uid_list[obj.uid].on_load_game(obj)
-		
+	call_deferred("emit_on_loaded_game")
 
 func _load_non_native_objs(obj: SavedData) -> void:
 	#prints(obj.uid, obj.scene_path)
@@ -75,7 +79,8 @@ func reload_cur_scene() -> void:
 	if !world_root.is_node_ready():
 		await world_root.ready
 
-
+func emit_on_loaded_game() -> void:
+	on_loaded_game.emit()
 
 #region DUMP
 # --------------------------------------------------------------------------------------------------

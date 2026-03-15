@@ -27,8 +27,7 @@ func on_load_game(saved_data: SavedData) -> void:
 			parent_button.disable()
 		parent_button.delay_before_reset = saved_data.delay_before_reset
 		parent_button.activated = saved_data.activated
-		if saved_data.activated:
-			print("buttonyum")
+		if parent_button.activated == true:
 			parent_button.timer.wait_time = saved_data.time_left
 			parent_button.timer.start()
 			parent_button.anim.play("button_activated")
