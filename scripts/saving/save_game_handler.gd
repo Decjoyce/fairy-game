@@ -27,6 +27,8 @@ func save_game() -> void:
 	print("saved_game")
 	print(OS.get_data_dir())
 
+var uid_list: Dictionary[String, Node] = {}
+
 func load_game() -> void:
 	var saved_game: SavedGame = load("user://savegame.tres") as SavedGame
 	
@@ -37,7 +39,7 @@ func load_game() -> void:
 	
 	get_tree().call_group("PO", "on_before_load_game")
 	
-	var uid_list: Dictionary[String, Node] = {}
+	uid_list.clear()
 	for i in get_tree().get_nodes_in_group("PO"):
 		assert(i is PersistentObject, "A node was marked as PO despite not being of type PersistentObject -- NOTIFY DECLAN ASAP")
 		if i.get_parent().has_meta("uid"):
