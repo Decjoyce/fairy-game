@@ -167,6 +167,9 @@ func begin_interact() -> void:
 				player_interact.free_interaction_on_other_hand(hand_type) # replace with signal
 			current_interactable.begin_interact()
 			state.finished.emit(state.VALVE)
+		hovering_interactable.InteractTypes.TEMP_SAVE:
+			current_interactable.begin_interact()
+			state.finished.emit(state.SAVING)
 
 func on_player_moved(direction: Vector3, target: Vector3) -> void:
 	if !state.moving_breaks_free:

@@ -1,0 +1,30 @@
+[gd_scene format=3 uid="uid://b6scifjideb28"]
+
+[ext_resource type="PackedScene" uid="uid://bq86osdembn58" path="res://scenes/_player/_player_test.tscn" id="1_kg0lj"]
+[ext_resource type="PackedScene" uid="uid://cruv8v8wh8l06" path="res://scenes/interactions/_special/saving_stone/saving_stone.tscn" id="2_nj5mn"]
+
+[sub_resource type="Environment" id="Environment_nj5mn"]
+background_mode = 1
+background_color = Color(0.55000263, 0.6715025, 1, 1)
+
+[node name="SavestoneTesting" type="Node3D" unique_id=1604087577]
+
+[node name="player_test" parent="." unique_id=725727541 instance=ExtResource("1_kg0lj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+
+[node name="_env" type="Node3D" parent="." unique_id=2081383644]
+
+[node name="CSGBox3D" type="CSGBox3D" parent="_env" unique_id=851799924]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, 0, -1)
+use_collision = true
+size = Vector3(34, 0.001, 13)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="_env" unique_id=1586059182]
+environment = SubResource("Environment_nj5mn")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="_env" unique_id=2040548070]
+transform = Transform3D(1, 0, 0, 0, -0.50000006, 0.8660254, 0, -0.8660254, -0.50000006, 0, 1.8000001, 0)
+shadow_enabled = true
+
+[node name="SavingStone" parent="." unique_id=452927148 instance=ExtResource("2_nj5mn")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 0, 0, -0.7999999)
