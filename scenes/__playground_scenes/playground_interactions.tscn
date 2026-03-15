@@ -33,7 +33,6 @@
 [ext_resource type="PackedScene" uid="uid://dde66nwtb1gv1" path="res://scenes/interactions/_triggers/item_receiver/torch_scont/torch_scont.tscn" id="30_limx5"]
 [ext_resource type="Script" uid="uid://cb04xjhu5ksor" path="res://scenes/interactions/_receivers/enabler_disabler_v1/visibility_enabler.gd" id="31_teo1q"]
 [ext_resource type="AudioStream" uid="uid://dutddyikwuiut" path="res://assets/audio/sfx/combat/misc/hittingsound_shorter.wav" id="32_1f7u1"]
-[ext_resource type="Script" uid="uid://cfmswqnu6u0bl" path="res://scenes/interactions/_receivers/_logic/counter/counter.gd" id="32_thvja"]
 [ext_resource type="Script" uid="uid://cgb0bi0gumby6" path="res://scenes/interactions/_receivers/skybox_changer/skybox_changer.gd" id="33_1f7u1"]
 [ext_resource type="Environment" uid="uid://co42tppomh8j3" path="res://assets/skyboxes/skyboxes_testing_dark.tres" id="34_bk0h7"]
 [ext_resource type="PackedScene" uid="uid://dqh8lru4mt2ap" path="res://scenes/interactions/interactables/items/all_items/breakables/item_urn.tscn" id="35_7ntu8"]
@@ -42,6 +41,7 @@
 [ext_resource type="PackedScene" uid="uid://civmqin21rnce" path="res://scenes/interactions/interactables/items/all_items/instruments/instrument_test.tscn" id="36_poavi"]
 [ext_resource type="PackedScene" uid="uid://lxic7c72kvyt" path="res://scenes/interactions/interactables/items/all_items/misc/item_skull.tscn" id="36_temsp"]
 [ext_resource type="PackedScene" uid="uid://ck1b6l8s7xnxi" path="res://scenes/interactions/_triggers/lever/lever.tscn" id="37_533sc"]
+[ext_resource type="PackedScene" uid="uid://4v23jnigirqc" path="res://scenes/interactions/_receivers/_logic/counter/Counter.tscn" id="37_dri38"]
 [ext_resource type="Script" uid="uid://dr3eeef0cxnnt" path="res://scenes/interactions/_receivers/item_spawners/item_spawner.gd" id="37_gw50n"]
 [ext_resource type="Material" uid="uid://c15janob14ltp" path="res://assets/_dev/materials/_dev_m_green_glow.tres" id="38_kye26"]
 [ext_resource type="Material" uid="uid://cvaorh1jxnk23" path="res://assets/shaders/Outline/outline1.tres" id="39_u8tqn"]
@@ -2551,11 +2551,13 @@ node_to_examine = NodePath("../demo_button_3")
 vars_to_display = Array[String](["delay_before_reset"])
 include_var_name = false
 
-[node name="counter_delay" type="Node" parent="Room_Interactions/Button_Room/Sec_2_c" unique_id=1010062480]
-script = ExtResource("32_thvja")
+[node name="counter_delay2" parent="Room_Interactions/Button_Room/Sec_2_c" unique_id=1521904207 instance=ExtResource("37_dri38")]
 begin_count = 3
 min_count = 1
 max_count = 3
+metadata/uid = "e6f0c316-cc47-4d9f-96e7-c1e8b09517d2"
+metadata/lock_uid = true
+metadata/date_generated = "2026-03-15T21:09:09"
 
 [node name="Sec_2_d" type="Node3D" parent="Room_Interactions/Button_Room" unique_id=1605766353]
 transform = Transform3D(7.549791e-08, 0, 1, 0, 1, 0, -1, 0, 7.549791e-08, 4.800003, 0.7, -7)
@@ -5342,10 +5344,6 @@ transform = Transform3D(-0.9999999, 0, -1.2716575e-07, 0, 1, 0, 1.2716575e-07, 0
 script = ExtResource("31_teo1q")
 linked_node = NodePath("../../../../_environment/DirectionalLight3D")
 
-[node name="counter_light" type="Node" parent="Room_Items/Sections/Sec_Default" unique_id=851587758]
-script = ExtResource("32_thvja")
-max_count = 1
-
 [node name="skybox_switcher" type="Node" parent="Room_Items/Sections/Sec_Default" unique_id=643501582 node_paths=PackedStringArray("world_environment")]
 script = ExtResource("33_1f7u1")
 world_environment = NodePath("../../../../_environment/WorldEnvironment")
@@ -5479,6 +5477,12 @@ transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -1.5
 
 [node name="TorchSconce" parent="Room_Items/Sections/Sec_Default/TorchSconce" unique_id=116068039 instance=ExtResource("66_aomhw")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.1000004, 0, 0)
+
+[node name="Counter_Light" parent="Room_Items/Sections/Sec_Default" unique_id=1464059266 instance=ExtResource("37_dri38")]
+max_count = 1
+metadata/uid = "931ed6ee-cd14-4221-89f9-cb16687cb7d7"
+metadata/lock_uid = true
+metadata/date_generated = "2026-03-15T21:09:09"
 
 [node name="Sec_Vessel" type="Node3D" parent="Room_Items/Sections" unique_id=645519208]
 transform = Transform3D(7.54979e-08, 0, 1, 0, 1, 0, -1, 0, 7.54979e-08, 2.5, 0, -1)
@@ -5967,9 +5971,9 @@ shape = SubResource("BoxShape3D_24qtj")
 [connection signal="on_change" from="Room_Interactions/Button_Room/Sec_2_c/demo_button_3" to="Room_Interactions/Button_Room/Sec_2_c/SignalDisplayer" method="display_signal"]
 [connection signal="on_deactivated" from="Room_Interactions/Button_Room/Sec_2_c/demo_button_3" to="Room_Interactions/Button_Room/Sec_2_c/SignalDisplayer" method="display_signal"]
 [connection signal="on_activated" from="Room_Interactions/Button_Room/Sec_2_c/demo_button_4" to="Room_Interactions/Button_Room/Sec_2_c/VarDisplayer" method="update_text"]
-[connection signal="on_activated" from="Room_Interactions/Button_Room/Sec_2_c/demo_button_4" to="Room_Interactions/Button_Room/Sec_2_c/counter_delay" method="add_count"]
-[connection signal="on_change_use_current_count" from="Room_Interactions/Button_Room/Sec_2_c/counter_delay" to="Room_Interactions/Button_Room/Sec_2_c/demo_button_3" method="change_delay"]
-[connection signal="on_change_use_current_count" from="Room_Interactions/Button_Room/Sec_2_c/counter_delay" to="Room_Interactions/Button_Room/Sec_2_c/VarDisplayer" method="update_text"]
+[connection signal="on_activated" from="Room_Interactions/Button_Room/Sec_2_c/demo_button_4" to="Room_Interactions/Button_Room/Sec_2_c/counter_delay2" method="add_count"]
+[connection signal="on_change_use_current_count" from="Room_Interactions/Button_Room/Sec_2_c/counter_delay2" to="Room_Interactions/Button_Room/Sec_2_c/demo_button_3" method="change_delay"]
+[connection signal="on_change_use_current_count" from="Room_Interactions/Button_Room/Sec_2_c/counter_delay2" to="Room_Interactions/Button_Room/Sec_2_c/VarDisplayer" method="update_text"]
 [connection signal="on_activated" from="Room_Interactions/Button_Room/Sec_2_d/demo_button_3" to="Room_Interactions/Button_Room/Sec_2_d/demo_button_4" method="reset_button"]
 [connection signal="on_activated" from="Room_Interactions/Button_Room/Sec_2_d/demo_button_3" to="Room_Interactions/Button_Room/Sec_2_d/SignalDisplayer" method="display_signal"]
 [connection signal="on_deactivated" from="Room_Interactions/Button_Room/Sec_2_d/demo_button_3" to="Room_Interactions/Button_Room/Sec_2_d/SignalDisplayer" method="display_signal"]
@@ -6005,13 +6009,12 @@ shape = SubResource("BoxShape3D_24qtj")
 [connection signal="on_change" from="Room_Interactions/SignalReceiver_Room/ObjectsSection/Sec_Gate/Gate_Lever/Lever2" to="Room_Interactions/SignalReceiver_Room/ObjectsSection/Sec_Gate/Gate_Lever/Gate" method="open_gate"]
 [connection signal="on_activated" from="Room_Interactions/SignalReceiver_Room/ObjectsSection/Sec_Traps/PressurePlate" to="Room_Interactions/SignalReceiver_Room/ObjectsSection/Sec_Traps/trap_projectile" method="trigger_trap"]
 [connection signal="on_stage_completed" from="Room_Interactions/SignalReceiver_Room/ObjectsSection/Sec_Statue/Statue" to="Room_Interactions/SignalReceiver_Room/ObjectsSection/Sec_Statue/MainQuest_StageIndicator" method="stage_completed"]
-[connection signal="on_activated" from="Room_Items/Sections/Sec_Default/counter_light" to="Room_Items/Sections/Sec_Default/skybox_switcher" method="change_to_b"]
-[connection signal="on_deactivated" from="Room_Items/Sections/Sec_Default/counter_light" to="Room_Items/Sections/Sec_Default/skybox_switcher" method="change_to_a"]
 [connection signal="on_activated" from="Room_Items/Sections/Sec_Default/But_switch/Button2" to="Room_Items/Sections/Sec_Default/enabler_light" method="toggle_visibilty"]
-[connection signal="on_activated" from="Room_Items/Sections/Sec_Default/But_switch/Button2" to="Room_Items/Sections/Sec_Default/counter_light" method="add_count"]
 [connection signal="on_activated" from="Room_Items/Sections/Sec_Default/But_SpawnRanItem/Button_RanItem" to="Room_Items/Sections/Sec_Default/item_spawner_ranitem" method="spawn_item"]
 [connection signal="on_activated" from="Room_Items/Sections/Sec_Default/But_SpawnItem/Button3" to="Room_Items/Sections/Sec_Default/item_spawner_default" method="spawn_item"]
 [connection signal="on_activated" from="Room_Items/Sections/Sec_Default/TorchSconce" to="Room_Items/Sections/Sec_Default/item_spawner_default" method="spawn_item"]
+[connection signal="on_activated" from="Room_Items/Sections/Sec_Default/Counter_Light" to="Room_Items/Sections/Sec_Default/skybox_switcher" method="change_to_b"]
+[connection signal="on_deactivated" from="Room_Items/Sections/Sec_Default/Counter_Light" to="Room_Items/Sections/Sec_Default/skybox_switcher" method="change_to_a"]
 [connection signal="on_activated" from="Room_Items/Sections/Sec_Breakable/SpawnBreakable_Weak/But_SpawnBreakable_Weak" to="Room_Items/Sections/Sec_Breakable/SpawnBreakable_Weak/itm_spawner_breakable_weak" method="spawn_item"]
 [connection signal="on_activated" from="Room_Items/Sections/Sec_Breakable/SpawnBreakable_Mid/But_Breakable_Mid" to="Room_Items/Sections/Sec_Breakable/SpawnBreakable_Mid/itm_spwnr_breakable_mid" method="spawn_item"]
 [connection signal="on_activated" from="Room_Items/Sections/Sec_Breakable/SpawnBreakable_Strong/But_SpawnBreakable_Strong" to="Room_Items/Sections/Sec_Breakable/SpawnBreakable_Strong/itm_spwnr_breakable_strong" method="spawn_item"]

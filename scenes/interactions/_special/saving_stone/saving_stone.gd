@@ -20,11 +20,15 @@ func end_interact(sig: float = -1) -> void:
 	l_charged = false
 	r_charged = false
 
+func charge_complete() -> void:
+	#some cool effect stuff shoudl go here
+	TEMPSaveGameHandler.save_game()
+
 func check_charged() -> bool:
 	l_charged = l_val >= 1.0
 	r_charged = r_val >= 1.0
 	if r_charged and l_charged:
-		TEMPSaveGameHandler.save_game()
+		charge_complete()
 		return true
 	else: return false
 
