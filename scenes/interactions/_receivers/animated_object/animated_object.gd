@@ -9,6 +9,8 @@ signal on_deactivated(sig: float)
 @export var connnect_anim_player: Node
 var anim_player: AnimationPlayer
 
+var current_time: float
+
 func _ready() -> void:
 	update_anim_player(connnect_anim_player, anim_to_play)
 	anim_player.current_animation = anim_to_play
