@@ -6,6 +6,9 @@ extends Node
 @export_tool_button("Check Duplicate UIDs", "VisualShaderNodeInput") var duplicate_uid := check_for_duplicate_uids
 @export_tool_button("Unlock All UIDs", "VisualShaderNodeInput") var unlock_uids := unlock_all_uids
 
+@export var uid_to_find: String
+@export_tool_button("Find UID", "VisualShaderNodeInput") var find_uider := find_uid
+
 func generate_uids() -> void:
 	var don := get_tree().get_first_node_in_group("MainLevel")
 	for i in get_tree().get_nodes_in_group("PO"):
@@ -26,3 +29,8 @@ func unlock_all_uids() -> void:
 	var don := get_tree().get_first_node_in_group("MainLevel")
 	for i in get_tree().get_nodes_in_group("PO"):
 		i.get_parent().set_meta("lock_uid", false)
+
+func find_uid() -> void:
+	for i in get_tree().get_nodes_in_group("PO"):
+		if i.get_parent().get_meta("uid") == uid_to_find:
+			print(i.get_parent())
