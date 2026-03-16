@@ -1,0 +1,23 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://dbo1y5f34jap8"]
+
+[ext_resource type="Texture2D" uid="uid://dbu2wgmmhbdmq" path="res://assets/models/cairn/Props/GrandDoor/Textures/MetalBars_Base_color.png" id="1_p50v3"]
+[ext_resource type="Texture2D" uid="uid://3oc57s3dp8mh" path="res://assets/models/cairn/Props/GrandDoor/Textures/MetalBars_Mixed_AO.png" id="2_4ieja"]
+[ext_resource type="Texture2D" uid="uid://175au6le2rfo" path="res://assets/models/cairn/Props/GrandDoor/Textures/MetalBars_Metallic.png" id="3_kn7ap"]
+[ext_resource type="Material" uid="uid://dyejtq23uplk4" path="res://assets/shaders/Outline/outline.tres" id="4_kou6n"]
+[ext_resource type="Texture2D" uid="uid://cheqjvowgga6s" path="res://assets/models/cairn/Props/GrandDoor/Textures/MetalBars_Roughness.png" id="5_oay5y"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_8k0en"]
+
+[resource]
+next_pass = ExtResource("4_kou6n")
+albedo_texture = ExtResource("1_p50v3")
+metallic = 1.0
+metallic_specular = 0.0
+metallic_texture = ExtResource("3_kn7ap")
+metallic_texture_channel = 4
+roughness_texture = ExtResource("5_oay5y")
+roughness_texture_channel = 4
+normal_enabled = true
+ao_enabled = true
+ao_texture = ExtResource("2_4ieja")
+heightmap_texture = SubResource("CompressedTexture2D_8k0en")
