@@ -22,6 +22,7 @@ var num_have_by_keyword: int
 @export_category("If SPECIFIC_ITEMS or EITHER")
 @export var specific_items_to_recieve: Array[Grabbable_Item] ## The Item Receiver must receive these items before being enabled
 var needed_items_left: Array[Grabbable_Item]
+var spec_needed_items_received: Array[Grabbable_Item]
 
 @export_category("If ANY")
 @export var num_needed_for_any: int 
@@ -134,7 +135,7 @@ func keyword_checker(_item: Grabbable_Item) -> bool:
 func check_item_is_specific(_item: Grabbable_Item, destroy_check: bool = true) -> bool:
 	if !needed_items_left.has(_item): return false
 	needed_items_left.erase(_item)
-	
+	spec_needed_items_received.append(_item)
 	check_if_item_should_be_destroyed(_item)
 	
 	
@@ -164,5 +165,5 @@ func check_if_any(_item: Grabbable_Item) -> bool:
 	return true
 
 func check_if_item_should_be_destroyed(_item: Grabbable_Item):
-	if destroy_items_on_receive: _item.queue_free()
+	if destroy_items_on_receive: _item.send_to_ether()
 	else: _item.global_position = Vector3.ONE * -100

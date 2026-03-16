@@ -4,6 +4,8 @@
 [ext_resource type="PackedScene" uid="uid://ca3w10h1t5332" path="res://scenes/interactions/_triggers/keyhole/keyhole.tscn" id="2_6jfoc"]
 [ext_resource type="PackedScene" uid="uid://bq86osdembn58" path="res://scenes/_player/_player_test.tscn" id="3_cdbnv"]
 [ext_resource type="PackedScene" uid="uid://oqosqgdkwcrb" path="res://scenes/interactions/_receivers/door/door_new.tscn" id="4_d0ohw"]
+[ext_resource type="PackedScene" uid="uid://qu5rxgbydmet" path="res://scenes/interactions/_triggers/button/button.tscn" id="5_w2mx3"]
+[ext_resource type="Script" uid="uid://bul4myvyhnpjc" path="res://scripts/saving/uid_generator.gd" id="6_0r2kq"]
 
 [sub_resource type="Environment" id="Environment_d0ohw"]
 background_mode = 1
@@ -14,9 +16,9 @@ background_color = Color(1, 1, 1, 1)
 [node name="_env" type="Node3D" parent="." unique_id=1166213138]
 
 [node name="CSGBox3D" type="CSGBox3D" parent="_env" unique_id=1807627627]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.25, -2)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.25, -0.5193176)
 use_collision = true
-size = Vector3(10, 0.5, 6)
+size = Vector3(10, 0.5, 8.961365)
 material = ExtResource("1_du0st")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="_env" unique_id=2116786980]
@@ -36,8 +38,28 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 
 [node name="Door" parent="." unique_id=1273201646 instance=ExtResource("4_d0ohw")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -3)
+metadata/uid = "5a7c04fa-5e77-424d-aaae-335837ed60bc"
+metadata/lock_uid = true
+metadata/date_generated = "2026-03-14T13:10:23"
 
 [node name="Keyhole" parent="Door" unique_id=2028671977 instance=ExtResource("2_6jfoc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.059424497, 0.9732478, 0.11204195)
 
+[node name="Door2" parent="." unique_id=1265448483 instance=ExtResource("4_d0ohw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.5132003, 0, -3)
+metadata/uid = "f479d16e-f1da-4809-88ff-dfc3bab034ec"
+metadata/lock_uid = true
+metadata/date_generated = "2026-03-14T13:10:23"
+
+[node name="Button" parent="." unique_id=1164325605 instance=ExtResource("5_w2mx3")]
+transform = Transform3D(-0.9999306, 0, -0.011780618, 0, 1, 0, 0.011780618, 0, -0.9999306, 2.7247872, 0.78166413, -1.7618749)
+metadata/uid = "cb2d8e7e-055d-4afa-aa81-f7864b4893e8"
+metadata/lock_uid = true
+metadata/date_generated = "2026-03-14T13:10:10"
+
+[node name="UID_Generator" type="Node" parent="." unique_id=1358274011]
+script = ExtResource("6_0r2kq")
+metadata/_custom_type_script = "uid://bul4myvyhnpjc"
+
 [connection signal="on_activated" from="Door/Keyhole" to="Door" method="open_door"]
+[connection signal="on_activated" from="Button" to="Door2" method="toggle_door"]

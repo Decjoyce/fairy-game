@@ -18,6 +18,8 @@ var cur_sequence: Array[int]
 var cur_note: int
 var needed_note: int
 
+var activated: bool
+
 func _ready() -> void:
 	var trig: Area3D
 	if overwrite_trigger: 
@@ -36,6 +38,7 @@ func update_current_sequence() -> void:
 	cur_sequence = melodies[current_melody].sequence
 
 func on_note_heard(note: int, instrument: Instrument) -> void:
+	if activated: return
 	prints("nn:", note, needed_note)
 	if note == needed_note:
 		correct_note()
@@ -62,12 +65,13 @@ func incorrect_note() -> void:
 	update_needed_note()
 
 func activate() -> void:
+	activated = true
 	on_activated.emit(1.0)
 
 
 func _on_instrument_entered(body: Area3D) -> void:
+	if activated: return
 	if body.get_parent() is not Grabbable_Item: return
-	prints(body.name, "has entered")
 	var instr: Instrument = body.get_parent() as Instrument
 	cur_instruments.append(instr)
 	instr.on_played_note.connect(on_note_heard)
@@ -75,6 +79,6 @@ func _on_instrument_entered(body: Area3D) -> void:
 func _on_instrument_exited(body: Node3D) -> void:
 	if body.get_parent() is not Grabbable_Item: return
 	if !cur_instruments.has(body.get_parent()): return
-	prints(body.name, "has exited")
-	var instr: Instrument = cur_instruments[cur_instruments.find(body)]
+	var instr: Instrument = cur_instruments[cur_instruments.find(body.get_parent())]
 	instr.on_played_note.disconnect(on_note_heard)
+	cur_instruments.erase(instr)

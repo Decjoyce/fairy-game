@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://cqvplgp1sfvfm" path="res://assets/sprites/item_sprites/statue/statue_spritesheets/statue_piece_arm.png" id="4_4o0cs"]
 [ext_resource type="AudioStream" uid="uid://dutddyikwuiut" path="res://assets/audio/sfx/combat/misc/hittingsound_shorter.wav" id="4_ijcvq"]
 [ext_resource type="Script" uid="uid://dk36d8kuwrwnv" path="res://addons/extras_sprites/scripts/simple_sprite_3D_billboard.gd" id="5_5hu3d"]
+[ext_resource type="Script" uid="uid://bhf6r6nw14krj" path="res://scripts/saving/persistent_objs/po_item.gd" id="7_ijcvq"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_llc7q"]
 
@@ -19,7 +20,7 @@ size = Vector3(0.5, 0.5, 0.5)
 [sub_resource type="BoxShape3D" id="BoxShape3D_234jp"]
 size = Vector3(0.4, 0.4, 0.4)
 
-[sub_resource type="Shader" id="Shader_4qxnt"]
+[sub_resource type="Shader" id="Shader_4o0cs"]
 code = "shader_type spatial;
 render_mode diffuse_lambert_wrap,cull_disabled;
 
@@ -96,9 +97,9 @@ void fragment() {
 }
 "
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_bv4e3"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_5hu3d"]
 render_priority = 0
-shader = SubResource("Shader_4qxnt")
+shader = SubResource("Shader_4o0cs")
 shader_parameter/rows = 1.0
 shader_parameter/columns = 8.0
 shader_parameter/frame = 0.0
@@ -107,12 +108,12 @@ shader_parameter/sprite = ExtResource("4_4o0cs")
 shader_parameter/mode = 0
 shader_parameter/Normal = ExtResource("3_ai671")
 
-[sub_resource type="PlaneMesh" id="PlaneMesh_nkd1j"]
-material = SubResource("ShaderMaterial_bv4e3")
+[sub_resource type="PlaneMesh" id="PlaneMesh_4qxnt"]
+material = SubResource("ShaderMaterial_5hu3d")
 size = Vector2(0.512, 0.512)
 orientation = 2
 
-[node name="StatuePiece_arm" type="RigidBody3D" unique_id=234370081 node_paths=PackedStringArray("col", "grab_col", "idle_graphics") groups=["debug_PickableObjects"]]
+[node name="StatuePiece_arm" type="RigidBody3D" unique_id=234370081 node_paths=PackedStringArray("col", "grab_col") groups=["debug_PickableObjects"]]
 collision_layer = 2
 axis_lock_angular_x = true
 axis_lock_angular_z = true
@@ -128,7 +129,6 @@ keywords = "ARM"
 item_weight = 3
 col = NodePath("CollisionShape3D")
 grab_col = NodePath("Area3D/CollisionShape3D2")
-idle_graphics = NodePath("")
 
 [node name="Area3D" type="Area3D" parent="." unique_id=1092598886]
 collision_layer = 2
@@ -142,7 +142,7 @@ debug_color = Color(0.8442249, 0.37985525, 5.7756904e-07, 0.41960785)
 
 [node name="_g_idle" type="MeshInstance3D" parent="." unique_id=1979781240]
 layers = 4
-mesh = SubResource("PlaneMesh_nkd1j")
+mesh = SubResource("PlaneMesh_4qxnt")
 script = ExtResource("5_5hu3d")
 sprite = ExtResource("4_4o0cs")
 sprite_scale = 0.001
@@ -161,3 +161,7 @@ bus = &"items"
 [node name="RayCast3D" type="RayCast3D" parent="." unique_id=1070737100]
 target_position = Vector3(0, -0.4, 0)
 hit_from_inside = true
+
+[node name="PO_Item" type="Node" parent="." unique_id=1122030167]
+script = ExtResource("7_ijcvq")
+metadata/_custom_type_script = "uid://bhf6r6nw14krj"

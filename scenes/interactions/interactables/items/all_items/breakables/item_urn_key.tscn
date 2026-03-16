@@ -1,8 +1,7 @@
 [gd_scene format=3 uid="uid://ci2extimpt5xl"]
 
 [ext_resource type="Script" uid="uid://s5cfdf85lm5g" path="res://scenes/interactions/interactables/items/grabbable_item.gd" id="1_2k741"]
-[ext_resource type="Script" uid="uid://q0egps2wmpgo" path="res://scenes/interactions/interactables/items/item_types/itemtype_key.gd" id="3_d8h7e"]
-[ext_resource type="Texture2D" uid="uid://527wal6n3lqs" path="res://assets/sprites/item_sprites/key.png" id="4_srh1v"]
+[ext_resource type="PackedScene" uid="uid://cfkoaxhngk3gf" path="res://scenes/interactions/interactables/items/all_items/keys/item_key.tscn" id="3_d8h7e"]
 [ext_resource type="Script" uid="uid://beaf3digx88d0" path="res://scenes/interactions/interactables/items/item_types/itemtype_breakable.gd" id="6_ix4o8"]
 [ext_resource type="Texture2D" uid="uid://ce58r2n0vi63r" path="res://assets/sprites/item_sprites/urn_item.png" id="7_nwc2n"]
 [ext_resource type="AudioStream" uid="uid://dutddyikwuiut" path="res://assets/audio/sfx/combat/misc/hittingsound_shorter.wav" id="8_smy8y"]
@@ -13,42 +12,15 @@
 [ext_resource type="AudioStream" uid="uid://b2wyku3cc6qng" path="res://assets/audio/sfx/items/urn/Pot_Break-005.wav" id="13_poukt"]
 [ext_resource type="AudioStream" uid="uid://dq7fnct8thxc1" path="res://assets/audio/sfx/items/urn/Pot_Break-006.wav" id="14_veit1"]
 [ext_resource type="AudioStream" uid="uid://fuh5gdonebeu" path="res://assets/audio/sfx/items/urn/Pot_Break-007.wav" id="15_elxmy"]
+[ext_resource type="Script" uid="uid://bhf6r6nw14krj" path="res://scripts/saving/persistent_objs/po_item.gd" id="16_srh1v"]
 [ext_resource type="AudioStream" uid="uid://mg4lgqchj0p5" path="res://assets/audio/sfx/items/urn/Pot_Break-008.wav" id="16_v227s"]
 [ext_resource type="AudioStream" uid="uid://plsapuaavdu" path="res://assets/audio/sfx/items/urn/Pot_Break-009.wav" id="17_78co4"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_llc7q"]
 
-[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_2k741"]
-
-[sub_resource type="Resource" id="Resource_17u2g"]
-script = ExtResource("3_d8h7e")
-item_type = 2
-metadata/_custom_type_script = "uid://q0egps2wmpgo"
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_llc7q"]
-size = Vector3(0.5, 0.6, 0.7)
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_234jp"]
-size = Vector3(0.4, 0.4, 0.6)
-
-[sub_resource type="PackedScene" id="PackedScene_ocfxw"]
-_bundled = {
-"conn_count": 0,
-"conns": PackedInt32Array(),
-"editable_instances": [],
-"id_paths": [PackedInt32Array(), PackedInt32Array(), PackedInt32Array(), PackedInt32Array(), PackedInt32Array(), PackedInt32Array()],
-"names": PackedStringArray("key", "RigidBody3D", "debug_PickableObjects", "collision_layer", "axis_lock_angular_x", "axis_lock_angular_z", "mass", "physics_material_override", "gravity_scale", "contact_monitor", "max_contacts_reported", "script", "item_type", "display_name", "col", "grab_col", "idle_graphics", "Area3D", "Area3D", "collision_layer", "CollisionShape3D2", "CollisionShape3D", "transform", "shape", "CollisionShape3D", "CollisionShape3D", "transform", "shape", "debug_color", "Sprite3D", "Sprite3D", "layers", "pixel_size", "billboard", "shaded", "render_priority", "texture", "AudioPlayer", "AudioStreamPlayer3D", "stream", "bus", "RayCast3D", "RayCast3D", "target_position", "hit_from_inside"),
-"node_count": 7,
-"node_ids": PackedInt32Array(451440735, 1232293276, 981346915, 481199139, 1609679013, 1100606253, 213088429),
-"node_paths": [NodePath("."), NodePath("./Area3D"), NodePath("."), NodePath("."), NodePath("."), NodePath(".")],
-"nodes": PackedInt32Array(-1, -1, 1, 0, -1, 14, 3, 0, 4, 1, 5, 2, 6, 3, 7, 4, 8, 5, 9, 6, 10, 7, 11, 8, 12, 9, 13, 10, 1073741838, 11, 1073741839, 12, 1073741840, 13, 1, 2, 1073741824, 0, 18, 17, -1, 1, 19, 14, 0, 1073741825, 0, 21, 20, -1, 2, 22, 15, 23, 16, 0, 1073741826, 0, 25, 24, -1, 3, 26, 17, 27, 18, 28, 19, 0, 1073741827, 0, 30, 29, -1, 6, 31, 20, 32, 21, 33, 22, 34, 23, 35, 24, 36, 25, 0, 1073741828, 0, 38, 37, -1, 2, 39, 26, 40, 27, 0, 1073741829, 0, 42, 41, -1, 2, 43, 28, 44, 29, 0),
-"variants": [2, true, true, 0.5, SubResource("PhysicsMaterial_2k741"), 0.8, true, 1, ExtResource("1_2k741"), SubResource("Resource_17u2g"), "Key", NodePath("CollisionShape3D"), NodePath("Area3D/CollisionShape3D2"), NodePath("Sprite3D"), 2, Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.050000012, -2.9802322e-08), SubResource("BoxShape3D_llc7q"), Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 7.450581e-09, -7.450581e-09), SubResource("BoxShape3D_234jp"), Color(0.8442249, 0.37985525, 5.7756904e-07, 0.41960785), 4, 0.0008, 2, true, 1, ExtResource("4_srh1v"), ExtResource("8_smy8y"), &"items", Vector3(0, -0.4, 0), true],
-"version": 3
-}
-
 [sub_resource type="Resource" id="Resource_ra5m5"]
 script = ExtResource("6_ix4o8")
-specific_item_to_drop = SubResource("PackedScene_ocfxw")
+specific_item_to_drop = ExtResource("3_d8h7e")
 item_type = 4
 metadata/_custom_type_script = "uid://beaf3digx88d0"
 
@@ -169,3 +141,7 @@ render_priority = 1
 texture = ExtResource("7_nwc2n")
 hframes = 2
 frame = 1
+
+[node name="PO_Item" type="Node" parent="." unique_id=1974872002 groups=["PO"]]
+script = ExtResource("16_srh1v")
+metadata/_custom_type_script = "uid://bhf6r6nw14krj"

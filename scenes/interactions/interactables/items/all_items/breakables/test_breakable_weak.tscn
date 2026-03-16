@@ -5,6 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://hfd6qbmx87rr" path="res://assets/__not_ours_dontship/cat-standing-on-a-chair-leoch-studio.png" id="3_jk2j7"]
 [ext_resource type="AudioStream" uid="uid://dutddyikwuiut" path="res://assets/audio/sfx/combat/misc/hittingsound_shorter.wav" id="4_16uba"]
 [ext_resource type="AudioStream" uid="uid://bpe8oyerrhdif" path="res://assets/__not_ours_dontship/lego-breaking.mp3" id="5_kg2dy"]
+[ext_resource type="Script" uid="uid://bhf6r6nw14krj" path="res://scripts/saving/persistent_objs/po_item.gd" id="6_naygb"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_llc7q"]
 
@@ -75,3 +76,7 @@ stream = ExtResource("4_16uba")
 [node name="AudioPlayer_Break" type="AudioStreamPlayer3D" parent="Destroyed_Items" unique_id=1153811370]
 stream = ExtResource("5_kg2dy")
 max_distance = 4.0
+
+[node name="PO_Item" type="Node" parent="." unique_id=82249644 groups=["PO"]]
+script = ExtResource("6_naygb")
+metadata/_custom_type_script = "uid://bhf6r6nw14krj"

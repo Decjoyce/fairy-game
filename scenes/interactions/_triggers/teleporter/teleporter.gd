@@ -15,5 +15,5 @@ func _teleport_entity(area: Area3D) -> void:
 			p.movement.teleport_player(out_pos)
 
 func teleport_player(sig: float) -> void:
-	Debug.player.movement.teleport_player(out_pos)
+	get_tree().get_first_node_in_group("Player").movement.teleport_player(out_pos)
 	#Debug.player.interaction.force_stop_interacting()

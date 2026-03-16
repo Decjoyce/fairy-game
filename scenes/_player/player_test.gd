@@ -37,8 +37,6 @@ func toggle_combat() -> void:
 	else: combat.exit_combat_mode()
 
 
-
-
 func die():
 	Debug.play_death_player()
 	combat.exit_combat_mode()
@@ -76,3 +74,37 @@ func _physics_process(delta: float) -> void:
 	movement.movement(delta)
 	
 	movement.movement_input()
+
+func on_save_game(saved_data: SavedData_Player) -> void:
+	#region General Data
+	saved_data.current_weight = current_weight
+	saved_data.freeze = freeze
+	#endregion
+	
+	#region Movement Data
+	saved_data.position = global_position
+	saved_data.target_position = movement.target_pos
+	saved_data.rotation = global_rotation
+	saved_data.target_rotation = movement.target_rotation
+	saved_data.is_crouching = movement.is_crouching
+	#endregion
+
+func on_before_load_game() -> void:
+	pass
+
+func on_load_game(saved_data: SavedData_Player) -> void:
+	#region General Data
+	current_weight = saved_data.current_weight
+	freeze = saved_data.freeze
+	#endregion
+	
+	#region Movement Data
+	global_position = saved_data.position
+	movement.target_pos = saved_data.target_position
+	movement.compass.global_position = saved_data.target_position
+	global_rotation = saved_data.rotation
+	movement.target_rotation = saved_data.target_rotation
+	movement.compass.global_rotation.y = saved_data.target_rotation
+	if saved_data.is_crouching:
+		movement.call_deferred("crouch", true)
+	#endregion

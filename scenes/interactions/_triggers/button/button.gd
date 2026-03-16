@@ -26,7 +26,7 @@ func begin_interact(sig: float = -1) -> void:
 
 func _process(delta: float) -> void:
 	if activated and !timer.is_stopped():
-		var mapped_time_left := timer.time_left / timer.wait_time
+		var mapped_time_left := timer.time_left / delay_before_reset
 		on_change.emit(mapped_time_left)
 
 func activate_button() -> void:
@@ -61,6 +61,7 @@ func change_delay(new_delay: float) -> void:
 	timer.wait_time = new_delay
 
 func _on_timer_timeout() -> void:
+	timer.wait_time = delay_before_reset
 	deactivate_button()
 
 

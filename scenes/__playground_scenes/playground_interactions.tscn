@@ -33,7 +33,6 @@
 [ext_resource type="PackedScene" uid="uid://dde66nwtb1gv1" path="res://scenes/interactions/_triggers/item_receiver/torch_scont/torch_scont.tscn" id="30_limx5"]
 [ext_resource type="Script" uid="uid://cb04xjhu5ksor" path="res://scenes/interactions/_receivers/enabler_disabler_v1/visibility_enabler.gd" id="31_teo1q"]
 [ext_resource type="AudioStream" uid="uid://dutddyikwuiut" path="res://assets/audio/sfx/combat/misc/hittingsound_shorter.wav" id="32_1f7u1"]
-[ext_resource type="Script" uid="uid://cfmswqnu6u0bl" path="res://scenes/interactions/_receivers/_logic/counter/counter.gd" id="32_thvja"]
 [ext_resource type="Script" uid="uid://cgb0bi0gumby6" path="res://scenes/interactions/_receivers/skybox_changer/skybox_changer.gd" id="33_1f7u1"]
 [ext_resource type="Environment" uid="uid://co42tppomh8j3" path="res://assets/skyboxes/skyboxes_testing_dark.tres" id="34_bk0h7"]
 [ext_resource type="PackedScene" uid="uid://dqh8lru4mt2ap" path="res://scenes/interactions/interactables/items/all_items/breakables/item_urn.tscn" id="35_7ntu8"]
@@ -42,6 +41,7 @@
 [ext_resource type="PackedScene" uid="uid://civmqin21rnce" path="res://scenes/interactions/interactables/items/all_items/instruments/instrument_test.tscn" id="36_poavi"]
 [ext_resource type="PackedScene" uid="uid://lxic7c72kvyt" path="res://scenes/interactions/interactables/items/all_items/misc/item_skull.tscn" id="36_temsp"]
 [ext_resource type="PackedScene" uid="uid://ck1b6l8s7xnxi" path="res://scenes/interactions/_triggers/lever/lever.tscn" id="37_533sc"]
+[ext_resource type="PackedScene" uid="uid://4v23jnigirqc" path="res://scenes/interactions/_receivers/_logic/counter/Counter.tscn" id="37_dri38"]
 [ext_resource type="Script" uid="uid://dr3eeef0cxnnt" path="res://scenes/interactions/_receivers/item_spawners/item_spawner.gd" id="37_gw50n"]
 [ext_resource type="Material" uid="uid://c15janob14ltp" path="res://assets/_dev/materials/_dev_m_green_glow.tres" id="38_kye26"]
 [ext_resource type="Material" uid="uid://cvaorh1jxnk23" path="res://assets/shaders/Outline/outline1.tres" id="39_u8tqn"]
@@ -69,6 +69,7 @@
 [ext_resource type="PackedScene" uid="uid://brxr85hbqpapm" path="res://scenes/interactions/interactables/items/all_items/breakables/item_baby.tscn" id="60_7evwh"]
 [ext_resource type="PackedScene" uid="uid://br35er4x4b6av" path="res://scenes/interactions/_triggers/torch_sconce/torch_sconce_unlit.tscn" id="65_tefph"]
 [ext_resource type="PackedScene" uid="uid://xuo5buj0odhi" path="res://scenes/interactions/_triggers/torch_sconce/torch_sconce_lit.tscn" id="66_aomhw"]
+[ext_resource type="Script" uid="uid://bul4myvyhnpjc" path="res://scripts/saving/uid_generator.gd" id="70_24qtj"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_3wul1"]
 
@@ -938,6 +939,9 @@ specific_item_to_drop = ExtResource("43_wchr0")
 item_type = 4
 metadata/_custom_type_script = "uid://beaf3digx88d0"
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_24qtj"]
+size = Vector3(5, 0.13, 5)
+
 [node name="Playground_Interactions" type="Node3D" unique_id=1592069120]
 
 [node name="player_test" parent="." unique_id=87981919 instance=ExtResource("2_3vnxs")]
@@ -1123,10 +1127,16 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0.4, 0)
 gravity_scale = 1.0
 item_type = SubResource("Resource_7ntu8")
 item_weight = 3
+metadata/uid = "ecfc4e30-1226-4565-8b85-d841e2e78e19"
+metadata/lock_uid = true
+metadata/date_generated = "2026-03-14T12:45:35"
 
 [node name="TEST_Grabbable_item2" parent="Bin/Room_Items" unique_id=1529267530 instance=ExtResource("16_3wul1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0.4, 0)
 item_weight = 3
+metadata/uid = "2b7e2fd5-141a-4b17-8bf4-e323fb21a356"
+metadata/lock_uid = true
+metadata/date_generated = "2026-03-14T12:45:35"
 
 [node name="TEST_Grabbable_item3" type="RigidBody3D" parent="Bin/Room_Items" unique_id=1158224670 node_paths=PackedStringArray("idle_graphics")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0.4, -2)
@@ -1170,6 +1180,9 @@ hit_from_inside = true
 
 [node name="TEST_Grabbable_item4" parent="Bin/Room_Items" unique_id=1345304804 instance=ExtResource("20_filap")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0.4, -2)
+metadata/uid = "809ff627-0a61-47f7-b4ec-75777dfc9f04"
+metadata/lock_uid = true
+metadata/date_generated = "2026-03-14T12:45:35"
 
 [node name="Label3D3" type="Label3D" parent="Bin/Room_Items" unique_id=1745122450]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 0, 2.7, -3)
@@ -1179,6 +1192,9 @@ font_size = 97
 
 [node name="Breakable_Item" parent="Bin/Room_Items" unique_id=223973632 instance=ExtResource("28_po0fx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.28214455, 8.7, -1.9685516)
+metadata/uid = "22ca2ca4-74be-4e0d-9be0-3b7fdeb910db"
+metadata/lock_uid = true
+metadata/date_generated = "2026-03-14T12:45:35"
 
 [node name="Room_Animation" type="Node3D" parent="Bin" unique_id=643371400]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, -18, -3)
@@ -1296,21 +1312,33 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.999, -1)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0.3, -2)
 item_type = SubResource("Resource_6a6ye")
 item_weight = 1
+metadata/uid = "26fd573f-d3d9-482a-a7c7-622ae418afdc"
+metadata/lock_uid = true
+metadata/date_generated = "2026-03-14T12:45:35"
 
 [node name="TEST_Grabbable_item2" parent="Bin/Room_Animation" unique_id=247412980 instance=ExtResource("16_3wul1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0.3, 0)
 item_type = SubResource("Resource_6a6ye")
 item_weight = 1
+metadata/uid = "6c7fb425-1ecf-4ec5-ad00-ea33cffc886f"
+metadata/lock_uid = true
+metadata/date_generated = "2026-03-14T12:45:35"
 
 [node name="TEST_Grabbable_item3" parent="Bin/Room_Animation" unique_id=2100105720 instance=ExtResource("16_3wul1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0.3, 1)
 item_type = SubResource("Resource_6a6ye")
 item_weight = 1
+metadata/uid = "aac12d0e-2223-4d65-8778-8f3506e4d499"
+metadata/lock_uid = true
+metadata/date_generated = "2026-03-14T12:45:35"
 
 [node name="TEST_Grabbable_item4" parent="Bin/Room_Animation" unique_id=2076711991 instance=ExtResource("16_3wul1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0.3, -3)
 item_type = SubResource("Resource_6a6ye")
 item_weight = 1
+metadata/uid = "31625711-135f-439e-bbca-b60f4b9c17df"
+metadata/lock_uid = true
+metadata/date_generated = "2026-03-14T12:45:35"
 
 [node name="Rotator" type="Node3D" parent="Bin/Room_Animation" unique_id=1225676134]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1)
@@ -1378,6 +1406,9 @@ metadata/_custom_type_script = "uid://c4t3ko70ihpyy"
 [node name="PressurePlate" parent="Bin/Room_Animation" unique_id=1788222316 instance=ExtResource("15_fpxpw")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1)
 weight_to_activate = 4.0
+metadata/uid = "cd59ec09-7341-4e27-b7fc-fedf27e6bf0c"
+metadata/lock_uid = true
+metadata/date_generated = "2026-03-15T23:30:15"
 
 [node name="Label3D" type="Label3D" parent="Bin/Room_Animation" unique_id=1589166101]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 0, 2.7, -1)
@@ -1509,6 +1540,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.999, -1)
 [node name="TEST_Grabbable_item" parent="Bin/Room_Interacting_old" unique_id=403185921 instance=ExtResource("16_3wul1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0.4, -1)
 item_weight = 2
+metadata/uid = "6fba7cee-8d36-47ca-8125-97cd2ea93601"
+metadata/lock_uid = true
+metadata/date_generated = "2026-03-14T12:45:35"
 
 [node name="Showcase_PressurePlate2" type="Node3D" parent="Bin/Room_Interacting_old" unique_id=1338747913]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -3, 0, 1)
@@ -1523,18 +1557,30 @@ transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -1, 
 transform = Transform3D(1.3113416e-07, 0, -1, 0, 1, 0, 1, 0, 1.3113416e-07, 1, 0, -4.371139e-08)
 
 [node name="Gate" parent="Bin/Room_Interacting_old/Showcase_PressurePlate2" unique_id=1539128500 instance=ExtResource("8_mlo6p")]
+metadata/uid = "0b6bba90-a0b1-45c2-be79-f108d9f6fb26"
+metadata/lock_uid = true
+metadata/date_generated = "2026-03-14T23:11:26"
 
 [node name="PressurePlate" parent="Bin/Room_Interacting_old/Showcase_PressurePlate2" unique_id=1451119954 instance=ExtResource("15_fpxpw")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.05000019, 1)
+metadata/uid = "d1ae5fd6-64e9-4ca3-8cf9-205aa737d599"
+metadata/lock_uid = true
+metadata/date_generated = "2026-03-15T23:30:15"
 
 [node name="Showcase_Button" type="Node3D" parent="Bin/Room_Interacting_old" unique_id=254147692]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 0, 15)
 
 [node name="Gate_Button" parent="Bin/Room_Interacting_old/Showcase_Button" unique_id=1299434649 instance=ExtResource("8_mlo6p")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -13, 0, -18)
+metadata/uid = "0dad9f81-df07-4da0-954d-5a51d32cea1f"
+metadata/lock_uid = true
+metadata/date_generated = "2026-03-14T23:11:26"
 
 [node name="Button" parent="Bin/Room_Interacting_old/Showcase_Button" unique_id=276286648 groups=["Interactables"] instance=ExtResource("10_h40wo")]
 transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, -12, 0.8, -18.9)
+metadata/uid = "6e306ce0-e251-4349-a93c-936f985efab8"
+metadata/lock_uid = true
+metadata/date_generated = "2026-03-14T12:52:05"
 
 [node name="_dev_open_doorway4" parent="Bin/Room_Interacting_old/Showcase_Button" unique_id=1172519060 instance=ExtResource("4_viu01")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -14, 0, -18)
@@ -2253,6 +2299,9 @@ mesh = SubResource("BoxMesh_o5rkc")
 [node name="how2_Button_1" parent="Room_Interactions/Button_Room/Sec_1_a" unique_id=777069645 groups=["Interactables"] instance=ExtResource("10_h40wo")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.025821686)
 delay_before_reset = 3.0
+metadata/uid = "78bccd20-7d3a-46f9-b400-cec123134e99"
+metadata/lock_uid = true
+metadata/date_generated = "2026-03-14T12:52:05"
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Room_Interactions/Button_Room/Sec_1_a" unique_id=1128895786]
 transform = Transform3D(1.1924867e-08, 0, 0.99999994, 0, 1, 0, -0.99999994, 0, 1.1924867e-08, 0, -0.6986841, -0.9999962)
@@ -2305,6 +2354,9 @@ mesh = SubResource("BoxMesh_o5rkc")
 [node name="ButtonIntro" parent="Room_Interactions/Button_Room/Sec_1_b" unique_id=2140407006 groups=["Interactables"] instance=ExtResource("10_h40wo")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.017689288)
 delay_before_reset = 3.0
+metadata/uid = "77f3aa26-a22c-498f-89b3-535edef0c67f"
+metadata/lock_uid = true
+metadata/date_generated = "2026-03-14T12:52:05"
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Room_Interactions/Button_Room/Sec_1_b" unique_id=436084586]
 transform = Transform3D(1.1924868e-08, 0, 0.99999994, 0, 1, 0, -0.99999994, 0, 1.1924868e-08, 0, -0.6986841, -1.7999964)
@@ -2343,6 +2395,9 @@ autowrap_mode = 1
 
 [node name="TEST_Grabbable_item" parent="Room_Interactions/Button_Room/Sec_1_b" unique_id=850033198 instance=ExtResource("16_3wul1")]
 transform = Transform3D(1.1924868e-08, 0, 1, 0, 1, 0, -1, 0, 1.1924868e-08, 0.049999237, -0.39999998, -0.84999704)
+metadata/uid = "672a2e4e-10be-4f13-8a57-7459aa0a6357"
+metadata/lock_uid = true
+metadata/date_generated = "2026-03-14T12:45:35"
 
 [node name="Sec_2_a" type="Node3D" parent="Room_Interactions/Button_Room" unique_id=1291428797]
 transform = Transform3D(7.549791e-08, 0, 1, 0, 1, 0, -1, 0, 7.549791e-08, 4.800003, 0.7, 0)
@@ -2362,6 +2417,9 @@ mesh = SubResource("BoxMesh_o5rkc")
 [node name="demo_button_1" parent="Room_Interactions/Button_Room/Sec_2_a" unique_id=102263047 groups=["Interactables"] instance=ExtResource("10_h40wo")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.025821686)
 delay_before_reset = 3.0
+metadata/uid = "ea3fa9df-d5fa-41ab-8a10-149123362cdf"
+metadata/lock_uid = true
+metadata/date_generated = "2026-03-14T12:52:05"
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Room_Interactions/Button_Room/Sec_2_a" unique_id=1393748691]
 transform = Transform3D(1.1924867e-08, 0, 0.99999994, 0, 1, 0, -0.99999994, 0, 1.1924867e-08, 0, -0.6986841, -0.9999962)
@@ -2403,6 +2461,9 @@ mesh = SubResource("BoxMesh_o5rkc")
 [node name="demo_button_2" parent="Room_Interactions/Button_Room/Sec_2_b" unique_id=1164325605 groups=["Interactables"] instance=ExtResource("10_h40wo")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.025821686)
 delay_before_reset = 3.0
+metadata/uid = "175ee74f-487b-4107-aafb-a840177bc30f"
+metadata/lock_uid = true
+metadata/date_generated = "2026-03-14T12:52:05"
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Room_Interactions/Button_Room/Sec_2_b" unique_id=2018217030]
 transform = Transform3D(1.1924867e-08, 0, 0.99999994, 0, 1, 0, -0.99999994, 0, 1.1924867e-08, 0, -0.6986841, -0.9999962)
@@ -2444,6 +2505,9 @@ mesh = SubResource("BoxMesh_p0tt5")
 [node name="demo_button_3" parent="Room_Interactions/Button_Room/Sec_2_c" unique_id=912829473 groups=["Interactables"] instance=ExtResource("10_h40wo")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.29999995, 0, -0.025821686)
 delay_before_reset = 3.0
+metadata/uid = "49a21e1d-d448-40c7-aaf3-f3dbba580284"
+metadata/lock_uid = true
+metadata/date_generated = "2026-03-14T12:52:05"
 
 [node name="_dev_open_wall29" type="StaticBody3D" parent="Room_Interactions/Button_Room/Sec_2_c" unique_id=353832558]
 transform = Transform3D(1, 0, -1.7484554e-07, 0, 1, 0, 1.7484554e-07, 0, 1, 0.2999997, -1.5, -0.9000015)
@@ -2459,6 +2523,9 @@ mesh = SubResource("BoxMesh_p0tt5")
 
 [node name="demo_button_4" parent="Room_Interactions/Button_Room/Sec_2_c" unique_id=924197407 groups=["Interactables"] instance=ExtResource("10_h40wo")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.3000002, 0, -0.025821686)
+metadata/uid = "2e1c54ac-3c6a-4089-adc2-1286964af8eb"
+metadata/lock_uid = true
+metadata/date_generated = "2026-03-14T12:52:05"
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Room_Interactions/Button_Room/Sec_2_c" unique_id=1483785258]
 transform = Transform3D(1.1924867e-08, 0, 0.99999994, 0, 1, 0, -0.99999994, 0, 1.1924867e-08, 0, -0.6986841, -0.9999962)
@@ -2490,11 +2557,13 @@ node_to_examine = NodePath("../demo_button_3")
 vars_to_display = Array[String](["delay_before_reset"])
 include_var_name = false
 
-[node name="counter_delay" type="Node" parent="Room_Interactions/Button_Room/Sec_2_c" unique_id=1010062480]
-script = ExtResource("32_thvja")
+[node name="counter_delay2" parent="Room_Interactions/Button_Room/Sec_2_c" unique_id=1521904207 instance=ExtResource("37_dri38")]
 begin_count = 3
 min_count = 1
 max_count = 3
+metadata/uid = "e6f0c316-cc47-4d9f-96e7-c1e8b09517d2"
+metadata/lock_uid = true
+metadata/date_generated = "2026-03-15T21:09:09"
 
 [node name="Sec_2_d" type="Node3D" parent="Room_Interactions/Button_Room" unique_id=1605766353]
 transform = Transform3D(7.549791e-08, 0, 1, 0, 1, 0, -1, 0, 7.549791e-08, 4.800003, 0.7, -7)
@@ -2515,6 +2584,9 @@ mesh = SubResource("BoxMesh_p0tt5")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.29999995, 0, -0.025821686)
 delay_before_reset = 3.0
 manual_reset = true
+metadata/uid = "bad41c26-650b-42a1-84f4-c845cce581ab"
+metadata/lock_uid = true
+metadata/date_generated = "2026-03-14T12:52:05"
 
 [node name="_dev_open_wall29" type="StaticBody3D" parent="Room_Interactions/Button_Room/Sec_2_d" unique_id=636980264]
 transform = Transform3D(1, 0, -1.7484554e-07, 0, 1, 0, 1.7484554e-07, 0, 1, 0.2999997, -1.5, -0.9000015)
@@ -2533,6 +2605,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.3000002, 0, -0.025821686)
 delay_before_reset = 3.0
 manual_reset = true
 start_activated = true
+metadata/uid = "0bf74f13-d223-42df-877d-3c05c4dcf62b"
+metadata/lock_uid = true
+metadata/date_generated = "2026-03-14T12:52:05"
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Room_Interactions/Button_Room/Sec_2_d" unique_id=1974662859]
 transform = Transform3D(1.1924867e-08, 0, 0.99999994, 0, 1, 0, -0.99999994, 0, 1.1924867e-08, 0, -0.6986841, -0.9999962)
@@ -2816,6 +2891,9 @@ mesh = SubResource("BoxMesh_o5rkc")
 
 [node name="Lever" parent="Room_Interactions/Lever_Room/Sec_1/Sec_1_a" unique_id=1692381032 instance=ExtResource("37_533sc")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0.099998474, 0.7, 0)
+metadata/lock_uid = true
+metadata/uid = "4765fd03-68c3-4bc4-bc18-2dd38201b38b"
+metadata/date_generated = "2026-03-14T12:45:35"
 
 [node name="Label4" type="Label3D" parent="Room_Interactions/Lever_Room/Sec_1/Sec_1_a" unique_id=1697241365]
 transform = Transform3D(1.1924875e-08, 0, 1, 0, 1, 0, -1, 0, 1.1924875e-08, 0, 1.5000001, 0)
@@ -3012,6 +3090,9 @@ mesh = SubResource("BoxMesh_o5rkc")
 
 [node name="Lever" parent="Room_Interactions/Lever_Room/Sec_1/Sec_1_b" unique_id=1471479815 instance=ExtResource("37_533sc")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0.5, 0.90000004, 0.39999998)
+metadata/lock_uid = true
+metadata/uid = "df5b6cc4-d989-4b57-a00b-eb7f48da042a"
+metadata/date_generated = "2026-03-14T12:45:35"
 
 [node name="Label4" type="Label3D" parent="Room_Interactions/Lever_Room/Sec_1/Sec_1_b" unique_id=126122071]
 transform = Transform3D(-1, 0, -3.1786513e-08, 0, 1, 0, 3.1786513e-08, 0, -1, 1, 1.5000001, 1.5)
@@ -3135,6 +3216,9 @@ mesh = SubResource("BoxMesh_o5rkc")
 
 [node name="Lever" parent="Room_Interactions/Lever_Room/Sec_2/Sec_2_a" unique_id=709642733 instance=ExtResource("37_533sc")]
 transform = Transform3D(-4.371138e-08, 0, 1, 0, 1, 0, -1, 0, -4.371138e-08, -0.70000076, 0.7, -6.993787e-08)
+metadata/lock_uid = true
+metadata/uid = "bc1caac0-02e1-4a7f-bf71-d8b8a1880c43"
+metadata/date_generated = "2026-03-14T12:45:35"
 
 [node name="Label4" type="Label3D" parent="Room_Interactions/Lever_Room/Sec_2/Sec_2_a" unique_id=1600804889]
 transform = Transform3D(1.1924875e-08, 0, 1, 0, 1, 0, -1, 0, 1.1924875e-08, -0.79999924, 1.5000001, -6.9938324e-08)
@@ -3174,6 +3258,9 @@ mesh = SubResource("BoxMesh_o5rkc")
 
 [node name="Lever" parent="Room_Interactions/Lever_Room/Sec_2/Sec_2_b" unique_id=295574633 instance=ExtResource("37_533sc")]
 transform = Transform3D(-4.371138e-08, 0, 1, 0, 1, 0, -1, 0, -4.371138e-08, -0.70000076, 0.7, -6.993787e-08)
+metadata/lock_uid = true
+metadata/uid = "e9edf852-d39e-4749-a61c-879a732a7e66"
+metadata/date_generated = "2026-03-14T12:45:35"
 
 [node name="Label4" type="Label3D" parent="Room_Interactions/Lever_Room/Sec_2/Sec_2_b" unique_id=1074826162]
 transform = Transform3D(1.1924875e-08, 0, 1, 0, 1, 0, -1, 0, 1.1924875e-08, -0.79999924, 1.435612, 0)
@@ -3212,6 +3299,9 @@ mesh = SubResource("BoxMesh_o5rkc")
 
 [node name="Lever" parent="Room_Interactions/Lever_Room/Sec_2/Sec_2_c" unique_id=1881101994 instance=ExtResource("37_533sc")]
 transform = Transform3D(-4.371138e-08, 0, 1, 0, 1, 0, -1, 0, -4.371138e-08, -0.70000076, 0.7, -6.993787e-08)
+metadata/lock_uid = true
+metadata/uid = "26647e70-e93f-4c08-a14e-b1f0bb0d23fb"
+metadata/date_generated = "2026-03-14T12:45:35"
 
 [node name="Label4" type="Label3D" parent="Room_Interactions/Lever_Room/Sec_2/Sec_2_c" unique_id=471337428]
 transform = Transform3D(1.1924875e-08, 0, 1, 0, 1, 0, -1, 0, 1.1924875e-08, -0.79999924, 1.435612, 0)
@@ -3250,6 +3340,9 @@ mesh = SubResource("BoxMesh_o5rkc")
 [node name="Lever" parent="Room_Interactions/Lever_Room/Sec_2/Sec_2_d" unique_id=797700307 instance=ExtResource("37_533sc")]
 transform = Transform3D(-4.371138e-08, 0, 1, 0, 1, 0, -1, 0, -4.371138e-08, -0.70000076, 0.7, -6.993787e-08)
 starting_value = 0.5
+metadata/lock_uid = true
+metadata/uid = "955eba97-c7ac-4123-adac-c7cdcacc9192"
+metadata/date_generated = "2026-03-14T12:45:35"
 
 [node name="Label4" type="Label3D" parent="Room_Interactions/Lever_Room/Sec_2/Sec_2_d" unique_id=1217537458]
 transform = Transform3D(1.1924875e-08, 0, 1, 0, 1, 0, -1, 0, 1.1924875e-08, -0.79999924, 1.435612, 0)
@@ -3290,6 +3383,9 @@ mesh = SubResource("BoxMesh_o5rkc")
 transform = Transform3D(-4.371138e-08, 0, 1, 0, 1, 0, -1, 0, -4.371138e-08, -0.70000076, 0.7, -6.993787e-08)
 use_intervals = true
 intervals = 0.25
+metadata/lock_uid = true
+metadata/uid = "85e54e9f-114c-490e-8090-aa13e71b027f"
+metadata/date_generated = "2026-03-14T12:45:35"
 
 [node name="Label4" type="Label3D" parent="Room_Interactions/Lever_Room/Sec_2/Sec_2_e" unique_id=2108751955]
 transform = Transform3D(1.1924875e-08, 0, 1, 0, 1, 0, -1, 0, 1.1924875e-08, -0.79999924, 1.535612, -9.536743e-07)
@@ -3332,6 +3428,9 @@ mesh = SubResource("BoxMesh_o5rkc")
 transform = Transform3D(-4.371138e-08, 0, 1, 0, 1, 0, -1, 0, -4.371138e-08, -0.70000076, 0.7, -6.993787e-08)
 use_intervals = true
 intervals = 1.0
+metadata/lock_uid = true
+metadata/uid = "bc2b8240-3838-46d1-8e1b-e2437dba38bb"
+metadata/date_generated = "2026-03-14T12:45:35"
 
 [node name="Label4" type="Label3D" parent="Room_Interactions/Lever_Room/Sec_2/Sec_2_f" unique_id=1790483268]
 transform = Transform3D(1.1924875e-08, 0, 1, 0, 1, 0, -1, 0, 1.1924875e-08, -0.79999924, 1.535612, -9.536743e-07)
@@ -3571,6 +3670,9 @@ skeleton = NodePath("")
 [node name="PressurePlate" parent="Room_Interactions/PressurePlate_Room/Sec_1/Sec_1_a" unique_id=247380468 instance=ExtResource("15_fpxpw")]
 weight_to_activate = 3.0
 _lerp_speed = 300.0
+metadata/uid = "70a7026b-b4fc-485d-8c9e-fc3d1fa88e5d"
+metadata/lock_uid = true
+metadata/date_generated = "2026-03-15T23:30:15"
 
 [node name="AO_Lever_1b" type="Node" parent="Room_Interactions/PressurePlate_Room/Sec_1/Sec_1_a" unique_id=191411308 node_paths=PackedStringArray("connnect_anim_player")]
 script = ExtResource("21_a71ib")
@@ -3705,6 +3807,9 @@ skeleton = NodePath("")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.10000305, 0, 0)
 weight_to_activate = 3.0
 _lerp_speed = 300.0
+metadata/uid = "5dd6a69e-3cbf-4f65-bb95-f4b52d86398f"
+metadata/lock_uid = true
+metadata/date_generated = "2026-03-15T23:30:15"
 
 [node name="AO_Lever_1b" type="Node" parent="Room_Interactions/PressurePlate_Room/Sec_1/Sec_1_b" unique_id=1647534162 node_paths=PackedStringArray("connnect_anim_player")]
 script = ExtResource("21_a71ib")
@@ -3796,6 +3901,9 @@ libraries/ = SubResource("AnimationLibrary_bww3y")
 [node name="TEST_Grabbable_item" parent="Room_Interactions/PressurePlate_Room/Sec_1/Sec_1_b" unique_id=532407261 instance=ExtResource("16_3wul1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0.3, 0)
 item_weight = 3
+metadata/uid = "d643eb11-6abb-43b8-a71c-9bb88e86dce5"
+metadata/lock_uid = true
+metadata/date_generated = "2026-03-14T12:45:35"
 
 [node name="Sec_2" type="Node3D" parent="Room_Interactions/PressurePlate_Room" unique_id=923804315]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, -4)
@@ -3836,6 +3944,9 @@ skeleton = NodePath("")
 [node name="PressurePlate" parent="Room_Interactions/PressurePlate_Room/Sec_2/Sec_2_a" unique_id=909781142 instance=ExtResource("15_fpxpw")]
 weight_to_activate = 3.0
 _lerp_speed = 300.0
+metadata/uid = "57ac9e3d-6921-4d38-b4e9-87dfdd4bfd3e"
+metadata/lock_uid = true
+metadata/date_generated = "2026-03-15T23:30:15"
 
 [node name="SignalDisplayer" parent="Room_Interactions/PressurePlate_Room/Sec_2/Sec_2_a" unique_id=477289209 instance=ExtResource("44_nqwxh")]
 transform = Transform3D(-4.371138e-08, 0, 1, 0, 1, 0, -1, 0, -4.371138e-08, -0.80000305, 0.70000005, -6.994014e-08)
@@ -3876,6 +3987,9 @@ skeleton = NodePath("")
 [node name="PressurePlate" parent="Room_Interactions/PressurePlate_Room/Sec_2/Sec_2_b" unique_id=445068691 instance=ExtResource("15_fpxpw")]
 weight_to_activate = 3.0
 _lerp_speed = 300.0
+metadata/uid = "48c26dca-194d-4ab2-a2bd-c3f94447546e"
+metadata/lock_uid = true
+metadata/date_generated = "2026-03-15T23:30:15"
 
 [node name="SignalDisplayer" parent="Room_Interactions/PressurePlate_Room/Sec_2/Sec_2_b" unique_id=1639729793 instance=ExtResource("44_nqwxh")]
 transform = Transform3D(-4.371138e-08, 0, 1, 0, 1, 0, -1, 0, -4.371138e-08, -0.80000305, 0.70000005, -6.994014e-08)
@@ -3917,6 +4031,9 @@ skeleton = NodePath("")
 [node name="PressurePlate" parent="Room_Interactions/PressurePlate_Room/Sec_2/Sec_2_c" unique_id=740350762 instance=ExtResource("15_fpxpw")]
 weight_to_activate = 3.0
 _lerp_speed = 300.0
+metadata/uid = "967e0c63-3e1a-47ee-8f58-fd3d736e9fed"
+metadata/lock_uid = true
+metadata/date_generated = "2026-03-15T23:30:15"
 
 [node name="SignalDisplayer" parent="Room_Interactions/PressurePlate_Room/Sec_2/Sec_2_c" unique_id=1370819559 instance=ExtResource("44_nqwxh")]
 transform = Transform3D(-4.371138e-08, 0, 1, 0, 1, 0, -1, 0, -4.371138e-08, -0.80000305, 0.70000005, 0)
@@ -4010,14 +4127,23 @@ autowrap_mode = 1
 [node name="skull" parent="Room_Interactions/PressurePlate_Room/Sec_2/Sec_2_d/Items" unique_id=234370081 instance=ExtResource("36_temsp")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.4, 2)
 display_name = "Skull - Heavy"
+metadata/uid = "4101f119-3acb-413b-9b90-c376ff86c64a"
+metadata/lock_uid = true
+metadata/date_generated = "2026-03-14T12:45:35"
 
 [node name="key" parent="Room_Interactions/PressurePlate_Room/Sec_2/Sec_2_d/Items" unique_id=451440735 instance=ExtResource("43_wchr0")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.9999995, 0.3, 2)
 display_name = "Key - Weightless"
+metadata/uid = "2d8bc292-b1ad-46c5-99ce-651171bd7b0c"
+metadata/lock_uid = true
+metadata/date_generated = "2026-03-14T12:45:35"
 
 [node name="drinkvessel" parent="Room_Interactions/PressurePlate_Room/Sec_2/Sec_2_d/Items" unique_id=240783312 instance=ExtResource("35_15de5")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0.3, 2)
 display_name = "Pitcher - Medium"
+metadata/uid = "7b791cce-aedc-4897-aac4-a4227c7f29c6"
+metadata/lock_uid = true
+metadata/date_generated = "2026-03-14T12:45:35"
 
 [node name="Torch" parent="Room_Interactions/PressurePlate_Room/Sec_2/Sec_2_d/Items" unique_id=1479203938 instance=ExtResource("29_lryfm")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.9999995, 0.5, 2)
@@ -4077,12 +4203,18 @@ autowrap_mode = 1
 weight_to_activate = 10.0
 always_emit_on_change = true
 _lerp_speed = 300.0
+metadata/uid = "af953f5d-80f8-466d-9770-267210215cb7"
+metadata/lock_uid = true
+metadata/date_generated = "2026-03-15T23:30:15"
 
 [node name="Lever" parent="Room_Interactions/PressurePlate_Room/Sec_2/Sec_2_d" unique_id=227850422 instance=ExtResource("37_533sc")]
 transform = Transform3D(-4.3711395e-08, 0, 1, 0, 1, 0, -1, 0, -4.3711395e-08, -0.7348118, 0.89076835, -0.6221237)
 starting_value = 0.5
 use_intervals = true
 intervals = 0.05
+metadata/lock_uid = true
+metadata/uid = "3c3885ac-473e-4233-9cd3-838f101e0d19"
+metadata/date_generated = "2026-03-14T12:45:35"
 
 [node name="SignalRemapper" type="Node" parent="Room_Interactions/PressurePlate_Room/Sec_2/Sec_2_d" unique_id=279003297]
 script = ExtResource("45_dbr6f")
@@ -4691,6 +4823,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7, 0, 0)
 
 [node name="Gate" parent="Room_Interactions/SignalReceiver_Room/ObjectsSection/Sec_Gate/Gate_Button" unique_id=2047962319 instance=ExtResource("8_mlo6p")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0.099998474, 0, 0)
+metadata/uid = "e8356edd-2456-40e6-af0b-b5cbfff194dc"
+metadata/lock_uid = true
+metadata/date_generated = "2026-03-14T23:11:26"
 
 [node name="_dev_open_doorway" parent="Room_Interactions/SignalReceiver_Room/ObjectsSection/Sec_Gate/Gate_Button" unique_id=2107543410 instance=ExtResource("4_viu01")]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 1, 0, 0)
@@ -4709,6 +4844,9 @@ mesh = SubResource("BoxMesh_o5rkc")
 
 [node name="Button" parent="Room_Interactions/SignalReceiver_Room/ObjectsSection/Sec_Gate/Gate_Button" unique_id=508998922 instance=ExtResource("10_h40wo")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.40000153, 0.7, 0.9000001)
+metadata/uid = "8a1019b0-9158-4a80-93af-a4e37607b77a"
+metadata/lock_uid = true
+metadata/date_generated = "2026-03-14T12:52:05"
 
 [node name="_decor2" type="StaticBody3D" parent="Room_Interactions/SignalReceiver_Room/ObjectsSection/Sec_Gate/Gate_Button" unique_id=1128370125]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.6293945e-06, 0.4, 1)
@@ -4724,12 +4862,18 @@ mesh = SubResource("BoxMesh_o5rkc")
 
 [node name="Button2" parent="Room_Interactions/SignalReceiver_Room/ObjectsSection/Sec_Gate/Gate_Button" unique_id=1528694243 instance=ExtResource("10_h40wo")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.19999695, 0.7, 0.9000001)
+metadata/uid = "d6292fe9-54de-4f80-b726-dd62c96d4436"
+metadata/lock_uid = true
+metadata/date_generated = "2026-03-14T12:52:05"
 
 [node name="Gate_Lever" type="Node3D" parent="Room_Interactions/SignalReceiver_Room/ObjectsSection/Sec_Gate" unique_id=291803237]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7, 0, -2)
 
 [node name="Gate" parent="Room_Interactions/SignalReceiver_Room/ObjectsSection/Sec_Gate/Gate_Lever" unique_id=436637209 instance=ExtResource("8_mlo6p")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0.099998474, 0, 0)
+metadata/uid = "6cb0d0a2-acfe-473c-bebd-66ce0d9c2e91"
+metadata/lock_uid = true
+metadata/date_generated = "2026-03-14T23:11:26"
 
 [node name="_dev_open_doorway" parent="Room_Interactions/SignalReceiver_Room/ObjectsSection/Sec_Gate/Gate_Lever" unique_id=1179608173 instance=ExtResource("4_viu01")]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 1, 0, 0)
@@ -4748,6 +4892,9 @@ mesh = SubResource("BoxMesh_o5rkc")
 
 [node name="Lever" parent="Room_Interactions/SignalReceiver_Room/ObjectsSection/Sec_Gate/Gate_Lever" unique_id=647058611 instance=ExtResource("37_533sc")]
 transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 0.40000153, 0.7, 0.945)
+metadata/lock_uid = true
+metadata/uid = "9d9e5a45-1607-4ec3-a927-cba4957f8b99"
+metadata/date_generated = "2026-03-14T12:45:35"
 
 [node name="_decor2" type="StaticBody3D" parent="Room_Interactions/SignalReceiver_Room/ObjectsSection/Sec_Gate/Gate_Lever" unique_id=1614038294]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.6293945e-06, 0.4, 1)
@@ -4763,6 +4910,9 @@ mesh = SubResource("BoxMesh_o5rkc")
 
 [node name="Lever2" parent="Room_Interactions/SignalReceiver_Room/ObjectsSection/Sec_Gate/Gate_Lever" unique_id=33020721 instance=ExtResource("37_533sc")]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -0.19999695, 0.7, 0.945)
+metadata/lock_uid = true
+metadata/uid = "d3c31565-35d5-4e47-8fcd-8d69ad7af56c"
+metadata/date_generated = "2026-03-14T12:45:35"
 
 [node name="Helpers" type="Node3D" parent="Room_Interactions/SignalReceiver_Room/ObjectsSection/Sec_Gate" unique_id=1572650156]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, 3)
@@ -4775,15 +4925,27 @@ skeleton = NodePath("")
 
 [node name="prev_page" parent="Room_Interactions/SignalReceiver_Room/ObjectsSection/Sec_Gate/Helpers/ButtonHolder" unique_id=997256189 instance=ExtResource("10_h40wo")]
 transform = Transform3D(1, 5.960461e-08, -3.5527137e-14, 3.2026693e-23, -8.742279e-08, -1, -5.9604645e-08, 1, -8.742278e-08, 0.19999695, 0.07190883, 0)
+metadata/uid = "67806a86-9639-47cc-9e2a-753ebc017ef3"
+metadata/lock_uid = true
+metadata/date_generated = "2026-03-14T12:52:05"
 
 [node name="next_page" parent="Room_Interactions/SignalReceiver_Room/ObjectsSection/Sec_Gate/Helpers/ButtonHolder" unique_id=1268615074 instance=ExtResource("10_h40wo")]
 transform = Transform3D(1, 5.9604613e-08, -3.1974423e-14, 3.2026667e-23, -8.742279e-08, -1, -5.9604645e-08, 1, -8.742278e-08, -0.19999695, 0.07190883, 0)
+metadata/uid = "6b7189eb-1851-463f-aa4b-70f01e218e2e"
+metadata/lock_uid = true
+metadata/date_generated = "2026-03-14T12:52:05"
 
 [node name="prev_sec" parent="Room_Interactions/SignalReceiver_Room/ObjectsSection/Sec_Gate/Helpers/ButtonHolder" unique_id=1047203513 instance=ExtResource("10_h40wo")]
 transform = Transform3D(0.5735762, 0.409576, 0.7094065, -1.4901163e-08, 0.8660254, -0.49999997, -0.819152, 0.28678817, 0.49673158, 0.69999695, 0.17190886, 0)
+metadata/uid = "47543ccb-eeb7-43a6-9cce-4479a0733208"
+metadata/lock_uid = true
+metadata/date_generated = "2026-03-14T12:52:05"
 
 [node name="next_sec" parent="Room_Interactions/SignalReceiver_Room/ObjectsSection/Sec_Gate/Helpers/ButtonHolder" unique_id=1137785221 instance=ExtResource("10_h40wo")]
 transform = Transform3D(0.57357633, -0.409576, -0.70940644, 0, 0.8660253, -0.49999994, 0.81915194, 0.2867882, 0.4967317, -0.69999695, 0.17199999, 0)
+metadata/uid = "a7987f3d-002e-4106-9dae-398b66ccab6d"
+metadata/lock_uid = true
+metadata/date_generated = "2026-03-14T12:52:05"
 
 [node name="Node" type="Node" parent="Room_Interactions/SignalReceiver_Room/ObjectsSection/Sec_Gate/Helpers/ButtonHolder" unique_id=235995968]
 script = ExtResource("46_2b8gu")
@@ -4887,21 +5049,36 @@ font_size = 52
 
 [node name="SpikeTrap_Floor" parent="Room_Interactions/SignalReceiver_Room/ObjectsSection/Sec_Traps" unique_id=610712147 instance=ExtResource("49_52qvx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0, -9.536743e-07)
+metadata/uid = "2f72980e-4b1f-41eb-b5c8-6901efb6e218"
+metadata/lock_uid = true
+metadata/date_generated = "2026-03-14T23:11:26"
 
 [node name="Breakable_Item_Strong" parent="Room_Interactions/SignalReceiver_Room/ObjectsSection/Sec_Traps" unique_id=577504107 instance=ExtResource("28_po0fx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0.4, -1.9073486e-06)
 item_weight = 3
+metadata/uid = "73ce88c0-5273-4ee8-ab88-08d2fd5536d8"
+metadata/lock_uid = true
+metadata/date_generated = "2026-03-14T12:45:35"
 
 [node name="TEST_Grabbable_item" parent="Room_Interactions/SignalReceiver_Room/ObjectsSection/Sec_Traps" unique_id=1019402571 instance=ExtResource("16_3wul1")]
 transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, -4, 1, 0.9999981)
 item_weight = 3
+metadata/uid = "3738f35c-8b14-4e18-8fc7-8f44e05f5e86"
+metadata/lock_uid = true
+metadata/date_generated = "2026-03-14T12:45:35"
 
 [node name="trap_projectile" parent="Room_Interactions/SignalReceiver_Room/ObjectsSection/Sec_Traps" unique_id=937661216 instance=ExtResource("50_atpov")]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -8, 1, 2)
+metadata/uid = "443d8708-962f-44cd-b970-003e804675d1"
+metadata/lock_uid = true
+metadata/date_generated = "2026-03-14T23:11:26"
 
 [node name="PressurePlate" parent="Room_Interactions/SignalReceiver_Room/ObjectsSection/Sec_Traps" unique_id=1764923757 instance=ExtResource("15_fpxpw")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0, 1.9999981)
 _lerp_speed = 1500.0
+metadata/uid = "279f6aed-fe81-4301-95af-9ef68004cd14"
+metadata/lock_uid = true
+metadata/date_generated = "2026-03-15T23:30:15"
 
 [node name="Sec_Statue" type="Node3D" parent="Room_Interactions/SignalReceiver_Room/ObjectsSection" unique_id=1313378291]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, -21)
@@ -5194,10 +5371,6 @@ transform = Transform3D(-0.9999999, 0, -1.2716575e-07, 0, 1, 0, 1.2716575e-07, 0
 script = ExtResource("31_teo1q")
 linked_node = NodePath("../../../../_environment/DirectionalLight3D")
 
-[node name="counter_light" type="Node" parent="Room_Items/Sections/Sec_Default" unique_id=851587758]
-script = ExtResource("32_thvja")
-max_count = 1
-
 [node name="skybox_switcher" type="Node" parent="Room_Items/Sections/Sec_Default" unique_id=643501582 node_paths=PackedStringArray("world_environment")]
 script = ExtResource("33_1f7u1")
 world_environment = NodePath("../../../../_environment/WorldEnvironment")
@@ -5227,9 +5400,15 @@ mesh = SubResource("BoxMesh_o5rkc")
 
 [node name="Button2" parent="Room_Items/Sections/Sec_Default/But_switch" unique_id=1119245790 groups=["Interactables"] instance=ExtResource("10_h40wo")]
 transform = Transform3D(-4.371138e-08, 0, 1, 0, 1, 0, -1, 0, -4.371138e-08, 0.90000045, 0.6999992, 1.5)
+metadata/uid = "3562d66e-66d6-4106-8ad0-b78f8ef12ddf"
+metadata/lock_uid = true
+metadata/date_generated = "2026-03-14T12:52:05"
 
 [node name="TEST_Grabbable_item" parent="Room_Items/Sections/Sec_Default" unique_id=1008805268 instance=ExtResource("16_3wul1")]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 1.9073486e-06, 0.4, 2.299999)
+metadata/uid = "f097fcfa-9a51-4438-8ae1-c9a2db3aa7d8"
+metadata/lock_uid = true
+metadata/date_generated = "2026-03-14T12:45:35"
 
 [node name="But_SpawnRanItem" type="Node3D" parent="Room_Items/Sections/Sec_Default" unique_id=1025660281]
 transform = Transform3D(-9.9347645e-08, 0, 1, 0, 1, 0, -1, 0, -9.9347645e-08, 2.9, 0.7, 1.5)
@@ -5247,6 +5426,9 @@ material_override = ExtResource("41_vxgp0")
 mesh = SubResource("BoxMesh_o5rkc")
 
 [node name="Button_RanItem" parent="Room_Items/Sections/Sec_Default/But_SpawnRanItem" unique_id=1931696969 groups=["Interactables"] instance=ExtResource("10_h40wo")]
+metadata/uid = "b6ba0782-7dd5-4c56-b558-8c7a83b0ddd4"
+metadata/lock_uid = true
+metadata/date_generated = "2026-03-14T12:52:05"
 
 [node name="Label3D8" type="Label3D" parent="Room_Items/Sections/Sec_Default/But_SpawnRanItem" unique_id=323642576]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 2.3841858e-07, 0.40000004, 0)
@@ -5270,6 +5452,9 @@ material_override = ExtResource("41_vxgp0")
 mesh = SubResource("BoxMesh_o5rkc")
 
 [node name="Button3" parent="Room_Items/Sections/Sec_Default/But_SpawnItem" unique_id=1954125307 groups=["Interactables"] instance=ExtResource("10_h40wo")]
+metadata/uid = "64e4a458-2800-4fe4-b188-d2059c9739c2"
+metadata/lock_uid = true
+metadata/date_generated = "2026-03-14T12:52:05"
 
 [node name="Label3D8" type="Label3D" parent="Room_Items/Sections/Sec_Default/But_SpawnItem" unique_id=2091304310]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 2.3841858e-07, 0.40000004, 0)
@@ -5279,6 +5464,9 @@ font_size = 26
 
 [node name="BabyDude" parent="Room_Items/Sections/Sec_Default/But_SpawnItem" unique_id=1376443271 instance=ExtResource("60_7evwh")]
 transform = Transform3D(-1, 0, -3.1786513e-08, 0, 1, 0, 3.1786513e-08, 0, -1, 74.41902, -0.3159998, 5.416399)
+metadata/uid = "3725b539-eb10-42dc-b894-73effea73618"
+metadata/lock_uid = true
+metadata/date_generated = "2026-03-14T12:45:35"
 
 [node name="item_spawner_ranitem" type="Node" parent="Room_Items/Sections/Sec_Default" unique_id=1119505886 node_paths=PackedStringArray("holder", "spawn_point")]
 script = ExtResource("37_gw50n")
@@ -5313,9 +5501,18 @@ skeleton = NodePath("")
 
 [node name="TorchSconce" parent="Room_Items/Sections/Sec_Default" unique_id=1729385187 instance=ExtResource("65_tefph")]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -1.5, 1.2, 3.2000005)
+metadata/uid = "a95d06ef-d0e7-4ca5-a38e-bfde4be273dd"
+metadata/lock_uid = true
+metadata/date_generated = "2026-03-15T22:32:45"
 
 [node name="TorchSconce" parent="Room_Items/Sections/Sec_Default/TorchSconce" unique_id=116068039 instance=ExtResource("66_aomhw")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.1000004, 0, 0)
+
+[node name="Counter_Light" parent="Room_Items/Sections/Sec_Default" unique_id=1464059266 instance=ExtResource("37_dri38")]
+max_count = 1
+metadata/uid = "931ed6ee-cd14-4221-89f9-cb16687cb7d7"
+metadata/lock_uid = true
+metadata/date_generated = "2026-03-15T21:09:09"
 
 [node name="Sec_Vessel" type="Node3D" parent="Room_Items/Sections" unique_id=645519208]
 transform = Transform3D(7.54979e-08, 0, 1, 0, 1, 0, -1, 0, 7.54979e-08, 2.5, 0, -1)
@@ -5333,6 +5530,9 @@ transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 0, 0
 
 [node name="drinkvessel" parent="Room_Items/Sections/Sec_Vessel/Items" unique_id=1354406032 instance=ExtResource("35_15de5")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 1, -2.3841858e-07)
+metadata/uid = "571473b0-a4ea-4c32-8597-8798e969666a"
+metadata/lock_uid = true
+metadata/date_generated = "2026-03-14T12:45:35"
 
 [node name="Sec_Breakable" type="Node3D" parent="Room_Items/Sections" unique_id=509965618]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.5)
@@ -5478,15 +5678,27 @@ font_size = 52
 
 [node name="Urn" parent="Room_Items/Sections/Sec_Breakable/Items" unique_id=1891994863 instance=ExtResource("35_7ntu8")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0.39999998, 1.5)
+metadata/uid = "b12d4f66-fbbc-44c3-b1d7-cea9c3838d5d"
+metadata/lock_uid = true
+metadata/date_generated = "2026-03-14T12:45:35"
 
 [node name="Breakable_Item_Weak" parent="Room_Items/Sections/Sec_Breakable/Items" unique_id=2042809985 instance=ExtResource("41_leo15")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.6999989, 0.70000005, 1.7)
+metadata/uid = "3497c736-5344-4cde-858b-34497d1134a4"
+metadata/lock_uid = true
+metadata/date_generated = "2026-03-14T12:45:35"
 
 [node name="Breakable_Item_Mid" parent="Room_Items/Sections/Sec_Breakable/Items" unique_id=1828156528 instance=ExtResource("41_3agfk")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.6999989, 0.70000005, 3.6999998)
+metadata/uid = "741efc88-486e-46f8-a111-8c2a9602869c"
+metadata/lock_uid = true
+metadata/date_generated = "2026-03-14T12:45:35"
 
 [node name="Breakable_Item_Strong" parent="Room_Items/Sections/Sec_Breakable/Items" unique_id=1366129378 instance=ExtResource("28_po0fx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.6999989, 0.70000005, 5.7)
+metadata/uid = "a7a09b07-1714-4c53-817e-eaa928931f96"
+metadata/lock_uid = true
+metadata/date_generated = "2026-03-14T12:45:35"
 
 [node name="SpawnBreakable_Weak" type="Node3D" parent="Room_Items/Sections/Sec_Breakable" unique_id=506004405]
 transform = Transform3D(-0.99999994, 0, 5.9604645e-08, 0, 1, 0, -5.9604645e-08, 0, -0.99999994, 1.7499981, 0.836, 0.88999987)
@@ -5503,6 +5715,9 @@ transform = Transform3D(0.9999998, 0, 7.1054274e-15, 0, 1, 0, -2.842171e-14, 0, 
 mesh = SubResource("BoxMesh_o5rkc")
 
 [node name="But_SpawnBreakable_Weak" parent="Room_Items/Sections/Sec_Breakable/SpawnBreakable_Weak" unique_id=1582440675 groups=["Interactables"] instance=ExtResource("10_h40wo")]
+metadata/uid = "87bb4071-55a6-4645-a61c-1a9b40f9e304"
+metadata/lock_uid = true
+metadata/date_generated = "2026-03-14T12:52:05"
 
 [node name="_label" type="Label3D" parent="Room_Items/Sections/Sec_Breakable/SpawnBreakable_Weak" unique_id=896634886]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 0.8, -0.6999998)
@@ -5536,6 +5751,9 @@ transform = Transform3D(0.9999998, 0, 7.1054274e-15, 0, 1, 0, -2.842171e-14, 0, 
 mesh = SubResource("BoxMesh_o5rkc")
 
 [node name="But_Breakable_Mid" parent="Room_Items/Sections/Sec_Breakable/SpawnBreakable_Mid" unique_id=1939299462 groups=["Interactables"] instance=ExtResource("10_h40wo")]
+metadata/uid = "d091ff84-8dea-4bec-bd1b-a32e9ba4a901"
+metadata/lock_uid = true
+metadata/date_generated = "2026-03-14T12:52:05"
 
 [node name="_label" type="Label3D" parent="Room_Items/Sections/Sec_Breakable/SpawnBreakable_Mid" unique_id=1614338690]
 transform = Transform3D(0.9999997, 0, 1.4210855e-14, 0, 1, 0, -1.4210855e-14, 0, 0.9999997, -0.5, 0.8, -0.6999998)
@@ -5569,6 +5787,9 @@ transform = Transform3D(0.9999998, 0, 7.1054274e-15, 0, 1, 0, -2.842171e-14, 0, 
 mesh = SubResource("BoxMesh_o5rkc")
 
 [node name="But_SpawnBreakable_Strong" parent="Room_Items/Sections/Sec_Breakable/SpawnBreakable_Strong" unique_id=188403977 groups=["Interactables"] instance=ExtResource("10_h40wo")]
+metadata/uid = "ebb6b41d-781a-4014-b564-43758714e52b"
+metadata/lock_uid = true
+metadata/date_generated = "2026-03-14T12:52:05"
 
 [node name="_label" type="Label3D" parent="Room_Items/Sections/Sec_Breakable/SpawnBreakable_Strong" unique_id=1085286991]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 0.8, -0.6999998)
@@ -5603,6 +5824,9 @@ material_override = ExtResource("41_vxgp0")
 mesh = SubResource("BoxMesh_o5rkc")
 
 [node name="Button3" parent="Room_Items/Sections/Sec_Breakable/But_SpawnUrn_Ran" unique_id=1794714035 groups=["Interactables"] instance=ExtResource("10_h40wo")]
+metadata/uid = "cff692ee-a33c-49cb-bec7-0c26caca2a5d"
+metadata/lock_uid = true
+metadata/date_generated = "2026-03-14T12:52:05"
 
 [node name="Label3D8" type="Label3D" parent="Room_Items/Sections/Sec_Breakable/But_SpawnUrn_Ran" unique_id=869512533]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 2.3841858e-07, 0.50000006, 0)
@@ -5641,6 +5865,9 @@ material_override = ExtResource("41_vxgp0")
 mesh = SubResource("BoxMesh_o5rkc")
 
 [node name="But_SpawnUrn_Specific" parent="Room_Items/Sections/Sec_Breakable/But_SpawnUrn_Specific" unique_id=1187097041 groups=["Interactables"] instance=ExtResource("10_h40wo")]
+metadata/uid = "1ce50222-9890-4d97-ba65-cf905a079dff"
+metadata/lock_uid = true
+metadata/date_generated = "2026-03-14T12:52:05"
 
 [node name="Label3D8" type="Label3D" parent="Room_Items/Sections/Sec_Breakable/But_SpawnUrn_Specific" unique_id=1711174257]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 2.3841858e-07, 0.50000006, 0)
@@ -5666,6 +5893,9 @@ skeleton = NodePath("")
 [node name="Urn" parent="Room_Items/Sections/Sec_Breakable/But_SpawnUrn_Specific" unique_id=1497881449 instance=ExtResource("35_7ntu8")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.105477214, 1.5)
 item_type = SubResource("Resource_fksdy")
+metadata/uid = "50d0d9b1-2313-4a6a-8c42-362afbe568e1"
+metadata/lock_uid = true
+metadata/date_generated = "2026-03-14T12:45:35"
 
 [node name="Sec_Instrument" type="Node3D" parent="Room_Items/Sections" unique_id=1844577597]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -2.5, 0, -1)
@@ -5694,15 +5924,43 @@ out_pos = NodePath("../../Room_Start/Emter_start")
 [node name="Button_Return" parent="Room_Items/ReturnButtons" unique_id=143874076 groups=["Interactables"] instance=ExtResource("10_h40wo")]
 transform = Transform3D(-0.70710677, 0, -0.70710677, 0, 1, 0, 0.70710677, 0, -0.70710677, -1.1000023, 0.9, -2.1)
 prompt_text = "Return 2 Interactions"
+metadata/uid = "6f3476c4-2d09-4edf-9647-71c6b3abc284"
+metadata/lock_uid = true
+metadata/date_generated = "2026-03-14T12:52:05"
 
 [node name="Button_Return2" parent="Room_Items/ReturnButtons" unique_id=348608344 groups=["Interactables"] instance=ExtResource("10_h40wo")]
 transform = Transform3D(-0.7071067, 0, 0.7071068, 0, 1, 0, -0.7071068, 0, -0.7071067, 1.0999985, 0.9, -2.1)
+metadata/uid = "bf8be431-554f-41a2-91af-096fb8bb08e0"
+metadata/lock_uid = true
+metadata/date_generated = "2026-03-14T12:52:05"
 
 [node name="Button_Return3" parent="Room_Items/ReturnButtons" unique_id=476547212 groups=["Interactables"] instance=ExtResource("10_h40wo")]
 transform = Transform3D(0.7071069, 0, 0.70710665, 0, 1, 0, -0.70710665, 0, 0.7071069, 0.9999981, 0.9, 9.685755e-08)
+metadata/uid = "486f64f3-6e00-4243-b3a3-9485d8b85b29"
+metadata/lock_uid = true
+metadata/date_generated = "2026-03-14T12:52:05"
 
 [node name="Button_Return4" parent="Room_Items/ReturnButtons" unique_id=920529653 groups=["Interactables"] instance=ExtResource("10_h40wo")]
 transform = Transform3D(0.7071066, 0, -0.70710695, 0, 1, 0, 0.70710695, 0, 0.7071066, -1.0292892, 0.9, 0.02928944)
+metadata/uid = "09c00430-546b-4e7f-9a24-3f24dde7999d"
+metadata/lock_uid = true
+metadata/date_generated = "2026-03-14T12:52:05"
+
+[node name="UID_Generator" type="Node" parent="." unique_id=1057249571]
+script = ExtResource("70_24qtj")
+metadata/_custom_type_script = "uid://bul4myvyhnpjc"
+
+[node name="Node" type="Node" parent="." unique_id=598361942]
+
+[node name="DestroyedItemCell" type="Node3D" parent="Node" unique_id=1255910063]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 50000, 0, 0)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Node/DestroyedItemCell" unique_id=847947637]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.1, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Node/DestroyedItemCell/StaticBody3D" unique_id=1858486817]
+shape = SubResource("BoxShape3D_24qtj")
 
 [connection signal="area_entered" from="Bin/Room_Items/Teleporter/Trigger" to="Bin/Room_Items/Teleporter" method="_teleport_entity"]
 [connection signal="body_entered" from="Bin/Room_Items/Teleporter/Trigger" to="Bin/Room_Items/Teleporter" method="_teleport_item"]
@@ -5743,9 +6001,9 @@ transform = Transform3D(0.7071066, 0, -0.70710695, 0, 1, 0, 0.70710695, 0, 0.707
 [connection signal="on_change" from="Room_Interactions/Button_Room/Sec_2_c/demo_button_3" to="Room_Interactions/Button_Room/Sec_2_c/SignalDisplayer" method="display_signal"]
 [connection signal="on_deactivated" from="Room_Interactions/Button_Room/Sec_2_c/demo_button_3" to="Room_Interactions/Button_Room/Sec_2_c/SignalDisplayer" method="display_signal"]
 [connection signal="on_activated" from="Room_Interactions/Button_Room/Sec_2_c/demo_button_4" to="Room_Interactions/Button_Room/Sec_2_c/VarDisplayer" method="update_text"]
-[connection signal="on_activated" from="Room_Interactions/Button_Room/Sec_2_c/demo_button_4" to="Room_Interactions/Button_Room/Sec_2_c/counter_delay" method="add_count"]
-[connection signal="on_change_use_current_count" from="Room_Interactions/Button_Room/Sec_2_c/counter_delay" to="Room_Interactions/Button_Room/Sec_2_c/demo_button_3" method="change_delay"]
-[connection signal="on_change_use_current_count" from="Room_Interactions/Button_Room/Sec_2_c/counter_delay" to="Room_Interactions/Button_Room/Sec_2_c/VarDisplayer" method="update_text"]
+[connection signal="on_activated" from="Room_Interactions/Button_Room/Sec_2_c/demo_button_4" to="Room_Interactions/Button_Room/Sec_2_c/counter_delay2" method="add_count"]
+[connection signal="on_change_use_current_count" from="Room_Interactions/Button_Room/Sec_2_c/counter_delay2" to="Room_Interactions/Button_Room/Sec_2_c/demo_button_3" method="change_delay"]
+[connection signal="on_change_use_current_count" from="Room_Interactions/Button_Room/Sec_2_c/counter_delay2" to="Room_Interactions/Button_Room/Sec_2_c/VarDisplayer" method="update_text"]
 [connection signal="on_activated" from="Room_Interactions/Button_Room/Sec_2_d/demo_button_3" to="Room_Interactions/Button_Room/Sec_2_d/demo_button_4" method="reset_button"]
 [connection signal="on_activated" from="Room_Interactions/Button_Room/Sec_2_d/demo_button_3" to="Room_Interactions/Button_Room/Sec_2_d/SignalDisplayer" method="display_signal"]
 [connection signal="on_deactivated" from="Room_Interactions/Button_Room/Sec_2_d/demo_button_3" to="Room_Interactions/Button_Room/Sec_2_d/SignalDisplayer" method="display_signal"]
@@ -5781,13 +6039,12 @@ transform = Transform3D(0.7071066, 0, -0.70710695, 0, 1, 0, 0.70710695, 0, 0.707
 [connection signal="on_change" from="Room_Interactions/SignalReceiver_Room/ObjectsSection/Sec_Gate/Gate_Lever/Lever2" to="Room_Interactions/SignalReceiver_Room/ObjectsSection/Sec_Gate/Gate_Lever/Gate" method="open_gate"]
 [connection signal="on_activated" from="Room_Interactions/SignalReceiver_Room/ObjectsSection/Sec_Traps/PressurePlate" to="Room_Interactions/SignalReceiver_Room/ObjectsSection/Sec_Traps/trap_projectile" method="trigger_trap"]
 [connection signal="on_stage_completed" from="Room_Interactions/SignalReceiver_Room/ObjectsSection/Sec_Statue/Statue" to="Room_Interactions/SignalReceiver_Room/ObjectsSection/Sec_Statue/MainQuest_StageIndicator" method="stage_completed"]
-[connection signal="on_activated" from="Room_Items/Sections/Sec_Default/counter_light" to="Room_Items/Sections/Sec_Default/skybox_switcher" method="change_to_b"]
-[connection signal="on_deactivated" from="Room_Items/Sections/Sec_Default/counter_light" to="Room_Items/Sections/Sec_Default/skybox_switcher" method="change_to_a"]
 [connection signal="on_activated" from="Room_Items/Sections/Sec_Default/But_switch/Button2" to="Room_Items/Sections/Sec_Default/enabler_light" method="toggle_visibilty"]
-[connection signal="on_activated" from="Room_Items/Sections/Sec_Default/But_switch/Button2" to="Room_Items/Sections/Sec_Default/counter_light" method="add_count"]
 [connection signal="on_activated" from="Room_Items/Sections/Sec_Default/But_SpawnRanItem/Button_RanItem" to="Room_Items/Sections/Sec_Default/item_spawner_ranitem" method="spawn_item"]
 [connection signal="on_activated" from="Room_Items/Sections/Sec_Default/But_SpawnItem/Button3" to="Room_Items/Sections/Sec_Default/item_spawner_default" method="spawn_item"]
 [connection signal="on_activated" from="Room_Items/Sections/Sec_Default/TorchSconce" to="Room_Items/Sections/Sec_Default/item_spawner_default" method="spawn_item"]
+[connection signal="on_activated" from="Room_Items/Sections/Sec_Default/Counter_Light" to="Room_Items/Sections/Sec_Default/skybox_switcher" method="change_to_b"]
+[connection signal="on_deactivated" from="Room_Items/Sections/Sec_Default/Counter_Light" to="Room_Items/Sections/Sec_Default/skybox_switcher" method="change_to_a"]
 [connection signal="on_activated" from="Room_Items/Sections/Sec_Breakable/SpawnBreakable_Weak/But_SpawnBreakable_Weak" to="Room_Items/Sections/Sec_Breakable/SpawnBreakable_Weak/itm_spawner_breakable_weak" method="spawn_item"]
 [connection signal="on_activated" from="Room_Items/Sections/Sec_Breakable/SpawnBreakable_Mid/But_Breakable_Mid" to="Room_Items/Sections/Sec_Breakable/SpawnBreakable_Mid/itm_spwnr_breakable_mid" method="spawn_item"]
 [connection signal="on_activated" from="Room_Items/Sections/Sec_Breakable/SpawnBreakable_Strong/But_SpawnBreakable_Strong" to="Room_Items/Sections/Sec_Breakable/SpawnBreakable_Strong/itm_spwnr_breakable_strong" method="spawn_item"]

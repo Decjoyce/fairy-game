@@ -35,6 +35,7 @@ enum item_weight_types {WEIGHTLESS, LIGHT, MEDIUM, HEAVY}
 @export var destroyed_item: Node3D
 var item_spawn_on_destroyed: Grabbable_Item
 @export var destroyed_audio: AudioStreamPlayer3D
+var is_broken: bool
 
 @export_category("Graphics")
 @export var idle_graphics: Node3D
@@ -51,17 +52,25 @@ var prev_velocity: Vector3
 
 var has_been_picked_up: bool
 
+var non_scene_native: bool
+var is_pooled: bool = false
+var starting_pos: Vector3
+
 func _ready() -> void:
 	interaction_type = InteractTypes.GRAB_ITEM
 	rb.body_entered.connect(_on_collide)
 	prompt_text = tr("GRAB") + tr(display_name)
-	if item_type is ItemType_Breakable:
+	starting_pos = global_position
+	if item_type is ItemType_Breakable and !is_broken:
 		var _item_to_spawn: PackedScene = item_type.get_item_to_spawn()
 		if _item_to_spawn == null: return
 		item_spawn_on_destroyed = _item_to_spawn.instantiate()
 		destroyed_item.add_child(item_spawn_on_destroyed)
 		item_spawn_on_destroyed.position = Vector3.UP * 0.75
 		item_spawn_on_destroyed.disable_me()
+		item_spawn_on_destroyed.non_scene_native = true
+		item_spawn_on_destroyed.is_pooled = true
+		item_spawn_on_destroyed.set_meta("uid", "[NONNATIVE]")
 
 func _physics_process(delta: float) -> void:
 	prev_velocity = rb.linear_velocity
@@ -176,12 +185,15 @@ func break_item() -> void:
 		if item_spawn_on_destroyed: 
 			item_spawn_on_destroyed.enable_me()
 			item_spawn_on_destroyed.reparent(get_tree().current_scene)
+			item_spawn_on_destroyed.is_pooled = false
 	#disable_me()
+	is_broken = true
 	call_deferred("send_to_ether")
 
 func send_to_ether() -> void:
-	reparent(Debug.destroyed_item_cell)
+	reparent(get_tree().current_scene.get_node("Node/DestroyedItemCell")) ##temp
 	position = Vector3.ZERO
+	disable_me()
 	#print("Dead")
 	#call_deferred("queue_free")
 
