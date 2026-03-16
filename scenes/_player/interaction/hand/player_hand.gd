@@ -124,7 +124,9 @@ var grabbed_obj: Interactable
 func begin_interact() -> void:
 	if !hovering_interactable:
 		return
-	if hovering_interactable.interaction_type == hovering_interactable.InteractTypes.LEVER and player.movement.dist_to_target >= 0.6: 
+	if (hovering_interactable.interaction_type == hovering_interactable.InteractTypes.LEVER or hovering_interactable.interaction_type == hovering_interactable.InteractTypes.TEMP_SAVE) and player.movement.dist_to_target >= 0.6: 
+		return
+	if hovering_interactable.interaction_type == hovering_interactable.InteractTypes.TEMP_SAVE and player.movement.dist_to_target >= 0.3:
 		return
 	anim_is_prompting = false
 	current_interactable = hovering_interactable

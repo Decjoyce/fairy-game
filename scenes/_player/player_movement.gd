@@ -208,6 +208,8 @@ func rotate_input() -> void:
 func rotate(delta: float):
 	var weight = 1 - exp(-rotation_speed * delta)
 	player.rotation.y = lerp_angle(player.rotation.y, target_rotation, weight)
+	if player.rotation.y <= target_rotation + 0.001 and player.rotation.y >= target_rotation - 0.001:
+		player.rotation.y = target_rotation
 
 # ↑ Rotating Stuff ↑
 # --------------------------------------------------------------------------------------------------

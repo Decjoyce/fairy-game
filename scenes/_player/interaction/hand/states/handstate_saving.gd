@@ -11,8 +11,14 @@ var time_since_start_charge: float
 func update(_delta: float) -> void:
 	if Input.is_action_just_pressed("action_" + hand_controller.stringed_hand_type):
 		finished.emit(FREE)
-		return
+		return	
+	
+	if value >= 0.75:
+		t_bob += _delta * value * 50
+		hand_controller.position = hand_place + _handbob(t_bob)
+	
 	if !begin_charging or value >= 1.0: return
+	move_to_pos()
 	update_value(_delta)
 
 func enter(previous_state_path: String, data := {}) -> void:
@@ -29,6 +35,7 @@ func enter(previous_state_path: String, data := {}) -> void:
 func exit() -> void:
 	save_stone.end_interact()
 	save_stone = null
+	begin_charging = false
 	tween.stop()
 	tween = null
 	time_since_start_charge = 0
@@ -39,3 +46,21 @@ func update_value(_delta: float) -> void:
 	value = clampf(time_since_start_charge / save_stone.charge_length, 0, 1.0)
 	var done:= save_stone.update_val(hand_controller.hand_type, value)
 	if done: player_interact.force_stop_interacting() # temp
+
+func move_to_pos() -> void:
+	if player.movement.dist_to_target > 0 or player.global_rotation.y != player.movement.target_rotation:
+		var hp := save_stone.get_hand_place(hand_controller.hand_type)
+		hand_place = get_viewport().get_camera_3d().unproject_position(hp.global_position)
+		hand_place -= hand_controller.size/2
+		hand_controller.global_position = hand_place
+
+var BOB_FREQ: float = 2.5
+var BOB_AMP: float = 1.25
+var t_bob: float = 0.0
+
+func _handbob(time: float) -> Vector2:
+	var pos = Vector2.ZERO
+	pos.x = sin(time * BOB_FREQ) * BOB_AMP
+	pos.y = cos(time * BOB_FREQ/4) * BOB_AMP
+	
+	return pos
