@@ -14,7 +14,7 @@ func on_save_game(saved_data: Array[SavedData]) -> void:
 	my_data.is_opening = parent_gate.is_opening
 	my_data.end_pos = parent_gate._end_position
 	my_data.start_pos = parent_gate._start_position
-	my_data.graphics_pos = parent_gate.graphics.position.y
+	my_data.graphics_pos = parent_gate.graphics.global_position.y
 	
 	saved_data.append(my_data)
 
@@ -27,7 +27,7 @@ func on_load_game(saved_data: SavedData) -> void:
 	if saved_data is SavedData_Gate:
 		parent_gate._end_position = saved_data.end_pos
 		parent_gate._start_position = saved_data.start_pos
-		parent_gate.graphics.position.y = saved_data.graphics_pos
+		parent_gate.graphics.global_position.y = saved_data.graphics_pos
 		parent_gate.cur_value = saved_data.current_value
 		parent_gate.last_value = saved_data.last_value
-		parent_gate.is_opening = saved_data.is_opening
+		parent_gate.open_gate(saved_data.current_value)
