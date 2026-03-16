@@ -3,10 +3,11 @@
 [ext_resource type="Script" uid="uid://6i1hfjvhvouh" path="res://scenes/interactions/_special/saving_stone/saving_stone.gd" id="1_e6y8a"]
 [ext_resource type="Material" uid="uid://jlw3srg0kwwt" path="res://assets/models/cairn/Props/StoneSlab/Stone_Slab.tres" id="2_fm62s"]
 [ext_resource type="Texture2D" uid="uid://1c406hs7su5a" path="res://assets/__not_ours_dontship/triskele_rough_01.png" id="3_vmeem"]
+[ext_resource type="Texture2D" uid="uid://bac1td5bs4tmp" path="res://scenes/_player/interaction/hand/assets/new/handThrowRelease.png" id="4_kjtoo"]
 
 [sub_resource type="Gradient" id="Gradient_vmeem"]
-offsets = PackedFloat32Array(0, 0.81914896, 1)
-colors = PackedColorArray(0.5411765, 0.5411765, 0.5411765, 1, 0.78077585, 0.9479055, 0.94566494, 1, 0, 1, 1, 1)
+offsets = PackedFloat32Array(0, 0.7279635, 1)
+colors = PackedColorArray(0, 0, 0, 1, 1.4344496, 1.732344, 1.7281344, 1, 0, 18.892157, 18.892157, 1)
 
 [sub_resource type="GradientTexture1D" id="GradientTexture1D_kjtoo"]
 gradient = SubResource("Gradient_vmeem")
@@ -48,9 +49,43 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_kjeil")
 
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_vmeem"]
+initial_velocity_min = -0.19999999
+initial_velocity_max = 0.19999999
+gravity = Vector3(0, 1, 0)
+hue_variation_min = -2.2351742e-08
+hue_variation_max = -2.2351742e-08
+
+[sub_resource type="Gradient" id="Gradient_8dvc6"]
+offsets = PackedFloat32Array(0.055555556, 0.6259259)
+colors = PackedColorArray(0, 1, 1, 1, 0, 0, 0, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_kjtoo"]
+gradient = SubResource("Gradient_8dvc6")
+width = 114
+height = 49
+fill = 1
+fill_from = Vector2(0.5, 0.536)
+fill_to = Vector2(1.075, 0.475)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_v2yan"]
+transparency = 1
+blend_mode = 1
+shading_mode = 0
+albedo_texture = SubResource("GradientTexture2D_kjtoo")
+billboard_mode = 3
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="QuadMesh" id="QuadMesh_k8w8l"]
+material = SubResource("StandardMaterial3D_v2yan")
+size = Vector2(1.5, 1.5)
+
 [node name="SavingStone" type="Node3D" unique_id=452927148]
 script = ExtResource("1_e6y8a")
 shine_gradient = SubResource("GradientTexture1D_kjtoo")
+charge_length = 2.5
 interaction_type = 8
 prompt_text = "SAVE"
 metadata/_custom_type_script = "uid://6i1hfjvhvouh"
@@ -74,18 +109,47 @@ mesh = SubResource("ArrayMesh_vmeem")
 
 [node name="HandPosStuff" type="Node3D" parent="." unique_id=1006346055]
 
-[node name="hand_place_l" type="Decal" parent="HandPosStuff" unique_id=1120033328]
+[node name="hand_place_l_old" type="Decal" parent="HandPosStuff" unique_id=1120033328]
 unique_name_in_owner = true
 transform = Transform3D(-4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 0, 1, 0.020418521, 0.8733648, 0.22204569)
+visible = false
 size = Vector3(0.3, 0.067, 0.3)
 texture_albedo = ExtResource("3_vmeem")
 emission_energy = 3.0
 modulate = Color(0.54178685, 0.5417869, 0.54178685, 1)
 
-[node name="hand_place_r" type="Decal" parent="HandPosStuff" unique_id=596926789]
+[node name="hand_place_l" type="Decal" parent="HandPosStuff" unique_id=654427683]
+unique_name_in_owner = true
+transform = Transform3D(-4.371139e-08, 1, 0, 4.371139e-08, 1.9106855e-15, -1, -1, -4.371139e-08, -4.371139e-08, 0.020418521, 0.8733648, 0.22204569)
+size = Vector3(0.35, 0.067, 0.35)
+texture_albedo = ExtResource("4_kjtoo")
+emission_energy = 16.0
+modulate = Color(0, 0, 0, 1)
+
+[node name="hand_place_r" type="Decal" parent="HandPosStuff" unique_id=898739501]
+unique_name_in_owner = true
+transform = Transform3D(4.371139e-08, 1, -4.371139e-08, 0, -4.371139e-08, -1, 1, -4.371139e-08, 1.9106855e-15, 0.02, 0.873, -0.222)
+size = Vector3(0.35, 0.067, 0.35)
+texture_albedo = ExtResource("4_kjtoo")
+emission_energy = 3.1
+modulate = Color(0, 0, 0, 1)
+
+[node name="hand_place_r_old" type="Decal" parent="HandPosStuff" unique_id=596926789]
 unique_name_in_owner = true
 transform = Transform3D(4.371139e-08, -1, 0, 1, 4.371139e-08, 0, 0, 0, -1, 0.02, 0.873, -0.222)
+visible = false
 size = Vector3(0.3, 0.067, 0.3)
 texture_albedo = ExtResource("3_vmeem")
 emission_energy = 3.0
 modulate = Color(0.54178685, 0.5417869, 0.54178685, 1)
+
+[node name="Particles" type="GPUParticles3D" parent="." unique_id=1051729732]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.038888752, 0.9318928, 0)
+emitting = false
+amount_ratio = 0.9126
+lifetime = 2.0
+one_shot = true
+preprocess = 0.01
+fixed_fps = 12
+process_material = SubResource("ParticleProcessMaterial_vmeem")
+draw_pass_1 = SubResource("QuadMesh_k8w8l")

@@ -2,7 +2,9 @@ class_name SavingStone
 extends Interactable
 
 @onready var hand_place_l: Decal = $%hand_place_l
-@onready var hand_place_r: Decal = $%hand_place_r
+@onready var hand_place_r: Decal = %hand_place_r
+@onready var particles: GPUParticles3D = $Particles
+
 @export var shine_gradient: GradientTexture1D
 
 @export var charge_length: float = 1.5
@@ -21,7 +23,7 @@ func end_interact(sig: float = -1) -> void:
 	r_charged = false
 
 func charge_complete() -> void:
-	#some cool effect stuff shoudl go here
+	particles.emitting = true
 	TEMPSaveGameHandler.save_game()
 
 func check_charged() -> bool:
