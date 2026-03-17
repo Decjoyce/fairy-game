@@ -75,6 +75,12 @@ func _physics_process(delta: float) -> void:
 	
 	movement.movement_input()
 
+var temp_do_save_trans: bool
+var temp_t: float
+var tmep_yo: float = 1
+#@onready var savetrans: ColorRect = %tempsavetrans
+#@onready var savetransmat: ShaderMaterial = savetrans.material
+
 func on_save_game(saved_data: SavedData_Player) -> void:
 	#region General Data
 	saved_data.current_weight = current_weight
@@ -88,6 +94,8 @@ func on_save_game(saved_data: SavedData_Player) -> void:
 	saved_data.target_rotation = movement.target_rotation
 	saved_data.is_crouching = movement.is_crouching
 	#endregion
+	#temp_do_save_trans = true
+	#tmep_yo = 0.5
 
 func on_before_load_game() -> void:
 	pass
@@ -108,3 +116,6 @@ func on_load_game(saved_data: SavedData_Player) -> void:
 	if saved_data.is_crouching:
 		movement.call_deferred("crouch", true)
 	#endregion
+	#savetransmat.set_shader_parameter("progress", 0)
+	#temp_do_save_trans = true
+	#tmep_yo = 0.5

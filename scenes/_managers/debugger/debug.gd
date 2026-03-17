@@ -19,6 +19,8 @@ func _ready() -> void:
 	_init_me()
 
 func _process(delta: float) -> void:
+	pass
+	
 	if !DEBUGGER_ENABLED:
 		return
 	if Input.is_action_just_pressed("_debug_open_console"):

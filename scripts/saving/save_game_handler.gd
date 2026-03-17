@@ -7,6 +7,8 @@ signal on_loaded_game
 
 var world_root: Node3D
 
+var is_loading: bool
+
 func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("save_game"):
 		save_game()
@@ -33,8 +35,14 @@ func save_game() -> void:
 var uid_list: Dictionary[String, Node] = {}
 
 func load_game() -> void:
+	if is_loading: return
 	var saved_game: SavedGame = load("user://savegame.tres") as SavedGame
 	
+	EffectsPlayer.blur_out(1, 1, true)
+	EffectsPlayer.saturize(0, 0.5, true)
+	
+	is_loading = true
+	await get_tree().create_timer(1).timeout
 	await reload_cur_scene()
 	
 	get_tree().call_group("Player", "on_before_load_game") 
@@ -60,7 +68,9 @@ func load_game() -> void:
 		else: # Nodes that were originally placed in the scene
 			if uid_list[obj.uid].has_method("on_load_game"):
 				uid_list[obj.uid].on_load_game(obj)
-	call_deferred("emit_on_loaded_game")
+	EffectsPlayer.blur_out(0, 1, true)
+	EffectsPlayer.saturize(1, 1, true)
+	is_loading = false
 
 func _load_non_native_objs(obj: SavedData) -> void:
 	#prints(obj.uid, obj.scene_path)

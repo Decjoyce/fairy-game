@@ -182,9 +182,6 @@ shadow_mesh = SubResource("ArrayMesh_mdfrn")
 [sub_resource type="SphereShape3D" id="SphereShape3D_owq6r"]
 radius = 0.1
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_d308h"]
-size = Vector3(5, 0.13, 5)
-
 [node name="Puzzle01" type="Node3D" unique_id=2140837292 node_paths=PackedStringArray("player", "checkpoints") groups=["Level"]]
 script = ExtResource("1_owq6r")
 player = NodePath("player_test")
@@ -695,18 +692,6 @@ shape = SubResource("SphereShape3D_owq6r")
 [node name="UID_Generator" type="Node" parent="." unique_id=909288222]
 script = ExtResource("24_d308h")
 metadata/_custom_type_script = "uid://bul4myvyhnpjc"
-
-[node name="Node" type="Node" parent="." unique_id=1187618193]
-
-[node name="DestroyedItemCell" type="Node3D" parent="Node" unique_id=918265430]
-unique_name_in_owner = true
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 50000, 0, 0)
-
-[node name="StaticBody3D" type="StaticBody3D" parent="Node/DestroyedItemCell" unique_id=1797474016]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.1, 0)
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Node/DestroyedItemCell/StaticBody3D" unique_id=317325135]
-shape = SubResource("BoxShape3D_d308h")
 
 [connection signal="on_activated" from="Room01/Button" to="Room01/Gate" method="open_gate"]
 [connection signal="on_change" from="Room01/PressurePlate" to="Room01/Gate2" method="open_gate"]

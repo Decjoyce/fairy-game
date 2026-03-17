@@ -1,7 +1,7 @@
 class_name PlayerHand
 extends Control
 
-var test_handlimit: bool
+var test_handlimit: bool = true
 var test_screen_limit_x_min: float 
 var test_screen_limit_x_max: float 
 var test_screen_fraction: float = 5.0
