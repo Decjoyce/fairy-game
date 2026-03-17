@@ -1,4 +1,5 @@
 @icon("res://assets/_editor_icons/icon_gate.svg")
+class_name Gate
 extends Node3D
 
 signal on_activated(sig: float)

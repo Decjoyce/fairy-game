@@ -14,5 +14,6 @@ func spawn_item(sig: float) -> void:
 		spawned_item = item.instantiate()
 	
 	holder.add_child(spawned_item)
+	spawned_item.non_scene_native = true
 	spawned_item.global_position = spawn_point.global_position
 	spawned_item.global_rotation = spawned_item.global_rotation

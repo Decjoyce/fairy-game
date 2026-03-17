@@ -5,6 +5,7 @@
 [ext_resource type="Material" uid="uid://dyejtq23uplk4" path="res://assets/shaders/Outline/outline.tres" id="2_512if"]
 [ext_resource type="AudioStream" uid="uid://b124myn6efxg3" path="res://assets/audio/sfx/environment/Traps/Spikes/Mechanical, Gears, Mechanical Texture, Metal   Wood, Creak, Movement, Friction, Vintage 01 SND117044 1.wav" id="4_8dywv"]
 [ext_resource type="AudioStream" uid="uid://d15ljkqmmt4ee" path="res://assets/audio/sfx/environment/Traps/Spikes/Metal, Impact, Heavy, Powerful, Big, Slide, Movement, Variations 01 SND117149.wav" id="5_r8g5n"]
+[ext_resource type="Script" uid="uid://dh3jjn72a6w1u" path="res://scripts/saving/persistent_objs/po_spiketrap.gd" id="6_3gx0s"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5yqwi"]
 albedo_color = Color(0.29582244, 0.28200856, 0.27378577, 1)
@@ -164,8 +165,9 @@ _data = {
 [sub_resource type="BoxShape3D" id="BoxShape3D_512if"]
 size = Vector3(1, 0.083, 1)
 
-[node name="SpikeTrap" type="Node3D" unique_id=610712147]
+[node name="SpikeTrap" type="Node3D" unique_id=1388700218]
 script = ExtResource("1_oarp6")
+metadata/_custom_type_script = "uid://dcbg0ho5ff6uu"
 
 [node name="Holes" type="Node3D" parent="." unique_id=452673624]
 
@@ -382,6 +384,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.9367798, 0)
 shape = SubResource("BoxShape3D_512if")
 
 [node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="." unique_id=952584298]
+
+[node name="PO_SpikeTrap" type="Node" parent="." unique_id=786041174 groups=["PO"]]
+script = ExtResource("6_3gx0s")
+metadata/_custom_type_script = "uid://dh3jjn72a6w1u"
 
 [connection signal="area_entered" from="Area3D" to="." method="_on_area_3d_area_entered"]
 [connection signal="area_exited" from="Area3D" to="." method="_on_area_3d_area_exited"]

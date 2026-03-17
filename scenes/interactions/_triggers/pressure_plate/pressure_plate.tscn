@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://c7ghu7bwjvv0k" path="res://scenes/interactions/_triggers/pressure_plate/pressure_plate.gd" id="1_i6vjq"]
 [ext_resource type="Material" uid="uid://beaom2cndegce" path="res://assets/models/cairn/Props/PressurePlate/PressurePlate.tres" id="2_237o0"]
+[ext_resource type="Script" uid="uid://0u8kvsvjv11k" path="res://scripts/saving/persistent_objs/po_pressureplate.gd" id="3_sfnck"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_i6vjq"]
 size = Vector3(1, 0.1, 1)
@@ -40,7 +41,7 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_8qv71")
 
-[node name="PressurePlate" type="Node3D" unique_id=247380468 groups=["debug_PickableObjects"]]
+[node name="PressurePlate" type="Node3D" unique_id=790035545 groups=["debug_PickableObjects"]]
 script = ExtResource("1_i6vjq")
 metadata/_custom_type_script = "uid://c7ghu7bwjvv0k"
 
@@ -74,6 +75,10 @@ debug_color = Color(0.83023536, 0.46282655, 3.85046e-07, 1)
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Graphics" unique_id=784396263]
 transform = Transform3D(0.2, 0, 0, 0, 0.45, 0, 0, 0, 0.2, 0, -0.0026611425, 0)
 mesh = SubResource("ArrayMesh_jqphk")
+
+[node name="PO_PressurePlate" type="Node" parent="." unique_id=2017023874 groups=["PO"]]
+script = ExtResource("3_sfnck")
+metadata/_custom_type_script = "uid://0u8kvsvjv11k"
 
 [connection signal="area_shape_entered" from="Graphics/Trigger" to="." method="_on_area_entered_trigger"]
 [connection signal="area_shape_exited" from="Graphics/Trigger" to="." method="_on_area_exited_trigger"]

@@ -1,7 +1,7 @@
 class_name PlayerHand
 extends Control
 
-var test_handlimit: bool
+var test_handlimit: bool = true
 var test_screen_limit_x_min: float 
 var test_screen_limit_x_max: float 
 var test_screen_fraction: float = 5.0
@@ -124,7 +124,9 @@ var grabbed_obj: Interactable
 func begin_interact() -> void:
 	if !hovering_interactable:
 		return
-	if hovering_interactable.interaction_type == hovering_interactable.InteractTypes.LEVER and player.movement.dist_to_target >= 0.6: 
+	if (hovering_interactable.interaction_type == hovering_interactable.InteractTypes.LEVER or hovering_interactable.interaction_type == hovering_interactable.InteractTypes.TEMP_SAVE) and player.movement.dist_to_target >= 0.6: 
+		return
+	if hovering_interactable.interaction_type == hovering_interactable.InteractTypes.TEMP_SAVE and player.movement.dist_to_target >= 0.3:
 		return
 	anim_is_prompting = false
 	current_interactable = hovering_interactable
@@ -167,6 +169,9 @@ func begin_interact() -> void:
 				player_interact.free_interaction_on_other_hand(hand_type) # replace with signal
 			current_interactable.begin_interact()
 			state.finished.emit(state.VALVE)
+		hovering_interactable.InteractTypes.TEMP_SAVE:
+			current_interactable.begin_interact()
+			state.finished.emit(state.SAVING)
 
 func on_player_moved(direction: Vector3, target: Vector3) -> void:
 	if !state.moving_breaks_free:

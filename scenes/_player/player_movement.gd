@@ -208,6 +208,8 @@ func rotate_input() -> void:
 func rotate(delta: float):
 	var weight = 1 - exp(-rotation_speed * delta)
 	player.rotation.y = lerp_angle(player.rotation.y, target_rotation, weight)
+	if player.rotation.y <= target_rotation + 0.001 and player.rotation.y >= target_rotation - 0.001:
+		player.rotation.y = target_rotation
 
 # ↑ Rotating Stuff ↑
 # --------------------------------------------------------------------------------------------------
@@ -219,8 +221,8 @@ func toggle_crouch() -> void:
 	if is_crouching: uncrouch()
 	else: crouch()
 
-func crouch() -> void:
-	if !floor_detector.get_collision_point(): return
+func crouch(bypass_floor_detection: bool = false) -> void:
+	if !bypass_floor_detection and !floor_detector.get_collision_point(): return
 	is_crouching = true
 	
 	on_crouch.emit(true)

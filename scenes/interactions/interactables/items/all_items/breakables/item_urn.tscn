@@ -17,6 +17,7 @@
 [ext_resource type="AudioStream" uid="uid://fuh5gdonebeu" path="res://assets/audio/sfx/items/urn/Pot_Break-007.wav" id="15_wuuoh"]
 [ext_resource type="AudioStream" uid="uid://mg4lgqchj0p5" path="res://assets/audio/sfx/items/urn/Pot_Break-008.wav" id="16_tdwgv"]
 [ext_resource type="AudioStream" uid="uid://plsapuaavdu" path="res://assets/audio/sfx/items/urn/Pot_Break-009.wav" id="17_7fac1"]
+[ext_resource type="Script" uid="uid://bhf6r6nw14krj" path="res://scripts/saving/persistent_objs/po_item.gd" id="18_ehatk"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_llc7q"]
 
@@ -145,3 +146,7 @@ render_priority = 1
 texture = ExtResource("3_bkq8s")
 hframes = 2
 frame = 1
+
+[node name="PO_Item" type="Node" parent="." unique_id=40441299 groups=["PO"]]
+script = ExtResource("18_ehatk")
+metadata/_custom_type_script = "uid://bhf6r6nw14krj"

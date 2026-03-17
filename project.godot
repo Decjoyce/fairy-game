@@ -30,6 +30,9 @@ GridMapPathfinding="res://addons/grid_map_pathfinding/grid_map_pathfinding.gd"
 Debug="*res://scenes/_managers/debugger/debugger.tscn"
 Impact_Manager="*res://scenes/_managers/impact_manager/impact_manager.tscn"
 GM="*uid://sfbx2b7nrctr"
+TEMPSaveGameHandler="*uid://cpncffjgoewdh"
+OMT="*uid://bfjbajm1402m3"
+EffectsPlayer="*uid://ck8x0eqy5wlqv"
 
 [debug]
 
@@ -79,6 +82,7 @@ EnemyCombatHand=""
 fakeplayer=""
 Investegate="make enemy look here"
 Level=""
+PO=""
 
 [input]
 
@@ -252,6 +256,16 @@ testing_handlimit_change={
 testing_altthrow={
 "deadzone": 0.2,
 "events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":true,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":50,"key_label":0,"unicode":50,"location":0,"echo":false,"script":null)
+]
+}
+save_game={
+"deadzone": 0.2,
+"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":true,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":79,"key_label":0,"unicode":111,"location":0,"echo":false,"script":null)
+]
+}
+load_game={
+"deadzone": 0.2,
+"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":true,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":80,"key_label":0,"unicode":112,"location":0,"echo":false,"script":null)
 ]
 }
 

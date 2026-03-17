@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://ccxmagyj4smfr"]
 
 [ext_resource type="Script" uid="uid://ejuiwwsmyrgi" path="res://scenes/interactions/_triggers/item_receiver/item_receiver.gd" id="1_h73fw"]
+[ext_resource type="Script" uid="uid://cc36kknugth5b" path="res://scripts/saving/persistent_objs/po_itmreceiver.gd" id="2_pvvlv"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_l8cot"]
 resource_local_to_scene = true
@@ -20,8 +21,13 @@ metadata/_custom_type_script = "uid://ejuiwwsmyrgi"
 collision_layer = 32
 monitoring = false
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" unique_id=392109662]
+[node name="_col" type="CollisionShape3D" parent="Area3D" unique_id=392109662]
+unique_name_in_owner = true
 shape = SubResource("SphereShape3D_l8cot")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=476626386]
 mesh = SubResource("SphereMesh_l8cot")
+
+[node name="PO_ItmReceiver" type="Node" parent="." unique_id=1441180582 groups=["PO"]]
+script = ExtResource("2_pvvlv")
+metadata/_custom_type_script = "uid://cc36kknugth5b"

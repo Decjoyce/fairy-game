@@ -1,0 +1,123 @@
+[gd_scene format=3 uid="uid://c4ldjm8f3b4pp"]
+
+[ext_resource type="PackedScene" uid="uid://bq86osdembn58" path="res://scenes/_player/_player_test.tscn" id="1_s7eb3"]
+[ext_resource type="Script" uid="uid://cgb0bi0gumby6" path="res://scenes/interactions/_receivers/skybox_changer/skybox_changer.gd" id="2_q7664"]
+[ext_resource type="Environment" uid="uid://co42tppomh8j3" path="res://assets/skyboxes/skyboxes_testing_dark.tres" id="3_af0j3"]
+[ext_resource type="Script" uid="uid://bul4myvyhnpjc" path="res://scripts/saving/uid_generator.gd" id="4_6vfwo"]
+[ext_resource type="PackedScene" uid="uid://ccxmagyj4smfr" path="res://scenes/interactions/_triggers/item_receiver/item_receiver.tscn" id="4_q7664"]
+[ext_resource type="PackedScene" uid="uid://brxr85hbqpapm" path="res://scenes/interactions/interactables/items/all_items/breakables/item_baby.tscn" id="6_6vfwo"]
+[ext_resource type="PackedScene" uid="uid://cfkoaxhngk3gf" path="res://scenes/interactions/interactables/items/all_items/keys/item_key.tscn" id="6_af0j3"]
+[ext_resource type="PackedScene" uid="uid://d13vdgis1uvvv" path="res://scenes/interactions/interactables/items/all_items/keys/item_leverhandle.tscn" id="7_c8w3x"]
+
+[sub_resource type="Environment" id="Environment_c8w3x"]
+
+[sub_resource type="Environment" id="Environment_gaiyo"]
+
+[node name="ItmrcvrTesting" type="Node3D" unique_id=1493754359]
+
+[node name="player_test" parent="." unique_id=725727541 instance=ExtResource("1_s7eb3")]
+transform = Transform3D(1, 0, -1.7484555e-07, 0, 1, 0, 1.7484555e-07, 0, 1, 0, 1, 1)
+
+[node name="skybox_changer" type="Node" parent="." unique_id=1456803582 node_paths=PackedStringArray("world_environment")]
+script = ExtResource("2_q7664")
+world_environment = NodePath("WorldEnvironment")
+skybox_a = SubResource("Environment_c8w3x")
+skybox_b = ExtResource("3_af0j3")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="skybox_changer" unique_id=936667896]
+environment = SubResource("Environment_gaiyo")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="skybox_changer" unique_id=1887402773]
+transform = Transform3D(1, 0, 0, 0, -0.50000006, 0.8660254, 0, -0.8660254, -0.50000006, 0, 1.8000001, 0)
+shadow_enabled = true
+
+[node name="_env" type="Node3D" parent="." unique_id=1727453601]
+
+[node name="CSGBox3D" type="CSGBox3D" parent="_env" unique_id=1305858072]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, 0, -1)
+use_collision = true
+size = Vector3(34, 0.001, 13)
+
+[node name="ItemReceiver" parent="." unique_id=578478741 instance=ExtResource("4_q7664")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9640733, -3.2102482)
+num_needed_by_type = 2
+destroy_items_on_receive = true
+metadata/uid = "c627e47c-8130-4c6f-9039-f41deb0e2245"
+metadata/lock_uid = true
+metadata/date_generated = "2026-03-15T22:05:02"
+
+[node name="ItemReceiver2" parent="." unique_id=1777372640 instance=ExtResource("4_q7664")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.4397864, 0.9640733, -3.2102482)
+receiver_type = 1
+keywords_needed = "BABY;LEVER"
+num_needed_by_keyword = 2
+destroy_items_on_receive = true
+metadata/uid = "3f1b6a2a-ca8a-4b62-9b90-234b3f10d5d6"
+metadata/lock_uid = true
+metadata/date_generated = "2026-03-15T22:05:02"
+
+[node name="ItemReceiver3" parent="." unique_id=769387127 node_paths=PackedStringArray("specific_items_to_recieve") instance=ExtResource("4_q7664")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5656195, 0.9640733, -3.2102482)
+receiver_type = 2
+specific_items_to_recieve = [NodePath("../BabyDude2"), NodePath("../LeverHandle2")]
+destroy_items_on_receive = true
+metadata/uid = "d11d752f-9ed6-4776-84d4-aec92d3ef56b"
+metadata/lock_uid = true
+metadata/date_generated = "2026-03-15T22:05:02"
+
+[node name="ItemReceiver4" parent="." unique_id=1217510774 instance=ExtResource("4_q7664")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.2686949, 0.96407306, 3.676296)
+receiver_type = 4
+num_needed_for_any = 4
+destroy_items_on_receive = true
+metadata/uid = "52242348-de26-43ba-9ae3-165277b3165a"
+metadata/lock_uid = true
+metadata/date_generated = "2026-03-15T22:05:02"
+
+[node name="ItemReceiver5" parent="." unique_id=1870092616 node_paths=PackedStringArray("specific_items_to_recieve") instance=ExtResource("4_q7664")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.095252, 0.96407306, 3.676296)
+receiver_type = 3
+num_needed_by_type = 2
+keywords_needed = "LEVER;BABY"
+num_needed_by_keyword = 2
+specific_items_to_recieve = [NodePath("../BabyDude2"), NodePath("../LeverHandle2")]
+destroy_items_on_receive = true
+metadata/uid = "6c94fad4-c222-406a-a75f-613ebc5890f6"
+metadata/lock_uid = true
+metadata/date_generated = "2026-03-15T22:05:02"
+
+[node name="key" parent="." unique_id=451440735 instance=ExtResource("6_af0j3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.68842113, -1.3503051)
+metadata/uid = "99f6c1cc-4735-47e9-aa2b-a03ddcbb4b74"
+metadata/lock_uid = true
+metadata/date_generated = "2026-03-15T22:04:44"
+
+[node name="BabyDude" parent="." unique_id=1376443271 instance=ExtResource("6_6vfwo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.4415617, 1.0737277, 0)
+keywords = "BABY"
+metadata/uid = "fc30f65c-2946-4b93-aa5d-3f6d5dde65cd"
+metadata/lock_uid = true
+metadata/date_generated = "2026-03-15T22:04:44"
+
+[node name="LeverHandle" parent="." unique_id=1226645142 instance=ExtResource("7_c8w3x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.5063133, 1.5463922, 0)
+metadata/uid = "8ca51c01-e722-42d0-bb43-2fd4ad12276e"
+metadata/lock_uid = true
+metadata/date_generated = "2026-03-15T22:04:44"
+
+[node name="BabyDude2" parent="." unique_id=2045594083 instance=ExtResource("6_6vfwo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.949877, 1.0737277, 0)
+keywords = "BABY"
+metadata/uid = "b9c3ccba-c113-4575-926e-20fa5a687c4f"
+metadata/lock_uid = true
+metadata/date_generated = "2026-03-15T22:04:44"
+
+[node name="LeverHandle2" parent="." unique_id=9133206 instance=ExtResource("7_c8w3x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.8851252, 1.5463922, 0)
+metadata/uid = "fb9cae45-7753-4fb1-80ed-65f2011b2ab0"
+metadata/lock_uid = true
+metadata/date_generated = "2026-03-15T22:04:44"
+
+[node name="UID_Generator" type="Node" parent="." unique_id=1369283535]
+script = ExtResource("4_6vfwo")
+metadata/_custom_type_script = "uid://bul4myvyhnpjc"
