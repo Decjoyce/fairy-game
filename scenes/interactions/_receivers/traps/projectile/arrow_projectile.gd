@@ -14,7 +14,7 @@ func _ready() -> void:
 	reset_proj()
 
 func shoot(gen_new_dir: bool = true) -> void:
-	print("shot: proj")
+	#print("shot: proj")
 	graphics.visible = true
 	shot = true
 	col.enabled = true
@@ -25,7 +25,7 @@ func shoot(gen_new_dir: bool = true) -> void:
 		dir = (-global_basis.z + ran_dir)
 
 func reset_proj(reset_pos: bool = true, hide_me: bool = true) -> void:
-	print("reset: proj")
+	#print("reset: proj")
 	if reset_pos: position = Vector3.ZERO
 	if hide_me: graphics.visible = false
 	col.enabled = false

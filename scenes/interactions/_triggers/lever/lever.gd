@@ -43,7 +43,7 @@ func update_value(amount: float, emit_sigs: bool = true, override_disabled: bool
 	
 	if use_intervals: 
 		current_value = snappedf(current_value, intervals)
-		print(current_value)
+		#print(current_value)
 	
 	update_graphics()
 	if emit_sigs:

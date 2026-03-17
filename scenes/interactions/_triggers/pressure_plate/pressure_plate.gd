@@ -183,9 +183,9 @@ func get_num_on_plate() -> int:
 	return entities_on_plate.size() + items_on_plate.size()
 
 func load_lock() -> void:
-	print("lck")
+	#print("lck")
 	loading_locked = true
 
 func load_unlock() -> void:
-	print("unlck")
+	#print("unlck")
 	loading_locked = false
