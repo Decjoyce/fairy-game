@@ -20,7 +20,7 @@ size = Vector3(0.5, 0.5, 0.5)
 [sub_resource type="BoxShape3D" id="BoxShape3D_234jp"]
 size = Vector3(0.4, 0.4, 0.4)
 
-[sub_resource type="Shader" id="Shader_st7xe"]
+[sub_resource type="Shader" id="Shader_r3poj"]
 code = "shader_type spatial;
 render_mode diffuse_lambert_wrap,cull_disabled;
 
@@ -97,9 +97,9 @@ void fragment() {
 }
 "
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_8dsw0"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_st7xe"]
 render_priority = 0
-shader = SubResource("Shader_st7xe")
+shader = SubResource("Shader_r3poj")
 shader_parameter/rows = 1.0
 shader_parameter/columns = 8.0
 shader_parameter/frame = 0.0
@@ -108,12 +108,12 @@ shader_parameter/sprite = ExtResource("4_st7xe")
 shader_parameter/mode = 0
 shader_parameter/Normal = ExtResource("3_rci7l")
 
-[sub_resource type="PlaneMesh" id="PlaneMesh_l2co8"]
-material = SubResource("ShaderMaterial_8dsw0")
+[sub_resource type="PlaneMesh" id="PlaneMesh_8dsw0"]
+material = SubResource("ShaderMaterial_st7xe")
 size = Vector2(0.512, 0.512)
 orientation = 2
 
-[node name="StatuePiece_Head" type="RigidBody3D" unique_id=234370081 node_paths=PackedStringArray("col", "grab_col") groups=["debug_PickableObjects"]]
+[node name="StatuePiece_Head" type="RigidBody3D" unique_id=234370081 node_paths=PackedStringArray("col", "grab_col", "idle_graphics") groups=["debug_PickableObjects"]]
 collision_layer = 2
 axis_lock_angular_x = true
 axis_lock_angular_z = true
@@ -129,6 +129,7 @@ keywords = "HEAD"
 item_weight = 3
 col = NodePath("CollisionShape3D")
 grab_col = NodePath("Area3D/CollisionShape3D2")
+idle_graphics = NodePath("_g_idle")
 
 [node name="Area3D" type="Area3D" parent="." unique_id=1092598886]
 collision_layer = 2
@@ -142,7 +143,7 @@ debug_color = Color(0.8442249, 0.37985525, 5.7756904e-07, 0.41960785)
 
 [node name="_g_idle" type="MeshInstance3D" parent="." unique_id=1013544370]
 layers = 4
-mesh = SubResource("PlaneMesh_l2co8")
+mesh = SubResource("PlaneMesh_8dsw0")
 script = ExtResource("5_8dsw0")
 sprite = ExtResource("4_st7xe")
 sprite_scale = 0.001
