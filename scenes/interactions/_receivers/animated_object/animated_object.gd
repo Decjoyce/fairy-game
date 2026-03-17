@@ -9,7 +9,7 @@ signal on_deactivated(sig: float)
 @export var connnect_anim_player: Node
 var anim_player: AnimationPlayer
 
-var current_time: float
+var end_pos: float
 
 func _ready() -> void:
 	update_anim_player(connnect_anim_player, anim_to_play)
@@ -18,12 +18,21 @@ func _ready() -> void:
 
 func play_animation(sig: float) -> void:
 	#print(sig)
-	var mapped_time: float = remap(sig, 0, 1, 0, anim_player.get_animation(anim_to_play).length)
+	end_pos = remap(sig, 0, 1, 0, anim_player.get_animation(anim_to_play).length)
 	
-	if mapped_time > anim_player.current_animation_position:
-		anim_player.play_section(anim_to_play, anim_player.current_animation_position, mapped_time)
-	elif mapped_time < anim_player.current_animation_position:
-		anim_player.play_section_backwards(anim_to_play, mapped_time, anim_player.current_animation_position)
+	if end_pos > anim_player.current_animation_position:
+		anim_player.play_section(anim_to_play, anim_player.current_animation_position, end_pos)
+	elif end_pos < anim_player.current_animation_position:
+		anim_player.play_section_backwards(anim_to_play, end_pos, anim_player.current_animation_position)
+
+func play_animation_to_position(anim_name: String, n_start_pos: float, n_end_pos: float):
+	end_pos = n_start_pos
+	if n_end_pos > n_start_pos:
+		anim_player.play_section(anim_name, n_start_pos, n_end_pos)
+	elif n_end_pos < n_start_pos:
+		anim_player.play_section_backwards(anim_name, n_end_pos, n_start_pos)
+	else:
+		anim_player.play_section_backwards(anim_name, n_start_pos-0.1, n_end_pos)
 
 func update_anim_player(new_anim_player, new_anim_to_play: String) -> void:
 	if new_anim_player == null:

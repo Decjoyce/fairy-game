@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://b50qqenfywy10"]
 
 [ext_resource type="Script" uid="uid://c4t3ko70ihpyy" path="res://scenes/interactions/_receivers/animated_object/animated_object.gd" id="1_4b6g1"]
+[ext_resource type="Script" uid="uid://qrylej730f2x" path="res://scripts/saving/persistent_objs/po_animatedobject.gd" id="2_umueg"]
 
 [sub_resource type="Animation" id="Animation_57fr3"]
 length = 0.001
@@ -49,3 +50,7 @@ libraries/ = SubResource("AnimationLibrary_hv7r0")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1811562458]
 mesh = SubResource("CylinderMesh_4b6g1")
+
+[node name="PO_AnimatedObject" type="Node" parent="." unique_id=145844149 groups=["PO"]]
+script = ExtResource("2_umueg")
+metadata/_custom_type_script = "uid://qrylej730f2x"
