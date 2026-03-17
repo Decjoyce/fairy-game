@@ -939,9 +939,6 @@ specific_item_to_drop = ExtResource("43_wchr0")
 item_type = 4
 metadata/_custom_type_script = "uid://beaf3digx88d0"
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_24qtj"]
-size = Vector3(5, 0.13, 5)
-
 [node name="Playground_Interactions" type="Node3D" unique_id=1592069120]
 
 [node name="player_test" parent="." unique_id=87981919 instance=ExtResource("2_3vnxs")]
@@ -5950,18 +5947,6 @@ metadata/date_generated = "2026-03-14T12:52:05"
 script = ExtResource("70_24qtj")
 uid_to_find = "6fba7cee-8d36-47ca-8125-97cd2ea93601"
 metadata/_custom_type_script = "uid://bul4myvyhnpjc"
-
-[node name="Node" type="Node" parent="." unique_id=598361942]
-
-[node name="DestroyedItemCell" type="Node3D" parent="Node" unique_id=1255910063]
-unique_name_in_owner = true
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 50000, 0, 0)
-
-[node name="StaticBody3D" type="StaticBody3D" parent="Node/DestroyedItemCell" unique_id=847947637]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.1, 0)
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Node/DestroyedItemCell/StaticBody3D" unique_id=1858486817]
-shape = SubResource("BoxShape3D_24qtj")
 
 [connection signal="area_entered" from="Bin/Room_Items/Teleporter/Trigger" to="Bin/Room_Items/Teleporter" method="_teleport_entity"]
 [connection signal="body_entered" from="Bin/Room_Items/Teleporter/Trigger" to="Bin/Room_Items/Teleporter" method="_teleport_item"]

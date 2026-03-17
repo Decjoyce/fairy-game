@@ -191,8 +191,8 @@ func break_item() -> void:
 	call_deferred("send_to_ether")
 
 func send_to_ether() -> void:
-	reparent(get_tree().current_scene.get_node("Node/DestroyedItemCell")) ##temp
-	position = Vector3.ZERO
+	#reparent(OMT.destroyed_item_cell) ##temp
+	global_position = OMT.destroyed_item_cell.global_position
 	disable_me()
 	#print("Dead")
 	#call_deferred("queue_free")

@@ -15,33 +15,11 @@ var cam: Camera3D
 
 #@export var destroyed_item_cell: Node3D
 
-var temp_do_save_trans: bool
-var temp_t: float
-var tmep_yo: float = 1
-@onready var savetrans: ColorRect = %tempsavetrans
-@onready var savetransmat: ShaderMaterial = savetrans.material
-
 func _ready() -> void:
 	_init_me()
-	TEMPSaveGameHandler.on_loaded_game.connect(op)
-
-func od() -> void:
-	savetransmat.set_shader_parameter("progress", 0)
-	tmep_yo = 1
-	temp_do_save_trans = true
-
-func op() -> void:
-	savetransmat.set_shader_parameter("progress", 1)
-	tmep_yo = -1
-	#print("---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------")
-	temp_do_save_trans = true
 
 func _process(delta: float) -> void:
-	if temp_do_save_trans:
-		var d = savetransmat.get_shader_parameter("progress") + (delta*tmep_yo)
-		savetransmat.set_shader_parameter("progress", d)
-		temp_do_save_trans = d < 1.0 and d > 0
-		#print(d)
+	pass
 	
 	if !DEBUGGER_ENABLED:
 		return

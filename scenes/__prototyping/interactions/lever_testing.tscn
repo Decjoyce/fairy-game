@@ -32,9 +32,6 @@ material = ExtResource("10_rc6n0")
 radius = 0.14
 height = 0.105
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_xvh5g"]
-size = Vector3(5, 0.13, 5)
-
 [node name="LeverTesting" type="Node3D" unique_id=1969717916]
 
 [node name="Lever" parent="." unique_id=1692381032 instance=ExtResource("1_vplke")]
@@ -308,18 +305,6 @@ metadata/date_generated = "2026-03-14T10:50:22"
 
 [node name="UID_Generator" type="Node" parent="." unique_id=1339389628]
 script = ExtResource("23_0ff0n")
-
-[node name="Node" type="Node" parent="." unique_id=430454402]
-
-[node name="DestroyedItemCell" type="Node3D" parent="Node" unique_id=1067420585]
-unique_name_in_owner = true
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 50000, 0, 0)
-
-[node name="StaticBody3D" type="StaticBody3D" parent="Node/DestroyedItemCell" unique_id=159244266]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.1, 0)
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Node/DestroyedItemCell/StaticBody3D" unique_id=226337730]
-shape = SubResource("BoxShape3D_xvh5g")
 
 [connection signal="on_activated" from="Lever" to="SpikeTrap" method="activate"]
 [connection signal="on_change" from="Lever" to="Gate" method="open_gate"]

@@ -60,7 +60,6 @@
 [ext_resource type="Texture2D" uid="uid://c7lfp47776dxr" path="res://assets/ui/player/attack_indicators/Lmid.png" id="51_l4n3m"]
 [ext_resource type="Texture2D" uid="uid://dbv7iuucvwfao" path="res://assets/ui/player/attack_indicators/Rlow.png" id="51_qv24e"]
 [ext_resource type="AudioStream" uid="uid://bvotk6pyl3sjh" path="res://assets/audio/sfx/player/_streams/sfx_player_hit.tres" id="58_svbpy"]
-[ext_resource type="Shader" uid="uid://b1ry6810b0o1l" path="res://assets/shaders/transitions/save_trans.gdshader" id="63_7hjlp"]
 [ext_resource type="Shader" uid="uid://4b4kstxm1aph" path="res://assets/shaders/post_processing/post_processing.gdshader" id="70_52e8e"]
 [ext_resource type="Texture2D" uid="uid://bgvylughro1va" path="res://assets/sprites/PaperTexture/Texturelabs_Paper_304L.jpg" id="71_nkha6"]
 
@@ -664,21 +663,6 @@ shader_parameter/contrast_boost = 1.15
 shader_parameter/saturation = 0.7650000363375
 shader_parameter/new_color = Color(1, 1, 1, 1)
 
-[sub_resource type="Gradient" id="Gradient_ux48r"]
-offsets = PackedFloat32Array(1)
-colors = PackedColorArray(1, 1, 1, 0)
-
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_ux48r"]
-gradient = SubResource("Gradient_ux48r")
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_j3cqb"]
-shader = ExtResource("63_7hjlp")
-shader_parameter/to_tex = SubResource("GradientTexture1D_ux48r")
-shader_parameter/progress = 0.0
-shader_parameter/blur_strength = 0.3
-shader_parameter/samples = 20
-shader_parameter/blur_center = Vector2(0.5, 0.5)
-
 [node name="player_test" type="Node3D" unique_id=725727541 node_paths=PackedStringArray("stats_ui", "combat", "death_ui") groups=["Player"]]
 script = ExtResource("1_e0b2u")
 stats_ui = NodePath("Stats/UI")
@@ -1213,16 +1197,6 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 color = Color(0.5747226, 0.50857943, 0.49505764, 0.03529412)
-
-[node name="tempsavetrans" type="ColorRect" parent="PostProcessing/CanvasLayer" unique_id=1621462013]
-unique_name_in_owner = true
-material = SubResource("ShaderMaterial_j3cqb")
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-metadata/_edit_use_anchors_ = true
 
 [connection signal="on_body_entered" from="EnemyChecker" to="Combat" method="_on_enemy_checker_on_body_entered"]
 [connection signal="on_body_exit" from="EnemyChecker" to="Combat" method="_on_enemy_checker_on_body_exit"]

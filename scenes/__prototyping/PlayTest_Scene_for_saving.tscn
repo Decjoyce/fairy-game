@@ -401,9 +401,6 @@ use_random_item = true
 item_type = 4
 metadata/_custom_type_script = "uid://beaf3digx88d0"
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_ncq50"]
-size = Vector3(5, 0.13, 5)
-
 [node name="Tutorial_Area" type="Node3D" unique_id=872925716]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=672850743]
@@ -1416,18 +1413,6 @@ metadata/date_generated = "2026-03-17T11:28:57"
 [node name="UID_Generator" type="Node" parent="." unique_id=463381397]
 script = ExtResource("52_ncq50")
 metadata/_custom_type_script = "uid://bul4myvyhnpjc"
-
-[node name="Node" type="Node" parent="." unique_id=114060258]
-
-[node name="DestroyedItemCell" type="Node3D" parent="Node" unique_id=1940446793]
-unique_name_in_owner = true
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 50000, 0, 0)
-
-[node name="StaticBody3D" type="StaticBody3D" parent="Node/DestroyedItemCell" unique_id=1078563032]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.1, 0)
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Node/DestroyedItemCell/StaticBody3D" unique_id=799227411]
-shape = SubResource("BoxShape3D_ncq50")
 
 [connection signal="on_change" from="PLS_ORGANIZE_THIS_STUFF/Weighted_Gate_Puzzle/Tutorial_Weight_Puzzle" to="PLS_ORGANIZE_THIS_STUFF/Weighted_Gate_Puzzle/Weight_Puzzle_Gate" method="open_gate"]
 [connection signal="on_activated" from="PLS_ORGANIZE_THIS_STUFF/Lever_Puzzle/BrokenLeverExample/BrokenLever" to="PLS_ORGANIZE_THIS_STUFF/Lever_Puzzle/BrokenLeverExample/Lever_Fixed" method="enable"]

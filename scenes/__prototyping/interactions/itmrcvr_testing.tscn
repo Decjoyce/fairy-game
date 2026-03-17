@@ -13,9 +13,6 @@
 
 [sub_resource type="Environment" id="Environment_gaiyo"]
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_c8w3x"]
-size = Vector3(5, 0.13, 5)
-
 [node name="ItmrcvrTesting" type="Node3D" unique_id=1493754359]
 
 [node name="player_test" parent="." unique_id=725727541 instance=ExtResource("1_s7eb3")]
@@ -124,15 +121,3 @@ metadata/date_generated = "2026-03-15T22:04:44"
 [node name="UID_Generator" type="Node" parent="." unique_id=1369283535]
 script = ExtResource("4_6vfwo")
 metadata/_custom_type_script = "uid://bul4myvyhnpjc"
-
-[node name="Node" type="Node" parent="." unique_id=491747425]
-
-[node name="DestroyedItemCell" type="Node3D" parent="Node" unique_id=1345756932]
-unique_name_in_owner = true
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 50000, 0, 0)
-
-[node name="StaticBody3D" type="StaticBody3D" parent="Node/DestroyedItemCell" unique_id=361797944]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.1, 0)
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Node/DestroyedItemCell/StaticBody3D" unique_id=1942463690]
-shape = SubResource("BoxShape3D_c8w3x")
