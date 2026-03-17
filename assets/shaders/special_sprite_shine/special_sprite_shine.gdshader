@@ -8,7 +8,6 @@ uniform sampler2D diffuse: source_color, filter_linear_mipmap, repeat_disable;
 
 uniform vec4 shine_color: source_color = vec4(1.0, 1.0, 1.0, 1.0);
 
-
 uniform float line_width: hint_range(0.0, 2.0, 0.01) = 0.1;
 uniform float angle: hint_range(0.0, 6.28318530718, 0.1308996939) = 0.785398163397;
 
@@ -39,10 +38,10 @@ void fragment() {
 	float len = 1.5 - max(abs(sine), abs(cosine)) + line_width;
 	float line = smoothstep(-line_width, line_width, 
 			rotate_precalculated((UV - vec2(0.5)), sine, cosine).y - mod(TIME * speed, (len * 2.0) * wait_cycles) + len);
-	float new_shine_alpha = shine_color.a*color.a;
-	ALPHA = new_shine_alpha; //- shine_color.a;
-	//ALBEDO.rgb = color.rgb;
-	ALBEDO.rgb = shine_color.rgb * shine_color.a * vec3(line * (1.0 - line) * 4.0);
+	float new_shine_alpha = color.a;
+	ALPHA *= new_shine_alpha; //- shine_color.a;
+	ALBEDO.rgb = color.rgb;
+	ALBEDO.rgb += shine_color.rgb * shine_color.a * vec3(line * (1.0 - line) * 4.0);
 }
 
 //void light() {
