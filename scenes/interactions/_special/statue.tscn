@@ -10,7 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://gc5vdufep1gi" path="res://assets/sprites/item_sprites/statue/statue_spritesheets/statue_attachedpiece_02.png" id="7_5y21r"]
 [ext_resource type="Texture2D" uid="uid://bji3q3mntuxdf" path="res://assets/sprites/item_sprites/statue/statue_spritesheets/statue_complete_n.png" id="7_qsil5"]
 [ext_resource type="Script" uid="uid://dsp7b0nc36qiw" path="res://scenes/interactions/_special/statue_receiver.gd" id="7_w1v47"]
-[ext_resource type="Script" uid="uid://cc36kknugth5b" path="res://scripts/saving/persistent_objs/po_itmreceiver.gd" id="20_qsil5"]
+[ext_resource type="Script" uid="uid://s218qdxyroom" path="res://scripts/saving/persistent_objs/po_mainquest.gd" id="11_5y21r"]
 
 [sub_resource type="Shader" id="Shader_5y21r"]
 code = "shader_type spatial;
@@ -133,21 +133,21 @@ texture_normal = ExtResource("7_qsil5")
 columns = 8.0
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_w1v47"]
-size = Vector3(1.5, 2.4, 1)
+size = Vector3(1.0812988, 2.4, 1)
 
-[node name="Statue" type="Node3D" unique_id=296240778 node_paths=PackedStringArray("statue")]
+[node name="Statue" type="Node3D" unique_id=296240778 node_paths=PackedStringArray("statue", "itm_receiver")]
 script = ExtResource("3_hdmdk")
-statue = NodePath("Statue_States/Unfinished/StatOff")
+statue = NodePath("Statue_States/StatOff")
+itm_receiver = NodePath("ItemReceiver")
 
 [node name="Statue_States" type="Node3D" parent="." unique_id=177232572]
 
-[node name="Unfinished" type="Node3D" parent="Statue_States" unique_id=935710233]
-
-[node name="StatOff" type="MeshInstance3D" parent="Statue_States/Unfinished" unique_id=1440207988]
-transform = Transform3D(-1, 0, -1.509958e-07, 0, 1, 0, 1.509958e-07, 0, -1, 0, 0.8596855, 0.24888021)
+[node name="StatOff" type="MeshInstance3D" parent="Statue_States" unique_id=1440207988]
+transform = Transform3D(-1, 0, -1.509958e-07, 0, 1, 0, 1.509958e-07, 0, -1, 0, 0.86, 0)
 layers = 3
 sorting_offset = 1.0
 mesh = SubResource("PlaneMesh_c6v4o")
+skeleton = NodePath("")
 script = ExtResource("4_84nn4")
 animations_array = Array[ExtResource("5_2qsbx")]([SubResource("Resource_nfmnu"), SubResource("Resource_13x82"), SubResource("Resource_hcu48"), SubResource("Resource_84nn4")])
 animation = 0
@@ -169,11 +169,11 @@ monitoring = false
 
 [node name="_col" type="CollisionShape3D" parent="ItemReceiver/Trigger" unique_id=969169536]
 unique_name_in_owner = true
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.05000007, 1.0000001, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.028393626, 1.0000001, 0)
 shape = SubResource("BoxShape3D_w1v47")
 
-[node name="PO_ItmReceiver" type="Node" parent="ItemReceiver" unique_id=366367706]
-script = ExtResource("20_qsil5")
-metadata/_custom_type_script = "uid://cc36kknugth5b"
+[node name="PO_MainQuest" type="Node" parent="." unique_id=1964630611 groups=["PO"]]
+script = ExtResource("11_5y21r")
+metadata/_custom_type_script = "uid://s218qdxyroom"
 
 [connection signal="statue_piece_received" from="ItemReceiver" to="." method="insert_piece"]

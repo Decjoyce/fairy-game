@@ -141,9 +141,21 @@ shader_parameter/wait_cycles = 2.500000037253
 
 [sub_resource type="QuadMesh" id="QuadMesh_ijcvq"]
 material = SubResource("ShaderMaterial_nkd1j")
-size = Vector2(0.7, 0.7)
+size = Vector2(0.75, 0.75)
 
-[node name="StatuePiece_arm" type="RigidBody3D" unique_id=234370081 node_paths=PackedStringArray("col", "grab_col", "idle_graphics") groups=["debug_PickableObjects"]]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4qxnt"]
+render_priority = 1
+transparency = 1
+albedo_texture = ExtResource("6_4o0cs")
+roughness = 0.51
+normal_enabled = true
+normal_texture = ExtResource("7_5hu3d")
+
+[sub_resource type="QuadMesh" id="QuadMesh_bv4e3"]
+material = SubResource("StandardMaterial3D_4qxnt")
+size = Vector2(0.75, 0.75)
+
+[node name="StatuePiece_arm" type="RigidBody3D" unique_id=234370081 node_paths=PackedStringArray("col", "grab_col", "idle_graphics", "grabbed_graphics") groups=["debug_PickableObjects"]]
 collision_layer = 2
 axis_lock_angular_x = true
 axis_lock_angular_z = true
@@ -159,7 +171,8 @@ keywords = "ARM"
 item_weight = 3
 col = NodePath("CollisionShape3D")
 grab_col = NodePath("Area3D/CollisionShape3D2")
-idle_graphics = NodePath("_g_idle")
+idle_graphics = NodePath("_g_idle2")
+grabbed_graphics = NodePath("_g_grabbed")
 
 [node name="Area3D" type="Area3D" parent="." unique_id=1092598886]
 collision_layer = 2
@@ -189,6 +202,10 @@ metadata/_custom_type_script = "uid://dk36d8kuwrwnv"
 [node name="_g_idle2" type="MeshInstance3D" parent="." unique_id=390010551]
 mesh = SubResource("QuadMesh_ijcvq")
 
+[node name="_g_grabbed" type="MeshInstance3D" parent="." unique_id=633151070]
+visible = false
+mesh = SubResource("QuadMesh_bv4e3")
+
 [node name="AudioPlayer" type="AudioStreamPlayer3D" parent="." unique_id=20800557]
 stream = ExtResource("4_ijcvq")
 bus = &"items"
@@ -197,6 +214,6 @@ bus = &"items"
 target_position = Vector3(0, -0.4, 0)
 hit_from_inside = true
 
-[node name="PO_Item" type="Node" parent="." unique_id=1122030167]
+[node name="PO_Item" type="Node" parent="." unique_id=1122030167 groups=["PO"]]
 script = ExtResource("7_ijcvq")
 metadata/_custom_type_script = "uid://bhf6r6nw14krj"
