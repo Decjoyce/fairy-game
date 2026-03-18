@@ -1,4 +1,5 @@
 @tool
+@icon("res://assets/_editor_icons/icon_uidgen_d.svg")
 class_name UID_Generator
 extends Node
 
