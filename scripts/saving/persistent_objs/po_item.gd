@@ -5,7 +5,7 @@ extends PersistentObject
 @onready var parent_item: Grabbable_Item = get_parent()
 
 func on_save_game(saved_data: Array[SavedData]) -> void:
-	super(saved_data)
+	if Engine.is_editor_hint(): return
 	if parent_item.starting_pos == parent_item.global_position: 
 		#prints(parent_item.name, "i didnt save bc sp == gp")
 		return
@@ -18,6 +18,8 @@ func on_save_game(saved_data: Array[SavedData]) -> void:
 		my_data.scene_path = parent_item.scene_file_path
 		my_data.uid = "[NONNATIVE]"
 	else:
+		assert(parent_item.has_meta("uid"), "ERROR: Could not find UID on - " + parent_item.name + " - please generate UIDs")
+		assert(parent_item.get_meta("uid") != "", "ERROR: Invalid UID found on - " + parent_item.name + " - please generate UIDs")
 		my_data.uid = parent_item.get_meta("uid")
 	my_data.non_scene_native = parent_item.non_scene_native
 	my_data.is_pooled = parent_item.is_pooled

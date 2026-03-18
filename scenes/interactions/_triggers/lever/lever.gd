@@ -75,7 +75,7 @@ func change_interval_value(sig: float) -> void:
 # ↓ Enabling/Disabling Stuff ↓
 
 func enable(sig: float = -1) -> void:
-	print("Fiddlesticks")
+	#print("Fiddlesticks")
 	visible = true
 	$Trigger/CollisionShape3D.set_deferred("disabled", false)
 	disabled = false

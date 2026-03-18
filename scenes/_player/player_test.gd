@@ -51,6 +51,7 @@ func fake_die(fakestring: StringName):
 	#if fake_dies == 0: 
 		#fake_dies+=1
 	#	return
+	TEMPSaveGameHandler.load_game()
 	stats.death_anim.play("death_anim")
 	Debug.play_death_player()
 	#combat.exit_combat_mode()
