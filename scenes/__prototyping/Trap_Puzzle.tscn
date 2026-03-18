@@ -1,3 +1,618 @@
 [gd_scene format=3 uid="uid://hembcdl1fp17"]
 
+[ext_resource type="MeshLibrary" uid="uid://bu208a8l5866i" path="res://scenes/_levels/_palettes/cairn/meshlibrary_cairn.tres" id="1_av2p5"]
+[ext_resource type="PackedScene" uid="uid://bq86osdembn58" path="res://scenes/_player/_player_test.tscn" id="2_oerpm"]
+[ext_resource type="Material" uid="uid://dyejtq23uplk4" path="res://assets/shaders/Outline/outline.tres" id="3_8iwsq"]
+[ext_resource type="PackedScene" uid="uid://csot2mi7746ll" path="res://scenes/interactions/_triggers/pressure_plate/pressure_plate.tscn" id="4_skd41"]
+[ext_resource type="PackedScene" uid="uid://lxic7c72kvyt" path="res://scenes/interactions/interactables/items/all_items/misc/item_skull.tscn" id="5_1cv1e"]
+[ext_resource type="PackedScene" uid="uid://crnrdh5wu8ooa" path="res://scenes/interactions/_receivers/traps/projectile/trap_projectile.tscn" id="6_8iwsq"]
+[ext_resource type="Texture2D" uid="uid://1m8e2skdgkex" path="res://assets/sprites/item_sprites/skull_item.png" id="7_gceky"]
+[ext_resource type="PackedScene" uid="uid://dt13fur6twjep" path="res://scenes/interactions/_receivers/gate/gate.tscn" id="10_gceky"]
+[ext_resource type="PackedScene" uid="uid://pfsmibp55qi" path="res://scenes/interactions/_receivers/bridge/bridge.tscn" id="11_dd6sd"]
+[ext_resource type="PackedScene" uid="uid://bmiljk53ks7e7" path="res://scenes/interactions/_receivers/wip_spike_trap/spike_trap_floor.tscn" id="11_v5mpt"]
+[ext_resource type="PackedScene" uid="uid://qu5rxgbydmet" path="res://scenes/interactions/_triggers/button/button.tscn" id="12_dd6sd"]
+[ext_resource type="PackedScene" uid="uid://xuo5buj0odhi" path="res://scenes/interactions/_triggers/torch_sconce/torch_sconce_lit.tscn" id="12_gssx2"]
+[ext_resource type="PackedScene" uid="uid://oqosqgdkwcrb" path="res://scenes/interactions/_receivers/door/door_new.tscn" id="13_gssx2"]
+[ext_resource type="PackedScene" uid="uid://dde66nwtb1gv1" path="res://scenes/interactions/_triggers/item_receiver/torch_scont/torch_scont.tscn" id="14_shf58"]
+[ext_resource type="PackedScene" uid="uid://cfkoaxhngk3gf" path="res://scenes/interactions/interactables/items/all_items/keys/item_key.tscn" id="15_2mhko"]
+[ext_resource type="Script" uid="uid://dcbg0ho5ff6uu" path="res://scenes/interactions/_receivers/wip_spike_trap/spike_trap.gd" id="15_p4pri"]
+[ext_resource type="Texture2D" uid="uid://ds2ryuxjpf5j1" path="res://scenes/interactions/_receivers/wip_spike_trap/blackcircle_tran.png" id="16_kr5dj"]
+[ext_resource type="AudioStream" uid="uid://b124myn6efxg3" path="res://assets/audio/sfx/environment/Traps/Spikes/Mechanical, Gears, Mechanical Texture, Metal   Wood, Creak, Movement, Friction, Vintage 01 SND117044 1.wav" id="17_svioi"]
+[ext_resource type="AudioStream" uid="uid://d15ljkqmmt4ee" path="res://assets/audio/sfx/environment/Traps/Spikes/Metal, Impact, Heavy, Powerful, Big, Slide, Movement, Variations 01 SND117149.wav" id="18_iedyh"]
+[ext_resource type="Script" uid="uid://dh3jjn72a6w1u" path="res://scripts/saving/persistent_objs/po_spiketrap.gd" id="19_vnr5e"]
+[ext_resource type="PackedScene" uid="uid://ck1b6l8s7xnxi" path="res://scenes/interactions/_triggers/lever/lever.tscn" id="21_kr5dj"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_8iwsq"]
+sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+ground_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+
+[sub_resource type="Sky" id="Sky_c287r"]
+sky_material = SubResource("ProceduralSkyMaterial_8iwsq")
+
+[sub_resource type="Environment" id="Environment_vpaym"]
+background_mode = 2
+sky = SubResource("Sky_c287r")
+tonemap_mode = 2
+glow_enabled = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ypdmq"]
+albedo_color = Color(0.29582244, 0.28200856, 0.27378577, 1)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_bwo3n"]
+material = SubResource("StandardMaterial3D_ypdmq")
+top_radius = 0.0
+bottom_radius = 0.05
+height = 0.5
+radial_segments = 4
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xbtjy"]
+albedo_color = Color(0.38039216, 0.28627452, 0.19215687, 1)
+metallic = 0.5
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_ueblh"]
+material = SubResource("StandardMaterial3D_xbtjy")
+top_radius = 0.03
+bottom_radius = 0.03
+height = 0.8
+radial_segments = 4
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5yqwi"]
+albedo_color = Color(0.29582244, 0.28200856, 0.27378577, 1)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_23lq1"]
+material = SubResource("StandardMaterial3D_5yqwi")
+top_radius = 0.0
+bottom_radius = 0.05
+height = 0.5
+radial_segments = 4
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8dywv"]
+albedo_color = Color(0.38039216, 0.28627452, 0.19215687, 1)
+metallic = 0.5
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_ypdmq"]
+material = SubResource("StandardMaterial3D_8dywv")
+top_radius = 0.03
+bottom_radius = 0.03
+height = 0.8
+radial_segments = 4
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_oarp6"]
+size = Vector3(1.3, 1, 1.3)
+
+[sub_resource type="Animation" id="Animation_oarp6"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Spikes:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Spikes:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "audio"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("AudioStreamPlayer3D")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"clips": [],
+"times": PackedFloat32Array()
+}
+tracks/2/use_blend = true
+
+[sub_resource type="Animation" id="Animation_0k2xd"]
+resource_name = "spike_down"
+length = 2.1666667
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Spikes:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.16666667, 0.56666666),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 1.3, 0), Vector3(0, 1.3, 0), Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Spikes:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.73333335),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/2/type = "audio"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("AudioStreamPlayer3D")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("17_svioi")
+}],
+"times": PackedFloat32Array(0)
+}
+tracks/2/use_blend = true
+
+[sub_resource type="Animation" id="Animation_512if"]
+resource_name = "spike_up"
+length = 0.9
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Spikes:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 1.3, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Spikes:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "audio"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("AudioStreamPlayer3D")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.15543126,
+"stream": ExtResource("18_iedyh")
+}],
+"times": PackedFloat32Array(0)
+}
+tracks/2/use_blend = true
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_oarp6"]
+_data = {
+&"RESET": SubResource("Animation_oarp6"),
+&"spike_down": SubResource("Animation_0k2xd"),
+&"spike_up": SubResource("Animation_512if")
+}
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_512if"]
+size = Vector3(1, 1.6473389, 1)
+
 [node name="Traps_Puzzle" type="Node3D" unique_id=698838124]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1327062648]
+environment = SubResource("Environment_vpaym")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1735948126]
+transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545, -0.50000006, 0.75, -0.43301266, 0, 0, 0)
+shadow_enabled = true
+
+[node name="GridMap" type="GridMap" parent="." unique_id=307396101]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
+mesh_library = ExtResource("1_av2p5")
+data = {
+"cells": PackedInt32Array(0, 65535, 4, 0, 65534, 2, 0, 65533, 2, 1, 65532, 3, 0, 65532, 1441792, 65535, 65531, 1441793, 1, 65531, 1048577, 0, 65531, 1048576, 0, 65530, 655361, 65534, 65532, 1048578, 65535, 65532, 1, 65533, 65532, 1441794, 65532, 65532, 1441795, 65532, 65531, 655362, 65533, 65530, 1048578, 65534, 65530, 1048578, 65535, 65530, 655361, 1, 65530, 655361, 2, 65530, 1048578, 65531, 65530, 1441796, 65532, 65530, 655361, 6, 65530, 1441794, 7, 65531, 655362, 7, 65529, 2, 7, 65530, 0, 7, 65528, 2, 8, 65527, 1048578, 7, 65527, 655361, 7, 65532, 1441795, 8, 65532, 1441794, 9, 65532, 1048580, 9, 65527, 1048578, 8, 65530, 1048578, 9, 65530, 1048580, 6, 65527, 1048578, 5, 65527, 1441796, 10, 65526, 655363, 11, 65526, 655361, 12, 65526, 655361, 13, 65526, 655361, 14, 65526, 1048579, 10, 65528, 1441795, 11, 65528, 1, 12, 65528, 1, 13, 65528, 1, 15, 65527, 1048580, 14, 65528, 3, 10, 65527, 0, 12, 65527, 0, 11, 65527, 0, 13, 65527, 0, 14, 65527, 0)
+}
+metadata/_editor_floor_ = Vector3(0, 0, 0)
+
+[node name="player_test" parent="." unique_id=725727541 instance=ExtResource("2_oerpm")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 13, 1.1754615, -11)
+
+[node name="Beginning_Part(Easier)" type="Node3D" parent="." unique_id=1582949254]
+
+[node name="First_Trap" type="Node3D" parent="Beginning_Part(Easier)" unique_id=1115717468]
+
+[node name="Arrow" type="Node3D" parent="Beginning_Part(Easier)/First_Trap" unique_id=993755155]
+transform = Transform3D(-2.1855694e-08, 0, 0.5, 0, 0.5, 0, -0.5, 0, -2.1855694e-08, 0.56474733, 0.95350873, -3.5840669)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Beginning_Part(Easier)/First_Trap/Arrow" unique_id=931489720]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, -1.2525717e-07, -0.5679159)
+material_overlay = ExtResource("3_8iwsq")
+mesh = SubResource("CylinderMesh_bwo3n")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Beginning_Part(Easier)/First_Trap/Arrow" unique_id=1101599646]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, -2.1964206e-07, 0)
+material_overlay = ExtResource("3_8iwsq")
+mesh = SubResource("CylinderMesh_ueblh")
+
+[node name="Skull Sprite" type="Sprite3D" parent="Beginning_Part(Easier)/First_Trap" unique_id=553540307]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.34057403, 1, -3.5617886)
+layers = 4
+pixel_size = 0.0008
+billboard = 2
+shaded = true
+render_priority = 1
+texture = ExtResource("7_gceky")
+
+[node name="First_Pressure_Plate" parent="Beginning_Part(Easier)/First_Trap" unique_id=247380468 instance=ExtResource("4_skd41")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, -4)
+
+[node name="trap_projectile3" parent="Beginning_Part(Easier)/First_Trap" unique_id=1463044430 instance=ExtResource("6_8iwsq")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 1.1311396, 0.9964758, -3.9030833)
+
+[node name="Second_Part" type="Node3D" parent="Beginning_Part(Easier)" unique_id=1396368298]
+
+[node name="skull" parent="Beginning_Part(Easier)/Second_Part" unique_id=234370081 instance=ExtResource("5_1cv1e")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0.30023858, -7)
+
+[node name="SpikeTrap" parent="Beginning_Part(Easier)/Second_Part" unique_id=610712147 instance=ExtResource("11_v5mpt")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, -9)
+
+[node name="SpikeTrap2" parent="Beginning_Part(Easier)/Second_Part" unique_id=1146527187 instance=ExtResource("11_v5mpt")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, -9)
+
+[node name="SpikeTrap3" parent="Beginning_Part(Easier)/Second_Part" unique_id=1865810860 instance=ExtResource("11_v5mpt")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, -9)
+
+[node name="Gate" parent="Beginning_Part(Easier)/Second_Part" unique_id=132524367 instance=ExtResource("10_gceky")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -2, 0, -7)
+
+[node name="PressurePlate3" parent="Beginning_Part(Easier)/Second_Part" unique_id=419622922 instance=ExtResource("4_skd41")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, -11)
+weight_to_activate = 12.0
+
+[node name="PressurePlate" parent="Beginning_Part(Easier)/Second_Part" unique_id=1716987331 instance=ExtResource("4_skd41")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, -11)
+weight_to_activate = 12.0
+
+[node name="PressurePlate2" parent="Beginning_Part(Easier)/Second_Part" unique_id=887215604 instance=ExtResource("4_skd41")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, -11)
+weight_to_activate = 12.0
+
+[node name="trap_projectile_Left" parent="Beginning_Part(Easier)/Second_Part" unique_id=167621873 instance=ExtResource("6_8iwsq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 1.1319622, -7)
+
+[node name="trap_projectile_Right" parent="Beginning_Part(Easier)/Second_Part" unique_id=1285918008 instance=ExtResource("6_8iwsq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 1.1319622, -7)
+
+[node name="PressurePlate4" parent="Beginning_Part(Easier)/Second_Part" unique_id=1537339598 instance=ExtResource("4_skd41")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, -7)
+
+[node name="trap_projectile" parent="Beginning_Part(Easier)/Second_Part" unique_id=937661216 instance=ExtResource("6_8iwsq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 1, -6.656242)
+
+[node name="Third_Part" type="Node3D" parent="Beginning_Part(Easier)" unique_id=1718290514]
+
+[node name="Button" parent="Beginning_Part(Easier)/Third_Part" unique_id=1164325605 instance=ExtResource("12_dd6sd")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -9.674, 1.305, -11)
+manual_reset = true
+
+[node name="PressurePlate4" parent="Beginning_Part(Easier)/Third_Part" unique_id=1766502568 instance=ExtResource("4_skd41")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, -11)
+weight_to_activate = 5.0
+
+[node name="trap_projectile" parent="Beginning_Part(Easier)/Third_Part" unique_id=668682316 instance=ExtResource("6_8iwsq")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 5, 1.305, -11)
+
+[node name="First_Bridge" parent="Beginning_Part(Easier)/Third_Part" unique_id=2088177992 instance=ExtResource("11_dd6sd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, -11)
+
+[node name="Torches" type="Node3D" parent="Beginning_Part(Easier)" unique_id=1664978704]
+
+[node name="TorchSconce" parent="Beginning_Part(Easier)/Torches" unique_id=1729385187 instance=ExtResource("12_gssx2")]
+transform = Transform3D(0.25881907, 0.9659258, 0, -0.9659258, 0.25881907, 0, 0, 0, 1, 2, 0.13853383, -11)
+
+[node name="TorchSconce2" parent="Beginning_Part(Easier)/Torches" unique_id=259670752 instance=ExtResource("12_gssx2")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -1, 1.454347, -6.411741)
+
+[node name="TorchSconce3" parent="Beginning_Part(Easier)/Torches" unique_id=1857077526 instance=ExtResource("12_gssx2")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 3.0041916, 1.454347, -6.411741)
+
+[node name="Labels" type="Node" parent="." unique_id=710111691]
+
+[node name="Level_End" type="Label3D" parent="Labels" unique_id=606758642]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 18, 1, -7)
+text = "End of Puzzle"
+
+[node name="End_Part(Harder" type="Node3D" parent="." unique_id=1577914232]
+
+[node name="Intersection" type="Node3D" parent="End_Part(Harder" unique_id=873605564]
+
+[node name="Lever_Door" parent="End_Part(Harder/Intersection" unique_id=1088244080 instance=ExtResource("13_gssx2")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 18, 0, -11)
+
+[node name="End_Gate" parent="End_Part(Harder/Intersection" unique_id=2077487765 instance=ExtResource("10_gceky")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15, 0, -10)
+
+[node name="TorchScont" parent="End_Part(Harder/Intersection" unique_id=813345400 instance=ExtResource("14_shf58")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 17, 1.2778568, -10.336268)
+
+[node name="Lever" parent="End_Part(Harder/Intersection" unique_id=1692381032 instance=ExtResource("21_kr5dj")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 19.75082, 1, -11)
+
+[node name="Key_Part" type="Node3D" parent="End_Part(Harder" unique_id=1963011828]
+
+[node name="SpikeTrap" type="Node3D" parent="End_Part(Harder/Key_Part" unique_id=1388700218]
+transform = Transform3D(-1, -8.742278e-08, 0, 8.742278e-08, -1, 0, 0, 0, 1, 13, 2.211256, -17)
+script = ExtResource("15_p4pri")
+metadata/_custom_type_script = "uid://dcbg0ho5ff6uu"
+
+[node name="Holes" type="Node3D" parent="End_Part(Harder/Key_Part/SpikeTrap" unique_id=452673624]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.32396317, 0)
+
+[node name="Sprite3D" type="Sprite3D" parent="End_Part(Harder/Key_Part/SpikeTrap/Holes" unique_id=1166511973]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0.01, 0)
+modulate = Color(0.60784316, 0.5568628, 0.5176471, 1)
+pixel_size = 0.002
+texture = ExtResource("16_kr5dj")
+
+[node name="Sprite3D2" type="Sprite3D" parent="End_Part(Harder/Key_Part/SpikeTrap/Holes" unique_id=2118355787]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, -0.6003717, 0.01, -0.23743492)
+modulate = Color(0.60784316, 0.5568628, 0.5176471, 1)
+pixel_size = 0.002
+texture = ExtResource("16_kr5dj")
+
+[node name="Sprite3D3" type="Sprite3D" parent="End_Part(Harder/Key_Part/SpikeTrap/Holes" unique_id=73406283]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, -0.6053808, 0.01, 0.2264297)
+modulate = Color(0.60784316, 0.5568628, 0.5176471, 1)
+pixel_size = 0.002
+texture = ExtResource("16_kr5dj")
+
+[node name="Sprite3D4" type="Sprite3D" parent="End_Part(Harder/Key_Part/SpikeTrap/Holes" unique_id=619578571]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0.2867295, 0.01, 0.580924)
+modulate = Color(0.60784316, 0.5568628, 0.5176471, 1)
+pixel_size = 0.002
+texture = ExtResource("16_kr5dj")
+
+[node name="Sprite3D9" type="Sprite3D" parent="End_Part(Harder/Key_Part/SpikeTrap/Holes" unique_id=115875837]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0.5867295, 0.01, 0.28092396)
+modulate = Color(0.60784316, 0.5568628, 0.5176471, 1)
+pixel_size = 0.002
+texture = ExtResource("16_kr5dj")
+
+[node name="Sprite3D5" type="Sprite3D" parent="End_Part(Harder/Key_Part/SpikeTrap/Holes" unique_id=1115010344]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0.3347944, 0.01, -0.56844777)
+modulate = Color(0.60784316, 0.5568628, 0.5176471, 1)
+pixel_size = 0.002
+texture = ExtResource("16_kr5dj")
+
+[node name="Sprite3D6" type="Sprite3D" parent="End_Part(Harder/Key_Part/SpikeTrap/Holes" unique_id=1785191186]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0.58432895, 0.01, -0.12357813)
+modulate = Color(0.60784316, 0.5568628, 0.5176471, 1)
+pixel_size = 0.002
+texture = ExtResource("16_kr5dj")
+
+[node name="Sprite3D7" type="Sprite3D" parent="End_Part(Harder/Key_Part/SpikeTrap/Holes" unique_id=1746395867]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, -0.27399936, 0.01, 0.5361426)
+modulate = Color(0.60784316, 0.5568628, 0.5176471, 1)
+pixel_size = 0.002
+texture = ExtResource("16_kr5dj")
+
+[node name="Sprite3D8" type="Sprite3D" parent="End_Part(Harder/Key_Part/SpikeTrap/Holes" unique_id=1941335071]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, -0.30325577, 0.01, -0.5908227)
+modulate = Color(0.60784316, 0.5568628, 0.5176471, 1)
+pixel_size = 0.002
+texture = ExtResource("16_kr5dj")
+
+[node name="Spikes" type="Node3D" parent="End_Part(Harder/Key_Part/SpikeTrap" unique_id=1888461165]
+visible = false
+
+[node name="Spike" type="Node3D" parent="End_Part(Harder/Key_Part/SpikeTrap/Spikes" unique_id=631357871]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, -1.321132, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="End_Part(Harder/Key_Part/SpikeTrap/Spikes/Spike" unique_id=1825238414]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, -1.1920929e-07, -1.0353832)
+material_overlay = ExtResource("3_8iwsq")
+mesh = SubResource("CylinderMesh_23lq1")
+skeleton = NodePath("../../../Holes/Sprite3D")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="End_Part(Harder/Key_Part/SpikeTrap/Spikes/Spike" unique_id=748604932]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, -2.3841858e-07, -0.38961193)
+material_overlay = ExtResource("3_8iwsq")
+mesh = SubResource("CylinderMesh_ypdmq")
+skeleton = NodePath("../../../Holes/Sprite3D")
+
+[node name="Spike2" type="Node3D" parent="End_Part(Harder/Key_Part/SpikeTrap/Spikes" unique_id=1502990083]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, -0.6003717, -1.4360068, -0.23743492)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="End_Part(Harder/Key_Part/SpikeTrap/Spikes/Spike2" unique_id=1513003414]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, -1.1920929e-07, -1.0353832)
+material_overlay = ExtResource("3_8iwsq")
+mesh = SubResource("CylinderMesh_23lq1")
+skeleton = NodePath("../../../Holes/Sprite3D2")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="End_Part(Harder/Key_Part/SpikeTrap/Spikes/Spike2" unique_id=532384745]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, -2.3841858e-07, -0.38961193)
+material_overlay = ExtResource("3_8iwsq")
+mesh = SubResource("CylinderMesh_ypdmq")
+skeleton = NodePath("../../../Holes/Sprite3D2")
+
+[node name="Spike3" type="Node3D" parent="End_Part(Harder/Key_Part/SpikeTrap/Spikes" unique_id=1014222293]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, -0.6053808, -1.3635471, 0.2264297)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="End_Part(Harder/Key_Part/SpikeTrap/Spikes/Spike3" unique_id=1285117857]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, -1.1920929e-07, -1.0353832)
+material_overlay = ExtResource("3_8iwsq")
+mesh = SubResource("CylinderMesh_23lq1")
+skeleton = NodePath("../../../Holes/Sprite3D3")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="End_Part(Harder/Key_Part/SpikeTrap/Spikes/Spike3" unique_id=1717394245]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, -2.3841858e-07, -0.38961193)
+material_overlay = ExtResource("3_8iwsq")
+mesh = SubResource("CylinderMesh_ypdmq")
+skeleton = NodePath("../../../Holes/Sprite3D3")
+
+[node name="Spike4" type="Node3D" parent="End_Part(Harder/Key_Part/SpikeTrap/Spikes" unique_id=1490250625]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0.2867295, -1.348794, 0.580924)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="End_Part(Harder/Key_Part/SpikeTrap/Spikes/Spike4" unique_id=1552632135]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, -1.1920929e-07, -1.0353832)
+material_overlay = ExtResource("3_8iwsq")
+mesh = SubResource("CylinderMesh_23lq1")
+skeleton = NodePath("../../../Holes/Sprite3D4")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="End_Part(Harder/Key_Part/SpikeTrap/Spikes/Spike4" unique_id=643309860]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, -2.3841858e-07, -0.38961193)
+material_overlay = ExtResource("3_8iwsq")
+mesh = SubResource("CylinderMesh_ypdmq")
+skeleton = NodePath("../../../Holes/Sprite3D4")
+
+[node name="Spike9" type="Node3D" parent="End_Part(Harder/Key_Part/SpikeTrap/Spikes" unique_id=894697479]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0.5867295, -1.348794, 0.28092396)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="End_Part(Harder/Key_Part/SpikeTrap/Spikes/Spike9" unique_id=2121925813]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, -1.1920929e-07, -1.0353832)
+material_overlay = ExtResource("3_8iwsq")
+mesh = SubResource("CylinderMesh_23lq1")
+skeleton = NodePath("../../../Holes/Sprite3D4")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="End_Part(Harder/Key_Part/SpikeTrap/Spikes/Spike9" unique_id=1715512581]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, -2.3841858e-07, -0.38961193)
+material_overlay = ExtResource("3_8iwsq")
+mesh = SubResource("CylinderMesh_ypdmq")
+skeleton = NodePath("../../../Holes/Sprite3D4")
+
+[node name="Spike5" type="Node3D" parent="End_Part(Harder/Key_Part/SpikeTrap/Spikes" unique_id=1097048778]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0.3347944, -1.4575983, -0.56844777)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="End_Part(Harder/Key_Part/SpikeTrap/Spikes/Spike5" unique_id=1180402773]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, -1.1920929e-07, -1.0353832)
+material_overlay = ExtResource("3_8iwsq")
+mesh = SubResource("CylinderMesh_23lq1")
+skeleton = NodePath("../../../Holes/Sprite3D5")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="End_Part(Harder/Key_Part/SpikeTrap/Spikes/Spike5" unique_id=1207627863]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, -2.3841858e-07, -0.38961193)
+material_overlay = ExtResource("3_8iwsq")
+mesh = SubResource("CylinderMesh_ypdmq")
+skeleton = NodePath("../../../Holes/Sprite3D5")
+
+[node name="Spike6" type="Node3D" parent="End_Part(Harder/Key_Part/SpikeTrap/Spikes" unique_id=269644892]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0.58432895, -1.3985858, -0.12357813)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="End_Part(Harder/Key_Part/SpikeTrap/Spikes/Spike6" unique_id=1409134979]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, -1.1920929e-07, -1.0353832)
+material_overlay = ExtResource("3_8iwsq")
+mesh = SubResource("CylinderMesh_23lq1")
+skeleton = NodePath("../../../Holes/Sprite3D6")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="End_Part(Harder/Key_Part/SpikeTrap/Spikes/Spike6" unique_id=1878534641]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, -2.3841858e-07, -0.38961193)
+material_overlay = ExtResource("3_8iwsq")
+mesh = SubResource("CylinderMesh_ypdmq")
+skeleton = NodePath("../../../Holes/Sprite3D6")
+
+[node name="Spike7" type="Node3D" parent="End_Part(Harder/Key_Part/SpikeTrap/Spikes" unique_id=614917241]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, -0.27399936, -1.3211321, 0.5361426)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="End_Part(Harder/Key_Part/SpikeTrap/Spikes/Spike7" unique_id=1132519358]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, -1.1920929e-07, -1.0353832)
+material_overlay = ExtResource("3_8iwsq")
+mesh = SubResource("CylinderMesh_23lq1")
+skeleton = NodePath("../../../Holes/Sprite3D7")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="End_Part(Harder/Key_Part/SpikeTrap/Spikes/Spike7" unique_id=249676132]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, -2.3841858e-07, -0.38961193)
+material_overlay = ExtResource("3_8iwsq")
+mesh = SubResource("CylinderMesh_ypdmq")
+skeleton = NodePath("../../../Holes/Sprite3D7")
+
+[node name="Spike8" type="Node3D" parent="End_Part(Harder/Key_Part/SpikeTrap/Spikes" unique_id=200123306]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, -0.30325577, -1.3211321, -0.5908227)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="End_Part(Harder/Key_Part/SpikeTrap/Spikes/Spike8" unique_id=1809317903]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, -1.1920929e-07, -1.0353832)
+material_overlay = ExtResource("3_8iwsq")
+mesh = SubResource("CylinderMesh_23lq1")
+skeleton = NodePath("../../../Holes/Sprite3D8")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="End_Part(Harder/Key_Part/SpikeTrap/Spikes/Spike8" unique_id=901724347]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, -2.3841858e-07, -0.38961193)
+material_overlay = ExtResource("3_8iwsq")
+mesh = SubResource("CylinderMesh_ypdmq")
+skeleton = NodePath("../../../Holes/Sprite3D8")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="End_Part(Harder/Key_Part/SpikeTrap/Spikes" unique_id=803726999]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.7, 0)
+collision_layer = 8
+collision_mask = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="End_Part(Harder/Key_Part/SpikeTrap/Spikes/StaticBody3D" unique_id=109602190]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.19499993, 0)
+shape = SubResource("BoxShape3D_oarp6")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="End_Part(Harder/Key_Part/SpikeTrap" unique_id=1300958917]
+libraries/ = SubResource("AnimationLibrary_oarp6")
+
+[node name="Area3D" type="Area3D" parent="End_Part(Harder/Key_Part/SpikeTrap" unique_id=1233380376]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+collision_mask = 3
+monitorable = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="End_Part(Harder/Key_Part/SpikeTrap/Area3D" unique_id=788205735]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.15461046, 0)
+shape = SubResource("BoxShape3D_512if")
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="End_Part(Harder/Key_Part/SpikeTrap" unique_id=952584298]
+
+[node name="PO_SpikeTrap" type="Node" parent="End_Part(Harder/Key_Part/SpikeTrap" unique_id=786041174 groups=["PO"]]
+script = ExtResource("19_vnr5e")
+metadata/_custom_type_script = "uid://dh3jjn72a6w1u"
+
+[node name="key" parent="End_Part(Harder/Key_Part" unique_id=451440735 instance=ExtResource("15_2mhko")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11, 0.13038898, -17)
+
+[node name="Disable_Spike_Trap" parent="End_Part(Harder/Key_Part" unique_id=1641176515 instance=ExtResource("12_dd6sd")]
+transform = Transform3D(-4.371138e-08, 0, 1, 0, 1, 0, -1, 0, -4.371138e-08, 31.65443, 1, -16.994024)
+
+[node name="TorchSconce2" parent="End_Part(Harder/Key_Part" unique_id=896716098 instance=ExtResource("12_gssx2")]
+transform = Transform3D(-1, -7.351371e-08, 2.6054018e-15, -7.351371e-08, 1, -5.9604645e-08, 1.7763568e-15, -5.9604645e-08, -1, 13, 1, -16.403517)
+
+[node name="TorchSconce" parent="." unique_id=496424625 instance=ExtResource("12_gssx2")]
+transform = Transform3D(-2.9802322e-08, 1, -5.9604645e-08, 1, 2.9802322e-08, 0, 1.7763568e-15, -5.9604645e-08, -1, 16, 0, -17)
+
+[node name="TorchScont" parent="." unique_id=1306714557 instance=ExtResource("14_shf58")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 10.408311, 1, -16.441223)
+
+[connection signal="on_change" from="Beginning_Part(Easier)/First_Trap/First_Pressure_Plate" to="Beginning_Part(Easier)/First_Trap/trap_projectile3" method="trigger_trap"]
+[connection signal="on_change" from="Beginning_Part(Easier)/Second_Part/PressurePlate3" to="Beginning_Part(Easier)/Second_Part/Gate" method="open_gate"]
+[connection signal="on_change" from="Beginning_Part(Easier)/Second_Part/PressurePlate3" to="Beginning_Part(Easier)/Second_Part/trap_projectile_Left" method="trigger_trap"]
+[connection signal="on_activated" from="Beginning_Part(Easier)/Second_Part/PressurePlate" to="Beginning_Part(Easier)/Second_Part/SpikeTrap" method="deactivate"]
+[connection signal="on_change" from="Beginning_Part(Easier)/Second_Part/PressurePlate" to="Beginning_Part(Easier)/Second_Part/Gate" method="open_gate"]
+[connection signal="on_change" from="Beginning_Part(Easier)/Second_Part/PressurePlate2" to="Beginning_Part(Easier)/Second_Part/Gate" method="open_gate"]
+[connection signal="on_change" from="Beginning_Part(Easier)/Second_Part/PressurePlate2" to="Beginning_Part(Easier)/Second_Part/trap_projectile_Right" method="trigger_trap"]
+[connection signal="on_activated" from="Beginning_Part(Easier)/Second_Part/PressurePlate4" to="Beginning_Part(Easier)/Second_Part/trap_projectile" method="trigger_trap"]
+[connection signal="on_activated" from="Beginning_Part(Easier)/Third_Part/Button" to="Beginning_Part(Easier)/Third_Part/First_Bridge" method="fully_open_bridge"]
+[connection signal="on_activated" from="Beginning_Part(Easier)/Third_Part/PressurePlate4" to="Beginning_Part(Easier)/Third_Part/trap_projectile" method="trigger_trap"]
+[connection signal="on_change" from="End_Part(Harder/Intersection/Lever" to="End_Part(Harder/Intersection/End_Gate" method="open_gate"]
+[connection signal="area_entered" from="End_Part(Harder/Key_Part/SpikeTrap/Area3D" to="End_Part(Harder/Key_Part/SpikeTrap" method="_on_area_3d_area_entered"]
+[connection signal="area_exited" from="End_Part(Harder/Key_Part/SpikeTrap/Area3D" to="End_Part(Harder/Key_Part/SpikeTrap" method="_on_area_3d_area_exited"]
+[connection signal="body_entered" from="End_Part(Harder/Key_Part/SpikeTrap/Area3D" to="End_Part(Harder/Key_Part/SpikeTrap" method="_on_area_3d_body_entered"]
+[connection signal="body_exited" from="End_Part(Harder/Key_Part/SpikeTrap/Area3D" to="End_Part(Harder/Key_Part/SpikeTrap" method="_on_area_3d_body_exited"]
+[connection signal="on_activated" from="End_Part(Harder/Key_Part/Disable_Spike_Trap" to="End_Part(Harder/Key_Part/SpikeTrap" method="deactivate"]
