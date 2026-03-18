@@ -3,7 +3,11 @@ extends MainMenu
 ## The animation can be skipped by the player with any input.
 
 var animation_state_machine : AnimationNodeStateMachinePlayback
-
+########################## NEW MIKE CODE FOR MAKING THE THING SMOOTH ###################################################################
+@export var anim_player: AnimationPlayer 
+@export var fade_anim: AnimationPlayer 
+@export var vs_scnee: PackedScene
+#####################################################################################################################################
 func intro_done() -> void:
 	animation_state_machine.travel("OpenMainMenu")
 
@@ -36,3 +40,19 @@ func _ready() -> void:
 
 func _on_continue_game_button_pressed() -> void:
 	load_game_scene()
+
+########################## NEW MIKE CODE FOR MAKING THE THING SMOOTH ####################################################################
+func _on_playground_pressed() -> void:
+	start_game()
+	pass # Replace with function body.
+
+func start_game():
+	anim_player.play("SpeedIntoCavee") 
+	animation_state_machine.travel("IntroB")
+
+	await anim_player.animation_finished
+
+	fade_anim.play("FadetoBlack")
+	await fade_anim.animation_finished
+
+	get_tree().change_scene_to_packed(vs_scnee)

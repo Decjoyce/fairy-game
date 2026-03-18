@@ -6,6 +6,7 @@
 [ext_resource type="Script" uid="uid://c3xgbfrig5y5w" path="res://UICOPY/scenes/menus/main_menu/main_menu_with_animations.gd" id="3_nbyns"]
 [ext_resource type="PackedScene" uid="uid://dpic53cok00p4" path="res://UICOPY/scenes/windows/main_menu_options_window.tscn" id="4_2wrwt"]
 [ext_resource type="PackedScene" uid="uid://btcpx55r5ma3v" path="res://assets/models/cairn/Props/Menu/Moutainrocks5.glb" id="4_ckx4x"]
+[ext_resource type="PackedScene" uid="uid://dw2dbsjbocxi7" path="res://scenes/__playground_scenes/playground_interactions.tscn" id="4_kmgne"]
 [ext_resource type="Material" uid="uid://dgrldudl0bdhu" path="res://assets/models/cairn/Props/Rockpile/Rock_pile.tres" id="5_fdbqd"]
 [ext_resource type="PackedScene" uid="uid://y4t20bpdha47" path="res://UICOPY/scenes/windows/main_menu_credits_window.tscn" id="5_kmgne"]
 [ext_resource type="AudioStream" uid="uid://20521ngpj5gh" path="res://assets/audio/music/menu/MainMenu_mixdown.mp3" id="6_hjv1s"]
@@ -297,6 +298,10 @@ _data = {
 [sub_resource type="AnimationNodeAnimation" id="7"]
 animation = &"Intro"
 
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_2wrwt"]
+animation = &"Intro"
+play_mode = 1
+
 [sub_resource type="AnimationNodeAnimation" id="10"]
 animation = &"OpenMainMenu"
 
@@ -313,16 +318,21 @@ advance_mode = 2
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_63dxc"]
 
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_kmgne"]
+advance_mode = 2
+
 [sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_vikuh"]
 states/End/position = Vector2(958, 123)
 states/Intro/node = SubResource("7")
 states/Intro/position = Vector2(259, 123)
+states/IntroB/node = SubResource("AnimationNodeAnimation_2wrwt")
+states/IntroB/position = Vector2(720.92303, 209.16002)
 states/OpenMainMenu/node = SubResource("10")
-states/OpenMainMenu/position = Vector2(472, 123)
+states/OpenMainMenu/position = Vector2(452, 123.96)
 states/OpenSubMenu/node = SubResource("13")
 states/OpenSubMenu/position = Vector2(734, 123)
 states/Start/position = Vector2(82, 123)
-transitions = ["Intro", "OpenMainMenu", SubResource("11"), "OpenMainMenu", "OpenSubMenu", SubResource("14"), "Start", "Intro", SubResource("AnimationNodeStateMachineTransition_j0orr"), "OpenSubMenu", "OpenMainMenu", SubResource("AnimationNodeStateMachineTransition_63dxc")]
+transitions = ["Intro", "OpenMainMenu", SubResource("11"), "OpenMainMenu", "OpenSubMenu", SubResource("14"), "Start", "Intro", SubResource("AnimationNodeStateMachineTransition_j0orr"), "OpenSubMenu", "OpenMainMenu", SubResource("AnimationNodeStateMachineTransition_63dxc"), "OpenMainMenu", "IntroB", SubResource("AnimationNodeStateMachineTransition_kmgne")]
 graph_offset = Vector2(-180.277, 49)
 
 [sub_resource type="CameraAttributesPhysical" id="CameraAttributesPhysical_lrn60"]
@@ -380,18 +390,6 @@ tracks/4/keys = {
 "update": 1,
 "values": [SubResource("CameraAttributesPhysical_lrn60"), SubResource("CameraAttributesPhysical_lrn60"), SubResource("CameraAttributesPhysical_lrn60"), SubResource("CameraAttributesPhysical_lrn60")]
 }
-tracks/5/type = "value"
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/path = NodePath("../TextureRect:modulate")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/keys = {
-"times": PackedFloat32Array(0, 7, 8.1),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
-}
 
 [sub_resource type="Animation" id="Animation_mlkpy"]
 length = 0.001
@@ -441,22 +439,10 @@ tracks/3/keys = {
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("../TextureRect:modulate")
+tracks/4/path = NodePath("../TextureRect:visible")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 1, 1, 0)]
-}
-tracks/5/type = "value"
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/path = NodePath("../TextureRect:visible")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
@@ -653,7 +639,7 @@ _data = {
 script = ExtResource("1_oitgu")
 vs_scnee = ExtResource("2_35d2q")
 
-[node name="MainMenu" type="Control" parent="." unique_id=589811630]
+[node name="MainMenu" type="Control" parent="." unique_id=589811630 node_paths=PackedStringArray("anim_player", "fade_anim")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -661,6 +647,10 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("3_nbyns")
+anim_player = NodePath("../Camera3D/AnimationPlayer")
+fade_anim = NodePath("../FadeLayer/AnimationPlayer")
+vs_scnee = ExtResource("4_kmgne")
+game_scene_path = "uid://dw2dbsjbocxi7"
 options_packed_scene = ExtResource("4_2wrwt")
 credits_packed_scene = ExtResource("5_kmgne")
 
@@ -774,6 +764,11 @@ lock = true
 unique_name_in_owner = true
 layout_mode = 2
 text = "New Game"
+
+[node name="Playground" type="Button" parent="MainMenu/MenuContainer/MenuButtonsMargin/MenuButtonsContainer/MenuButtonsBoxContainer" unique_id=971537016]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Playground"
 
 [node name="OptionsButton" type="Button" parent="MainMenu/MenuContainer/MenuButtonsMargin/MenuButtonsContainer/MenuButtonsBoxContainer" unique_id=1486236076]
 unique_name_in_owner = true
@@ -928,6 +923,7 @@ stretch_mode = 4
 metadata/_edit_use_anchors_ = true
 
 [connection signal="pressed" from="MainMenu/MenuContainer/MenuButtonsMargin/MenuButtonsContainer/MenuButtonsBoxContainer/NewGameButton" to="MainMenu" method="_on_new_game_button_pressed"]
+[connection signal="pressed" from="MainMenu/MenuContainer/MenuButtonsMargin/MenuButtonsContainer/MenuButtonsBoxContainer/Playground" to="MainMenu" method="_on_playground_pressed"]
 [connection signal="pressed" from="MainMenu/MenuContainer/MenuButtonsMargin/MenuButtonsContainer/MenuButtonsBoxContainer/OptionsButton" to="MainMenu" method="_on_options_button_pressed"]
 [connection signal="pressed" from="MainMenu/MenuContainer/MenuButtonsMargin/MenuButtonsContainer/MenuButtonsBoxContainer/CreditsButton" to="MainMenu" method="_on_credits_button_pressed"]
 [connection signal="pressed" from="MainMenu/MenuContainer/MenuButtonsMargin/MenuButtonsContainer/MenuButtonsBoxContainer/ExitButton" to="MainMenu" method="_on_exit_button_pressed"]

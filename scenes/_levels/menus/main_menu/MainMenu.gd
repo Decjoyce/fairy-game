@@ -15,9 +15,9 @@ func _process(delta):
 	if game_started:
 		return
 	
-	if Input.is_action_just_pressed("ui_StartButton"):
-		game_started = true
-		start_game()
+	##if Input.is_action_just_pressed("ui_StartButton"):
+	##	game_started = true
+	##	start_game()
 
 func start_game():
 	anim_player.play("SpeedIntoCavee") 
