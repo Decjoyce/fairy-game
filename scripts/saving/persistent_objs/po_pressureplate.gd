@@ -21,3 +21,5 @@ func on_load_game(saved_data: SavedData) -> void:
 	super(saved_data)
 	if saved_data is SavedData_PressurePlate:
 		parent_plate.saved_num_on_pressure_plate = saved_data.num_on_plate
+		if saved_data.num_on_plate == 0:
+			parent_plate.load_unlock()
