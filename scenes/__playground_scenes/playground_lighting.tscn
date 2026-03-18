@@ -18,6 +18,7 @@
 [ext_resource type="Shader" uid="uid://4b4kstxm1aph" path="res://assets/shaders/post_processing/post_processing.gdshader" id="16_vnihi"]
 [ext_resource type="Texture2D" uid="uid://bgvylughro1va" path="res://assets/sprites/PaperTexture/Texturelabs_Paper_304L.jpg" id="17_naykj"]
 [ext_resource type="PackedScene" uid="uid://b6yxusckbk4fk" path="res://scenes/interactions/_special/statue.tscn" id="18_naykj"]
+[ext_resource type="PackedScene" uid="uid://bq5fylqfw1ru7" path="res://scenes/interactions/_special/item_statue_arm.tscn" id="19_exkgn"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_cti4x"]
 size = Vector3(0.2, 2, 0.2)
@@ -444,3 +445,6 @@ color = Color(0.5747226, 0.50857943, 0.49505764, 0.03529412)
 
 [node name="Statue" parent="." unique_id=296240778 instance=ExtResource("18_naykj")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 0, -3)
+
+[node name="StatuePiece_arm" parent="." unique_id=234370081 instance=ExtResource("19_exkgn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11, 0.5, -3)

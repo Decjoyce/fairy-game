@@ -7,6 +7,9 @@
 [ext_resource type="Texture2D" uid="uid://ccrwcq4ub7lyd" path="res://assets/sprites/item_sprites/statue/statue_spritesheets/statue_piece_head.png" id="4_st7xe"]
 [ext_resource type="Script" uid="uid://dk36d8kuwrwnv" path="res://addons/extras_sprites/scripts/simple_sprite_3D_billboard.gd" id="5_8dsw0"]
 [ext_resource type="Script" uid="uid://bhf6r6nw14krj" path="res://scripts/saving/persistent_objs/po_item.gd" id="7_r3poj"]
+[ext_resource type="Shader" uid="uid://bxy4s1fhoupka" path="res://assets/shaders/special_sprite_shine/new_special_sprite_shine.gdshader" id="8_ifrky"]
+[ext_resource type="Texture2D" uid="uid://cs7hb6d4m7ofv" path="res://assets/sprites/item_sprites/statue/statue_piece_head.png" id="9_3owfn"]
+[ext_resource type="Texture2D" uid="uid://fhu8mpyetofc" path="res://assets/sprites/item_sprites/statue/statue_piece_arm_n_single.png" id="11_o6a02"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_llc7q"]
 
@@ -20,7 +23,7 @@ size = Vector3(0.5, 0.5, 0.5)
 [sub_resource type="BoxShape3D" id="BoxShape3D_234jp"]
 size = Vector3(0.4, 0.4, 0.4)
 
-[sub_resource type="Shader" id="Shader_r3poj"]
+[sub_resource type="Shader" id="Shader_x0bqo"]
 code = "shader_type spatial;
 render_mode diffuse_lambert_wrap,cull_disabled;
 
@@ -97,9 +100,9 @@ void fragment() {
 }
 "
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_st7xe"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_cfmtu"]
 render_priority = 0
-shader = SubResource("Shader_r3poj")
+shader = SubResource("Shader_x0bqo")
 shader_parameter/rows = 1.0
 shader_parameter/columns = 8.0
 shader_parameter/frame = 0.0
@@ -108,10 +111,48 @@ shader_parameter/sprite = ExtResource("4_st7xe")
 shader_parameter/mode = 0
 shader_parameter/Normal = ExtResource("3_rci7l")
 
-[sub_resource type="PlaneMesh" id="PlaneMesh_8dsw0"]
-material = SubResource("ShaderMaterial_st7xe")
+[sub_resource type="PlaneMesh" id="PlaneMesh_3pq2u"]
+material = SubResource("ShaderMaterial_cfmtu")
 size = Vector2(0.512, 0.512)
 orientation = 2
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_j7pcd"]
+render_priority = 1
+shader = ExtResource("8_ifrky")
+shader_parameter/albedo = Color(3.194369, 3.194369, 3.194369, 1)
+shader_parameter/texture_albedo = ExtResource("9_3owfn")
+shader_parameter/albedo_texture_size = Vector2i(512, 512)
+shader_parameter/point_size = 1.0
+shader_parameter/roughness = 0.51
+shader_parameter/metallic_texture_channel = Vector4(1, 0, 0, 0)
+shader_parameter/specular = 0.5
+shader_parameter/metallic = 0.0
+shader_parameter/normal_scale = 0.0
+shader_parameter/uv1_scale = Vector3(1, 1, 1)
+shader_parameter/uv1_offset = Vector3(0, 0, 0)
+shader_parameter/uv2_scale = Vector3(1, 1, 1)
+shader_parameter/uv2_offset = Vector3(0, 0, 0)
+shader_parameter/shine_color = Color(1.1730844, 1.1730844, 1.1730844, 1)
+shader_parameter/line_width = 0.0999999977648
+shader_parameter/angle = 0.7853982
+shader_parameter/speed = 1.5000000223518
+shader_parameter/wait_cycles = 2.500000037253
+
+[sub_resource type="QuadMesh" id="QuadMesh_yimkh"]
+material = SubResource("ShaderMaterial_j7pcd")
+size = Vector2(0.7, 0.7)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1d3no"]
+render_priority = 1
+transparency = 1
+albedo_color = Color(2.5713813, 2.5713813, 2.5713813, 1)
+albedo_texture = ExtResource("9_3owfn")
+roughness = 0.51
+normal_texture = ExtResource("11_o6a02")
+
+[sub_resource type="QuadMesh" id="QuadMesh_uiosa"]
+material = SubResource("StandardMaterial3D_1d3no")
+size = Vector2(0.7, 0.7)
 
 [node name="StatuePiece_Head" type="RigidBody3D" unique_id=234370081 node_paths=PackedStringArray("col", "grab_col", "idle_graphics") groups=["debug_PickableObjects"]]
 collision_layer = 2
@@ -142,8 +183,9 @@ shape = SubResource("BoxShape3D_234jp")
 debug_color = Color(0.8442249, 0.37985525, 5.7756904e-07, 0.41960785)
 
 [node name="_g_idle" type="MeshInstance3D" parent="." unique_id=1013544370]
+visible = false
 layers = 4
-mesh = SubResource("PlaneMesh_8dsw0")
+mesh = SubResource("PlaneMesh_3pq2u")
 script = ExtResource("5_8dsw0")
 sprite = ExtResource("4_st7xe")
 sprite_scale = 0.001
@@ -166,3 +208,10 @@ hit_from_inside = true
 [node name="PO_Item" type="Node" parent="." unique_id=2119214321 groups=["PO"]]
 script = ExtResource("7_r3poj")
 metadata/_custom_type_script = "uid://bhf6r6nw14krj"
+
+[node name="_g_idle2" type="MeshInstance3D" parent="." unique_id=1074241538]
+mesh = SubResource("QuadMesh_yimkh")
+
+[node name="_g_grabbed" type="MeshInstance3D" parent="." unique_id=1611364003]
+visible = false
+mesh = SubResource("QuadMesh_uiosa")
