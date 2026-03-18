@@ -19,6 +19,8 @@
 [ext_resource type="Texture2D" uid="uid://bgvylughro1va" path="res://assets/sprites/PaperTexture/Texturelabs_Paper_304L.jpg" id="17_naykj"]
 [ext_resource type="PackedScene" uid="uid://b6yxusckbk4fk" path="res://scenes/interactions/_special/statue.tscn" id="18_naykj"]
 [ext_resource type="PackedScene" uid="uid://bq5fylqfw1ru7" path="res://scenes/interactions/_special/item_statue_arm.tscn" id="19_exkgn"]
+[ext_resource type="PackedScene" uid="uid://u8or5ikxykcy" path="res://scenes/interactions/_special/item_statue_base.tscn" id="20_eut0j"]
+[ext_resource type="PackedScene" uid="uid://ciak43nkaxomm" path="res://scenes/interactions/_special/item_statue_head.tscn" id="21_1e64r"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_cti4x"]
 size = Vector3(0.2, 2, 0.2)
@@ -448,3 +450,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 0, -3)
 
 [node name="StatuePiece_arm" parent="." unique_id=234370081 instance=ExtResource("19_exkgn")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11, 0.5, -3)
+
+[node name="StatuePiece_Base" parent="." unique_id=1176637578 instance=ExtResource("20_eut0j")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 1, -1)
+
+[node name="StatuePiece_Head" parent="." unique_id=2139321768 instance=ExtResource("21_1e64r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15, 1, -7.4)

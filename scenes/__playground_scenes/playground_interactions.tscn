@@ -4844,6 +4844,18 @@ metadata/uid = "4ec4dec1-83f7-48d2-826f-9265b8920a3f"
 metadata/lock_uid = true
 metadata/date_generated = "2026-03-17T20:29:48"
 
+[node name="Button3" parent="Room_Interactions/SignalReceiver_Room/ObjectsSection/Sec_Gate/Gate_Button" unique_id=951315421 instance=ExtResource("10_h40wo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.400002, 0.7, -4.1000004)
+metadata/uid = "4ec4dec1-83f7-48d2-826f-9265b8920a3f"
+metadata/lock_uid = true
+metadata/date_generated = "2026-03-17T20:29:48"
+
+[node name="Button4" parent="Room_Interactions/SignalReceiver_Room/ObjectsSection/Sec_Gate/Gate_Button" unique_id=1615891795 instance=ExtResource("10_h40wo")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 12.400002, 0.7, -6.1000004)
+metadata/uid = "4ec4dec1-83f7-48d2-826f-9265b8920a3f"
+metadata/lock_uid = true
+metadata/date_generated = "2026-03-17T20:29:48"
+
 [node name="_decor2" type="StaticBody3D" parent="Room_Interactions/SignalReceiver_Room/ObjectsSection/Sec_Gate/Gate_Button" unique_id=1128370125]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.6293945e-06, 0.4, 1)
 
@@ -5045,6 +5057,7 @@ font_size = 52
 
 [node name="SpikeTrap_Floor" parent="Room_Interactions/SignalReceiver_Room/ObjectsSection/Sec_Traps" unique_id=610712147 instance=ExtResource("49_52qvx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0, -9.536743e-07)
+only_trig_once = true
 metadata/uid = "90985db4-39b1-4df2-98fc-93924bfd427b"
 metadata/lock_uid = true
 metadata/date_generated = "2026-03-17T20:29:48"
@@ -6031,6 +6044,8 @@ metadata/date_generated = "2026-03-18T00:59:33"
 [connection signal="area_entered" from="Room_Interactions/SignalReceiver_Room/TP_SR2Start/Trigger" to="Room_Interactions/SignalReceiver_Room/TP_SR2Start" method="_teleport_entity"]
 [connection signal="body_entered" from="Room_Interactions/SignalReceiver_Room/TP_SR2Start/Trigger" to="Room_Interactions/SignalReceiver_Room/TP_SR2Start" method="_teleport_item"]
 [connection signal="on_activated" from="Room_Interactions/SignalReceiver_Room/ObjectsSection/Sec_Gate/Gate_Button/Button" to="Room_Interactions/SignalReceiver_Room/ObjectsSection/Sec_Gate/Gate_Button/Gate" method="toggle_gate"]
+[connection signal="on_activated" from="Room_Interactions/SignalReceiver_Room/ObjectsSection/Sec_Gate/Gate_Button/Button3" to="Room_Interactions/SignalReceiver_Room/ObjectsSection/Sec_Traps/SpikeTrap_Floor" method="deactivate"]
+[connection signal="on_activated" from="Room_Interactions/SignalReceiver_Room/ObjectsSection/Sec_Gate/Gate_Button/Button4" to="Room_Interactions/SignalReceiver_Room/ObjectsSection/Sec_Traps/SpikeTrap_Floor" method="activate"]
 [connection signal="on_activated" from="Room_Interactions/SignalReceiver_Room/ObjectsSection/Sec_Gate/Gate_Button/Button2" to="Room_Interactions/SignalReceiver_Room/ObjectsSection/Sec_Gate/Gate_Button/Gate" method="toggle_gate"]
 [connection signal="on_change" from="Room_Interactions/SignalReceiver_Room/ObjectsSection/Sec_Gate/Gate_Lever/Lever" to="Room_Interactions/SignalReceiver_Room/ObjectsSection/Sec_Gate/Gate_Lever/Gate" method="open_gate"]
 [connection signal="on_change" from="Room_Interactions/SignalReceiver_Room/ObjectsSection/Sec_Gate/Gate_Lever/Lever2" to="Room_Interactions/SignalReceiver_Room/ObjectsSection/Sec_Gate/Gate_Lever/Gate" method="open_gate"]
