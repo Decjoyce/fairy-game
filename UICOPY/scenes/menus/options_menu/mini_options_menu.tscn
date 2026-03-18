@@ -1,11 +1,11 @@
 [gd_scene format=3 uid="uid://ds57telfhrosc"]
 
-[ext_resource type="Script" path="res://addons/maaacks_options_menus/base/nodes/menus/options_menu/mini_options_menu.gd" id="1_47jgc"]
-[ext_resource type="PackedScene" path="res://addons/maaacks_options_menus/base/nodes/menus/options_menu/option_control/slider_option_control.tscn" id="2_5bmoe"]
-[ext_resource type="Script" path="res://addons/maaacks_options_menus/base/nodes/utilities/capture_focus.gd" id="3_suvev"]
-[ext_resource type="PackedScene" path="res://addons/maaacks_options_menus/base/nodes/menus/options_menu/option_control/toggle_option_control.tscn" id="4_ffc38"]
+[ext_resource type="Script" path="res://addons/maaacks_menus_template/base/nodes/menus/options_menu/mini_options_menu.gd" id="1_47jgc"]
+[ext_resource type="PackedScene" path="res://addons/maaacks_menus_template/base/nodes/menus/options_menu/option_control/slider_option_control.tscn" id="2_5bmoe"]
+[ext_resource type="Script" path="res://addons/maaacks_menus_template/base/nodes/utilities/capture_focus.gd" id="3_suvev"]
+[ext_resource type="PackedScene" path="res://addons/maaacks_menus_template/base/nodes/menus/options_menu/option_control/toggle_option_control.tscn" id="4_ffc38"]
 
-[node name="MiniOptionsMenu" type="VBoxContainer"]
+[node name="MiniOptionsMenu" type="VBoxContainer" unique_id=2109470311]
 custom_minimum_size = Vector2(400, 260)
 anchors_preset = 8
 anchor_left = 0.5
@@ -24,14 +24,14 @@ alignment = 1
 script = ExtResource("1_47jgc")
 audio_control_scene = ExtResource("2_5bmoe")
 
-[node name="AudioControlContainer" type="VBoxContainer" parent="."]
+[node name="AudioControlContainer" type="VBoxContainer" parent="." unique_id=2081802894]
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_constants/separation = 8
 script = ExtResource("3_suvev")
 search_depth = 2
 
-[node name="MuteControl" parent="." instance=ExtResource("4_ffc38")]
+[node name="MuteControl" parent="." unique_id=1533689152 instance=ExtResource("4_ffc38")]
 unique_name_in_owner = true
 layout_mode = 2
 option_name = "Mute"
@@ -39,7 +39,7 @@ option_section = 2
 key = "Mute"
 section = "AudioSettings"
 
-[node name="FullscreenControl" parent="." instance=ExtResource("4_ffc38")]
+[node name="FullscreenControl" parent="." unique_id=311912129 instance=ExtResource("4_ffc38")]
 unique_name_in_owner = true
 layout_mode = 2
 option_name = "Fullscreen"
