@@ -34,6 +34,27 @@ height = 0.105
 
 [node name="LeverTesting" type="Node3D" unique_id=1969717916]
 
+[node name="player_test" parent="." unique_id=725727541 instance=ExtResource("2_5vvke")]
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 0, 1, 1)
+
+[node name="Gate" parent="." unique_id=1033176324 instance=ExtResource("3_mkmlb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2.4)
+metadata/uid = "c2f3f721-259d-4f74-a4da-e8dacc5380b9"
+metadata/lock_uid = true
+metadata/date_generated = "2026-03-14T22:02:08"
+
+[node name="Gate3" parent="." unique_id=445072765 instance=ExtResource("3_mkmlb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, -2.4)
+metadata/uid = "02c8f925-f31e-40d6-b9a6-9bbd2d92c28c"
+metadata/lock_uid = true
+metadata/date_generated = "2026-03-14T22:02:08"
+
+[node name="Gate2" parent="." unique_id=1292899736 instance=ExtResource("3_mkmlb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 0, -2.4)
+metadata/uid = "75eb4edc-ede9-40e6-ae79-4f3ed63ea8da"
+metadata/lock_uid = true
+metadata/date_generated = "2026-03-14T22:02:08"
+
 [node name="Lever" parent="." unique_id=1692381032 instance=ExtResource("1_vplke")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.6, 0.93050265, 0.3)
 metadata/lock_uid = true
@@ -55,27 +76,6 @@ use_intervals = true
 metadata/lock_uid = true
 metadata/uid = "7607ea0d-7860-4283-9041-d69c780daf73"
 metadata/date_generated = "2026-03-14T10:50:22"
-
-[node name="player_test" parent="." unique_id=725727541 instance=ExtResource("2_5vvke")]
-transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 0, 1, 1)
-
-[node name="Gate" parent="." unique_id=1033176324 instance=ExtResource("3_mkmlb")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2.4)
-metadata/uid = "c2f3f721-259d-4f74-a4da-e8dacc5380b9"
-metadata/lock_uid = true
-metadata/date_generated = "2026-03-14T22:02:08"
-
-[node name="Gate3" parent="." unique_id=445072765 instance=ExtResource("3_mkmlb")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, -2.4)
-metadata/uid = "02c8f925-f31e-40d6-b9a6-9bbd2d92c28c"
-metadata/lock_uid = true
-metadata/date_generated = "2026-03-14T22:02:08"
-
-[node name="Gate2" parent="." unique_id=1292899736 instance=ExtResource("3_mkmlb")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 0, -2.4)
-metadata/uid = "75eb4edc-ede9-40e6-ae79-4f3ed63ea8da"
-metadata/lock_uid = true
-metadata/date_generated = "2026-03-14T22:02:08"
 
 [node name="skybox_changer" type="Node" parent="." unique_id=724843259 node_paths=PackedStringArray("world_environment")]
 script = ExtResource("4_2rnw6")
@@ -117,6 +117,9 @@ metadata/date_generated = "2026-03-14T10:50:22"
 
 [node name="SpikeTrap" parent="." unique_id=610712147 instance=ExtResource("8_uyxk5")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.3651237, 0.00061232597, 1)
+metadata/uid = "faa50995-1c9a-4961-bd42-ed6b3ddf7cee"
+metadata/lock_uid = true
+metadata/date_generated = "2026-03-18T00:04:05"
 
 [node name="ITMMOVERSTUFF" type="Node3D" parent="." unique_id=464698885]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 0, 0)
@@ -297,12 +300,10 @@ max_count = 8
 metadata/_custom_type_script = "uid://cfmswqnu6u0bl"
 
 [node name="Bridge" parent="." unique_id=2088177992 instance=ExtResource("21_h0f0v")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 0, -3)
-
-[node name="Lever4" parent="." unique_id=1189795630 instance=ExtResource("1_vplke")]
+transform = Transform3D(-1.9841906e-09, 0, 1, 0, 1, 0, -1, 0, -1.9841906e-09, 9, 0, -3)
+metadata/uid = "c3ccfceb-7f96-4940-95b9-f0adc075e864"
 metadata/lock_uid = true
-metadata/uid = "56217d06-a90e-4227-95db-fbdd5fa57497"
-metadata/date_generated = "2026-03-14T10:50:22"
+metadata/date_generated = "2026-03-18T00:24:12"
 
 [node name="UID_Generator" type="Node" parent="." unique_id=1339389628]
 script = ExtResource("23_0ff0n")
@@ -314,7 +315,7 @@ script = ExtResource("23_0ff0n")
 [connection signal="on_deactivated" from="Lever2" to="skybox_changer" method="change_to_b"]
 [connection signal="on_change" from="Lever3" to="Gate2" method="open_gate"]
 [connection signal="on_activated" from="BrokenLeverExample/BrokenLever" to="BrokenLeverExample/Lever_Fixed" method="enable"]
-[connection signal="on_change" from="BrokenLeverExample/Lever_Fixed" to="Bridge" method="open_bridge"]
+[connection signal="on_change" from="BrokenLeverExample/Lever_Fixed" to="Bridge" method="move_bridge"]
 [connection signal="on_activated" from="ITMMOVERSTUFF/Button" to="ITMMOVERSTUFF/ITM_MOVER" method="move_item_from_index"]
 [connection signal="on_activated" from="ITMMOVERSTUFF/Button5" to="ITMMOVERSTUFF/ITM_MOVER2" method="smooth_move_all_items"]
 [connection signal="on_activated" from="ITMMOVERSTUFF/Button6" to="ITMMOVERSTUFF/Counter" method="add_count"]

@@ -21,5 +21,6 @@ func on_before_load_game() -> void:
 func on_load_game(saved_data: SavedData) -> void:
 	super(saved_data)
 	if saved_data is SavedData_IntValuer:
-		parent_intvalue.update_value(saved_data.value, false)
 		if saved_data.disabled: parent_intvalue.disable()
+		else: parent_intvalue.enable()
+		parent_intvalue.update_value(saved_data.value, false)
