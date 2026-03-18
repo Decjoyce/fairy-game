@@ -152,7 +152,7 @@ tracks/2/keys = {
 }
 tracks/3/type = "value"
 tracks/3/imported = false
-tracks/3/enabled = true
+tracks/3/enabled = false
 tracks/3/path = NodePath("../DeathUI/ColorRect:color")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
@@ -1062,18 +1062,17 @@ script = ExtResource("15_6jmgc")
 hands = [NodePath("../CombatHand_Left"), NodePath("../CombatHand_Right")]
 metadata/_custom_type_script = "uid://446bgqyk22na"
 
-[node name="Stats" type="Node" parent="." unique_id=1718418828 node_paths=PackedStringArray("health_bar", "death_anim", "hit_sfx", "who_owns", "stam_bar", "stam_sfx")]
+[node name="Stats" type="Node" parent="." unique_id=1718418828 node_paths=PackedStringArray("who_owns", "hit_sfx", "health_regen_timer")]
 script = ExtResource("4_fhpxp")
-health_bar = NodePath("UI/Border/HealthBar")
-death_anim = NodePath("../Camera3D/DeathAnimationPlayer")
-hit_sfx = NodePath("../HitSfx")
+can_regen_health = true
+health_regen_rate = 10.0
 who_owns = NodePath("..")
-stam_bar = NodePath("UI/Border/StamBar")
-stamina_regen_rate = 20.0
-stam_sfx = NodePath("../StamSfx")
+hit_sfx = NodePath("../HitSfx")
+health_regen_timer = NodePath("Timer")
 metadata/_custom_type_script = "uid://46pp7aerorca"
 
 [node name="Timer" type="Timer" parent="Stats" unique_id=486626692]
+wait_time = 4.0
 one_shot = true
 
 [node name="UI" type="Control" parent="Stats" unique_id=668554115]
@@ -1207,5 +1206,5 @@ color = Color(0.5747226, 0.50857943, 0.49505764, 0.03529412)
 [connection signal="timeout" from="Combat/CombatHand_Right/Attack/Timer_Attack" to="Combat/CombatHand_Right/Attack" method="end_attack"]
 [connection signal="timeout" from="Combat/CombatHand_Right/Attack/Timer_Recover" to="Combat/CombatHand_Right/Attack" method="end_recover"]
 [connection signal="timeout" from="Combat/Combat_UI/IncomingAttacks/Timer" to="Combat" method="_on_timer_timeout"]
-[connection signal="timeout" from="Stats/Timer" to="Stats" method="begin_regen"]
+[connection signal="timeout" from="Stats/Timer" to="Stats" method="begin_regen_health"]
 [connection signal="pressed" from="DeathUI/Button" to="." method="return_to_menu"]

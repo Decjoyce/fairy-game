@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://drkcm6snb4co7" path="res://scenes/_managers/effects_player/effect_player.gd" id="1_q42w5"]
 [ext_resource type="Shader" uid="uid://b1ry6810b0o1l" path="res://assets/shaders/transitions/save_trans.gdshader" id="2_ex38h"]
 [ext_resource type="Shader" uid="uid://d3s7n6vhxao3e" path="res://assets/shaders/post_processing/saturation.gdshader" id="3_ex38h"]
+[ext_resource type="Shader" uid="uid://vldhix8qu4l5" path="res://assets/shaders/post_processing/colorize.gdshader" id="4_xs6ce"]
 
 [sub_resource type="Gradient" id="Gradient_a2lus"]
 offsets = PackedFloat32Array(1)
@@ -23,10 +24,15 @@ shader_parameter/blur_center = Vector2(0.5, 0.5)
 shader = ExtResource("3_ex38h")
 shader_parameter/saturation = 1.0000000475
 
-[node name="EffectPlayer" type="Node" unique_id=1469880449 node_paths=PackedStringArray("blur_out_effect", "saturation_effect")]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_bgohy"]
+shader = ExtResource("4_xs6ce")
+shader_parameter/new_color = Color(1, 1, 1, 1)
+
+[node name="EffectPlayer" type="Node" unique_id=1469880449 node_paths=PackedStringArray("blur_out_effect", "saturation_effect", "colorize_effect")]
 script = ExtResource("1_q42w5")
 blur_out_effect = NodePath("Blur/BlurEffect")
 saturation_effect = NodePath("Saturate/SaturateEffect")
+colorize_effect = NodePath("Colorize/Colorize")
 metadata/_custom_type_script = "uid://drkcm6snb4co7"
 
 [node name="Blur" type="CanvasLayer" parent="." unique_id=897778376]
@@ -48,6 +54,21 @@ unique_name_in_owner = true
 visible = false
 z_index = -1
 material = SubResource("ShaderMaterial_xs6ce")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0.5747226, 0.50857943, 0.49505764, 0.03529412)
+
+[node name="Colorize" type="CanvasLayer" parent="." unique_id=1544894433]
+
+[node name="Colorize" type="ColorRect" parent="Colorize" unique_id=1630707913]
+unique_name_in_owner = true
+visible = false
+z_index = -1
+material = SubResource("ShaderMaterial_bgohy")
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
