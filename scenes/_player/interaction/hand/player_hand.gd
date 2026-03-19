@@ -141,7 +141,7 @@ func begin_interact() -> void:
 			if player_interact.get_other_hand_state(hand_type) is HandState_Grab_Item:
 				if player_interact.get_other_hand_current_interactable(hand_type) == current_interactable:
 					player_interact.free_interaction_on_other_hand(hand_type) # replace with signal
-			current_interactable.begin_interact()
+			current_interactable.begin_interact(-1.0, self)
 			state.finished.emit(state.GRAB_ITEM)
 			
 		hovering_interactable.InteractTypes.GRAB_OBJ:

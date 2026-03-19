@@ -24,13 +24,13 @@ func _ready() -> void:
 	super()
 	update_value(starting_value, emit_sig_when_using_start_value, true)
 
-func begin_interact(sig: float = -1) -> void:
+func begin_interact(sig: float = -1, hand: PlayerHand = null) -> void:
 	pass
 
-func interacting(sig: float = -1) -> void:
+func interacting(sig: float = -1, hand: PlayerHand = null) -> void:
 	pass
 
-func end_interact(sig: float = -1) -> void:
+func end_interact(sig: float = -1, hand: PlayerHand = null) -> void:
 	pass
 
 # ↑ Interacting Stuff ↑

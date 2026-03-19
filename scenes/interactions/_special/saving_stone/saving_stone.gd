@@ -15,7 +15,7 @@ var r_val: float
 var l_charged: bool
 var r_charged: bool
 
-func end_interact(sig: float = -1) -> void:
+func end_interact(sig: float = -1, hand: PlayerHand = null) -> void:
 	r_val = 0
 	l_val = 0
 	if !l_charged or !r_charged: update_decal()

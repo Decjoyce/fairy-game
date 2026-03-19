@@ -56,6 +56,8 @@ var non_scene_native: bool
 var is_pooled: bool = false
 var starting_pos: Vector3
 
+var grabbed_hand: PlayerHand = null
+
 func _ready() -> void:
 	interaction_type = InteractTypes.GRAB_ITEM
 	rb.body_entered.connect(_on_collide)
@@ -75,7 +77,7 @@ func _ready() -> void:
 func _physics_process(delta: float) -> void:
 	prev_velocity = rb.linear_velocity
 
-func begin_interact(sig: float = -1) -> void:
+func begin_interact(sig: float = -1, hand: PlayerHand = null) -> void:
 	if grabbed_graphics:
 		if untouched_graphics: untouched_graphics.visible = false
 		idle_graphics.visible = false
@@ -83,14 +85,16 @@ func begin_interact(sig: float = -1) -> void:
 	has_been_picked_up = true
 	rb.freeze = true
 	rb.linear_velocity = Vector3.ZERO
+	grabbed_hand = hand
 
-func interacting(sig: float = -1) -> void:
+func interacting(sig: float = -1, hand: PlayerHand = null) -> void:
 	pass
 
-func end_interact(sig: float = -1) -> void:
+func end_interact(sig: float = -1, hand: PlayerHand = null) -> void:
 	if grabbed_graphics: grabbed_graphics.visible = false
 	idle_graphics.visible = true
 	
+	grabbed_hand = null
 	rb.freeze = false
 	rb.force_update_transform()
 	rb.linear_velocity = Vector3.ZERO
@@ -156,6 +160,10 @@ func throw_alt(_throw_mult: float, dir: Vector3) -> void:##[-]
 	rb.apply_central_impulse(dir * (throw_force/1.25) * rb.mass)
 	rb.force_update_transform()
 
+# ↑ Throw Stuff ↑
+# --------------------------------------------------------------------------------------------------
+# ↓ Break Stuff ↓
+
 func _on_collide(body: Node) -> void:
 	if !init_impact:
 		init_impact = true
@@ -167,7 +175,6 @@ func _on_collide(body: Node) -> void:
 	audio_player.volume_linear = current_force/120
 	audio_player.play()
 	
-	
 	if raycast.is_colliding():
 		Impact_Manager.play_impact_at(raycast.get_collision_point(), impact_type, 0.5)
 	else: Impact_Manager.play_impact_at(global_position, impact_type, 0.5)
@@ -177,6 +184,9 @@ func _on_collide(body: Node) -> void:
 
 func break_item() -> void:
 	if !can_break: return
+	if is_grabbed:
+		assert(grabbed_hand, "YOU IDIOT!!!! YOU FORGOT TO ASSIGN A HAND SOMEWHERE SOMEHOW SOMEWHEN")
+		grabbed_hand.force_stop_interacting("FREE", false)
 	if destroyed_item:
 		destroyed_item.reparent(get_tree().current_scene)
 		destroyed_item.visible = true
@@ -197,7 +207,7 @@ func send_to_ether() -> void:
 	#print("Dead")
 	#call_deferred("queue_free")
 
-# ↑ Use Stuff ↑
+# ↑ Break Stuff ↑
 # --------------------------------------------------------------------------------------------------
 # ↓ Ballybog Stuff ↓
 
@@ -214,9 +224,9 @@ func ballybog_throw(throw_force: float, hand_position: Vector3, direction: Vecto
 	
 	throw(throw_force)
 
-# ↑ Use Stuff ↑
+# ↑ Ballybog Stuff ↑
 # --------------------------------------------------------------------------------------------------
-# ↓ Item Stuff ↓
+# ↓ Weight Stuff ↓
 
 func get_weight() -> float:
 	match item_weight:
@@ -226,7 +236,7 @@ func get_weight() -> float:
 		3: return 8 # heavy
 		_: return 0
 
-# ↑ Item Stuff ↑
+# ↑ Weight Stuff ↑
 # --------------------------------------------------------------------------------------------------
 # ↓ Debug Stuff ↓
 

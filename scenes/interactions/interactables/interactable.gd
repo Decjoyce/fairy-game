@@ -18,14 +18,14 @@ var being_interacted_with: bool
 func _ready() -> void:
 	if disabled: disable()
 
-func begin_interact(sig: float = -1) -> void:
+func begin_interact(sig: float = -1, hand: PlayerHand = null) -> void:
 	being_interacted_with = true
 	pass
 
-func interacting(sig: float = -1) -> void:
+func interacting(sig: float = -1, hand: PlayerHand = null) -> void:
 	pass
 
-func end_interact(sig: float = -1) -> void:
+func end_interact(sig: float = -1, hand: PlayerHand = null) -> void:
 	being_interacted_with = false
 	pass
 

@@ -31,7 +31,7 @@ func _ready() -> void:
 		grav_scale = rb.gravity_scale
 		rb.gravity_scale = 0
 
-func begin_interact(sig: float = -1) -> void:
+func begin_interact(sig: float = -1, hand: PlayerHand = null) -> void:
 	super()
 	if sconted:
 		rb.gravity_scale = grav_scale

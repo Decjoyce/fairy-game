@@ -42,6 +42,7 @@ func die():
 	Debug.play_death_player()
 	$Camera3D/DeathAnimationPlayer.play("death_anim")
 	#combat.exit_combat_mode()
+	interaction.force_stop_interacting()
 	interaction.visible = false
 	death_ui.visible = true
 	freeze = true
