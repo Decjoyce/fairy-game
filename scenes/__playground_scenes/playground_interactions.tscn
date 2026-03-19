@@ -68,7 +68,7 @@
 [ext_resource type="PackedScene" uid="uid://b7svh6muowjde" path="res://scenes/interactions/_special/main_quest_stage_indicator.tscn" id="54_fl0xw"]
 [ext_resource type="PackedScene" uid="uid://brxr85hbqpapm" path="res://scenes/interactions/interactables/items/all_items/breakables/item_baby.tscn" id="60_7evwh"]
 [ext_resource type="PackedScene" uid="uid://br35er4x4b6av" path="res://scenes/interactions/_triggers/torch_sconce/torch_sconce_unlit.tscn" id="65_tefph"]
-[ext_resource type="PackedScene" uid="uid://xuo5buj0odhi" path="res://scenes/interactions/_triggers/torch_sconce/torch_sconce_lit.tscn" id="66_aomhw"]
+[ext_resource type="PackedScene" uid="uid://ije1mmh1wcad" path="res://scenes/interactions/interactables/items/all_items/torch/torch_mounted.tscn" id="66_7evwh"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_3wul1"]
 
@@ -5520,20 +5520,23 @@ material_override = ExtResource("41_vxgp0")
 mesh = SubResource("CylinderMesh_l1j80")
 skeleton = NodePath("")
 
+[node name="Torch2" parent="Room_Items/Sections/Sec_Default" unique_id=1792740118 instance=ExtResource("66_7evwh")]
+transform = Transform3D(1.1356552e-07, -6.556708e-08, -1, 0.5, 0.8660254, 0, 0.8660254, -0.5, 1.3113416e-07, -2.6000004, 1.2, 3.2000005)
+
 [node name="TorchSconce" parent="Room_Items/Sections/Sec_Default" unique_id=1729385187 instance=ExtResource("65_tefph")]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -1.5, 1.2, 3.2000005)
 metadata/uid = "25ffc818-3fe6-4b6e-b352-797ebd1a12d2"
 metadata/lock_uid = true
 metadata/date_generated = "2026-03-17T20:29:48"
 
-[node name="TorchSconce" parent="Room_Items/Sections/Sec_Default/TorchSconce" unique_id=116068039 instance=ExtResource("66_aomhw")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.1000004, 0, 0)
-
 [node name="Counter_Light" parent="Room_Items/Sections/Sec_Default" unique_id=1464059266 instance=ExtResource("37_dri38")]
 max_count = 1
 metadata/uid = "dab80b83-e71d-49c9-ad45-260408511d3e"
 metadata/lock_uid = true
 metadata/date_generated = "2026-03-17T20:29:48"
+
+[node name="Torch" parent="Room_Items/Sections/Sec_Default" unique_id=896209847 instance=ExtResource("66_7evwh")]
+transform = Transform3D(0.8660254, -0.5, 0, 0.5, 0.8660254, 0, 0, 0, 1, 0, 0, 3.9999998)
 
 [node name="Sec_Vessel" type="Node3D" parent="Room_Items/Sections" unique_id=645519208]
 transform = Transform3D(7.54979e-08, 0, 1, 0, 1, 0, -1, 0, 7.54979e-08, 2.5, 0, -1)

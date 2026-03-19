@@ -12,40 +12,26 @@ var is_dead: bool
 
 var is_at_edge_of_screen: bool
 
-var grav_scale: float
 @export var sconted: bool
-@export var scont: Torch_Scont
-
 
 func _ready() -> void:
 	super()
 	if item_type is not ItemType_Torch:
 		printerr("TORCH item type must of type torch")
 		return
-	if item_type.starting_health < 0: current_health = item_type.max_health
-	else: current_health = item_type.starting_health
-	if !is_dead and current_health == 0:
-		die()
 	if sconted:
 		rb.linear_velocity = Vector3.ZERO
-		grav_scale = rb.gravity_scale
-		rb.gravity_scale = 0
+		rb.freeze = true
 
 func begin_interact(sig: float = -1, hand: PlayerHand = null) -> void:
 	super()
 	if sconted:
-		rb.gravity_scale = grav_scale
-		rb.linear_velocity = Vector3.ZERO
-		rb.sleeping = false
-		visible = true
+		rb.freeze = false
 		sconted = false
-		scont.disable_me()
-		scont = null
-		reparent(get_tree().current_scene)
 
 func _process(delta: float) -> void:
 	if is_dead: return
-	time_passed += delta
+	time_passed = wrapf(time_passed+delta, 0.0, 10.0)
 	
 	var sampled_noise = abs(item_type.noise.noise.get_noise_1d(time_passed))
 	#torch_light.light_energy = clamp(item_type.light_strength * (current_health / item_type.max_health) * (item_type.flicker_frequency + sampled_noise), 0, item_type.light_strength)

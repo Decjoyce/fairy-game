@@ -6,29 +6,29 @@ var is_grabbed: bool = false
 
 @onready var rb: RigidBody3D = $"."
 
-@export_category("Item Type")
+@export_group("Item Type")
 @export var item_type: ItemType
 @export var display_name: String
 @export var keywords: String ## Separate keywords with ,
 
-@export_category("Weight")
+@export_group("Weight")
 enum item_weight_types {WEIGHTLESS, LIGHT, MEDIUM, HEAVY}
 @export var item_weight: item_weight_types ## Weightless = 0; Light = 1; Medium = 3; Heavy = 8
 
-@export_category("Collision")
+@export_group("Collision")
 @export var col: CollisionShape3D
 @export var grab_col: CollisionShape3D
 
-@export_category("Grabbing")
+@export_group("Grabbing")
 @export var grabbed_offset: Vector2 = Vector2.ZERO
 @export var grabbed_rotation: float = 0.0
 
-@export_category("Throwing")
+@export_group("Throwing")
 @export var throw_distance : float = 8.0
 @export var throwing_offset: Vector2 = Vector2.ZERO
 @export var throwing_rotation: float = 0.0
 
-@export_category("Breaking")
+@export_group("Breaking")
 @export var can_break: bool
 @export var break_force: float = 35.0
 @export var impact_type: int
@@ -37,12 +37,12 @@ var item_spawn_on_destroyed: Grabbable_Item
 @export var destroyed_audio: AudioStreamPlayer3D
 var is_broken: bool
 
-@export_category("Graphics")
+@export_group("Graphics")
 @export var idle_graphics: Node3D
 @export var grabbed_graphics: Node3D
 @export var untouched_graphics: Node3D
 
-@export_category("Audio")
+@export_group("Audio")
 @onready var audio_player: AudioStreamPlayer3D = $AudioPlayer
 @export var base_volume: float = 1.0
 
