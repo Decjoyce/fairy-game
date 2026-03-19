@@ -39,6 +39,7 @@ func saturize(amount: float, length: float, start_amount: float = -1, override_e
 func close_saturation() -> void:
 	saturation_effect.visible = false
 	cur_saturation_effect.finished.disconnect(close_saturation)
+	cur_saturation_effect = null
 
 # ↑ Blur Stuff ↑
 # --------------------------------------------------------------------------------------------------

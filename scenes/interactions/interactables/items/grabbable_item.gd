@@ -139,6 +139,7 @@ var init_impact: bool
 
 func throw(_throw_mult: float) -> void:
 	if grabbed_graphics: grabbed_graphics.visible = false
+	grabbed_hand = null
 	idle_graphics.visible = true
 	rb.linear_velocity = Vector3.ZERO
 	rb.freeze = false

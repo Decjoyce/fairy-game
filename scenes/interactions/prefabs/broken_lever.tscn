@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://ejuiwwsmyrgi" path="res://scenes/interactions/_triggers/item_receiver/item_receiver.gd" id="1_vsmdw"]
 [ext_resource type="Script" uid="uid://cb04xjhu5ksor" path="res://scenes/interactions/_receivers/enabler_disabler_v1/visibility_enabler.gd" id="2_p7kfh"]
 [ext_resource type="Material" uid="uid://bpo4624s20wmk" path="res://assets/models/cairn/Props/Lever/Lever.tres" id="3_p7kfh"]
+[ext_resource type="Script" uid="uid://cc36kknugth5b" path="res://scripts/saving/persistent_objs/po_itmreceiver.gd" id="4_n15gq"]
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_tydbh"]
 _surfaces = [{
@@ -64,5 +65,9 @@ skeleton = NodePath("../..")
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.8428774e-08, 0.044433594, 0.10101714)
 shape = SubResource("BoxShape3D_p7kfh")
+
+[node name="PO_ItmReceiver" type="Node" parent="." unique_id=777104979 groups=["PO"]]
+script = ExtResource("4_n15gq")
+metadata/_custom_type_script = "uid://cc36kknugth5b"
 
 [connection signal="on_activated" from="." to="_graphics" method="disable_obj"]
