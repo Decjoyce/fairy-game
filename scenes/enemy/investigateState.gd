@@ -1,6 +1,6 @@
 extends NodeState
 
-@export var Body : CharacterBody3D # for shmoovment
+@export var Body : EnemyBB # for shmoovment
 @export var Sprite : Sprite3DBillBoard #For animation control i hope
 @export_category("A* Search")
 @export var curr_tile: Vector3i = Vector3i(3,0,-4)
@@ -23,7 +23,7 @@ var curr_pos : int
 var curr_posV : Vector3
 var curr_posPlayerV: Vector3
 var player : PlayerTest
-var interest
+var interest: Vector3
 var inVision : bool
 var current_point: int
 var HUHAnim : bool
@@ -54,7 +54,7 @@ func enter():
 	grid_map =get_tree().get_first_node_in_group("GMPF")
 	grid_map.setup_astar_grid(grid_map.walkable_items)
 	prints(grid_map.walkable_items)
-	interest = get_tree().get_first_node_in_group("Investegate")
+	interest = Body.last_heard_location
 	Animator.play("Alert")
 	await get_tree().create_timer(1.5).timeout
 	HUHAnim = true
@@ -74,7 +74,8 @@ func get_pos_item():
 	#curr_posVi = Body.global_position
 	#curr_posPlayerVi = player.global_position
 	## PLAYER IN THIS CASE IS ITEM THAT MADE THE NOISE!!!!
-	curr_posPlayerV = grid_map.astar.get_closest_position_in_segment(interest.get_child(0).global_position)      #Vector3(player.position.x,0,player.position.z)
+	curr_posPlayerV = grid_map.astar.get_closest_position_in_segment(interest)      #Vector3(player.position.x,0,player.position.z)
+	print("ko")
 	#curr_pos = grid_map.astar.get_closest_point(Body.global_position)
 	curr_posV = grid_map.astar.get_closest_position_in_segment(Body.global_position)
 	prints(curr_posV, curr_posPlayerV,)
@@ -131,6 +132,10 @@ func DebugPath():
 	grid_map.do_debug_path(curr_posPlayerV,curr_posV)
 	
 	pass
+
+func on_heard_something(location: Vector3) -> void:
+	SM.transition_to("Investegate")
+
 
 ############## GET THE FIGHT MODE TRANSFER TO STATE HERE############
 # if entered area 3d most likely or the distance to player is >= to something

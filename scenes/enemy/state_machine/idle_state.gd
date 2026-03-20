@@ -21,6 +21,9 @@ func exit():
 	Animator.stop()
 	pass
 
+func on_heard_something(location: Vector3) -> void:
+	SM.transition_to("Investegate")
+
 func RandomIdle():
 	var random_float = randf()
 	if random_float < 0.5:

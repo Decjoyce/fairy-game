@@ -49,7 +49,8 @@ func enter():
 	#prints(grid_map.walkable_items)
 	player = get_tree().get_first_node_in_group("fakeplayer")
 	Animator.play("Walk2")
-	
+	print("WANDERING")
+
 	
 	RandomWander()
 
@@ -121,7 +122,8 @@ func RandomIdle():
 	
 	pass
 
-
+func on_heard_something(location: Vector3) -> void:
+	SM.transition_to("Investegate")
 
 func exit():
 	Animator.stop()

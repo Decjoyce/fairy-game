@@ -47,11 +47,12 @@ func on_process(delta : float):
 func enter():
 	grid_map =get_tree().get_first_node_in_group("GMPF")
 	grid_map.setup_astar_grid(grid_map.walkable_items)
-	prints(grid_map.walkable_items)
+	#prints(grid_map.walkable_items)
 	player = get_tree().get_first_node_in_group("Player")
 	Animator.play("Walk2",-1,0.5)
 	get_pos()
 	find_path()
+	print("CHASING")
 	return path
 
 func exit():

@@ -173,6 +173,8 @@ func _on_collide(body: Node) -> void:
 	#print(current_force)
 	if current_force <= 0.5: return
 	
+	if current_force >= 1: OMT.on_item_broke.emit(global_position)
+	
 	audio_player.volume_linear = current_force/120
 	audio_player.play()
 	
@@ -197,7 +199,7 @@ func break_item() -> void:
 			item_spawn_on_destroyed.enable_me()
 			item_spawn_on_destroyed.reparent(get_tree().current_scene)
 			item_spawn_on_destroyed.is_pooled = false
-	#disable_me()
+	#OMT.on_item_broke.emit(global_position)
 	is_broken = true
 	call_deferred("send_to_ether")
 

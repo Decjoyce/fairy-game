@@ -24,7 +24,7 @@ func exit() -> void:
 
 func update(_delta: float) -> void:
 	if Input.is_action_just_pressed("action_" + hand_controller.stringed_hand_type) or Input.is_action_just_pressed("use_" + hand_controller.stringed_hand_type): 
-		finished.emit(GRAB_ITEM)
+		finished.emit(FREE)
 	
 	controls(_delta)
 
