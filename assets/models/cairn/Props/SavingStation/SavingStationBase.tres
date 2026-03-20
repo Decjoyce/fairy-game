@@ -1,0 +1,21 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://xf0dn7jdaoah"]
+
+[ext_resource type="Texture2D" uid="uid://dbji52gruhbx7" path="res://assets/models/cairn/Props/SavingStation/Textures/SavingStationBase_Base_color.png" id="1_s2abt"]
+[ext_resource type="Texture2D" uid="uid://cxgfaqx3q2312" path="res://assets/models/cairn/Props/SavingStation/Textures/SavingStationBase_Mixed_AO.png" id="2_ff57l"]
+[ext_resource type="Texture2D" uid="uid://bqusr0lvgica4" path="res://assets/models/cairn/Props/SavingStation/Textures/SavingStationBase_Metallic.png" id="3_3hsjr"]
+[ext_resource type="Material" uid="uid://dyejtq23uplk4" path="res://assets/shaders/Outline/outline.tres" id="3_lpqba"]
+[ext_resource type="Texture2D" uid="uid://cecxueyunmka8" path="res://assets/models/cairn/Props/SavingStation/Textures/SavingStationBase_Normal_OpenGL.png" id="5_wx1rb"]
+[ext_resource type="Texture2D" uid="uid://bkl1vy0lvp2r0" path="res://assets/models/cairn/Props/SavingStation/Textures/SavingStationBase_Roughness.png" id="6_c0288"]
+
+[resource]
+next_pass = ExtResource("3_lpqba")
+albedo_texture = ExtResource("1_s2abt")
+metallic = 1.0
+metallic_specular = 0.0
+metallic_texture = ExtResource("3_3hsjr")
+roughness_texture = ExtResource("6_c0288")
+normal_enabled = true
+normal_scale = 0.35
+normal_texture = ExtResource("5_wx1rb")
+ao_enabled = true
+ao_texture = ExtResource("2_ff57l")
