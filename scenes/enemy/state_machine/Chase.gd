@@ -28,8 +28,12 @@ var current_point: int
 
 
 func on_physics_process(delta: float) -> void:
-		movement(delta)
-
+		if path.size() >= 1:
+			movement(delta)
+			if Animator.current_animation != "Walk2":
+				Animator.play("Walk2")
+		else: 
+			Animator.play("Idle2")
 func on_process(delta : float):
 	#movement(delta)
 	#get_pos()

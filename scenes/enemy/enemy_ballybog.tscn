@@ -126,13 +126,13 @@ void fragment() {
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_86kpf"]
 render_priority = 0
 shader = SubResource("Shader_phxqg")
-shader_parameter/rows = 2.0
+shader_parameter/rows = 1.0
 shader_parameter/columns = 8.0
 shader_parameter/frame = 1.0
 shader_parameter/invert_rows_columns = false
-shader_parameter/sprite = ExtResource("12_l3c6t")
+shader_parameter/sprite = ExtResource("22_pkfog")
 shader_parameter/mode = 0
-shader_parameter/Normal = ExtResource("13_lngu7")
+shader_parameter/Normal = ExtResource("23_d7tla")
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_pkfog"]
 material = SubResource("ShaderMaterial_86kpf")
@@ -149,7 +149,7 @@ columns = 8.0
 
 [sub_resource type="Resource" id="Resource_8vrwc"]
 script = ExtResource("4_v1swk")
-name = "Attack"
+name = "AttackN"
 sprite = ExtResource("3_5ussm")
 texture_normal = ExtResource("2_p6ydp")
 rows = 2.0
@@ -246,6 +246,7 @@ tracks/2/use_blend = true
 
 [sub_resource type="Animation" id="Animation_l3c6t"]
 resource_name = "AttackN"
+loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -1129,7 +1130,7 @@ sorting_offset = 1.0
 mesh = SubResource("PlaneMesh_pkfog")
 script = ExtResource("3_j08hu")
 animations_array = Array[ExtResource("4_v1swk")]([SubResource("Resource_d7tla"), SubResource("Resource_8vrwc"), SubResource("Resource_iaicr"), SubResource("Resource_600hx"), SubResource("Resource_gefnw")])
-animation = 4
+animation = 3
 frame = 1.0
 sprite_scale = 0.003
 metadata/_custom_type_script = "uid://b5653u7w56pqw"
@@ -1189,12 +1190,12 @@ Body = NodePath("../..")
 Sprite = NodePath("../../Sprite3DBillBoard")
 footstep_audio = NodePath("../../SoundsWalkAndIdle")
 Debug_draw = true
+speed = 6.0
 SM = NodePath("..")
 Animator = NodePath("../../AnimationPlayer")
 
 [node name="Timer" type="Timer" parent="StateMachine/Chase" unique_id=1875391046]
 process_callback = 0
-wait_time = 5.0
 one_shot = true
 
 [node name="Investegate" type="Node" parent="StateMachine" unique_id=1316965168 node_paths=PackedStringArray("Body", "Sprite", "footstep_audio", "SM", "Animator")]
@@ -1203,12 +1204,13 @@ Body = NodePath("../..")
 Sprite = NodePath("../../Sprite3DBillBoard")
 footstep_audio = NodePath("../../SoundsWalkAndIdle")
 Debug_draw = true
+speed = 5.0
 SM = NodePath("..")
 Animator = NodePath("../../AnimationPlayer")
 
 [node name="Timer" type="Timer" parent="StateMachine/Investegate" unique_id=509255129]
 process_callback = 0
-wait_time = 10.0
+wait_time = 4.0
 one_shot = true
 
 [node name="Stunned" type="Node" parent="StateMachine" unique_id=1137882621 node_paths=PackedStringArray("SM", "Animator")]
@@ -1217,6 +1219,7 @@ SM = NodePath("..")
 Animator = NodePath("../../AnimationPlayer")
 
 [node name="_timer_stunned" type="Timer" parent="StateMachine/Stunned" unique_id=2133530117]
+wait_time = 2.0
 one_shot = true
 
 [node name="Area3D" type="Area3D" parent="." unique_id=1416647770 groups=["Player"]]
@@ -1335,12 +1338,10 @@ bus = &"items"
 root_node = NodePath("../Sprite3DBillBoard")
 libraries/ = SubResource("AnimationLibrary_khln7")
 
-[node name="Stats" type="Node" parent="." unique_id=1131594280 node_paths=PackedStringArray("health_bar", "hit_sfx", "who_owns", "stam_bar")]
+[node name="Stats" type="Node" parent="." unique_id=1131594280 node_paths=PackedStringArray("who_owns", "hit_sfx")]
 script = ExtResource("35_pydrg")
-health_bar = NodePath("Node3D/SubViewport/Control/Border/HealthBar")
-hit_sfx = NodePath("../HitSfx")
 who_owns = NodePath("..")
-stam_bar = NodePath("Node3D/SubViewport/Control/Border/StamBar")
+hit_sfx = NodePath("../HitSfx")
 metadata/_custom_type_script = "uid://46pp7aerorca"
 
 [node name="Timer" type="Timer" parent="Stats" unique_id=1927817739]
