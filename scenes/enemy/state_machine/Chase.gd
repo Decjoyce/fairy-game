@@ -147,7 +147,8 @@ func DebugPath():
 
 func _on_area_3d_2_area_exited(area: Area3D) -> void:
 	if area.owner is PlayerTest:
-		SM.transition_to("Wander")
+		if SM.current_node_state_name == ("Chase"):
+			SM.transition_to("Wander")
 	pass # Replace with function body.
 
 

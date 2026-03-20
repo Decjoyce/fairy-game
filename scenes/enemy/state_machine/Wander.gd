@@ -153,4 +153,3 @@ func _on_aggro_far_area_entered(area: Area3D) -> void:
 		SM.transition_to("Investegate")
 	else: 
 		pass
-	pass # Replace with function body.

@@ -28,19 +28,9 @@ func exit():
 	pass
 
 
-func _on_area_3d_area_shape_exited(area_rid: RID, area: Area3D, area_shape_index: int, local_shape_index: int) -> void:
-	if area.owner != null:
-		if area.owner is PlayerTest:
-			SM.transition_to("Chase")
-		else:
-			pass
-	
-	
-	
-	
-	
-	
-		
-		
-		
-	
+func _on_area_3d_area_exited(area: Area3D) -> void:
+		if area.owner != null:
+			if area.owner is PlayerTest:
+				SM.transition_to("Chase")
+			else:
+				pass
