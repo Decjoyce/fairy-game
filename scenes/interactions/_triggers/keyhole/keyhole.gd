@@ -9,7 +9,8 @@ signal on_activated(sig: float)
 @export var use_intervals: bool = false
 @export_range(0, 1.0, 0.05) var intervals: float = 0.2
 
-@onready var hand_pos: Node3D = $hand_pos
+@onready var hand_pos_inserted: Node3D = %hand_pos_inserted
+@onready var hand_pos_initial: Node3D = %hand_pos_initial
 @onready var col: CollisionShape3D = $Area3D/CollisionShape3D
 
 var activated: bool

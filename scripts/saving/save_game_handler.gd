@@ -14,6 +14,8 @@ func _process(delta: float) -> void:
 		save_game()
 	elif Input.is_action_just_pressed("load_game"):
 		load_game()
+	elif Input.is_action_just_pressed("reset_vs"):
+		reload_cur_scene()
 
 func save_game() -> void:
 	var saved_game: SavedGame = SavedGame.new()
