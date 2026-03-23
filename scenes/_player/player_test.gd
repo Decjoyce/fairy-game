@@ -12,7 +12,7 @@ const PLAYER_HEIGHT_CROUCHED: float = 0.65
 const PLAYER_WEIGHT: float = 10
 @onready var cam: Camera3D = $Camera3D
 
-@onready var stats: Stats = $Stats
+
 @export var stats_ui: Control
 
 var in_combat: bool

@@ -54,11 +54,11 @@ func begin_regen_health() -> void:
 	is_regen_health = true
 
 func check_if_dead() -> bool:
-	if !is_dead and current_health <= 0:
-		is_dead = true
-		who_owns.die()
+	if current_health <= 0:
+		if !is_dead:
+			is_dead = true
+			who_owns.die()
 		return true
-	elif is_dead: return true 
 	else: return false
 
 func play_hit_fx() -> void:

@@ -173,7 +173,7 @@ func _on_collide(body: Node) -> void:
 	#print(current_force)
 	if current_force <= 0.5: return
 	
-	if current_force >= 1: OMT.on_item_broke.emit(global_position)
+	if current_force >= 5: OMT.on_item_broke.emit(global_position)
 	
 	audio_player.volume_linear = current_force/120
 	audio_player.play()
