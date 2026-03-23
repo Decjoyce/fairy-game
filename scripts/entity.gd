@@ -1,4 +1,3 @@
-@icon("res://assets/_editor_icons/icon_ballyhead.svg")
 class_name Entity
 extends Node3D
 

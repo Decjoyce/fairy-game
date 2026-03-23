@@ -2,6 +2,7 @@ class_name EnemyState_Chase
 extends EnemyState
 
 @onready var wait_timer: Timer = $_wait_timer
+@onready var failsafe_timer: Timer = $_failsafe
 
 var lost_player: bool
 
@@ -15,6 +16,9 @@ var has_reacted: bool
 
 func enter(previous_state_path: String, data := {}) -> void:
 	super(previous_state_path, data)
+	failsafe_timer.timeout.connect(failsafe_trigged)
+	failsafe_timer.start()
+	
 	wait_timer.timeout.connect(wait_delay_over)
 	wait_timer.wait_time = react_time
 	lost_player = false
@@ -28,6 +32,7 @@ func enter(previous_state_path: String, data := {}) -> void:
 
 func exit() -> void:
 	super()
+	failsafe_timer.timeout.disconnect(failsafe_trigged)
 	wait_timer.timeout.disconnect(wait_delay_over)
 	ballybog.player.movement.on_move.disconnect(update_destination)
 
@@ -84,6 +89,15 @@ func update_destination(d: Vector3 = Vector3.ZERO,e: Vector3 = Vector3.ZERO) -> 
 	if !ballybog.movement.is_moving:
 		ballybog.movement.start_movement()
 	last_known_location = ballybog.player.global_position
+
+func failsafe_trigged() -> void:
+	if !active: return
+	if lost_player:
+		finished.emit(sm.default_state)
+	else:
+		ballybog.movement.stop_movement()
+		ballybog.movement.set_destination_to_player()
+		ballybog.movement.start_movement()
 
 func wait_delay_over() -> void:
 	if !active: return

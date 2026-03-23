@@ -39,7 +39,7 @@
 radius = 0.3
 height = 1.3169571
 
-[sub_resource type="Shader" id="Shader_kx3g2"]
+[sub_resource type="Shader" id="Shader_0ak1w"]
 code = "shader_type spatial;
 render_mode diffuse_lambert_wrap,cull_disabled;
 
@@ -116,9 +116,9 @@ void fragment() {
 }
 "
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_0ak1w"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_tsg0o"]
 render_priority = 0
-shader = SubResource("Shader_kx3g2")
+shader = SubResource("Shader_0ak1w")
 shader_parameter/rows = 1.0
 shader_parameter/columns = 8.0
 shader_parameter/frame = 1.0
@@ -127,12 +127,12 @@ shader_parameter/sprite = ExtResource("10_egxrc")
 shader_parameter/mode = 0
 shader_parameter/Normal = ExtResource("11_ojypm")
 
-[sub_resource type="PlaneMesh" id="PlaneMesh_tsg0o"]
-material = SubResource("ShaderMaterial_0ak1w")
+[sub_resource type="PlaneMesh" id="PlaneMesh_ehkwp"]
+material = SubResource("ShaderMaterial_tsg0o")
 size = Vector2(1.62, 1.62)
 orientation = 2
 
-[sub_resource type="Resource" id="Resource_ehkwp"]
+[sub_resource type="Resource" id="Resource_hc02d"]
 script = ExtResource("5_kmwqr")
 name = "walk"
 sprite = ExtResource("6_8sj3j")
@@ -140,7 +140,7 @@ texture_normal = ExtResource("7_r4p23")
 rows = 5.0
 columns = 8.0
 
-[sub_resource type="Resource" id="Resource_hc02d"]
+[sub_resource type="Resource" id="Resource_va8xr"]
 script = ExtResource("5_kmwqr")
 name = "AttackN"
 sprite = ExtResource("3_lcqxn")
@@ -148,7 +148,7 @@ texture_normal = ExtResource("2_kkwvg")
 rows = 2.0
 columns = 8.0
 
-[sub_resource type="Resource" id="Resource_va8xr"]
+[sub_resource type="Resource" id="Resource_pncs0"]
 script = ExtResource("5_kmwqr")
 name = "idle_rub"
 sprite = ExtResource("8_ba1g8")
@@ -156,14 +156,14 @@ texture_normal = ExtResource("9_3yfja")
 rows = 3.0
 columns = 8.0
 
-[sub_resource type="Resource" id="Resource_pncs0"]
+[sub_resource type="Resource" id="Resource_s30ol"]
 script = ExtResource("5_kmwqr")
 name = "Alert"
 sprite = ExtResource("10_egxrc")
 texture_normal = ExtResource("11_ojypm")
 columns = 8.0
 
-[sub_resource type="Resource" id="Resource_s30ol"]
+[sub_resource type="Resource" id="Resource_ysfdd"]
 script = ExtResource("5_kmwqr")
 name = "Stunned"
 sprite = ExtResource("12_tpbbe")
@@ -488,7 +488,7 @@ radius = 8.0
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_hujos"]
 height = 1.33
-radius = 2.0
+radius = 1.5
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_kx3g2"]
 size = Vector3(1.6, 0.9, 0.1)
@@ -511,9 +511,9 @@ disabled = true
 transform = Transform3D(-1, 0, -1.509958e-07, 0, 1, 0, 1.509958e-07, 0, -1, 0, 0.6596855, 0)
 layers = 3
 sorting_offset = 1.0
-mesh = SubResource("PlaneMesh_tsg0o")
+mesh = SubResource("PlaneMesh_ehkwp")
 script = ExtResource("4_neywx")
-animations_array = Array[ExtResource("5_kmwqr")]([SubResource("Resource_ehkwp"), SubResource("Resource_hc02d"), SubResource("Resource_va8xr"), SubResource("Resource_pncs0"), SubResource("Resource_s30ol")])
+animations_array = Array[ExtResource("5_kmwqr")]([SubResource("Resource_hc02d"), SubResource("Resource_va8xr"), SubResource("Resource_pncs0"), SubResource("Resource_s30ol"), SubResource("Resource_ysfdd")])
 animation = 3
 frame = 1.0
 sprite_scale = 0.003
@@ -604,6 +604,10 @@ metadata/_custom_type_script = "uid://drblaerhq3ms4"
 wait_time = 5.0
 one_shot = true
 
+[node name="_failsafe" type="Timer" parent="StateMachine/CHASE" unique_id=1541884139]
+wait_time = 15.0
+one_shot = true
+
 [node name="STUNNED" type="Node" parent="StateMachine" unique_id=1333534698]
 script = ExtResource("31_6joc2")
 metadata/_custom_type_script = "uid://2bed6vo71pcr"
@@ -644,6 +648,7 @@ monitorable = false
 [node name="CollisionShape3D" type="CollisionShape3D" parent="DetectionTriggers/AggroTrig" unique_id=1786604870]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.66875005, 0)
 shape = SubResource("CylinderShape3D_hujos")
+disabled = true
 debug_color = Color(0.6712908, 0.3018689, 0.2512931, 0.41960785)
 
 [node name="FIGHTTRIG" type="Area3D" parent="DetectionTriggers" unique_id=214191219]
