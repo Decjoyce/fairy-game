@@ -85,6 +85,7 @@ func player_raycast_check() -> bool:
 	query.collide_with_areas = true
 	#query.hit_from_inside = true
 	query.hit_back_faces = true
+	$RayCast3D.target_position = to_local(player.global_position)
 	var result = space_state.intersect_ray(query)
 	if !result or !result.collider or result.collider.get_parent() is not PlayerTest:
 		return false

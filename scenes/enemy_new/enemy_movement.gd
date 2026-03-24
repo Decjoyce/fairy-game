@@ -167,7 +167,7 @@ func check_if_needs_to_turn() -> bool:
 	return current_move_direction != prev_dir
 
 func start_turn():
-	print("Started_Turning")
+	#print("Started_Turning")
 	#ballybog.do_idle()
 	is_turning = true
 	_time_started_turning = Time.get_ticks_msec()
@@ -194,7 +194,7 @@ func complete_turn() -> void:
 	_end_rot = 0
 	has_turned.emit()
 	_begin_movement()
-	print("Completed_Turning")
+	#print("Completed_Turning")
 
 # ↑ Moving Stuff ↑
 # --------------------------------------------------------------------------------------------------

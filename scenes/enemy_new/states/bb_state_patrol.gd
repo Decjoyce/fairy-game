@@ -28,8 +28,7 @@ func handle_input(_event: InputEvent) -> void:
 	pass
 
 func update(_delta: float) -> void:
-	if Input.is_action_just_pressed("toggle_crouch"):
-		finished.emit("WANDER")
+	pass
 
 func physics_update(_delta: float) -> void:
 	ballybog.movement.update_physics(_delta)

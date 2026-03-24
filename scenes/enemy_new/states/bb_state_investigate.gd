@@ -4,7 +4,7 @@ extends EnemyState
 @onready var wait_timer: Timer = $_wait_timer
 @onready var giveup_timer: Timer = $_delay_before_give_up
 var reaction_delay: float = 2
-var time_to_investigate: float = 7.5
+var time_to_investigate: float = 3
 var time_before_new_pos: float = 2
 var time_before_giveup: float = 15
 
@@ -27,7 +27,10 @@ func enter(previous_state_path: String, data := {}) -> void:
 		start_investigation()
 		return
 	
+	ballybog.graphics.look_at(current_poi, Vector3.UP)
+	ballybog.graphics.rotation_degrees.y += 180
 	ballybog.current_alertness = ballybog.ALERTNESS.SUSPICIOUS
+	
 	current_investigate_state = 0
 	wait_timer.wait_time = reaction_delay
 	wait_timer.start()

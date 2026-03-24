@@ -44,20 +44,20 @@ func _on_area_exited_trigger(area_rid: RID, area: Area3D, area_shape_index: int,
 
 func item_entered_pressure_plate(item: Grabbable_Item) -> void:
 	if items_on_plate.has(item): return
-	print("entered")
+	#print("entered")
 	items_on_plate[item] = item.get_weight()
 	check_weight()
 	if always_emit_on_change: emit_on_change()
 
 func item_exited_pressure_plate(item: Grabbable_Item) -> void:
 	if items_on_plate.has(item): items_on_plate.erase(item)
-	print("exited")
+	#print("exited")
 	check_weight()
 	if always_emit_on_change: emit_on_change()
 
 func entity_entered_pressure_plate(entity: Entity) -> void:
 	if entities_on_plate.has(entity): return
-	print("entered")
+	#print("entered")
 	entities_on_plate[entity] = entity.current_weight
 	entity.current_pressureplate = self
 	check_weight()
@@ -67,7 +67,7 @@ func entity_exited_pressure_plate(entity: Entity) -> void:
 	#prints(entity, entity.current_pressureplate, self)
 	if entity.current_pressureplate == self: entity.current_pressureplate = null
 	if entities_on_plate.has(entity): entities_on_plate.erase(entity)
-	print("exited")
+	#print("exited")
 	check_weight()
 	if always_emit_on_change: emit_on_change()
 

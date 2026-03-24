@@ -499,6 +499,7 @@ size = Vector3(0.1, 0.9, 1.6)
 [node name="Ballybog" type="CharacterBody3D" unique_id=1712475425]
 collision_layer = 0
 script = ExtResource("1_8ccvb")
+los_fov = 20.0
 player_check_layer_mask = 1
 time_before_giveup_chase = 5.0
 
@@ -674,6 +675,9 @@ target_position = Vector3(0, -1.1, 0)
 collision_mask = 4097
 script = ExtResource("34_0ak1w")
 metadata/_custom_type_script = "uid://jxohgxu3vshf"
+
+[node name="RayCast3D" type="RayCast3D" parent="." unique_id=1852318428]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 
 [connection signal="body_entered" from="Hitbox" to="." method="_on_item_entered"]
 [connection signal="area_entered" from="DetectionTriggers/AwarenessTrig" to="." method="_something_entered_awareness_trig"]

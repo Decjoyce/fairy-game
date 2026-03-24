@@ -65,7 +65,7 @@ func wait_delay_over() -> void:
 
 func on_player_exit_fight_radius() -> void:
 	if !active: return
-	finished.emit("CHASE")
+	finished.emit("CHASE", {"skip_reaction": true})
 
 func on_player_enter_sight() -> void:
 	return
