@@ -14,6 +14,7 @@
 [ext_resource type="PackedScene" uid="uid://lxic7c72kvyt" path="res://scenes/interactions/interactables/items/all_items/misc/item_skull.tscn" id="7_0h5nv"]
 [ext_resource type="Material" uid="uid://rbnbiylju0f0" path="res://assets/models/cairn/Hall_BigRoof/Dirtcube.tres" id="7_w1yc6"]
 [ext_resource type="ArrayMesh" uid="uid://dkmhu2vvhxyg0" path="res://assets/models/misc/fake_plane/fake_plane.obj" id="8_jsiwv"]
+[ext_resource type="PackedScene" uid="uid://chqox5wu7wm4q" path="res://scenes/_levels/_palettes/cairn/props/cairn_exit_pillars.tscn" id="9_5tq18"]
 [ext_resource type="PackedScene" uid="uid://oqosqgdkwcrb" path="res://scenes/interactions/_receivers/door/door_new.tscn" id="10_am3t6"]
 [ext_resource type="Script" uid="uid://ejuiwwsmyrgi" path="res://scenes/interactions/_triggers/item_receiver/item_receiver.gd" id="11_fdx8o"]
 [ext_resource type="Script" uid="uid://cc36kknugth5b" path="res://scripts/saving/persistent_objs/po_itmreceiver.gd" id="12_fdx8o"]
@@ -295,7 +296,10 @@ transform = Transform3D(0.9659258, 0, -0.25881904, 0, 1, 0, 0.25881904, 0, 0.965
 transform = Transform3D(-0.96592593, 0, 0.25881916, 0, 1, 0, -0.25881916, 0, -0.96592593, -6.883576, 2.1000001, -2.3291874)
 
 [node name="TorchSconce_Lit3" parent="_env/_decor/_lights" unique_id=2095231742 instance=ExtResource("13_c4s1r")]
-transform = Transform3D(0.9659258, 0, -0.25881904, 0, 1, 0, 0.25881904, 0, 0.9659258, 1.3, 2.1716464, -7.6467614)
+transform = Transform3D(0.9659258, 0, -0.25881904, 0, 1, 0, 0.25881904, 0, 0.9659258, 0.19999993, 2.1716464, -7.6467614)
+
+[node name="TorchSconce_Lit6" parent="_env/_decor/_lights" unique_id=1112573980 instance=ExtResource("13_c4s1r")]
+transform = Transform3D(0.9659258, 0, -0.25881904, 0, 1, 0, 0.25881904, 0, 0.9659258, 0.19999993, 2.1716464, -7.6467614)
 
 [node name="TorchSconce_Unlit" parent="_env/_decor/_lights" unique_id=1431723012 instance=ExtResource("14_78v0c")]
 transform = Transform3D(0.9659258, 0, -0.25881904, 0, 1, 0, 0.25881904, 0, 0.9659258, 1, 2.1000001, 0.3)
@@ -358,13 +362,16 @@ transform = Transform3D(0.96592593, 1.131334e-08, -0.2588191, 0.2432104, 0.34202
 light_energy = 0.17
 spot_angle = 21.860338
 
+[node name="cairn_exit_pillars" parent="_env/_decor" unique_id=246181575 instance=ExtResource("9_5tq18")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 1, -6.1)
+
 [node name="Gate_Left" type="Node3D" parent="_env" unique_id=956662018]
 
 [node name="Gate" parent="_env/Gate_Left" unique_id=2077487765 instance=ExtResource("3_p6t5v")]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -6, 1, -3)
 
 [node name="Lever" parent="_env/Gate_Left" unique_id=1692381032 instance=ExtResource("5_1lnmj")]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -0.108270764, 2, -5.99395)
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -0.108270764, 2, -6.1939497)
 
 [node name="PressurePlates" type="Node3D" parent="_env/Gate_Left" unique_id=681313151]
 
@@ -373,88 +380,84 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 1, -7)
 weight_to_activate = 1.0
 
 [node name="TR_Indicator" type="Sprite3D" parent="_env/Gate_Left/PressurePlates/PressurePlateTR" unique_id=1813989257]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.3248484, -0.71914625)
+transform = Transform3D(0.70710677, 0, -0.70710677, 0, 1, 0, 0.70710677, 0, 0.70710677, 0.5999999, 1.3248484, -0.61914635)
 visible = false
 modulate = Color(0, 5.0718627, 5.0718627, 1)
 double_sided = false
 texture = SubResource("GradientTexture2D_ru1df")
 
-[node name="TR_Indicator2" type="Sprite3D" parent="_env/Gate_Left/PressurePlates/PressurePlateTR" unique_id=1723444045]
-transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 0.7151346, 1.3248484, 0.003780365)
-visible = false
-modulate = Color(0, 5.0718627, 5.0718627, 1)
-double_sided = false
-texture = SubResource("GradientTexture2D_ru1df")
+[node name="OmniLight3D" type="OmniLight3D" parent="_env/Gate_Left/PressurePlates/PressurePlateTR/TR_Indicator" unique_id=1764220635]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.2)
+light_color = Color(0, 0.65967244, 0.66711485, 1)
+light_energy = 0.137
+omni_range = 26.025
 
 [node name="indicator_visenabler" type="Node" parent="_env/Gate_Left/PressurePlates/PressurePlateTR" unique_id=790588771 node_paths=PackedStringArray("linked_nodes")]
 script = ExtResource("6_3ucu1")
-linked_nodes = [NodePath("../TR_Indicator2"), NodePath("../TR_Indicator")]
+linked_nodes = [NodePath("../TR_Indicator")]
 
 [node name="PressurePlateBR" parent="_env/Gate_Left/PressurePlates" unique_id=1468168500 instance=ExtResource("5_gq2py")]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 3, 1, 1)
 weight_to_activate = 1.0
 
 [node name="TR_Indicator" type="Sprite3D" parent="_env/Gate_Left/PressurePlates/PressurePlateBR" unique_id=785991367]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.3248484, -0.71914625)
+transform = Transform3D(0.70710677, 0, -0.70710677, 0, 1, 0, 0.70710677, 0, 0.70710677, 0.6, 1.3248484, -0.61914635)
 visible = false
 modulate = Color(0, 5.0718627, 5.0718627, 1)
 double_sided = false
 texture = SubResource("GradientTexture2D_ru1df")
 
-[node name="TR_Indicator2" type="Sprite3D" parent="_env/Gate_Left/PressurePlates/PressurePlateBR" unique_id=2140206252]
-transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 0.7151346, 1.3248484, 0.003780365)
-visible = false
-modulate = Color(0, 5.0718627, 5.0718627, 1)
-double_sided = false
-texture = SubResource("GradientTexture2D_ru1df")
+[node name="OmniLight3D" type="OmniLight3D" parent="_env/Gate_Left/PressurePlates/PressurePlateBR/TR_Indicator" unique_id=1201079395]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.2)
+light_color = Color(0, 0.65967244, 0.66711485, 1)
+light_energy = 0.137
+omni_range = 26.025
 
 [node name="indicator_visenabler" type="Node" parent="_env/Gate_Left/PressurePlates/PressurePlateBR" unique_id=979742110 node_paths=PackedStringArray("linked_nodes")]
 script = ExtResource("6_3ucu1")
-linked_nodes = [NodePath("../TR_Indicator2"), NodePath("../TR_Indicator")]
+linked_nodes = [NodePath("../TR_Indicator")]
 
 [node name="PressurePlateBL" parent="_env/Gate_Left/PressurePlates" unique_id=809153718 instance=ExtResource("5_gq2py")]
 transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, -5, 1, 1)
 weight_to_activate = 1.0
 
 [node name="TR_Indicator" type="Sprite3D" parent="_env/Gate_Left/PressurePlates/PressurePlateBL" unique_id=121325159]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.3248484, -0.71914625)
+transform = Transform3D(0.70710677, 0, -0.70710677, 0, 1, 0, 0.70710677, 0, 0.70710677, 0.5, 1.3248484, -0.6191462)
 visible = false
 modulate = Color(0, 5.0718627, 5.0718627, 1)
 double_sided = false
 texture = SubResource("GradientTexture2D_ru1df")
 
-[node name="TR_Indicator2" type="Sprite3D" parent="_env/Gate_Left/PressurePlates/PressurePlateBL" unique_id=1313329286]
-transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 0.7151346, 1.3248484, 0.003780365)
-visible = false
-modulate = Color(0, 5.0718627, 5.0718627, 1)
-double_sided = false
-texture = SubResource("GradientTexture2D_ru1df")
+[node name="OmniLight3D" type="OmniLight3D" parent="_env/Gate_Left/PressurePlates/PressurePlateBL/TR_Indicator" unique_id=1208101981]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.2)
+light_color = Color(0, 0.65967244, 0.66711485, 1)
+light_energy = 0.137
+omni_range = 26.025
 
 [node name="indicator_visenabler" type="Node" parent="_env/Gate_Left/PressurePlates/PressurePlateBL" unique_id=663048936 node_paths=PackedStringArray("linked_nodes")]
 script = ExtResource("6_3ucu1")
-linked_nodes = [NodePath("../TR_Indicator2"), NodePath("../TR_Indicator")]
+linked_nodes = [NodePath("../TR_Indicator")]
 
 [node name="PressurePlateTL" parent="_env/Gate_Left/PressurePlates" unique_id=2101118817 instance=ExtResource("5_gq2py")]
 transform = Transform3D(1.3113416e-07, 0, 1, 0, 1, 0, -1, 0, 1.3113416e-07, -5, 1, -7)
 weight_to_activate = 1.0
 
 [node name="TR_Indicator" type="Sprite3D" parent="_env/Gate_Left/PressurePlates/PressurePlateTL" unique_id=1231302948]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.3248484, -0.71914625)
+transform = Transform3D(0.70710677, 0, -0.70710677, 0, 1, 0, 0.70710677, 0, 0.70710677, 0.62928814, 1.3248484, -0.64843553)
 visible = false
 modulate = Color(0, 5.0718627, 5.0718627, 1)
 double_sided = false
 texture = SubResource("GradientTexture2D_ru1df")
 
-[node name="TR_Indicator2" type="Sprite3D" parent="_env/Gate_Left/PressurePlates/PressurePlateTL" unique_id=1149923589]
-transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 0.7151346, 1.3248484, 0.003780365)
-visible = false
-modulate = Color(0, 5.0718627, 5.0718627, 1)
-double_sided = false
-texture = SubResource("GradientTexture2D_ru1df")
+[node name="OmniLight3D" type="OmniLight3D" parent="_env/Gate_Left/PressurePlates/PressurePlateTL/TR_Indicator" unique_id=637458119]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.2)
+light_color = Color(0, 0.65967244, 0.66711485, 1)
+light_energy = 0.137
+omni_range = 26.025
 
 [node name="indicator_visenabler" type="Node" parent="_env/Gate_Left/PressurePlates/PressurePlateTL" unique_id=1723363131 node_paths=PackedStringArray("linked_nodes")]
 script = ExtResource("6_3ucu1")
-linked_nodes = [NodePath("../TR_Indicator2"), NodePath("../TR_Indicator")]
+linked_nodes = [NodePath("../TR_Indicator")]
 
 [node name="PressurePlateTL2" parent="_env/Gate_Left/PressurePlates" unique_id=649470869 instance=ExtResource("5_gq2py")]
 transform = Transform3D(1.3113416e-07, 0, 1, 0, 1, 0, -1, 0, 1.3113416e-07, -1, 1, -3)
@@ -467,12 +470,24 @@ modulate = Color(0, 5.0718627, 5.0718627, 1)
 double_sided = false
 texture = SubResource("GradientTexture2D_ru1df")
 
+[node name="OmniLight3D" type="OmniLight3D" parent="_env/Gate_Left/PressurePlates/PressurePlateTL2/TR_Indicator" unique_id=257354711]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.2)
+light_color = Color(0, 0.65967244, 0.66711485, 1)
+light_energy = 0.137
+omni_range = 26.025
+
 [node name="TR_Indicator2" type="Sprite3D" parent="_env/Gate_Left/PressurePlates/PressurePlateTL2" unique_id=2105889088]
 transform = Transform3D(-0.7071068, 0, -0.7071067, 0, 1, 0, 0.7071067, 0, -0.7071068, 0.8665292, 1.3248484, 0.8208256)
 visible = false
 modulate = Color(0, 5.0718627, 5.0718627, 1)
 double_sided = false
 texture = SubResource("GradientTexture2D_ru1df")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="_env/Gate_Left/PressurePlates/PressurePlateTL2/TR_Indicator2" unique_id=1342957520]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.2)
+light_color = Color(0, 0.65967244, 0.66711485, 1)
+light_energy = 0.137
+omni_range = 26.025
 
 [node name="TR_Indicator3" type="Sprite3D" parent="_env/Gate_Left/PressurePlates/PressurePlateTL2" unique_id=1251226757]
 transform = Transform3D(-0.7071067, 0, 0.7071068, 0, 1, 0, -0.7071068, 0, -0.7071067, -0.85831475, 1.3248484, 0.86645013)
@@ -481,12 +496,24 @@ modulate = Color(0, 5.0718627, 5.0718627, 1)
 double_sided = false
 texture = SubResource("GradientTexture2D_ru1df")
 
+[node name="OmniLight3D" type="OmniLight3D" parent="_env/Gate_Left/PressurePlates/PressurePlateTL2/TR_Indicator3" unique_id=1864443065]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.2)
+light_color = Color(0, 0.65967244, 0.66711485, 1)
+light_energy = 0.137
+omni_range = 26.025
+
 [node name="TR_Indicator4" type="Sprite3D" parent="_env/Gate_Left/PressurePlates/PressurePlateTL2" unique_id=198080370]
 transform = Transform3D(0.7071068, 0, 0.7071067, 0, 1, 0, -0.7071067, 0, 0.7071068, -0.87250614, 1.3248484, -0.88221455)
 visible = false
 modulate = Color(0, 5.0718627, 5.0718627, 1)
 double_sided = false
 texture = SubResource("GradientTexture2D_ru1df")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="_env/Gate_Left/PressurePlates/PressurePlateTL2/TR_Indicator4" unique_id=1530238786]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.2)
+light_color = Color(0, 0.65967244, 0.66711485, 1)
+light_energy = 0.137
+omni_range = 26.025
 
 [node name="indicator_visenabler" type="Node" parent="_env/Gate_Left/PressurePlates/PressurePlateTL2" unique_id=1988308420 node_paths=PackedStringArray("linked_nodes")]
 script = ExtResource("6_3ucu1")
@@ -540,7 +567,7 @@ metadata/_custom_type_script = "uid://b4y0nvl1kcnqk"
 [node name="Items" type="Node3D" parent="_env" unique_id=1821975207]
 
 [node name="Torch_Mounted" parent="_env/Items" unique_id=1479203938 instance=ExtResource("15_jnwi5")]
-transform = Transform3D(-3.7855173e-08, 2.1855694e-08, 1, 0.5, 0.8660254, 0, -0.8660254, 0.5, -4.371139e-08, 0.8, 2.1, -3.6999998)
+transform = Transform3D(-3.7855173e-08, 2.1855694e-08, 1, 0.5, 0.8660254, 0, -0.8660254, 0.5, -4.371139e-08, 0.8, 2.1, -3.6)
 
 [node name="skull" parent="_env/Items" unique_id=234370081 instance=ExtResource("7_0h5nv")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 1.6, 1.1)

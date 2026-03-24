@@ -1,3 +1,4 @@
+@icon("res://assets/_editor_icons/icon_bb_stun.svg")
 class_name EnemyState_Stunned
 extends EnemyState
 
@@ -69,6 +70,6 @@ func on_heard_something(loc: Vector3) -> void:
 func wait_delay_over() -> void:
 	if !active: return
 	match ballybog.current_alertness:
-		2: finished.emit("CHASE")
+		2: finished.emit("CHASE", {"skip_reaction": true})
 		3:finished.emit("FIGHT")
 		_: finished.emit("INVESTIGATE", {"poi": item_dropped_pos, "skip_reaction": true})

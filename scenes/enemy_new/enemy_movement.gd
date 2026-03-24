@@ -97,7 +97,7 @@ var _end_pos: Vector3
 
 signal on_reached_destination
 
-func start_movement() -> void:
+func start_movement() -> void: ## probs should rename this to new movement
 	if current_path.size() <= 0: return
 	#print("-----------------")
 	#print("Started_Movement")
@@ -110,8 +110,6 @@ func start_movement() -> void:
 		start_turn()
 	else:
 		_begin_movement()
-	
-	
 
 func _begin_movement() -> void:
 	is_moving = true

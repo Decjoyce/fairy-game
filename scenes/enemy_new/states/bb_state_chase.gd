@@ -1,3 +1,4 @@
+@icon("res://assets/_editor_icons/icon_bb_aggro.svg")
 class_name EnemyState_Chase
 extends EnemyState
 

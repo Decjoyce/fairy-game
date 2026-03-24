@@ -1,3 +1,4 @@
+@icon("res://assets/_editor_icons/icon_bb_sus.svg")
 class_name EnemyState_Investigate
 extends EnemyState
 

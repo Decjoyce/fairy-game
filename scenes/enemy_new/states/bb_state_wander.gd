@@ -1,3 +1,4 @@
+@icon("res://assets/_editor_icons/icon_bb_chill.svg")
 class_name EnemyState_Wander
 extends EnemyState
 

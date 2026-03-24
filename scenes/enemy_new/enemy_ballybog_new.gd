@@ -76,21 +76,7 @@ func _something_exited_awareness_trig(area: Area3D) -> void:
 		#print("player_exted")
 		check_for_player = false
 
-func player_raycast_check() -> bool:
-	var space_state = get_world_3d().direct_space_state
-	var origin = global_position + Vector3.UP
-	var end = player.global_position
-	
-	var query = PhysicsRayQueryParameters3D.create(origin, end, player_check_layer_mask)
-	query.collide_with_areas = true
-	#query.hit_from_inside = true
-	query.hit_back_faces = true
-	$RayCast3D.target_position = to_local(player.global_position)
-	var result = space_state.intersect_ray(query)
-	if !result or !result.collider or result.collider.get_parent() is not PlayerTest:
-		return false
-	else: return true
-
+## Checks if player is within the field of vision
 func check_for_player_in_LOS(_delta: float) -> void:
 	if !check_for_player: return
 	if Engine.get_process_frames() % (10 + enemy_id) != 0: return # stops it running every frame
@@ -105,6 +91,22 @@ func check_for_player_in_LOS(_delta: float) -> void:
 			return
 	
 	player_exited_los() ## player was not in los
+
+## Raycasts to player. If blocked, bb can't see
+func player_raycast_check() -> bool:
+	var space_state = get_world_3d().direct_space_state
+	var origin = global_position + Vector3.UP
+	var end = player.global_position
+	
+	var query = PhysicsRayQueryParameters3D.create(origin, end, player_check_layer_mask)
+	query.collide_with_areas = true
+	#query.hit_from_inside = true
+	query.hit_back_faces = true
+	#$RayCast3D.target_position = to_local(player.global_position)
+	var result = space_state.intersect_ray(query)
+	if !result or !result.collider or result.collider.get_parent() is not PlayerTest:
+		return false
+	else: return true
 
 func player_entered_los() -> void:
 	if player_in_los: return
@@ -136,7 +138,7 @@ func _something_exited_fight_trig(area: Area3D) -> void:
 
 # ↑ Player Checking Stuff ↑
 # --------------------------------------------------------------------------------------------------
-# ↓ State Stuff ↓
+# ↓ OTHER Stuff ↓
 
 func do_idle() -> void:
 	var ran:= rng.randf_range(0.0, 1.0)
@@ -145,7 +147,7 @@ func do_idle() -> void:
 
 func _on_item_entered(body: Node3D) -> void:
 	if body is Grabbable_Item:
-		print(body.prev_velocity.length())
+		if body.is_grabbed: return
 		if body.prev_velocity.length() > 5:
 			state_machine.state.on_hit_with_item(body as Grabbable_Item, body.prev_velocity.length())
 			body.rb.linear_velocity = (-body.prev_velocity * 0.2)
