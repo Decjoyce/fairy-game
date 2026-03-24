@@ -18,7 +18,7 @@ size = Vector3(0.5, 0.5, 0.5)
 [sub_resource type="BoxShape3D" id="BoxShape3D_234jp"]
 size = Vector3(0.4, 0.4, 0.4)
 
-[node name="bell" type="RigidBody3D" unique_id=234370081 node_paths=PackedStringArray("col", "grab_col", "idle_graphics") groups=["debug_PickableObjects"]]
+[node name="bell" type="RigidBody3D" unique_id=234370081 node_paths=PackedStringArray("col", "grab_col", "idle_graphics", "grabbed_graphics") groups=["debug_PickableObjects"]]
 collision_layer = 2
 axis_lock_angular_x = true
 axis_lock_angular_z = true
@@ -33,7 +33,8 @@ display_name = "SKULL"
 item_weight = 3
 col = NodePath("CollisionShape3D")
 grab_col = NodePath("Area3D/CollisionShape3D2")
-idle_graphics = NodePath("Sprite3D")
+idle_graphics = NodePath("_g_idle")
+grabbed_graphics = NodePath("_g_grabbed")
 
 [node name="Area3D" type="Area3D" parent="." unique_id=1092598886]
 collision_layer = 2
@@ -45,7 +46,14 @@ shape = SubResource("BoxShape3D_llc7q")
 shape = SubResource("BoxShape3D_234jp")
 debug_color = Color(0.8442249, 0.37985525, 5.7756904e-07, 0.41960785)
 
-[node name="Sprite3D" type="Sprite3D" parent="." unique_id=553540307]
+[node name="_g_idle" type="Sprite3D" parent="." unique_id=553540307]
+layers = 4
+pixel_size = 0.0015
+billboard = 2
+shaded = true
+texture = ExtResource("3_youxa")
+
+[node name="_g_grabbed" type="Sprite3D" parent="." unique_id=1304977173]
 layers = 4
 pixel_size = 0.0015
 billboard = 2

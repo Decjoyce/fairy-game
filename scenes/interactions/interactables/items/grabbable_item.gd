@@ -58,6 +58,8 @@ var starting_pos: Vector3
 
 var grabbed_hand: PlayerHand = null
 
+var cur_graphics: Node3D
+
 func _ready() -> void:
 	interaction_type = InteractTypes.GRAB_ITEM
 	rb.body_entered.connect(_on_collide)
@@ -82,6 +84,7 @@ func begin_interact(sig: float = -1, hand: PlayerHand = null) -> void:
 		if untouched_graphics: untouched_graphics.visible = false
 		idle_graphics.visible = false
 		grabbed_graphics.visible = true
+		if grabbed_graphics is Sprite3D: grabbed_graphics.render_priority = 1
 	has_been_picked_up = true
 	rb.freeze = true
 	rb.linear_velocity = Vector3.ZERO

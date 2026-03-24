@@ -29,7 +29,6 @@ transform = Transform3D(0.73, 0, 0, 0, 0.6321986, -0.365, 0, 0.365, 0.6321986, 0
 layers = 2
 pixel_size = 0.0013
 shaded = true
-render_priority = 1
 texture = ExtResource("2_bi0p3")
 
 [node name="Sprite3D2" type="Sprite3D" parent="Sprite3D" unique_id=49823889]
@@ -37,13 +36,11 @@ transform = Transform3D(0, 0, 0.99999994, 0, 1, 0, -0.99999994, 0, 0, 0.006, 0.0
 layers = 2
 pixel_size = 0.0013
 shaded = true
-render_priority = 1
 texture = ExtResource("3_4fy06")
 
-[node name="Torch" parent="." unique_id=1935006489 node_paths=PackedStringArray("scont") instance=ExtResource("3_qpg1p")]
+[node name="Torch" parent="." unique_id=1935006489 instance=ExtResource("3_qpg1p")]
 visible = false
 sconted = true
-scont = NodePath("..")
 item_weight = 0
 
 [node name="TorchLight" type="OmniLight3D" parent="." unique_id=328799854]

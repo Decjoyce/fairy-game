@@ -24,7 +24,7 @@ size = Vector3(0.4, 0.4, 0.4)
 radius = 0.25
 height = 0.5
 
-[node name="BouncyBall" type="RigidBody3D" unique_id=1345304804 node_paths=PackedStringArray("idle_graphics")]
+[node name="BouncyBall" type="RigidBody3D" unique_id=1345304804 node_paths=PackedStringArray("idle_graphics", "grabbed_graphics")]
 collision_layer = 2
 axis_lock_angular_x = true
 axis_lock_angular_z = true
@@ -34,7 +34,8 @@ gravity_scale = 1.477
 script = ExtResource("1_gbmyy")
 item_type = SubResource("Resource_po0fx")
 item_weight = 3
-idle_graphics = NodePath("Sprite3D")
+idle_graphics = NodePath("_g_idle")
+grabbed_graphics = NodePath("_g_grabbed")
 
 [node name="Area3D" type="Area3D" parent="." unique_id=1213660990]
 collision_layer = 2
@@ -50,7 +51,14 @@ debug_color = Color(0.8442249, 0.37985525, 5.7756904e-07, 0.41960785)
 visible = false
 mesh = SubResource("SphereMesh_234jp")
 
-[node name="Sprite3D" type="Sprite3D" parent="." unique_id=1574294457]
+[node name="_g_idle" type="Sprite3D" parent="." unique_id=1574294457]
+modulate = Color(18.892157, 0, 18.892157, 1)
+pixel_size = 0.0064
+billboard = 1
+texture_filter = 0
+texture = ExtResource("3_uwq0t")
+
+[node name="_g_grabbed" type="Sprite3D" parent="." unique_id=374449956]
 modulate = Color(18.892157, 0, 18.892157, 1)
 pixel_size = 0.0064
 billboard = 1

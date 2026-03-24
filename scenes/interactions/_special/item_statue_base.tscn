@@ -23,7 +23,7 @@ size = Vector3(0.5, 0.5, 0.5)
 [sub_resource type="BoxShape3D" id="BoxShape3D_234jp"]
 size = Vector3(0.4, 0.4, 0.4)
 
-[sub_resource type="Shader" id="Shader_3odr4"]
+[sub_resource type="Shader" id="Shader_rm7vo"]
 code = "shader_type spatial;
 render_mode diffuse_lambert_wrap,cull_disabled;
 
@@ -100,9 +100,9 @@ void fragment() {
 }
 "
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_5ciw7"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_e1lr5"]
 render_priority = 0
-shader = SubResource("Shader_3odr4")
+shader = SubResource("Shader_rm7vo")
 shader_parameter/rows = 1.0
 shader_parameter/columns = 8.0
 shader_parameter/frame = 0.0
@@ -111,13 +111,13 @@ shader_parameter/sprite = ExtResource("4_ps0m7")
 shader_parameter/mode = 0
 shader_parameter/Normal = ExtResource("3_ibphc")
 
-[sub_resource type="PlaneMesh" id="PlaneMesh_lqnra"]
-material = SubResource("ShaderMaterial_5ciw7")
+[sub_resource type="PlaneMesh" id="PlaneMesh_lvpsl"]
+material = SubResource("ShaderMaterial_e1lr5")
 size = Vector2(0.512, 0.512)
 orientation = 2
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_rm7vo"]
-render_priority = 1
+render_priority = 0
 shader = ExtResource("8_rm7vo")
 shader_parameter/albedo = Color(2.342, 2.342, 2.342, 1)
 shader_parameter/texture_albedo = ExtResource("9_e1lr5")
@@ -154,7 +154,7 @@ normal_texture = ExtResource("10_lvpsl")
 material = SubResource("StandardMaterial3D_e1lr5")
 size = Vector2(0.6, 0.6)
 
-[node name="StatuePiece_Base" type="RigidBody3D" unique_id=234370081 node_paths=PackedStringArray("col", "grab_col", "idle_graphics") groups=["debug_PickableObjects"]]
+[node name="StatuePiece_Base" type="RigidBody3D" unique_id=234370081 node_paths=PackedStringArray("col", "grab_col", "idle_graphics", "grabbed_graphics") groups=["debug_PickableObjects"]]
 collision_layer = 2
 axis_lock_angular_x = true
 axis_lock_angular_z = true
@@ -170,7 +170,8 @@ keywords = "BASE"
 item_weight = 3
 col = NodePath("CollisionShape3D")
 grab_col = NodePath("Area3D/CollisionShape3D2")
-idle_graphics = NodePath("_g_idle")
+idle_graphics = NodePath("_g_idle2")
+grabbed_graphics = NodePath("_g_grabbed")
 
 [node name="Area3D" type="Area3D" parent="." unique_id=1092598886]
 collision_layer = 2
@@ -185,7 +186,7 @@ debug_color = Color(0.8442249, 0.37985525, 5.7756904e-07, 0.41960785)
 [node name="_g_idle" type="MeshInstance3D" parent="." unique_id=707151852]
 visible = false
 layers = 4
-mesh = SubResource("PlaneMesh_lqnra")
+mesh = SubResource("PlaneMesh_lvpsl")
 script = ExtResource("5_jyrc5")
 sprite = ExtResource("4_ps0m7")
 sprite_scale = 0.001

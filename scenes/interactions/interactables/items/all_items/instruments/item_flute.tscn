@@ -29,7 +29,7 @@ size = Vector3(0.4, 0.4, 0.4)
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_m3m7e"]
 
-[node name="Flute" type="RigidBody3D" unique_id=130412758 node_paths=PackedStringArray("music_player", "col", "grab_col", "idle_graphics") groups=["debug_PickableObjects"]]
+[node name="Flute" type="RigidBody3D" unique_id=130412758 node_paths=PackedStringArray("music_player", "col", "grab_col", "idle_graphics", "grabbed_graphics") groups=["debug_PickableObjects"]]
 collision_layer = 2
 axis_lock_angular_x = true
 axis_lock_angular_z = true
@@ -44,7 +44,8 @@ item_type = SubResource("Resource_3g5fp")
 display_name = "Kazoo"
 col = NodePath("CollisionShape3D")
 grab_col = NodePath("Area3D/CollisionShape3D2")
-idle_graphics = NodePath("Sprite3D")
+idle_graphics = NodePath("_g_idle")
+grabbed_graphics = NodePath("_g_grabbed")
 
 [node name="Area3D" type="Area3D" parent="." unique_id=1930827065]
 collision_layer = 2
@@ -56,7 +57,13 @@ shape = SubResource("BoxShape3D_llc7q")
 shape = SubResource("BoxShape3D_234jp")
 debug_color = Color(0.8442249, 0.37985525, 5.7756904e-07, 0.41960785)
 
-[node name="Sprite3D" type="Sprite3D" parent="." unique_id=1835715381]
+[node name="_g_idle" type="Sprite3D" parent="." unique_id=1835715381]
+layers = 4
+pixel_size = 0.001
+billboard = 1
+texture = ExtResource("10_agl8n")
+
+[node name="_g_grabbed" type="Sprite3D" parent="." unique_id=145348828]
 layers = 4
 pixel_size = 0.001
 billboard = 1

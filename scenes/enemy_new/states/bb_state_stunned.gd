@@ -17,7 +17,7 @@ func enter(previous_state_path: String, data := {}) -> void:
 	wait_timer.timeout.connect(wait_delay_over)
 	
 	if data.has("stun_force") and data["stun_force"] is float:
-		wait_timer.wait_time = 0.05 * data["stun_force"]
+		wait_timer.wait_time = 0.1 * data["stun_force"]
 	else: wait_timer.wait_time = 1
 	
 	assert(data.has("item"), "Ballybog tried entering STUNNED state but a item was never passed in")

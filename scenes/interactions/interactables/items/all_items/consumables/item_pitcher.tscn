@@ -19,7 +19,7 @@ size = Vector3(0.5, 0.6, 0.5)
 [sub_resource type="BoxShape3D" id="BoxShape3D_234jp"]
 size = Vector3(0.4, 0.5, 0.4)
 
-[node name="drinkvessel" type="RigidBody3D" unique_id=240783312 node_paths=PackedStringArray("col", "grab_col", "idle_graphics") groups=["debug_PickableObjects"]]
+[node name="drinkvessel" type="RigidBody3D" unique_id=240783312 node_paths=PackedStringArray("col", "grab_col", "idle_graphics", "grabbed_graphics") groups=["debug_PickableObjects"]]
 collision_layer = 2
 axis_lock_angular_x = true
 axis_lock_angular_z = true
@@ -35,6 +35,7 @@ item_weight = 2
 col = NodePath("CollisionShape3D")
 grab_col = NodePath("Area3D/CollisionShape3D2")
 idle_graphics = NodePath("_g_idle")
+grabbed_graphics = NodePath("_g_grabbed")
 
 [node name="Area3D" type="Area3D" parent="." unique_id=1293178386]
 collision_layer = 2
@@ -49,6 +50,13 @@ shape = SubResource("BoxShape3D_234jp")
 debug_color = Color(0.8442249, 0.37985525, 5.7756904e-07, 0.41960785)
 
 [node name="_g_idle" type="Sprite3D" parent="." unique_id=2000248812]
+layers = 4
+pixel_size = 0.0008
+billboard = 2
+shaded = true
+texture = ExtResource("3_cd30j")
+
+[node name="_g_grabbed" type="Sprite3D" parent="." unique_id=1670377827]
 layers = 4
 pixel_size = 0.0008
 billboard = 2

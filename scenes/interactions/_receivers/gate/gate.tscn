@@ -42,7 +42,7 @@ blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_cw6yt")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_wx5q6"]
-size = Vector3(2, 0.2, 0.03)
+size = Vector3(2, 0.4, 0.03)
 
 [node name="Gate" type="Node3D" unique_id=2077487765 groups=["debug_PickableObjects"]]
 script = ExtResource("1_cm4qh")
@@ -69,11 +69,10 @@ font_size = 67
 
 [node name="UnderChecker" type="Area3D" parent="gate" unique_id=379725726]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.2, 0)
-collision_layer = 256
+collision_layer = 0
 collision_mask = 2
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="gate/UnderChecker" unique_id=1495217223]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.1, 0)
 shape = SubResource("BoxShape3D_wx5q6")
 
 [node name="PlayerCollision" type="StaticBody3D" parent="." unique_id=670546705]

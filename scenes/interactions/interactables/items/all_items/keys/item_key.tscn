@@ -32,7 +32,7 @@ billboard_mode = 2
 [sub_resource type="QuadMesh" id="QuadMesh_1aeak"]
 material = SubResource("StandardMaterial3D_8m1kt")
 
-[node name="key" type="RigidBody3D" unique_id=451440735 node_paths=PackedStringArray("col", "grab_col", "idle_graphics") groups=["debug_PickableObjects"]]
+[node name="key" type="RigidBody3D" unique_id=451440735 node_paths=PackedStringArray("col", "grab_col", "idle_graphics", "grabbed_graphics") groups=["debug_PickableObjects"]]
 collision_layer = 2
 axis_lock_angular_x = true
 axis_lock_angular_z = true
@@ -47,6 +47,7 @@ display_name = "KEY"
 col = NodePath("CollisionShape3D")
 grab_col = NodePath("Area3D/CollisionShape3D2")
 idle_graphics = NodePath("MeshInstance3D")
+grabbed_graphics = NodePath("_g_grabbed")
 
 [node name="Area3D" type="Area3D" parent="." unique_id=1232293276]
 collision_layer = 2
@@ -60,7 +61,15 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 7.450581e-09, -7.450581e-0
 shape = SubResource("BoxShape3D_234jp")
 debug_color = Color(0.8442249, 0.37985525, 5.7756904e-07, 0.41960785)
 
-[node name="Sprite3D" type="Sprite3D" parent="." unique_id=1609679013]
+[node name="_g_idle" type="Sprite3D" parent="." unique_id=1609679013]
+visible = false
+layers = 4
+pixel_size = 0.0008
+billboard = 2
+shaded = true
+texture = ExtResource("3_i4wxb")
+
+[node name="_g_grabbed" type="Sprite3D" parent="." unique_id=416879076]
 visible = false
 layers = 4
 pixel_size = 0.0008
