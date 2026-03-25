@@ -4,13 +4,14 @@
 [ext_resource type="Texture2D" uid="uid://bdv15pyviy4kf" path="res://scenes/interactions/interactables/items/all_items/torch/ScontSprite/ScontFrontSide.png" id="3_01ajo"]
 [ext_resource type="Texture2D" uid="uid://dblc3nb28nfp1" path="res://scenes/interactions/interactables/items/all_items/torch/ScontSprite/ScontSide.png" id="4_8tbth"]
 [ext_resource type="Texture2D" uid="uid://d0mairuj2kbi" path="res://scenes/interactions/interactables/items/all_items/torch/ScontSprite/ScontSide_unlit.png" id="5_wn36w"]
+[ext_resource type="Script" uid="uid://cc36kknugth5b" path="res://scripts/saving/persistent_objs/po_itmreceiver.gd" id="6_4yjpm"]
 [ext_resource type="Texture2D" uid="uid://dvp8s5j4heyx7" path="res://scenes/interactions/interactables/items/all_items/torch/ScontSprite/ScontFrontSide_unlit.png" id="6_f7w26"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_xy4ik"]
 radius = 0.166
 height = 0.67825
 
-[node name="TorchSconce" type="Node3D" unique_id=1729385187]
+[node name="TorchSconce_Unlit" type="Node3D" unique_id=1729385187]
 script = ExtResource("1_4yjpm")
 type_of_item = 1
 num_needed_by_type = 1
@@ -24,7 +25,6 @@ transform = Transform3D(0.73, 0, 0, 0, 0.6321986, -0.365, 0, 0.365, 0.6321986, 0
 layers = 2
 pixel_size = 0.0013
 shaded = true
-render_priority = 1
 texture = ExtResource("3_01ajo")
 
 [node name="_g_side" type="Sprite3D" parent="Lit_Sconce" unique_id=958112046]
@@ -32,7 +32,6 @@ transform = Transform3D(0, 0, 0.72999996, 0.36499998, 0.6321986, 0, -0.6321985, 
 layers = 2
 pixel_size = 0.0013
 shaded = true
-render_priority = 1
 texture = ExtResource("4_8tbth")
 
 [node name="TorchLight" type="OmniLight3D" parent="Lit_Sconce" unique_id=801500960]
@@ -50,7 +49,6 @@ transform = Transform3D(0.73, 0, 0, 0, 0.6321986, -0.365, 0, 0.365, 0.6321986, 0
 layers = 2
 pixel_size = 0.0013
 shaded = true
-render_priority = 1
 texture = ExtResource("5_wn36w")
 
 [node name="_g_side" type="Sprite3D" parent="Unlit_Sconce" unique_id=927835500]
@@ -58,7 +56,6 @@ transform = Transform3D(0, 0, 0.72999996, 0.36499998, 0.6321986, 0, -0.6321985, 
 layers = 2
 pixel_size = 0.0013
 shaded = true
-render_priority = 1
 texture = ExtResource("6_f7w26")
 
 [node name="Trigger" type="Area3D" parent="." unique_id=924980069]
@@ -68,3 +65,7 @@ monitoring = false
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 0.8660254, -0.5, 0, 0.5, 0.8660254, 0, -0.03388324, -0.019562498)
 shape = SubResource("CapsuleShape3D_xy4ik")
+
+[node name="PO_ItmReceiver" type="Node" parent="." unique_id=815735927 groups=["PO"]]
+script = ExtResource("6_4yjpm")
+metadata/_custom_type_script = "uid://cc36kknugth5b"

@@ -4,6 +4,7 @@
 [ext_resource type="Script" uid="uid://q0egps2wmpgo" path="res://scenes/interactions/interactables/items/item_types/itemtype_key.gd" id="2_i4wxb"]
 [ext_resource type="Texture2D" uid="uid://527wal6n3lqs" path="res://assets/sprites/item_sprites/key.png" id="3_i4wxb"]
 [ext_resource type="AudioStream" uid="uid://dutddyikwuiut" path="res://assets/audio/sfx/combat/misc/hittingsound_shorter.wav" id="4_jbrpq"]
+[ext_resource type="Script" uid="uid://bhf6r6nw14krj" path="res://scripts/saving/persistent_objs/po_item.gd" id="5_8m1kt"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_llc7q"]
 
@@ -18,7 +19,20 @@ size = Vector3(0.5, 0.6, 0.7)
 [sub_resource type="BoxShape3D" id="BoxShape3D_234jp"]
 size = Vector3(0.4, 0.4, 0.6)
 
-[node name="key" type="RigidBody3D" unique_id=451440735 node_paths=PackedStringArray("col", "grab_col", "idle_graphics") groups=["debug_PickableObjects"]]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8m1kt"]
+transparency = 1
+albedo_texture = ExtResource("3_i4wxb")
+metallic = 0.33
+roughness = 0.0
+emission_enabled = true
+emission_energy_multiplier = 0.75
+emission_texture = ExtResource("3_i4wxb")
+billboard_mode = 2
+
+[sub_resource type="QuadMesh" id="QuadMesh_1aeak"]
+material = SubResource("StandardMaterial3D_8m1kt")
+
+[node name="key" type="RigidBody3D" unique_id=451440735 node_paths=PackedStringArray("col", "grab_col", "idle_graphics", "grabbed_graphics") groups=["debug_PickableObjects"]]
 collision_layer = 2
 axis_lock_angular_x = true
 axis_lock_angular_z = true
@@ -32,7 +46,8 @@ item_type = SubResource("Resource_17u2g")
 display_name = "KEY"
 col = NodePath("CollisionShape3D")
 grab_col = NodePath("Area3D/CollisionShape3D2")
-idle_graphics = NodePath("Sprite3D")
+idle_graphics = NodePath("MeshInstance3D")
+grabbed_graphics = NodePath("_g_grabbed")
 
 [node name="Area3D" type="Area3D" parent="." unique_id=1232293276]
 collision_layer = 2
@@ -46,7 +61,16 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 7.450581e-09, -7.450581e-0
 shape = SubResource("BoxShape3D_234jp")
 debug_color = Color(0.8442249, 0.37985525, 5.7756904e-07, 0.41960785)
 
-[node name="Sprite3D" type="Sprite3D" parent="." unique_id=1609679013]
+[node name="_g_idle" type="Sprite3D" parent="." unique_id=1609679013]
+visible = false
+layers = 4
+pixel_size = 0.0008
+billboard = 2
+shaded = true
+texture = ExtResource("3_i4wxb")
+
+[node name="_g_grabbed" type="Sprite3D" parent="." unique_id=416879076]
+visible = false
 layers = 4
 pixel_size = 0.0008
 billboard = 2
@@ -61,3 +85,10 @@ bus = &"items"
 [node name="RayCast3D" type="RayCast3D" parent="." unique_id=213088429]
 target_position = Vector3(0, -0.4, 0)
 hit_from_inside = true
+
+[node name="PO_Item" type="Node" parent="." unique_id=310053980 groups=["PO"]]
+script = ExtResource("5_8m1kt")
+metadata/_custom_type_script = "uid://bhf6r6nw14krj"
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=366071288]
+mesh = SubResource("QuadMesh_1aeak")

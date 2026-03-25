@@ -1,0 +1,152 @@
+[gd_scene format=3 uid="uid://dgkvwgcnbo145"]
+
+[ext_resource type="PackedScene" uid="uid://bq86osdembn58" path="res://scenes/_player/_player_test.tscn" id="1_m5elb"]
+[ext_resource type="MeshLibrary" uid="uid://bu208a8l5866i" path="res://scenes/_levels/_palettes/cairn/meshlibrary_cairn.tres" id="2_x3uj0"]
+[ext_resource type="PackedScene" uid="uid://dpm2ettl06ilt" path="res://scenes/interactions/interactables/items/all_items/instruments/item_flute.tscn" id="3_5so3r"]
+[ext_resource type="PackedScene" uid="uid://dt13fur6twjep" path="res://scenes/interactions/_receivers/gate/gate.tscn" id="4_syfo6"]
+[ext_resource type="PackedScene" uid="uid://c5kh7hs6fp6go" path="res://scenes/interactions/_triggers/music_trigger/music_trigger.tscn" id="5_1gnip"]
+[ext_resource type="Texture2D" uid="uid://1m8e2skdgkex" path="res://assets/sprites/item_sprites/skull_item.png" id="5_lguud"]
+[ext_resource type="Script" uid="uid://b46j43ho84wfj" path="res://scenes/interactions/_triggers/music_trigger/melodies/melody.gd" id="6_hiim6"]
+[ext_resource type="Texture2D" uid="uid://bhs3fvxrmdp4o" path="res://assets/sprites/item_sprites/bone_flute.png" id="6_j4tow"]
+[ext_resource type="Resource" uid="uid://b5bs0jgbt263j" path="res://scenes/interactions/_triggers/music_trigger/melodies/melody_test.tres" id="7_lguud"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_lguud"]
+sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+ground_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+
+[sub_resource type="Sky" id="Sky_j4tow"]
+sky_material = SubResource("ProceduralSkyMaterial_lguud")
+
+[sub_resource type="Environment" id="Environment_kukba"]
+background_mode = 2
+sky = SubResource("Sky_j4tow")
+tonemap_mode = 2
+glow_enabled = true
+
+[node name="Kazoo_Puzzle" type="Node3D" unique_id=115048630]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1037315605]
+environment = SubResource("Environment_kukba")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=2130275889]
+transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545, -0.50000006, 0.75, -0.43301266, 0, 0, 0)
+shadow_enabled = true
+
+[node name="player_test" parent="." unique_id=725727541 instance=ExtResource("1_m5elb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 1, 1)
+
+[node name="GridMap" type="GridMap" parent="." unique_id=210839267]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
+mesh_library = ExtResource("2_x3uj0")
+data = {
+"cells": PackedInt32Array(0, 0, 4, 0, 65535, 2, 65535, 65534, 1441795, 1, 65534, 3, 0, 65534, 655360, 1, 65533, 1048577, 65535, 65533, 1441793, 65535, 65532, 655363, 1, 65532, 1048579, 0, 65531, 2, 0, 65532, 0, 0, 65533, 0)
+}
+
+[node name="Flute" parent="." unique_id=130412758 instance=ExtResource("3_5so3r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 1, -1)
+
+[node name="Flute_Introduction" type="Node3D" parent="." unique_id=897630555]
+
+[node name="First_Gate" parent="Flute_Introduction" unique_id=2077487765 instance=ExtResource("4_syfo6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, -8)
+
+[node name="Showing_FlutePattern" type="Node3D" parent="Flute_Introduction" unique_id=574305226]
+
+[node name="Skull" type="Sprite3D" parent="Flute_Introduction/Showing_FlutePattern" unique_id=435902038]
+transform = Transform3D(-0.1, 0, 1.509958e-08, 0, 0.1, 0, -1.509958e-08, 0, -0.1, -0.5715338, 0.5921645, -5)
+texture = ExtResource("5_lguud")
+
+[node name="rope" type="Sprite3D" parent="Flute_Introduction/Showing_FlutePattern/Skull" unique_id=51560491]
+transform = Transform3D(-3.0289428e-08, 0.5795555, -0.23165691, -1.7011548, -3.193105e-08, 7.982762e-08, -4.117349e-08, 0.15529133, 0.8645554, 0.048388004, -3.3021295, -0.18058777)
+modulate = Color(0.35028115, 0.3298801, 0.16637966, 1)
+texture = ExtResource("6_j4tow")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="Flute_Introduction/Showing_FlutePattern/Skull" unique_id=75144321]
+transform = Transform3D(10, 0, 6.357302e-07, 0, 10, 0, -6.357302e-07, 0, 10, 0, 0, 0)
+light_color = Color(0.85068107, 0.51648796, 0.13903737, 1)
+
+[node name="Skull2" type="Sprite3D" parent="Flute_Introduction/Showing_FlutePattern" unique_id=742150659]
+transform = Transform3D(-0.08, 0, 1.20796635e-08, 0, 0.08, 0, -1.20796635e-08, 0, -0.08, 0.017655373, 0.5921645, -5)
+texture = ExtResource("5_lguud")
+
+[node name="rope" type="Sprite3D" parent="Flute_Introduction/Showing_FlutePattern/Skull2" unique_id=960803434]
+transform = Transform3D(-3.786179e-08, 0.7244444, -0.2895712, -2.1264436, -3.9913818e-08, 9.978452e-08, -5.1466863e-08, 0.19411416, 1.0806942, 0.060484886, -4.1276627, -0.22574234)
+modulate = Color(0.35028115, 0.3298801, 0.16637966, 1)
+texture = ExtResource("6_j4tow")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="Flute_Introduction/Showing_FlutePattern/Skull2" unique_id=1171539029]
+transform = Transform3D(12.5, 0, 7.9466247e-07, 0, 12.5, 0, -7.9466247e-07, 0, 12.5, 0, 0, 0)
+light_color = Color(0.85068107, 0.51648796, 0.13903737, 1)
+
+[node name="Skull3" type="Sprite3D" parent="Flute_Introduction/Showing_FlutePattern" unique_id=1188074515]
+transform = Transform3D(-0.06, 0, 5.2453664e-09, 0, 0.06, 0, -5.2453664e-09, 0, -0.06, 0.54825866, 0.5921645, -5)
+texture = ExtResource("5_lguud")
+
+[node name="rope" type="Sprite3D" parent="Flute_Introduction/Showing_FlutePattern/Skull3" unique_id=692626519]
+transform = Transform3D(-5.0482377e-08, 0.9659258, -0.38609496, -2.8352582, -5.3218425e-08, 1.3304604e-07, -6.862248e-08, 0.25881895, 1.4409257, 0.080646515, -5.503549, -0.3009796)
+modulate = Color(0.35028115, 0.3298801, 0.16637966, 1)
+texture = ExtResource("6_j4tow")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="Flute_Introduction/Showing_FlutePattern/Skull3" unique_id=356291097]
+light_color = Color(0.85068107, 0.51648796, 0.13903737, 1)
+
+[node name="Skull4" type="Sprite3D" parent="Flute_Introduction/Showing_FlutePattern" unique_id=1576917877]
+transform = Transform3D(-0.04, 0, 6.0398317e-09, 0, 0.04, 0, -6.0398317e-09, 0, -0.04, 1.0725033, 0.5921645, -5)
+texture = ExtResource("5_lguud")
+
+[node name="rope" type="Sprite3D" parent="Flute_Introduction/Showing_FlutePattern/Skull4" unique_id=1467400733]
+transform = Transform3D(-7.572357e-08, 1.4488887, -0.57914233, -4.2528872, -7.9827636e-08, 1.9956904e-07, -1.0293371e-07, 0.38822833, 2.1613884, 0.12097168, -8.255324, -0.45146942)
+modulate = Color(0.35028115, 0.3298801, 0.16637966, 1)
+texture = ExtResource("6_j4tow")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="Flute_Introduction/Showing_FlutePattern/Skull4" unique_id=2032888372]
+transform = Transform3D(25, 0, 1.5893254e-06, 0, 25, 0, -1.5893254e-06, 0, 25, 0, 0, 0)
+light_color = Color(0.85068107, 0.51648796, 0.13903737, 1)
+
+[node name="Skull5" type="Sprite3D" parent="Flute_Introduction/Showing_FlutePattern" unique_id=1495489566]
+transform = Transform3D(-0.06, 0, 5.2453664e-09, 0, 0.06, 0, -5.2453664e-09, 0, -0.06, 1.6124539, 0.5921645, -5)
+texture = ExtResource("5_lguud")
+
+[node name="rope" type="Sprite3D" parent="Flute_Introduction/Showing_FlutePattern/Skull5" unique_id=1612001261]
+transform = Transform3D(-5.0482377e-08, 0.9659258, -0.38609496, -2.8352582, -5.3218425e-08, 1.3304604e-07, -6.862248e-08, 0.25881895, 1.4409257, 0.080646515, -5.503549, -0.3009796)
+modulate = Color(0.35028115, 0.3298801, 0.16637966, 1)
+texture = ExtResource("6_j4tow")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="Flute_Introduction/Showing_FlutePattern/Skull5" unique_id=1415262063]
+light_color = Color(0.85068107, 0.51648796, 0.13903737, 1)
+
+[node name="Skull6" type="Sprite3D" parent="Flute_Introduction/Showing_FlutePattern" unique_id=38722755]
+transform = Transform3D(-0.08, 0, 1.20796635e-08, 0, 0.08, 0, -1.20796635e-08, 0, -0.08, 2.1730478, 0.5921645, -5)
+texture = ExtResource("5_lguud")
+
+[node name="rope" type="Sprite3D" parent="Flute_Introduction/Showing_FlutePattern/Skull6" unique_id=1214491122]
+transform = Transform3D(-3.7861785e-08, 0.7244443, -0.28957117, -2.1264436, -3.9913818e-08, 9.978452e-08, -5.1466856e-08, 0.19411416, 1.0806942, 0.060483932, -4.127662, -0.22573471)
+modulate = Color(0.35028115, 0.3298801, 0.16637966, 1)
+texture = ExtResource("6_j4tow")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="Flute_Introduction/Showing_FlutePattern/Skull6" unique_id=2096865532]
+transform = Transform3D(12.5, 0, 7.946627e-07, 0, 12.5, 0, -7.946627e-07, 0, 12.5, 0, 0, 0)
+light_color = Color(0.85068107, 0.51648796, 0.13903737, 1)
+
+[node name="Skull7" type="Sprite3D" parent="Flute_Introduction/Showing_FlutePattern" unique_id=18940182]
+transform = Transform3D(-0.1, 0, 1.509958e-08, 0, 0.1, 0, -1.509958e-08, 0, -0.1, 2.833767, 0.5921645, -5)
+texture = ExtResource("5_lguud")
+
+[node name="rope" type="Sprite3D" parent="Flute_Introduction/Showing_FlutePattern/Skull7" unique_id=1977042576]
+transform = Transform3D(-3.0289428e-08, 0.5795555, -0.23165691, -1.7011548, -3.193105e-08, 7.982762e-08, -4.117349e-08, 0.15529133, 0.8645554, 0.048387527, -3.3021295, -0.18058777)
+modulate = Color(0.35028115, 0.3298801, 0.16637966, 1)
+texture = ExtResource("6_j4tow")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="Flute_Introduction/Showing_FlutePattern/Skull7" unique_id=343971713]
+transform = Transform3D(10, 0, 6.357302e-07, 0, 10, 0, -6.357302e-07, 0, 10, 0, 0, 0)
+light_color = Color(0.85068107, 0.51648796, 0.13903737, 1)
+
+[node name="MusicReceiver" parent="Flute_Introduction" unique_id=1647442715 instance=ExtResource("5_1gnip")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, -6)
+debug_mode = true
+melodies = Array[ExtResource("6_hiim6")]([ExtResource("7_lguud")])
+metadata/uid = "153f5a32-e8f6-4042-b724-ccb3a90986f0"
+metadata/lock_uid = true
+metadata/date_generated = "2026-03-14T22:31:51"
+
+[connection signal="on_change" from="Flute_Introduction/MusicReceiver" to="Flute_Introduction/First_Gate" method="toggle_gate"]

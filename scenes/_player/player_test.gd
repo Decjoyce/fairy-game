@@ -12,7 +12,7 @@ const PLAYER_HEIGHT_CROUCHED: float = 0.65
 const PLAYER_WEIGHT: float = 10
 @onready var cam: Camera3D = $Camera3D
 
-@onready var stats: Stats = $Stats
+
 @export var stats_ui: Control
 
 var in_combat: bool
@@ -32,16 +32,17 @@ func _process(delta: float) -> void:
 	pass
 
 func toggle_combat() -> void:
-	in_combat = !in_combat
-	if in_combat: combat.enter_combat_mode()
-	else: combat.exit_combat_mode()
-
-
+	pass
+	#in_combat = !in_combat
+	#if in_combat: combat.enter_combat_mode()
+	#else: combat.exit_combat_mode()
 
 
 func die():
 	Debug.play_death_player()
-	combat.exit_combat_mode()
+	$Camera3D/DeathAnimationPlayer.play("death_anim")
+	#combat.exit_combat_mode()
+	interaction.force_stop_interacting()
 	interaction.visible = false
 	death_ui.visible = true
 	freeze = true
@@ -53,6 +54,7 @@ func fake_die(fakestring: StringName):
 	#if fake_dies == 0: 
 		#fake_dies+=1
 	#	return
+	TEMPSaveGameHandler.load_game()
 	stats.death_anim.play("death_anim")
 	Debug.play_death_player()
 	#combat.exit_combat_mode()
@@ -76,3 +78,37 @@ func _physics_process(delta: float) -> void:
 	movement.movement(delta)
 	
 	movement.movement_input()
+
+func on_save_game(saved_data: SavedData_Player) -> void:
+	#region General Data
+	saved_data.current_weight = current_weight
+	saved_data.freeze = freeze
+	#endregion
+	
+	#region Movement Data
+	saved_data.position = global_position
+	saved_data.target_position = movement.target_pos
+	saved_data.rotation = global_rotation
+	saved_data.target_rotation = movement.target_rotation
+	saved_data.is_crouching = movement.is_crouching
+	#endregion
+
+func on_before_load_game() -> void:
+	pass
+
+func on_load_game(saved_data: SavedData_Player) -> void:
+	#region General Data
+	current_weight = saved_data.current_weight
+	freeze = saved_data.freeze
+	#endregion
+	
+	#region Movement Data
+	global_position = saved_data.position
+	movement.target_pos = saved_data.target_position
+	movement.compass.global_position = saved_data.target_position
+	global_rotation = saved_data.rotation
+	movement.target_rotation = saved_data.target_rotation
+	movement.compass.global_rotation.y = saved_data.target_rotation
+	if saved_data.is_crouching:
+		movement.call_deferred("crouch", true)
+	#endregion

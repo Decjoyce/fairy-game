@@ -1,3 +1,4 @@
+class_name StatueReceiver
 extends ItemReceiver
 
 signal statue_piece_received(num_received: int, item_received: Grabbable_Item)

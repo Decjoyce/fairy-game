@@ -1,4 +1,5 @@
 @icon("res://assets/_editor_icons/icon_door_c.svg")
+class_name Door
 extends Node3D
 
 @onready var anim_player: AnimationPlayer = $StaticBody3D/AnimationPlayer

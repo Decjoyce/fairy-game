@@ -16,7 +16,7 @@ var last_pos: Vector3
 func _process(delta: float) -> void:
 	call_deferred("update_last_pos", delta)
 
-func begin_interact(sig: float = -1) -> void:
+func begin_interact(sig: float = -1, hand: PlayerHand = null) -> void:
 	
 	is_grabbed = true
 	grabbed_times += 1
@@ -33,10 +33,10 @@ func begin_interact(sig: float = -1) -> void:
 	
 	is_being_pulled = true
 
-func interacting(sig: float = -1) -> void:
+func interacting(sig: float = -1, hand: PlayerHand = null) -> void:
 	pass
 
-func end_interact(sig: float = -1) -> void:
+func end_interact(sig: float = -1, hand: PlayerHand = null) -> void:
 	grabbed_times -= 1
 	is_grabbed = grabbed_times > 0
 	if requires_two_hands or grabbed_times <= 0: stop_being_pulled()

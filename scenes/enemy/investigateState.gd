@@ -1,6 +1,6 @@
 extends NodeState
 
-@export var Body : CharacterBody3D # for shmoovment
+@export var Body : EnemyBB # for shmoovment
 @export var Sprite : Sprite3DBillBoard #For animation control i hope
 @export_category("A* Search")
 @export var curr_tile: Vector3i = Vector3i(3,0,-4)
@@ -23,14 +23,21 @@ var curr_pos : int
 var curr_posV : Vector3
 var curr_posPlayerV: Vector3
 var player : PlayerTest
-var interest
+var interest: Vector3
 var inVision : bool
 var current_point: int
+var HUHAnim : bool
 
 
 
 func on_physics_process(delta: float) -> void:
-		movement(delta)
+	if HUHAnim:
+		if path.size() >= 1:
+			movement(delta)
+			if Animator.current_animation != "Walk2":
+				Animator.play("Walk2")
+		else: 
+			Animator.play("Idle2")
 
 func on_process(delta : float):
 	#movement(delta)
@@ -43,12 +50,14 @@ func on_process(delta : float):
 
 		
 func enter():
+	HUHAnim = false
 	grid_map =get_tree().get_first_node_in_group("GMPF")
 	grid_map.setup_astar_grid(grid_map.walkable_items)
 	prints(grid_map.walkable_items)
-	interest = get_tree().get_first_node_in_group("Investegate")
+	interest = Body.last_heard_location
 	Animator.play("Alert")
 	await get_tree().create_timer(1.5).timeout
+	HUHAnim = true
 	Animator.play("Walk2")#-1,0.5)
 	get_pos_item()
 	find_path()
@@ -58,13 +67,15 @@ func enter():
 func exit():
 	Animator.stop()
 	$Timer.stop()
+	HUHAnim = false
 	pass
 	
 func get_pos_item():
 	#curr_posVi = Body.global_position
 	#curr_posPlayerVi = player.global_position
 	## PLAYER IN THIS CASE IS ITEM THAT MADE THE NOISE!!!!
-	curr_posPlayerV = grid_map.astar.get_closest_position_in_segment(interest.get_child(0).global_position)      #Vector3(player.position.x,0,player.position.z)
+	curr_posPlayerV = grid_map.astar.get_closest_position_in_segment(interest)      #Vector3(player.position.x,0,player.position.z)
+	print("ko")
 	#curr_pos = grid_map.astar.get_closest_point(Body.global_position)
 	curr_posV = grid_map.astar.get_closest_position_in_segment(Body.global_position)
 	prints(curr_posV, curr_posPlayerV,)
@@ -103,7 +114,7 @@ func movement(delta: float) -> void:
 			#Body.global_position = target_pos
 	else:
 		is_moving = false
-		SM.transition_to("Fighting")
+		##SM.transition_to("Fighting")
 	
 
 func get_next_target() -> void:
@@ -114,13 +125,17 @@ func get_next_target() -> void:
 		return 
 	target_pos = path[0]
 	Animator.play("Walk2")
-	##$Timer.start()
+	$Timer.start()
 	
 
 func DebugPath():
 	grid_map.do_debug_path(curr_posPlayerV,curr_posV)
 	
 	pass
+
+func on_heard_something(location: Vector3) -> void:
+	SM.transition_to("Investegate")
+
 
 ############## GET THE FIGHT MODE TRANSFER TO STATE HERE############
 # if entered area 3d most likely or the distance to player is >= to something
@@ -160,3 +175,5 @@ func _on_timer_timeout() -> void:
 func _on_area_3d_area_shape_entered(area_rid: RID, area: Area3D, area_shape_index: int, local_shape_index: int) -> void:
 	if area.owner is PlayerTest:
 		SM.transition_to("Fighting")
+	else:
+			pass

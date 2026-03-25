@@ -202,7 +202,6 @@ layers = 2
 pixel_size = 0.0013
 shaded = true
 alpha_cut = 1
-render_priority = 1
 texture = ExtResource("2_6nvro")
 
 [node name="Sprite3D2" type="Sprite3D" parent="Sprite3D" unique_id=1459221227]
@@ -211,10 +210,9 @@ layers = 2
 pixel_size = 0.0013
 shaded = true
 alpha_cut = 1
-render_priority = 1
 texture = ExtResource("3_1xmxa")
 
-[node name="Torch" type="RigidBody3D" parent="." unique_id=1265342431 node_paths=PackedStringArray("scont", "col", "grab_col", "idle_graphics", "grabbed_graphics")]
+[node name="Torch" type="RigidBody3D" parent="." unique_id=1265342431 node_paths=PackedStringArray("col", "grab_col", "idle_graphics", "grabbed_graphics")]
 visible = false
 collision_layer = 2
 axis_lock_angular_x = true
@@ -226,7 +224,6 @@ contact_monitor = true
 max_contacts_reported = 1
 script = ExtResource("4_6qrgq")
 sconted = true
-scont = NodePath("..")
 item_type = SubResource("Resource_d0jyt")
 display_name = "Torch"
 col = NodePath("CollisionShape3D")
@@ -258,7 +255,6 @@ layers = 4
 pixel_size = 0.0013
 billboard = 1
 shaded = true
-render_priority = 1
 texture = ExtResource("6_2ks6i")
 
 [node name="Grabbed" type="Sprite3D" parent="Torch/Node3D" unique_id=1620786448]
@@ -267,7 +263,6 @@ visible = false
 layers = 4
 pixel_size = 0.0013
 shaded = true
-render_priority = 1
 texture = ExtResource("6_2ks6i")
 
 [node name="TorchLight" type="OmniLight3D" parent="Torch" unique_id=200654058]

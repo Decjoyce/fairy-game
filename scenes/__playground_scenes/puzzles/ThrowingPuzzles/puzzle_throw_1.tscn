@@ -23,6 +23,7 @@
 [ext_resource type="PackedScene" uid="uid://br35er4x4b6av" path="res://scenes/interactions/_triggers/torch_sconce/torch_sconce_unlit.tscn" id="20_ntrdj"]
 [ext_resource type="PackedScene" uid="uid://cjmys4ssiclk5" path="res://scripts/checkpoint_manager/checkpoint.tscn" id="21_lufm1"]
 [ext_resource type="Script" uid="uid://oq8j5fypv13a" path="res://scenes/interactions/_triggers/area_triggers/player_area_trigger.gd" id="23_xfits"]
+[ext_resource type="Script" uid="uid://bul4myvyhnpjc" path="res://scripts/saving/uid_generator.gd" id="24_d308h"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_2vnbd"]
 sky_horizon_color = Color(0, 0.37292683, 0.8185948, 1)
@@ -339,6 +340,8 @@ transform = Transform3D(-5.6824803e-08, 0, -1.3, 0, 1.3, 0, 1.3, 0, -5.6824803e-
 
 [node name="skull" parent="Room01" unique_id=234370081 instance=ExtResource("7_6emgk")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.39999998, 0.3)
+metadata/uid = "9fff739a-1e35-4f64-b91c-e3e488a63169"
+metadata/lock_uid = true
 
 [node name="PressurePlate" parent="Room01" unique_id=247380468 instance=ExtResource("10_5hc0a")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1)
@@ -661,6 +664,8 @@ transform = Transform3D(-1, -8.742278e-08, 0, 8.742278e-08, -1, 0, 0, 0, 1, 0, 2
 
 [node name="skull" parent="Room03" unique_id=2126113278 instance=ExtResource("7_6emgk")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.4326153, 2.5511937, 4.0778875)
+metadata/uid = "21d95d55-59be-47b0-9e1b-5452914dea8f"
+metadata/lock_uid = true
 
 [node name="CP_0" parent="." unique_id=1899616095 node_paths=PackedStringArray("spawn_pos") instance=ExtResource("21_lufm1")]
 spawn_pos = NodePath("sp")
@@ -683,6 +688,10 @@ trig_once = true
 [node name="CollisionShape3D" type="CollisionShape3D" parent="CP_1/_checkpoint_trig" unique_id=262578095]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.39999962, 0, 0)
 shape = SubResource("SphereShape3D_owq6r")
+
+[node name="UID_Generator" type="Node" parent="." unique_id=909288222]
+script = ExtResource("24_d308h")
+metadata/_custom_type_script = "uid://bul4myvyhnpjc"
 
 [connection signal="on_activated" from="Room01/Button" to="Room01/Gate" method="open_gate"]
 [connection signal="on_change" from="Room01/PressurePlate" to="Room01/Gate2" method="open_gate"]

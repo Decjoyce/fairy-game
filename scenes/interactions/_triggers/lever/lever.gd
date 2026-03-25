@@ -24,13 +24,13 @@ func _ready() -> void:
 	super()
 	update_value(starting_value, emit_sig_when_using_start_value, true)
 
-func begin_interact(sig: float = -1) -> void:
+func begin_interact(sig: float = -1, hand: PlayerHand = null) -> void:
 	pass
 
-func interacting(sig: float = -1) -> void:
+func interacting(sig: float = -1, hand: PlayerHand = null) -> void:
 	pass
 
-func end_interact(sig: float = -1) -> void:
+func end_interact(sig: float = -1, hand: PlayerHand = null) -> void:
 	pass
 
 # ↑ Interacting Stuff ↑
@@ -43,7 +43,7 @@ func update_value(amount: float, emit_sigs: bool = true, override_disabled: bool
 	
 	if use_intervals: 
 		current_value = snappedf(current_value, intervals)
-		print(current_value)
+		#print(current_value)
 	
 	update_graphics()
 	if emit_sigs:
@@ -75,7 +75,7 @@ func change_interval_value(sig: float) -> void:
 # ↓ Enabling/Disabling Stuff ↓
 
 func enable(sig: float = -1) -> void:
-	print("Fiddlesticks")
+	#print("Fiddlesticks")
 	visible = true
 	$Trigger/CollisionShape3D.set_deferred("disabled", false)
 	disabled = false

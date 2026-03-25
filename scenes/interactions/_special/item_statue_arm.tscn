@@ -6,6 +6,10 @@
 [ext_resource type="Texture2D" uid="uid://cqvplgp1sfvfm" path="res://assets/sprites/item_sprites/statue/statue_spritesheets/statue_piece_arm.png" id="4_4o0cs"]
 [ext_resource type="AudioStream" uid="uid://dutddyikwuiut" path="res://assets/audio/sfx/combat/misc/hittingsound_shorter.wav" id="4_ijcvq"]
 [ext_resource type="Script" uid="uid://dk36d8kuwrwnv" path="res://addons/extras_sprites/scripts/simple_sprite_3D_billboard.gd" id="5_5hu3d"]
+[ext_resource type="Texture2D" uid="uid://708dtid1lpq2" path="res://assets/sprites/item_sprites/statue/statue_piece_arm.png" id="6_4o0cs"]
+[ext_resource type="Texture2D" uid="uid://fhu8mpyetofc" path="res://assets/sprites/item_sprites/statue/statue_piece_arm_n_single.png" id="7_5hu3d"]
+[ext_resource type="Script" uid="uid://bhf6r6nw14krj" path="res://scripts/saving/persistent_objs/po_item.gd" id="7_ijcvq"]
+[ext_resource type="Shader" uid="uid://bxy4s1fhoupka" path="res://assets/shaders/special_sprite_shine/new_special_sprite_shine.gdshader" id="8_bv4e3"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_llc7q"]
 
@@ -112,7 +116,47 @@ material = SubResource("ShaderMaterial_bv4e3")
 size = Vector2(0.512, 0.512)
 orientation = 2
 
-[node name="StatuePiece_arm" type="RigidBody3D" unique_id=234370081 node_paths=PackedStringArray("col", "grab_col", "idle_graphics") groups=["debug_PickableObjects"]]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_tyjdn"]
+render_priority = 0
+shader = ExtResource("8_bv4e3")
+shader_parameter/albedo = Color(2.3422987, 2.3422987, 2.3422987, 1)
+shader_parameter/texture_albedo = ExtResource("6_4o0cs")
+shader_parameter/albedo_texture_size = Vector2i(512, 512)
+shader_parameter/point_size = 1.0
+shader_parameter/roughness = 0.51
+shader_parameter/metallic_texture_channel = Vector4(1, 0, 0, 0)
+shader_parameter/specular = 0.5
+shader_parameter/metallic = 0.0
+shader_parameter/texture_normal = ExtResource("7_5hu3d")
+shader_parameter/normal_scale = 1.0
+shader_parameter/uv1_scale = Vector3(1, 1, 1)
+shader_parameter/uv1_offset = Vector3(0, 0, 0)
+shader_parameter/uv2_scale = Vector3(1, 1, 1)
+shader_parameter/uv2_offset = Vector3(0, 0, 0)
+shader_parameter/shine_color = Color(1.1730844, 1.1730844, 1.1730844, 1)
+shader_parameter/line_width = 0.00999999977648
+shader_parameter/angle = 0.7853982
+shader_parameter/speed = 1.5000000223518
+shader_parameter/wait_cycles = 2.500000037253
+
+[sub_resource type="QuadMesh" id="QuadMesh_ijcvq"]
+material = SubResource("ShaderMaterial_tyjdn")
+size = Vector2(0.75, 0.75)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3r6uf"]
+render_priority = 1
+transparency = 1
+albedo_color = Color(2.342, 2.342, 2.342, 1)
+albedo_texture = ExtResource("6_4o0cs")
+roughness = 0.51
+normal_enabled = true
+normal_texture = ExtResource("7_5hu3d")
+
+[sub_resource type="QuadMesh" id="QuadMesh_bv4e3"]
+material = SubResource("StandardMaterial3D_3r6uf")
+size = Vector2(0.75, 0.75)
+
+[node name="StatuePiece_arm" type="RigidBody3D" unique_id=234370081 node_paths=PackedStringArray("col", "grab_col", "idle_graphics", "grabbed_graphics") groups=["debug_PickableObjects"]]
 collision_layer = 2
 axis_lock_angular_x = true
 axis_lock_angular_z = true
@@ -128,7 +172,8 @@ keywords = "ARM"
 item_weight = 3
 col = NodePath("CollisionShape3D")
 grab_col = NodePath("Area3D/CollisionShape3D2")
-idle_graphics = NodePath("")
+idle_graphics = NodePath("_g_idle2")
+grabbed_graphics = NodePath("_g_grabbed")
 
 [node name="Area3D" type="Area3D" parent="." unique_id=1092598886]
 collision_layer = 2
@@ -141,6 +186,7 @@ shape = SubResource("BoxShape3D_234jp")
 debug_color = Color(0.8442249, 0.37985525, 5.7756904e-07, 0.41960785)
 
 [node name="_g_idle" type="MeshInstance3D" parent="." unique_id=1979781240]
+visible = false
 layers = 4
 mesh = SubResource("PlaneMesh_nkd1j")
 script = ExtResource("5_5hu3d")
@@ -154,6 +200,13 @@ mode = 0
 frame = 0.0
 metadata/_custom_type_script = "uid://dk36d8kuwrwnv"
 
+[node name="_g_idle2" type="MeshInstance3D" parent="." unique_id=390010551]
+mesh = SubResource("QuadMesh_ijcvq")
+
+[node name="_g_grabbed" type="MeshInstance3D" parent="." unique_id=633151070]
+visible = false
+mesh = SubResource("QuadMesh_bv4e3")
+
 [node name="AudioPlayer" type="AudioStreamPlayer3D" parent="." unique_id=20800557]
 stream = ExtResource("4_ijcvq")
 bus = &"items"
@@ -161,3 +214,7 @@ bus = &"items"
 [node name="RayCast3D" type="RayCast3D" parent="." unique_id=1070737100]
 target_position = Vector3(0, -0.4, 0)
 hit_from_inside = true
+
+[node name="PO_Item" type="Node" parent="." unique_id=1122030167 groups=["PO"]]
+script = ExtResource("7_ijcvq")
+metadata/_custom_type_script = "uid://bhf6r6nw14krj"

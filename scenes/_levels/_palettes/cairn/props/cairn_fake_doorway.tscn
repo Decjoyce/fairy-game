@@ -1,9 +1,12 @@
-[gd_scene load_steps=5 format=4 uid="uid://ue3520w5p7fo"]
+[gd_scene format=4 uid="uid://ue3520w5p7fo"]
 
-[ext_resource type="Material" uid="uid://cw6t4hgt8cs61" path="res://assets/models/cairn/Materials/props/Door_Wall/Walldoor.tres" id="1_q12ba"]
+[ext_resource type="Material" uid="uid://cw6t4hgt8cs61" path="res://assets/models/cairn/Props/Door_Wall/Walldoor.tres" id="1_q12ba"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_q12ba"]
-size = Vector3(1.8, 1.3257813, 0.275)
+size = Vector3(0.6, 1.3257813, 0.275)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_qojtl"]
+size = Vector3(0.5, 0.7, 0.275)
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_62k3k"]
 _surfaces = [{
@@ -38,16 +41,24 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_62k3k")
 
-[node name="cairn_fake_wall" type="StaticBody3D"]
+[node name="cairn_fake_wall" type="StaticBody3D" unique_id=428772299]
 
-[node name="CollisionShape3D2" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.66265094, 0.0025000125)
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="." unique_id=1349411087]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.59999996, 0.66265094, 0.0025000125)
 shape = SubResource("BoxShape3D_q12ba")
 
-[node name="Walldoor" type="Node3D" parent="."]
+[node name="CollisionShape3D4" type="CollisionShape3D" parent="." unique_id=1508534336]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.6, 0.663, 0.003)
+shape = SubResource("BoxShape3D_q12ba")
+
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="." unique_id=1971761797]
+transform = Transform3D(-4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 0, 1, -0.012890667, 1.1129999, 0.003)
+shape = SubResource("BoxShape3D_qojtl")
+
+[node name="Walldoor" type="Node3D" parent="." unique_id=507419583]
 transform = Transform3D(-5.5950578e-09, 0, 0.128, 0, 0.128, 0, -0.128, 0, -5.5950578e-09, 0, 0, 0)
 
-[node name="mesh_Walldoor_001" type="MeshInstance3D" parent="Walldoor"]
+[node name="mesh_Walldoor_001" type="MeshInstance3D" parent="Walldoor" unique_id=1088688898]
 transform = Transform3D(1.0031981, 0, 0, 0, 1.0031981, 0, 0, 0, 0.98516035, 0, 0, 0)
 mesh = SubResource("ArrayMesh_fkdh0")
 skeleton = NodePath("")

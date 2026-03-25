@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://ojog2sye6yhg" path="res://scenes/interactions/_triggers/lever/lever.gd" id="1_00osh"]
 [ext_resource type="Material" uid="uid://bpo4624s20wmk" path="res://assets/models/cairn/Props/Lever/Lever.tres" id="2_prq61"]
+[ext_resource type="Script" uid="uid://bdyjv0nvh5xde" path="res://scripts/saving/persistent_objs/po_intvalue.gd" id="3_iipu8"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_4o6sw"]
 size = Vector3(0.4, 0.5, 0.4)
@@ -72,11 +73,13 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_7m5vr")
 
-[node name="Lever" type="Node3D" unique_id=1692381032]
+[node name="Lever" type="Node3D" unique_id=1692381032 groups=["Interactables", "debug_PickableObjects"]]
 script = ExtResource("1_00osh")
 interaction_type = 3
 prompt_text = "PULL_LEVER"
 metadata/_custom_type_script = "uid://ojog2sye6yhg"
+metadata/lock_uid = false
+metadata/uid = ""
 
 [node name="Trigger" type="Area3D" parent="." unique_id=1796378351]
 
@@ -113,3 +116,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.23081675)
 [node name="pos_bottom" type="Node3D" parent="HandPositions" unique_id=1705502395]
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.18919349, 0.14250156)
+
+[node name="PO_Lever" type="Node" parent="." unique_id=484801473 groups=["PO"]]
+script = ExtResource("3_iipu8")
+metadata/_custom_type_script = "uid://bdyjv0nvh5xde"

@@ -80,24 +80,24 @@ func _ready() -> void:
 func movement_input() -> void:
 	
 	if Input.is_action_just_pressed("move_up") and check_can_move_up():
-		if player.stats.current_stamina <= 0: return
-		if player.in_combat and player.combat.enemy_stance != null: player.stats.take_stamina(20)
+		#if player.stats.current_stamina <= 0: return
+		#if player.in_combat and player.combat.enemy_stance != null: player.stats.take_stamina(20)
 		target_pos = target_pos - compass.basis.z * Vector3.ONE
 		current_direction = MoveDirections.VERTICAL
 		on_move.emit(Vector3.FORWARD, target_pos)
 		
 		on_move_up.emit(target_pos)
 	elif Input.is_action_just_pressed("move_down") and check_can_move_down():
-		if player.stats.current_stamina <= 0: return
-		if player.in_combat and player.combat.enemy_stance != null: player.stats.take_stamina(20)
+		#if player.stats.current_stamina <= 0: return
+		#if player.in_combat and player.combat.enemy_stance != null: player.stats.take_stamina(20)
 		target_pos = target_pos + compass.basis.z * Vector3.ONE
 		current_direction = MoveDirections.VERTICAL
 		
 		on_move.emit(Vector3.BACK, target_pos)
 		on_move_down.emit(target_pos)
 	elif Input.is_action_just_pressed("move_left") and check_can_move_left():
-		if player.stats.current_stamina <= 0: return
-		if player.in_combat and player.combat.enemy_stance != null: player.stats.take_stamina(20)
+		#if player.stats.current_stamina <= 0: return
+		#if player.in_combat and player.combat.enemy_stance != null: player.stats.take_stamina(20)
 		target_pos = target_pos - compass.basis.x * Vector3.ONE
 		
 		current_direction = MoveDirections.HORIZONTAL
@@ -105,8 +105,8 @@ func movement_input() -> void:
 		on_move.emit(Vector3.LEFT, target_pos)
 		on_move_left.emit(target_pos)
 	elif Input.is_action_just_pressed("move_right") and check_can_move_right():
-		if player.stats.current_stamina <= 0: return
-		if player.in_combat and player.combat.enemy_stance != null: player.stats.take_stamina(20)
+		#if player.stats.current_stamina <= 0: return
+		#if player.in_combat and player.combat.enemy_stance != null: player.stats.take_stamina(20)
 		
 		target_pos = target_pos + compass.basis.x * Vector3.ONE
 		
@@ -166,25 +166,25 @@ func check_can_move_up() -> bool:
 	if Debug.noclip_enabled: return true
 	if check_grabbed_obj_direction(0): return false
 	ray_north.force_shapecast_update()
-	return !ray_north.is_colliding() and (dist_to_target <= 0.6 or current_direction != MoveDirections.HORIZONTAL) and current_direction != MoveDirections.FALLING
+	return !ray_north.is_colliding() and (dist_to_target <= 0.45 or current_direction != MoveDirections.HORIZONTAL) and current_direction != MoveDirections.FALLING
 
 func check_can_move_down() -> bool:
 	if Debug.noclip_enabled: return true
 	if check_grabbed_obj_direction(1): return false
 	ray_south.force_shapecast_update()
-	return !ray_south.is_colliding() and (dist_to_target <= 0.6 or current_direction != MoveDirections.HORIZONTAL) and current_direction != MoveDirections.FALLING
+	return !ray_south.is_colliding() and (dist_to_target <= 0.45 or current_direction != MoveDirections.HORIZONTAL) and current_direction != MoveDirections.FALLING
 
 func check_can_move_left() -> bool:
 	if Debug.noclip_enabled: return true
 	if check_grabbed_obj_direction(2): return false
 	ray_west.force_shapecast_update()
-	return !ray_west.is_colliding() and (dist_to_target <= 0.6 or current_direction != MoveDirections.VERTICAL) and current_direction != MoveDirections.FALLING
+	return !ray_west.is_colliding() and (dist_to_target <= 0.45 or current_direction != MoveDirections.VERTICAL) and current_direction != MoveDirections.FALLING
 
 func check_can_move_right() -> bool:
 	if Debug.noclip_enabled: return true
 	if check_grabbed_obj_direction(3): return false
 	ray_east.force_shapecast_update()
-	return !ray_east.is_colliding() and (dist_to_target <= 0.6 or current_direction != MoveDirections.VERTICAL) and current_direction != MoveDirections.FALLING
+	return !ray_east.is_colliding() and (dist_to_target <= 0.45 or current_direction != MoveDirections.VERTICAL) and current_direction != MoveDirections.FALLING
 
 # ↑ Moving Stuff ↑
 # --------------------------------------------------------------------------------------------------
@@ -208,6 +208,8 @@ func rotate_input() -> void:
 func rotate(delta: float):
 	var weight = 1 - exp(-rotation_speed * delta)
 	player.rotation.y = lerp_angle(player.rotation.y, target_rotation, weight)
+	if player.rotation.y <= target_rotation + 0.001 and player.rotation.y >= target_rotation - 0.001:
+		player.rotation.y = target_rotation
 
 # ↑ Rotating Stuff ↑
 # --------------------------------------------------------------------------------------------------
@@ -219,8 +221,8 @@ func toggle_crouch() -> void:
 	if is_crouching: uncrouch()
 	else: crouch()
 
-func crouch() -> void:
-	if !floor_detector.get_collision_point(): return
+func crouch(bypass_floor_detection: bool = false) -> void:
+	if !bypass_floor_detection and !floor_detector.get_collision_point(): return
 	is_crouching = true
 	
 	on_crouch.emit(true)

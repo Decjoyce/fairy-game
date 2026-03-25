@@ -16,3 +16,6 @@ func enter():
 
 func exit():
 	pass
+
+func on_heard_something(location: Vector3) -> void:
+	pass

@@ -4,6 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://cm7goh62m0nv2" path="res://assets/ui/misc/TEMP_inv_slot.png" id="2_hacnr"]
 [ext_resource type="Material" uid="uid://c22pex7gucglg" path="res://assets/models/cairn/Props/Button/Button/Button.tres" id="4_t7mcd"]
 [ext_resource type="Material" uid="uid://bhu52kgm23cmj" path="res://assets/models/cairn/Props/Button/ButtonBack/ButtonBack.tres" id="4_wyfxs"]
+[ext_resource type="Script" uid="uid://7lo6ukgtr84g" path="res://scripts/saving/persistent_objs/po_button.gd" id="5_wv7xb"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_t7mcd"]
 transparency = 1
@@ -178,6 +179,10 @@ libraries/ = SubResource("AnimationLibrary_xia2v")
 transform = Transform3D(-6.5567085e-09, 0, -0.15, 0, 0.15, 0, 0.15, 0, -6.5567085e-09, 0, -0.135, 0.027638823)
 material_overlay = SubResource("StandardMaterial3D_wyfxs")
 mesh = SubResource("ArrayMesh_wyfxs")
+
+[node name="PO_Button" type="Node" parent="." unique_id=1229540181 groups=["PO"]]
+script = ExtResource("5_wv7xb")
+metadata/_custom_type_script = "uid://7lo6ukgtr84g"
 
 [connection signal="area_entered" from="Trigger" to="." method="_on_item_entered"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

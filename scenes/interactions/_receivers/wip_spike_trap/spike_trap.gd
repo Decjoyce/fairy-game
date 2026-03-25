@@ -1,22 +1,27 @@
+class_name SpikeTrap
 extends Node3D
 
 @onready var anim: AnimationPlayer = $AnimationPlayer
 @onready var col: CollisionShape3D = $Spikes/StaticBody3D/CollisionShape3D
 
 @export var trigger_when_in: bool = true
+@export var only_trig_once: bool
 
 var people_inside: Array[Entity]
 var itms_inside: Array[Grabbable_Item]
 var weighted_things_inside: int
 
 var activated: bool
+var has_been_triggered: bool
 
 func activate(sig: float = -1) -> void:
+	if has_been_triggered and only_trig_once: return
 	if activated: return
 	print("activated")
 	activated = true
 	anim.play("spike_up")
 	col.set_deferred("disabled", false)
+	has_been_triggered = true
 	dmg_things_inide()
 
 func deactivate(sig: float = -1) -> void:

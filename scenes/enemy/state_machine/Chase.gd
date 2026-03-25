@@ -28,8 +28,12 @@ var current_point: int
 
 
 func on_physics_process(delta: float) -> void:
-		movement(delta)
-
+		if path.size() >= 1:
+			movement(delta)
+			if Animator.current_animation != "Walk2":
+				Animator.play("Walk2")
+		else: 
+			Animator.play("Idle2")
 func on_process(delta : float):
 	#movement(delta)
 	#get_pos()
@@ -43,11 +47,12 @@ func on_process(delta : float):
 func enter():
 	grid_map =get_tree().get_first_node_in_group("GMPF")
 	grid_map.setup_astar_grid(grid_map.walkable_items)
-	prints(grid_map.walkable_items)
+	#prints(grid_map.walkable_items)
 	player = get_tree().get_first_node_in_group("Player")
 	Animator.play("Walk2",-1,0.5)
 	get_pos()
 	find_path()
+	print("CHASING")
 	return path
 
 func exit():
@@ -143,7 +148,8 @@ func DebugPath():
 
 func _on_area_3d_2_area_exited(area: Area3D) -> void:
 	if area.owner is PlayerTest:
-		SM.transition_to("Wander")
+		if SM.current_node_state_name == ("Chase"):
+			SM.transition_to("Wander")
 	pass # Replace with function body.
 
 

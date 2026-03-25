@@ -1,0 +1,5 @@
+class_name SavedGame
+extends Resource
+
+@export var player_data: SavedData_Player
+@export var saved_data:Array[SavedData]

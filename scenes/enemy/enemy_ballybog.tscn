@@ -130,9 +130,9 @@ shader_parameter/rows = 2.0
 shader_parameter/columns = 8.0
 shader_parameter/frame = 1.0
 shader_parameter/invert_rows_columns = false
-shader_parameter/sprite = ExtResource("12_l3c6t")
+shader_parameter/sprite = ExtResource("3_5ussm")
 shader_parameter/mode = 0
-shader_parameter/Normal = ExtResource("13_lngu7")
+shader_parameter/Normal = ExtResource("2_p6ydp")
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_pkfog"]
 material = SubResource("ShaderMaterial_86kpf")
@@ -149,7 +149,7 @@ columns = 8.0
 
 [sub_resource type="Resource" id="Resource_8vrwc"]
 script = ExtResource("4_v1swk")
-name = "Attack"
+name = "AttackN"
 sprite = ExtResource("3_5ussm")
 texture_normal = ExtResource("2_p6ydp")
 rows = 2.0
@@ -244,195 +244,6 @@ tracks/2/keys = {
 }
 tracks/2/use_blend = true
 
-[sub_resource type="Animation" id="Animation_l3c6t"]
-resource_name = "AttackN"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:animation")
-tracks/0/interp = 0
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [1]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath(".:frame")
-tracks/1/interp = 0
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.5),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [0.0, 1.0]
-}
-
-[sub_resource type="Animation" id="Animation_cangh"]
-resource_name = "Attack_LBottom"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:animation")
-tracks/0/interp = 0
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [2]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath(".:frame")
-tracks/1/interp = 0
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [0.0, 1.0]
-}
-
-[sub_resource type="Animation" id="Animation_3o7nl"]
-resource_name = "Attack_LMid"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:animation")
-tracks/0/interp = 0
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [3]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath(".:frame")
-tracks/1/interp = 0
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [0.0, 1.0]
-}
-
-[sub_resource type="Animation" id="Animation_8sfa5"]
-resource_name = "Attack_LTop"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:animation")
-tracks/0/interp = 0
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [4]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath(".:frame")
-tracks/1/interp = 0
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [0.0, 1.0]
-}
-
-[sub_resource type="Animation" id="Animation_ifeau"]
-resource_name = "Attack_RBottom"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:animation")
-tracks/0/interp = 0
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [5]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath(".:frame")
-tracks/1/interp = 0
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [0.0, 1.0]
-}
-
-[sub_resource type="Animation" id="Animation_7o52w"]
-resource_name = "Attack_RMid"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:animation")
-tracks/0/interp = 0
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [6]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath(".:frame")
-tracks/1/interp = 0
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [0.0, 1.0]
-}
-
-[sub_resource type="Animation" id="Animation_v2g1a"]
-resource_name = "Attack_RTop"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:animation")
-tracks/0/interp = 0
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [7]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath(".:frame")
-tracks/1/interp = 0
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [0.0, 1.0]
-}
-
 [sub_resource type="Animation" id="Animation_e8ov3"]
 resource_name = "Idle"
 loop_mode = 1
@@ -526,250 +337,6 @@ tracks/2/keys = {
 }
 tracks/2/use_blend = true
 
-[sub_resource type="Animation" id="Animation_7p6et"]
-resource_name = "OLD__Attack_LBottom"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:animation")
-tracks/0/interp = 0
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [4]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath(".:frame")
-tracks/1/interp = 0
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [0.0, 1.0]
-}
-
-[sub_resource type="Animation" id="Animation_om1c7"]
-resource_name = "OLD__Attack_RMid"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:animation")
-tracks/0/interp = 0
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [2]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath(".:frame")
-tracks/1/interp = 0
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [0.0, 1.0]
-}
-
-[sub_resource type="Animation" id="Animation_2jpox"]
-resource_name = "OLD__Attack_RTop"
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:animation")
-tracks/0/interp = 0
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [2]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath(".:frame")
-tracks/1/interp = 0
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [0.0, 1.0]
-}
-
-[sub_resource type="Animation" id="Animation_5pe8i"]
-resource_name = "Recover_LBottom"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:animation")
-tracks/0/interp = 0
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [2, 0]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath(".:frame")
-tracks/1/interp = 0
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [1.0, 0.0]
-}
-
-[sub_resource type="Animation" id="Animation_eex23"]
-resource_name = "Recover_LMid"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:animation")
-tracks/0/interp = 0
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [3, 0]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath(".:frame")
-tracks/1/interp = 0
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [1.0, 0.0]
-}
-
-[sub_resource type="Animation" id="Animation_pjoft"]
-resource_name = "Recover_LTop"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:animation")
-tracks/0/interp = 0
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [4, 0]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath(".:frame")
-tracks/1/interp = 0
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [1.0, 1.0]
-}
-
-[sub_resource type="Animation" id="Animation_3wbeg"]
-resource_name = "Recover_RBottom"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:animation")
-tracks/0/interp = 0
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [5, 0]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath(".:frame")
-tracks/1/interp = 0
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [1.0, 0.0]
-}
-
-[sub_resource type="Animation" id="Animation_84imu"]
-resource_name = "Recover_RMid"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:animation")
-tracks/0/interp = 0
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [6, 0]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath(".:frame")
-tracks/1/interp = 0
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [1.0, 0.0]
-}
-
-[sub_resource type="Animation" id="Animation_hovqw"]
-resource_name = "Recover_RTop"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:animation")
-tracks/0/interp = 0
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [7, 0]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath(".:frame")
-tracks/1/interp = 0
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [1.0, 1.0]
-}
-
 [sub_resource type="Animation" id="Animation_hu1w4"]
 resource_name = "Stunned"
 length = 1.1833333
@@ -810,174 +377,6 @@ tracks/2/keys = {
 "times": PackedFloat32Array()
 }
 tracks/2/use_blend = true
-
-[sub_resource type="Animation" id="Animation_vx87h"]
-resource_name = "Telegraph_LBottom"
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:animation")
-tracks/0/interp = 0
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [2]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath(".:frame")
-tracks/1/interp = 0
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [0.0]
-}
-
-[sub_resource type="Animation" id="Animation_r88ec"]
-resource_name = "Telegraph_LMid"
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:animation")
-tracks/0/interp = 0
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [3]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath(".:frame")
-tracks/1/interp = 0
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [0.0]
-}
-
-[sub_resource type="Animation" id="Animation_tkkut"]
-resource_name = "Telegraph_LTop"
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:animation")
-tracks/0/interp = 0
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [4]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath(".:frame")
-tracks/1/interp = 0
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [0.0]
-}
-
-[sub_resource type="Animation" id="Animation_rcnqh"]
-resource_name = "Telegraph_RBottom"
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:animation")
-tracks/0/interp = 0
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [5]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath(".:frame")
-tracks/1/interp = 0
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [0.0]
-}
-
-[sub_resource type="Animation" id="Animation_w4frb"]
-resource_name = "Telegraph_RMid"
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:animation")
-tracks/0/interp = 0
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [6]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath(".:frame")
-tracks/1/interp = 0
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [0.0]
-}
-
-[sub_resource type="Animation" id="Animation_7kheq"]
-resource_name = "Telegraph_RTop"
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:animation")
-tracks/0/interp = 0
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [7]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath(".:frame")
-tracks/1/interp = 0
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [0.0]
-}
 
 [sub_resource type="Animation" id="Animation_lgmkq"]
 resource_name = "Walk2"
@@ -1032,54 +431,76 @@ tracks/2/keys = {
 }
 tracks/2/use_blend = true
 
-[sub_resource type="Animation" id="Animation_g8xqt"]
-resource_name = "test_walk"
-length = 1.1
+[sub_resource type="Animation" id="Animation_phxqg"]
+resource_name = "attack"
+length = 0.001
 loop_mode = 1
+step = 0.0167
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath(".:frame")
+tracks/0/path = NodePath(".:animation")
 tracks/0/interp = 0
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.26666668, 0.7, 1),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:frame")
+tracks/1/interp = 0
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [0.0, 1.0, 2.0, 3.0]
+"values": [1.0]
+}
+
+[sub_resource type="Animation" id="Animation_86kpf"]
+resource_name = "telegraph"
+length = 0.001
+loop_mode = 1
+step = 0.0167
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:animation")
+tracks/0/interp = 0
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:frame")
+tracks/1/interp = 0
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_khln7"]
 _data = {
 &"Alert": SubResource("Animation_njbw1"),
-&"AttackN": SubResource("Animation_l3c6t"),
-&"Attack_LBottom": SubResource("Animation_cangh"),
-&"Attack_LMid": SubResource("Animation_3o7nl"),
-&"Attack_LTop": SubResource("Animation_8sfa5"),
-&"Attack_RBottom": SubResource("Animation_ifeau"),
-&"Attack_RMid": SubResource("Animation_7o52w"),
-&"Attack_RTop": SubResource("Animation_v2g1a"),
 &"Idle": SubResource("Animation_e8ov3"),
 &"Idle2": SubResource("Animation_p6ydp"),
-&"OLD__Attack_LBottom": SubResource("Animation_7p6et"),
-&"OLD__Attack_RMid": SubResource("Animation_om1c7"),
-&"OLD__Attack_RTop": SubResource("Animation_2jpox"),
 &"RESET": ExtResource("25_nsc4k"),
-&"Recover_LBottom": SubResource("Animation_5pe8i"),
-&"Recover_LMid": SubResource("Animation_eex23"),
-&"Recover_LTop": SubResource("Animation_pjoft"),
-&"Recover_RBottom": SubResource("Animation_3wbeg"),
-&"Recover_RMid": SubResource("Animation_84imu"),
-&"Recover_RTop": SubResource("Animation_hovqw"),
 &"Stunned": SubResource("Animation_hu1w4"),
-&"Telegraph_LBottom": SubResource("Animation_vx87h"),
-&"Telegraph_LMid": SubResource("Animation_r88ec"),
-&"Telegraph_LTop": SubResource("Animation_tkkut"),
-&"Telegraph_RBottom": SubResource("Animation_rcnqh"),
-&"Telegraph_RMid": SubResource("Animation_w4frb"),
-&"Telegraph_RTop": SubResource("Animation_7kheq"),
 &"Walk2": SubResource("Animation_lgmkq"),
-&"test_walk": SubResource("Animation_g8xqt")
+&"attack": SubResource("Animation_phxqg"),
+&"telegraph": SubResource("Animation_86kpf")
 }
 
 [sub_resource type="Gradient" id="Gradient_xnhkk"]
@@ -1129,7 +550,7 @@ sorting_offset = 1.0
 mesh = SubResource("PlaneMesh_pkfog")
 script = ExtResource("3_j08hu")
 animations_array = Array[ExtResource("4_v1swk")]([SubResource("Resource_d7tla"), SubResource("Resource_8vrwc"), SubResource("Resource_iaicr"), SubResource("Resource_600hx"), SubResource("Resource_gefnw")])
-animation = 4
+animation = 1
 frame = 1.0
 sprite_scale = 0.003
 metadata/_custom_type_script = "uid://b5653u7w56pqw"
@@ -1170,6 +591,9 @@ Body = NodePath("../..")
 SM = NodePath("..")
 Animator = NodePath("../../AnimationPlayer")
 
+[node name="Timer" type="Timer" parent="StateMachine/Fighting" unique_id=1808761424]
+one_shot = true
+
 [node name="Wander" type="Node" parent="StateMachine" unique_id=223225635 node_paths=PackedStringArray("Body", "Sprite", "footstep_audio", "SM", "Animator")]
 script = ExtResource("23_3m1id")
 Body = NodePath("../..")
@@ -1189,12 +613,12 @@ Body = NodePath("../..")
 Sprite = NodePath("../../Sprite3DBillBoard")
 footstep_audio = NodePath("../../SoundsWalkAndIdle")
 Debug_draw = true
+speed = 6.0
 SM = NodePath("..")
 Animator = NodePath("../../AnimationPlayer")
 
 [node name="Timer" type="Timer" parent="StateMachine/Chase" unique_id=1875391046]
 process_callback = 0
-wait_time = 5.0
 one_shot = true
 
 [node name="Investegate" type="Node" parent="StateMachine" unique_id=1316965168 node_paths=PackedStringArray("Body", "Sprite", "footstep_audio", "SM", "Animator")]
@@ -1203,12 +627,13 @@ Body = NodePath("../..")
 Sprite = NodePath("../../Sprite3DBillBoard")
 footstep_audio = NodePath("../../SoundsWalkAndIdle")
 Debug_draw = true
+speed = 5.0
 SM = NodePath("..")
 Animator = NodePath("../../AnimationPlayer")
 
 [node name="Timer" type="Timer" parent="StateMachine/Investegate" unique_id=509255129]
 process_callback = 0
-wait_time = 10.0
+wait_time = 4.0
 one_shot = true
 
 [node name="Stunned" type="Node" parent="StateMachine" unique_id=1137882621 node_paths=PackedStringArray("SM", "Animator")]
@@ -1217,6 +642,7 @@ SM = NodePath("..")
 Animator = NodePath("../../AnimationPlayer")
 
 [node name="_timer_stunned" type="Timer" parent="StateMachine/Stunned" unique_id=2133530117]
+wait_time = 2.0
 one_shot = true
 
 [node name="Area3D" type="Area3D" parent="." unique_id=1416647770 groups=["Player"]]
@@ -1335,12 +761,10 @@ bus = &"items"
 root_node = NodePath("../Sprite3DBillBoard")
 libraries/ = SubResource("AnimationLibrary_khln7")
 
-[node name="Stats" type="Node" parent="." unique_id=1131594280 node_paths=PackedStringArray("health_bar", "hit_sfx", "who_owns", "stam_bar")]
+[node name="Stats" type="Node" parent="." unique_id=1131594280 node_paths=PackedStringArray("who_owns", "hit_sfx")]
 script = ExtResource("35_pydrg")
-health_bar = NodePath("Node3D/SubViewport/Control/Border/HealthBar")
-hit_sfx = NodePath("../HitSfx")
 who_owns = NodePath("..")
-stam_bar = NodePath("Node3D/SubViewport/Control/Border/StamBar")
+hit_sfx = NodePath("../HitSfx")
 metadata/_custom_type_script = "uid://46pp7aerorca"
 
 [node name="Timer" type="Timer" parent="Stats" unique_id=1927817739]
@@ -1415,15 +839,16 @@ metadata/_edit_use_anchors_ = true
 transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 0, 1.3992093, 0)
 mesh = SubResource("QuadMesh_pydrg")
 
+[connection signal="timeout" from="StateMachine/Fighting/Timer" to="StateMachine/Fighting" method="timeout"]
 [connection signal="timeout" from="StateMachine/Wander/Timer" to="StateMachine/Wander" method="_on_timer_timeout"]
 [connection signal="timeout" from="StateMachine/Chase/Timer" to="StateMachine/Chase" method="_on_timer_timeout"]
+[connection signal="timeout" from="StateMachine/Investegate/Timer" to="StateMachine/Investegate" method="_on_timer_timeout"]
 [connection signal="timeout" from="StateMachine/Stunned/_timer_stunned" to="StateMachine/Stunned" method="_on__timer_stunned_timeout"]
+[connection signal="area_exited" from="Area3D" to="StateMachine/Fighting" method="_on_area_3d_area_exited"]
 [connection signal="area_shape_entered" from="Area3D" to="StateMachine/Chase" method="_on_area_3d_area_shape_entered"]
-[connection signal="area_shape_exited" from="Area3D" to="StateMachine/Fighting" method="_on_area_3d_area_shape_exited"]
 [connection signal="body_shape_entered" from="Area3D" to="SM_controller" method="_on_area_3d_body_shape_entered"]
 [connection signal="body_shape_exited" from="Area3D" to="SM_controller" method="_on_area_3d_body_shape_exited"]
 [connection signal="area_entered" from="Area3D2(Close)" to="StateMachine/Wander" method="_on_area_3d_2_area_entered"]
-[connection signal="area_entered" from="Area3D2(Close)" to="StateMachine/Chase" method="_on_area_3d_2_area_entered"]
 [connection signal="area_entered" from="Aggro(Far)" to="StateMachine/Wander" method="_on_aggro_far_area_entered"]
 [connection signal="area_exited" from="Aggro(Far)" to="StateMachine/Chase" method="_on_area_3d_2_area_exited"]
 [connection signal="timeout" from="Combat/CombatHand/Attack/Timer_Telegraph" to="Combat/CombatHand/Attack" method="end_telegraph"]

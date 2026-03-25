@@ -3,7 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://bdv15pyviy4kf" path="res://scenes/interactions/interactables/items/all_items/torch/ScontSprite/ScontFrontSide.png" id="3_hldjy"]
 [ext_resource type="Texture2D" uid="uid://dblc3nb28nfp1" path="res://scenes/interactions/interactables/items/all_items/torch/ScontSprite/ScontSide.png" id="4_8gaph"]
 
-[node name="TorchSconce" type="Node3D" unique_id=1729385187]
+[node name="TorchSconce_Lit" type="Node3D" unique_id=1729385187]
 
 [node name="Lit_Sconce" type="Node3D" parent="." unique_id=1591104962]
 
@@ -12,7 +12,6 @@ transform = Transform3D(0.73, 0, 0, 0, 0.6321986, -0.365, 0, 0.365, 0.6321986, 0
 layers = 2
 pixel_size = 0.0013
 shaded = true
-render_priority = 1
 texture = ExtResource("3_hldjy")
 
 [node name="_g_side" type="Sprite3D" parent="Lit_Sconce" unique_id=958112046]
@@ -20,7 +19,6 @@ transform = Transform3D(0, 0, 0.72999996, 0.36499998, 0.6321986, 0, -0.6321985, 
 layers = 2
 pixel_size = 0.0013
 shaded = true
-render_priority = 1
 texture = ExtResource("4_8gaph")
 
 [node name="TorchLight" type="OmniLight3D" parent="Lit_Sconce" unique_id=801500960]

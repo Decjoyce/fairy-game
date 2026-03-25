@@ -8,6 +8,7 @@
 [ext_resource type="AudioStream" uid="uid://dpv5f1hi48dtp" path="res://assets/__not_ours_dontship/death_fortnite.mp3" id="7_uk0c6"]
 [ext_resource type="AudioStream" uid="uid://vx653pqd2bno" path="res://assets/__not_ours_dontship/death_yoda.mp3" id="8_bwyit"]
 [ext_resource type="AudioStream" uid="uid://dutddyikwuiut" path="res://assets/audio/sfx/combat/misc/hittingsound_shorter.wav" id="8_hick6"]
+[ext_resource type="Script" uid="uid://bhf6r6nw14krj" path="res://scripts/saving/persistent_objs/po_item.gd" id="10_bwyit"]
 [ext_resource type="Texture2D" uid="uid://hfd6qbmx87rr" path="res://assets/__not_ours_dontship/cat-standing-on-a-chair-leoch-studio.png" id="18_71cdv"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_llc7q"]
@@ -69,7 +70,6 @@ debug_color = Color(0.8442249, 0.37985525, 5.7756904e-07, 0.41960785)
 layers = 4
 pixel_size = 0.0015
 billboard = 1
-render_priority = 1
 texture = ExtResource("4_jgox5")
 
 [node name="_grabbed_graphics" type="Sprite3D" parent="." unique_id=1144728069]
@@ -98,5 +98,8 @@ bus = &"pl_footsteps"
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.2, 0)
 pixel_size = 0.0006
 billboard = 1
-render_priority = 1
 texture = ExtResource("18_71cdv")
+
+[node name="PO_Item" type="Node" parent="." unique_id=919407277 groups=["PO"]]
+script = ExtResource("10_bwyit")
+metadata/_custom_type_script = "uid://bhf6r6nw14krj"

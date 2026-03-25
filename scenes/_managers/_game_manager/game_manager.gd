@@ -9,9 +9,10 @@ func _ready() -> void:
 
 var test_timer: float
 
-func _process(delta: float) -> void:
-	if Input.is_action_just_pressed("reset_vs"):
-		load_last_checkpoint()
+#func _process(delta: float) -> void:
+	#if Input.is_action_just_pressed("reset_vs"):
+		#if level_manager != null:
+			#load_last_checkpoint()
 
 # ↑ Default Stuff ↑
 # --------------------------------------------------------------------------------------------------

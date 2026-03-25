@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://bfjbajm1402m3"]
+
+[ext_resource type="Script" uid="uid://ccjmr6hykt32s" path="res://scenes/_managers/outside_main_tree.gd" id="1_1oicw"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_0fg8d"]
+size = Vector3(5, 0.13, 5)
+
+[node name="OutsideMainTree" type="Node" unique_id=1891106469 node_paths=PackedStringArray("destroyed_item_cell")]
+script = ExtResource("1_1oicw")
+destroyed_item_cell = NodePath("DestroyedItemCell")
+metadata/_custom_type_script = "uid://ccjmr6hykt32s"
+
+[node name="DestroyedItemCell" type="Node3D" parent="." unique_id=1266927386]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 50000, 0, 0)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="DestroyedItemCell" unique_id=1292330145]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.1, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="DestroyedItemCell/StaticBody3D" unique_id=1080955443]
+shape = SubResource("BoxShape3D_0fg8d")

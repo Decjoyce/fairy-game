@@ -10,6 +10,7 @@
 [ext_resource type="Resource" uid="uid://b5bs0jgbt263j" path="res://scenes/interactions/_triggers/music_trigger/melodies/melody_test.tres" id="7_vj51q"]
 [ext_resource type="Texture2D" uid="uid://crxiied1mq25" path="res://assets/sprites/_dev/divided.png" id="9_vj51q"]
 [ext_resource type="PackedScene" uid="uid://dpm2ettl06ilt" path="res://scenes/interactions/interactables/items/all_items/instruments/item_flute.tscn" id="10_8x6fc"]
+[ext_resource type="Script" uid="uid://bul4myvyhnpjc" path="res://scripts/saving/uid_generator.gd" id="11_75y8e"]
 
 [sub_resource type="Environment" id="Environment_vu50v"]
 
@@ -22,12 +23,21 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 1)
 
 [node name="Gate" parent="." unique_id=1033176324 instance=ExtResource("3_vj51q")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -4.4)
+metadata/uid = "67593890-2386-4a24-ae5c-d2734b276e8e"
+metadata/lock_uid = true
+metadata/date_generated = "2026-03-14T22:31:51"
 
 [node name="Gate2" parent="." unique_id=1177506036 instance=ExtResource("3_vj51q")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, -4.4)
+metadata/uid = "ac14f9da-8bcc-40ef-bd29-18a62b00bf18"
+metadata/lock_uid = true
+metadata/date_generated = "2026-03-14T22:31:51"
 
 [node name="Gate3" parent="." unique_id=1709236270 instance=ExtResource("3_vj51q")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, -4.4)
+metadata/uid = "dee0b8ef-dde1-4d74-9cf8-75bbe4f8e5d4"
+metadata/lock_uid = true
+metadata/date_generated = "2026-03-14T22:31:51"
 
 [node name="skybox_changer" type="Node" parent="." unique_id=724843259 node_paths=PackedStringArray("world_environment")]
 script = ExtResource("4_8x6fc")
@@ -56,6 +66,9 @@ size = Vector3(34, 0.001, 13)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2)
 debug_mode = true
 melodies = Array[ExtResource("6_2gnfs")]([ExtResource("7_vj51q")])
+metadata/uid = "153f5a32-e8f6-4042-b724-ccb3a90986f0"
+metadata/lock_uid = true
+metadata/date_generated = "2026-03-14T22:31:51"
 
 [node name="TEST_Instrument" parent="." unique_id=130412758 instance=ExtResource("6_tyyse")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
@@ -72,6 +85,13 @@ metadata/_edit_use_anchors_ = true
 
 [node name="Flute" parent="." unique_id=454630447 instance=ExtResource("10_8x6fc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0.4, 0)
+metadata/uid = "ea2c68d0-51f5-4994-9332-95c4ac09989b"
+metadata/lock_uid = true
+metadata/date_generated = "2026-03-14T22:31:51"
+
+[node name="UID_Generator" type="Node" parent="." unique_id=1806086347]
+script = ExtResource("11_75y8e")
+metadata/_custom_type_script = "uid://bul4myvyhnpjc"
 
 [connection signal="on_activated" from="MusicReceiver" to="Gate2" method="fully_open_gate"]
 [connection signal="on_change" from="MusicReceiver" to="Gate" method="open_gate"]

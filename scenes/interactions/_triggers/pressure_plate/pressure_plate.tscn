@@ -2,12 +2,16 @@
 
 [ext_resource type="Script" uid="uid://c7ghu7bwjvv0k" path="res://scenes/interactions/_triggers/pressure_plate/pressure_plate.gd" id="1_i6vjq"]
 [ext_resource type="Material" uid="uid://beaom2cndegce" path="res://assets/models/cairn/Props/PressurePlate/PressurePlate.tres" id="2_237o0"]
+[ext_resource type="Script" uid="uid://0u8kvsvjv11k" path="res://scripts/saving/persistent_objs/po_pressureplate.gd" id="3_sfnck"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_i6vjq"]
 size = Vector3(1, 0.1, 1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_qye5f"]
 size = Vector3(1, 0.1, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_sfnck"]
+size = Vector3(0.7, 0.1, 0.7)
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_8qv71"]
 _surfaces = [{
@@ -40,7 +44,7 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_8qv71")
 
-[node name="PressurePlate" type="Node3D" unique_id=247380468 groups=["debug_PickableObjects"]]
+[node name="PressurePlate" type="Node3D" unique_id=790035545 groups=["debug_PickableObjects"]]
 script = ExtResource("1_i6vjq")
 metadata/_custom_type_script = "uid://c7ghu7bwjvv0k"
 
@@ -60,22 +64,35 @@ billboard = 1
 text = "Plate"
 font_size = 67
 
-[node name="Trigger" type="Area3D" parent="Graphics" unique_id=1012212312]
+[node name="Trigger_Item" type="Area3D" parent="Graphics" unique_id=1012212312]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.037968785, 0)
 collision_mask = 3
 monitorable = false
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Graphics/Trigger" unique_id=1396841565]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Graphics/Trigger_Item" unique_id=1396841565]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.049999997, 0)
-visible = false
 shape = SubResource("BoxShape3D_qye5f")
+debug_color = Color(0.83023536, 0.46282655, 3.85046e-07, 1)
+
+[node name="Trigger_Player" type="Area3D" parent="Graphics" unique_id=344518149]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.037968785, 0)
+collision_mask = 3
+monitorable = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Graphics/Trigger_Player" unique_id=1232226109]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.049999997, 0)
+shape = SubResource("BoxShape3D_sfnck")
 debug_color = Color(0.83023536, 0.46282655, 3.85046e-07, 1)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Graphics" unique_id=784396263]
 transform = Transform3D(0.2, 0, 0, 0, 0.45, 0, 0, 0, 0.2, 0, -0.0026611425, 0)
 mesh = SubResource("ArrayMesh_jqphk")
 
-[connection signal="area_shape_entered" from="Graphics/Trigger" to="." method="_on_area_entered_trigger"]
-[connection signal="area_shape_exited" from="Graphics/Trigger" to="." method="_on_area_exited_trigger"]
-[connection signal="body_entered" from="Graphics/Trigger" to="." method="_on_body_entered_trigger"]
-[connection signal="body_exited" from="Graphics/Trigger" to="." method="_on_body_exited_trigger"]
+[node name="PO_PressurePlate" type="Node" parent="." unique_id=2017023874 groups=["PO"]]
+script = ExtResource("3_sfnck")
+metadata/_custom_type_script = "uid://0u8kvsvjv11k"
+
+[connection signal="body_entered" from="Graphics/Trigger_Item" to="." method="_on_body_entered_trigger"]
+[connection signal="body_exited" from="Graphics/Trigger_Item" to="." method="_on_body_exited_trigger"]
+[connection signal="area_shape_entered" from="Graphics/Trigger_Player" to="." method="_on_area_entered_trigger"]
+[connection signal="area_shape_exited" from="Graphics/Trigger_Player" to="." method="_on_area_exited_trigger"]

@@ -11,6 +11,7 @@
 [ext_resource type="Script" uid="uid://cfxwq2a75x5r4" path="res://scenes/interactions/interactables/items/item_types/itemtype_instrument.gd" id="9_b4jvk"]
 [ext_resource type="Texture2D" uid="uid://bhs3fvxrmdp4o" path="res://assets/sprites/item_sprites/bone_flute.png" id="10_agl8n"]
 [ext_resource type="AudioStream" uid="uid://dutddyikwuiut" path="res://assets/audio/sfx/combat/misc/hittingsound_shorter.wav" id="11_k286w"]
+[ext_resource type="Script" uid="uid://bhf6r6nw14krj" path="res://scripts/saving/persistent_objs/po_item.gd" id="12_byysy"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_llc7q"]
 
@@ -28,7 +29,7 @@ size = Vector3(0.4, 0.4, 0.4)
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_m3m7e"]
 
-[node name="Flute" type="RigidBody3D" unique_id=130412758 node_paths=PackedStringArray("music_player", "col", "grab_col", "idle_graphics") groups=["debug_PickableObjects"]]
+[node name="Flute" type="RigidBody3D" unique_id=130412758 node_paths=PackedStringArray("music_player", "col", "grab_col", "idle_graphics", "grabbed_graphics") groups=["debug_PickableObjects"]]
 collision_layer = 2
 axis_lock_angular_x = true
 axis_lock_angular_z = true
@@ -43,7 +44,8 @@ item_type = SubResource("Resource_3g5fp")
 display_name = "Kazoo"
 col = NodePath("CollisionShape3D")
 grab_col = NodePath("Area3D/CollisionShape3D2")
-idle_graphics = NodePath("Sprite3D")
+idle_graphics = NodePath("_g_idle")
+grabbed_graphics = NodePath("_g_grabbed")
 
 [node name="Area3D" type="Area3D" parent="." unique_id=1930827065]
 collision_layer = 2
@@ -55,7 +57,13 @@ shape = SubResource("BoxShape3D_llc7q")
 shape = SubResource("BoxShape3D_234jp")
 debug_color = Color(0.8442249, 0.37985525, 5.7756904e-07, 0.41960785)
 
-[node name="Sprite3D" type="Sprite3D" parent="." unique_id=1835715381]
+[node name="_g_idle" type="Sprite3D" parent="." unique_id=1835715381]
+layers = 4
+pixel_size = 0.001
+billboard = 1
+texture = ExtResource("10_agl8n")
+
+[node name="_g_grabbed" type="Sprite3D" parent="." unique_id=145348828]
 layers = 4
 pixel_size = 0.001
 billboard = 1
@@ -86,3 +94,7 @@ monitoring = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="MusicCol" unique_id=1875582206]
 shape = SubResource("SphereShape3D_m3m7e")
+
+[node name="PO_Item" type="Node" parent="." unique_id=1485825816 groups=["PO"]]
+script = ExtResource("12_byysy")
+metadata/_custom_type_script = "uid://bhf6r6nw14krj"

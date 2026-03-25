@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://bwii7dbg7wd7s" path="res://scenes/interactions/_receivers/traps/projectile/arrow_projectile.tscn" id="2_qehb0"]
 [ext_resource type="AudioStream" uid="uid://bl70njdpufmni" path="res://assets/audio/sfx/environment/Traps/Arrow/Weapons, Arrow, Arrows, Shot 04, Bowstring, Twang, Thwack, 8070 (Mono) SND127426 2.wav" id="3_v5yxh"]
 [ext_resource type="AudioStream" uid="uid://323itw85oonc" path="res://assets/audio/sfx/environment/Traps/Arrow/Weapons, Arrow, Arrows, Shot 04, Bowstring, Twang, Thwack, 8070 (Mono) SND127426.wav" id="4_iw5ko"]
+[ext_resource type="Script" uid="uid://djyhniwugtcsq" path="res://scripts/saving/persistent_objs/po_arrowtrap.gd" id="7_v5yxh"]
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_c1656"]
 streams_count = 3
@@ -13,10 +14,11 @@ stream_0/stream = ExtResource("2_61h22")
 stream_1/stream = ExtResource("3_v5yxh")
 stream_2/stream = ExtResource("4_iw5ko")
 
-[node name="trap_projectile" type="Node3D" unique_id=937661216 node_paths=PackedStringArray("projectile_pool", "audio")]
+[node name="trap_projectile" type="Node3D" unique_id=589372953 node_paths=PackedStringArray("projectile_pool", "audio") groups=["debug_PickableObjects"]]
 script = ExtResource("1_fuppk")
 projectile_pool = [NodePath("_projectiles/ArrowProjectile"), NodePath("_projectiles/ArrowProjectile2"), NodePath("_projectiles/ArrowProjectile3"), NodePath("_projectiles/ArrowProjectile4"), NodePath("_projectiles/ArrowProjectile5")]
 audio = NodePath("AudioStreamPlayer3D")
+metadata/_custom_type_script = "uid://r8vvnup14amn"
 
 [node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="." unique_id=108284454]
 stream = SubResource("AudioStreamRandomizer_c1656")
@@ -40,3 +42,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.0073896833)
 [node name="ArrowProjectile4" parent="_projectiles" unique_id=1750565942 instance=ExtResource("2_qehb0")]
 
 [node name="ArrowProjectile5" parent="_projectiles" unique_id=522591875 instance=ExtResource("2_qehb0")]
+
+[node name="PO_ArrowTrap" type="Node" parent="." unique_id=333408450 groups=["PO"]]
+script = ExtResource("7_v5yxh")
+metadata/_custom_type_script = "uid://djyhniwugtcsq"

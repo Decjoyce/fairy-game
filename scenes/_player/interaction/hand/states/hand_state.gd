@@ -10,6 +10,7 @@ const ATTACK = "ATTACK"
 const KEY = "KEY"
 const CHAIN = "CHAIN"
 const VALVE = "VALVE"
+const SAVING = "SAVING"
 
 var hand_controller: PlayerHand
 var player: PlayerTest

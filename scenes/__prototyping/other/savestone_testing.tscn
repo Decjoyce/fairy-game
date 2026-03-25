@@ -1,0 +1,61 @@
+[gd_scene format=3 uid="uid://b6scifjideb28"]
+
+[ext_resource type="PackedScene" uid="uid://bq86osdembn58" path="res://scenes/_player/_player_test.tscn" id="1_kg0lj"]
+[ext_resource type="PackedScene" uid="uid://cruv8v8wh8l06" path="res://scenes/interactions/_special/saving_stone/saving_stone.tscn" id="2_nj5mn"]
+[ext_resource type="Script" uid="uid://bul4myvyhnpjc" path="res://scripts/saving/uid_generator.gd" id="3_hludd"]
+[ext_resource type="PackedScene" uid="uid://b50qqenfywy10" path="res://scenes/interactions/_receivers/animated_object/animated_object.tscn" id="4_55xpi"]
+[ext_resource type="PackedScene" uid="uid://dcbfb4frwgj7c" path="res://scenes/interactions/_triggers/chain/chain.tscn" id="5_vj6ji"]
+[ext_resource type="PackedScene" uid="uid://qu5rxgbydmet" path="res://scenes/interactions/_triggers/button/button.tscn" id="6_20lrk"]
+
+[sub_resource type="Environment" id="Environment_nj5mn"]
+background_mode = 1
+background_color = Color(0.55000263, 0.6715025, 1, 1)
+
+[node name="SavestoneTesting" type="Node3D" unique_id=1604087577]
+
+[node name="player_test" parent="." unique_id=725727541 instance=ExtResource("1_kg0lj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+
+[node name="_env" type="Node3D" parent="." unique_id=2081383644]
+
+[node name="CSGBox3D" type="CSGBox3D" parent="_env" unique_id=851799924]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, 0, -1)
+use_collision = true
+size = Vector3(34, 0.001, 13)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="_env" unique_id=1586059182]
+environment = SubResource("Environment_nj5mn")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="_env" unique_id=2040548070]
+transform = Transform3D(1, 0, 0, 0, -0.50000006, 0.8660254, 0, -0.8660254, -0.50000006, 0, 1.8000001, 0)
+shadow_enabled = true
+
+[node name="SavingStone" parent="." unique_id=452927148 instance=ExtResource("2_nj5mn")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 0, 0, -0.7999999)
+
+[node name="UID_Generator" type="Node" parent="." unique_id=1854074549]
+script = ExtResource("3_hludd")
+metadata/_custom_type_script = "uid://bul4myvyhnpjc"
+
+[node name="Chain" parent="." unique_id=691524357 instance=ExtResource("5_vj6ji")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0, 2)
+metadata/uid = "528156a6-0e8f-494e-ad5b-45c8aa4db64e"
+metadata/lock_uid = true
+metadata/date_generated = "2026-03-17T12:01:13"
+
+[node name="AnimatedObject" parent="." unique_id=761663444 node_paths=PackedStringArray("connnect_anim_player") instance=ExtResource("4_55xpi")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0, 0)
+anim_to_play = "test_anim"
+connnect_anim_player = NodePath(".")
+metadata/uid = "956781c2-4a7a-412d-b16f-d65b6c466999"
+metadata/lock_uid = true
+metadata/date_generated = "2026-03-17T12:01:13"
+
+[node name="Button" parent="." unique_id=1164325605 instance=ExtResource("6_20lrk")]
+transform = Transform3D(-0.8660254, 0, 0.50000006, 0, 1, 0, -0.50000006, 0, -0.8660254, -4, 1, 2.2)
+metadata/uid = "84d9bca1-1346-4e6e-81ab-8043109043f6"
+metadata/lock_uid = true
+metadata/date_generated = "2026-03-17T12:17:12"
+
+[connection signal="on_change" from="Chain" to="AnimatedObject" method="play_animation"]
+[connection signal="on_activated" from="Button" to="AnimatedObject" method="play_animation"]

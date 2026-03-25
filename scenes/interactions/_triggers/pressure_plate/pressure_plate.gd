@@ -19,6 +19,7 @@ var entities_on_plate: Dictionary[Node3D, float]
 var current_weight: float
 @export var always_emit_on_change: bool = false
 
+var loading_locked: bool #used to stop pp triggering after loading
 
 # ↑ General Stuff ↑
 # --------------------------------------------------------------------------------------------------
@@ -43,30 +44,30 @@ func _on_area_exited_trigger(area_rid: RID, area: Area3D, area_shape_index: int,
 
 func item_entered_pressure_plate(item: Grabbable_Item) -> void:
 	if items_on_plate.has(item): return
-	print("entered")
+	#print("entered")
 	items_on_plate[item] = item.get_weight()
 	check_weight()
 	if always_emit_on_change: emit_on_change()
 
 func item_exited_pressure_plate(item: Grabbable_Item) -> void:
 	if items_on_plate.has(item): items_on_plate.erase(item)
-	print("exited")
+	#print("exited")
 	check_weight()
 	if always_emit_on_change: emit_on_change()
 
 func entity_entered_pressure_plate(entity: Entity) -> void:
 	if entities_on_plate.has(entity): return
-	print("entered")
+	#print("entered")
 	entities_on_plate[entity] = entity.current_weight
 	entity.current_pressureplate = self
 	check_weight()
 	if always_emit_on_change: emit_on_change()
 
 func entity_exited_pressure_plate(entity: Entity) -> void:
-	prints(entity, entity.current_pressureplate, self)
+	#prints(entity, entity.current_pressureplate, self)
 	if entity.current_pressureplate == self: entity.current_pressureplate = null
 	if entities_on_plate.has(entity): entities_on_plate.erase(entity)
-	print("exited")
+	#print("exited")
 	check_weight()
 	if always_emit_on_change: emit_on_change()
 
@@ -88,6 +89,7 @@ func check_weight() -> void:
 	if current_weight >= weight_to_activate: activate()
 	elif current_weight < weight_to_activate and current_weight > 0: inbetween()
 	else: deactivate()
+	check_if_reached_saved_num()
 
 func update_total_weight() -> float:
 	var updated_weight: float = 0
@@ -105,15 +107,17 @@ func update_total_weight() -> float:
 func activate() -> void:
 	if current_state == plate_states.ACTIVATED: return
 	var weight_percent: float = clampf(current_weight / weight_to_activate, 0, 1)
-	on_activated.emit(weight_percent)
-	on_change.emit(weight_percent)
+	if !loading_locked:
+		on_activated.emit(weight_percent)
+		on_change.emit(weight_percent)
 	current_state = plate_states.ACTIVATED
 
 func deactivate() -> void:
 	if current_state == plate_states.DEACTIVATED: return
 	var weight_percent: float = clampf(current_weight / weight_to_activate, 0, 1)
-	on_deactivated.emit(0)
-	on_change.emit(weight_percent)
+	if !loading_locked:
+		on_deactivated.emit(0)
+		on_change.emit(weight_percent)
 	current_state = plate_states.DEACTIVATED
 
 func inbetween() -> void:
@@ -121,6 +125,7 @@ func inbetween() -> void:
 	current_state = plate_states.INBETWEEN
 
 func emit_on_change() -> void:
+	if loading_locked: return
 	var weight_percent: float = clampf(current_weight / weight_to_activate, 0, 1)
 	on_change.emit(weight_percent)
 
@@ -136,16 +141,13 @@ const DEACTIVATED_HEIGHT: float = -0.05
 @export_range(100, 1500, 100) var _lerp_speed: float = 1000
 @onready var graphics: Node3D = $Graphics
 
-func _ready() -> void:
-	pass
-
 func animate_plate() -> void:
 	time_move_started = Time.get_ticks_msec()
 	is_lerping = true
 	_start_position = graphics.position.y
 	var move_amount : float = clampf(current_weight / weight_to_activate, 0, 1)
 	_end_position = DEACTIVATED_HEIGHT * move_amount
-	prints(current_weight, weight_to_activate, move_amount, _end_position)
+	#prints(current_weight, weight_to_activate, move_amount, _end_position)
 
 func _process(delta: float) -> void:
 	if is_lerping:
@@ -162,3 +164,28 @@ func _process(delta: float) -> void:
 func plate_lerp(start: float, finish: float, percentage: float):
 	var _percentage = clampf(percentage, 0.0, 1.0)
 	return (1-_percentage) * start + _percentage * finish
+
+# ↑ Animating Stuff ↑
+# --------------------------------------------------------------------------------------------------
+# ↓ Saving Stuff ↓
+
+var saved_num_on_pressure_plate: int
+
+func _ready() -> void:
+	TEMPSaveGameHandler.on_before_load_game.connect(load_lock)
+	#TEMPSaveGameHandler.on_loaded_game.connect(load_unlock)
+
+func check_if_reached_saved_num() -> void:
+	if saved_num_on_pressure_plate == get_num_on_plate():
+		load_unlock()
+
+func get_num_on_plate() -> int:
+	return entities_on_plate.size() + items_on_plate.size()
+
+func load_lock() -> void:
+	#print("lck")
+	loading_locked = true
+
+func load_unlock() -> void:
+	#print("unlck")
+	loading_locked = false

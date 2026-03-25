@@ -5,6 +5,7 @@
 [ext_resource type="Script" uid="uid://d3averdt6fuqm" path="res://scenes/interactions/interactables/items/item_types/itemtype_torch.gd" id="2_t5i1y"]
 [ext_resource type="AudioStream" uid="uid://rc1825amqk33" path="res://assets/__not_ours_dontship/lego_mavelsuperheroes/FIRESML_LP.WAV" id="5_7yijt"]
 [ext_resource type="AudioStream" uid="uid://dutddyikwuiut" path="res://assets/audio/sfx/combat/misc/hittingsound_shorter.wav" id="5_j22s6"]
+[ext_resource type="Script" uid="uid://bhf6r6nw14krj" path="res://scripts/saving/persistent_objs/po_item.gd" id="6_hwxea"]
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_j22s6"]
 noise_type = 5
@@ -72,7 +73,6 @@ layers = 4
 pixel_size = 0.0013
 billboard = 1
 shaded = true
-render_priority = 1
 texture = ExtResource("2_20p6n")
 
 [node name="Grabbed" type="Sprite3D" parent="Node3D" unique_id=1749190379]
@@ -116,3 +116,7 @@ doppler_tracking = 1
 [node name="RayCast3D" type="RayCast3D" parent="." unique_id=1316099085]
 target_position = Vector3(0, -0.63, 0)
 hit_from_inside = true
+
+[node name="PO_Item" type="Node" parent="." unique_id=113795984]
+script = ExtResource("6_hwxea")
+metadata/_custom_type_script = "uid://bhf6r6nw14krj"
