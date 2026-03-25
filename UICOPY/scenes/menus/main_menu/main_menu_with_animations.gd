@@ -7,6 +7,7 @@ var animation_state_machine : AnimationNodeStateMachinePlayback
 @export var anim_player: AnimationPlayer 
 @export var fade_anim: AnimationPlayer 
 @export var vs_scnee: PackedScene
+@export var demo_scnee: PackedScene
 #####################################################################################################################################
 func intro_done() -> void:
 	animation_state_machine.travel("OpenMainMenu")
@@ -43,10 +44,12 @@ func _on_continue_game_button_pressed() -> void:
 
 ########################## NEW MIKE CODE FOR MAKING THE THING SMOOTH ####################################################################
 func _on_playground_pressed() -> void:
-	start_game()
+	start_game(vs_scnee)
 	pass # Replace with function body.
+	
 
-func start_game():
+func start_game(scene):
+	
 	anim_player.play("SpeedIntoCavee") 
 	animation_state_machine.travel("IntroB")
 
@@ -55,4 +58,9 @@ func start_game():
 	fade_anim.play("FadetoBlack")
 	await fade_anim.animation_finished
 
-	get_tree().change_scene_to_packed(vs_scnee)
+	get_tree().change_scene_to_packed(scene)
+
+
+func _on_play_demo_pressed() -> void:
+	start_game(demo_scnee)
+	pass # Replace with function body.

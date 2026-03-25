@@ -4,6 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://bssask2v64ogc" path="res://scenes/_levels/Vertical Slice/_vertical_slice.tscn" id="2_35d2q"]
 [ext_resource type="LightmapGIData" uid="uid://bqiy8iqbdsnh" path="res://scenes/_levels/lightmap_data/LightMapBake/MainMenuScene.lmbake" id="3_buqdy"]
 [ext_resource type="Script" uid="uid://c3xgbfrig5y5w" path="res://UICOPY/scenes/menus/main_menu/main_menu_with_animations.gd" id="3_nbyns"]
+[ext_resource type="Theme" uid="uid://dpa7cj0od41dk" path="res://scenes/_levels/menus/main_menu/Main_Menu_UI_NEW/UI_themes/Stone_Theme.tres" id="3_q6106"]
 [ext_resource type="PackedScene" uid="uid://dpic53cok00p4" path="res://UICOPY/scenes/windows/main_menu_options_window.tscn" id="4_2wrwt"]
 [ext_resource type="PackedScene" uid="uid://btcpx55r5ma3v" path="res://assets/models/cairn/Props/Menu/Moutainrocks5.glb" id="4_ckx4x"]
 [ext_resource type="PackedScene" uid="uid://dw2dbsjbocxi7" path="res://scenes/__playground_scenes/playground_interactions.tscn" id="4_kmgne"]
@@ -14,6 +15,7 @@
 [ext_resource type="Texture2D" uid="uid://wpx72pcpea8n" path="res://assets/__not_ours_dontship/Xbox Series/XboxSeriesX_A.png" id="7_mpmb8"]
 [ext_resource type="PackedScene" uid="uid://bkcsjsk2ciff" path="res://addons/maaacks_menus_template/base/nodes/music_players/background_music_player.tscn" id="7_rgd0m"]
 [ext_resource type="Script" uid="uid://bkwlopi4qn32o" path="res://addons/maaacks_menus_template/base/nodes/labels/config_name_label.gd" id="8_0evim"]
+[ext_resource type="PackedScene" uid="uid://ckuw7ho3cogrs" path="res://scenes/__prototyping/PlayTest_Scene.tscn" id="8_xwrb1"]
 [ext_resource type="Script" uid="uid://1nf36h0gms3q" path="res://addons/maaacks_menus_template/base/nodes/utilities/capture_focus.gd" id="9_xwrb1"]
 [ext_resource type="Script" uid="uid://dmkubt2nsnsbn" path="res://addons/maaacks_menus_template/base/nodes/labels/config_version_label.gd" id="10_gmba7"]
 [ext_resource type="PackedScene" uid="uid://cwt4p3bufkke5" path="res://addons/maaacks_menus_template/base/nodes/windows/confirmation_overlaid_window.tscn" id="11_bus8x"]
@@ -646,13 +648,16 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("3_q6106")
 script = ExtResource("3_nbyns")
 anim_player = NodePath("../Camera3D/AnimationPlayer")
 fade_anim = NodePath("../FadeLayer/AnimationPlayer")
 vs_scnee = ExtResource("4_kmgne")
+demo_scnee = ExtResource("8_xwrb1")
 game_scene_path = "uid://dw2dbsjbocxi7"
 options_packed_scene = ExtResource("4_2wrwt")
 credits_packed_scene = ExtResource("5_kmgne")
+confirm_exit = false
 
 [node name="UISoundController" type="Node" parent="MainMenu" unique_id=1619985599]
 script = ExtResource("6_q6106")
@@ -724,7 +729,7 @@ anchor_right = 1.0
 offset_bottom = 34.0
 grow_horizontal = 2
 theme_override_font_sizes/font_size = 24
-text = "Subtitle"
+text = "working title"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -760,12 +765,13 @@ vertical = true
 script = ExtResource("9_xwrb1")
 lock = true
 
-[node name="NewGameButton" type="Button" parent="MainMenu/MenuContainer/MenuButtonsMargin/MenuButtonsContainer/MenuButtonsBoxContainer" unique_id=2044537792]
+[node name="Play Demo" type="Button" parent="MainMenu/MenuContainer/MenuButtonsMargin/MenuButtonsContainer/MenuButtonsBoxContainer" unique_id=971537016]
 unique_name_in_owner = true
 layout_mode = 2
-text = "New Game"
+theme_override_font_sizes/font_size = 24
+text = "Play Demo"
 
-[node name="Playground" type="Button" parent="MainMenu/MenuContainer/MenuButtonsMargin/MenuButtonsContainer/MenuButtonsBoxContainer" unique_id=971537016]
+[node name="Playground" type="Button" parent="MainMenu/MenuContainer/MenuButtonsMargin/MenuButtonsContainer/MenuButtonsBoxContainer" unique_id=984087950]
 unique_name_in_owner = true
 layout_mode = 2
 text = "Playground"
@@ -922,7 +928,7 @@ texture = ExtResource("7_mpmb8")
 stretch_mode = 4
 metadata/_edit_use_anchors_ = true
 
-[connection signal="pressed" from="MainMenu/MenuContainer/MenuButtonsMargin/MenuButtonsContainer/MenuButtonsBoxContainer/NewGameButton" to="MainMenu" method="_on_new_game_button_pressed"]
+[connection signal="pressed" from="MainMenu/MenuContainer/MenuButtonsMargin/MenuButtonsContainer/MenuButtonsBoxContainer/Play Demo" to="MainMenu" method="_on_play_demo_pressed"]
 [connection signal="pressed" from="MainMenu/MenuContainer/MenuButtonsMargin/MenuButtonsContainer/MenuButtonsBoxContainer/Playground" to="MainMenu" method="_on_playground_pressed"]
 [connection signal="pressed" from="MainMenu/MenuContainer/MenuButtonsMargin/MenuButtonsContainer/MenuButtonsBoxContainer/OptionsButton" to="MainMenu" method="_on_options_button_pressed"]
 [connection signal="pressed" from="MainMenu/MenuContainer/MenuButtonsMargin/MenuButtonsContainer/MenuButtonsBoxContainer/CreditsButton" to="MainMenu" method="_on_credits_button_pressed"]
