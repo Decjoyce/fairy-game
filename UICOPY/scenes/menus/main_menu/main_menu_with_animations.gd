@@ -8,6 +8,7 @@ var animation_state_machine : AnimationNodeStateMachinePlayback
 @export var fade_anim: AnimationPlayer 
 @export var vs_scnee: PackedScene
 @export var demo_scnee: PackedScene
+@export var demo_bb: PackedScene
 #####################################################################################################################################
 func intro_done() -> void:
 	animation_state_machine.travel("OpenMainMenu")
@@ -63,4 +64,9 @@ func start_game(scene):
 
 func _on_play_demo_pressed() -> void:
 	start_game(demo_scnee)
+	pass # Replace with function body.
+
+
+func _on_play_BB_pressed() -> void:
+	start_game(demo_bb)
 	pass # Replace with function body.
