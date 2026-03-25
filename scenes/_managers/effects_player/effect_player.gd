@@ -12,8 +12,9 @@ var cur_blur_out_effect: Tween
 @export var blur_out_effect: ColorRect
 @onready var blur_out_mat: ShaderMaterial = blur_out_effect.material
 
-func blur_out(progress: float, length: float, override_effect: bool = false) -> Tween:
+func blur_out(progress: float, length: float, start_progress: float = -1, override_effect: bool = false) -> Tween:
 	if cur_blur_out_effect and !override_effect: return
+	if start_progress >= 0: blur_out_mat.set_shader_parameter("progress", start_progress)
 	progress = clampf(progress, 0, 1.0)
 	cur_blur_out_effect = create_tween().bind_node(self).set_trans(Tween.TRANS_LINEAR)
 	cur_blur_out_effect.tween_property(blur_out_mat, "shader_parameter/progress", progress, length)
