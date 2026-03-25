@@ -1,3 +1,15 @@
 [gd_scene format=3 uid="uid://bvj3a43avx5bu"]
 
+[ext_resource type="MeshLibrary" uid="uid://bu208a8l5866i" path="res://scenes/_levels/_palettes/cairn/meshlibrary_cairn.tres" id="1_5cery"]
+[ext_resource type="PackedScene" uid="uid://bq86osdembn58" path="res://scenes/_player/_player_test.tscn" id="2_gkddq"]
+[ext_resource type="PackedScene" uid="uid://drsdttca4hc5w" path="res://scenes/enemy_new/enemy_ballybog_new.tscn" id="3_n1x43"]
+
 [node name="Ballybog_Scene" type="Node3D" unique_id=842226877]
+
+[node name="GridMap" type="GridMap" parent="." unique_id=848183923]
+mesh_library = ExtResource("1_5cery")
+
+[node name="player_test" parent="." unique_id=725727541 instance=ExtResource("2_gkddq")]
+
+[node name="Ballybog" parent="." unique_id=1712475425 instance=ExtResource("3_n1x43")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 0)
