@@ -43,19 +43,6 @@ albedo_color = Color(1, 1, 1, 0.044000003)
 albedo_texture = ExtResource("3_bkq8s")
 billboard_mode = 1
 
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_hgehc"]
-load_path = "res://.godot/imported/urn_item.png-a865bb42c1dd5f9effd8c6077babc439.s3tc.ctex"
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_18pev"]
-render_priority = 3
-transparency = 1
-blend_mode = 1
-shading_mode = 0
-diffuse_mode = 3
-albedo_color = Color(0.69135684, 0.6913568, 0.69135684, 1)
-albedo_texture = SubResource("CompressedTexture2D_hgehc")
-billboard_mode = 1
-
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_52tl6"]
 random_pitch = 1.2
 streams_count = 9
@@ -115,7 +102,6 @@ hframes = 2
 [node name="_grabbed_graphics" type="Sprite3D" parent="." unique_id=1144728069]
 visible = false
 layers = 4
-material_overlay = SubResource("StandardMaterial3D_18pev")
 pixel_size = 0.0007
 shaded = true
 render_priority = 1
