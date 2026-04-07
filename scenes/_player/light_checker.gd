@@ -38,7 +38,7 @@ var lerped_current_light_avgcolor: Color
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass
+	calc_light_values()
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -46,7 +46,7 @@ func _process(delta: float) -> void:
 	match_par_position()
 	lerp_values(delta)
 	
-	if Engine.get_process_frames() % 60 != 0: return
+	if Engine.get_process_frames() % 24 != 0: return
 	calc_light_values() 
 
 func calc_light_values() -> void:
@@ -56,7 +56,7 @@ func calc_light_values() -> void:
 	current_light_avgcolor = (current_light_avgcolor_back + current_light_avgcolor_front)
 
 	current_light_level = (current_light_level_front + current_light_level_back) 
-	current_light_avgcolor = current_light_avgcolor.lightened(current_light_level)
+	current_light_avgcolor = current_light_avgcolor.lightened(current_light_level * 0.5)
 	
 	dbg_light_bar_combined.value = current_light_level
 	dbg_light_texture_combined.color = current_light_avgcolor
