@@ -38,6 +38,10 @@
 [ext_resource type="Texture2D" uid="uid://caig263otkgib" path="res://scenes/_player/interaction/hand/assets/new/handLeverMid_side.png" id="27_rjeyo"]
 [ext_resource type="Texture2D" uid="uid://bjr37otryvvbb" path="res://scenes/_player/interaction/hand/assets/new/handLeverUp_side.png" id="28_onote"]
 
+[sub_resource type="Gradient" id="Gradient_um574"]
+offsets = PackedFloat32Array(0, 0.9241486)
+colors = PackedColorArray(0.1254902, 0.25490198, 0.36862746, 1, 1, 0.7287319, 0.56201816, 1)
+
 [sub_resource type="Animation" id="Animation_434r6"]
 length = 0.001
 tracks/0/type = "value"
@@ -591,6 +595,7 @@ hand_left = NodePath("Hand_Left")
 hand_right = NodePath("Hand_Right")
 hand_left_sprite = NodePath("Hand_Left/_hand_sprite")
 hand_right_sprite = NodePath("Hand_Right/_hand_sprite")
+hand_light_gradient = SubResource("Gradient_um574")
 
 [node name="Hand_Left" type="Control" parent="." unique_id=342954462 node_paths=PackedStringArray("initial_state")]
 custom_minimum_size = Vector2(64, 64)

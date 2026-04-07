@@ -60,6 +60,15 @@ func test_player_moved()-> void:
 	hand_left.on_player_moved(Vector3.ZERO, Vector3.ZERO)
 	
 
+const NO_LIGHT_COLOR: Color = Color("20415e")
+@export var hand_light_gradient: Gradient
+
 func match_hand_to_light(_delta: float) -> void:
-	hand_left_sprite.modulate = light_checker.lerped_current_light_avgcolor
-	hand_right_sprite.modulate = light_checker.lerped_current_light_avgcolor
+	
+	hand_left_sprite.self_modulate = light_checker.lerped_current_light_avgcolor
+	hand_right_sprite.self_modulate = light_checker.lerped_current_light_avgcolor
+	
+	#var mapped_light_level := remap(light_checker.lerped_current_light, 0.35, 1, 0, 1)
+	#hand_right_sprite.self_modulate = hand_light_gradient.sample(mapped_light_level)
+	##hand_right_sprite.self_modulate = hand_right_sprite.self_modulate.blend(light_checker.lerped_current_light_avgcolor).lightened(0.5)
+	#print(light_checker.lerped_current_light)
