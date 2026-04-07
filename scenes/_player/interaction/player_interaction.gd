@@ -11,6 +11,10 @@ const INT_RAY_LENGTH = 1.5
 
 @export var hand_left: PlayerHand # index = 0
 @export var hand_right: PlayerHand # index = 1
+@export var hand_left_sprite: TextureRect
+@export var hand_right_sprite: TextureRect
+
+@export var light_checker: LightChecker
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:	
@@ -23,7 +27,7 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	pass
+	match_hand_to_light(delta)
 
 func make_hands_inactive() -> void:
 	hand_left.state.finished.emit(hand_left.state.FREE)
@@ -55,3 +59,7 @@ func test_player_moved()-> void:
 	hand_right.on_player_moved(Vector3.ZERO, Vector3.ZERO)
 	hand_left.on_player_moved(Vector3.ZERO, Vector3.ZERO)
 	
+
+func match_hand_to_light(_delta: float) -> void:
+	hand_left_sprite.modulate = light_checker.lerped_current_light_avgcolor
+	hand_right_sprite.modulate = light_checker.lerped_current_light_avgcolor

@@ -60,6 +60,7 @@
 [ext_resource type="Texture2D" uid="uid://c7lfp47776dxr" path="res://assets/ui/player/attack_indicators/Lmid.png" id="51_l4n3m"]
 [ext_resource type="Texture2D" uid="uid://dbv7iuucvwfao" path="res://assets/ui/player/attack_indicators/Rlow.png" id="51_qv24e"]
 [ext_resource type="AudioStream" uid="uid://bvotk6pyl3sjh" path="res://assets/audio/sfx/player/_streams/sfx_player_hit.tres" id="58_svbpy"]
+[ext_resource type="Script" uid="uid://b13u1myu3u5tw" path="res://scenes/_player/light_checker.gd" id="61_ux48r"]
 [ext_resource type="Shader" uid="uid://4b4kstxm1aph" path="res://assets/shaders/post_processing/post_processing.gdshader" id="70_52e8e"]
 [ext_resource type="Texture2D" uid="uid://bgvylughro1va" path="res://assets/sprites/PaperTexture/Texturelabs_Paper_304L.jpg" id="71_nkha6"]
 
@@ -654,6 +655,15 @@ texture = SubResource("GradientTexture1D_imes0")
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_gcklq"]
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ux48r"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_7hjlp"]
+material = SubResource("StandardMaterial3D_ux48r")
+radius = 1.0
+height = 2.0
+radial_segments = 4
+rings = 1
+
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_52e8e"]
 resource_local_to_scene = true
 shader = ExtResource("70_52e8e")
@@ -697,6 +707,7 @@ material_override = SubResource("StandardMaterial3D_1snfn")
 mesh = SubResource("CapsuleMesh_1snfn")
 
 [node name="Camera3D" type="Camera3D" parent="." unique_id=321688860 groups=["MainCamera"]]
+cull_mask = 524287
 current = true
 fov = 100.0
 
@@ -736,6 +747,7 @@ BOB_AMP = 0.04
 metadata/_custom_type_script = "uid://by88p7ijbixe5"
 
 [node name="Compass" type="Node3D" parent="Movement" unique_id=1229802818]
+visible = false
 
 [node name="North" type="ShapeCast3D" parent="Movement/Compass" unique_id=1707693672]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.1, -0.55)
@@ -770,9 +782,10 @@ unique_name_in_owner = true
 stream = SubResource("AudioStreamRandomizer_gcklq")
 volume_db = 15.0
 
-[node name="Interaction" parent="." unique_id=336913977 node_paths=PackedStringArray("movement", "cam") instance=ExtResource("3_3jgj8")]
+[node name="Interaction" parent="." unique_id=336913977 node_paths=PackedStringArray("movement", "cam", "light_checker") instance=ExtResource("3_3jgj8")]
 movement = NodePath("../Movement")
 cam = NodePath("../Camera3D")
+light_checker = NodePath("../LightChecker")
 
 [node name="Combat" type="Node" parent="." unique_id=2004242347 node_paths=PackedStringArray("stats_ui", "combat_hands", "stats", "incoming_attack_uis")]
 script = ExtResource("12_gcklq")
@@ -1174,9 +1187,29 @@ grow_vertical = 2
 color = Color(0, 0, 0, 0)
 
 [node name="OmniLight3D" type="OmniLight3D" parent="." unique_id=1178815366]
+layers = 524289
 light_color = Color(0.20314711, 0.27413306, 0.28956375, 1)
 light_energy = 0.3
 omni_range = 2.149
+
+[node name="LightChecker" type="SubViewport" parent="." unique_id=2129080354 node_paths=PackedStringArray("dbg_light_texture", "dbg_light_bar")]
+size = Vector2i(128, 128)
+script = ExtResource("61_ux48r")
+dbg_light_texture = NodePath("../Control/TextureRect")
+dbg_light_bar = NodePath("../Control/ProgressBar")
+
+[node name="LightDetection" type="Node3D" parent="LightChecker" unique_id=1555556534]
+
+[node name="Camera3D" type="Camera3D" parent="LightChecker/LightDetection" unique_id=812139113]
+transform = Transform3D(1, 0, 0, 0, -1, -8.742278e-08, 0, 8.742278e-08, -1, 0, 0, -0.15000018)
+cull_mask = 524289
+fov = 66.0
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="LightChecker/LightDetection" unique_id=851903331]
+transform = Transform3D(0.70710677, 0, 0.70710677, -0.70710677, -4.371139e-08, 0.70710677, 3.090862e-08, -1, -3.090862e-08, 0, 0, 0.95000017)
+layers = 524288
+mesh = SubResource("SphereMesh_7hjlp")
+skeleton = NodePath("../Camera3D")
 
 [node name="PostProcessing" type="Node" parent="." unique_id=1157661822]
 
@@ -1195,6 +1228,36 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 color = Color(0.5747226, 0.50857943, 0.49505764, 0.03529412)
+
+[node name="Control" type="Control" parent="." unique_id=1902871278]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="ProgressBar" type="ProgressBar" parent="Control" unique_id=1601168612]
+custom_minimum_size = Vector2(50, 200)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.13958333
+anchor_top = 0.7787037
+anchor_right = 0.165625
+anchor_bottom = 0.9638889
+metadata/_edit_use_anchors_ = true
+
+[node name="TextureRect" type="TextureRect" parent="Control" unique_id=670895543]
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 0
+anchor_left = 0.19375
+anchor_top = 0.8212963
+anchor_right = 0.26041666
+anchor_bottom = 0.9398148
+offset_right = 3.0517578e-05
+expand_mode = 2
+metadata/_edit_use_anchors_ = true
 
 [connection signal="on_body_entered" from="EnemyChecker" to="Combat" method="_on_enemy_checker_on_body_entered"]
 [connection signal="on_body_exit" from="EnemyChecker" to="Combat" method="_on_enemy_checker_on_body_exit"]

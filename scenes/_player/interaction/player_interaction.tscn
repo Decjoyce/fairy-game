@@ -573,7 +573,7 @@ _data = {
 &"hand_valve_side": SubResource("Animation_4266y")
 }
 
-[node name="Interaction" type="Control" unique_id=1977560016 node_paths=PackedStringArray("hand_left", "hand_right")]
+[node name="Interaction" type="Control" unique_id=1977560016 node_paths=PackedStringArray("hand_left", "hand_right", "hand_left_sprite", "hand_right_sprite")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -589,6 +589,8 @@ item_receiver_collision_mask = 33
 enemy_collision_mask = 1
 hand_left = NodePath("Hand_Left")
 hand_right = NodePath("Hand_Right")
+hand_left_sprite = NodePath("Hand_Left/_hand_sprite")
+hand_right_sprite = NodePath("Hand_Right/_hand_sprite")
 
 [node name="Hand_Left" type="Control" parent="." unique_id=342954462 node_paths=PackedStringArray("initial_state")]
 custom_minimum_size = Vector2(64, 64)

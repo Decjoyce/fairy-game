@@ -29,7 +29,7 @@ const SPEED_MAX: float = 4.0
 const SPEED_CROUCH: float = 2.5
 var speed: float = 4
 
-const FALL_SPEED: float = 10.0
+const FALL_SPEED: float = 8.5
 var current_fall_speed: float = 0
 var start_fall_height: float = 0
 
