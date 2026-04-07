@@ -10,7 +10,7 @@
 [ext_resource type="AudioStream" uid="uid://d3478poal24w2" path="res://assets/audio/sfx/items/instrument_notes/kalimba/kalimba_e.wav" id="6_p3nmw"]
 [ext_resource type="AudioStream" uid="uid://bo8yi7nwdj4j8" path="res://assets/audio/sfx/items/instrument_notes/kalimba/kalimba_f.wav" id="7_6dj48"]
 [ext_resource type="AudioStream" uid="uid://cn5rugil2wr8c" path="res://assets/audio/sfx/items/instrument_notes/kalimba/kalimba_g.wav" id="8_h2fm7"]
-[ext_resource type="Script" path="res://scenes/interactions/interactables/items/item_types/itemtype_instrument.gd" id="9_8h3jj"]
+[ext_resource type="Script" uid="uid://cfxwq2a75x5r4" path="res://scenes/interactions/interactables/items/item_types/itemtype_instrument.gd" id="9_8h3jj"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_llc7q"]
 
@@ -43,6 +43,7 @@ item_type = SubResource("Resource_3g5fp")
 display_name = "Kazoo"
 col = NodePath("CollisionShape3D")
 grab_col = NodePath("Area3D/CollisionShape3D2")
+no_screen_restrictions = true
 idle_graphics = NodePath("Sprite3D")
 
 [node name="Area3D" type="Area3D" parent="." unique_id=1930827065]

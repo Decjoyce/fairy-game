@@ -99,6 +99,8 @@ func enter(previous_state_path: String, data := {}) -> void:
 	
 	is_ready = true
 	time_held_down = 0
+	
+	if grabbed_item.no_screen_restrictions: hand_controller.test_handlimit = false
 
 func exit() -> void:
 	player.current_weight -= grabbed_item.get_weight()
@@ -112,7 +114,7 @@ func exit() -> void:
 	offset_helper.position = offset_og_pos
 	hand_controller.input_controls.disable_interact_action()
 	t_bob = 0.0
-	
+	hand_controller.test_handlimit = true
 	#is_exiting = true
 	#grabbed_item = null
 

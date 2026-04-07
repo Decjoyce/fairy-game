@@ -107,7 +107,7 @@ func failsafe_trigged() -> void:
 	if !active: return
 	var fs_string: String = "FAILSAFE TRIGGERED: "
 	if lost_player:
-		finished.emit(sm.get_default_state())
+		finished.emit(sm.default_state.name)
 		fs_string+= "I LOST PLAYER"
 	else:
 		ballybog.movement.stop_movement()

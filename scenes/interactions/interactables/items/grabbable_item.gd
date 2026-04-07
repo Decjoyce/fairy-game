@@ -22,6 +22,7 @@ enum item_weight_types {WEIGHTLESS, LIGHT, MEDIUM, HEAVY}
 @export_group("Grabbing")
 @export var grabbed_offset: Vector2 = Vector2.ZERO
 @export var grabbed_rotation: float = 0.0
+@export var no_screen_restrictions: bool = false
 
 @export_group("Throwing")
 @export var throw_distance : float = 8.0
@@ -125,13 +126,13 @@ func disable_me()-> void:
 # --------------------------------------------------------------------------------------------------
 # ↓ Use Stuff ↓
 
-func begin_using_item() -> void:
+func begin_using_item(arg) -> void:
 	pass
 
 func using_item(arg) -> void:
 	pass
 
-func end_using_item() -> void:
+func end_using_item(arg) -> void:
 	pass
 
 # ↑ Use Stuff ↑
