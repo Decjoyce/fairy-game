@@ -15,10 +15,15 @@ func _process(delta: float) -> void:
 	elif Input.is_action_just_pressed("load_game"):
 		load_game()
 	elif Input.is_action_just_pressed("reset_vs"):
-		reload_cur_scene()
+		load_scene_root(get_tree().current_scene.scene_file_path)
+	elif Input.is_action_just_pressed("ui_end"): load_scene_root("res://scenes/__playground_scenes/puzzles/ThrowingPuzzles/puzzle_throw_2.tscn")
 
 func save_game() -> void:
 	var saved_game: SavedGame = SavedGame.new()
+	
+	saved_game.current_scene = get_tree().current_scene.scene_file_path
+	
+	saved_game.time_saved_at = Time.get_datetime_string_from_system()
 	
 	var player_data: SavedData_Player = SavedData_Player.new()
 	get_tree().call_group("Player", "on_save_game", player_data) 
@@ -45,7 +50,7 @@ func load_game() -> void:
 	
 	is_loading = true
 	await get_tree().create_timer(1).timeout
-	await reload_cur_scene()
+	await load_scene_root(saved_game.current_scene)
 	
 	get_tree().call_group("Player", "on_before_load_game") 
 	get_tree().call_group("Player", "on_load_game", saved_game.player_data) 
@@ -119,8 +124,9 @@ func _load_non_native_objs(obj: SavedData) -> void:
 		i.has_method("on_load_game")
 		i.on_load_game(obj)
 
-func reload_cur_scene() -> void:
-	get_tree().reload_current_scene()
+func load_scene_root(scene_to_load: String) -> void:
+	if scene_to_load == get_tree().current_scene.scene_file_path: get_tree().reload_current_scene()
+	else: get_tree().change_scene_to_file(scene_to_load)
 	await get_tree().node_added
 	world_root = get_tree().current_scene
 	if !world_root.is_node_ready():
