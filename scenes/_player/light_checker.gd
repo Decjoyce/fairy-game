@@ -79,7 +79,7 @@ func update_back() -> void:
 
 func lerp_values(delta: float) -> void:
 	lerped_current_light = lerp(lerped_current_light, current_light_level, 200 * delta)
-	lerped_current_light_avgcolor = lerp(lerped_current_light_avgcolor, current_light_avgcolor, 200 * delta)
+	lerped_current_light_avgcolor = lerp(lerped_current_light_avgcolor, current_light_avgcolor, 100 * delta)
 
 func get_average_color(texture: ViewportTexture) -> Color:
 	var image := texture.get_image()
