@@ -1,23 +1,24 @@
 [gd_scene format=3 uid="uid://dpm2ettl06ilt"]
 
 [ext_resource type="Script" uid="uid://1ab2j8l1hg1h" path="res://scenes/interactions/interactables/items/all_items/instruments/instrument.gd" id="1_agl8n"]
-[ext_resource type="AudioStream" uid="uid://dja6pitt00t5d" path="res://assets/audio/sfx/items/instrument_notes/kalimba/kalimba_c.wav" id="2_byysy"]
-[ext_resource type="AudioStream" uid="uid://e023i1tw57mh" path="res://assets/audio/sfx/items/instrument_notes/kalimba/kalimba_d.wav" id="3_mo512"]
-[ext_resource type="AudioStream" uid="uid://d3478poal24w2" path="res://assets/audio/sfx/items/instrument_notes/kalimba/kalimba_e.wav" id="4_r5v6g"]
-[ext_resource type="AudioStream" uid="uid://bo8yi7nwdj4j8" path="res://assets/audio/sfx/items/instrument_notes/kalimba/kalimba_f.wav" id="5_timof"]
-[ext_resource type="AudioStream" uid="uid://cn5rugil2wr8c" path="res://assets/audio/sfx/items/instrument_notes/kalimba/kalimba_g.wav" id="6_6p6aq"]
-[ext_resource type="AudioStream" uid="uid://c53eyfix2k16e" path="res://assets/audio/sfx/items/instrument_notes/kalimba/kalimba_a.wav" id="7_wkphe"]
-[ext_resource type="AudioStream" uid="uid://b8c4c8kicey7c" path="res://assets/audio/sfx/items/instrument_notes/kalimba/kalimba_b.wav" id="8_003w0"]
+[ext_resource type="AudioStream" uid="uid://woi66qpuxf8o" path="res://assets/audio/sfx/items/instrument_notes/floot/full_notes/flute_c.wav" id="2_byysy"]
+[ext_resource type="AudioStream" uid="uid://c8yxyrrkhfspy" path="res://assets/audio/sfx/items/instrument_notes/floot/full_notes/flute_d.wav" id="3_mo512"]
+[ext_resource type="AudioStream" uid="uid://ce5g2na285rap" path="res://assets/audio/sfx/items/instrument_notes/floot/full_notes/flute_e.wav" id="4_r5v6g"]
+[ext_resource type="AudioStream" uid="uid://bcra4tnd372f4" path="res://assets/audio/sfx/items/instrument_notes/floot/full_notes/flute_f.wav" id="5_timof"]
+[ext_resource type="AudioStream" uid="uid://btggttasrlymn" path="res://assets/audio/sfx/items/instrument_notes/floot/full_notes/flute_g.wav" id="6_6p6aq"]
+[ext_resource type="AudioStream" uid="uid://nrvsiy70204w" path="res://assets/audio/sfx/items/instrument_notes/floot/sustain_notes/flute_stustain_a.wav" id="7_byysy"]
+[ext_resource type="AudioStream" uid="uid://ddljt4ewfkycw" path="res://assets/audio/sfx/items/instrument_notes/floot/full_notes/flute_b.wav" id="8_003w0"]
 [ext_resource type="Script" uid="uid://cfxwq2a75x5r4" path="res://scenes/interactions/interactables/items/item_types/itemtype_instrument.gd" id="9_b4jvk"]
 [ext_resource type="Texture2D" uid="uid://bhs3fvxrmdp4o" path="res://assets/sprites/item_sprites/bone_flute.png" id="10_agl8n"]
 [ext_resource type="AudioStream" uid="uid://dutddyikwuiut" path="res://assets/audio/sfx/combat/misc/hittingsound_shorter.wav" id="11_k286w"]
 [ext_resource type="Script" uid="uid://bhf6r6nw14krj" path="res://scripts/saving/persistent_objs/po_item.gd" id="12_byysy"]
+[ext_resource type="Texture2D" uid="uid://fn4v0r2yystc" path="res://icon.svg" id="13_mo512"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_llc7q"]
 
 [sub_resource type="Resource" id="Resource_3g5fp"]
 script = ExtResource("9_b4jvk")
-note_sound_files = Array[AudioStream]([ExtResource("2_byysy"), ExtResource("3_mo512"), ExtResource("4_r5v6g"), ExtResource("5_timof"), ExtResource("6_6p6aq"), ExtResource("7_wkphe"), ExtResource("8_003w0")])
+note_sound_files = Array[AudioStream]([ExtResource("2_byysy"), ExtResource("3_mo512"), ExtResource("4_r5v6g"), ExtResource("5_timof"), ExtResource("6_6p6aq"), ExtResource("7_byysy"), ExtResource("8_003w0")])
 item_type = 5
 metadata/_custom_type_script = "uid://cfxwq2a75x5r4"
 
@@ -28,6 +29,34 @@ size = Vector3(0.5, 0.5, 0.5)
 size = Vector3(0.4, 0.4, 0.4)
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_m3m7e"]
+
+[sub_resource type="Curve" id="Curve_mo512"]
+_data = [Vector2(0, 1), 0.0, -0.6999999, 0, 1, Vector2(1, 0.3), -0.6999999, 0.0, 1, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_r5v6g"]
+curve = SubResource("Curve_mo512")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_byysy"]
+direction = Vector3(0, 1, 0.1)
+spread = 13.301
+initial_velocity_min = 0.099999994
+initial_velocity_max = 0.099999994
+gravity = Vector3(0, 0, 0)
+scale_min = 0.0
+scale_curve = SubResource("CurveTexture_r5v6g")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mo512"]
+transparency = 1
+albedo_texture = ExtResource("13_mo512")
+billboard_mode = 3
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="QuadMesh" id="QuadMesh_mo512"]
+material = SubResource("StandardMaterial3D_mo512")
+size = Vector2(0.05, 0.05)
 
 [node name="Flute" type="RigidBody3D" unique_id=130412758 node_paths=PackedStringArray("music_player", "col", "grab_col", "idle_graphics", "grabbed_graphics") groups=["debug_PickableObjects"]]
 collision_layer = 2
@@ -41,9 +70,10 @@ max_contacts_reported = 1
 script = ExtResource("1_agl8n")
 music_player = NodePath("MusicMaker")
 item_type = SubResource("Resource_3g5fp")
-display_name = "Kazoo"
+display_name = "Flute"
 col = NodePath("CollisionShape3D")
 grab_col = NodePath("Area3D/CollisionShape3D2")
+no_screen_restrictions = true
 idle_graphics = NodePath("_g_idle")
 grabbed_graphics = NodePath("_g_grabbed")
 
@@ -59,11 +89,12 @@ debug_color = Color(0.8442249, 0.37985525, 5.7756904e-07, 0.41960785)
 
 [node name="_g_idle" type="Sprite3D" parent="." unique_id=1835715381]
 layers = 4
-pixel_size = 0.001
+pixel_size = 0.0015
 billboard = 1
 texture = ExtResource("10_agl8n")
 
 [node name="_g_grabbed" type="Sprite3D" parent="." unique_id=145348828]
+visible = false
 layers = 4
 pixel_size = 0.001
 billboard = 1
@@ -87,6 +118,10 @@ doppler_tracking = 1
 wait_time = 0.2
 one_shot = true
 
+[node name="timer_endnote" type="Timer" parent="." unique_id=1190653447]
+wait_time = 1.2
+one_shot = true
+
 [node name="MusicCol" type="Area3D" parent="." unique_id=1546735738]
 collision_layer = 256
 collision_mask = 0
@@ -98,3 +133,13 @@ shape = SubResource("SphereShape3D_m3m7e")
 [node name="PO_Item" type="Node" parent="." unique_id=1485825816 groups=["PO"]]
 script = ExtResource("12_byysy")
 metadata/_custom_type_script = "uid://bhf6r6nw14krj"
+
+[node name="MusicParticles" type="GPUParticles3D" parent="." unique_id=1028435067]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.19999999, 0, 0)
+emitting = false
+amount = 5
+amount_ratio = 0.7339
+lifetime = 2.0
+speed_scale = 0.8
+process_material = SubResource("ParticleProcessMaterial_byysy")
+draw_pass_1 = SubResource("QuadMesh_mo512")

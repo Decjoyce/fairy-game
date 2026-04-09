@@ -53,15 +53,19 @@ func update(_delta: float) -> void:
 	if !is_charging and Input.is_action_just_pressed("use_" + hand_controller.stringed_hand_type):
 		use()
 	
-	#if !item_receiver and Input.is_action_pressed("use_" + hand_controller.stringed_hand_type):
-		#use()
+	if !item_receiver and !is_charging and Input.is_action_pressed("use_" + hand_controller.stringed_hand_type):
+		using()
+	
+	if !is_charging and !item_receiver and Input.is_action_just_released("use_" + hand_controller.stringed_hand_type):
+		end_use()
 	
 	if is_ready:
 		grabbing()
 
 func physics_update(_delta: float) -> void:
-	if !item_receiver and Input.is_action_pressed("use_" + hand_controller.stringed_hand_type):
-		use()
+	pass
+	#if !item_receiver and Input.is_action_pressed("use_" + hand_controller.stringed_hand_type):
+		#use()
 
 func enter(previous_state_path: String, data := {}) -> void:
 	grabbed_item = hand_controller.hovering_interactable
@@ -189,16 +193,35 @@ func use():
 			ItemType.ItemTypes.CONSUMABLE:
 				return
 			ItemType.ItemTypes.INSTRUMENT:
+				pass
+			_:
+				return
+	
+
+func using()-> void:
+	match current_item_type.item_type:
+			ItemType.ItemTypes.DEFAULT:
+				return # maybe an inspect?
+			ItemType.ItemTypes.TORCH:
+				return
+			ItemType.ItemTypes.CONSUMABLE:
+				return
+			ItemType.ItemTypes.INSTRUMENT:
 				var freq : int
 				if !hand_controller.test_handlimit:
 					freq = int(remap(hand_controller.get_screen_position().x/player_interact.size.x, 0, 1, 0, 7))
 				else:
 					freq = int(remap(hand_controller.get_screen_position().x, hand_controller.test_screen_limit_x_min, hand_controller.test_screen_limit_x_max - hand_controller.size.x, 0, 6))
-				print(freq)
+				#print(freq)
 				grabbed_item.using_item([freq])
 			_:
 				return
-	
+
+func end_use() -> void:
+	if item_receiver and item_receiver.receive_item(grabbed_item): pass
+	else:
+		grabbed_item.end_using_item([])
+		return
 
 # ↑ Using Stuff ↑
 # --------------------------------------------------------------------------------------------------
