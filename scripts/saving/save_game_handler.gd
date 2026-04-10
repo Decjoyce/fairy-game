@@ -9,6 +9,8 @@ var world_root: Node3D
 
 var is_loading: bool
 
+const MAX_SAVE_COUNT: int = 3
+
 func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("save_game"):
 		save_game()
@@ -17,6 +19,18 @@ func _process(delta: float) -> void:
 	elif Input.is_action_just_pressed("reset_vs"):
 		load_scene_root(get_tree().current_scene.scene_file_path)
 	elif Input.is_action_just_pressed("ui_end"): load_scene_root("res://scenes/__playground_scenes/puzzles/ThrowingPuzzles/puzzle_throw_2.tscn")
+
+func file_save(saved_game: SavedGame) -> void:
+	var num_saves: int = 1
+	var temp_file: Resource
+	print("saving_file")
+	for i in range(MAX_SAVE_COUNT, 0, -1):
+		prints(i, "user://savegame_" + str(i) + ".tres")
+		if i+1 > MAX_SAVE_COUNT: continue
+		if FileAccess.file_exists("user://savegame_" + str(i) + ".tres"):
+			prints("user://savegame_" + str(i) + ".tres", "- exists")
+			DirAccess.rename_absolute("user://savegame_" + str(i) + ".tres", "user://savegame_" + str(i+1) + ".tres")
+	ResourceSaver.save(saved_game, "user://savegame_1.tres")
 
 func save_game() -> void:
 	var saved_game: SavedGame = SavedGame.new()
@@ -35,7 +49,7 @@ func save_game() -> void:
 	
 	on_saved_game.emit()
 	
-	ResourceSaver.save(saved_game, "user://savegame.tres")
+	file_save(saved_game)
 	print("saved_game")
 	print(OS.get_data_dir())
 
@@ -43,7 +57,7 @@ var uid_list: Dictionary[String, Node] = {}
 
 func load_game() -> void:
 	if is_loading: return
-	var saved_game: SavedGame = load("user://savegame.tres") as SavedGame
+	var saved_game: SavedGame = load("user://savegame_1.tres") as SavedGame
 	
 	EffectsPlayer.blur_out(1, 1, 0, true)
 	EffectsPlayer.saturize(0, 0.5, -1,true)

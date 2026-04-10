@@ -31,3 +31,4 @@ func on_load_game(saved_data: SavedData) -> void:
 		parent_gate.cur_value = saved_data.current_value
 		parent_gate.last_value = saved_data.last_value
 		parent_gate.open_gate(saved_data.current_value)
+		parent_gate.check_if_disable_col(true)

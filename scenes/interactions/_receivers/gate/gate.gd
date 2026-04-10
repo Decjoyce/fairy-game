@@ -57,10 +57,7 @@ func fully_open_gate(sig: float = -1) -> void:
 	cur_value = 1
 	_end_position = 1 + (open_pos * 1)
 	
-	if _end_position >= open_pos + height_to_toggle_player_barrier:
-		player_col.set_deferred("disabled",true)
-	else:
-		player_col.set_deferred("disabled",false)
+	check_if_disable_col()
 
 func close_gate(sig: float = -1) -> void:
 	time_since_start = 0
@@ -70,10 +67,7 @@ func close_gate(sig: float = -1) -> void:
 	cur_value = 0
 	_end_position = 1 + (open_pos * 0)
 	
-	if _end_position >= open_pos + height_to_toggle_player_barrier:
-		player_col.set_deferred("disabled",true)
-	else:
-		player_col.set_deferred("disabled",false)
+	check_if_disable_col()
 
 func toggle_gate(sig: float = -1) -> void:
 	if cur_value > 0.5: close_gate()
@@ -97,6 +91,17 @@ func gate_lerp(start: float, finish: float, percentage: float):
 	var _percentage = clampf(percentage, 0.0, 1.0)
 	return (1-_percentage) * start + _percentage * finish
 
+func check_if_disable_col(use_cur: bool = false) -> void:
+	if use_cur:
+		if cur_value >= height_to_toggle_player_barrier:
+			player_col.set_deferred("disabled",true)
+		else:
+			player_col.set_deferred("disabled",false)
+	else:
+		if _end_position >= open_pos + height_to_toggle_player_barrier:
+			player_col.set_deferred("disabled",true)
+		else:
+			player_col.set_deferred("disabled",false)
 
 func _on_area_entered_under_checker(area: Area3D) -> void:
 	if  area.get_parent() is Entity: # removed:: = area.get_parent() is Grabbable_Item or
