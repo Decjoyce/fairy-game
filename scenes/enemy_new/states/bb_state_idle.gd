@@ -4,11 +4,19 @@ extends EnemyState
 
 @onready var wait_timer: Timer = $_wait_timer
 
+func load_me(previous_state_path: String, data : SavedData_Ballybog) -> void:
+	super(previous_state_path, data)
+	ballybog.current_alertness = ballybog.ALERTNESS.CHILL
+	ballybog.do_idle()
+	wait_timer.timeout.connect(wait_delay_over)
+	wait_timer.start(wait_timer.wait_time - data.time_left)
+
 func enter(previous_state_path: String, data := {}) -> void:
 	super(previous_state_path, data)
 	ballybog.current_alertness = ballybog.ALERTNESS.CHILL
 	ballybog.do_idle()
 	wait_timer.timeout.connect(wait_delay_over)
+	wait_timer.start()
 
 func exit() -> void:
 	super()

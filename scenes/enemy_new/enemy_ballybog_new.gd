@@ -2,12 +2,13 @@
 class_name Enemy_Ballybog_New
 extends Entity
 
-var enemy_id: int = 20
+@export_range(20, 30) var enemy_id: int
 var player: PlayerTest
 
 const BB_WEIGHT: int = 10
 var freeze : bool
 
+@export var my_body: CharacterBody3D
 @onready var movement: EnemyMovement = $EnemyMovement
 @onready var state_machine: StateMachine_Enemy = $StateMachine
 @onready var graphics: Sprite3DBillBoard = $_graphics

@@ -1,8 +1,11 @@
 [gd_scene format=3 uid="uid://drsdttca4hc5w"]
 
 [ext_resource type="Script" uid="uid://1jf6p8aog45w" path="res://scenes/enemy_new/enemy_ballybog_new.gd" id="1_8ccvb"]
+[ext_resource type="Texture2D" uid="uid://da4oookht0gsp" path="res://scenes/enemy/Sprites/ballybog_new/death/bally_death.png" id="2_ehkwp"]
 [ext_resource type="Texture2D" uid="uid://c3wp34r7rytko" path="res://scenes/enemy/Sprites/ballybog_new/attack/bally_attack_n.png" id="2_kkwvg"]
+[ext_resource type="Texture2D" uid="uid://bjd7yeekbvmx0" path="res://scenes/enemy/Sprites/ballybog/attacks/ballyAttack_RMid_n.png" id="2_s30ol"]
 [ext_resource type="Texture2D" uid="uid://c02du17ak7gdq" path="res://scenes/enemy/Sprites/ballybog_new/attack/bally_attack.png" id="3_lcqxn"]
+[ext_resource type="Texture2D" uid="uid://d32p1mrham4j6" path="res://scenes/enemy/Sprites/ballybog/attacks/ballyAttack_RMid.png" id="3_ysfdd"]
 [ext_resource type="Script" uid="uid://b5653u7w56pqw" path="res://addons/extras_sprites/scripts/sprite_3D_billboard.gd" id="4_neywx"]
 [ext_resource type="Script" uid="uid://b4m0sglcg4smw" path="res://addons/extras_sprites/scripts/animatio_data.gd" id="5_kmwqr"]
 [ext_resource type="Texture2D" uid="uid://cshw8doe2356i" path="res://scenes/enemy/Sprites/ballybog_new/walk/bally_walk.png" id="6_8sj3j"]
@@ -13,6 +16,8 @@
 [ext_resource type="Texture2D" uid="uid://c4n44m5bobhg4" path="res://scenes/enemy/Sprites/ballybog_new/alert/bally_alert_n.png" id="11_ojypm"]
 [ext_resource type="Texture2D" uid="uid://04lgkaffi6nf" path="res://scenes/enemy/Sprites/ballybog_new/stunned/bally_stunned.png" id="12_tpbbe"]
 [ext_resource type="Texture2D" uid="uid://da1va2x3xe8dm" path="res://scenes/enemy/Sprites/ballybog_new/stunned/bally_stunned_n.png" id="13_xqytu"]
+[ext_resource type="Texture2D" uid="uid://fohbvfmbnsw7" path="res://scenes/enemy/Sprites/ballybog/attacks/ballyAttack_LMid.png" id="15_va8xr"]
+[ext_resource type="Texture2D" uid="uid://d2eurcnwm514j" path="res://scenes/enemy/Sprites/ballybog/attacks/ballyAttack_LMid_n.png" id="16_pncs0"]
 [ext_resource type="AudioStream" uid="uid://78nk0cnbd7w0" path="res://assets/audio/sfx/enemy/ballybog/huh/Voices, Reaction, Huh, Suprised, Shocked, Loud, Meme Redesign SND140141.wav" id="23_vvem3"]
 [ext_resource type="AudioStream" uid="uid://0xpm0o2jyheg" path="res://assets/audio/sfx/enemy/ballybog/Rub/Objects, Fashion, Makeup, Sponge, Beautyblender, Single Strokes On Skin SND123478 1.wav" id="24_apxom"]
 [ext_resource type="AudioStream" uid="uid://bv4qewq6vcxos" path="res://assets/audio/sfx/enemy/ballybog/Rub/Objects, Fashion, Makeup, Sponge, Beautyblender, Single Strokes On Skin SND123478 2.wav" id="25_6t0pq"]
@@ -34,12 +39,13 @@
 [ext_resource type="Script" uid="uid://m8lc61vvvmh3" path="res://scenes/enemy_new/states/bb_state_fight.gd" id="33_kx3g2"]
 [ext_resource type="Script" uid="uid://46pp7aerorca" path="res://scripts/stats.gd" id="33_p22w6"]
 [ext_resource type="Script" uid="uid://jxohgxu3vshf" path="res://scripts/improved_raycast.gd" id="34_0ak1w"]
+[ext_resource type="Script" uid="uid://buwlv4dpooytr" path="res://po_ballybog.gd" id="35_tsg0o"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_u6way"]
 radius = 0.3
 height = 1.3169571
 
-[sub_resource type="Shader" id="Shader_0ak1w"]
+[sub_resource type="Shader" id="Shader_tsg0o"]
 code = "shader_type spatial;
 render_mode diffuse_lambert_wrap,cull_disabled;
 
@@ -116,23 +122,23 @@ void fragment() {
 }
 "
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_tsg0o"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ehkwp"]
 render_priority = 0
-shader = SubResource("Shader_0ak1w")
-shader_parameter/rows = 1.0
+shader = SubResource("Shader_tsg0o")
+shader_parameter/rows = 2.0
 shader_parameter/columns = 8.0
 shader_parameter/frame = 1.0
 shader_parameter/invert_rows_columns = false
-shader_parameter/sprite = ExtResource("10_egxrc")
+shader_parameter/sprite = ExtResource("3_ysfdd")
 shader_parameter/mode = 0
-shader_parameter/Normal = ExtResource("11_ojypm")
+shader_parameter/Normal = ExtResource("2_s30ol")
 
-[sub_resource type="PlaneMesh" id="PlaneMesh_ehkwp"]
-material = SubResource("ShaderMaterial_tsg0o")
-size = Vector2(1.62, 1.62)
+[sub_resource type="PlaneMesh" id="PlaneMesh_hc02d"]
+material = SubResource("ShaderMaterial_ehkwp")
+size = Vector2(3.24, 3.24)
 orientation = 2
 
-[sub_resource type="Resource" id="Resource_hc02d"]
+[sub_resource type="Resource" id="Resource_va8xr"]
 script = ExtResource("5_kmwqr")
 name = "walk"
 sprite = ExtResource("6_8sj3j")
@@ -140,7 +146,7 @@ texture_normal = ExtResource("7_r4p23")
 rows = 5.0
 columns = 8.0
 
-[sub_resource type="Resource" id="Resource_va8xr"]
+[sub_resource type="Resource" id="Resource_pncs0"]
 script = ExtResource("5_kmwqr")
 name = "AttackN"
 sprite = ExtResource("3_lcqxn")
@@ -148,7 +154,7 @@ texture_normal = ExtResource("2_kkwvg")
 rows = 2.0
 columns = 8.0
 
-[sub_resource type="Resource" id="Resource_pncs0"]
+[sub_resource type="Resource" id="Resource_s30ol"]
 script = ExtResource("5_kmwqr")
 name = "idle_rub"
 sprite = ExtResource("8_ba1g8")
@@ -156,18 +162,41 @@ texture_normal = ExtResource("9_3yfja")
 rows = 3.0
 columns = 8.0
 
-[sub_resource type="Resource" id="Resource_s30ol"]
+[sub_resource type="Resource" id="Resource_ysfdd"]
 script = ExtResource("5_kmwqr")
 name = "Alert"
 sprite = ExtResource("10_egxrc")
 texture_normal = ExtResource("11_ojypm")
 columns = 8.0
 
-[sub_resource type="Resource" id="Resource_ysfdd"]
+[sub_resource type="Resource" id="Resource_j8kvk"]
 script = ExtResource("5_kmwqr")
 name = "Stunned"
 sprite = ExtResource("12_tpbbe")
 texture_normal = ExtResource("13_xqytu")
+rows = 2.0
+columns = 8.0
+
+[sub_resource type="Resource" id="Resource_hc02d"]
+script = ExtResource("5_kmwqr")
+name = "Dead"
+sprite = ExtResource("2_ehkwp")
+texture_normal = ExtResource("2_ehkwp")
+columns = 8.0
+
+[sub_resource type="Resource" id="Resource_l6uyl"]
+script = ExtResource("5_kmwqr")
+name = "DanceL"
+sprite = ExtResource("15_va8xr")
+texture_normal = ExtResource("16_pncs0")
+rows = 2.0
+columns = 8.0
+
+[sub_resource type="Resource" id="Resource_hc104"]
+script = ExtResource("5_kmwqr")
+name = "DanceR"
+sprite = ExtResource("3_ysfdd")
+texture_normal = ExtResource("2_s30ol")
 rows = 2.0
 columns = 8.0
 
@@ -431,6 +460,77 @@ tracks/1/keys = {
 "values": [1.0]
 }
 
+[sub_resource type="Animation" id="Animation_va8xr"]
+resource_name = "boogie"
+length = 1.75
+loop_mode = 1
+step = 0.0167
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:animation")
+tracks/0/interp = 0
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.51666665, 1.15, 1.4833333),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [4, 6, 7, 7]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:frame")
+tracks/1/interp = 0
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.51666665, 0.78333336, 1.15, 1.4166667),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 0.0, 1.0, 0.0, 1.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:sprite_scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.016666666, 0.51666665, 1.1166667),
+"transitions": PackedFloat32Array(0, 0, 0),
+"update": 0,
+"values": [0.003, 0.002, 0.002]
+}
+
+[sub_resource type="Animation" id="Animation_pncs0"]
+resource_name = "death"
+length = 0.13333334
+step = 0.0167
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:animation")
+tracks/0/interp = 0
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [5]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:frame")
+tracks/1/interp = 0
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.0]
+}
+
 [sub_resource type="Animation" id="Animation_86kpf"]
 resource_name = "telegraph"
 length = 0.001
@@ -470,6 +570,8 @@ _data = {
 &"Stunned": SubResource("Animation_hu1w4"),
 &"Walk2": SubResource("Animation_lgmkq"),
 &"attack": SubResource("Animation_phxqg"),
+&"boogie": SubResource("Animation_va8xr"),
+&"death": SubResource("Animation_pncs0"),
 &"telegraph": SubResource("Animation_86kpf")
 }
 
@@ -496,9 +598,10 @@ size = Vector3(1.6, 0.9, 0.1)
 [sub_resource type="BoxShape3D" id="BoxShape3D_0ak1w"]
 size = Vector3(0.1, 0.9, 1.6)
 
-[node name="Ballybog" type="CharacterBody3D" unique_id=1712475425]
+[node name="Ballybog" type="CharacterBody3D" unique_id=1712475425 node_paths=PackedStringArray("my_body")]
 collision_layer = 0
 script = ExtResource("1_8ccvb")
+my_body = NodePath(".")
 los_fov = 20.0
 player_check_layer_mask = 1
 time_before_giveup_chase = 5.0
@@ -512,10 +615,10 @@ disabled = true
 transform = Transform3D(-1, 0, -1.509958e-07, 0, 1, 0, 1.509958e-07, 0, -1, 0, 0.6596855, 0)
 layers = 3
 sorting_offset = 1.0
-mesh = SubResource("PlaneMesh_ehkwp")
+mesh = SubResource("PlaneMesh_hc02d")
 script = ExtResource("4_neywx")
-animations_array = Array[ExtResource("5_kmwqr")]([SubResource("Resource_hc02d"), SubResource("Resource_va8xr"), SubResource("Resource_pncs0"), SubResource("Resource_s30ol"), SubResource("Resource_ysfdd")])
-animation = 3
+animations_array = Array[ExtResource("5_kmwqr")]([SubResource("Resource_va8xr"), SubResource("Resource_pncs0"), SubResource("Resource_s30ol"), SubResource("Resource_ysfdd"), SubResource("Resource_j8kvk"), SubResource("Resource_hc02d"), SubResource("Resource_l6uyl"), SubResource("Resource_hc104")])
+animation = 7
 frame = 1.0
 sprite_scale = 0.003
 metadata/_custom_type_script = "uid://b5653u7w56pqw"
@@ -566,6 +669,7 @@ ballybog = NodePath("..")
 metadata/_custom_type_script = "uid://blc6m0krr8lqw"
 
 [node name="IDLE" type="Node" parent="StateMachine" unique_id=250805703]
+unique_name_in_owner = true
 script = ExtResource("27_oshtu")
 metadata/_custom_type_script = "uid://b8c2trex5vjl"
 
@@ -574,6 +678,7 @@ wait_time = 3.0
 one_shot = true
 
 [node name="PATROL" type="Node" parent="StateMachine" unique_id=806140314]
+unique_name_in_owner = true
 script = ExtResource("28_pn4ip")
 metadata/_custom_type_script = "uid://c6umevt0lo1l8"
 
@@ -581,6 +686,7 @@ metadata/_custom_type_script = "uid://c6umevt0lo1l8"
 one_shot = true
 
 [node name="WANDER" type="Node" parent="StateMachine" unique_id=870294329]
+unique_name_in_owner = true
 script = ExtResource("29_6joc2")
 metadata/_custom_type_script = "uid://gb75nkisxxvj"
 
@@ -588,6 +694,7 @@ metadata/_custom_type_script = "uid://gb75nkisxxvj"
 one_shot = true
 
 [node name="INVESTIGATE" type="Node" parent="StateMachine" unique_id=1543015418]
+unique_name_in_owner = true
 script = ExtResource("30_pn4ip")
 metadata/_custom_type_script = "uid://b3bpwvi8y4663"
 
@@ -598,6 +705,7 @@ one_shot = true
 one_shot = true
 
 [node name="CHASE" type="Node" parent="StateMachine" unique_id=1939676604]
+unique_name_in_owner = true
 script = ExtResource("32_hujos")
 metadata/_custom_type_script = "uid://drblaerhq3ms4"
 
@@ -610,6 +718,7 @@ wait_time = 15.0
 one_shot = true
 
 [node name="STUNNED" type="Node" parent="StateMachine" unique_id=1333534698]
+unique_name_in_owner = true
 script = ExtResource("31_6joc2")
 metadata/_custom_type_script = "uid://2bed6vo71pcr"
 
@@ -617,6 +726,7 @@ metadata/_custom_type_script = "uid://2bed6vo71pcr"
 one_shot = true
 
 [node name="FIGHT" type="Node" parent="StateMachine" unique_id=417788519]
+unique_name_in_owner = true
 script = ExtResource("33_kx3g2")
 metadata/_custom_type_script = "uid://m8lc61vvvmh3"
 
@@ -679,6 +789,10 @@ metadata/_custom_type_script = "uid://jxohgxu3vshf"
 
 [node name="DEBUGRAY" type="RayCast3D" parent="." unique_id=1852318428]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+
+[node name="PO_Ballybog" type="Node" parent="." unique_id=687777013 groups=["PO"]]
+script = ExtResource("35_tsg0o")
+metadata/_custom_type_script = "uid://buwlv4dpooytr"
 
 [connection signal="body_entered" from="Hitbox" to="." method="_on_item_entered"]
 [connection signal="area_entered" from="DetectionTriggers/AwarenessTrig" to="." method="_something_entered_awareness_trig"]

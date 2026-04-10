@@ -12,6 +12,14 @@ var has_seen_player: bool
 var can_sense_player: bool
 var can_touch_player: bool
 
+func load_me(previous_state_path: String, data : SavedData_Ballybog) -> void:
+	super(previous_state_path, data)
+	wait_timer.timeout.connect(wait_delay_over)
+	wait_timer.wait_time = 1.0
+	item_dropped_pos = data.stun_item_dropped_pos
+	wait_timer.start()
+	ballybog.anim_player.play("Stunned")
+
 func enter(previous_state_path: String, data := {}) -> void:
 	super(previous_state_path, data)
 	wait_timer.timeout.connect(wait_delay_over)
@@ -39,7 +47,7 @@ func handle_input(_event: InputEvent) -> void:
 	pass
 
 func update(_delta: float) -> void:
-	pass
+	print(wait_timer.time_left)
 
 func physics_update(_delta: float) -> void:
 	pass
@@ -69,6 +77,7 @@ func on_heard_something(loc: Vector3) -> void:
 
 func wait_delay_over() -> void:
 	if !active: return
+	print("d")
 	match ballybog.current_alertness:
 		2: finished.emit("CHASE", {"skip_reaction": true})
 		3:finished.emit("FIGHT")

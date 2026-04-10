@@ -20,6 +20,7 @@
 [ext_resource type="Material" uid="uid://c6lv8pfrvktb8" path="res://assets/models/cairn/Hall_BigRoof/Wall.tres" id="15_ntrdj"]
 [ext_resource type="PackedScene" uid="uid://cpnmun20lswr" path="res://scenes/_levels/_palettes/cairn/props/cairn_pillar.tscn" id="19_37gbc"]
 [ext_resource type="PackedScene" uid="uid://br35er4x4b6av" path="res://scenes/interactions/_triggers/torch_sconce/torch_sconce_unlit.tscn" id="20_ntrdj"]
+[ext_resource type="Script" uid="uid://cfmswqnu6u0bl" path="res://scenes/interactions/_receivers/_logic/counter/counter.gd" id="22_owq6r"]
 [ext_resource type="Script" uid="uid://bul4myvyhnpjc" path="res://scripts/saving/uid_generator.gd" id="24_d308h"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_2vnbd"]
@@ -710,9 +711,21 @@ metadata/lock_uid = true
 script = ExtResource("24_d308h")
 metadata/_custom_type_script = "uid://bul4myvyhnpjc"
 
+[node name="Timer" type="Timer" parent="." unique_id=1425915286]
+wait_time = 5.0
+autostart = true
+
+[node name="Counter" type="Node" parent="." unique_id=1948488279]
+script = ExtResource("22_owq6r")
+max_count = 1
+metadata/_custom_type_script = "uid://cfmswqnu6u0bl"
+
 [connection signal="on_activated" from="Room01/Button" to="Room01/Gate" method="open_gate"]
 [connection signal="on_change" from="Room01/PressurePlate" to="Room01/Gate2" method="open_gate"]
 [connection signal="on_activated" from="Room02/Button" to="Room02/SpikeTrap" method="activate"]
 [connection signal="on_activated" from="Room02/Button" to="Room02/Gate" method="fully_open_gate"]
 [connection signal="on_change" from="Room03/PressurePlate_L" to="Room03/Gate_RT" method="open_gate"]
 [connection signal="on_change" from="Room03/PressurePlate_R" to="Room03/Gate_RB" method="open_gate"]
+[connection signal="timeout" from="Timer" to="Counter" method="add_count_no_sig"]
+[connection signal="on_activated" from="Counter" to="Room02/SpikeTrap" method="activate"]
+[connection signal="on_deactivated" from="Counter" to="Room02/SpikeTrap" method="deactivate"]

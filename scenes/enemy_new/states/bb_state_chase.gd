@@ -15,6 +15,30 @@ var in_rad: bool
 var react_time: float = 1
 var has_reacted: bool 
 
+func load_me(previous_state_path: String, data : SavedData_Ballybog) -> void:
+	super(previous_state_path, data)
+	failsafe_timer.timeout.connect(failsafe_trigged)
+	wait_timer.timeout.connect(wait_delay_over)
+	
+	failsafe_timer.start()
+	
+	last_known_location = data.chase_last_known_loc
+	has_reacted = data.chase_has_reacted
+	lost_player = data.chase_lost_player
+	
+	if data.time_left > 0: wait_timer.wait_time = data.time_left
+	
+	if has_reacted:
+		ballybog.movement.set_destination_to_player()
+		update_destination()
+		ballybog.movement.start_movement()
+		has_reacted = true
+		return
+	ballybog.graphics.look_at(ballybog.player.global_position, Vector3.UP)
+	ballybog.graphics.rotation_degrees.y += 180
+	wait_timer.start()
+	ballybog.anim_player.play("Alert")
+
 func enter(previous_state_path: String, data := {}) -> void:
 	super(previous_state_path, data)
 	failsafe_timer.timeout.connect(failsafe_trigged)

@@ -38,3 +38,14 @@ func _transition_to_next_state(target_state_path: String, data: Dictionary = {})
 	state.exit()
 	state = get_node(target_state_path)
 	state.enter(previous_state_path, data)
+
+func load_states(sd: SavedData_Ballybog) -> void:
+	if not has_node(sd.current_state):
+		printerr(owner.name + ": Trying to transition to state " + sd.current_state + " but it does not exist.")
+		return
+	
+	prints("LOADING STATE :: From", state, "to", sd.current_state)
+	var previous_state_path := state.name
+	state.exit()
+	state = get_node(sd.current_state)
+	state.load_me(previous_state_path, sd)

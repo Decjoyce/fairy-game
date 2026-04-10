@@ -53,3 +53,38 @@ func minus_count(sig: float) -> void:
 		on_change_use_current_count.emit(float(current_count))
 		on_change_use_current_count_as_int.emit(current_count)
 		on_activated.emit(1)
+
+func add_count_no_sig() -> void:
+	current_count += 1
+	if current_count <= max_count:
+		on_change.emit(float(current_count)/float(max_count - min_count))
+		on_change_use_current_count.emit(float(current_count))
+		on_change_use_current_count_as_int.emit(current_count)
+	
+	if current_count == max_count:
+		on_activated.emit(1)
+	
+	if loop and current_count > max_count:
+		current_count = min_count
+		on_change.emit(float(current_count)/float(max_count - min_count))
+		on_change_use_current_count.emit(float(current_count))
+		on_change_use_current_count_as_int.emit(current_count)
+		on_deactivated.emit(0)
+
+func minus_count_no_sig() -> void:
+	current_count -= 1
+	
+	if current_count > min_count:
+		on_change.emit(float(current_count)/float(max_count - min_count))
+		on_change_use_current_count.emit(float(current_count))
+		on_change_use_current_count_as_int.emit(current_count)
+	
+	if current_count == min_count:
+		on_deactivated.emit(0)
+	
+	if loop and current_count < min_count:
+		current_count = max_count
+		on_change.emit(float(current_count)/float(max_count - min_count))
+		on_change_use_current_count.emit(float(current_count))
+		on_change_use_current_count_as_int.emit(current_count)
+		on_activated.emit(1)

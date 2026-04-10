@@ -5,6 +5,14 @@ extends EnemyState
 @onready var wait_timer: Timer = $_wait_timer
 var rng := RandomNumberGenerator.new()
 
+func load_me(previous_state_path: String, data : SavedData_Ballybog) -> void:
+	super(previous_state_path, data)
+	wait_timer.timeout.connect(wait_delay_over)
+	ballybog.movement.on_reached_destination.connect(reached_pos)
+	print(data)
+	get_new_pos()
+	ballybog.current_alertness = ballybog.ALERTNESS.CHILL
+
 func enter(previous_state_path: String, data := {}) -> void:
 	super(previous_state_path, data)
 	wait_timer.timeout.connect(wait_delay_over)
