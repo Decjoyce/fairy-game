@@ -69,6 +69,7 @@
 [ext_resource type="PackedScene" uid="uid://brxr85hbqpapm" path="res://scenes/interactions/interactables/items/all_items/breakables/item_baby.tscn" id="60_7evwh"]
 [ext_resource type="PackedScene" uid="uid://br35er4x4b6av" path="res://scenes/interactions/_triggers/torch_sconce/torch_sconce_unlit.tscn" id="65_tefph"]
 [ext_resource type="PackedScene" uid="uid://ije1mmh1wcad" path="res://scenes/interactions/interactables/items/all_items/torch/torch_mounted.tscn" id="66_7evwh"]
+[ext_resource type="Script" uid="uid://bul4myvyhnpjc" path="res://scripts/saving/uid_generator.gd" id="70_24qtj"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_3wul1"]
 
@@ -4144,6 +4145,9 @@ metadata/date_generated = "2026-03-17T20:29:48"
 [node name="Torch" parent="Room_Interactions/PressurePlate_Room/Sec_2/Sec_2_d/Items" unique_id=1479203938 instance=ExtResource("29_lryfm")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.9999995, 0.5, 2)
 display_name = "Torch - Light"
+metadata/uid = "c5b9d143-7f70-42a9-8b1d-bc1d844ea0bb"
+metadata/lock_uid = true
+metadata/date_generated = "2026-04-11T13:29:32"
 
 [node name="Labels" type="Node3D" parent="Room_Interactions/PressurePlate_Room/Sec_2/Sec_2_d" unique_id=1823641789]
 
@@ -5403,6 +5407,9 @@ transform = Transform3D(-1, 0, 3.1786513e-08, 0, 1, 0, -3.1786513e-08, 0, -1, -2
 
 [node name="Torch3" parent="Room_Items/Sections/Sec_Default/Items_Default" unique_id=1165287121 instance=ExtResource("29_lryfm")]
 transform = Transform3D(7.54979e-08, 0, -1, 0, 1, 0, 1, 0, 7.54979e-08, -0.5, 1, -4.0000005)
+metadata/uid = "15d53bd5-fddc-43e0-8a20-458b6c5a1ccb"
+metadata/lock_uid = true
+metadata/date_generated = "2026-04-11T13:29:32"
 
 [node name="But_switch" type="Node3D" parent="Room_Items/Sections/Sec_Default" unique_id=1703877021]
 transform = Transform3D(-1, 0, 3.1786506e-08, 0, 1, 0, -3.1786506e-08, 0, -1, -2, 0, 3.0000002)
@@ -5974,6 +5981,10 @@ metadata/date_generated = "2026-03-17T20:29:48"
 metadata/uid = "2a3db534-456e-4f95-8182-90e199caedd3"
 metadata/lock_uid = true
 metadata/date_generated = "2026-03-18T00:59:33"
+
+[node name="UID_Generator" type="Node" parent="." unique_id=1703961275]
+script = ExtResource("70_24qtj")
+metadata/_custom_type_script = "uid://bul4myvyhnpjc"
 
 [connection signal="area_entered" from="Bin/Room_Items/Teleporter/Trigger" to="Bin/Room_Items/Teleporter" method="_teleport_entity"]
 [connection signal="body_entered" from="Bin/Room_Items/Teleporter/Trigger" to="Bin/Room_Items/Teleporter" method="_teleport_item"]

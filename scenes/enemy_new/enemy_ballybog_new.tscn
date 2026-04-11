@@ -45,7 +45,7 @@
 radius = 0.3
 height = 1.3169571
 
-[sub_resource type="Shader" id="Shader_tsg0o"]
+[sub_resource type="Shader" id="Shader_s30ol"]
 code = "shader_type spatial;
 render_mode diffuse_lambert_wrap,cull_disabled;
 
@@ -122,23 +122,23 @@ void fragment() {
 }
 "
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_ehkwp"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ysfdd"]
 render_priority = 0
-shader = SubResource("Shader_tsg0o")
-shader_parameter/rows = 2.0
+shader = SubResource("Shader_s30ol")
+shader_parameter/rows = 1.0
 shader_parameter/columns = 8.0
 shader_parameter/frame = 1.0
 shader_parameter/invert_rows_columns = false
-shader_parameter/sprite = ExtResource("3_ysfdd")
+shader_parameter/sprite = ExtResource("10_egxrc")
 shader_parameter/mode = 0
-shader_parameter/Normal = ExtResource("2_s30ol")
+shader_parameter/Normal = ExtResource("11_ojypm")
 
-[sub_resource type="PlaneMesh" id="PlaneMesh_hc02d"]
-material = SubResource("ShaderMaterial_ehkwp")
-size = Vector2(3.24, 3.24)
+[sub_resource type="PlaneMesh" id="PlaneMesh_j8kvk"]
+material = SubResource("ShaderMaterial_ysfdd")
+size = Vector2(1.62, 1.62)
 orientation = 2
 
-[sub_resource type="Resource" id="Resource_va8xr"]
+[sub_resource type="Resource" id="Resource_l6uyl"]
 script = ExtResource("5_kmwqr")
 name = "walk"
 sprite = ExtResource("6_8sj3j")
@@ -146,7 +146,7 @@ texture_normal = ExtResource("7_r4p23")
 rows = 5.0
 columns = 8.0
 
-[sub_resource type="Resource" id="Resource_pncs0"]
+[sub_resource type="Resource" id="Resource_hc104"]
 script = ExtResource("5_kmwqr")
 name = "AttackN"
 sprite = ExtResource("3_lcqxn")
@@ -154,7 +154,7 @@ texture_normal = ExtResource("2_kkwvg")
 rows = 2.0
 columns = 8.0
 
-[sub_resource type="Resource" id="Resource_s30ol"]
+[sub_resource type="Resource" id="Resource_oj3bs"]
 script = ExtResource("5_kmwqr")
 name = "idle_rub"
 sprite = ExtResource("8_ba1g8")
@@ -162,14 +162,14 @@ texture_normal = ExtResource("9_3yfja")
 rows = 3.0
 columns = 8.0
 
-[sub_resource type="Resource" id="Resource_ysfdd"]
+[sub_resource type="Resource" id="Resource_s731o"]
 script = ExtResource("5_kmwqr")
 name = "Alert"
 sprite = ExtResource("10_egxrc")
 texture_normal = ExtResource("11_ojypm")
 columns = 8.0
 
-[sub_resource type="Resource" id="Resource_j8kvk"]
+[sub_resource type="Resource" id="Resource_1gxwg"]
 script = ExtResource("5_kmwqr")
 name = "Stunned"
 sprite = ExtResource("12_tpbbe")
@@ -177,14 +177,14 @@ texture_normal = ExtResource("13_xqytu")
 rows = 2.0
 columns = 8.0
 
-[sub_resource type="Resource" id="Resource_hc02d"]
+[sub_resource type="Resource" id="Resource_it4pt"]
 script = ExtResource("5_kmwqr")
 name = "Dead"
 sprite = ExtResource("2_ehkwp")
 texture_normal = ExtResource("2_ehkwp")
 columns = 8.0
 
-[sub_resource type="Resource" id="Resource_l6uyl"]
+[sub_resource type="Resource" id="Resource_byr2v"]
 script = ExtResource("5_kmwqr")
 name = "DanceL"
 sprite = ExtResource("15_va8xr")
@@ -192,7 +192,7 @@ texture_normal = ExtResource("16_pncs0")
 rows = 2.0
 columns = 8.0
 
-[sub_resource type="Resource" id="Resource_hc104"]
+[sub_resource type="Resource" id="Resource_dduw1"]
 script = ExtResource("5_kmwqr")
 name = "DanceR"
 sprite = ExtResource("3_ysfdd")
@@ -615,10 +615,10 @@ disabled = true
 transform = Transform3D(-1, 0, -1.509958e-07, 0, 1, 0, 1.509958e-07, 0, -1, 0, 0.6596855, 0)
 layers = 3
 sorting_offset = 1.0
-mesh = SubResource("PlaneMesh_hc02d")
+mesh = SubResource("PlaneMesh_j8kvk")
 script = ExtResource("4_neywx")
-animations_array = Array[ExtResource("5_kmwqr")]([SubResource("Resource_va8xr"), SubResource("Resource_pncs0"), SubResource("Resource_s30ol"), SubResource("Resource_ysfdd"), SubResource("Resource_j8kvk"), SubResource("Resource_hc02d"), SubResource("Resource_l6uyl"), SubResource("Resource_hc104")])
-animation = 7
+animations_array = Array[ExtResource("5_kmwqr")]([SubResource("Resource_l6uyl"), SubResource("Resource_hc104"), SubResource("Resource_oj3bs"), SubResource("Resource_s731o"), SubResource("Resource_1gxwg"), SubResource("Resource_it4pt"), SubResource("Resource_byr2v"), SubResource("Resource_dduw1")])
+animation = 3
 frame = 1.0
 sprite_scale = 0.003
 metadata/_custom_type_script = "uid://b5653u7w56pqw"

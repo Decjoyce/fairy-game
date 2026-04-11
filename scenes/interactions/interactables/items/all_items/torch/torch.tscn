@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://b0nee5gqk8fwf" path="res://scenes/interactions/interactables/items/all_items/torch/torch.gd" id="1_j22s6"]
 [ext_resource type="Texture2D" uid="uid://cek17ch4ko4ca" path="res://scenes/interactions/interactables/items/all_items/torch/torch.png" id="2_20p6n"]
 [ext_resource type="Script" uid="uid://d3averdt6fuqm" path="res://scenes/interactions/interactables/items/item_types/itemtype_torch.gd" id="2_t5i1y"]
+[ext_resource type="PackedScene" uid="uid://gc2qo6ixywh3" path="res://scenes/decor/fire.tscn" id="4_nxhne"]
 [ext_resource type="AudioStream" uid="uid://rc1825amqk33" path="res://assets/__not_ours_dontship/lego_mavelsuperheroes/FIRESML_LP.WAV" id="5_7yijt"]
 [ext_resource type="AudioStream" uid="uid://dutddyikwuiut" path="res://assets/audio/sfx/combat/misc/hittingsound_shorter.wav" id="5_j22s6"]
 [ext_resource type="Script" uid="uid://bhf6r6nw14krj" path="res://scripts/saving/persistent_objs/po_item.gd" id="6_hwxea"]
@@ -75,6 +76,10 @@ billboard = 1
 shaded = true
 texture = ExtResource("2_20p6n")
 
+[node name="Fire" parent="Node3D/Idle" unique_id=531285147 instance=ExtResource("4_nxhne")]
+transform = Transform3D(0.99999994, 0, 0, 0, 0.99999994, 0, 0, 0, 1, 0, 0.3, 0)
+pixel_size = 0.002024
+
 [node name="Grabbed" type="Sprite3D" parent="Node3D" unique_id=1749190379]
 transform = Transform3D(0.99999994, 0, 0, 0, 0.99999994, 0, 0, 0, 1, 0, 0, 0)
 visible = false
@@ -83,6 +88,11 @@ pixel_size = 0.0013
 shaded = true
 render_priority = 1
 texture = ExtResource("2_20p6n")
+
+[node name="Fire" parent="Node3D/Grabbed" unique_id=593035744 instance=ExtResource("4_nxhne")]
+transform = Transform3D(0.99999994, 0, 0, 0, 0.99999994, 0, 0, 0, 1, 0, 0.3, 0)
+pixel_size = 0.0015925
+billboard = 0
 
 [node name="TorchLight" type="OmniLight3D" parent="." unique_id=314174637]
 unique_name_in_owner = true
@@ -117,6 +127,6 @@ doppler_tracking = 1
 target_position = Vector3(0, -0.63, 0)
 hit_from_inside = true
 
-[node name="PO_Item" type="Node" parent="." unique_id=113795984]
+[node name="PO_Item" type="Node" parent="." unique_id=113795984 groups=["PO"]]
 script = ExtResource("6_hwxea")
 metadata/_custom_type_script = "uid://bhf6r6nw14krj"
