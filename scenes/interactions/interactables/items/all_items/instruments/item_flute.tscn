@@ -13,6 +13,12 @@
 [ext_resource type="AudioStream" uid="uid://dutddyikwuiut" path="res://assets/audio/sfx/combat/misc/hittingsound_shorter.wav" id="11_k286w"]
 [ext_resource type="Script" uid="uid://bhf6r6nw14krj" path="res://scripts/saving/persistent_objs/po_item.gd" id="12_byysy"]
 [ext_resource type="Texture2D" uid="uid://fn4v0r2yystc" path="res://icon.svg" id="13_mo512"]
+[ext_resource type="Texture2D" uid="uid://kh7r551pp0h7" path="res://assets/_dev/textures/prototype_512x512_red.png" id="14_timof"]
+[ext_resource type="Texture2D" uid="uid://boptataeqjohq" path="res://assets/_dev/textures/prototype_512x512_green2.png" id="15_6p6aq"]
+[ext_resource type="Texture2D" uid="uid://byg0u435xhja5" path="res://assets/sprites/baby/baby.png" id="16_b4jvk"]
+[ext_resource type="Texture2D" uid="uid://e4o8bglf3705" path="res://assets/_editor_icons/icon_door.svg" id="17_qymxq"]
+[ext_resource type="Texture2D" uid="uid://vvyp3kfi47jv" path="res://assets/sprites/Ballybog/ballyIdle1_1.png" id="18_k286w"]
+[ext_resource type="Texture2D" uid="uid://b7wsee5v8cxgn" path="res://assets/__not_ours_dontship/sticker.webp" id="19_ifbui"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_llc7q"]
 
@@ -47,6 +53,7 @@ scale_min = 0.0
 scale_curve = SubResource("CurveTexture_r5v6g")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mo512"]
+render_priority = 1
 transparency = 1
 albedo_texture = ExtResource("13_mo512")
 billboard_mode = 3
@@ -58,7 +65,94 @@ particles_anim_loop = false
 material = SubResource("StandardMaterial3D_mo512")
 size = Vector2(0.05, 0.05)
 
-[node name="Flute" type="RigidBody3D" unique_id=130412758 node_paths=PackedStringArray("music_player", "col", "grab_col", "idle_graphics", "grabbed_graphics") groups=["debug_PickableObjects"]]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wkphe"]
+render_priority = 1
+transparency = 1
+albedo_texture = ExtResource("14_timof")
+billboard_mode = 3
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="QuadMesh" id="QuadMesh_003w0"]
+material = SubResource("StandardMaterial3D_wkphe")
+size = Vector2(0.05, 0.05)
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_b4jvk"]
+direction = Vector3(0, 1, 0.1)
+spread = 13.301
+initial_velocity_min = 0.099999994
+initial_velocity_max = 0.099999994
+gravity = Vector3(0, 0, 0)
+scale_min = 0.0
+scale_curve = SubResource("CurveTexture_r5v6g")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qymxq"]
+render_priority = 1
+transparency = 1
+albedo_texture = ExtResource("15_6p6aq")
+billboard_mode = 3
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="QuadMesh" id="QuadMesh_k286w"]
+material = SubResource("StandardMaterial3D_qymxq")
+size = Vector2(0.05, 0.05)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1g5yx"]
+render_priority = 1
+transparency = 1
+albedo_texture = ExtResource("16_b4jvk")
+billboard_mode = 3
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="QuadMesh" id="QuadMesh_plult"]
+material = SubResource("StandardMaterial3D_1g5yx")
+size = Vector2(0.05, 0.05)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pay3t"]
+render_priority = 1
+transparency = 1
+albedo_texture = ExtResource("17_qymxq")
+billboard_mode = 3
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="QuadMesh" id="QuadMesh_ywj3y"]
+material = SubResource("StandardMaterial3D_pay3t")
+size = Vector2(0.05, 0.05)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_46rvc"]
+render_priority = 1
+transparency = 1
+albedo_texture = ExtResource("18_k286w")
+billboard_mode = 3
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="QuadMesh" id="QuadMesh_sqjjb"]
+material = SubResource("StandardMaterial3D_46rvc")
+size = Vector2(0.05, 0.05)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pvnci"]
+render_priority = 1
+transparency = 1
+albedo_texture = ExtResource("19_ifbui")
+billboard_mode = 3
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="QuadMesh" id="QuadMesh_1rf2p"]
+material = SubResource("StandardMaterial3D_pvnci")
+size = Vector2(0.05, 0.05)
+
+[node name="Flute" type="RigidBody3D" unique_id=130412758 node_paths=PackedStringArray("music_player", "music_particles", "col", "grab_col", "idle_graphics", "grabbed_graphics") groups=["debug_PickableObjects"]]
 collision_layer = 2
 axis_lock_angular_x = true
 axis_lock_angular_z = true
@@ -69,6 +163,7 @@ contact_monitor = true
 max_contacts_reported = 1
 script = ExtResource("1_agl8n")
 music_player = NodePath("MusicMaker")
+music_particles = [NodePath("Particles/MusicParticles_0"), NodePath("Particles/MusicParticles_1"), NodePath("Particles/MusicParticles_2"), NodePath("Particles/MusicParticles_3"), NodePath("Particles/MusicParticles_4"), NodePath("Particles/MusicParticles_5"), NodePath("Particles/MusicParticles_6")]
 item_type = SubResource("Resource_3g5fp")
 display_name = "Flute"
 col = NodePath("CollisionShape3D")
@@ -134,12 +229,54 @@ shape = SubResource("SphereShape3D_m3m7e")
 script = ExtResource("12_byysy")
 metadata/_custom_type_script = "uid://bhf6r6nw14krj"
 
-[node name="MusicParticles" type="GPUParticles3D" parent="." unique_id=1028435067]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.19999999, 0, 0)
+[node name="Particles" type="Node3D" parent="." unique_id=1175162859]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.2106218, 0, 0)
+
+[node name="MusicParticles_0" type="GPUParticles3D" parent="Particles" unique_id=1028435067]
 emitting = false
-amount = 5
-amount_ratio = 0.7339
-lifetime = 2.0
+amount = 3
 speed_scale = 0.8
 process_material = SubResource("ParticleProcessMaterial_byysy")
 draw_pass_1 = SubResource("QuadMesh_mo512")
+
+[node name="MusicParticles_1" type="GPUParticles3D" parent="Particles" unique_id=2147379056]
+emitting = false
+amount = 3
+speed_scale = 0.8
+process_material = SubResource("ParticleProcessMaterial_byysy")
+draw_pass_1 = SubResource("QuadMesh_003w0")
+
+[node name="MusicParticles_2" type="GPUParticles3D" parent="Particles" unique_id=395384186]
+emitting = false
+amount = 3
+speed_scale = 0.8
+process_material = SubResource("ParticleProcessMaterial_b4jvk")
+draw_pass_1 = SubResource("QuadMesh_k286w")
+
+[node name="MusicParticles_3" type="GPUParticles3D" parent="Particles" unique_id=1143889224]
+emitting = false
+amount = 3
+speed_scale = 0.8
+process_material = SubResource("ParticleProcessMaterial_byysy")
+draw_pass_1 = SubResource("QuadMesh_plult")
+
+[node name="MusicParticles_4" type="GPUParticles3D" parent="Particles" unique_id=1568104298]
+emitting = false
+amount = 3
+speed_scale = 0.8
+process_material = SubResource("ParticleProcessMaterial_byysy")
+draw_pass_1 = SubResource("QuadMesh_ywj3y")
+
+[node name="MusicParticles_5" type="GPUParticles3D" parent="Particles" unique_id=1874380037]
+emitting = false
+amount = 3
+speed_scale = 0.8
+process_material = SubResource("ParticleProcessMaterial_byysy")
+draw_pass_1 = SubResource("QuadMesh_sqjjb")
+
+[node name="MusicParticles_6" type="GPUParticles3D" parent="Particles" unique_id=1305890382]
+emitting = false
+amount = 3
+speed_scale = 0.8
+process_material = SubResource("ParticleProcessMaterial_byysy")
+draw_pass_1 = SubResource("QuadMesh_1rf2p")

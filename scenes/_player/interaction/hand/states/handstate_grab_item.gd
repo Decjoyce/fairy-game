@@ -209,7 +209,7 @@ func using()-> void:
 			ItemType.ItemTypes.INSTRUMENT:
 				var freq : int
 				if !hand_controller.test_handlimit:
-					freq = int(remap(hand_controller.get_screen_position().x/player_interact.size.x, 0, 1, 0, 7))
+					freq = int(remap((hand_controller.get_screen_position().x+(hand_controller.size.x/2))/player_interact.size.x, 0, 1, 0, 7))
 				else:
 					freq = int(remap(hand_controller.get_screen_position().x, hand_controller.test_screen_limit_x_min, hand_controller.test_screen_limit_x_max - hand_controller.size.x, 0, 6))
 				#print(freq)
