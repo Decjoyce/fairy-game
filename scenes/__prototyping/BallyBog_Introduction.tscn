@@ -30,6 +30,8 @@
 [ext_resource type="PackedScene" uid="uid://dr3608osp2js" path="res://scenes/interactions/interactables/items/all_items/misc/item_bell.tscn" id="26_8ofet"]
 [ext_resource type="Script" uid="uid://ubfk2a80dhfp" path="res://addons/grid_map_pathfinding/grid_map_pathfinding.gd" id="29_211nq"]
 [ext_resource type="Script" uid="uid://bul4myvyhnpjc" path="res://scripts/saving/uid_generator.gd" id="30_tetch"]
+[ext_resource type="PackedScene" uid="uid://b5g00fexnuwte" path="res://scenes/interactions/_special/item_no_pass_zone.tscn" id="31_iw7gl"]
+[ext_resource type="Material" uid="uid://ioo51vym3k1d" path="res://scenes/interactions/_triggers/teleporter/m_teleport.tres" id="32_tie2v"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_iw7gl"]
 
@@ -194,10 +196,18 @@ _data = {
 &"open_da_grate": SubResource("Animation_kngx6")
 }
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_83bcy"]
+size = Vector3(2, 2, 2)
+
+[sub_resource type="BoxMesh" id="BoxMesh_0ebxv"]
+material = ExtResource("32_tie2v")
+size = Vector3(2, 2, 2)
+
 [node name="Ballybog_Scene" type="Node3D" unique_id=842226877]
 
 [node name="GridMapPathFinding2" type="GridMap" parent="." unique_id=1929151095 groups=["GMPF"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.445, 0)
+visible = false
 mesh_library = ExtResource("1_m8tlr")
 cell_size = Vector3(1, 1, 1)
 cell_octant_size = 4
@@ -743,6 +753,17 @@ trig_once = true
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Puzzle/EnemyEnableTrig/Area3D" unique_id=1108225877]
 shape = SubResource("SphereShape3D_iw7gl")
+
+[node name="ItemNoPassZone" parent="." unique_id=223074910 instance=ExtResource("31_iw7gl")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -1.9, 1.3, -5)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ItemNoPassZone" unique_id=17687229]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.29999983, 0.9)
+visible = false
+shape = SubResource("BoxShape3D_83bcy")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="ItemNoPassZone/CollisionShape3D" unique_id=396008072]
+mesh = SubResource("BoxMesh_0ebxv")
 
 [connection signal="on_activated" from="Sneaked_past/PlayerAreaTrigger" to="Sneaked_past/Gate2" method="close_gate"]
 [connection signal="area_entered" from="Sneaked_past/PlayerAreaTrigger/Area3D" to="Sneaked_past/PlayerAreaTrigger" method="_player_entered"]

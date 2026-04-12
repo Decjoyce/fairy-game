@@ -70,6 +70,7 @@
 [ext_resource type="PackedScene" uid="uid://br35er4x4b6av" path="res://scenes/interactions/_triggers/torch_sconce/torch_sconce_unlit.tscn" id="65_tefph"]
 [ext_resource type="PackedScene" uid="uid://ije1mmh1wcad" path="res://scenes/interactions/interactables/items/all_items/torch/torch_mounted.tscn" id="66_7evwh"]
 [ext_resource type="Script" uid="uid://bul4myvyhnpjc" path="res://scripts/saving/uid_generator.gd" id="70_24qtj"]
+[ext_resource type="PackedScene" uid="uid://b5g00fexnuwte" path="res://scenes/interactions/_special/item_no_pass_zone.tscn" id="71_dri38"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_3wul1"]
 
@@ -938,6 +939,11 @@ script = ExtResource("42_n5cca")
 specific_item_to_drop = ExtResource("43_wchr0")
 item_type = 4
 metadata/_custom_type_script = "uid://beaf3digx88d0"
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_dri38"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_dri38"]
+material = ExtResource("15_50n8y")
 
 [node name="Playground_Interactions" type="Node3D" unique_id=1592069120]
 
@@ -5985,6 +5991,16 @@ metadata/date_generated = "2026-03-18T00:59:33"
 [node name="UID_Generator" type="Node" parent="." unique_id=1703961275]
 script = ExtResource("70_24qtj")
 metadata/_custom_type_script = "uid://bul4myvyhnpjc"
+
+[node name="ItemNoPassZone" parent="." unique_id=223074910 instance=ExtResource("71_dri38")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -112, 1, -16)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ItemNoPassZone" unique_id=1476364356]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.49999982, 1.5)
+shape = SubResource("BoxShape3D_dri38")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="ItemNoPassZone/CollisionShape3D" unique_id=252605463]
+mesh = SubResource("BoxMesh_dri38")
 
 [connection signal="area_entered" from="Bin/Room_Items/Teleporter/Trigger" to="Bin/Room_Items/Teleporter" method="_teleport_entity"]
 [connection signal="body_entered" from="Bin/Room_Items/Teleporter/Trigger" to="Bin/Room_Items/Teleporter" method="_teleport_item"]
