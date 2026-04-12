@@ -39,7 +39,7 @@ func _physics_process(delta: float) -> void:
 func _on_improved_raycast_on_body_entered(obj: Object) -> void:
 	if obj.get_parent() is Entity:
 		var stats: Stats = obj.get_parent().stats
-		stats.take_damage(50)
+		stats.take_damage(50, 3)
 		reset_proj()
 	elif obj.get_parent() is Grabbable_Item: 
 		var itm: Grabbable_Item = obj.get_parent() as Grabbable_Item

@@ -66,10 +66,12 @@ func attack() -> void:
 	if !active: return
 	ballybog.anim_player.play("attack")
 	print("i attack u")
-	killed_player = ballybog.player.stats.take_damage(25.0)
+	killed_player = ballybog.player.stats.take_damage(25.0, 1)
 	
 	if killed_player:
-		ballybog.anim_player.play("boogie")
+		if ballybog.rng.randf_range(0, 1) > 0.75:
+			ballybog.anim_player.play("boogie")
+		else: ballybog.do_idle()
 		return
 	
 	wait_timer.wait_time = charge_delay

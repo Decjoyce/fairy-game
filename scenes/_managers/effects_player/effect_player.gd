@@ -62,5 +62,6 @@ func colorize(from_color: Color, to_color: Color, length: float, override_effect
 
 func close_colorize() -> void:
 	colorize_effect.visible = false
-	cur_colorize_effect.finished.disconnect(close_colorize)
+	if cur_colorize_effect:
+		cur_colorize_effect.finished.disconnect(close_colorize)
 	cur_colorize_effect = null

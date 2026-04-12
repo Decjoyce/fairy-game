@@ -16,6 +16,7 @@ var cam: Camera3D
 #@export var destroyed_item_cell: Node3D
 
 func _ready() -> void:
+	TEMPSaveGameHandler.on_loaded_game.connect(_init_me)
 	_init_me()
 
 func _process(delta: float) -> void:

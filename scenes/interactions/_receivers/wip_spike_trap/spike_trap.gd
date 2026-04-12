@@ -36,7 +36,7 @@ func deactivate(sig: float = -1) -> void:
 
 func dmg_things_inide() -> void:
 	for peep in people_inside:
-		peep.stats.take_damage(100)
+		peep.stats.take_damage(100, 2)
 	for itm in itms_inside:
 		if itm.can_break:
 			if itm.item_weight == Grabbable_Item.item_weight_types.HEAVY: weighted_things_inside -= 1

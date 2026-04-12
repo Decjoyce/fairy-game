@@ -9,6 +9,8 @@ var world_root: Node3D
 
 var is_loading: bool
 
+var delay_before_reload: float = 1.4
+
 const MAX_SAVE_COUNT: int = 3
 
 func _process(delta: float) -> void:
@@ -18,7 +20,7 @@ func _process(delta: float) -> void:
 		load_game()
 	elif Input.is_action_just_pressed("reset_vs"):
 		load_scene_root(get_tree().current_scene.scene_file_path)
-	elif Input.is_action_just_pressed("ui_end"): load_scene_root("res://scenes/__playground_scenes/puzzles/ThrowingPuzzles/puzzle_throw_2.tscn")
+	#elif Input.is_action_just_pressed("ui_end"): load_scene_root("res://scenes/__playground_scenes/puzzles/ThrowingPuzzles/puzzle_throw_2.tscn")
 
 func file_save(saved_game: SavedGame) -> void:
 	var num_saves: int = 1
@@ -59,11 +61,11 @@ func load_game() -> void:
 	if is_loading: return
 	var saved_game: SavedGame = load("user://savegame_1.tres") as SavedGame
 	
-	EffectsPlayer.blur_out(1, 1, 0, true)
-	EffectsPlayer.saturize(0, 0.5, -1,true)
+	EffectsPlayer.blur_out(1, delay_before_reload, 0, true)
+	EffectsPlayer.saturize(0, delay_before_reload/2, -1,true)
 	
 	is_loading = true
-	await get_tree().create_timer(1).timeout
+	await get_tree().create_timer(delay_before_reload).timeout
 	await load_scene_root(saved_game.current_scene)
 	
 	get_tree().call_group("Player", "on_before_load_game") 
@@ -89,9 +91,10 @@ func load_game() -> void:
 		else: # Nodes that were originally placed in the scene
 			if uid_list[obj.uid].has_method("on_load_game"):
 				uid_list[obj.uid].on_load_game(obj)
-	EffectsPlayer.blur_out(0, 1, 1, true)
-	EffectsPlayer.saturize(1, 1, 0, true)
+	EffectsPlayer.blur_out(0, delay_before_reload, 1, true)
+	EffectsPlayer.saturize(1, delay_before_reload, 0, true)
 	is_loading = false
+	on_loaded_game.emit()
 
 func load_game_from_menu(scene_to_load: PackedScene) -> void:
 	if is_loading: return

@@ -31,9 +31,12 @@ func _process(delta: float) -> void:
 var is_regen_health: bool = true
 var time_since_began_regen: float = 0
 
-func take_damage(amount: float) -> bool:
+var last_dmg_type: int = -1
+
+func take_damage(amount: float, damage_type: int = 0) -> bool:
 	if is_dead: return true
 	current_health -= amount
+	last_dmg_type = damage_type
 	if !check_if_dead():
 		play_hit_fx()
 		if can_regen_health: health_regen_timer.start()
