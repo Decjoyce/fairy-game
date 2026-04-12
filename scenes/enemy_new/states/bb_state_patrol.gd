@@ -5,6 +5,7 @@ extends EnemyState
 @onready var wait_timer: Timer = $_wait_timer
 
 var current_patrol_point: int = 0
+var bounce_mult: int = -1
 
 func load_me(previous_state_path: String, data : SavedData_Ballybog) -> void:
 	super(previous_state_path, data)
@@ -51,7 +52,16 @@ func physics_update(_delta: float) -> void:
 
 func get_new_point() -> void:
 	if !active: return
-	current_patrol_point = wrapi(current_patrol_point+1, 0, ballybog.patrol_points.size())
+	match ballybog.patrol_loop_mode:
+		0: current_patrol_point = wrapi(current_patrol_point+1, 0, ballybog.patrol_points.size())
+		1:
+			if current_patrol_point == 0 or current_patrol_point == ballybog.patrol_points.size()-1:
+				print("k")
+				bounce_mult*=-1
+			prints("d", current_patrol_point)
+			current_patrol_point = current_patrol_point + bounce_mult
+		2: return
+		3: current_patrol_point = ballybog.patrol_points.pick_random()
 	ballybog.movement.set_new_destination(ballybog.patrol_points[current_patrol_point].global_position)
 	ballybog.movement.start_movement()
 

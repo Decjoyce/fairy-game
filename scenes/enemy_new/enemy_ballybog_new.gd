@@ -28,9 +28,11 @@ enum DEFUALT_STATES {IDLE, PATROL, WANDER}
 @export var default_state: DEFUALT_STATES = DEFUALT_STATES.PATROL
 
 @export_subgroup("Patrol")
+enum LOOP_MODES {LOOP, BOUNCE, DO_ONCE, RANDOM}
 @export var patrol_points: Array[Node3D]
+@export var patrol_loop_mode: LOOP_MODES
 @export var delay_between_points: float = 3
-@export var use_random_points: bool = false
+#@export var use_random_points: bool = false
 
 @export_subgroup("Wander")
 @export var wander_starting_pos: Node3D

@@ -40,7 +40,7 @@ func set_new_destination(new_loc: Vector3) -> void:
 	current_path = grid_map.find_path(current_grid_pos,current_destination)
 	current_path.pop_front()
 	has_reached_destination = false
-	prints("-------------------------\n", grid_map.astar.get_closest_position_in_segment(ballybog.global_position), current_path)
+	#prints("-------------------------\n", grid_map.astar.get_closest_position_in_segment(ballybog.global_position), current_path)
 
 func set_destination_to_player() -> void:
 	current_grid_pos = grid_map.astar.get_closest_position_in_segment(ballybog.global_position)
@@ -111,13 +111,13 @@ func start_movement() -> void: ## probs should rename this to new movement
 	#prints(current_path.size(), "sp: ", _start_pos, ":: end_pos: ", _end_pos, ":: non-converted_pos:", current_path[0], current_destination)
 	#prints("no_converted:", current_path[0], ":: map_to_local:", grid_map.map_to_local(current_path[0]).floor(), ":: to_global", grid_map.to_global(grid_map.map_to_local(current_path[0]).floor()))
 	dbg_move_helper_b.global_position = _end_pos
-	print(ballybog.global_position, grid_map.to_global(grid_map.map_to_local(current_path[0]).floor()))
+	#print(ballybog.global_position, grid_map.to_global(grid_map.map_to_local(current_path[0]).floor()))
 	
 	if check_if_needs_to_turn():
-		print("turning")
+		#print("turning")
 		start_turn()
 	else:
-		print("not turning")
+		#print("not turning")
 		_begin_movement()
 
 func _begin_movement() -> void:
@@ -172,7 +172,7 @@ signal has_turned
 func check_if_needs_to_turn() -> bool:
 	var prev_dir:= current_move_direction
 	update_current_move_direction()
-	prints("dests: ", prev_dir, current_move_direction )
+	#prints("dests: ", prev_dir, current_move_direction )
 	return current_move_direction != prev_dir
 
 func start_turn():
