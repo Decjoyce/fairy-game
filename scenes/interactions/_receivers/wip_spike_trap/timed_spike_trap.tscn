@@ -1,0 +1,25 @@
+[gd_scene format=3 uid="uid://kqw8pq8itb2k"]
+
+[ext_resource type="PackedScene" uid="uid://bmiljk53ks7e7" path="res://scenes/interactions/_receivers/wip_spike_trap/spike_trap_floor.tscn" id="1_1e56w"]
+[ext_resource type="Script" uid="uid://cfmswqnu6u0bl" path="res://scenes/interactions/_receivers/_logic/counter/counter.gd" id="2_bm3rw"]
+
+[node name="Timed_SpikeTrap" type="Node3D" unique_id=1714444948]
+
+[node name="SpikeTrap" parent="." unique_id=1388700218 instance=ExtResource("1_1e56w")]
+trigger_when_in = false
+metadata/uid = "613f3d3a-55ca-401e-804a-dd20c41a2503"
+metadata/lock_uid = true
+metadata/date_generated = "2026-04-09T13:39:19"
+
+[node name="Counter" type="Node" parent="." unique_id=1401039183]
+script = ExtResource("2_bm3rw")
+max_count = 1
+metadata/_custom_type_script = "uid://cfmswqnu6u0bl"
+
+[node name="Timer" type="Timer" parent="." unique_id=1970550776]
+wait_time = 2.0
+autostart = true
+
+[connection signal="on_activated" from="Counter" to="SpikeTrap" method="activate"]
+[connection signal="on_deactivated" from="Counter" to="SpikeTrap" method="deactivate"]
+[connection signal="timeout" from="Timer" to="Counter" method="add_count_no_sig"]

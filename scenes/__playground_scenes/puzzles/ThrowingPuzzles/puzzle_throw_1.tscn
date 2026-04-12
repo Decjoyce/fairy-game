@@ -20,7 +20,7 @@
 [ext_resource type="Material" uid="uid://c6lv8pfrvktb8" path="res://assets/models/cairn/Hall_BigRoof/Wall.tres" id="15_ntrdj"]
 [ext_resource type="PackedScene" uid="uid://cpnmun20lswr" path="res://scenes/_levels/_palettes/cairn/props/cairn_pillar.tscn" id="19_37gbc"]
 [ext_resource type="PackedScene" uid="uid://br35er4x4b6av" path="res://scenes/interactions/_triggers/torch_sconce/torch_sconce_unlit.tscn" id="20_ntrdj"]
-[ext_resource type="Script" uid="uid://cfmswqnu6u0bl" path="res://scenes/interactions/_receivers/_logic/counter/counter.gd" id="22_owq6r"]
+[ext_resource type="PackedScene" uid="uid://kqw8pq8itb2k" path="res://scenes/interactions/_receivers/wip_spike_trap/timed_spike_trap.tscn" id="22_owq6r"]
 [ext_resource type="Script" uid="uid://bul4myvyhnpjc" path="res://scripts/saving/uid_generator.gd" id="24_d308h"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_2vnbd"]
@@ -381,12 +381,6 @@ transform = Transform3D(2.8144472e-08, -0.12825754, 0.35238475, 0.032683432, -0.
 [node name="SpotLight3D" type="SpotLight3D" parent="Room02/_decor" unique_id=431112461]
 transform = Transform3D(1, 0, 0, 0, 0.49999997, 0.86602545, 0, -0.86602545, 0.49999997, 0, 2.7, -4)
 
-[node name="SpikeTrap" parent="Room02" unique_id=610712147 instance=ExtResource("8_1whn7")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -4)
-metadata/uid = "613f3d3a-55ca-401e-804a-dd20c41a2503"
-metadata/lock_uid = true
-metadata/date_generated = "2026-04-09T13:39:19"
-
 [node name="SpikeTrap2" parent="Room02" unique_id=1491806634 instance=ExtResource("8_1whn7")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.7, 0, -2.6000004)
 metadata/uid = "b17cd6e8-9d95-43aa-af2d-9f9be153422b"
@@ -711,21 +705,11 @@ metadata/lock_uid = true
 script = ExtResource("24_d308h")
 metadata/_custom_type_script = "uid://bul4myvyhnpjc"
 
-[node name="Timer" type="Timer" parent="." unique_id=1425915286]
-wait_time = 5.0
-autostart = true
-
-[node name="Counter" type="Node" parent="." unique_id=1948488279]
-script = ExtResource("22_owq6r")
-max_count = 1
-metadata/_custom_type_script = "uid://cfmswqnu6u0bl"
+[node name="Timed_SpikeTrap" parent="." unique_id=1857500516 instance=ExtResource("22_owq6r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 1, -10)
 
 [connection signal="on_activated" from="Room01/Button" to="Room01/Gate" method="open_gate"]
 [connection signal="on_change" from="Room01/PressurePlate" to="Room01/Gate2" method="open_gate"]
-[connection signal="on_activated" from="Room02/Button" to="Room02/SpikeTrap" method="activate"]
 [connection signal="on_activated" from="Room02/Button" to="Room02/Gate" method="fully_open_gate"]
 [connection signal="on_change" from="Room03/PressurePlate_L" to="Room03/Gate_RT" method="open_gate"]
 [connection signal="on_change" from="Room03/PressurePlate_R" to="Room03/Gate_RB" method="open_gate"]
-[connection signal="timeout" from="Timer" to="Counter" method="add_count_no_sig"]
-[connection signal="on_activated" from="Counter" to="Room02/SpikeTrap" method="activate"]
-[connection signal="on_deactivated" from="Counter" to="Room02/SpikeTrap" method="deactivate"]
