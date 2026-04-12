@@ -1,0 +1,42 @@
+[gd_resource type="MeshLibrary" format=3 uid="uid://br861hnjhp6ry"]
+
+[ext_resource type="Texture2D" uid="uid://bj1t77t2jchxa" path="res://assets/_dev/textures/prototype_512x512_white.png" id="1_2x1ae"]
+[ext_resource type="Texture2D" uid="uid://kh7r551pp0h7" path="res://assets/_dev/textures/prototype_512x512_red.png" id="2_du0vj"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_02yal"]
+shading_mode = 0
+diffuse_mode = 3
+albedo_color = Color(0.19192207, 0.2795341, 0.22862524, 1)
+albedo_texture = ExtResource("1_2x1ae")
+uv1_triplanar = true
+uv1_world_triplanar = true
+
+[sub_resource type="BoxMesh" id="BoxMesh_vugc7"]
+material = SubResource("StandardMaterial3D_02yal")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_uj1yh"]
+shading_mode = 0
+diffuse_mode = 3
+albedo_texture = ExtResource("2_du0vj")
+uv1_offset = Vector3(0.5, 0, 0)
+uv1_triplanar = true
+uv1_world_triplanar = true
+
+[sub_resource type="BoxMesh" id="BoxMesh_cns1u"]
+material = SubResource("StandardMaterial3D_uj1yh")
+
+[resource]
+item/0/name = "WLKE"
+item/0/mesh = SubResource("BoxMesh_vugc7")
+item/0/mesh_transform = Transform3D(1, 0, 0, 0, 0.09, 0, 0, 0, 1, 0, 0, 0)
+item/0/mesh_cast_shadow = 1
+item/0/shapes = []
+item/0/navigation_mesh_transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+item/0/navigation_layers = 1
+item/1/name = "NO WALKE"
+item/1/mesh = SubResource("BoxMesh_cns1u")
+item/1/mesh_transform = Transform3D(1, 0, 0, 0, 0.09, 0, 0, 0, 1, 0, 0, 0)
+item/1/mesh_cast_shadow = 0
+item/1/shapes = []
+item/1/navigation_mesh_transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+item/1/navigation_layers = 1

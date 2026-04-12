@@ -57,6 +57,8 @@ func get_new_point() -> void:
 
 func reached_destination() -> void:
 	if !active: return 
+	print("reachdestination")
+	ballybog.do_idle()
 	wait_timer.wait_time = ballybog.delay_between_points
 	wait_timer.start()
 

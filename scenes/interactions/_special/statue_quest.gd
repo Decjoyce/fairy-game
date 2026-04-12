@@ -9,7 +9,7 @@ signal on_quest_completed(sig: float)
 var stages: int = 3 # 0 = default, 1 = 1st piece added, 2 = 2nd piece added, 3 = 3rd piece added/completed
 var current_stage: int
 
-@export var statue: Sprite3DBillBoard
+@export var statue_pieces: Array[MeshInstance3D]
 @export var itm_receiver: StatueReceiver
 
 func insert_piece(num_received: int, item_received: Grabbable_Item, emit_sigs: bool = true) -> void:
@@ -37,16 +37,16 @@ func update_graphics() -> void:
 
 func piece_inserted_base(emit_sigs: bool = true) -> void:
 	if emit_sigs: on_piece_inserted.emit("BASE")
-	statue.animation = 1
-
-func piece_inserted_head(emit_sigs: bool = true) -> void:
-	if emit_sigs: on_piece_inserted.emit("HEAD")
-	statue.animation = 3
+	statue_pieces[0].visible = true
 
 func piece_inserted_arm(emit_sigs: bool = true) -> void:
 	if emit_sigs: on_piece_inserted.emit("ARM")
-	statue.animation = 2
+	statue_pieces[1].visible = true
+
+func piece_inserted_head(emit_sigs: bool = true) -> void:
+	if emit_sigs: on_piece_inserted.emit("HEAD")
+	statue_pieces[2].visible = true
 
 func quest_completed(emit_sigs: bool = true) -> void:
 	if emit_sigs: on_quest_completed.emit(1)
-	
+	statue_pieces[3].visible = true

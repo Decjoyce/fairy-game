@@ -598,6 +598,18 @@ size = Vector3(1.6, 0.9, 0.1)
 [sub_resource type="BoxShape3D" id="BoxShape3D_0ak1w"]
 size = Vector3(0.1, 0.9, 1.6)
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_s30ol"]
+albedo_color = Color(1, 0, 0, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_s30ol"]
+material = SubResource("StandardMaterial3D_s30ol")
+radius = 0.2
+height = 0.4
+
+[sub_resource type="SphereMesh" id="SphereMesh_ysfdd"]
+radius = 0.2
+height = 0.4
+
 [node name="Ballybog" type="CharacterBody3D" unique_id=1712475425 node_paths=PackedStringArray("my_body")]
 collision_layer = 0
 script = ExtResource("1_8ccvb")
@@ -657,10 +669,12 @@ stream = SubResource("AudioStreamRandomizer_u7shv")
 pitch_scale = 0.97
 bus = &"items"
 
-[node name="EnemyMovement" type="Node" parent="." unique_id=387151753 node_paths=PackedStringArray("ballybog", "floor_detector")]
+[node name="EnemyMovement" type="Node" parent="." unique_id=387151753 node_paths=PackedStringArray("ballybog", "floor_detector", "dbg_move_helper_a", "dbg_move_helper_b")]
 script = ExtResource("25_m02yd")
 ballybog = NodePath("..")
 floor_detector = NodePath("../FloorDetector")
+dbg_move_helper_a = NodePath("../dbg_move_helper_a")
+dbg_move_helper_b = NodePath("../dbg_move_helper_b")
 metadata/_custom_type_script = "uid://bkue08ffmqiq2"
 
 [node name="StateMachine" type="Node" parent="." unique_id=735208212 node_paths=PackedStringArray("ballybog")]
@@ -793,6 +807,12 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 [node name="PO_Ballybog" type="Node" parent="." unique_id=687777013 groups=["PO"]]
 script = ExtResource("35_tsg0o")
 metadata/_custom_type_script = "uid://buwlv4dpooytr"
+
+[node name="dbg_move_helper_a" type="MeshInstance3D" parent="." unique_id=1993620807]
+mesh = SubResource("SphereMesh_s30ol")
+
+[node name="dbg_move_helper_b" type="MeshInstance3D" parent="." unique_id=44147216]
+mesh = SubResource("SphereMesh_ysfdd")
 
 [connection signal="body_entered" from="Hitbox" to="." method="_on_item_entered"]
 [connection signal="area_entered" from="DetectionTriggers/AwarenessTrig" to="." method="_something_entered_awareness_trig"]
