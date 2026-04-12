@@ -21,6 +21,7 @@ func update_idle(delta: float) -> void:
 	pass
 	
 func update_physics(delta: float) -> void:
+	move_particles.emitting = is_moving or is_turning
 	movement(delta)
 	turning(delta)
 
@@ -210,10 +211,11 @@ func lerp_me(start: Vector3, end: Vector3, percentage: float) -> Vector3:
 
 # ↑ Turning Stuff ↑
 # --------------------------------------------------------------------------------------------------
-# ↓ Footsteps Stuff ↓
+# ↓ VFX Stuff ↓
 
 @export var footstep_decals: Array[Decal]
 var footstep_index: int
+@export var move_particles: GPUParticles3D
 
 func imprint_footstep() -> void:
 	footstep_decals[footstep_index].visible = true
