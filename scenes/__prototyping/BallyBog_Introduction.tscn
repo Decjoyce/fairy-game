@@ -198,6 +198,7 @@ _data = {
 
 [node name="GridMapPathFinding2" type="GridMap" parent="." unique_id=1929151095 groups=["GMPF"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.445, 0)
+visible = false
 mesh_library = ExtResource("1_m8tlr")
 cell_size = Vector3(1, 1, 1)
 cell_octant_size = 4
@@ -240,6 +241,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 1, 1)
 
 [node name="Ballybog" parent="." unique_id=1712475425 node_paths=PackedStringArray("patrol_points", "wander_starting_pos") instance=ExtResource("3_nfw6c")]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 1, 0, -7.9102936)
+disabled = false
 patrol_points = [NodePath("../Bally_1_PatrolPoints/Node3D"), NodePath("../Bally_1_PatrolPoints/Node3D2"), NodePath("../Bally_1_PatrolPoints/Node3D3"), NodePath("../Bally_1_PatrolPoints/Node3D4")]
 wander_starting_pos = NodePath("../Bally_1_PatrolPoints/Node3D5")
 
@@ -701,6 +703,7 @@ metadata/date_generated = "2026-03-25T10:07:13"
 
 [node name="Ballybog" parent="Puzzle" unique_id=687752297 node_paths=PackedStringArray("patrol_points", "wander_starting_pos") instance=ExtResource("3_nfw6c")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 1, -7)
+disabled = false
 patrol_points = [NodePath("../Bally_PatrolPoints/Node3D"), NodePath("../Bally_PatrolPoints/Node3D2"), NodePath("../Bally_PatrolPoints/Node3D3"), NodePath("../Bally_PatrolPoints/Node3D4"), NodePath("../Bally_PatrolPoints/Node3D5"), NodePath("../Bally_PatrolPoints/Node3D6"), NodePath("../Bally_PatrolPoints/Node3D8"), NodePath("../Bally_PatrolPoints/Node3D9")]
 delay_between_points = 0.5
 wander_starting_pos = NodePath("../Bally_PatrolPoints/Node3D6")

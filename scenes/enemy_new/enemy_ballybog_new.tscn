@@ -40,6 +40,7 @@
 [ext_resource type="Script" uid="uid://46pp7aerorca" path="res://scripts/stats.gd" id="33_p22w6"]
 [ext_resource type="Script" uid="uid://jxohgxu3vshf" path="res://scripts/improved_raycast.gd" id="34_0ak1w"]
 [ext_resource type="Script" uid="uid://buwlv4dpooytr" path="res://po_ballybog.gd" id="35_tsg0o"]
+[ext_resource type="Texture2D" uid="uid://ba1v617x2s4k6" path="res://assets/_editor_icons/icon_bb_sus.svg" id="41_ysfdd"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_u6way"]
 radius = 0.3
@@ -125,13 +126,13 @@ void fragment() {
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ysfdd"]
 render_priority = 0
 shader = SubResource("Shader_s30ol")
-shader_parameter/rows = 1.0
+shader_parameter/rows = 5.0
 shader_parameter/columns = 8.0
 shader_parameter/frame = 1.0
 shader_parameter/invert_rows_columns = false
-shader_parameter/sprite = ExtResource("10_egxrc")
+shader_parameter/sprite = ExtResource("6_8sj3j")
 shader_parameter/mode = 0
-shader_parameter/Normal = ExtResource("11_ojypm")
+shader_parameter/Normal = ExtResource("7_r4p23")
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_j8kvk"]
 material = SubResource("ShaderMaterial_ysfdd")
@@ -598,18 +599,6 @@ size = Vector3(1.6, 0.9, 0.1)
 [sub_resource type="BoxShape3D" id="BoxShape3D_0ak1w"]
 size = Vector3(0.1, 0.9, 1.6)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_s30ol"]
-albedo_color = Color(1, 0, 0, 1)
-
-[sub_resource type="SphereMesh" id="SphereMesh_s30ol"]
-material = SubResource("StandardMaterial3D_s30ol")
-radius = 0.2
-height = 0.4
-
-[sub_resource type="SphereMesh" id="SphereMesh_ysfdd"]
-radius = 0.2
-height = 0.4
-
 [node name="Ballybog" type="CharacterBody3D" unique_id=1712475425 node_paths=PackedStringArray("my_body")]
 collision_layer = 0
 script = ExtResource("1_8ccvb")
@@ -625,12 +614,12 @@ disabled = true
 
 [node name="_graphics" type="MeshInstance3D" parent="." unique_id=589909567]
 transform = Transform3D(-1, 0, -1.509958e-07, 0, 1, 0, 1.509958e-07, 0, -1, 0, 0.6596855, 0)
-layers = 3
+layers = 2
 sorting_offset = 1.0
 mesh = SubResource("PlaneMesh_j8kvk")
 script = ExtResource("4_neywx")
 animations_array = Array[ExtResource("5_kmwqr")]([SubResource("Resource_l6uyl"), SubResource("Resource_hc104"), SubResource("Resource_oj3bs"), SubResource("Resource_s731o"), SubResource("Resource_1gxwg"), SubResource("Resource_it4pt"), SubResource("Resource_byr2v"), SubResource("Resource_dduw1")])
-animation = 3
+animation = 0
 frame = 1.0
 sprite_scale = 0.003
 metadata/_custom_type_script = "uid://b5653u7w56pqw"
@@ -669,12 +658,11 @@ stream = SubResource("AudioStreamRandomizer_u7shv")
 pitch_scale = 0.97
 bus = &"items"
 
-[node name="EnemyMovement" type="Node" parent="." unique_id=387151753 node_paths=PackedStringArray("ballybog", "floor_detector", "dbg_move_helper_a", "dbg_move_helper_b")]
+[node name="EnemyMovement" type="Node" parent="." unique_id=387151753 node_paths=PackedStringArray("ballybog", "floor_detector", "footstep_decals")]
 script = ExtResource("25_m02yd")
 ballybog = NodePath("..")
 floor_detector = NodePath("../FloorDetector")
-dbg_move_helper_a = NodePath("../dbg_move_helper_a")
-dbg_move_helper_b = NodePath("../dbg_move_helper_b")
+footstep_decals = [NodePath("../Footsteps/_footsteps_1"), NodePath("../Footsteps/_footsteps_2"), NodePath("../Footsteps/_footsteps_3"), NodePath("../Footsteps/_footsteps_4"), NodePath("../Footsteps/_footsteps_5"), NodePath("../Footsteps/_footsteps_6"), NodePath("../Footsteps/_footsteps_7"), NodePath("../Footsteps/_footsteps_8")]
 metadata/_custom_type_script = "uid://bkue08ffmqiq2"
 
 [node name="StateMachine" type="Node" parent="." unique_id=735208212 node_paths=PackedStringArray("ballybog")]
@@ -808,11 +796,70 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 script = ExtResource("35_tsg0o")
 metadata/_custom_type_script = "uid://buwlv4dpooytr"
 
-[node name="dbg_move_helper_a" type="MeshInstance3D" parent="." unique_id=1993620807]
-mesh = SubResource("SphereMesh_s30ol")
+[node name="Footsteps" type="Node" parent="." unique_id=413456975]
 
-[node name="dbg_move_helper_b" type="MeshInstance3D" parent="." unique_id=44147216]
-mesh = SubResource("SphereMesh_ysfdd")
+[node name="_footsteps_1" type="Decal" parent="Footsteps" unique_id=864394099]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.450581e-09, 0, 7.450581e-09)
+size = Vector3(1, 0.2, 1)
+texture_albedo = ExtResource("41_ysfdd")
+modulate = Color(0.14, 0.09625, 0.035, 0.5294118)
+cull_mask = 1048573
+
+[node name="_footsteps_2" type="Decal" parent="Footsteps" unique_id=1595608224]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.450581e-09, 0, 7.450581e-09)
+visible = false
+size = Vector3(1, 0.2, 1)
+texture_albedo = ExtResource("41_ysfdd")
+modulate = Color(0.14, 0.09625, 0.035, 0.5294118)
+cull_mask = 1048573
+
+[node name="_footsteps_3" type="Decal" parent="Footsteps" unique_id=959026530]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.450581e-09, 0, 7.450581e-09)
+visible = false
+size = Vector3(1, 0.2, 1)
+texture_albedo = ExtResource("41_ysfdd")
+modulate = Color(0.14, 0.09625, 0.035, 0.5294118)
+cull_mask = 1048573
+
+[node name="_footsteps_4" type="Decal" parent="Footsteps" unique_id=119543714]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.450581e-09, 0, 7.450581e-09)
+visible = false
+size = Vector3(1, 0.2, 1)
+texture_albedo = ExtResource("41_ysfdd")
+modulate = Color(0.14, 0.09625, 0.035, 0.5294118)
+cull_mask = 1048573
+
+[node name="_footsteps_5" type="Decal" parent="Footsteps" unique_id=145119528]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.450581e-09, 0, 7.450581e-09)
+visible = false
+size = Vector3(1, 0.2, 1)
+texture_albedo = ExtResource("41_ysfdd")
+modulate = Color(0.14, 0.09625, 0.035, 0.5294118)
+cull_mask = 1048573
+
+[node name="_footsteps_6" type="Decal" parent="Footsteps" unique_id=1662988889]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.450581e-09, 0, 7.450581e-09)
+visible = false
+size = Vector3(1, 0.2, 1)
+texture_albedo = ExtResource("41_ysfdd")
+modulate = Color(0.14, 0.09625, 0.035, 0.5294118)
+cull_mask = 1048573
+
+[node name="_footsteps_7" type="Decal" parent="Footsteps" unique_id=1225514629]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.450581e-09, 0, 7.450581e-09)
+visible = false
+size = Vector3(1, 0.2, 1)
+texture_albedo = ExtResource("41_ysfdd")
+modulate = Color(0.14, 0.09625, 0.035, 0.5294118)
+cull_mask = 1048573
+
+[node name="_footsteps_8" type="Decal" parent="Footsteps" unique_id=679012226]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.450581e-09, 0, 7.450581e-09)
+visible = false
+size = Vector3(1, 0.2, 1)
+texture_albedo = ExtResource("41_ysfdd")
+modulate = Color(0.14, 0.09625, 0.035, 0.5294118)
+cull_mask = 1048573
 
 [connection signal="body_entered" from="Hitbox" to="." method="_on_item_entered"]
 [connection signal="area_entered" from="DetectionTriggers/AwarenessTrig" to="." method="_something_entered_awareness_trig"]

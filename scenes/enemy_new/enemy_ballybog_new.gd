@@ -64,6 +64,15 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	check_for_player_in_LOS(delta)
 
+func die() -> void:
+	freeze = true
+	OMT.on_item_broke.disconnect(heard_sound)
+	anim_player.play("die")
+
+# ↑ General Stuff ↑
+# --------------------------------------------------------------------------------------------------
+# ↓ Enable/Disable Stuff ↓
+
 func enable_me(sig: float = -1) -> void:
 	disabled = false
 	if disabled: process_mode = ProcessMode.PROCESS_MODE_DISABLED
@@ -74,12 +83,13 @@ func disable_me(sig: float = -1) -> void:
 	if disabled: process_mode = ProcessMode.PROCESS_MODE_DISABLED
 	else: process_mode = ProcessMode.PROCESS_MODE_INHERIT
 
-func die() -> void:
-	freeze = true
-	OMT.on_item_broke.disconnect(heard_sound)
-	anim_player.play("die")
+func enable_visiblity(sig: float = -1) -> void:
+	graphics.visible = true
 
-# ↑ General Stuff ↑
+func disable_visiblity(sig: float = -1) -> void:
+	graphics.visible = false
+
+# ↑ Enable/Disable Stuff ↑
 # --------------------------------------------------------------------------------------------------
 # ↓ Player Checking Stuff ↓
 

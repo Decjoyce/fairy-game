@@ -95,9 +95,6 @@ var _time_started_moving: float
 var _start_pos: Vector3
 var _end_pos: Vector3
 
-@export var dbg_move_helper_a: Node3D
-@export var dbg_move_helper_b: Node3D
-
 signal on_reached_destination
 
 func start_movement() -> void: ## probs should rename this to new movement
@@ -105,14 +102,9 @@ func start_movement() -> void: ## probs should rename this to new movement
 	#print("-----------------")
 	#print("Started_Movement")
 	
-	dbg_move_helper_a.global_position = ballybog.global_position
 	_start_pos = ballybog.global_position #grid_map.astar.get_closest_position_in_segment(ballybog.global_position)
 	_end_pos = grid_map.to_global(grid_map.map_to_local(current_path[0]).floor())
-	#prints(current_path.size(), "sp: ", _start_pos, ":: end_pos: ", _end_pos, ":: non-converted_pos:", current_path[0], current_destination)
-	#prints("no_converted:", current_path[0], ":: map_to_local:", grid_map.map_to_local(current_path[0]).floor(), ":: to_global", grid_map.to_global(grid_map.map_to_local(current_path[0]).floor()))
-	dbg_move_helper_b.global_position = _end_pos
-	#print(ballybog.global_position, grid_map.to_global(grid_map.map_to_local(current_path[0]).floor()))
-	
+
 	if check_if_needs_to_turn():
 		#print("turning")
 		start_turn()
@@ -138,6 +130,7 @@ func movement(delta: float) -> void:
 	
 	
 	if percentage_complete >= 1.0:
+		imprint_footstep()
 		complete_movement()
 
 func complete_movement() -> void:
@@ -195,6 +188,7 @@ func turning(delta: float) -> void:
 	ballybog.graphics.global_rotation.y = lerped_rot
 	
 	if percentage_complete >= 1.0:
+		imprint_footstep()
 		complete_turn()
 
 func complete_turn() -> void:
@@ -213,3 +207,16 @@ func lerp_me(start: Vector3, end: Vector3, percentage: float) -> Vector3:
 	var _percentage = clampf(percentage, 0.0, 1)
 	var start_to_finish = end - start
 	return (1-_percentage)*start + _percentage*end
+
+# ↑ Turning Stuff ↑
+# --------------------------------------------------------------------------------------------------
+# ↓ Footsteps Stuff ↓
+
+@export var footstep_decals: Array[Decal]
+var footstep_index: int
+
+func imprint_footstep() -> void:
+	footstep_decals[footstep_index].visible = true
+	footstep_decals[footstep_index].global_position = ballybog.global_position
+	footstep_decals[footstep_index].global_rotation = ballybog.graphics.global_rotation
+	footstep_index = wrapi(footstep_index+1, 0, footstep_decals.size())
