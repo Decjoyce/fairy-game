@@ -8,6 +8,8 @@ var player: PlayerTest
 const BB_WEIGHT: int = 10
 var freeze : bool
 
+@export var disabled: bool = true
+
 @export var my_body: CharacterBody3D
 @onready var movement: EnemyMovement = $EnemyMovement
 @onready var state_machine: StateMachine_Enemy = $StateMachine
@@ -52,10 +54,25 @@ func _ready() -> void:
 	if wander_starting_pos: wander_point = wander_starting_pos.global_position
 	else: wander_point = global_position
 	
+	if disabled:
+		disable_me()
+	else:
+		enable_me()
+	
 	OMT.on_item_broke.connect(heard_sound)
 
 func _process(delta: float) -> void:
 	check_for_player_in_LOS(delta)
+
+func enable_me(sig: float = -1) -> void:
+	disabled = false
+	if disabled: process_mode = ProcessMode.PROCESS_MODE_DISABLED
+	else: process_mode = ProcessMode.PROCESS_MODE_INHERIT
+
+func disable_me(sig: float = -1) -> void:
+	disabled = true
+	if disabled: process_mode = ProcessMode.PROCESS_MODE_DISABLED
+	else: process_mode = ProcessMode.PROCESS_MODE_INHERIT
 
 func die() -> void:
 	freeze = true

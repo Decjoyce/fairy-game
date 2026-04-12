@@ -206,6 +206,8 @@ data = {
 }
 script = ExtResource("29_211nq")
 walkable_items = Array[int]([0])
+debug_start_cell = Vector3i(-2, 2, -5)
+debug_end_cell = Vector3i(-1, 2, -10)
 metadata/_editor_floor_ = Vector3(0, 2, 0)
 
 [node name="GridMap" type="GridMap" parent="." unique_id=848183923]
@@ -234,7 +236,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, -5)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, -3)
 
 [node name="player_test" parent="." unique_id=725727541 instance=ExtResource("2_1r4jb")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 1, -2)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 1, 1)
 
 [node name="Ballybog" parent="." unique_id=1712475425 node_paths=PackedStringArray("patrol_points", "wander_starting_pos") instance=ExtResource("3_nfw6c")]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 1, 0, -7.9102936)
@@ -252,6 +254,15 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 1, -7)
 [node name="Area3D" type="Area3D" parent="Sneaked_past/PlayerAreaTrigger" unique_id=1756126255]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Sneaked_past/PlayerAreaTrigger/Area3D" unique_id=735975362]
+shape = SubResource("SphereShape3D_iw7gl")
+
+[node name="EnemyEnableTrig" parent="Sneaked_past" unique_id=1987765279 instance=ExtResource("5_cvgf4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 1, -1)
+trig_once = true
+
+[node name="Area3D" type="Area3D" parent="Sneaked_past/EnemyEnableTrig" unique_id=2004090868]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Sneaked_past/EnemyEnableTrig/Area3D" unique_id=218991855]
 shape = SubResource("SphereShape3D_iw7gl")
 
 [node name="Crouching_Part" type="Node3D" parent="." unique_id=268499608]
@@ -727,6 +738,9 @@ metadata/_custom_type_script = "uid://bul4myvyhnpjc"
 [connection signal="on_activated" from="Sneaked_past/PlayerAreaTrigger" to="Sneaked_past/Gate2" method="close_gate"]
 [connection signal="area_entered" from="Sneaked_past/PlayerAreaTrigger/Area3D" to="Sneaked_past/PlayerAreaTrigger" method="_player_entered"]
 [connection signal="area_exited" from="Sneaked_past/PlayerAreaTrigger/Area3D" to="Sneaked_past/PlayerAreaTrigger" method="_player_exited"]
+[connection signal="on_activated" from="Sneaked_past/EnemyEnableTrig" to="Ballybog" method="enable_me"]
+[connection signal="area_entered" from="Sneaked_past/EnemyEnableTrig/Area3D" to="Sneaked_past/EnemyEnableTrig" method="_player_entered"]
+[connection signal="area_exited" from="Sneaked_past/EnemyEnableTrig/Area3D" to="Sneaked_past/EnemyEnableTrig" method="_player_exited"]
 [connection signal="on_activated" from="Crouching_Part/PressurePlate" to="Crouching_Part/Gate" method="close_gate"]
 [connection signal="on_change" from="Puzzle/_env/Gate_Left/Lever" to="Puzzle/_env/Items/HiddenItem/hiddentgate/AnimatedObject" method="play_animation"]
 [connection signal="on_activated" from="Puzzle/_env/Gate_Left/PressurePlates/PressurePlateTR" to="Puzzle/_env/Gate_Left/PressurePlates/PressurePlateTR/indicator_visenabler" method="enable_obj"]
