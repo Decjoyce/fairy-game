@@ -55,46 +55,115 @@ material = SubResource("StandardMaterial3D_fsdha")
 radius = 0.05
 height = 0.1
 
-[node name="ItemNoPassZone" type="Area3D" unique_id=223074910]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_h8huj"]
+next_pass = ExtResource("4_h8huj")
+albedo_color = Color(0, 0, 0.67263305, 1)
+emission_enabled = true
+emission = Color(0, 0.5602506, 0.6371351, 1)
+rim_enabled = true
+rim_tint = 0.0
+
+[sub_resource type="SphereMesh" id="SphereMesh_oxqej"]
+material = SubResource("StandardMaterial3D_h8huj")
+radius = 0.025
+height = 0.05
+
+[node name="ItemNoPassZone" type="Area3D" unique_id=223074910 node_paths=PackedStringArray("itm_showers")]
 collision_layer = 0
 collision_mask = 3
 monitorable = false
 script = ExtResource("1_h8huj")
+itm_showers = [NodePath("Item_Showers/itm_s_1"), NodePath("Item_Showers/itm_s_2"), NodePath("Item_Showers/itm_s_3"), NodePath("Item_Showers/itm_s_4"), NodePath("Item_Showers/itm_s_5"), NodePath("Item_Showers/itm_s_6"), NodePath("Item_Showers/itm_s_7"), NodePath("Item_Showers/itm_s_8")]
 
-[node name="cairn_saving_head" type="Node3D" parent="." unique_id=726172596]
-transform = Transform3D(1, 0, 0, 0, 0.9659258, -0.25881904, 0, 0.25881904, 0.9659258, 0, 0, 0)
+[node name="Pivot" type="Node3D" parent="." unique_id=1679909858]
+transform = Transform3D(0.75, 0, 0, 0, 0.75, 0, 0, 0, 0.75, 0, 0, 0)
 
-[node name="SavingStationHead2" type="MeshInstance3D" parent="cairn_saving_head" unique_id=1973331236]
+[node name="cairn_saving_head" type="Node3D" parent="Pivot" unique_id=726172596]
+transform = Transform3D(1, 0, 0, 0, 0.99999994, 0, 0, 0, 0.99999994, 0, 0, 0)
+
+[node name="SavingStationHead2" type="MeshInstance3D" parent="Pivot/cairn_saving_head" unique_id=1973331236]
 transform = Transform3D(0.15, 0, 0, 0, 0.15, 0, 0, 0, 0.15, 0, 0, 0)
 material_override = ExtResource("1_fsdha")
 material_overlay = ExtResource("2_u0ex1")
 mesh = SubResource("ArrayMesh_l367m")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="cairn_saving_head/SavingStationHead2" unique_id=454755136]
+[node name="StaticBody3D" type="StaticBody3D" parent="Pivot/cairn_saving_head/SavingStationHead2" unique_id=454755136]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="cairn_saving_head/SavingStationHead2/StaticBody3D" unique_id=1095566302]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Pivot/cairn_saving_head/SavingStationHead2/StaticBody3D" unique_id=1095566302]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.026611192, 2.4910583, -0.06652833)
 shape = SubResource("BoxShape3D_bq752")
 
-[node name="Eyes" type="Node3D" parent="cairn_saving_head" unique_id=1325597951]
+[node name="Eyes" type="Node3D" parent="Pivot/cairn_saving_head" unique_id=1325597951]
 unique_name_in_owner = true
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.4, 0.3)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.4, 0.0026675463)
 visible = false
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="cairn_saving_head/Eyes" unique_id=1740140752]
-transform = Transform3D(-3.928388e-08, -1.1856962, -0.57157326, 1.18, -6.316296e-08, 4.5068633e-09, -3.3845197e-08, -0.8259234, 0.82055104, -0.102266476, -0.024914622, -0.059823945)
-mesh = SubResource("SphereMesh_fsdha")
-skeleton = NodePath("../..")
-
-[node name="MeshInstance3D2" type="MeshInstance3D" parent="cairn_saving_head/Eyes" unique_id=964615027]
-transform = Transform3D(-4.230297e-08, -1.1851195, 0.5721459, 1.18, -6.316296e-08, 0, 2.951096e-08, 0.8267508, 0.82015187, 0.12313053, -0.034264863, -0.055298522)
-mesh = SubResource("SphereMesh_fsdha")
-skeleton = NodePath("../..")
-
-[node name="OmniLight3D" type="OmniLight3D" parent="cairn_saving_head/Eyes" unique_id=2038594469]
+[node name="OmniLight3D" type="OmniLight3D" parent="Pivot/cairn_saving_head/Eyes" unique_id=2038594469]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.03239847, 0.1)
 light_color = Color(0, 0.3944329, 1, 1)
 omni_range = 1.67
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Pivot/cairn_saving_head/Eyes" unique_id=1740140752]
+transform = Transform3D(-3.928388e-08, -1.1856962, -0.57157326, 1.1799997, -6.316294e-08, 4.5068624e-09, -3.384519e-08, -0.82592326, 0.8205509, -0.102266476, -0.024914652, 0.23750848)
+mesh = SubResource("SphereMesh_fsdha")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Pivot/cairn_saving_head/Eyes" unique_id=964615027]
+transform = Transform3D(-4.230297e-08, -1.1851195, 0.5721459, 1.1799997, -6.316294e-08, 0, 2.9510957e-08, 0.8267507, 0.82015175, 0.12313053, -0.034264892, 0.2420339)
+mesh = SubResource("SphereMesh_fsdha")
+skeleton = NodePath("../..")
+
+[node name="facing_helper" type="Node3D" parent="Pivot" unique_id=471766865]
+
+[node name="Item_Showers" type="Node3D" parent="." unique_id=364805829]
+
+[node name="itm_s_1" type="Node3D" parent="Item_Showers" unique_id=1460790990]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Item_Showers/itm_s_1" unique_id=1797978017]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.22942013, 0)
+mesh = SubResource("SphereMesh_oxqej")
+
+[node name="itm_s_2" type="Node3D" parent="Item_Showers" unique_id=1502265913]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Item_Showers/itm_s_2" unique_id=1090172899]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.22942013, 0)
+mesh = SubResource("SphereMesh_oxqej")
+
+[node name="itm_s_3" type="Node3D" parent="Item_Showers" unique_id=1801181164]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Item_Showers/itm_s_3" unique_id=953832903]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.22942013, 0)
+mesh = SubResource("SphereMesh_oxqej")
+
+[node name="itm_s_4" type="Node3D" parent="Item_Showers" unique_id=2137079002]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Item_Showers/itm_s_4" unique_id=631545592]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.22942013, 0)
+mesh = SubResource("SphereMesh_oxqej")
+
+[node name="itm_s_5" type="Node3D" parent="Item_Showers" unique_id=1134370580]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Item_Showers/itm_s_5" unique_id=685971297]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.22942013, 0)
+mesh = SubResource("SphereMesh_oxqej")
+
+[node name="itm_s_6" type="Node3D" parent="Item_Showers" unique_id=124619037]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Item_Showers/itm_s_6" unique_id=1810746754]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.22942013, 0)
+mesh = SubResource("SphereMesh_oxqej")
+
+[node name="itm_s_7" type="Node3D" parent="Item_Showers" unique_id=576277939]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Item_Showers/itm_s_7" unique_id=1182696857]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.22942013, 0)
+mesh = SubResource("SphereMesh_oxqej")
+
+[node name="itm_s_8" type="Node3D" parent="Item_Showers" unique_id=320360920]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Item_Showers/itm_s_8" unique_id=403742770]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.22942013, 0)
+mesh = SubResource("SphereMesh_oxqej")
 
 [connection signal="area_entered" from="." to="." method="on_item_area_entered"]
 [connection signal="area_exited" from="." to="." method="on_item_area_exited"]
