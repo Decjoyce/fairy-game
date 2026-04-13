@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://ck1b6l8s7xnxi" path="res://scenes/interactions/_triggers/lever/lever.tscn" id="5_1lnmj"]
 [ext_resource type="PackedScene" uid="uid://csot2mi7746ll" path="res://scenes/interactions/_triggers/pressure_plate/pressure_plate.tscn" id="5_gq2py"]
 [ext_resource type="PackedScene" uid="uid://d2ict3hg28spx" path="res://scenes/_levels/_palettes/cairn/props/cairn_fake_wall.tscn" id="5_pdgyx"]
+[ext_resource type="PackedScene" uid="uid://dkx1fyyqx7cmp" path="res://scenes/interactions/_triggers/torch_sconce/torch_sconce_ceiling.tscn" id="5_yp11f"]
 [ext_resource type="Script" uid="uid://bicoc8ibhscjw" path="res://scenes/interactions/_receivers/enabler_disabler_v1/group_visibility_enabler.gd" id="6_3ucu1"]
 [ext_resource type="PackedScene" uid="uid://ue3520w5p7fo" path="res://scenes/_levels/_palettes/cairn/props/cairn_fake_doorway.tscn" id="6_33mfq"]
 [ext_resource type="PackedScene" uid="uid://4v23jnigirqc" path="res://scenes/interactions/_receivers/_logic/counter/Counter.tscn" id="6_eju3j"]
@@ -251,10 +252,7 @@ metadata/_editor_floor_ = Vector3(0, 0, 0)
 [node name="_lights" type="Node3D" parent="_env/_decor" unique_id=1344103282]
 
 [node name="TorchSconce_Lit" parent="_env/_decor/_lights" unique_id=1729385187 instance=ExtResource("13_c4s1r")]
-transform = Transform3D(0.9659258, 0, -0.25881904, 0, 1, 0, 0.25881904, 0, 0.9659258, -3, 2.1000001, 0.20000002)
-
-[node name="TorchSconce_Lit2" parent="_env/_decor/_lights" unique_id=18470100 instance=ExtResource("13_c4s1r")]
-transform = Transform3D(0.9659258, 0, -0.25881904, 0, 1, 0, 0.25881904, 0, 0.9659258, -3, 2.1000001, -3.8000002)
+transform = Transform3D(0.99999994, 0, 0, 0, 1, 0, 0, 0, 0.99999994, -3, 2.045, 0.21)
 
 [node name="TorchSconce_Lit4" parent="_env/_decor/_lights" unique_id=1008576657 instance=ExtResource("13_c4s1r")]
 transform = Transform3D(0.9659258, 0, -0.25881904, 0, 1, 0, 0.25881904, 0, 0.9659258, -6.883576, 2.1000001, -3.7251482)
@@ -263,22 +261,25 @@ transform = Transform3D(0.9659258, 0, -0.25881904, 0, 1, 0, 0.25881904, 0, 0.965
 transform = Transform3D(-0.96592593, 0, 0.25881916, 0, 1, 0, -0.25881916, 0, -0.96592593, -6.883576, 2.1000001, -2.3291874)
 
 [node name="TorchSconce_Lit3" parent="_env/_decor/_lights" unique_id=2095231742 instance=ExtResource("13_c4s1r")]
-transform = Transform3D(0.9659258, 0, -0.25881904, 0, 1, 0, 0.25881904, 0, 0.9659258, 0.19999993, 2.1716464, -7.6467614)
+transform = Transform3D(0.99999994, 0, 0, 0, 1, 0, 0, 0, 0.99999994, 0.19999993, 2.1716464, -7.787)
 
 [node name="TorchSconce_Lit6" parent="_env/_decor/_lights" unique_id=1112573980 instance=ExtResource("13_c4s1r")]
-transform = Transform3D(0.9659258, 0, -0.25881904, 0, 1, 0, 0.25881904, 0, 0.9659258, 0.19999993, 2.1716464, -7.6467614)
+transform = Transform3D(0.99999994, 0, 0, 0, 1, 0, 0, 0, 0.99999994, 0.19999993, 2.1716464, -7.787)
 
 [node name="TorchSconce_Unlit" parent="_env/_decor/_lights" unique_id=1431723012 instance=ExtResource("14_78v0c")]
-transform = Transform3D(0.9659258, 0, -0.25881904, 0, 1, 0, 0.25881904, 0, 0.9659258, 1, 2.1000001, 0.3)
+transform = Transform3D(0.99999994, 0, 0, 0, 1, 0, 0, 0, 0.99999994, 1, 2.1, 0.275)
 metadata/uid = "f141fd01-5540-4b8f-a8e0-26dc966727be"
 metadata/lock_uid = true
 metadata/date_generated = "2026-03-25T10:07:13"
 
 [node name="TorchSconce_Unlit2" parent="_env/_decor/_lights" unique_id=1975511268 instance=ExtResource("14_78v0c")]
-transform = Transform3D(-0.96592593, 0, 0.25881916, 0, 1, 0, -0.25881916, 0, -0.96592593, 1, 2.1000001, -2.4)
+transform = Transform3D(-1.0000001, 0, -8.7422784e-08, 0, 1, 0, 8.7422784e-08, 0, -1.0000001, 1, 2.1, -2.21)
 metadata/uid = "9b6c1b5f-3615-4b64-a15f-b8b6eb9b7f86"
 metadata/lock_uid = true
 metadata/date_generated = "2026-03-25T10:07:13"
+
+[node name="TorchSconce_Lit2" parent="_env/_decor/_lights" unique_id=1925507860 instance=ExtResource("5_yp11f")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 2.9, -3)
 
 [node name="roofthing" type="Node3D" parent="_env/_decor" unique_id=1439106267]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 3.2, -3)

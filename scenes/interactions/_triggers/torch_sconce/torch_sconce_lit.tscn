@@ -1,30 +1,27 @@
 [gd_scene format=3 uid="uid://xuo5buj0odhi"]
 
-[ext_resource type="Texture2D" uid="uid://bdv15pyviy4kf" path="res://scenes/interactions/interactables/items/all_items/torch/ScontSprite/ScontFrontSide.png" id="3_hldjy"]
-[ext_resource type="Texture2D" uid="uid://dblc3nb28nfp1" path="res://scenes/interactions/interactables/items/all_items/torch/ScontSprite/ScontSide.png" id="4_8gaph"]
+[ext_resource type="Material" uid="uid://cykgn4cpccw6q" path="res://assets/models/cairn/Props/MountedTorch/MountedTorch.tres" id="3_0h7rj"]
+[ext_resource type="ArrayMesh" uid="uid://bq3anitpbj6jj" path="res://assets/models/cairn/Props/MountedTorch/MountedTorch.obj" id="4_t016d"]
+[ext_resource type="PackedScene" uid="uid://gc2qo6ixywh3" path="res://scenes/decor/fire.tscn" id="5_u665x"]
 
 [node name="TorchSconce_Lit" type="Node3D" unique_id=1729385187]
 
 [node name="Lit_Sconce" type="Node3D" parent="." unique_id=1591104962]
 
-[node name="_g_front" type="Sprite3D" parent="Lit_Sconce" unique_id=776897349]
-transform = Transform3D(0.73, 0, 0, 0, 0.6321986, -0.365, 0, 0.365, 0.6321986, 0, 0, 0)
-layers = 2
-pixel_size = 0.0013
-shaded = true
-texture = ExtResource("3_hldjy")
-
-[node name="_g_side" type="Sprite3D" parent="Lit_Sconce" unique_id=958112046]
-transform = Transform3D(0, 0, 0.72999996, 0.36499998, 0.6321986, 0, -0.6321985, 0.365, 0, 0.0043800003, 0.0056897867, 0.0032849999)
-layers = 2
-pixel_size = 0.0013
-shaded = true
-texture = ExtResource("4_8gaph")
-
 [node name="TorchLight" type="OmniLight3D" parent="Lit_Sconce" unique_id=801500960]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.123654895, 0.2)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.013138853, 0.14283247)
 light_color = Color(0.7468442, 0.34661883, 0, 1)
 light_energy = 2.645
 light_size = 0.593
 distance_fade_shadow = 46.75
 omni_range = 3.0
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Lit_Sconce" unique_id=317317458]
+transform = Transform3D(-6.119594e-09, 0, -0.14, 0, 0.14, 0, 0.14, 0, -6.119594e-09, 0, -0.19999999, 0.018826813)
+material_override = ExtResource("3_0h7rj")
+mesh = ExtResource("4_t016d")
+
+[node name="Fire" parent="Lit_Sconce/MeshInstance3D" unique_id=531285147 instance=ExtResource("5_u665x")]
+transform = Transform3D(0.78, 0, 3.5527137e-15, 0, 0.54, 0, -3.5527137e-15, 0, 0.645, 0.88888896, 1.4869865, 0.12925352)
+modulate = Color(1.1017857, 0.62274027, 0.14369495, 1)
+pixel_size = 0.015

@@ -6,10 +6,13 @@
 [ext_resource type="Texture2D" uid="uid://d0mairuj2kbi" path="res://scenes/interactions/interactables/items/all_items/torch/ScontSprite/ScontSide_unlit.png" id="5_wn36w"]
 [ext_resource type="Script" uid="uid://cc36kknugth5b" path="res://scripts/saving/persistent_objs/po_itmreceiver.gd" id="6_4yjpm"]
 [ext_resource type="Texture2D" uid="uid://dvp8s5j4heyx7" path="res://scenes/interactions/interactables/items/all_items/torch/ScontSprite/ScontFrontSide_unlit.png" id="6_f7w26"]
+[ext_resource type="Material" uid="uid://cykgn4cpccw6q" path="res://assets/models/cairn/Props/MountedTorch/MountedTorch.tres" id="7_8tbth"]
+[ext_resource type="ArrayMesh" uid="uid://bq3anitpbj6jj" path="res://assets/models/cairn/Props/MountedTorch/MountedTorch.obj" id="8_wn36w"]
+[ext_resource type="PackedScene" uid="uid://gc2qo6ixywh3" path="res://scenes/decor/fire.tscn" id="9_f7w26"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_xy4ik"]
-radius = 0.166
-height = 0.67825
+radius = 0.15350685
+height = 0.3070137
 
 [node name="TorchSconce_Unlit" type="Node3D" unique_id=1729385187]
 script = ExtResource("1_4yjpm")
@@ -22,6 +25,7 @@ visible = false
 
 [node name="_g_front" type="Sprite3D" parent="Lit_Sconce" unique_id=776897349]
 transform = Transform3D(0.73, 0, 0, 0, 0.6321986, -0.365, 0, 0.365, 0.6321986, 0, 0, 0)
+visible = false
 layers = 2
 pixel_size = 0.0013
 shaded = true
@@ -29,23 +33,28 @@ texture = ExtResource("3_01ajo")
 
 [node name="_g_side" type="Sprite3D" parent="Lit_Sconce" unique_id=958112046]
 transform = Transform3D(0, 0, 0.72999996, 0.36499998, 0.6321986, 0, -0.6321985, 0.365, 0, 0.0043800003, 0.0056897867, 0.0032849999)
+visible = false
 layers = 2
 pixel_size = 0.0013
 shaded = true
 texture = ExtResource("4_8tbth")
 
 [node name="TorchLight" type="OmniLight3D" parent="Lit_Sconce" unique_id=801500960]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.123654895, 0.2)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.011330001, 0.14420725)
 light_color = Color(0.7468442, 0.34661883, 0, 1)
 light_energy = 2.645
 light_size = 0.593
 distance_fade_shadow = 46.75
 omni_range = 3.0
 
+[node name="Fire" parent="Lit_Sconce" unique_id=531285147 instance=ExtResource("9_f7w26")]
+transform = Transform3D(-5.9666028e-09, 0, -0.0903, 0, 0.1043, 0, 0.1365, 0, -3.9471373e-09, -0.018095499, 0.0061363727, 0.14327127)
+
 [node name="Unlit_Sconce" type="Node3D" parent="." unique_id=140256026]
 
 [node name="_g_front" type="Sprite3D" parent="Unlit_Sconce" unique_id=1753034840]
 transform = Transform3D(0.73, 0, 0, 0, 0.6321986, -0.365, 0, 0.365, 0.6321986, 0, 0, 0)
+visible = false
 layers = 2
 pixel_size = 0.0013
 shaded = true
@@ -53,6 +62,7 @@ texture = ExtResource("5_wn36w")
 
 [node name="_g_side" type="Sprite3D" parent="Unlit_Sconce" unique_id=927835500]
 transform = Transform3D(0, 0, 0.72999996, 0.36499998, 0.6321986, 0, -0.6321985, 0.365, 0, 0.0043800003, 0.0056897867, 0.0032849999)
+visible = false
 layers = 2
 pixel_size = 0.0013
 shaded = true
@@ -63,9 +73,14 @@ monitoring = false
 
 [node name="_col" type="CollisionShape3D" parent="Trigger" unique_id=201459598]
 unique_name_in_owner = true
-transform = Transform3D(1, 0, 0, 0, 0.8660254, -0.5, 0, 0.5, 0.8660254, 0, -0.03388324, -0.019562498)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.013073653, 0.13964444)
 shape = SubResource("CapsuleShape3D_xy4ik")
 
 [node name="PO_ItmReceiver" type="Node" parent="." unique_id=815735927 groups=["PO"]]
 script = ExtResource("6_4yjpm")
 metadata/_custom_type_script = "uid://cc36kknugth5b"
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=2105665120]
+transform = Transform3D(-6.119594e-09, 0, -0.14, 0, 0.14, 0, 0.14, 0, -6.119594e-09, 0, -0.19999999, 0.018826813)
+material_override = ExtResource("7_8tbth")
+mesh = ExtResource("8_wn36w")

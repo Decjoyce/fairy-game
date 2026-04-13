@@ -1,0 +1,29 @@
+[gd_scene format=3 uid="uid://dkx1fyyqx7cmp"]
+
+[ext_resource type="Material" uid="uid://cykgn4cpccw6q" path="res://assets/models/cairn/Props/MountedTorch/MountedTorch.tres" id="1_wj5xi"]
+[ext_resource type="ArrayMesh" uid="uid://nwtrg4drujy3" path="res://assets/models/cairn/Props/MountedTorch/CeilingTorch.obj" id="2_wj5xi"]
+[ext_resource type="PackedScene" uid="uid://gc2qo6ixywh3" path="res://scenes/decor/fire.tscn" id="3_l3p50"]
+
+[node name="TorchSconce_Lit" type="Node3D" unique_id=1729385187]
+
+[node name="Lit_Sconce" type="Node3D" parent="." unique_id=1591104962]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5447761, 0)
+
+[node name="TorchLight" type="OmniLight3D" parent="Lit_Sconce" unique_id=801500960]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.09950936, 0.010445267)
+light_color = Color(0.7468442, 0.34661883, 0, 1)
+light_energy = 2.645
+light_size = 0.593
+distance_fade_shadow = 46.75
+omni_range = 3.0
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Lit_Sconce" unique_id=317317458]
+transform = Transform3D(-6.119594e-09, 0, -0.14, 0, 0.14, 0, 0.14, 0, -6.119594e-09, 0.023733735, 0, 0)
+material_override = ExtResource("1_wj5xi")
+cast_shadow = 0
+mesh = ExtResource("2_wj5xi")
+
+[node name="Fire" parent="Lit_Sconce/MeshInstance3D" unique_id=531285147 instance=ExtResource("3_l3p50")]
+transform = Transform3D(0.78, 0, 3.5527137e-15, 0, 0.54, 0, -3.5527137e-15, 0, 0.645, 7.018845e-09, 0.9362365, 0.16057247)
+modulate = Color(1.1017857, 0.62274027, 0.14369495, 1)
+pixel_size = 0.015
