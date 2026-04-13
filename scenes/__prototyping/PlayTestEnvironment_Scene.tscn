@@ -2,6 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://dde66nwtb1gv1" path="res://scenes/interactions/_triggers/item_receiver/torch_scont/torch_scont.tscn" id="1_vor1c"]
 [ext_resource type="PackedScene" uid="uid://dt13fur6twjep" path="res://scenes/interactions/_receivers/gate/gate.tscn" id="2_0riuu"]
+[ext_resource type="PackedScene" uid="uid://cs5760b18r0jr" path="res://scenes/_levels/_palettes/cairn/props/cairn_ceiling_torch.tscn" id="2_x7jfs"]
 [ext_resource type="PackedScene" uid="uid://qu5rxgbydmet" path="res://scenes/interactions/_triggers/button/button.tscn" id="3_5dw6y"]
 [ext_resource type="PackedScene" uid="uid://dfe565flkjwxt" path="res://scenes/interactions/interactables/items/all_items/test_grabbable_item.tscn" id="4_vunli"]
 [ext_resource type="PackedScene" uid="uid://dqh8lru4mt2ap" path="res://scenes/interactions/interactables/items/all_items/breakables/item_urn.tscn" id="5_vfr11"]
@@ -45,6 +46,7 @@
 [ext_resource type="AudioStream" uid="uid://bscs1lnw8crcv" path="res://assets/audio/sfx/environment/ambient/Ambience, Underground, Cave, Magic, Dangling Metal SND46572.wav" id="43_t1xg4"]
 [ext_resource type="PackedScene" uid="uid://pxrjbcn4d7uc" path="res://scenes/_levels/_palettes/cairn/props/cairn_saving_station.tscn" id="44_t1xg4"]
 [ext_resource type="PackedScene" uid="uid://ca2lcfvhjwslv" path="res://scenes/_levels/_palettes/cairn/props/cairn_saving_head.tscn" id="45_n5rhx"]
+[ext_resource type="PackedScene" uid="uid://c31ds8w8eyjvy" path="res://scenes/_levels/_palettes/cairn/props/cairn_mounted_torch.tscn" id="47_b3yur"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_vor1c"]
 sky_horizon_color = Color(0, 0.37292683, 0.8185948, 1)
@@ -388,10 +390,13 @@ transform = Transform3D(-0.06402715, 0, 0.99794817, 0, 1, 0, -0.99794817, 0, -0.
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.634439, 1.2788017, -11.524515)
 
 [node name="TorchScont3" parent="Torches" unique_id=1220965294 instance=ExtResource("1_vor1c")]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -0.06010425, 1.2788017, -13.73769)
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -0.19010426, 1.1188017, -13.44769)
 
 [node name="TorchScont4" parent="Torches" unique_id=818549058 instance=ExtResource("1_vor1c")]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 5.2970614, 1.2788017, -13.770056)
+
+[node name="cairn_ceiling_torch" parent="Torches" unique_id=1287236420 instance=ExtResource("2_x7jfs")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.6927879, 1.3, -13.874554)
 
 [node name="First Gate&Button" type="Node3D" parent="." unique_id=1968183095]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
@@ -1389,6 +1394,9 @@ transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 4.93
 
 [node name="cairn_saving_head2" parent="." unique_id=1211185225 instance=ExtResource("45_n5rhx")]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 4.94, 0.74, -16.9)
+
+[node name="cairn_MountedTorch" parent="." unique_id=563173417 instance=ExtResource("47_b3yur")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.26, 1.3899999, -15.859999)
 
 [connection signal="on_activated" from="First Gate&Button/First_Button" to="First Gate&Button/First_Gate" method="open_gate"]
 [connection signal="on_change" from="Weighted_Gate_Puzzle/Tutorial_Weight_Puzzle" to="Weighted_Gate_Puzzle/Weight_Puzzle_Gate" method="open_gate"]
