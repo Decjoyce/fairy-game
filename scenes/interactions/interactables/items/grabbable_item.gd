@@ -9,7 +9,7 @@ var is_grabbed: bool = false
 @export_group("Item Type")
 @export var item_type: ItemType
 @export var display_name: String
-@export var keywords: String ## Separate keywords with ,
+@export var keywords: String ## Separate keywords with ;
 
 @export_group("Weight")
 enum item_weight_types {WEIGHTLESS, LIGHT, MEDIUM, HEAVY}
