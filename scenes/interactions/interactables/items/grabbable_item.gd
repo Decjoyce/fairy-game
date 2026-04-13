@@ -22,6 +22,8 @@ enum item_weight_types {WEIGHTLESS, LIGHT, MEDIUM, HEAVY}
 @export_group("Grabbing")
 @export var grabbed_offset: Vector2 = Vector2.ZERO
 @export var grabbed_rotation: float = 0.0
+@export var use_alt_flipping: bool = false
+@export var flip_graphics_with_hand: bool = false
 @export var no_screen_restrictions: bool = false
 
 @export_group("Throwing")
@@ -85,7 +87,9 @@ func begin_interact(sig: float = -1, hand: PlayerHand = null) -> void:
 		if untouched_graphics: untouched_graphics.visible = false
 		idle_graphics.visible = false
 		grabbed_graphics.visible = true
-		if grabbed_graphics is Sprite3D: grabbed_graphics.render_priority = 1
+		if grabbed_graphics is Sprite3D:
+			if flip_graphics_with_hand:
+				grabbed_graphics.flip_v = hand.hand_type == 1
 	has_been_picked_up = true
 	rb.freeze = true
 	rb.linear_velocity = Vector3.ZERO

@@ -17,6 +17,7 @@ var current_grab_prompt: String
 var current_hand_prompt: String
 
 
+
 func handle_input(_event: InputEvent) -> void:
 	pass
 
@@ -88,7 +89,9 @@ func enter(previous_state_path: String, data := {}) -> void:
 	hand_controller.anim_override_current_animation("a_hand_pickup", true)
 	
 	var item_rot_z: float = grabbed_item.grabbed_rotation
-	if hand_controller.hand_type == 0: item_rot_z *= -1
+	if hand_controller.hand_type == 0: 
+		if grabbed_item.use_alt_flipping: item_rot_z *= 0.25
+		else: item_rot_z *= -1
 	
 	#var new_rot: Quaternion = Quaternion.from_euler(Vector3(0, player.global_rotation.y, item_rot_z))
 	var new_rot: Vector3 = Vector3(0.0, player.global_rotation.y, item_rot_z)
