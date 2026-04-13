@@ -15,13 +15,15 @@ var open_pos: float = 1.8
 @onready var graphics: Node3D = $gate
 @onready var player_col: CollisionShape3D = $PlayerCollision/CollisionShape3D
 @export var height_to_toggle_player_barrier: float = 0.7
-@onready var under_checker: Area3D = $gate/UnderChecker
+@export var stay_open: bool
+@export_group("IGNORE")
+@export var tp_checker_col: CollisionShape3D
 @export var out_pos_back: Node3D
 @export var out_pos_front: Node3D
+var current_out_pos: Vector3
 
 var things_under: Array[Node3D]
 
-@export var stay_open: bool
 
 var cur_value: float
 var last_value: float
@@ -79,6 +81,7 @@ func _process(delta: float) -> void:
 	
 	if !things_under and player_col_should_enabled:
 		player_col.set_deferred("disabled",false)
+		tp_checker_col.set_deferred("disabled",false)
 		player_col_should_enabled = false
 	
 	if is_opening:
@@ -102,47 +105,57 @@ func check_if_disable_col(use_cur: bool = false) -> void:
 	if use_cur:
 		if cur_value >= height_to_toggle_player_barrier:
 			player_col.set_deferred("disabled",true)
+			tp_checker_col.set_deferred("disabled",true)
 			player_col_should_enabled = false
 			stop_player = false
 		else:
 			stop_player = true
 			if things_under: 
 				player_col.set_deferred("disabled",true)
+				tp_checker_col.set_deferred("disabled",true)
 				player_col_should_enabled = true
 			else: 
 				player_col.set_deferred("disabled",false)
+				tp_checker_col.set_deferred("disabled",false)
 	else:
 		if _end_position >= open_pos + height_to_toggle_player_barrier:
 			player_col.set_deferred("disabled",true)
+			tp_checker_col.set_deferred("disabled",true)
 			player_col_should_enabled = false
 			stop_player = false
 		else:
 			stop_player = true
 			if things_under: 
 				player_col.set_deferred("disabled",true)
+				tp_checker_col.set_deferred("disabled",true)
 				player_col_should_enabled = true
 			else: 
 				stop_player = true
 				player_col.set_deferred("disabled",false)
+				tp_checker_col.set_deferred("disabled",false)
 
-func _on_area_entered_under_checker_back(area: Area3D) -> void:
-	if  area.get_parent() is Entity: # removed:: = area.get_parent() is Grabbable_Item or
-		things_under.append(area.get_parent())
-		var f = area.get_parent()
-		if f is PlayerTest:
-			f.movement.teleport_player_by_coords(out_pos_back.global_position)
 
-func _on_area_entered_under_checker_front(area: Area3D) -> void:
-	if  area.get_parent() is Entity: # removed:: = area.get_parent() is Grabbable_Item or
-		things_under.append(area.get_parent())
-		var f = area.get_parent()
-		if f is PlayerTest:
-			f.movement.teleport_player_by_coords(out_pos_front.global_position)
+
+func tp_checker_entered(area: Area3D) -> void:
+	var f = area.get_parent()
+	if f is PlayerTest:
+		f.movement.teleport_player_by_coords(current_out_pos)
+
+func out_pos_area_entered_back(area: Area3D) -> void:
+	if area.get_parent() is PlayerTest:
+		current_out_pos = out_pos_back.global_position
+
+func out_pos_area_entered_front(area: Area3D) -> void:
+	if area.get_parent() is PlayerTest:
+		current_out_pos = out_pos_front.global_position
 
 func _on_area_exited_under_checker(area: Area3D) -> void:
 	if things_under.has(area.get_parent()):
 		things_under.erase(area.get_parent())
 
+func _on_area_entered_under_checker_player(area: Area3D) -> void:
+	if  area.get_parent() is Entity: # removed:: = area.get_parent() is Grabbable_Item or
+		things_under.append(area.get_parent())
 
 func _on_body_entered_under_checker(body: Node3D) -> void:
 	if body is Grabbable_Item or body is Entity:

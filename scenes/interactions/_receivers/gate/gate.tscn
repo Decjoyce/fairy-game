@@ -45,11 +45,18 @@ shadow_mesh = SubResource("ArrayMesh_cw6yt")
 size = Vector3(2, 0.5, 0.03)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_rophg"]
-size = Vector3(2, 0.2, 0.2)
+size = Vector3(2, 0.5, 0.05)
 
-[node name="Gate" type="Node3D" unique_id=2077487765 node_paths=PackedStringArray("out_pos_back", "out_pos_front") groups=["debug_PickableObjects"]]
+[sub_resource type="SphereShape3D" id="SphereShape3D_rophg"]
+radius = 0.25
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ycxvs"]
+size = Vector3(2, 2, 0.2)
+
+[node name="Gate" type="Node3D" unique_id=2077487765 node_paths=PackedStringArray("tp_checker_col", "out_pos_back", "out_pos_front") groups=["debug_PickableObjects"]]
 script = ExtResource("1_cm4qh")
 height_to_toggle_player_barrier = 0.51
+tp_checker_col = NodePath("TPChecker_player/CollisionShape3D")
 out_pos_back = NodePath("out_pos_back")
 out_pos_front = NodePath("out_pos_front")
 metadata/_custom_type_script = "uid://42c4j0jtwejr"
@@ -83,26 +90,15 @@ monitorable = false
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.050000012, 0)
 shape = SubResource("BoxShape3D_wx5q6")
 
-[node name="UnderChecker_player_back" type="Area3D" parent="gate" unique_id=906156806]
+[node name="UnderChecker_player" type="Area3D" parent="gate" unique_id=1292407627]
 physics_interpolation_mode = 1
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.2, 0)
 collision_layer = 0
 collision_mask = 2
 monitorable = false
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="gate/UnderChecker_player_back" unique_id=600236291]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.099999994, -0.1)
-shape = SubResource("BoxShape3D_rophg")
-
-[node name="UnderChecker_player_front" type="Area3D" parent="gate" unique_id=1973014668]
-physics_interpolation_mode = 1
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.2, 0.2)
-collision_layer = 0
-collision_mask = 2
-monitorable = false
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="gate/UnderChecker_player_front" unique_id=1780811518]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.1, -0.1)
+[node name="CollisionShape3D" type="CollisionShape3D" parent="gate/UnderChecker_player" unique_id=1344037531]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.050000012, 0)
 shape = SubResource("BoxShape3D_rophg")
 
 [node name="PlayerCollision" type="StaticBody3D" parent="." unique_id=670546705]
@@ -124,12 +120,33 @@ stream = ExtResource("4_rophg")
 [node name="out_pos_back" type="Node3D" parent="." unique_id=2137923254]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -1)
 
+[node name="Area3D" type="Area3D" parent="out_pos_back" unique_id=908202577]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="out_pos_back/Area3D" unique_id=2078576496]
+shape = SubResource("SphereShape3D_rophg")
+
 [node name="out_pos_front" type="Node3D" parent="." unique_id=1301618955]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 1)
 
+[node name="Area3D" type="Area3D" parent="out_pos_front" unique_id=1045673248]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="out_pos_front/Area3D" unique_id=79661122]
+shape = SubResource("SphereShape3D_rophg")
+
+[node name="TPChecker_player" type="Area3D" parent="." unique_id=906156806]
+physics_interpolation_mode = 1
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+collision_layer = 0
+collision_mask = 2
+monitorable = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="TPChecker_player" unique_id=600236291]
+shape = SubResource("BoxShape3D_ycxvs")
+
 [connection signal="body_entered" from="gate/UnderChecker_items" to="." method="_on_body_entered_under_checker"]
 [connection signal="body_exited" from="gate/UnderChecker_items" to="." method="_on_body_exited_under_checker"]
-[connection signal="area_entered" from="gate/UnderChecker_player_back" to="." method="_on_area_entered_under_checker_back"]
-[connection signal="area_exited" from="gate/UnderChecker_player_back" to="." method="_on_area_exited_under_checker"]
-[connection signal="area_entered" from="gate/UnderChecker_player_front" to="." method="_on_area_entered_under_checker_front"]
-[connection signal="area_exited" from="gate/UnderChecker_player_front" to="." method="_on_area_exited_under_checker"]
+[connection signal="area_entered" from="gate/UnderChecker_player" to="." method="_on_area_entered_under_checker_back"]
+[connection signal="area_exited" from="gate/UnderChecker_player" to="." method="_on_area_exited_under_checker"]
+[connection signal="area_entered" from="out_pos_back/Area3D" to="." method="out_pos_area_entered_back"]
+[connection signal="area_entered" from="out_pos_front/Area3D" to="." method="out_pos_area_entered_front"]
+[connection signal="area_entered" from="TPChecker_player" to="." method="tp_checker_entered"]
