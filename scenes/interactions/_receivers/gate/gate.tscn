@@ -42,11 +42,16 @@ blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_cw6yt")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_wx5q6"]
-size = Vector3(2, 0.4, 0.03)
+size = Vector3(2, 0.5, 0.03)
 
-[node name="Gate" type="Node3D" unique_id=2077487765 groups=["debug_PickableObjects"]]
+[sub_resource type="BoxShape3D" id="BoxShape3D_rophg"]
+size = Vector3(2, 0.2, 0.2)
+
+[node name="Gate" type="Node3D" unique_id=2077487765 node_paths=PackedStringArray("out_pos_back", "out_pos_front") groups=["debug_PickableObjects"]]
 script = ExtResource("1_cm4qh")
 height_to_toggle_player_barrier = 0.51
+out_pos_back = NodePath("out_pos_back")
+out_pos_front = NodePath("out_pos_front")
 metadata/_custom_type_script = "uid://42c4j0jtwejr"
 
 [node name="gate" type="StaticBody3D" parent="." unique_id=316557696]
@@ -54,7 +59,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="gate" unique_id=340802356]
 shape = SubResource("BoxShape3D_i1hti")
-debug_color = Color(0.7263446, 0.47620404, 1.92523e-07, 1)
+debug_color = Color(13.972358, 9.491839, 0, 1)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="gate" unique_id=517457797]
 transform = Transform3D(0.135, 0, 0, 0, 0.135, 0, 0, 0, 0.135, 0, -1, 0)
@@ -67,13 +72,38 @@ billboard = 1
 text = "GATE"
 font_size = 67
 
-[node name="UnderChecker" type="Area3D" parent="gate" unique_id=379725726]
+[node name="UnderChecker_items" type="Area3D" parent="gate" unique_id=379725726]
+physics_interpolation_mode = 1
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.2, 0)
 collision_layer = 0
 collision_mask = 2
+monitorable = false
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="gate/UnderChecker" unique_id=1495217223]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="gate/UnderChecker_items" unique_id=1495217223]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.050000012, 0)
 shape = SubResource("BoxShape3D_wx5q6")
+
+[node name="UnderChecker_player_back" type="Area3D" parent="gate" unique_id=906156806]
+physics_interpolation_mode = 1
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.2, 0)
+collision_layer = 0
+collision_mask = 2
+monitorable = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="gate/UnderChecker_player_back" unique_id=600236291]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.099999994, -0.1)
+shape = SubResource("BoxShape3D_rophg")
+
+[node name="UnderChecker_player_front" type="Area3D" parent="gate" unique_id=1973014668]
+physics_interpolation_mode = 1
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.2, 0.2)
+collision_layer = 0
+collision_mask = 2
+monitorable = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="gate/UnderChecker_player_front" unique_id=1780811518]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.1, -0.1)
+shape = SubResource("BoxShape3D_rophg")
 
 [node name="PlayerCollision" type="StaticBody3D" parent="." unique_id=670546705]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
@@ -82,7 +112,7 @@ collision_mask = 0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="PlayerCollision" unique_id=1797764377]
 shape = SubResource("BoxShape3D_i1hti")
-debug_color = Color(0.7263446, 0.47620404, 1.92523e-07, 1)
+debug_color = Color(13.972358, 9.491839, 0, 1)
 
 [node name="PO_Gate" type="Node" parent="." unique_id=724632479 groups=["PO"]]
 script = ExtResource("3_oueqo")
@@ -91,7 +121,15 @@ metadata/_custom_type_script = "uid://3ihhc0me4bjf"
 [node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="." unique_id=746212478]
 stream = ExtResource("4_rophg")
 
-[connection signal="area_entered" from="gate/UnderChecker" to="." method="_on_area_entered_under_checker"]
-[connection signal="area_exited" from="gate/UnderChecker" to="." method="_on_area_exited_under_checker"]
-[connection signal="body_entered" from="gate/UnderChecker" to="." method="_on_body_entered_under_checker"]
-[connection signal="body_exited" from="gate/UnderChecker" to="." method="_on_body_exited_under_checker"]
+[node name="out_pos_back" type="Node3D" parent="." unique_id=2137923254]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -1)
+
+[node name="out_pos_front" type="Node3D" parent="." unique_id=1301618955]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 1)
+
+[connection signal="body_entered" from="gate/UnderChecker_items" to="." method="_on_body_entered_under_checker"]
+[connection signal="body_exited" from="gate/UnderChecker_items" to="." method="_on_body_exited_under_checker"]
+[connection signal="area_entered" from="gate/UnderChecker_player_back" to="." method="_on_area_entered_under_checker_back"]
+[connection signal="area_exited" from="gate/UnderChecker_player_back" to="." method="_on_area_exited_under_checker"]
+[connection signal="area_entered" from="gate/UnderChecker_player_front" to="." method="_on_area_entered_under_checker_front"]
+[connection signal="area_exited" from="gate/UnderChecker_player_front" to="." method="_on_area_exited_under_checker"]

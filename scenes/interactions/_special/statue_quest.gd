@@ -23,7 +23,7 @@ func insert_piece(num_received: int, item_received: Grabbable_Item, emit_sigs: b
 	
 	if emit_sigs:
 		on_stage_completed.emit(current_stage)
-		on_stage_completed_sig.emit(float(current_stage/stages))
+		on_stage_completed_sig.emit(float(current_stage)/float(stages))
 	
 	if current_stage != 3: return
 	quest_completed()

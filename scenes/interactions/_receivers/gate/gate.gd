@@ -16,6 +16,8 @@ var open_pos: float = 1.8
 @onready var player_col: CollisionShape3D = $PlayerCollision/CollisionShape3D
 @export var height_to_toggle_player_barrier: float = 0.7
 @onready var under_checker: Area3D = $gate/UnderChecker
+@export var out_pos_back: Node3D
+@export var out_pos_front: Node3D
 
 var things_under: Array[Node3D]
 
@@ -28,6 +30,9 @@ var last_value: float
 @export var override_signal_range: bool = false
 @export_range(0, 0.9, 0.01) var ovr_signal_min: float = 0
 @export_range(0, 1.0, 0.01) var ovr_signal_max: float = 1.0
+
+var player_col_should_enabled: bool
+var stop_player: bool
 
 func open_gate(amount: float) -> void:
 	if stay_open and cur_value >= 1: return
@@ -44,10 +49,7 @@ func open_gate(amount: float) -> void:
 	cur_value = amount
 	_end_position = 1 + (open_pos * amount)
 	
-	if cur_value >= height_to_toggle_player_barrier:
-		player_col.set_deferred("disabled",true)
-	else:
-		player_col.set_deferred("disabled",false)
+	check_if_disable_col(true)
 
 func fully_open_gate(sig: float = -1) -> void:
 	time_since_start = 0
@@ -74,6 +76,11 @@ func toggle_gate(sig: float = -1) -> void:
 	else: fully_open_gate()
 
 func _process(delta: float) -> void:
+	
+	if !things_under and player_col_should_enabled:
+		player_col.set_deferred("disabled",false)
+		player_col_should_enabled = false
+	
 	if is_opening:
 		if (things_under and cur_value <= last_value): return
 		#print(time_since_start)
@@ -95,17 +102,42 @@ func check_if_disable_col(use_cur: bool = false) -> void:
 	if use_cur:
 		if cur_value >= height_to_toggle_player_barrier:
 			player_col.set_deferred("disabled",true)
+			player_col_should_enabled = false
+			stop_player = false
 		else:
-			player_col.set_deferred("disabled",false)
+			stop_player = true
+			if things_under: 
+				player_col.set_deferred("disabled",true)
+				player_col_should_enabled = true
+			else: 
+				player_col.set_deferred("disabled",false)
 	else:
 		if _end_position >= open_pos + height_to_toggle_player_barrier:
 			player_col.set_deferred("disabled",true)
+			player_col_should_enabled = false
+			stop_player = false
 		else:
-			player_col.set_deferred("disabled",false)
+			stop_player = true
+			if things_under: 
+				player_col.set_deferred("disabled",true)
+				player_col_should_enabled = true
+			else: 
+				stop_player = true
+				player_col.set_deferred("disabled",false)
 
-func _on_area_entered_under_checker(area: Area3D) -> void:
+func _on_area_entered_under_checker_back(area: Area3D) -> void:
 	if  area.get_parent() is Entity: # removed:: = area.get_parent() is Grabbable_Item or
 		things_under.append(area.get_parent())
+		var f = area.get_parent()
+		if f is PlayerTest:
+			f.movement.teleport_player_by_coords(out_pos_back.global_position)
+
+func _on_area_entered_under_checker_front(area: Area3D) -> void:
+	if  area.get_parent() is Entity: # removed:: = area.get_parent() is Grabbable_Item or
+		things_under.append(area.get_parent())
+		var f = area.get_parent()
+		if f is PlayerTest:
+			f.movement.teleport_player_by_coords(out_pos_front.global_position)
 
 func _on_area_exited_under_checker(area: Area3D) -> void:
 	if things_under.has(area.get_parent()):

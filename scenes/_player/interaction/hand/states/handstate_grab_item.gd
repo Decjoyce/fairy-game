@@ -135,6 +135,8 @@ var item_at_edge_of_screen: bool
 
 var _space_state: PhysicsDirectSpaceState3D
 
+var is_against_wall: bool
+
 func set_grab_position() -> void:
 	var _grab_pos: Vector2
 	if is_charging:  _grab_pos = Vector2(grabbed_item.throwing_offset.x * hand_controller.hand_type_rotation_mult, grabbed_item.throwing_offset.y)
@@ -150,8 +152,9 @@ func set_grab_position() -> void:
 	
 	if !result or !result.collider:
 		grab_position = end
+		is_against_wall = false
 	else:
-		#print(result.collider)
+		is_against_wall = true
 		grab_position = result.position + (result.normal * 0.1)
 
 func grabbing() -> void:
@@ -258,7 +261,7 @@ func charging(_delta: float) -> void:
 
 func end_charge() -> void:
 	hand_controller.anim_override_current_animation("a_hand_grab_item_charge", true)
-	if charge_amount < 0.1: grabbed_item.end_interact()
+	if charge_amount < 0.1 or is_against_wall: grabbed_item.end_interact()
 	else: 
 		if !_testing_throw_alt:
 			grabbed_item.throw(charge_amount)
