@@ -21,6 +21,8 @@ func _physics_process(delta: float) -> void:
 	if activated:
 		facing_helper.look_at(items_in_zone.back().global_position, Vector3.UP, true)
 		head.rotation = lerp(head.rotation, facing_helper.rotation, 0.7 * delta)
+		head.rotation_degrees.x = clampf(head.rotation_degrees.x, -10, 40)
+		head.rotation_degrees.y = clampf(head.rotation_degrees.y, -40, 40)
 	else:
 		head.rotation = lerp(head.rotation, Vector3.ZERO, 0.0001 * delta)
 
