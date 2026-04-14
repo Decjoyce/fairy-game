@@ -1,0 +1,121 @@
+[gd_scene format=3 uid="uid://ccuc6i6bx45dv"]
+
+[ext_resource type="PackedScene" uid="uid://d2pk1l2expq4i" path="res://scenes/_levels/_palettes/__dev/source/open/dev_open_middle_a.tscn" id="1_0gra3"]
+[ext_resource type="PackedScene" uid="uid://6bfa5eai5wft" path="res://scenes/_levels/_palettes/__dev/props/dev_floor_guidemid.tscn" id="2_74mei"]
+[ext_resource type="Script" uid="uid://bsg4edaef8ewn" path="res://scripts/newmovingtesting/new_movement_tester.gd" id="3_74mei"]
+[ext_resource type="PackedScene" uid="uid://dsjvpsev5l40" path="res://scenes/_player/_player_test_new.tscn" id="4_3tp1q"]
+
+[sub_resource type="Environment" id="Environment_3tp1q"]
+background_mode = 1
+background_color = Color(0.53224236, 0.53224236, 0.53224236, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_sfeat"]
+shading_mode = 0
+specular_mode = 1
+
+[sub_resource type="SphereMesh" id="SphereMesh_74mei"]
+material = SubResource("StandardMaterial3D_sfeat")
+radius = 0.3
+height = 0.3
+
+[sub_resource type="Curve" id="Curve_74mei"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.55617976, 0.73520046), 0.0, 0.0, 0, 0, Vector2(1, 0.4317844), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="Curve" id="Curve_3tp1q"]
+_data = [Vector2(0, 0.47040093), 0.0, 0.0, 0, 0, Vector2(1, 0.08423507), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[node name="PlaygroundMovement" type="Node3D" unique_id=784499510]
+
+[node name="environment" type="Node" parent="." unique_id=1130697017]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="environment" unique_id=757438621]
+environment = SubResource("Environment_3tp1q")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="environment" unique_id=1799218564]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 2, 3)
+light_energy = 1.28
+sky_mode = 1
+
+[node name="_decor" type="Node3D" parent="." unique_id=1279515144]
+
+[node name="_tiles" type="Node3D" parent="_decor" unique_id=892111017]
+
+[node name="_floor" type="Node3D" parent="_decor/_tiles" unique_id=1924917994]
+
+[node name="_dev_open_middle_a" parent="_decor/_tiles/_floor" unique_id=721803465 instance=ExtResource("1_0gra3")]
+
+[node name="_dev_open_middle_a2" parent="_decor/_tiles/_floor" unique_id=1010014662 instance=ExtResource("1_0gra3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2)
+
+[node name="_dev_open_middle_a3" parent="_decor/_tiles/_floor" unique_id=639231303 instance=ExtResource("1_0gra3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 4)
+
+[node name="_dev_open_middle_a4" parent="_decor/_tiles/_floor" unique_id=1357762833 instance=ExtResource("1_0gra3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 6)
+
+[node name="_dev_open_middle_a5" parent="_decor/_tiles/_floor" unique_id=2076308670 instance=ExtResource("1_0gra3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 8)
+
+[node name="_dev_open_middle_a6" parent="_decor/_tiles/_floor" unique_id=1559821093 instance=ExtResource("1_0gra3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 0)
+
+[node name="_dev_open_middle_a7" parent="_decor/_tiles/_floor" unique_id=1151671991 instance=ExtResource("1_0gra3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 2)
+
+[node name="_dev_open_middle_a8" parent="_decor/_tiles/_floor" unique_id=1793785168 instance=ExtResource("1_0gra3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 4)
+
+[node name="_dev_open_middle_a9" parent="_decor/_tiles/_floor" unique_id=1209199201 instance=ExtResource("1_0gra3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 6)
+
+[node name="_dev_open_middle_a10" parent="_decor/_tiles/_floor" unique_id=2050598313 instance=ExtResource("1_0gra3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 8)
+
+[node name="_dev_open_middle_a11" parent="_decor/_tiles/_floor" unique_id=871621842 instance=ExtResource("1_0gra3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 0)
+
+[node name="_dev_open_middle_a12" parent="_decor/_tiles/_floor" unique_id=732173782 instance=ExtResource("1_0gra3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 2)
+
+[node name="_dev_open_middle_a13" parent="_decor/_tiles/_floor" unique_id=206985225 instance=ExtResource("1_0gra3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 4)
+
+[node name="_dev_open_middle_a14" parent="_decor/_tiles/_floor" unique_id=1891914890 instance=ExtResource("1_0gra3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 6)
+
+[node name="_dev_open_middle_a15" parent="_decor/_tiles/_floor" unique_id=436546228 instance=ExtResource("1_0gra3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 8)
+
+[node name="_guides" type="Node3D" parent="_decor/_tiles" unique_id=371460751]
+
+[node name="_dev_floor_guidemid" parent="_decor/_tiles/_guides" unique_id=1472913320 instance=ExtResource("2_74mei")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1)
+
+[node name="_dev_floor_guidemid2" parent="_decor/_tiles/_guides" unique_id=561835317 instance=ExtResource("2_74mei")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2)
+
+[node name="_dev_floor_guidemid3" parent="_decor/_tiles/_guides" unique_id=1278650762 instance=ExtResource("2_74mei")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 5)
+
+[node name="_dev_floor_guidemid4" parent="_decor/_tiles/_guides" unique_id=76885176 instance=ExtResource("2_74mei")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 6)
+
+[node name="_dev_floor_guidemid5" parent="_decor/_tiles/_guides" unique_id=1706524441 instance=ExtResource("2_74mei")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 7)
+
+[node name="Camera3D" type="Camera3D" parent="." unique_id=1222075899]
+transform = Transform3D(0, 1, 0, 4.371139e-08, 0, 1, 1, 0, -4.371139e-08, 0, 5, 4)
+visible = false
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1625943565]
+visible = false
+mesh = SubResource("SphereMesh_74mei")
+script = ExtResource("3_74mei")
+speed_curve = SubResource("Curve_74mei")
+crouch_speed_curve = SubResource("Curve_3tp1q")
+standing_speed_curve = SubResource("Curve_74mei")
+
+[node name="player_test" parent="." unique_id=725727541 instance=ExtResource("4_3tp1q")]
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 0, 1, 0)

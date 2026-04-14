@@ -23,12 +23,14 @@ var freeze : bool
 
 @export var death_ui: Control
 
-@export var post_processing: Shader
+@export var post_processing_rect: ColorRect
+var post_processing: ShaderMaterial
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	current_weight = PLAYER_WEIGHT
 	Input.set_mouse_mode(Input.MOUSE_MODE_CONFINED_HIDDEN)
+	post_processing = post_processing_rect.material
 
 func _process(delta: float) -> void:
 	pass
@@ -85,6 +87,7 @@ func _physics_process(delta: float) -> void:
 	movement.movement(delta)
 	
 	movement.movement_input()
+	movement.movement_input_sprint()
 
 func on_save_game(saved_data: SavedData_Player) -> void:
 	#region General Data

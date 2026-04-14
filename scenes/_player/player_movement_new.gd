@@ -1,4 +1,4 @@
-class_name PlayerMovement_OLD
+class_name PlayerMovement
 extends Node
 
 @export var player: PlayerTest
@@ -26,7 +26,7 @@ extends Node
 var is_moving: bool
 var target_pos: Vector3
 const SPEED_MAX: float = 4.0
-const SPEED_CROUCH: float = 2.5
+const SPEED_CROUCH: float = 2.25
 var speed: float = 4
 
 const FALL_SPEED: float = 8.5
@@ -50,6 +50,7 @@ signal on_turn_right(target_rotation: float)
 
 signal on_crouch(crouched: bool)
 
+var was_holding: bool
 
 func _ready() -> void:
 	var dd: =player.global_position.round()
@@ -77,37 +78,61 @@ func _ready() -> void:
 	crouch()
 	uncrouch()
 
+func _process(delta: float) -> void:
+	#$Label.text = str(current_sprint_step)
+	#$Label.text += "\n" + str(is_recovering)
+	if is_recovering: 
+		current_recovery_time += delta
+		if current_recovery_time >= current_ttr:
+			current_sprint_step = 0
+			is_recovering = false
+#			player.post_processing.set_shader_parameter("saturation", 0.765)
+	#$Label.text += "\n" + str(current_recovery_time)
+
 func movement_input() -> void:
 	## MOVEINPUT
 	#--> NORTH
-	if Input.is_action_just_pressed("move_up") and check_can_move_up():
+	if Input.is_action_pressed("move_up") and !Input.is_action_just_pressed("move_up") and !Input.is_action_just_released("move_up") and check_can_move_up():
+		if dist_to_target > 0.2: return
 		target_pos = target_pos - compass.basis.z * Vector3.ONE
 		current_direction = MoveDirections.VERTICAL
 		
 		on_move.emit(Vector3.FORWARD, target_pos)
 		on_move_up.emit(target_pos)
+		
+		was_holding = true
+		
 	#--> SOUTH
-	elif Input.is_action_just_pressed("move_down") and check_can_move_down():
+	elif Input.is_action_pressed("move_down") and !Input.is_action_just_pressed("move_down") and !Input.is_action_just_released("move_down") and check_can_move_down():
+		if dist_to_target > 0.2: return
 		target_pos = target_pos + compass.basis.z * Vector3.ONE
 		current_direction = MoveDirections.VERTICAL
 		
 		on_move.emit(Vector3.BACK, target_pos)
 		on_move_down.emit(target_pos)
+		
+		was_holding = true
 	#--> EAST
-	elif Input.is_action_just_pressed("move_left") and check_can_move_left():
+	elif Input.is_action_pressed("move_left") and !Input.is_action_just_pressed("move_left") and !Input.is_action_just_released("move_left") and check_can_move_left():
+		if dist_to_target > 0.2: return
 		target_pos = target_pos - compass.basis.x * Vector3.ONE
 		
 		current_direction = MoveDirections.HORIZONTAL
 		
 		on_move.emit(Vector3.LEFT, target_pos)
 		on_move_left.emit(target_pos)
+		
+		was_holding = true
 	#--> WEST
-	elif Input.is_action_just_pressed("move_right") and check_can_move_right():
+	elif Input.is_action_pressed("move_right") and !Input.is_action_just_pressed("move_right") and !Input.is_action_just_released("move_right") and check_can_move_right():
+		if dist_to_target > 0.2: return
 		target_pos = target_pos + compass.basis.x * Vector3.ONE
 		current_direction = MoveDirections.HORIZONTAL
 		
 		on_move.emit(Vector3.RIGHT, target_pos)
 		on_move_right.emit(target_pos)
+		
+		was_holding = true
 	## MOVEINPUT
 	##----------
 	if floor_detector.is_colliding() and Input.is_action_just_pressed("toggle_crouch") and dist_to_target <= 0.6:
@@ -170,6 +195,110 @@ func check_can_move_right() -> bool:
 	return !ray_east.is_colliding() and (dist_to_target <= 0.45 or current_direction != MoveDirections.VERTICAL) and current_direction != MoveDirections.FALLING
 
 # ↑ Moving Stuff ↑
+# --------------------------------------------------------------------------------------------------
+# ↓ Sprinting Stuff ↓
+
+var current_sprint_step: int
+var max_sprint_step: int = 7
+
+var is_recovering: bool
+var current_recovery_time: float = 0
+var current_ttr: float = 3.0
+const OOS_TTR: float = 8.0
+const NORMAL_TTR: float = 3.0
+
+func movement_input_sprint() -> void:
+	if is_crouching: return
+	## MOVEINPUT
+	#--> NORTH
+	if Input.is_action_just_released("move_up") and check_can_move_up():
+		if was_holding:
+			was_holding = false
+			return
+		
+		if current_sprint_step == max_sprint_step: return
+		target_pos = target_pos - compass.basis.z * Vector3.ONE
+		current_direction = MoveDirections.VERTICAL
+		
+		on_move.emit(Vector3.FORWARD, target_pos)
+		on_move_up.emit(target_pos)
+		
+		current_sprint_step += 1
+		
+		check_recover()
+	#--> SOUTH
+	elif Input.is_action_just_released("move_down") and check_can_move_down():
+		if was_holding:
+			was_holding = false
+			return
+		
+		if current_sprint_step == max_sprint_step: return
+		target_pos = target_pos + compass.basis.z * Vector3.ONE
+		current_direction = MoveDirections.VERTICAL
+		
+		on_move.emit(Vector3.BACK, target_pos)
+		on_move_down.emit(target_pos)
+		
+		current_sprint_step += 1
+		
+		check_recover()
+	#--> EAST
+	elif Input.is_action_just_released("move_left") and check_can_move_left():
+		if was_holding:
+			was_holding = false
+			return
+		
+		if current_sprint_step == max_sprint_step: return
+		target_pos = target_pos - compass.basis.x * Vector3.ONE
+		
+		current_direction = MoveDirections.HORIZONTAL
+		
+		on_move.emit(Vector3.LEFT, target_pos)
+		on_move_left.emit(target_pos)
+		
+		current_sprint_step += 1
+		
+		check_recover()
+	#--> WEST
+	elif Input.is_action_just_released("move_right") and check_can_move_right():
+		if was_holding:
+			was_holding = false
+			return
+		
+		if current_sprint_step == max_sprint_step: return
+		target_pos = target_pos + compass.basis.x * Vector3.ONE
+		current_direction = MoveDirections.HORIZONTAL
+		
+		on_move.emit(Vector3.RIGHT, target_pos)
+		on_move_right.emit(target_pos)
+		
+		current_sprint_step += 1
+		
+		check_recover()
+	## MOVEINPUT
+	##----------
+	
+
+	
+	target_pos.round() 
+	target_pos.y = player.global_position.y
+	compass.global_position = target_pos
+
+func check_recover() -> void:
+	var mapped_d:= remap(current_sprint_step, 0, max_sprint_step, 0.765, 0)
+	print(mapped_d)
+	#player.post_processing.set_shader_parameter("saturation", mapped_d)
+	if current_sprint_step == max_sprint_step: current_ttr = OOS_TTR
+	else: current_ttr = NORMAL_TTR
+	#current_ttr = float(current_sprint_step)
+	
+	start_step_recovery()
+
+func start_step_recovery() -> void:
+	current_recovery_time = 0
+	is_recovering = true
+
+# ↑ Sprinting Stuff ↑
 # --------------------------------------------------------------------------------------------------
 # ↓ Rotating Stuff ↓
 
