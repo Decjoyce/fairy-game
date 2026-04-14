@@ -83,6 +83,9 @@ func _process(delta: float) -> void:
 	$Label.text += "\n" + str(is_recovering)
 	if is_recovering: 
 		current_recovery_time += delta
+		#var mapped_d:= remap(current_recovery_time/current_ttr, 0, 1, 0, 0.765)
+		#print(mapped_d)
+		#player.post_processing.set_shader_parameter("saturation", mapped_d)
 		if current_recovery_time >= current_ttr:
 			current_sprint_step = 0
 			is_recovering = false
@@ -293,8 +296,8 @@ func movement_input_sprint() -> void:
 
 func check_recover() -> void:
 	var mapped_d:= remap(current_sprint_step, 0, max_sprint_step, 0.765, 0)
-	print(mapped_d)
-	#player.post_processing.set_shader_parameter("saturation", mapped_d)
+	#print(mapped_d)
+	player.post_processing.set_shader_parameter("saturation", mapped_d)
 	#if current_sprint_step == max_sprint_step: current_ttr = OOS_TTR
 	#else: current_ttr = NORMAL_TTR
 	current_ttr = float(current_sprint_step)

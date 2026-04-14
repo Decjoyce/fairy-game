@@ -1,7 +1,6 @@
 [gd_scene format=3 uid="uid://bq86osdembn58"]
 
 [ext_resource type="Script" uid="uid://io22wsbhy73f" path="res://scenes/_player/player_test.gd" id="1_e0b2u"]
-[ext_resource type="Script" uid="uid://by88p7ijbixe5" path="res://scenes/_player/player_movement.gd" id="2_3jgj8"]
 [ext_resource type="Shape3D" uid="uid://fpddyf5ita81" path="res://scenes/_player/movement/p_col_shape.tres" id="2_4f8kv"]
 [ext_resource type="PackedScene" uid="uid://ds04v2o1xwpoj" path="res://scenes/_levels/menus/death_menu/death_scene.tscn" id="2_7hjlp"]
 [ext_resource type="Script" uid="uid://jxohgxu3vshf" path="res://scripts/improved_raycast.gd" id="2_s1g5w"]
@@ -11,6 +10,7 @@
 [ext_resource type="AudioStream" uid="uid://ca0atvq7vv2dq" path="res://assets/audio/sfx/player/footsteps/FootStep-001.wav" id="4_ux48r"]
 [ext_resource type="AudioStream" uid="uid://bf6k8q7kypf7l" path="res://assets/audio/sfx/player/footsteps/FootStep-002.wav" id="5_7hjlp"]
 [ext_resource type="Texture2D" uid="uid://drwif87vii7ya" path="res://assets/ui/player/stats/HealthStaminaUI_border.png" id="5_bfirj"]
+[ext_resource type="Script" uid="uid://cgflk5r64qgcc" path="res://scenes/_player/player_movement_new.gd" id="6_7hjlp"]
 [ext_resource type="AudioStream" uid="uid://5sd44cpi12dv" path="res://assets/audio/sfx/player/footsteps/FootStep-003.wav" id="6_j3cqb"]
 [ext_resource type="AudioStream" uid="uid://bbmyi8k0bkkjd" path="res://assets/audio/sfx/player/footsteps/FootStep-004.wav" id="7_ijyi7"]
 [ext_resource type="AudioStream" uid="uid://da4l7eb7yuxm" path="res://assets/audio/sfx/combat/misc/out-of-breath-male-176715.wav" id="7_nbsyt"]
@@ -187,8 +187,9 @@ radial_segments = 4
 rings = 1
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_gcklq"]
-random_pitch = 1.17
-random_volume_offset_db = 0.22
+playback_mode = 2
+random_pitch = 1.0633255
+random_volume_offset_db = 0.07
 streams_count = 8
 stream_0/stream = ExtResource("4_ux48r")
 stream_1/stream = ExtResource("5_7hjlp")
@@ -665,7 +666,7 @@ texture = SubResource("GradientTexture1D_imes0")
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_gcklq"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_52e8e"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_7hjlp"]
 resource_local_to_scene = true
 shader = ExtResource("70_52e8e")
 shader_parameter/paper_texture = ExtResource("71_nkha6")
@@ -674,12 +675,13 @@ shader_parameter/contrast_boost = 1.15
 shader_parameter/saturation = 0.7650000363375
 shader_parameter/new_color = Color(1, 1, 1, 1)
 
-[node name="player_test" type="Node3D" unique_id=725727541 node_paths=PackedStringArray("stats_ui", "combat", "death_ui") groups=["Player"]]
+[node name="player_test" type="Node3D" unique_id=725727541 node_paths=PackedStringArray("stats_ui", "combat", "death_ui", "post_processing_rect") groups=["Player"]]
 script = ExtResource("1_e0b2u")
 death_scene = ExtResource("2_7hjlp")
 stats_ui = NodePath("Stats/UI")
 combat = NodePath("Combat")
 death_ui = NodePath("DeathUI")
+post_processing_rect = NodePath("PostProcessing/CanvasLayer/ColorRect")
 metadata/uid = "[PLAYER]"
 
 [node name="Collision" type="Area3D" parent="." unique_id=457696524 groups=["Player"]]
@@ -736,7 +738,7 @@ script = ExtResource("2_s1g5w")
 metadata/_custom_type_script = "uid://jxohgxu3vshf"
 
 [node name="Movement" type="Node" parent="." unique_id=1505445123 node_paths=PackedStringArray("player", "interact", "floor_detector", "roof_detector", "col", "col_helper_uncrouched", "col_helper_crouched")]
-script = ExtResource("2_3jgj8")
+script = ExtResource("6_7hjlp")
 player = NodePath("..")
 interact = NodePath("../Interaction")
 floor_detector = NodePath("../FloorDetector")
@@ -777,6 +779,15 @@ shape = SubResource("BoxShape3D_xwuyi")
 target_position = Vector3(0, 0, 0)
 collision_mask = 9
 debug_shape_custom_color = Color(0, 0.79870725, 0.7254093, 1)
+
+[node name="Label" type="Label" parent="Movement" unique_id=755451727]
+anchors_preset = -1
+anchor_right = 0.11805555
+anchor_bottom = 0.13117284
+text = "D"
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
 
 [node name="LightChecker" type="Node" parent="." unique_id=657269114 node_paths=PackedStringArray("dbg_ctrl", "dbg_light_texture_front", "dbg_light_bar_front", "dbg_light_texture_back", "dbg_light_bar_back", "dbg_light_texture_combined", "dbg_light_bar_combined")]
 script = ExtResource("61_ux48r")
@@ -1326,8 +1337,7 @@ omni_range = 2.149
 layer = 0
 
 [node name="ColorRect" type="ColorRect" parent="PostProcessing/CanvasLayer" unique_id=1334518288]
-visible = false
-material = SubResource("ShaderMaterial_52e8e")
+material = SubResource("ShaderMaterial_7hjlp")
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
