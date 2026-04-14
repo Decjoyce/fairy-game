@@ -11,6 +11,7 @@ var is_grabbed: bool = false
 @export var display_name: String
 @export var keywords: String ## Separate keywords with ;
 @export var start_frozen: bool
+@export var use_prompt: String
 
 @export_group("Weight")
 enum item_weight_types {WEIGHTLESS, LIGHT, MEDIUM, HEAVY}

@@ -166,6 +166,7 @@ music_player = NodePath("MusicMaker")
 music_particles = [NodePath("Particles/MusicParticles_0"), NodePath("Particles/MusicParticles_1"), NodePath("Particles/MusicParticles_2"), NodePath("Particles/MusicParticles_3"), NodePath("Particles/MusicParticles_4"), NodePath("Particles/MusicParticles_5"), NodePath("Particles/MusicParticles_6")]
 item_type = SubResource("Resource_3g5fp")
 display_name = "Flute"
+use_prompt = "PLAYFLUTE"
 col = NodePath("CollisionShape3D")
 grab_col = NodePath("Area3D/CollisionShape3D2")
 grabbed_offset = Vector2(8.87, -11.185)
@@ -238,6 +239,7 @@ metadata/_custom_type_script = "uid://bhf6r6nw14krj"
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.21225211, 0, 0)
 
 [node name="MusicParticles_0" type="GPUParticles3D" parent="Particles" unique_id=1028435067]
+emitting = false
 amount = 3
 speed_scale = 0.85
 local_coords = true

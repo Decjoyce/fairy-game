@@ -48,7 +48,10 @@ func update(_delta: float) -> void:
 	else:
 		if hand_controller.anim_is_prompting:
 			hand_controller.anim_is_prompting = false
-			hand_controller.input_controls.disable_use_action()
+			if grabbed_item.item_type.item_type == ItemType.ItemTypes.INSTRUMENT: 
+				print("d")
+				hand_controller.input_controls.enable_use_action(grabbed_item.use_prompt)
+			else: hand_controller.input_controls.disable_use_action()
 			hand_controller.anim_change_prompt_anim(anim_prompt)
 	
 	if !is_charging and Input.is_action_just_pressed("use_" + hand_controller.stringed_hand_type):
@@ -103,6 +106,10 @@ func enter(previous_state_path: String, data := {}) -> void:
 	
 	await tween.finished
 	grabbed_item.global_rotation = new_rot
+	
+	if grabbed_item.item_type.item_type == ItemType.ItemTypes.INSTRUMENT: 
+		print("d")
+		hand_controller.input_controls.enable_use_action(grabbed_item.use_prompt)
 	
 	is_ready = true
 	time_held_down = 0

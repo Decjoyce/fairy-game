@@ -4,6 +4,7 @@ extends Grabbable_Item
 @onready var timer: Timer = $Timer
 @onready var timer_end: Timer = $timer_endnote
 @export var music_player: AudioStreamPlayer3D
+@onready var don: Node3D = $Particles
 @export var music_particles: Array[GPUParticles3D]
 
 signal on_played_note(note: int, instrument: Instrument)
@@ -13,6 +14,11 @@ var is_playing: bool
 
 var ending_note: bool
 
+func begin_interact(sig: float = -1, hand: PlayerHand = null) -> void:
+	prints("ddd",don)
+	super(sig, hand)
+	
+
 func end_interact(sig: float = -1, hand: PlayerHand = null) -> void:
 	super(sig, hand)
 	if is_playing:
@@ -20,6 +26,8 @@ func end_interact(sig: float = -1, hand: PlayerHand = null) -> void:
 
 func _process(delta: float) -> void:
 	#music_particles.emitting = music_player.playing
+	if is_playing: don.global_rotation = Vector3.ZERO
+	
 	if ending_note and timer_end.time_left > 0:
 		music_player.volume_db = lerpf(music_player.volume_db, -100, (timer_end.time_left+0.5)/timer_end.wait_time * delta)
 		#print(music_player.volume_db)
