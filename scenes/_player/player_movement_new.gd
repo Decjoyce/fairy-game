@@ -86,10 +86,14 @@ func _process(delta: float) -> void:
 		#var mapped_d:= remap(current_recovery_time/current_ttr, 0, 1, 0, 0.765)
 		#print(mapped_d)
 		#player.post_processing.set_shader_parameter("saturation", mapped_d)
+		if current_recovery_time >= 1:
+			$TextureRect.visible = false
+		
 		if current_recovery_time >= current_ttr:
 			current_sprint_step = 0
 			is_recovering = false
 			player.post_processing.set_shader_parameter("saturation", 0.765)
+			#$TextureRect.visible = false
 	$Label.text += "\n" + str(current_recovery_time)
 
 func movement_input() -> void:
@@ -231,6 +235,7 @@ func movement_input_sprint() -> void:
 		
 		current_sprint_step += 1
 		
+		$TextureRect.visible = true
 		footstep_audio.play()
 		check_recover()
 	##--> SOUTH
