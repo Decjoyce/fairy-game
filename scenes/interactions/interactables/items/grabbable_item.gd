@@ -10,6 +10,7 @@ var is_grabbed: bool = false
 @export var item_type: ItemType
 @export var display_name: String
 @export var keywords: String ## Separate keywords with ;
+@export var start_frozen: bool
 
 @export_group("Weight")
 enum item_weight_types {WEIGHTLESS, LIGHT, MEDIUM, HEAVY}
@@ -94,6 +95,7 @@ func begin_interact(sig: float = -1, hand: PlayerHand = null) -> void:
 	rb.freeze = true
 	rb.linear_velocity = Vector3.ZERO
 	grabbed_hand = hand
+	on_begin_interact.emit(1)
 
 func interacting(sig: float = -1, hand: PlayerHand = null) -> void:
 	pass
@@ -106,6 +108,7 @@ func end_interact(sig: float = -1, hand: PlayerHand = null) -> void:
 	rb.freeze = false
 	rb.force_update_transform()
 	rb.linear_velocity = Vector3.ZERO
+	on_end_interact.emit(0)
 
 # ↑ Interacting Stuff ↑
 # --------------------------------------------------------------------------------------------------

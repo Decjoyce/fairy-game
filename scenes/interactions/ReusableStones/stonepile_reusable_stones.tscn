@@ -1,0 +1,54 @@
+[gd_scene format=3 uid="uid://cwr2r7yxt4ust"]
+
+[ext_resource type="Material" uid="uid://dgrldudl0bdhu" path="res://assets/models/cairn/Props/Rockpile/Rock_pile.tres" id="1_670bk"]
+[ext_resource type="Script" uid="uid://d3bv00f0bmt6j" path="res://scenes/interactions/ReusableStones/stonepile_reusable_stones.gd" id="1_vsa00"]
+[ext_resource type="ArrayMesh" uid="uid://bboxjdwpohtg0" path="res://assets/models/cairn/Props/Rockpile/Rock_pile.obj" id="2_vsa00"]
+[ext_resource type="Script" uid="uid://dpj75tckiwmsm" path="res://scenes/interactions/_receivers/wip__item_mover/itm_mover.gd" id="3_kmgx0"]
+[ext_resource type="PackedScene" uid="uid://clvus6c43ipdy" path="res://scenes/interactions/interactables/items/all_items/misc/item_stone.tscn" id="4_qsdh4"]
+[ext_resource type="Texture2D" uid="uid://jn4y036xglgo" path="res://assets/ui/misc/triskele_rough_02.png" id="8_317lc"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_qsdh4"]
+radius = 0.72753906
+height = 1.4550781
+
+[node name="Stonepile_ReusableStones" type="Area3D" unique_id=1682368129]
+collision_layer = 0
+collision_mask = 2
+monitorable = false
+script = ExtResource("1_vsa00")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=651584812]
+transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, -1.148, -0.1, 0)
+material_override = ExtResource("1_670bk")
+mesh = ExtResource("2_vsa00")
+
+[node name="ItemMover" type="Node" parent="." unique_id=1734723238 node_paths=PackedStringArray("itms_2_move", "positions_to_move_to")]
+script = ExtResource("3_kmgx0")
+itms_2_move = [NodePath("../stonepile_stone")]
+positions_to_move_to = [NodePath("../out_pos")]
+metadata/_custom_type_script = "uid://dpj75tckiwmsm"
+
+[node name="stonepile_stone" parent="." unique_id=234370081 instance=ExtResource("4_qsdh4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.28610995, 0)
+
+[node name="out_pos" type="Node3D" parent="." unique_id=1799811114]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.28610995, 0)
+
+[node name="Timer" type="Timer" parent="." unique_id=2127654294]
+wait_time = 2.0
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=941630500]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.148, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" unique_id=652565633]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.029663086, -0.22897023, 0)
+shape = SubResource("CapsuleShape3D_qsdh4")
+
+[node name="Decal" type="Decal" parent="." unique_id=1965361562]
+size = Vector3(0.4, 0.4, 0.4)
+texture_albedo = ExtResource("8_317lc")
+cull_mask = 1048571
+
+[connection signal="body_entered" from="." to="." method="on_stone_entered_return_areas"]
+[connection signal="body_exited" from="." to="." method="on_stone_exited_return_areas"]
+[connection signal="timeout" from="Timer" to="." method="on_tp_timeout"]

@@ -7,10 +7,18 @@
 [ext_resource type="Environment" uid="uid://co42tppomh8j3" path="res://assets/skyboxes/skyboxes_testing_dark.tres" id="5_8egdi"]
 [ext_resource type="PackedScene" uid="uid://bg3e8trp0vy58" path="res://scenes/interactions/prefabs/broken_lever.tscn" id="6_ncoiu"]
 [ext_resource type="PackedScene" uid="uid://d13vdgis1uvvv" path="res://scenes/interactions/interactables/items/all_items/keys/item_leverhandle.tscn" id="7_rdogh"]
+[ext_resource type="PackedScene" uid="uid://1imsfywompor" path="res://zzz_GARBAGE/obs_Stonepile_itmspawner/stonepile_item_spawner.tscn" id="8_jjv43"]
+[ext_resource type="PackedScene" uid="uid://cwr2r7yxt4ust" path="res://scenes/interactions/ReusableStones/stonepile_reusable_stones.tscn" id="9_ufamh"]
+[ext_resource type="Material" uid="uid://ioo51vym3k1d" path="res://scenes/interactions/_triggers/teleporter/m_teleport.tres" id="10_54x8d"]
 
 [sub_resource type="Environment" id="Environment_vu50v"]
 
 [sub_resource type="Environment" id="Environment_2rnw6"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_8egdi"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_ncoiu"]
+material = ExtResource("10_54x8d")
 
 [node name="LeverTesting" type="Node3D" unique_id=1969717916]
 
@@ -70,6 +78,19 @@ disabled = true
 [node name="LeverHandle" parent="BrokenLeverExample" unique_id=1226645142 instance=ExtResource("7_rdogh")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.2396591)
 keywords = "LEVER;"
+
+[node name="Stonepile_ItemSpawner" parent="." unique_id=1521572728 instance=ExtResource("8_jjv43")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, 0)
+
+[node name="Stonepile_ReusableStones" parent="." unique_id=1682368129 instance=ExtResource("9_ufamh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, -0.1, 3)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Stonepile_ReusableStones" unique_id=1451071940]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0.6, 2)
+shape = SubResource("BoxShape3D_8egdi")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Stonepile_ReusableStones/CollisionShape3D" unique_id=2028408613]
+mesh = SubResource("BoxMesh_ncoiu")
 
 [connection signal="on_change" from="Lever" to="Gate" method="open_gate"]
 [connection signal="on_activated" from="Lever2" to="skybox_changer" method="change_to_a"]
