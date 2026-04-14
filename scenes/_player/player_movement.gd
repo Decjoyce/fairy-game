@@ -78,43 +78,38 @@ func _ready() -> void:
 	uncrouch()
 
 func movement_input() -> void:
-	
+	## MOVEINPUT
+	#--> NORTH
 	if Input.is_action_just_pressed("move_up") and check_can_move_up():
-		#if player.stats.current_stamina <= 0: return
-		#if player.in_combat and player.combat.enemy_stance != null: player.stats.take_stamina(20)
 		target_pos = target_pos - compass.basis.z * Vector3.ONE
 		current_direction = MoveDirections.VERTICAL
-		on_move.emit(Vector3.FORWARD, target_pos)
 		
+		on_move.emit(Vector3.FORWARD, target_pos)
 		on_move_up.emit(target_pos)
+	#--> SOUTH
 	elif Input.is_action_just_pressed("move_down") and check_can_move_down():
-		#if player.stats.current_stamina <= 0: return
-		#if player.in_combat and player.combat.enemy_stance != null: player.stats.take_stamina(20)
 		target_pos = target_pos + compass.basis.z * Vector3.ONE
 		current_direction = MoveDirections.VERTICAL
 		
 		on_move.emit(Vector3.BACK, target_pos)
 		on_move_down.emit(target_pos)
+	#--> EAST
 	elif Input.is_action_just_pressed("move_left") and check_can_move_left():
-		#if player.stats.current_stamina <= 0: return
-		#if player.in_combat and player.combat.enemy_stance != null: player.stats.take_stamina(20)
 		target_pos = target_pos - compass.basis.x * Vector3.ONE
 		
 		current_direction = MoveDirections.HORIZONTAL
 		
 		on_move.emit(Vector3.LEFT, target_pos)
 		on_move_left.emit(target_pos)
+	#--> WEST
 	elif Input.is_action_just_pressed("move_right") and check_can_move_right():
-		#if player.stats.current_stamina <= 0: return
-		#if player.in_combat and player.combat.enemy_stance != null: player.stats.take_stamina(20)
-		
 		target_pos = target_pos + compass.basis.x * Vector3.ONE
-		
 		current_direction = MoveDirections.HORIZONTAL
 		
 		on_move.emit(Vector3.RIGHT, target_pos)
 		on_move_right.emit(target_pos)
-	
+	## MOVEINPUT
+	##----------
 	if floor_detector.is_colliding() and Input.is_action_just_pressed("toggle_crouch") and dist_to_target <= 0.6:
 		toggle_crouch()
 	
@@ -126,19 +121,7 @@ func movement(delta: float) -> void:
 	target_pos.round() 
 	
 	#print(floor_detector.is_colliding())
-	
-	if !disable_gravity and !Debug.noclip_enabled and !floor_detector.is_colliding():
-		if current_direction != MoveDirections.FALLING:
-			current_direction = MoveDirections.FALLING
-			start_fall_height = player.global_position.y
-		current_fall_speed = clampf(current_fall_speed + 4, 0.1, FALL_SPEED)
-		player.global_position.y -= current_fall_speed * delta
-	elif current_direction == MoveDirections.FALLING:
-		if abs(player.global_position.y - start_fall_height) >= 4:
-			player.stats.take_damage(10000)
-		player.global_position.y = floor_detector.get_collision_point().y + player.current_player_height
-		current_direction = MoveDirections.NOT_MOVING
-		current_fall_speed = 0
+	gravity(delta)
 	
 	target_pos.y = player.global_position.y
 	dist_to_target = player.global_position.distance_to(target_pos)
@@ -252,6 +235,24 @@ func uncrouch() -> void:
 	roof_detector.enabled = false
 
 # ↑ Crouching Stuff ↑
+# --------------------------------------------------------------------------------------------------
+# ↓ Falling Stuff ↓
+
+func gravity(delta: float) -> void:
+	if !disable_gravity and !Debug.noclip_enabled and !floor_detector.is_colliding():
+		if current_direction != MoveDirections.FALLING:
+			current_direction = MoveDirections.FALLING
+			start_fall_height = player.global_position.y
+		current_fall_speed = clampf(current_fall_speed + 4, 0.1, FALL_SPEED)
+		player.global_position.y -= current_fall_speed * delta
+	elif current_direction == MoveDirections.FALLING:
+		if abs(player.global_position.y - start_fall_height) >= 4:
+			player.stats.take_damage(10000)
+		player.global_position.y = floor_detector.get_collision_point().y + player.current_player_height
+		current_direction = MoveDirections.NOT_MOVING
+		current_fall_speed = 0
+
+# ↑ Falling Stuff ↑
 # --------------------------------------------------------------------------------------------------
 # ↓ Grabbing Stuff ↓
 
