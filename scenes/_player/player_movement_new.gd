@@ -25,9 +25,9 @@ extends Node
 
 var is_moving: bool
 var target_pos: Vector3
-const SPEED_MAX: float = 4.0
+const SPEED_MAX: float = 4.5
 const SPEED_CROUCH: float = 2.25
-var speed: float = 4
+var speed: float = 4.5
 
 const FALL_SPEED: float = 8.5
 var current_fall_speed: float = 0
@@ -79,15 +79,15 @@ func _ready() -> void:
 	uncrouch()
 
 func _process(delta: float) -> void:
-	#$Label.text = str(current_sprint_step)
-	#$Label.text += "\n" + str(is_recovering)
+	$Label.text = str(current_sprint_step)
+	$Label.text += "\n" + str(is_recovering)
 	if is_recovering: 
 		current_recovery_time += delta
 		if current_recovery_time >= current_ttr:
 			current_sprint_step = 0
 			is_recovering = false
-#			player.post_processing.set_shader_parameter("saturation", 0.765)
-	#$Label.text += "\n" + str(current_recovery_time)
+			player.post_processing.set_shader_parameter("saturation", 0.765)
+	$Label.text += "\n" + str(current_recovery_time)
 
 func movement_input() -> void:
 	## MOVEINPUT
@@ -101,9 +101,9 @@ func movement_input() -> void:
 		on_move_up.emit(target_pos)
 		
 		was_holding = true
-		
+		footstep_audio.play()
 	#--> SOUTH
-	elif Input.is_action_pressed("move_down") and !Input.is_action_just_pressed("move_down") and !Input.is_action_just_released("move_down") and check_can_move_down():
+	elif Input.is_action_pressed("move_down") and check_can_move_down() :# and !Input.is_action_just_pressed("move_down") and !Input.is_action_just_released("move_down")
 		if dist_to_target > 0.2: return
 		target_pos = target_pos + compass.basis.z * Vector3.ONE
 		current_direction = MoveDirections.VERTICAL
@@ -111,9 +111,10 @@ func movement_input() -> void:
 		on_move.emit(Vector3.BACK, target_pos)
 		on_move_down.emit(target_pos)
 		
+		footstep_audio.play()
 		was_holding = true
 	#--> EAST
-	elif Input.is_action_pressed("move_left") and !Input.is_action_just_pressed("move_left") and !Input.is_action_just_released("move_left") and check_can_move_left():
+	elif Input.is_action_pressed("move_left") and check_can_move_left() :# and !Input.is_action_just_pressed("move_left") and !Input.is_action_just_released("move_left")
 		if dist_to_target > 0.2: return
 		target_pos = target_pos - compass.basis.x * Vector3.ONE
 		
@@ -122,9 +123,10 @@ func movement_input() -> void:
 		on_move.emit(Vector3.LEFT, target_pos)
 		on_move_left.emit(target_pos)
 		
+		footstep_audio.play()
 		was_holding = true
 	#--> WEST
-	elif Input.is_action_pressed("move_right") and !Input.is_action_just_pressed("move_right") and !Input.is_action_just_released("move_right") and check_can_move_right():
+	elif Input.is_action_pressed("move_right") and check_can_move_right() :# and !Input.is_action_just_pressed("move_right") and !Input.is_action_just_released("move_right"):
 		if dist_to_target > 0.2: return
 		target_pos = target_pos + compass.basis.x * Vector3.ONE
 		current_direction = MoveDirections.HORIZONTAL
@@ -132,6 +134,7 @@ func movement_input() -> void:
 		on_move.emit(Vector3.RIGHT, target_pos)
 		on_move_right.emit(target_pos)
 		
+		footstep_audio.play()
 		was_holding = true
 	## MOVEINPUT
 	##----------
@@ -225,56 +228,60 @@ func movement_input_sprint() -> void:
 		
 		current_sprint_step += 1
 		
+		footstep_audio.play()
 		check_recover()
-	#--> SOUTH
-	elif Input.is_action_just_released("move_down") and check_can_move_down():
-		if was_holding:
-			was_holding = false
-			return
-		
-		if current_sprint_step == max_sprint_step: return
-		target_pos = target_pos + compass.basis.z * Vector3.ONE
-		current_direction = MoveDirections.VERTICAL
-		
-		on_move.emit(Vector3.BACK, target_pos)
-		on_move_down.emit(target_pos)
-		
-		current_sprint_step += 1
-		
-		check_recover()
-	#--> EAST
-	elif Input.is_action_just_released("move_left") and check_can_move_left():
-		if was_holding:
-			was_holding = false
-			return
-		
-		if current_sprint_step == max_sprint_step: return
-		target_pos = target_pos - compass.basis.x * Vector3.ONE
-		
-		current_direction = MoveDirections.HORIZONTAL
-		
-		on_move.emit(Vector3.LEFT, target_pos)
-		on_move_left.emit(target_pos)
-		
-		current_sprint_step += 1
-		
-		check_recover()
-	#--> WEST
-	elif Input.is_action_just_released("move_right") and check_can_move_right():
-		if was_holding:
-			was_holding = false
-			return
-		
-		if current_sprint_step == max_sprint_step: return
-		target_pos = target_pos + compass.basis.x * Vector3.ONE
-		current_direction = MoveDirections.HORIZONTAL
-		
-		on_move.emit(Vector3.RIGHT, target_pos)
-		on_move_right.emit(target_pos)
-		
-		current_sprint_step += 1
-		
-		check_recover()
+	##--> SOUTH
+	#elif Input.is_action_just_released("move_down") and check_can_move_down():
+		#if was_holding:
+			#was_holding = false
+			#return
+		#
+		#if current_sprint_step == max_sprint_step: return
+		#target_pos = target_pos + compass.basis.z * Vector3.ONE
+		#current_direction = MoveDirections.VERTICAL
+		#
+		#on_move.emit(Vector3.BACK, target_pos)
+		#on_move_down.emit(target_pos)
+		#
+		#current_sprint_step += 1
+		#
+		#footstep_audio.play()
+		#check_recover()
+	##--> EAST
+	#elif Input.is_action_just_released("move_left") and check_can_move_left():
+		#if was_holding:
+			#was_holding = false
+			#return
+		#
+		#if current_sprint_step == max_sprint_step: return
+		#target_pos = target_pos - compass.basis.x * Vector3.ONE
+		#
+		#current_direction = MoveDirections.HORIZONTAL
+		#
+		#on_move.emit(Vector3.LEFT, target_pos)
+		#on_move_left.emit(target_pos)
+		#
+		#current_sprint_step += 1
+		#
+		#footstep_audio.play()
+		#check_recover()
+	##--> WEST
+	#elif Input.is_action_just_released("move_right") and check_can_move_right():
+		#if was_holding:
+			#was_holding = false
+			#return
+		#
+		#if current_sprint_step == max_sprint_step: return
+		#target_pos = target_pos + compass.basis.x * Vector3.ONE
+		#current_direction = MoveDirections.HORIZONTAL
+		#
+		#on_move.emit(Vector3.RIGHT, target_pos)
+		#on_move_right.emit(target_pos)
+		#
+		#current_sprint_step += 1
+		#
+		#footstep_audio.play()
+		#check_recover()
 	## MOVEINPUT
 	##----------
 	
@@ -288,9 +295,9 @@ func check_recover() -> void:
 	var mapped_d:= remap(current_sprint_step, 0, max_sprint_step, 0.765, 0)
 	print(mapped_d)
 	#player.post_processing.set_shader_parameter("saturation", mapped_d)
-	if current_sprint_step == max_sprint_step: current_ttr = OOS_TTR
-	else: current_ttr = NORMAL_TTR
-	#current_ttr = float(current_sprint_step)
+	#if current_sprint_step == max_sprint_step: current_ttr = OOS_TTR
+	#else: current_ttr = NORMAL_TTR
+	current_ttr = float(current_sprint_step)
 	
 	start_step_recovery()
 
@@ -458,12 +465,12 @@ func _headbob(time: float) -> Vector2:
 	pos.x = cos(time * BOB_FREQ/2) * BOB_AMP
 	
 	#print(-pos.y)
-	var footstep_threshold = -BOB_AMP + 0.04
-	if pos.y > footstep_threshold:
-		footstep_can_play = true
-	elif pos.y < footstep_threshold and footstep_can_play:
-		footstep_can_play = false
-		footstep_audio.play()
+	#var footstep_threshold = -BOB_AMP + 0.035# 0.04
+	#if pos.y > footstep_threshold:
+		#footstep_can_play = true
+	#elif pos.y < footstep_threshold and footstep_can_play:
+		#footstep_can_play = false
+		#footstep_audio.play()
 		
 	
 	return pos

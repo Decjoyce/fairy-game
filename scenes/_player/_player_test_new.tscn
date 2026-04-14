@@ -187,6 +187,7 @@ radial_segments = 4
 rings = 1
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_gcklq"]
+playback_mode = 2
 random_pitch = 1.17
 random_volume_offset_db = 0.22
 streams_count = 8
@@ -917,6 +918,7 @@ metadata/_edit_use_anchors_ = true
 unique_name_in_owner = true
 stream = SubResource("AudioStreamRandomizer_gcklq")
 volume_db = 15.0
+max_polyphony = 2
 
 [node name="Interaction" parent="." unique_id=336913977 node_paths=PackedStringArray("movement", "cam", "light_checker") instance=ExtResource("16_5xgye")]
 movement = NodePath("../Movement")
