@@ -5,11 +5,33 @@
 [ext_resource type="ArrayMesh" uid="uid://bboxjdwpohtg0" path="res://assets/models/cairn/Props/Rockpile/Rock_pile.obj" id="2_vsa00"]
 [ext_resource type="Script" uid="uid://dpj75tckiwmsm" path="res://scenes/interactions/_receivers/wip__item_mover/itm_mover.gd" id="3_kmgx0"]
 [ext_resource type="PackedScene" uid="uid://clvus6c43ipdy" path="res://scenes/interactions/interactables/items/all_items/misc/item_stone.tscn" id="4_qsdh4"]
-[ext_resource type="Texture2D" uid="uid://jn4y036xglgo" path="res://assets/ui/misc/triskele_rough_02.png" id="8_317lc"]
+[ext_resource type="Texture2D" uid="uid://1c406hs7su5a" path="res://assets/__not_ours_dontship/triskele_rough_01.png" id="6_kmgx0"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_qsdh4"]
 radius = 0.72753906
 height = 1.4550781
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kmgx0"]
+transparency = 1
+albedo_color = Color(0, 0.8494162, 1, 1)
+albedo_texture = ExtResource("6_kmgx0")
+emission_enabled = true
+emission = Color(0, 0.89420825, 1, 1)
+rim_enabled = true
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_qsdh4"]
+material = SubResource("StandardMaterial3D_kmgx0")
+size = Vector2(0.5, 0.5)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qsdh4"]
+transparency = 1
+albedo_color = Color(0, 0.09350002, 0.11, 1)
+albedo_texture = ExtResource("6_kmgx0")
+emission = Color(0, 0.89420825, 1, 1)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_317lc"]
+material = SubResource("StandardMaterial3D_qsdh4")
+size = Vector2(0.5, 0.5)
 
 [node name="Stonepile_ReusableStones" type="Area3D" unique_id=1682368129]
 collision_layer = 0
@@ -44,10 +66,16 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.148, 0, 0)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.029663086, -0.22897023, 0)
 shape = SubResource("CapsuleShape3D_qsdh4")
 
-[node name="Decal" type="Decal" parent="." unique_id=1965361562]
-size = Vector3(0.4, 0.4, 0.4)
-texture_albedo = ExtResource("8_317lc")
-cull_mask = 1048571
+[node name="_g_on" type="MeshInstance3D" parent="." unique_id=1967571280]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.01381889, 0)
+visible = false
+mesh = SubResource("PlaneMesh_qsdh4")
+skeleton = NodePath("")
+
+[node name="_g_off" type="MeshInstance3D" parent="." unique_id=150059038]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.01381889, 0)
+mesh = SubResource("PlaneMesh_317lc")
+skeleton = NodePath("")
 
 [connection signal="body_entered" from="." to="." method="on_stone_entered_return_areas"]
 [connection signal="body_exited" from="." to="." method="on_stone_exited_return_areas"]
