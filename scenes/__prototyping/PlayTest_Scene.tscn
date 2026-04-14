@@ -1,7 +1,6 @@
 [gd_scene format=4 uid="uid://ckuw7ho3cogrs"]
 
 [ext_resource type="PackedScene" uid="uid://qu5rxgbydmet" path="res://scenes/interactions/_triggers/button/button.tscn" id="1_rjk7r"]
-[ext_resource type="Script" uid="uid://42c4j0jtwejr" path="res://scenes/interactions/_receivers/gate/gate.gd" id="2_ogbox"]
 [ext_resource type="PackedScene" uid="uid://dde66nwtb1gv1" path="res://scenes/interactions/_triggers/item_receiver/torch_scont/torch_scont.tscn" id="6_677wr"]
 [ext_resource type="PackedScene" uid="uid://lxic7c72kvyt" path="res://scenes/interactions/interactables/items/all_items/misc/item_skull.tscn" id="6_bsnhk"]
 [ext_resource type="PackedScene" uid="uid://csot2mi7746ll" path="res://scenes/interactions/_triggers/pressure_plate/pressure_plate.tscn" id="7_bsnhk"]
@@ -13,7 +12,6 @@
 [ext_resource type="PackedScene" uid="uid://clnnqb1efkbei" path="res://scenes/interactions/_receivers/door/locked_door.tscn" id="13_gji15"]
 [ext_resource type="PackedScene" uid="uid://dkx1fyyqx7cmp" path="res://scenes/interactions/_triggers/torch_sconce/torch_sconce_ceiling.tscn" id="16_2bjl1"]
 [ext_resource type="PackedScene" uid="uid://ije1mmh1wcad" path="res://scenes/interactions/interactables/items/all_items/torch/torch_mounted.tscn" id="16_60h8r"]
-[ext_resource type="AudioStream" uid="uid://bbdcm4hsrc2y3" path="res://assets/audio/sfx/enemy/ballybog/death/Creatures, Humanoid, Demon, Evil Demonic Growl, Groan SND22290 2.wav" id="16_djejk"]
 [ext_resource type="PackedScene" uid="uid://bg3e8trp0vy58" path="res://scenes/interactions/prefabs/broken_lever.tscn" id="20_3j7on"]
 [ext_resource type="PackedScene" uid="uid://ck1b6l8s7xnxi" path="res://scenes/interactions/_triggers/lever/lever.tscn" id="21_ds25k"]
 [ext_resource type="PackedScene" uid="uid://ci2extimpt5xl" path="res://scenes/interactions/interactables/items/all_items/breakables/item_urn_key.tscn" id="21_iwtqd"]
@@ -22,7 +20,6 @@
 [ext_resource type="PackedScene" uid="uid://d13vdgis1uvvv" path="res://scenes/interactions/interactables/items/all_items/keys/item_leverhandle.tscn" id="22_r8grq"]
 [ext_resource type="PackedScene" uid="uid://br01bblhowysi" path="res://assets/models/cairn/Z-Old-EnvironmentModels/Wall/Wall.glb" id="23_bsnhk"]
 [ext_resource type="PackedScene" uid="uid://bry8rqyr2pf37" path="res://assets/models/cairn/Z-Old-EnvironmentModels/Rocks/Rocks.glb" id="23_rbqtc"]
-[ext_resource type="ArrayMesh" uid="uid://hh3rgr5ljsbh" path="res://assets/Key_Items/Slate.obj" id="23_rjk7r"]
 [ext_resource type="PackedScene" uid="uid://dr3608osp2js" path="res://scenes/interactions/interactables/items/all_items/misc/item_bell.tscn" id="24_iu7h4"]
 [ext_resource type="PackedScene" uid="uid://bm8kaq0ah5g7q" path="res://scenes/interactions/interactables/items/all_items/torch/torch.tscn" id="26_puwyg"]
 [ext_resource type="Texture2D" uid="uid://1m8e2skdgkex" path="res://assets/sprites/item_sprites/skull_item.png" id="30_l401g"]
@@ -78,20 +75,6 @@ radius = 1.0
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_4v2ph"]
 size = Vector3(1.3928223, 1, 0.9602661)
-
-[sub_resource type="SphereShape3D" id="SphereShape3D_ywmxo"]
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_rjk7r"]
-size = Vector3(1, 1.1561279, 0.07299805)
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_wx5q6"]
-size = Vector3(1.3007507, 0.25147656, 0.135)
-
-[sub_resource type="CylinderShape3D" id="CylinderShape3D_rjk7r"]
-height = 0.05001068
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_i1hti"]
-size = Vector3(1.293457, 1.1239624, 0.0836914)
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_bbr0v"]
 radius = 1.0
@@ -185,7 +168,7 @@ shadow_mesh = SubResource("ArrayMesh_42tyc")
 [sub_resource type="BoxShape3D" id="BoxShape3D_2bjl1"]
 size = Vector3(1.9, 15.480347, 2)
 
-[sub_resource type="Shader" id="Shader_hy1oc"]
+[sub_resource type="Shader" id="Shader_86y0k"]
 code = "shader_type spatial;
 render_mode diffuse_lambert_wrap,cull_disabled;
 
@@ -262,9 +245,9 @@ void fragment() {
 }
 "
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_2youk"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_braxj"]
 render_priority = 0
-shader = SubResource("Shader_hy1oc")
+shader = SubResource("Shader_86y0k")
 shader_parameter/rows = 1.0
 shader_parameter/columns = 8.0
 shader_parameter/frame = 0.0
@@ -273,33 +256,33 @@ shader_parameter/sprite = ExtResource("50_m5a70")
 shader_parameter/mode = 0
 shader_parameter/Normal = ExtResource("49_7xclf")
 
-[sub_resource type="PlaneMesh" id="PlaneMesh_xsp3k"]
-material = SubResource("ShaderMaterial_2youk")
+[sub_resource type="PlaneMesh" id="PlaneMesh_y35hk"]
+material = SubResource("ShaderMaterial_braxj")
 size = Vector2(2.048, 2.048)
 orientation = 2
 
-[sub_resource type="Resource" id="Resource_t4adt"]
+[sub_resource type="Resource" id="Resource_hy1oc"]
 script = ExtResource("52_rtdc7")
 name = "Unfinished"
 sprite = ExtResource("50_m5a70")
 texture_normal = ExtResource("49_7xclf")
 columns = 8.0
 
-[sub_resource type="Resource" id="Resource_bhdn7"]
+[sub_resource type="Resource" id="Resource_2youk"]
 script = ExtResource("52_rtdc7")
 name = "piece_one"
 sprite = ExtResource("53_2bjl1")
 texture_normal = ExtResource("53_2bjl1")
 columns = 8.0
 
-[sub_resource type="Resource" id="Resource_iu7h4"]
+[sub_resource type="Resource" id="Resource_xsp3k"]
 script = ExtResource("52_rtdc7")
 name = "piece_two"
 sprite = ExtResource("54_wlsjf")
 texture_normal = ExtResource("54_wlsjf")
 columns = 8.0
 
-[sub_resource type="Resource" id="Resource_1mmfd"]
+[sub_resource type="Resource" id="Resource_t4adt"]
 script = ExtResource("52_rtdc7")
 sprite = ExtResource("55_38ytk")
 texture_normal = ExtResource("56_mf6to")
@@ -321,7 +304,7 @@ size = Vector2(10, 10)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.03, 0)
 mesh_library = ExtResource("11_h4c7c")
 data = {
-"cells": PackedInt32Array(65535, 5, 655373, 65535, 6, 2, 65535, 7, 4, 0, 5, 1441794, 1, 2, 2, 1, 3, 2, 1, 4, 2, 1, 5, 3, 2, 1, 1, 1, 65535, 2, 65535, 1, 1441795, 0, 1, 1, 3, 1, 3, 3, 0, 1048579, 2, 0, 655361, 1, 1, 655360, 1, 0, 655360, 1, 65534, 655362, 1, 65533, 655362, 1, 65532, 655362, 0, 65531, 1441795, 65535, 65530, 1441795, 65535, 65529, 1441793, 65535, 65528, 655363, 0, 65527, 655363, 3, 65530, 3, 3, 65528, 1048579, 2, 65527, 1048579, 1, 65526, 655364, 1, 65527, 1441792, 0, 65528, 1441792, 1, 65528, 1441792, 2, 65528, 1441792, 2, 65529, 1441792, 1, 65529, 1441792, 0, 65529, 1441792, 2, 65530, 1441792, 1, 65530, 1441792, 0, 65530, 1441792, 1, 65531, 1441792, 2, 65531, 3, 4, 65529, 1441794, 3, 65529, 1441792, 5, 65529, 1441804, -65519, 65533, 1048578, -65520, 65533, 1441808, -65521, 65532, 1441808, -65521, 65533, 1441808, -65521, 65534, 1441808, -65522, 65534, 1441808, -65522, 65533, 1441808, -65522, 65532, 1441808, -65523, 65533, 1441808, -65518, 65533, 1441794, -65517, 65533, 1441794, 65535, 0, 655373, 0, 0, 655371, -65516, 65533, 1441794, -65526, 65529, 655380, -65526, 65530, 655362, -65526, 65531, 3, -65527, 65531, 1441794, -65528, 65531, 1441794, -65529, 65532, 655362, -65524, 65533, 1048578, -65525, 65533, 1048578, -65526, 65533, 1048578, -65527, 65533, 1048578, -65528, 65533, 1048578, -65529, 65533, 1441795, -65530, 65531, 655377, -65530, 65532, 655378, -65530, 65533, 655378, -65529, 65531, 655361, -65497, 65531, 2, -65497, 65532, 2, -65515, 65533, 1441794, -65520, 65534, 1048593, -65523, 65534, 16, -65523, 65535, 655369, -65523, 0, 1441800, -65522, 0, 1441799, -65521, 0, 8, -65522, 65535, 16, -65520, 65532, 655377, -65521, 65531, 655377, -65522, 65531, 1441809, -65523, 65532, 1441809, -65521, 65535, 655378)
+"cells": PackedInt32Array(65535, 5, 655373, 65535, 6, 2, 65535, 7, 4, 0, 5, 1441794, 1, 2, 2, 1, 3, 2, 1, 4, 2, 1, 5, 3, 2, 1, 1, 1, 65535, 2, 65535, 1, 1441795, 0, 1, 1, 3, 1, 3, 3, 0, 1048579, 2, 0, 655361, 1, 1, 655360, 1, 0, 655360, 1, 65534, 655362, 1, 65533, 655362, 1, 65532, 655362, 0, 65531, 1441795, 65535, 65530, 1441795, 65535, 65529, 1441793, 65535, 65528, 655363, 0, 65527, 655363, 3, 65530, 3, 3, 65528, 1048579, 2, 65527, 1048579, 1, 65526, 655364, 1, 65527, 1441792, 0, 65528, 1441792, 1, 65528, 1441792, 2, 65528, 1441792, 2, 65529, 1441792, 1, 65529, 1441792, 0, 65529, 1441792, 2, 65530, 1441792, 1, 65530, 1441792, 0, 65530, 1441792, 1, 65531, 1441792, 2, 65531, 3, 4, 65529, 1441794, 3, 65529, 1441792, 5, 65529, 1441804, -65519, 65533, 1048578, -65520, 65533, 1441808, -65521, 65532, 1441808, -65521, 65533, 1441808, -65521, 65534, 1441808, -65522, 65534, 1441808, -65522, 65533, 1441808, -65522, 65532, 1441808, -65523, 65533, 1441808, -65518, 65533, 1441794, -65517, 65533, 1441794, 65535, 0, 655373, 0, 0, 655371, -65516, 65533, 1441794, -65497, 65531, 2, -65497, 65532, 2, -65515, 65533, 1441794, -65520, 65534, 1048593, -65523, 65534, 16, -65523, 65535, 655369, -65523, 0, 1441800, -65522, 0, 1441799, -65521, 0, 8, -65522, 65535, 16, -65520, 65532, 655377, -65521, 65531, 655377, -65522, 65531, 1441809, -65523, 65532, 1441809, -65521, 65535, 655378, 6, 65529, 3, 6, 65528, 655363, 7, 65528, 1048578, 8, 65528, 1048578, -65523, 65528, 655380, -65523, 65529, 3, -65524, 65529, 655363, -65524, 65530, 3, -65525, 65530, 1441794, -65526, 65530, 1441794, -65527, 65530, 1441794, -65528, 65530, 1441794, -65529, 65530, 1441794, -65530, 65530, 655361, -65530, 65531, 655362, -65530, 65532, 655362, -65530, 65533, 1441795, -65529, 65533, 1441794, -65528, 65533, 1441794, -65527, 65533, 1441794, -65526, 65533, 1441794, -65525, 65533, 1441794, -65524, 65533, 1441794, -65531, 65530, 655383, -65531, 65531, 655383, -65531, 65532, 655383)
 }
 metadata/_editor_floor_ = Vector3(0, -1, 0)
 
@@ -329,12 +312,6 @@ metadata/_editor_floor_ = Vector3(0, -1, 0)
 
 [node name="Torches" type="Node3D" parent="Tutorial_Area" unique_id=1073021904]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.37721205, 0, -2.0954456)
-
-[node name="TorchScont" parent="Tutorial_Area/Torches" unique_id=799079126 instance=ExtResource("6_677wr")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.377212, -7, 9.477758)
-
-[node name="TorchScont5" parent="Tutorial_Area/Torches" unique_id=1705786496 instance=ExtResource("6_677wr")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.23729, 1.2112281, 2.477759)
 
 [node name="TorchScont2" parent="Tutorial_Area/Torches" unique_id=134845992 instance=ExtResource("6_677wr")]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 7.2344327, 1.2788017, -9.223978)
@@ -500,23 +477,6 @@ transform = Transform3D(3.4959998, 0, 0, 0, 3.4959998, 0, 0, 0, 3.4959998, 3.200
 
 [node name="3d Text" type="Node" parent="Tutorial_Area" unique_id=456015211]
 
-[node name="Label3D" type="Label3D" parent="Tutorial_Area/3d Text" unique_id=2028200629]
-transform = Transform3D(0.8, 0, 0, 0, 0.9, 0, 0, 0, 1, 12.917559, -1, -8)
-pixel_size = 0.008
-text = "Ballybog Tease 
-goes here"
-
-[node name="Ballybog Noise" type="AudioStreamPlayer3D" parent="Tutorial_Area/3d Text/Label3D" unique_id=386894395]
-stream = ExtResource("16_djejk")
-
-[node name="PlayerAreaTrigger" parent="Tutorial_Area/3d Text/Label3D" unique_id=917204587 instance=ExtResource("52_fj6xp")]
-
-[node name="Area3D" type="Area3D" parent="Tutorial_Area/3d Text/Label3D/PlayerAreaTrigger" unique_id=2029011342]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Tutorial_Area/3d Text/Label3D/PlayerAreaTrigger/Area3D" unique_id=1807267681]
-shape = SubResource("SphereShape3D_ywmxo")
-disabled = true
-
 [node name="Decoration" type="Node" parent="Tutorial_Area" unique_id=1724044233]
 
 [node name="Doorways" type="Node3D" parent="Tutorial_Area/Decoration" unique_id=1299658400]
@@ -534,65 +494,9 @@ metadata/uid = "2b76aebc-8e60-48bc-ba11-5dfb684cd7a2"
 metadata/lock_uid = true
 metadata/date_generated = "2026-03-25T16:38:33"
 
-[node name="Slate_Door" type="Node3D" parent="Tutorial_Area/Urn_key_puzzle" unique_id=2100226170 groups=["debug_PickableObjects"]]
-transform = Transform3D(-1, 8.742278e-08, -3.821371e-15, 0, -4.371139e-08, -1, -8.742278e-08, -1, 4.371139e-08, 32.062336, 1.3030984, -4.3087273)
-script = ExtResource("2_ogbox")
-override_signal_range = true
-ovr_signal_min = 0.5
-ovr_signal_max = 0.85
-
-[node name="gate" type="StaticBody3D" parent="Tutorial_Area/Urn_key_puzzle/Slate_Door" unique_id=127311904]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.7233887, -5.9604645e-08)
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Tutorial_Area/Urn_key_puzzle/Slate_Door/gate" unique_id=27213280]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0027472973, 0.012573302)
-shape = SubResource("BoxShape3D_rjk7r")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Tutorial_Area/Urn_key_puzzle/Slate_Door/gate" unique_id=607277578]
-transform = Transform3D(0.135, 0, 0, 0, 0.135, 0, 0, 0, 0.135, 0, 0.27661204, -1.1920929e-07)
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Tutorial_Area/Urn_key_puzzle/Slate_Door/gate/MeshInstance3D" unique_id=2067190423]
-transform = Transform3D(0.85508686, 0, 0, 0, 1.0905446, 0, 0, 0, 0.4890525, 0, 6.7462816, 0)
-
-[node name="_label" type="Label3D" parent="Tutorial_Area/Urn_key_puzzle/Slate_Door/gate" unique_id=1394795214]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.4766107, -0.10000008)
-visible = false
-billboard = 1
-text = "GATE"
-font_size = 67
-
-[node name="UnderChecker" type="Area3D" parent="Tutorial_Area/Urn_key_puzzle/Slate_Door/gate" unique_id=851444154]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.076611996, -2.9802322e-07)
-collision_layer = 256
-collision_mask = 2
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Tutorial_Area/Urn_key_puzzle/Slate_Door/gate/UnderChecker" unique_id=385213415]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.005050659, 0.32573843, -5.364418e-07)
-shape = SubResource("BoxShape3D_wx5q6")
-
-[node name="Slate" type="MeshInstance3D" parent="Tutorial_Area/Urn_key_puzzle/Slate_Door/gate" unique_id=209038216]
-transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, -0.062335968, -0.01513958, -0.040539026)
-mesh = ExtResource("23_rjk7r")
-skeleton = NodePath("../../../../..")
-
-[node name="StaticBody3D" type="StaticBody3D" parent="Tutorial_Area/Urn_key_puzzle/Slate_Door/gate/Slate" unique_id=1095010505]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Tutorial_Area/Urn_key_puzzle/Slate_Door/gate/Slate/StaticBody3D" unique_id=226063034]
-transform = Transform3D(1.315, 0, 0, 0, 1.315, 0, 0, 0, 1.315, 0, -0.03903252, -0.009521484)
-shape = SubResource("CylinderShape3D_rjk7r")
-
-[node name="PlayerCollision" type="StaticBody3D" parent="Tutorial_Area/Urn_key_puzzle/Slate_Door" unique_id=779071703]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
-collision_layer = 8
-collision_mask = 0
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Tutorial_Area/Urn_key_puzzle/Slate_Door/PlayerCollision" unique_id=211489375]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.007080078, -0.26222706, -0.005028069)
-shape = SubResource("BoxShape3D_i1hti")
-
 [node name="Urn_puzzle_Pressure_Plate" parent="Tutorial_Area/Urn_key_puzzle" unique_id=247380468 instance=ExtResource("7_bsnhk")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 27, -2, -5)
-weight_to_activate = 25.0
+weight_to_activate = 20.0
 metadata/uid = "ee568bc3-8830-496f-a69e-d10c37c6ef9d"
 metadata/lock_uid = true
 metadata/date_generated = "2026-03-25T16:38:33"
@@ -606,13 +510,13 @@ metadata/date_generated = "2026-03-25T17:22:57"
 [node name="Torch" parent="Tutorial_Area/Urn_key_puzzle" unique_id=1021080000 instance=ExtResource("26_puwyg")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 1, 10.9)
 
+[node name="Slate_Gate" parent="Tutorial_Area/Urn_key_puzzle" unique_id=2077487765 instance=ExtResource("8_l401g")]
+transform = Transform3D(0.705, 0, 0, 0, -3.081653e-08, 0.705, 0, -0.705, -3.081653e-08, 32.01162, 1.2980931, -4.2281075)
+
 [node name="Walls_Parent" type="Node3D" parent="Tutorial_Area" unique_id=777706606]
 
 [node name="Wall76" parent="Tutorial_Area/Walls_Parent" unique_id=530347327 instance=ExtResource("23_bsnhk")]
 transform = Transform3D(-8.444389e-09, -2.2626683e-09, -0.19999997, -0.16352145, 0.11515518, 5.601406e-09, 0.11515518, 0.16352145, -6.7120527e-09, 32.2462, -0.9962957, -11.381468)
-
-[node name="Wall77" parent="Tutorial_Area/Walls_Parent" unique_id=875978958 instance=ExtResource("23_bsnhk")]
-transform = Transform3D(-8.444389e-09, -2.2626683e-09, -0.19999997, -0.16352145, 0.11515518, 5.601406e-09, 0.11515518, 0.16352145, -6.7120527e-09, 26.772135, -0.9962957, -11.381468)
 
 [node name="Wall78" parent="Tutorial_Area/Walls_Parent" unique_id=1536273315 instance=ExtResource("23_bsnhk")]
 transform = Transform3D(-8.444389e-09, -2.2626683e-09, -0.19999997, -0.16352145, 0.11515518, 5.601406e-09, 0.11515518, 0.16352145, -6.7120527e-09, 29.530064, -0.9962957, -11.381468)
@@ -749,28 +653,28 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30, 0, -5)
 [node name="CollisionEnabler_Disabler" parent="Tutorial_Area" unique_id=768060295 instance=ExtResource("53_sc7xq")]
 
 [node name="Ballybog_Tease" type="Node3D" parent="Tutorial_Area" unique_id=113216871]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, -1, -11)
 
 [node name="Torch_Mounted" parent="Tutorial_Area/Ballybog_Tease" unique_id=1479203938 instance=ExtResource("16_60h8r")]
-transform = Transform3D(-3.7855173e-08, 2.1855694e-08, -1, 0.5, 0.8660254, 0, 0.8660254, -0.5, -4.371139e-08, 21, -0.8856605, -8.348483)
+transform = Transform3D(-3.7855173e-08, 2.1855694e-08, 1, 0.5, 0.8660254, 0, -0.8660254, 0.5, -4.371139e-08, 13, 0.11433947, -2.6662045)
 
 [node name="Walls" type="Node3D" parent="Tutorial_Area/Ballybog_Tease" unique_id=582559957]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14, -1, -9)
 
 [node name="cairn_fake_wall" parent="Tutorial_Area/Ballybog_Tease" unique_id=2127319660 instance=ExtResource("55_ym2x2")]
-transform = Transform3D(-2.1855694e-08, -3.7855173e-08, -1, -0.2588191, 0.96592575, -3.090862e-08, 0.96592575, 0.2588191, -3.090862e-08, 14, -0.79884195, -9.1166315)
+transform = Transform3D(-2.1855694e-08, -3.7855173e-08, -1, -0.2588191, 0.96592575, -3.090862e-08, 0.96592575, 0.2588191, -3.090862e-08, 0, 0.20115805, -0.11663151)
 
 [node name="cairn_fake_wall2" parent="Tutorial_Area/Ballybog_Tease" unique_id=1275059464 instance=ExtResource("55_ym2x2")]
-transform = Transform3D(1.131334e-08, 4.2221956e-08, -1, 0.49999988, -0.8660254, -3.0908616e-08, -0.8660254, -0.49999988, -3.0908616e-08, 14, -0.43384776, -7.7740703)
+transform = Transform3D(1.131334e-08, 4.2221956e-08, -1, 0.49999988, -0.8660254, -3.0908616e-08, -0.8660254, -0.49999988, -3.0908616e-08, 0, 0.5661522, 1.2259293)
 
 [node name="cairn_fake_wall3" parent="Tutorial_Area/Ballybog_Tease" unique_id=1600281061 instance=ExtResource("55_ym2x2")]
-transform = Transform3D(1.131334e-08, 4.2221956e-08, -1, 0.49999988, -0.8660254, -3.0908616e-08, -0.8660254, -0.49999988, -3.0908616e-08, 14, -1.192769, -8.887454)
+transform = Transform3D(1.131334e-08, 4.2221956e-08, -1, 0.49999988, -0.8660254, -3.0908616e-08, -0.8660254, -0.49999988, -3.0908616e-08, 0, -0.19276905, 0.11254597)
 
 [node name="Ballybog_Teaser" type="Sprite3D" parent="Tutorial_Area/Ballybog_Tease" unique_id=950421919]
 transform = Transform3D(0.20901303, 0, 0.06865532, 0, 0.22, 0, -0.06865532, 0, 0.20901303, 13, -1, -9.424281)
 texture = ExtResource("41_bbr0v")
 
 [node name="PlayerAreaTrigger_Ballybog" parent="Tutorial_Area/Ballybog_Tease" unique_id=1751250691 instance=ExtResource("52_fj6xp")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18, -2, -9)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, -1, 0)
 
 [node name="Area3D" type="Area3D" parent="Tutorial_Area/Ballybog_Tease/PlayerAreaTrigger_Ballybog" unique_id=1845026978]
 
@@ -778,9 +682,12 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18, -2, -9)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.55210114, 0)
 shape = SubResource("SphereShape3D_bbr0v")
 
-[node name="SpotLight3D" type="SpotLight3D" parent="Tutorial_Area/Ballybog_Tease" unique_id=1674662549]
-transform = Transform3D(-4.2484682e-08, 0.23524393, -0.9719364, 1.0282836e-08, 0.9719364, 0.23524393, 1, 0, -4.371139e-08, 12.360177, 0.32445824, -8.963644)
+[node name="SpotLight3D2" type="SpotLight3D" parent="Tutorial_Area/Ballybog_Tease" unique_id=1674662549]
+transform = Transform3D(-4.2484682e-08, 0.23524393, -0.9719364, 1.0282836e-08, 0.9719364, 0.23524393, 1, 1.7763568e-15, -4.3711385e-08, -1.639823, 1.3244582, 0.036355972)
 light_color = Color(0.683119, 0.6925642, 0.7601388, 1)
+light_energy = 3.55
+light_volumetric_fog_energy = 3.203
+spot_angle = 27.736124
 
 [node name="Bally_Bog_Animated" type="Node" parent="Tutorial_Area/Ballybog_Tease" unique_id=446559783 node_paths=PackedStringArray("connnect_anim_player")]
 script = ExtResource("42_y3vt4")
@@ -800,7 +707,7 @@ light_color = Color(0.3227734, 0.33385244, 0.3646147, 1)
 shadow_enabled = true
 
 [node name="player_test" parent="." unique_id=725727541 instance=ExtResource("12_djejk")]
-transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 41, -1, -5)
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 16.2, 1, -15)
 
 [node name="Ambient_Noises" type="Node3D" parent="." unique_id=369290277]
 
@@ -1085,10 +992,10 @@ metadata/date_generated = "2026-03-25T16:38:33"
 transform = Transform3D(-1, 0, -1.509958e-07, 0, 1, 0, 1.509958e-07, 0, -1, 0, 0.86, -0.50483274)
 layers = 3
 sorting_offset = 1.0
-mesh = SubResource("PlaneMesh_xsp3k")
+mesh = SubResource("PlaneMesh_y35hk")
 skeleton = NodePath("")
 script = ExtResource("51_tbefv")
-animations_array = Array[ExtResource("52_rtdc7")]([SubResource("Resource_t4adt"), SubResource("Resource_bhdn7"), SubResource("Resource_iu7h4"), SubResource("Resource_1mmfd")])
+animations_array = Array[ExtResource("52_rtdc7")]([SubResource("Resource_hy1oc"), SubResource("Resource_2youk"), SubResource("Resource_xsp3k"), SubResource("Resource_t4adt")])
 animation = 0
 frame = 1.0
 sprite_scale = 0.002
@@ -1255,8 +1162,8 @@ spot_angle = 7.1541214
 [node name="Area_2_Gate" type="Node3D" parent="Statue_Section" unique_id=1503320681]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, 0)
 
-[node name="Gate" parent="Statue_Section/Area_2_Gate" unique_id=2077487765 instance=ExtResource("8_l401g")]
-transform = Transform3D(2.395, 0, 0, 0, 2.395, 0, 0, 0, 2.395, -1.2539177, -0.89096856, 8.843126)
+[node name="Gate" parent="Statue_Section/Area_2_Gate" unique_id=142549669 instance=ExtResource("8_l401g")]
+transform = Transform3D(2.395, 0, 0, 0, 2.395, 0, 0, 0, 2.395, -1.2539177, -0.89096856, 9.010145)
 metadata/uid = "5dfe361d-abc9-49d8-9b5d-38f05d90ea34"
 metadata/lock_uid = true
 metadata/date_generated = "2026-03-25T16:38:33"
@@ -1617,7 +1524,7 @@ transform = Transform3D(-0.49999988, 9.195101e-16, -0.86602545, -3.6737695e-15, 
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 53, -2, -16)
 
 [node name="Throwing_Puzzle" parent="Puzzles" unique_id=1927853586 instance=ExtResource("58_xsp3k")]
-transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 13.947641, -1, -12.028069)
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 19.947641, -1, -14.028069)
 
 [node name="UID_Generator" type="Node" parent="." unique_id=78198919]
 script = ExtResource("62_t4adt")
@@ -1675,6 +1582,9 @@ transform = Transform3D(-2.9802322e-08, 5.745588e-08, 1.0000001, -1.0000001, -5.
 mesh = SubResource("QuadMesh_t4adt")
 skeleton = NodePath("../..")
 
+[node name="TorchSconce_Lit" parent="." unique_id=1817049137 instance=ExtResource("33_h4c7c")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13, 1.2523891, -15.755529)
+
 [connection signal="on_activated" from="Tutorial_Area/First Gate&Button/First_Button" to="Tutorial_Area/First Gate&Button/First_Gate" method="open_gate"]
 [connection signal="on_change" from="Tutorial_Area/Weighted_Gate_Puzzle/Tutorial_Weight_Puzzle" to="Tutorial_Area/Weighted_Gate_Puzzle/Weight_Puzzle_Gate" method="open_gate"]
 [connection signal="on_activated" from="Tutorial_Area/Lever_Puzzle/BrokenLeverExample/BrokenLever" to="Tutorial_Area/Lever_Puzzle/BrokenLeverExample/Lever_Fixed" method="enable"]
@@ -1682,14 +1592,7 @@ skeleton = NodePath("../..")
 [connection signal="on_activated" from="Tutorial_Area/Lever_Puzzle/PlayerAreaTrigger_AfterLeverPuzzle" to="Tutorial_Area/Lever_Puzzle/Lever_Gate" method="close_gate"]
 [connection signal="area_entered" from="Tutorial_Area/Lever_Puzzle/PlayerAreaTrigger_AfterLeverPuzzle/Area3D" to="Tutorial_Area/Lever_Puzzle/PlayerAreaTrigger_AfterLeverPuzzle" method="_player_entered"]
 [connection signal="area_exited" from="Tutorial_Area/Lever_Puzzle/PlayerAreaTrigger_AfterLeverPuzzle/Area3D" to="Tutorial_Area/Lever_Puzzle/PlayerAreaTrigger_AfterLeverPuzzle" method="_player_exited"]
-[connection signal="on_activated" from="Tutorial_Area/3d Text/Label3D/PlayerAreaTrigger" to="Tutorial_Area/CollisionEnabler_Disabler" method="enable_obj"]
-[connection signal="area_entered" from="Tutorial_Area/3d Text/Label3D/PlayerAreaTrigger/Area3D" to="Tutorial_Area/3d Text/Label3D/PlayerAreaTrigger" method="_player_entered"]
-[connection signal="area_exited" from="Tutorial_Area/3d Text/Label3D/PlayerAreaTrigger/Area3D" to="Tutorial_Area/3d Text/Label3D/PlayerAreaTrigger" method="_player_exited"]
-[connection signal="area_entered" from="Tutorial_Area/Urn_key_puzzle/Slate_Door/gate/UnderChecker" to="Tutorial_Area/Urn_key_puzzle/Slate_Door" method="_on_area_entered_under_checker"]
-[connection signal="area_exited" from="Tutorial_Area/Urn_key_puzzle/Slate_Door/gate/UnderChecker" to="Tutorial_Area/Urn_key_puzzle/Slate_Door" method="_on_area_exited_under_checker"]
-[connection signal="body_entered" from="Tutorial_Area/Urn_key_puzzle/Slate_Door/gate/UnderChecker" to="Tutorial_Area/Urn_key_puzzle/Slate_Door" method="_on_body_entered_under_checker"]
-[connection signal="body_exited" from="Tutorial_Area/Urn_key_puzzle/Slate_Door/gate/UnderChecker" to="Tutorial_Area/Urn_key_puzzle/Slate_Door" method="_on_body_exited_under_checker"]
-[connection signal="on_change" from="Tutorial_Area/Urn_key_puzzle/Urn_puzzle_Pressure_Plate" to="Tutorial_Area/Urn_key_puzzle/Slate_Door" method="open_gate"]
+[connection signal="on_change" from="Tutorial_Area/Urn_key_puzzle/Urn_puzzle_Pressure_Plate" to="Tutorial_Area/Urn_key_puzzle/Slate_Gate" method="open_gate"]
 [connection signal="on_activated" from="Tutorial_Area/Ballybog_Tease/PlayerAreaTrigger_Ballybog" to="Tutorial_Area/Ballybog_Tease/Bally_Bog_Animated" method="play_animation"]
 [connection signal="area_entered" from="Tutorial_Area/Ballybog_Tease/PlayerAreaTrigger_Ballybog/Area3D" to="Tutorial_Area/Ballybog_Tease/PlayerAreaTrigger_Ballybog" method="_player_entered"]
 [connection signal="area_exited" from="Tutorial_Area/Ballybog_Tease/PlayerAreaTrigger_Ballybog/Area3D" to="Tutorial_Area/Ballybog_Tease/PlayerAreaTrigger_Ballybog" method="_player_exited"]
