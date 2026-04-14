@@ -29,25 +29,15 @@
 [ext_resource type="AudioStream" uid="uid://bscs1lnw8crcv" path="res://assets/audio/sfx/environment/ambient/Ambience, Underground, Cave, Magic, Dangling Metal SND46572.wav" id="38_qadhr"]
 [ext_resource type="Texture2D" uid="uid://vvyp3kfi47jv" path="res://assets/sprites/Ballybog/ballyIdle1_1.png" id="41_bbr0v"]
 [ext_resource type="Script" uid="uid://c4t3ko70ihpyy" path="res://scenes/interactions/_receivers/animated_object/animated_object.gd" id="42_y3vt4"]
+[ext_resource type="PackedScene" uid="uid://dj0rj4luqsc12" path="res://scenes/interactions/interactables/items/all_items/misc/statue_3D_model.tscn" id="46_6tg2o"]
 [ext_resource type="PackedScene" uid="uid://dmighlk8j2g37" path="res://scenes/interactions/_receivers/bridge/long_bridge.tscn" id="47_m214l"]
 [ext_resource type="PackedScene" uid="uid://pfsmibp55qi" path="res://scenes/interactions/_receivers/bridge/bridge.tscn" id="47_ywmxo"]
 [ext_resource type="Script" uid="uid://cko3icuffehvs" path="res://scenes/interactions/_receivers/bridge/bridge_new.gd" id="48_7bdt6"]
-[ext_resource type="Script" uid="uid://djy3mmt6h4b4v" path="res://scenes/interactions/_special/statue_quest.gd" id="48_mrobv"]
-[ext_resource type="Texture2D" uid="uid://vahl7u1og8ht" path="res://assets/sprites/item_sprites/statue/statue_spritesheets/statue_broken_n.png" id="49_7xclf"]
-[ext_resource type="Texture2D" uid="uid://bkotqhx10wian" path="res://assets/sprites/item_sprites/statue/statue_spritesheets/statue_broken.png" id="50_m5a70"]
-[ext_resource type="Script" uid="uid://b5653u7w56pqw" path="res://addons/extras_sprites/scripts/sprite_3D_billboard.gd" id="51_tbefv"]
 [ext_resource type="PackedScene" uid="uid://bsdlm8rcrt2j" path="res://scenes/interactions/_triggers/area_triggers/player_area_trigger.tscn" id="52_fj6xp"]
-[ext_resource type="Script" uid="uid://b4m0sglcg4smw" path="res://addons/extras_sprites/scripts/animatio_data.gd" id="52_rtdc7"]
-[ext_resource type="Texture2D" uid="uid://cox108m7rv1n6" path="res://assets/sprites/item_sprites/statue/statue_spritesheets/statue_attachedpiece_01.png" id="53_2bjl1"]
 [ext_resource type="PackedScene" uid="uid://dhb1ju03ckwh4" path="res://scenes/interactions/_receivers/enabler_disabler_v1/collision_enabler_disabler.tscn" id="53_sc7xq"]
-[ext_resource type="Texture2D" uid="uid://gc5vdufep1gi" path="res://assets/sprites/item_sprites/statue/statue_spritesheets/statue_attachedpiece_02.png" id="54_wlsjf"]
-[ext_resource type="Texture2D" uid="uid://d26atksj8e8yj" path="res://assets/sprites/item_sprites/statue/statue_spritesheets/statue_complete.png" id="55_38ytk"]
 [ext_resource type="PackedScene" uid="uid://d2ict3hg28spx" path="res://scenes/_levels/_palettes/cairn/props/cairn_fake_wall.tscn" id="55_ym2x2"]
-[ext_resource type="Texture2D" uid="uid://bji3q3mntuxdf" path="res://assets/sprites/item_sprites/statue/statue_spritesheets/statue_complete_n.png" id="56_mf6to"]
 [ext_resource type="Material" uid="uid://b0i2txe3meqnl" path="res://assets/models/cairn/Props/Pillar/Pillar.tres" id="56_rtdc7"]
 [ext_resource type="PackedScene" uid="uid://cieiwvi0168kv" path="res://scenes/__prototyping/traps_puzzle_new.tscn" id="57_2youk"]
-[ext_resource type="Script" uid="uid://dsp7b0nc36qiw" path="res://scenes/interactions/_special/statue_receiver.gd" id="57_15asm"]
-[ext_resource type="Script" uid="uid://s218qdxyroom" path="res://scripts/saving/persistent_objs/po_mainquest.gd" id="58_3dxuf"]
 [ext_resource type="PackedScene" uid="uid://b1ug372yre60k" path="res://scenes/__prototyping/throwing_puzzle_new.tscn" id="58_xsp3k"]
 [ext_resource type="PackedScene" uid="uid://bmamnnx3o5e28" path="res://assets/models/cairn/Z-Old-EnvironmentModels/Pillar/Full/Fullpillar.glb" id="59_2skob"]
 [ext_resource type="PackedScene" uid="uid://djqcj61nf551b" path="res://scenes/_levels/_palettes/cairn/props/cairn_pillardamaged.tscn" id="61_bbr0v"]
@@ -167,129 +157,6 @@ shadow_mesh = SubResource("ArrayMesh_42tyc")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_2bjl1"]
 size = Vector3(1.9, 15.480347, 2)
-
-[sub_resource type="Shader" id="Shader_86y0k"]
-code = "shader_type spatial;
-render_mode diffuse_lambert_wrap,cull_disabled;
-
-uniform float rows:hint_range(1.0, 100.0, 1) = 1;
-uniform float columns:hint_range(1.0, 100.0, 1) = 1;
-uniform float frame:hint_range(0.0, 100.0, 1) = 0;
-uniform bool invert_rows_columns = false;
-uniform sampler2D sprite:filter_nearest_mipmap;
-uniform int mode:hint_range(0, 1, 1) = 1;
-varying vec3 look_dir;
-uniform sampler2D Normal;
-
-
-float billboard_mode_a(vec3 CAMERA_POSITION,vec3 NODE_POSITION, mat4 MODEL_MAT,float directions){
-	vec3 direction_to_camera = normalize(CAMERA_POSITION-NODE_POSITION);
-	float angle_to_camera = atan(direction_to_camera.x,direction_to_camera.z);
-	vec4 model_direction = MODEL_MAT*vec4(1.0,0.0,0.0,0.0);
-	float y_angle = atan(model_direction.x,model_direction.z)-PI/2.0;
-	float final_angle = angle_to_camera-y_angle;
-	float int_y_angle = round((final_angle / TAU) * float(directions)) / float(directions);
-	return int_y_angle;
-}
-float billboard_mobe_b(vec3 CAMERA_POSITION,mat4 MODEL_MAT,mat4 VIEW_MAT,float directions,int ret){
-
-    vec3 ray_origin = CAMERA_POSITION;
-
-    vec3 object_origin = (MODEL_MAT * vec4(0.0,0.0,0.0,1.0)).xyz;
-    vec3 cam_dir = object_origin - ray_origin;
-    cam_dir = normalize((VIEW_MAT * vec4(cam_dir, 0.0)).xyz);
-
-    float angle = 180.0 - degrees(acos(dot(normalize(cam_dir.xz), normalize(look_dir.xz))));
-    float _direction = round(angle/180.0 * directions);
-
-    float flip = sign((look_dir.x * cam_dir.z) - (look_dir.z * cam_dir.x));
-
-    flip = mix(flip, 1.0, max(step(_direction, 0.0), step(directions, _direction)));
-	float retu = ret == 0 ? _direction : flip;
-	return retu ;
-}
-void vertex() {
-		 MODELVIEW_MATRIX = VIEW_MATRIX * mat4(vec4(normalize(cross(vec3(0.0, 1.0, 0.0), INV_VIEW_MATRIX[2].xyz)), 0.0), vec4(0.0, 1.0, 0.0, 0.0), vec4(normalize(cross(INV_VIEW_MATRIX[0].xyz, vec3(0.0, 1.0, 0.0))), 0.0), MODEL_MATRIX[3]);
-		look_dir = MODELVIEW_NORMAL_MATRIX * NORMAL;
-		MODELVIEW_NORMAL_MATRIX = mat3(MODELVIEW_MATRIX);
-	switch (mode){
-		case 0:
-			float y = invert_rows_columns == true ? billboard_mode_a(CAMERA_POSITION_WORLD,NODE_POSITION_WORLD,MODEL_MATRIX,rows) : billboard_mode_a(CAMERA_POSITION_WORLD,NODE_POSITION_WORLD,MODEL_MATRIX,columns);
-			float x = invert_rows_columns == true ? frame/columns:frame/rows;
-			UV /= vec2(rows,columns);
-			UV += invert_rows_columns == true ?vec2(y,x):vec2(x,y);
-			break;
-		case 1:
-			float x = invert_rows_columns == true ? frame/columns:frame/rows;
-			float y = billboard_mobe_b(CAMERA_POSITION_WORLD,MODEL_MATRIX,VIEW_MATRIX,rows,0);
-			float f = billboard_mobe_b(CAMERA_POSITION_WORLD,MODEL_MATRIX,VIEW_MATRIX,rows,1);
-			if (invert_rows_columns){
-				y = billboard_mobe_b(CAMERA_POSITION_WORLD,MODEL_MATRIX,VIEW_MATRIX,columns,0);
-				f = billboard_mobe_b(CAMERA_POSITION_WORLD,MODEL_MATRIX,VIEW_MATRIX,columns,1);
-			}
-			UV.y += invert_rows_columns == true ? x:y;
-			UV /=vec2(rows,columns);
-			UV.x +=  invert_rows_columns == true ? y : x;
-			UV *= invert_rows_columns == true ? vec2(1.0,f):vec2(f,1.0);
-			break;
-	};
-}
-
-void fragment() {
-	vec3 VNormal = texture(Normal,UV).rgb;
-	vec4 sprite_texture;
-	sprite_texture = texture(sprite,UV);
-	ALBEDO = sprite_texture.rgb;
-	ALPHA = sprite_texture.a;
-	NORMAL_MAP = VNormal;
-}
-"
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_braxj"]
-render_priority = 0
-shader = SubResource("Shader_86y0k")
-shader_parameter/rows = 1.0
-shader_parameter/columns = 8.0
-shader_parameter/frame = 0.0
-shader_parameter/invert_rows_columns = false
-shader_parameter/sprite = ExtResource("50_m5a70")
-shader_parameter/mode = 0
-shader_parameter/Normal = ExtResource("49_7xclf")
-
-[sub_resource type="PlaneMesh" id="PlaneMesh_y35hk"]
-material = SubResource("ShaderMaterial_braxj")
-size = Vector2(2.048, 2.048)
-orientation = 2
-
-[sub_resource type="Resource" id="Resource_hy1oc"]
-script = ExtResource("52_rtdc7")
-name = "Unfinished"
-sprite = ExtResource("50_m5a70")
-texture_normal = ExtResource("49_7xclf")
-columns = 8.0
-
-[sub_resource type="Resource" id="Resource_2youk"]
-script = ExtResource("52_rtdc7")
-name = "piece_one"
-sprite = ExtResource("53_2bjl1")
-texture_normal = ExtResource("53_2bjl1")
-columns = 8.0
-
-[sub_resource type="Resource" id="Resource_xsp3k"]
-script = ExtResource("52_rtdc7")
-name = "piece_two"
-sprite = ExtResource("54_wlsjf")
-texture_normal = ExtResource("54_wlsjf")
-columns = 8.0
-
-[sub_resource type="Resource" id="Resource_t4adt"]
-script = ExtResource("52_rtdc7")
-sprite = ExtResource("55_38ytk")
-texture_normal = ExtResource("56_mf6to")
-columns = 8.0
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_w1v47"]
-size = Vector3(1.0812988, 2.4, 1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_rqpeq"]
 size = Vector3(1.750473, 1.2870789, 0.27978516)
@@ -978,50 +845,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.02386856, 1.291575, -5.3724
 [node name="cairn_exit_pillars2" parent="Statue_Section/Gates" unique_id=477219843 instance=ExtResource("63_yuom8")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.02386856, 1.291575, 4.25663)
 
-[node name="Statue" type="Node3D" parent="Statue_Section" unique_id=296240778 node_paths=PackedStringArray("itm_receiver")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0.14023519, 0.3724923)
-script = ExtResource("48_mrobv")
-itm_receiver = NodePath("ItemReceiver")
-metadata/uid = "6498f6eb-f10e-4779-819d-0cebe727e840"
-metadata/lock_uid = true
-metadata/date_generated = "2026-03-25T16:38:33"
-
-[node name="Statue_States" type="Node3D" parent="Statue_Section/Statue" unique_id=177232572]
-
-[node name="StatOff" type="MeshInstance3D" parent="Statue_Section/Statue/Statue_States" unique_id=1440207988]
-transform = Transform3D(-1, 0, -1.509958e-07, 0, 1, 0, 1.509958e-07, 0, -1, 0, 0.86, -0.50483274)
-layers = 3
-sorting_offset = 1.0
-mesh = SubResource("PlaneMesh_y35hk")
-skeleton = NodePath("")
-script = ExtResource("51_tbefv")
-animations_array = Array[ExtResource("52_rtdc7")]([SubResource("Resource_hy1oc"), SubResource("Resource_2youk"), SubResource("Resource_xsp3k"), SubResource("Resource_t4adt")])
-animation = 0
-frame = 1.0
-sprite_scale = 0.002
-metadata/_custom_type_script = "uid://b5653u7w56pqw"
-
-[node name="ItemReceiver" type="Node3D" parent="Statue_Section/Statue" unique_id=1763736643]
-script = ExtResource("57_15asm")
-receiver_type = 1
-keywords_needed = "BASE;HEAD;ARM"
-num_needed_by_keyword = 3
-destroy_items_on_receive = true
-prompt_text = "STATUEPROMPT"
-
-[node name="Trigger" type="Area3D" parent="Statue_Section/Statue/ItemReceiver" unique_id=978927815]
-collision_layer = 32
-monitoring = false
-
-[node name="_col" type="CollisionShape3D" parent="Statue_Section/Statue/ItemReceiver/Trigger" unique_id=969169536]
-unique_name_in_owner = true
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.028393626, 1.0000001, 0)
-shape = SubResource("BoxShape3D_w1v47")
-
-[node name="PO_MainQuest" type="Node" parent="Statue_Section/Statue" unique_id=1964630611 groups=["PO"]]
-script = ExtResource("58_3dxuf")
-metadata/_custom_type_script = "uid://s218qdxyroom"
-
 [node name="Foundation" type="Node3D" parent="Statue_Section" unique_id=2075139292]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, 0)
 
@@ -1049,6 +872,32 @@ transform = Transform3D(1, 0, -2.1175824e-22, 0, 1, -5.8268024e-23, 0, -1.197119
 shape = SubResource("BoxShape3D_rqpeq")
 
 [node name="pillars" type="StaticBody3D" parent="Statue_Section/Foundation/Floor2" unique_id=1016765445]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, -2, 0)
+
+[node name="Floor6" type="Node3D" parent="Statue_Section/Foundation" unique_id=74838892]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.8174934, 0, -2.1394453)
+
+[node name="Floor" parent="Statue_Section/Foundation/Floor6" unique_id=521195174 instance=ExtResource("55_ym2x2")]
+transform = Transform3D(-4.858288e-08, 1.4333545, -4.371139e-08, 0, -6.265392e-08, -1, -1.1114466, -6.265392e-08, 1.9106855e-15, -1.9228745, 0, -0.036546707)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Statue_Section/Foundation/Floor6/Floor" unique_id=1749160483]
+transform = Transform3D(1, 0, -2.1175824e-22, 0, 1, -5.8268024e-23, 0, -1.1971195e-22, 1, -0.004737377, 0.64094543, 0.052001834)
+shape = SubResource("BoxShape3D_rqpeq")
+
+[node name="pillars" type="StaticBody3D" parent="Statue_Section/Foundation/Floor6" unique_id=55075896]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, -2, 0)
+
+[node name="Floor7" type="Node3D" parent="Statue_Section/Foundation" unique_id=2053995734]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.8174934, 0, 1.8605547)
+
+[node name="Floor" parent="Statue_Section/Foundation/Floor7" unique_id=249874595 instance=ExtResource("55_ym2x2")]
+transform = Transform3D(-4.858288e-08, 1.4333545, -4.371139e-08, 0, -6.265392e-08, -1, -1.1114466, -6.265392e-08, 1.9106855e-15, -1.9228745, 0, -0.036546707)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Statue_Section/Foundation/Floor7/Floor" unique_id=750215858]
+transform = Transform3D(1, 0, -2.1175824e-22, 0, 1, -5.8268024e-23, 0, -1.1971195e-22, 1, -0.004737377, 0.64094543, 0.052001834)
+shape = SubResource("BoxShape3D_rqpeq")
+
+[node name="pillars" type="StaticBody3D" parent="Statue_Section/Foundation/Floor7" unique_id=1866152272]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, -2, 0)
 
 [node name="Floor5" type="Node3D" parent="Statue_Section/Foundation" unique_id=1142358489]
@@ -1585,6 +1434,9 @@ skeleton = NodePath("../..")
 [node name="TorchSconce_Lit" parent="." unique_id=1817049137 instance=ExtResource("33_h4c7c")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13, 1.2523891, -15.755529)
 
+[node name="Statue2" parent="." unique_id=1809581142 instance=ExtResource("46_6tg2o")]
+transform = Transform3D(0.55, 0, 0, 0, 0.55, 0, 0, 0, 0.55, 54, -2, -5)
+
 [connection signal="on_activated" from="Tutorial_Area/First Gate&Button/First_Button" to="Tutorial_Area/First Gate&Button/First_Gate" method="open_gate"]
 [connection signal="on_change" from="Tutorial_Area/Weighted_Gate_Puzzle/Tutorial_Weight_Puzzle" to="Tutorial_Area/Weighted_Gate_Puzzle/Weight_Puzzle_Gate" method="open_gate"]
 [connection signal="on_activated" from="Tutorial_Area/Lever_Puzzle/BrokenLeverExample/BrokenLever" to="Tutorial_Area/Lever_Puzzle/BrokenLeverExample/Lever_Fixed" method="enable"]
@@ -1599,5 +1451,4 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13, 1.2523891, -15.755529)
 [connection signal="on_change" from="Statue_Section/Bridges/Levers/Lever_Big_Bridge_One" to="Statue_Section/Bridges/Long_Bridge_First" method="move_bridge"]
 [connection signal="on_change" from="Statue_Section/Bridges/Levers/Area_One_Lever" to="Statue_Section/Bridges/Area_One_Bridge" method="move_bridge"]
 [connection signal="on_change" from="Statue_Section/Bridges/Levers/Area_Two_lever" to="Statue_Section/Bridges/Area_Two_Bridge" method="move_bridge"]
-[connection signal="statue_piece_received" from="Statue_Section/Statue/ItemReceiver" to="Statue_Section/Statue" method="insert_piece"]
 [connection signal="on_activated" from="Statue_Section/Area_2_Gate/Statue_Piece_Pressure_Plate" to="Statue_Section/Area_2_Gate/Gate" method="open_gate"]
