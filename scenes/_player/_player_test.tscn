@@ -8,16 +8,9 @@
 [ext_resource type="Shape3D" uid="uid://s7dtgfwvmtwe" path="res://scenes/_player/movement/p_col_shape_crouched.tres" id="2_svbpy"]
 [ext_resource type="PackedScene" uid="uid://dqojmsc2q6wf4" path="res://scenes/_player/interaction/player_interaction.tscn" id="3_3jgj8"]
 [ext_resource type="Script" uid="uid://46pp7aerorca" path="res://scripts/stats.gd" id="4_fhpxp"]
-[ext_resource type="AudioStream" uid="uid://ca0atvq7vv2dq" path="res://assets/audio/sfx/player/footsteps/FootStep-001.wav" id="4_ux48r"]
-[ext_resource type="AudioStream" uid="uid://bf6k8q7kypf7l" path="res://assets/audio/sfx/player/footsteps/FootStep-002.wav" id="5_7hjlp"]
 [ext_resource type="Texture2D" uid="uid://drwif87vii7ya" path="res://assets/ui/player/stats/HealthStaminaUI_border.png" id="5_bfirj"]
-[ext_resource type="AudioStream" uid="uid://5sd44cpi12dv" path="res://assets/audio/sfx/player/footsteps/FootStep-003.wav" id="6_j3cqb"]
-[ext_resource type="AudioStream" uid="uid://bbmyi8k0bkkjd" path="res://assets/audio/sfx/player/footsteps/FootStep-004.wav" id="7_ijyi7"]
 [ext_resource type="AudioStream" uid="uid://da4l7eb7yuxm" path="res://assets/audio/sfx/combat/misc/out-of-breath-male-176715.wav" id="7_nbsyt"]
-[ext_resource type="AudioStream" uid="uid://bkk7jrgij205s" path="res://assets/audio/sfx/player/footsteps/FootStep-005.wav" id="8_l4n3m"]
-[ext_resource type="AudioStream" uid="uid://dlc0dgjoyycuv" path="res://assets/audio/sfx/player/footsteps/FootStep-006.wav" id="9_f0ma5"]
-[ext_resource type="AudioStream" uid="uid://lmda00v3x2ll" path="res://assets/audio/sfx/player/footsteps/FootStep-007.wav" id="10_qv24e"]
-[ext_resource type="AudioStream" uid="uid://c2oqvd4e4tsyv" path="res://assets/audio/sfx/player/footsteps/FootStep-008.wav" id="11_qxkv7"]
+[ext_resource type="AudioStream" uid="uid://dstyv0nubxjd4" path="res://assets/audio/sfx/player/footsteps/footstepV2/Player_step_randomizer_2.tres" id="8_ni6fa"]
 [ext_resource type="Script" uid="uid://cpomu5ts52mpj" path="res://scenes/_player/combat/player_combat.gd" id="12_gcklq"]
 [ext_resource type="Resource" uid="uid://ci23rrjojjvls" path="res://scenes/_player/combat/attacks/p_attacksq.tres" id="12_uus6m"]
 [ext_resource type="Texture2D" uid="uid://dlrbgxyxghidg" path="res://scenes/_player/combat/assets/r_t/r_idle_t.png" id="13_6jmgc"]
@@ -185,19 +178,6 @@ radius = 0.25
 height = 0.5
 radial_segments = 4
 rings = 1
-
-[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_gcklq"]
-random_pitch = 1.17
-random_volume_offset_db = 0.22
-streams_count = 8
-stream_0/stream = ExtResource("4_ux48r")
-stream_1/stream = ExtResource("5_7hjlp")
-stream_2/stream = ExtResource("6_j3cqb")
-stream_3/stream = ExtResource("7_ijyi7")
-stream_4/stream = ExtResource("8_l4n3m")
-stream_5/stream = ExtResource("9_f0ma5")
-stream_6/stream = ExtResource("10_qv24e")
-stream_7/stream = ExtResource("11_qxkv7")
 
 [sub_resource type="Animation" id="Animation_imd3c"]
 length = 0.001
@@ -905,7 +885,7 @@ metadata/_edit_use_anchors_ = true
 
 [node name="FootstepAudio" type="AudioStreamPlayer3D" parent="." unique_id=1340962626]
 unique_name_in_owner = true
-stream = SubResource("AudioStreamRandomizer_gcklq")
+stream = ExtResource("8_ni6fa")
 volume_db = 15.0
 
 [node name="Interaction" parent="." unique_id=336913977 node_paths=PackedStringArray("movement", "cam", "light_checker") instance=ExtResource("3_3jgj8")]
