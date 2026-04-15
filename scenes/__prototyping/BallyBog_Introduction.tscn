@@ -12,10 +12,11 @@
 [ext_resource type="Material" uid="uid://dgrldudl0bdhu" path="res://assets/models/cairn/Props/Rockpile/Rock_pile.tres" id="15_0ox1x"]
 [ext_resource type="ArrayMesh" uid="uid://bboxjdwpohtg0" path="res://assets/models/cairn/Props/Rockpile/Rock_pile.obj" id="16_ru5qk"]
 [ext_resource type="Script" uid="uid://dpj75tckiwmsm" path="res://scenes/interactions/_receivers/wip__item_mover/itm_mover.gd" id="17_tnaar"]
-[ext_resource type="PackedScene" uid="uid://qu5rxgbydmet" path="res://scenes/interactions/_triggers/button/button.tscn" id="18_2cxtd"]
 [ext_resource type="PackedScene" uid="uid://clvus6c43ipdy" path="res://scenes/interactions/interactables/items/all_items/misc/item_stone.tscn" id="18_r7etj"]
+[ext_resource type="PackedScene" uid="uid://csot2mi7746ll" path="res://scenes/interactions/_triggers/pressure_plate/pressure_plate.tscn" id="19_0ox1x"]
 [ext_resource type="Texture2D" uid="uid://1c406hs7su5a" path="res://assets/__not_ours_dontship/triskele_rough_01.png" id="19_g6es1"]
 [ext_resource type="PackedScene" uid="uid://dkx1fyyqx7cmp" path="res://scenes/interactions/_triggers/torch_sconce/torch_sconce_ceiling.tscn" id="19_qofka"]
+[ext_resource type="Script" uid="uid://bicoc8ibhscjw" path="res://scenes/interactions/_receivers/enabler_disabler_v1/group_visibility_enabler.gd" id="20_ru5qk"]
 [ext_resource type="Script" uid="uid://ubfk2a80dhfp" path="res://addons/grid_map_pathfinding/grid_map_pathfinding.gd" id="29_211nq"]
 [ext_resource type="PackedScene" uid="uid://b5g00fexnuwte" path="res://scenes/interactions/_special/item_no_pass_zone.tscn" id="31_iw7gl"]
 [ext_resource type="Material" uid="uid://ioo51vym3k1d" path="res://scenes/interactions/_triggers/teleporter/m_teleport.tres" id="32_tie2v"]
@@ -23,6 +24,17 @@
 [sub_resource type="SphereShape3D" id="SphereShape3D_iw7gl"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_qofka"]
+
+[sub_resource type="Gradient" id="Gradient_fv00s"]
+interpolation_mode = 2
+offsets = PackedFloat32Array(0.3402556, 0.53355706, 1)
+colors = PackedColorArray(0.17184411, 0.11207495, 0.06100855, 0, 0, 1.9492192, 2.0330758, 0.69000006, 0, 0, 0, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_tnaar"]
+gradient = SubResource("Gradient_fv00s")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.94, 0.43)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_1r4jb"]
 size = Vector3(2.3212585, 0.9329834, 1.6738892)
@@ -71,6 +83,7 @@ material = ExtResource("32_tie2v")
 
 [node name="GridMapPathFinding2" type="GridMap" parent="." unique_id=1929151095 groups=["GMPF"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.445, 0)
+visible = false
 mesh_library = ExtResource("1_m8tlr")
 cell_size = Vector3(1, 1, 1)
 cell_octant_size = 4
@@ -113,7 +126,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 1, 1)
 
 [node name="Ballybog2" parent="." unique_id=1712475425 node_paths=PackedStringArray("patrol_points") instance=ExtResource("3_nfw6c")]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0.99999994, 0, -7)
-patrol_points = [NodePath("../Bally_1_PatrolPoints/Node3D"), NodePath("../Bally_1_PatrolPoints/Node3D2"), NodePath("../Bally_1_PatrolPoints/Node3D3"), NodePath("../Bally_1_PatrolPoints/Node3D5"), NodePath("../Bally_1_PatrolPoints/Node3D6")]
+patrol_points = [NodePath("../Bally_1_PatrolPoints/Node3D2"), NodePath("../Bally_1_PatrolPoints/Node3D"), NodePath("../Bally_1_PatrolPoints/Node3D3"), NodePath("../Bally_1_PatrolPoints/Node3D5"), NodePath("../Bally_1_PatrolPoints/Node3D6")]
 
 [node name="Sneaked_past" type="Node3D" parent="." unique_id=233466530]
 
@@ -129,9 +142,6 @@ trig_once = true
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Sneaked_past/EnemyEnableTrig/Area3D" unique_id=218991855]
 shape = SubResource("SphereShape3D_iw7gl")
 
-[node name="Button" parent="Sneaked_past" unique_id=1164325605 instance=ExtResource("18_2cxtd")]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 1.6966367, 0.55474347, -8.960292)
-
 [node name="GateAreaDoor_Trigger" parent="Sneaked_past" unique_id=917204587 instance=ExtResource("5_cvgf4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 1, -14)
 
@@ -139,6 +149,30 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 1, -14)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Sneaked_past/GateAreaDoor_Trigger/Area3D" unique_id=410955833]
 shape = SubResource("SphereShape3D_qofka")
+
+[node name="PressurePlateLight" parent="Sneaked_past" unique_id=790035545 instance=ExtResource("19_0ox1x")]
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 1, 0, -9)
+weight_to_activate = 1.0
+metadata/uid = "f3359305-3bac-48aa-a54e-9eb61499a31b"
+metadata/lock_uid = true
+metadata/date_generated = "2026-03-25T10:07:13"
+
+[node name="TR_Indicator" type="Sprite3D" parent="Sneaked_past/PressurePlateLight" unique_id=285485071]
+transform = Transform3D(-2.7818125e-08, 0, 0.99999994, 0, 1, 0, -0.99999994, 0, -2.7818125e-08, -0.7020326, 1.3248484, 0.037664413)
+visible = false
+modulate = Color(0, 5.0718627, 5.0718627, 1)
+double_sided = false
+texture = SubResource("GradientTexture2D_tnaar")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="Sneaked_past/PressurePlateLight/TR_Indicator" unique_id=1731387925]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.2)
+light_color = Color(0, 0.65967244, 0.66711485, 1)
+light_energy = 0.137
+omni_range = 26.025
+
+[node name="indicator_visenabler" type="Node" parent="Sneaked_past/PressurePlateLight" unique_id=255301397 node_paths=PackedStringArray("linked_nodes")]
+script = ExtResource("20_ru5qk")
+linked_nodes = [NodePath("../TR_Indicator")]
 
 [node name="Crouching_Part" type="Node3D" parent="." unique_id=268499608]
 
@@ -226,16 +260,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.01381889, 0)
 mesh = SubResource("PlaneMesh_317lc")
 skeleton = NodePath("")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Stonepile_ReusableStones" unique_id=1973990200]
-transform = Transform3D(-0.25881907, 0, 0.9659258, 0, 1, 0, -0.9659258, 0, -0.25881907, -0.7498293, 0.6, -4.129614)
-shape = SubResource("BoxShape3D_qofka")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Stonepile_ReusableStones/CollisionShape3D" unique_id=1791553741]
-visible = false
-mesh = SubResource("BoxMesh_0ox1x")
-
 [node name="CollisionShape3D2" type="CollisionShape3D" parent="Stonepile_ReusableStones" unique_id=808598168]
-transform = Transform3D(-0.25881907, 0, 0.9659258, 0, 1, 0, -0.9659258, 0, -0.25881907, -0.49101067, 0.6, -3.1636884)
+transform = Transform3D(-0.25881907, 0, 0.9659258, 0, 1, 0, -0.9659258, 0, -0.25881907, -0.3672104, 0.6, -2.701656)
 shape = SubResource("BoxShape3D_qofka")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Stonepile_ReusableStones/CollisionShape3D2" unique_id=304486292]
@@ -243,7 +269,7 @@ visible = false
 mesh = SubResource("BoxMesh_0ox1x")
 
 [node name="CollisionShape3D3" type="CollisionShape3D" parent="Stonepile_ReusableStones" unique_id=659146393]
-transform = Transform3D(-0.25881907, 0, 0.9659258, 0, 1, 0, -0.9659258, 0, -0.25881907, -0.23219204, 0.6, -2.197763)
+transform = Transform3D(-0.25881907, 0, 0.9659258, 0, 1, 0, -0.9659258, 0, -0.25881907, -0.108392715, 0.6, -1.7357306)
 shape = SubResource("BoxShape3D_qofka")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Stonepile_ReusableStones/CollisionShape3D3" unique_id=140676877]
@@ -258,10 +284,12 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 1, -3.763967)
 
 [connection signal="area_entered" from="Sneaked_past/EnemyEnableTrig/Area3D" to="Sneaked_past/EnemyEnableTrig" method="_player_entered"]
 [connection signal="area_exited" from="Sneaked_past/EnemyEnableTrig/Area3D" to="Sneaked_past/EnemyEnableTrig" method="_player_exited"]
-[connection signal="on_activated" from="Sneaked_past/Button" to="Sneaked_past/First_Gate" method="open_gate"]
 [connection signal="on_activated" from="Sneaked_past/GateAreaDoor_Trigger" to="Sneaked_past/First_Gate" method="close_gate"]
 [connection signal="area_entered" from="Sneaked_past/GateAreaDoor_Trigger/Area3D" to="Sneaked_past/GateAreaDoor_Trigger" method="_player_entered"]
 [connection signal="area_exited" from="Sneaked_past/GateAreaDoor_Trigger/Area3D" to="Sneaked_past/GateAreaDoor_Trigger" method="_player_exited"]
+[connection signal="on_activated" from="Sneaked_past/PressurePlateLight" to="Sneaked_past/First_Gate" method="open_gate"]
+[connection signal="on_activated" from="Sneaked_past/PressurePlateLight" to="Sneaked_past/PressurePlateLight/indicator_visenabler" method="enable_obj"]
+[connection signal="on_deactivated" from="Sneaked_past/PressurePlateLight" to="Sneaked_past/PressurePlateLight/indicator_visenabler" method="disable_obj"]
 [connection signal="on_activated" from="BallyBog_Trigger" to="Ballybog2" method="enable_me"]
 [connection signal="area_entered" from="BallyBog_Trigger/Area3D" to="BallyBog_Trigger" method="_player_entered"]
 [connection signal="area_exited" from="BallyBog_Trigger/Area3D" to="BallyBog_Trigger" method="_player_exited"]

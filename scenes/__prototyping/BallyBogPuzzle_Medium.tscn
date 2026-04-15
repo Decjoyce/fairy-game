@@ -66,13 +66,13 @@ volumetric_fog_emission = Color(0.117735185, 0.20947376, 0.3003329, 1)
 volumetric_fog_emission_energy = 0.5
 volumetric_fog_sky_affect = 0.0
 
-[sub_resource type="Gradient" id="Gradient_fv00s"]
+[sub_resource type="Gradient" id="Gradient_ouj5r"]
 interpolation_mode = 2
 offsets = PackedFloat32Array(0.3402556, 0.53355706, 1)
 colors = PackedColorArray(0.17184411, 0.11207495, 0.06100855, 0, 0, 1.9492192, 2.0330758, 0.69000006, 0, 0, 0, 0)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_ru1df"]
-gradient = SubResource("Gradient_fv00s")
+gradient = SubResource("Gradient_ouj5r")
 fill = 1
 fill_from = Vector2(0.5, 0.5)
 fill_to = Vector2(0.94, 0.43)
@@ -671,6 +671,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 1, -7)
 
 [node name="GridMapPathFinding2" type="GridMap" parent="." unique_id=1929151095 groups=["GMPF"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.445, 0)
+visible = false
 mesh_library = ExtResource("26_p5orj")
 cell_size = Vector3(1, 1, 1)
 cell_octant_size = 4
