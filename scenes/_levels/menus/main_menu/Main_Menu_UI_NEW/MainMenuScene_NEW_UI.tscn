@@ -19,6 +19,7 @@
 [ext_resource type="PackedScene" uid="uid://ckuw7ho3cogrs" path="res://scenes/__prototyping/PlayTest_Scene.tscn" id="8_xwrb1"]
 [ext_resource type="Script" uid="uid://1nf36h0gms3q" path="res://addons/maaacks_menus_template/base/nodes/utilities/capture_focus.gd" id="9_xwrb1"]
 [ext_resource type="Script" uid="uid://dmkubt2nsnsbn" path="res://addons/maaacks_menus_template/base/nodes/labels/config_version_label.gd" id="10_gmba7"]
+[ext_resource type="AudioStream" uid="uid://2j13alqx80jr" path="res://assets/audio/sfx/menu/UI/UI_Buttons_randomizer3.tres" id="11_0evim"]
 [ext_resource type="PackedScene" uid="uid://cwt4p3bufkke5" path="res://addons/maaacks_menus_template/base/nodes/windows/confirmation_overlaid_window.tscn" id="11_bus8x"]
 
 [sub_resource type="Animation" id="1"]
@@ -663,6 +664,14 @@ confirm_exit = false
 
 [node name="UISoundController" type="Node" parent="MainMenu" unique_id=1619985599]
 script = ExtResource("6_q6106")
+persistent = false
+button_focused = ExtResource("11_0evim")
+button_pressed = ExtResource("11_0evim")
+tab_changed = ExtResource("11_0evim")
+tab_selected = ExtResource("11_0evim")
+slider_focused = ExtResource("11_0evim")
+slider_drag_started = ExtResource("11_0evim")
+slider_drag_ended = ExtResource("11_0evim")
 
 [node name="MenuAnimationPlayer" type="AnimationPlayer" parent="MainMenu" unique_id=1492532975]
 libraries/ = SubResource("AnimationLibrary_2kqig")
