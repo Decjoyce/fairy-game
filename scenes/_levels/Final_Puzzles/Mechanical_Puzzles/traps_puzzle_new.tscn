@@ -1,0 +1,2304 @@
+[gd_scene format=3 uid="uid://cieiwvi0168kv"]
+
+[ext_resource type="MeshLibrary" uid="uid://bu208a8l5866i" path="res://scenes/_levels/_palettes/cairn/meshlibrary_cairn.tres" id="1_jhxkl"]
+[ext_resource type="Material" uid="uid://dyejtq23uplk4" path="res://assets/shaders/Outline/outline.tres" id="2_nwl5k"]
+[ext_resource type="PackedScene" uid="uid://csot2mi7746ll" path="res://scenes/interactions/_triggers/pressure_plate/pressure_plate.tscn" id="3_nevts"]
+[ext_resource type="PackedScene" uid="uid://crnrdh5wu8ooa" path="res://scenes/interactions/_receivers/traps/projectile/trap_projectile.tscn" id="4_krfnm"]
+[ext_resource type="PackedScene" uid="uid://lxic7c72kvyt" path="res://scenes/interactions/interactables/items/all_items/misc/item_skull.tscn" id="5_dp00y"]
+[ext_resource type="PackedScene" uid="uid://bmiljk53ks7e7" path="res://scenes/interactions/_receivers/wip_spike_trap/spike_trap_floor.tscn" id="6_jkfe6"]
+[ext_resource type="PackedScene" uid="uid://dt13fur6twjep" path="res://scenes/interactions/_receivers/gate/gate.tscn" id="7_wn42o"]
+[ext_resource type="PackedScene" uid="uid://qu5rxgbydmet" path="res://scenes/interactions/_triggers/button/button.tscn" id="8_uqwb3"]
+[ext_resource type="PackedScene" uid="uid://pfsmibp55qi" path="res://scenes/interactions/_receivers/bridge/bridge.tscn" id="9_4clkm"]
+[ext_resource type="PackedScene" uid="uid://br01bblhowysi" path="res://assets/models/cairn/Z-Old-EnvironmentModels/Wall/Wall.glb" id="10_8sfw4"]
+[ext_resource type="PackedScene" uid="uid://xuo5buj0odhi" path="res://scenes/interactions/_triggers/torch_sconce/torch_sconce_lit.tscn" id="14_ftbts"]
+[ext_resource type="PackedScene" uid="uid://bsdlm8rcrt2j" path="res://scenes/interactions/_triggers/area_triggers/player_area_trigger.tscn" id="15_fs7hw"]
+[ext_resource type="PackedScene" uid="uid://dde66nwtb1gv1" path="res://scenes/interactions/_triggers/item_receiver/torch_scont/torch_scont.tscn" id="16_fuubn"]
+[ext_resource type="PackedScene" uid="uid://ck1b6l8s7xnxi" path="res://scenes/interactions/_triggers/lever/lever.tscn" id="17_lyaua"]
+[ext_resource type="PackedScene" uid="uid://clnnqb1efkbei" path="res://scenes/interactions/_receivers/door/locked_door.tscn" id="18_6uu8n"]
+[ext_resource type="PackedScene" uid="uid://bm8kaq0ah5g7q" path="res://scenes/interactions/interactables/items/all_items/torch/torch.tscn" id="19_luwe3"]
+[ext_resource type="PackedScene" uid="uid://dkx1fyyqx7cmp" path="res://scenes/interactions/_triggers/torch_sconce/torch_sconce_ceiling.tscn" id="20_uwed5"]
+[ext_resource type="PackedScene" uid="uid://cfkoaxhngk3gf" path="res://scenes/interactions/interactables/items/all_items/keys/item_key.tscn" id="20_y4ekb"]
+[ext_resource type="PackedScene" uid="uid://d2ict3hg28spx" path="res://scenes/_levels/_palettes/cairn/props/cairn_fake_wall.tscn" id="21_xajqr"]
+[ext_resource type="Script" uid="uid://cfmswqnu6u0bl" path="res://scenes/interactions/_receivers/_logic/counter/counter.gd" id="22_el7m8"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ypdmq"]
+albedo_color = Color(0.29582244, 0.28200856, 0.27378577, 1)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_bwo3n"]
+material = SubResource("StandardMaterial3D_ypdmq")
+top_radius = 0.0
+bottom_radius = 0.05
+height = 0.5
+radial_segments = 4
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xbtjy"]
+albedo_color = Color(0.38039216, 0.28627452, 0.19215687, 1)
+metallic = 0.5
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_ueblh"]
+material = SubResource("StandardMaterial3D_xbtjy")
+top_radius = 0.03
+bottom_radius = 0.03
+height = 0.8
+radial_segments = 4
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_7bdt6"]
+
+[node name="Traps_Puzzle" type="Node3D" unique_id=1530637846]
+
+[node name="GridMap" type="GridMap" parent="." unique_id=1918316488]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
+mesh_library = ExtResource("1_jhxkl")
+data = {
+"cells": PackedInt32Array(0, 65533, 2, 0, 65532, 1441792, 65535, 65531, 1441793, 1, 65531, 1048577, 0, 65531, 1048576, 0, 65530, 655361, 65534, 65532, 1048578, 65535, 65532, 1, 65533, 65532, 1441794, 65532, 65532, 1441795, 65532, 65531, 655362, 65533, 65530, 1048578, 65534, 65530, 1048578, 65535, 65530, 655361, 1, 65530, 655361, 2, 65530, 1048578, 65531, 65530, 1441796, 65532, 65530, 655361, 6, 65530, 1441794, 7, 65531, 655362, 7, 65529, 2, 7, 65530, 0, 7, 65528, 2, 8, 65527, 1048578, 8, 65532, 1441794, 9, 65527, 1048578, 8, 65530, 1048578, 9, 65530, 1048580, 10, 65526, 655363, 11, 65526, 655361, 12, 65526, 655361, 13, 65526, 655361, 14, 65526, 1048579, 10, 65528, 1441795, 11, 65528, 1, 12, 65528, 1, 13, 65528, 1, 15, 65527, 1048580, 14, 65528, 3, 10, 65527, 0, 12, 65527, 0, 11, 65527, 0, 13, 65527, 0, 14, 65527, 0, 5, 65531, 1048591, 4, 65531, 1048591, 3, 65531, 1048591, 65541, 65531, 1048591, 65540, 65531, 1048591, 65539, 65531, 1048591, 131075, 65531, 1048591, 131076, 65531, 1048591, 131077, 65531, 1048591, 0, 65535, 2, 0, 65534, 2, 7, 65527, 655363, 9, 65532, 1441794, 10, 65532, 1441794, 11, 65532, 1441794, 12, 65532, 1441794, 13, 65532, 1048579, 14, 65534, 1441808, 14, 65535, 16, 13, 65535, 16, 13, 65534, 16, 12, 65535, 16, 13, 1, 1441808, 12, 0, 1441808, 13, 0, 16, 11, 65535, 1441808, -65522, 0, 1441809, 7, 65532, 1, 6, 65532, 1441794, 5, 65532, 1441794, 4, 65532, 1441794, 3, 65532, 1441794, 2, 65532, 1441794, 1, 65532, 1, -65522, 65535, 1441807, 10, 65535, 1441807, 13, 65533, 1441808, 9, 65535, 1441812, 26, 65516, 18, -65525, 1, 17, -65526, 65534, 1441809, -65525, 65534, 655376, -65525, 65533, 1441809, -65524, 65533, 655377, -65523, 65533, 1441809, -65521, 0, 655377, -65521, 1, 1048593, -65522, 1, 17, 15, 65535, 655378, -65525, 0, 24, -65521, 65533, 655377, -65522, 65533, 1441810, -65521, 65534, 1048593, -65526, 65535, 1441817, -65524, 65534, 22, -65524, 1, 1048601, -65525, 65535, 25, 13, 2, 2)
+}
+metadata/_editor_floor_ = Vector3(0, 0, 0)
+
+[node name="Beginning_Part(Easier)" type="Node3D" parent="." unique_id=967571025]
+
+[node name="First_Trap" type="Node3D" parent="Beginning_Part(Easier)" unique_id=2140856452]
+
+[node name="Arrow" type="Node3D" parent="Beginning_Part(Easier)/First_Trap" unique_id=772705159]
+transform = Transform3D(-2.1855694e-08, 0, 0.5, 0, 0.5, 0, -0.5, 0, -2.1855694e-08, 0.56474733, 0.95350873, -3.5840669)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Beginning_Part(Easier)/First_Trap/Arrow" unique_id=1019898902]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, -1.2525717e-07, -0.5679159)
+material_overlay = ExtResource("2_nwl5k")
+mesh = SubResource("CylinderMesh_bwo3n")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Beginning_Part(Easier)/First_Trap/Arrow" unique_id=1630451811]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, -2.1964206e-07, 0)
+material_overlay = ExtResource("2_nwl5k")
+mesh = SubResource("CylinderMesh_ueblh")
+
+[node name="First_Pressure_Plate" parent="Beginning_Part(Easier)/First_Trap" unique_id=790035545 instance=ExtResource("3_nevts")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, -4)
+metadata/uid = "f830bfea-bd0e-48e6-a695-af6a439fb98d"
+metadata/lock_uid = true
+metadata/date_generated = "2026-03-25T16:38:33"
+
+[node name="trap_projectile3" parent="Beginning_Part(Easier)/First_Trap" unique_id=589372953 instance=ExtResource("4_krfnm")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 1.7510376, 0.9964758, -3.9030838)
+metadata/uid = "51c4398e-d0e3-4deb-a065-58e6a4282fcb"
+metadata/lock_uid = true
+metadata/date_generated = "2026-03-25T16:38:33"
+
+[node name="Second_Part" type="Node3D" parent="Beginning_Part(Easier)" unique_id=88189312]
+
+[node name="skull" parent="Beginning_Part(Easier)/Second_Part" unique_id=234370081 instance=ExtResource("5_dp00y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.3409958, 1.0126112, -3.5627441)
+metadata/uid = "7f390dea-8d5c-48cf-8cf0-827fc723bf6e"
+metadata/lock_uid = true
+metadata/date_generated = "2026-03-25T16:38:33"
+
+[node name="SpikeTrap" parent="Beginning_Part(Easier)/Second_Part" unique_id=1388700218 instance=ExtResource("6_jkfe6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.8231583, 0, -9)
+metadata/uid = "ce4b7fd8-4af6-47ad-ab85-cd768b994b32"
+metadata/lock_uid = true
+metadata/date_generated = "2026-03-25T16:38:33"
+
+[node name="SpikeTrap2" parent="Beginning_Part(Easier)/Second_Part" unique_id=2121606658 instance=ExtResource("6_jkfe6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, -9)
+metadata/uid = "1d791a5f-4967-48c7-b00d-37a0137a5524"
+metadata/lock_uid = true
+metadata/date_generated = "2026-03-25T16:38:33"
+
+[node name="SpikeTrap3" parent="Beginning_Part(Easier)/Second_Part" unique_id=1589298351 instance=ExtResource("6_jkfe6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.8206482, 0, -9)
+metadata/uid = "27166954-201e-402e-9e30-9f2e2ac1dd6a"
+metadata/lock_uid = true
+metadata/date_generated = "2026-03-25T16:38:33"
+
+[node name="Gate" parent="Beginning_Part(Easier)/Second_Part" unique_id=2077487765 instance=ExtResource("7_wn42o")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -2, 0, -7)
+metadata/uid = "ce6b5775-a4be-4b0a-b974-701a189a4973"
+metadata/lock_uid = true
+metadata/date_generated = "2026-03-25T16:38:33"
+
+[node name="PressurePlate3" parent="Beginning_Part(Easier)/Second_Part" unique_id=491005947 instance=ExtResource("3_nevts")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, -11)
+weight_to_activate = 12.0
+metadata/uid = "aa454738-03f2-4c9b-be38-d42b3d69fe31"
+metadata/lock_uid = true
+metadata/date_generated = "2026-03-25T16:38:33"
+
+[node name="PressurePlate" parent="Beginning_Part(Easier)/Second_Part" unique_id=50223912 instance=ExtResource("3_nevts")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, -11)
+weight_to_activate = 12.0
+metadata/uid = "f50e5a53-1776-4337-aeaa-4ec70d1863e1"
+metadata/lock_uid = true
+metadata/date_generated = "2026-03-25T16:38:33"
+
+[node name="PressurePlate5" parent="Beginning_Part(Easier)/Second_Part" unique_id=1713068633 instance=ExtResource("3_nevts")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, -11)
+weight_to_activate = 1.5
+metadata/uid = "cd24481b-d1a6-47a0-990a-d0c657e715fd"
+metadata/lock_uid = true
+metadata/date_generated = "2026-03-25T16:38:33"
+
+[node name="PressurePlate2" parent="Beginning_Part(Easier)/Second_Part" unique_id=1174408089 instance=ExtResource("3_nevts")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, -11)
+weight_to_activate = 12.0
+metadata/uid = "741daef2-4b92-413b-99ab-f84b84175d98"
+metadata/lock_uid = true
+metadata/date_generated = "2026-03-25T16:38:33"
+
+[node name="trap_projectile_Left" parent="Beginning_Part(Easier)/Second_Part" unique_id=647444162 instance=ExtResource("4_krfnm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 1.1319622, -6.2465477)
+metadata/uid = "732d7f24-2f7d-429f-ae3c-3924f95db619"
+metadata/lock_uid = true
+metadata/date_generated = "2026-03-25T16:38:33"
+
+[node name="trap_projectile_Right" parent="Beginning_Part(Easier)/Second_Part" unique_id=1193845386 instance=ExtResource("4_krfnm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 1.1319622, -6.2465477)
+metadata/uid = "65fefa0d-98ad-4afe-891b-e83dde41e01d"
+metadata/lock_uid = true
+metadata/date_generated = "2026-03-25T16:38:33"
+
+[node name="PressurePlate4" parent="Beginning_Part(Easier)/Second_Part" unique_id=1821217806 instance=ExtResource("3_nevts")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, -7)
+metadata/uid = "4bc19c14-3345-4876-bcc5-030b8961b516"
+metadata/lock_uid = true
+metadata/date_generated = "2026-03-25T16:38:33"
+
+[node name="trap_projectile" parent="Beginning_Part(Easier)/Second_Part" unique_id=1876734696 instance=ExtResource("4_krfnm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 1, -6.239393)
+metadata/uid = "755b7019-b15c-4787-9c2b-5c759736c35d"
+metadata/lock_uid = true
+metadata/date_generated = "2026-03-25T16:38:33"
+
+[node name="Third_Part" type="Node3D" parent="Beginning_Part(Easier)" unique_id=1295854055]
+
+[node name="Button" parent="Beginning_Part(Easier)/Third_Part" unique_id=1164325605 instance=ExtResource("8_uqwb3")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -9.674, 1.305, -11)
+manual_reset = true
+metadata/uid = "10e83ccc-7ecd-4df2-9289-14987ccf1a45"
+metadata/lock_uid = true
+metadata/date_generated = "2026-03-25T16:38:33"
+
+[node name="PressurePlate4" parent="Beginning_Part(Easier)/Third_Part" unique_id=402978137 instance=ExtResource("3_nevts")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, -11)
+weight_to_activate = 5.0
+metadata/uid = "78148161-0c5e-4353-83a5-f02b0cfd4132"
+metadata/lock_uid = true
+metadata/date_generated = "2026-03-25T16:38:33"
+
+[node name="trap_projectile" parent="Beginning_Part(Easier)/Third_Part" unique_id=603146276 instance=ExtResource("4_krfnm")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 5, 1.305, -11)
+metadata/uid = "2bc5dc70-222f-40b2-8943-048929a69b6a"
+metadata/lock_uid = true
+metadata/date_generated = "2026-03-25T16:38:33"
+
+[node name="First_Bridge" parent="Beginning_Part(Easier)/Third_Part" unique_id=1119761856 instance=ExtResource("9_4clkm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, -11)
+metadata/uid = "6addbbb0-01fb-4903-a392-38640fc6d559"
+metadata/lock_uid = true
+metadata/date_generated = "2026-03-25T16:38:33"
+
+[node name="Walls" type="Node3D" parent="Beginning_Part(Easier)/Third_Part" unique_id=1544566796]
+
+[node name="wall" parent="Beginning_Part(Easier)/Third_Part/Walls" unique_id=1712316320 instance=ExtResource("10_8sfw4")]
+transform = Transform3D(-6.993822e-09, -2.2626665e-09, -0.16, 5.9604655e-09, 0.2, -1.8101335e-09, 0.16, -7.450582e-09, -6.993822e-09, 10.828231, -0.15424359, -12.072551)
+
+[node name="wall2" parent="Beginning_Part(Easier)/Third_Part/Walls" unique_id=706206358 instance=ExtResource("10_8sfw4")]
+transform = Transform3D(-6.993822e-09, -2.2626665e-09, -0.16, 5.9604655e-09, 0.2, -1.8101335e-09, 0.16, -7.450582e-09, -6.993822e-09, 8.607064, -0.15424359, -12.072551)
+
+[node name="wall3" parent="Beginning_Part(Easier)/Third_Part/Walls" unique_id=1548995499 instance=ExtResource("10_8sfw4")]
+transform = Transform3D(-6.993822e-09, -2.2626665e-09, -0.16, 5.9604655e-09, 0.2, -1.8101335e-09, 0.16, -7.450582e-09, -6.993822e-09, 6.396567, -0.15424359, -12.072551)
+
+[node name="wall4" parent="Beginning_Part(Easier)/Third_Part/Walls" unique_id=81796214 instance=ExtResource("10_8sfw4")]
+transform = Transform3D(-6.993822e-09, -2.2626665e-09, -0.16, 5.9604655e-09, 0.2, -1.8101335e-09, 0.16, -7.450582e-09, -6.993822e-09, 10.828231, 1.8457564, -12.072551)
+
+[node name="wall5" parent="Beginning_Part(Easier)/Third_Part/Walls" unique_id=563566624 instance=ExtResource("10_8sfw4")]
+transform = Transform3D(-6.993822e-09, -2.2626665e-09, -0.16, 5.9604655e-09, 0.2, -1.8101335e-09, 0.16, -7.450582e-09, -6.993822e-09, 8.607064, 1.8457564, -12.072551)
+
+[node name="wall6" parent="Beginning_Part(Easier)/Third_Part/Walls" unique_id=197655982 instance=ExtResource("10_8sfw4")]
+transform = Transform3D(-6.993822e-09, -2.2626665e-09, -0.16, 5.9604655e-09, 0.2, -1.8101335e-09, 0.16, -7.450582e-09, -6.993822e-09, 6.396567, 1.8457564, -12.072551)
+
+[node name="wall7" parent="Beginning_Part(Easier)/Third_Part/Walls" unique_id=10945085 instance=ExtResource("10_8sfw4")]
+transform = Transform3D(-6.993822e-09, -2.2626665e-09, -0.16, 5.9604655e-09, 0.2, -1.8101335e-09, 0.16, -7.450582e-09, -6.993822e-09, 10.828231, 3.8457565, -12.072551)
+
+[node name="wall19" parent="Beginning_Part(Easier)/Third_Part/Walls" unique_id=983440860 instance=ExtResource("10_8sfw4")]
+transform = Transform3D(-0.16, 7.450583e-09, 1.3987645e-08, 5.9604655e-09, 0.19999999, -1.8101335e-09, -1.3987645e-08, -2.262665e-09, -0.16, 11.90638, 5.8457565, -10.959492)
+
+[node name="wall20" parent="Beginning_Part(Easier)/Third_Part/Walls" unique_id=1283315625 instance=ExtResource("10_8sfw4")]
+transform = Transform3D(-0.16, 7.450583e-09, 1.3987645e-08, 5.9604655e-09, 0.19999999, -1.8101335e-09, -1.3987645e-08, -2.262665e-09, -0.16, 11.929571, 3.8457565, -10.989663)
+
+[node name="wall22" parent="Beginning_Part(Easier)/Third_Part/Walls" unique_id=1214319742 instance=ExtResource("10_8sfw4")]
+transform = Transform3D(-0.16, 7.450583e-09, 1.3987645e-08, 5.9604655e-09, 0.19999999, -1.8101335e-09, -1.3987645e-08, -2.262665e-09, -0.16, 5.8367963, 5.8457565, -10.959492)
+
+[node name="wall23" parent="Beginning_Part(Easier)/Third_Part/Walls" unique_id=1450737035 instance=ExtResource("10_8sfw4")]
+transform = Transform3D(-0.16, 7.450583e-09, 1.3987645e-08, 5.9604655e-09, 0.19999999, -1.8101335e-09, -1.3987645e-08, -2.262665e-09, -0.16, 5.8599877, 3.8457565, -10.989663)
+
+[node name="wall24" parent="Beginning_Part(Easier)/Third_Part/Walls" unique_id=2079616529 instance=ExtResource("10_8sfw4")]
+transform = Transform3D(-0.16, 7.450583e-09, 1.3987645e-08, 5.9604655e-09, 0.19999999, -1.8101335e-09, -1.3987645e-08, -2.262665e-09, -0.16, 5.8599877, 2.196874, -10.989663)
+
+[node name="wall21" parent="Beginning_Part(Easier)/Third_Part/Walls" unique_id=651877434 instance=ExtResource("10_8sfw4")]
+transform = Transform3D(-0.16, 7.450583e-09, 1.3987645e-08, 5.9604655e-09, 0.19999999, -1.8101335e-09, -1.3987645e-08, -2.262665e-09, -0.16, 11.976042, 2.0976522, -10.989663)
+
+[node name="wall8" parent="Beginning_Part(Easier)/Third_Part/Walls" unique_id=1039280189 instance=ExtResource("10_8sfw4")]
+transform = Transform3D(-6.993822e-09, -2.2626665e-09, -0.16, 5.9604655e-09, 0.2, -1.8101335e-09, 0.16, -7.450582e-09, -6.993822e-09, 8.607064, 3.8457565, -12.072551)
+
+[node name="wall9" parent="Beginning_Part(Easier)/Third_Part/Walls" unique_id=2074085274 instance=ExtResource("10_8sfw4")]
+transform = Transform3D(-6.993822e-09, -2.2626665e-09, -0.16, 5.9604655e-09, 0.2, -1.8101335e-09, 0.16, -7.450582e-09, -6.993822e-09, 6.396567, 3.8457565, -12.072551)
+
+[node name="wall10" parent="Beginning_Part(Easier)/Third_Part/Walls" unique_id=1255017499 instance=ExtResource("10_8sfw4")]
+transform = Transform3D(-6.9938224e-09, -2.2626667e-09, -0.16, -0.07999998, 0.17320506, 1.9292894e-09, 0.13856407, 0.099999994, -6.9618946e-09, 10.828231, 5.8457565, -12.072551)
+
+[node name="wall11" parent="Beginning_Part(Easier)/Third_Part/Walls" unique_id=560826361 instance=ExtResource("10_8sfw4")]
+transform = Transform3D(-6.9938224e-09, -2.2626667e-09, -0.16, -0.07999998, 0.17320506, 1.9292894e-09, 0.13856407, 0.099999994, -6.9618946e-09, 8.607064, 5.8457565, -12.072551)
+
+[node name="wall12" parent="Beginning_Part(Easier)/Third_Part/Walls" unique_id=657426078 instance=ExtResource("10_8sfw4")]
+transform = Transform3D(-6.9938224e-09, -2.2626667e-09, -0.16, -0.07999998, 0.17320506, 1.9292894e-09, 0.13856407, 0.099999994, -6.9618946e-09, 6.396567, 5.8457565, -12.072551)
+
+[node name="wall13" parent="Beginning_Part(Easier)/Third_Part/Walls" unique_id=16688560 instance=ExtResource("10_8sfw4")]
+transform = Transform3D(-6.993822e-09, -2.2626665e-09, -0.16, 0.080000006, 0.17320505, -5.0645323e-09, 0.13856402, -0.09999999, -5.151761e-09, 10.828231, 5.8457565, -9.845802)
+
+[node name="wall14" parent="Beginning_Part(Easier)/Third_Part/Walls" unique_id=1138846 instance=ExtResource("10_8sfw4")]
+transform = Transform3D(-6.993822e-09, -2.2626665e-09, -0.16, 0.080000006, 0.17320505, -5.0645323e-09, 0.13856402, -0.09999999, -5.151761e-09, 8.607064, 5.8457565, -9.845802)
+
+[node name="wall16" parent="Beginning_Part(Easier)/Third_Part/Walls" unique_id=1786247731 instance=ExtResource("10_8sfw4")]
+transform = Transform3D(-6.993821e-09, -2.2626663e-09, -0.16, 0.15999997, -1.4901161e-08, -6.9938215e-09, -2.9802322e-08, -0.19999997, 1.8101334e-09, 8.607064, 7.8457565, -9.845802)
+
+[node name="wall17" parent="Beginning_Part(Easier)/Third_Part/Walls" unique_id=1373727406 instance=ExtResource("10_8sfw4")]
+transform = Transform3D(-6.993821e-09, -2.2626663e-09, -0.16, 0.15999997, -1.4901161e-08, -6.9938215e-09, -2.9802322e-08, -0.19999997, 1.8101334e-09, 10.837829, 7.8457565, -9.845802)
+
+[node name="wall18" parent="Beginning_Part(Easier)/Third_Part/Walls" unique_id=119351506 instance=ExtResource("10_8sfw4")]
+transform = Transform3D(-6.993821e-09, -2.2626663e-09, -0.16, 0.15999997, -1.4901161e-08, -6.9938215e-09, -2.9802322e-08, -0.19999997, 1.8101334e-09, 6.3934164, 7.8457565, -9.845802)
+
+[node name="wall15" parent="Beginning_Part(Easier)/Third_Part/Walls" unique_id=1784414390 instance=ExtResource("10_8sfw4")]
+transform = Transform3D(-6.993822e-09, -2.2626665e-09, -0.16, 0.080000006, 0.17320505, -5.0645323e-09, 0.13856402, -0.09999999, -5.151761e-09, 6.396567, 5.8457565, -9.845802)
+
+[node name="Ceiling_Torches" type="Node3D" parent="Beginning_Part(Easier)/Third_Part" unique_id=741144713]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 7, -11)
+
+[node name="TorchSconce_Lit" parent="Beginning_Part(Easier)/Third_Part/Ceiling_Torches" unique_id=1429042042 instance=ExtResource("20_uwed5")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 2, 0.49018383, 0.048742294)
+
+[node name="TorchSconce_Lit2" parent="Beginning_Part(Easier)/Third_Part/Ceiling_Torches" unique_id=607081284 instance=ExtResource("20_uwed5")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -1, 0.49018383, 0.048742294)
+
+[node name="TorchSconce_Lit3" parent="Beginning_Part(Easier)/Third_Part/Ceiling_Torches" unique_id=973763166 instance=ExtResource("20_uwed5")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0.49018383, 0.048742294)
+
+[node name="Torches" type="Node3D" parent="Beginning_Part(Easier)" unique_id=1634841621]
+
+[node name="TorchSconce" parent="Beginning_Part(Easier)/Torches" unique_id=1729385187 instance=ExtResource("14_ftbts")]
+transform = Transform3D(0.25881907, 0.9659258, 0, -0.9659258, 0.25881907, 0, 0, 0, 1, 2, 0.13853383, -11)
+
+[node name="TorchSconce2" parent="Beginning_Part(Easier)/Torches" unique_id=1516041722 instance=ExtResource("14_ftbts")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -1.2884445, 1.454347, -6.4117413)
+
+[node name="TorchSconce4" parent="Beginning_Part(Easier)/Torches" unique_id=437802833 instance=ExtResource("14_ftbts")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -9.569396, 0.81302834, -11.056533)
+
+[node name="TorchSconce3" parent="Beginning_Part(Easier)/Torches" unique_id=602521113 instance=ExtResource("14_ftbts")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 3.3426514, 1.454347, -6.4117413)
+
+[node name="Gate_Area_Finished" type="Node3D" parent="Beginning_Part(Easier)" unique_id=2036709341]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 4, 0, -11)
+
+[node name="First_Area_FinishedGate" parent="Beginning_Part(Easier)/Gate_Area_Finished" unique_id=1811524582 instance=ExtResource("7_wn42o")]
+
+[node name="PlayerAreaTrigger" parent="Beginning_Part(Easier)/Gate_Area_Finished" unique_id=917204587 instance=ExtResource("15_fs7hw")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -3.8146973e-06, 1, -4)
+
+[node name="Area3D" type="Area3D" parent="Beginning_Part(Easier)/Gate_Area_Finished/PlayerAreaTrigger" unique_id=2090231692]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Beginning_Part(Easier)/Gate_Area_Finished/PlayerAreaTrigger/Area3D" unique_id=2117907083]
+shape = SubResource("SphereShape3D_7bdt6")
+
+[node name="Second_Part(Harder)" type="Node3D" parent="." unique_id=626173283]
+
+[node name="Intersection" type="Node3D" parent="Second_Part(Harder)" unique_id=2000506198]
+
+[node name="End_Gate" parent="Second_Part(Harder)/Intersection" unique_id=1823157079 instance=ExtResource("7_wn42o")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15, 0, -10)
+metadata/uid = "6c2eafce-b84c-4c50-8b6b-711ca4c198aa"
+metadata/lock_uid = true
+metadata/date_generated = "2026-03-25T16:38:33"
+
+[node name="TorchScont" parent="Second_Part(Harder)/Intersection" unique_id=813345400 instance=ExtResource("16_fuubn")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 19, 1.2778568, -10.293091)
+
+[node name="TorchScont2" parent="Second_Part(Harder)/Intersection" unique_id=1854489855 instance=ExtResource("16_fuubn")]
+transform = Transform3D(1.3057098e-07, -0.81601655, -0.5780285, -1.214029e-08, 0.5780285, -0.81601655, 1, 1.1356552e-07, 6.556708e-08, 15, 0.043614388, -7.293091)
+
+[node name="Lever" parent="Second_Part(Harder)/Intersection" unique_id=1692381032 instance=ExtResource("17_lyaua")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 19.75082, 1, -11)
+metadata/lock_uid = true
+metadata/uid = "7ec93476-786c-4761-b843-63be702eb276"
+metadata/date_generated = "2026-03-25T16:38:33"
+
+[node name="Lever_Door" parent="Second_Part(Harder)/Intersection" unique_id=1820735957 instance=ExtResource("18_6uu8n")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 17, 1, -11)
+
+[node name="Final Projectile Part" type="Node3D" parent="Second_Part(Harder)" unique_id=1723333603]
+
+[node name="BunbleofArrows_Trap8" type="Node3D" parent="Second_Part(Harder)/Final Projectile Part" unique_id=12090922]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21, 1, -15)
+
+[node name="Arrow_Colony" type="Node3D" parent="Second_Part(Harder)/Final Projectile Part/BunbleofArrows_Trap8" unique_id=837782971]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.6, 0)
+
+[node name="trap_projectile" parent="Second_Part(Harder)/Final Projectile Part/BunbleofArrows_Trap8/Arrow_Colony" unique_id=2140923396 instance=ExtResource("4_krfnm")]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, -0.2139492, 0.28925622, 0)
+metadata/uid = "746b352f-17ab-4508-b0b8-5dfcf36f2b16"
+metadata/lock_uid = true
+metadata/date_generated = "2026-03-25T16:38:33"
+
+[node name="trap_projectile3" parent="Second_Part(Harder)/Final Projectile Part/BunbleofArrows_Trap8/Arrow_Colony" unique_id=891565745 instance=ExtResource("4_krfnm")]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, -0.2139492, 0.28925622, 0.34223747)
+metadata/uid = "dfae9bc5-fa72-4639-81d6-e6f78d628ceb"
+metadata/lock_uid = true
+metadata/date_generated = "2026-03-25T16:38:33"
+
+[node name="trap_projectile2" parent="Second_Part(Harder)/Final Projectile Part/BunbleofArrows_Trap8/Arrow_Colony" unique_id=227491122 instance=ExtResource("4_krfnm")]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, -0.2139492, 0.28925622, -0.36455154)
+metadata/uid = "e3a79b41-bb3e-440c-a6e2-b271859dccad"
+metadata/lock_uid = true
+metadata/date_generated = "2026-03-25T16:38:33"
+
+[node name="trap_projectile4" parent="Second_Part(Harder)/Final Projectile Part/BunbleofArrows_Trap8/Arrow_Colony" unique_id=704299221 instance=ExtResource("4_krfnm")]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0.23301697, 0.28925622, 0)
+metadata/uid = "cfafb60d-39eb-4e4f-8d18-f00352f63d69"
+metadata/lock_uid = true
+metadata/date_generated = "2026-03-25T16:38:33"
+
+[node name="trap_projectile5" parent="Second_Part(Harder)/Final Projectile Part/BunbleofArrows_Trap8/Arrow_Colony" unique_id=2052265987 instance=ExtResource("4_krfnm")]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0.23301697, 0.28925622, 0.34223747)
+metadata/uid = "e21b506b-ce2d-4ce7-bfba-ffe0ca06736b"
+metadata/lock_uid = true
+metadata/date_generated = "2026-03-25T16:38:33"
+
+[node name="trap_projectile6" parent="Second_Part(Harder)/Final Projectile Part/BunbleofArrows_Trap8/Arrow_Colony" unique_id=1049788478 instance=ExtResource("4_krfnm")]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0.23301697, 0.28925622, -0.36455154)
+metadata/uid = "d62a5587-fd80-4a21-9ac1-8c1fcd0ee2f5"
+metadata/lock_uid = true
+metadata/date_generated = "2026-03-25T16:38:33"
+
+[node name="PressurePlate_ArrowTrap" parent="Second_Part(Harder)/Final Projectile Part/BunbleofArrows_Trap8" unique_id=2039255344 instance=ExtResource("3_nevts")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
+metadata/uid = "d2dbb5d0-26f2-4fc2-9e34-397be934c4dd"
+metadata/lock_uid = true
+metadata/date_generated = "2026-03-25T16:38:33"
+
+[node name="BunbleofArrows_Trap9" type="Node3D" parent="Second_Part(Harder)/Final Projectile Part" unique_id=1886297044]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22, 1, -15)
+
+[node name="Arrow_Colony" type="Node3D" parent="Second_Part(Harder)/Final Projectile Part/BunbleofArrows_Trap9" unique_id=1257505154]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.6, 0)
+
+[node name="trap_projectile" parent="Second_Part(Harder)/Final Projectile Part/BunbleofArrows_Trap9/Arrow_Colony" unique_id=1923306206 instance=ExtResource("4_krfnm")]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, -0.2139492, 0.28925622, 0)
+metadata/uid = "746b352f-17ab-4508-b0b8-5dfcf36f2b16"
+metadata/lock_uid = true
+metadata/date_generated = "2026-03-25T16:38:33"
+
+[node name="trap_projectile3" parent="Second_Part(Harder)/Final Projectile Part/BunbleofArrows_Trap9/Arrow_Colony" unique_id=822421236 instance=ExtResource("4_krfnm")]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, -0.2139492, 0.28925622, 0.34223747)
+metadata/uid = "dfae9bc5-fa72-4639-81d6-e6f78d628ceb"
+metadata/lock_uid = true
+metadata/date_generated = "2026-03-25T16:38:33"
+
+[node name="trap_projectile2" parent="Second_Part(Harder)/Final Projectile Part/BunbleofArrows_Trap9/Arrow_Colony" unique_id=2072938492 instance=ExtResource("4_krfnm")]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, -0.2139492, 0.28925622, -0.36455154)
+metadata/uid = "e3a79b41-bb3e-440c-a6e2-b271859dccad"
+metadata/lock_uid = true
+metadata/date_generated = "2026-03-25T16:38:33"
+
+[node name="trap_projectile4" parent="Second_Part(Harder)/Final Projectile Part/BunbleofArrows_Trap9/Arrow_Colony" unique_id=1895999924 instance=ExtResource("4_krfnm")]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0.23301697, 0.28925622, 0)
+metadata/uid = "cfafb60d-39eb-4e4f-8d18-f00352f63d69"
+metadata/lock_uid = true
+metadata/date_generated = "2026-03-25T16:38:33"
+
+[node name="trap_projectile5" parent="Second_Part(Harder)/Final Projectile Part/BunbleofArrows_Trap9/Arrow_Colony" unique_id=449435403 instance=ExtResource("4_krfnm")]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0.23301697, 0.28925622, 0.34223747)
+metadata/uid = "e21b506b-ce2d-4ce7-bfba-ffe0ca06736b"
+metadata/lock_uid = true
+metadata/date_generated = "2026-03-25T16:38:33"
+
+[node name="trap_projectile6" parent="Second_Part(Harder)/Final Projectile Part/BunbleofArrows_Trap9/Arrow_Colony" unique_id=464305181 instance=ExtResource("4_krfnm")]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0.23301697, 0.28925622, -0.36455154)
+metadata/uid = "d62a5587-fd80-4a21-9ac1-8c1fcd0ee2f5"
+metadata/lock_uid = true
+metadata/date_generated = "2026-03-25T16:38:33"
+
+[node name="PressurePlate_ArrowTrap" parent="Second_Part(Harder)/Final Projectile Part/BunbleofArrows_Trap9" unique_id=1376329534 instance=ExtResource("3_nevts")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
+metadata/uid = "d2dbb5d0-26f2-4fc2-9e34-397be934c4dd"
+metadata/lock_uid = true
+metadata/date_generated = "2026-03-25T16:38:33"
+
+[node name="BunbleofArrows_Trap10" type="Node3D" parent="Second_Part(Harder)/Final Projectile Part" unique_id=857584813]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 23, 1, -15)
+
+[node name="Arrow_Colony" type="Node3D" parent="Second_Part(Harder)/Final Projectile Part/BunbleofArrows_Trap10" unique_id=179233232]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.6, 0)
+
+[node name="trap_projectile" parent="Second_Part(Harder)/Final Projectile Part/BunbleofArrows_Trap10/Arrow_Colony" unique_id=827035221 instance=ExtResource("4_krfnm")]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, -0.2139492, 0.28925622, 0)
+metadata/uid = "746b352f-17ab-4508-b0b8-5dfcf36f2b16"
+metadata/lock_uid = true
+metadata/date_generated = "2026-03-25T16:38:33"
+
+[node name="trap_projectile3" parent="Second_Part(Harder)/Final Projectile Part/BunbleofArrows_Trap10/Arrow_Colony" unique_id=1919521081 instance=ExtResource("4_krfnm")]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, -0.2139492, 0.28925622, 0.34223747)
+metadata/uid = "dfae9bc5-fa72-4639-81d6-e6f78d628ceb"
+metadata/lock_uid = true
+metadata/date_generated = "2026-03-25T16:38:33"
+
+[node name="trap_projectile2" parent="Second_Part(Harder)/Final Projectile Part/BunbleofArrows_Trap10/Arrow_Colony" unique_id=1755207571 instance=ExtResource("4_krfnm")]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, -0.2139492, 0.28925622, -0.36455154)
+metadata/uid = "e3a79b41-bb3e-440c-a6e2-b271859dccad"
+metadata/lock_uid = true
+metadata/date_generated = "2026-03-25T16:38:33"
+
+[node name="trap_projectile4" parent="Second_Part(Harder)/Final Projectile Part/BunbleofArrows_Trap10/Arrow_Colony" unique_id=1576086155 instance=ExtResource("4_krfnm")]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0.23301697, 0.28925622, 0)
+metadata/uid = "cfafb60d-39eb-4e4f-8d18-f00352f63d69"
+metadata/lock_uid = true
+metadata/date_generated = "2026-03-25T16:38:33"
+
+[node name="trap_projectile5" parent="Second_Part(Harder)/Final Projectile Part/BunbleofArrows_Trap10/Arrow_Colony" unique_id=969819156 instance=ExtResource("4_krfnm")]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0.23301697, 0.28925622, 0.34223747)
+metadata/uid = "e21b506b-ce2d-4ce7-bfba-ffe0ca06736b"
+metadata/lock_uid = true
+metadata/date_generated = "2026-03-25T16:38:33"
+
+[node name="trap_projectile6" parent="Second_Part(Harder)/Final Projectile Part/BunbleofArrows_Trap10/Arrow_Colony" unique_id=1244272993 instance=ExtResource("4_krfnm")]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0.23301697, 0.28925622, -0.36455154)
+metadata/uid = "d62a5587-fd80-4a21-9ac1-8c1fcd0ee2f5"
+metadata/lock_uid = true
+metadata/date_generated = "2026-03-25T16:38:33"
+
+[node name="PressurePlate_ArrowTrap" parent="Second_Part(Harder)/Final Projectile Part/BunbleofArrows_Trap10" unique_id=2103944176 instance=ExtResource("3_nevts")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
+metadata/uid = "d2dbb5d0-26f2-4fc2-9e34-397be934c4dd"
+metadata/lock_uid = true
+metadata/date_generated = "2026-03-25T16:38:33"
+
+[node name="BunbleofArrows_Trap11" type="Node3D" parent="Second_Part(Harder)/Final Projectile Part" unique_id=1131532820]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22, 1, -16)
+
+[node name="Arrow_Colony" type="Node3D" parent="Second_Part(Harder)/Final Projectile Part/BunbleofArrows_Trap11" unique_id=1214897362]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.6, 0)
+
+[node name="trap_projectile" parent="Second_Part(Harder)/Final Projectile Part/BunbleofArrows_Trap11/Arrow_Colony" unique_id=1487229023 instance=ExtResource("4_krfnm")]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, -0.2139492, 0.28925622, 0)
+metadata/uid = "746b352f-17ab-4508-b0b8-5dfcf36f2b16"
+metadata/lock_uid = true
+metadata/date_generated = "2026-03-25T16:38:33"
+
+[node name="trap_projectile3" parent="Second_Part(Harder)/Final Projectile Part/BunbleofArrows_Trap11/Arrow_Colony" unique_id=577251370 instance=ExtResource("4_krfnm")]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, -0.2139492, 0.28925622, 0.34223747)
+metadata/uid = "dfae9bc5-fa72-4639-81d6-e6f78d628ceb"
+metadata/lock_uid = true
+metadata/date_generated = "2026-03-25T16:38:33"
+
+[node name="trap_projectile2" parent="Second_Part(Harder)/Final Projectile Part/BunbleofArrows_Trap11/Arrow_Colony" unique_id=479618728 instance=ExtResource("4_krfnm")]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, -0.2139492, 0.28925622, -0.36455154)
+metadata/uid = "e3a79b41-bb3e-440c-a6e2-b271859dccad"
+metadata/lock_uid = true
+metadata/date_generated = "2026-03-25T16:38:33"
+
+[node name="trap_projectile4" parent="Second_Part(Harder)/Final Projectile Part/BunbleofArrows_Trap11/Arrow_Colony" unique_id=951571223 instance=ExtResource("4_krfnm")]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0.23301697, 0.28925622, 0)
+metadata/uid = "cfafb60d-39eb-4e4f-8d18-f00352f63d69"
+metadata/lock_uid = true
+metadata/date_generated = "2026-03-25T16:38:33"
+
+[node name="trap_projectile5" parent="Second_Part(Harder)/Final Projectile Part/BunbleofArrows_Trap11/Arrow_Colony" unique_id=1820461205 instance=ExtResource("4_krfnm")]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0.23301697, 0.28925622, 0.34223747)
+metadata/uid = "e21b506b-ce2d-4ce7-bfba-ffe0ca06736b"
+metadata/lock_uid = true
+metadata/date_generated = "2026-03-25T16:38:33"
+
+[node name="trap_projectile6" parent="Second_Part(Harder)/Final Projectile Part/BunbleofArrows_Trap11/Arrow_Colony" unique_id=1755748538 instance=ExtResource("4_krfnm")]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0.23301697, 0.28925622, -0.36455154)
+metadata/uid = "d62a5587-fd80-4a21-9ac1-8c1fcd0ee2f5"
+metadata/lock_uid = true
+metadata/date_generated = "2026-03-25T16:38:33"
+
+[node name="PressurePlate_ArrowTrap" parent="Second_Part(Harder)/Final Projectile Part/BunbleofArrows_Trap11" unique_id=1123392162 instance=ExtResource("3_nevts")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
+metadata/uid = "d2dbb5d0-26f2-4fc2-9e34-397be934c4dd"
+metadata/lock_uid = true
+metadata/date_generated = "2026-03-25T16:38:33"
+
+[node name="BunbleofArrows_Trap12" type="Node3D" parent="Second_Part(Harder)/Final Projectile Part" unique_id=1466368937]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21, 1, -16)
+
+[node name="Arrow_Colony" type="Node3D" parent="Second_Part(Harder)/Final Projectile Part/BunbleofArrows_Trap12" unique_id=1639435426]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.6, 0)
+
+[node name="trap_projectile" parent="Second_Part(Harder)/Final Projectile Part/BunbleofArrows_Trap12/Arrow_Colony" unique_id=404965624 instance=ExtResource("4_krfnm")]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, -0.2139492, 0.28925622, 0)
+metadata/uid = "746b352f-17ab-4508-b0b8-5dfcf36f2b16"
+metadata/lock_uid = true
+metadata/date_generated = "2026-03-25T16:38:33"
+
+[node name="trap_projectile3" parent="Second_Part(Harder)/Final Projectile Part/BunbleofArrows_Trap12/Arrow_Colony" unique_id=293521206 instance=ExtResource("4_krfnm")]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, -0.2139492, 0.28925622, 0.34223747)
+metadata/uid = "dfae9bc5-fa72-4639-81d6-e6f78d628ceb"
+metadata/lock_uid = true
+metadata/date_generated = "2026-03-25T16:38:33"
+
+[node name="trap_projectile2" parent="Second_Part(Harder)/Final Projectile Part/BunbleofArrows_Trap12/Arrow_Colony" unique_id=736488354 instance=ExtResource("4_krfnm")]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, -0.2139492, 0.28925622, -0.36455154)
+metadata/uid = "e3a79b41-bb3e-440c-a6e2-b271859dccad"
+metadata/lock_uid = true
+metadata/date_generated = "2026-03-25T16:38:33"
+
+[node name="trap_projectile4" parent="Second_Part(Harder)/Final Projectile Part/BunbleofArrows_Trap12/Arrow_Colony" unique_id=1772606109 instance=ExtResource("4_krfnm")]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0.23301697, 0.28925622, 0)
+metadata/uid = "cfafb60d-39eb-4e4f-8d18-f00352f63d69"
+metadata/lock_uid = true
+metadata/date_generated = "2026-03-25T16:38:33"
+
+[node name="trap_projectile5" parent="Second_Part(Harder)/Final Projectile Part/BunbleofArrows_Trap12/Arrow_Colony" unique_id=1242301162 instance=ExtResource("4_krfnm")]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0.23301697, 0.28925622, 0.34223747)
+metadata/uid = "e21b506b-ce2d-4ce7-bfba-ffe0ca06736b"
+metadata/lock_uid = true
+metadata/date_generated = "2026-03-25T16:38:33"
+
+[node name="trap_projectile6" parent="Second_Part(Harder)/Final Projectile Part/BunbleofArrows_Trap12/Arrow_Colony" unique_id=1085630640 instance=ExtResource("4_krfnm")]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0.23301697, 0.28925622, -0.36455154)
+metadata/uid = "d62a5587-fd80-4a21-9ac1-8c1fcd0ee2f5"
+metadata/lock_uid = true
+metadata/date_generated = "2026-03-25T16:38:33"
+
+[node name="PressurePlate_ArrowTrap" parent="Second_Part(Harder)/Final Projectile Part/BunbleofArrows_Trap12" unique_id=1634177730 instance=ExtResource("3_nevts")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
+metadata/uid = "d2dbb5d0-26f2-4fc2-9e34-397be934c4dd"
+metadata/lock_uid = true
+metadata/date_generated = "2026-03-25T16:38:33"
+
+[node name="BunbleofArrows_Trap13" type="Node3D" parent="Second_Part(Harder)/Final Projectile Part" unique_id=1440475822]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21, 1, -19)
+
+[node name="Arrow_Colony" type="Node3D" parent="Second_Part(Harder)/Final Projectile Part/BunbleofArrows_Trap13" unique_id=92536609]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.6, 0)
+
+[node name="trap_projectile" parent="Second_Part(Harder)/Final Projectile Part/BunbleofArrows_Trap13/Arrow_Colony" unique_id=233477207 instance=ExtResource("4_krfnm")]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, -0.2139492, 0.28925622, 0)
+metadata/uid = "746b352f-17ab-4508-b0b8-5dfcf36f2b16"
+metadata/lock_uid = true
+metadata/date_generated = "2026-03-25T16:38:33"
+
+[node name="trap_projectile3" parent="Second_Part(Harder)/Final Projectile Part/BunbleofArrows_Trap13/Arrow_Colony" unique_id=672442597 instance=ExtResource("4_krfnm")]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, -0.2139492, 0.28925622, 0.34223747)
+metadata/uid = "dfae9bc5-fa72-4639-81d6-e6f78d628ceb"
+metadata/lock_uid = true
+metadata/date_generated = "2026-03-25T16:38:33"
+
+[node name="trap_projectile2" parent="Second_Part(Harder)/Final Projectile Part/BunbleofArrows_Trap13/Arrow_Colony" unique_id=1090400394 instance=ExtResource("4_krfnm")]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, -0.2139492, 0.28925622, -0.36455154)
+metadata/uid = "e3a79b41-bb3e-440c-a6e2-b271859dccad"
+metadata/lock_uid = true
+metadata/date_generated = "2026-03-25T16:38:33"
+
+[node name="trap_projectile4" parent="Second_Part(Harder)/Final Projectile Part/BunbleofArrows_Trap13/Arrow_Colony" unique_id=375411121 instance=ExtResource("4_krfnm")]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0.23301697, 0.28925622, 0)
+metadata/uid = "cfafb60d-39eb-4e4f-8d18-f00352f63d69"
+metadata/lock_uid = true
+metadata/date_generated = "2026-03-25T16:38:33"
+
+[node name="trap_projectile5" parent="Second_Part(Harder)/Final Projectile Part/BunbleofArrows_Trap13/Arrow_Colony" unique_id=1241481438 instance=ExtResource("4_krfnm")]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0.23301697, 0.28925622, 0.34223747)
+metadata/uid = "e21b506b-ce2d-4ce7-bfba-ffe0ca06736b"
+metadata/lock_uid = true
+metadata/date_generated = "2026-03-25T16:38:33"
+
+[node name="trap_projectile6" parent="Second_Part(Harder)/Final Projectile Part/BunbleofArrows_Trap13/Arrow_Colony" unique_id=17585635 instance=ExtResource("4_krfnm")]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0.23301697, 0.28925622, -0.36455154)
+metadata/uid = "d62a5587-fd80-4a21-9ac1-8c1fcd0ee2f5"
+metadata/lock_uid = true
+metadata/date_generated = "2026-03-25T16:38:33"
+
+[node name="PressurePlate_ArrowTrap" parent="Second_Part(Harder)/Final Projectile Part/BunbleofArrows_Trap13" unique_id=2076537189 instance=ExtResource("3_nevts")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
+metadata/uid = "d2dbb5d0-26f2-4fc2-9e34-397be934c4dd"
+metadata/lock_uid = true
+metadata/date_generated = "2026-03-25T16:38:33"
+
+[node name="BunbleofArrows_Trap14" type="Node3D" parent="Second_Part(Harder)/Final Projectile Part" unique_id=1766083276]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 23, 1, -19)
+
+[node name="Arrow_Colony" type="Node3D" parent="Second_Part(Harder)/Final Projectile Part/BunbleofArrows_Trap14" unique_id=890721134]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.6, 0)
+
+[node name="trap_projectile" parent="Second_Part(Harder)/Final Projectile Part/BunbleofArrows_Trap14/Arrow_Colony" unique_id=1678092340 instance=ExtResource("4_krfnm")]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, -0.2139492, 0.28925622, 0)
+metadata/uid = "746b352f-17ab-4508-b0b8-5dfcf36f2b16"
+metadata/lock_uid = true
+metadata/date_generated = "2026-03-25T16:38:33"
+
+[node name="trap_projectile3" parent="Second_Part(Harder)/Final Projectile Part/BunbleofArrows_Trap14/Arrow_Colony" unique_id=230393532 instance=ExtResource("4_krfnm")]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, -0.2139492, 0.28925622, 0.34223747)
+metadata/uid = "dfae9bc5-fa72-4639-81d6-e6f78d628ceb"
+metadata/lock_uid = true
+metadata/date_generated = "2026-03-25T16:38:33"
+
+[node name="trap_projectile2" parent="Second_Part(Harder)/Final Projectile Part/BunbleofArrows_Trap14/Arrow_Colony" unique_id=1524214849 instance=ExtResource("4_krfnm")]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, -0.2139492, 0.28925622, -0.36455154)
+metadata/uid = "e3a79b41-bb3e-440c-a6e2-b271859dccad"
+metadata/lock_uid = true
+metadata/date_generated = "2026-03-25T16:38:33"
+
+[node name="trap_projectile4" parent="Second_Part(Harder)/Final Projectile Part/BunbleofArrows_Trap14/Arrow_Colony" unique_id=748453423 instance=ExtResource("4_krfnm")]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0.23301697, 0.28925622, 0)
+metadata/uid = "cfafb60d-39eb-4e4f-8d18-f00352f63d69"
+metadata/lock_uid = true
+metadata/date_generated = "2026-03-25T16:38:33"
+
+[node name="trap_projectile5" parent="Second_Part(Harder)/Final Projectile Part/BunbleofArrows_Trap14/Arrow_Colony" unique_id=1684188514 instance=ExtResource("4_krfnm")]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0.23301697, 0.28925622, 0.34223747)
+metadata/uid = "e21b506b-ce2d-4ce7-bfba-ffe0ca06736b"
+metadata/lock_uid = true
+metadata/date_generated = "2026-03-25T16:38:33"
+
+[node name="trap_projectile6" parent="Second_Part(Harder)/Final Projectile Part/BunbleofArrows_Trap14/Arrow_Colony" unique_id=1350683981 instance=ExtResource("4_krfnm")]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0.23301697, 0.28925622, -0.36455154)
+metadata/uid = "d62a5587-fd80-4a21-9ac1-8c1fcd0ee2f5"
+metadata/lock_uid = true
+metadata/date_generated = "2026-03-25T16:38:33"
+
+[node name="PressurePlate_ArrowTrap" parent="Second_Part(Harder)/Final Projectile Part/BunbleofArrows_Trap14" unique_id=233139833 instance=ExtResource("3_nevts")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
+metadata/uid = "d2dbb5d0-26f2-4fc2-9e34-397be934c4dd"
+metadata/lock_uid = true
+metadata/date_generated = "2026-03-25T16:38:33"
+
+[node name="BunbleofArrows_Trap15" type="Node3D" parent="Second_Part(Harder)/Final Projectile Part" unique_id=174592694]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24, 1, -19)
+
+[node name="Arrow_Colony" type="Node3D" parent="Second_Part(Harder)/Final Projectile Part/BunbleofArrows_Trap15" unique_id=651701720]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.6, 0)
+
+[node name="trap_projectile" parent="Second_Part(Harder)/Final Projectile Part/BunbleofArrows_Trap15/Arrow_Colony" unique_id=1267173366 instance=ExtResource("4_krfnm")]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, -0.2139492, 0.28925622, 0)
+metadata/uid = "746b352f-17ab-4508-b0b8-5dfcf36f2b16"
+metadata/lock_uid = true
+metadata/date_generated = "2026-03-25T16:38:33"
+
+[node name="trap_projectile3" parent="Second_Part(Harder)/Final Projectile Part/BunbleofArrows_Trap15/Arrow_Colony" unique_id=1658937273 instance=ExtResource("4_krfnm")]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, -0.2139492, 0.28925622, 0.34223747)
+metadata/uid = "dfae9bc5-fa72-4639-81d6-e6f78d628ceb"
+metadata/lock_uid = true
+metadata/date_generated = "2026-03-25T16:38:33"
+
+[node name="trap_projectile2" parent="Second_Part(Harder)/Final Projectile Part/BunbleofArrows_Trap15/Arrow_Colony" unique_id=196930321 instance=ExtResource("4_krfnm")]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, -0.2139492, 0.28925622, -0.36455154)
+metadata/uid = "e3a79b41-bb3e-440c-a6e2-b271859dccad"
+metadata/lock_uid = true
+metadata/date_generated = "2026-03-25T16:38:33"
+
+[node name="trap_projectile4" parent="Second_Part(Harder)/Final Projectile Part/BunbleofArrows_Trap15/Arrow_Colony" unique_id=620308691 instance=ExtResource("4_krfnm")]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0.23301697, 0.28925622, 0)
+metadata/uid = "cfafb60d-39eb-4e4f-8d18-f00352f63d69"
+metadata/lock_uid = true
+metadata/date_generated = "2026-03-25T16:38:33"
+
+[node name="trap_projectile5" parent="Second_Part(Harder)/Final Projectile Part/BunbleofArrows_Trap15/Arrow_Colony" unique_id=1813644515 instance=ExtResource("4_krfnm")]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0.23301697, 0.28925622, 0.34223747)
+metadata/uid = "e21b506b-ce2d-4ce7-bfba-ffe0ca06736b"
+metadata/lock_uid = true
+metadata/date_generated = "2026-03-25T16:38:33"
+
+[node name="trap_projectile6" parent="Second_Part(Harder)/Final Projectile Part/BunbleofArrows_Trap15/Arrow_Colony" unique_id=1026335155 instance=ExtResource("4_krfnm")]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0.23301697, 0.28925622, -0.36455154)
+metadata/uid = "d62a5587-fd80-4a21-9ac1-8c1fcd0ee2f5"
+metadata/lock_uid = true
+metadata/date_generated = "2026-03-25T16:38:33"
+
+[node name="PressurePlate_ArrowTrap" parent="Second_Part(Harder)/Final Projectile Part/BunbleofArrows_Trap15" unique_id=1681668863 instance=ExtResource("3_nevts")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
+metadata/uid = "d2dbb5d0-26f2-4fc2-9e34-397be934c4dd"
+metadata/lock_uid = true
+metadata/date_generated = "2026-03-25T16:38:33"
+
+[node name="BunbleofArrows_Trap16" type="Node3D" parent="Second_Part(Harder)/Final Projectile Part" unique_id=494169939]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25, 1, -19)
+
+[node name="Arrow_Colony" type="Node3D" parent="Second_Part(Harder)/Final Projectile Part/BunbleofArrows_Trap16" unique_id=2013634177]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.6, 0)
+
+[node name="trap_projectile" parent="Second_Part(Harder)/Final Projectile Part/BunbleofArrows_Trap16/Arrow_Colony" unique_id=2030470554 instance=ExtResource("4_krfnm")]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, -0.2139492, 0.28925622, 0)
+metadata/uid = "746b352f-17ab-4508-b0b8-5dfcf36f2b16"
+metadata/lock_uid = true
+metadata/date_generated = "2026-03-25T16:38:33"
+
+[node name="trap_projectile3" parent="Second_Part(Harder)/Final Projectile Part/BunbleofArrows_Trap16/Arrow_Colony" unique_id=451366529 instance=ExtResource("4_krfnm")]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, -0.2139492, 0.28925622, 0.34223747)
+metadata/uid = "dfae9bc5-fa72-4639-81d6-e6f78d628ceb"
+metadata/lock_uid = true
+metadata/date_generated = "2026-03-25T16:38:33"
+
+[node name="trap_projectile2" parent="Second_Part(Harder)/Final Projectile Part/BunbleofArrows_Trap16/Arrow_Colony" unique_id=646467122 instance=ExtResource("4_krfnm")]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, -0.2139492, 0.28925622, -0.36455154)
+metadata/uid = "e3a79b41-bb3e-440c-a6e2-b271859dccad"
+metadata/lock_uid = true
+metadata/date_generated = "2026-03-25T16:38:33"
+
+[node name="trap_projectile4" parent="Second_Part(Harder)/Final Projectile Part/BunbleofArrows_Trap16/Arrow_Colony" unique_id=1238929206 instance=ExtResource("4_krfnm")]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0.23301697, 0.28925622, 0)
+metadata/uid = "cfafb60d-39eb-4e4f-8d18-f00352f63d69"
+metadata/lock_uid = true
+metadata/date_generated = "2026-03-25T16:38:33"
+
+[node name="trap_projectile5" parent="Second_Part(Harder)/Final Projectile Part/BunbleofArrows_Trap16/Arrow_Colony" unique_id=303928547 instance=ExtResource("4_krfnm")]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0.23301697, 0.28925622, 0.34223747)
+metadata/uid = "e21b506b-ce2d-4ce7-bfba-ffe0ca06736b"
+metadata/lock_uid = true
+metadata/date_generated = "2026-03-25T16:38:33"
+
+[node name="trap_projectile6" parent="Second_Part(Harder)/Final Projectile Part/BunbleofArrows_Trap16/Arrow_Colony" unique_id=283092731 instance=ExtResource("4_krfnm")]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0.23301697, 0.28925622, -0.36455154)
+metadata/uid = "d62a5587-fd80-4a21-9ac1-8c1fcd0ee2f5"
+metadata/lock_uid = true
+metadata/date_generated = "2026-03-25T16:38:33"
+
+[node name="PressurePlate_ArrowTrap" parent="Second_Part(Harder)/Final Projectile Part/BunbleofArrows_Trap16" unique_id=397524622 instance=ExtResource("3_nevts")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
+metadata/uid = "d2dbb5d0-26f2-4fc2-9e34-397be934c4dd"
+metadata/lock_uid = true
+metadata/date_generated = "2026-03-25T16:38:33"
+
+[node name="BunbleofArrows_Trap17" type="Node3D" parent="Second_Part(Harder)/Final Projectile Part" unique_id=1634369243]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 27, 1, -19)
+
+[node name="Arrow_Colony" type="Node3D" parent="Second_Part(Harder)/Final Projectile Part/BunbleofArrows_Trap17" unique_id=1612871308]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.6, 0)
+
+[node name="trap_projectile" parent="Second_Part(Harder)/Final Projectile Part/BunbleofArrows_Trap17/Arrow_Colony" unique_id=1946491685 instance=ExtResource("4_krfnm")]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, -0.2139492, 0.28925622, 0)
+metadata/uid = "746b352f-17ab-4508-b0b8-5dfcf36f2b16"
+metadata/lock_uid = true
+metadata/date_generated = "2026-03-25T16:38:33"
+
+[node name="trap_projectile3" parent="Second_Part(Harder)/Final Projectile Part/BunbleofArrows_Trap17/Arrow_Colony" unique_id=52801942 instance=ExtResource("4_krfnm")]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, -0.2139492, 0.28925622, 0.34223747)
+metadata/uid = "dfae9bc5-fa72-4639-81d6-e6f78d628ceb"
+metadata/lock_uid = true
+metadata/date_generated = "2026-03-25T16:38:33"
+
+[node name="trap_projectile2" parent="Second_Part(Harder)/Final Projectile Part/BunbleofArrows_Trap17/Arrow_Colony" unique_id=2037838025 instance=ExtResource("4_krfnm")]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, -0.2139492, 0.28925622, -0.36455154)
+metadata/uid = "e3a79b41-bb3e-440c-a6e2-b271859dccad"
+metadata/lock_uid = true
+metadata/date_generated = "2026-03-25T16:38:33"
+
+[node name="trap_projectile4" parent="Second_Part(Harder)/Final Projectile Part/BunbleofArrows_Trap17/Arrow_Colony" unique_id=1817424307 instance=ExtResource("4_krfnm")]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0.23301697, 0.28925622, 0)
+metadata/uid = "cfafb60d-39eb-4e4f-8d18-f00352f63d69"
+metadata/lock_uid = true
+metadata/date_generated = "2026-03-25T16:38:33"
+
+[node name="trap_projectile5" parent="Second_Part(Harder)/Final Projectile Part/BunbleofArrows_Trap17/Arrow_Colony" unique_id=1557079012 instance=ExtResource("4_krfnm")]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0.23301697, 0.28925622, 0.34223747)
+metadata/uid = "e21b506b-ce2d-4ce7-bfba-ffe0ca06736b"
+metadata/lock_uid = true
+metadata/date_generated = "2026-03-25T16:38:33"
+
+[node name="trap_projectile6" parent="Second_Part(Harder)/Final Projectile Part/BunbleofArrows_Trap17/Arrow_Colony" unique_id=2107703963 instance=ExtResource("4_krfnm")]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0.23301697, 0.28925622, -0.36455154)
+metadata/uid = "d62a5587-fd80-4a21-9ac1-8c1fcd0ee2f5"
+metadata/lock_uid = true
+metadata/date_generated = "2026-03-25T16:38:33"
+
+[node name="PressurePlate_ArrowTrap" parent="Second_Part(Harder)/Final Projectile Part/BunbleofArrows_Trap17" unique_id=507111274 instance=ExtResource("3_nevts")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
+metadata/uid = "d2dbb5d0-26f2-4fc2-9e34-397be934c4dd"
+metadata/lock_uid = true
+metadata/date_generated = "2026-03-25T16:38:33"
+
+[node name="BunbleofArrows_Trap18" type="Node3D" parent="Second_Part(Harder)/Final Projectile Part" unique_id=484193872]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 26, 1, -18)
+
+[node name="Arrow_Colony" type="Node3D" parent="Second_Part(Harder)/Final Projectile Part/BunbleofArrows_Trap18" unique_id=646017691]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.6, 0)
+
+[node name="trap_projectile" parent="Second_Part(Harder)/Final Projectile Part/BunbleofArrows_Trap18/Arrow_Colony" unique_id=200027831 instance=ExtResource("4_krfnm")]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, -0.2139492, 0.28925622, 0)
+metadata/uid = "746b352f-17ab-4508-b0b8-5dfcf36f2b16"
+metadata/lock_uid = true
+metadata/date_generated = "2026-03-25T16:38:33"
+
+[node name="trap_projectile3" parent="Second_Part(Harder)/Final Projectile Part/BunbleofArrows_Trap18/Arrow_Colony" unique_id=1478668078 instance=ExtResource("4_krfnm")]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, -0.2139492, 0.28925622, 0.34223747)
+metadata/uid = "dfae9bc5-fa72-4639-81d6-e6f78d628ceb"
+metadata/lock_uid = true
+metadata/date_generated = "2026-03-25T16:38:33"
+
+[node name="trap_projectile2" parent="Second_Part(Harder)/Final Projectile Part/BunbleofArrows_Trap18/Arrow_Colony" unique_id=851656822 instance=ExtResource("4_krfnm")]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, -0.2139492, 0.28925622, -0.36455154)
+metadata/uid = "e3a79b41-bb3e-440c-a6e2-b271859dccad"
+metadata/lock_uid = true
+metadata/date_generated = "2026-03-25T16:38:33"
+
+[node name="trap_projectile4" parent="Second_Part(Harder)/Final Projectile Part/BunbleofArrows_Trap18/Arrow_Colony" unique_id=539975033 instance=ExtResource("4_krfnm")]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0.23301697, 0.28925622, 0)
+metadata/uid = "cfafb60d-39eb-4e4f-8d18-f00352f63d69"
+metadata/lock_uid = true
+metadata/date_generated = "2026-03-25T16:38:33"
+
+[node name="trap_projectile5" parent="Second_Part(Harder)/Final Projectile Part/BunbleofArrows_Trap18/Arrow_Colony" unique_id=415929350 instance=ExtResource("4_krfnm")]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0.23301697, 0.28925622, 0.34223747)
+metadata/uid = "e21b506b-ce2d-4ce7-bfba-ffe0ca06736b"
+metadata/lock_uid = true
+metadata/date_generated = "2026-03-25T16:38:33"
+
+[node name="trap_projectile6" parent="Second_Part(Harder)/Final Projectile Part/BunbleofArrows_Trap18/Arrow_Colony" unique_id=610343703 instance=ExtResource("4_krfnm")]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0.23301697, 0.28925622, -0.36455154)
+metadata/uid = "d62a5587-fd80-4a21-9ac1-8c1fcd0ee2f5"
+metadata/lock_uid = true
+metadata/date_generated = "2026-03-25T16:38:33"
+
+[node name="PressurePlate_ArrowTrap" parent="Second_Part(Harder)/Final Projectile Part/BunbleofArrows_Trap18" unique_id=952612103 instance=ExtResource("3_nevts")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
+metadata/uid = "d2dbb5d0-26f2-4fc2-9e34-397be934c4dd"
+metadata/lock_uid = true
+metadata/date_generated = "2026-03-25T16:38:33"
+
+[node name="BunbleofArrows_Trap19" type="Node3D" parent="Second_Part(Harder)/Final Projectile Part" unique_id=767892942]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 28, 1, -19)
+
+[node name="Arrow_Colony" type="Node3D" parent="Second_Part(Harder)/Final Projectile Part/BunbleofArrows_Trap19" unique_id=2118112300]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.6, 0)
+
+[node name="trap_projectile" parent="Second_Part(Harder)/Final Projectile Part/BunbleofArrows_Trap19/Arrow_Colony" unique_id=1265009835 instance=ExtResource("4_krfnm")]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, -0.2139492, 0.28925622, 0)
+metadata/uid = "746b352f-17ab-4508-b0b8-5dfcf36f2b16"
+metadata/lock_uid = true
+metadata/date_generated = "2026-03-25T16:38:33"
+
+[node name="trap_projectile3" parent="Second_Part(Harder)/Final Projectile Part/BunbleofArrows_Trap19/Arrow_Colony" unique_id=667323251 instance=ExtResource("4_krfnm")]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, -0.2139492, 0.28925622, 0.34223747)
+metadata/uid = "dfae9bc5-fa72-4639-81d6-e6f78d628ceb"
+metadata/lock_uid = true
+metadata/date_generated = "2026-03-25T16:38:33"
+
+[node name="trap_projectile2" parent="Second_Part(Harder)/Final Projectile Part/BunbleofArrows_Trap19/Arrow_Colony" unique_id=843573802 instance=ExtResource("4_krfnm")]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, -0.2139492, 0.28925622, -0.36455154)
+metadata/uid = "e3a79b41-bb3e-440c-a6e2-b271859dccad"
+metadata/lock_uid = true
+metadata/date_generated = "2026-03-25T16:38:33"
+
+[node name="trap_projectile4" parent="Second_Part(Harder)/Final Projectile Part/BunbleofArrows_Trap19/Arrow_Colony" unique_id=1771595281 instance=ExtResource("4_krfnm")]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0.23301697, 0.28925622, 0)
+metadata/uid = "cfafb60d-39eb-4e4f-8d18-f00352f63d69"
+metadata/lock_uid = true
+metadata/date_generated = "2026-03-25T16:38:33"
+
+[node name="trap_projectile5" parent="Second_Part(Harder)/Final Projectile Part/BunbleofArrows_Trap19/Arrow_Colony" unique_id=1770049170 instance=ExtResource("4_krfnm")]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0.23301697, 0.28925622, 0.34223747)
+metadata/uid = "e21b506b-ce2d-4ce7-bfba-ffe0ca06736b"
+metadata/lock_uid = true
+metadata/date_generated = "2026-03-25T16:38:33"
+
+[node name="trap_projectile6" parent="Second_Part(Harder)/Final Projectile Part/BunbleofArrows_Trap19/Arrow_Colony" unique_id=1099812749 instance=ExtResource("4_krfnm")]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0.23301697, 0.28925622, -0.36455154)
+metadata/uid = "d62a5587-fd80-4a21-9ac1-8c1fcd0ee2f5"
+metadata/lock_uid = true
+metadata/date_generated = "2026-03-25T16:38:33"
+
+[node name="PressurePlate_ArrowTrap" parent="Second_Part(Harder)/Final Projectile Part/BunbleofArrows_Trap19" unique_id=442444272 instance=ExtResource("3_nevts")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
+metadata/uid = "d2dbb5d0-26f2-4fc2-9e34-397be934c4dd"
+metadata/lock_uid = true
+metadata/date_generated = "2026-03-25T16:38:33"
+
+[node name="BunbleofArrows_Trap20" type="Node3D" parent="Second_Part(Harder)/Final Projectile Part" unique_id=288789957]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 29, 1, -19)
+
+[node name="Arrow_Colony" type="Node3D" parent="Second_Part(Harder)/Final Projectile Part/BunbleofArrows_Trap20" unique_id=1908467810]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.6, 0)
+
+[node name="trap_projectile" parent="Second_Part(Harder)/Final Projectile Part/BunbleofArrows_Trap20/Arrow_Colony" unique_id=1926242675 instance=ExtResource("4_krfnm")]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, -0.2139492, 0.28925622, 0)
+metadata/uid = "746b352f-17ab-4508-b0b8-5dfcf36f2b16"
+metadata/lock_uid = true
+metadata/date_generated = "2026-03-25T16:38:33"
+
+[node name="trap_projectile3" parent="Second_Part(Harder)/Final Projectile Part/BunbleofArrows_Trap20/Arrow_Colony" unique_id=1654480827 instance=ExtResource("4_krfnm")]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, -0.2139492, 0.28925622, 0.34223747)
+metadata/uid = "dfae9bc5-fa72-4639-81d6-e6f78d628ceb"
+metadata/lock_uid = true
+metadata/date_generated = "2026-03-25T16:38:33"
+
+[node name="trap_projectile2" parent="Second_Part(Harder)/Final Projectile Part/BunbleofArrows_Trap20/Arrow_Colony" unique_id=2046601844 instance=ExtResource("4_krfnm")]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, -0.2139492, 0.28925622, -0.36455154)
+metadata/uid = "e3a79b41-bb3e-440c-a6e2-b271859dccad"
+metadata/lock_uid = true
+metadata/date_generated = "2026-03-25T16:38:33"
+
+[node name="trap_projectile4" parent="Second_Part(Harder)/Final Projectile Part/BunbleofArrows_Trap20/Arrow_Colony" unique_id=2074073679 instance=ExtResource("4_krfnm")]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0.23301697, 0.28925622, 0)
+metadata/uid = "cfafb60d-39eb-4e4f-8d18-f00352f63d69"
+metadata/lock_uid = true
+metadata/date_generated = "2026-03-25T16:38:33"
+
+[node name="trap_projectile5" parent="Second_Part(Harder)/Final Projectile Part/BunbleofArrows_Trap20/Arrow_Colony" unique_id=590407268 instance=ExtResource("4_krfnm")]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0.23301697, 0.28925622, 0.34223747)
+metadata/uid = "e21b506b-ce2d-4ce7-bfba-ffe0ca06736b"
+metadata/lock_uid = true
+metadata/date_generated = "2026-03-25T16:38:33"
+
+[node name="trap_projectile6" parent="Second_Part(Harder)/Final Projectile Part/BunbleofArrows_Trap20/Arrow_Colony" unique_id=1100406873 instance=ExtResource("4_krfnm")]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0.23301697, 0.28925622, -0.36455154)
+metadata/uid = "d62a5587-fd80-4a21-9ac1-8c1fcd0ee2f5"
+metadata/lock_uid = true
+metadata/date_generated = "2026-03-25T16:38:33"
+
+[node name="PressurePlate_ArrowTrap" parent="Second_Part(Harder)/Final Projectile Part/BunbleofArrows_Trap20" unique_id=653830743 instance=ExtResource("3_nevts")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
+metadata/uid = "d2dbb5d0-26f2-4fc2-9e34-397be934c4dd"
+metadata/lock_uid = true
+metadata/date_generated = "2026-03-25T16:38:33"
+
+[node name="BunbleofArrows_Trap21" type="Node3D" parent="Second_Part(Harder)/Final Projectile Part" unique_id=1095455873]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 29, 1, -18)
+
+[node name="Arrow_Colony" type="Node3D" parent="Second_Part(Harder)/Final Projectile Part/BunbleofArrows_Trap21" unique_id=1958049023]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.6, 0)
+
+[node name="trap_projectile" parent="Second_Part(Harder)/Final Projectile Part/BunbleofArrows_Trap21/Arrow_Colony" unique_id=1959131740 instance=ExtResource("4_krfnm")]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, -0.2139492, 0.28925622, 0)
+metadata/uid = "746b352f-17ab-4508-b0b8-5dfcf36f2b16"
+metadata/lock_uid = true
+metadata/date_generated = "2026-03-25T16:38:33"
+
+[node name="trap_projectile3" parent="Second_Part(Harder)/Final Projectile Part/BunbleofArrows_Trap21/Arrow_Colony" unique_id=841341948 instance=ExtResource("4_krfnm")]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, -0.2139492, 0.28925622, 0.34223747)
+metadata/uid = "dfae9bc5-fa72-4639-81d6-e6f78d628ceb"
+metadata/lock_uid = true
+metadata/date_generated = "2026-03-25T16:38:33"
+
+[node name="trap_projectile2" parent="Second_Part(Harder)/Final Projectile Part/BunbleofArrows_Trap21/Arrow_Colony" unique_id=235662517 instance=ExtResource("4_krfnm")]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, -0.2139492, 0.28925622, -0.36455154)
+metadata/uid = "e3a79b41-bb3e-440c-a6e2-b271859dccad"
+metadata/lock_uid = true
+metadata/date_generated = "2026-03-25T16:38:33"
+
+[node name="trap_projectile4" parent="Second_Part(Harder)/Final Projectile Part/BunbleofArrows_Trap21/Arrow_Colony" unique_id=449839338 instance=ExtResource("4_krfnm")]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0.23301697, 0.28925622, 0)
+metadata/uid = "cfafb60d-39eb-4e4f-8d18-f00352f63d69"
+metadata/lock_uid = true
+metadata/date_generated = "2026-03-25T16:38:33"
+
+[node name="trap_projectile5" parent="Second_Part(Harder)/Final Projectile Part/BunbleofArrows_Trap21/Arrow_Colony" unique_id=1677396343 instance=ExtResource("4_krfnm")]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0.23301697, 0.28925622, 0.34223747)
+metadata/uid = "e21b506b-ce2d-4ce7-bfba-ffe0ca06736b"
+metadata/lock_uid = true
+metadata/date_generated = "2026-03-25T16:38:33"
+
+[node name="trap_projectile6" parent="Second_Part(Harder)/Final Projectile Part/BunbleofArrows_Trap21/Arrow_Colony" unique_id=1634413541 instance=ExtResource("4_krfnm")]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0.23301697, 0.28925622, -0.36455154)
+metadata/uid = "d62a5587-fd80-4a21-9ac1-8c1fcd0ee2f5"
+metadata/lock_uid = true
+metadata/date_generated = "2026-03-25T16:38:33"
+
+[node name="PressurePlate_ArrowTrap" parent="Second_Part(Harder)/Final Projectile Part/BunbleofArrows_Trap21" unique_id=615180071 instance=ExtResource("3_nevts")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
+metadata/uid = "d2dbb5d0-26f2-4fc2-9e34-397be934c4dd"
+metadata/lock_uid = true
+metadata/date_generated = "2026-03-25T16:38:33"
+
+[node name="BunbleofArrows_Trap22" type="Node3D" parent="Second_Part(Harder)/Final Projectile Part" unique_id=1024774431]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 29, 1, -16)
+
+[node name="Arrow_Colony" type="Node3D" parent="Second_Part(Harder)/Final Projectile Part/BunbleofArrows_Trap22" unique_id=206466123]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.6, 0)
+
+[node name="trap_projectile" parent="Second_Part(Harder)/Final Projectile Part/BunbleofArrows_Trap22/Arrow_Colony" unique_id=1063195284 instance=ExtResource("4_krfnm")]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, -0.2139492, 0.28925622, 0)
+metadata/uid = "746b352f-17ab-4508-b0b8-5dfcf36f2b16"
+metadata/lock_uid = true
+metadata/date_generated = "2026-03-25T16:38:33"
+
+[node name="trap_projectile3" parent="Second_Part(Harder)/Final Projectile Part/BunbleofArrows_Trap22/Arrow_Colony" unique_id=1602948597 instance=ExtResource("4_krfnm")]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, -0.2139492, 0.28925622, 0.34223747)
+metadata/uid = "dfae9bc5-fa72-4639-81d6-e6f78d628ceb"
+metadata/lock_uid = true
+metadata/date_generated = "2026-03-25T16:38:33"
+
+[node name="trap_projectile2" parent="Second_Part(Harder)/Final Projectile Part/BunbleofArrows_Trap22/Arrow_Colony" unique_id=1602700403 instance=ExtResource("4_krfnm")]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, -0.2139492, 0.28925622, -0.36455154)
+metadata/uid = "e3a79b41-bb3e-440c-a6e2-b271859dccad"
+metadata/lock_uid = true
+metadata/date_generated = "2026-03-25T16:38:33"
+
+[node name="trap_projectile4" parent="Second_Part(Harder)/Final Projectile Part/BunbleofArrows_Trap22/Arrow_Colony" unique_id=1623170729 instance=ExtResource("4_krfnm")]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0.23301697, 0.28925622, 0)
+metadata/uid = "cfafb60d-39eb-4e4f-8d18-f00352f63d69"
+metadata/lock_uid = true
+metadata/date_generated = "2026-03-25T16:38:33"
+
+[node name="trap_projectile5" parent="Second_Part(Harder)/Final Projectile Part/BunbleofArrows_Trap22/Arrow_Colony" unique_id=120407298 instance=ExtResource("4_krfnm")]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0.23301697, 0.28925622, 0.34223747)
+metadata/uid = "e21b506b-ce2d-4ce7-bfba-ffe0ca06736b"
+metadata/lock_uid = true
+metadata/date_generated = "2026-03-25T16:38:33"
+
+[node name="trap_projectile6" parent="Second_Part(Harder)/Final Projectile Part/BunbleofArrows_Trap22/Arrow_Colony" unique_id=1728185424 instance=ExtResource("4_krfnm")]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0.23301697, 0.28925622, -0.36455154)
+metadata/uid = "d62a5587-fd80-4a21-9ac1-8c1fcd0ee2f5"
+metadata/lock_uid = true
+metadata/date_generated = "2026-03-25T16:38:33"
+
+[node name="PressurePlate_ArrowTrap" parent="Second_Part(Harder)/Final Projectile Part/BunbleofArrows_Trap22" unique_id=708823855 instance=ExtResource("3_nevts")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
+metadata/uid = "d2dbb5d0-26f2-4fc2-9e34-397be934c4dd"
+metadata/lock_uid = true
+metadata/date_generated = "2026-03-25T16:38:33"
+
+[node name="BunbleofArrows_Trap23" type="Node3D" parent="Second_Part(Harder)/Final Projectile Part" unique_id=1722184439]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 29, 1, -15)
+
+[node name="Arrow_Colony" type="Node3D" parent="Second_Part(Harder)/Final Projectile Part/BunbleofArrows_Trap23" unique_id=670593094]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.6, 0)
+
+[node name="trap_projectile" parent="Second_Part(Harder)/Final Projectile Part/BunbleofArrows_Trap23/Arrow_Colony" unique_id=891860830 instance=ExtResource("4_krfnm")]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, -0.2139492, 0.28925622, 0)
+metadata/uid = "746b352f-17ab-4508-b0b8-5dfcf36f2b16"
+metadata/lock_uid = true
+metadata/date_generated = "2026-03-25T16:38:33"
+
+[node name="trap_projectile3" parent="Second_Part(Harder)/Final Projectile Part/BunbleofArrows_Trap23/Arrow_Colony" unique_id=1512129515 instance=ExtResource("4_krfnm")]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, -0.2139492, 0.28925622, 0.34223747)
+metadata/uid = "dfae9bc5-fa72-4639-81d6-e6f78d628ceb"
+metadata/lock_uid = true
+metadata/date_generated = "2026-03-25T16:38:33"
+
+[node name="trap_projectile2" parent="Second_Part(Harder)/Final Projectile Part/BunbleofArrows_Trap23/Arrow_Colony" unique_id=2077015260 instance=ExtResource("4_krfnm")]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, -0.2139492, 0.28925622, -0.36455154)
+metadata/uid = "e3a79b41-bb3e-440c-a6e2-b271859dccad"
+metadata/lock_uid = true
+metadata/date_generated = "2026-03-25T16:38:33"
+
+[node name="trap_projectile4" parent="Second_Part(Harder)/Final Projectile Part/BunbleofArrows_Trap23/Arrow_Colony" unique_id=108938069 instance=ExtResource("4_krfnm")]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0.23301697, 0.28925622, 0)
+metadata/uid = "cfafb60d-39eb-4e4f-8d18-f00352f63d69"
+metadata/lock_uid = true
+metadata/date_generated = "2026-03-25T16:38:33"
+
+[node name="trap_projectile5" parent="Second_Part(Harder)/Final Projectile Part/BunbleofArrows_Trap23/Arrow_Colony" unique_id=1773116948 instance=ExtResource("4_krfnm")]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0.23301697, 0.28925622, 0.34223747)
+metadata/uid = "e21b506b-ce2d-4ce7-bfba-ffe0ca06736b"
+metadata/lock_uid = true
+metadata/date_generated = "2026-03-25T16:38:33"
+
+[node name="trap_projectile6" parent="Second_Part(Harder)/Final Projectile Part/BunbleofArrows_Trap23/Arrow_Colony" unique_id=1058310981 instance=ExtResource("4_krfnm")]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0.23301697, 0.28925622, -0.36455154)
+metadata/uid = "d62a5587-fd80-4a21-9ac1-8c1fcd0ee2f5"
+metadata/lock_uid = true
+metadata/date_generated = "2026-03-25T16:38:33"
+
+[node name="PressurePlate_ArrowTrap" parent="Second_Part(Harder)/Final Projectile Part/BunbleofArrows_Trap23" unique_id=324753490 instance=ExtResource("3_nevts")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
+metadata/uid = "d2dbb5d0-26f2-4fc2-9e34-397be934c4dd"
+metadata/lock_uid = true
+metadata/date_generated = "2026-03-25T16:38:33"
+
+[node name="BunbleofArrows_Trap24" type="Node3D" parent="Second_Part(Harder)/Final Projectile Part" unique_id=1454452389]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 28, 1, -15)
+
+[node name="Arrow_Colony" type="Node3D" parent="Second_Part(Harder)/Final Projectile Part/BunbleofArrows_Trap24" unique_id=1837606998]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.6, 0)
+
+[node name="trap_projectile" parent="Second_Part(Harder)/Final Projectile Part/BunbleofArrows_Trap24/Arrow_Colony" unique_id=187257042 instance=ExtResource("4_krfnm")]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, -0.2139492, 0.28925622, 0)
+metadata/uid = "746b352f-17ab-4508-b0b8-5dfcf36f2b16"
+metadata/lock_uid = true
+metadata/date_generated = "2026-03-25T16:38:33"
+
+[node name="trap_projectile3" parent="Second_Part(Harder)/Final Projectile Part/BunbleofArrows_Trap24/Arrow_Colony" unique_id=764510380 instance=ExtResource("4_krfnm")]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, -0.2139492, 0.28925622, 0.34223747)
+metadata/uid = "dfae9bc5-fa72-4639-81d6-e6f78d628ceb"
+metadata/lock_uid = true
+metadata/date_generated = "2026-03-25T16:38:33"
+
+[node name="trap_projectile2" parent="Second_Part(Harder)/Final Projectile Part/BunbleofArrows_Trap24/Arrow_Colony" unique_id=655647307 instance=ExtResource("4_krfnm")]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, -0.2139492, 0.28925622, -0.36455154)
+metadata/uid = "e3a79b41-bb3e-440c-a6e2-b271859dccad"
+metadata/lock_uid = true
+metadata/date_generated = "2026-03-25T16:38:33"
+
+[node name="trap_projectile4" parent="Second_Part(Harder)/Final Projectile Part/BunbleofArrows_Trap24/Arrow_Colony" unique_id=245329268 instance=ExtResource("4_krfnm")]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0.23301697, 0.28925622, 0)
+metadata/uid = "cfafb60d-39eb-4e4f-8d18-f00352f63d69"
+metadata/lock_uid = true
+metadata/date_generated = "2026-03-25T16:38:33"
+
+[node name="trap_projectile5" parent="Second_Part(Harder)/Final Projectile Part/BunbleofArrows_Trap24/Arrow_Colony" unique_id=1682871302 instance=ExtResource("4_krfnm")]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0.23301697, 0.28925622, 0.34223747)
+metadata/uid = "e21b506b-ce2d-4ce7-bfba-ffe0ca06736b"
+metadata/lock_uid = true
+metadata/date_generated = "2026-03-25T16:38:33"
+
+[node name="trap_projectile6" parent="Second_Part(Harder)/Final Projectile Part/BunbleofArrows_Trap24/Arrow_Colony" unique_id=1568206528 instance=ExtResource("4_krfnm")]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0.23301697, 0.28925622, -0.36455154)
+metadata/uid = "d62a5587-fd80-4a21-9ac1-8c1fcd0ee2f5"
+metadata/lock_uid = true
+metadata/date_generated = "2026-03-25T16:38:33"
+
+[node name="PressurePlate_ArrowTrap" parent="Second_Part(Harder)/Final Projectile Part/BunbleofArrows_Trap24" unique_id=795075226 instance=ExtResource("3_nevts")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
+metadata/uid = "d2dbb5d0-26f2-4fc2-9e34-397be934c4dd"
+metadata/lock_uid = true
+metadata/date_generated = "2026-03-25T16:38:33"
+
+[node name="BunbleofArrows_Trap25" type="Node3D" parent="Second_Part(Harder)/Final Projectile Part" unique_id=1438556124]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 27, 1, -16)
+
+[node name="Arrow_Colony" type="Node3D" parent="Second_Part(Harder)/Final Projectile Part/BunbleofArrows_Trap25" unique_id=627761059]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.6, 0)
+
+[node name="trap_projectile" parent="Second_Part(Harder)/Final Projectile Part/BunbleofArrows_Trap25/Arrow_Colony" unique_id=1248844477 instance=ExtResource("4_krfnm")]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, -0.2139492, 0.28925622, 0)
+metadata/uid = "746b352f-17ab-4508-b0b8-5dfcf36f2b16"
+metadata/lock_uid = true
+metadata/date_generated = "2026-03-25T16:38:33"
+
+[node name="trap_projectile3" parent="Second_Part(Harder)/Final Projectile Part/BunbleofArrows_Trap25/Arrow_Colony" unique_id=613726784 instance=ExtResource("4_krfnm")]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, -0.2139492, 0.28925622, 0.34223747)
+metadata/uid = "dfae9bc5-fa72-4639-81d6-e6f78d628ceb"
+metadata/lock_uid = true
+metadata/date_generated = "2026-03-25T16:38:33"
+
+[node name="trap_projectile2" parent="Second_Part(Harder)/Final Projectile Part/BunbleofArrows_Trap25/Arrow_Colony" unique_id=2087887565 instance=ExtResource("4_krfnm")]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, -0.2139492, 0.28925622, -0.36455154)
+metadata/uid = "e3a79b41-bb3e-440c-a6e2-b271859dccad"
+metadata/lock_uid = true
+metadata/date_generated = "2026-03-25T16:38:33"
+
+[node name="trap_projectile4" parent="Second_Part(Harder)/Final Projectile Part/BunbleofArrows_Trap25/Arrow_Colony" unique_id=1668453689 instance=ExtResource("4_krfnm")]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0.23301697, 0.28925622, 0)
+metadata/uid = "cfafb60d-39eb-4e4f-8d18-f00352f63d69"
+metadata/lock_uid = true
+metadata/date_generated = "2026-03-25T16:38:33"
+
+[node name="trap_projectile5" parent="Second_Part(Harder)/Final Projectile Part/BunbleofArrows_Trap25/Arrow_Colony" unique_id=1817429698 instance=ExtResource("4_krfnm")]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0.23301697, 0.28925622, 0.34223747)
+metadata/uid = "e21b506b-ce2d-4ce7-bfba-ffe0ca06736b"
+metadata/lock_uid = true
+metadata/date_generated = "2026-03-25T16:38:33"
+
+[node name="trap_projectile6" parent="Second_Part(Harder)/Final Projectile Part/BunbleofArrows_Trap25/Arrow_Colony" unique_id=1924973562 instance=ExtResource("4_krfnm")]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0.23301697, 0.28925622, -0.36455154)
+metadata/uid = "d62a5587-fd80-4a21-9ac1-8c1fcd0ee2f5"
+metadata/lock_uid = true
+metadata/date_generated = "2026-03-25T16:38:33"
+
+[node name="PressurePlate_ArrowTrap" parent="Second_Part(Harder)/Final Projectile Part/BunbleofArrows_Trap25" unique_id=1957317960 instance=ExtResource("3_nevts")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
+metadata/uid = "d2dbb5d0-26f2-4fc2-9e34-397be934c4dd"
+metadata/lock_uid = true
+metadata/date_generated = "2026-03-25T16:38:33"
+
+[node name="BunbleofArrows_Trap26" type="Node3D" parent="Second_Part(Harder)/Final Projectile Part" unique_id=1722856019]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 26, 1, -16)
+
+[node name="Arrow_Colony" type="Node3D" parent="Second_Part(Harder)/Final Projectile Part/BunbleofArrows_Trap26" unique_id=1066215131]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.6, 0)
+
+[node name="trap_projectile" parent="Second_Part(Harder)/Final Projectile Part/BunbleofArrows_Trap26/Arrow_Colony" unique_id=140460060 instance=ExtResource("4_krfnm")]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, -0.2139492, 0.28925622, 0)
+metadata/uid = "746b352f-17ab-4508-b0b8-5dfcf36f2b16"
+metadata/lock_uid = true
+metadata/date_generated = "2026-03-25T16:38:33"
+
+[node name="trap_projectile3" parent="Second_Part(Harder)/Final Projectile Part/BunbleofArrows_Trap26/Arrow_Colony" unique_id=1682416916 instance=ExtResource("4_krfnm")]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, -0.2139492, 0.28925622, 0.34223747)
+metadata/uid = "dfae9bc5-fa72-4639-81d6-e6f78d628ceb"
+metadata/lock_uid = true
+metadata/date_generated = "2026-03-25T16:38:33"
+
+[node name="trap_projectile2" parent="Second_Part(Harder)/Final Projectile Part/BunbleofArrows_Trap26/Arrow_Colony" unique_id=1762928345 instance=ExtResource("4_krfnm")]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, -0.2139492, 0.28925622, -0.36455154)
+metadata/uid = "e3a79b41-bb3e-440c-a6e2-b271859dccad"
+metadata/lock_uid = true
+metadata/date_generated = "2026-03-25T16:38:33"
+
+[node name="trap_projectile4" parent="Second_Part(Harder)/Final Projectile Part/BunbleofArrows_Trap26/Arrow_Colony" unique_id=250359054 instance=ExtResource("4_krfnm")]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0.23301697, 0.28925622, 0)
+metadata/uid = "cfafb60d-39eb-4e4f-8d18-f00352f63d69"
+metadata/lock_uid = true
+metadata/date_generated = "2026-03-25T16:38:33"
+
+[node name="trap_projectile5" parent="Second_Part(Harder)/Final Projectile Part/BunbleofArrows_Trap26/Arrow_Colony" unique_id=2062945979 instance=ExtResource("4_krfnm")]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0.23301697, 0.28925622, 0.34223747)
+metadata/uid = "e21b506b-ce2d-4ce7-bfba-ffe0ca06736b"
+metadata/lock_uid = true
+metadata/date_generated = "2026-03-25T16:38:33"
+
+[node name="trap_projectile6" parent="Second_Part(Harder)/Final Projectile Part/BunbleofArrows_Trap26/Arrow_Colony" unique_id=20624654 instance=ExtResource("4_krfnm")]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0.23301697, 0.28925622, -0.36455154)
+metadata/uid = "d62a5587-fd80-4a21-9ac1-8c1fcd0ee2f5"
+metadata/lock_uid = true
+metadata/date_generated = "2026-03-25T16:38:33"
+
+[node name="PressurePlate_ArrowTrap" parent="Second_Part(Harder)/Final Projectile Part/BunbleofArrows_Trap26" unique_id=1803655893 instance=ExtResource("3_nevts")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
+metadata/uid = "d2dbb5d0-26f2-4fc2-9e34-397be934c4dd"
+metadata/lock_uid = true
+metadata/date_generated = "2026-03-25T16:38:33"
+
+[node name="BunbleofArrows_Trap27" type="Node3D" parent="Second_Part(Harder)/Final Projectile Part" unique_id=307663832]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25, 1, -16)
+
+[node name="Arrow_Colony" type="Node3D" parent="Second_Part(Harder)/Final Projectile Part/BunbleofArrows_Trap27" unique_id=1305037922]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.6, 0)
+
+[node name="trap_projectile" parent="Second_Part(Harder)/Final Projectile Part/BunbleofArrows_Trap27/Arrow_Colony" unique_id=1127269931 instance=ExtResource("4_krfnm")]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, -0.2139492, 0.28925622, 0)
+metadata/uid = "746b352f-17ab-4508-b0b8-5dfcf36f2b16"
+metadata/lock_uid = true
+metadata/date_generated = "2026-03-25T16:38:33"
+
+[node name="trap_projectile3" parent="Second_Part(Harder)/Final Projectile Part/BunbleofArrows_Trap27/Arrow_Colony" unique_id=478909513 instance=ExtResource("4_krfnm")]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, -0.2139492, 0.28925622, 0.34223747)
+metadata/uid = "dfae9bc5-fa72-4639-81d6-e6f78d628ceb"
+metadata/lock_uid = true
+metadata/date_generated = "2026-03-25T16:38:33"
+
+[node name="trap_projectile2" parent="Second_Part(Harder)/Final Projectile Part/BunbleofArrows_Trap27/Arrow_Colony" unique_id=974440693 instance=ExtResource("4_krfnm")]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, -0.2139492, 0.28925622, -0.36455154)
+metadata/uid = "e3a79b41-bb3e-440c-a6e2-b271859dccad"
+metadata/lock_uid = true
+metadata/date_generated = "2026-03-25T16:38:33"
+
+[node name="trap_projectile4" parent="Second_Part(Harder)/Final Projectile Part/BunbleofArrows_Trap27/Arrow_Colony" unique_id=1285947908 instance=ExtResource("4_krfnm")]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0.23301697, 0.28925622, 0)
+metadata/uid = "cfafb60d-39eb-4e4f-8d18-f00352f63d69"
+metadata/lock_uid = true
+metadata/date_generated = "2026-03-25T16:38:33"
+
+[node name="trap_projectile5" parent="Second_Part(Harder)/Final Projectile Part/BunbleofArrows_Trap27/Arrow_Colony" unique_id=1222043544 instance=ExtResource("4_krfnm")]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0.23301697, 0.28925622, 0.34223747)
+metadata/uid = "e21b506b-ce2d-4ce7-bfba-ffe0ca06736b"
+metadata/lock_uid = true
+metadata/date_generated = "2026-03-25T16:38:33"
+
+[node name="trap_projectile6" parent="Second_Part(Harder)/Final Projectile Part/BunbleofArrows_Trap27/Arrow_Colony" unique_id=1955426336 instance=ExtResource("4_krfnm")]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0.23301697, 0.28925622, -0.36455154)
+metadata/uid = "d62a5587-fd80-4a21-9ac1-8c1fcd0ee2f5"
+metadata/lock_uid = true
+metadata/date_generated = "2026-03-25T16:38:33"
+
+[node name="PressurePlate_ArrowTrap" parent="Second_Part(Harder)/Final Projectile Part/BunbleofArrows_Trap27" unique_id=1112104833 instance=ExtResource("3_nevts")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
+metadata/uid = "d2dbb5d0-26f2-4fc2-9e34-397be934c4dd"
+metadata/lock_uid = true
+metadata/date_generated = "2026-03-25T16:38:33"
+
+[node name="skull" parent="Second_Part(Harder)/Final Projectile Part" unique_id=1240736835 instance=ExtResource("5_dp00y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19.322329, 0.30186212, -17)
+metadata/uid = "658cee4a-b4de-4986-bc2c-7ec3ae5cbc82"
+metadata/lock_uid = true
+metadata/date_generated = "2026-03-25T16:38:33"
+
+[node name="Gate_Puzzle" type="Node3D" parent="Second_Part(Harder)/Final Projectile Part" unique_id=779330908]
+
+[node name="Gate_Three" parent="Second_Part(Harder)/Final Projectile Part/Gate_Puzzle" unique_id=434887435 instance=ExtResource("7_wn42o")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 31, 0, -17)
+metadata/uid = "d49f13e1-d184-4309-a6c2-49e50d37504a"
+metadata/lock_uid = true
+metadata/date_generated = "2026-03-25T16:38:33"
+
+[node name="Gate_Two" parent="Second_Part(Harder)/Final Projectile Part/Gate_Puzzle" unique_id=1311453918 instance=ExtResource("7_wn42o")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 30.4993, 0, -17)
+metadata/uid = "abc0068c-6500-4e03-941d-e9fa38ff5b27"
+metadata/lock_uid = true
+metadata/date_generated = "2026-03-25T16:38:33"
+
+[node name="Gate_One" parent="Second_Part(Harder)/Final Projectile Part/Gate_Puzzle" unique_id=1757179895 instance=ExtResource("7_wn42o")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 30, 0, -17)
+metadata/uid = "c392433c-b8ac-41b7-a8e3-6edf5f3c642f"
+metadata/lock_uid = true
+metadata/date_generated = "2026-03-25T16:38:33"
+
+[node name="Second_Gate_Button" parent="Second_Part(Harder)/Final Projectile Part/Gate_Puzzle" unique_id=1588089152 instance=ExtResource("8_uqwb3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 23, 0.87892485, -14.298307)
+manual_reset = true
+metadata/uid = "516e799e-3c28-4ee0-ada7-3f0320e64aa1"
+metadata/lock_uid = true
+metadata/date_generated = "2026-03-25T16:38:33"
+
+[node name="First_Gate_Button" parent="Second_Part(Harder)/Final Projectile Part/Gate_Puzzle" unique_id=442174818 instance=ExtResource("8_uqwb3")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 20.269361, 1, -18.786285)
+manual_reset = true
+metadata/uid = "50b8f65f-8272-4faf-884c-322832a427ca"
+metadata/lock_uid = true
+metadata/date_generated = "2026-03-25T16:38:33"
+
+[node name="Third_Button" parent="Second_Part(Harder)/Final Projectile Part/Gate_Puzzle" unique_id=488060575 instance=ExtResource("8_uqwb3")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 29.68211, 1, -15.197068)
+manual_reset = true
+metadata/uid = "6a07b3c1-ab4d-4f77-84ea-391ad28a14ef"
+metadata/lock_uid = true
+metadata/date_generated = "2026-03-25T16:38:33"
+
+[node name="Torches" type="Node3D" parent="Second_Part(Harder)/Final Projectile Part" unique_id=229239606]
+
+[node name="TorchSconce_Lit" parent="Second_Part(Harder)/Final Projectile Part/Torches" unique_id=2102977074 instance=ExtResource("14_ftbts")]
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 24, 1, -14.44828)
+
+[node name="TorchSconce_Lit2" parent="Second_Part(Harder)/Final Projectile Part/Torches" unique_id=689318691 instance=ExtResource("14_ftbts")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 29.63647, 1, -15.766501)
+
+[node name="TorchSconce_Lit3" parent="Second_Part(Harder)/Final Projectile Part/Torches" unique_id=156417813 instance=ExtResource("14_ftbts")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 29.63647, 1, -18.766502)
+
+[node name="TorchSconce_Lit4" parent="Second_Part(Harder)/Final Projectile Part/Torches" unique_id=1356277031 instance=ExtResource("14_ftbts")]
+transform = Transform3D(1.3113416e-07, 0, 1, 0, 1, 0, -1, 0, 1.3113416e-07, 20.374414, 1, -18.073769)
+
+[node name="Torch" parent="Second_Part(Harder)/Final Projectile Part/Torches" unique_id=1479203938 instance=ExtResource("19_luwe3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16, 0.6652323, -17)
+
+[node name="key" parent="Second_Part(Harder)/Final Projectile Part" unique_id=451440735 instance=ExtResource("20_y4ekb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 31.45549, 0.3164053, -17)
+metadata/uid = "0d50f4be-645d-4315-a915-70586369aa57"
+metadata/lock_uid = true
+metadata/date_generated = "2026-03-25T16:38:33"
+
+[node name="Finale(Hardest)" type="Node3D" parent="." unique_id=1024305867]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 27, 0, 0)
+
+[node name="Walls" type="Node3D" parent="Finale(Hardest)" unique_id=1915735370]
+
+[node name="Wall" parent="Finale(Hardest)/Walls" unique_id=1650934434 instance=ExtResource("21_xajqr")]
+transform = Transform3D(1.1, 0, 0, 0, 1.4506367, 0, 0, 0, 1, -6, 0.014382362, -1.9079771)
+
+[node name="Roof" type="Node3D" parent="Finale(Hardest)/Walls" unique_id=2090817922]
+transform = Transform3D(1.22, 0, 0, 0, 1.22, 0, 0, 0, 1.22, 1, -0.32517195, -1)
+
+[node name="Wall" parent="Finale(Hardest)/Walls/Roof" unique_id=1576415829 instance=ExtResource("10_8sfw4")]
+transform = Transform3D(-6.1545635e-09, 0, 0.15488002, 0.064, 0.17688541, 3.0772818e-09, -0.11085126, 0.10212483, -5.3300084e-09, -1, 1.777835, -4.044549)
+
+[node name="Wall2" parent="Finale(Hardest)/Walls/Roof" unique_id=609492662 instance=ExtResource("10_8sfw4")]
+transform = Transform3D(-6.1545635e-09, 0, 0.14080001, 0.064, 0.16080491, 2.7975289e-09, -0.11085126, 0.09284075, -4.8454623e-09, 1, 2.0143824, -3.907978)
+
+[node name="Wall49" parent="Finale(Hardest)/Walls/Roof" unique_id=1252456216 instance=ExtResource("10_8sfw4")]
+transform = Transform3D(-5.473113e-09, -3.689271e-09, 0.14080001, 0, 0.18568152, 2.797529e-09, -0.128, -7.450581e-09, -4.8454627e-09, 0.8592, 0.22065169, -4.0683856)
+
+[node name="Wall50" parent="Finale(Hardest)/Walls/Roof" unique_id=821487046 instance=ExtResource("10_8sfw4")]
+transform = Transform3D(0.090509675, -3.689271e-09, 0.09956064, 3.3026413e-09, 0.18568152, 5.9730816e-09, -0.090509675, -7.450581e-09, 0.09956065, 2.416944, 0.2206517, -3.504513)
+
+[node name="Wall3" parent="Finale(Hardest)/Walls/Roof" unique_id=1210822952 instance=ExtResource("10_8sfw4")]
+transform = Transform3D(-6.1545635e-09, 0, 0.14080001, 0.064, 0.16080491, 2.7975289e-09, -0.11085126, 0.09284075, -4.8454623e-09, -3, 2.0143824, -3.907978)
+
+[node name="Wall19" parent="Finale(Hardest)/Walls/Roof" unique_id=1717323083 instance=ExtResource("10_8sfw4")]
+transform = Transform3D(-6.1545635e-09, 0, 0.098560005, 0.064, 0.16080491, 1.9582702e-09, -0.11085126, 0.09284075, -3.3918235e-09, -2.60576, 3.6224315, -2.9795704)
+
+[node name="Wall28" parent="Finale(Hardest)/Walls/Roof" unique_id=175627928 instance=ExtResource("10_8sfw4")]
+transform = Transform3D(-3.536361e-09, 8.116395e-09, -0.09856, 0.064, 0.16080491, 1.95827e-09, 0.11085126, -0.092840746, -5.2245657e-09, -2.6057587, 3.6224315, 3.1974888)
+
+[node name="Wall31" parent="Finale(Hardest)/Walls/Roof" unique_id=343809795 instance=ExtResource("10_8sfw4")]
+transform = Transform3D(-3.536361e-09, 8.116395e-09, -0.09856, 0.064, 0.16080491, 1.95827e-09, 0.11085126, -0.092840746, -5.2245657e-09, 0.64672136, 3.6224315, 3.197489)
+
+[node name="Wall24" parent="Finale(Hardest)/Walls/Roof" unique_id=1091932140 instance=ExtResource("10_8sfw4")]
+transform = Transform3D(-6.1545635e-09, 0, 0.098560005, 0.064, 0.16080491, 1.9582702e-09, -0.11085126, 0.09284075, -3.3918235e-09, 0.6467202, 3.6224315, -2.9795704)
+
+[node name="Wall20" parent="Finale(Hardest)/Walls/Roof" unique_id=110814502 instance=ExtResource("10_8sfw4")]
+transform = Transform3D(-6.1545635e-09, 0, 0.14080001, 0.064, 0.17031947, 2.7975289e-09, -0.11085126, 0.098333985, -4.8454623e-09, -1, 3.5218391, -3.0376475)
+
+[node name="Wall4" parent="Finale(Hardest)/Walls/Roof" unique_id=21402049 instance=ExtResource("10_8sfw4")]
+transform = Transform3D(0.11085126, -0.09284075, -1.4400114e-09, 0.064, 0.16080491, 3.0772818e-09, -1.3091013e-09, -4.058198e-09, 0.15488002, 3, 2.0143824, 0.09202194)
+
+[node name="Wall5" parent="Finale(Hardest)/Walls/Roof" unique_id=1910002694 instance=ExtResource("10_8sfw4")]
+transform = Transform3D(0.11085126, -0.09284075, -1.3091013e-09, 0.064, 0.16080491, 2.7975289e-09, -1.3091013e-09, -4.058198e-09, 0.14080001, 3, 2.0143824, 2.092022)
+
+[node name="Wall6" parent="Finale(Hardest)/Walls/Roof" unique_id=96886539 instance=ExtResource("10_8sfw4")]
+transform = Transform3D(0.11085126, -0.09284075, -1.3091013e-09, 0.064, 0.16080491, 2.7975289e-09, -1.3091013e-09, -4.058198e-09, 0.14080001, 3, 2.0143824, -1.907978)
+
+[node name="Wall51" parent="Finale(Hardest)/Walls/Roof" unique_id=1893604049 instance=ExtResource("10_8sfw4")]
+transform = Transform3D(0.128, 7.450581e-09, -1.3091013e-09, 2.6010275e-18, 0.18568152, 2.797529e-09, 1.2194468e-10, -3.689271e-09, 0.14080001, 3.0324078, 0.22065169, -1.767178)
+
+[node name="Wall52" parent="Finale(Hardest)/Walls/Roof" unique_id=541461647 instance=ExtResource("10_8sfw4")]
+transform = Transform3D(0.128, 7.450581e-09, -1.3091013e-09, 2.6010275e-18, 0.18568152, 2.797529e-09, 1.2194468e-10, -3.689271e-09, 0.14080001, 3.0324078, 0.22065169, -1.767178)
+
+[node name="Wall54" parent="Finale(Hardest)/Walls/Roof" unique_id=1537658139 instance=ExtResource("10_8sfw4")]
+transform = Transform3D(0.12800002, 7.4505815e-09, -1.3091014e-09, 2.6010291e-18, 0.18568166, 2.79753e-09, 1.2194469e-10, -3.6892716e-09, 0.14080006, 3.2015991, 0.22065175, 1.8557243)
+
+[node name="Wall57" parent="Finale(Hardest)/Walls/Roof" unique_id=1691576705 instance=ExtResource("10_8sfw4")]
+transform = Transform3D(0.12800002, 7.4505815e-09, -1.3091014e-09, 2.6010291e-18, 0.18568169, 2.79753e-09, 1.2194469e-10, -3.6892716e-09, 0.14080006, 3.2015991, 1.7784253, -0.020226479)
+
+[node name="Wall55" parent="Finale(Hardest)/Walls/Roof" unique_id=1054185443 instance=ExtResource("10_8sfw4")]
+transform = Transform3D(0.09050969, 7.877067e-09, -0.099560685, 2.6010291e-18, 0.18568169, 2.79753e-09, 0.09050969, 2.6596476e-09, 0.099560685, 2.4859052, 0.22065176, 3.5096235)
+
+[node name="Wall17" parent="Finale(Hardest)/Walls/Roof" unique_id=1672123461 instance=ExtResource("10_8sfw4")]
+transform = Transform3D(0.11085126, -0.09284075, -1.3091013e-09, 0.064, 0.16080491, 2.7975289e-09, -1.3091013e-09, -4.058198e-09, 0.14080001, 2.0715923, 3.6224315, 0.092021905)
+
+[node name="Wall7" parent="Finale(Hardest)/Walls/Roof" unique_id=784399356 instance=ExtResource("10_8sfw4")]
+transform = Transform3D(-0.11085126, 0.09284075, 1.4980051e-08, 0.064, 0.16080491, 3.0772818e-09, -8.381823e-09, 1.2174595e-08, -0.15488002, -5, 2.0143824, 0.09202194)
+
+[node name="Wall8" parent="Finale(Hardest)/Walls/Roof" unique_id=430555085 instance=ExtResource("10_8sfw4")]
+transform = Transform3D(-0.11085126, 0.09284075, 1.3618228e-08, 0.064, 0.16080491, 2.7975289e-09, -8.381823e-09, 1.2174595e-08, -0.14080001, -5, 2.0143824, -1.907978)
+
+[node name="Wall43" parent="Finale(Hardest)/Walls/Roof" unique_id=330668745 instance=ExtResource("10_8sfw4")]
+transform = Transform3D(-0.128, -7.450581e-09, 1.4980051e-08, -3.8303478e-16, 0.18568152, 3.0772824e-09, -1.1312061e-08, 3.689271e-09, -0.15488002, -5.0324078, 0.17899413, -1.7857265)
+
+[node name="Wall60" parent="Finale(Hardest)/Walls/Roof" unique_id=216291780 instance=ExtResource("10_8sfw4")]
+transform = Transform3D(1.1175871e-08, 0.18568154, 1.4980051e-08, 0.128, -7.4505815e-09, 3.0772838e-09, 3.6113548e-09, 1.7959183e-08, -0.15488002, -6.696408, 0.17899413, -1.7857267)
+
+[node name="Wall61" parent="Finale(Hardest)/Walls/Roof" unique_id=773716944 instance=ExtResource("10_8sfw4")]
+transform = Transform3D(1.1175871e-08, 0.16080491, 0.07744002, 0.128, -7.897948e-09, -4.269552e-09, 3.6113552e-09, 0.09284079, -0.13413003, -5.9536815, 0.11080107, -4.108927)
+
+[node name="Wall48" parent="Finale(Hardest)/Walls/Roof" unique_id=673069597 instance=ExtResource("10_8sfw4")]
+transform = Transform3D(-0.09050966, -7.450581e-09, 0.09956065, 3.302641e-09, 0.18568152, 5.973081e-09, -0.090509675, 3.6892704e-09, -0.09956063, -4.48935, 0.17899416, -3.3361206)
+
+[node name="Wall44" parent="Finale(Hardest)/Walls/Roof" unique_id=1288877978 instance=ExtResource("10_8sfw4")]
+transform = Transform3D(-0.128, -7.450581e-09, 1.4833869e-08, -3.8303478e-16, 0.18568152, 3.0472527e-09, -1.1312061e-08, 3.689271e-09, -0.15336862, -4.8638296, 0.17899406, 1.812825)
+
+[node name="Wall45" parent="Finale(Hardest)/Walls/Roof" unique_id=23418561 instance=ExtResource("10_8sfw4")]
+transform = Transform3D(-5.717003e-09, -7.4505815e-09, -0.14080003, 2.5928668e-09, 0.18568154, -5.649683e-09, 0.12800002, 3.6892713e-09, -7.463665e-09, -2.5236092, 0.17899406, 4.089937)
+
+[node name="Wall53" parent="Finale(Hardest)/Walls/Roof" unique_id=2066964136 instance=ExtResource("10_8sfw4")]
+transform = Transform3D(-4.0679278e-09, 9.842786e-09, -0.14080001, 0.128, -4.427126e-09, -5.649682e-09, -8.187924e-09, -0.18568152, -7.463665e-09, -5.8761683, 1.9391782, 1.0109113)
+
+[node name="Wall58" parent="Finale(Hardest)/Walls/Roof" unique_id=1188845697 instance=ExtResource("10_8sfw4")]
+transform = Transform3D(-4.0679273e-09, 0.13129666, -0.09956063, 0.128, 3.224471e-09, -1.0707777e-08, -8.187924e-09, -0.13129666, -0.09956065, -7.6672535, 1.9391781, 0.94743913)
+
+[node name="Wall46" parent="Finale(Hardest)/Walls/Roof" unique_id=1715054595 instance=ExtResource("10_8sfw4")]
+transform = Transform3D(-0.090509675, -8.940696e-09, -0.12942882, -2.939986e-10, 0.22281784, -2.6218097e-09, 0.09050966, 4.4271244e-09, -0.12942883, -4.41335, -0.002819851, 3.7122428)
+
+[node name="Wall47" parent="Finale(Hardest)/Walls/Roof" unique_id=1789851761 instance=ExtResource("10_8sfw4")]
+transform = Transform3D(0.064, -8.940696e-09, -0.1585173, 5.5016285e-09, 0.22281784, -8.178991e-09, 0.11085125, 4.4271244e-09, 0.09152, -3.3779197, -0.00281983, 4.7476735)
+
+[node name="Wall21" parent="Finale(Hardest)/Walls/Roof" unique_id=845374977 instance=ExtResource("10_8sfw4")]
+transform = Transform3D(-0.11085126, 0.09284075, 9.5327595e-09, 0.064, 0.16080491, 1.9582702e-09, -8.381823e-09, 1.2174595e-08, -0.098560005, -4.071594, 3.6224315, -1.5256386)
+
+[node name="Wall25" parent="Finale(Hardest)/Walls/Roof" unique_id=1288967323 instance=ExtResource("10_8sfw4")]
+transform = Transform3D(0.11085126, -0.092840746, -9.163683e-10, 0.064, 0.16080491, 1.9582702e-09, -1.3091022e-09, -4.0581973e-09, 0.09856, 2.0650406, 3.6224315, -1.5256386)
+
+[node name="Wall30" parent="Finale(Hardest)/Walls/Roof" unique_id=1035286920 instance=ExtResource("10_8sfw4")]
+transform = Transform3D(0.11085126, -0.092840746, -9.163683e-10, 0.064, 0.16080491, 1.9582702e-09, -1.3091022e-09, -4.0581973e-09, 0.09856, 2.0650406, 3.6224315, 1.7268413)
+
+[node name="Wall22" parent="Finale(Hardest)/Walls/Roof" unique_id=375747805 instance=ExtResource("10_8sfw4")]
+transform = Transform3D(-0.11085126, 0.09284075, 9.5327595e-09, 0.064, 0.16080491, 1.9582702e-09, -8.381823e-09, 1.2174595e-08, -0.098560005, -4.0715947, 3.6224315, 1.7268417)
+
+[node name="Wall9" parent="Finale(Hardest)/Walls/Roof" unique_id=998444013 instance=ExtResource("10_8sfw4")]
+transform = Transform3D(-0.11085126, 0.09284075, 1.3618228e-08, 0.064, 0.16080491, 2.7975289e-09, -8.381823e-09, 1.2174595e-08, -0.14080001, -5, 2.0143824, 2.092022)
+
+[node name="Wall23" parent="Finale(Hardest)/Walls/Roof" unique_id=1795089688 instance=ExtResource("10_8sfw4")]
+transform = Transform3D(-0.11085126, 0.09284075, 1.3618228e-08, 0.064, 0.16080491, 2.7975289e-09, -8.381823e-09, 1.2174595e-08, -0.14080001, -4.0715923, 3.6224315, 0.09202206)
+
+[node name="Wall33" parent="Finale(Hardest)/Walls/Roof" unique_id=2012447536 instance=ExtResource("10_8sfw4")]
+transform = Transform3D(-0.11085126, 0.09284075, 1.3618228e-08, 0.064, 0.16080491, 2.7975289e-09, -8.381823e-09, 1.2174595e-08, -0.14080001, -4.0715923, 3.6224315, 0.09202206)
+
+[node name="Wall34" parent="Finale(Hardest)/Walls/Roof" unique_id=1256391751 instance=ExtResource("10_8sfw4")]
+transform = Transform3D(7.450581e-09, 0.18568152, 1.3618227e-08, 0.128, -7.4505815e-09, 2.7975293e-09, 3.6113548e-09, 1.7959184e-08, -0.14080001, -3.1431847, 5.2304807, 0.09202218)
+
+[node name="Wall35" parent="Finale(Hardest)/Walls/Roof" unique_id=1456202869 instance=ExtResource("10_8sfw4")]
+transform = Transform3D(7.450581e-09, 0.18568152, 1.3618227e-08, 0.128, -7.4505815e-09, 2.7975293e-09, 3.6113548e-09, 1.7959184e-08, -0.14080001, -1.2863694, 5.2304807, 0.09202236)
+
+[node name="Wall36" parent="Finale(Hardest)/Walls/Roof" unique_id=2065403991 instance=ExtResource("10_8sfw4")]
+transform = Transform3D(7.450581e-09, 0.18568152, 1.3618227e-08, 0.128, -7.4505815e-09, 2.7975293e-09, 3.6113548e-09, 1.7959184e-08, -0.14080001, -1.2863692, 5.2304807, -1.8791778)
+
+[node name="Wall37" parent="Finale(Hardest)/Walls/Roof" unique_id=1240974302 instance=ExtResource("10_8sfw4")]
+transform = Transform3D(7.450581e-09, 0.18568152, 1.3618227e-08, 0.128, -7.4505815e-09, 2.7975293e-09, 3.6113548e-09, 1.7959184e-08, -0.14080001, -3.1431844, 5.2304807, -1.879178)
+
+[node name="Wall38" parent="Finale(Hardest)/Walls/Roof" unique_id=1375914632 instance=ExtResource("10_8sfw4")]
+transform = Transform3D(7.450581e-09, 0.18568152, 1.3618227e-08, 0.128, -7.4505815e-09, 2.7975293e-09, 3.6113548e-09, 1.7959184e-08, -0.14080001, -3.143185, 5.2304807, 2.0632224)
+
+[node name="Wall39" parent="Finale(Hardest)/Walls/Roof" unique_id=181658551 instance=ExtResource("10_8sfw4")]
+transform = Transform3D(7.450581e-09, 0.18568152, 1.3618227e-08, 0.128, -7.4505815e-09, 2.7975293e-09, 3.6113548e-09, 1.7959184e-08, -0.14080001, -1.2863697, 5.2304807, 2.0632226)
+
+[node name="Wall40" parent="Finale(Hardest)/Walls/Roof" unique_id=1614605001 instance=ExtResource("10_8sfw4")]
+transform = Transform3D(7.450581e-09, 0.18568152, 1.3618227e-08, 0.128, -7.4505815e-09, 2.7975293e-09, 3.6113548e-09, 1.7959184e-08, -0.14080001, 0.38476408, 5.2304807, 2.063223)
+
+[node name="Wall41" parent="Finale(Hardest)/Walls/Roof" unique_id=1835798669 instance=ExtResource("10_8sfw4")]
+transform = Transform3D(7.450581e-09, 0.18568152, 1.3618227e-08, 0.128, -7.4505815e-09, 2.7975293e-09, 3.6113548e-09, 1.7959184e-08, -0.14080001, 0.5704458, 5.2304807, 0.09202267)
+
+[node name="Wall42" parent="Finale(Hardest)/Walls/Roof" unique_id=1084994995 instance=ExtResource("10_8sfw4")]
+transform = Transform3D(7.450581e-09, 0.18568152, 1.3618227e-08, 0.128, -7.4505815e-09, 2.7975293e-09, 3.6113548e-09, 1.7959184e-08, -0.14080001, 0.57044595, 5.2304807, -1.8791776)
+
+[node name="Wall10" parent="Finale(Hardest)/Walls/Roof" unique_id=656002589 instance=ExtResource("10_8sfw4")]
+transform = Transform3D(-3.5363619e-09, 8.116397e-09, -0.15205845, 0.064, 0.16080491, 3.021221e-09, 0.11085126, -0.09284075, -8.060463e-09, -1, 2.0143824, 4.092022)
+
+[node name="Wall11" parent="Finale(Hardest)/Walls/Roof" unique_id=1780232691 instance=ExtResource("10_8sfw4")]
+transform = Transform3D(-3.5363619e-09, 8.116397e-09, -0.14080001, 0.064, 0.16080491, 2.7975293e-09, 0.11085126, -0.09284075, -7.463665e-09, -3, 2.0143824, 4.092022)
+
+[node name="Wall12" parent="Finale(Hardest)/Walls/Roof" unique_id=271366419 instance=ExtResource("10_8sfw4")]
+transform = Transform3D(-3.5363619e-09, 8.116397e-09, -0.14080001, 0.064, 0.16080491, 2.7975293e-09, 0.11085126, -0.09284075, -7.463665e-09, 1, 2.0143824, 4.092022)
+
+[node name="Wall56" parent="Finale(Hardest)/Walls/Roof" unique_id=1685857626 instance=ExtResource("10_8sfw4")]
+transform = Transform3D(-3.5363625e-09, 8.116396e-09, -0.14080006, -6.107035e-09, 0.18568157, 6.154565e-09, 0.12800002, 1.8321103e-08, -5.0649605e-09, 1, 0.14652073, 4.092022)
+
+[node name="Wall26" parent="Finale(Hardest)/Walls/Roof" unique_id=2031168406 instance=ExtResource("10_8sfw4")]
+transform = Transform3D(-3.5363619e-09, 8.116397e-09, -0.14080001, 0.064, 0.16080491, 2.7975293e-09, 0.11085126, -0.09284075, -7.463665e-09, -0.99999994, 3.6224315, 3.1636143)
+
+[node name="Wall13" parent="Finale(Hardest)/Walls/Roof" unique_id=1216115704 instance=ExtResource("10_8sfw4")]
+transform = Transform3D(0.07838369, -0.08288991, -0.09956065, 0.06400001, 0.20303799, 1.9610717e-09, 0.078383684, -0.08288991, 0.09956064, 2.9650683, 1.5879463, 4.0570903)
+
+[node name="Wall59" parent="Finale(Hardest)/Walls/Roof" unique_id=553283155 instance=ExtResource("10_8sfw4")]
+transform = Transform3D(0.0783837, -0.065648355, -0.099560685, 0.06400001, 0.16080494, 1.9610717e-09, 0.0783837, -0.065648355, 0.09956068, 3.4387455, -0.021321416, 4.2390523)
+
+[node name="Wall32" parent="Finale(Hardest)/Walls/Roof" unique_id=1189918248 instance=ExtResource("10_8sfw4")]
+transform = Transform3D(0.07838369, -0.06564833, -0.09956065, 0.06400001, 0.16080493, 1.9610717e-09, 0.078383684, -0.06564833, 0.09956064, 2.033868, 3.6129122, 3.12589)
+
+[node name="Wall14" parent="Finale(Hardest)/Walls/Roof" unique_id=1851866030 instance=ExtResource("10_8sfw4")]
+transform = Transform3D(-0.078383684, 0.065648325, -0.09956064, 0.06400001, 0.16080493, 6.8892825e-09, 0.0783837, -0.06564832, -0.099560656, -4.8307433, 2.1000578, 3.8628743)
+
+[node name="Wall29" parent="Finale(Hardest)/Walls/Roof" unique_id=154162372 instance=ExtResource("10_8sfw4")]
+transform = Transform3D(-0.078383684, 0.065648325, -0.09956064, 0.06400001, 0.16080493, 6.8892825e-09, 0.0783837, -0.06564832, -0.099560656, -4.0291166, 3.5895977, 3.0612476)
+
+[node name="Wall15" parent="Finale(Hardest)/Walls/Roof" unique_id=1165592720 instance=ExtResource("10_8sfw4")]
+transform = Transform3D(0.07838368, -0.06564833, 0.09956065, 0.06400001, 0.16080493, 6.889282e-09, -0.07838369, 0.06564833, 0.09956064, 2.7708552, 2.1000578, -3.7387254)
+
+[node name="Wall27" parent="Finale(Hardest)/Walls/Roof" unique_id=1145417172 instance=ExtResource("10_8sfw4")]
+transform = Transform3D(0.07838368, -0.06564833, 0.09956065, 0.06400001, 0.16080493, 6.889282e-09, -0.07838369, 0.06564833, 0.09956064, 1.9576044, 3.580107, -2.9254746)
+
+[node name="Wall16" parent="Finale(Hardest)/Walls/Roof" unique_id=1853194786 instance=ExtResource("10_8sfw4")]
+transform = Transform3D(-0.0783837, 0.06564832, 0.099560656, 0.064, 0.16080491, 1.08114255e-08, -0.078383684, 0.06564832, -0.09956063, -4.652797, 1.9842327, -3.556546)
+
+[node name="Wall18" parent="Finale(Hardest)/Walls/Roof" unique_id=1702715949 instance=ExtResource("10_8sfw4")]
+transform = Transform3D(-0.0783837, 0.06564832, 0.099560656, 0.064, 0.16080491, 1.08114255e-08, -0.078383684, 0.06564832, -0.09956063, -3.9360487, 3.5941906, -2.8397977)
+
+[node name="Timed_Traps" type="Node3D" parent="Finale(Hardest)" unique_id=1305335169]
+
+[node name="PotHoles" type="Node3D" parent="Finale(Hardest)/Timed_Traps" unique_id=101927179]
+
+[node name="Timed_SpikeTrap9" type="Node3D" parent="Finale(Hardest)/Timed_Traps/PotHoles" unique_id=401680567]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, -2, 4)
+
+[node name="SpikeTrap" parent="Finale(Hardest)/Timed_Traps/PotHoles/Timed_SpikeTrap9" unique_id=1693374211 instance=ExtResource("6_jkfe6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1)
+trigger_when_in = false
+metadata/uid = "613f3d3a-55ca-401e-804a-dd20c41a2503"
+metadata/lock_uid = true
+metadata/date_generated = "2026-04-09T13:39:19"
+
+[node name="Counter" type="Node" parent="Finale(Hardest)/Timed_Traps/PotHoles/Timed_SpikeTrap9" unique_id=681666267]
+script = ExtResource("22_el7m8")
+max_count = 1
+metadata/_custom_type_script = "uid://cfmswqnu6u0bl"
+
+[node name="Timer" type="Timer" parent="Finale(Hardest)/Timed_Traps/PotHoles/Timed_SpikeTrap9" unique_id=1185284076]
+wait_time = 0.5
+autostart = true
+
+[node name="Timed_SpikeTrap38" type="Node3D" parent="Finale(Hardest)/Timed_Traps/PotHoles" unique_id=2066072384]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, -2, 4)
+
+[node name="SpikeTrap" parent="Finale(Hardest)/Timed_Traps/PotHoles/Timed_SpikeTrap38" unique_id=66961669 instance=ExtResource("6_jkfe6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1)
+trigger_when_in = false
+metadata/uid = "613f3d3a-55ca-401e-804a-dd20c41a2503"
+metadata/lock_uid = true
+metadata/date_generated = "2026-04-09T13:39:19"
+
+[node name="Counter" type="Node" parent="Finale(Hardest)/Timed_Traps/PotHoles/Timed_SpikeTrap38" unique_id=1408447565]
+script = ExtResource("22_el7m8")
+max_count = 1
+metadata/_custom_type_script = "uid://cfmswqnu6u0bl"
+
+[node name="Timer" type="Timer" parent="Finale(Hardest)/Timed_Traps/PotHoles/Timed_SpikeTrap38" unique_id=565406614]
+wait_time = 0.5
+autostart = true
+
+[node name="Timed_SpikeTrap39" type="Node3D" parent="Finale(Hardest)/Timed_Traps/PotHoles" unique_id=459838117]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, -2, 2)
+
+[node name="SpikeTrap" parent="Finale(Hardest)/Timed_Traps/PotHoles/Timed_SpikeTrap39" unique_id=217404291 instance=ExtResource("6_jkfe6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1)
+trigger_when_in = false
+metadata/uid = "613f3d3a-55ca-401e-804a-dd20c41a2503"
+metadata/lock_uid = true
+metadata/date_generated = "2026-04-09T13:39:19"
+
+[node name="Counter" type="Node" parent="Finale(Hardest)/Timed_Traps/PotHoles/Timed_SpikeTrap39" unique_id=662118794]
+script = ExtResource("22_el7m8")
+max_count = 1
+metadata/_custom_type_script = "uid://cfmswqnu6u0bl"
+
+[node name="Timer" type="Timer" parent="Finale(Hardest)/Timed_Traps/PotHoles/Timed_SpikeTrap39" unique_id=714564046]
+wait_time = 0.5
+autostart = true
+
+[node name="Timed_SpikeTrap40" type="Node3D" parent="Finale(Hardest)/Timed_Traps/PotHoles" unique_id=237759304]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, -2, 0)
+
+[node name="SpikeTrap" parent="Finale(Hardest)/Timed_Traps/PotHoles/Timed_SpikeTrap40" unique_id=1295844952 instance=ExtResource("6_jkfe6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1)
+trigger_when_in = false
+metadata/uid = "613f3d3a-55ca-401e-804a-dd20c41a2503"
+metadata/lock_uid = true
+metadata/date_generated = "2026-04-09T13:39:19"
+
+[node name="Counter" type="Node" parent="Finale(Hardest)/Timed_Traps/PotHoles/Timed_SpikeTrap40" unique_id=424330785]
+script = ExtResource("22_el7m8")
+max_count = 1
+metadata/_custom_type_script = "uid://cfmswqnu6u0bl"
+
+[node name="Timer" type="Timer" parent="Finale(Hardest)/Timed_Traps/PotHoles/Timed_SpikeTrap40" unique_id=476751047]
+wait_time = 0.5
+autostart = true
+
+[node name="Timed_SpikeTrap8" type="Node3D" parent="Finale(Hardest)/Timed_Traps/PotHoles" unique_id=1114261503]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, -2, -2)
+
+[node name="SpikeTrap" parent="Finale(Hardest)/Timed_Traps/PotHoles/Timed_SpikeTrap8" unique_id=305528431 instance=ExtResource("6_jkfe6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1)
+trigger_when_in = false
+metadata/uid = "613f3d3a-55ca-401e-804a-dd20c41a2503"
+metadata/lock_uid = true
+metadata/date_generated = "2026-04-09T13:39:19"
+
+[node name="Counter" type="Node" parent="Finale(Hardest)/Timed_Traps/PotHoles/Timed_SpikeTrap8" unique_id=1875760030]
+script = ExtResource("22_el7m8")
+max_count = 1
+metadata/_custom_type_script = "uid://cfmswqnu6u0bl"
+
+[node name="Timer" type="Timer" parent="Finale(Hardest)/Timed_Traps/PotHoles/Timed_SpikeTrap8" unique_id=1524780632]
+wait_time = 0.5
+autostart = true
+
+[node name="Timed_SpikeTrap11" type="Node3D" parent="Finale(Hardest)/Timed_Traps/PotHoles" unique_id=887907813]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, -2, -2)
+
+[node name="SpikeTrap" parent="Finale(Hardest)/Timed_Traps/PotHoles/Timed_SpikeTrap11" unique_id=1101764073 instance=ExtResource("6_jkfe6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1)
+trigger_when_in = false
+metadata/uid = "613f3d3a-55ca-401e-804a-dd20c41a2503"
+metadata/lock_uid = true
+metadata/date_generated = "2026-04-09T13:39:19"
+
+[node name="Counter" type="Node" parent="Finale(Hardest)/Timed_Traps/PotHoles/Timed_SpikeTrap11" unique_id=1835631923]
+script = ExtResource("22_el7m8")
+max_count = 1
+metadata/_custom_type_script = "uid://cfmswqnu6u0bl"
+
+[node name="Timer" type="Timer" parent="Finale(Hardest)/Timed_Traps/PotHoles/Timed_SpikeTrap11" unique_id=2083427855]
+wait_time = 0.5
+autostart = true
+
+[node name="Timed_SpikeTrap12" type="Node3D" parent="Finale(Hardest)/Timed_Traps/PotHoles" unique_id=911969276]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, -2, -2)
+
+[node name="SpikeTrap" parent="Finale(Hardest)/Timed_Traps/PotHoles/Timed_SpikeTrap12" unique_id=1530249941 instance=ExtResource("6_jkfe6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1)
+trigger_when_in = false
+metadata/uid = "613f3d3a-55ca-401e-804a-dd20c41a2503"
+metadata/lock_uid = true
+metadata/date_generated = "2026-04-09T13:39:19"
+
+[node name="Counter" type="Node" parent="Finale(Hardest)/Timed_Traps/PotHoles/Timed_SpikeTrap12" unique_id=1523221815]
+script = ExtResource("22_el7m8")
+max_count = 1
+metadata/_custom_type_script = "uid://cfmswqnu6u0bl"
+
+[node name="Timer" type="Timer" parent="Finale(Hardest)/Timed_Traps/PotHoles/Timed_SpikeTrap12" unique_id=269414088]
+wait_time = 0.5
+autostart = true
+
+[node name="Timed_SpikeTrap14" type="Node3D" parent="Finale(Hardest)/Timed_Traps/PotHoles" unique_id=1300308321]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, -2, -4)
+
+[node name="SpikeTrap" parent="Finale(Hardest)/Timed_Traps/PotHoles/Timed_SpikeTrap14" unique_id=736379649 instance=ExtResource("6_jkfe6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1)
+trigger_when_in = false
+metadata/uid = "613f3d3a-55ca-401e-804a-dd20c41a2503"
+metadata/lock_uid = true
+metadata/date_generated = "2026-04-09T13:39:19"
+
+[node name="Counter" type="Node" parent="Finale(Hardest)/Timed_Traps/PotHoles/Timed_SpikeTrap14" unique_id=1059948805]
+script = ExtResource("22_el7m8")
+max_count = 1
+metadata/_custom_type_script = "uid://cfmswqnu6u0bl"
+
+[node name="Timer" type="Timer" parent="Finale(Hardest)/Timed_Traps/PotHoles/Timed_SpikeTrap14" unique_id=739671908]
+wait_time = 0.5
+autostart = true
+
+[node name="Timed_SpikeTrap24" type="Node3D" parent="Finale(Hardest)/Timed_Traps/PotHoles" unique_id=318827335]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, -2, -4)
+
+[node name="SpikeTrap" parent="Finale(Hardest)/Timed_Traps/PotHoles/Timed_SpikeTrap24" unique_id=1210180129 instance=ExtResource("6_jkfe6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1)
+trigger_when_in = false
+metadata/uid = "613f3d3a-55ca-401e-804a-dd20c41a2503"
+metadata/lock_uid = true
+metadata/date_generated = "2026-04-09T13:39:19"
+
+[node name="Counter" type="Node" parent="Finale(Hardest)/Timed_Traps/PotHoles/Timed_SpikeTrap24" unique_id=869361768]
+script = ExtResource("22_el7m8")
+max_count = 1
+metadata/_custom_type_script = "uid://cfmswqnu6u0bl"
+
+[node name="Timer" type="Timer" parent="Finale(Hardest)/Timed_Traps/PotHoles/Timed_SpikeTrap24" unique_id=1565945306]
+wait_time = 0.5
+autostart = true
+
+[node name="Timed_SpikeTrap15" type="Node3D" parent="Finale(Hardest)/Timed_Traps/PotHoles" unique_id=1937150368]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, -2, 2)
+
+[node name="SpikeTrap" parent="Finale(Hardest)/Timed_Traps/PotHoles/Timed_SpikeTrap15" unique_id=1867261593 instance=ExtResource("6_jkfe6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1)
+trigger_when_in = false
+metadata/uid = "613f3d3a-55ca-401e-804a-dd20c41a2503"
+metadata/lock_uid = true
+metadata/date_generated = "2026-04-09T13:39:19"
+
+[node name="Counter" type="Node" parent="Finale(Hardest)/Timed_Traps/PotHoles/Timed_SpikeTrap15" unique_id=970534555]
+script = ExtResource("22_el7m8")
+max_count = 1
+metadata/_custom_type_script = "uid://cfmswqnu6u0bl"
+
+[node name="Timer" type="Timer" parent="Finale(Hardest)/Timed_Traps/PotHoles/Timed_SpikeTrap15" unique_id=1128780499]
+wait_time = 0.5
+autostart = true
+
+[node name="Timed_SpikeTrap16" type="Node3D" parent="Finale(Hardest)/Timed_Traps/PotHoles" unique_id=1740442952]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, -2, 4)
+
+[node name="SpikeTrap" parent="Finale(Hardest)/Timed_Traps/PotHoles/Timed_SpikeTrap16" unique_id=1628993653 instance=ExtResource("6_jkfe6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1)
+trigger_when_in = false
+metadata/uid = "613f3d3a-55ca-401e-804a-dd20c41a2503"
+metadata/lock_uid = true
+metadata/date_generated = "2026-04-09T13:39:19"
+
+[node name="Counter" type="Node" parent="Finale(Hardest)/Timed_Traps/PotHoles/Timed_SpikeTrap16" unique_id=1689609082]
+script = ExtResource("22_el7m8")
+max_count = 1
+metadata/_custom_type_script = "uid://cfmswqnu6u0bl"
+
+[node name="Timer" type="Timer" parent="Finale(Hardest)/Timed_Traps/PotHoles/Timed_SpikeTrap16" unique_id=2055173465]
+wait_time = 0.5
+autostart = true
+
+[node name="Timed_SpikeTrap17" type="Node3D" parent="Finale(Hardest)/Timed_Traps/PotHoles" unique_id=224979994]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, -2, 4)
+
+[node name="SpikeTrap" parent="Finale(Hardest)/Timed_Traps/PotHoles/Timed_SpikeTrap17" unique_id=902871061 instance=ExtResource("6_jkfe6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1)
+trigger_when_in = false
+metadata/uid = "613f3d3a-55ca-401e-804a-dd20c41a2503"
+metadata/lock_uid = true
+metadata/date_generated = "2026-04-09T13:39:19"
+
+[node name="Counter" type="Node" parent="Finale(Hardest)/Timed_Traps/PotHoles/Timed_SpikeTrap17" unique_id=1484161952]
+script = ExtResource("22_el7m8")
+max_count = 1
+metadata/_custom_type_script = "uid://cfmswqnu6u0bl"
+
+[node name="Timer" type="Timer" parent="Finale(Hardest)/Timed_Traps/PotHoles/Timed_SpikeTrap17" unique_id=399523279]
+wait_time = 0.5
+autostart = true
+
+[node name="Timed_SpikeTrap18" type="Node3D" parent="Finale(Hardest)/Timed_Traps/PotHoles" unique_id=1063458132]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, -2, 2)
+
+[node name="SpikeTrap" parent="Finale(Hardest)/Timed_Traps/PotHoles/Timed_SpikeTrap18" unique_id=2113116371 instance=ExtResource("6_jkfe6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1)
+trigger_when_in = false
+metadata/uid = "613f3d3a-55ca-401e-804a-dd20c41a2503"
+metadata/lock_uid = true
+metadata/date_generated = "2026-04-09T13:39:19"
+
+[node name="Counter" type="Node" parent="Finale(Hardest)/Timed_Traps/PotHoles/Timed_SpikeTrap18" unique_id=2096491013]
+script = ExtResource("22_el7m8")
+max_count = 1
+metadata/_custom_type_script = "uid://cfmswqnu6u0bl"
+
+[node name="Timer" type="Timer" parent="Finale(Hardest)/Timed_Traps/PotHoles/Timed_SpikeTrap18" unique_id=1239094512]
+wait_time = 0.5
+autostart = true
+
+[node name="Timed_SpikeTrap35" type="Node3D" parent="Finale(Hardest)/Timed_Traps/PotHoles" unique_id=1359060055]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, -2, -2)
+
+[node name="SpikeTrap" parent="Finale(Hardest)/Timed_Traps/PotHoles/Timed_SpikeTrap35" unique_id=676126446 instance=ExtResource("6_jkfe6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1)
+trigger_when_in = false
+metadata/uid = "613f3d3a-55ca-401e-804a-dd20c41a2503"
+metadata/lock_uid = true
+metadata/date_generated = "2026-04-09T13:39:19"
+
+[node name="Counter" type="Node" parent="Finale(Hardest)/Timed_Traps/PotHoles/Timed_SpikeTrap35" unique_id=363471836]
+script = ExtResource("22_el7m8")
+max_count = 1
+metadata/_custom_type_script = "uid://cfmswqnu6u0bl"
+
+[node name="Timer" type="Timer" parent="Finale(Hardest)/Timed_Traps/PotHoles/Timed_SpikeTrap35" unique_id=1810421756]
+wait_time = 0.5
+autostart = true
+
+[node name="Timed_SpikeTrap36" type="Node3D" parent="Finale(Hardest)/Timed_Traps/PotHoles" unique_id=1921444462]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, -2, -4)
+
+[node name="SpikeTrap" parent="Finale(Hardest)/Timed_Traps/PotHoles/Timed_SpikeTrap36" unique_id=752082092 instance=ExtResource("6_jkfe6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1)
+trigger_when_in = false
+metadata/uid = "613f3d3a-55ca-401e-804a-dd20c41a2503"
+metadata/lock_uid = true
+metadata/date_generated = "2026-04-09T13:39:19"
+
+[node name="Counter" type="Node" parent="Finale(Hardest)/Timed_Traps/PotHoles/Timed_SpikeTrap36" unique_id=1739348867]
+script = ExtResource("22_el7m8")
+max_count = 1
+metadata/_custom_type_script = "uid://cfmswqnu6u0bl"
+
+[node name="Timer" type="Timer" parent="Finale(Hardest)/Timed_Traps/PotHoles/Timed_SpikeTrap36" unique_id=1378339529]
+wait_time = 0.5
+autostart = true
+
+[node name="Timed_SpikeTrap37" type="Node3D" parent="Finale(Hardest)/Timed_Traps/PotHoles" unique_id=990899584]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, -2, -4)
+
+[node name="SpikeTrap" parent="Finale(Hardest)/Timed_Traps/PotHoles/Timed_SpikeTrap37" unique_id=1859517851 instance=ExtResource("6_jkfe6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1)
+trigger_when_in = false
+metadata/uid = "613f3d3a-55ca-401e-804a-dd20c41a2503"
+metadata/lock_uid = true
+metadata/date_generated = "2026-04-09T13:39:19"
+
+[node name="Counter" type="Node" parent="Finale(Hardest)/Timed_Traps/PotHoles/Timed_SpikeTrap37" unique_id=2080239572]
+script = ExtResource("22_el7m8")
+max_count = 1
+metadata/_custom_type_script = "uid://cfmswqnu6u0bl"
+
+[node name="Timer" type="Timer" parent="Finale(Hardest)/Timed_Traps/PotHoles/Timed_SpikeTrap37" unique_id=992587108]
+wait_time = 0.5
+autostart = true
+
+[node name="First_Part" type="Node3D" parent="Finale(Hardest)/Timed_Traps" unique_id=1923596029]
+
+[node name="Timed_SpikeTrap5" type="Node3D" parent="Finale(Hardest)/Timed_Traps/First_Part" unique_id=697681740]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -4)
+
+[node name="SpikeTrap" parent="Finale(Hardest)/Timed_Traps/First_Part/Timed_SpikeTrap5" unique_id=1037020072 instance=ExtResource("6_jkfe6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1)
+trigger_when_in = false
+metadata/uid = "613f3d3a-55ca-401e-804a-dd20c41a2503"
+metadata/lock_uid = true
+metadata/date_generated = "2026-04-09T13:39:19"
+
+[node name="Counter" type="Node" parent="Finale(Hardest)/Timed_Traps/First_Part/Timed_SpikeTrap5" unique_id=1594392420]
+script = ExtResource("22_el7m8")
+begin_count = 1
+metadata/_custom_type_script = "uid://cfmswqnu6u0bl"
+
+[node name="Timer" type="Timer" parent="Finale(Hardest)/Timed_Traps/First_Part/Timed_SpikeTrap5" unique_id=314640256]
+wait_time = 2.0
+autostart = true
+
+[node name="Timed_SpikeTrap7" type="Node3D" parent="Finale(Hardest)/Timed_Traps/First_Part" unique_id=207515159]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, -2)
+
+[node name="SpikeTrap" parent="Finale(Hardest)/Timed_Traps/First_Part/Timed_SpikeTrap7" unique_id=712361235 instance=ExtResource("6_jkfe6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1)
+trigger_when_in = false
+metadata/uid = "613f3d3a-55ca-401e-804a-dd20c41a2503"
+metadata/lock_uid = true
+metadata/date_generated = "2026-04-09T13:39:19"
+
+[node name="Counter" type="Node" parent="Finale(Hardest)/Timed_Traps/First_Part/Timed_SpikeTrap7" unique_id=163539294]
+script = ExtResource("22_el7m8")
+begin_count = 1
+metadata/_custom_type_script = "uid://cfmswqnu6u0bl"
+
+[node name="Timer" type="Timer" parent="Finale(Hardest)/Timed_Traps/First_Part/Timed_SpikeTrap7" unique_id=705340620]
+wait_time = 2.0
+autostart = true
+
+[node name="Timed_SpikeTrap6" type="Node3D" parent="Finale(Hardest)/Timed_Traps/First_Part" unique_id=1783949272]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2)
+
+[node name="SpikeTrap" parent="Finale(Hardest)/Timed_Traps/First_Part/Timed_SpikeTrap6" unique_id=242004027 instance=ExtResource("6_jkfe6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1)
+trigger_when_in = false
+metadata/uid = "613f3d3a-55ca-401e-804a-dd20c41a2503"
+metadata/lock_uid = true
+metadata/date_generated = "2026-04-09T13:39:19"
+
+[node name="Counter" type="Node" parent="Finale(Hardest)/Timed_Traps/First_Part/Timed_SpikeTrap6" unique_id=1746746309]
+script = ExtResource("22_el7m8")
+metadata/_custom_type_script = "uid://cfmswqnu6u0bl"
+
+[node name="Timer" type="Timer" parent="Finale(Hardest)/Timed_Traps/First_Part/Timed_SpikeTrap6" unique_id=25702251]
+wait_time = 2.0
+autostart = true
+
+[node name="Second_Part" type="Node3D" parent="Finale(Hardest)/Timed_Traps" unique_id=1007172125]
+
+[node name="Timed_SpikeTrap9" type="Node3D" parent="Finale(Hardest)/Timed_Traps/Second_Part" unique_id=901349506]
+
+[node name="SpikeTrap" parent="Finale(Hardest)/Timed_Traps/Second_Part/Timed_SpikeTrap9" unique_id=2007306786 instance=ExtResource("6_jkfe6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1)
+trigger_when_in = false
+metadata/uid = "613f3d3a-55ca-401e-804a-dd20c41a2503"
+metadata/lock_uid = true
+metadata/date_generated = "2026-04-09T13:39:19"
+
+[node name="Counter" type="Node" parent="Finale(Hardest)/Timed_Traps/Second_Part/Timed_SpikeTrap9" unique_id=1335030330]
+script = ExtResource("22_el7m8")
+begin_count = -1
+metadata/_custom_type_script = "uid://cfmswqnu6u0bl"
+
+[node name="Timer" type="Timer" parent="Finale(Hardest)/Timed_Traps/Second_Part/Timed_SpikeTrap9" unique_id=582741949]
+wait_time = 0.75
+autostart = true
+
+[node name="Timed_SpikeTrap10" type="Node3D" parent="Finale(Hardest)/Timed_Traps/Second_Part" unique_id=628480414]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 0)
+
+[node name="SpikeTrap" parent="Finale(Hardest)/Timed_Traps/Second_Part/Timed_SpikeTrap10" unique_id=719100306 instance=ExtResource("6_jkfe6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1)
+trigger_when_in = false
+metadata/uid = "613f3d3a-55ca-401e-804a-dd20c41a2503"
+metadata/lock_uid = true
+metadata/date_generated = "2026-04-09T13:39:19"
+
+[node name="Counter" type="Node" parent="Finale(Hardest)/Timed_Traps/Second_Part/Timed_SpikeTrap10" unique_id=215877284]
+script = ExtResource("22_el7m8")
+begin_count = -2
+metadata/_custom_type_script = "uid://cfmswqnu6u0bl"
+
+[node name="Timer" type="Timer" parent="Finale(Hardest)/Timed_Traps/Second_Part/Timed_SpikeTrap10" unique_id=1117306113]
+wait_time = 0.75
+autostart = true
+
+[node name="Timed_SpikeTrap11" type="Node3D" parent="Finale(Hardest)/Timed_Traps/Second_Part" unique_id=1198967517]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, -2, 0)
+
+[node name="SpikeTrap" parent="Finale(Hardest)/Timed_Traps/Second_Part/Timed_SpikeTrap11" unique_id=1494559958 instance=ExtResource("6_jkfe6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1)
+trigger_when_in = false
+metadata/uid = "613f3d3a-55ca-401e-804a-dd20c41a2503"
+metadata/lock_uid = true
+metadata/date_generated = "2026-04-09T13:39:19"
+
+[node name="Counter" type="Node" parent="Finale(Hardest)/Timed_Traps/Second_Part/Timed_SpikeTrap11" unique_id=1507042064]
+script = ExtResource("22_el7m8")
+max_count = 1
+metadata/_custom_type_script = "uid://cfmswqnu6u0bl"
+
+[node name="Timer" type="Timer" parent="Finale(Hardest)/Timed_Traps/Second_Part/Timed_SpikeTrap11" unique_id=289983721]
+wait_time = 0.5
+autostart = true
+
+[node name="Timed_SpikeTrap8" type="Node3D" parent="Finale(Hardest)/Timed_Traps/Second_Part" unique_id=194538943]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 0)
+
+[node name="SpikeTrap" parent="Finale(Hardest)/Timed_Traps/Second_Part/Timed_SpikeTrap8" unique_id=1438458676 instance=ExtResource("6_jkfe6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1)
+trigger_when_in = false
+metadata/uid = "613f3d3a-55ca-401e-804a-dd20c41a2503"
+metadata/lock_uid = true
+metadata/date_generated = "2026-04-09T13:39:19"
+
+[node name="Counter" type="Node" parent="Finale(Hardest)/Timed_Traps/Second_Part/Timed_SpikeTrap8" unique_id=458151601]
+script = ExtResource("22_el7m8")
+metadata/_custom_type_script = "uid://cfmswqnu6u0bl"
+
+[node name="Timer" type="Timer" parent="Finale(Hardest)/Timed_Traps/Second_Part/Timed_SpikeTrap8" unique_id=259055459]
+wait_time = 0.75
+autostart = true
+
+[node name="skull" parent="Finale(Hardest)/Timed_Traps/Second_Part" unique_id=1750242372 instance=ExtResource("5_dp00y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0.3234074, -1)
+
+[node name="Final_Part" type="Node3D" parent="Finale(Hardest)/Timed_Traps" unique_id=2090667189]
+
+[node name="Gate_Open" parent="Finale(Hardest)/Timed_Traps/Final_Part" unique_id=1242169664 instance=ExtResource("3_nevts")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 0, -1)
+
+[node name="Iron_Gate" parent="Finale(Hardest)/Timed_Traps/Final_Part" unique_id=1103378738 instance=ExtResource("7_wn42o")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 4.0640206)
+
+[node name="Timed_SpikeTrap12" type="Node3D" parent="Finale(Hardest)/Timed_Traps/Final_Part" unique_id=1345324114]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2)
+
+[node name="SpikeTrap" parent="Finale(Hardest)/Timed_Traps/Final_Part/Timed_SpikeTrap12" unique_id=886902186 instance=ExtResource("6_jkfe6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1)
+trigger_when_in = false
+metadata/uid = "613f3d3a-55ca-401e-804a-dd20c41a2503"
+metadata/lock_uid = true
+metadata/date_generated = "2026-04-09T13:39:19"
+
+[node name="Counter" type="Node" parent="Finale(Hardest)/Timed_Traps/Final_Part/Timed_SpikeTrap12" unique_id=548608891]
+script = ExtResource("22_el7m8")
+max_count = 1
+metadata/_custom_type_script = "uid://cfmswqnu6u0bl"
+
+[node name="Timer" type="Timer" parent="Finale(Hardest)/Timed_Traps/Final_Part/Timed_SpikeTrap12" unique_id=1184165228]
+wait_time = 3.0
+autostart = true
+
+[node name="Timed_SpikeTrap13" type="Node3D" parent="Finale(Hardest)/Timed_Traps/Final_Part" unique_id=56649961]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 2)
+
+[node name="SpikeTrap" parent="Finale(Hardest)/Timed_Traps/Final_Part/Timed_SpikeTrap13" unique_id=1044425309 instance=ExtResource("6_jkfe6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1)
+trigger_when_in = false
+metadata/uid = "613f3d3a-55ca-401e-804a-dd20c41a2503"
+metadata/lock_uid = true
+metadata/date_generated = "2026-04-09T13:39:19"
+
+[node name="Counter" type="Node" parent="Finale(Hardest)/Timed_Traps/Final_Part/Timed_SpikeTrap13" unique_id=1346431216]
+script = ExtResource("22_el7m8")
+max_count = 1
+metadata/_custom_type_script = "uid://cfmswqnu6u0bl"
+
+[node name="Timer" type="Timer" parent="Finale(Hardest)/Timed_Traps/Final_Part/Timed_SpikeTrap13" unique_id=72987252]
+wait_time = 3.0
+autostart = true
+
+[node name="Torches" type="Node3D" parent="Finale(Hardest)" unique_id=1893701880]
+
+[node name="TorchScont" parent="Finale(Hardest)/Torches" unique_id=276211408 instance=ExtResource("16_fuubn")]
+transform = Transform3D(0.2588191, 0.68301266, 0.68301266, -0.019301832, 0.71062267, -0.7033084, -0.9657328, 0.16884623, 0.19710605, 3.3410187, 0.1693511, -1)
+
+[node name="TorchScont2" parent="Finale(Hardest)/Torches" unique_id=1547234996 instance=ExtResource("16_fuubn")]
+transform = Transform3D(0.86588895, 0.36357057, 0.34358788, -0.019301819, 0.7106227, -0.70330846, -0.49986354, 0.60235524, 0.62233794, 0.34101868, 0.1693511, -3)
+
+[node name="TorchScont3" parent="Finale(Hardest)/Torches" unique_id=1893827518 instance=ExtResource("16_fuubn")]
+transform = Transform3D(0.25872254, -0.6759295, -0.69005936, -0.019301834, 0.7106227, -0.70330846, 0.9657587, 0.19528115, 0.17080751, -1.6589813, 0.1693511, -1)
+
+[node name="SpotLight3D" type="SpotLight3D" parent="Finale(Hardest)" unique_id=862005375]
+transform = Transform3D(-0.5026619, 0.7183515, -0.4809389, 0.05508426, 0.5818157, 0.81145316, 0.86272633, 0.38139442, -0.33202642, -9.052059, 2.1343782, -1.9725636)
+light_color = Color(0.17852655, 0.19799966, 0.24214685, 1)
+light_energy = 1.929
+light_indirect_energy = 0.0
+light_volumetric_fog_energy = 8.816
+spot_range = 6.1764393
+spot_angle = 10.464578
+
+[node name="TorchSconce_Lit" parent="Finale(Hardest)" unique_id=571440269 instance=ExtResource("14_ftbts")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 1.322401, 1.3852149, 3.8780537)
+
+[node name="TorchSconce_Lit2" parent="Finale(Hardest)" unique_id=1536245296 instance=ExtResource("14_ftbts")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -1.2511024, 1.4079803, 3.8567815)
+
+[node name="Shortcut" type="Node3D" parent="." unique_id=1834614490]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, -7)
+
+[node name="Shortcut back" parent="Shortcut" unique_id=1754271012 instance=ExtResource("7_wn42o")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 0, 0, 0)
+
+[connection signal="on_change" from="Beginning_Part(Easier)/First_Trap/First_Pressure_Plate" to="Beginning_Part(Easier)/First_Trap/trap_projectile3" method="trigger_trap"]
+[connection signal="on_change" from="Beginning_Part(Easier)/Second_Part/PressurePlate3" to="Beginning_Part(Easier)/Second_Part/Gate" method="open_gate"]
+[connection signal="on_change" from="Beginning_Part(Easier)/Second_Part/PressurePlate3" to="Beginning_Part(Easier)/Second_Part/trap_projectile_Left" method="trigger_trap"]
+[connection signal="on_activated" from="Beginning_Part(Easier)/Second_Part/PressurePlate" to="Beginning_Part(Easier)/Second_Part/SpikeTrap" method="activate"]
+[connection signal="on_activated" from="Beginning_Part(Easier)/Second_Part/PressurePlate" to="Beginning_Part(Easier)/Second_Part/SpikeTrap2" method="activate"]
+[connection signal="on_activated" from="Beginning_Part(Easier)/Second_Part/PressurePlate" to="Beginning_Part(Easier)/Second_Part/SpikeTrap3" method="activate"]
+[connection signal="on_change" from="Beginning_Part(Easier)/Second_Part/PressurePlate" to="Beginning_Part(Easier)/Second_Part/Gate" method="open_gate"]
+[connection signal="on_activated" from="Beginning_Part(Easier)/Second_Part/PressurePlate5" to="Beginning_Part(Easier)/Second_Part/SpikeTrap" method="activate"]
+[connection signal="on_activated" from="Beginning_Part(Easier)/Second_Part/PressurePlate5" to="Beginning_Part(Easier)/Second_Part/SpikeTrap2" method="activate"]
+[connection signal="on_activated" from="Beginning_Part(Easier)/Second_Part/PressurePlate5" to="Beginning_Part(Easier)/Second_Part/SpikeTrap3" method="activate"]
+[connection signal="on_change" from="Beginning_Part(Easier)/Second_Part/PressurePlate2" to="Beginning_Part(Easier)/Second_Part/Gate" method="open_gate"]
+[connection signal="on_change" from="Beginning_Part(Easier)/Second_Part/PressurePlate2" to="Beginning_Part(Easier)/Second_Part/trap_projectile_Right" method="trigger_trap"]
+[connection signal="on_activated" from="Beginning_Part(Easier)/Second_Part/PressurePlate4" to="Beginning_Part(Easier)/Second_Part/trap_projectile" method="trigger_trap"]
+[connection signal="on_activated" from="Beginning_Part(Easier)/Third_Part/Button" to="Beginning_Part(Easier)/Third_Part/First_Bridge" method="fully_open_bridge"]
+[connection signal="on_activated" from="Beginning_Part(Easier)/Third_Part/Button" to="Beginning_Part(Easier)/Gate_Area_Finished/First_Area_FinishedGate" method="open_gate"]
+[connection signal="on_activated" from="Beginning_Part(Easier)/Third_Part/PressurePlate4" to="Beginning_Part(Easier)/Third_Part/trap_projectile" method="trigger_trap"]
+[connection signal="on_activated" from="Beginning_Part(Easier)/Gate_Area_Finished/PlayerAreaTrigger" to="Beginning_Part(Easier)/Gate_Area_Finished/First_Area_FinishedGate" method="close_gate"]
+[connection signal="area_entered" from="Beginning_Part(Easier)/Gate_Area_Finished/PlayerAreaTrigger/Area3D" to="Beginning_Part(Easier)/Gate_Area_Finished/PlayerAreaTrigger" method="_player_entered"]
+[connection signal="area_exited" from="Beginning_Part(Easier)/Gate_Area_Finished/PlayerAreaTrigger/Area3D" to="Beginning_Part(Easier)/Gate_Area_Finished/PlayerAreaTrigger" method="_player_exited"]
+[connection signal="on_change" from="Second_Part(Harder)/Intersection/Lever" to="Second_Part(Harder)/Intersection/End_Gate" method="open_gate"]
+[connection signal="on_change" from="Second_Part(Harder)/Intersection/Lever" to="Shortcut/Shortcut back" method="open_gate"]
+[connection signal="on_activated" from="Second_Part(Harder)/Final Projectile Part/BunbleofArrows_Trap8/PressurePlate_ArrowTrap" to="Second_Part(Harder)/Final Projectile Part/BunbleofArrows_Trap8/Arrow_Colony/trap_projectile" method="trigger_trap"]
+[connection signal="on_activated" from="Second_Part(Harder)/Final Projectile Part/BunbleofArrows_Trap8/PressurePlate_ArrowTrap" to="Second_Part(Harder)/Final Projectile Part/BunbleofArrows_Trap8/Arrow_Colony/trap_projectile3" method="trigger_trap"]
+[connection signal="on_activated" from="Second_Part(Harder)/Final Projectile Part/BunbleofArrows_Trap8/PressurePlate_ArrowTrap" to="Second_Part(Harder)/Final Projectile Part/BunbleofArrows_Trap8/Arrow_Colony/trap_projectile2" method="trigger_trap"]
+[connection signal="on_activated" from="Second_Part(Harder)/Final Projectile Part/BunbleofArrows_Trap8/PressurePlate_ArrowTrap" to="Second_Part(Harder)/Final Projectile Part/BunbleofArrows_Trap8/Arrow_Colony/trap_projectile4" method="trigger_trap"]
+[connection signal="on_activated" from="Second_Part(Harder)/Final Projectile Part/BunbleofArrows_Trap8/PressurePlate_ArrowTrap" to="Second_Part(Harder)/Final Projectile Part/BunbleofArrows_Trap8/Arrow_Colony/trap_projectile5" method="trigger_trap"]
+[connection signal="on_activated" from="Second_Part(Harder)/Final Projectile Part/BunbleofArrows_Trap8/PressurePlate_ArrowTrap" to="Second_Part(Harder)/Final Projectile Part/BunbleofArrows_Trap8/Arrow_Colony/trap_projectile6" method="trigger_trap"]
+[connection signal="on_activated" from="Second_Part(Harder)/Final Projectile Part/BunbleofArrows_Trap9/PressurePlate_ArrowTrap" to="Second_Part(Harder)/Final Projectile Part/BunbleofArrows_Trap9/Arrow_Colony/trap_projectile" method="trigger_trap"]
+[connection signal="on_activated" from="Second_Part(Harder)/Final Projectile Part/BunbleofArrows_Trap9/PressurePlate_ArrowTrap" to="Second_Part(Harder)/Final Projectile Part/BunbleofArrows_Trap9/Arrow_Colony/trap_projectile3" method="trigger_trap"]
+[connection signal="on_activated" from="Second_Part(Harder)/Final Projectile Part/BunbleofArrows_Trap9/PressurePlate_ArrowTrap" to="Second_Part(Harder)/Final Projectile Part/BunbleofArrows_Trap9/Arrow_Colony/trap_projectile2" method="trigger_trap"]
+[connection signal="on_activated" from="Second_Part(Harder)/Final Projectile Part/BunbleofArrows_Trap9/PressurePlate_ArrowTrap" to="Second_Part(Harder)/Final Projectile Part/BunbleofArrows_Trap9/Arrow_Colony/trap_projectile4" method="trigger_trap"]
+[connection signal="on_activated" from="Second_Part(Harder)/Final Projectile Part/BunbleofArrows_Trap9/PressurePlate_ArrowTrap" to="Second_Part(Harder)/Final Projectile Part/BunbleofArrows_Trap9/Arrow_Colony/trap_projectile5" method="trigger_trap"]
+[connection signal="on_activated" from="Second_Part(Harder)/Final Projectile Part/BunbleofArrows_Trap9/PressurePlate_ArrowTrap" to="Second_Part(Harder)/Final Projectile Part/BunbleofArrows_Trap9/Arrow_Colony/trap_projectile6" method="trigger_trap"]
+[connection signal="on_activated" from="Second_Part(Harder)/Final Projectile Part/BunbleofArrows_Trap10/PressurePlate_ArrowTrap" to="Second_Part(Harder)/Final Projectile Part/BunbleofArrows_Trap10/Arrow_Colony/trap_projectile" method="trigger_trap"]
+[connection signal="on_activated" from="Second_Part(Harder)/Final Projectile Part/BunbleofArrows_Trap10/PressurePlate_ArrowTrap" to="Second_Part(Harder)/Final Projectile Part/BunbleofArrows_Trap10/Arrow_Colony/trap_projectile3" method="trigger_trap"]
+[connection signal="on_activated" from="Second_Part(Harder)/Final Projectile Part/BunbleofArrows_Trap10/PressurePlate_ArrowTrap" to="Second_Part(Harder)/Final Projectile Part/BunbleofArrows_Trap10/Arrow_Colony/trap_projectile2" method="trigger_trap"]
+[connection signal="on_activated" from="Second_Part(Harder)/Final Projectile Part/BunbleofArrows_Trap10/PressurePlate_ArrowTrap" to="Second_Part(Harder)/Final Projectile Part/BunbleofArrows_Trap10/Arrow_Colony/trap_projectile4" method="trigger_trap"]
+[connection signal="on_activated" from="Second_Part(Harder)/Final Projectile Part/BunbleofArrows_Trap10/PressurePlate_ArrowTrap" to="Second_Part(Harder)/Final Projectile Part/BunbleofArrows_Trap10/Arrow_Colony/trap_projectile5" method="trigger_trap"]
+[connection signal="on_activated" from="Second_Part(Harder)/Final Projectile Part/BunbleofArrows_Trap10/PressurePlate_ArrowTrap" to="Second_Part(Harder)/Final Projectile Part/BunbleofArrows_Trap10/Arrow_Colony/trap_projectile6" method="trigger_trap"]
+[connection signal="on_activated" from="Second_Part(Harder)/Final Projectile Part/BunbleofArrows_Trap11/PressurePlate_ArrowTrap" to="Second_Part(Harder)/Final Projectile Part/BunbleofArrows_Trap11/Arrow_Colony/trap_projectile" method="trigger_trap"]
+[connection signal="on_activated" from="Second_Part(Harder)/Final Projectile Part/BunbleofArrows_Trap11/PressurePlate_ArrowTrap" to="Second_Part(Harder)/Final Projectile Part/BunbleofArrows_Trap11/Arrow_Colony/trap_projectile3" method="trigger_trap"]
+[connection signal="on_activated" from="Second_Part(Harder)/Final Projectile Part/BunbleofArrows_Trap11/PressurePlate_ArrowTrap" to="Second_Part(Harder)/Final Projectile Part/BunbleofArrows_Trap11/Arrow_Colony/trap_projectile2" method="trigger_trap"]
+[connection signal="on_activated" from="Second_Part(Harder)/Final Projectile Part/BunbleofArrows_Trap11/PressurePlate_ArrowTrap" to="Second_Part(Harder)/Final Projectile Part/BunbleofArrows_Trap11/Arrow_Colony/trap_projectile4" method="trigger_trap"]
+[connection signal="on_activated" from="Second_Part(Harder)/Final Projectile Part/BunbleofArrows_Trap11/PressurePlate_ArrowTrap" to="Second_Part(Harder)/Final Projectile Part/BunbleofArrows_Trap11/Arrow_Colony/trap_projectile5" method="trigger_trap"]
+[connection signal="on_activated" from="Second_Part(Harder)/Final Projectile Part/BunbleofArrows_Trap11/PressurePlate_ArrowTrap" to="Second_Part(Harder)/Final Projectile Part/BunbleofArrows_Trap11/Arrow_Colony/trap_projectile6" method="trigger_trap"]
+[connection signal="on_activated" from="Second_Part(Harder)/Final Projectile Part/BunbleofArrows_Trap12/PressurePlate_ArrowTrap" to="Second_Part(Harder)/Final Projectile Part/BunbleofArrows_Trap12/Arrow_Colony/trap_projectile" method="trigger_trap"]
+[connection signal="on_activated" from="Second_Part(Harder)/Final Projectile Part/BunbleofArrows_Trap12/PressurePlate_ArrowTrap" to="Second_Part(Harder)/Final Projectile Part/BunbleofArrows_Trap12/Arrow_Colony/trap_projectile3" method="trigger_trap"]
+[connection signal="on_activated" from="Second_Part(Harder)/Final Projectile Part/BunbleofArrows_Trap12/PressurePlate_ArrowTrap" to="Second_Part(Harder)/Final Projectile Part/BunbleofArrows_Trap12/Arrow_Colony/trap_projectile2" method="trigger_trap"]
+[connection signal="on_activated" from="Second_Part(Harder)/Final Projectile Part/BunbleofArrows_Trap12/PressurePlate_ArrowTrap" to="Second_Part(Harder)/Final Projectile Part/BunbleofArrows_Trap12/Arrow_Colony/trap_projectile4" method="trigger_trap"]
+[connection signal="on_activated" from="Second_Part(Harder)/Final Projectile Part/BunbleofArrows_Trap12/PressurePlate_ArrowTrap" to="Second_Part(Harder)/Final Projectile Part/BunbleofArrows_Trap12/Arrow_Colony/trap_projectile5" method="trigger_trap"]
+[connection signal="on_activated" from="Second_Part(Harder)/Final Projectile Part/BunbleofArrows_Trap12/PressurePlate_ArrowTrap" to="Second_Part(Harder)/Final Projectile Part/BunbleofArrows_Trap12/Arrow_Colony/trap_projectile6" method="trigger_trap"]
+[connection signal="on_activated" from="Second_Part(Harder)/Final Projectile Part/BunbleofArrows_Trap13/PressurePlate_ArrowTrap" to="Second_Part(Harder)/Final Projectile Part/BunbleofArrows_Trap13/Arrow_Colony/trap_projectile" method="trigger_trap"]
+[connection signal="on_activated" from="Second_Part(Harder)/Final Projectile Part/BunbleofArrows_Trap13/PressurePlate_ArrowTrap" to="Second_Part(Harder)/Final Projectile Part/BunbleofArrows_Trap13/Arrow_Colony/trap_projectile3" method="trigger_trap"]
+[connection signal="on_activated" from="Second_Part(Harder)/Final Projectile Part/BunbleofArrows_Trap13/PressurePlate_ArrowTrap" to="Second_Part(Harder)/Final Projectile Part/BunbleofArrows_Trap13/Arrow_Colony/trap_projectile2" method="trigger_trap"]
+[connection signal="on_activated" from="Second_Part(Harder)/Final Projectile Part/BunbleofArrows_Trap13/PressurePlate_ArrowTrap" to="Second_Part(Harder)/Final Projectile Part/BunbleofArrows_Trap13/Arrow_Colony/trap_projectile4" method="trigger_trap"]
+[connection signal="on_activated" from="Second_Part(Harder)/Final Projectile Part/BunbleofArrows_Trap13/PressurePlate_ArrowTrap" to="Second_Part(Harder)/Final Projectile Part/BunbleofArrows_Trap13/Arrow_Colony/trap_projectile5" method="trigger_trap"]
+[connection signal="on_activated" from="Second_Part(Harder)/Final Projectile Part/BunbleofArrows_Trap13/PressurePlate_ArrowTrap" to="Second_Part(Harder)/Final Projectile Part/BunbleofArrows_Trap13/Arrow_Colony/trap_projectile6" method="trigger_trap"]
+[connection signal="on_activated" from="Second_Part(Harder)/Final Projectile Part/BunbleofArrows_Trap14/PressurePlate_ArrowTrap" to="Second_Part(Harder)/Final Projectile Part/BunbleofArrows_Trap14/Arrow_Colony/trap_projectile" method="trigger_trap"]
+[connection signal="on_activated" from="Second_Part(Harder)/Final Projectile Part/BunbleofArrows_Trap14/PressurePlate_ArrowTrap" to="Second_Part(Harder)/Final Projectile Part/BunbleofArrows_Trap14/Arrow_Colony/trap_projectile3" method="trigger_trap"]
+[connection signal="on_activated" from="Second_Part(Harder)/Final Projectile Part/BunbleofArrows_Trap14/PressurePlate_ArrowTrap" to="Second_Part(Harder)/Final Projectile Part/BunbleofArrows_Trap14/Arrow_Colony/trap_projectile2" method="trigger_trap"]
+[connection signal="on_activated" from="Second_Part(Harder)/Final Projectile Part/BunbleofArrows_Trap14/PressurePlate_ArrowTrap" to="Second_Part(Harder)/Final Projectile Part/BunbleofArrows_Trap14/Arrow_Colony/trap_projectile4" method="trigger_trap"]
+[connection signal="on_activated" from="Second_Part(Harder)/Final Projectile Part/BunbleofArrows_Trap14/PressurePlate_ArrowTrap" to="Second_Part(Harder)/Final Projectile Part/BunbleofArrows_Trap14/Arrow_Colony/trap_projectile5" method="trigger_trap"]
+[connection signal="on_activated" from="Second_Part(Harder)/Final Projectile Part/BunbleofArrows_Trap14/PressurePlate_ArrowTrap" to="Second_Part(Harder)/Final Projectile Part/BunbleofArrows_Trap14/Arrow_Colony/trap_projectile6" method="trigger_trap"]
+[connection signal="on_activated" from="Second_Part(Harder)/Final Projectile Part/BunbleofArrows_Trap15/PressurePlate_ArrowTrap" to="Second_Part(Harder)/Final Projectile Part/BunbleofArrows_Trap15/Arrow_Colony/trap_projectile" method="trigger_trap"]
+[connection signal="on_activated" from="Second_Part(Harder)/Final Projectile Part/BunbleofArrows_Trap15/PressurePlate_ArrowTrap" to="Second_Part(Harder)/Final Projectile Part/BunbleofArrows_Trap15/Arrow_Colony/trap_projectile3" method="trigger_trap"]
+[connection signal="on_activated" from="Second_Part(Harder)/Final Projectile Part/BunbleofArrows_Trap15/PressurePlate_ArrowTrap" to="Second_Part(Harder)/Final Projectile Part/BunbleofArrows_Trap15/Arrow_Colony/trap_projectile2" method="trigger_trap"]
+[connection signal="on_activated" from="Second_Part(Harder)/Final Projectile Part/BunbleofArrows_Trap15/PressurePlate_ArrowTrap" to="Second_Part(Harder)/Final Projectile Part/BunbleofArrows_Trap15/Arrow_Colony/trap_projectile4" method="trigger_trap"]
+[connection signal="on_activated" from="Second_Part(Harder)/Final Projectile Part/BunbleofArrows_Trap15/PressurePlate_ArrowTrap" to="Second_Part(Harder)/Final Projectile Part/BunbleofArrows_Trap15/Arrow_Colony/trap_projectile5" method="trigger_trap"]
+[connection signal="on_activated" from="Second_Part(Harder)/Final Projectile Part/BunbleofArrows_Trap15/PressurePlate_ArrowTrap" to="Second_Part(Harder)/Final Projectile Part/BunbleofArrows_Trap15/Arrow_Colony/trap_projectile6" method="trigger_trap"]
+[connection signal="on_activated" from="Second_Part(Harder)/Final Projectile Part/BunbleofArrows_Trap16/PressurePlate_ArrowTrap" to="Second_Part(Harder)/Final Projectile Part/BunbleofArrows_Trap16/Arrow_Colony/trap_projectile" method="trigger_trap"]
+[connection signal="on_activated" from="Second_Part(Harder)/Final Projectile Part/BunbleofArrows_Trap16/PressurePlate_ArrowTrap" to="Second_Part(Harder)/Final Projectile Part/BunbleofArrows_Trap16/Arrow_Colony/trap_projectile3" method="trigger_trap"]
+[connection signal="on_activated" from="Second_Part(Harder)/Final Projectile Part/BunbleofArrows_Trap16/PressurePlate_ArrowTrap" to="Second_Part(Harder)/Final Projectile Part/BunbleofArrows_Trap16/Arrow_Colony/trap_projectile2" method="trigger_trap"]
+[connection signal="on_activated" from="Second_Part(Harder)/Final Projectile Part/BunbleofArrows_Trap16/PressurePlate_ArrowTrap" to="Second_Part(Harder)/Final Projectile Part/BunbleofArrows_Trap16/Arrow_Colony/trap_projectile4" method="trigger_trap"]
+[connection signal="on_activated" from="Second_Part(Harder)/Final Projectile Part/BunbleofArrows_Trap16/PressurePlate_ArrowTrap" to="Second_Part(Harder)/Final Projectile Part/BunbleofArrows_Trap16/Arrow_Colony/trap_projectile5" method="trigger_trap"]
+[connection signal="on_activated" from="Second_Part(Harder)/Final Projectile Part/BunbleofArrows_Trap16/PressurePlate_ArrowTrap" to="Second_Part(Harder)/Final Projectile Part/BunbleofArrows_Trap16/Arrow_Colony/trap_projectile6" method="trigger_trap"]
+[connection signal="on_activated" from="Second_Part(Harder)/Final Projectile Part/BunbleofArrows_Trap17/PressurePlate_ArrowTrap" to="Second_Part(Harder)/Final Projectile Part/BunbleofArrows_Trap17/Arrow_Colony/trap_projectile" method="trigger_trap"]
+[connection signal="on_activated" from="Second_Part(Harder)/Final Projectile Part/BunbleofArrows_Trap17/PressurePlate_ArrowTrap" to="Second_Part(Harder)/Final Projectile Part/BunbleofArrows_Trap17/Arrow_Colony/trap_projectile3" method="trigger_trap"]
+[connection signal="on_activated" from="Second_Part(Harder)/Final Projectile Part/BunbleofArrows_Trap17/PressurePlate_ArrowTrap" to="Second_Part(Harder)/Final Projectile Part/BunbleofArrows_Trap17/Arrow_Colony/trap_projectile2" method="trigger_trap"]
+[connection signal="on_activated" from="Second_Part(Harder)/Final Projectile Part/BunbleofArrows_Trap17/PressurePlate_ArrowTrap" to="Second_Part(Harder)/Final Projectile Part/BunbleofArrows_Trap17/Arrow_Colony/trap_projectile4" method="trigger_trap"]
+[connection signal="on_activated" from="Second_Part(Harder)/Final Projectile Part/BunbleofArrows_Trap17/PressurePlate_ArrowTrap" to="Second_Part(Harder)/Final Projectile Part/BunbleofArrows_Trap17/Arrow_Colony/trap_projectile5" method="trigger_trap"]
+[connection signal="on_activated" from="Second_Part(Harder)/Final Projectile Part/BunbleofArrows_Trap17/PressurePlate_ArrowTrap" to="Second_Part(Harder)/Final Projectile Part/BunbleofArrows_Trap17/Arrow_Colony/trap_projectile6" method="trigger_trap"]
+[connection signal="on_activated" from="Second_Part(Harder)/Final Projectile Part/BunbleofArrows_Trap18/PressurePlate_ArrowTrap" to="Second_Part(Harder)/Final Projectile Part/BunbleofArrows_Trap18/Arrow_Colony/trap_projectile" method="trigger_trap"]
+[connection signal="on_activated" from="Second_Part(Harder)/Final Projectile Part/BunbleofArrows_Trap18/PressurePlate_ArrowTrap" to="Second_Part(Harder)/Final Projectile Part/BunbleofArrows_Trap18/Arrow_Colony/trap_projectile3" method="trigger_trap"]
+[connection signal="on_activated" from="Second_Part(Harder)/Final Projectile Part/BunbleofArrows_Trap18/PressurePlate_ArrowTrap" to="Second_Part(Harder)/Final Projectile Part/BunbleofArrows_Trap18/Arrow_Colony/trap_projectile2" method="trigger_trap"]
+[connection signal="on_activated" from="Second_Part(Harder)/Final Projectile Part/BunbleofArrows_Trap18/PressurePlate_ArrowTrap" to="Second_Part(Harder)/Final Projectile Part/BunbleofArrows_Trap18/Arrow_Colony/trap_projectile4" method="trigger_trap"]
+[connection signal="on_activated" from="Second_Part(Harder)/Final Projectile Part/BunbleofArrows_Trap18/PressurePlate_ArrowTrap" to="Second_Part(Harder)/Final Projectile Part/BunbleofArrows_Trap18/Arrow_Colony/trap_projectile5" method="trigger_trap"]
+[connection signal="on_activated" from="Second_Part(Harder)/Final Projectile Part/BunbleofArrows_Trap18/PressurePlate_ArrowTrap" to="Second_Part(Harder)/Final Projectile Part/BunbleofArrows_Trap18/Arrow_Colony/trap_projectile6" method="trigger_trap"]
+[connection signal="on_activated" from="Second_Part(Harder)/Final Projectile Part/BunbleofArrows_Trap19/PressurePlate_ArrowTrap" to="Second_Part(Harder)/Final Projectile Part/BunbleofArrows_Trap19/Arrow_Colony/trap_projectile" method="trigger_trap"]
+[connection signal="on_activated" from="Second_Part(Harder)/Final Projectile Part/BunbleofArrows_Trap19/PressurePlate_ArrowTrap" to="Second_Part(Harder)/Final Projectile Part/BunbleofArrows_Trap19/Arrow_Colony/trap_projectile3" method="trigger_trap"]
+[connection signal="on_activated" from="Second_Part(Harder)/Final Projectile Part/BunbleofArrows_Trap19/PressurePlate_ArrowTrap" to="Second_Part(Harder)/Final Projectile Part/BunbleofArrows_Trap19/Arrow_Colony/trap_projectile2" method="trigger_trap"]
+[connection signal="on_activated" from="Second_Part(Harder)/Final Projectile Part/BunbleofArrows_Trap19/PressurePlate_ArrowTrap" to="Second_Part(Harder)/Final Projectile Part/BunbleofArrows_Trap19/Arrow_Colony/trap_projectile4" method="trigger_trap"]
+[connection signal="on_activated" from="Second_Part(Harder)/Final Projectile Part/BunbleofArrows_Trap19/PressurePlate_ArrowTrap" to="Second_Part(Harder)/Final Projectile Part/BunbleofArrows_Trap19/Arrow_Colony/trap_projectile5" method="trigger_trap"]
+[connection signal="on_activated" from="Second_Part(Harder)/Final Projectile Part/BunbleofArrows_Trap19/PressurePlate_ArrowTrap" to="Second_Part(Harder)/Final Projectile Part/BunbleofArrows_Trap19/Arrow_Colony/trap_projectile6" method="trigger_trap"]
+[connection signal="on_activated" from="Second_Part(Harder)/Final Projectile Part/BunbleofArrows_Trap20/PressurePlate_ArrowTrap" to="Second_Part(Harder)/Final Projectile Part/BunbleofArrows_Trap20/Arrow_Colony/trap_projectile" method="trigger_trap"]
+[connection signal="on_activated" from="Second_Part(Harder)/Final Projectile Part/BunbleofArrows_Trap20/PressurePlate_ArrowTrap" to="Second_Part(Harder)/Final Projectile Part/BunbleofArrows_Trap20/Arrow_Colony/trap_projectile3" method="trigger_trap"]
+[connection signal="on_activated" from="Second_Part(Harder)/Final Projectile Part/BunbleofArrows_Trap20/PressurePlate_ArrowTrap" to="Second_Part(Harder)/Final Projectile Part/BunbleofArrows_Trap20/Arrow_Colony/trap_projectile2" method="trigger_trap"]
+[connection signal="on_activated" from="Second_Part(Harder)/Final Projectile Part/BunbleofArrows_Trap20/PressurePlate_ArrowTrap" to="Second_Part(Harder)/Final Projectile Part/BunbleofArrows_Trap20/Arrow_Colony/trap_projectile4" method="trigger_trap"]
+[connection signal="on_activated" from="Second_Part(Harder)/Final Projectile Part/BunbleofArrows_Trap20/PressurePlate_ArrowTrap" to="Second_Part(Harder)/Final Projectile Part/BunbleofArrows_Trap20/Arrow_Colony/trap_projectile5" method="trigger_trap"]
+[connection signal="on_activated" from="Second_Part(Harder)/Final Projectile Part/BunbleofArrows_Trap20/PressurePlate_ArrowTrap" to="Second_Part(Harder)/Final Projectile Part/BunbleofArrows_Trap20/Arrow_Colony/trap_projectile6" method="trigger_trap"]
+[connection signal="on_activated" from="Second_Part(Harder)/Final Projectile Part/BunbleofArrows_Trap21/PressurePlate_ArrowTrap" to="Second_Part(Harder)/Final Projectile Part/BunbleofArrows_Trap21/Arrow_Colony/trap_projectile" method="trigger_trap"]
+[connection signal="on_activated" from="Second_Part(Harder)/Final Projectile Part/BunbleofArrows_Trap21/PressurePlate_ArrowTrap" to="Second_Part(Harder)/Final Projectile Part/BunbleofArrows_Trap21/Arrow_Colony/trap_projectile3" method="trigger_trap"]
+[connection signal="on_activated" from="Second_Part(Harder)/Final Projectile Part/BunbleofArrows_Trap21/PressurePlate_ArrowTrap" to="Second_Part(Harder)/Final Projectile Part/BunbleofArrows_Trap21/Arrow_Colony/trap_projectile2" method="trigger_trap"]
+[connection signal="on_activated" from="Second_Part(Harder)/Final Projectile Part/BunbleofArrows_Trap21/PressurePlate_ArrowTrap" to="Second_Part(Harder)/Final Projectile Part/BunbleofArrows_Trap21/Arrow_Colony/trap_projectile4" method="trigger_trap"]
+[connection signal="on_activated" from="Second_Part(Harder)/Final Projectile Part/BunbleofArrows_Trap21/PressurePlate_ArrowTrap" to="Second_Part(Harder)/Final Projectile Part/BunbleofArrows_Trap21/Arrow_Colony/trap_projectile5" method="trigger_trap"]
+[connection signal="on_activated" from="Second_Part(Harder)/Final Projectile Part/BunbleofArrows_Trap21/PressurePlate_ArrowTrap" to="Second_Part(Harder)/Final Projectile Part/BunbleofArrows_Trap21/Arrow_Colony/trap_projectile6" method="trigger_trap"]
+[connection signal="on_activated" from="Second_Part(Harder)/Final Projectile Part/BunbleofArrows_Trap22/PressurePlate_ArrowTrap" to="Second_Part(Harder)/Final Projectile Part/BunbleofArrows_Trap22/Arrow_Colony/trap_projectile" method="trigger_trap"]
+[connection signal="on_activated" from="Second_Part(Harder)/Final Projectile Part/BunbleofArrows_Trap22/PressurePlate_ArrowTrap" to="Second_Part(Harder)/Final Projectile Part/BunbleofArrows_Trap22/Arrow_Colony/trap_projectile3" method="trigger_trap"]
+[connection signal="on_activated" from="Second_Part(Harder)/Final Projectile Part/BunbleofArrows_Trap22/PressurePlate_ArrowTrap" to="Second_Part(Harder)/Final Projectile Part/BunbleofArrows_Trap22/Arrow_Colony/trap_projectile2" method="trigger_trap"]
+[connection signal="on_activated" from="Second_Part(Harder)/Final Projectile Part/BunbleofArrows_Trap22/PressurePlate_ArrowTrap" to="Second_Part(Harder)/Final Projectile Part/BunbleofArrows_Trap22/Arrow_Colony/trap_projectile4" method="trigger_trap"]
+[connection signal="on_activated" from="Second_Part(Harder)/Final Projectile Part/BunbleofArrows_Trap22/PressurePlate_ArrowTrap" to="Second_Part(Harder)/Final Projectile Part/BunbleofArrows_Trap22/Arrow_Colony/trap_projectile5" method="trigger_trap"]
+[connection signal="on_activated" from="Second_Part(Harder)/Final Projectile Part/BunbleofArrows_Trap22/PressurePlate_ArrowTrap" to="Second_Part(Harder)/Final Projectile Part/BunbleofArrows_Trap22/Arrow_Colony/trap_projectile6" method="trigger_trap"]
+[connection signal="on_activated" from="Second_Part(Harder)/Final Projectile Part/BunbleofArrows_Trap23/PressurePlate_ArrowTrap" to="Second_Part(Harder)/Final Projectile Part/BunbleofArrows_Trap23/Arrow_Colony/trap_projectile" method="trigger_trap"]
+[connection signal="on_activated" from="Second_Part(Harder)/Final Projectile Part/BunbleofArrows_Trap23/PressurePlate_ArrowTrap" to="Second_Part(Harder)/Final Projectile Part/BunbleofArrows_Trap23/Arrow_Colony/trap_projectile3" method="trigger_trap"]
+[connection signal="on_activated" from="Second_Part(Harder)/Final Projectile Part/BunbleofArrows_Trap23/PressurePlate_ArrowTrap" to="Second_Part(Harder)/Final Projectile Part/BunbleofArrows_Trap23/Arrow_Colony/trap_projectile2" method="trigger_trap"]
+[connection signal="on_activated" from="Second_Part(Harder)/Final Projectile Part/BunbleofArrows_Trap23/PressurePlate_ArrowTrap" to="Second_Part(Harder)/Final Projectile Part/BunbleofArrows_Trap23/Arrow_Colony/trap_projectile4" method="trigger_trap"]
+[connection signal="on_activated" from="Second_Part(Harder)/Final Projectile Part/BunbleofArrows_Trap23/PressurePlate_ArrowTrap" to="Second_Part(Harder)/Final Projectile Part/BunbleofArrows_Trap23/Arrow_Colony/trap_projectile5" method="trigger_trap"]
+[connection signal="on_activated" from="Second_Part(Harder)/Final Projectile Part/BunbleofArrows_Trap23/PressurePlate_ArrowTrap" to="Second_Part(Harder)/Final Projectile Part/BunbleofArrows_Trap23/Arrow_Colony/trap_projectile6" method="trigger_trap"]
+[connection signal="on_activated" from="Second_Part(Harder)/Final Projectile Part/BunbleofArrows_Trap24/PressurePlate_ArrowTrap" to="Second_Part(Harder)/Final Projectile Part/BunbleofArrows_Trap24/Arrow_Colony/trap_projectile" method="trigger_trap"]
+[connection signal="on_activated" from="Second_Part(Harder)/Final Projectile Part/BunbleofArrows_Trap24/PressurePlate_ArrowTrap" to="Second_Part(Harder)/Final Projectile Part/BunbleofArrows_Trap24/Arrow_Colony/trap_projectile3" method="trigger_trap"]
+[connection signal="on_activated" from="Second_Part(Harder)/Final Projectile Part/BunbleofArrows_Trap24/PressurePlate_ArrowTrap" to="Second_Part(Harder)/Final Projectile Part/BunbleofArrows_Trap24/Arrow_Colony/trap_projectile2" method="trigger_trap"]
+[connection signal="on_activated" from="Second_Part(Harder)/Final Projectile Part/BunbleofArrows_Trap24/PressurePlate_ArrowTrap" to="Second_Part(Harder)/Final Projectile Part/BunbleofArrows_Trap24/Arrow_Colony/trap_projectile4" method="trigger_trap"]
+[connection signal="on_activated" from="Second_Part(Harder)/Final Projectile Part/BunbleofArrows_Trap24/PressurePlate_ArrowTrap" to="Second_Part(Harder)/Final Projectile Part/BunbleofArrows_Trap24/Arrow_Colony/trap_projectile5" method="trigger_trap"]
+[connection signal="on_activated" from="Second_Part(Harder)/Final Projectile Part/BunbleofArrows_Trap24/PressurePlate_ArrowTrap" to="Second_Part(Harder)/Final Projectile Part/BunbleofArrows_Trap24/Arrow_Colony/trap_projectile6" method="trigger_trap"]
+[connection signal="on_activated" from="Second_Part(Harder)/Final Projectile Part/BunbleofArrows_Trap25/PressurePlate_ArrowTrap" to="Second_Part(Harder)/Final Projectile Part/BunbleofArrows_Trap25/Arrow_Colony/trap_projectile" method="trigger_trap"]
+[connection signal="on_activated" from="Second_Part(Harder)/Final Projectile Part/BunbleofArrows_Trap25/PressurePlate_ArrowTrap" to="Second_Part(Harder)/Final Projectile Part/BunbleofArrows_Trap25/Arrow_Colony/trap_projectile3" method="trigger_trap"]
+[connection signal="on_activated" from="Second_Part(Harder)/Final Projectile Part/BunbleofArrows_Trap25/PressurePlate_ArrowTrap" to="Second_Part(Harder)/Final Projectile Part/BunbleofArrows_Trap25/Arrow_Colony/trap_projectile2" method="trigger_trap"]
+[connection signal="on_activated" from="Second_Part(Harder)/Final Projectile Part/BunbleofArrows_Trap25/PressurePlate_ArrowTrap" to="Second_Part(Harder)/Final Projectile Part/BunbleofArrows_Trap25/Arrow_Colony/trap_projectile4" method="trigger_trap"]
+[connection signal="on_activated" from="Second_Part(Harder)/Final Projectile Part/BunbleofArrows_Trap25/PressurePlate_ArrowTrap" to="Second_Part(Harder)/Final Projectile Part/BunbleofArrows_Trap25/Arrow_Colony/trap_projectile5" method="trigger_trap"]
+[connection signal="on_activated" from="Second_Part(Harder)/Final Projectile Part/BunbleofArrows_Trap25/PressurePlate_ArrowTrap" to="Second_Part(Harder)/Final Projectile Part/BunbleofArrows_Trap25/Arrow_Colony/trap_projectile6" method="trigger_trap"]
+[connection signal="on_activated" from="Second_Part(Harder)/Final Projectile Part/BunbleofArrows_Trap26/PressurePlate_ArrowTrap" to="Second_Part(Harder)/Final Projectile Part/BunbleofArrows_Trap26/Arrow_Colony/trap_projectile" method="trigger_trap"]
+[connection signal="on_activated" from="Second_Part(Harder)/Final Projectile Part/BunbleofArrows_Trap26/PressurePlate_ArrowTrap" to="Second_Part(Harder)/Final Projectile Part/BunbleofArrows_Trap26/Arrow_Colony/trap_projectile3" method="trigger_trap"]
+[connection signal="on_activated" from="Second_Part(Harder)/Final Projectile Part/BunbleofArrows_Trap26/PressurePlate_ArrowTrap" to="Second_Part(Harder)/Final Projectile Part/BunbleofArrows_Trap26/Arrow_Colony/trap_projectile2" method="trigger_trap"]
+[connection signal="on_activated" from="Second_Part(Harder)/Final Projectile Part/BunbleofArrows_Trap26/PressurePlate_ArrowTrap" to="Second_Part(Harder)/Final Projectile Part/BunbleofArrows_Trap26/Arrow_Colony/trap_projectile4" method="trigger_trap"]
+[connection signal="on_activated" from="Second_Part(Harder)/Final Projectile Part/BunbleofArrows_Trap26/PressurePlate_ArrowTrap" to="Second_Part(Harder)/Final Projectile Part/BunbleofArrows_Trap26/Arrow_Colony/trap_projectile5" method="trigger_trap"]
+[connection signal="on_activated" from="Second_Part(Harder)/Final Projectile Part/BunbleofArrows_Trap26/PressurePlate_ArrowTrap" to="Second_Part(Harder)/Final Projectile Part/BunbleofArrows_Trap26/Arrow_Colony/trap_projectile6" method="trigger_trap"]
+[connection signal="on_activated" from="Second_Part(Harder)/Final Projectile Part/BunbleofArrows_Trap27/PressurePlate_ArrowTrap" to="Second_Part(Harder)/Final Projectile Part/BunbleofArrows_Trap27/Arrow_Colony/trap_projectile" method="trigger_trap"]
+[connection signal="on_activated" from="Second_Part(Harder)/Final Projectile Part/BunbleofArrows_Trap27/PressurePlate_ArrowTrap" to="Second_Part(Harder)/Final Projectile Part/BunbleofArrows_Trap27/Arrow_Colony/trap_projectile3" method="trigger_trap"]
+[connection signal="on_activated" from="Second_Part(Harder)/Final Projectile Part/BunbleofArrows_Trap27/PressurePlate_ArrowTrap" to="Second_Part(Harder)/Final Projectile Part/BunbleofArrows_Trap27/Arrow_Colony/trap_projectile2" method="trigger_trap"]
+[connection signal="on_activated" from="Second_Part(Harder)/Final Projectile Part/BunbleofArrows_Trap27/PressurePlate_ArrowTrap" to="Second_Part(Harder)/Final Projectile Part/BunbleofArrows_Trap27/Arrow_Colony/trap_projectile4" method="trigger_trap"]
+[connection signal="on_activated" from="Second_Part(Harder)/Final Projectile Part/BunbleofArrows_Trap27/PressurePlate_ArrowTrap" to="Second_Part(Harder)/Final Projectile Part/BunbleofArrows_Trap27/Arrow_Colony/trap_projectile5" method="trigger_trap"]
+[connection signal="on_activated" from="Second_Part(Harder)/Final Projectile Part/BunbleofArrows_Trap27/PressurePlate_ArrowTrap" to="Second_Part(Harder)/Final Projectile Part/BunbleofArrows_Trap27/Arrow_Colony/trap_projectile6" method="trigger_trap"]
+[connection signal="on_activated" from="Second_Part(Harder)/Final Projectile Part/Gate_Puzzle/Second_Gate_Button" to="Second_Part(Harder)/Final Projectile Part/Gate_Puzzle/Gate_Two" method="open_gate"]
+[connection signal="on_activated" from="Second_Part(Harder)/Final Projectile Part/Gate_Puzzle/First_Gate_Button" to="Second_Part(Harder)/Final Projectile Part/Gate_Puzzle/Gate_One" method="open_gate"]
+[connection signal="on_activated" from="Second_Part(Harder)/Final Projectile Part/Gate_Puzzle/Third_Button" to="Second_Part(Harder)/Final Projectile Part/Gate_Puzzle/Gate_Three" method="open_gate"]
+[connection signal="on_activated" from="Finale(Hardest)/Timed_Traps/PotHoles/Timed_SpikeTrap9/Counter" to="Finale(Hardest)/Timed_Traps/PotHoles/Timed_SpikeTrap9/SpikeTrap" method="activate"]
+[connection signal="on_deactivated" from="Finale(Hardest)/Timed_Traps/PotHoles/Timed_SpikeTrap9/Counter" to="Finale(Hardest)/Timed_Traps/PotHoles/Timed_SpikeTrap9/SpikeTrap" method="deactivate"]
+[connection signal="timeout" from="Finale(Hardest)/Timed_Traps/PotHoles/Timed_SpikeTrap9/Timer" to="Finale(Hardest)/Timed_Traps/PotHoles/Timed_SpikeTrap9/Counter" method="add_count_no_sig"]
+[connection signal="on_activated" from="Finale(Hardest)/Timed_Traps/PotHoles/Timed_SpikeTrap38/Counter" to="Finale(Hardest)/Timed_Traps/PotHoles/Timed_SpikeTrap38/SpikeTrap" method="activate"]
+[connection signal="on_deactivated" from="Finale(Hardest)/Timed_Traps/PotHoles/Timed_SpikeTrap38/Counter" to="Finale(Hardest)/Timed_Traps/PotHoles/Timed_SpikeTrap38/SpikeTrap" method="deactivate"]
+[connection signal="timeout" from="Finale(Hardest)/Timed_Traps/PotHoles/Timed_SpikeTrap38/Timer" to="Finale(Hardest)/Timed_Traps/PotHoles/Timed_SpikeTrap38/Counter" method="add_count_no_sig"]
+[connection signal="on_activated" from="Finale(Hardest)/Timed_Traps/PotHoles/Timed_SpikeTrap39/Counter" to="Finale(Hardest)/Timed_Traps/PotHoles/Timed_SpikeTrap39/SpikeTrap" method="activate"]
+[connection signal="on_deactivated" from="Finale(Hardest)/Timed_Traps/PotHoles/Timed_SpikeTrap39/Counter" to="Finale(Hardest)/Timed_Traps/PotHoles/Timed_SpikeTrap39/SpikeTrap" method="deactivate"]
+[connection signal="timeout" from="Finale(Hardest)/Timed_Traps/PotHoles/Timed_SpikeTrap39/Timer" to="Finale(Hardest)/Timed_Traps/PotHoles/Timed_SpikeTrap39/Counter" method="add_count_no_sig"]
+[connection signal="on_activated" from="Finale(Hardest)/Timed_Traps/PotHoles/Timed_SpikeTrap40/Counter" to="Finale(Hardest)/Timed_Traps/PotHoles/Timed_SpikeTrap40/SpikeTrap" method="activate"]
+[connection signal="on_deactivated" from="Finale(Hardest)/Timed_Traps/PotHoles/Timed_SpikeTrap40/Counter" to="Finale(Hardest)/Timed_Traps/PotHoles/Timed_SpikeTrap40/SpikeTrap" method="deactivate"]
+[connection signal="timeout" from="Finale(Hardest)/Timed_Traps/PotHoles/Timed_SpikeTrap40/Timer" to="Finale(Hardest)/Timed_Traps/PotHoles/Timed_SpikeTrap40/Counter" method="add_count_no_sig"]
+[connection signal="on_activated" from="Finale(Hardest)/Timed_Traps/PotHoles/Timed_SpikeTrap8/Counter" to="Finale(Hardest)/Timed_Traps/PotHoles/Timed_SpikeTrap8/SpikeTrap" method="activate"]
+[connection signal="on_deactivated" from="Finale(Hardest)/Timed_Traps/PotHoles/Timed_SpikeTrap8/Counter" to="Finale(Hardest)/Timed_Traps/PotHoles/Timed_SpikeTrap8/SpikeTrap" method="deactivate"]
+[connection signal="timeout" from="Finale(Hardest)/Timed_Traps/PotHoles/Timed_SpikeTrap8/Timer" to="Finale(Hardest)/Timed_Traps/PotHoles/Timed_SpikeTrap8/Counter" method="add_count_no_sig"]
+[connection signal="on_activated" from="Finale(Hardest)/Timed_Traps/PotHoles/Timed_SpikeTrap11/Counter" to="Finale(Hardest)/Timed_Traps/PotHoles/Timed_SpikeTrap11/SpikeTrap" method="activate"]
+[connection signal="on_deactivated" from="Finale(Hardest)/Timed_Traps/PotHoles/Timed_SpikeTrap11/Counter" to="Finale(Hardest)/Timed_Traps/PotHoles/Timed_SpikeTrap11/SpikeTrap" method="deactivate"]
+[connection signal="timeout" from="Finale(Hardest)/Timed_Traps/PotHoles/Timed_SpikeTrap11/Timer" to="Finale(Hardest)/Timed_Traps/PotHoles/Timed_SpikeTrap11/Counter" method="add_count_no_sig"]
+[connection signal="on_activated" from="Finale(Hardest)/Timed_Traps/PotHoles/Timed_SpikeTrap12/Counter" to="Finale(Hardest)/Timed_Traps/PotHoles/Timed_SpikeTrap12/SpikeTrap" method="activate"]
+[connection signal="on_deactivated" from="Finale(Hardest)/Timed_Traps/PotHoles/Timed_SpikeTrap12/Counter" to="Finale(Hardest)/Timed_Traps/PotHoles/Timed_SpikeTrap12/SpikeTrap" method="deactivate"]
+[connection signal="timeout" from="Finale(Hardest)/Timed_Traps/PotHoles/Timed_SpikeTrap12/Timer" to="Finale(Hardest)/Timed_Traps/PotHoles/Timed_SpikeTrap12/Counter" method="add_count_no_sig"]
+[connection signal="on_activated" from="Finale(Hardest)/Timed_Traps/PotHoles/Timed_SpikeTrap14/Counter" to="Finale(Hardest)/Timed_Traps/PotHoles/Timed_SpikeTrap14/SpikeTrap" method="activate"]
+[connection signal="on_deactivated" from="Finale(Hardest)/Timed_Traps/PotHoles/Timed_SpikeTrap14/Counter" to="Finale(Hardest)/Timed_Traps/PotHoles/Timed_SpikeTrap14/SpikeTrap" method="deactivate"]
+[connection signal="timeout" from="Finale(Hardest)/Timed_Traps/PotHoles/Timed_SpikeTrap14/Timer" to="Finale(Hardest)/Timed_Traps/PotHoles/Timed_SpikeTrap14/Counter" method="add_count_no_sig"]
+[connection signal="on_activated" from="Finale(Hardest)/Timed_Traps/PotHoles/Timed_SpikeTrap24/Counter" to="Finale(Hardest)/Timed_Traps/PotHoles/Timed_SpikeTrap24/SpikeTrap" method="activate"]
+[connection signal="on_deactivated" from="Finale(Hardest)/Timed_Traps/PotHoles/Timed_SpikeTrap24/Counter" to="Finale(Hardest)/Timed_Traps/PotHoles/Timed_SpikeTrap24/SpikeTrap" method="deactivate"]
+[connection signal="timeout" from="Finale(Hardest)/Timed_Traps/PotHoles/Timed_SpikeTrap24/Timer" to="Finale(Hardest)/Timed_Traps/PotHoles/Timed_SpikeTrap24/Counter" method="add_count_no_sig"]
+[connection signal="on_activated" from="Finale(Hardest)/Timed_Traps/PotHoles/Timed_SpikeTrap15/Counter" to="Finale(Hardest)/Timed_Traps/PotHoles/Timed_SpikeTrap15/SpikeTrap" method="activate"]
+[connection signal="on_deactivated" from="Finale(Hardest)/Timed_Traps/PotHoles/Timed_SpikeTrap15/Counter" to="Finale(Hardest)/Timed_Traps/PotHoles/Timed_SpikeTrap15/SpikeTrap" method="deactivate"]
+[connection signal="timeout" from="Finale(Hardest)/Timed_Traps/PotHoles/Timed_SpikeTrap15/Timer" to="Finale(Hardest)/Timed_Traps/PotHoles/Timed_SpikeTrap15/Counter" method="add_count_no_sig"]
+[connection signal="on_activated" from="Finale(Hardest)/Timed_Traps/PotHoles/Timed_SpikeTrap16/Counter" to="Finale(Hardest)/Timed_Traps/PotHoles/Timed_SpikeTrap16/SpikeTrap" method="activate"]
+[connection signal="on_deactivated" from="Finale(Hardest)/Timed_Traps/PotHoles/Timed_SpikeTrap16/Counter" to="Finale(Hardest)/Timed_Traps/PotHoles/Timed_SpikeTrap16/SpikeTrap" method="deactivate"]
+[connection signal="timeout" from="Finale(Hardest)/Timed_Traps/PotHoles/Timed_SpikeTrap16/Timer" to="Finale(Hardest)/Timed_Traps/PotHoles/Timed_SpikeTrap16/Counter" method="add_count_no_sig"]
+[connection signal="on_activated" from="Finale(Hardest)/Timed_Traps/PotHoles/Timed_SpikeTrap17/Counter" to="Finale(Hardest)/Timed_Traps/PotHoles/Timed_SpikeTrap17/SpikeTrap" method="activate"]
+[connection signal="on_deactivated" from="Finale(Hardest)/Timed_Traps/PotHoles/Timed_SpikeTrap17/Counter" to="Finale(Hardest)/Timed_Traps/PotHoles/Timed_SpikeTrap17/SpikeTrap" method="deactivate"]
+[connection signal="timeout" from="Finale(Hardest)/Timed_Traps/PotHoles/Timed_SpikeTrap17/Timer" to="Finale(Hardest)/Timed_Traps/PotHoles/Timed_SpikeTrap17/Counter" method="add_count_no_sig"]
+[connection signal="on_activated" from="Finale(Hardest)/Timed_Traps/PotHoles/Timed_SpikeTrap18/Counter" to="Finale(Hardest)/Timed_Traps/PotHoles/Timed_SpikeTrap18/SpikeTrap" method="activate"]
+[connection signal="on_deactivated" from="Finale(Hardest)/Timed_Traps/PotHoles/Timed_SpikeTrap18/Counter" to="Finale(Hardest)/Timed_Traps/PotHoles/Timed_SpikeTrap18/SpikeTrap" method="deactivate"]
+[connection signal="timeout" from="Finale(Hardest)/Timed_Traps/PotHoles/Timed_SpikeTrap18/Timer" to="Finale(Hardest)/Timed_Traps/PotHoles/Timed_SpikeTrap18/Counter" method="add_count_no_sig"]
+[connection signal="on_activated" from="Finale(Hardest)/Timed_Traps/PotHoles/Timed_SpikeTrap35/Counter" to="Finale(Hardest)/Timed_Traps/PotHoles/Timed_SpikeTrap35/SpikeTrap" method="activate"]
+[connection signal="on_deactivated" from="Finale(Hardest)/Timed_Traps/PotHoles/Timed_SpikeTrap35/Counter" to="Finale(Hardest)/Timed_Traps/PotHoles/Timed_SpikeTrap35/SpikeTrap" method="deactivate"]
+[connection signal="timeout" from="Finale(Hardest)/Timed_Traps/PotHoles/Timed_SpikeTrap35/Timer" to="Finale(Hardest)/Timed_Traps/PotHoles/Timed_SpikeTrap35/Counter" method="add_count_no_sig"]
+[connection signal="on_activated" from="Finale(Hardest)/Timed_Traps/PotHoles/Timed_SpikeTrap36/Counter" to="Finale(Hardest)/Timed_Traps/PotHoles/Timed_SpikeTrap36/SpikeTrap" method="activate"]
+[connection signal="on_deactivated" from="Finale(Hardest)/Timed_Traps/PotHoles/Timed_SpikeTrap36/Counter" to="Finale(Hardest)/Timed_Traps/PotHoles/Timed_SpikeTrap36/SpikeTrap" method="deactivate"]
+[connection signal="timeout" from="Finale(Hardest)/Timed_Traps/PotHoles/Timed_SpikeTrap36/Timer" to="Finale(Hardest)/Timed_Traps/PotHoles/Timed_SpikeTrap36/Counter" method="add_count_no_sig"]
+[connection signal="on_activated" from="Finale(Hardest)/Timed_Traps/PotHoles/Timed_SpikeTrap37/Counter" to="Finale(Hardest)/Timed_Traps/PotHoles/Timed_SpikeTrap37/SpikeTrap" method="activate"]
+[connection signal="on_deactivated" from="Finale(Hardest)/Timed_Traps/PotHoles/Timed_SpikeTrap37/Counter" to="Finale(Hardest)/Timed_Traps/PotHoles/Timed_SpikeTrap37/SpikeTrap" method="deactivate"]
+[connection signal="timeout" from="Finale(Hardest)/Timed_Traps/PotHoles/Timed_SpikeTrap37/Timer" to="Finale(Hardest)/Timed_Traps/PotHoles/Timed_SpikeTrap37/Counter" method="add_count_no_sig"]
+[connection signal="on_activated" from="Finale(Hardest)/Timed_Traps/First_Part/Timed_SpikeTrap5/Counter" to="Finale(Hardest)/Timed_Traps/First_Part/Timed_SpikeTrap5/SpikeTrap" method="activate"]
+[connection signal="on_deactivated" from="Finale(Hardest)/Timed_Traps/First_Part/Timed_SpikeTrap5/Counter" to="Finale(Hardest)/Timed_Traps/First_Part/Timed_SpikeTrap5/SpikeTrap" method="deactivate"]
+[connection signal="timeout" from="Finale(Hardest)/Timed_Traps/First_Part/Timed_SpikeTrap5/Timer" to="Finale(Hardest)/Timed_Traps/First_Part/Timed_SpikeTrap5/Counter" method="add_count_no_sig"]
+[connection signal="on_activated" from="Finale(Hardest)/Timed_Traps/First_Part/Timed_SpikeTrap7/Counter" to="Finale(Hardest)/Timed_Traps/First_Part/Timed_SpikeTrap7/SpikeTrap" method="activate"]
+[connection signal="on_deactivated" from="Finale(Hardest)/Timed_Traps/First_Part/Timed_SpikeTrap7/Counter" to="Finale(Hardest)/Timed_Traps/First_Part/Timed_SpikeTrap7/SpikeTrap" method="deactivate"]
+[connection signal="timeout" from="Finale(Hardest)/Timed_Traps/First_Part/Timed_SpikeTrap7/Timer" to="Finale(Hardest)/Timed_Traps/First_Part/Timed_SpikeTrap7/Counter" method="add_count_no_sig"]
+[connection signal="on_activated" from="Finale(Hardest)/Timed_Traps/First_Part/Timed_SpikeTrap6/Counter" to="Finale(Hardest)/Timed_Traps/First_Part/Timed_SpikeTrap6/SpikeTrap" method="activate"]
+[connection signal="on_deactivated" from="Finale(Hardest)/Timed_Traps/First_Part/Timed_SpikeTrap6/Counter" to="Finale(Hardest)/Timed_Traps/First_Part/Timed_SpikeTrap6/SpikeTrap" method="deactivate"]
+[connection signal="timeout" from="Finale(Hardest)/Timed_Traps/First_Part/Timed_SpikeTrap6/Timer" to="Finale(Hardest)/Timed_Traps/First_Part/Timed_SpikeTrap6/Counter" method="add_count_no_sig"]
+[connection signal="on_activated" from="Finale(Hardest)/Timed_Traps/Second_Part/Timed_SpikeTrap9/Counter" to="Finale(Hardest)/Timed_Traps/Second_Part/Timed_SpikeTrap9/SpikeTrap" method="activate"]
+[connection signal="on_deactivated" from="Finale(Hardest)/Timed_Traps/Second_Part/Timed_SpikeTrap9/Counter" to="Finale(Hardest)/Timed_Traps/Second_Part/Timed_SpikeTrap9/SpikeTrap" method="deactivate"]
+[connection signal="timeout" from="Finale(Hardest)/Timed_Traps/Second_Part/Timed_SpikeTrap9/Timer" to="Finale(Hardest)/Timed_Traps/Second_Part/Timed_SpikeTrap9/Counter" method="add_count_no_sig"]
+[connection signal="on_activated" from="Finale(Hardest)/Timed_Traps/Second_Part/Timed_SpikeTrap10/Counter" to="Finale(Hardest)/Timed_Traps/Second_Part/Timed_SpikeTrap10/SpikeTrap" method="activate"]
+[connection signal="on_deactivated" from="Finale(Hardest)/Timed_Traps/Second_Part/Timed_SpikeTrap10/Counter" to="Finale(Hardest)/Timed_Traps/Second_Part/Timed_SpikeTrap10/SpikeTrap" method="deactivate"]
+[connection signal="timeout" from="Finale(Hardest)/Timed_Traps/Second_Part/Timed_SpikeTrap10/Timer" to="Finale(Hardest)/Timed_Traps/Second_Part/Timed_SpikeTrap10/Counter" method="add_count_no_sig"]
+[connection signal="on_activated" from="Finale(Hardest)/Timed_Traps/Second_Part/Timed_SpikeTrap11/Counter" to="Finale(Hardest)/Timed_Traps/Second_Part/Timed_SpikeTrap11/SpikeTrap" method="activate"]
+[connection signal="on_deactivated" from="Finale(Hardest)/Timed_Traps/Second_Part/Timed_SpikeTrap11/Counter" to="Finale(Hardest)/Timed_Traps/Second_Part/Timed_SpikeTrap11/SpikeTrap" method="deactivate"]
+[connection signal="timeout" from="Finale(Hardest)/Timed_Traps/Second_Part/Timed_SpikeTrap11/Timer" to="Finale(Hardest)/Timed_Traps/Second_Part/Timed_SpikeTrap11/Counter" method="add_count_no_sig"]
+[connection signal="on_activated" from="Finale(Hardest)/Timed_Traps/Second_Part/Timed_SpikeTrap8/Counter" to="Finale(Hardest)/Timed_Traps/Second_Part/Timed_SpikeTrap8/SpikeTrap" method="activate"]
+[connection signal="on_deactivated" from="Finale(Hardest)/Timed_Traps/Second_Part/Timed_SpikeTrap8/Counter" to="Finale(Hardest)/Timed_Traps/Second_Part/Timed_SpikeTrap8/SpikeTrap" method="deactivate"]
+[connection signal="timeout" from="Finale(Hardest)/Timed_Traps/Second_Part/Timed_SpikeTrap8/Timer" to="Finale(Hardest)/Timed_Traps/Second_Part/Timed_SpikeTrap8/Counter" method="add_count_no_sig"]
+[connection signal="on_activated" from="Finale(Hardest)/Timed_Traps/Final_Part/Gate_Open" to="Finale(Hardest)/Timed_Traps/Final_Part/Iron_Gate" method="open_gate"]
+[connection signal="on_activated" from="Finale(Hardest)/Timed_Traps/Final_Part/Timed_SpikeTrap12/Counter" to="Finale(Hardest)/Timed_Traps/Final_Part/Timed_SpikeTrap12/SpikeTrap" method="activate"]
+[connection signal="on_deactivated" from="Finale(Hardest)/Timed_Traps/Final_Part/Timed_SpikeTrap12/Counter" to="Finale(Hardest)/Timed_Traps/Final_Part/Timed_SpikeTrap12/SpikeTrap" method="deactivate"]
+[connection signal="timeout" from="Finale(Hardest)/Timed_Traps/Final_Part/Timed_SpikeTrap12/Timer" to="Finale(Hardest)/Timed_Traps/Final_Part/Timed_SpikeTrap12/Counter" method="add_count_no_sig"]
+[connection signal="on_activated" from="Finale(Hardest)/Timed_Traps/Final_Part/Timed_SpikeTrap13/Counter" to="Finale(Hardest)/Timed_Traps/Final_Part/Timed_SpikeTrap13/SpikeTrap" method="activate"]
+[connection signal="on_deactivated" from="Finale(Hardest)/Timed_Traps/Final_Part/Timed_SpikeTrap13/Counter" to="Finale(Hardest)/Timed_Traps/Final_Part/Timed_SpikeTrap13/SpikeTrap" method="deactivate"]
+[connection signal="timeout" from="Finale(Hardest)/Timed_Traps/Final_Part/Timed_SpikeTrap13/Timer" to="Finale(Hardest)/Timed_Traps/Final_Part/Timed_SpikeTrap13/Counter" method="add_count_no_sig"]
