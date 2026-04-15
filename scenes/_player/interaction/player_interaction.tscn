@@ -91,8 +91,8 @@ tracks/0/keys = {
 }
 tracks/1/type = "audio"
 tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("../AudioStreamPlayer2D")
+tracks/1/enabled = false
+tracks/1/path = NodePath("../AudioStreamPlayer")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -101,9 +101,23 @@ tracks/1/keys = {
 "start_offset": 0.0,
 "stream": ExtResource("21_uwauf")
 }],
-"times": PackedFloat32Array(0.36666667)
+"times": PackedFloat32Array(0)
 }
 tracks/1/use_blend = true
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../AudioStreamPlayer")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [0.0],
+"method": &"play"
+}]
+}
 
 [sub_resource type="Animation" id="Animation_h6x2d"]
 resource_name = "a_hand_idle"
@@ -1018,3 +1032,5 @@ callback_mode_method = 1
 libraries/ = SubResource("AnimationLibrary_3efos")
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=2033962313]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=500822543]

@@ -19,6 +19,7 @@ var current_value: float = 0
 @onready var hand_pos_top: Node3D = %pos_top
 @onready var hand_pos_mid: Node3D = %pos_middle
 @onready var hand_pos_bottom: Node3D = %pos_bottom
+@onready var avp: AudioValuePlayer = $AudioValuePlayer
 
 func _ready() -> void:
 	super()
@@ -44,6 +45,8 @@ func update_value(amount: float, emit_sigs: bool = true, override_disabled: bool
 	if use_intervals: 
 		current_value = snappedf(current_value, intervals)
 		#print(current_value)
+	
+	avp.play_me_bro(current_value)
 	
 	update_graphics()
 	if emit_sigs:
@@ -84,3 +87,18 @@ func disable(sig: float = -1) -> void:
 	visible = false
 	$Trigger/CollisionShape3D.set_deferred("disabled", true)
 	disabled = true
+
+# ↑ Enabling/Disabling Stuff ↑
+# --------------------------------------------------------------------------------------------------
+# ↓ Audio Stuff ↓
+
+#func update_sounds() -> void:
+	#if current_value < 0.2:
+		##play da sound
+		#pass
+	#elif: current_value <= 0.8:
+		##player
+		#pass
+	#else:
+		##player
+		#pass
