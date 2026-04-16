@@ -2,7 +2,7 @@ class_name HandState_Attack
 extends HandState
 
 @onready var timer: Timer = $Timer
-var target: Tempp_Enemy
+var target: Enemy_Ballybog_New
 var stats: Stats
 
 ## Called by the state machine when receiving unhandled input events.
@@ -11,10 +11,8 @@ func handle_input(_event: InputEvent) -> void:
 
 ## Called by the state machine on the engine's main loop tick.
 func update(_delta: float) -> void:
+
 	hand_controller.joystick_movement(_delta)
-	if Input.is_action_just_pressed("enter_paint_mode_" + hand_controller.stringed_hand_type):
-		finished.emit(FREE)
-		return
 	
 	target = hand_controller.interact_checker_enemy()
 	if target:
@@ -38,23 +36,25 @@ func physics_update(_delta: float) -> void:
 func enter(previous_state_path: String, data := {}) -> void:
 	hand_controller.anim_change_idle_anim(anim_idle)
 	hand_controller.anim_change_prompt_anim(anim_prompt)
-	player.change_to_combat()
+	#player.change_to_combat()
 
 ## Called by the state machine before changing the active state. Use this function
 ## to clean up the state.
 func exit() -> void:
 	target = null
-	player.exit_to_combat()
+	#player.exit_to_combat()
 
 func attack() -> void:
 	if !timer.is_stopped(): 
 		print("Stopped at timer")
 		return
-	if player.stats.current_stamina <= 0: 
-		print("Stopped at stam")
-		return
+	#if player.stats.current_stamina <= 0: 
+		#print("Stopped at stam")
+		#return
 	print("wasnt stopped?")
-	hand_controller.anim_override_current_animation("hand_attack")
+	hand_controller.anim_override_current_animation("hand_attack", true)
 	timer.start()
-	player.stats.take_stamina(25.0)
-	if target: target.take_damage(25)
+	#player.stats.take_stamina(25.0)
+	if target: 
+		print("POW!")
+		target.stats.take_damage(80)

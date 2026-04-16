@@ -39,6 +39,7 @@ func _on_area_entered_trigger(area_rid: RID, area: Area3D, area_shape_index: int
 		entity_entered_pressure_plate(area.get_parent() as Entity)
 
 func _on_area_exited_trigger(area_rid: RID, area: Area3D, area_shape_index: int, local_shape_index: int) -> void:
+	if !area: return
 	if area.get_parent() is Entity:
 		entity_exited_pressure_plate(area.get_parent() as Entity)
 

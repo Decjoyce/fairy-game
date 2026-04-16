@@ -68,6 +68,7 @@ func play_hit_fx() -> void:
 	on_hit.emit(current_health)
 	hit_sfx.play()
 	# ↓ temp stuff ↓
+	if !health_regen_timer: return
 	var length = (max_health - current_health) / (health_regen_rate) + health_regen_timer.wait_time
 	prints(current_health, length)
 	var new_color: Color = Color.CRIMSON

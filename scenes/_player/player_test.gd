@@ -31,7 +31,8 @@ func _ready() -> void:
 	Input.set_mouse_mode(Input.MOUSE_MODE_CONFINED_HIDDEN)
 
 func _process(delta: float) -> void:
-	pass
+	if Input.is_action_just_pressed("ui_end"):
+		toggle_combat_new()
 
 func toggle_combat() -> void:
 	pass
@@ -39,6 +40,12 @@ func toggle_combat() -> void:
 	#if in_combat: combat.enter_combat_mode()
 	#else: combat.exit_combat_mode()
 
+func toggle_combat_new() -> void:
+	in_combat = !in_combat
+	if in_combat: 
+		interaction.force_stop_interacting("ATTACK", true, true)
+	else: 
+		interaction.force_stop_interacting("FREE", false, true)
 
 func die():
 	Debug.play_death_player()

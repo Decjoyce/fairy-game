@@ -53,6 +53,10 @@ func unfreeze_player() -> void:
 	if !player: return
 	player.freeze = false
 
+func player_enter_combat() -> void:
+	if !player: return
+	player.toggle_combat_new()
+
 func teleport_player_to_coord(x: float, y: float, z: float) -> void:
 	if !player: return
 	player.movement.teleport_player_by_coords(Vector3(x, y, z))

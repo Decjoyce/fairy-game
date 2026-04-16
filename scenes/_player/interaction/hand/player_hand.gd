@@ -57,7 +57,7 @@ func _unhandled_input(event: InputEvent) -> void:
 	state.handle_input(event)
 
 func _process(delta: float) -> void:
-	if player.in_combat: return
+	#if player.in_combat: return
 	if Input.is_action_just_pressed("testing_handlimit"):
 		test_handlimit = !test_handlimit
 	if Input.is_action_just_pressed("testing_handlimit_change"):
@@ -249,10 +249,10 @@ func interact_checker_enemy(): # -> Interactable:
 	
 	var result = space_state.intersect_ray(query)
 	
-	if !result or !result.collider or result.collider.get_parent() is not Tempp_Enemy:
+	if !result or !result.collider or result.collider.get_parent() is not Enemy_Ballybog_New:
 		return null
 	
-	var _enemy: Tempp_Enemy = result.collider.get_parent() as Tempp_Enemy
+	var _enemy: Enemy_Ballybog_New = result.collider.get_parent() as Enemy_Ballybog_New
 	
 	
 	return _enemy

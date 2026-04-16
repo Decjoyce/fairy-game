@@ -67,7 +67,11 @@ func _process(delta: float) -> void:
 func die() -> void:
 	freeze = true
 	OMT.on_item_broke.disconnect(heard_sound)
-	anim_player.play("die")
+	state_machine.process_mode = Node.PROCESS_MODE_DISABLED
+	anim_player.play("death")
+	await anim_player.animation_finished
+	graphics.reparent(get_parent())
+	queue_free()
 
 # ↑ General Stuff ↑
 # --------------------------------------------------------------------------------------------------
