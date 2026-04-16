@@ -4,7 +4,6 @@
 [ext_resource type="AudioStream" uid="uid://bpe8oyerrhdif" path="res://assets/__not_ours_dontship/lego-breaking.mp3" id="2_4266y"]
 [ext_resource type="Script" uid="uid://bvrebn6ao2hvn" path="res://scenes/_player/interaction/hand/player_hand.gd" id="2_f78vs"]
 [ext_resource type="Script" uid="uid://ceufl68l7cqys" path="res://scenes/_player/interaction/hand/states/handstate_free.gd" id="3_7baq5"]
-[ext_resource type="AudioStream" uid="uid://o1ijw7tvjbup" path="res://assets/audio/music/menu/AmbientDraft2.wav" id="4_mny7c"]
 [ext_resource type="Script" uid="uid://d533dr0gr15o" path="res://scenes/_player/interaction/hand/states/handstate_grab_item.gd" id="4_r26r4"]
 [ext_resource type="Script" uid="uid://c6qqmpwrn8dic" path="res://scenes/_player/interaction/hand/states/handstate_grab_obj.gd" id="5_wcvr7"]
 [ext_resource type="Script" uid="uid://dpsgaiv5m7n21" path="res://scenes/_player/interaction/hand/states/handstate_chalk.gd" id="6_4ojao"]
@@ -595,7 +594,7 @@ hand_left = NodePath("Hand_Left")
 hand_right = NodePath("Hand_Right")
 hand_left_sprite = NodePath("Hand_Left/_hand_sprite")
 hand_right_sprite = NodePath("Hand_Right/_hand_sprite")
-throw_clips = Array[AudioStream]([ExtResource("2_4266y"), ExtResource("41_mny7c"), ExtResource("4_mny7c")])
+throw_clips = Array[AudioStream]([ExtResource("2_4266y"), ExtResource("41_mny7c")])
 
 [node name="Hand_Left" type="Control" parent="." unique_id=342954462 node_paths=PackedStringArray("initial_state")]
 custom_minimum_size = Vector2(64, 64)

@@ -74,5 +74,5 @@ func match_hand_to_light(_delta: float) -> void:
 	#print(light_checker.lerped_current_light)
 
 
-@export_group("AUDIO")
-@export var throw_clips: Array[AudioStream] ## 0 = begin charge, 1 = charging, 2 = throwing
+@export_group("AUDIO") #AUDIO
+@export var throw_clips: Array[AudioStream] ## 0 = charge, 1 = release

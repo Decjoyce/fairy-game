@@ -327,5 +327,5 @@ func force_grab_item(itm: Grabbable_Item) -> void:
 	state.finished.emit(state.GRAB_ITEM)
 
 @export_group("AUDIO")
-@onready var audio_throw: AudioStreamPlayer = $Audio_Throw
-@onready var audio_grab: AudioStreamPlayer = $Audio_Grab
+@onready var audio_throw: AudioStreamPlayer = $Audio_Throw #AUDIO
+@onready var audio_grab: AudioStreamPlayer = $Audio_Grab #AUDIO
