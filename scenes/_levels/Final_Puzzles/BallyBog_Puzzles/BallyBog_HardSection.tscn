@@ -13,7 +13,10 @@
 [ext_resource type="PackedScene" uid="uid://drsdttca4hc5w" path="res://scenes/enemy_new/enemy_ballybog_new.tscn" id="11_4joy0"]
 [ext_resource type="PackedScene" uid="uid://cfkoaxhngk3gf" path="res://scenes/interactions/interactables/items/all_items/keys/item_key.tscn" id="11_feors"]
 [ext_resource type="PackedScene" uid="uid://d13vdgis1uvvv" path="res://scenes/interactions/interactables/items/all_items/keys/item_leverhandle.tscn" id="11_llrke"]
+[ext_resource type="PackedScene" uid="uid://bsdlm8rcrt2j" path="res://scenes/interactions/_triggers/area_triggers/player_area_trigger.tscn" id="12_g0t4t"]
 [ext_resource type="PackedScene" uid="uid://oqosqgdkwcrb" path="res://scenes/interactions/_receivers/door/door_new.tscn" id="14_feors"]
+[ext_resource type="PackedScene" uid="uid://ije1mmh1wcad" path="res://scenes/interactions/interactables/items/all_items/torch/torch_mounted.tscn" id="15_w4n7j"]
+[ext_resource type="PackedScene" uid="uid://xuo5buj0odhi" path="res://scenes/interactions/_triggers/torch_sconce/torch_sconce_lit.tscn" id="16_g0t4t"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_ipccd"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
@@ -27,6 +30,8 @@ background_mode = 2
 sky = SubResource("Sky_4joy0")
 tonemap_mode = 2
 glow_enabled = true
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_1hgo1"]
 
 [node name="BallyBog_HardSection" type="Node3D" unique_id=818137965]
 
@@ -111,6 +116,14 @@ transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -1.8
 [node name="Free_BallyBog_Button" parent="First_Part" unique_id=1585829472 instance=ExtResource("6_vy3m1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 1, -12.305842)
 
+[node name="BallyBogOne_Trigger" parent="First_Part" unique_id=917204587 instance=ExtResource("12_g0t4t")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 1, -9)
+
+[node name="Area3D" type="Area3D" parent="First_Part/BallyBogOne_Trigger" unique_id=1001783763]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="First_Part/BallyBogOne_Trigger/Area3D" unique_id=788956497]
+shape = SubResource("SphereShape3D_1hgo1")
+
 [node name="Second_Part" type="Node3D" parent="." unique_id=700111724]
 
 [node name="Ballybog_Trap_Plate" parent="Second_Part" unique_id=2058336646 instance=ExtResource("7_w1ddp")]
@@ -127,6 +140,14 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, -12)
 
 [node name="Get_out_of_trap_puzzle_just_incase" parent="Second_Part" unique_id=533593224 instance=ExtResource("6_vy3m1")]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -3.6941922, 1, -9)
+
+[node name="BallyBogOne_Trigger2" parent="Second_Part" unique_id=482191571 instance=ExtResource("12_g0t4t")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 1, -11)
+
+[node name="Area3D" type="Area3D" parent="Second_Part/BallyBogOne_Trigger2" unique_id=1379741942]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Second_Part/BallyBogOne_Trigger2/Area3D" unique_id=101860901]
+shape = SubResource("SphereShape3D_1hgo1")
 
 [node name="Third_Part" type="Node3D" parent="." unique_id=1246019401]
 
@@ -147,12 +168,45 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, -14)
 [node name="Ballybog_Two" parent="Enemies" unique_id=1027218711 instance=ExtResource("11_4joy0")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 0, -7)
 
+[node name="Torches" type="Node3D" parent="." unique_id=2025326532]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -10)
+
+[node name="Torch_Mounted" parent="Torches" unique_id=1479203938 instance=ExtResource("15_w4n7j")]
+transform = Transform3D(-0.8660254, 0.5, 8.742278e-08, 0.5, 0.8660254, 0, -7.5710346e-08, 4.371139e-08, -1, 0.3554868, 1.3727363, 9)
+
+[node name="TorchSconce_Lit" parent="Torches" unique_id=1729385187 instance=ExtResource("16_g0t4t")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -3.8048627, 1.5145273, 1)
+
+[node name="TorchSconce_Lit2" parent="Torches" unique_id=531346122 instance=ExtResource("16_g0t4t")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -2.8048627, 1.5145273, 7.79589)
+
+[node name="TorchSconce_Lit3" parent="Torches" unique_id=1865730810 instance=ExtResource("16_g0t4t")]
+transform = Transform3D(1, 0, 1.7484555e-07, 0, 1, 0, -1.7484555e-07, 0, 1, -7.0969844, 1.5145273, 4.261833)
+
+[node name="TorchSconce_Lit4" parent="Torches" unique_id=1094412383 instance=ExtResource("16_g0t4t")]
+transform = Transform3D(-2.1855695e-07, 0, 1, 0, 1, 0, -1, 0, -2.1855695e-07, -9.837907, 1.5145273, 1.1239128)
+
+[node name="TorchSconce_Lit5" parent="Torches" unique_id=972321886 instance=ExtResource("16_g0t4t")]
+transform = Transform3D(1, 0, 1.7484555e-07, 0, 1, 0, -1.7484555e-07, 0, 1, 0.81685746, 1.5145273, -9.815786)
+
+[node name="TorchSconce_Lit6" parent="Torches" unique_id=1934993162 instance=ExtResource("16_g0t4t")]
+transform = Transform3D(0.22263771, -0.9416823, -0.25232297, -1.6888784e-07, -0.25881907, 0.96592593, -0.9749014, -0.2150515, -0.057623047, 2.8168573, -0.057905674, -2.715786)
+
+[node name="TorchSconce_Lit7" parent="Torches" unique_id=1395597450 instance=ExtResource("16_g0t4t")]
+transform = Transform3D(0.22263771, -0.9416823, -0.25232297, -1.6888784e-07, -0.25881907, 0.96592593, -0.9749014, -0.2150515, -0.057623047, 2.8168573, -0.057905674, 3.284214)
+
 [connection signal="on_activated" from="First_Part/First_PressurePlate" to="First_Part/First_PressurePlate_CloseGate" method="close_gate"]
 [connection signal="on_activated" from="First_Part/First_PressurePlate" to="First_Part/Gate_With_leverPiece" method="open_gate"]
 [connection signal="on_activated" from="First_Part/First_Gate_Button_Open" to="First_Part/First_PressurePlate_CloseGate" method="open_gate"]
 [connection signal="on_activated" from="First_Part/BrokenLever/BrokenLever" to="First_Part/BrokenLever/Lever_Fixed" method="enable"]
 [connection signal="on_change" from="First_Part/BrokenLever/Lever_Fixed" to="Second_Part/Key_Gate" method="open_gate"]
 [connection signal="on_activated" from="First_Part/Free_BallyBog_Button" to="First_Part/Free_Ballybog_Gate" method="open_gate"]
+[connection signal="on_activated" from="First_Part/BallyBogOne_Trigger" to="Enemies/Ballybog_One" method="enable_me"]
+[connection signal="area_entered" from="First_Part/BallyBogOne_Trigger/Area3D" to="First_Part/BallyBogOne_Trigger" method="_player_entered"]
+[connection signal="area_exited" from="First_Part/BallyBogOne_Trigger/Area3D" to="First_Part/BallyBogOne_Trigger" method="_player_exited"]
 [connection signal="on_activated" from="Second_Part/Ballybog_Trap_Plate" to="Second_Part/Trap_Ballybog_Gate" method="close_gate"]
 [connection signal="on_activated" from="Second_Part/Ballybog_Trap_Plate" to="Second_Part/Exit_Gate" method="open_gate"]
 [connection signal="on_activated" from="Second_Part/Get_out_of_trap_puzzle_just_incase" to="Second_Part/Trap_Ballybog_Gate" method="open_gate"]
+[connection signal="on_activated" from="Second_Part/BallyBogOne_Trigger2" to="Enemies/Ballybog_Two" method="enable_me"]
+[connection signal="area_entered" from="Second_Part/BallyBogOne_Trigger2/Area3D" to="Second_Part/BallyBogOne_Trigger2" method="_player_entered"]
+[connection signal="area_exited" from="Second_Part/BallyBogOne_Trigger2/Area3D" to="Second_Part/BallyBogOne_Trigger2" method="_player_exited"]
