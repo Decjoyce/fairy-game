@@ -1,3 +1,158 @@
 [gd_scene format=3 uid="uid://8ur6fpvfuoah"]
 
+[ext_resource type="MeshLibrary" uid="uid://bhdjk8h6chf0o" path="res://scenes/_levels/_palettes/cairn/mossy/meshlibrary_mossy_cairn.meshlib" id="1_jbjem"]
+[ext_resource type="PackedScene" uid="uid://bq86osdembn58" path="res://scenes/_player/_player_test.tscn" id="2_rv1fq"]
+[ext_resource type="MeshLibrary" uid="uid://br861hnjhp6ry" path="res://scenes/_levels/_palettes/gmpf_meshlib.tres" id="3_ho3g3"]
+[ext_resource type="Script" uid="uid://ubfk2a80dhfp" path="res://addons/grid_map_pathfinding/grid_map_pathfinding.gd" id="4_aw6bp"]
+[ext_resource type="PackedScene" uid="uid://dt13fur6twjep" path="res://scenes/interactions/_receivers/gate/gate.tscn" id="5_1nwec"]
+[ext_resource type="PackedScene" uid="uid://qu5rxgbydmet" path="res://scenes/interactions/_triggers/button/button.tscn" id="6_vy3m1"]
+[ext_resource type="PackedScene" uid="uid://csot2mi7746ll" path="res://scenes/interactions/_triggers/pressure_plate/pressure_plate.tscn" id="7_w1ddp"]
+[ext_resource type="PackedScene" uid="uid://bg3e8trp0vy58" path="res://scenes/interactions/prefabs/broken_lever.tscn" id="9_4joy0"]
+[ext_resource type="PackedScene" uid="uid://ck1b6l8s7xnxi" path="res://scenes/interactions/_triggers/lever/lever.tscn" id="10_0jeu4"]
+[ext_resource type="PackedScene" uid="uid://bmiljk53ks7e7" path="res://scenes/interactions/_receivers/wip_spike_trap/spike_trap_floor.tscn" id="11_0jeu4"]
+[ext_resource type="PackedScene" uid="uid://drsdttca4hc5w" path="res://scenes/enemy_new/enemy_ballybog_new.tscn" id="11_4joy0"]
+[ext_resource type="PackedScene" uid="uid://cfkoaxhngk3gf" path="res://scenes/interactions/interactables/items/all_items/keys/item_key.tscn" id="11_feors"]
+[ext_resource type="PackedScene" uid="uid://d13vdgis1uvvv" path="res://scenes/interactions/interactables/items/all_items/keys/item_leverhandle.tscn" id="11_llrke"]
+[ext_resource type="PackedScene" uid="uid://oqosqgdkwcrb" path="res://scenes/interactions/_receivers/door/door_new.tscn" id="14_feors"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_ipccd"]
+sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+ground_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+
+[sub_resource type="Sky" id="Sky_4joy0"]
+sky_material = SubResource("ProceduralSkyMaterial_ipccd")
+
+[sub_resource type="Environment" id="Environment_0jeu4"]
+background_mode = 2
+sky = SubResource("Sky_4joy0")
+tonemap_mode = 2
+glow_enabled = true
+
 [node name="BallyBog_HardSection" type="Node3D" unique_id=818137965]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=964649183]
+environment = SubResource("Environment_0jeu4")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1608218128]
+transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545, -0.50000006, 0.75, -0.43301266, 0, 0, 0)
+shadow_enabled = true
+
+[node name="GridMap" type="GridMap" parent="." unique_id=11253392]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
+mesh_library = ExtResource("1_jbjem")
+data = {
+"cells": PackedInt32Array(0, 0, 18, 0, 65535, 17, 65535, 65534, 1048591, 65534, 65534, 1441808, 65532, 65534, 15, 65532, 65533, 655378, 65532, 65532, 655378, 65532, 65529, 655377, 65532, 65528, 655377, 65532, 65527, 1441807, 1, 65534, 15, 2, 65534, 1441808, 3, 65534, 1441809, 4, 65534, 1048591, 4, 65533, 17, 4, 65532, 17, 4, 65531, 655375, 4, 65529, 16, 4, 65528, 16, 4, 65527, 655375, 65533, 65527, 1048593, 65534, 65527, 1048593, 65535, 65527, 655375, 0, 65527, 655379, 1, 65527, 1441807, 3, 65527, 1048592, 2, 65527, 1048592, 65535, 65528, 17, 0, 65528, 1048595, 1, 65528, 655377, 2, 65528, 1048595, 3, 65528, 655378, 3, 65530, 16, 3, 65531, 1441807, 3, 65532, 15, 3, 65533, 1048595, 2, 65533, 1048595, 2, 65532, 1048595, 2, 65531, 1048595, 2, 65530, 1048595, 1, 65529, 18, 0, 65529, 1048595, 65535, 65529, 1048591, 65533, 65530, 1048595, 65534, 65530, 1048595, 65535, 65530, 1048595, 0, 65530, 1048595, 1, 65530, 1048595, 1, 65531, 1441809, 1, 65532, 655378, 0, 65532, 1048595, 65535, 65532, 1048595, 65534, 65531, 1441810, 65533, 65531, 1048595, 65535, 65531, 1441809, 0, 65531, 1441809, 65533, 65532, 1048595, 65534, 65532, 1048595, 65534, 65533, 1441807, 65533, 65533, 1048595, 65535, 65533, 655375, 0, 65533, 1048595, 1, 65533, 655377, 0, 65534, 16, 65532, 65530, 655376, 65532, 65531, 1048595, 65531, 65531, 1441810, 0, 65526, 655378, 3, 65529, 655377, 2, 65529, 655379, 5, 65530, 1441794, 6, 65530, 1441794, 7, 65530, 1048580, 4, 65530, 19, 65533, 65534, 1441808, 65533, 65529, 1441808, 65534, 65529, 1441808, 65533, 65528, 1441811, 65534, 65528, 1441811)
+}
+
+[node name="GridMapPathFinding2" type="GridMap" parent="." unique_id=15751754 groups=["GMPF"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, -1.4449999, 0)
+visible = false
+mesh_library = ExtResource("3_ho3g3")
+cell_size = Vector3(1, 1, 1)
+cell_octant_size = 4
+data = {
+"cells": PackedInt32Array(23, 18, 0, 196606, 65526, 655360, 196606, 65527, 655360, 196606, 65528, 1441792, 196606, 65529, 1441792, 196606, 65530, 655360, 196606, 65531, 655360, 196607, 65531, 0, 131072, 65531, 1441792, 131073, 65531, 1441792, 131073, 65526, 655360, 131072, 65526, 655360, 196607, 65526, 655360, 196607, 65527, 0, 196607, 65528, 0, 196607, 65529, 655360, 196607, 65530, 655360, 131072, 65530, 655360, 131073, 65530, 655360, 131073, 65529, 655360, 131072, 65529, 655360, 131073, 65528, 655360, 131072, 65528, 655360, 131073, 65527, 655360, 131072, 65527, 655360, 131072, 65525, 1441792, 131073, 65525, 1441792, 131073, 65524, 1441792, 131072, 65524, 1441792, 196607, 65524, 1441792, 196606, 65524, 1441792, 196606, 65525, 1441792, 196607, 65525, 1441792, 196605, 65527, 1441793, 196605, 65526, 1441793)
+}
+script = ExtResource("4_aw6bp")
+walkable_items = Array[int]([0])
+debug_start_cell = Vector3i(-2, 2, -5)
+debug_end_cell = Vector3i(-1, 2, -10)
+metadata/_editor_floor_ = Vector3(0, 2, 0)
+
+[node name="player_test" parent="." unique_id=725727541 instance=ExtResource("2_rv1fq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 1, 0)
+
+[node name="First_Part" type="Node3D" parent="." unique_id=1476509548]
+
+[node name="First_PressurePlate_CloseGate" parent="First_Part" unique_id=2077487765 instance=ExtResource("5_1nwec")]
+transform = Transform3D(-4.3711395e-08, 0, -1, 0, 1, 0, 1, 0, -4.3711395e-08, -3.9010968, 0.008686721, -3.0494363)
+
+[node name="First_PressurePlate" parent="First_Part" unique_id=790035545 instance=ExtResource("7_w1ddp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, -3)
+
+[node name="First_Gate_Button_Open" parent="First_Part" unique_id=1164325605 instance=ExtResource("6_vy3m1")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -6.9874196, 1, -5.6793723)
+
+[node name="Gate_With_leverPiece" parent="First_Part" unique_id=893706790 instance=ExtResource("5_1nwec")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -8, 0, -9)
+
+[node name="BrokenLever" type="Node3D" parent="First_Part" unique_id=2660761]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.1489944, 1.0864971, -11)
+
+[node name="BrokenLever" parent="First_Part/BrokenLever" unique_id=525346541 instance=ExtResource("9_4joy0")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -0.6354332, 0, 0.385643)
+keywords_needed = "LEVER;"
+metadata/uid = "a897b4c7-6f76-495d-bc91-14434dd8b029"
+metadata/lock_uid = true
+metadata/date_generated = "2026-03-25T16:38:33"
+
+[node name="Lever_Fixed" parent="First_Part/BrokenLever" unique_id=1692381032 instance=ExtResource("10_0jeu4")]
+transform = Transform3D(1.3113416e-07, 0, 1, 0, 1, 0, -1, 0, 1.3113416e-07, -0.6354332, 0, 0.385643)
+use_intervals = true
+hand_prompt = "hand_prompt_lever"
+disabled = true
+metadata/lock_uid = true
+metadata/uid = "085ac79c-b426-45e5-8102-235e14dce2f2"
+metadata/date_generated = "2026-03-25T16:38:33"
+
+[node name="LeverHandle" parent="First_Part/BrokenLever" unique_id=1226645142 instance=ExtResource("11_llrke")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, -0.7798259, 1.9669609)
+keywords = "LEVER;"
+metadata/uid = "24a553cd-6a29-4473-9e3b-40d0e91173d0"
+metadata/lock_uid = true
+metadata/date_generated = "2026-03-25T16:38:33"
+
+[node name="SpikeTrap" parent="First_Part/BrokenLever" unique_id=1388700218 instance=ExtResource("11_0jeu4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.148994, -1.0864971, 4)
+
+[node name="Free_Ballybog_Gate" parent="First_Part" unique_id=1153629532 instance=ExtResource("5_1nwec")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -1.8566258, 0, -13.156555)
+
+[node name="Free_BallyBog_Button" parent="First_Part" unique_id=1585829472 instance=ExtResource("6_vy3m1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 1, -12.305842)
+
+[node name="Second_Part" type="Node3D" parent="." unique_id=700111724]
+
+[node name="Ballybog_Trap_Plate" parent="Second_Part" unique_id=2058336646 instance=ExtResource("7_w1ddp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, -9)
+
+[node name="Trap_Ballybog_Gate" parent="Second_Part" unique_id=1090975527 instance=ExtResource("5_1nwec")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -2, 1.8725364, -9)
+
+[node name="Key_Gate" parent="Second_Part" unique_id=244480145 instance=ExtResource("5_1nwec")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, -18)
+
+[node name="Exit_Gate" parent="Second_Part" unique_id=1018557165 instance=ExtResource("5_1nwec")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, -12)
+
+[node name="Get_out_of_trap_puzzle_just_incase" parent="Second_Part" unique_id=533593224 instance=ExtResource("6_vy3m1")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -3.6941922, 1, -9)
+
+[node name="Third_Part" type="Node3D" parent="." unique_id=1246019401]
+
+[node name="SpikeTrap" parent="Third_Part" unique_id=2005212729 instance=ExtResource("11_0jeu4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, -13)
+
+[node name="key" parent="Third_Part" unique_id=451440735 instance=ExtResource("11_feors")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 1, -19)
+
+[node name="Final_Door" parent="Third_Part" unique_id=1088244080 instance=ExtResource("14_feors")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 10, 0, -11)
+
+[node name="Enemies" type="Node3D" parent="." unique_id=160301403]
+
+[node name="Ballybog_One" parent="Enemies" unique_id=1712475425 instance=ExtResource("11_4joy0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, -14)
+
+[node name="Ballybog_Two" parent="Enemies" unique_id=1027218711 instance=ExtResource("11_4joy0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 0, -7)
+
+[connection signal="on_activated" from="First_Part/First_PressurePlate" to="First_Part/First_PressurePlate_CloseGate" method="close_gate"]
+[connection signal="on_activated" from="First_Part/First_PressurePlate" to="First_Part/Gate_With_leverPiece" method="open_gate"]
+[connection signal="on_activated" from="First_Part/First_Gate_Button_Open" to="First_Part/First_PressurePlate_CloseGate" method="open_gate"]
+[connection signal="on_activated" from="First_Part/BrokenLever/BrokenLever" to="First_Part/BrokenLever/Lever_Fixed" method="enable"]
+[connection signal="on_change" from="First_Part/BrokenLever/Lever_Fixed" to="Second_Part/Key_Gate" method="open_gate"]
+[connection signal="on_activated" from="First_Part/Free_BallyBog_Button" to="First_Part/Free_Ballybog_Gate" method="open_gate"]
+[connection signal="on_activated" from="Second_Part/Ballybog_Trap_Plate" to="Second_Part/Trap_Ballybog_Gate" method="close_gate"]
+[connection signal="on_activated" from="Second_Part/Ballybog_Trap_Plate" to="Second_Part/Exit_Gate" method="open_gate"]
+[connection signal="on_activated" from="Second_Part/Get_out_of_trap_puzzle_just_incase" to="Second_Part/Trap_Ballybog_Gate" method="open_gate"]
