@@ -16,8 +16,6 @@ var offset_og_pos: Vector2
 var current_grab_prompt: String
 var current_hand_prompt: String
 
-
-
 func handle_input(_event: InputEvent) -> void:
 	pass
 
@@ -257,7 +255,9 @@ func begin_charge() -> void:
 	hand_controller.anim_change_idle_anim("a_hand_grab_item_charge")
 	grabbed_item.rotation_degrees.z = -grabbed_item.throwing_rotation * hand_controller.hand_type_rotation_mult
 	hand_controller.input_controls.enable_interact_action(tr("RELEASE_TO_THROW"))
-	
+	hand_controller.audio_throw.stream = player_interact.throw_clips[0]
+	hand_controller.audio_throw.play()
+
 func charging(_delta: float) -> void:
 	if !is_charging: return
 	time_held_down += _delta
@@ -268,6 +268,8 @@ func charging(_delta: float) -> void:
 	if charge_amount > 0.1:
 		t_bob += _delta * charge_amount * 50
 		offset_helper.position = offset_og_pos + _headbob(t_bob)
+	hand_controller.audio_throw.stream = player_interact.throw_clips[1]
+	hand_controller.audio_throw.play()
 
 func end_charge() -> void:
 	hand_controller.anim_override_current_animation("a_hand_grab_item_charge", true)
@@ -275,6 +277,8 @@ func end_charge() -> void:
 	else: 
 		if !_testing_throw_alt:
 			grabbed_item.throw(charge_amount)
+			hand_controller.audio_throw.stream = player_interact.throw_clips[2]
+			hand_controller.audio_throw.play()
 		else:
 			var origin := hand_controller.cam.project_ray_origin(player_interact.get_rect().get_center())
 			var end := origin + hand_controller.cam.project_ray_normal(offset_helper.global_position) * GRAB_DIST
@@ -287,6 +291,7 @@ func end_charge() -> void:
 	time_held_down = 0
 	grabbed_item.is_grabbed = false
 	finished.emit(FREE)
+
 
 func _headbob(time: float) -> Vector2:
 	var pos = Vector2.ZERO

@@ -1,8 +1,10 @@
 [gd_scene format=3 uid="uid://dqojmsc2q6wf4"]
 
 [ext_resource type="Script" uid="uid://bkcxym5jqdgg4" path="res://scenes/_player/interaction/player_interaction.gd" id="1_ebye2"]
+[ext_resource type="AudioStream" uid="uid://bpe8oyerrhdif" path="res://assets/__not_ours_dontship/lego-breaking.mp3" id="2_4266y"]
 [ext_resource type="Script" uid="uid://bvrebn6ao2hvn" path="res://scenes/_player/interaction/hand/player_hand.gd" id="2_f78vs"]
 [ext_resource type="Script" uid="uid://ceufl68l7cqys" path="res://scenes/_player/interaction/hand/states/handstate_free.gd" id="3_7baq5"]
+[ext_resource type="AudioStream" uid="uid://o1ijw7tvjbup" path="res://assets/audio/music/menu/AmbientDraft2.wav" id="4_mny7c"]
 [ext_resource type="Script" uid="uid://d533dr0gr15o" path="res://scenes/_player/interaction/hand/states/handstate_grab_item.gd" id="4_r26r4"]
 [ext_resource type="Script" uid="uid://c6qqmpwrn8dic" path="res://scenes/_player/interaction/hand/states/handstate_grab_obj.gd" id="5_wcvr7"]
 [ext_resource type="Script" uid="uid://dpsgaiv5m7n21" path="res://scenes/_player/interaction/hand/states/handstate_chalk.gd" id="6_4ojao"]
@@ -27,7 +29,6 @@
 [ext_resource type="Texture2D" uid="uid://ip3mcc0c48rf" path="res://scenes/_player/interaction/hand/assets/new/handPick.png" id="20_j5qgs"]
 [ext_resource type="Texture2D" uid="uid://bvp14xwrxbn3n" path="res://assets/__not_ours_dontship/Xbox Series/XboxSeriesX_B.png" id="20_x8mhs"]
 [ext_resource type="Texture2D" uid="uid://jub3n8100tqt" path="res://assets/__not_ours_dontship/Xbox Series/XboxSeriesX_RT.png" id="21_g8o0o"]
-[ext_resource type="AudioStream" uid="uid://y2phwtxrytt4" path="res://assets/audio/sfx/player/throw/Player_throw_randomizer.tres" id="21_uwauf"]
 [ext_resource type="Texture2D" uid="uid://by4r3xp6u2qur" path="res://scenes/_player/interaction/hand/assets/new/handOut.png" id="22_6q41x"]
 [ext_resource type="Texture2D" uid="uid://bsneap2rk48wi" path="res://scenes/_player/interaction/hand/assets/new/handHover.png" id="22_f0odu"]
 [ext_resource type="Texture2D" uid="uid://dug1nta4aw3qf" path="res://scenes/_player/interaction/hand/assets/new/handLeverDown_side.png" id="25_1y63c"]
@@ -38,10 +39,8 @@
 [ext_resource type="Texture2D" uid="uid://ie2qwgyt82t5" path="res://scenes/_player/interaction/hand/assets/new/handKey.png" id="26_g103e"]
 [ext_resource type="Texture2D" uid="uid://caig263otkgib" path="res://scenes/_player/interaction/hand/assets/new/handLeverMid_side.png" id="27_rjeyo"]
 [ext_resource type="Texture2D" uid="uid://bjr37otryvvbb" path="res://scenes/_player/interaction/hand/assets/new/handLeverUp_side.png" id="28_onote"]
-
-[sub_resource type="Gradient" id="Gradient_um574"]
-offsets = PackedFloat32Array(0, 0.9241486)
-colors = PackedColorArray(0.1254902, 0.25490198, 0.36862746, 1, 1, 0.7287319, 0.56201816, 1)
+[ext_resource type="AudioStream" uid="uid://vx653pqd2bno" path="res://assets/__not_ours_dontship/death_yoda.mp3" id="41_0v66h"]
+[ext_resource type="AudioStream" uid="uid://dpv5f1hi48dtp" path="res://assets/__not_ours_dontship/death_fortnite.mp3" id="41_mny7c"]
 
 [sub_resource type="Animation" id="Animation_434r6"]
 length = 0.001
@@ -88,35 +87,6 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 1,
 "values": [ExtResource("13_g103e"), ExtResource("14_adext"), ExtResource("22_f0odu"), ExtResource("22_f0odu")]
-}
-tracks/1/type = "audio"
-tracks/1/imported = false
-tracks/1/enabled = false
-tracks/1/path = NodePath("../AudioStreamPlayer")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"clips": [{
-"end_offset": 0.0,
-"start_offset": 0.0,
-"stream": ExtResource("21_uwauf")
-}],
-"times": PackedFloat32Array(0)
-}
-tracks/1/use_blend = true
-tracks/2/type = "method"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("../AudioStreamPlayer")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"values": [{
-"args": [0.0],
-"method": &"play"
-}]
 }
 
 [sub_resource type="Animation" id="Animation_h6x2d"]
@@ -625,7 +595,7 @@ hand_left = NodePath("Hand_Left")
 hand_right = NodePath("Hand_Right")
 hand_left_sprite = NodePath("Hand_Left/_hand_sprite")
 hand_right_sprite = NodePath("Hand_Right/_hand_sprite")
-hand_light_gradient = SubResource("Gradient_um574")
+throw_clips = Array[AudioStream]([ExtResource("2_4266y"), ExtResource("41_mny7c"), ExtResource("4_mny7c")])
 
 [node name="Hand_Left" type="Control" parent="." unique_id=342954462 node_paths=PackedStringArray("initial_state")]
 custom_minimum_size = Vector2(64, 64)
@@ -839,6 +809,10 @@ expand_mode = 1
 callback_mode_method = 1
 libraries/ = SubResource("AnimationLibrary_3efos")
 
+[node name="Audio_Throw" type="AudioStreamPlayer" parent="Hand_Left" unique_id=1061217917]
+
+[node name="Audio_Grab" type="AudioStreamPlayer" parent="Hand_Left" unique_id=561223657]
+
 [node name="Hand_Right" type="Control" parent="." unique_id=2015924242 node_paths=PackedStringArray("initial_state")]
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 1
@@ -1031,6 +1005,7 @@ vertical_alignment = 1
 callback_mode_method = 1
 libraries/ = SubResource("AnimationLibrary_3efos")
 
-[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=2033962313]
+[node name="Audio_Throw" type="AudioStreamPlayer" parent="Hand_Right" unique_id=500822543]
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=500822543]
+[node name="Audio_Grab" type="AudioStreamPlayer" parent="Hand_Right" unique_id=981864139]
+stream = ExtResource("41_0v66h")

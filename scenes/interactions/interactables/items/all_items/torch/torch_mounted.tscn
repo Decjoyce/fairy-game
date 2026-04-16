@@ -6,6 +6,7 @@
 [ext_resource type="AudioStream" uid="uid://dutddyikwuiut" path="res://assets/audio/sfx/combat/misc/hittingsound_shorter.wav" id="4_qnxa0"]
 [ext_resource type="AudioStream" uid="uid://rc1825amqk33" path="res://assets/__not_ours_dontship/lego_mavelsuperheroes/FIRESML_LP.WAV" id="5_nb14r"]
 [ext_resource type="Script" uid="uid://bhf6r6nw14krj" path="res://scripts/saving/persistent_objs/po_item.gd" id="6_d1j3f"]
+[ext_resource type="AudioStream" uid="uid://bbl7dke2rpp5q" path="res://assets/audio/sfx/combat/_streams/sfx_shield_block.tres" id="7_bpydh"]
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_j22s6"]
 noise_type = 5
@@ -137,3 +138,7 @@ hit_from_inside = true
 [node name="PO_Item" type="Node" parent="." unique_id=113795984]
 script = ExtResource("6_d1j3f")
 metadata/_custom_type_script = "uid://bhf6r6nw14krj"
+
+[node name="Audio_Grabbed" type="AudioStreamPlayer3D" parent="." unique_id=2123331773]
+stream = ExtResource("7_bpydh")
+max_distance = 1.0

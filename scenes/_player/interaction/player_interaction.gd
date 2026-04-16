@@ -60,8 +60,8 @@ func test_player_moved()-> void:
 	hand_left.on_player_moved(Vector3.ZERO, Vector3.ZERO)
 	
 
-const NO_LIGHT_COLOR: Color = Color("20415e")
-@export var hand_light_gradient: Gradient
+#const NO_LIGHT_COLOR: Color = Color("20415e")
+#@export var hand_light_gradient: Gradient
 
 func match_hand_to_light(_delta: float) -> void:
 	
@@ -72,3 +72,7 @@ func match_hand_to_light(_delta: float) -> void:
 	#hand_right_sprite.self_modulate = hand_light_gradient.sample(mapped_light_level)
 	##hand_right_sprite.self_modulate = hand_right_sprite.self_modulate.blend(light_checker.lerped_current_light_avgcolor).lightened(0.5)
 	#print(light_checker.lerped_current_light)
+
+
+@export_group("AUDIO")
+@export var throw_clips: Array[AudioStream] ## 0 = begin charge, 1 = charging, 2 = throwing

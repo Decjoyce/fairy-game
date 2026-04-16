@@ -49,6 +49,7 @@ var is_broken: bool
 
 @export_group("Audio")
 @onready var audio_player: AudioStreamPlayer3D = $AudioPlayer
+@onready var audio_grabbed: AudioStreamPlayer3D = $Audio_Grabbed
 @export var base_volume: float = 1.0
 
 var prev_velocity: Vector3
@@ -97,6 +98,7 @@ func begin_interact(sig: float = -1, hand: PlayerHand = null) -> void:
 	rb.linear_velocity = Vector3.ZERO
 	grabbed_hand = hand
 	on_begin_interact.emit(1)
+	audio_grabbed.play()
 
 func interacting(sig: float = -1, hand: PlayerHand = null) -> void:
 	pass

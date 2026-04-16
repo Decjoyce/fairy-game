@@ -1,3 +1,4 @@
+@icon("res://assets/_editor_icons/icon_item_b.svg")
 class_name Instrument
 extends Grabbable_Item
 

@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://xuo5buj0odhi"]
 
+[ext_resource type="ArrayMesh" uid="uid://deenfjj76xugt" path="res://assets/models/cairn/Props/MountedTorch/mountedtorch_nobackboard.obj" id="2_2ktew"]
 [ext_resource type="Material" uid="uid://cykgn4cpccw6q" path="res://assets/models/cairn/Props/MountedTorch/MountedTorch.tres" id="3_0h7rj"]
-[ext_resource type="ArrayMesh" uid="uid://bq3anitpbj6jj" path="res://assets/models/cairn/Props/MountedTorch/MountedTorch.obj" id="4_t016d"]
 [ext_resource type="PackedScene" uid="uid://gc2qo6ixywh3" path="res://scenes/decor/fire.tscn" id="5_u665x"]
 
 [node name="TorchSconce_Lit" type="Node3D" unique_id=1729385187]
@@ -19,7 +19,7 @@ omni_range = 3.0
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Lit_Sconce" unique_id=317317458]
 transform = Transform3D(-6.119594e-09, 0, -0.14, 0, 0.14, 0, 0.14, 0, -6.119594e-09, 0, -0.19999999, 0.018826813)
 material_override = ExtResource("3_0h7rj")
-mesh = ExtResource("4_t016d")
+mesh = ExtResource("2_2ktew")
 
 [node name="Fire" parent="Lit_Sconce/MeshInstance3D" unique_id=531285147 instance=ExtResource("5_u665x")]
 transform = Transform3D(0.78, 0, 3.5527137e-15, 0, 0.54, 0, -3.5527137e-15, 0, 0.645, 0.88888896, 1.4869865, 0.12925352)

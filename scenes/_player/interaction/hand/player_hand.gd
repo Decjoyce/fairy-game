@@ -143,7 +143,7 @@ func begin_interact() -> void:
 					player_interact.free_interaction_on_other_hand(hand_type) # replace with signal
 			current_interactable.begin_interact(-1.0, self)
 			state.finished.emit(state.GRAB_ITEM)
-			
+			audio_grab.play()
 		hovering_interactable.InteractTypes.GRAB_OBJ:
 			current_interactable.begin_interact()
 			state.finished.emit(state.GRAB_OBJ)
@@ -325,3 +325,7 @@ func force_grab_item(itm: Grabbable_Item) -> void:
 			player_interact.free_interaction_on_other_hand(hand_type) # replace with signal
 	current_interactable.begin_interact()
 	state.finished.emit(state.GRAB_ITEM)
+
+@export_group("AUDIO")
+@onready var audio_throw: AudioStreamPlayer = $Audio_Throw
+@onready var audio_grab: AudioStreamPlayer = $Audio_Grab
