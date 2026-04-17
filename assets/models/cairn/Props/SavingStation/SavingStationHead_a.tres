@@ -1,0 +1,21 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://ibx6rbv6xg23"]
+
+[ext_resource type="Texture2D" uid="uid://chq6k8wkjxhxh" path="res://assets/models/cairn/Props/SavingStation/Textures/old/StoneHead_Base_color.png" id="1_guqc4"]
+[ext_resource type="Texture2D" uid="uid://410wrvahdj7p" path="res://assets/models/cairn/Props/SavingStation/Textures/old/StoneHead_Mixed_AO.png" id="2_0cuf5"]
+[ext_resource type="Texture2D" uid="uid://crfdm7dj3f3wm" path="res://assets/models/cairn/Props/SavingStation/Textures/old/StoneHead_Metallic.png" id="3_2ojxq"]
+[ext_resource type="Material" uid="uid://dyejtq23uplk4" path="res://assets/shaders/Outline/outline.tres" id="4_bw6gp"]
+[ext_resource type="Texture2D" uid="uid://b001o84aux6ie" path="res://assets/models/cairn/Props/SavingStation/Textures/old/StoneHead_Normal_OpenGL.png" id="5_bw6gp"]
+[ext_resource type="Texture2D" uid="uid://obft3mxshdnk" path="res://assets/models/cairn/Props/SavingStation/Textures/old/StoneHead_Roughness.png" id="6_orbhy"]
+
+[resource]
+next_pass = ExtResource("4_bw6gp")
+albedo_texture = ExtResource("1_guqc4")
+metallic = 1.0
+metallic_specular = 0.0
+metallic_texture = ExtResource("3_2ojxq")
+roughness_texture = ExtResource("6_orbhy")
+normal_enabled = true
+normal_scale = 0.35
+normal_texture = ExtResource("5_bw6gp")
+ao_enabled = true
+ao_texture = ExtResource("2_0cuf5")

@@ -1,20 +1,23 @@
 [gd_resource type="StandardMaterial3D" format=3 uid="uid://chllmmkd6s7v6"]
 
-[ext_resource type="Texture2D" uid="uid://chq6k8wkjxhxh" path="res://assets/models/cairn/Props/SavingStation/Textures/StoneHead_Base_color.png" id="1_o3khl"]
-[ext_resource type="Texture2D" uid="uid://410wrvahdj7p" path="res://assets/models/cairn/Props/SavingStation/Textures/StoneHead_Mixed_AO.png" id="2_7lmyt"]
+[ext_resource type="Texture2D" uid="uid://228gec8x3wwr" path="res://assets/models/cairn/Props/SavingStation/Textures/Head_Base_color.png" id="1_7lmyt"]
+[ext_resource type="Texture2D" uid="uid://dt5mur8yoq3vl" path="res://assets/models/cairn/Props/SavingStation/Textures/Head_Mixed_AO.png" id="2_p704s"]
+[ext_resource type="Texture2D" uid="uid://cn2vtwamb5oc6" path="res://assets/models/cairn/Props/SavingStation/Textures/Head_Height.png" id="3_knsma"]
 [ext_resource type="Material" uid="uid://dyejtq23uplk4" path="res://assets/shaders/Outline/outline.tres" id="4_klwi6"]
-[ext_resource type="Texture2D" uid="uid://b001o84aux6ie" path="res://assets/models/cairn/Props/SavingStation/Textures/StoneHead_Normal_OpenGL.png" id="4_p704s"]
-[ext_resource type="Texture2D" uid="uid://obft3mxshdnk" path="res://assets/models/cairn/Props/SavingStation/Textures/StoneHead_Roughness.png" id="5_knsma"]
+[ext_resource type="Texture2D" uid="uid://bkvuhlyb6ffke" path="res://assets/models/cairn/Props/SavingStation/Textures/Head_Normal_OpenGL.png" id="5_klwi6"]
+[ext_resource type="Texture2D" uid="uid://dlfgayyo1f1op" path="res://assets/models/cairn/Props/SavingStation/Textures/Head_Roughness.png" id="6_1usjg"]
 
 [resource]
 next_pass = ExtResource("4_klwi6")
-albedo_texture = ExtResource("1_o3khl")
+albedo_color = Color(1.353256, 1.353256, 1.353256, 1)
+albedo_texture = ExtResource("1_7lmyt")
 metallic = 1.0
 metallic_specular = 0.0
-metallic_texture = ExtResource("2_7lmyt")
-roughness_texture = ExtResource("5_knsma")
+roughness_texture = ExtResource("6_1usjg")
 normal_enabled = true
 normal_scale = 0.35
-normal_texture = ExtResource("4_p704s")
+normal_texture = ExtResource("5_klwi6")
 ao_enabled = true
-ao_texture = ExtResource("2_7lmyt")
+ao_texture = ExtResource("2_p704s")
+heightmap_enabled = true
+heightmap_texture = ExtResource("3_knsma")
