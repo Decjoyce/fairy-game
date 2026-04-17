@@ -28,6 +28,7 @@
 [ext_resource type="MeshLibrary" uid="uid://br861hnjhp6ry" path="res://scenes/_levels/_palettes/gmpf_meshlib.tres" id="26_p5orj"]
 [ext_resource type="Script" uid="uid://ubfk2a80dhfp" path="res://addons/grid_map_pathfinding/grid_map_pathfinding.gd" id="27_4w4fw"]
 [ext_resource type="Script" uid="uid://bul4myvyhnpjc" path="res://scripts/saving/uid_generator.gd" id="28_qhdgp"]
+[ext_resource type="PackedScene" uid="uid://bsdlm8rcrt2j" path="res://scenes/interactions/_triggers/area_triggers/player_area_trigger.tscn" id="29_b2mbs"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_2vnbd"]
 sky_horizon_color = Color(0, 0.37292683, 0.8185948, 1)
@@ -223,6 +224,8 @@ _data = {
 &"RESET": SubResource("Animation_e1ua7"),
 &"open_da_grate": SubResource("Animation_kngx6")
 }
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_060nb"]
 
 [node name="Puzzle01" type="Node3D" unique_id=2140837292]
 
@@ -671,7 +674,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 1, -7)
 
 [node name="GridMapPathFinding2" type="GridMap" parent="." unique_id=1929151095 groups=["GMPF"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.445, 0)
-visible = false
 mesh_library = ExtResource("26_p5orj")
 cell_size = Vector3(1, 1, 1)
 cell_octant_size = 4
@@ -687,6 +689,14 @@ metadata/_editor_floor_ = Vector3(0, 2, 0)
 [node name="UID_Generator" type="Node" parent="." unique_id=950764856]
 script = ExtResource("28_qhdgp")
 metadata/_custom_type_script = "uid://bul4myvyhnpjc"
+
+[node name="BallyBog_Trigger" parent="." unique_id=917204587 instance=ExtResource("29_b2mbs")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 2, 0)
+
+[node name="Area3D" type="Area3D" parent="BallyBog_Trigger" unique_id=1370552303]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="BallyBog_Trigger/Area3D" unique_id=1364307751]
+shape = SubResource("SphereShape3D_060nb")
 
 [connection signal="on_change" from="_env/Gate_Left/Lever" to="_env/Items/HiddenItem/hiddentgate/AnimatedObject" method="play_animation"]
 [connection signal="on_activated" from="_env/Gate_Left/PressurePlates/PressurePlateTR" to="_env/Gate_Left/PressurePlates/PressurePlateTR/indicator_visenabler" method="enable_obj"]
@@ -714,3 +724,6 @@ metadata/_custom_type_script = "uid://bul4myvyhnpjc"
 [connection signal="on_deactivated" from="_env/Gate_Right/Button" to="_env/Gate_Right/Gate" method="close_gate"]
 [connection signal="on_activated" from="_env/Gate_Right/Button2" to="_env/Gate_Right/Gate" method="fully_open_gate"]
 [connection signal="on_activated" from="_env/Door/ItemReceiver" to="_env/Door/Door" method="open_door"]
+[connection signal="on_activated" from="BallyBog_Trigger" to="Ballybog" method="enable_me"]
+[connection signal="area_entered" from="BallyBog_Trigger/Area3D" to="BallyBog_Trigger" method="_player_entered"]
+[connection signal="area_exited" from="BallyBog_Trigger/Area3D" to="BallyBog_Trigger" method="_player_exited"]
