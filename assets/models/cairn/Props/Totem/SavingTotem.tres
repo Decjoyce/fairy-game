@@ -1,0 +1,19 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://ccmj2j8qe2wrj"]
+
+[ext_resource type="Texture2D" uid="uid://bqf17shac2ksf" path="res://assets/models/cairn/Props/Totem/textures/Totem/SavingTotem_Base_color.png" id="1_v22b4"]
+[ext_resource type="Texture2D" uid="uid://dy8g1f5lsp4fl" path="res://assets/models/cairn/Props/Totem/textures/Totem/SavingTotem_Mixed_AO.png" id="2_famt1"]
+[ext_resource type="Material" uid="uid://dyejtq23uplk4" path="res://assets/shaders/Outline/outline.tres" id="2_ub74d"]
+[ext_resource type="Texture2D" uid="uid://bblg3wcr2kq4m" path="res://assets/models/cairn/Props/Totem/textures/Totem/SavingTotem_Metallic.png" id="3_qkanc"]
+[ext_resource type="Texture2D" uid="uid://dfy6bx4ri4140" path="res://assets/models/cairn/Props/Totem/textures/Totem/SavingTotem_Normal_OpenGL.png" id="5_7bi8t"]
+[ext_resource type="Texture2D" uid="uid://bxi7adcdtsf01" path="res://assets/models/cairn/Props/Totem/textures/Totem/SavingTotem_Roughness.png" id="6_t4mf1"]
+
+[resource]
+next_pass = ExtResource("2_ub74d")
+albedo_texture = ExtResource("1_v22b4")
+metallic = 1.0
+metallic_texture = ExtResource("3_qkanc")
+roughness_texture = ExtResource("6_t4mf1")
+normal_enabled = true
+normal_texture = ExtResource("5_7bi8t")
+ao_enabled = true
+ao_texture = ExtResource("2_famt1")
