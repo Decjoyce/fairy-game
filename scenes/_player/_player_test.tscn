@@ -172,6 +172,11 @@ _data = {
 &"death_anim": SubResource("Animation_gcklq")
 }
 
+[sub_resource type="Curve" id="Curve_j3cqb"]
+_limits = [0.5, 1.0, 0.0, 1.0]
+_data = [Vector2(0, 0.5), 0.0, 0.0, 0, 0, Vector2(0.33146065, 0.78485036), 0.0, 0.0, 0, 0, Vector2(0.64325845, 0.7462338), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 4
+
 [sub_resource type="BoxShape3D" id="BoxShape3D_3jgj8"]
 size = Vector3(0.5, 0.9, 1.1)
 
@@ -742,6 +747,9 @@ metadata/_custom_type_script = "uid://jxohgxu3vshf"
 script = ExtResource("6_7hjlp")
 player = NodePath("..")
 interact = NodePath("../Interaction")
+move_curve = SubResource("Curve_j3cqb")
+crouch_curve = SubResource("Curve_j3cqb")
+stand_curve = SubResource("Curve_j3cqb")
 floor_detector = NodePath("../FloorDetector")
 roof_detector = NodePath("../RoofDetector")
 col = NodePath("../Collision/CollisionShape3D")

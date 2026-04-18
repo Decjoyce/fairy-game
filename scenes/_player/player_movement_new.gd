@@ -4,6 +4,10 @@ extends Node
 @export var player: PlayerTest
 @export var interact: PlayerInteract
 
+@export var move_curve: Curve
+@export var crouch_curve: Curve
+@export var stand_curve: Curve
+
 @onready var compass: Node3D = $Compass
 
 @onready var ray_north: ShapeCast3D = $Compass/North ## Checks if player can move forward and also temporary interact
@@ -34,6 +38,7 @@ var current_fall_speed: float = 0
 var start_fall_height: float = 0
 
 var dist_to_target: float
+var og_dist: float
 
 enum MoveDirections {NOT_MOVING, VERTICAL, HORIZONTAL, FALLING}
 var current_direction: MoveDirections
@@ -101,28 +106,35 @@ func movement_input() -> void:
 	#--> NORTH
 	if Input.is_action_pressed("move_up") and !Input.is_action_just_pressed("move_up") and !Input.is_action_just_released("move_up") and check_can_move_up():
 		if dist_to_target > 0.2: return
+		var prev_target: Vector3 = target_pos
 		target_pos = target_pos - compass.basis.z * Vector3.ONE
 		current_direction = MoveDirections.VERTICAL
 		
 		on_move.emit(Vector3.FORWARD, target_pos)
 		on_move_up.emit(target_pos)
 		
+		og_dist = prev_target.distance_to(target_pos)
+		
 		was_holding = true
 		footstep_audio.play()
 	#--> SOUTH
-	elif Input.is_action_pressed("move_down") and check_can_move_down() :# and !Input.is_action_just_pressed("move_down") and !Input.is_action_just_released("move_down")
+	elif (Input.is_action_pressed("move_down") or Input.is_action_just_pressed("move_down")) and check_can_move_down() :# and !Input.is_action_just_pressed("move_down") and !Input.is_action_just_released("move_down")
 		if dist_to_target > 0.2: return
+		var prev_target: Vector3 = target_pos
 		target_pos = target_pos + compass.basis.z * Vector3.ONE
 		current_direction = MoveDirections.VERTICAL
 		
 		on_move.emit(Vector3.BACK, target_pos)
 		on_move_down.emit(target_pos)
 		
+		og_dist = prev_target.distance_to(target_pos)
+		
 		footstep_audio.play()
 		was_holding = true
 	#--> EAST
-	elif Input.is_action_pressed("move_left") and check_can_move_left() :# and !Input.is_action_just_pressed("move_left") and !Input.is_action_just_released("move_left")
+	elif (Input.is_action_pressed("move_left") or Input.is_action_just_pressed("move_left")) and check_can_move_left() :# and !Input.is_action_just_pressed("move_left") and !Input.is_action_just_released("move_left")
 		if dist_to_target > 0.2: return
+		var prev_target: Vector3 = target_pos
 		target_pos = target_pos - compass.basis.x * Vector3.ONE
 		
 		current_direction = MoveDirections.HORIZONTAL
@@ -130,16 +142,21 @@ func movement_input() -> void:
 		on_move.emit(Vector3.LEFT, target_pos)
 		on_move_left.emit(target_pos)
 		
+		og_dist = prev_target.distance_to(target_pos)
+		
 		footstep_audio.play()
 		was_holding = true
 	#--> WEST
-	elif Input.is_action_pressed("move_right") and check_can_move_right() :# and !Input.is_action_just_pressed("move_right") and !Input.is_action_just_released("move_right"):
+	elif (Input.is_action_pressed("move_right") or Input.is_action_just_pressed("move_right")) and check_can_move_right() :# and !Input.is_action_just_pressed("move_right") and !Input.is_action_just_released("move_right"):
 		if dist_to_target > 0.2: return
+		var prev_target: Vector3 = target_pos
 		target_pos = target_pos + compass.basis.x * Vector3.ONE
 		current_direction = MoveDirections.HORIZONTAL
 		
 		on_move.emit(Vector3.RIGHT, target_pos)
 		on_move_right.emit(target_pos)
+		
+		og_dist = prev_target.distance_to(target_pos)
 		
 		footstep_audio.play()
 		was_holding = true
@@ -163,6 +180,7 @@ func movement(delta: float) -> void:
 	
 	if dist_to_target > 0.001: ## This is conditioned so we can know if player is moving, to stop them from being able to attack while moving
 		#t_bob += delta * (target_pos - player.position).length() * speed ## some headbobbing formula i used before. Its really bad.
+		var new_speed := speed * move_curve.sample((og_dist - dist_to_target)/og_dist)
 		var weight = 1 - exp(-speed * delta)
 		player.global_position.x = lerpf(player.global_position.x, target_pos.x, weight)
 		player.global_position.z = lerpf(player.global_position.z, target_pos.z, weight)
@@ -209,13 +227,13 @@ func check_can_move_right() -> bool:
 # ↓ Sprinting Stuff ↓
 
 var current_sprint_step: int
-var max_sprint_step: int = 7
+var max_sprint_step: int = 12
 
 var is_recovering: bool
 var current_recovery_time: float = 0
-var current_ttr: float = 3.0
-const OOS_TTR: float = 8.0
-const NORMAL_TTR: float = 3.0
+var current_ttr: float = 1.5
+const OOS_TTR: float = 1.5
+const NORMAL_TTR: float = 0.25
 
 func movement_input_sprint() -> void:
 	if is_crouching: return
@@ -227,6 +245,7 @@ func movement_input_sprint() -> void:
 			return
 		
 		if current_sprint_step == max_sprint_step: return
+		var prev_target: Vector3 = target_pos
 		target_pos = target_pos - compass.basis.z * Vector3.ONE
 		current_direction = MoveDirections.VERTICAL
 		
@@ -235,8 +254,10 @@ func movement_input_sprint() -> void:
 		
 		current_sprint_step += 1
 		
-		$TextureRect.visible = true
+		og_dist = prev_target.distance_to(target_pos)
+		
 		footstep_audio.play()
+		
 		check_recover()
 	##--> SOUTH
 	#elif Input.is_action_just_released("move_down") and check_can_move_down():
@@ -300,12 +321,12 @@ func movement_input_sprint() -> void:
 	compass.global_position = target_pos
 
 func check_recover() -> void:
-	var mapped_d:= remap(current_sprint_step, 0, max_sprint_step, 0.765, 0)
-	#print(mapped_d)
-	player.post_processing.set_shader_parameter("saturation", mapped_d)
-	#if current_sprint_step == max_sprint_step: current_ttr = OOS_TTR
-	#else: current_ttr = NORMAL_TTR
-	current_ttr = float(current_sprint_step)
+	if current_sprint_step >= 2:
+		var mapped_d:= remap(current_sprint_step, 0, max_sprint_step, 0.765, 0)
+		player.post_processing.set_shader_parameter("saturation", mapped_d)
+	
+	if current_sprint_step == max_sprint_step: current_ttr = OOS_TTR
+	else: current_ttr = NORMAL_TTR
 	
 	start_step_recovery()
 
@@ -357,6 +378,8 @@ func crouch(bypass_floor_detection: bool = false) -> void:
 	col.shape = col_helper_crouched.shape
 	col.position.y = col_helper_crouched.position.y
 	
+	move_curve = crouch_curve
+	
 	player.current_player_height = player.PLAYER_HEIGHT_CROUCHED
 	speed = SPEED_CROUCH
 	player.global_position.y = floor_detector.get_collision_point().y + player.current_player_height
@@ -371,6 +394,8 @@ func uncrouch() -> void:
 	
 	col.shape = col_helper_uncrouched.shape
 	col.position.y = col_helper_uncrouched.position.y
+	
+	move_curve = stand_curve
 	
 	player.current_player_height = player.PLAYER_HEIGHT
 	speed = SPEED_MAX
