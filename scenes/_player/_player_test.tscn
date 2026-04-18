@@ -1,7 +1,6 @@
 [gd_scene format=3 uid="uid://bq86osdembn58"]
 
 [ext_resource type="Script" uid="uid://io22wsbhy73f" path="res://scenes/_player/player_test.gd" id="1_e0b2u"]
-[ext_resource type="Script" uid="uid://by88p7ijbixe5" path="res://scenes/_player/player_movement.gd" id="2_3jgj8"]
 [ext_resource type="Shape3D" uid="uid://fpddyf5ita81" path="res://scenes/_player/movement/p_col_shape.tres" id="2_4f8kv"]
 [ext_resource type="PackedScene" uid="uid://ds04v2o1xwpoj" path="res://scenes/_levels/menus/death_menu/death_scene.tscn" id="2_7hjlp"]
 [ext_resource type="Script" uid="uid://jxohgxu3vshf" path="res://scripts/improved_raycast.gd" id="2_s1g5w"]
@@ -9,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://dqojmsc2q6wf4" path="res://scenes/_player/interaction/player_interaction.tscn" id="3_3jgj8"]
 [ext_resource type="Script" uid="uid://46pp7aerorca" path="res://scripts/stats.gd" id="4_fhpxp"]
 [ext_resource type="Texture2D" uid="uid://drwif87vii7ya" path="res://assets/ui/player/stats/HealthStaminaUI_border.png" id="5_bfirj"]
+[ext_resource type="Script" uid="uid://ckdu0p87yl30a" path="res://scenes/_player/player_movement_new.gd" id="6_ni6fa"]
 [ext_resource type="AudioStream" uid="uid://da4l7eb7yuxm" path="res://assets/audio/sfx/combat/misc/out-of-breath-male-176715.wav" id="7_nbsyt"]
 [ext_resource type="AudioStream" uid="uid://c1yxm3xg22iw8" path="res://assets/audio/sfx/player/footsteps/Player_step_randomizer_1.tres" id="8_ni6fa"]
 [ext_resource type="Script" uid="uid://cpomu5ts52mpj" path="res://scenes/_player/combat/player_combat.gd" id="12_gcklq"]
@@ -53,6 +53,7 @@
 [ext_resource type="Texture2D" uid="uid://b3yr563ecebd1" path="res://assets/ui/player/attack_indicators/RTop.png" id="51_j3cqb"]
 [ext_resource type="Texture2D" uid="uid://c7lfp47776dxr" path="res://assets/ui/player/attack_indicators/Lmid.png" id="51_l4n3m"]
 [ext_resource type="Texture2D" uid="uid://dbv7iuucvwfao" path="res://assets/ui/player/attack_indicators/Rlow.png" id="51_qv24e"]
+[ext_resource type="PackedScene" uid="uid://brgf3euo0od1y" path="res://scenes/_managers/effects_player/local_effect_player.tscn" id="58_4iw8u"]
 [ext_resource type="AudioStream" uid="uid://bvotk6pyl3sjh" path="res://assets/audio/sfx/player/_streams/sfx_player_hit.tres" id="58_svbpy"]
 [ext_resource type="Script" uid="uid://b13u1myu3u5tw" path="res://scenes/_player/light_checker.gd" id="61_ux48r"]
 [ext_resource type="Shader" uid="uid://4b4kstxm1aph" path="res://assets/shaders/post_processing/post_processing.gdshader" id="70_52e8e"]
@@ -163,6 +164,16 @@ _data = {
 &"RESET": SubResource("Animation_s1g5w"),
 &"death_anim": SubResource("Animation_gcklq")
 }
+
+[sub_resource type="Curve" id="Curve_4iw8u"]
+_limits = [0.5, 1.0, 0.0, 1.0]
+_data = [Vector2(0, 0.5972841), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Curve" id="Curve_ni6fa"]
+_limits = [0.5, 1.0, 0.0, 1.0]
+_data = [Vector2(0, 0.5972841), 0.0, 0.0, 0, 0, Vector2(0.6741573, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.815192), 0.0, 0.0, 0, 0]
+point_count = 3
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_3jgj8"]
 size = Vector3(0.5, 0.9, 1.1)
@@ -716,9 +727,12 @@ script = ExtResource("2_s1g5w")
 metadata/_custom_type_script = "uid://jxohgxu3vshf"
 
 [node name="Movement" type="Node" parent="." unique_id=1505445123 node_paths=PackedStringArray("player", "interact", "floor_detector", "roof_detector", "col", "col_helper_uncrouched", "col_helper_crouched")]
-script = ExtResource("2_3jgj8")
+script = ExtResource("6_ni6fa")
 player = NodePath("..")
 interact = NodePath("../Interaction")
+move_curve = SubResource("Curve_4iw8u")
+crouch_curve = SubResource("Curve_ni6fa")
+stand_curve = SubResource("Curve_4iw8u")
 floor_detector = NodePath("../FloorDetector")
 roof_detector = NodePath("../RoofDetector")
 col = NodePath("../Collision/CollisionShape3D")
@@ -1302,9 +1316,11 @@ omni_range = 2.149
 [node name="PostProcessing" type="Node" parent="." unique_id=1157661822]
 
 [node name="Sprite2D" type="Sprite2D" parent="PostProcessing" unique_id=359931708]
+visible = false
 
 [node name="CanvasLayer" type="CanvasLayer" parent="PostProcessing" unique_id=274380558]
 layer = 0
+visible = false
 
 [node name="ColorRect" type="ColorRect" parent="PostProcessing/CanvasLayer" unique_id=1334518288]
 visible = false
@@ -1316,6 +1332,8 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 color = Color(0.5747226, 0.50857943, 0.49505764, 0.03529412)
+
+[node name="LocalEffectPlayer" parent="." unique_id=1469880449 instance=ExtResource("58_4iw8u")]
 
 [connection signal="on_body_entered" from="EnemyChecker" to="Combat" method="_on_enemy_checker_on_body_entered"]
 [connection signal="on_body_exit" from="EnemyChecker" to="Combat" method="_on_enemy_checker_on_body_exit"]

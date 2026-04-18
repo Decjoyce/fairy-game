@@ -74,7 +74,7 @@ func play_hit_fx() -> void:
 	var new_color: Color = Color.CRIMSON
 	new_color.a = (max_health - current_health)/max_health
 	prints(Color.CRIMSON, new_color)
-	EffectsPlayer.colorize(new_color, new_color * Color.TRANSPARENT, length, true, true)
+	owner.local_effect_player.colorize(new_color, new_color * Color.TRANSPARENT, length, true, true)
 
 # ↑ Health Stuff ↑
 # --------------------------------------------------------------------------------------------------

@@ -25,6 +25,8 @@ var freeze : bool
 
 @export var post_processing: Shader
 
+@onready var local_effect_player: EffectPlayer = $LocalEffectPlayer
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	current_weight = PLAYER_WEIGHT
@@ -92,6 +94,7 @@ func _physics_process(delta: float) -> void:
 	movement.movement(delta)
 	
 	movement.movement_input()
+	movement.movement_input_sprint()
 
 func on_save_game(saved_data: SavedData_Player) -> void:
 	#region General Data
