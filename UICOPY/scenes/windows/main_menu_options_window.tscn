@@ -1,7 +1,8 @@
 [gd_scene format=3 uid="uid://dpic53cok00p4"]
 
-[ext_resource type="PackedScene" path="res://addons/maaacks_menus_template/base/nodes/windows/overlaid_window_scene_container.tscn" id="1_qodjs"]
-[ext_resource type="PackedScene" path="res://UICOPY/scenes/menus/options_menu/master_options_menu_with_tabs.tscn" id="2_ffnov"]
+[ext_resource type="PackedScene" uid="uid://crndfbb22ri4s" path="res://addons/maaacks_menus_template/base/nodes/windows/overlaid_window_scene_container.tscn" id="1_qodjs"]
+[ext_resource type="PackedScene" uid="uid://wyg20wvsg5p1" path="res://UICOPY/scenes/menus/options_menu/master_options_menu_with_tabs.tscn" id="2_ffnov"]
+[ext_resource type="Theme" uid="uid://4rqtecgji27t" path="res://scenes/_levels/menus/main_menu/Main_Menu_UI_NEW/UI_themes/customised_brush_theme.tres" id="2_t8l3r"]
 
 [node name="MainMenuOptionsOverlaidWindow" unique_id=1787637973 instance=ExtResource("1_qodjs")]
 anchors_preset = 15
@@ -15,6 +16,7 @@ offset_right = 0.0
 offset_bottom = 0.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
+theme = ExtResource("2_t8l3r")
 packed_scene = ExtResource("2_ffnov")
 update_content = true
 close_button_text = "Back"
