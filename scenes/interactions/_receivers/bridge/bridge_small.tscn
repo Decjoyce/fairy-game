@@ -3,7 +3,12 @@
 [ext_resource type="Script" uid="uid://cko3icuffehvs" path="res://scenes/interactions/_receivers/bridge/bridge_new.gd" id="1_y5wnn"]
 [ext_resource type="Material" uid="uid://f0qp2o0ip83p" path="res://assets/models/cairn/Props/Wood_Door/Wood_Door.tres" id="2_8sowv"]
 [ext_resource type="Material" uid="uid://c17eub34k5hf8" path="res://assets/models/cairn/Props/Wood_Door/Wood_Screw.tres" id="3_10s5n"]
+[ext_resource type="Script" uid="uid://kg11gyciyied" path="res://scripts/audio_value_player.gd" id="4_ax3gi"]
 [ext_resource type="Script" uid="uid://ce8fajkonjvqr" path="res://scripts/saving/persistent_objs/po_bridge.gd" id="4_ylild"]
+[ext_resource type="AudioStream" uid="uid://domk04y6ro822" path="res://assets/audio/sfx/player/hit/Hit_Player-005.wav" id="5_y3uxi"]
+[ext_resource type="AudioStream" uid="uid://uwq4d1fqxpyc" path="res://assets/audio/sfx/player/hit/Hit_Player-001.wav" id="6_lvkeh"]
+[ext_resource type="AudioStream" uid="uid://dq7fnct8thxc1" path="res://assets/audio/sfx/items/urn/Pot_Break-006.wav" id="7_fc6df"]
+[ext_resource type="AudioStream" uid="uid://d4dvoha5rxki3" path="res://assets/audio/sfx/environment/Button/Vehicles, Mechanism, Toyota Auris 2018, Radio, On, Off SND154190 S00.wav" id="8_4krcl"]
 
 [sub_resource type="Curve" id="Curve_y65r8"]
 _data = [Vector2(0.13202247, 0.97241664), 0.0, 0.0, 0, 0, Vector2(0.49438202, 0.2662847), 0.0, 0.0, 0, 0, Vector2(0.9691011, 1), 0.0, 0.0, 0, 0]
@@ -72,6 +77,11 @@ size = Vector3(3.85083, 0.16186523, 1.9274902)
 [sub_resource type="BoxShape3D" id="BoxShape3D_rtdc7"]
 size = Vector3(3.8459778, 0.1673584, 0.13110352)
 
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_tlw02"]
+streams_count = 2
+stream_0/stream = ExtResource("5_y3uxi")
+stream_1/stream = ExtResource("6_lvkeh")
+
 [node name="Bridge_Small" type="Node3D" unique_id=996377687 node_paths=PackedStringArray("col", "pivot")]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, 0)
 script = ExtResource("1_y5wnn")
@@ -125,6 +135,12 @@ shape = SubResource("BoxShape3D_rtdc7")
 [node name="CollisionShape3D2" type="CollisionShape3D" parent="_pivot/_player_col" unique_id=659447663]
 transform = Transform3D(0.99999917, 6.854534e-07, 0, -6.854534e-07, 0.99999917, -7.1054274e-15, 0, 3.375078e-12, 1, 1.8992386, -0.043849945, 0.90089655)
 shape = SubResource("BoxShape3D_rtdc7")
+
+[node name="AudioValuePlayer" type="AudioStreamPlayer3D" parent="." unique_id=2113044445]
+max_distance = 12.0
+bus = &"items"
+script = ExtResource("4_ax3gi")
+sounds = Array[AudioStream]([SubResource("AudioStreamRandomizer_tlw02"), ExtResource("7_fc6df"), ExtResource("8_4krcl")])
 
 [node name="PO_Bridge" type="Node" parent="." unique_id=1309201495 groups=["PO"]]
 script = ExtResource("4_ylild")

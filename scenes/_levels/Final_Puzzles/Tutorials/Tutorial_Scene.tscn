@@ -26,15 +26,13 @@
 [ext_resource type="PackedScene" uid="uid://d2ict3hg28spx" path="res://scenes/_levels/_palettes/cairn/props/cairn_fake_wall.tscn" id="24_5nqf6"]
 [ext_resource type="Texture2D" uid="uid://vvyp3kfi47jv" path="res://assets/sprites/Ballybog/ballyIdle1_1.png" id="25_vxxbb"]
 [ext_resource type="Script" uid="uid://c4t3ko70ihpyy" path="res://scenes/interactions/_receivers/animated_object/animated_object.gd" id="26_iqwb6"]
+[ext_resource type="PackedScene" uid="uid://cruv8v8wh8l06" path="res://scenes/interactions/_special/saving_stone/saving_stone.tscn" id="27_ea6e4"]
 [ext_resource type="PackedScene" uid="uid://bq86osdembn58" path="res://scenes/_player/_player_test.tscn" id="27_r5rtq"]
 [ext_resource type="AudioStream" uid="uid://cq7dtkcnrtjyk" path="res://assets/audio/sfx/environment/ambient/Ambience, Underground, Cave, Magic, Deep, Wind, Howling 01 SND46571.wav" id="28_k1g5s"]
 [ext_resource type="AudioStream" uid="uid://cte56l5nhnq88" path="res://assets/audio/sfx/environment/ambient/Ambience, Underground, Cave, Magic, Cold, Deep, Wind, Eerie SND46573.wav" id="29_li6vv"]
 [ext_resource type="AudioStream" uid="uid://bscs1lnw8crcv" path="res://assets/audio/sfx/environment/ambient/Ambience, Underground, Cave, Magic, Dangling Metal SND46572.wav" id="30_cb5rp"]
-[ext_resource type="PackedScene" uid="uid://dixo0ej77bjqc" path="res://scenes/_levels/Final_Puzzles/Tutorials/statue_section.tscn" id="31_e6y0d"]
-[ext_resource type="PackedScene" uid="uid://cieiwvi0168kv" path="res://scenes/_levels/Final_Puzzles/Mechanical_Puzzles/traps_puzzle_new.tscn" id="32_gc7j0"]
 [ext_resource type="PackedScene" uid="uid://b1ug372yre60k" path="res://scenes/_levels/Final_Puzzles/Tutorials/throwing_puzzle_new.tscn" id="33_ughci"]
 [ext_resource type="Script" uid="uid://bul4myvyhnpjc" path="res://scripts/saving/uid_generator.gd" id="34_1qgam"]
-[ext_resource type="Material" uid="uid://rbnbiylju0f0" path="res://assets/models/cairn/Hall_BigRoof/Dirtcube.tres" id="35_pc8ss"]
 
 [sub_resource type="Resource" id="Resource_7acmg"]
 script = ExtResource("7_0nxer")
@@ -111,17 +109,13 @@ tonemap_mode = 2
 glow_enabled = true
 volumetric_fog_enabled = true
 
-[sub_resource type="QuadMesh" id="QuadMesh_t4adt"]
-material = ExtResource("35_pc8ss")
-size = Vector2(10, 10)
-
 [node name="Main_Level" type="Node3D" unique_id=872925716]
 
 [node name="GridMap" type="GridMap" parent="." unique_id=977673662]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.03, 0)
 mesh_library = ExtResource("1_56l6l")
 data = {
-"cells": PackedInt32Array(65535, 5, 655373, 65535, 6, 2, 65535, 7, 4, 0, 5, 1441794, 1, 2, 2, 1, 3, 2, 1, 4, 2, 1, 5, 3, 2, 1, 1, 1, 65535, 2, 65535, 1, 1441795, 0, 1, 1, 3, 1, 3, 3, 0, 1048579, 2, 0, 655361, 1, 1, 655360, 1, 0, 655360, 1, 65534, 655362, 1, 65533, 655362, 1, 65532, 655362, 0, 65531, 1441795, 65535, 65530, 1441795, 65535, 65529, 1441793, 65535, 65528, 655363, 0, 65527, 655363, 3, 65530, 3, 3, 65528, 1048579, 2, 65527, 1048579, 1, 65526, 655364, 1, 65527, 1441792, 0, 65528, 1441792, 1, 65528, 1441792, 2, 65528, 1441792, 2, 65529, 1441792, 1, 65529, 1441792, 0, 65529, 1441792, 2, 65530, 1441792, 1, 65530, 1441792, 0, 65530, 1441792, 1, 65531, 1441792, 2, 65531, 3, 4, 65529, 1441794, 3, 65529, 1441792, 5, 65529, 1441804, -65519, 65533, 1048578, -65520, 65533, 1441808, -65521, 65532, 1441808, -65521, 65533, 1441808, -65521, 65534, 1441808, -65522, 65534, 1441808, -65522, 65533, 1441808, -65522, 65532, 1441808, -65523, 65533, 1441808, -65518, 65533, 1441794, -65517, 65533, 1441794, 65535, 0, 655373, 0, 0, 655371, -65516, 65533, 1441794, -65497, 65531, 2, -65497, 65532, 2, -65515, 65533, 1441794, -65520, 65534, 1048593, -65523, 65534, 16, -65523, 65535, 655369, -65523, 0, 1441800, -65522, 0, 1441799, -65521, 0, 8, -65522, 65535, 16, -65520, 65532, 655377, -65521, 65531, 655377, -65522, 65531, 1441809, -65523, 65532, 1441809, -65521, 65535, 655378, 6, 65529, 3, 6, 65528, 655363, 7, 65528, 1048578, 8, 65528, 1048578, -65523, 65528, 655380, -65523, 65529, 3, -65524, 65529, 655363, -65524, 65530, 3, -65525, 65530, 1441794, -65526, 65530, 1441794, -65527, 65530, 1441794, -65528, 65530, 1441794, -65529, 65530, 1441794, -65530, 65530, 655361, -65530, 65531, 655362, -65530, 65532, 655362, -65530, 65533, 1441795, -65529, 65533, 1441794, -65528, 65533, 1441794, -65527, 65533, 1441794, -65526, 65533, 1441794, -65525, 65533, 1441794, -65524, 65533, 1441794, -65531, 65530, 655383, -65531, 65531, 655383, -65531, 65532, 655383)
+"cells": PackedInt32Array(65535, 5, 655373, 65535, 6, 2, 65535, 7, 4, 0, 5, 1441794, 1, 2, 2, 1, 3, 2, 1, 4, 2, 1, 5, 3, 2, 1, 1, 1, 65535, 2, 65535, 1, 1441795, 0, 1, 1, 3, 1, 3, 3, 0, 1048579, 2, 0, 655361, 1, 1, 655360, 1, 0, 655360, 1, 65534, 655362, 1, 65533, 655362, 1, 65532, 655362, 0, 65531, 1441795, 65535, 65530, 1441795, 65535, 65529, 1441793, 65535, 65528, 655363, 0, 65527, 655363, 3, 65530, 3, 3, 65528, 1048579, 2, 65527, 1048579, 1, 65526, 655364, 1, 65527, 1441792, 0, 65528, 1441792, 1, 65528, 1441792, 2, 65528, 1441792, 2, 65529, 1441792, 1, 65529, 1441792, 0, 65529, 1441792, 2, 65530, 1441792, 1, 65530, 1441792, 0, 65530, 1441792, 1, 65531, 1441792, 2, 65531, 3, 4, 65529, 1441794, 3, 65529, 1441792, 5, 65529, 1441804, -65519, 65533, 1048578, -65520, 65533, 1441808, -65521, 65532, 1441808, -65521, 65533, 1441808, -65521, 65534, 1441808, -65522, 65534, 1441808, -65522, 65533, 1441808, -65522, 65532, 1441808, -65523, 65533, 1441808, -65518, 65533, 1441794, -65517, 65533, 1441794, 65535, 0, 655373, 0, 0, 655371, -65516, 65533, 1441794, -65515, 65533, 1441794, -65520, 65534, 1048593, -65523, 65534, 16, -65523, 65535, 655369, -65523, 0, 1441800, -65522, 0, 1441799, -65521, 0, 8, -65522, 65535, 16, -65520, 65532, 655377, -65521, 65531, 655377, -65522, 65531, 1441809, -65523, 65532, 1441809, -65521, 65535, 655378, 6, 65529, 3, 6, 65528, 655363, 7, 65528, 1048578, 8, 65528, 1048578, -65523, 65528, 655380, -65523, 65529, 3, -65524, 65529, 655363, -65524, 65530, 3, -65525, 65530, 1441794, -65526, 65530, 1441794, -65527, 65530, 1441794, -65528, 65530, 1441794, -65529, 65530, 1441794, -65530, 65530, 655361, -65530, 65531, 655362, -65530, 65532, 655362, -65530, 65533, 1441795, -65529, 65533, 1441794, -65528, 65533, 1441794, -65527, 65533, 1441794, -65526, 65533, 1441794, -65525, 65533, 1441794, -65524, 65533, 1441794, -65531, 65530, 655383, -65531, 65531, 655383, -65531, 65532, 655383, -65514, 65532, 655373, -65514, 65534, 1441805, -65512, 65534, 13, -65512, 65532, 1048589, -65513, 65532, 655371, -65513, 65534, 11, -65511, 65533, 1441794, -65512, 65533, 1441792, -65513, 65533, 1441792, -65514, 65533, 1441792, -65510, 65533, 1441794, -65509, 65533, 1441794)
 }
 metadata/_editor_floor_ = Vector3(0, -1, 0)
 
@@ -283,9 +277,6 @@ transform = Transform3D(1, 0, 0, 0, 0.96592593, -0.25881907, 0, 0.25881907, 0.96
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.07205212)
 shape = SubResource("BoxShape3D_4v2ph")
 
-[node name="TorchScont" parent="Tutorial_Area/Second_Crouch Point" unique_id=377443057 instance=ExtResource("2_ea6e4")]
-transform = Transform3D(1.4705882, 0, 0, 0, 0.73529404, -1.2735668, 0, 1.2735668, 0.73529404, 0.25948715, -1.5335776, -2.3730986)
-
 [node name="TorchSconce_Lit" parent="Tutorial_Area/Second_Crouch Point" unique_id=28563450 instance=ExtResource("16_jw1y0")]
 transform = Transform3D(3.496, 0, 0, 0, 3.496, 0, 0, 0, 3.496, 0.25948715, 4.9849377, -8.823529)
 
@@ -294,6 +285,9 @@ transform = Transform3D(3.4959998, 0, 0, 0, 3.4959998, 0, 0, 0, 3.4959998, 0.259
 
 [node name="TorchSconce_Lit3" parent="Tutorial_Area/Second_Crouch Point" unique_id=762051617 instance=ExtResource("16_jw1y0")]
 transform = Transform3D(3.4959998, 0, 0, 0, 3.4959998, 0, 0, 0, 3.4959998, 3.2006645, 5.8186073, -7.352941)
+
+[node name="TorchSconce_Lit4" parent="Tutorial_Area/Second_Crouch Point" unique_id=1517405374 instance=ExtResource("3_pvb4u")]
+transform = Transform3D(-6.428145e-08, 6.428145e-08, -1.4705882, 1.4705882, 2.8098315e-15, -6.428145e-08, 0, -1.4705882, -6.428145e-08, 0.25948715, -1.7077113, 0)
 
 [node name="3d Text" type="Node" parent="Tutorial_Area" unique_id=456015211]
 
@@ -329,9 +323,15 @@ metadata/date_generated = "2026-03-25T17:22:57"
 
 [node name="Torch" parent="Tutorial_Area/Urn_key_puzzle" unique_id=1021080000 instance=ExtResource("20_nyk0u")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 1, 10.9)
+metadata/uid = "fa2347fc-d2a7-4fa3-aadf-854228619730"
+metadata/lock_uid = true
+metadata/date_generated = "2026-04-20T16:03:47"
 
 [node name="Slate_Gate" parent="Tutorial_Area/Urn_key_puzzle" unique_id=2077487765 instance=ExtResource("4_elh88")]
 transform = Transform3D(0.705, 0, 0, 0, -3.081653e-08, 0.705, 0, -0.705, -3.081653e-08, 32.01162, 1.2980931, -4.2281075)
+metadata/uid = "0d7628be-a07d-4dab-8826-984eae779960"
+metadata/lock_uid = true
+metadata/date_generated = "2026-04-20T16:03:47"
 
 [node name="Walls_Parent" type="Node3D" parent="Tutorial_Area" unique_id=777706606]
 
@@ -518,6 +518,35 @@ metadata/_custom_type_script = "uid://c4t3ko70ihpyy"
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Tutorial_Area/Ballybog_Tease/Bally_Bog_Animated" unique_id=758951367]
 libraries/ = SubResource("AnimationLibrary_06cj6")
 
+[node name="Save_Tutorial" type="Node3D" parent="Tutorial_Area" unique_id=2032179810]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 47, -2, -5)
+
+[node name="Gate" parent="Tutorial_Area/Save_Tutorial" unique_id=2072897166 instance=ExtResource("4_elh88")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 5, 0, 0)
+metadata/uid = "f8174a49-f99c-47a2-88c6-6d41fbd2340f"
+metadata/lock_uid = true
+metadata/date_generated = "2026-04-20T16:03:47"
+
+[node name="SavingStone" parent="Tutorial_Area/Save_Tutorial" unique_id=452927148 instance=ExtResource("27_ea6e4")]
+transform = Transform3D(-1, 0, 8.940697e-08, 0, 1, 0, -8.940697e-08, 0, -1, 0, -0.010372877, 0)
+
+[node name="Environment" type="Node3D" parent="Tutorial_Area/Save_Tutorial" unique_id=468420931]
+
+[node name="Torches" type="Node3D" parent="Tutorial_Area/Save_Tutorial/Environment" unique_id=891606685]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 1, 0)
+
+[node name="TorchSconce_Lit" parent="Tutorial_Area/Save_Tutorial/Environment/Torches" unique_id=1062016048 instance=ExtResource("3_pvb4u")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -0.20166779, 0.5142746, -1.1426411)
+
+[node name="TorchSconce_Lit2" parent="Tutorial_Area/Save_Tutorial/Environment/Torches" unique_id=104641397 instance=ExtResource("3_pvb4u")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 0.020332336, 0.5142746, 1.2891049)
+
+[node name="Torch_Mounted" parent="Tutorial_Area/Save_Tutorial/Environment/Torches" unique_id=319274200 instance=ExtResource("23_gyl80")]
+transform = Transform3D(-3.7855173e-08, 2.1855694e-08, -1, 0.5, 0.8660254, 0, 0.8660254, -0.5, -4.371139e-08, -9, 0.38180494, 0.6345644)
+
+[node name="Torch_Mounted2" parent="Tutorial_Area/Save_Tutorial/Environment/Torches" unique_id=1287931186 instance=ExtResource("23_gyl80")]
+transform = Transform3D(-3.7855173e-08, 2.1855694e-08, 1, 0.5, 0.8660254, 0, -0.8660254, 0.5, -4.371139e-08, -9, 0.38180494, -0.5995693)
+
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=672850743]
 environment = SubResource("Environment_rbu3s")
 
@@ -527,7 +556,7 @@ light_color = Color(0.3227734, 0.33385244, 0.3646147, 1)
 shadow_enabled = true
 
 [node name="player_test" parent="." unique_id=725727541 instance=ExtResource("27_r5rtq")]
-transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 16.2, 1, -15)
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 38.2, -1, -5)
 
 [node name="Ambient_Noises" type="Node3D" parent="." unique_id=369290277]
 
@@ -568,13 +597,7 @@ pitch_scale = 0.2
 autoplay = true
 max_distance = 10.0
 
-[node name="Statue_Section" parent="." unique_id=1516115227 instance=ExtResource("31_e6y0d")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 52, -2, -5)
-
 [node name="Puzzles" type="Node3D" parent="." unique_id=1428055799]
-
-[node name="Traps_Puzzle" parent="Puzzles" unique_id=1530637846 instance=ExtResource("32_gc7j0")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 53, -2, -16)
 
 [node name="Throwing_Puzzle" parent="Puzzles" unique_id=1927853586 instance=ExtResource("33_ughci")]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 19.947641, -1, -14.028069)
@@ -582,58 +605,6 @@ transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 19.9
 [node name="UID_Generator" type="Node" parent="." unique_id=78198919]
 script = ExtResource("34_1qgam")
 metadata/_custom_type_script = "uid://bul4myvyhnpjc"
-
-[node name="Temp_DirtWalls" type="Node3D" parent="." unique_id=369493102]
-
-[node name="MeshInstance3D9" type="MeshInstance3D" parent="Temp_DirtWalls" unique_id=1486817852]
-transform = Transform3D(4.3711392e-08, -1.0111054, 1.9106857e-15, -1.0000001, -4.419682e-08, -4.3711395e-08, 4.3711395e-08, 0, -1.0000001, 78.9, -7, -16.00988)
-mesh = SubResource("QuadMesh_t4adt")
-skeleton = NodePath("../..")
-
-[node name="MeshInstance3D16" type="MeshInstance3D" parent="Temp_DirtWalls" unique_id=275395451]
-transform = Transform3D(-4.3711402e-08, 1.0111054, 8.7422784e-08, -1.0000001, -4.4196824e-08, -4.37114e-08, -4.3711395e-08, -8.839364e-08, 1.0000001, 78.9, -7, -13.973159)
-mesh = SubResource("QuadMesh_t4adt")
-skeleton = NodePath("../..")
-
-[node name="MeshInstance3D17" type="MeshInstance3D" parent="Temp_DirtWalls" unique_id=1454823335]
-transform = Transform3D(-4.3711392e-08, -1.3259046e-07, 1.0000001, -1.0000001, -4.4196828e-08, -4.3711402e-08, 4.371141e-08, -1.0111054, -1.3113419e-07, 80.000336, -7, -14.973159)
-mesh = SubResource("QuadMesh_t4adt")
-skeleton = NodePath("../..")
-
-[node name="MeshInstance3D18" type="MeshInstance3D" parent="Temp_DirtWalls" unique_id=162170901]
-transform = Transform3D(4.37114e-08, 4.4196817e-08, -1.0000001, -1.0000001, -4.419683e-08, -4.3711406e-08, -4.371141e-08, 1.0111054, 4.3711402e-08, 78.1894, -7, -14.973159)
-mesh = SubResource("QuadMesh_t4adt")
-skeleton = NodePath("../..")
-
-[node name="MeshInstance3D10" type="MeshInstance3D" parent="Temp_DirtWalls" unique_id=176356870]
-transform = Transform3D(4.3711392e-08, 4.419682e-08, -1.0000001, -1.0000001, -4.4196824e-08, -4.37114e-08, -4.37114e-08, 1.0111054, 4.371139e-08, 84.02147, 0, -15.616363)
-mesh = SubResource("QuadMesh_t4adt")
-skeleton = NodePath("../..")
-
-[node name="MeshInstance3D13" type="MeshInstance3D" parent="Temp_DirtWalls" unique_id=1282022953]
-transform = Transform3D(4.37114e-08, -1.0111054, 0, -0.8660255, -3.827558e-08, -0.5000001, 0.5000001, 2.2098414e-08, -0.8660255, 78.9, 5.3437185, -11.616363)
-mesh = SubResource("QuadMesh_t4adt")
-skeleton = NodePath("../..")
-
-[node name="MeshInstance3D14" type="MeshInstance3D" parent="Temp_DirtWalls" unique_id=1455066999]
-transform = Transform3D(4.37114e-08, -1.0111054, 1.5383703e-15, 8.940697e-08, 1.7763568e-15, -1.0000001, 1.0000001, 4.419683e-08, 8.940697e-08, 78.9, 4.3437185, -15.616363)
-mesh = SubResource("QuadMesh_t4adt")
-skeleton = NodePath("../..")
-
-[node name="MeshInstance3D15" type="MeshInstance3D" parent="Temp_DirtWalls" unique_id=40471740]
-transform = Transform3D(4.37114e-08, -1.0111054, 1.5383703e-15, 0.7071069, 3.125188e-08, -0.70710677, 0.70710677, 3.1251883e-08, 0.7071069, 78.9, 4.3437185, -18.616364)
-mesh = SubResource("QuadMesh_t4adt")
-skeleton = NodePath("../..")
-
-[node name="MeshInstance3D11" type="MeshInstance3D" parent="Temp_DirtWalls" unique_id=1393663316]
-transform = Transform3D(-0.2588191, 3.1251872e-08, 0.96592593, -0.96592593, -5.412984e-08, -0.2588191, 4.37114e-08, -1.0111054, 4.3711395e-08, 74.75317, 5.044847, -15.616363)
-mesh = SubResource("QuadMesh_t4adt")
-skeleton = NodePath("../..")
-
-[node name="MeshInstance3D12" type="MeshInstance3D" parent="Temp_DirtWalls" unique_id=1351375846]
-transform = Transform3D(-2.9802322e-08, 5.745588e-08, 1.0000001, -1.0000001, -5.745588e-08, -2.9802322e-08, 4.37114e-08, -1.314437, 4.3711395e-08, 71.86529, -7.1431727, -15.616363)
-mesh = SubResource("QuadMesh_t4adt")
-skeleton = NodePath("../..")
 
 [connection signal="on_activated" from="Tutorial_Area/First Gate&Button/First_Button" to="Tutorial_Area/First Gate&Button/First_Gate" method="open_gate"]
 [connection signal="on_change" from="Tutorial_Area/Weighted_Gate_Puzzle/Tutorial_Weight_Puzzle" to="Tutorial_Area/Weighted_Gate_Puzzle/Weight_Puzzle_Gate" method="open_gate"]
@@ -646,3 +617,4 @@ skeleton = NodePath("../..")
 [connection signal="on_activated" from="Tutorial_Area/Ballybog_Tease/PlayerAreaTrigger_Ballybog" to="Tutorial_Area/Ballybog_Tease/Bally_Bog_Animated" method="play_animation"]
 [connection signal="area_entered" from="Tutorial_Area/Ballybog_Tease/PlayerAreaTrigger_Ballybog/Area3D" to="Tutorial_Area/Ballybog_Tease/PlayerAreaTrigger_Ballybog" method="_player_entered"]
 [connection signal="area_exited" from="Tutorial_Area/Ballybog_Tease/PlayerAreaTrigger_Ballybog/Area3D" to="Tutorial_Area/Ballybog_Tease/PlayerAreaTrigger_Ballybog" method="_player_exited"]
+[connection signal="on_end_interact" from="Tutorial_Area/Save_Tutorial/SavingStone" to="Tutorial_Area/Save_Tutorial/Gate" method="open_gate"]
