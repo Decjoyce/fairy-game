@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://8ur6fpvfuoah" path="res://scenes/_levels/Final_Puzzles/BallyBog_Puzzles/BallyBog_HardSection.tscn" id="6_eit3y"]
 [ext_resource type="PackedScene" uid="uid://dacn4eoc5kfd3" path="res://scenes/_levels/Final_Puzzles/Mechanical_Puzzles/bridge_puzzle.tscn" id="7_4xsbt"]
 [ext_resource type="Script" uid="uid://io22wsbhy73f" path="res://scenes/_player/player_test.gd" id="8_hkkfa"]
+[ext_resource type="Script" uid="uid://bul4myvyhnpjc" path="res://scripts/saving/uid_generator.gd" id="9_yx8rv"]
 
 [node name="Final_Level" type="Node3D" unique_id=40124892]
 
@@ -40,3 +41,11 @@ transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 63, 
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 1)
 script = ExtResource("8_hkkfa")
 metadata/_custom_type_script = "uid://io22wsbhy73f"
+
+[node name="Connections_GridMap" type="GridMap" parent="." unique_id=1193872561]
+
+[node name="Save_points" type="Node3D" parent="." unique_id=984743412]
+
+[node name="UID_Generator" type="Node" parent="." unique_id=789896370]
+script = ExtResource("9_yx8rv")
+metadata/_custom_type_script = "uid://bul4myvyhnpjc"
