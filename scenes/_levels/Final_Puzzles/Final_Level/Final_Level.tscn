@@ -1,0 +1,42 @@
+[gd_scene format=3 uid="uid://b4m52oohfjp65"]
+
+[ext_resource type="PackedScene" uid="uid://ckuw7ho3cogrs" path="res://scenes/_levels/Final_Puzzles/Tutorials/Tutorial_Scene.tscn" id="1_rrpju"]
+[ext_resource type="PackedScene" uid="uid://dixo0ej77bjqc" path="res://scenes/_levels/Final_Puzzles/Tutorials/statue_section.tscn" id="2_yx8rv"]
+[ext_resource type="PackedScene" uid="uid://cieiwvi0168kv" path="res://scenes/_levels/Final_Puzzles/Mechanical_Puzzles/traps_puzzle_new.tscn" id="3_puimf"]
+[ext_resource type="PackedScene" uid="uid://bvj3a43avx5bu" path="res://scenes/_levels/Final_Puzzles/BallyBog_Puzzles/BallyBog_Introduction.tscn" id="4_hkhvn"]
+[ext_resource type="PackedScene" uid="uid://d1urmoxnqqkkl" path="res://scenes/_levels/Final_Puzzles/BallyBog_Puzzles/BallyBogPuzzle_Medium.tscn" id="5_ugv53"]
+[ext_resource type="PackedScene" uid="uid://8ur6fpvfuoah" path="res://scenes/_levels/Final_Puzzles/BallyBog_Puzzles/BallyBog_HardSection.tscn" id="6_eit3y"]
+[ext_resource type="PackedScene" uid="uid://dacn4eoc5kfd3" path="res://scenes/_levels/Final_Puzzles/Mechanical_Puzzles/bridge_puzzle.tscn" id="7_4xsbt"]
+[ext_resource type="Script" uid="uid://io22wsbhy73f" path="res://scenes/_player/player_test.gd" id="8_hkkfa"]
+
+[node name="Final_Level" type="Node3D" unique_id=40124892]
+
+[node name="Different_Sections" type="Node3D" parent="." unique_id=1678989516]
+
+[node name="Tutorial" parent="Different_Sections" unique_id=872925716 instance=ExtResource("1_rrpju")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, -14)
+
+[node name="Statue_Section" parent="Different_Sections" unique_id=1516115227 instance=ExtResource("2_yx8rv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 65, -2, -19)
+
+[node name="Traps_Puzzle" parent="Different_Sections" unique_id=1530637846 instance=ExtResource("3_puimf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 66, -2, -30)
+
+[node name="BallyBog_Section" type="Node3D" parent="Different_Sections" unique_id=1895157133]
+
+[node name="Ballybog_Scene" parent="Different_Sections/BallyBog_Section" unique_id=842226877 instance=ExtResource("4_hkhvn")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 83, 0, -1)
+
+[node name="Puzzle01" parent="Different_Sections/BallyBog_Section" unique_id=2140837292 instance=ExtResource("5_ugv53")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 81, -1, 19)
+
+[node name="BallyBog_HardSection" parent="Different_Sections/BallyBog_Section" unique_id=818137965 instance=ExtResource("6_eit3y")]
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 83, 0, 33)
+
+[node name="Bridge_Puzzle" parent="Different_Sections/BallyBog_Section" unique_id=935876353 instance=ExtResource("7_4xsbt")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 63, 0, 41)
+
+[node name="PlayerTest" type="Node3D" parent="." unique_id=1985705818]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 1)
+script = ExtResource("8_hkkfa")
+metadata/_custom_type_script = "uid://io22wsbhy73f"
