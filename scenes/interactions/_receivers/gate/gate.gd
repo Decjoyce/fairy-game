@@ -20,6 +20,7 @@ var open_pos: float = 1.8
 @export var tp_checker_col: CollisionShape3D
 @export var out_pos_back: Node3D
 @export var out_pos_front: Node3D
+@onready var avp: AudioValuePlayer = $AudioValuePlayer
 var current_out_pos: Vector3
 
 var things_under: Array[Node3D]
@@ -78,6 +79,8 @@ func toggle_gate(sig: float = -1) -> void:
 	else: fully_open_gate()
 
 func _process(delta: float) -> void:
+	
+	avp.play_me_bro(cur_value)
 	
 	if !things_under and player_col_should_enabled:
 		player_col.set_deferred("disabled",false)

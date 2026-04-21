@@ -5,6 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://d0xde7v5f357c" path="res://assets/sprites/item_sprites/stone.png" id="3_3y6sd"]
 [ext_resource type="AudioStream" uid="uid://c06ecuwypinuu" path="res://assets/audio/sfx/items/StoneHit/stonepile_hit_randomizer.tres" id="4_86mok"]
 [ext_resource type="Script" uid="uid://bhf6r6nw14krj" path="res://scripts/saving/persistent_objs/po_item.gd" id="6_4pe46"]
+[ext_resource type="AudioStream" uid="uid://bny0b3bdsuco3" path="res://assets/audio/sfx/items/Grab/Rock_randomizer.tres" id="6_okfy6"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_llc7q"]
 
@@ -77,4 +78,5 @@ script = ExtResource("6_4pe46")
 metadata/_custom_type_script = "uid://bhf6r6nw14krj"
 
 [node name="Audio_Grabbed" type="AudioStreamPlayer3D" parent="." unique_id=2132005903]
+stream = ExtResource("6_okfy6")
 max_distance = 1.0

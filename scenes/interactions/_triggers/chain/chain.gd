@@ -21,6 +21,7 @@ signal on_deactivated(sig: float)
 @onready var graphics: Node3D = $temp_graphics
 @onready var animated_object: AnimatedObject = $AnimatedObject
 @onready var col: CollisionShape3D = $Trigger/_col
+@onready var avp: AudioValuePlayer = $AudioValuePlayer
 
 var point_end: Vector3
 var point_top: Vector3
@@ -35,6 +36,7 @@ func _ready() -> void:
 	else: $Trigger/_debugmesh.visible = false
 
 func _process(delta: float) -> void:
+	avp.play_me_bro(current_value)
 	if !being_interacted_with and slowly_reset_when_not_used and current_value > 0:
 		if no_reset_if_activated and current_value == 1.0: return
 		slowly_reset_chain(delta)

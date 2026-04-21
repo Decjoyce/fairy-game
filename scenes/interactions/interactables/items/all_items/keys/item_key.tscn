@@ -5,6 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://527wal6n3lqs" path="res://assets/sprites/item_sprites/key.png" id="3_i4wxb"]
 [ext_resource type="AudioStream" uid="uid://dutddyikwuiut" path="res://assets/audio/sfx/combat/misc/hittingsound_shorter.wav" id="4_jbrpq"]
 [ext_resource type="Script" uid="uid://bhf6r6nw14krj" path="res://scripts/saving/persistent_objs/po_item.gd" id="5_8m1kt"]
+[ext_resource type="AudioStream" uid="uid://dytft82vafsv1" path="res://assets/audio/sfx/items/Grab/Key_grab.tres" id="6_1aeak"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_llc7q"]
 
@@ -94,4 +95,5 @@ metadata/_custom_type_script = "uid://bhf6r6nw14krj"
 mesh = SubResource("QuadMesh_1aeak")
 
 [node name="Audio_Grabbed" type="AudioStreamPlayer3D" parent="." unique_id=1584303311]
+stream = ExtResource("6_1aeak")
 max_distance = 1.0

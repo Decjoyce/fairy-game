@@ -5,6 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://fi7u5hje4qql" path="res://assets/sprites/item_sprites/bell.png" id="3_youxa"]
 [ext_resource type="AudioStream" uid="uid://bbqnhfeniq7gu" path="res://assets/audio/sfx/items/bell/bell_hit_randomizer.tres" id="4_youxa"]
 [ext_resource type="Script" uid="uid://bhf6r6nw14krj" path="res://scripts/saving/persistent_objs/po_item.gd" id="5_ypg6s"]
+[ext_resource type="AudioStream" uid="uid://ct8n131fcmf8r" path="res://assets/audio/sfx/items/Grab/CupHandle.tres" id="6_dbiq4"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_llc7q"]
 
@@ -75,4 +76,5 @@ script = ExtResource("5_ypg6s")
 metadata/_custom_type_script = "uid://bhf6r6nw14krj"
 
 [node name="Audio_Grabbed" type="AudioStreamPlayer3D" parent="." unique_id=1108259553]
+stream = ExtResource("6_dbiq4")
 max_distance = 1.0
