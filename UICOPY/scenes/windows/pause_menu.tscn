@@ -1,9 +1,10 @@
 [gd_scene format=3 uid="uid://dpb4loi6o0aum"]
 
-[ext_resource type="PackedScene" path="res://addons/maaacks_menus_template/base/nodes/windows/overlaid_window.tscn" id="1_iqqot"]
-[ext_resource type="Script" path="res://UICOPY/scenes/windows/pause_menu.gd" id="2_nqejx"]
-[ext_resource type="PackedScene" path="res://UICOPY/scenes/windows/pause_menu_options_window.tscn" id="3_sv8q1"]
-[ext_resource type="PackedScene" path="res://addons/maaacks_menus_template/base/nodes/windows/confirmation_overlaid_window.tscn" id="4_qnj2a"]
+[ext_resource type="PackedScene" uid="uid://6gdbfi0172ji" path="res://addons/maaacks_menus_template/base/nodes/windows/overlaid_window.tscn" id="1_iqqot"]
+[ext_resource type="Script" uid="uid://fhe0hsd7xxma" path="res://UICOPY/scenes/windows/pause_menu.gd" id="2_nqejx"]
+[ext_resource type="Theme" uid="uid://4rqtecgji27t" path="res://scenes/_levels/menus/main_menu/Main_Menu_UI_NEW/UI_themes/customised_brush_theme.tres" id="2_sv8q1"]
+[ext_resource type="PackedScene" uid="uid://bp5w33g1hroc2" path="res://UICOPY/scenes/windows/pause_menu_options_window.tscn" id="3_sv8q1"]
+[ext_resource type="PackedScene" uid="uid://cwt4p3bufkke5" path="res://addons/maaacks_menus_template/base/nodes/windows/confirmation_overlaid_window.tscn" id="4_qnj2a"]
 
 [node name="PauseMenu" unique_id=156357199 instance=ExtResource("1_iqqot")]
 process_mode = 3
@@ -14,9 +15,10 @@ offset_right = 128.0
 offset_bottom = 157.0
 size_flags_horizontal = 1
 size_flags_vertical = 1
+theme = ExtResource("2_sv8q1")
 script = ExtResource("2_nqejx")
 options_menu_scene = ExtResource("3_sv8q1")
-main_menu_scene_path = ""
+main_menu_scene_path = "uid://c1evlmyhcjgef"
 restart_confirmation_node_path = NodePath("RestartConfirmation")
 main_menu_confirmation_node_path = NodePath("MainMenuConfirmation")
 exit_confirmation_node_path = NodePath("ExitConfirmation")
@@ -24,6 +26,7 @@ menu_container_node_path = NodePath("..")
 pauses_game = true
 
 [node name="TitleLabel" parent="ContentContainer/BoxContainer/TitleMargin/BoxContainer" parent_id_path=PackedInt32Array(1788474031) index="0" unique_id=1049966061]
+theme_override_font_sizes/font_size = 30
 text = "Paused"
 
 [node name="BodyMargin" parent="ContentContainer/BoxContainer" parent_id_path=PackedInt32Array(394030069) index="1" unique_id=590613964]

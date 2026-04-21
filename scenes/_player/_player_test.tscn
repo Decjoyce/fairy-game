@@ -56,6 +56,8 @@
 [ext_resource type="Texture2D" uid="uid://dbv7iuucvwfao" path="res://assets/ui/player/attack_indicators/Rlow.png" id="51_qv24e"]
 [ext_resource type="PackedScene" uid="uid://brgf3euo0od1y" path="res://scenes/_managers/effects_player/local_effect_player.tscn" id="58_4iw8u"]
 [ext_resource type="AudioStream" uid="uid://bvotk6pyl3sjh" path="res://assets/audio/sfx/player/_streams/sfx_player_hit.tres" id="58_svbpy"]
+[ext_resource type="Script" uid="uid://cyh0d64pfygbl" path="res://addons/maaacks_menus_template/base/nodes/utilities/pause_menu_controller.gd" id="60_svbpy"]
+[ext_resource type="PackedScene" uid="uid://dpb4loi6o0aum" path="res://UICOPY/scenes/windows/pause_menu.tscn" id="61_4f8kv"]
 [ext_resource type="Script" uid="uid://b13u1myu3u5tw" path="res://scenes/_player/light_checker.gd" id="61_ux48r"]
 [ext_resource type="Shader" uid="uid://4b4kstxm1aph" path="res://assets/shaders/post_processing/post_processing.gdshader" id="70_52e8e"]
 [ext_resource type="Texture2D" uid="uid://bgvylughro1va" path="res://assets/sprites/PaperTexture/Texturelabs_Paper_304L.jpg" id="71_nkha6"]
@@ -1339,6 +1341,10 @@ mouse_filter = 2
 color = Color(0.5747226, 0.50857943, 0.49505764, 0.03529412)
 
 [node name="LocalEffectPlayer" parent="." unique_id=1469880449 instance=ExtResource("58_4iw8u")]
+
+[node name="Pause" type="Node" parent="." unique_id=136133790]
+script = ExtResource("60_svbpy")
+pause_menu_packed = ExtResource("61_4f8kv")
 
 [connection signal="on_body_entered" from="EnemyChecker" to="Combat" method="_on_enemy_checker_on_body_entered"]
 [connection signal="on_body_exit" from="EnemyChecker" to="Combat" method="_on_enemy_checker_on_body_exit"]

@@ -11,11 +11,11 @@
 [ext_resource type="Material" uid="uid://dgrldudl0bdhu" path="res://assets/models/cairn/Props/Rockpile/Rock_pile.tres" id="5_fdbqd"]
 [ext_resource type="PackedScene" uid="uid://y4t20bpdha47" path="res://UICOPY/scenes/windows/main_menu_credits_window.tscn" id="5_kmgne"]
 [ext_resource type="Script" uid="uid://b5oej1q4h7jvh" path="res://addons/maaacks_menus_template/base/nodes/autoloads/ui_sound_controller/ui_sound_controller.gd" id="6_q6106"]
+[ext_resource type="PackedScene" uid="uid://b4m52oohfjp65" path="res://scenes/_levels/Final_Puzzles/Final_Level/Final_Level.tscn" id="6_xwrb1"]
 [ext_resource type="PackedScene" uid="uid://38yo6y6rg7ak" path="res://scenes/__playground_scenes/puzzles/ThrowingPuzzles/puzzle_throw_2.tscn" id="7_0evim"]
 [ext_resource type="Texture2D" uid="uid://wpx72pcpea8n" path="res://assets/__not_ours_dontship/Xbox Series/XboxSeriesX_A.png" id="7_mpmb8"]
 [ext_resource type="PackedScene" uid="uid://bkcsjsk2ciff" path="res://addons/maaacks_menus_template/base/nodes/music_players/background_music_player.tscn" id="7_rgd0m"]
 [ext_resource type="Script" uid="uid://bkwlopi4qn32o" path="res://addons/maaacks_menus_template/base/nodes/labels/config_name_label.gd" id="8_0evim"]
-[ext_resource type="PackedScene" uid="uid://ckuw7ho3cogrs" path="res://scenes/_levels/Final_Puzzles/Tutorials/Tutorial_Scene.tscn" id="8_xwrb1"]
 [ext_resource type="Script" uid="uid://1nf36h0gms3q" path="res://addons/maaacks_menus_template/base/nodes/utilities/capture_focus.gd" id="9_xwrb1"]
 [ext_resource type="Script" uid="uid://dmkubt2nsnsbn" path="res://addons/maaacks_menus_template/base/nodes/labels/config_version_label.gd" id="10_gmba7"]
 [ext_resource type="AudioStream" uid="uid://2j13alqx80jr" path="res://assets/audio/sfx/menu/UI/UI_Buttons_randomizer3.tres" id="11_0evim"]
@@ -661,7 +661,7 @@ script = ExtResource("3_nbyns")
 anim_player = NodePath("../Camera3D/AnimationPlayer")
 fade_anim = NodePath("../FadeLayer/AnimationPlayer")
 vs_scnee = ExtResource("4_kmgne")
-demo_scnee = ExtResource("8_xwrb1")
+demo_scnee = ExtResource("6_xwrb1")
 demo_bb = ExtResource("7_0evim")
 game_scene_path = "uid://dw2dbsjbocxi7"
 options_packed_scene = ExtResource("4_2wrwt")
@@ -687,6 +687,7 @@ anim_player = NodePath("../MenuAnimationPlayer")
 parameters/conditions/intro_done = false
 
 [node name="BackgroundMusicPlayer" parent="MainMenu" unique_id=1141822549 instance=ExtResource("7_rgd0m")]
+max_polyphony = 5
 
 [node name="BackgroundTextureRect" type="TextureRect" parent="MainMenu" unique_id=1940176448]
 visible = false

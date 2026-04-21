@@ -97,8 +97,11 @@ script = ExtResource("3_sfnck")
 metadata/_custom_type_script = "uid://0u8kvsvjv11k"
 
 [node name="AudioValuePlayer" type="AudioStreamPlayer3D" parent="." unique_id=598333734]
+max_distance = 10.0
+max_polyphony = 3
+bus = &"SFX"
 script = ExtResource("4_dhg3m")
-sounds = Array[AudioStream]([ExtResource("5_7ufpd"), ExtResource("5_7ufpd"), ExtResource("6_di2xw"), ExtResource("7_h2knw")])
+sounds = Array[AudioStream]([ExtResource("5_7ufpd"), ExtResource("7_h2knw"), ExtResource("6_di2xw"), ExtResource("5_7ufpd")])
 metadata/_custom_type_script = "uid://kg11gyciyied"
 
 [connection signal="body_entered" from="Graphics/Trigger_Item" to="." method="_on_body_entered_trigger"]

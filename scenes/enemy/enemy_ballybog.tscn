@@ -45,7 +45,7 @@
 radius = 0.43391418
 height = 0.86782837
 
-[sub_resource type="Shader" id="Shader_phxqg"]
+[sub_resource type="Shader" id="Shader_pts2q"]
 code = "shader_type spatial;
 render_mode diffuse_lambert_wrap,cull_disabled;
 
@@ -122,23 +122,23 @@ void fragment() {
 }
 "
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_86kpf"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_phxqg"]
 render_priority = 0
-shader = SubResource("Shader_phxqg")
-shader_parameter/rows = 3.0
+shader = SubResource("Shader_pts2q")
+shader_parameter/rows = 5.0
 shader_parameter/columns = 8.0
 shader_parameter/frame = 1.0
 shader_parameter/invert_rows_columns = false
-shader_parameter/sprite = ExtResource("20_phxqg")
+shader_parameter/sprite = ExtResource("6_l3c6t")
 shader_parameter/mode = 0
-shader_parameter/Normal = ExtResource("21_86kpf")
+shader_parameter/Normal = ExtResource("7_lngu7")
 
-[sub_resource type="PlaneMesh" id="PlaneMesh_pkfog"]
-material = SubResource("ShaderMaterial_86kpf")
+[sub_resource type="PlaneMesh" id="PlaneMesh_86kpf"]
+material = SubResource("ShaderMaterial_phxqg")
 size = Vector2(1.62, 1.62)
 orientation = 2
 
-[sub_resource type="Resource" id="Resource_d7tla"]
+[sub_resource type="Resource" id="Resource_pkfog"]
 script = ExtResource("4_v1swk")
 name = "walk"
 sprite = ExtResource("6_l3c6t")
@@ -146,7 +146,7 @@ texture_normal = ExtResource("7_lngu7")
 rows = 5.0
 columns = 8.0
 
-[sub_resource type="Resource" id="Resource_8vrwc"]
+[sub_resource type="Resource" id="Resource_d7tla"]
 script = ExtResource("4_v1swk")
 name = "AttackN"
 sprite = ExtResource("3_5ussm")
@@ -154,7 +154,7 @@ texture_normal = ExtResource("2_p6ydp")
 rows = 2.0
 columns = 8.0
 
-[sub_resource type="Resource" id="Resource_iaicr"]
+[sub_resource type="Resource" id="Resource_8vrwc"]
 script = ExtResource("4_v1swk")
 name = "idle_rub"
 sprite = ExtResource("20_phxqg")
@@ -162,14 +162,14 @@ texture_normal = ExtResource("21_86kpf")
 rows = 3.0
 columns = 8.0
 
-[sub_resource type="Resource" id="Resource_600hx"]
+[sub_resource type="Resource" id="Resource_iaicr"]
 script = ExtResource("4_v1swk")
 name = "Alert"
 sprite = ExtResource("22_pkfog")
 texture_normal = ExtResource("23_d7tla")
 columns = 8.0
 
-[sub_resource type="Resource" id="Resource_gefnw"]
+[sub_resource type="Resource" id="Resource_600hx"]
 script = ExtResource("4_v1swk")
 name = "Stunned"
 sprite = ExtResource("12_l3c6t")
@@ -430,7 +430,7 @@ tracks/2/keys = {
 "start_offset": 0.0,
 "stream": ExtResource("36_k3ua6")
 }],
-"times": PackedFloat32Array(0, 0.6, 1.2)
+"times": PackedFloat32Array(0, 0.6333333, 1.2666667)
 }
 tracks/2/use_blend = true
 
@@ -550,10 +550,10 @@ shape = SubResource("CapsuleShape3D_abuop")
 transform = Transform3D(-1, 0, -1.509958e-07, 0, 1, 0, 1.509958e-07, 0, -1, 0, 0.6596855, 0)
 layers = 3
 sorting_offset = 1.0
-mesh = SubResource("PlaneMesh_pkfog")
+mesh = SubResource("PlaneMesh_86kpf")
 script = ExtResource("3_j08hu")
-animations_array = Array[ExtResource("4_v1swk")]([SubResource("Resource_d7tla"), SubResource("Resource_8vrwc"), SubResource("Resource_iaicr"), SubResource("Resource_600hx"), SubResource("Resource_gefnw")])
-animation = 2
+animations_array = Array[ExtResource("4_v1swk")]([SubResource("Resource_pkfog"), SubResource("Resource_d7tla"), SubResource("Resource_8vrwc"), SubResource("Resource_iaicr"), SubResource("Resource_600hx")])
+animation = 0
 frame = 1.0
 sprite_scale = 0.003
 metadata/_custom_type_script = "uid://b5653u7w56pqw"
