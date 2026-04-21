@@ -35,6 +35,7 @@
 [ext_resource type="Texture2D" uid="uid://caig263otkgib" path="res://scenes/_player/interaction/hand/assets/new/handLeverMid_side.png" id="27_rjeyo"]
 [ext_resource type="Texture2D" uid="uid://bjr37otryvvbb" path="res://scenes/_player/interaction/hand/assets/new/handLeverUp_side.png" id="28_onote"]
 [ext_resource type="AudioStream" uid="uid://y2phwtxrytt4" path="res://assets/audio/sfx/player/throw/Player_throw_randomizer.tres" id="34_v48pp"]
+[ext_resource type="Script" uid="uid://oa1ip6f7wn5o" path="res://scripts/input_context_helper.gd" id="36_u1dts"]
 
 [sub_resource type="Animation" id="Animation_434r6"]
 length = 0.001
@@ -1006,3 +1007,6 @@ bus = &"pl_footsteps"
 
 [node name="Audio_Grab" type="AudioStreamPlayer" parent="Hand_Right" unique_id=981864139]
 bus = &"pl_footsteps"
+
+[node name="InputContextHelpre" type="Node" parent="." unique_id=1056320993]
+script = ExtResource("36_u1dts")
