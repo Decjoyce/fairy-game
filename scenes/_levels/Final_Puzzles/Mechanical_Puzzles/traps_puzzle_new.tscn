@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://lxic7c72kvyt" path="res://scenes/interactions/interactables/items/all_items/misc/item_skull.tscn" id="5_dp00y"]
 [ext_resource type="PackedScene" uid="uid://bmiljk53ks7e7" path="res://scenes/interactions/_receivers/wip_spike_trap/spike_trap_floor.tscn" id="6_jkfe6"]
 [ext_resource type="PackedScene" uid="uid://dt13fur6twjep" path="res://scenes/interactions/_receivers/gate/gate.tscn" id="7_wn42o"]
+[ext_resource type="PackedScene" uid="uid://cwr2r7yxt4ust" path="res://scenes/interactions/ReusableStones/stonepile_reusable_stones.tscn" id="8_lu18g"]
 [ext_resource type="PackedScene" uid="uid://qu5rxgbydmet" path="res://scenes/interactions/_triggers/button/button.tscn" id="8_uqwb3"]
 [ext_resource type="PackedScene" uid="uid://pfsmibp55qi" path="res://scenes/interactions/_receivers/bridge/bridge.tscn" id="9_4clkm"]
 [ext_resource type="PackedScene" uid="uid://br01bblhowysi" path="res://assets/models/cairn/Z-Old-EnvironmentModels/Wall/Wall.glb" id="10_8sfw4"]
@@ -52,6 +53,12 @@ top_radius = 0.03
 bottom_radius = 0.03
 height = 0.8
 radial_segments = 4
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_lu18g"]
+size = Vector3(1.9938965, 1, 5.520874)
+
+[sub_resource type="BoxMesh" id="BoxMesh_6vcod"]
+material = ExtResource("26_lu18g")
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_7bdt6"]
 
@@ -272,6 +279,17 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 1, -6.239393)
 metadata/uid = "d5102b2e-c73c-4367-8eb0-bec30b6794c0"
 metadata/lock_uid = true
 metadata/date_generated = "2026-04-21T14:00:56"
+
+[node name="Stonepile_ReusableStones" parent="Beginning_Part(Easier)/Second_Part" unique_id=1682368129 instance=ExtResource("8_lu18g")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 2, 0, -7)
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="Beginning_Part(Easier)/Second_Part/Stonepile_ReusableStones" unique_id=1411853350]
+transform = Transform3D(-3.178652e-08, 0, 0.99999994, 0, 1, 0, -0.99999994, 0, -3.178652e-08, 1.0841457, 0.6, 3.7022047)
+shape = SubResource("BoxShape3D_lu18g")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Beginning_Part(Easier)/Second_Part/Stonepile_ReusableStones/CollisionShape3D2" unique_id=2095669143]
+visible = false
+mesh = SubResource("BoxMesh_6vcod")
 
 [node name="Third_Part" type="Node3D" parent="Beginning_Part(Easier)" unique_id=1295854055]
 
@@ -2021,7 +2039,7 @@ metadata/uid = "580b174c-dd26-49f5-8ef2-0598dbedc123"
 metadata/lock_uid = true
 metadata/date_generated = "2026-04-21T14:00:56"
 
-[node name="Stonepile_ReusableStones" type="Area3D" parent="Finale(Hardest)/Timed_Traps/Final_Part" unique_id=1682368129]
+[node name="Stonepile_ReusableStones" type="Area3D" parent="Finale(Hardest)/Timed_Traps/Final_Part" unique_id=1036130600]
 transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 4.0833855, 0, -1)
 collision_layer = 0
 collision_mask = 2
