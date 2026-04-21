@@ -52,6 +52,9 @@ radius = 1.0
 [sub_resource type="BoxShape3D" id="BoxShape3D_4v2ph"]
 size = Vector3(1.3928223, 1, 0.9602661)
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_qbrer"]
+size = Vector3(5.864746, 10.474762, 11.434204)
+
 [sub_resource type="SphereShape3D" id="SphereShape3D_bbr0v"]
 radius = 1.0
 
@@ -298,7 +301,7 @@ metadata/lock_uid = true
 metadata/date_generated = "2026-04-21T21:06:03"
 
 [node name="Urn_puzzle_Pressure_Plate" parent="Tutorial_Area/Urn_key_puzzle" unique_id=247380468 instance=ExtResource("10_rxxv5")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 27, -2, -5)
+transform = Transform3D(0.9999938, 0.0021761043, 0.0027576794, -0.0020939705, 0.99956423, -0.02944298, -0.0028205516, 0.029437024, 0.9995626, 27, -2, -5)
 weight_to_activate = 20.0
 metadata/uid = "487a23ad-22a3-461d-bfd0-176c07e128f3"
 metadata/lock_uid = true
@@ -399,6 +402,13 @@ transform = Transform3D(0.19999999, -5.229573e-09, -8.823244e-09, 8.762729e-09, 
 
 [node name="Wall106" parent="Tutorial_Area/Walls_Parent" unique_id=1127254718 instance=ExtResource("21_cm8jj")]
 transform = Transform3D(0.19999999, -5.229573e-09, -8.823244e-09, 8.762729e-09, -0.0009529516, 0.19999771, -1.2722047e-08, -0.19999771, -0.0009529516, 25.772135, -1.2172806, -1.8984879)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Tutorial_Area/Walls_Parent/Wall106" unique_id=1375877401]
+transform = Transform3D(1, 1.7763568e-15, 1.3877788e-17, 0, 1.0000001, 4.656613e-10, 1.9151347e-15, -4.656613e-10, 1.0000001, 0, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Tutorial_Area/Walls_Parent/Wall106/StaticBody3D" unique_id=1611651842]
+transform = Transform3D(0.99999994, 1.3677948e-13, 7.84095e-15, 0, 1, 1.6158447e-07, -1.6653345e-15, -1.6158447e-07, 1, -1.7145538, 4.7373962, 0.083313465)
+shape = SubResource("BoxShape3D_qbrer")
 
 [node name="Wall107" parent="Tutorial_Area/Walls_Parent" unique_id=1198068301 instance=ExtResource("21_cm8jj")]
 transform = Transform3D(0.19999999, -5.229573e-09, -8.823244e-09, 8.762729e-09, -0.0009529516, 0.19999771, -1.2722047e-08, -0.19999771, -0.0009529516, 25.772135, -1.2172806, 0.101512074)

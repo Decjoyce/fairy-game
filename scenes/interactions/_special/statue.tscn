@@ -15,7 +15,7 @@
 [ext_resource type="Texture2D" uid="uid://55f5g5re18gs" path="res://assets/models/statue/Statue_Statue Texture.png" id="11_13x82"]
 [ext_resource type="Texture2D" uid="uid://b4hndl714wvlf" path="res://assets/models/statue/Statue_Statue Normal Map.png" id="12_hcu48"]
 
-[sub_resource type="Shader" id="Shader_84nn4"]
+[sub_resource type="Shader" id="Shader_nfmnu"]
 code = "shader_type spatial;
 render_mode diffuse_lambert_wrap,cull_disabled;
 
@@ -92,44 +92,44 @@ void fragment() {
 }
 "
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_2qsbx"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_13x82"]
 render_priority = 0
-shader = SubResource("Shader_84nn4")
+shader = SubResource("Shader_nfmnu")
 shader_parameter/rows = 1.0
 shader_parameter/columns = 8.0
-shader_parameter/frame = 1.0
+shader_parameter/frame = 0.0
 shader_parameter/invert_rows_columns = false
 shader_parameter/sprite = ExtResource("3_hcu48")
 shader_parameter/mode = 0
 shader_parameter/Normal = ExtResource("2_13x82")
 
-[sub_resource type="PlaneMesh" id="PlaneMesh_p27kb"]
-material = SubResource("ShaderMaterial_2qsbx")
+[sub_resource type="PlaneMesh" id="PlaneMesh_hcu48"]
+material = SubResource("ShaderMaterial_13x82")
 size = Vector2(2.048, 2.048)
 orientation = 2
 
-[sub_resource type="Resource" id="Resource_qsil5"]
+[sub_resource type="Resource" id="Resource_84nn4"]
 script = ExtResource("5_2qsbx")
 name = "Unfinished"
 sprite = ExtResource("3_hcu48")
 texture_normal = ExtResource("2_13x82")
 columns = 8.0
 
-[sub_resource type="Resource" id="Resource_y3qa0"]
+[sub_resource type="Resource" id="Resource_2qsbx"]
 script = ExtResource("5_2qsbx")
 name = "piece_one"
 sprite = ExtResource("6_b5j2e")
 texture_normal = ExtResource("6_b5j2e")
 columns = 8.0
 
-[sub_resource type="Resource" id="Resource_8gujr"]
+[sub_resource type="Resource" id="Resource_p27kb"]
 script = ExtResource("5_2qsbx")
 name = "piece_two"
 sprite = ExtResource("7_5y21r")
 texture_normal = ExtResource("7_5y21r")
 columns = 8.0
 
-[sub_resource type="Resource" id="Resource_cxgkg"]
+[sub_resource type="Resource" id="Resource_qsil5"]
 script = ExtResource("5_2qsbx")
 sprite = ExtResource("6_p27kb")
 texture_normal = ExtResource("7_qsil5")
@@ -333,10 +333,10 @@ transform = Transform3D(-1, 0, -1.509958e-07, 0, 1, 0, 1.509958e-07, 0, -1, 0, 0
 visible = false
 layers = 3
 sorting_offset = 1.0
-mesh = SubResource("PlaneMesh_p27kb")
+mesh = SubResource("PlaneMesh_hcu48")
 skeleton = NodePath("")
 script = ExtResource("4_84nn4")
-animations_array = Array[ExtResource("5_2qsbx")]([SubResource("Resource_qsil5"), SubResource("Resource_y3qa0"), SubResource("Resource_8gujr"), SubResource("Resource_cxgkg")])
+animations_array = Array[ExtResource("5_2qsbx")]([SubResource("Resource_84nn4"), SubResource("Resource_2qsbx"), SubResource("Resource_p27kb"), SubResource("Resource_qsil5")])
 animation = 0
 frame = 1.0
 sprite_scale = 0.002

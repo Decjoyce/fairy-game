@@ -115,3 +115,8 @@ func _on_main_menu_confirmation_confirmed():
 
 func _on_exit_confirmation_confirmed():
 	get_tree().quit()
+	
+func _on_Load_Save_confirmed():
+	close_window()
+	_scene_tree.paused = false
+	TEMPSaveGameHandler.load_game()
