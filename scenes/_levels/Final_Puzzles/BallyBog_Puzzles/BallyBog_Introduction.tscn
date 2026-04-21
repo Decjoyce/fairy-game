@@ -21,6 +21,7 @@
 [ext_resource type="PackedScene" uid="uid://dhanht7b5rwkq" path="res://scenes/_levels/_palettes/cairn/props/Rocks/cairn_rock_4.tscn" id="23_r0k5g"]
 [ext_resource type="PackedScene" uid="uid://v3a4kqxol6jl" path="res://scenes/_levels/_palettes/cairn/props/Rocks/cairn_rock_8.tscn" id="24_nn74u"]
 [ext_resource type="PackedScene" uid="uid://cfuq8lf22so06" path="res://scenes/_levels/_palettes/cairn/props/Rocks/cairn_rock_pile.tscn" id="25_o06uf"]
+[ext_resource type="Script" uid="uid://bul4myvyhnpjc" path="res://scripts/saving/uid_generator.gd" id="26_jbn6s"]
 [ext_resource type="PackedScene" uid="uid://cpnmun20lswr" path="res://scenes/_levels/_palettes/cairn/props/cairn_pillar.tscn" id="26_pw1ys"]
 [ext_resource type="Script" uid="uid://ubfk2a80dhfp" path="res://addons/grid_map_pathfinding/grid_map_pathfinding.gd" id="29_211nq"]
 [ext_resource type="PackedScene" uid="uid://b5g00fexnuwte" path="res://scenes/interactions/_special/item_no_pass_zone.tscn" id="31_iw7gl"]
@@ -88,7 +89,6 @@ material = ExtResource("32_tie2v")
 
 [node name="GridMapPathFinding2" type="GridMap" parent="." unique_id=1929151095 groups=["GMPF"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.445, 0)
-visible = false
 mesh_library = ExtResource("1_m8tlr")
 cell_size = Vector3(1, 1, 1)
 cell_octant_size = 4
@@ -126,14 +126,21 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, -1)
 [node name="Node3D6" type="Node3D" parent="Bally_1_PatrolPoints" unique_id=1879697846]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7, 0, -0.9999998)
 
-[node name="Ballybog2" parent="." unique_id=1712475425 node_paths=PackedStringArray("patrol_points") instance=ExtResource("3_nfw6c")]
+[node name="Ballybog2" parent="." unique_id=1712475425 node_paths=PackedStringArray("grid_map", "patrol_points") instance=ExtResource("3_nfw6c")]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0.99999994, 0, -7)
+grid_map = NodePath("../GridMapPathFinding2")
 patrol_points = [NodePath("../Bally_1_PatrolPoints/Node3D2"), NodePath("../Bally_1_PatrolPoints/Node3D"), NodePath("../Bally_1_PatrolPoints/Node3D3"), NodePath("../Bally_1_PatrolPoints/Node3D5"), NodePath("../Bally_1_PatrolPoints/Node3D6")]
+metadata/lock_uid = true
+metadata/uid = "80376abe-116c-4383-a2cb-3207494796ca"
+metadata/date_generated = "2026-04-21T14:01:21"
 
 [node name="Sneaked_past" type="Node3D" parent="." unique_id=233466530]
 
 [node name="First_Gate" parent="Sneaked_past" unique_id=2077487765 instance=ExtResource("5_nfw6c")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, -12.022409)
+metadata/lock_uid = true
+metadata/uid = "9f396a67-166a-459b-acb8-20d1d0484c13"
+metadata/date_generated = "2026-04-21T14:01:21"
 
 [node name="EnemyEnableTrig" parent="Sneaked_past" unique_id=1987765279 instance=ExtResource("5_cvgf4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, -3, -1)
@@ -155,9 +162,9 @@ shape = SubResource("SphereShape3D_qofka")
 [node name="PressurePlateLight" parent="Sneaked_past" unique_id=790035545 instance=ExtResource("19_0ox1x")]
 transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 1, 0, -9)
 weight_to_activate = 1.0
-metadata/uid = "f3359305-3bac-48aa-a54e-9eb61499a31b"
+metadata/uid = "c0ffa70e-eaa2-47d2-8140-acd37fb77dca"
 metadata/lock_uid = true
-metadata/date_generated = "2026-03-25T10:07:13"
+metadata/date_generated = "2026-04-21T14:01:21"
 
 [node name="TR_Indicator" type="Sprite3D" parent="Sneaked_past/PressurePlateLight" unique_id=285485071]
 transform = Transform3D(-2.7818125e-08, 0, 0.99999994, 0, 1, 0, -0.99999994, 0, -2.7818125e-08, -0.7020326, 1.3248484, 0.037664413)
@@ -236,6 +243,9 @@ metadata/_custom_type_script = "uid://dpj75tckiwmsm"
 
 [node name="stonepile_stone" parent="Stonepile_ReusableStones" unique_id=234370081 instance=ExtResource("18_r7etj")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.1744905, 0.28610995, -7.8661084)
+metadata/lock_uid = true
+metadata/uid = "84f2589a-fff4-4078-ad57-7b365fafe646"
+metadata/date_generated = "2026-04-21T14:01:21"
 
 [node name="out_pos" type="Node3D" parent="Stonepile_ReusableStones" unique_id=1799811114]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.28610995, 0)
@@ -333,6 +343,10 @@ transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, -3.4
 
 [node name="Rock2" parent="SetDressing" unique_id=1484517650 instance=ExtResource("21_jbn6s")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.26, 0, -5.83)
+
+[node name="UID_Generator" type="Node" parent="." unique_id=2077654621]
+script = ExtResource("26_jbn6s")
+metadata/_custom_type_script = "uid://bul4myvyhnpjc"
 
 [connection signal="area_entered" from="Sneaked_past/EnemyEnableTrig/Area3D" to="Sneaked_past/EnemyEnableTrig" method="_player_entered"]
 [connection signal="area_exited" from="Sneaked_past/EnemyEnableTrig/Area3D" to="Sneaked_past/EnemyEnableTrig" method="_player_exited"]

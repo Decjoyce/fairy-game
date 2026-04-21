@@ -2,6 +2,8 @@
 class_name Enemy_Ballybog_New
 extends Entity
 
+@export var grid_map: GridMapPathFinding 
+
 @export_range(20, 30) var enemy_id: int
 var player: PlayerTest
 
