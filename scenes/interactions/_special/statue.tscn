@@ -321,6 +321,9 @@ shadow_mesh = SubResource("ArrayMesh_ucg4c")
 [sub_resource type="BoxShape3D" id="BoxShape3D_w1v47"]
 size = Vector3(1.0812988, 2.4, 1)
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_y3qa0"]
+size = Vector3(0.8677368, 1.7498779, 0.80578613)
+
 [node name="Statue" type="Node3D" unique_id=296240778 node_paths=PackedStringArray("statue_pieces", "itm_receiver")]
 script = ExtResource("3_hdmdk")
 statue_pieces = [NodePath("Statue_States/Statue2/BasePiece"), NodePath("Statue_States/Statue2/ArmPiece"), NodePath("Statue_States/Statue2/HeadPiece"), NodePath("Statue_States/Statue2/Flame")]
@@ -401,5 +404,11 @@ shape = SubResource("BoxShape3D_w1v47")
 [node name="PO_MainQuest" type="Node" parent="." unique_id=1964630611 groups=["PO"]]
 script = ExtResource("11_5y21r")
 metadata/_custom_type_script = "uid://s218qdxyroom"
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=1379834487 groups=["debug_PickableObjects"]]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" unique_id=255886344]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0058705807, 1.0180054, -0.009216309)
+shape = SubResource("BoxShape3D_y3qa0")
 
 [connection signal="statue_piece_received" from="ItemReceiver" to="." method="insert_piece"]

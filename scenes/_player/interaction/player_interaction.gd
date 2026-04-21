@@ -35,7 +35,7 @@ func _process(delta: float) -> void:
 	
 	if Input.is_action_just_pressed("reload_level"): 
 		load_level_thing = 0
-		load_game_graphics.visible = true
+		load_game_graphics.get_parent().visible = true
 		is_reloading = true
 	
 	if is_reloading and Input.is_action_pressed("reload_level"): 
@@ -46,7 +46,7 @@ func _process(delta: float) -> void:
 	
 	if Input.is_action_just_released("reload_level"): 
 		load_level_thing = 0
-		load_game_graphics.visible = false
+		load_game_graphics.get_parent().visible = false
 		is_reloading = false
 
 func make_hands_inactive() -> void:

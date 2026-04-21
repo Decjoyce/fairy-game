@@ -19,6 +19,8 @@
 [ext_resource type="MeshLibrary" uid="uid://br861hnjhp6ry" path="res://scenes/_levels/_palettes/gmpf_meshlib.tres" id="17_w1121"]
 [ext_resource type="Script" uid="uid://ubfk2a80dhfp" path="res://addons/grid_map_pathfinding/grid_map_pathfinding.gd" id="18_q6b1a"]
 [ext_resource type="Material" uid="uid://ciiy1aqgkcp5k" path="res://assets/models/cairn/Hall_BigRoof/Dirtfloor.tres" id="19_q6b1a"]
+[ext_resource type="Script" uid="uid://c00pbq6pr77dd" path="res://scenes/_levels/menus/vs_menu_helper.gd" id="20_4pwbv"]
+[ext_resource type="PackedScene" uid="uid://2urw8kkhhaec" path="res://scenes/_levels/Vertical Slice/end_scene.tscn" id="21_62r4a"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_mtbvg"]
 sky_horizon_color = Color(0, 0.37292683, 0.8185948, 1)
@@ -62,6 +64,76 @@ emission = Color(0.26293278, 0.2629323, 0.26293254, 1)
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_jok38"]
 material = ExtResource("19_q6b1a")
+
+[sub_resource type="Animation" id="Animation_8o3kd"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 0, 0, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_e7sjl"]
+resource_name = "fade_in"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 1), Color(0, 0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_j4a7u"]
+resource_name = "fade_out"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 0), Color(0, 0, 0, 1)]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(1),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"to_menu"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_jok38"]
+_data = {
+&"RESET": SubResource("Animation_8o3kd"),
+&"fade_in": SubResource("Animation_e7sjl"),
+&"fade_out": SubResource("Animation_j4a7u")
+}
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_ksb0i"]
+radius = 1.7361357
 
 [node name="Final_Level" type="Node3D" unique_id=40124892]
 
@@ -352,4 +424,32 @@ visible = false
 mesh = SubResource("PlaneMesh_jok38")
 skeleton = NodePath("../..")
 
+[node name="Ender" type="Node3D" parent="." unique_id=43994904 node_paths=PackedStringArray("anim_pl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 85, 0, -27)
+script = ExtResource("20_4pwbv")
+anim_pl = NodePath("AnimationPlayer")
+end_screen = ExtResource("21_62r4a")
+
+[node name="ColorRect" type="ColorRect" parent="Ender" unique_id=592881255]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 1)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Ender" unique_id=139984505]
+libraries/ = SubResource("AnimationLibrary_jok38")
+
+[node name="Area3D" type="Area3D" parent="Ender" unique_id=384446722]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.033516, -1.4817531, 7.5514584)
+collision_layer = 0
+monitorable = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Ender/Area3D" unique_id=1923937827]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5542221, 0)
+shape = SubResource("SphereShape3D_ksb0i")
+
 [connection signal="on_activated" from="Different_Sections/Inbetween_Sections/BallyBog_Area_Button" to="Different_Sections/Inbetween_Sections/BallyBog_Area_Gate" method="open_gate"]
+[connection signal="area_entered" from="Ender/Area3D" to="Ender" method="_on_area_3d_area_entered"]

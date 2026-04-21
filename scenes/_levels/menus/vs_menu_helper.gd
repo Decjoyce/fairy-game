@@ -14,3 +14,8 @@ func to_menu():
 func _on_area_3d_area_entered(area: Area3D) -> void:
 	if area.owner is PlayerTest:
 		anim_pl.play("fade_out")
+
+func me_so_end() -> void:
+	anim_pl.play("fade_out")
+	await anim_pl.animation_finished
+	get_tree().change_scene_to_packed(end_screen)
