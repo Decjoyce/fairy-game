@@ -4,6 +4,12 @@
 [ext_resource type="Material" uid="uid://c6ic70i7jpqeu" path="res://assets/models/cairn/Props/Gate/Gate.tres" id="2_7y3tx"]
 [ext_resource type="Script" uid="uid://3ihhc0me4bjf" path="res://scripts/saving/persistent_objs/po_gate.gd" id="3_oueqo"]
 [ext_resource type="AudioStream" uid="uid://cyo1b0ry2gwgu" path="res://assets/audio/sfx/player/death/Fight, Bodyfall, Asphalt, Concrete 01 SND120897.wav" id="4_rophg"]
+[ext_resource type="Script" uid="uid://kg11gyciyied" path="res://scripts/audio_value_player.gd" id="5_poaq6"]
+[ext_resource type="AudioStream" uid="uid://bq4uldbae66oh" path="res://assets/audio/sfx/environment/Doors/Gate/Doors, Hardware, Metal Garage Gate, Key Handle, Lock, Rattle 02 SND108872 S04.wav" id="6_it7cd"]
+[ext_resource type="AudioStream" uid="uid://cb6lcxqkql8qi" path="res://assets/audio/sfx/environment/Chain/Chain dragMechanic/Boats, Mechanism, Anchor, Type 1, Metal, Hitting The Deck, Impacts, Handling 07 SND134309 S01.wav" id="7_sa43l"]
+[ext_resource type="AudioStream" uid="uid://1n0jula0gdsl" path="res://assets/audio/sfx/environment/Doors/Gate/Doors, Hardware, Metal Garage Gate, Key Handle, Lock, Rattle 02 SND108872 S01.wav" id="8_ftyv1"]
+[ext_resource type="AudioStream" uid="uid://cln34775fxho5" path="res://assets/audio/sfx/environment/Chain/Chain dragMechanic/Boats, Mechanism, Anchor, Type 1, Metal, Hitting The Deck, Impacts, Handling 07 SND134309 S04.wav" id="9_by4up"]
+[ext_resource type="AudioStream" uid="uid://xva0fbelht0m" path="res://assets/audio/sfx/environment/Doors/Gate/Doors, Hardware, Metal Garage Gate, Key Handle, Lock, Rattle 02 SND108872 S00.wav" id="10_yotrw"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_i1hti"]
 size = Vector3(2, 2, 0.2)
@@ -146,6 +152,12 @@ monitorable = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="TPChecker_player" unique_id=600236291]
 shape = SubResource("BoxShape3D_ycxvs")
+
+[node name="AudioValuePlayer" type="AudioStreamPlayer3D" parent="." unique_id=438728741]
+bus = &"items"
+script = ExtResource("5_poaq6")
+sounds = Array[AudioStream]([ExtResource("6_it7cd"), ExtResource("7_sa43l"), ExtResource("8_ftyv1"), ExtResource("9_by4up"), ExtResource("10_yotrw")])
+metadata/_custom_type_script = "uid://kg11gyciyied"
 
 [connection signal="body_entered" from="gate/UnderChecker_items" to="." method="_on_body_entered_under_checker"]
 [connection signal="body_exited" from="gate/UnderChecker_items" to="." method="_on_body_exited_under_checker"]

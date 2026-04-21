@@ -3,12 +3,13 @@
 [ext_resource type="Script" uid="uid://s5cfdf85lm5g" path="res://scenes/interactions/interactables/items/grabbable_item.gd" id="1_ajkq4"]
 [ext_resource type="Script" uid="uid://cqhq7vrwiw3m6" path="res://scenes/interactions/interactables/items/item_types/item_type.gd" id="2_8go1c"]
 [ext_resource type="Texture2D" uid="uid://ckrk6cppausoy" path="res://assets/sprites/item_sprites/statue/statue_spritesheets/statue_piece_head_n.png" id="3_rci7l"]
-[ext_resource type="AudioStream" uid="uid://dutddyikwuiut" path="res://assets/audio/sfx/combat/misc/hittingsound_shorter.wav" id="4_r3poj"]
 [ext_resource type="Texture2D" uid="uid://ccrwcq4ub7lyd" path="res://assets/sprites/item_sprites/statue/statue_spritesheets/statue_piece_head.png" id="4_st7xe"]
 [ext_resource type="Script" uid="uid://dk36d8kuwrwnv" path="res://addons/extras_sprites/scripts/simple_sprite_3D_billboard.gd" id="5_8dsw0"]
+[ext_resource type="AudioStream" uid="uid://c06ecuwypinuu" path="res://assets/audio/sfx/items/StoneHit/stonepile_hit_randomizer.tres" id="6_l2co8"]
 [ext_resource type="Script" uid="uid://bhf6r6nw14krj" path="res://scripts/saving/persistent_objs/po_item.gd" id="7_r3poj"]
 [ext_resource type="Shader" uid="uid://bxy4s1fhoupka" path="res://assets/shaders/special_sprite_shine/new_special_sprite_shine.gdshader" id="8_ifrky"]
 [ext_resource type="Texture2D" uid="uid://cs7hb6d4m7ofv" path="res://assets/sprites/item_sprites/statue/statue_piece_head.png" id="9_3owfn"]
+[ext_resource type="AudioStream" uid="uid://bny0b3bdsuco3" path="res://assets/audio/sfx/items/Grab/Rock_randomizer.tres" id="11_ifrky"]
 [ext_resource type="Texture2D" uid="uid://fhu8mpyetofc" path="res://assets/sprites/item_sprites/statue/statue_piece_arm_n_single.png" id="11_o6a02"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_llc7q"]
@@ -23,7 +24,7 @@ size = Vector3(0.5, 0.5, 0.5)
 [sub_resource type="BoxShape3D" id="BoxShape3D_234jp"]
 size = Vector3(0.4, 0.4, 0.4)
 
-[sub_resource type="Shader" id="Shader_l2co8"]
+[sub_resource type="Shader" id="Shader_ifrky"]
 code = "shader_type spatial;
 render_mode diffuse_lambert_wrap,cull_disabled;
 
@@ -100,9 +101,9 @@ void fragment() {
 }
 "
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_ifrky"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_3owfn"]
 render_priority = 0
-shader = SubResource("Shader_l2co8")
+shader = SubResource("Shader_ifrky")
 shader_parameter/rows = 1.0
 shader_parameter/columns = 8.0
 shader_parameter/frame = 0.0
@@ -111,8 +112,8 @@ shader_parameter/sprite = ExtResource("4_st7xe")
 shader_parameter/mode = 0
 shader_parameter/Normal = ExtResource("3_rci7l")
 
-[sub_resource type="PlaneMesh" id="PlaneMesh_3owfn"]
-material = SubResource("ShaderMaterial_ifrky")
+[sub_resource type="PlaneMesh" id="PlaneMesh_upnfv"]
+material = SubResource("ShaderMaterial_3owfn")
 size = Vector2(0.512, 0.512)
 orientation = 2
 
@@ -186,7 +187,7 @@ debug_color = Color(0.8442249, 0.37985525, 5.7756904e-07, 0.41960785)
 [node name="_g_idle" type="MeshInstance3D" parent="." unique_id=1013544370]
 visible = false
 layers = 4
-mesh = SubResource("PlaneMesh_3owfn")
+mesh = SubResource("PlaneMesh_upnfv")
 script = ExtResource("5_8dsw0")
 sprite = ExtResource("4_st7xe")
 sprite_scale = 0.001
@@ -199,7 +200,7 @@ frame = 0.0
 metadata/_custom_type_script = "uid://dk36d8kuwrwnv"
 
 [node name="AudioPlayer" type="AudioStreamPlayer3D" parent="." unique_id=20800557]
-stream = ExtResource("4_r3poj")
+stream = ExtResource("6_l2co8")
 bus = &"items"
 
 [node name="RayCast3D" type="RayCast3D" parent="." unique_id=1070737100]
@@ -218,4 +219,5 @@ visible = false
 mesh = SubResource("QuadMesh_uiosa")
 
 [node name="Audio_Grabbed" type="AudioStreamPlayer3D" parent="." unique_id=1066561880]
+stream = ExtResource("11_ifrky")
 max_distance = 1.0
