@@ -1,6 +1,5 @@
 [gd_scene format=4 uid="uid://d1urmoxnqqkkl"]
 
-[ext_resource type="PackedScene" uid="uid://bq86osdembn58" path="res://scenes/_player/_player_test.tscn" id="1_cflmq"]
 [ext_resource type="MeshLibrary" uid="uid://bu208a8l5866i" path="res://scenes/_levels/_palettes/cairn/meshlibrary_cairn.tres" id="2_rpyid"]
 [ext_resource type="PackedScene" uid="uid://xuo5buj0odhi" path="res://scenes/interactions/_triggers/torch_sconce/torch_sconce_lit.tscn" id="3_jjjpb"]
 [ext_resource type="PackedScene" uid="uid://br35er4x4b6av" path="res://scenes/interactions/_triggers/torch_sconce/torch_sconce_unlit.tscn" id="4_kixsx"]
@@ -38,43 +37,8 @@
 [ext_resource type="PackedScene" uid="uid://v3a4kqxol6jl" path="res://scenes/_levels/_palettes/cairn/props/Rocks/cairn_rock_8.tscn" id="36_i5lll"]
 [ext_resource type="PackedScene" uid="uid://cnkngeiaucgql" path="res://scenes/_levels/_palettes/cairn/props/Rocks/cairn_rock_2.tscn" id="37_x42l1"]
 [ext_resource type="PackedScene" uid="uid://ylg6mxx468cq" path="res://scenes/_levels/_palettes/cairn/props/Rocks/cairn_rock_1.tscn" id="38_rv6yw"]
-
-[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_b2mbs"]
-sky_horizon_color = Color(0, 0.37292683, 0.8185948, 1)
-sky_curve = 0.23537512
-ground_horizon_color = Color(0.3529412, 0.30588236, 0.2509804, 1)
-ground_curve = 0.060628746
-
-[sub_resource type="Sky" id="Sky_uqgcp"]
-sky_material = SubResource("ProceduralSkyMaterial_b2mbs")
-
-[sub_resource type="Environment" id="Environment_060nb"]
-sky = SubResource("Sky_uqgcp")
-ambient_light_source = 2
-ambient_light_color = Color(4.512258e-08, 0.025031792, 0.083208345, 1)
-ambient_light_energy = 4.0
-reflected_light_source = 1
-tonemap_mode = 4
-tonemap_exposure = 2.0
-ssao_enabled = true
-ssao_radius = 0.05
-ssao_intensity = 1.0
-sdfgi_read_sky_light = false
-sdfgi_bounce_feedback = 1.99
-sdfgi_cascades = 8
-sdfgi_min_cell_size = 19.315624
-sdfgi_energy = 4.035
-sdfgi_normal_bias = 6.215
-sdfgi_probe_bias = 2.94
-glow_enabled = true
-glow_intensity = 0.5
-glow_strength = 0.4
-volumetric_fog_enabled = true
-volumetric_fog_density = 0.025
-volumetric_fog_albedo = Color(0.74509805, 0.34509805, 0, 1)
-volumetric_fog_emission = Color(0.117735185, 0.20947376, 0.3003329, 1)
-volumetric_fog_emission_energy = 0.5
-volumetric_fog_sky_affect = 0.0
+[ext_resource type="PackedScene" uid="uid://b5g00fexnuwte" path="res://scenes/interactions/_special/item_no_pass_zone.tscn" id="39_x42l1"]
+[ext_resource type="Material" uid="uid://ioo51vym3k1d" path="res://scenes/interactions/_triggers/teleporter/m_teleport.tres" id="40_rv6yw"]
 
 [sub_resource type="Gradient" id="Gradient_ouj5r"]
 interpolation_mode = 2
@@ -236,23 +200,19 @@ _data = {
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_060nb"]
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_lckpc"]
+size = Vector3(2, 2, 2)
+
+[sub_resource type="BoxMesh" id="BoxMesh_r1ap5"]
+material = ExtResource("40_rv6yw")
+size = Vector3(2, 2, 2)
+
 [node name="Puzzle01" type="Node3D" unique_id=2140837292]
-
-[node name="WorldEnvironment2" type="WorldEnvironment" parent="." unique_id=1478136431]
-environment = SubResource("Environment_060nb")
-
-[node name="player_test" parent="." unique_id=725727541 instance=ExtResource("1_cflmq")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 2.1000001, 2.7)
-
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1818625410]
-light_color = Color(0, 0, 0, 1)
-light_energy = 0.061
-sky_mode = 1
 
 [node name="GridMap" type="GridMap" parent="." unique_id=694687736]
 mesh_library = ExtResource("2_rpyid")
 data = {
-"cells": PackedInt32Array(65535, 1, 4, 65535, 0, 0, 0, 0, 1441794, 65534, 0, 1441794, 1, 0, 3, 65533, 0, 1441795, 65533, 65535, 655362, 65533, 65534, 1441792, 65533, 65533, 2, 65533, 65532, 655363, 65534, 65532, 1048578, 1, 65535, 2, 1, 65533, 2, 65535, 65535, 2, 65535, 65533, 2, 0, 65532, 1441794, 0, 65534, 1441794, 65534, 65534, 1441794, 65535, 65534, 1048592, 1, 65534, 1441792, 65535, 65532, 1048576, 65535, 65531, 2, 65535, 65530, 2, 65532, 65534, 1441796, 2, 65534, 1048580, 1, 65532, 1048579, 65532, 3, 4)
+"cells": PackedInt32Array(65535, 1, 2, 65535, 0, 0, 0, 0, 1441794, 65534, 0, 1441794, 1, 0, 3, 65533, 0, 1441795, 65533, 65535, 655362, 65533, 65534, 1441792, 65533, 65533, 2, 65533, 65532, 655363, 65534, 65532, 1048578, 1, 65535, 2, 1, 65533, 2, 65535, 65535, 2, 65535, 65533, 2, 0, 65532, 1441794, 0, 65534, 1441794, 65534, 65534, 1441794, 65535, 65534, 1048592, 1, 65534, 1441792, 65535, 65532, 1048576, 65535, 65531, 2, 65535, 65530, 2, 65532, 65534, 1441796, 2, 65534, 1048580, 1, 65532, 1048579)
 }
 metadata/_editor_floor_ = Vector3(0, 0, 0)
 
@@ -810,7 +770,7 @@ mesh_library = ExtResource("26_p5orj")
 cell_size = Vector3(1, 1, 1)
 cell_octant_size = 4
 data = {
-"cells": PackedInt32Array(196604, 65528, 1048577, 196605, 65528, 1048577, 196606, 65528, 1048577, 196607, 65528, 1048577, 131072, 65528, 1048577, 131073, 65528, 1048577, 131074, 65528, 1048577, 131075, 65528, 1048577, 131075, 65530, 1048576, 131075, 65529, 1048576, 131075, 65531, 1048576, 131075, 65532, 1048576, 131075, 65533, 1048576, 131075, 65534, 1048576, 131075, 0, 1048576, 131075, 65535, 1048576, 131075, 1, 1048576, 131074, 1, 1048576, 131073, 1, 1048576, 131072, 1, 1048576, 196607, 1, 1048576, 196606, 1, 1048576, 196603, 1, 1048576, 196604, 1, 1048576, 196605, 1, 1048576, 196602, 0, 1048577, 196602, 65535, 1048577, 196602, 65534, 1048577, 196602, 65533, 1048577, 196602, 65532, 1048577, 196602, 65531, 1048577, 196602, 65530, 1048577, 196602, 65529, 1048577, 196602, 65528, 1048577, 196603, 65528, 1048577, 196603, 65532, 1048576, 196604, 65532, 1, 196605, 65532, 1, 196606, 65532, 1, 196606, 65529, 1048576, 196606, 65530, 1048577, 196606, 65531, 1048577, 196606, 65533, 0, 196606, 65534, 1048577, 196606, 65535, 1048577, 196606, 0, 1048577, 196607, 65533, 1048576, 131072, 65533, 0, 131073, 65533, 0, 131074, 65533, 1048576, 196607, 65529, 1048576, 196607, 65530, 1048576, 196607, 65531, 1048576, 196607, 65532, 1048576, 131072, 65532, 1, 131073, 65532, 1, 131074, 65532, 1048577, 131074, 65531, 1048577, 131074, 65530, 1048577, 131074, 65529, 1048576, 131073, 65529, 1048576, 131072, 65529, 1048576, 131072, 65530, 1048577, 131072, 65531, 1048577, 131073, 65531, 1048577, 131073, 65530, 1048577, 196605, 65531, 1048577, 196604, 65531, 1, 196603, 65531, 1048576, 196603, 65530, 1048576, 196604, 65529, 1048576, 196605, 65530, 1048577, 196604, 65530, 1048577, 196603, 0, 1048576, 196603, 65535, 1048576, 196603, 65534, 1048576, 196603, 65533, 1048576, 196604, 65533, 0, 196604, 65534, 1048577, 196604, 65535, 1048577, 196604, 0, 1048577, 196605, 0, 1048577, 196605, 65535, 1048577, 196605, 65534, 1048577, 196605, 65533, 0, 131074, 65534, 1048577, 131073, 65534, 1048577, 131072, 65534, 1048577, 196607, 65534, 1048576, 196607, 65535, 1048576, 196607, 0, 1048576, 131072, 0, 1048577, 131072, 65535, 1048577, 131073, 65535, 1048577, 131073, 0, 1048577, 131074, 0, 1048577, 131074, 65535, 1048577, 196602, 1, 1048577, 131076, 65528, 1048577, 196603, 65529, 1048576, 196605, 65529, 1048576)
+"cells": PackedInt32Array(196604, 65528, 1048577, 196605, 65528, 1048577, 196606, 65528, 1048577, 196607, 65528, 1048577, 131072, 65528, 1048577, 131073, 65528, 1048577, 131074, 65528, 1048577, 131075, 65528, 1048577, 131075, 65530, 1048576, 131075, 65529, 1048576, 131075, 65531, 1048576, 131075, 65532, 1048576, 131075, 65533, 1048576, 131075, 65534, 1048576, 131075, 0, 1048576, 131075, 65535, 1048576, 131075, 1, 1048576, 131074, 1, 1048576, 131073, 1, 1048576, 131072, 1, 1048576, 196607, 1, 1048576, 196606, 1, 1048576, 196603, 1, 1048576, 196604, 1, 1048576, 196605, 1, 1048576, 196602, 0, 1048577, 196602, 65535, 1048577, 196602, 65534, 1048577, 196602, 65533, 1048577, 196602, 65532, 1048577, 196602, 65531, 1048577, 196602, 65530, 1048577, 196602, 65529, 1048577, 196602, 65528, 1048577, 196603, 65528, 1048577, 196603, 65532, 1048576, 196604, 65532, 1, 196605, 65532, 1, 196606, 65532, 1, 196606, 65529, 1048576, 196606, 65530, 1048577, 196606, 65531, 1048577, 196606, 65533, 0, 196606, 65534, 1048577, 196606, 65535, 1048577, 196606, 0, 1048577, 196607, 65533, 1048576, 131072, 65533, 0, 131073, 65533, 0, 131074, 65533, 1048576, 196607, 65529, 1048576, 196607, 65530, 1048576, 196607, 65531, 1048576, 196607, 65532, 1048576, 131072, 65532, 1, 131073, 65532, 1, 131074, 65532, 1048577, 131074, 65531, 1048577, 131074, 65530, 1048577, 131074, 65529, 1048576, 131073, 65529, 1048576, 131072, 65529, 1048576, 131072, 65530, 1048577, 131072, 65531, 1048577, 131073, 65531, 1048577, 131073, 65530, 1048577, 196605, 65531, 1048577, 196604, 65531, 1, 196603, 65531, 1048576, 196603, 65530, 1048576, 196604, 65529, 1048576, 196605, 65530, 1048577, 196604, 65530, 1048577, 196603, 0, 1048576, 196603, 65535, 1048576, 196603, 65534, 1048576, 196603, 65533, 1048576, 196604, 65533, 0, 196604, 65534, 1048577, 196604, 65535, 1048577, 196604, 0, 1048577, 196605, 0, 1048577, 196605, 65535, 1048577, 196605, 65534, 1048577, 196605, 65533, 0, 131074, 65534, 1048577, 131073, 65534, 1048577, 131072, 65534, 1048577, 196607, 65534, 1048576, 196607, 65535, 1048576, 196607, 0, 1048576, 131072, 0, 1048577, 131072, 65535, 1048577, 131073, 65535, 1048577, 131073, 0, 1048577, 131074, 0, 1048577, 131074, 65535, 1048577, 196602, 1, 1048577, 131076, 65528, 1048577, 196603, 65529, 1048576, 196605, 65529, 1048576, 196606, 65524, 1441793, 196607, 65524, 1441793, 196607, 65525, 1441793, 196606, 65525, 1441793, 196607, 65526, 1441793, 196606, 65526, 1441793, 196606, 65527, 1441793, 196607, 65527, 1441793, 196607, 65523, 1441793, 196606, 65523, 1441793, 196606, 65522, 1441793, 196607, 65522, 1441793)
 }
 script = ExtResource("27_4w4fw")
 walkable_items = Array[int]([0])
@@ -912,6 +872,17 @@ transform = Transform3D(0.26437333, -0.7305622, 0.62959164, 0.94032377, 0.340281
 
 [node name="cairn rock 2" parent="." unique_id=1404731225 instance=ExtResource("37_x42l1")]
 transform = Transform3D(-3.239805e-08, 0.9659258, -0.258819, 3.3488384e-08, 0.258819, 0.9659258, 1, 2.2626681e-08, -4.073253e-08, -5.82, 1.12, -5.22)
+
+[node name="ItemNoPassZone" parent="." unique_id=223074910 instance=ExtResource("39_x42l1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.30000007, 2.3, -7.58424)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ItemNoPassZone" unique_id=1186143029]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.29999983, 0.9)
+visible = false
+shape = SubResource("BoxShape3D_lckpc")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="ItemNoPassZone/CollisionShape3D" unique_id=1908048497]
+mesh = SubResource("BoxMesh_r1ap5")
 
 [connection signal="on_change" from="_env/Gate_Left/Lever" to="_env/Items/HiddenItem/hiddentgate/AnimatedObject" method="play_animation"]
 [connection signal="on_activated" from="_env/Gate_Left/PressurePlates/PressurePlateTR" to="_env/Gate_Left/PressurePlates/PressurePlateTR/indicator_visenabler" method="enable_obj"]

@@ -27,7 +27,6 @@
 [ext_resource type="Texture2D" uid="uid://vvyp3kfi47jv" path="res://assets/sprites/Ballybog/ballyIdle1_1.png" id="25_vxxbb"]
 [ext_resource type="Script" uid="uid://c4t3ko70ihpyy" path="res://scenes/interactions/_receivers/animated_object/animated_object.gd" id="26_iqwb6"]
 [ext_resource type="PackedScene" uid="uid://cruv8v8wh8l06" path="res://scenes/interactions/_special/saving_stone/saving_stone.tscn" id="27_ea6e4"]
-[ext_resource type="PackedScene" uid="uid://bq86osdembn58" path="res://scenes/_player/_player_test.tscn" id="27_r5rtq"]
 [ext_resource type="AudioStream" uid="uid://cq7dtkcnrtjyk" path="res://assets/audio/sfx/environment/ambient/Ambience, Underground, Cave, Magic, Deep, Wind, Howling 01 SND46571.wav" id="28_k1g5s"]
 [ext_resource type="AudioStream" uid="uid://cte56l5nhnq88" path="res://assets/audio/sfx/environment/ambient/Ambience, Underground, Cave, Magic, Cold, Deep, Wind, Eerie SND46573.wav" id="29_li6vv"]
 [ext_resource type="AudioStream" uid="uid://bscs1lnw8crcv" path="res://assets/audio/sfx/environment/ambient/Ambience, Underground, Cave, Magic, Dangling Metal SND46572.wav" id="30_cb5rp"]
@@ -91,23 +90,6 @@ _data = {
 &"RESET": SubResource("Animation_yuom8"),
 &"Zooooooooom": SubResource("Animation_6ejh2")
 }
-
-[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_xunri"]
-sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
-sky_curve = 0.13058276
-ground_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
-
-[sub_resource type="Sky" id="Sky_rj5h8"]
-sky_material = SubResource("ProceduralSkyMaterial_xunri")
-
-[sub_resource type="Environment" id="Environment_rbu3s"]
-background_mode = 1
-background_color = Color(0.21430236, 0.20071769, 0.20977312, 1)
-sky = SubResource("Sky_rj5h8")
-ambient_light_color = Color(0.096089296, 0.120830394, 0.20651546, 1)
-tonemap_mode = 2
-glow_enabled = true
-volumetric_fog_enabled = true
 
 [node name="Main_Level" type="Node3D" unique_id=872925716]
 
@@ -547,16 +529,8 @@ transform = Transform3D(-3.7855173e-08, 2.1855694e-08, -1, 0.5, 0.8660254, 0, 0.
 [node name="Torch_Mounted2" parent="Tutorial_Area/Save_Tutorial/Environment/Torches" unique_id=1287931186 instance=ExtResource("23_gyl80")]
 transform = Transform3D(-3.7855173e-08, 2.1855694e-08, 1, 0.5, 0.8660254, 0, -0.8660254, 0.5, -4.371139e-08, -9, 0.38180494, -0.5995693)
 
-[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=672850743]
-environment = SubResource("Environment_rbu3s")
-
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1362444198]
-transform = Transform3D(-0.944665, 0.3251611, -0.04333894, -0.039370164, 0.01877861, 0.9990482, 0.32566544, 0.94547224, -0.0049378485, 3.5, 12.124357, -6.0621777)
-light_color = Color(0.3227734, 0.33385244, 0.3646147, 1)
-shadow_enabled = true
-
-[node name="player_test" parent="." unique_id=725727541 instance=ExtResource("27_r5rtq")]
-transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 38.2, -1, -5)
+[node name="Button" parent="Tutorial_Area/Save_Tutorial" unique_id=1164325605 instance=ExtResource("5_ogl71")]
+transform = Transform3D(2.9802322e-08, 0, 1, 0, 1, 0, -1, 0, 2.9802322e-08, 2.711975, 1, 1.2922611)
 
 [node name="Ambient_Noises" type="Node3D" parent="." unique_id=369290277]
 
@@ -618,3 +592,4 @@ metadata/_custom_type_script = "uid://bul4myvyhnpjc"
 [connection signal="area_entered" from="Tutorial_Area/Ballybog_Tease/PlayerAreaTrigger_Ballybog/Area3D" to="Tutorial_Area/Ballybog_Tease/PlayerAreaTrigger_Ballybog" method="_player_entered"]
 [connection signal="area_exited" from="Tutorial_Area/Ballybog_Tease/PlayerAreaTrigger_Ballybog/Area3D" to="Tutorial_Area/Ballybog_Tease/PlayerAreaTrigger_Ballybog" method="_player_exited"]
 [connection signal="on_end_interact" from="Tutorial_Area/Save_Tutorial/SavingStone" to="Tutorial_Area/Save_Tutorial/Gate" method="open_gate"]
+[connection signal="on_activated" from="Tutorial_Area/Save_Tutorial/Button" to="Tutorial_Area/Save_Tutorial/Gate" method="open_gate"]

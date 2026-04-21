@@ -1,7 +1,6 @@
 [gd_scene format=4 uid="uid://8ur6fpvfuoah"]
 
 [ext_resource type="MeshLibrary" uid="uid://bhdjk8h6chf0o" path="res://scenes/_levels/_palettes/cairn/mossy/meshlibrary_mossy_cairn.meshlib" id="1_jbjem"]
-[ext_resource type="PackedScene" uid="uid://bq86osdembn58" path="res://scenes/_player/_player_test.tscn" id="2_rv1fq"]
 [ext_resource type="MeshLibrary" uid="uid://br861hnjhp6ry" path="res://scenes/_levels/_palettes/gmpf_meshlib.tres" id="3_ho3g3"]
 [ext_resource type="Script" uid="uid://ubfk2a80dhfp" path="res://addons/grid_map_pathfinding/grid_map_pathfinding.gd" id="4_aw6bp"]
 [ext_resource type="PackedScene" uid="uid://dt13fur6twjep" path="res://scenes/interactions/_receivers/gate/gate.tscn" id="5_1nwec"]
@@ -25,23 +24,8 @@
 [ext_resource type="PackedScene" uid="uid://dkx1fyyqx7cmp" path="res://scenes/interactions/_triggers/torch_sconce/torch_sconce_ceiling.tscn" id="19_1rfv5"]
 [ext_resource type="PackedScene" uid="uid://cfhacobhksnxe" path="res://scenes/_levels/_palettes/cairn/props/cairn_dirtwall.tscn" id="20_86n7n"]
 [ext_resource type="PackedScene" uid="uid://crnrdh5wu8ooa" path="res://scenes/interactions/_receivers/traps/projectile/trap_projectile.tscn" id="24_5jhwi"]
-
-[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_5jhwi"]
-sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
-sky_curve = 0.13058276
-ground_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
-
-[sub_resource type="Sky" id="Sky_rj5h8"]
-sky_material = SubResource("ProceduralSkyMaterial_5jhwi")
-
-[sub_resource type="Environment" id="Environment_57qbt"]
-background_mode = 1
-background_color = Color(0.21430236, 0.20071769, 0.20977312, 1)
-sky = SubResource("Sky_rj5h8")
-ambient_light_color = Color(0.096089296, 0.120830394, 0.20651546, 1)
-tonemap_mode = 2
-glow_enabled = true
-volumetric_fog_enabled = true
+[ext_resource type="PackedScene" uid="uid://b5g00fexnuwte" path="res://scenes/interactions/_special/item_no_pass_zone.tscn" id="26_i5oae"]
+[ext_resource type="Material" uid="uid://ioo51vym3k1d" path="res://scenes/interactions/_triggers/teleporter/m_teleport.tres" id="27_edn4m"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_1hgo1"]
 
@@ -114,26 +98,22 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_70ft0")
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_fx3kc"]
+size = Vector3(2, 2, 2)
+
+[sub_resource type="BoxMesh" id="BoxMesh_haa7c"]
+material = ExtResource("27_edn4m")
+size = Vector3(2, 2, 2)
+
 [node name="BallyBog_HardSection" type="Node3D" unique_id=818137965]
-
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1834986096]
-transform = Transform3D(-0.944665, 0.32516113, -0.04333894, -0.039370164, 0.018778611, 0.99904823, 0.32566544, 0.94547224, -0.004937849, 3.5, 12.124357, -6.0621777)
-light_color = Color(0.3227734, 0.33385244, 0.3646147, 1)
-shadow_enabled = true
-
-[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=584735391]
-environment = SubResource("Environment_57qbt")
 
 [node name="GridMap" type="GridMap" parent="." unique_id=11253392]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
 mesh_library = ExtResource("1_jbjem")
 data = {
-"cells": PackedInt32Array(0, 0, 4, 0, 65535, 2, 65535, 65534, 1048591, 65534, 65534, 1048592, 65532, 65534, 15, 65532, 65533, 655378, 65532, 65532, 655378, 65532, 65529, 655377, 65532, 65528, 655377, 65532, 65527, 1441807, 1, 65534, 15, 2, 65534, 1048593, 3, 65534, 1441809, 4, 65534, 1048591, 4, 65533, 17, 4, 65532, 17, 4, 65531, 655375, 4, 65529, 17, 4, 65528, 17, 4, 65527, 655375, 65533, 65527, 1048593, 65534, 65527, 1048593, 65535, 65527, 655375, 0, 65527, 655379, 1, 65527, 1441807, 3, 65527, 1048593, 65535, 65528, 17, 0, 65528, 1048595, 1, 65528, 655377, 2, 65528, 1048595, 3, 65528, 655378, 3, 65530, 16, 3, 65531, 1441807, 3, 65532, 15, 3, 65533, 1048595, 2, 65533, 1048595, 2, 65532, 1048595, 2, 65531, 1048595, 2, 65530, 1048595, 1, 65529, 18, 0, 65529, 1048595, 65535, 65529, 1048591, 65533, 65530, 1048595, 65534, 65530, 1048595, 65535, 65530, 1048595, 0, 65530, 1048595, 1, 65530, 1048595, 1, 65531, 1441809, 0, 65532, 1048595, 65535, 65532, 1048595, 65534, 65531, 1441810, 65533, 65531, 1048595, 65535, 65531, 1441809, 0, 65531, 1441809, 65533, 65532, 1048595, 65534, 65532, 1048595, 65534, 65533, 1441807, 65533, 65533, 1048595, 65535, 65533, 655375, 0, 65533, 1048595, 1, 65533, 655377, 0, 65534, 16, 65532, 65530, 17, 65532, 65531, 1048595, 65531, 65531, 1441796, 0, 65526, 655364, 3, 65529, 655377, 2, 65529, 655379, 5, 65530, 1441794, 6, 65530, 1441794, 7, 65530, 1048580, 4, 65530, 19, 65533, 65528, 1441811, 65534, 65528, 1441811, 65533, 65534, 1048592, 2, 65527, 1441808, 65533, 65529, 1048592, 65534, 65529, 1048592, 1, 65532, 655379)
+"cells": PackedInt32Array(0, 0, 2, 0, 65535, 2, 65535, 65534, 1048591, 65534, 65534, 1048592, 65532, 65534, 15, 65532, 65533, 655378, 65532, 65532, 655378, 65532, 65529, 655377, 65532, 65528, 655377, 65532, 65527, 1441807, 1, 65534, 15, 2, 65534, 1048593, 3, 65534, 1441809, 4, 65534, 1048591, 4, 65533, 17, 4, 65532, 17, 4, 65531, 655375, 4, 65529, 17, 4, 65528, 17, 4, 65527, 655375, 65533, 65527, 1048593, 65534, 65527, 1048593, 65535, 65527, 655375, 0, 65527, 655379, 1, 65527, 1441807, 3, 65527, 1048593, 65535, 65528, 17, 0, 65528, 1048595, 1, 65528, 655377, 2, 65528, 1048595, 3, 65528, 655378, 3, 65530, 16, 3, 65531, 1441807, 3, 65532, 15, 3, 65533, 1048595, 2, 65533, 1048595, 2, 65532, 1048595, 2, 65531, 1048595, 2, 65530, 1048595, 1, 65529, 18, 0, 65529, 1048595, 65535, 65529, 1048591, 65533, 65530, 1048595, 65534, 65530, 1048595, 65535, 65530, 1048595, 0, 65530, 1048595, 1, 65530, 1048595, 1, 65531, 1441809, 0, 65532, 1048595, 65535, 65532, 1048595, 65534, 65531, 1441810, 65533, 65531, 1048595, 65535, 65531, 1441809, 0, 65531, 1441809, 65533, 65532, 1048595, 65534, 65532, 1048595, 65534, 65533, 1441807, 65533, 65533, 1048595, 65535, 65533, 655375, 0, 65533, 1048595, 1, 65533, 655377, 0, 65534, 16, 65532, 65530, 17, 65532, 65531, 1048595, 65531, 65531, 1441796, 0, 65526, 655364, 3, 65529, 655377, 2, 65529, 655379, 5, 65530, 1441794, 6, 65530, 1441794, 4, 65530, 19, 65533, 65528, 1441811, 65534, 65528, 1441811, 65533, 65534, 1048592, 2, 65527, 1441808, 65533, 65529, 1048592, 65534, 65529, 1048592, 1, 65532, 655379, 7, 65530, 1441794)
 }
 metadata/_editor_floor_ = Vector3(0, 0, 0)
-
-[node name="player_test" parent="." unique_id=725727541 instance=ExtResource("2_rv1fq")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 1, 0)
 
 [node name="First_Part" type="Node3D" parent="." unique_id=1476509548]
 
@@ -305,6 +285,9 @@ transform = Transform3D(1, 0, 1.7484555e-07, 0, 1, 0, -1.7484555e-07, 0, 1, 0.81
 
 [node name="TorchSconce_Lit6" parent="Torches" unique_id=1934993162 instance=ExtResource("16_g0t4t")]
 transform = Transform3D(0.22263771, -0.9416823, -0.25232297, -1.6888784e-07, -0.25881907, 0.96592593, -0.9749014, -0.2150515, -0.057623047, 2.8168573, -0.057905674, -2.715786)
+
+[node name="TorchSconce_Lit11" parent="Torches" unique_id=379251639 instance=ExtResource("16_g0t4t")]
+transform = Transform3D(-0.05762303, -0.006274724, 0.9983187, 0.044599235, 0.99896556, 0.008853001, -0.99734163, 0.04503432, -0.05728359, -7.8525915, 1.5866971, -0.6157856)
 
 [node name="TorchSconce_Lit7" parent="Torches" unique_id=1395597450 instance=ExtResource("16_g0t4t")]
 transform = Transform3D(0.22263771, -0.9416823, -0.25232297, -1.6888784e-07, -0.25881907, 0.96592593, -0.9749014, -0.2150515, -0.057623047, -1.1831427, -0.057905674, 3.284214)
@@ -1358,6 +1341,17 @@ debug_start_cell = Vector3i(-3, 2, -7)
 debug_end_cell = Vector3i(0, 2, 1)
 metadata/_editor_floor_ = Vector3(0, 2, 0)
 
+[node name="ItemNoPassZone" parent="." unique_id=223074910 instance=ExtResource("26_i5oae")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 9.526411, 2.3, -11.088887)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ItemNoPassZone" unique_id=1896824372]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.29999983, 0.9)
+visible = false
+shape = SubResource("BoxShape3D_fx3kc")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="ItemNoPassZone/CollisionShape3D" unique_id=1363136761]
+mesh = SubResource("BoxMesh_haa7c")
+
 [connection signal="on_activated" from="First_Part/First_Gate_Button_Open" to="First_Part/First_BallyBog_Trap_Gate" method="open_gate"]
 [connection signal="on_activated" from="First_Part/BrokenLever/BrokenLever" to="First_Part/BrokenLever/Lever_Fixed" method="enable"]
 [connection signal="on_change" from="First_Part/BrokenLever/Lever_Fixed" to="Second_Part/Key_Gate" method="open_gate"]
@@ -1370,8 +1364,8 @@ metadata/_editor_floor_ = Vector3(0, 2, 0)
 [connection signal="area_entered" from="Second_Part/BallyBogOne_Trigger2/Area3D" to="Second_Part/BallyBogOne_Trigger2" method="_player_entered"]
 [connection signal="area_exited" from="Second_Part/BallyBogOne_Trigger2/Area3D" to="Second_Part/BallyBogOne_Trigger2" method="_player_exited"]
 [connection signal="on_activated" from="Second_Part/Open_skull_Gate_Button" to="Second_Part/Skull_Gate" method="open_gate"]
-[connection signal="on_activated" from="Second_Part/Open_Chain_Gate_Button" to="Traps/SpikeTrap2" method="activate"]
 [connection signal="on_activated" from="Second_Part/Open_Chain_Gate_Button" to="Second_Part/Unlock_Chain_Gate" method="open_gate"]
+[connection signal="on_activated" from="Second_Part/Open_Chain_Gate_Button" to="Traps/SpikeTrap2" method="activate"]
 [connection signal="on_activated" from="Third_Part/Door/ItemReceiver" to="Third_Part/Door/Door" method="open_door"]
 [connection signal="on_change" from="Third_Part/Open_Exit_Gate_Chain" to="Third_Part/Exit_Gate" method="fully_open_gate"]
 [connection signal="on_activated" from="Traps/Arrow_Trap" to="Traps/Arrow_Trap/trap_projectile" method="trigger_trap"]

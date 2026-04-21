@@ -1,7 +1,6 @@
 [gd_scene format=3 uid="uid://bvj3a43avx5bu"]
 
 [ext_resource type="MeshLibrary" uid="uid://br861hnjhp6ry" path="res://scenes/_levels/_palettes/gmpf_meshlib.tres" id="1_m8tlr"]
-[ext_resource type="PackedScene" uid="uid://bq86osdembn58" path="res://scenes/_player/_player_test.tscn" id="2_1r4jb"]
 [ext_resource type="PackedScene" uid="uid://drsdttca4hc5w" path="res://scenes/enemy_new/enemy_ballybog_new.tscn" id="3_nfw6c"]
 [ext_resource type="MeshLibrary" uid="uid://bhdjk8h6chf0o" path="res://scenes/_levels/_palettes/cairn/mossy/meshlibrary_mossy_cairn.meshlib" id="3_qofka"]
 [ext_resource type="PackedScene" uid="uid://bry8rqyr2pf37" path="res://assets/models/cairn/Z-Old-EnvironmentModels/Rocks/Rocks.glb" id="4_1r4jb"]
@@ -27,54 +26,17 @@
 [ext_resource type="PackedScene" uid="uid://b5g00fexnuwte" path="res://scenes/interactions/_special/item_no_pass_zone.tscn" id="31_iw7gl"]
 [ext_resource type="Material" uid="uid://ioo51vym3k1d" path="res://scenes/interactions/_triggers/teleporter/m_teleport.tres" id="32_tie2v"]
 
-[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_pac4h"]
-sky_horizon_color = Color(0, 0.37292683, 0.8185948, 1)
-sky_curve = 0.23537512
-ground_horizon_color = Color(0.3529412, 0.30588236, 0.2509804, 1)
-ground_curve = 0.060628746
-
-[sub_resource type="Sky" id="Sky_jbn6s"]
-sky_material = SubResource("ProceduralSkyMaterial_pac4h")
-
-[sub_resource type="Environment" id="Environment_q00f3"]
-sky = SubResource("Sky_jbn6s")
-ambient_light_source = 2
-ambient_light_color = Color(4.512258e-08, 0.025031792, 0.083208345, 1)
-ambient_light_energy = 4.0
-reflected_light_source = 1
-tonemap_mode = 4
-tonemap_exposure = 2.0
-ssao_enabled = true
-ssao_radius = 0.05
-ssao_intensity = 1.0
-sdfgi_read_sky_light = false
-sdfgi_bounce_feedback = 1.99
-sdfgi_cascades = 8
-sdfgi_min_cell_size = 19.315624
-sdfgi_energy = 4.035
-sdfgi_normal_bias = 6.215
-sdfgi_probe_bias = 2.94
-glow_enabled = true
-glow_intensity = 0.5
-glow_strength = 0.4
-volumetric_fog_enabled = true
-volumetric_fog_density = 0.025
-volumetric_fog_albedo = Color(0.74509805, 0.34509805, 0, 1)
-volumetric_fog_emission = Color(0.117735185, 0.20947376, 0.3003329, 1)
-volumetric_fog_emission_energy = 0.5
-volumetric_fog_sky_affect = 0.0
-
 [sub_resource type="SphereShape3D" id="SphereShape3D_iw7gl"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_qofka"]
 
-[sub_resource type="Gradient" id="Gradient_fv00s"]
+[sub_resource type="Gradient" id="Gradient_jbn6s"]
 interpolation_mode = 2
 offsets = PackedFloat32Array(0.3402556, 0.53355706, 1)
 colors = PackedColorArray(0.17184411, 0.11207495, 0.06100855, 0, 0, 1.9492192, 2.0330758, 0.69000006, 0, 0, 0, 0)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_tnaar"]
-gradient = SubResource("Gradient_fv00s")
+gradient = SubResource("Gradient_jbn6s")
 fill = 1
 fill_from = Vector2(0.5, 0.5)
 fill_to = Vector2(0.94, 0.43)
@@ -124,14 +86,6 @@ material = ExtResource("32_tie2v")
 
 [node name="Ballybog_Scene" type="Node3D" unique_id=842226877]
 
-[node name="WorldEnvironment2" type="WorldEnvironment" parent="." unique_id=1134384756]
-environment = SubResource("Environment_q00f3")
-
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1471337058]
-transform = Transform3D(0.033493724, 0.99102545, -0.12940948, 0.01924202, 0.1288187, 0.9914815, 0.9992537, -0.03569851, -0.014754714, 3.5, 12.124357, -6.0621777)
-light_color = Color(0.3227734, 0.33385244, 0.3646147, 1)
-shadow_enabled = true
-
 [node name="GridMapPathFinding2" type="GridMap" parent="." unique_id=1929151095 groups=["GMPF"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.445, 0)
 visible = false
@@ -139,7 +93,7 @@ mesh_library = ExtResource("1_m8tlr")
 cell_size = Vector3(1, 1, 1)
 cell_octant_size = 4
 data = {
-"cells": PackedInt32Array(23, 18, 0, 196606, 65526, 655360, 196606, 65527, 655360, 196606, 65528, 1441792, 196606, 65529, 1441792, 196606, 65530, 655360, 196606, 65531, 655360, 196607, 65531, 0, 131072, 65531, 1441792, 131073, 65531, 1441792, 131073, 65526, 655360, 131072, 65526, 655360, 196607, 65526, 655360, 196607, 65527, 0, 196607, 65528, 0, 196607, 65529, 655360, 196607, 65530, 655360, 131072, 65530, 655360, 131073, 65530, 655360, 131073, 65529, 655360, 131072, 65529, 655360, 131073, 65528, 655360, 131072, 65528, 655360, 131073, 65527, 655360, 131072, 65527, 655360, 131072, 65525, 1441792, 131073, 65525, 1441792, 131073, 65524, 1441792, 131072, 65524, 1441792, 196607, 65524, 1441792, 196606, 65524, 1441792, 196606, 65525, 1441792, 196607, 65525, 1441792, 196605, 65527, 1441793, 196605, 65526, 1441793)
+"cells": PackedInt32Array(196606, 65526, 655360, 196606, 65527, 655360, 196606, 65528, 1441792, 196606, 65529, 1441792, 196606, 65530, 655360, 196606, 65531, 655360, 196607, 65531, 0, 131072, 65531, 1441792, 131073, 65531, 1441792, 131073, 65526, 655360, 131072, 65526, 655360, 196607, 65526, 655360, 196607, 65527, 0, 196607, 65528, 0, 196607, 65529, 655360, 196607, 65530, 655360, 131072, 65530, 655360, 131073, 65530, 655360, 131073, 65529, 655360, 131072, 65529, 655360, 131073, 65528, 655360, 131072, 65528, 655360, 131073, 65527, 655360, 131072, 65527, 655360, 131072, 65525, 1441792, 131073, 65525, 1441792, 131073, 65524, 1441792, 131072, 65524, 1441792, 196607, 65524, 1441792, 196606, 65524, 1441792, 196606, 65525, 1441792, 196607, 65525, 1441792, 196605, 65527, 1441793, 196605, 65526, 1441793, 131073, 65532, 1, 131072, 65532, 1, 131072, 65533, 1, 131073, 65534, 1, 131073, 65533, 1, 131072, 65535, 1, 131072, 65534, 1, 131073, 65535, 1, 131074, 65535, 1, 131074, 65534, 1, 131075, 65534, 1, 131075, 65535, 1, 131075, 1, 1, 131074, 1, 1, 131074, 0, 1, 131075, 0, 1, 131073, 65522, 1, 131073, 65523, 1, 131072, 65523, 1, 131072, 65522, 1, 131073, 65521, 1, 131072, 65520, 1, 131072, 65521, 1, 131073, 65520, 1)
 }
 script = ExtResource("29_211nq")
 walkable_items = Array[int]([0])
@@ -151,7 +105,7 @@ metadata/_editor_floor_ = Vector3(0, 2, 0)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
 mesh_library = ExtResource("3_qofka")
 data = {
-"cells": PackedInt32Array(1, 0, 4, 1, 65535, 1048579, 0, 65535, 1441795, 65533, 65532, 655367, 65533, 65531, 655368, 65534, 65531, 1048583, 65535, 65530, 655363, 65535, 65531, 655360, 65535, 65532, 1441793, 0, 65534, 1048577, 65535, 65534, 1048583, 65534, 65534, 1048583, 65533, 65534, 1441800, 65533, 65533, 655367, 65535, 65533, 1441795, 0, 65533, 1048582, 0, 65532, 1048582, 0, 65531, 1048582, 0, 65530, 1048582, 0, 65529, 7, 0, 65528, 655364)
+"cells": PackedInt32Array(1, 0, 2, 1, 65535, 1048579, 0, 65535, 1441795, 65533, 65532, 655367, 65533, 65531, 655368, 65534, 65531, 1048583, 65535, 65530, 655363, 65535, 65531, 655360, 65535, 65532, 1441793, 0, 65534, 1048577, 65535, 65534, 1048583, 65534, 65534, 1048583, 65533, 65534, 1441800, 65533, 65533, 655367, 65535, 65533, 1441795, 0, 65533, 1048582, 0, 65532, 1048582, 0, 65531, 1048582, 0, 65530, 1048582, 0, 65529, 7, 0, 65528, 7)
 }
 
 [node name="Bally_1_PatrolPoints" type="Node3D" parent="." unique_id=666893484]
@@ -171,9 +125,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, -1)
 
 [node name="Node3D6" type="Node3D" parent="Bally_1_PatrolPoints" unique_id=1879697846]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7, 0, -0.9999998)
-
-[node name="player_test" parent="." unique_id=725727541 instance=ExtResource("2_1r4jb")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 1, 1)
 
 [node name="Ballybog2" parent="." unique_id=1712475425 node_paths=PackedStringArray("patrol_points") instance=ExtResource("3_nfw6c")]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0.99999994, 0, -7)
