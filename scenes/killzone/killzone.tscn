@@ -2,8 +2,14 @@
 
 [ext_resource type="Script" uid="uid://cgnxxpvybr8w6" path="res://scenes/killzone/killzone.gd" id="1_6ib8s"]
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_6ib8s"]
+size = Vector3(1000, 0.5, 1000)
+
 [node name="Killzone" type="Area3D" unique_id=935534973]
 monitorable = false
 script = ExtResource("1_6ib8s")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1464016356]
+shape = SubResource("BoxShape3D_6ib8s")
 
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]
