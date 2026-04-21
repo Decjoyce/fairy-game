@@ -165,7 +165,7 @@ metadata/lock_uid = true
 metadata/date_generated = "2026-04-21T14:01:56"
 
 [node name="BallyBogOne_Trigger" parent="First_Part" unique_id=917204587 instance=ExtResource("12_g0t4t")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 1, -9)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 1, -7)
 
 [node name="Area3D" type="Area3D" parent="First_Part/BallyBogOne_Trigger" unique_id=1001783763]
 
@@ -188,7 +188,7 @@ metadata/uid = "40cda675-83d8-4591-b3ae-111ef80c75cf"
 metadata/date_generated = "2026-04-21T14:01:56"
 
 [node name="BallyBogOne_Trigger2" parent="Second_Part" unique_id=482191571 instance=ExtResource("12_g0t4t")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 1, -11)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7, 1, -9)
 
 [node name="Area3D" type="Area3D" parent="Second_Part/BallyBogOne_Trigger2" unique_id=1379741942]
 
@@ -285,7 +285,7 @@ metadata/date_generated = "2026-04-21T14:01:56"
 [node name="Enemies" type="Node3D" parent="." unique_id=160301403]
 
 [node name="Ballybog" parent="Enemies" unique_id=1712475425 node_paths=PackedStringArray("grid_map", "patrol_points") instance=ExtResource("11_4joy0")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, -13)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, -14)
 grid_map = NodePath("../../GridMapPathFinding2")
 patrol_points = [NodePath("../../EnemyWanderPoints/BallyBog_One_WanderPoints/WP_1"), NodePath("../../EnemyWanderPoints/BallyBog_One_WanderPoints/WP_2"), NodePath("../../EnemyWanderPoints/BallyBog_One_WanderPoints/WP_3"), NodePath("../../EnemyWanderPoints/BallyBog_One_WanderPoints/WP_4"), NodePath("../../EnemyWanderPoints/BallyBog_One_WanderPoints/WP_5"), NodePath("../../EnemyWanderPoints/BallyBog_One_WanderPoints/WP_6"), NodePath("../../EnemyWanderPoints/BallyBog_One_WanderPoints/WP_7"), NodePath("../../EnemyWanderPoints/BallyBog_One_WanderPoints/WP_8"), NodePath("../../EnemyWanderPoints/BallyBog_One_WanderPoints/WP_9"), NodePath("../../EnemyWanderPoints/BallyBog_One_WanderPoints/WP_10"), NodePath("../../EnemyWanderPoints/BallyBog_One_WanderPoints/WP_11"), NodePath("../../EnemyWanderPoints/BallyBog_One_WanderPoints/WP_12"), NodePath("../../EnemyWanderPoints/BallyBog_One_WanderPoints/WP_13"), NodePath("../../EnemyWanderPoints/BallyBog_One_WanderPoints/WP_14"), NodePath("../../EnemyWanderPoints/BallyBog_One_WanderPoints/WP_15"), NodePath("../../EnemyWanderPoints/BallyBog_One_WanderPoints/WP_16"), NodePath("../../EnemyWanderPoints/BallyBog_One_WanderPoints/WP_17")]
 delay_between_points = 0.5
@@ -352,7 +352,7 @@ metadata/date_generated = "2026-04-21T14:01:56"
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, -14.2)
 
 [node name="WP_1" type="Node3D" parent="EnemyWanderPoints/BallyBog_One_WanderPoints" unique_id=641253685]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 1)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 1)
 
 [node name="WP_2" type="Node3D" parent="EnemyWanderPoints/BallyBog_One_WanderPoints" unique_id=1693004914]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, -1)
@@ -1392,7 +1392,7 @@ metadata/lock_uid = true
 metadata/uid = "f4252484-1618-44c1-92b1-5ae656991ab0"
 metadata/date_generated = "2026-04-21T14:01:56"
 
-[node name="GridMapPathFinding2" type="GridMap" parent="." unique_id=1647210820 groups=["GMPF"]]
+[node name="GridMapPathFinding2" type="GridMap" parent="." unique_id=1647210820]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.5, 0)
 visible = false
 mesh_library = ExtResource("3_ho3g3")
