@@ -247,6 +247,8 @@ var BOB_FREQ: float = 0.75
 var BOB_AMP: float = 6.5
 var t_bob: float = 0.0
 
+var played_sfx: bool
+
 func begin_charge() -> void:
 	is_charging = true
 	charge_amount = 0
@@ -256,13 +258,16 @@ func begin_charge() -> void:
 	grabbed_item.rotation_degrees.z = -grabbed_item.throwing_rotation * hand_controller.hand_type_rotation_mult
 	hand_controller.input_controls.enable_interact_action(tr("RELEASE_TO_THROW"))
 	
-	hand_controller.audio_throw.stream = player_interact.throw_clips[0]#AUDIO
-	hand_controller.audio_throw.play()#AUDIO
 
 func charging(_delta: float) -> void:
 	if !is_charging: return
 	time_held_down += _delta
 	var _charged_amount = time_held_down / delay_before_max_charge
+	
+	if !played_sfx and charge_amount >= 0.1:
+		hand_controller.audio_throw.stream = player_interact.throw_clips[0] #AUDIO
+		hand_controller.audio_throw.play() #AUDIO
+		played_sfx = true
 	
 	charge_amount = clampf(_charged_amount, 0.0, 1.0)
 	t_bob += _delta * charge_amount * 50
@@ -291,6 +296,7 @@ func end_charge() -> void:
 	charge_amount = 0
 	time_held_down = 0
 	grabbed_item.is_grabbed = false
+	played_sfx = false
 	finished.emit(FREE)
 
 
