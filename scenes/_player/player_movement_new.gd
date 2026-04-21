@@ -29,7 +29,7 @@ extends Node
 
 var is_moving: bool
 var target_pos: Vector3
-const SPEED_MAX: float = 4.5
+const SPEED_MAX: float = 5
 const SPEED_CROUCH: float = 2.75
 var speed: float = 4
 
