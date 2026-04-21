@@ -22,7 +22,7 @@ func pause() -> void:
 
 # If pause menu should take precedence, override _input() instead.
 func _unhandled_input(event : InputEvent) -> void:
-	if event.is_action_pressed("ui_cancel"):
+	if event.is_action_pressed("dec_pause"):
 		pause()
 
 func _ready() -> void:
