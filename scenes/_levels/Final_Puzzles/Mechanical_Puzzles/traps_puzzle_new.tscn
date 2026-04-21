@@ -7,9 +7,10 @@
 [ext_resource type="PackedScene" uid="uid://lxic7c72kvyt" path="res://scenes/interactions/interactables/items/all_items/misc/item_skull.tscn" id="5_dp00y"]
 [ext_resource type="PackedScene" uid="uid://bmiljk53ks7e7" path="res://scenes/interactions/_receivers/wip_spike_trap/spike_trap_floor.tscn" id="6_jkfe6"]
 [ext_resource type="PackedScene" uid="uid://dt13fur6twjep" path="res://scenes/interactions/_receivers/gate/gate.tscn" id="7_wn42o"]
-[ext_resource type="PackedScene" uid="uid://cwr2r7yxt4ust" path="res://scenes/interactions/ReusableStones/stonepile_reusable_stones.tscn" id="8_lu18g"]
 [ext_resource type="PackedScene" uid="uid://qu5rxgbydmet" path="res://scenes/interactions/_triggers/button/button.tscn" id="8_uqwb3"]
 [ext_resource type="PackedScene" uid="uid://pfsmibp55qi" path="res://scenes/interactions/_receivers/bridge/bridge.tscn" id="9_4clkm"]
+[ext_resource type="Material" uid="uid://dgrldudl0bdhu" path="res://assets/models/cairn/Props/Rockpile/Rock_pile.tres" id="9_6vcod"]
+[ext_resource type="ArrayMesh" uid="uid://bboxjdwpohtg0" path="res://assets/models/cairn/Props/Rockpile/Rock_pile.obj" id="10_1c2il"]
 [ext_resource type="PackedScene" uid="uid://br01bblhowysi" path="res://assets/models/cairn/Z-Old-EnvironmentModels/Wall/Wall.glb" id="10_8sfw4"]
 [ext_resource type="PackedScene" uid="uid://xuo5buj0odhi" path="res://scenes/interactions/_triggers/torch_sconce/torch_sconce_lit.tscn" id="14_ftbts"]
 [ext_resource type="PackedScene" uid="uid://bsdlm8rcrt2j" path="res://scenes/interactions/_triggers/area_triggers/player_area_trigger.tscn" id="15_fs7hw"]
@@ -53,6 +54,32 @@ top_radius = 0.03
 bottom_radius = 0.03
 height = 0.8
 radial_segments = 4
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_qsdh4"]
+radius = 0.72753906
+height = 1.4550781
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kmgx0"]
+transparency = 1
+albedo_color = Color(0, 0.8494162, 1, 1)
+albedo_texture = ExtResource("25_fymop")
+emission_enabled = true
+emission = Color(0, 0.89420825, 1, 1)
+rim_enabled = true
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_qsdh4"]
+material = SubResource("StandardMaterial3D_kmgx0")
+size = Vector2(0.5, 0.5)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qsdh4"]
+transparency = 1
+albedo_color = Color(0, 0.09350002, 0.11, 1)
+albedo_texture = ExtResource("25_fymop")
+emission = Color(0, 0.89420825, 1, 1)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_317lc"]
+material = SubResource("StandardMaterial3D_qsdh4")
+size = Vector2(0.5, 0.5)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_lu18g"]
 size = Vector3(1.9938965, 1, 5.520874)
@@ -126,7 +153,7 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_42tyc")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kmgx0"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_70hwn"]
 transparency = 1
 albedo_color = Color(0, 0.8494162, 1, 1)
 albedo_texture = ExtResource("25_fymop")
@@ -134,18 +161,18 @@ emission_enabled = true
 emission = Color(0, 0.89420825, 1, 1)
 rim_enabled = true
 
-[sub_resource type="PlaneMesh" id="PlaneMesh_qsdh4"]
-material = SubResource("StandardMaterial3D_kmgx0")
+[sub_resource type="PlaneMesh" id="PlaneMesh_dhg0u"]
+material = SubResource("StandardMaterial3D_70hwn")
 size = Vector2(0.5, 0.5)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qsdh4"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2pmk1"]
 transparency = 1
 albedo_color = Color(0, 0.09350002, 0.11, 1)
 albedo_texture = ExtResource("25_fymop")
 emission = Color(0, 0.89420825, 1, 1)
 
-[sub_resource type="PlaneMesh" id="PlaneMesh_317lc"]
-material = SubResource("StandardMaterial3D_qsdh4")
+[sub_resource type="PlaneMesh" id="PlaneMesh_of2sk"]
+material = SubResource("StandardMaterial3D_2pmk1")
 size = Vector2(0.5, 0.5)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_6vcod"]
@@ -280,8 +307,54 @@ metadata/uid = "d5102b2e-c73c-4367-8eb0-bec30b6794c0"
 metadata/lock_uid = true
 metadata/date_generated = "2026-04-21T14:00:56"
 
-[node name="Stonepile_ReusableStones" parent="Beginning_Part(Easier)/Second_Part" unique_id=1682368129 instance=ExtResource("8_lu18g")]
+[node name="Stonepile_ReusableStones" type="Area3D" parent="Beginning_Part(Easier)/Second_Part" unique_id=1682368129]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 2, 0, -7)
+collision_layer = 0
+collision_mask = 2
+monitorable = false
+script = ExtResource("22_rym0g")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Beginning_Part(Easier)/Second_Part/Stonepile_ReusableStones" unique_id=651584812]
+transform = Transform3D(0.4, 0, 0, 0, 0.505, 0, 0, 0, 0.4, -1.148, -0.26655877, 0)
+material_override = ExtResource("9_6vcod")
+mesh = ExtResource("10_1c2il")
+
+[node name="ItemMover" type="Node" parent="Beginning_Part(Easier)/Second_Part/Stonepile_ReusableStones" unique_id=1734723238 node_paths=PackedStringArray("itms_2_move", "positions_to_move_to")]
+script = ExtResource("23_g30tv")
+itms_2_move = [NodePath("../stonepile_stone")]
+positions_to_move_to = [NodePath("../out_pos")]
+metadata/_custom_type_script = "uid://dpj75tckiwmsm"
+
+[node name="stonepile_stone" parent="Beginning_Part(Easier)/Second_Part/Stonepile_ReusableStones" unique_id=2129386566 instance=ExtResource("24_fsl0s")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.28610995, 0)
+item_weight = 2
+metadata/uid = "4a9e2fad-e1b5-49cf-a886-0d8fc39ae230"
+metadata/lock_uid = true
+metadata/date_generated = "2026-04-21T21:20:20"
+
+[node name="out_pos" type="Node3D" parent="Beginning_Part(Easier)/Second_Part/Stonepile_ReusableStones" unique_id=1799811114]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.28610995, 0)
+
+[node name="Timer" type="Timer" parent="Beginning_Part(Easier)/Second_Part/Stonepile_ReusableStones" unique_id=2127654294]
+wait_time = 2.0
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Beginning_Part(Easier)/Second_Part/Stonepile_ReusableStones" unique_id=941630500]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.148, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Beginning_Part(Easier)/Second_Part/Stonepile_ReusableStones/StaticBody3D" unique_id=652565633]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.029663086, -0.22897023, 0)
+shape = SubResource("CapsuleShape3D_qsdh4")
+
+[node name="_g_on" type="MeshInstance3D" parent="Beginning_Part(Easier)/Second_Part/Stonepile_ReusableStones" unique_id=1967571280]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.01381889, 0)
+visible = false
+mesh = SubResource("PlaneMesh_qsdh4")
+skeleton = NodePath("")
+
+[node name="_g_off" type="MeshInstance3D" parent="Beginning_Part(Easier)/Second_Part/Stonepile_ReusableStones" unique_id=150059038]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.01381889, 0)
+mesh = SubResource("PlaneMesh_317lc")
+skeleton = NodePath("")
 
 [node name="CollisionShape3D2" type="CollisionShape3D" parent="Beginning_Part(Easier)/Second_Part/Stonepile_ReusableStones" unique_id=1411853350]
 transform = Transform3D(-3.178652e-08, 0, 0.99999994, 0, 1, 0, -0.99999994, 0, -3.178652e-08, 1.0841457, 0.6, 3.7022047)
@@ -2046,7 +2119,7 @@ collision_mask = 2
 monitorable = false
 script = ExtResource("22_rym0g")
 
-[node name="ItemMover" type="Node" parent="Finale(Hardest)/Timed_Traps/Final_Part/Stonepile_ReusableStones" unique_id=1734723238 node_paths=PackedStringArray("itms_2_move", "positions_to_move_to")]
+[node name="ItemMover" type="Node" parent="Finale(Hardest)/Timed_Traps/Final_Part/Stonepile_ReusableStones" unique_id=118869992 node_paths=PackedStringArray("itms_2_move", "positions_to_move_to")]
 script = ExtResource("23_g30tv")
 itms_2_move = [NodePath("../stonepile_stone")]
 positions_to_move_to = [NodePath("../out_pos")]
@@ -2058,21 +2131,21 @@ metadata/uid = "09e3d13a-4adc-498a-af6d-29bd53f7cd1d"
 metadata/lock_uid = true
 metadata/date_generated = "2026-04-21T14:00:56"
 
-[node name="out_pos" type="Node3D" parent="Finale(Hardest)/Timed_Traps/Final_Part/Stonepile_ReusableStones" unique_id=1799811114]
+[node name="out_pos" type="Node3D" parent="Finale(Hardest)/Timed_Traps/Final_Part/Stonepile_ReusableStones" unique_id=1281220810]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.28610995, 0)
 
-[node name="Timer" type="Timer" parent="Finale(Hardest)/Timed_Traps/Final_Part/Stonepile_ReusableStones" unique_id=2127654294]
+[node name="Timer" type="Timer" parent="Finale(Hardest)/Timed_Traps/Final_Part/Stonepile_ReusableStones" unique_id=1656513327]
 wait_time = 2.0
 
-[node name="_g_on" type="MeshInstance3D" parent="Finale(Hardest)/Timed_Traps/Final_Part/Stonepile_ReusableStones" unique_id=1967571280]
+[node name="_g_on" type="MeshInstance3D" parent="Finale(Hardest)/Timed_Traps/Final_Part/Stonepile_ReusableStones" unique_id=1392967717]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.01381889, 0)
 visible = false
-mesh = SubResource("PlaneMesh_qsdh4")
+mesh = SubResource("PlaneMesh_dhg0u")
 skeleton = NodePath("")
 
-[node name="_g_off" type="MeshInstance3D" parent="Finale(Hardest)/Timed_Traps/Final_Part/Stonepile_ReusableStones" unique_id=150059038]
+[node name="_g_off" type="MeshInstance3D" parent="Finale(Hardest)/Timed_Traps/Final_Part/Stonepile_ReusableStones" unique_id=2105713575]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.01381889, 0)
-mesh = SubResource("PlaneMesh_317lc")
+mesh = SubResource("PlaneMesh_of2sk")
 skeleton = NodePath("")
 
 [node name="CollisionShape3D2" type="CollisionShape3D" parent="Finale(Hardest)/Timed_Traps/Final_Part/Stonepile_ReusableStones" unique_id=1409708234]
@@ -2449,6 +2522,9 @@ transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 35, 
 [connection signal="on_change" from="Beginning_Part(Easier)/Second_Part/PressurePlate2" to="Beginning_Part(Easier)/Second_Part/Gate" method="open_gate"]
 [connection signal="on_change" from="Beginning_Part(Easier)/Second_Part/PressurePlate2" to="Beginning_Part(Easier)/Second_Part/trap_projectile_Right" method="trigger_trap"]
 [connection signal="on_activated" from="Beginning_Part(Easier)/Second_Part/PressurePlate4" to="Beginning_Part(Easier)/Second_Part/trap_projectile" method="trigger_trap"]
+[connection signal="body_entered" from="Beginning_Part(Easier)/Second_Part/Stonepile_ReusableStones" to="Beginning_Part(Easier)/Second_Part/Stonepile_ReusableStones" method="on_stone_entered_return_areas"]
+[connection signal="body_exited" from="Beginning_Part(Easier)/Second_Part/Stonepile_ReusableStones" to="Beginning_Part(Easier)/Second_Part/Stonepile_ReusableStones" method="on_stone_exited_return_areas"]
+[connection signal="timeout" from="Beginning_Part(Easier)/Second_Part/Stonepile_ReusableStones/Timer" to="Beginning_Part(Easier)/Second_Part/Stonepile_ReusableStones" method="on_tp_timeout"]
 [connection signal="on_activated" from="Beginning_Part(Easier)/Third_Part/Button" to="Beginning_Part(Easier)/Third_Part/First_Bridge" method="fully_open_bridge"]
 [connection signal="on_activated" from="Beginning_Part(Easier)/Third_Part/Button" to="Beginning_Part(Easier)/Gate_Area_Finished/First_Area_FinishedGate" method="open_gate"]
 [connection signal="on_activated" from="Beginning_Part(Easier)/Gate_Area_Finished/PlayerAreaTrigger" to="Beginning_Part(Easier)/Gate_Area_Finished/First_Area_FinishedGate" method="close_gate"]
