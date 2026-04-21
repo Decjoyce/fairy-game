@@ -18,23 +18,50 @@
 [ext_resource type="PackedScene" uid="uid://c22hpnno5nm0g" path="res://scenes/killzone/killzone.tscn" id="16_qm8xg"]
 [ext_resource type="MeshLibrary" uid="uid://br861hnjhp6ry" path="res://scenes/_levels/_palettes/gmpf_meshlib.tres" id="17_w1121"]
 [ext_resource type="Script" uid="uid://ubfk2a80dhfp" path="res://addons/grid_map_pathfinding/grid_map_pathfinding.gd" id="18_q6b1a"]
+[ext_resource type="Material" uid="uid://ciiy1aqgkcp5k" path="res://assets/models/cairn/Hall_BigRoof/Dirtfloor.tres" id="19_q6b1a"]
 
-[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_4xsbt"]
-sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
-sky_curve = 0.13058276
-ground_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_mtbvg"]
+sky_horizon_color = Color(0, 0.37292683, 0.8185948, 1)
+sky_curve = 0.23537512
+ground_horizon_color = Color(0.3529412, 0.30588236, 0.2509804, 1)
+ground_curve = 0.060628746
 
-[sub_resource type="Sky" id="Sky_rj5h8"]
-sky_material = SubResource("ProceduralSkyMaterial_4xsbt")
+[sub_resource type="Sky" id="Sky_3tewx"]
+sky_material = SubResource("ProceduralSkyMaterial_mtbvg")
 
-[sub_resource type="Environment" id="Environment_hkkfa"]
+[sub_resource type="Environment" id="Environment_4pwbv"]
 background_mode = 1
-background_color = Color(0.21430236, 0.20071769, 0.20977312, 1)
-sky = SubResource("Sky_rj5h8")
-ambient_light_color = Color(0.096089296, 0.120830394, 0.20651546, 1)
-tonemap_mode = 2
+background_color = Color(0.21568628, 0.2, 0.20784314, 1)
+sky = SubResource("Sky_3tewx")
+ambient_light_source = 2
+ambient_light_color = Color(0, 0.046818696, 0.12593761, 1)
+ambient_light_energy = 6.0
+tonemap_mode = 4
+tonemap_exposure = 2.0
+ssao_enabled = true
+ssao_radius = 0.05
+ssao_intensity = 1.0
+sdfgi_read_sky_light = false
+sdfgi_bounce_feedback = 1.99
+sdfgi_cascades = 8
+sdfgi_min_cell_size = 19.315624
+sdfgi_energy = 4.035
+sdfgi_normal_bias = 6.215
+sdfgi_probe_bias = 2.94
 glow_enabled = true
+glow_intensity = 0.2
+glow_strength = 0.4
 volumetric_fog_enabled = true
+volumetric_fog_density = 0.025
+volumetric_fog_albedo = Color(0.74509805, 0.34509805, 0, 1)
+volumetric_fog_emission = Color(0.117735185, 0.20947376, 0.3003329, 1)
+
+[sub_resource type="FogMaterial" id="FogMaterial_62r4a"]
+density = 0.1351
+emission = Color(0.26293278, 0.2629323, 0.26293254, 1)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_jok38"]
+material = ExtResource("19_q6b1a")
 
 [node name="Final_Level" type="Node3D" unique_id=40124892]
 
@@ -156,14 +183,12 @@ script = ExtResource("9_yx8rv")
 metadata/_custom_type_script = "uid://bul4myvyhnpjc"
 
 [node name="Environment" type="Node3D" parent="." unique_id=619772807]
+visible = false
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="Environment" unique_id=573573312]
 transform = Transform3D(-0.944665, 0.32516113, -0.04333894, -0.039370164, 0.018778611, 0.99904823, 0.32566544, 0.94547224, -0.0049378504, 3.5, 12.124357, -6.0621777)
 light_color = Color(0.3227734, 0.33385244, 0.3646147, 1)
 shadow_enabled = true
-
-[node name="WorldEnvironment" type="WorldEnvironment" parent="Environment" unique_id=576216047]
-environment = SubResource("Environment_hkkfa")
 
 [node name="Killzone" parent="." unique_id=935534973 instance=ExtResource("16_qm8xg")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 41, -11, -17)
@@ -182,5 +207,149 @@ walkable_items = Array[int]([0])
 debug_start_cell = Vector3i(-3, 2, -7)
 debug_end_cell = Vector3i(0, 2, 1)
 metadata/_editor_floor_ = Vector3(0, 0, 0)
+
+[node name="Environment2" type="Node3D" parent="." unique_id=1023727688]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="Environment2" unique_id=286259743]
+transform = Transform3D(-0.944665, 0.32516113, -0.04333894, -0.039370164, 0.018778611, 0.99904823, 0.32566544, 0.94547224, -0.0049378504, 3.5, 12.124357, -6.0621777)
+light_color = Color(0.3227734, 0.33385244, 0.3646147, 1)
+shadow_enabled = true
+
+[node name="WorldEnvironment2" type="WorldEnvironment" parent="Environment2" unique_id=1695253467]
+environment = SubResource("Environment_4pwbv")
+
+[node name="FogVolume" type="FogVolume" parent="Environment2" unique_id=15103820]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 68.87999, -3.1899996, 3.814999)
+size = Vector3(26.539999, 13.84, 28.529999)
+material = SubResource("FogMaterial_62r4a")
+
+[node name="FogVolume3" type="FogVolume" parent="Environment2" unique_id=898530393]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 49.519993, -3.1899996, 12.24)
+size = Vector3(14.0199995, 13.84, 29.3)
+material = SubResource("FogMaterial_62r4a")
+
+[node name="FogVolume2" type="FogVolume" parent="Environment2" unique_id=217882469]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 66.149994, -5.8999996, -21.904997)
+size = Vector3(23.64, 6.12, 23.83)
+material = SubResource("FogMaterial_62r4a")
+
+[node name="FogVolume4" type="FogVolume" parent="Environment2" unique_id=787117981]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 58.394993, -2.0999992, -21.904997)
+size = Vector3(4.17, 13.259999, 23.83)
+material = SubResource("FogMaterial_62r4a")
+
+[node name="FakeWall" type="MeshInstance3D" parent="Environment2" unique_id=850347915]
+transform = Transform3D(3.6822482e-07, -1.0000001, -1.3288262e-06, -8.424001, -4.3711395e-08, 0, -3.219123e-14, 8.742278e-08, -15.199998, 83.28999, -1.6800001, 3.35)
+visible = false
+mesh = SubResource("PlaneMesh_jok38")
+skeleton = NodePath("../..")
+
+[node name="FakeWall5" type="MeshInstance3D" parent="Environment2" unique_id=1730295278]
+transform = Transform3D(29.484001, 8.74228e-08, 6.970183e-14, 2.5775735e-06, -1.0000002, -1.5945917e-06, -1.1266931e-13, 8.7422784e-08, -18.239996, 67.13999, 6.21, 7.22)
+visible = false
+mesh = SubResource("PlaneMesh_jok38")
+skeleton = NodePath("../..")
+
+[node name="FakeWall2" type="MeshInstance3D" parent="Environment2" unique_id=1348304467]
+transform = Transform3D(1.6095611e-14, -4.3711392e-08, 15.199998, -8.424001, -4.37114e-08, -1.1158388e-20, 3.682248e-07, -1, -6.644133e-07, 63.179996, -1.4199998, 24.21)
+visible = false
+mesh = SubResource("PlaneMesh_jok38")
+skeleton = NodePath("../..")
+
+[node name="FakeWall13" type="MeshInstance3D" parent="Environment2" unique_id=584264571]
+transform = Transform3D(3.862947e-14, -4.371139e-08, 25.839994, -1.3642421e-13, 0.99999994, 1.1295027e-06, -20.217602, -1.065814e-14, 2.3297632e-13, 63.179996, -9.259999, 8.65)
+visible = false
+mesh = SubResource("PlaneMesh_jok38")
+skeleton = NodePath("../..")
+
+[node name="FakeWall6" type="MeshInstance3D" parent="Environment2" unique_id=1697317328]
+transform = Transform3D(-3.6822476e-07, 0.9999999, 3.0695444e-13, -8.424001, -4.3711402e-08, -1.2166971e-20, -2.992807e-14, 0, 13.679997, 39.199997, -1.4199998, 9.8)
+visible = false
+mesh = SubResource("PlaneMesh_jok38")
+skeleton = NodePath("../..")
+
+[node name="FakeWall10" type="MeshInstance3D" parent="Environment2" unique_id=1623815176]
+transform = Transform3D(-1.546544e-07, 0.9999999, 9.208634e-14, -3.5380802, -4.3711402e-08, -3.6500916e-21, -1.2569789e-14, 0, 4.1039996, 39.199997, 3.71, -7.9799995)
+visible = false
+mesh = SubResource("PlaneMesh_jok38")
+skeleton = NodePath("../..")
+
+[node name="FakeWall12" type="MeshInstance3D" parent="Environment2" unique_id=1580791485]
+transform = Transform3D(5.3290705e-14, 4.470349e-08, -10.670399, -8.845199, -4.37114e-08, 9.1542705e-15, -3.8663597e-07, 0.9999999, 0, 49.43, -2.1099997, -11.609999)
+visible = false
+mesh = SubResource("PlaneMesh_jok38")
+skeleton = NodePath("../..")
+
+[node name="FakeWall18" type="MeshInstance3D" parent="Environment2" unique_id=1072417422]
+transform = Transform3D(1.9331803e-07, -0.4999999, -0.9240833, -8.845199, -4.37114e-08, 9.154267e-16, -3.3483653e-07, 0.86602527, -0.53351974, 59.69, -2.1099997, -11.159998)
+visible = false
+mesh = SubResource("PlaneMesh_jok38")
+skeleton = NodePath("../..")
+
+[node name="FakeWall19" type="MeshInstance3D" parent="Environment2" unique_id=614791083]
+transform = Transform3D(5.7995415e-08, -0.42499992, -0.6839994, -2.5631418, 0.19052221, -0.102209516, 0.68679166, 0.7110387, -0.38145113, 75.429985, 3.9700003, -10.299998)
+visible = false
+mesh = SubResource("PlaneMesh_jok38")
+skeleton = NodePath("../..")
+
+[node name="FakeWall15" type="MeshInstance3D" parent="Environment2" unique_id=419988202]
+transform = Transform3D(2.131628e-14, 4.470349e-08, -9.507325, -3.5380793, -4.37114e-08, 8.156455e-15, -1.5465439e-07, 0.9999999, 0, 69.53001, -6.1499996, -11.609999)
+visible = false
+mesh = SubResource("PlaneMesh_jok38")
+skeleton = NodePath("../..")
+
+[node name="FakeWall16" type="MeshInstance3D" parent="Environment2" unique_id=247458222]
+transform = Transform3D(-7.795966e-15, -1.3212626e-07, 9.507325, -3.5380797, -4.37114e-08, 8.156455e-15, 1.5465434e-07, -0.9999999, -8.3115674e-07, 69.53001, -6.1499996, -11.609999)
+visible = false
+mesh = SubResource("PlaneMesh_jok38")
+skeleton = NodePath("../..")
+
+[node name="FakeWall17" type="MeshInstance3D" parent="Environment2" unique_id=1097534159]
+transform = Transform3D(-7.795966e-15, -1.3212626e-07, 9.507325, -3.5380797, -4.37114e-08, 8.156455e-15, 1.5465434e-07, -0.9999999, -8.3115674e-07, 50.820007, -6.1499996, -11.609999)
+visible = false
+mesh = SubResource("PlaneMesh_jok38")
+skeleton = NodePath("../..")
+
+[node name="FakeWall11" type="MeshInstance3D" parent="Environment2" unique_id=1233966182]
+transform = Transform3D(-1.546544e-07, 0.9999999, 9.208634e-14, -3.5380802, -4.3711402e-08, -3.6500916e-21, -1.2569789e-14, 0, 4.1039996, 39.199997, -5.71, -7.9799995)
+visible = false
+mesh = SubResource("PlaneMesh_jok38")
+skeleton = NodePath("../..")
+
+[node name="FakeWall14" type="MeshInstance3D" parent="Environment2" unique_id=263045744]
+transform = Transform3D(-7.73272e-08, 0.9999999, 9.208634e-14, -1.7690401, -4.3711402e-08, -3.6500916e-21, -6.2848947e-15, 0, 4.1039996, 39.199997, -1.4700004, -10.15)
+visible = false
+mesh = SubResource("PlaneMesh_jok38")
+skeleton = NodePath("../..")
+
+[node name="FakeWall7" type="MeshInstance3D" parent="Environment2" unique_id=1114791432]
+transform = Transform3D(2.3021585e-14, -1.4901161e-07, 4.104, -9.09792, -4.3711402e-08, 8.943743e-15, 3.9768278e-07, -0.99999994, -1.4305115e-07, 41.949997, -2.54, 24.16)
+visible = false
+mesh = SubResource("PlaneMesh_jok38")
+skeleton = NodePath("../..")
+
+[node name="FakeWall8" type="MeshInstance3D" parent="Environment2" unique_id=725641513]
+transform = Transform3D(1.6115108e-14, -1.4901161e-07, 1.2312001, -6.368544, -4.3711402e-08, 2.683123e-15, 2.7837794e-07, -0.99999994, -4.2915346e-08, 47.1, 6.4799995, 24.16)
+visible = false
+mesh = SubResource("PlaneMesh_jok38")
+skeleton = NodePath("../..")
+
+[node name="FakeWall9" type="MeshInstance3D" parent="Environment2" unique_id=1216290363]
+transform = Transform3D(1.6115108e-14, -1.4901161e-07, 1.2312001, -6.368544, -4.3711402e-08, 2.683123e-15, 2.7837794e-07, -0.99999994, -4.2915346e-08, 47.1, -8.650001, 24.16)
+visible = false
+mesh = SubResource("PlaneMesh_jok38")
+skeleton = NodePath("../..")
+
+[node name="FakeWall3" type="MeshInstance3D" parent="Environment2" unique_id=1416149685]
+transform = Transform3D(4.3742875e-07, -0.45710677, 6.948021, -14.152321, -2.8257087e-08, -8.73922e-21, 4.3742864e-07, -0.4571067, -6.9480214, 79.21999, -6.88, 21.33)
+visible = false
+mesh = SubResource("PlaneMesh_jok38")
+skeleton = NodePath("../..")
+
+[node name="FakeWall4" type="MeshInstance3D" parent="Environment2" unique_id=833366957]
+transform = Transform3D(3.093087e-07, -0.20363069, -3.3798215, -14.15232, -1.7801964e-08, 1.2911881e-14, -5.3573865e-07, 0.3526987, -1.9513406, 80.759995, -7.2199993, -10.419998)
+visible = false
+mesh = SubResource("PlaneMesh_jok38")
+skeleton = NodePath("../..")
 
 [connection signal="on_activated" from="Different_Sections/Inbetween_Sections/BallyBog_Area_Button" to="Different_Sections/Inbetween_Sections/BallyBog_Area_Gate" method="open_gate"]
