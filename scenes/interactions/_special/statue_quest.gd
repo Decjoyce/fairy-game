@@ -15,11 +15,14 @@ var current_stage: int
 func insert_piece(num_received: int, item_received: Grabbable_Item, emit_sigs: bool = true) -> void:
 	current_stage = num_received
 	print(item_received.keywords)
-	match item_received.keywords:
+	
+	var keywrd := item_received.keywords.split(";", false)[0]
+	
+	match keywrd:
 		"BASE": piece_inserted_base(emit_sigs)
 		"HEAD": piece_inserted_head(emit_sigs)
 		"ARM": piece_inserted_arm(emit_sigs)
-		_: printerr(item_received, "contains invalid keyword for statue quest = ", item_received.keywords, " || Must be either BASE, HEAD, or ARM")
+		_: printerr(item_received, "contains invalid keyword for statue quest = ", item_received.keywords, " || 1st Keyword Must be either BASE, HEAD, or ARM")
 	
 	if emit_sigs:
 		on_stage_completed.emit(current_stage)
@@ -50,3 +53,6 @@ func piece_inserted_head(emit_sigs: bool = true) -> void:
 func quest_completed(emit_sigs: bool = true) -> void:
 	if emit_sigs: on_quest_completed.emit(1)
 	statue_pieces[3].visible = true
+
+func keywrd_checker(keywords: String) -> void:
+	pass

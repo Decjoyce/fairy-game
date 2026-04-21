@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://bgguanmd67m3f" path="res://scenes/interactions/interactables/interactable_instant.gd" id="1_03rle"]
 [ext_resource type="Texture2D" uid="uid://byg0u435xhja5" path="res://assets/sprites/baby/baby.png" id="2_t4nwx"]
+[ext_resource type="Script" uid="uid://c4t3ko70ihpyy" path="res://scenes/interactions/_receivers/animated_object/animated_object.gd" id="3_t4nwx"]
 
 [node name="Baby" type="Node3D" unique_id=665848214]
 script = ExtResource("1_03rle")
@@ -10,3 +11,7 @@ metadata/_custom_type_script = "uid://bgguanmd67m3f"
 [node name="Sprite3D" type="Sprite3D" parent="." unique_id=205705141]
 pixel_size = 0.0015
 texture = ExtResource("2_t4nwx")
+
+[node name="AnimatedObject" type="Node" parent="." unique_id=1543950217]
+script = ExtResource("3_t4nwx")
+metadata/_custom_type_script = "uid://c4t3ko70ihpyy"
