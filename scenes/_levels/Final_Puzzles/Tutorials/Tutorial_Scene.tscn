@@ -1,7 +1,6 @@
 [gd_scene format=3 uid="uid://ckuw7ho3cogrs"]
 
 [ext_resource type="MeshLibrary" uid="uid://bu208a8l5866i" path="res://scenes/_levels/_palettes/cairn/meshlibrary_cairn.tres" id="1_56l6l"]
-[ext_resource type="PackedScene" uid="uid://dde66nwtb1gv1" path="res://scenes/interactions/_triggers/item_receiver/torch_scont/torch_scont.tscn" id="2_ea6e4"]
 [ext_resource type="PackedScene" uid="uid://xuo5buj0odhi" path="res://scenes/interactions/_triggers/torch_sconce/torch_sconce_lit.tscn" id="3_pvb4u"]
 [ext_resource type="PackedScene" uid="uid://dt13fur6twjep" path="res://scenes/interactions/_receivers/gate/gate.tscn" id="4_elh88"]
 [ext_resource type="PackedScene" uid="uid://qu5rxgbydmet" path="res://scenes/interactions/_triggers/button/button.tscn" id="5_ogl71"]
@@ -27,6 +26,7 @@
 [ext_resource type="Texture2D" uid="uid://vvyp3kfi47jv" path="res://assets/sprites/Ballybog/ballyIdle1_1.png" id="25_vxxbb"]
 [ext_resource type="Script" uid="uid://c4t3ko70ihpyy" path="res://scenes/interactions/_receivers/animated_object/animated_object.gd" id="26_iqwb6"]
 [ext_resource type="PackedScene" uid="uid://cruv8v8wh8l06" path="res://scenes/interactions/_special/saving_stone/saving_stone.tscn" id="27_ea6e4"]
+[ext_resource type="PackedScene" uid="uid://chqox5wu7wm4q" path="res://scenes/_levels/_palettes/cairn/props/cairn_exit_pillars.tscn" id="27_qbrer"]
 [ext_resource type="AudioStream" uid="uid://cq7dtkcnrtjyk" path="res://assets/audio/sfx/environment/ambient/Ambience, Underground, Cave, Magic, Deep, Wind, Howling 01 SND46571.wav" id="28_k1g5s"]
 [ext_resource type="AudioStream" uid="uid://cte56l5nhnq88" path="res://assets/audio/sfx/environment/ambient/Ambience, Underground, Cave, Magic, Cold, Deep, Wind, Eerie SND46573.wav" id="29_li6vv"]
 [ext_resource type="AudioStream" uid="uid://bscs1lnw8crcv" path="res://assets/audio/sfx/environment/ambient/Ambience, Underground, Cave, Magic, Dangling Metal SND46572.wav" id="30_cb5rp"]
@@ -106,17 +106,20 @@ metadata/_editor_floor_ = Vector3(0, -1, 0)
 [node name="Torches" type="Node3D" parent="Tutorial_Area" unique_id=1073021904]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.37721205, 0, -2.0954456)
 
-[node name="TorchScont2" parent="Tutorial_Area/Torches" unique_id=134845992 instance=ExtResource("2_ea6e4")]
-transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 7.2344327, 1.2788017, -9.223978)
-
-[node name="TorchScont3" parent="Tutorial_Area/Torches" unique_id=1220965294 instance=ExtResource("2_ea6e4")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.91289663, 1.2788017, -15.556007)
-
-[node name="TorchScont4" parent="Tutorial_Area/Torches" unique_id=818549058 instance=ExtResource("2_ea6e4")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.198119, 1.2788017, -15.556007)
-
 [node name="TorchSconce_Lit" parent="Tutorial_Area/Torches" unique_id=1817049137 instance=ExtResource("3_pvb4u")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.622787, 1.2523891, -13.660084)
+
+[node name="TorchSconce_Lit2" parent="Tutorial_Area/Torches" unique_id=1729385187 instance=ExtResource("3_pvb4u")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 7.4594426, 1.5076159, -9.7972355)
+
+[node name="TorchSconce_Lit3" parent="Tutorial_Area/Torches" unique_id=88089989 instance=ExtResource("3_pvb4u")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 7.4594426, 1.5076159, -12.236701)
+
+[node name="TorchSconce_Lit4" parent="Tutorial_Area/Torches" unique_id=358549991 instance=ExtResource("3_pvb4u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.8306718, 1.5076159, -15.735287)
+
+[node name="TorchSconce_Lit5" parent="Tutorial_Area/Torches" unique_id=481846659 instance=ExtResource("3_pvb4u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.4767132, 1.5076159, -15.735287)
 
 [node name="First Gate&Button" type="Node3D" parent="Tutorial_Area" unique_id=1968183095]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
@@ -188,7 +191,7 @@ metadata/uid = "2d8ac377-cde2-49f6-af13-29b5df228e42"
 metadata/lock_uid = true
 metadata/date_generated = "2026-04-21T14:03:59"
 
-[node name="TorchSconce_Lit" parent="Tutorial_Area/Weighted_Gate_Puzzle" unique_id=1729385187 instance=ExtResource("3_pvb4u")]
+[node name="TorchSconce_Lit" parent="Tutorial_Area/Weighted_Gate_Puzzle" unique_id=892789027 instance=ExtResource("3_pvb4u")]
 transform = Transform3D(-3.7855173e-08, 0.8660253, -0.49999997, -1, -4.371138e-08, 0, -2.1855694e-08, 0.49999997, 0.8660253, 2, 0.018867135, -14)
 
 [node name="Lever_Puzzle" type="Node3D" parent="Tutorial_Area" unique_id=914674146]
@@ -197,14 +200,14 @@ transform = Transform3D(-3.7855173e-08, 0.8660253, -0.49999997, -1, -4.371138e-0
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.8510056, 1.0864971, -15)
 
 [node name="BrokenLever" parent="Tutorial_Area/Lever_Puzzle/BrokenLeverExample" unique_id=525346541 instance=ExtResource("11_s8t13")]
-transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 4.876789, 0, 3.129527)
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 4.984377, 0, 2.853303)
 keywords_needed = "LEVER;"
 metadata/uid = "b28cbd79-69d1-41d0-bb2e-c4c7d1073af7"
 metadata/lock_uid = true
 metadata/date_generated = "2026-04-21T14:03:59"
 
 [node name="Lever_Fixed" parent="Tutorial_Area/Lever_Puzzle/BrokenLeverExample" unique_id=1692381032 instance=ExtResource("12_jce6r")]
-transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 4.876789, 0, 3.129527)
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 4.984377, 0, 2.853303)
 use_intervals = true
 hand_prompt = "hand_prompt_lever"
 disabled = true
@@ -528,6 +531,9 @@ transform = Transform3D(-3.7855173e-08, 2.1855694e-08, -1, 0.5, 0.8660254, 0, 0.
 
 [node name="Torch_Mounted2" parent="Tutorial_Area/Save_Tutorial/Environment/Torches" unique_id=1287931186 instance=ExtResource("23_gyl80")]
 transform = Transform3D(-3.7855173e-08, 2.1855694e-08, 1, 0.5, 0.8660254, 0, -0.8660254, 0.5, -4.371139e-08, -9, 0.38180494, -0.5995693)
+
+[node name="cairn_exit_pillars" parent="Tutorial_Area/Save_Tutorial/Environment/Torches" unique_id=1384657963 instance=ExtResource("27_qbrer")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -42.042828, 1, -8)
 
 [node name="Button" parent="Tutorial_Area/Save_Tutorial" unique_id=1164325605 instance=ExtResource("5_ogl71")]
 transform = Transform3D(2.9802322e-08, 0, 1, 0, 1, 0, -1, 0, 2.9802322e-08, 2.711975, 1, 1.2922611)
