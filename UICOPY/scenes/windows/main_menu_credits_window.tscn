@@ -1,8 +1,9 @@
 [gd_scene format=3 uid="uid://y4t20bpdha47"]
 
-[ext_resource type="PackedScene" path="res://addons/maaacks_menus_template/base/nodes/windows/overlaid_window_scene_container.tscn" id="1_hussd"]
-[ext_resource type="Script" path="res://UICOPY/scenes/windows/main_menu_credits_window.gd" id="2_v1bjb"]
-[ext_resource type="PackedScene" path="res://UICOPY/scenes/credits/scrollable_credits.tscn" id="3_7kqca"]
+[ext_resource type="PackedScene" uid="uid://crndfbb22ri4s" path="res://addons/maaacks_menus_template/base/nodes/windows/overlaid_window_scene_container.tscn" id="1_hussd"]
+[ext_resource type="Theme" uid="uid://4rqtecgji27t" path="res://scenes/_levels/menus/main_menu/Main_Menu_UI_NEW/UI_themes/customised_brush_theme.tres" id="2_7kqca"]
+[ext_resource type="Script" uid="uid://dt3a5wf86t05p" path="res://UICOPY/scenes/windows/main_menu_credits_window.gd" id="2_v1bjb"]
+[ext_resource type="PackedScene" uid="uid://sugntfym4hf3" path="res://UICOPY/scenes/credits/scrollable_credits.tscn" id="3_7kqca"]
 
 [node name="MainMenuCreditsOverlaidWindow" unique_id=1453761674 instance=ExtResource("1_hussd")]
 anchors_preset = 15
@@ -14,11 +15,22 @@ offset_left = 0.0
 offset_top = 0.0
 offset_right = 0.0
 offset_bottom = 0.0
+theme = ExtResource("2_7kqca")
 script = ExtResource("2_v1bjb")
 packed_scene = ExtResource("3_7kqca")
 
 [node name="TitleMargin" parent="ContentContainer/BoxContainer" parent_id_path=PackedInt32Array(394030069) index="0" unique_id=1262022916]
 visible = false
+
+[node name="TitleLabel" parent="ContentContainer/BoxContainer/TitleMargin/BoxContainer" parent_id_path=PackedInt32Array(1788474031) index="0" unique_id=1049966061]
+theme_override_font_sizes/font_size = 17
+
+[node name="DescriptionLabel" parent="ContentContainer/BoxContainer/BodyMargin" parent_id_path=PackedInt32Array(590613964) index="0" unique_id=617407155]
+theme_override_font_sizes/normal_font_size = 30
+theme_override_font_sizes/bold_font_size = 30
+theme_override_font_sizes/bold_italics_font_size = 30
+theme_override_font_sizes/italics_font_size = 30
+theme_override_font_sizes/mono_font_size = 30
 
 [node name="CloseButton" parent="ContentContainer/BoxContainer/MenuButtonsMargin/MenuButtons" parent_id_path=PackedInt32Array(1371114575) index="0" unique_id=314526102]
 size_flags_horizontal = 0

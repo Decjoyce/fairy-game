@@ -1,17 +1,20 @@
 # Attribution
-## Collaborators
+## Developers
 
 ### Role
-Person 1  
-Person 2  
-[Person w/ Link]()  
+[Aaron McCabe](https://aaronmccabe.itch.io/) - 3D/Environment Artist 
+[Declan Phillips](https://decooced.itch.io/) - Programmer, Game Designer
+[Finn Archer](https://archer-productions.itch.io/) - Game Designer, Level Designer
+[Minh Anh Pham](https://ma123.itch.io/) - 2D/3D Artist, Musician 
+[Mikhail Fisenko](https://funnymike09.itch.io/) - Project Lead, Programmer, Audio Engineer 
+
 
 ## Sourced
-### Asset Type
-#### Use Case
-Author: [Name]()  
-Source: [Domain : webpage.html]()  
-License: [License]()
+### Audio
+#### All SFX and Ambient
+Author: Soundly 
+Source: [Domain : https://getsoundly.com/](https://getsoundly.com/)  
+License: [License](https://getsoundly.com/faq/how-can-i-use-the-sounds/)
 
 #### Godot Engine Logo
 Author: Andrea Calabró  
@@ -36,3 +39,17 @@ License: [MIT License](LICENSE.txt)
 Author: [Linus Torvalds](https://github.com/torvalds)  
 Source: [git-scm.com](https://git-scm.com/downloads)  
 License: [GNU General Public License version 2](https://opensource.org/licenses/GPL-2.0)
+
+
+#### GodotSprite3DPlus
+
+Author:  BlueMaster 
+Source: [Domain : GitHub](https://github.com/23Bluemaster23/GodotSprite3DPlus?tab=readme-ov-file)  
+License: [MIT](https://github.com/23Bluemaster23/GodotSprite3DPlus?tab=readme-ov-file)
+
+
+#### GodotSprite3DPlus
+
+Author:  Antz 
+Source: [Domain : GitHub](https://github.com/antzGames/Godot-A-Star-Pathfinding-for-Gridmaps)  
+License: [MIT](https://github.com/antzGames/Godot-A-Star-Pathfinding-for-Gridmaps/blob/master/LICENSE)
