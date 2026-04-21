@@ -10,55 +10,24 @@
 [ext_resource type="PackedScene" uid="uid://bm62kimh3kwhr" path="res://scenes/interactions/_receivers/bridge/bridge_small.tscn" id="9_wghfm"]
 [ext_resource type="PackedScene" uid="uid://cpnmun20lswr" path="res://scenes/_levels/_palettes/cairn/props/cairn_pillar.tscn" id="11_3exgw"]
 [ext_resource type="PackedScene" uid="uid://xuo5buj0odhi" path="res://scenes/interactions/_triggers/torch_sconce/torch_sconce_lit.tscn" id="12_c3sjm"]
-[ext_resource type="Script" uid="uid://d3bv00f0bmt6j" path="res://scenes/interactions/ReusableStones/stonepile_reusable_stones.gd" id="12_xyoi8"]
-[ext_resource type="Material" uid="uid://dgrldudl0bdhu" path="res://assets/models/cairn/Props/Rockpile/Rock_pile.tres" id="13_4qulk"]
-[ext_resource type="ArrayMesh" uid="uid://bboxjdwpohtg0" path="res://assets/models/cairn/Props/Rockpile/Rock_pile.obj" id="14_fisyt"]
-[ext_resource type="Script" uid="uid://dpj75tckiwmsm" path="res://scenes/interactions/_receivers/wip__item_mover/itm_mover.gd" id="15_psrev"]
-[ext_resource type="PackedScene" uid="uid://clvus6c43ipdy" path="res://scenes/interactions/interactables/items/all_items/misc/item_stone.tscn" id="16_882fo"]
-[ext_resource type="Texture2D" uid="uid://1c406hs7su5a" path="res://assets/__not_ours_dontship/triskele_rough_01.png" id="17_j7l2i"]
+[ext_resource type="PackedScene" uid="uid://cwr2r7yxt4ust" path="res://scenes/interactions/ReusableStones/stonepile_reusable_stones.tscn" id="12_cl670"]
 [ext_resource type="Material" uid="uid://ioo51vym3k1d" path="res://scenes/interactions/_triggers/teleporter/m_teleport.tres" id="18_4qulk"]
 [ext_resource type="PackedScene" uid="uid://d2ict3hg28spx" path="res://scenes/_levels/_palettes/cairn/props/cairn_fake_wall.tscn" id="19_psrev"]
 [ext_resource type="Material" uid="uid://b0i2txe3meqnl" path="res://assets/models/cairn/Props/Pillar/Pillar.tres" id="20_882fo"]
 [ext_resource type="PackedScene" uid="uid://ije1mmh1wcad" path="res://scenes/interactions/interactables/items/all_items/torch/torch_mounted.tscn" id="21_882fo"]
 [ext_resource type="Script" uid="uid://bul4myvyhnpjc" path="res://scripts/saving/uid_generator.gd" id="21_j7l2i"]
 
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_qsdh4"]
-radius = 0.72753906
-height = 1.4550781
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kmgx0"]
-transparency = 1
-albedo_color = Color(0, 0.8494162, 1, 1)
-albedo_texture = ExtResource("17_j7l2i")
-emission_enabled = true
-emission = Color(0, 0.89420825, 1, 1)
-rim_enabled = true
-
-[sub_resource type="PlaneMesh" id="PlaneMesh_qsdh4"]
-material = SubResource("StandardMaterial3D_kmgx0")
-size = Vector2(0.5, 0.5)
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qsdh4"]
-transparency = 1
-albedo_color = Color(0, 0.09350002, 0.11, 1)
-albedo_texture = ExtResource("17_j7l2i")
-emission = Color(0, 0.89420825, 1, 1)
-
-[sub_resource type="PlaneMesh" id="PlaneMesh_317lc"]
-material = SubResource("StandardMaterial3D_qsdh4")
-size = Vector2(0.5, 0.5)
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_psrev"]
-size = Vector3(36, 33, 38)
+[sub_resource type="BoxShape3D" id="BoxShape3D_4qulk"]
+size = Vector3(57, 30.253418, 58)
 
 [sub_resource type="BoxMesh" id="BoxMesh_psrev"]
 material = ExtResource("18_4qulk")
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_4qulk"]
-size = Vector3(48, 30.253418, 43)
+[sub_resource type="BoxShape3D" id="BoxShape3D_psrev"]
+size = Vector3(60, 33, 51)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_fisyt"]
-size = Vector3(75, 64, 24)
+size = Vector3(83, 64, 69)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_j7l2i"]
 size = Vector3(1.750473, 1.2870789, 0.27978516)
@@ -323,174 +292,36 @@ transform = Transform3D(0.053390622, -0.85978925, 0.50785, -0.041343674, 0.50623
 [node name="Reuseable_Stones" type="Node3D" parent="Fifth_Bridge Section" unique_id=825763209]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 23, 0, 2)
 
-[node name="Stonepile_ReusableStones" type="Area3D" parent="Fifth_Bridge Section/Reuseable_Stones" unique_id=1682368129]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -2, 1, -6)
-collision_layer = 0
-collision_mask = 2
-monitorable = false
-script = ExtResource("12_xyoi8")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Fifth_Bridge Section/Reuseable_Stones/Stonepile_ReusableStones" unique_id=651584812]
-transform = Transform3D(0.4, 0, 0, 0, 0.505, 0, 0, 0, 0.4, -1.148, -0.26655877, 0)
-material_override = ExtResource("13_4qulk")
-mesh = ExtResource("14_fisyt")
-
-[node name="ItemMover" type="Node" parent="Fifth_Bridge Section/Reuseable_Stones/Stonepile_ReusableStones" unique_id=1734723238 node_paths=PackedStringArray("itms_2_move", "positions_to_move_to")]
-script = ExtResource("15_psrev")
-itms_2_move = [NodePath("../stonepile_stone")]
-positions_to_move_to = [NodePath("../out_pos")]
-metadata/_custom_type_script = "uid://dpj75tckiwmsm"
-
-[node name="stonepile_stone" parent="Fifth_Bridge Section/Reuseable_Stones/Stonepile_ReusableStones" unique_id=234370081 instance=ExtResource("16_882fo")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.19491279, 0)
-item_weight = 2
-metadata/lock_uid = true
-metadata/uid = "4dbe47ae-7dbf-4311-bbc0-3285cde32edd"
-metadata/date_generated = "2026-04-21T14:02:28"
-
-[node name="out_pos" type="Node3D" parent="Fifth_Bridge Section/Reuseable_Stones/Stonepile_ReusableStones" unique_id=1799811114]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.28610995, 0)
-
-[node name="Timer" type="Timer" parent="Fifth_Bridge Section/Reuseable_Stones/Stonepile_ReusableStones" unique_id=2127654294]
-wait_time = 2.0
-
-[node name="StaticBody3D" type="StaticBody3D" parent="Fifth_Bridge Section/Reuseable_Stones/Stonepile_ReusableStones" unique_id=941630500]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.148, 0, 0)
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Fifth_Bridge Section/Reuseable_Stones/Stonepile_ReusableStones/StaticBody3D" unique_id=652565633]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.029663086, -0.22897023, 0)
-shape = SubResource("CapsuleShape3D_qsdh4")
-
-[node name="_g_on" type="MeshInstance3D" parent="Fifth_Bridge Section/Reuseable_Stones/Stonepile_ReusableStones" unique_id=1967571280]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.01381889, 0)
-visible = false
-mesh = SubResource("PlaneMesh_qsdh4")
-skeleton = NodePath("")
-
-[node name="_g_off" type="MeshInstance3D" parent="Fifth_Bridge Section/Reuseable_Stones/Stonepile_ReusableStones" unique_id=150059038]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.01381889, 0)
-mesh = SubResource("PlaneMesh_317lc")
-skeleton = NodePath("")
-
-[node name="CollisionShape3D2" type="CollisionShape3D" parent="Fifth_Bridge Section/Reuseable_Stones/Stonepile_ReusableStones" unique_id=1859742459]
-transform = Transform3D(-0.9999999, 0, -3.1786517e-08, 0, 1, 0, 3.1786517e-08, 0, -0.9999999, 3.2602854, -17.8, -2.021)
-shape = SubResource("BoxShape3D_psrev")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Fifth_Bridge Section/Reuseable_Stones/Stonepile_ReusableStones/CollisionShape3D2" unique_id=332452674]
-visible = false
-mesh = SubResource("BoxMesh_psrev")
-
-[node name="Stonepile_ReusableStones2" type="Area3D" parent="Fifth_Bridge Section/Reuseable_Stones" unique_id=411446325]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -8, 1, 2)
-collision_layer = 0
-collision_mask = 2
-monitorable = false
-script = ExtResource("12_xyoi8")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Fifth_Bridge Section/Reuseable_Stones/Stonepile_ReusableStones2" unique_id=790477904]
-transform = Transform3D(0.4, 0, 0, 0, 0.505, 0, 0, 0, 0.4, -1.148, -0.26655877, 0)
-material_override = ExtResource("13_4qulk")
-mesh = ExtResource("14_fisyt")
-
-[node name="ItemMover" type="Node" parent="Fifth_Bridge Section/Reuseable_Stones/Stonepile_ReusableStones2" unique_id=598576189 node_paths=PackedStringArray("itms_2_move", "positions_to_move_to")]
-script = ExtResource("15_psrev")
-itms_2_move = [NodePath("../stonepile_stone")]
-positions_to_move_to = [NodePath("../out_pos")]
-metadata/_custom_type_script = "uid://dpj75tckiwmsm"
-
-[node name="stonepile_stone" parent="Fifth_Bridge Section/Reuseable_Stones/Stonepile_ReusableStones2" unique_id=319655755 instance=ExtResource("16_882fo")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.1797446, 0)
-item_weight = 2
-metadata/lock_uid = true
-metadata/uid = "f4b09e0e-a3de-4df3-af5e-4c762b43ad15"
-metadata/date_generated = "2026-04-21T14:02:28"
-
-[node name="out_pos" type="Node3D" parent="Fifth_Bridge Section/Reuseable_Stones/Stonepile_ReusableStones2" unique_id=2108831242]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.28610995, 0)
-
-[node name="Timer" type="Timer" parent="Fifth_Bridge Section/Reuseable_Stones/Stonepile_ReusableStones2" unique_id=547866925]
-wait_time = 2.0
-
-[node name="StaticBody3D" type="StaticBody3D" parent="Fifth_Bridge Section/Reuseable_Stones/Stonepile_ReusableStones2" unique_id=2073490775]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.148, 0, 0)
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Fifth_Bridge Section/Reuseable_Stones/Stonepile_ReusableStones2/StaticBody3D" unique_id=2086737591]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.029663086, -0.22897023, 0)
-shape = SubResource("CapsuleShape3D_qsdh4")
-
-[node name="_g_on" type="MeshInstance3D" parent="Fifth_Bridge Section/Reuseable_Stones/Stonepile_ReusableStones2" unique_id=1457155934]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.01381889, 0)
-visible = false
-mesh = SubResource("PlaneMesh_qsdh4")
-skeleton = NodePath("")
-
-[node name="_g_off" type="MeshInstance3D" parent="Fifth_Bridge Section/Reuseable_Stones/Stonepile_ReusableStones2" unique_id=1483302068]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.01381889, 0)
-mesh = SubResource("PlaneMesh_317lc")
-skeleton = NodePath("")
+[node name="Stonepile_ReusableStones2" parent="Fifth_Bridge Section/Reuseable_Stones" unique_id=1686131852 instance=ExtResource("12_cl670")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -2, 1, -7)
 
 [node name="CollisionShape3D2" type="CollisionShape3D" parent="Fifth_Bridge Section/Reuseable_Stones/Stonepile_ReusableStones2" unique_id=1168743575]
-transform = Transform3D(-0.9999999, 0, -3.1786517e-08, 0, 1, 0, 3.1786517e-08, 0, -0.9999999, 9.260281, -16.17329, 4.479)
+transform = Transform3D(-0.9999999, 0, -3.1786517e-08, 0, 1, 0, 3.1786517e-08, 0, -0.9999999, -4.2397184, -16.17329, 1.9790001)
 shape = SubResource("BoxShape3D_4qulk")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Fifth_Bridge Section/Reuseable_Stones/Stonepile_ReusableStones2/CollisionShape3D2" unique_id=771757307]
 visible = false
 mesh = SubResource("BoxMesh_psrev")
 
-[node name="Stonepile_ReusableStones3" type="Area3D" parent="Fifth_Bridge Section/Reuseable_Stones" unique_id=99346821]
-transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -16, 1, -12)
-collision_layer = 0
-collision_mask = 2
-monitorable = false
-script = ExtResource("12_xyoi8")
+[node name="Stonepile_ReusableStones" parent="Fifth_Bridge Section/Reuseable_Stones" unique_id=1682368129 instance=ExtResource("12_cl670")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -8, 1, 4)
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Fifth_Bridge Section/Reuseable_Stones/Stonepile_ReusableStones3" unique_id=1050123562]
-transform = Transform3D(0.4, 0, 0, 0, 0.505, 0, 0, 0, 0.4, -1.148, -0.26655877, 0)
-material_override = ExtResource("13_4qulk")
-mesh = ExtResource("14_fisyt")
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="Fifth_Bridge Section/Reuseable_Stones/Stonepile_ReusableStones" unique_id=1859742459]
+transform = Transform3D(-0.9999999, 0, -3.1786517e-08, 0, 1, 0, 3.1786517e-08, 0, -0.9999999, 8.2602825, -17.8, 2.479)
+shape = SubResource("BoxShape3D_psrev")
 
-[node name="ItemMover" type="Node" parent="Fifth_Bridge Section/Reuseable_Stones/Stonepile_ReusableStones3" unique_id=277820240 node_paths=PackedStringArray("itms_2_move", "positions_to_move_to")]
-script = ExtResource("15_psrev")
-itms_2_move = [NodePath("../stonepile_stone")]
-positions_to_move_to = [NodePath("../out_pos")]
-metadata/_custom_type_script = "uid://dpj75tckiwmsm"
-
-[node name="stonepile_stone" parent="Fifth_Bridge Section/Reuseable_Stones/Stonepile_ReusableStones3" unique_id=2099029188 instance=ExtResource("16_882fo")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.16722012, 0)
-item_weight = 2
-metadata/lock_uid = true
-metadata/uid = "331381f6-1ff8-49fe-a785-fc321937291a"
-metadata/date_generated = "2026-04-21T14:02:28"
-
-[node name="out_pos" type="Node3D" parent="Fifth_Bridge Section/Reuseable_Stones/Stonepile_ReusableStones3" unique_id=1569073357]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.28610995, 0)
-
-[node name="Timer" type="Timer" parent="Fifth_Bridge Section/Reuseable_Stones/Stonepile_ReusableStones3" unique_id=2097577720]
-wait_time = 2.0
-
-[node name="StaticBody3D" type="StaticBody3D" parent="Fifth_Bridge Section/Reuseable_Stones/Stonepile_ReusableStones3" unique_id=587914142]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.148, 0, 0)
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Fifth_Bridge Section/Reuseable_Stones/Stonepile_ReusableStones3/StaticBody3D" unique_id=222356961]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.029663086, -0.22897023, 0)
-shape = SubResource("CapsuleShape3D_qsdh4")
-
-[node name="_g_on" type="MeshInstance3D" parent="Fifth_Bridge Section/Reuseable_Stones/Stonepile_ReusableStones3" unique_id=511747657]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.01381889, 0)
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Fifth_Bridge Section/Reuseable_Stones/Stonepile_ReusableStones/CollisionShape3D3" unique_id=332452674]
 visible = false
-mesh = SubResource("PlaneMesh_qsdh4")
-skeleton = NodePath("")
+mesh = SubResource("BoxMesh_psrev")
 
-[node name="_g_off" type="MeshInstance3D" parent="Fifth_Bridge Section/Reuseable_Stones/Stonepile_ReusableStones3" unique_id=61249793]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.01381889, 0)
-mesh = SubResource("PlaneMesh_317lc")
-skeleton = NodePath("")
+[node name="Stonepile_ReusableStones3" parent="Fifth_Bridge Section/Reuseable_Stones" unique_id=521895807 instance=ExtResource("12_cl670")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -16, 1, -12)
 
-[node name="CollisionShape3D2" type="CollisionShape3D" parent="Fifth_Bridge Section/Reuseable_Stones/Stonepile_ReusableStones3" unique_id=1463990954]
-transform = Transform3D(-0.9999999, 0, -3.1786517e-08, 0, 1, 0, 3.1786517e-08, 0, -0.9999999, 6.7602835, -33.8, -0.52099895)
+[node name="CollisionShape3D4" type="CollisionShape3D" parent="Fifth_Bridge Section/Reuseable_Stones/Stonepile_ReusableStones3" unique_id=1463990954]
+transform = Transform3D(1.1924868e-08, 0, 0.9999999, 0, 1, 0, -0.9999999, 0, 1.1924868e-08, 2.0209985, -32.8, -4.239718)
 shape = SubResource("BoxShape3D_fisyt")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Fifth_Bridge Section/Reuseable_Stones/Stonepile_ReusableStones3/CollisionShape3D2" unique_id=1517231871]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Fifth_Bridge Section/Reuseable_Stones/Stonepile_ReusableStones3/CollisionShape3D4" unique_id=1517231871]
 visible = false
 mesh = SubResource("BoxMesh_psrev")
 
@@ -1159,12 +990,3 @@ metadata/_custom_type_script = "uid://bul4myvyhnpjc"
 [connection signal="on_activated" from="Fifth_Bridge Section/Button2" to="Fifth_Bridge Section/Short_Cut_Bridge" method="fully_open_bridge"]
 [connection signal="on_activated" from="Fifth_Bridge Section/Button3" to="Fifth_Bridge Section/Bridge_Small4" method="fully_open_bridge"]
 [connection signal="on_activated" from="Fifth_Bridge Section/Button4" to="Fifth_Bridge Section/Bridge_Small3" method="fully_open_bridge"]
-[connection signal="body_entered" from="Fifth_Bridge Section/Reuseable_Stones/Stonepile_ReusableStones" to="Fifth_Bridge Section/Reuseable_Stones/Stonepile_ReusableStones" method="on_stone_entered_return_areas"]
-[connection signal="body_exited" from="Fifth_Bridge Section/Reuseable_Stones/Stonepile_ReusableStones" to="Fifth_Bridge Section/Reuseable_Stones/Stonepile_ReusableStones" method="on_stone_exited_return_areas"]
-[connection signal="timeout" from="Fifth_Bridge Section/Reuseable_Stones/Stonepile_ReusableStones/Timer" to="Fifth_Bridge Section/Reuseable_Stones/Stonepile_ReusableStones" method="on_tp_timeout"]
-[connection signal="body_entered" from="Fifth_Bridge Section/Reuseable_Stones/Stonepile_ReusableStones2" to="Fifth_Bridge Section/Reuseable_Stones/Stonepile_ReusableStones2" method="on_stone_entered_return_areas"]
-[connection signal="body_exited" from="Fifth_Bridge Section/Reuseable_Stones/Stonepile_ReusableStones2" to="Fifth_Bridge Section/Reuseable_Stones/Stonepile_ReusableStones2" method="on_stone_exited_return_areas"]
-[connection signal="timeout" from="Fifth_Bridge Section/Reuseable_Stones/Stonepile_ReusableStones2/Timer" to="Fifth_Bridge Section/Reuseable_Stones/Stonepile_ReusableStones2" method="on_tp_timeout"]
-[connection signal="body_entered" from="Fifth_Bridge Section/Reuseable_Stones/Stonepile_ReusableStones3" to="Fifth_Bridge Section/Reuseable_Stones/Stonepile_ReusableStones3" method="on_stone_entered_return_areas"]
-[connection signal="body_exited" from="Fifth_Bridge Section/Reuseable_Stones/Stonepile_ReusableStones3" to="Fifth_Bridge Section/Reuseable_Stones/Stonepile_ReusableStones3" method="on_stone_exited_return_areas"]
-[connection signal="timeout" from="Fifth_Bridge Section/Reuseable_Stones/Stonepile_ReusableStones3/Timer" to="Fifth_Bridge Section/Reuseable_Stones/Stonepile_ReusableStones3" method="on_tp_timeout"]
