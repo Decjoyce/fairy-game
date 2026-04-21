@@ -47,6 +47,7 @@
 [ext_resource type="PackedScene" uid="uid://pxrjbcn4d7uc" path="res://scenes/_levels/_palettes/cairn/props/cairn_saving_station.tscn" id="44_t1xg4"]
 [ext_resource type="PackedScene" uid="uid://ca2lcfvhjwslv" path="res://scenes/_levels/_palettes/cairn/props/cairn_saving_head.tscn" id="45_n5rhx"]
 [ext_resource type="PackedScene" uid="uid://c31ds8w8eyjvy" path="res://scenes/_levels/_palettes/cairn/props/cairn_mounted_torch.tscn" id="47_b3yur"]
+[ext_resource type="PackedScene" uid="uid://bapii1ncwhkan" path="res://scenes/_levels/_palettes/cairn/props/cairn_saving_totem.tscn" id="48_3tewx"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_vor1c"]
 sky_horizon_color = Color(0, 0.37292683, 0.8185948, 1)
@@ -54,11 +55,11 @@ sky_curve = 0.23537512
 ground_horizon_color = Color(0.3529412, 0.30588236, 0.2509804, 1)
 ground_curve = 0.060628746
 
-[sub_resource type="Sky" id="Sky_uqgcp"]
+[sub_resource type="Sky" id="Sky_b3yur"]
 sky_material = SubResource("ProceduralSkyMaterial_vor1c")
 
 [sub_resource type="Environment" id="Environment_0riuu"]
-sky = SubResource("Sky_uqgcp")
+sky = SubResource("Sky_b3yur")
 ambient_light_source = 2
 ambient_light_color = Color(0, 0.046818696, 0.12593761, 1)
 ambient_light_energy = 6.0
@@ -366,6 +367,7 @@ environment = SubResource("Environment_0riuu")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1362444198]
 transform = Transform3D(0.03349372, 0.99102545, -0.12940946, 0.019242018, 0.1288187, 0.9914814, 0.99925363, -0.03569847, -0.014754742, 3.5, 12.124357, -6.0621777)
+visible = false
 light_color = Color(0.3227734, 0.33385244, 0.3646147, 1)
 shadow_enabled = true
 
@@ -1397,6 +1399,9 @@ transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 4.94
 
 [node name="cairn_MountedTorch" parent="." unique_id=563173417 instance=ExtResource("47_b3yur")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.26, 1.3899999, -15.859999)
+
+[node name="cairn_SavingTotem" parent="." unique_id=2031778864 instance=ExtResource("48_3tewx")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 5.18, -0.02000001, 1.9699999)
 
 [connection signal="on_activated" from="First Gate&Button/First_Button" to="First Gate&Button/First_Gate" method="open_gate"]
 [connection signal="on_change" from="Weighted_Gate_Puzzle/Tutorial_Weight_Puzzle" to="Weighted_Gate_Puzzle/Weight_Puzzle_Gate" method="open_gate"]
