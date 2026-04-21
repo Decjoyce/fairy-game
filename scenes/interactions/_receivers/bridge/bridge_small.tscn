@@ -5,10 +5,11 @@
 [ext_resource type="Material" uid="uid://c17eub34k5hf8" path="res://assets/models/cairn/Props/Wood_Door/Wood_Screw.tres" id="3_10s5n"]
 [ext_resource type="Script" uid="uid://kg11gyciyied" path="res://scripts/audio_value_player.gd" id="4_ax3gi"]
 [ext_resource type="Script" uid="uid://ce8fajkonjvqr" path="res://scripts/saving/persistent_objs/po_bridge.gd" id="4_ylild"]
-[ext_resource type="AudioStream" uid="uid://domk04y6ro822" path="res://assets/audio/sfx/player/hit/Hit_Player-005.wav" id="5_y3uxi"]
-[ext_resource type="AudioStream" uid="uid://uwq4d1fqxpyc" path="res://assets/audio/sfx/player/hit/Hit_Player-001.wav" id="6_lvkeh"]
-[ext_resource type="AudioStream" uid="uid://dq7fnct8thxc1" path="res://assets/audio/sfx/items/urn/Pot_Break-006.wav" id="7_fc6df"]
-[ext_resource type="AudioStream" uid="uid://d4dvoha5rxki3" path="res://assets/audio/sfx/environment/Button/Vehicles, Mechanism, Toyota Auris 2018, Radio, On, Off SND154190 S00.wav" id="8_4krcl"]
+[ext_resource type="AudioStream" uid="uid://cxgj2auu5e1ps" path="res://assets/audio/sfx/environment/Bridge/Doors, Dungeon, Medieval Door, Heavy, Sliding SND122522 S00.wav" id="5_y3uxi"]
+[ext_resource type="AudioStream" uid="uid://beadjwqckc21w" path="res://assets/audio/sfx/environment/Bridge/Windows, Covering, Blinds, Raise & Lower SND99688 S00.wav" id="6_lvkeh"]
+[ext_resource type="AudioStream" uid="uid://d0tpt0enpjwty" path="res://assets/audio/sfx/environment/Bridge/Doors, Hardware, Metal Garage Gate, Key Handle, Lock, Rattle 02 SND108872 S01.wav" id="7_fc6df"]
+[ext_resource type="AudioStream" uid="uid://ba8athcty83rq" path="res://assets/audio/sfx/environment/Bridge/Doors, Hardware, Metal Garage Gate, Key Handle, Lock, Rattle 02 SND108872 S00.wav" id="8_4krcl"]
+[ext_resource type="AudioStream" uid="uid://chcjs4hsvqqh3" path="res://assets/audio/sfx/environment/Bridge/Boats, Mechanism, Anchor, Type 1, Metal, Hitting The Deck, Impacts, Handling 07 SND134309 S04.wav" id="9_4fo3v"]
 
 [sub_resource type="Curve" id="Curve_y65r8"]
 _data = [Vector2(0.13202247, 0.97241664), 0.0, 0.0, 0, 0, Vector2(0.49438202, 0.2662847), 0.0, 0.0, 0, 0, Vector2(0.9691011, 1), 0.0, 0.0, 0, 0]
@@ -77,11 +78,6 @@ size = Vector3(3.85083, 0.16186523, 1.9274902)
 [sub_resource type="BoxShape3D" id="BoxShape3D_rtdc7"]
 size = Vector3(3.8459778, 0.1673584, 0.13110352)
 
-[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_tlw02"]
-streams_count = 2
-stream_0/stream = ExtResource("5_y3uxi")
-stream_1/stream = ExtResource("6_lvkeh")
-
 [node name="Bridge_Small" type="Node3D" unique_id=996377687 node_paths=PackedStringArray("col", "pivot")]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, 0)
 script = ExtResource("1_y5wnn")
@@ -140,7 +136,7 @@ shape = SubResource("BoxShape3D_rtdc7")
 max_distance = 12.0
 bus = &"items"
 script = ExtResource("4_ax3gi")
-sounds = Array[AudioStream]([SubResource("AudioStreamRandomizer_tlw02"), ExtResource("7_fc6df"), ExtResource("8_4krcl")])
+sounds = Array[AudioStream]([ExtResource("5_y3uxi"), ExtResource("6_lvkeh"), ExtResource("7_fc6df"), ExtResource("8_4krcl"), ExtResource("9_4fo3v")])
 
 [node name="PO_Bridge" type="Node" parent="." unique_id=1309201495 groups=["PO"]]
 script = ExtResource("4_ylild")

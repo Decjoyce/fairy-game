@@ -1,7 +1,6 @@
 [gd_scene format=3 uid="uid://dqojmsc2q6wf4"]
 
 [ext_resource type="Script" uid="uid://bkcxym5jqdgg4" path="res://scenes/_player/interaction/player_interaction.gd" id="1_ebye2"]
-[ext_resource type="AudioStream" uid="uid://bpe8oyerrhdif" path="res://assets/__not_ours_dontship/lego-breaking.mp3" id="2_4266y"]
 [ext_resource type="Script" uid="uid://bvrebn6ao2hvn" path="res://scenes/_player/interaction/hand/player_hand.gd" id="2_f78vs"]
 [ext_resource type="Script" uid="uid://ceufl68l7cqys" path="res://scenes/_player/interaction/hand/states/handstate_free.gd" id="3_7baq5"]
 [ext_resource type="Script" uid="uid://d533dr0gr15o" path="res://scenes/_player/interaction/hand/states/handstate_grab_item.gd" id="4_r26r4"]
@@ -34,8 +33,6 @@
 [ext_resource type="Texture2D" uid="uid://ie2qwgyt82t5" path="res://scenes/_player/interaction/hand/assets/new/handKey.png" id="26_g103e"]
 [ext_resource type="Texture2D" uid="uid://caig263otkgib" path="res://scenes/_player/interaction/hand/assets/new/handLeverMid_side.png" id="27_rjeyo"]
 [ext_resource type="Texture2D" uid="uid://bjr37otryvvbb" path="res://scenes/_player/interaction/hand/assets/new/handLeverUp_side.png" id="28_onote"]
-[ext_resource type="AudioStream" uid="uid://vx653pqd2bno" path="res://assets/__not_ours_dontship/death_yoda.mp3" id="41_0v66h"]
-[ext_resource type="AudioStream" uid="uid://dpv5f1hi48dtp" path="res://assets/__not_ours_dontship/death_fortnite.mp3" id="41_mny7c"]
 
 [sub_resource type="Animation" id="Animation_434r6"]
 length = 0.001
@@ -590,7 +587,7 @@ hand_left = NodePath("Hand_Left")
 hand_right = NodePath("Hand_Right")
 hand_left_sprite = NodePath("Hand_Left/_hand_sprite")
 hand_right_sprite = NodePath("Hand_Right/_hand_sprite")
-throw_clips = Array[AudioStream]([ExtResource("2_4266y"), ExtResource("41_mny7c")])
+throw_clips = Array[AudioStream]([null, null])
 
 [node name="Hand_Left" type="Control" parent="." unique_id=342954462 node_paths=PackedStringArray("initial_state")]
 custom_minimum_size = Vector2(64, 64)
@@ -1003,4 +1000,3 @@ libraries/ = SubResource("AnimationLibrary_3efos")
 [node name="Audio_Throw" type="AudioStreamPlayer" parent="Hand_Right" unique_id=500822543]
 
 [node name="Audio_Grab" type="AudioStreamPlayer" parent="Hand_Right" unique_id=981864139]
-stream = ExtResource("41_0v66h")

@@ -21,6 +21,8 @@ var current_weight: float
 
 var loading_locked: bool #used to stop pp triggering after loading
 
+@onready var avp: AudioValuePlayer = $AudioValuePlayer
+
 # ↑ General Stuff ↑
 # --------------------------------------------------------------------------------------------------
 # ↓ Triggering Stuff ↓
@@ -99,6 +101,8 @@ func update_total_weight() -> float:
 	for entity in entities_on_plate:
 		updated_weight += entities_on_plate[entity]
 	current_weight = updated_weight
+	prints("OOOOOOOOOOOOOO", current_weight/weight_to_activate)
+	avp.play_me_bro(clampf(current_weight/weight_to_activate, 0, 1))
 	return current_weight
 
 # ↑ Checking Stuff ↑

@@ -80,7 +80,7 @@ func toggle_gate(sig: float = -1) -> void:
 
 func _process(delta: float) -> void:
 	
-	avp.play_me_bro(cur_value)
+	if avp: avp.play_me_bro(cur_value)
 	
 	if !things_under and player_col_should_enabled:
 		player_col.set_deferred("disabled",false)

@@ -317,7 +317,7 @@ func movement_input_sprint() -> void:
 
 func check_recover() -> void:
 	if current_sprint_step >= 2:
-		var mapped_d:= remap(current_sprint_step, 0, max_sprint_step, 0.765, 0)
+		var mapped_d:= remap(current_sprint_step, 0, max_sprint_step, 0.765, 0.3)
 		var mapped_e:= remap(current_sprint_step, 0, max_sprint_step, 2, 1.5)
 		player.local_effect_player.saturize(mapped_d, 0.5, -1, true)
 		player.local_effect_player.vignettize(1, 0, mapped_e, 0.3, true)

@@ -3,6 +3,11 @@
 [ext_resource type="Script" uid="uid://c7ghu7bwjvv0k" path="res://scenes/interactions/_triggers/pressure_plate/pressure_plate.gd" id="1_i6vjq"]
 [ext_resource type="Material" uid="uid://beaom2cndegce" path="res://assets/models/cairn/Props/PressurePlate/PressurePlate.tres" id="2_237o0"]
 [ext_resource type="Script" uid="uid://0u8kvsvjv11k" path="res://scripts/saving/persistent_objs/po_pressureplate.gd" id="3_sfnck"]
+[ext_resource type="Script" uid="uid://kg11gyciyied" path="res://scripts/audio_value_player.gd" id="4_dhg3m"]
+[ext_resource type="AudioStream" uid="uid://dpv5f1hi48dtp" path="res://assets/__not_ours_dontship/death_fortnite.mp3" id="5_di2xw"]
+[ext_resource type="AudioStream" uid="uid://bxnq1vnc3pmrr" path="res://assets/audio/sfx/items/StoneHit/stonepile_randomizer.tres" id="6_h2knw"]
+[ext_resource type="AudioStream" uid="uid://c8yxyrrkhfspy" path="res://assets/audio/sfx/items/instrument_notes/floot/full_notes/flute_d.wav" id="7_e0rkr"]
+[ext_resource type="AudioStream" uid="uid://vx653pqd2bno" path="res://assets/__not_ours_dontship/death_yoda.mp3" id="8_lyami"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_i6vjq"]
 size = Vector3(1, 0.1, 1)
@@ -91,6 +96,11 @@ mesh = SubResource("ArrayMesh_jqphk")
 [node name="PO_PressurePlate" type="Node" parent="." unique_id=2017023874 groups=["PO"]]
 script = ExtResource("3_sfnck")
 metadata/_custom_type_script = "uid://0u8kvsvjv11k"
+
+[node name="AudioValuePlayer" type="AudioStreamPlayer3D" parent="." unique_id=598333734]
+script = ExtResource("4_dhg3m")
+sounds = Array[AudioStream]([ExtResource("5_di2xw"), ExtResource("6_h2knw"), ExtResource("7_e0rkr"), ExtResource("8_lyami")])
+metadata/_custom_type_script = "uid://kg11gyciyied"
 
 [connection signal="body_entered" from="Graphics/Trigger_Item" to="." method="_on_body_entered_trigger"]
 [connection signal="body_exited" from="Graphics/Trigger_Item" to="." method="_on_body_exited_trigger"]
