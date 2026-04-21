@@ -9,6 +9,7 @@
 [ext_resource type="Material" uid="uid://cykgn4cpccw6q" path="res://assets/models/cairn/Props/MountedTorch/MountedTorch.tres" id="7_8tbth"]
 [ext_resource type="ArrayMesh" uid="uid://bq3anitpbj6jj" path="res://assets/models/cairn/Props/MountedTorch/MountedTorch.obj" id="8_wn36w"]
 [ext_resource type="PackedScene" uid="uid://gc2qo6ixywh3" path="res://scenes/decor/fire.tscn" id="9_f7w26"]
+[ext_resource type="ArrayMesh" uid="uid://deenfjj76xugt" path="res://assets/models/cairn/Props/MountedTorch/mountedtorch_nobackboard.obj" id="10_wn36w"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_xy4ik"]
 radius = 0.15350685
@@ -82,5 +83,11 @@ metadata/_custom_type_script = "uid://cc36kknugth5b"
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=2105665120]
 transform = Transform3D(-6.119594e-09, 0, -0.14, 0, 0.14, 0, 0.14, 0, -6.119594e-09, 0, -0.19999999, 0.018826813)
+visible = false
 material_override = ExtResource("7_8tbth")
 mesh = ExtResource("8_wn36w")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="." unique_id=1439202160]
+transform = Transform3D(-6.119594e-09, 0, -0.14, 0, 0.14, 0, 0.14, 0, -6.119594e-09, 0, -0.11482699, 0.018826813)
+material_override = ExtResource("7_8tbth")
+mesh = ExtResource("10_wn36w")
