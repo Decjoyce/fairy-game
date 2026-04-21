@@ -17,9 +17,52 @@
 [ext_resource type="Texture2D" uid="uid://1c406hs7su5a" path="res://assets/__not_ours_dontship/triskele_rough_01.png" id="19_g6es1"]
 [ext_resource type="PackedScene" uid="uid://dkx1fyyqx7cmp" path="res://scenes/interactions/_triggers/torch_sconce/torch_sconce_ceiling.tscn" id="19_qofka"]
 [ext_resource type="Script" uid="uid://bicoc8ibhscjw" path="res://scenes/interactions/_receivers/enabler_disabler_v1/group_visibility_enabler.gd" id="20_ru5qk"]
+[ext_resource type="PackedScene" uid="uid://ylg6mxx468cq" path="res://scenes/_levels/_palettes/cairn/props/Rocks/cairn_rock_1.tscn" id="21_jbn6s"]
+[ext_resource type="PackedScene" uid="uid://cnkngeiaucgql" path="res://scenes/_levels/_palettes/cairn/props/Rocks/cairn_rock_2.tscn" id="22_656c1"]
+[ext_resource type="PackedScene" uid="uid://dhanht7b5rwkq" path="res://scenes/_levels/_palettes/cairn/props/Rocks/cairn_rock_4.tscn" id="23_r0k5g"]
+[ext_resource type="PackedScene" uid="uid://v3a4kqxol6jl" path="res://scenes/_levels/_palettes/cairn/props/Rocks/cairn_rock_8.tscn" id="24_nn74u"]
+[ext_resource type="PackedScene" uid="uid://cfuq8lf22so06" path="res://scenes/_levels/_palettes/cairn/props/Rocks/cairn_rock_pile.tscn" id="25_o06uf"]
+[ext_resource type="PackedScene" uid="uid://cpnmun20lswr" path="res://scenes/_levels/_palettes/cairn/props/cairn_pillar.tscn" id="26_pw1ys"]
 [ext_resource type="Script" uid="uid://ubfk2a80dhfp" path="res://addons/grid_map_pathfinding/grid_map_pathfinding.gd" id="29_211nq"]
 [ext_resource type="PackedScene" uid="uid://b5g00fexnuwte" path="res://scenes/interactions/_special/item_no_pass_zone.tscn" id="31_iw7gl"]
 [ext_resource type="Material" uid="uid://ioo51vym3k1d" path="res://scenes/interactions/_triggers/teleporter/m_teleport.tres" id="32_tie2v"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_pac4h"]
+sky_horizon_color = Color(0, 0.37292683, 0.8185948, 1)
+sky_curve = 0.23537512
+ground_horizon_color = Color(0.3529412, 0.30588236, 0.2509804, 1)
+ground_curve = 0.060628746
+
+[sub_resource type="Sky" id="Sky_jbn6s"]
+sky_material = SubResource("ProceduralSkyMaterial_pac4h")
+
+[sub_resource type="Environment" id="Environment_q00f3"]
+sky = SubResource("Sky_jbn6s")
+ambient_light_source = 2
+ambient_light_color = Color(4.512258e-08, 0.025031792, 0.083208345, 1)
+ambient_light_energy = 4.0
+reflected_light_source = 1
+tonemap_mode = 4
+tonemap_exposure = 2.0
+ssao_enabled = true
+ssao_radius = 0.05
+ssao_intensity = 1.0
+sdfgi_read_sky_light = false
+sdfgi_bounce_feedback = 1.99
+sdfgi_cascades = 8
+sdfgi_min_cell_size = 19.315624
+sdfgi_energy = 4.035
+sdfgi_normal_bias = 6.215
+sdfgi_probe_bias = 2.94
+glow_enabled = true
+glow_intensity = 0.5
+glow_strength = 0.4
+volumetric_fog_enabled = true
+volumetric_fog_density = 0.025
+volumetric_fog_albedo = Color(0.74509805, 0.34509805, 0, 1)
+volumetric_fog_emission = Color(0.117735185, 0.20947376, 0.3003329, 1)
+volumetric_fog_emission_energy = 0.5
+volumetric_fog_sky_affect = 0.0
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_iw7gl"]
 
@@ -80,6 +123,14 @@ size = Vector2(0.5, 0.5)
 material = ExtResource("32_tie2v")
 
 [node name="Ballybog_Scene" type="Node3D" unique_id=842226877]
+
+[node name="WorldEnvironment2" type="WorldEnvironment" parent="." unique_id=1134384756]
+environment = SubResource("Environment_q00f3")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1471337058]
+transform = Transform3D(0.033493724, 0.99102545, -0.12940948, 0.01924202, 0.1288187, 0.9914815, 0.9992537, -0.03569851, -0.014754714, 3.5, 12.124357, -6.0621777)
+light_color = Color(0.3227734, 0.33385244, 0.3646147, 1)
+shadow_enabled = true
 
 [node name="GridMapPathFinding2" type="GridMap" parent="." unique_id=1929151095 groups=["GMPF"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.445, 0)
@@ -281,6 +332,56 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 1.9521668, -9)
 
 [node name="TorchSconce_Lit2" parent="." unique_id=1380779159 instance=ExtResource("8_m8tlr")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 1, -3.763967)
+
+[node name="SetDressing" type="Node3D" parent="." unique_id=1525157430]
+
+[node name="Rock1" parent="SetDressing" unique_id=2099505668 instance=ExtResource("21_jbn6s")]
+transform = Transform3D(0.23325866, 0, 0.97241473, 0.9392805, 0.25881907, -0.22531056, -0.25167948, 0.9659258, 0.06037179, 0.52532214, 0.066113405, -0.54452175)
+
+[node name="cairn rock 2" parent="SetDressing" unique_id=2096655475 instance=ExtResource("22_656c1")]
+transform = Transform3D(-0.1974763, 0.59503484, -0.7790614, 0.97165823, 0.22414388, -0.07509819, 0.12993586, -0.77181166, -0.62243366, -5.7046766, 0.3809744, -2.3153882)
+
+[node name="cairnrock4" parent="SetDressing" unique_id=1263725129 instance=ExtResource("23_r0k5g")]
+transform = Transform3D(0.9996754, 0, -0.025479123, 0, 1, 0, 0.025479123, 0, 0.9996754, -5.4419384, 0.0012799278, -9.605905)
+
+[node name="cairn rock" parent="SetDressing" unique_id=441529078 instance=ExtResource("24_nn74u")]
+transform = Transform3D(0.9071068, 0.9071068, 4.3272067e-08, 0, -5.607484e-08, 1.4, 0.9071068, -0.9071068, -4.3272067e-08, -1.6556028, 0.22457974, -4.2352333)
+
+[node name="RockPile" parent="SetDressing" unique_id=1635723744 instance=ExtResource("25_o06uf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.738562, -0.11283098, -6.034661)
+
+[node name="cairnPillar" parent="SetDressing" unique_id=607460616 instance=ExtResource("26_pw1ys")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.8960001, 0.004, -1.9130001)
+
+[node name="cairnPillar2" parent="SetDressing" unique_id=1220792989 instance=ExtResource("26_pw1ys")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.09, 0, -0.12)
+
+[node name="cairnPillar3" parent="SetDressing" unique_id=1855143492 instance=ExtResource("26_pw1ys")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1.7, 0.14, 0, -4.04)
+
+[node name="cairnPillar4" parent="SetDressing" unique_id=428358648 instance=ExtResource("26_pw1ys")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.099999994, 0, -2.1299999)
+
+[node name="cairnPillar5" parent="SetDressing" unique_id=727193883 instance=ExtResource("26_pw1ys")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.9, 0, -8.11)
+
+[node name="cairnPillar6" parent="SetDressing" unique_id=1407066734 instance=ExtResource("26_pw1ys")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.9, 0, -9.900001)
+
+[node name="cairnPillar7" parent="SetDressing" unique_id=779638691 instance=ExtResource("26_pw1ys")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.11, 0, -8.08)
+
+[node name="cairnPillar8" parent="SetDressing" unique_id=875429568 instance=ExtResource("26_pw1ys")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.0899997, 0, -3.8999999)
+
+[node name="cairnrock5" parent="SetDressing" unique_id=755577005 instance=ExtResource("23_r0k5g")]
+transform = Transform3D(0.258819, -0.9659258, 0, 0.9659258, 0.258819, 0, 0, 0, 1, 1.78, 0.34, -13.71)
+
+[node name="cairn rock2" parent="SetDressing" unique_id=1276835031 instance=ExtResource("24_nn74u")]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, -3.48, 0.22999999, -3.4799998)
+
+[node name="Rock2" parent="SetDressing" unique_id=1484517650 instance=ExtResource("21_jbn6s")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.26, 0, -5.83)
 
 [connection signal="area_entered" from="Sneaked_past/EnemyEnableTrig/Area3D" to="Sneaked_past/EnemyEnableTrig" method="_player_entered"]
 [connection signal="area_exited" from="Sneaked_past/EnemyEnableTrig/Area3D" to="Sneaked_past/EnemyEnableTrig" method="_player_exited"]

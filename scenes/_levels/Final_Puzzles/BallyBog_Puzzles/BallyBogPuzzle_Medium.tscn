@@ -4,8 +4,12 @@
 [ext_resource type="MeshLibrary" uid="uid://bu208a8l5866i" path="res://scenes/_levels/_palettes/cairn/meshlibrary_cairn.tres" id="2_rpyid"]
 [ext_resource type="PackedScene" uid="uid://xuo5buj0odhi" path="res://scenes/interactions/_triggers/torch_sconce/torch_sconce_lit.tscn" id="3_jjjpb"]
 [ext_resource type="PackedScene" uid="uid://br35er4x4b6av" path="res://scenes/interactions/_triggers/torch_sconce/torch_sconce_unlit.tscn" id="4_kixsx"]
+[ext_resource type="Material" uid="uid://cykgn4cpccw6q" path="res://assets/models/cairn/Props/MountedTorch/MountedTorch.tres" id="5_8sy4o"]
+[ext_resource type="ArrayMesh" uid="uid://deenfjj76xugt" path="res://assets/models/cairn/Props/MountedTorch/mountedtorch_nobackboard.obj" id="5_m7dit"]
 [ext_resource type="PackedScene" uid="uid://d2ict3hg28spx" path="res://scenes/_levels/_palettes/cairn/props/cairn_fake_wall.tscn" id="5_ocruc"]
+[ext_resource type="ArrayMesh" uid="uid://nwtrg4drujy3" path="res://assets/models/cairn/Props/MountedTorch/CeilingTorch.obj" id="6_m7dit"]
 [ext_resource type="PackedScene" uid="uid://ue3520w5p7fo" path="res://scenes/_levels/_palettes/cairn/props/cairn_fake_doorway.tscn" id="6_n0333"]
+[ext_resource type="PackedScene" uid="uid://gc2qo6ixywh3" path="res://scenes/decor/fire.tscn" id="7_j0le8"]
 [ext_resource type="Material" uid="uid://rbnbiylju0f0" path="res://assets/models/cairn/Hall_BigRoof/Dirtcube.tres" id="7_jvm2i"]
 [ext_resource type="ArrayMesh" uid="uid://dkmhu2vvhxyg0" path="res://assets/models/misc/fake_plane/fake_plane.obj" id="8_06wii"]
 [ext_resource type="PackedScene" uid="uid://chqox5wu7wm4q" path="res://scenes/_levels/_palettes/cairn/props/cairn_exit_pillars.tscn" id="9_au3qv"]
@@ -29,21 +33,26 @@
 [ext_resource type="Script" uid="uid://ubfk2a80dhfp" path="res://addons/grid_map_pathfinding/grid_map_pathfinding.gd" id="27_4w4fw"]
 [ext_resource type="Script" uid="uid://bul4myvyhnpjc" path="res://scripts/saving/uid_generator.gd" id="28_qhdgp"]
 [ext_resource type="PackedScene" uid="uid://bsdlm8rcrt2j" path="res://scenes/interactions/_triggers/area_triggers/player_area_trigger.tscn" id="29_b2mbs"]
+[ext_resource type="PackedScene" uid="uid://cpnmun20lswr" path="res://scenes/_levels/_palettes/cairn/props/cairn_pillar.tscn" id="34_j0le8"]
+[ext_resource type="PackedScene" uid="uid://cfuq8lf22so06" path="res://scenes/_levels/_palettes/cairn/props/Rocks/cairn_rock_pile.tscn" id="35_2cjid"]
+[ext_resource type="PackedScene" uid="uid://v3a4kqxol6jl" path="res://scenes/_levels/_palettes/cairn/props/Rocks/cairn_rock_8.tscn" id="36_i5lll"]
+[ext_resource type="PackedScene" uid="uid://cnkngeiaucgql" path="res://scenes/_levels/_palettes/cairn/props/Rocks/cairn_rock_2.tscn" id="37_x42l1"]
+[ext_resource type="PackedScene" uid="uid://ylg6mxx468cq" path="res://scenes/_levels/_palettes/cairn/props/Rocks/cairn_rock_1.tscn" id="38_rv6yw"]
 
-[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_2vnbd"]
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_b2mbs"]
 sky_horizon_color = Color(0, 0.37292683, 0.8185948, 1)
 sky_curve = 0.23537512
 ground_horizon_color = Color(0.3529412, 0.30588236, 0.2509804, 1)
 ground_curve = 0.060628746
 
-[sub_resource type="Sky" id="Sky_18d3f"]
-sky_material = SubResource("ProceduralSkyMaterial_2vnbd")
+[sub_resource type="Sky" id="Sky_uqgcp"]
+sky_material = SubResource("ProceduralSkyMaterial_b2mbs")
 
-[sub_resource type="Environment" id="Environment_dx54j"]
-sky = SubResource("Sky_18d3f")
+[sub_resource type="Environment" id="Environment_060nb"]
+sky = SubResource("Sky_uqgcp")
 ambient_light_source = 2
-ambient_light_color = Color(0, 0.15776503, 0.22900726, 1)
-ambient_light_energy = 0.75
+ambient_light_color = Color(4.512258e-08, 0.025031792, 0.083208345, 1)
+ambient_light_energy = 4.0
 reflected_light_source = 1
 tonemap_mode = 4
 tonemap_exposure = 2.0
@@ -58,10 +67,10 @@ sdfgi_energy = 4.035
 sdfgi_normal_bias = 6.215
 sdfgi_probe_bias = 2.94
 glow_enabled = true
-glow_intensity = 0.2
+glow_intensity = 0.5
 glow_strength = 0.4
 volumetric_fog_enabled = true
-volumetric_fog_density = 0.015
+volumetric_fog_density = 0.025
 volumetric_fog_albedo = Color(0.74509805, 0.34509805, 0, 1)
 volumetric_fog_emission = Color(0.117735185, 0.20947376, 0.3003329, 1)
 volumetric_fog_emission_energy = 0.5
@@ -229,11 +238,11 @@ _data = {
 
 [node name="Puzzle01" type="Node3D" unique_id=2140837292]
 
+[node name="WorldEnvironment2" type="WorldEnvironment" parent="." unique_id=1478136431]
+environment = SubResource("Environment_060nb")
+
 [node name="player_test" parent="." unique_id=725727541 instance=ExtResource("1_cflmq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 2.1000001, 2.7)
-
-[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=654468544]
-environment = SubResource("Environment_dx54j")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1818625410]
 light_color = Color(0, 0, 0, 1)
@@ -255,21 +264,66 @@ metadata/_editor_floor_ = Vector3(0, 0, 0)
 
 [node name="TorchSconce_Lit" parent="_env/_decor/_lights" unique_id=1729385187 instance=ExtResource("3_jjjpb")]
 transform = Transform3D(0.9659258, 0, -0.25881904, 0, 1, 0, 0.25881904, 0, 0.9659258, -3, 2.1000001, 0.20000002)
+visible = false
 
-[node name="TorchSconce_Lit2" parent="_env/_decor/_lights" unique_id=18470100 instance=ExtResource("3_jjjpb")]
-transform = Transform3D(0.9659258, 0, -0.25881904, 0, 1, 0, 0.25881904, 0, 0.9659258, -3, 2.1000001, -3.8000002)
+[node name="TorchSconce_Lit2" type="Node3D" parent="_env/_decor/_lights" unique_id=18470100]
+transform = Transform3D(-0.08517349, 0, 0.99636614, 0, 1, 0, -0.99636614, 0, -0.08517349, -1.8437309, 2.1000001, -0.98212045)
+visible = false
 
-[node name="TorchSconce_Lit4" parent="_env/_decor/_lights" unique_id=1008576657 instance=ExtResource("3_jjjpb")]
-transform = Transform3D(0.9659258, 0, -0.25881904, 0, 1, 0, 0.25881904, 0, 0.9659258, -6.883576, 2.1000001, -3.7251482)
+[node name="Lit_Sconce" type="Node3D" parent="_env/_decor/_lights/TorchSconce_Lit2" unique_id=1591104962]
+
+[node name="TorchLight" type="OmniLight3D" parent="_env/_decor/_lights/TorchSconce_Lit2/Lit_Sconce" unique_id=801500960]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.013138853, 0.14283247)
+light_color = Color(0.7468442, 0.34661883, 0, 1)
+light_energy = 1.298
+light_size = 0.593
+distance_fade_shadow = 46.75
+omni_range = 2.4169688
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="_env/_decor/_lights/TorchSconce_Lit2/Lit_Sconce" unique_id=317317458]
+transform = Transform3D(-6.119594e-09, 0, -0.14, 0, 0.14, 0, 0.14, 0, -6.119594e-09, 0, -0.19999999, 0.018826813)
+material_override = ExtResource("5_8sy4o")
+mesh = ExtResource("5_m7dit")
+
+[node name="Fire" parent="_env/_decor/_lights/TorchSconce_Lit2/Lit_Sconce/MeshInstance3D" unique_id=531285147 instance=ExtResource("7_j0le8")]
+transform = Transform3D(0.78, 0, 3.5527137e-15, 0, 0.54, 0, -3.5527137e-15, 0, 0.645, 0.88888896, 1.4869865, 0.12925352)
+modulate = Color(1.1017857, 0.62274027, 0.14369495, 1)
+pixel_size = 0.015
+
+[node name="TorchSconce_Lit4" type="Node3D" parent="_env/_decor/_lights" unique_id=1008576657]
+transform = Transform3D(-1.4901161e-08, 0, 1, 0, 1, 0, -1, 0, -1.4901161e-08, -7.8135757, 2.46, -3.0051482)
+
+[node name="Lit_Sconce" type="Node3D" parent="_env/_decor/_lights/TorchSconce_Lit4" unique_id=2048139514]
+
+[node name="TorchLight" type="OmniLight3D" parent="_env/_decor/_lights/TorchSconce_Lit4/Lit_Sconce" unique_id=184176030]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.013138853, 0.14283247)
+light_color = Color(0.7468442, 0.34661883, 0, 1)
+light_energy = 1.466
+light_size = 0.593
+distance_fade_shadow = 46.75
+omni_range = 2.4530156
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="_env/_decor/_lights/TorchSconce_Lit4/Lit_Sconce" unique_id=1440491033]
+transform = Transform3D(-6.119594e-09, 0, -0.14, 0, 0.14, 0, 0.14, 0, -6.119594e-09, 0, -0.19999999, 0.018826813)
+material_override = ExtResource("5_8sy4o")
+mesh = ExtResource("5_m7dit")
+
+[node name="Fire" parent="_env/_decor/_lights/TorchSconce_Lit4/Lit_Sconce/MeshInstance3D" unique_id=1371436008 instance=ExtResource("7_j0le8")]
+transform = Transform3D(0.78, 0, 3.5527137e-15, 0, 0.54, 0, -3.5527137e-15, 0, 0.645, 0.88888896, 1.4869865, 0.12925352)
+modulate = Color(1.1017857, 0.62274027, 0.14369495, 1)
+pixel_size = 0.015
 
 [node name="TorchSconce_Lit5" parent="_env/_decor/_lights" unique_id=309145913 instance=ExtResource("3_jjjpb")]
 transform = Transform3D(-0.96592593, 0, 0.25881916, 0, 1, 0, -0.25881916, 0, -0.96592593, -6.883576, 2.1000001, -2.3291874)
+visible = false
 
 [node name="TorchSconce_Lit3" parent="_env/_decor/_lights" unique_id=2095231742 instance=ExtResource("3_jjjpb")]
 transform = Transform3D(0.9659258, 0, -0.25881904, 0, 1, 0, 0.25881904, 0, 0.9659258, 0.19999993, 2.1716464, -7.6467614)
+visible = false
 
 [node name="TorchSconce_Lit6" parent="_env/_decor/_lights" unique_id=1112573980 instance=ExtResource("3_jjjpb")]
 transform = Transform3D(0.9659258, 0, -0.25881904, 0, 1, 0, 0.25881904, 0, 0.9659258, 0.19999993, 2.1716464, -7.6467614)
+visible = false
 
 [node name="TorchSconce_Unlit" parent="_env/_decor/_lights" unique_id=1431723012 instance=ExtResource("4_kixsx")]
 transform = Transform3D(0.9659258, 0, -0.25881904, 0, 1, 0, 0.25881904, 0, 0.9659258, 1, 2.1000001, 0.3)
@@ -278,10 +332,85 @@ metadata/lock_uid = true
 metadata/date_generated = "2026-03-25T10:07:13"
 
 [node name="TorchSconce_Unlit2" parent="_env/_decor/_lights" unique_id=1975511268 instance=ExtResource("4_kixsx")]
-transform = Transform3D(-0.96592593, 0, 0.25881916, 0, 1, 0, -0.25881916, 0, -0.96592593, 1, 2.1000001, -2.4)
+transform = Transform3D(-0.9992543, 0, -0.038614467, 0, 1, 0, 0.038614467, 0, -0.9992543, 1, 2.1000001, -2.2253718)
 metadata/uid = "9b6c1b5f-3615-4b64-a15f-b8b6eb9b7f86"
 metadata/lock_uid = true
 metadata/date_generated = "2026-03-25T10:07:13"
+
+[node name="TorchSconce_Lit7" type="Node3D" parent="_env/_decor/_lights" unique_id=310770479]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.95426697, 3.02, -7.0091615)
+
+[node name="Lit_Sconce" type="Node3D" parent="_env/_decor/_lights/TorchSconce_Lit7" unique_id=816977869]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5447761, 0)
+
+[node name="TorchLight" type="OmniLight3D" parent="_env/_decor/_lights/TorchSconce_Lit7/Lit_Sconce" unique_id=1553930956]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.09950936, 0.010445267)
+light_color = Color(0.7468442, 0.34661883, 0, 1)
+light_energy = 0.961
+light_size = 0.593
+distance_fade_shadow = 46.75
+omni_range = 2.1769862
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="_env/_decor/_lights/TorchSconce_Lit7/Lit_Sconce" unique_id=682733824]
+transform = Transform3D(-6.119594e-09, 0, -0.14, 0, 0.14, 0, 0.14, 0, -6.119594e-09, 0.023733735, 0, 0)
+material_override = ExtResource("5_8sy4o")
+cast_shadow = 0
+mesh = ExtResource("6_m7dit")
+
+[node name="Fire" parent="_env/_decor/_lights/TorchSconce_Lit7/Lit_Sconce/MeshInstance3D" unique_id=1785550898 instance=ExtResource("7_j0le8")]
+transform = Transform3D(0.78, 0, 3.5527137e-15, 0, 0.54, 0, -3.5527137e-15, 0, 0.645, 7.018845e-09, 0.9362365, 0.16057247)
+modulate = Color(1.1017857, 0.62274027, 0.14369495, 1)
+pixel_size = 0.015
+
+[node name="TorchSconce_Lit9" type="Node3D" parent="_env/_decor/_lights" unique_id=260787570]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.06, 3.02, -0.9360571)
+
+[node name="Lit_Sconce" type="Node3D" parent="_env/_decor/_lights/TorchSconce_Lit9" unique_id=988540837]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5447761, 0)
+
+[node name="TorchLight" type="OmniLight3D" parent="_env/_decor/_lights/TorchSconce_Lit9/Lit_Sconce" unique_id=692085650]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.09950936, 0.010445267)
+light_color = Color(0.7468442, 0.34661883, 0, 1)
+light_energy = 0.961
+light_size = 0.593
+distance_fade_shadow = 46.75
+omni_range = 2.1769862
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="_env/_decor/_lights/TorchSconce_Lit9/Lit_Sconce" unique_id=888443395]
+transform = Transform3D(-6.119594e-09, 0, -0.14, 0, 0.14, 0, 0.14, 0, -6.119594e-09, 0.112675846, 0, 0)
+material_override = ExtResource("5_8sy4o")
+cast_shadow = 0
+mesh = ExtResource("6_m7dit")
+
+[node name="Fire" parent="_env/_decor/_lights/TorchSconce_Lit9/Lit_Sconce/MeshInstance3D" unique_id=2010654532 instance=ExtResource("7_j0le8")]
+transform = Transform3D(0.78, 0, 3.5527137e-15, 0, 0.54, 0, -3.5527137e-15, 0, 0.645, 7.018845e-09, 0.9362365, 0.16057247)
+modulate = Color(1.1017857, 0.62274027, 0.14369495, 1)
+pixel_size = 0.015
+
+[node name="TorchSconce_Lit8" type="Node3D" parent="_env/_decor/_lights" unique_id=1988870013]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.0299997, 2.9699998, -2.9599998)
+
+[node name="Lit_Sconce" type="Node3D" parent="_env/_decor/_lights/TorchSconce_Lit8" unique_id=1844882394]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5447761, 0)
+
+[node name="TorchLight" type="OmniLight3D" parent="_env/_decor/_lights/TorchSconce_Lit8/Lit_Sconce" unique_id=1601076557]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.09950936, 0.010445267)
+light_color = Color(0.7468442, 0.34661883, 0, 1)
+light_energy = 1.298
+light_size = 0.593
+distance_fade_shadow = 46.75
+omni_range = 2.0025609
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="_env/_decor/_lights/TorchSconce_Lit8/Lit_Sconce" unique_id=265719683]
+transform = Transform3D(-6.119594e-09, 0, -0.14, 0, 0.14, 0, 0.14, 0, -6.119594e-09, 0.023733735, 0, 0)
+material_override = ExtResource("5_8sy4o")
+cast_shadow = 0
+mesh = ExtResource("6_m7dit")
+
+[node name="Fire" parent="_env/_decor/_lights/TorchSconce_Lit8/Lit_Sconce/MeshInstance3D" unique_id=1340755633 instance=ExtResource("7_j0le8")]
+transform = Transform3D(0.78, 0, 3.5527137e-15, 0, 0.54, 0, -3.5527137e-15, 0, 0.645, 7.018845e-09, 0.9362365, 0.16057247)
+modulate = Color(1.1017857, 0.62274027, 0.14369495, 1)
+pixel_size = 0.015
 
 [node name="roofthing" type="Node3D" parent="_env/_decor" unique_id=1439106267]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 3.2, -3)
@@ -331,10 +460,12 @@ mesh = ExtResource("8_06wii")
 
 [node name="OmniLight3D" type="SpotLight3D" parent="_env/_decor" unique_id=84725738]
 transform = Transform3D(0.9659258, 1.1313338e-08, -0.25881904, 0.25881904, -4.2221956e-08, 0.9659258, 0, -1, -4.371139e-08, 4.3, 3.7, -3)
+visible = false
 spot_angle = 21.860338
 
 [node name="OmniLight3D2" type="SpotLight3D" parent="_env/_decor" unique_id=484394428]
 transform = Transform3D(0.96592593, 1.131334e-08, -0.2588191, 0.2432104, 0.34202012, 0.9076735, 0.08852133, -0.9396926, 0.33036605, 4.3, 3.7, -3)
+visible = false
 light_energy = 0.17
 spot_angle = 21.860338
 
@@ -698,6 +829,89 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 2, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="BallyBog_Trigger/Area3D" unique_id=1364307751]
 shape = SubResource("SphereShape3D_060nb")
+
+[node name="SetDressing" type="Node3D" parent="." unique_id=1748671349]
+
+[node name="cairnPillar" parent="SetDressing" unique_id=607460616 instance=ExtResource("34_j0le8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.8903983, 1.011476, 0.122203454)
+
+[node name="cairnPillar19" parent="SetDressing" unique_id=465975782 instance=ExtResource("34_j0le8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.1083765, 1.011476, 0.122203454)
+
+[node name="cairnPillar20" parent="SetDressing" unique_id=1138312264 instance=ExtResource("34_j0le8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.1134062, 1.011476, 0.122203454)
+
+[node name="cairnPillar21" parent="SetDressing" unique_id=1880638622 instance=ExtResource("34_j0le8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.1083765, 1.011476, -6.1044216)
+
+[node name="cairnPillar22" parent="SetDressing" unique_id=613564148 instance=ExtResource("34_j0le8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.1134062, 1.011476, -6.1044216)
+
+[node name="cairnPillar2" parent="SetDressing" unique_id=1940722928 instance=ExtResource("34_j0le8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.09381701, 1.011476, 0.122203454)
+
+[node name="cairnPillar3" parent="SetDressing" unique_id=1560875331 instance=ExtResource("34_j0le8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.8903983, 1.011476, 1.9012978)
+
+[node name="cairnPillar4" parent="SetDressing" unique_id=1024061080 instance=ExtResource("34_j0le8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.09381701, 1.011476, 1.9012978)
+
+[node name="cairnPillar5" parent="SetDressing" unique_id=796576643 instance=ExtResource("34_j0le8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.8903983, 1.011476, -3.8646603)
+
+[node name="cairnPillar6" parent="SetDressing" unique_id=1349419146 instance=ExtResource("34_j0le8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.09381701, 1.011476, -3.8646603)
+
+[node name="cairnPillar9" parent="SetDressing" unique_id=51200574 instance=ExtResource("34_j0le8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.8903983, 1.011476, -7.8950467)
+
+[node name="cairnPillar10" parent="SetDressing" unique_id=866195612 instance=ExtResource("34_j0le8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.09381701, 1.011476, -7.8950467)
+
+[node name="cairnPillar7" parent="SetDressing" unique_id=1432317220 instance=ExtResource("34_j0le8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.8903983, 1.011476, -2.0855658)
+
+[node name="cairnPillar8" parent="SetDressing" unique_id=1058744188 instance=ExtResource("34_j0le8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.09381701, 1.011476, -2.0855658)
+
+[node name="cairnPillar15" parent="SetDressing" unique_id=1161763195 instance=ExtResource("34_j0le8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.1060915, 1.011476, -3.8646603)
+
+[node name="cairnPillar16" parent="SetDressing" unique_id=1441204994 instance=ExtResource("34_j0le8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.9026725, 1.011476, -3.8646603)
+
+[node name="cairnPillar17" parent="SetDressing" unique_id=315494237 instance=ExtResource("34_j0le8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.1060915, 1.011476, -2.0855658)
+
+[node name="cairnPillar18" parent="SetDressing" unique_id=726449312 instance=ExtResource("34_j0le8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.9026725, 1.011476, -2.0855658)
+
+[node name="cairnPillar11" parent="SetDressing" unique_id=1746023686 instance=ExtResource("34_j0le8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.904746, 1.011476, -3.8646603)
+
+[node name="cairnPillar12" parent="SetDressing" unique_id=1287573377 instance=ExtResource("34_j0le8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.108165, 1.011476, -3.8646603)
+
+[node name="cairnPillar13" parent="SetDressing" unique_id=792631564 instance=ExtResource("34_j0le8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.904746, 1.011476, -2.0855658)
+
+[node name="cairnPillar14" parent="SetDressing" unique_id=633244431 instance=ExtResource("34_j0le8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.108165, 1.011476, -2.0855658)
+
+[node name="RockPile" parent="SetDressing" unique_id=1635723744 instance=ExtResource("35_2cjid")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.4991264, 0.94744194, -3.4548063)
+
+[node name="cairn rock 2" parent="SetDressing" unique_id=2096655475 instance=ExtResource("37_x42l1")]
+transform = Transform3D(0.8338473, 0, -0.5519952, 0, 1, 0, 0.5519952, 0, 0.8338473, -1.4781532, 1.0103813, 3.5524771)
+
+[node name="Rock1" parent="SetDressing" unique_id=2099505668 instance=ExtResource("38_rv6yw")]
+transform = Transform3D(-4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0, 1, -0.09858885, 1.2420994, -5.253508)
+
+[node name="cairn rock" parent="SetDressing" unique_id=441529078 instance=ExtResource("36_i5lll")]
+transform = Transform3D(0.26437333, -0.7305622, 0.62959164, 0.94032377, 0.34028113, 0, -0.21423815, 0.59202, 0.7769262, 5.732799, 1.138177, -3.6570768)
+
+[node name="cairn rock 2" parent="." unique_id=1404731225 instance=ExtResource("37_x42l1")]
+transform = Transform3D(-3.239805e-08, 0.9659258, -0.258819, 3.3488384e-08, 0.258819, 0.9659258, 1, 2.2626681e-08, -4.073253e-08, -5.82, 1.12, -5.22)
 
 [connection signal="on_change" from="_env/Gate_Left/Lever" to="_env/Items/HiddenItem/hiddentgate/AnimatedObject" method="play_animation"]
 [connection signal="on_activated" from="_env/Gate_Left/PressurePlates/PressurePlateTR" to="_env/Gate_Left/PressurePlates/PressurePlateTR/indicator_visenabler" method="enable_obj"]
