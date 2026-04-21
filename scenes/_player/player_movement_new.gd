@@ -374,10 +374,12 @@ func rotate(delta: float):
 # ↓ Crouching Stuff ↓
 
 var is_crouching: bool
+@onready var crouch_sfx: AudioStreamPlayer3D = $CrouchSFX
 
 func toggle_crouch() -> void:
 	if is_crouching: uncrouch()
 	else: crouch()
+	crouch_sfx.play()
 
 func crouch(bypass_floor_detection: bool = false) -> void:
 	if !bypass_floor_detection and !floor_detector.get_collision_point(): return

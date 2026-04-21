@@ -10,6 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://drwif87vii7ya" path="res://assets/ui/player/stats/HealthStaminaUI_border.png" id="5_bfirj"]
 [ext_resource type="Script" uid="uid://ckdu0p87yl30a" path="res://scenes/_player/player_movement_new.gd" id="6_ni6fa"]
 [ext_resource type="AudioStream" uid="uid://da4l7eb7yuxm" path="res://assets/audio/sfx/combat/misc/out-of-breath-male-176715.wav" id="7_nbsyt"]
+[ext_resource type="AudioStream" uid="uid://vo4gw3owurlo" path="res://assets/audio/sfx/player/Crouch/Player_crouch_randomizer.tres" id="7_y4iss"]
 [ext_resource type="AudioStream" uid="uid://c1yxm3xg22iw8" path="res://assets/audio/sfx/player/footsteps/Player_step_randomizer_1.tres" id="8_ni6fa"]
 [ext_resource type="Script" uid="uid://cpomu5ts52mpj" path="res://scenes/_player/combat/player_combat.gd" id="12_gcklq"]
 [ext_resource type="Resource" uid="uid://ci23rrjojjvls" path="res://scenes/_player/combat/attacks/p_attacksq.tres" id="12_uus6m"]
@@ -771,6 +772,10 @@ shape = SubResource("BoxShape3D_xwuyi")
 target_position = Vector3(0, 0, 0)
 collision_mask = 9
 debug_shape_custom_color = Color(0, 0.79870725, 0.7254093, 1)
+
+[node name="CrouchSFX" type="AudioStreamPlayer3D" parent="Movement" unique_id=2066927461]
+stream = ExtResource("7_y4iss")
+volume_db = -20.0
 
 [node name="LightChecker" type="Node" parent="." unique_id=657269114 node_paths=PackedStringArray("dbg_ctrl", "dbg_light_texture_front", "dbg_light_bar_front", "dbg_light_texture_back", "dbg_light_bar_back", "dbg_light_texture_combined", "dbg_light_bar_combined")]
 script = ExtResource("61_ux48r")

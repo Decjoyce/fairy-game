@@ -11,6 +11,7 @@ var time_since_start: float = 0.0
 var _start_position: float
 var _end_position: float
 var open_pos: float = 1.8
+@export var disable_tp: bool = true
 @export var speed: float = 0.5
 @onready var graphics: Node3D = $gate
 @onready var player_col: CollisionShape3D = $PlayerCollision/CollisionShape3D
@@ -140,6 +141,7 @@ func check_if_disable_col(use_cur: bool = false) -> void:
 
 
 func tp_checker_entered(area: Area3D) -> void:
+	if disable_tp: return
 	var f = area.get_parent()
 	if f is PlayerTest:
 		f.movement.teleport_player_by_coords(current_out_pos)
