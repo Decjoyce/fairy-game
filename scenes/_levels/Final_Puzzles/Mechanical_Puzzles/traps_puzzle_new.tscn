@@ -282,19 +282,6 @@ metadata/uid = "f674d0da-e901-4917-b17e-fa160ba99539"
 metadata/lock_uid = true
 metadata/date_generated = "2026-04-21T14:00:56"
 
-[node name="PressurePlate4" parent="Beginning_Part(Easier)/Third_Part" unique_id=402978137 instance=ExtResource("3_nevts")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, -11)
-weight_to_activate = 5.0
-metadata/uid = "c2407130-016c-4ae3-bd9c-8b17d9d62c03"
-metadata/lock_uid = true
-metadata/date_generated = "2026-04-21T14:00:56"
-
-[node name="trap_projectile" parent="Beginning_Part(Easier)/Third_Part" unique_id=603146276 instance=ExtResource("4_krfnm")]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 5, 1.305, -11)
-metadata/uid = "cc693bbd-e914-411d-87be-a68ef680afba"
-metadata/lock_uid = true
-metadata/date_generated = "2026-04-21T14:00:56"
-
 [node name="First_Bridge" parent="Beginning_Part(Easier)/Third_Part" unique_id=1119761856 instance=ExtResource("9_4clkm")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, -11)
 metadata/uid = "2dbf2445-7706-44e8-a83a-e37ea54465f3"
@@ -1483,13 +1470,13 @@ metadata/lock_uid = true
 metadata/date_generated = "2026-04-21T14:00:56"
 
 [node name="Door" parent="Second_Part(Harder)/Door" unique_id=1088244080 instance=ExtResource("19_fymop")]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -3, 1, -8.1)
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -3, 1, -8.1)
 metadata/uid = "a2c73ecc-fcc8-4a8e-a135-2521df163372"
 metadata/lock_uid = true
 metadata/date_generated = "2026-04-21T14:00:56"
 
 [node name="ItemReceiver" type="Node3D" parent="Second_Part(Harder)/Door" unique_id=629021644 groups=["debug_PickableObjects"]]
-transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -3, 2, -8.1)
+transform = Transform3D(1.3113416e-07, 0, 1, 0, 1, 0, -1, 0, 1.3113416e-07, -3, 2, -8.1)
 script = ExtResource("20_lu18g")
 num_needed_by_type = 1
 destroy_items_on_receive = true
@@ -1507,15 +1494,6 @@ shape = SubResource("BoxShape3D_1c2il")
 [node name="PersistentObject" type="Node" parent="Second_Part(Harder)/Door/ItemReceiver" unique_id=858032223]
 script = ExtResource("21_6vcod")
 metadata/_custom_type_script = "uid://b4y0nvl1kcnqk"
-
-[node name="Shortcut" type="Node3D" parent="." unique_id=1834614490]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, -7)
-
-[node name="Shortcut back" parent="Shortcut" unique_id=1754271012 instance=ExtResource("7_wn42o")]
-transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 0, 0, 0)
-metadata/uid = "e3c55231-1d33-4553-9c6f-1e7da1d5ae0d"
-metadata/lock_uid = true
-metadata/date_generated = "2026-04-21T14:00:56"
 
 [node name="Finale(Hardest)" type="Node3D" parent="." unique_id=1024305867]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 32.916615, 0, 4)
@@ -2455,12 +2433,10 @@ transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 35, 
 [connection signal="on_activated" from="Beginning_Part(Easier)/Second_Part/PressurePlate4" to="Beginning_Part(Easier)/Second_Part/trap_projectile" method="trigger_trap"]
 [connection signal="on_activated" from="Beginning_Part(Easier)/Third_Part/Button" to="Beginning_Part(Easier)/Third_Part/First_Bridge" method="fully_open_bridge"]
 [connection signal="on_activated" from="Beginning_Part(Easier)/Third_Part/Button" to="Beginning_Part(Easier)/Gate_Area_Finished/First_Area_FinishedGate" method="open_gate"]
-[connection signal="on_activated" from="Beginning_Part(Easier)/Third_Part/PressurePlate4" to="Beginning_Part(Easier)/Third_Part/trap_projectile" method="trigger_trap"]
 [connection signal="on_activated" from="Beginning_Part(Easier)/Gate_Area_Finished/PlayerAreaTrigger" to="Beginning_Part(Easier)/Gate_Area_Finished/First_Area_FinishedGate" method="close_gate"]
 [connection signal="area_entered" from="Beginning_Part(Easier)/Gate_Area_Finished/PlayerAreaTrigger/Area3D" to="Beginning_Part(Easier)/Gate_Area_Finished/PlayerAreaTrigger" method="_player_entered"]
 [connection signal="area_exited" from="Beginning_Part(Easier)/Gate_Area_Finished/PlayerAreaTrigger/Area3D" to="Beginning_Part(Easier)/Gate_Area_Finished/PlayerAreaTrigger" method="_player_exited"]
 [connection signal="on_change" from="Second_Part(Harder)/Intersection/Lever" to="Second_Part(Harder)/Intersection/End_Gate" method="open_gate"]
-[connection signal="on_change" from="Second_Part(Harder)/Intersection/Lever" to="Shortcut/Shortcut back" method="open_gate"]
 [connection signal="on_activated" from="Second_Part(Harder)/Final Projectile Part/BunbleofArrows_Trap8/PressurePlate_ArrowTrap" to="Second_Part(Harder)/Final Projectile Part/BunbleofArrows_Trap8/Arrow_Colony/trap_projectile" method="trigger_trap"]
 [connection signal="on_activated" from="Second_Part(Harder)/Final Projectile Part/BunbleofArrows_Trap8/PressurePlate_ArrowTrap" to="Second_Part(Harder)/Final Projectile Part/BunbleofArrows_Trap8/Arrow_Colony/trap_projectile3" method="trigger_trap"]
 [connection signal="on_activated" from="Second_Part(Harder)/Final Projectile Part/BunbleofArrows_Trap8/PressurePlate_ArrowTrap" to="Second_Part(Harder)/Final Projectile Part/BunbleofArrows_Trap8/Arrow_Colony/trap_projectile2" method="trigger_trap"]
