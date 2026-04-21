@@ -9,6 +9,8 @@ extends Interactable
 
 @export var charge_length: float = 1.5
 
+signal on_saved(sig: float)
+
 var l_val: float
 var r_val: float
 
@@ -24,6 +26,7 @@ func end_interact(sig: float = -1, hand: PlayerHand = null) -> void:
 
 func charge_complete() -> void:
 	particles.emitting = true
+	on_saved.emit(1.0)
 	TEMPSaveGameHandler.save_game()
 
 func check_charged() -> bool:
