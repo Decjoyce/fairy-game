@@ -45,7 +45,10 @@ expand_margin_bottom = 10.0
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_5a0ra"]
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_cq1el"]
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_prdxi"]
+color = Color(1, 1, 1, 1)
+thickness = 4
+vertical = true
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_12waw"]
 
@@ -60,6 +63,12 @@ texture = ExtResource("1_8ymfr")
 expand_margin_top = 3.0
 expand_margin_bottom = 3.0
 modulate_color = Color(0.63996637, 0.492449, 0.24631813, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_vklbc"]
+texture = ExtResource("1_8ymfr")
+expand_margin_top = 3.0
+expand_margin_bottom = 3.0
+modulate_color = Color(0.8903416, 0.73162526, 0.47407544, 1)
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_f6pfi"]
 texture = ExtResource("7_vbfg0")
@@ -179,7 +188,7 @@ CheckButton/constants/icon_max_width = 32
 CheckButton/icons/checked = ExtResource("3_prdxi")
 CheckButton/icons/unchecked = ExtResource("4_1wlv4")
 CheckButton/styles/disabled = SubResource("StyleBoxEmpty_5a0ra")
-CheckButton/styles/focus = SubResource("StyleBoxEmpty_cq1el")
+CheckButton/styles/focus = SubResource("StyleBoxLine_prdxi")
 CheckButton/styles/hover = SubResource("StyleBoxEmpty_12waw")
 CheckButton/styles/hover_pressed = SubResource("StyleBoxEmpty_rvvwj")
 CheckButton/styles/normal = SubResource("StyleBoxEmpty_c0a0j")
@@ -191,7 +200,7 @@ HSlider/icons/grabber = ExtResource("5_2f6bj")
 HSlider/icons/grabber_disabled = ExtResource("5_2f6bj")
 HSlider/icons/grabber_highlight = ExtResource("5_2f6bj")
 HSlider/styles/grabber_area = SubResource("StyleBoxTexture_l66d0")
-HSlider/styles/grabber_area_highlight = SubResource("StyleBoxTexture_l66d0")
+HSlider/styles/grabber_area_highlight = SubResource("StyleBoxTexture_vklbc")
 HSlider/styles/slider = SubResource("StyleBoxTexture_f6pfi")
 LineEdit/styles/focus = SubResource("StyleBoxTexture_n6eud")
 LineEdit/styles/normal = SubResource("StyleBoxTexture_n6eud")
