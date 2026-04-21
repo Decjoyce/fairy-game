@@ -40,6 +40,8 @@
 [ext_resource type="Resource" uid="uid://bvdc57ehdgnq3" path="res://scripts/input_context/joyicons_xbox.tres" id="38_4266y"]
 [ext_resource type="Resource" uid="uid://cuvbrqma8ltub" path="res://scripts/input_context/joyicons_ps4.tres" id="39_mny7c"]
 [ext_resource type="Resource" uid="uid://cy86l8mtli3ke" path="res://scripts/input_context/joyicons_nintendo.tres" id="40_4266y"]
+[ext_resource type="Texture2D" uid="uid://bnuamqc7avcot" path="res://assets/__not_ours_dontship/Xbox Series/XboxSeriesX_Y.png" id="41_mny7c"]
+[ext_resource type="Texture2D" uid="uid://ccq1sgoc15kuf" path="res://assets/__not_ours_dontship/PS4/PS4_Circle.png" id="42_0v66h"]
 
 [sub_resource type="Animation" id="Animation_434r6"]
 length = 0.001
@@ -1024,3 +1026,41 @@ interact_action_left = NodePath("../Hand_Left/_hand_sprite/InputContexts/Interac
 interact_action_right = NodePath("../Hand_Right/_hand_sprite/InputContexts/InteractAction/TextureRect")
 use_action_left = NodePath("../Hand_Left/_hand_sprite/InputContexts/UseAction/TextureRect")
 use_action_right = NodePath("../Hand_Right/_hand_sprite/InputContexts/UseAction/TextureRect")
+
+[node name="Control" type="Control" parent="." unique_id=1806043591]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -40.0
+offset_top = -40.0
+grow_horizontal = 0
+grow_vertical = 0
+
+[node name="TextureRect" type="TextureRect" parent="Control" unique_id=799360397]
+layout_mode = 0
+anchor_left = -3.7
+anchor_top = -2.0
+anchor_right = -1.2
+anchor_bottom = 0.5
+texture = ExtResource("41_mny7c")
+metadata/_edit_use_anchors_ = true
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="Control/TextureRect" unique_id=1845804218]
+visible = false
+z_index = -1
+custom_minimum_size = Vector2(124, 124)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+max_value = 1.0
+step = 0.001
+fill_mode = 4
+nine_patch_stretch = true
+texture_progress = ExtResource("42_0v66h")
+tint_progress = Color(0, 6.2861433, 5.8854394, 1)
