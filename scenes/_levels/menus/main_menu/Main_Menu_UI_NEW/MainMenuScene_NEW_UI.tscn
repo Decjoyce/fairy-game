@@ -10,14 +10,14 @@
 [ext_resource type="PackedScene" uid="uid://dw2dbsjbocxi7" path="res://scenes/__playground_scenes/playground_interactions.tscn" id="4_kmgne"]
 [ext_resource type="Material" uid="uid://dgrldudl0bdhu" path="res://assets/models/cairn/Props/Rockpile/Rock_pile.tres" id="5_fdbqd"]
 [ext_resource type="PackedScene" uid="uid://y4t20bpdha47" path="res://UICOPY/scenes/windows/main_menu_credits_window.tscn" id="5_kmgne"]
-[ext_resource type="Script" uid="uid://b5oej1q4h7jvh" path="res://addons/maaacks_menus_template/base/nodes/autoloads/ui_sound_controller/ui_sound_controller.gd" id="6_q6106"]
+[ext_resource type="Script" uid="uid://ow5fg7u16pnf" path="res://addons/maaacks_menus_template/base/nodes/autoloads/ui_sound_controller/ui_sound_controller.gd" id="6_q6106"]
 [ext_resource type="PackedScene" uid="uid://b4m52oohfjp65" path="res://scenes/_levels/Final_Puzzles/Final_Level/Final_Level.tscn" id="6_xwrb1"]
 [ext_resource type="PackedScene" uid="uid://38yo6y6rg7ak" path="res://scenes/__playground_scenes/puzzles/ThrowingPuzzles/puzzle_throw_2.tscn" id="7_0evim"]
 [ext_resource type="Texture2D" uid="uid://wpx72pcpea8n" path="res://assets/__not_ours_dontship/Xbox Series/XboxSeriesX_A.png" id="7_mpmb8"]
 [ext_resource type="PackedScene" uid="uid://bkcsjsk2ciff" path="res://addons/maaacks_menus_template/base/nodes/music_players/background_music_player.tscn" id="7_rgd0m"]
-[ext_resource type="Script" uid="uid://bkwlopi4qn32o" path="res://addons/maaacks_menus_template/base/nodes/labels/config_name_label.gd" id="8_0evim"]
+[ext_resource type="Script" uid="uid://y6prf5abagx4" path="res://addons/maaacks_menus_template/base/nodes/labels/config_name_label.gd" id="8_0evim"]
 [ext_resource type="Script" uid="uid://1nf36h0gms3q" path="res://addons/maaacks_menus_template/base/nodes/utilities/capture_focus.gd" id="9_xwrb1"]
-[ext_resource type="Script" uid="uid://dmkubt2nsnsbn" path="res://addons/maaacks_menus_template/base/nodes/labels/config_version_label.gd" id="10_gmba7"]
+[ext_resource type="Script" uid="uid://qmgpsk8o2gq" path="res://addons/maaacks_menus_template/base/nodes/labels/config_version_label.gd" id="10_gmba7"]
 [ext_resource type="AudioStream" uid="uid://2j13alqx80jr" path="res://assets/audio/sfx/menu/UI/UI_Buttons_randomizer3.tres" id="11_0evim"]
 [ext_resource type="PackedScene" uid="uid://cwt4p3bufkke5" path="res://addons/maaacks_menus_template/base/nodes/windows/confirmation_overlaid_window.tscn" id="11_bus8x"]
 [ext_resource type="Texture2D" uid="uid://c6nnov3eisqt5" path="res://scenes/_levels/menus/main_menu/Main_Menu_UI_NEW/UI_themes/ui_art/title.png" id="14_xwrb1"]
@@ -114,9 +114,99 @@ tracks/6/keys = {
 "values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
 }
 
+[sub_resource type="Animation" id="Animation_gmba7"]
+resource_name = "Intro_2"
+length = 5.0
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(4.9333334),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"intro_done"
+}]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("MenuContainer/TitleMargin/TitleContainer:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(2.3000002, 3.1000001),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("MenuContainer/SubTitleMargin/SubTitleContainer:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(2.3000002, 3.1000001, 3.9),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("MenuContainer/MenuButtonsMargin/MenuButtonsContainer:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(2.3000002, 3.9, 4.7000003),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("MouseFilter:mouse_filter")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(2.3000002, 4.7000003),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [0, 2]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("VersionMargin/VersionContainer:modulate")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(2.3000002, 3.9, 4.7000003),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("%MenuContainer/RichTextLabel:modulate")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0.4, 1.8),
+"transitions": PackedFloat32Array(1, 17.14838),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0)]
+}
+
 [sub_resource type="Animation" id="6"]
 resource_name = "OpenMainMenu"
-length = 0.1
+length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -200,6 +290,18 @@ tracks/6/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [false]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("%MenuContainer/RichTextLabel:modulate")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
 }
 
 [sub_resource type="Animation" id="4"]
@@ -320,6 +422,7 @@ tracks/7/keys = {
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_2kqig"]
 _data = {
 &"Intro": SubResource("1"),
+&"Intro_2": SubResource("Animation_gmba7"),
 &"OpenMainMenu": SubResource("6"),
 &"OpenSubMenu": SubResource("4"),
 &"RESET": SubResource("2")
@@ -329,7 +432,7 @@ _data = {
 animation = &"Intro"
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_2wrwt"]
-animation = &"Intro"
+animation = &"Intro_2"
 play_mode = 1
 use_custom_timeline = true
 timeline_length = 0.7
@@ -354,7 +457,6 @@ advance_mode = 2
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_63dxc"]
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_kmgne"]
-advance_mode = 2
 
 [sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_vikuh"]
 states/End/position = Vector2(958, 123)
@@ -363,7 +465,7 @@ states/Intro/position = Vector2(259, 123)
 states/IntroB/node = SubResource("AnimationNodeAnimation_2wrwt")
 states/IntroB/position = Vector2(720.92303, 209.16002)
 states/OpenMainMenu/node = SubResource("10")
-states/OpenMainMenu/position = Vector2(452, 123.96)
+states/OpenMainMenu/position = Vector2(452, 123.192)
 states/OpenSubMenu/node = SubResource("13")
 states/OpenSubMenu/position = Vector2(734, 123)
 states/Start/position = Vector2(82, 123)
@@ -906,7 +1008,7 @@ metadata/_edit_use_anchors_ = true
 
 [node name="RichTextLabel" type="RichTextLabel" parent="MainMenu/MenuContainer" unique_id=1013632441]
 layout_mode = 2
-focus_mode = 0
+focus_mode = 2
 mouse_filter = 2
 theme = ExtResource("3_0evim")
 theme_override_font_sizes/normal_font_size = 50
