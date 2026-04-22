@@ -874,6 +874,36 @@ layout_mode = 2
 theme_override_font_sizes/font_size = 40
 text = "The Creature"
 
+[node name="TextureRect2" type="TextureRect" parent="MainMenu/MenuContainer/MenuButtonsMargin/MenuButtonsContainer" unique_id=593327020]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -83.125
+offset_top = -181.0
+offset_right = 83.125
+offset_bottom = -21.0
+grow_horizontal = 2
+grow_vertical = 0
+focus_behavior_recursive = 1
+mouse_filter = 2
+texture = ExtResource("18_gmba7")
+expand_mode = 1
+
+[node name="Label" type="Label" parent="MainMenu/MenuContainer/MenuButtonsMargin/MenuButtonsContainer/TextureRect2" unique_id=1022377034]
+layout_mode = 0
+anchor_left = -0.8662829
+anchor_top = -0.1875
+anchor_right = 1.8894737
+anchor_bottom = 0.225
+focus_behavior_recursive = 1
+theme_override_font_sizes/font_size = 20
+text = "FILL OUT OUR FORM PLEASE"
+horizontal_alignment = 1
+metadata/_edit_use_anchors_ = true
+
 [node name="RichTextLabel" type="RichTextLabel" parent="MainMenu/MenuContainer" unique_id=1013632441]
 layout_mode = 2
 focus_mode = 0
@@ -1038,34 +1068,6 @@ grow_horizontal = 2
 grow_vertical = 0
 texture = ExtResource("7_mpmb8")
 stretch_mode = 4
-metadata/_edit_use_anchors_ = true
-
-[node name="TextureRect2" type="TextureRect" parent="." unique_id=593327020]
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -83.125
-offset_top = -160.0
-offset_right = 83.125
-grow_horizontal = 2
-grow_vertical = 0
-focus_behavior_recursive = 1
-mouse_filter = 2
-texture = ExtResource("18_gmba7")
-expand_mode = 1
-
-[node name="Label" type="Label" parent="TextureRect2" unique_id=1022377034]
-layout_mode = 0
-anchor_left = -0.8662829
-anchor_top = -0.1875
-anchor_right = 1.8894737
-anchor_bottom = 0.225
-focus_behavior_recursive = 1
-theme_override_font_sizes/font_size = 20
-text = "FILL OUT OUR FORM PLEASE"
-horizontal_alignment = 1
 metadata/_edit_use_anchors_ = true
 
 [connection signal="pressed" from="MainMenu/MenuContainer/MenuButtonsMargin/MenuButtonsContainer/MenuButtonsBoxContainer/Play Demo" to="MainMenu" method="_on_play_demo_pressed"]
