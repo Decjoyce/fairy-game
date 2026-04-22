@@ -22,6 +22,7 @@
 [ext_resource type="Script" uid="uid://cfmswqnu6u0bl" path="res://scenes/interactions/_receivers/_logic/counter/counter.gd" id="20_7ghgf"]
 [ext_resource type="PackedScene" uid="uid://pfsmibp55qi" path="res://scenes/interactions/_receivers/bridge/bridge.tscn" id="21_h0f0v"]
 [ext_resource type="Script" uid="uid://bul4myvyhnpjc" path="res://scripts/saving/uid_generator.gd" id="23_0ff0n"]
+[ext_resource type="PackedScene" uid="uid://d3x1l1brjvyre" path="res://scenes/item_catcher/item_catcher.tscn" id="23_miusb"]
 
 [sub_resource type="Environment" id="Environment_vu50v"]
 
@@ -31,6 +32,15 @@
 material = ExtResource("10_rc6n0")
 radius = 0.14
 height = 0.105
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_2w57q"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_yy6wh"]
+transparency = 1
+albedo_color = Color(0, 2.8215237, 1.4582423, 0.45882353)
+
+[sub_resource type="BoxMesh" id="BoxMesh_5b781"]
+material = SubResource("StandardMaterial3D_yy6wh")
 
 [node name="LeverTesting" type="Node3D" unique_id=1969717916]
 
@@ -310,6 +320,22 @@ metadata/date_generated = "2026-03-18T00:24:12"
 
 [node name="UID_Generator" type="Node" parent="." unique_id=1339389628]
 script = ExtResource("23_0ff0n")
+
+[node name="ItemCatcher" parent="." unique_id=2014139358 node_paths=PackedStringArray("return_point") instance=ExtResource("23_miusb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0.4, 2.9)
+collision_layer = 0
+collision_mask = 2
+monitorable = false
+return_point = NodePath("Node3D")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ItemCatcher" unique_id=104025511]
+shape = SubResource("BoxShape3D_2w57q")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="ItemCatcher/CollisionShape3D" unique_id=912397495]
+mesh = SubResource("BoxMesh_5b781")
+
+[node name="Node3D" type="Node3D" parent="ItemCatcher" unique_id=1241330001]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.7, 0, 0)
 
 [connection signal="on_activated" from="Lever" to="SpikeTrap" method="activate"]
 [connection signal="on_change" from="Lever" to="Gate" method="open_gate"]

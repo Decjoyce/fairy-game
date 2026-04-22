@@ -21,6 +21,8 @@
 [ext_resource type="Material" uid="uid://ciiy1aqgkcp5k" path="res://assets/models/cairn/Hall_BigRoof/Dirtfloor.tres" id="19_q6b1a"]
 [ext_resource type="Script" uid="uid://c00pbq6pr77dd" path="res://scenes/_levels/menus/vs_menu_helper.gd" id="20_4pwbv"]
 [ext_resource type="PackedScene" uid="uid://2urw8kkhhaec" path="res://scenes/_levels/Vertical Slice/end_scene.tscn" id="21_62r4a"]
+[ext_resource type="PackedScene" uid="uid://d3x1l1brjvyre" path="res://scenes/item_catcher/item_catcher.tscn" id="22_62r4a"]
+[ext_resource type="Script" uid="uid://d3su0hjvi88g4" path="res://scripts/save_sphere.gd" id="23_jok38"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_mtbvg"]
 sky_horizon_color = Color(0, 0.37292683, 0.8185948, 1)
@@ -134,6 +136,14 @@ _data = {
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_ksb0i"]
 radius = 1.7361357
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_62r4a"]
+size = Vector3(63, 2.3, 42.8)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_jok38"]
+size = Vector3(63, 1.6, 42.8)
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_62r4a"]
 
 [node name="Final_Level" type="Node3D" unique_id=40124892]
 
@@ -451,5 +461,42 @@ monitorable = false
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5542221, 0)
 shape = SubResource("SphereShape3D_ksb0i")
 
+[node name="ItemCatcher_StatueRoom" parent="." unique_id=2014139358 node_paths=PackedStringArray("return_point") instance=ExtResource("22_62r4a")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 67, -8, -22)
+collision_layer = 0
+collision_mask = 2
+return_point = NodePath("Node3D")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ItemCatcher_StatueRoom" unique_id=725302252]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.1500001, -1.1000004)
+shape = SubResource("BoxShape3D_62r4a")
+debug_color = Color(0.9454445, 3.657937e-06, 0.59471697, 0.41960785)
+
+[node name="Node3D" type="Node3D" parent="ItemCatcher_StatueRoom" unique_id=640711362]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.7999954, 6.3999996, 2.5999985)
+
+[node name="ItemCatcher_Bridge" parent="." unique_id=1549977672 node_paths=PackedStringArray("return_point") instance=ExtResource("22_62r4a")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 67, -7.1, 10.1)
+collision_layer = 0
+collision_mask = 2
+return_point = NodePath("Node3D")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ItemCatcher_Bridge" unique_id=48829338]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.80000067, 7.1000004)
+shape = SubResource("BoxShape3D_jok38")
+debug_color = Color(0.10427118, 0.64838356, 0, 0.41960785)
+
+[node name="Node3D" type="Node3D" parent="ItemCatcher_Bridge" unique_id=2049297056]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.3999996, -13.200001)
+
+[node name="InitialSavePoint" type="Area3D" parent="." unique_id=584908414]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.8, -0.70000005)
+monitorable = false
+script = ExtResource("23_jok38")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="InitialSavePoint" unique_id=282755088]
+shape = SubResource("SphereShape3D_62r4a")
+
 [connection signal="on_activated" from="Different_Sections/Inbetween_Sections/BallyBog_Area_Button" to="Different_Sections/Inbetween_Sections/BallyBog_Area_Gate" method="open_gate"]
 [connection signal="area_entered" from="Ender/Area3D" to="Ender" method="_on_area_3d_area_entered"]
+[connection signal="area_entered" from="InitialSavePoint" to="InitialSavePoint" method="_on_area_entered"]

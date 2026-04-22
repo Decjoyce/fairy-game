@@ -17,7 +17,7 @@ var has_been_triggered: bool
 func activate(sig: float = -1) -> void:
 	if has_been_triggered and only_trig_once: return
 	if activated: return
-	print("activated")
+	#print("activated")
 	activated = true
 	anim.play("spike_up")
 	col.set_deferred("disabled", false)
@@ -26,7 +26,7 @@ func activate(sig: float = -1) -> void:
 
 func deactivate(sig: float = -1) -> void:
 	if !activated: return
-	print("deactivated")
+	#print("deactivated")
 	
 	activated = false
 	if anim.current_animation == "spike_down": return

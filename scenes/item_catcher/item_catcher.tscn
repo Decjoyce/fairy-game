@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://d3x1l1brjvyre"]
+
+[ext_resource type="Script" uid="uid://byfosjys2jd58" path="res://item_catcher.gd" id="1_w0t0s"]
+
+[node name="ItemCatcher" type="Area3D" unique_id=2014139358]
+script = ExtResource("1_w0t0s")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
