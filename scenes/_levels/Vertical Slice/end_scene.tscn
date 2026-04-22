@@ -50,7 +50,9 @@
 [ext_resource type="Shader" uid="uid://4b4kstxm1aph" path="res://assets/shaders/post_processing/post_processing.gdshader" id="47_1e8k0"]
 [ext_resource type="Texture2D" uid="uid://bgvylughro1va" path="res://assets/sprites/PaperTexture/Texturelabs_Paper_304L.jpg" id="48_pp2u7"]
 [ext_resource type="Texture2D" uid="uid://bajdgu88x35py" path="res://scenes/enemy/Sprites/ballybog/walk/ballyWalkSheet_n.png" id="50_4xi4b"]
+[ext_resource type="Texture2D" uid="uid://dx0bnxjq4jyep" path="res://assets/__not_ours_dontship/QR CODE.jpg" id="50_w3odh"]
 [ext_resource type="Texture2D" uid="uid://dl3etwft2mhxm" path="res://scenes/enemy/Sprites/ballybog/walk/ballyWalkSheet.png" id="51_nhqle"]
+[ext_resource type="Theme" uid="uid://4rqtecgji27t" path="res://scenes/_levels/menus/main_menu/Main_Menu_UI_NEW/UI_themes/customised_brush_theme.tres" id="51_vbcpi"]
 [ext_resource type="Script" uid="uid://b5653u7w56pqw" path="res://addons/extras_sprites/scripts/sprite_3D_billboard.gd" id="52_fbcwi"]
 [ext_resource type="Script" uid="uid://b4m0sglcg4smw" path="res://addons/extras_sprites/scripts/animatio_data.gd" id="53_b43h7"]
 [ext_resource type="Texture2D" uid="uid://cjn3bxmukh4fj" path="res://scenes/enemy/Sprites/ballybog/idle/ballybogIdle.png" id="54_juvur"]
@@ -334,7 +336,6 @@ albedo_texture = ExtResource("29_qhokm")
 billboard_mode = 1
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_hgehc"]
-load_path = "res://.godot/imported/urn_item.png-a865bb42c1dd5f9effd8c6077babc439.s3tc.ctex"
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_18pev"]
 render_priority = 3
@@ -379,7 +380,6 @@ texture_margin_left = 251.0
 texture_margin_right = 135.0
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_ii7os"]
-load_path = "res://.godot/imported/enemy_border.png-3ffe4f0c60bfc33891c3132fe245b708.ctex"
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_8qs0m"]
 texture = SubResource("CompressedTexture2D_ii7os")
@@ -467,7 +467,7 @@ _data = {
 &"fade_out": SubResource("Animation_j4a7u")
 }
 
-[sub_resource type="Shader" id="Shader_tg5r2"]
+[sub_resource type="Shader" id="Shader_g1vbu"]
 code = "shader_type spatial;
 render_mode diffuse_lambert_wrap,cull_disabled;
 
@@ -544,9 +544,9 @@ void fragment() {
 }
 "
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_hh2rn"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_tskgo"]
 render_priority = 0
-shader = SubResource("Shader_tg5r2")
+shader = SubResource("Shader_g1vbu")
 shader_parameter/rows = 5.0
 shader_parameter/columns = 8.0
 shader_parameter/frame = 0.0
@@ -555,18 +555,18 @@ shader_parameter/sprite = ExtResource("51_nhqle")
 shader_parameter/mode = 0
 shader_parameter/Normal = ExtResource("50_4xi4b")
 
-[sub_resource type="PlaneMesh" id="PlaneMesh_w3odh"]
-material = SubResource("ShaderMaterial_hh2rn")
+[sub_resource type="PlaneMesh" id="PlaneMesh_wssqf"]
+material = SubResource("ShaderMaterial_tskgo")
 size = Vector2(1.7279999, 1.7279999)
 orientation = 2
 
-[sub_resource type="Resource" id="Resource_vbcpi"]
+[sub_resource type="Resource" id="Resource_46xf5"]
 script = ExtResource("53_b43h7")
 sprite = ExtResource("54_juvur")
 texture_normal = ExtResource("55_36u6w")
 columns = 8.0
 
-[sub_resource type="Resource" id="Resource_g1vbu"]
+[sub_resource type="Resource" id="Resource_s4se0"]
 script = ExtResource("53_b43h7")
 name = "walk"
 sprite = ExtResource("51_nhqle")
@@ -574,7 +574,7 @@ texture_normal = ExtResource("50_4xi4b")
 rows = 5.0
 columns = 8.0
 
-[sub_resource type="Resource" id="Resource_tskgo"]
+[sub_resource type="Resource" id="Resource_y8ebg"]
 script = ExtResource("53_b43h7")
 name = "Attack_LbBottom"
 sprite = ExtResource("56_e1i07")
@@ -582,7 +582,7 @@ texture_normal = ExtResource("57_4tonh")
 rows = 2.0
 columns = 8.0
 
-[sub_resource type="Resource" id="Resource_wssqf"]
+[sub_resource type="Resource" id="Resource_3f577"]
 script = ExtResource("53_b43h7")
 name = "Attack_LMid"
 sprite = ExtResource("58_qhokm")
@@ -590,7 +590,7 @@ texture_normal = ExtResource("59_7bvpj")
 rows = 2.0
 columns = 8.0
 
-[sub_resource type="Resource" id="Resource_46xf5"]
+[sub_resource type="Resource" id="Resource_c2wdu"]
 script = ExtResource("53_b43h7")
 name = "Attack_LTop"
 sprite = ExtResource("60_oy8hb")
@@ -598,7 +598,7 @@ texture_normal = ExtResource("61_1oeiy")
 rows = 2.0
 columns = 8.0
 
-[sub_resource type="Resource" id="Resource_s4se0"]
+[sub_resource type="Resource" id="Resource_twbo1"]
 script = ExtResource("53_b43h7")
 name = "Attack_RBottom"
 sprite = ExtResource("62_aplly")
@@ -606,7 +606,7 @@ texture_normal = ExtResource("63_3wk16")
 rows = 2.0
 columns = 8.0
 
-[sub_resource type="Resource" id="Resource_y8ebg"]
+[sub_resource type="Resource" id="Resource_iskxt"]
 script = ExtResource("53_b43h7")
 name = "Attack_RMid"
 sprite = ExtResource("64_vajfy")
@@ -614,7 +614,7 @@ texture_normal = ExtResource("65_cdcvb")
 rows = 2.0
 columns = 8.0
 
-[sub_resource type="Resource" id="Resource_3f577"]
+[sub_resource type="Resource" id="Resource_xdkfd"]
 script = ExtResource("53_b43h7")
 name = "Attack_RTop"
 sprite = ExtResource("66_pyvp0")
@@ -1292,6 +1292,29 @@ grow_vertical = 2
 mouse_filter = 2
 color = Color(0, 0, 0, 1)
 
+[node name="TextureRect" type="TextureRect" parent="Ender/ColorRect" unique_id=1900491031]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 187.0
+offset_top = -339.0
+offset_right = 476.7782
+offset_bottom = -76.0
+grow_vertical = 0
+texture = ExtResource("50_w3odh")
+expand_mode = 1
+
+[node name="Label" type="Label" parent="Ender/ColorRect/TextureRect" unique_id=1327339858]
+layout_mode = 0
+offset_left = -150.0
+offset_top = -60.0
+offset_right = 480.0
+offset_bottom = 52.0
+theme = ExtResource("51_vbcpi")
+theme_override_font_sizes/font_size = 30
+text = "PLEASE FILL OUT THE FEEDBACK FORM "
+
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Ender" unique_id=698778890]
 libraries/ = SubResource("AnimationLibrary_4xi4b")
 
@@ -1299,9 +1322,9 @@ libraries/ = SubResource("AnimationLibrary_4xi4b")
 transform = Transform3D(0.0975481, 0, 0.9952308, 0, 1, 0, -0.9952308, 0, 0.0975481, -8.632547, 1.1772481, -17.09639)
 layers = 3
 sorting_offset = 1.0
-mesh = SubResource("PlaneMesh_w3odh")
+mesh = SubResource("PlaneMesh_wssqf")
 script = ExtResource("52_fbcwi")
-animations_array = Array[ExtResource("53_b43h7")]([SubResource("Resource_vbcpi"), SubResource("Resource_g1vbu"), SubResource("Resource_tskgo"), SubResource("Resource_wssqf"), SubResource("Resource_46xf5"), SubResource("Resource_s4se0"), SubResource("Resource_y8ebg"), SubResource("Resource_3f577")])
+animations_array = Array[ExtResource("53_b43h7")]([SubResource("Resource_46xf5"), SubResource("Resource_s4se0"), SubResource("Resource_y8ebg"), SubResource("Resource_3f577"), SubResource("Resource_c2wdu"), SubResource("Resource_twbo1"), SubResource("Resource_iskxt"), SubResource("Resource_xdkfd")])
 animation = 1
 frame = 1.0
 sprite_scale = 0.0016
