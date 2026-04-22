@@ -13,6 +13,8 @@ var delay_before_reload: float = 1.4
 
 const MAX_SAVE_COUNT: int = 3
 
+var experimental_handlighting: bool = false
+
 func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("save_game"):
 		save_game()

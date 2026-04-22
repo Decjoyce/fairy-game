@@ -30,6 +30,9 @@ func _on_fullscreen_control_setting_changed(value) -> void:
 	AppSettings.set_fullscreen_enabled(value, window)
 	_update_resolution_options_enabled(window)
 
+func _handlighting_chaged(value) -> void:
+	TEMPSaveGameHandler.experimental_handlighting = value
+
 func _on_resolution_control_setting_changed(value) -> void:
 	AppSettings.set_resolution(value, get_window(), false)
 

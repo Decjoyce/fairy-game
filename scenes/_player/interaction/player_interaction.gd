@@ -85,9 +85,12 @@ func test_player_moved()-> void:
 
 func match_hand_to_light(_delta: float) -> void:
 	
-	hand_left_sprite.self_modulate = light_checker.lerped_current_light_avgcolor
-	hand_right_sprite.self_modulate = light_checker.lerped_current_light_avgcolor
-	
+	if TEMPSaveGameHandler.experimental_handlighting:
+		hand_left_sprite.self_modulate = light_checker.lerped_current_light_avgcolor
+		hand_right_sprite.self_modulate = light_checker.lerped_current_light_avgcolor
+	else:
+		hand_left_sprite.self_modulate = Color.WHITE
+		hand_right_sprite.self_modulate = Color.WHITE
 	#var mapped_light_level := remap(light_checker.lerped_current_light, 0.35, 1, 0, 1)
 	#hand_right_sprite.self_modulate = hand_light_gradient.sample(mapped_light_level)
 	##hand_right_sprite.self_modulate = hand_right_sprite.self_modulate.blend(light_checker.lerped_current_light_avgcolor).lightened(0.5)
