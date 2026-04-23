@@ -150,6 +150,7 @@ func end_using_item(arg) -> void:
 # ↓ Throw Stuff ↓
 
 var init_impact: bool
+var last_throw_force: float
 
 func throw(_throw_mult: float) -> void:
 	if grabbed_graphics: grabbed_graphics.visible = false
@@ -162,6 +163,7 @@ func throw(_throw_mult: float) -> void:
 	#prints(_throw_mult, throw_distance * _throw_mult, throw_force)
 	rb.apply_central_impulse(-global_basis.z * throw_force * rb.mass)
 	rb.force_update_transform()
+	last_throw_force = throw_force
 
 func throw_alt(_throw_mult: float, dir: Vector3) -> void:##[-]
 	if grabbed_graphics: grabbed_graphics.visible = false
@@ -174,6 +176,7 @@ func throw_alt(_throw_mult: float, dir: Vector3) -> void:##[-]
 	#prints(_throw_mult, throw_distance * _throw_mult, throw_force)
 	rb.apply_central_impulse(dir * (throw_force/1.25) * rb.mass)
 	rb.force_update_transform()
+	last_throw_force = throw_force
 
 # ↑ Throw Stuff ↑
 # --------------------------------------------------------------------------------------------------

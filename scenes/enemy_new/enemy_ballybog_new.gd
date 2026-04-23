@@ -185,7 +185,7 @@ func _on_item_entered(body: Node3D) -> void:
 	if body is Grabbable_Item:
 		if body.is_grabbed: return
 		if body.prev_velocity.length() > 2:
-			state_machine.state.on_hit_with_item(body as Grabbable_Item, body.prev_velocity.length())
+			state_machine.state.on_hit_with_item(body as Grabbable_Item, body.last_throw_force)
 			body.rb.linear_velocity = (-body.prev_velocity * 0.2)
 
 func heard_sound(loc: Vector3) -> void:
