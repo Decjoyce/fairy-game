@@ -6,6 +6,10 @@ signal on_stage_completed_sig(sig: float)
 signal on_stage_completed(stage: int)
 signal on_quest_completed(sig: float)
 
+signal on_piece_inserted_base(sig: float)
+signal on_piece_inserted_arm(sig: float)
+signal on_piece_inserted_head(sig: float)
+
 var stages: int = 3 # 0 = default, 1 = 1st piece added, 2 = 2nd piece added, 3 = 3rd piece added/completed
 var current_stage: int
 
@@ -41,14 +45,17 @@ func update_graphics() -> void:
 func piece_inserted_base(emit_sigs: bool = true) -> void:
 	if emit_sigs: on_piece_inserted.emit("BASE")
 	statue_pieces[0].visible = true
+	on_piece_inserted_base.emit(1.0)
 
 func piece_inserted_arm(emit_sigs: bool = true) -> void:
 	if emit_sigs: on_piece_inserted.emit("ARM")
 	statue_pieces[1].visible = true
+	on_piece_inserted_arm.emit(1.0)
 
 func piece_inserted_head(emit_sigs: bool = true) -> void:
 	if emit_sigs: on_piece_inserted.emit("HEAD")
 	statue_pieces[2].visible = true
+	on_piece_inserted_head.emit(1.0)
 
 func quest_completed(emit_sigs: bool = true) -> void:
 	if emit_sigs: on_quest_completed.emit(1)
