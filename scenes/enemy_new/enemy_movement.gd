@@ -47,6 +47,7 @@ func set_new_destination(new_loc: Vector3) -> void:
 func set_destination_to_player() -> void:
 	current_grid_pos = grid_map.astar.get_closest_position_in_segment(ballybog.global_position)
 	current_destination = grid_map.astar.get_closest_position_in_segment(ballybog.player.movement.target_pos)
+	#can_reach_destination()
 	current_path = grid_map.find_path(current_grid_pos,current_destination)
 	#has_reached_destination = false
 	#if current_path[0] == current_grid_pos:
@@ -68,6 +69,7 @@ func add_player_pos_to_destination() -> void:
 		set_destination_to_player()
 	else:
 		var path_to_player := grid_map.find_path(current_path[current_path.size()-1],grid_map.astar.get_closest_position_in_segment(player.movement.target_pos))
+		#can_reach_destination()
 		current_path.pop_back()
 		#current_path.pop_front
 		current_path.append_array(path_to_player)
@@ -77,6 +79,13 @@ func check_if_reached_destination() -> bool:
 
 func update_current_move_direction() -> void:
 	current_move_direction = (_start_pos * Vector3(1, 0, 1)).direction_to((_end_pos * Vector3(1, 0, 1)))
+
+func can_reach_destination() -> bool:
+	var a:= grid_map.astar.get_closest_point(ballybog.player.movement.target_pos)
+	var b:= grid_map.astar.get_point_position(a) * Vector3(1, 0, 1)
+	var c:= (ballybog.player.movement.target_pos * Vector3(1, 0, 1)).round()
+	prints("MOVEMOVEMOVE", a, b, c, b <= c + Vector3(1, 0, 1), b >= c + Vector3(-1, 0, -1))
+	return b <= c + Vector3(1, 0, 1) and b >= c + Vector3(-1, 0, -1)
 
 func stop_movement() -> void:
 	is_moving = false
@@ -142,7 +151,7 @@ func complete_movement() -> void:
 	#print("Completed_Movement")
 	#print("-----------------")
 	if has_reached_destination:
-		#print("REACHED DESTINATION")
+		#prints("MOVEMOVEMOVE", "REACHED DESTINATION")
 		ballybog.do_idle()
 		current_move_type = MOVETYPES.NOT_MOVING
 		on_reached_destination.emit()

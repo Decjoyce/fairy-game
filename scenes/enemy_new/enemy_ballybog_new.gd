@@ -117,6 +117,8 @@ func check_for_player_in_LOS(_delta: float) -> void:
 	if !check_for_player: return
 	if Engine.get_process_frames() % (10 + enemy_id) != 0: return # stops it running every frame
 	
+	if !movement.can_reach_destination(): return
+	
 	var dir_to: Vector3 = (global_position * Vector3(1, 0, 1)).direction_to(player.global_position * Vector3(1, 0, 1))
 	var angle:float = rad_to_deg((graphics.basis.z).dot(dir_to))
 	

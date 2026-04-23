@@ -118,9 +118,15 @@ func set_destination()-> void:
 
 func reached_destination() -> void:
 	if !active: return
-	#set_destination()
+	#if !ballybog.movement.can_reach_destination():
+		#finished.emit(sm.default_state.name)
+		#return
 
 func update_destination(d: Vector3 = Vector3.ZERO,e: Vector3 = Vector3.ZERO) -> void:
+	if !ballybog.movement.can_reach_destination():
+		finished.emit(sm.default_state.name)
+		return
+	
 	if lost_player: return
 	ballybog.movement.add_player_pos_to_destination()
 	if !ballybog.movement.is_moving:
