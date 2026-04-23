@@ -13,7 +13,6 @@
 [ext_resource type="PackedScene" uid="uid://cfkoaxhngk3gf" path="res://scenes/interactions/interactables/items/all_items/keys/item_key.tscn" id="11_feors"]
 [ext_resource type="PackedScene" uid="uid://d13vdgis1uvvv" path="res://scenes/interactions/interactables/items/all_items/keys/item_leverhandle.tscn" id="11_llrke"]
 [ext_resource type="PackedScene" uid="uid://bsdlm8rcrt2j" path="res://scenes/interactions/_triggers/area_triggers/player_area_trigger.tscn" id="12_g0t4t"]
-[ext_resource type="PackedScene" uid="uid://dcbfb4frwgj7c" path="res://scenes/interactions/_triggers/chain/chain.tscn" id="12_po0ra"]
 [ext_resource type="PackedScene" uid="uid://oqosqgdkwcrb" path="res://scenes/interactions/_receivers/door/door_new.tscn" id="14_feors"]
 [ext_resource type="PackedScene" uid="uid://lxic7c72kvyt" path="res://scenes/interactions/interactables/items/all_items/misc/item_skull.tscn" id="15_57qbt"]
 [ext_resource type="Script" uid="uid://ejuiwwsmyrgi" path="res://scenes/interactions/_triggers/item_receiver/item_receiver.gd" id="15_wclfl"]
@@ -21,11 +20,12 @@
 [ext_resource type="Script" uid="uid://cc36kknugth5b" path="res://scripts/saving/persistent_objs/po_itmreceiver.gd" id="16_po0ra"]
 [ext_resource type="PackedScene" uid="uid://br01bblhowysi" path="res://assets/models/cairn/Z-Old-EnvironmentModels/Wall/Wall.glb" id="18_1hgo1"]
 [ext_resource type="PackedScene" uid="uid://bm8kaq0ah5g7q" path="res://scenes/interactions/interactables/items/all_items/torch/torch.tscn" id="18_57qbt"]
-[ext_resource type="PackedScene" uid="uid://dkx1fyyqx7cmp" path="res://scenes/interactions/_triggers/torch_sconce/torch_sconce_ceiling.tscn" id="19_1rfv5"]
 [ext_resource type="PackedScene" uid="uid://cfhacobhksnxe" path="res://scenes/_levels/_palettes/cairn/props/cairn_dirtwall.tscn" id="20_86n7n"]
+[ext_resource type="PackedScene" uid="uid://cs5760b18r0jr" path="res://scenes/_levels/_palettes/cairn/props/cairn_ceiling_torch.tscn" id="20_edn4m"]
 [ext_resource type="PackedScene" uid="uid://crnrdh5wu8ooa" path="res://scenes/interactions/_receivers/traps/projectile/trap_projectile.tscn" id="24_5jhwi"]
 [ext_resource type="PackedScene" uid="uid://b5g00fexnuwte" path="res://scenes/interactions/_special/item_no_pass_zone.tscn" id="26_i5oae"]
 [ext_resource type="Material" uid="uid://ioo51vym3k1d" path="res://scenes/interactions/_triggers/teleporter/m_teleport.tres" id="27_edn4m"]
+[ext_resource type="PackedScene" uid="uid://kqw8pq8itb2k" path="res://scenes/interactions/_receivers/wip_spike_trap/timed_spike_trap.tscn" id="27_fx3kc"]
 [ext_resource type="Script" uid="uid://bul4myvyhnpjc" path="res://scripts/saving/uid_generator.gd" id="27_i5oae"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_1hgo1"]
@@ -118,22 +118,8 @@ metadata/_editor_floor_ = Vector3(0, 0, 0)
 
 [node name="First_Part" type="Node3D" parent="." unique_id=1476509548]
 
-[node name="First_BallyBog_Trap_Gate" parent="First_Part" unique_id=2077487765 instance=ExtResource("5_1nwec")]
-transform = Transform3D(-4.3711395e-08, 0, -1, 0, 1, 0, 1, 0, -4.3711395e-08, -3.9010968, 0.008686721, -3.0494363)
-disable_tp = false
-metadata/lock_uid = true
-metadata/uid = "db222d0a-5d1d-4008-a016-4101bf3c77f9"
-metadata/date_generated = "2026-04-21T14:01:56"
-
-[node name="First_Gate_Button_Open" parent="First_Part" unique_id=1164325605 instance=ExtResource("6_vy3m1")]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -6.9874196, 1, -5.6793723)
-metadata/lock_uid = true
-metadata/uid = "bc59fe33-2ea3-4bc1-a7eb-bee486d1250e"
-metadata/date_generated = "2026-04-21T14:01:56"
-
 [node name="Gate_With_leverPiece" parent="First_Part" unique_id=893706790 instance=ExtResource("5_1nwec")]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -8, 0, -9)
-disable_tp = false
 metadata/lock_uid = true
 metadata/uid = "e238507f-045c-4adc-b04d-ca21b0524eeb"
 metadata/date_generated = "2026-04-21T14:01:56"
@@ -178,6 +164,9 @@ transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -0.2
 metadata/lock_uid = true
 metadata/uid = "0bd0c47b-4364-4af5-9fd4-e9e1fe2049b8"
 metadata/date_generated = "2026-04-21T14:01:56"
+
+[node name="Timed_SpikeTrap" parent="First_Part" unique_id=1714444948 instance=ExtResource("27_fx3kc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7, 0, -5)
 
 [node name="Second_Part" type="Node3D" parent="." unique_id=700111724]
 
@@ -271,18 +260,16 @@ metadata/lock_uid = true
 metadata/uid = "c2753858-001b-4108-abe7-0567ea37817b"
 metadata/date_generated = "2026-04-21T14:01:56"
 
-[node name="Open_Exit_Gate_Chain" parent="Third_Part" unique_id=691524357 instance=ExtResource("12_po0ra")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 1, -9)
-metadata/lock_uid = true
-metadata/uid = "502aeb63-f28f-4ceb-800d-688881563e10"
-metadata/date_generated = "2026-04-21T14:01:56"
-
 [node name="Exit_Gate" parent="Third_Part" unique_id=1018557165 instance=ExtResource("5_1nwec")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, -12)
 disable_tp = false
 metadata/lock_uid = true
 metadata/uid = "9892004e-11a2-403b-b733-cbd15a3bcf7d"
 metadata/date_generated = "2026-04-21T14:01:56"
+
+[node name="Exit_Gate_Lever" parent="Third_Part" unique_id=1810684424 instance=ExtResource("10_0jeu4")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -3.7466524, 1.2034434, -9)
+use_intervals = true
 
 [node name="Enemies" type="Node3D" parent="." unique_id=160301403]
 
@@ -316,7 +303,7 @@ transform = Transform3D(-4.371139e-08, 0, -1, -1, -4.371139e-08, 4.371139e-08, -
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 8.045722, 1.5161095, 5)
 
 [node name="TorchSconce_Lit2" parent="Torches" unique_id=531346122 instance=ExtResource("16_g0t4t")]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -2.8048627, 1.5145273, 7.79589)
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -3.8048627, 1.5145273, 7.79589)
 
 [node name="TorchSconce_Lit8" parent="Torches" unique_id=2117904681 instance=ExtResource("16_g0t4t")]
 transform = Transform3D(1.3113416e-07, 0, -1, 0, 1, 0, 1, 0, 1.3113416e-07, -0.13172448, 1.5145273, 4.79589)
@@ -325,7 +312,7 @@ transform = Transform3D(1.3113416e-07, 0, -1, 0, 1, 0, 1, 0, 1.3113416e-07, -0.1
 transform = Transform3D(-4.371138e-08, 0, 1, 0, 1, 0, -1, 0, -4.371138e-08, -5.9954777, 1.5145273, -5.0034714)
 
 [node name="TorchSconce_Lit3" parent="Torches" unique_id=1865730810 instance=ExtResource("16_g0t4t")]
-transform = Transform3D(1, 0, 1.7484555e-07, 0, 1, 0, -1.7484555e-07, 0, 1, -6.973964, 1.5145273, 4.261833)
+transform = Transform3D(1.447079e-07, -0.70710677, -0.70710677, 1, 2.9802322e-08, 1.7484555e-07, -1.0256105e-07, -0.70710677, 0.70710677, -6.605207, 0.09561199, 4.8265347)
 
 [node name="TorchSconce_Lit4" parent="Torches" unique_id=1094412383 instance=ExtResource("16_g0t4t")]
 transform = Transform3D(-2.1855695e-07, 0, 1, 0, 1, 0, -1, 0, -2.1855695e-07, -9.837907, 1.5145273, 1.1239128)
@@ -1211,110 +1198,11 @@ transform = Transform3D(0.12799999, 2.9802322e-08, 0, -1.8626451e-09, 0.03312885
 
 [node name="CeilingTorches" type="Node3D" parent="Environment" unique_id=1518433331]
 
-[node name="Ceiling_Torch_Long" parent="Environment/CeilingTorches" unique_id=1565248879 instance=ExtResource("19_1rfv5")]
-transform = Transform3D(2.355, 0, 0, 0, 2.355, 0, 0, 0, 2.355, 7.9970055, 4.0394125, -10.950689)
-
-[node name="temp_graphics" type="Node3D" parent="Environment/CeilingTorches/Ceiling_Torch_Long" unique_id=2035832158]
-transform = Transform3D(-0.49596605, 0, 4.3358728e-08, 0, 0.49596605, 0, -4.3358728e-08, 0, -0.49596605, 0.0012714863, 0.3029213, -0.0023784637)
-
-[node name="Chains" type="Node3D" parent="Environment/CeilingTorches/Ceiling_Torch_Long/temp_graphics" unique_id=1261202593]
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Environment/CeilingTorches/Ceiling_Torch_Long/temp_graphics/Chains" unique_id=593256634]
-transform = Transform3D(1, 0, -3.5527137e-15, 0, 1, 0, 3.5527137e-15, 0, 1, 0, -1.5000005, 0)
-mesh = SubResource("ArrayMesh_3omk6")
-skeleton = NodePath("")
-
-[node name="MeshInstance3D3" type="MeshInstance3D" parent="Environment/CeilingTorches/Ceiling_Torch_Long/temp_graphics/Chains" unique_id=2096878852]
-transform = Transform3D(1, 0, -3.5527137e-15, 0, 1, 0, 3.5527137e-15, 0, 1, 0, -0.8680525, 0)
-mesh = SubResource("ArrayMesh_3omk6")
-skeleton = NodePath("")
-
-[node name="MeshInstance3D4" type="MeshInstance3D" parent="Environment/CeilingTorches/Ceiling_Torch_Long/temp_graphics/Chains" unique_id=1276765504]
-transform = Transform3D(1, 0, -3.5527137e-15, 0, 1, 0, 3.5527137e-15, 0, 1, 0, -0.23879242, 0)
-mesh = SubResource("ArrayMesh_3omk6")
-skeleton = NodePath("")
-
-[node name="MeshInstance3D5" type="MeshInstance3D" parent="Environment/CeilingTorches/Ceiling_Torch_Long/temp_graphics/Chains" unique_id=1424932294]
-transform = Transform3D(0.9999999, 0, -7.1054274e-15, 0, 0.9999999, 0, 7.1054274e-15, 0, 0.9999999, 0, 0.3880272, 0)
-mesh = SubResource("ArrayMesh_3omk6")
-skeleton = NodePath("")
-
-[node name="MeshInstance3D2" type="MeshInstance3D" parent="Environment/CeilingTorches/Ceiling_Torch_Long/temp_graphics/Chains" unique_id=1832044692]
-transform = Transform3D(1, 0, -3.5527137e-15, 0, 1, 0, 3.5527137e-15, 0, 1, 0, -2.1531024, 0)
-mesh = SubResource("ArrayMesh_3omk6")
-skeleton = NodePath("")
-
-[node name="Ceiling_Torch_Long2" parent="Environment/CeilingTorches" unique_id=1224173364 instance=ExtResource("19_1rfv5")]
-transform = Transform3D(2.355, 0, 0, 0, 2.355, 0, 0, 0, 2.355, 0.9320054, 4.0394125, -15.660689)
-
-[node name="temp_graphics" type="Node3D" parent="Environment/CeilingTorches/Ceiling_Torch_Long2" unique_id=1688233091]
-transform = Transform3D(-0.49596605, 0, 4.3358728e-08, 0, 0.49596605, 0, -4.3358728e-08, 0, -0.49596605, 0.0012714863, 0.3029213, -0.0023784637)
-
-[node name="Chains" type="Node3D" parent="Environment/CeilingTorches/Ceiling_Torch_Long2/temp_graphics" unique_id=216153133]
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Environment/CeilingTorches/Ceiling_Torch_Long2/temp_graphics/Chains" unique_id=699343987]
-transform = Transform3D(1, 0, -3.5527137e-15, 0, 1, 0, 3.5527137e-15, 0, 1, 0, -1.5000005, 0)
-mesh = SubResource("ArrayMesh_3omk6")
-skeleton = NodePath("")
-
-[node name="MeshInstance3D3" type="MeshInstance3D" parent="Environment/CeilingTorches/Ceiling_Torch_Long2/temp_graphics/Chains" unique_id=472082146]
-transform = Transform3D(1, 0, -3.5527137e-15, 0, 1, 0, 3.5527137e-15, 0, 1, 0, -0.8680525, 0)
-mesh = SubResource("ArrayMesh_3omk6")
-skeleton = NodePath("")
-
-[node name="MeshInstance3D4" type="MeshInstance3D" parent="Environment/CeilingTorches/Ceiling_Torch_Long2/temp_graphics/Chains" unique_id=1266105668]
-transform = Transform3D(1, 0, -3.5527137e-15, 0, 1, 0, 3.5527137e-15, 0, 1, 0, -0.23879242, 0)
-mesh = SubResource("ArrayMesh_3omk6")
-skeleton = NodePath("")
-
-[node name="MeshInstance3D5" type="MeshInstance3D" parent="Environment/CeilingTorches/Ceiling_Torch_Long2/temp_graphics/Chains" unique_id=899298121]
-transform = Transform3D(0.9999999, 0, -7.1054274e-15, 0, 0.9999999, 0, 7.1054274e-15, 0, 0.9999999, 0, 0.3880272, 0)
-mesh = SubResource("ArrayMesh_3omk6")
-skeleton = NodePath("")
-
-[node name="MeshInstance3D2" type="MeshInstance3D" parent="Environment/CeilingTorches/Ceiling_Torch_Long2/temp_graphics/Chains" unique_id=1690575618]
-transform = Transform3D(1, 0, -3.5527137e-15, 0, 1, 0, 3.5527137e-15, 0, 1, 0, -2.1531024, 0)
-mesh = SubResource("ArrayMesh_3omk6")
-skeleton = NodePath("")
-
-[node name="Ceiling_Torch_Long3" parent="Environment/CeilingTorches" unique_id=1602220605 instance=ExtResource("19_1rfv5")]
-transform = Transform3D(2.355, 0, 0, 0, 2.355, 0, 0, 0, 2.355, -1.4229946, 4.0394125, -3.8856897)
-
-[node name="temp_graphics" type="Node3D" parent="Environment/CeilingTorches/Ceiling_Torch_Long3" unique_id=1975346275]
-transform = Transform3D(-0.49596605, 0, 4.3358728e-08, 0, 0.49596605, 0, -4.3358728e-08, 0, -0.49596605, 0.0012714863, 0.3029213, -0.0023784637)
-
-[node name="Chains" type="Node3D" parent="Environment/CeilingTorches/Ceiling_Torch_Long3/temp_graphics" unique_id=1663272102]
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Environment/CeilingTorches/Ceiling_Torch_Long3/temp_graphics/Chains" unique_id=348971302]
-transform = Transform3D(1, 0, -3.5527137e-15, 0, 1, 0, 3.5527137e-15, 0, 1, 0, -1.5000005, 0)
-mesh = SubResource("ArrayMesh_3omk6")
-skeleton = NodePath("")
-
-[node name="MeshInstance3D3" type="MeshInstance3D" parent="Environment/CeilingTorches/Ceiling_Torch_Long3/temp_graphics/Chains" unique_id=1667430565]
-transform = Transform3D(1, 0, -3.5527137e-15, 0, 1, 0, 3.5527137e-15, 0, 1, 0, -0.8680525, 0)
-mesh = SubResource("ArrayMesh_3omk6")
-skeleton = NodePath("")
-
-[node name="MeshInstance3D4" type="MeshInstance3D" parent="Environment/CeilingTorches/Ceiling_Torch_Long3/temp_graphics/Chains" unique_id=1057413906]
-transform = Transform3D(1, 0, -3.5527137e-15, 0, 1, 0, 3.5527137e-15, 0, 1, 0, -0.23879242, 0)
-mesh = SubResource("ArrayMesh_3omk6")
-skeleton = NodePath("")
-
-[node name="MeshInstance3D5" type="MeshInstance3D" parent="Environment/CeilingTorches/Ceiling_Torch_Long3/temp_graphics/Chains" unique_id=701035282]
-transform = Transform3D(0.9999999, 0, -7.1054274e-15, 0, 0.9999999, 0, 7.1054274e-15, 0, 0.9999999, 0, 0.3880272, 0)
-mesh = SubResource("ArrayMesh_3omk6")
-skeleton = NodePath("")
-
-[node name="MeshInstance3D2" type="MeshInstance3D" parent="Environment/CeilingTorches/Ceiling_Torch_Long3/temp_graphics/Chains" unique_id=876857766]
-transform = Transform3D(1, 0, -3.5527137e-15, 0, 1, 0, 3.5527137e-15, 0, 1, 0, -2.1531024, 0)
-mesh = SubResource("ArrayMesh_3omk6")
-skeleton = NodePath("")
-
-[node name="Ceiling_Torch_Long4" parent="Environment/CeilingTorches" unique_id=133278660 instance=ExtResource("19_1rfv5")]
-transform = Transform3D(2.355, 0, 0, 0, 2.355, 0, 0, 0, 2.355, -2.9966822, 4.2088327, -9.001348)
+[node name="Ceiling_Torch_Long4" parent="Environment/CeilingTorches" unique_id=1287236420 instance=ExtResource("20_edn4m")]
+transform = Transform3D(2.355, 0, 0, 0, 2.355, 0, 0, 0, 2.355, 3.9379306, 2.8482683, -9.1374235)
 
 [node name="temp_graphics" type="Node3D" parent="Environment/CeilingTorches/Ceiling_Torch_Long4" unique_id=1326430316]
-transform = Transform3D(-0.49596605, 0, 4.3358728e-08, 0, 0.49596605, 0, -4.3358728e-08, 0, -0.49596605, 0.0012714863, 0.3029213, -0.0023784637)
+transform = Transform3D(0, 0, -0.49596605, 0, 0.49596605, 0, 0.49596605, 0, 0, 0.0012714863, 0.88065577, 0.022693157)
 
 [node name="Chains" type="Node3D" parent="Environment/CeilingTorches/Ceiling_Torch_Long4/temp_graphics" unique_id=1236248125]
 
@@ -1339,6 +1227,138 @@ mesh = SubResource("ArrayMesh_3omk6")
 skeleton = NodePath("")
 
 [node name="MeshInstance3D2" type="MeshInstance3D" parent="Environment/CeilingTorches/Ceiling_Torch_Long4/temp_graphics/Chains" unique_id=631667088]
+transform = Transform3D(1, 0, -3.5527137e-15, 0, 1, 0, 3.5527137e-15, 0, 1, 0, -2.1531024, 0)
+mesh = SubResource("ArrayMesh_3omk6")
+skeleton = NodePath("")
+
+[node name="Ceiling_Torch_Long5" parent="Environment/CeilingTorches" unique_id=1423991286 instance=ExtResource("20_edn4m")]
+transform = Transform3D(2.355, 0, 0, 0, 2.355, 0, 0, 0, 2.355, 2.9379306, 2.8482683, -6.1374235)
+
+[node name="temp_graphics" type="Node3D" parent="Environment/CeilingTorches/Ceiling_Torch_Long5" unique_id=707493021]
+transform = Transform3D(0, 0, -0.49596605, 0, 0.49596605, 0, 0.49596605, 0, 0, 0.0012714863, 0.88065577, 0.022693157)
+
+[node name="Chains" type="Node3D" parent="Environment/CeilingTorches/Ceiling_Torch_Long5/temp_graphics" unique_id=2082189125]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Environment/CeilingTorches/Ceiling_Torch_Long5/temp_graphics/Chains" unique_id=1875602697]
+transform = Transform3D(1, 0, -3.5527137e-15, 0, 1, 0, 3.5527137e-15, 0, 1, 0, -1.5000005, 0)
+mesh = SubResource("ArrayMesh_3omk6")
+skeleton = NodePath("")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="Environment/CeilingTorches/Ceiling_Torch_Long5/temp_graphics/Chains" unique_id=1917501852]
+transform = Transform3D(1, 0, -3.5527137e-15, 0, 1, 0, 3.5527137e-15, 0, 1, 0, -0.8680525, 0)
+mesh = SubResource("ArrayMesh_3omk6")
+skeleton = NodePath("")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="Environment/CeilingTorches/Ceiling_Torch_Long5/temp_graphics/Chains" unique_id=574399590]
+transform = Transform3D(1, 0, -3.5527137e-15, 0, 1, 0, 3.5527137e-15, 0, 1, 0, -0.23879242, 0)
+mesh = SubResource("ArrayMesh_3omk6")
+skeleton = NodePath("")
+
+[node name="MeshInstance3D5" type="MeshInstance3D" parent="Environment/CeilingTorches/Ceiling_Torch_Long5/temp_graphics/Chains" unique_id=955753078]
+transform = Transform3D(0.9999999, 0, -7.1054274e-15, 0, 0.9999999, 0, 7.1054274e-15, 0, 0.9999999, 0, 0.3880272, 0)
+mesh = SubResource("ArrayMesh_3omk6")
+skeleton = NodePath("")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Environment/CeilingTorches/Ceiling_Torch_Long5/temp_graphics/Chains" unique_id=271592654]
+transform = Transform3D(1, 0, -3.5527137e-15, 0, 1, 0, 3.5527137e-15, 0, 1, 0, -2.1531024, 0)
+mesh = SubResource("ArrayMesh_3omk6")
+skeleton = NodePath("")
+
+[node name="Ceiling_Torch_Long6" parent="Environment/CeilingTorches" unique_id=193041783 instance=ExtResource("20_edn4m")]
+transform = Transform3D(2.355, 0, 0, 0, 2.355, 0, 0, 0, 2.355, -7.0620694, 2.8482683, -9.1374235)
+
+[node name="temp_graphics" type="Node3D" parent="Environment/CeilingTorches/Ceiling_Torch_Long6" unique_id=1384964453]
+transform = Transform3D(0, 0, -0.49596605, 0, 0.49596605, 0, 0.49596605, 0, 0, 0.0012714863, 0.88065577, 0.022693157)
+
+[node name="Chains" type="Node3D" parent="Environment/CeilingTorches/Ceiling_Torch_Long6/temp_graphics" unique_id=573792668]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Environment/CeilingTorches/Ceiling_Torch_Long6/temp_graphics/Chains" unique_id=1352648456]
+transform = Transform3D(1, 0, -3.5527137e-15, 0, 1, 0, 3.5527137e-15, 0, 1, 0, -1.5000005, 0)
+mesh = SubResource("ArrayMesh_3omk6")
+skeleton = NodePath("")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="Environment/CeilingTorches/Ceiling_Torch_Long6/temp_graphics/Chains" unique_id=1441960812]
+transform = Transform3D(1, 0, -3.5527137e-15, 0, 1, 0, 3.5527137e-15, 0, 1, 0, -0.8680525, 0)
+mesh = SubResource("ArrayMesh_3omk6")
+skeleton = NodePath("")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="Environment/CeilingTorches/Ceiling_Torch_Long6/temp_graphics/Chains" unique_id=875570806]
+transform = Transform3D(1, 0, -3.5527137e-15, 0, 1, 0, 3.5527137e-15, 0, 1, 0, -0.23879242, 0)
+mesh = SubResource("ArrayMesh_3omk6")
+skeleton = NodePath("")
+
+[node name="MeshInstance3D5" type="MeshInstance3D" parent="Environment/CeilingTorches/Ceiling_Torch_Long6/temp_graphics/Chains" unique_id=177885373]
+transform = Transform3D(0.9999999, 0, -7.1054274e-15, 0, 0.9999999, 0, 7.1054274e-15, 0, 0.9999999, 0, 0.3880272, 0)
+mesh = SubResource("ArrayMesh_3omk6")
+skeleton = NodePath("")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Environment/CeilingTorches/Ceiling_Torch_Long6/temp_graphics/Chains" unique_id=216035149]
+transform = Transform3D(1, 0, -3.5527137e-15, 0, 1, 0, 3.5527137e-15, 0, 1, 0, -2.1531024, 0)
+mesh = SubResource("ArrayMesh_3omk6")
+skeleton = NodePath("")
+
+[node name="Ceiling_Torch_Long7" parent="Environment/CeilingTorches" unique_id=77503640 instance=ExtResource("20_edn4m")]
+transform = Transform3D(2.355, 0, 0, 0, 2.355, 0, 0, 0, 2.355, 0.9379306, 1.8482683, -16.137424)
+
+[node name="temp_graphics" type="Node3D" parent="Environment/CeilingTorches/Ceiling_Torch_Long7" unique_id=928661909]
+transform = Transform3D(0, 0, -0.49596605, 0, 0.49596605, 0, 0.49596605, 0, 0, 0.0012714863, 0.88065577, 0.022693157)
+
+[node name="Chains" type="Node3D" parent="Environment/CeilingTorches/Ceiling_Torch_Long7/temp_graphics" unique_id=1878510797]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Environment/CeilingTorches/Ceiling_Torch_Long7/temp_graphics/Chains" unique_id=1044367053]
+transform = Transform3D(1, 0, -3.5527137e-15, 0, 1, 0, 3.5527137e-15, 0, 1, 0, -1.5000005, 0)
+mesh = SubResource("ArrayMesh_3omk6")
+skeleton = NodePath("")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="Environment/CeilingTorches/Ceiling_Torch_Long7/temp_graphics/Chains" unique_id=923632639]
+transform = Transform3D(1, 0, -3.5527137e-15, 0, 1, 0, 3.5527137e-15, 0, 1, 0, -0.8680525, 0)
+mesh = SubResource("ArrayMesh_3omk6")
+skeleton = NodePath("")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="Environment/CeilingTorches/Ceiling_Torch_Long7/temp_graphics/Chains" unique_id=1292412286]
+transform = Transform3D(1, 0, -3.5527137e-15, 0, 1, 0, 3.5527137e-15, 0, 1, 0, -0.23879242, 0)
+mesh = SubResource("ArrayMesh_3omk6")
+skeleton = NodePath("")
+
+[node name="MeshInstance3D5" type="MeshInstance3D" parent="Environment/CeilingTorches/Ceiling_Torch_Long7/temp_graphics/Chains" unique_id=1848347810]
+transform = Transform3D(0.9999999, 0, -7.1054274e-15, 0, 0.9999999, 0, 7.1054274e-15, 0, 0.9999999, 0, 0.3880272, 0)
+mesh = SubResource("ArrayMesh_3omk6")
+skeleton = NodePath("")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Environment/CeilingTorches/Ceiling_Torch_Long7/temp_graphics/Chains" unique_id=1402639173]
+transform = Transform3D(1, 0, -3.5527137e-15, 0, 1, 0, 3.5527137e-15, 0, 1, 0, -2.1531024, 0)
+mesh = SubResource("ArrayMesh_3omk6")
+skeleton = NodePath("")
+
+[node name="Ceiling_Torch_Long8" parent="Environment/CeilingTorches" unique_id=311263931 instance=ExtResource("20_edn4m")]
+transform = Transform3D(2.355, 0, 0, 0, 2.355, 0, 0, 0, 2.355, 4.9379306, 2.8482683, -12.137424)
+
+[node name="temp_graphics" type="Node3D" parent="Environment/CeilingTorches/Ceiling_Torch_Long8" unique_id=1419077052]
+transform = Transform3D(0, 0, -0.49596605, 0, 0.49596605, 0, 0.49596605, 0, 0, 0.0012714863, 0.88065577, 0.022693157)
+
+[node name="Chains" type="Node3D" parent="Environment/CeilingTorches/Ceiling_Torch_Long8/temp_graphics" unique_id=1920742913]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Environment/CeilingTorches/Ceiling_Torch_Long8/temp_graphics/Chains" unique_id=208683266]
+transform = Transform3D(1, 0, -3.5527137e-15, 0, 1, 0, 3.5527137e-15, 0, 1, 0, -1.5000005, 0)
+mesh = SubResource("ArrayMesh_3omk6")
+skeleton = NodePath("")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="Environment/CeilingTorches/Ceiling_Torch_Long8/temp_graphics/Chains" unique_id=1754033122]
+transform = Transform3D(1, 0, -3.5527137e-15, 0, 1, 0, 3.5527137e-15, 0, 1, 0, -0.8680525, 0)
+mesh = SubResource("ArrayMesh_3omk6")
+skeleton = NodePath("")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="Environment/CeilingTorches/Ceiling_Torch_Long8/temp_graphics/Chains" unique_id=1880955486]
+transform = Transform3D(1, 0, -3.5527137e-15, 0, 1, 0, 3.5527137e-15, 0, 1, 0, -0.23879242, 0)
+mesh = SubResource("ArrayMesh_3omk6")
+skeleton = NodePath("")
+
+[node name="MeshInstance3D5" type="MeshInstance3D" parent="Environment/CeilingTorches/Ceiling_Torch_Long8/temp_graphics/Chains" unique_id=1658334013]
+transform = Transform3D(0.9999999, 0, -7.1054274e-15, 0, 0.9999999, 0, 7.1054274e-15, 0, 0.9999999, 0, 0.3880272, 0)
+mesh = SubResource("ArrayMesh_3omk6")
+skeleton = NodePath("")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Environment/CeilingTorches/Ceiling_Torch_Long8/temp_graphics/Chains" unique_id=349943675]
 transform = Transform3D(1, 0, -3.5527137e-15, 0, 1, 0, 3.5527137e-15, 0, 1, 0, -2.1531024, 0)
 mesh = SubResource("ArrayMesh_3omk6")
 skeleton = NodePath("")
@@ -1388,7 +1408,7 @@ metadata/uid = "33b28e8e-9ac5-40b3-b13f-5cde5394fd80"
 metadata/date_generated = "2026-04-21T14:01:56"
 
 [node name="SpikeTrap2" parent="Traps" unique_id=1518703143 instance=ExtResource("11_0jeu4")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, 4)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.2679, 0, 4)
 trigger_when_in = false
 metadata/lock_uid = true
 metadata/uid = "f4252484-1618-44c1-92b1-5ae656991ab0"
@@ -1424,13 +1444,11 @@ mesh = SubResource("BoxMesh_haa7c")
 script = ExtResource("27_i5oae")
 metadata/_custom_type_script = "uid://bul4myvyhnpjc"
 
-[connection signal="on_activated" from="First_Part/First_Gate_Button_Open" to="First_Part/First_BallyBog_Trap_Gate" method="open_gate"]
 [connection signal="on_activated" from="First_Part/BrokenLever/BrokenLever" to="First_Part/BrokenLever/Lever_Fixed" method="enable"]
 [connection signal="on_change" from="First_Part/BrokenLever/Lever_Fixed" to="Second_Part/Key_Gate" method="open_gate"]
 [connection signal="on_activated" from="First_Part/BallyBogOne_Trigger" to="Enemies/Ballybog" method="enable_me"]
 [connection signal="area_entered" from="First_Part/BallyBogOne_Trigger/Area3D" to="First_Part/BallyBogOne_Trigger" method="_player_entered"]
 [connection signal="area_exited" from="First_Part/BallyBogOne_Trigger/Area3D" to="First_Part/BallyBogOne_Trigger" method="_player_exited"]
-[connection signal="on_activated" from="First_Part/Open_BallyBog_Gate_Button" to="First_Part/First_BallyBog_Trap_Gate" method="open_gate"]
 [connection signal="on_activated" from="First_Part/Open_BallyBog_Gate_Button" to="First_Part/Gate_With_leverPiece" method="open_gate"]
 [connection signal="on_activated" from="Second_Part/BallyBogOne_Trigger2" to="Enemies/Ballybog2" method="enable_me"]
 [connection signal="area_entered" from="Second_Part/BallyBogOne_Trigger2/Area3D" to="Second_Part/BallyBogOne_Trigger2" method="_player_entered"]
@@ -1439,6 +1457,6 @@ metadata/_custom_type_script = "uid://bul4myvyhnpjc"
 [connection signal="on_activated" from="Second_Part/Open_Chain_Gate_Button" to="Second_Part/Unlock_Chain_Gate" method="open_gate"]
 [connection signal="on_activated" from="Second_Part/Open_Chain_Gate_Button" to="Traps/SpikeTrap2" method="activate"]
 [connection signal="on_activated" from="Third_Part/Door/ItemReceiver" to="Third_Part/Door/Door" method="open_door"]
-[connection signal="on_change" from="Third_Part/Open_Exit_Gate_Chain" to="Third_Part/Exit_Gate" method="fully_open_gate"]
+[connection signal="on_change" from="Third_Part/Exit_Gate_Lever" to="Third_Part/Exit_Gate" method="open_gate"]
 [connection signal="on_activated" from="Traps/Arrow_Trap" to="Traps/Arrow_Trap/trap_projectile" method="trigger_trap"]
 [connection signal="on_activated" from="Traps/Arrow_Trap2" to="Traps/Arrow_Trap2/trap_projectile" method="trigger_trap"]
