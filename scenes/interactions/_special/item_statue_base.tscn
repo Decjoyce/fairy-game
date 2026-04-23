@@ -24,7 +24,7 @@ size = Vector3(0.5, 0.5, 0.5)
 [sub_resource type="BoxShape3D" id="BoxShape3D_234jp"]
 size = Vector3(0.4, 0.4, 0.4)
 
-[sub_resource type="Shader" id="Shader_3odr4"]
+[sub_resource type="Shader" id="Shader_e1lr5"]
 code = "shader_type spatial;
 render_mode diffuse_lambert_wrap,cull_disabled;
 
@@ -101,9 +101,9 @@ void fragment() {
 }
 "
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_5ciw7"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_lvpsl"]
 render_priority = 0
-shader = SubResource("Shader_3odr4")
+shader = SubResource("Shader_e1lr5")
 shader_parameter/rows = 1.0
 shader_parameter/columns = 8.0
 shader_parameter/frame = 0.0
@@ -112,8 +112,8 @@ shader_parameter/sprite = ExtResource("4_ps0m7")
 shader_parameter/mode = 0
 shader_parameter/Normal = ExtResource("3_ibphc")
 
-[sub_resource type="PlaneMesh" id="PlaneMesh_lqnra"]
-material = SubResource("ShaderMaterial_5ciw7")
+[sub_resource type="PlaneMesh" id="PlaneMesh_3odr4"]
+material = SubResource("ShaderMaterial_lvpsl")
 size = Vector2(0.512, 0.512)
 orientation = 2
 
@@ -167,7 +167,7 @@ max_contacts_reported = 1
 script = ExtResource("1_jpd5g")
 item_type = SubResource("Resource_yadgr")
 display_name = "STATUE_PIECE_BASE"
-keywords = "BASE;PERM"
+keywords = "BASE;PERM;"
 item_weight = 3
 col = NodePath("CollisionShape3D")
 grab_col = NodePath("Area3D/CollisionShape3D2")
@@ -187,7 +187,7 @@ debug_color = Color(0.8442249, 0.37985525, 5.7756904e-07, 0.41960785)
 [node name="_g_idle" type="MeshInstance3D" parent="." unique_id=707151852]
 visible = false
 layers = 4
-mesh = SubResource("PlaneMesh_lqnra")
+mesh = SubResource("PlaneMesh_3odr4")
 script = ExtResource("5_jyrc5")
 sprite = ExtResource("4_ps0m7")
 sprite_scale = 0.001
