@@ -23,6 +23,14 @@ var loading_locked: bool #used to stop pp triggering after loading
 
 @onready var avp: AudioValuePlayer = $AudioValuePlayer
 
+@export var disabled: bool
+
+func disabled_me(sig: float) -> void:
+	disabled = true
+
+func enable_me(sig: float) -> void:
+	disabled = false
+
 # ↑ General Stuff ↑
 # --------------------------------------------------------------------------------------------------
 # ↓ Triggering Stuff ↓
@@ -72,6 +80,7 @@ func entity_exited_pressure_plate(entity: Entity) -> void:
 	if entities_on_plate.has(entity): entities_on_plate.erase(entity)
 	#print("exited")
 	check_weight()
+	if disabled: return
 	if always_emit_on_change: emit_on_change()
 
 # ↑ Triggering Stuff ↑
@@ -87,6 +96,7 @@ func update_weight_of_entity(entity: Entity) -> void:
 	check_weight()
 
 func check_weight() -> void:
+	if disabled: return
 	update_total_weight()
 	animate_plate()
 	if current_weight >= weight_to_activate: activate()
