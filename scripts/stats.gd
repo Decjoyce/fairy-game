@@ -72,7 +72,7 @@ func play_hit_fx() -> void:
 	var length = (max_health - current_health) / (health_regen_rate) + health_regen_timer.wait_time
 	prints(current_health, length)
 	var new_color: Color = Color.CRIMSON
-	new_color.a = (max_health - current_health)/max_health
+	new_color.a = ((max_health - current_health)/max_health) * 0.8
 	prints(Color.CRIMSON, new_color)
 	owner.local_effect_player.colorize(new_color, new_color * Color.TRANSPARENT, length, true, true)
 

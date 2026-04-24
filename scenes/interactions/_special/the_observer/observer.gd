@@ -1,7 +1,7 @@
 extends Area3D
 
-signal on_activate(sig: float)
-signal on_deactivate(sig: float)
+signal on_enter_lockdown(sig: float)
+signal on_exit_lockdown(sig: float)
 
 var items_in_zone: Array[Grabbable_Item]
 @onready var head: Node3D = $Pivot/cairn_saving_head
@@ -17,6 +17,8 @@ var activated: bool
 
 var eye_tween: Tween
 
+var disabled: bool
+
 func _physics_process(delta: float) -> void:
 	if activated:
 		facing_helper.look_at(items_in_zone.back().global_position, Vector3.UP, true)
@@ -30,7 +32,7 @@ func enter_lockdown() -> void:
 	if activated: return
 	eyes.scale = Vector3.ONE * 0.9
 	eyes.visible = true
-	on_activate.emit(1.0)
+	on_enter_lockdown.emit(1.0)
 	activated = true
 	if eye_tween: eye_tween.stop()
 	eye_tween = get_tree().create_tween().bind_node(self).set_trans(Tween.TRANS_CUBIC)
@@ -40,7 +42,7 @@ func enter_lockdown() -> void:
 func exit_lockdown() -> void:
 	if !activated: return
 	#eyes.visible = false
-	on_activate.emit(0)
+	on_exit_lockdown.emit(0)
 	head.rotation = Vector3.ZERO
 	activated = false
 	if eye_tween: eye_tween.stop()
@@ -49,7 +51,7 @@ func exit_lockdown() -> void:
 	eye_tween.tween_property(eyes, "scale", Vector3.ZERO, 3)
 
 func check_if_should_lockdown() -> bool:
-	return items_in_zone.size() > 0
+	return items_in_zone.size() > 0 and !disabled
 
 func on_item_area_entered(area: Area3D) -> void:
 	if area.get_parent() is not Grabbable_Item: return

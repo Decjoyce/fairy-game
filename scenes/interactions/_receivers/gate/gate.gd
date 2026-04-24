@@ -17,6 +17,7 @@ var open_pos: float = 1.8
 @onready var player_col: CollisionShape3D = $PlayerCollision/CollisionShape3D
 @export var height_to_toggle_player_barrier: float = 0.7
 @export var stay_open: bool
+@export var start_open: bool
 @export_group("IGNORE")
 @export var tp_checker_col: CollisionShape3D
 @export var out_pos_back: Node3D
@@ -25,7 +26,6 @@ var open_pos: float = 1.8
 var current_out_pos: Vector3
 
 var things_under: Array[Node3D]
-
 
 var cur_value: float
 var last_value: float
@@ -37,6 +37,14 @@ var last_value: float
 
 var player_col_should_enabled: bool
 var stop_player: bool
+
+func _ready() -> void:
+	if start_open:
+		last_value = 1.0
+		cur_value = 1.0
+		player_col.set_deferred("disabled",true)
+		tp_checker_col.set_deferred("disabled",true)
+		graphics.position.y = 1 + (open_pos * 1)
 
 func open_gate(amount: float) -> void:
 	if stay_open and cur_value >= 1: return
