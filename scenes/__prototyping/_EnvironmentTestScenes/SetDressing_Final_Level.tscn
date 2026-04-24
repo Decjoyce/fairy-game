@@ -13,6 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://xuo5buj0odhi" path="res://scenes/interactions/_triggers/torch_sconce/torch_sconce_lit.tscn" id="11_54i5u"]
 [ext_resource type="PackedScene" uid="uid://ije1mmh1wcad" path="res://scenes/interactions/interactables/items/all_items/torch/torch_mounted.tscn" id="12_y7mrb"]
 [ext_resource type="MeshLibrary" uid="uid://bu208a8l5866i" path="res://scenes/_levels/_palettes/cairn/meshlibrary_cairn.tres" id="13_6rydq"]
+[ext_resource type="PackedScene" uid="uid://cfuq8lf22so06" path="res://scenes/_levels/_palettes/cairn/props/Rocks/cairn_rock_pile.tscn" id="13_oqsm6"]
 [ext_resource type="PackedScene" uid="uid://cruv8v8wh8l06" path="res://scenes/interactions/_special/saving_stone/saving_stone.tscn" id="14_qj3op"]
 [ext_resource type="Script" uid="uid://bul4myvyhnpjc" path="res://scripts/saving/uid_generator.gd" id="15_57y3h"]
 [ext_resource type="PackedScene" uid="uid://c22hpnno5nm0g" path="res://scenes/killzone/killzone.tscn" id="16_h842l"]
@@ -32,6 +33,7 @@
 [ext_resource type="PackedScene" uid="uid://cpyooys4p0yng" path="res://scenes/_levels/_palettes/cairn/props/cairn_stone_slab.tscn" id="30_icas2"]
 [ext_resource type="PackedScene" uid="uid://cpnmun20lswr" path="res://scenes/_levels/_palettes/cairn/props/cairn_pillar.tscn" id="30_u1stw"]
 [ext_resource type="PackedScene" uid="uid://b1clamofxlgo8" path="res://scenes/_levels/_palettes/cairn/props/cairn_gate_setdressing.tscn" id="32_hpkss"]
+[ext_resource type="PackedScene" uid="uid://pfnqccjh5kbs" path="res://scenes/_levels/_palettes/cairn/props/skull.tscn" id="33_hpkss"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_mtbvg"]
 sky_horizon_color = Color(0, 0.37292683, 0.8185948, 1)
@@ -70,8 +72,12 @@ volumetric_fog_albedo = Color(0.74509805, 0.34509805, 0, 1)
 volumetric_fog_emission = Color(0.117735185, 0.20947376, 0.3003329, 1)
 
 [sub_resource type="FogMaterial" id="FogMaterial_62r4a"]
-density = 0.1351
+density = 0.3607
 emission = Color(0.26293278, 0.2629323, 0.26293254, 1)
+
+[sub_resource type="FogMaterial" id="FogMaterial_oqsm6"]
+density = 0.0351
+emission = Color(0.08217584, 0.095120884, 0.13308424, 1)
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_jok38"]
 material = ExtResource("19_l4grf")
@@ -241,24 +247,6 @@ transform = Transform3D(-3.7855173e-08, 2.1855694e-08, 1, 0.5, 0.8660254, 0, -0.
 [node name="Torch_Mounted5" parent="Different_Sections/Inbetween_Sections/Indicators&Torches" unique_id=31382356 instance=ExtResource("12_y7mrb")]
 transform = Transform3D(1.1356552e-07, -6.556708e-08, -1, 0.5, 0.8660254, 0, 0.8660254, -0.5, 1.3113416e-07, 106, -0.57103145, 9.637015)
 
-[node name="cairnrock4" parent="Different_Sections" unique_id=1263725129 instance=ExtResource("27_wg6q8")]
-transform = Transform3D(1, 0, 0, 0, 0.25881907, 0.9659258, 0, -0.9659258, 0.25881907, 26.44, -1.79, -24.22)
-
-[node name="cairnPillar" parent="Different_Sections" unique_id=607460616 instance=ExtResource("30_u1stw")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19.059998, 0, -28.16)
-
-[node name="cairnrock5" parent="Different_Sections" unique_id=1080783835 instance=ExtResource("27_wg6q8")]
-transform = Transform3D(0.35355335, 0.61237246, -0.70710677, -0.86602545, 0.49999997, 0, 0.35355335, 0.61237246, 0.70710677, 13.267834, -1.8287199, -25.688522)
-
-[node name="cairn rock 2" parent="Different_Sections" unique_id=2096655475 instance=ExtResource("28_2r4l7")]
-transform = Transform3D(-0.7071068, 0, -0.7071067, 0, 1, 0, 0.7071067, 0, -0.7071068, 50.4, -2, -16.6)
-
-[node name="cairnrock6" parent="Different_Sections" unique_id=1195927648 instance=ExtResource("27_wg6q8")]
-transform = Transform3D(1, 0, 0, 0, 0.49999997, -0.86602545, 0, 0.86602545, 0.49999997, 49.4, -1.9, -21.8)
-
-[node name="cairn rock" parent="Different_Sections" unique_id=441529078 instance=ExtResource("26_f0xeo")]
-transform = Transform3D(1.1313709, -1.1313709, -4.9453796e-08, -3.3881318e-22, -6.9938224e-08, 1.6, -1.1313709, -1.1313709, -4.945379e-08, 45.7, -1.5646596, -21.2)
-
 [node name="Connections_GridMap" type="GridMap" parent="." unique_id=1193872561]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
 mesh_library = ExtResource("13_6rydq")
@@ -321,20 +309,21 @@ metadata/_editor_floor_ = Vector3(0, 0, 0)
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="Environment2" unique_id=286259743]
 transform = Transform3D(-0.944665, 0.32516113, -0.04333894, -0.039370164, 0.018778611, 0.99904823, 0.32566544, 0.94547224, -0.0049378504, 3.5, 12.124357, -6.0621777)
-light_color = Color(0.3227734, 0.33385244, 0.3646147, 1)
+visible = false
+light_color = Color(0.15849423, 0.16554698, 0.18437496, 1)
 shadow_enabled = true
 
 [node name="WorldEnvironment2" type="WorldEnvironment" parent="Environment2" unique_id=1695253467]
 environment = SubResource("Environment_4pwbv")
 
 [node name="FogVolume" type="FogVolume" parent="Environment2" unique_id=15103820]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 68.87999, -3.1899996, 3.814999)
-size = Vector3(26.539999, 13.84, 28.529999)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 69.259995, -3.1899996, 7.1000023)
+size = Vector3(27.300001, 13.84, 33.5)
 material = SubResource("FogMaterial_62r4a")
 
 [node name="FogVolume3" type="FogVolume" parent="Environment2" unique_id=898530393]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 49.519993, -3.1899996, 12.24)
-size = Vector3(14.0199995, 13.84, 29.3)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 48.02999, -3.1899996, 7.6399994)
+size = Vector3(17, 13.84, 38.5)
 material = SubResource("FogMaterial_62r4a")
 
 [node name="FogVolume2" type="FogVolume" parent="Environment2" unique_id=217882469]
@@ -343,9 +332,14 @@ size = Vector3(23.64, 6.12, 23.83)
 material = SubResource("FogMaterial_62r4a")
 
 [node name="FogVolume4" type="FogVolume" parent="Environment2" unique_id=787117981]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 58.394993, -2.0999992, -21.904997)
-size = Vector3(4.17, 13.259999, 23.83)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 57.479992, -2.0999992, -21.904997)
+size = Vector3(6, 13.259999, 23.83)
 material = SubResource("FogMaterial_62r4a")
+
+[node name="fogstatueroom" type="FogVolume" parent="Environment2" unique_id=1029832959]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 68.7, 2.4499998, -19.75)
+size = Vector3(15.2, 9.1, 21.5)
+material = SubResource("FogMaterial_oqsm6")
 
 [node name="FakeWall" type="MeshInstance3D" parent="Environment2" unique_id=850347915]
 transform = Transform3D(3.6822482e-07, -1.0000001, -1.3288262e-06, -8.424001, -4.3711395e-08, 0, -3.219123e-14, 8.742278e-08, -15.199998, 83.28999, -1.6800001, 3.35)
@@ -393,12 +387,12 @@ mesh = SubResource("PlaneMesh_jok38")
 skeleton = NodePath("../..")
 
 [node name="FakeWall15" type="MeshInstance3D" parent="Environment2" unique_id=419988202]
-transform = Transform3D(2.131628e-14, 4.470349e-08, -9.507325, -3.5380793, -4.37114e-08, 8.156455e-15, -1.5465439e-07, 0.9999999, 0, 69.53001, -6.1499996, -11.609999)
+transform = Transform3D(2.131628e-14, 4.470349e-08, -9.507325, -3.5380793, -4.37114e-08, 8.156455e-15, -1.5465439e-07, 0.9999999, 0, 69.53001, -21.849998, -11.609999)
 mesh = SubResource("PlaneMesh_jok38")
 skeleton = NodePath("../..")
 
 [node name="FakeWall16" type="MeshInstance3D" parent="Environment2" unique_id=247458222]
-transform = Transform3D(-7.795966e-15, -1.3212626e-07, 9.507325, -3.5380797, -4.37114e-08, 8.156455e-15, 1.5465434e-07, -0.9999999, -8.3115674e-07, 69.53001, -6.1499996, -11.609999)
+transform = Transform3D(-7.795966e-15, -1.3212626e-07, 9.507325, -3.5380797, -4.37114e-08, 8.156455e-15, 1.5465434e-07, -0.9999999, -8.3115674e-07, 69.53001, -15.849999, -11.609999)
 mesh = SubResource("PlaneMesh_jok38")
 skeleton = NodePath("../..")
 
@@ -553,6 +547,24 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, -12.444199)
 [node name="cairn rock5" parent="Setdressing/Rock_Piles" unique_id=1254346467 instance=ExtResource("26_f0xeo")]
 transform = Transform3D(0.13192756, 1.99339, -0.094825506, 0.044415765, 0.092075884, 1.9973853, 1.9951501, -0.13386104, -0.03819521, 1.3144962, 0.2239763, -12.933502)
 
+[node name="RockPile3" parent="Setdressing/Rock_Piles" unique_id=1635723744 instance=ExtResource("13_oqsm6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 55.550003, -2, -27.439999)
+
+[node name="RockPile4" parent="Setdressing/Rock_Piles" unique_id=955085642 instance=ExtResource("13_oqsm6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 55.350002, -2, -26.54)
+
+[node name="cairn rock19" parent="Setdressing/Rock_Piles" unique_id=441529078 instance=ExtResource("26_f0xeo")]
+transform = Transform3D(0.25881907, -0.9659258, 0, 0.9659258, 0.25881907, 0, 0, 0, 1, 58.75, -1.9, -25.14)
+
+[node name="cairn rock20" parent="Setdressing/Rock_Piles" unique_id=1270928334 instance=ExtResource("26_f0xeo")]
+transform = Transform3D(0.258819, 0.9659258, 0, -0.9659258, 0.258819, 0, 0, 0, 1, 89.15, -1.8, -5.54)
+
+[node name="cairn rock 15" parent="Setdressing/Rock_Piles" unique_id=2096655475 instance=ExtResource("28_2r4l7")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 89.35, -2, -4.4399996)
+
+[node name="cairnrock18" parent="Setdressing/Rock_Piles" unique_id=1263725129 instance=ExtResource("27_wg6q8")]
+transform = Transform3D(-0.25881904, 0.9659258, 0, -0.9659258, -0.25881904, 0, 0, 0, 1, 90.45, -1.7, -8.04)
+
 [node name="Rock4" parent="Setdressing/Rock_Piles" unique_id=1265249565 instance=ExtResource("25_f3rg8")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.48612738, -0.027900588, -17.344404)
 
@@ -567,6 +579,9 @@ transform = Transform3D(0.9276995, 0, -0.37332782, 0, 1, 0, 0.37332782, 0, 0.927
 
 [node name="cairnrock8" parent="Setdressing/Rock_Piles" unique_id=2004753364 instance=ExtResource("27_wg6q8")]
 transform = Transform3D(0.4959892, -0.8683287, 0, 0.8683287, 0.4959892, 0, 0, 0, 1, 7.685104, 0.27365032, -10.499889)
+
+[node name="cairn rock16" parent="Setdressing/Rock_Piles" unique_id=481350652 instance=ExtResource("26_f0xeo")]
+transform = Transform3D(-8.742278e-08, 2, 0, -0.51763815, -2.2626683e-08, 1.9318516, 1.9318516, 8.444392e-08, 0.51763815, 64.84999, -1.8, -18.34)
 
 [node name="cairn rock8" parent="Setdressing/Rock_Piles" unique_id=610999360 instance=ExtResource("26_f0xeo")]
 transform = Transform3D(1, 0, 0, 0, 0.2112395, -0.97743434, 0, 0.97743434, 0.2112395, 11.641879, 0.07439239, -13.774288)
@@ -658,6 +673,93 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 53.75, -2, -5.54)
 [node name="cairn rock 10" parent="Setdressing/Rock_Piles" unique_id=208819846 instance=ExtResource("28_2r4l7")]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 53.75, -2, -4.340001)
 
+[node name="cairnrock13" parent="Setdressing/Rock_Piles" unique_id=957715890 instance=ExtResource("27_wg6q8")]
+transform = Transform3D(1, 0, 0, 0, 0.25881907, 0.9659258, 0, -0.9659258, 0.25881907, 25.390001, -1.79, -10.159999)
+
+[node name="cairnrock14" parent="Setdressing/Rock_Piles" unique_id=1080783835 instance=ExtResource("27_wg6q8")]
+transform = Transform3D(0.35355335, 0.61237246, -0.70710677, -0.86602545, 0.49999997, 0, 0.35355335, 0.61237246, 0.70710677, 12.2178335, -1.8287199, -11.628522)
+
+[node name="cairn rock 11" parent="Setdressing/Rock_Piles" unique_id=136687232 instance=ExtResource("28_2r4l7")]
+transform = Transform3D(-0.7071068, 0, -0.7071067, 0, 1, 0, 0.7071067, 0, -0.7071068, 49.350002, -2, -2.54)
+
+[node name="cairnrock15" parent="Setdressing/Rock_Piles" unique_id=1195927648 instance=ExtResource("27_wg6q8")]
+transform = Transform3D(1, 0, 0, 0, 0.49999997, -0.86602545, 0, 0.86602545, 0.49999997, 48.350002, -1.9, -7.739999)
+
+[node name="cairn rock14" parent="Setdressing/Rock_Piles" unique_id=275755924 instance=ExtResource("26_f0xeo")]
+transform = Transform3D(1.1313709, -1.1313709, -4.9453796e-08, -3.3881318e-22, -6.9938224e-08, 1.6, -1.1313709, -1.1313709, -4.945379e-08, 44.65, -1.5646596, -7.1400003)
+
+[node name="cairnrock16" parent="Setdressing/Rock_Piles" unique_id=671776740 instance=ExtResource("27_wg6q8")]
+transform = Transform3D(0.70710677, 0, -0.70710677, 0, 1, 0, 0.70710677, 0, 0.70710677, 61.92231, -1.865, -0.71573544)
+
+[node name="Rock12" parent="Setdressing/Rock_Piles" unique_id=414012812 instance=ExtResource("25_f3rg8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 57.350002, -2, -22.439999)
+
+[node name="cairnrock17" parent="Setdressing/Rock_Piles" unique_id=340504022 instance=ExtResource("27_wg6q8")]
+transform = Transform3D(1, 0, 0, 0, 0.49999997, -0.86602545, 0, 0.86602545, 0.49999997, 60.550003, -1.8, -27.739998)
+
+[node name="cairn rock 12" parent="Setdressing/Rock_Piles" unique_id=1799873169 instance=ExtResource("28_2r4l7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 62.850002, -1.9, -1.6400003)
+
+[node name="RockPile2" parent="Setdressing/Rock_Piles" unique_id=1193921624 instance=ExtResource("13_oqsm6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 97.35, -2.1, -20.84)
+
+[node name="Rock10" parent="Setdressing/Rock_Piles" unique_id=798388815 instance=ExtResource("25_f3rg8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 62.350002, -1.9, -9.4400015)
+
+[node name="RockPile" parent="Setdressing/Rock_Piles" unique_id=876785143 instance=ExtResource("13_oqsm6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 79.450005, -2, -33.44)
+
+[node name="cairn rock17" parent="Setdressing/Rock_Piles" unique_id=1630445348 instance=ExtResource("26_f0xeo")]
+transform = Transform3D(0.49999997, -0.86602545, 0, 0.86602545, 0.49999997, 0, 0, 0, 1, 80.75, -1.9, -31.64)
+
+[node name="cairn rock 13" parent="Setdressing/Rock_Piles" unique_id=335979141 instance=ExtResource("28_2r4l7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 82.65, -2, -33.54)
+
+[node name="cairn rock 14" parent="Setdressing/Rock_Piles" unique_id=584499085 instance=ExtResource("28_2r4l7")]
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 82.65, -2, -32.34)
+
+[node name="cairn rock18" parent="Setdressing/Rock_Piles" unique_id=1238526675 instance=ExtResource("26_f0xeo")]
+transform = Transform3D(2.1213205, 2.1213205, 9.272587e-08, 0, -1.3113417e-07, 3.0000005, 2.1213205, -2.1213205, -9.272588e-08, 79.049995, -1.3, -22.04)
+
+[node name="cairn rock15" parent="Setdressing/Rock_Piles" unique_id=1008506737 instance=ExtResource("26_f0xeo")]
+transform = Transform3D(0.51763815, -1.9318516, 0, 1.9318516, 0.51763815, 0, 0, 0, 2, 62.15, -1.5999999, -9.339999)
+
+[node name="Rock11" parent="Setdressing/Rock_Piles" unique_id=924769590 instance=ExtResource("25_f3rg8")]
+transform = Transform3D(-4.371139e-08, 1, 0, -0.70710677, -3.090862e-08, -0.70710677, -0.70710677, -3.090862e-08, 0.70710677, 65.149994, -1.8, -17.140003)
+
+[node name="cairn rock 16" parent="Setdressing/Rock_Piles" unique_id=1812068170 instance=ExtResource("28_2r4l7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 95.65, -2, -3.54)
+
+[node name="cairnrock19" parent="Setdressing/Rock_Piles" unique_id=142818098 instance=ExtResource("27_wg6q8")]
+transform = Transform3D(1, 0, 0, 0, 0.25881907, 0.9659258, 0, -0.9659258, 0.25881907, 96.85, -1.9, -2.1400003)
+
+[node name="Rock13" parent="Setdressing/Rock_Piles" unique_id=434464316 instance=ExtResource("25_f3rg8")]
+transform = Transform3D(1, 0, 0, 0, -5.9604645e-08, 1, 0, -1, -5.9604645e-08, 94.15, -1.7, -2.04)
+
+[node name="RockPile5" parent="Setdressing/Rock_Piles" unique_id=1936747707 instance=ExtResource("13_oqsm6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 89.45, -2, -2.4399996)
+
+[node name="cairnrock20" parent="Setdressing/Rock_Piles" unique_id=2006827924 instance=ExtResource("27_wg6q8")]
+transform = Transform3D(1, 0, 0, 0, 0.25881907, 0.9659258, 0, -0.9659258, 0.25881907, 79.35, -1.8, -0.13999939)
+
+[node name="cairn rock 17" parent="Setdressing/Rock_Piles" unique_id=1255438917 instance=ExtResource("28_2r4l7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 78.25, -2, -1.54)
+
+[node name="cairnrock21" parent="Setdressing/Rock_Piles" unique_id=222004597 instance=ExtResource("27_wg6q8")]
+transform = Transform3D(0.49999997, -0.86602545, 0, 0.86602545, 0.49999997, 0, 0, 0, 1, 88.74999, -1.7, 16.960001)
+
+[node name="cairnrock22" parent="Setdressing/Rock_Piles" unique_id=265272630 instance=ExtResource("27_wg6q8")]
+transform = Transform3D(0.49999997, -0.86602545, 0, 0.86602545, 0.49999997, 0, 0, 0, 1, 88.74999, -1.7, 24.460003)
+
+[node name="cairn rock21" parent="Setdressing/Rock_Piles" unique_id=1248542298 instance=ExtResource("26_f0xeo")]
+transform = Transform3D(-4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 0, 1, 87.149994, -1.8, 20.16)
+
+[node name="cairnrock23" parent="Setdressing/Rock_Piles" unique_id=1770485449 instance=ExtResource("27_wg6q8")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 87.25, -2, 19.460001)
+
+[node name="cairn rock 18" parent="Setdressing/Rock_Piles" unique_id=316301093 instance=ExtResource("28_2r4l7")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 87.34999, -2, 35.66)
+
 [node name="Slabs" type="Node3D" parent="Setdressing" unique_id=1802085875]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.04, 0, -13.849999)
 
@@ -678,6 +780,18 @@ transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 28.5
 
 [node name="StoneSlab6" parent="Setdressing/Slabs" unique_id=1277477977 instance=ExtResource("30_icas2")]
 transform = Transform3D(1.3113416e-07, 0, -1, 0, 1, 0, 1, 0, 1.3113416e-07, 31.360775, -2, -8.139998)
+
+[node name="StoneSlab7" parent="Setdressing/Slabs" unique_id=271732180 instance=ExtResource("30_icas2")]
+transform = Transform3D(1.6, 0, 0, 0, 3.1248002, 0, 0, 0, 1, 63.760002, -1.9, -7.1500006)
+
+[node name="StoneSlab8" parent="Setdressing/Slabs" unique_id=1276647669 instance=ExtResource("30_icas2")]
+transform = Transform3D(-6.993822e-08, 0, -0.99999994, 0, 3.1248, 0, 1.5999999, 0, -4.3711385e-08, 62.66, -1.9, -8.55)
+
+[node name="StoneSlab9" parent="Setdressing/Slabs" unique_id=1102636212 instance=ExtResource("30_icas2")]
+transform = Transform3D(-6.993822e-08, 0, -0.99999994, 0, 3.1248, 0, 1.5999999, 0, -4.3711385e-08, 62.66, -1.9, -2.1499996)
+
+[node name="StoneSlab10" parent="Setdressing/Slabs" unique_id=349423518 instance=ExtResource("30_icas2")]
+transform = Transform3D(-1.5999999, 0, 8.742277e-08, 0, 3.1248, 0, -1.3987643e-07, 0, -0.99999994, 63.760002, -1.9, -3.5500002)
 
 [node name="Pillars" type="Node3D" parent="Setdressing" unique_id=1937853528]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, -14.04)
@@ -766,6 +880,24 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 33.90176, -2, -4.1290674)
 [node name="cairnPillar27" parent="Setdressing/Pillars" unique_id=1464522791 instance=ExtResource("30_u1stw")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 33.863205, -2, -5.838435)
 
+[node name="cairnPillar61" parent="Setdressing/Pillars" unique_id=607460616 instance=ExtResource("30_u1stw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 65.11732, -1.9955702, -22.04601)
+
+[node name="cairnPillar63" parent="Setdressing/Pillars" unique_id=1127575634 instance=ExtResource("30_u1stw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 63.083443, -1.9955702, -23.846008)
+
+[node name="cairnPillar64" parent="Setdressing/Pillars" unique_id=2130974528 instance=ExtResource("30_u1stw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 58.922108, -1.9955702, -23.846008)
+
+[node name="cairnPillar65" parent="Setdressing/Pillars" unique_id=693167275 instance=ExtResource("30_u1stw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 58.889057, -1.9955702, -26.04601)
+
+[node name="cairnPillar66" parent="Setdressing/Pillars" unique_id=398510079 instance=ExtResource("30_u1stw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 57.106174, -1.9955702, -26.086636)
+
+[node name="cairnPillar62" parent="Setdressing/Pillars" unique_id=1995055590 instance=ExtResource("30_u1stw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 66.842964, -1.9955702, -22.04601)
+
 [node name="pillardamaged3" parent="Setdressing/Pillars" unique_id=549549215 instance=ExtResource("29_b3lts")]
 transform = Transform3D(-0.8660254, 0, -0.50000006, 0, 1, 0, 0.50000006, 0, -0.8660254, 32, -2, -7)
 
@@ -801,6 +933,42 @@ transform = Transform3D(1.3113416e-07, 0, -1, 0, 1, 0, 1, 0, 1.3113416e-07, 24.3
 
 [node name="cairnPillar38" parent="Setdressing/Pillars" unique_id=642713797 instance=ExtResource("30_u1stw")]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 20.593332, -2.03, -11.600005)
+
+[node name="pillardamaged24" parent="Setdressing/Pillars" unique_id=692574680 instance=ExtResource("29_b3lts")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 86.39, -2.04, -8.300002)
+
+[node name="pillardamaged25" parent="Setdressing/Pillars" unique_id=1298889539 instance=ExtResource("29_b3lts")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 83.65, -2.04, -8.300002)
+
+[node name="cairnPillar103" parent="Setdressing/Pillars" unique_id=576134680 instance=ExtResource("30_u1stw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 85.1, -2.03, -8.300002)
+
+[node name="pillardamaged26" parent="Setdressing/Pillars" unique_id=2027388847 instance=ExtResource("29_b3lts")]
+transform = Transform3D(1.3113416e-07, 0, -1, 0, 1, 0, 1, 0, 1.3113416e-07, 83.70333, -2.04, -9.600003)
+
+[node name="pillardamaged27" parent="Setdressing/Pillars" unique_id=1039114872 instance=ExtResource("29_b3lts")]
+transform = Transform3D(1.3113416e-07, 0, -1, 0, 1, 0, 1, 0, 1.3113416e-07, 86.44333, -2.04, -9.600003)
+
+[node name="cairnPillar104" parent="Setdressing/Pillars" unique_id=458936676 instance=ExtResource("30_u1stw")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 84.99333, -2.03, -9.600003)
+
+[node name="pillardamaged28" parent="Setdressing/Pillars" unique_id=57562441 instance=ExtResource("29_b3lts")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 81.99, -2.04, -8.300002)
+
+[node name="pillardamaged29" parent="Setdressing/Pillars" unique_id=1102108118 instance=ExtResource("29_b3lts")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 79.25, -2.04, -8.300002)
+
+[node name="cairnPillar105" parent="Setdressing/Pillars" unique_id=1259199125 instance=ExtResource("30_u1stw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 80.7, -2.03, -8.300002)
+
+[node name="pillardamaged30" parent="Setdressing/Pillars" unique_id=1219241597 instance=ExtResource("29_b3lts")]
+transform = Transform3D(1.3113416e-07, 0, -1, 0, 1, 0, 1, 0, 1.3113416e-07, 79.30333, -2.04, -9.600003)
+
+[node name="pillardamaged31" parent="Setdressing/Pillars" unique_id=1629790828 instance=ExtResource("29_b3lts")]
+transform = Transform3D(1.3113416e-07, 0, -1, 0, 1, 0, 1, 0, 1.3113416e-07, 82.04333, -2.04, -9.600003)
+
+[node name="cairnPillar106" parent="Setdressing/Pillars" unique_id=821507792 instance=ExtResource("30_u1stw")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 80.59333, -2.03, -9.600003)
 
 [node name="pillardamaged10" parent="Setdressing/Pillars" unique_id=1555029482 instance=ExtResource("29_b3lts")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 17.090002, -2.04, -10.3)
@@ -892,6 +1060,291 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 41.999996, -2, -5.660001)
 [node name="cairnPillar41" parent="Setdressing/Pillars" unique_id=1231322469 instance=ExtResource("30_u1stw")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.900001, -2, -5.8599997)
 
+[node name="cairnPillar54" parent="Setdressing/Pillars" unique_id=815950503 instance=ExtResource("30_u1stw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.059998, 0, -14.12)
+
+[node name="cairnPillar55" parent="Setdressing/Pillars" unique_id=1386373259 instance=ExtResource("30_u1stw")]
+transform = Transform3D(4, 0, 0, 0, 4.4, 0, 0, 0, 4, 63.799995, -2.1, -8.06)
+
+[node name="cairnPillar57" parent="Setdressing/Pillars" unique_id=2091533631 instance=ExtResource("30_u1stw")]
+transform = Transform3D(4, 0, 0, 0, 6.4063997, 0, 0, 0, 4, 69.299995, -5.8000007, -6.46)
+
+[node name="cairnPillar58" parent="Setdressing/Pillars" unique_id=1828630593 instance=ExtResource("30_u1stw")]
+transform = Transform3D(4, 0, 0, 0, 6.4063997, 0, 0, 0, 4, 69.299995, -5.8000007, -3.7600012)
+
+[node name="cairnPillar59" parent="Setdressing/Pillars" unique_id=612411874 instance=ExtResource("30_u1stw")]
+transform = Transform3D(4, 0, 0, 0, 6.4063997, 0, 0, 0, 4, 72.1, -5.8000007, -6.46)
+
+[node name="cairnPillar60" parent="Setdressing/Pillars" unique_id=250335256 instance=ExtResource("30_u1stw")]
+transform = Transform3D(4, 0, 0, 0, 6.4063997, 0, 0, 0, 4, 72.1, -5.8000007, -3.7600012)
+
+[node name="cairnPillar56" parent="Setdressing/Pillars" unique_id=223459049 instance=ExtResource("30_u1stw")]
+transform = Transform3D(4, 0, 0, 0, 4.4, 0, 0, 0, 4, 63.799995, -2.1, -2.2600012)
+
+[node name="cairnPillar67" parent="Setdressing/Pillars" unique_id=2085057777 instance=ExtResource("30_u1stw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 63.100006, -2, -26.059998)
+
+[node name="cairnPillar68" parent="Setdressing/Pillars" unique_id=143182490 instance=ExtResource("30_u1stw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 68.90001, -2, -26.059998)
+
+[node name="cairnPillar69" parent="Setdressing/Pillars" unique_id=1445821154 instance=ExtResource("30_u1stw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 71.10001, -2, -26.059998)
+
+[node name="cairnPillar70" parent="Setdressing/Pillars" unique_id=1003717162 instance=ExtResource("30_u1stw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 71.10001, -2, -27.859997)
+
+[node name="cairnPillar71" parent="Setdressing/Pillars" unique_id=2117405706 instance=ExtResource("30_u1stw")]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 71.10001, 1.4901161e-08, -27.859997)
+
+[node name="cairnPillar72" parent="Setdressing/Pillars" unique_id=1527325686 instance=ExtResource("30_u1stw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 76.90001, -2, -26.059998)
+
+[node name="cairnPillar73" parent="Setdressing/Pillars" unique_id=412451167 instance=ExtResource("30_u1stw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 76.90001, -2, -27.859997)
+
+[node name="cairnPillar74" parent="Setdressing/Pillars" unique_id=172654179 instance=ExtResource("30_u1stw")]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 76.90001, 1.4901161e-08, -27.859997)
+
+[node name="cairnPillar75" parent="Setdressing/Pillars" unique_id=614354002 instance=ExtResource("30_u1stw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 79.1, -2, -27.860004)
+
+[node name="cairnPillar76" parent="Setdressing/Pillars" unique_id=1476951816 instance=ExtResource("30_u1stw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 79.1, -2, -26.060005)
+
+[node name="pillardamaged18" parent="Setdressing/Pillars" unique_id=464073970 instance=ExtResource("29_b3lts")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 66.30001, -1.9, -6.160001)
+
+[node name="pillardamaged19" parent="Setdressing/Pillars" unique_id=315035842 instance=ExtResource("29_b3lts")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 66.30001, -1.9, -4.260001)
+
+[node name="cairnPillar77" parent="Setdressing/Pillars" unique_id=900688069 instance=ExtResource("30_u1stw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 80.9, -2, -32.06)
+
+[node name="cairnPillar78" parent="Setdressing/Pillars" unique_id=222233035 instance=ExtResource("30_u1stw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 85.1, -2, -32.06)
+
+[node name="cairnPillar79" parent="Setdressing/Pillars" unique_id=1751285040 instance=ExtResource("30_u1stw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 85.1, -2, -33.86)
+
+[node name="cairnPillar82" parent="Setdressing/Pillars" unique_id=1471311238 instance=ExtResource("30_u1stw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 80.9, -2, -23.86)
+
+[node name="cairnPillar80" parent="Setdressing/Pillars" unique_id=1831709984 instance=ExtResource("30_u1stw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 94.9, -2, -33.86)
+
+[node name="cairnPillar81" parent="Setdressing/Pillars" unique_id=313126973 instance=ExtResource("30_u1stw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 94.9, -2, -32.06)
+
+[node name="cairnPillar83" parent="Setdressing/Pillars" unique_id=1091256151 instance=ExtResource("30_u1stw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 97.1, -2, -22.060001)
+
+[node name="cairnPillar85" parent="Setdressing/Pillars" unique_id=1212641330 instance=ExtResource("30_u1stw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 83, -2, -23.66)
+
+[node name="cairnPillar86" parent="Setdressing/Pillars" unique_id=1827205060 instance=ExtResource("30_u1stw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 83, -2, -22.259998)
+
+[node name="cairnPillar87" parent="Setdressing/Pillars" unique_id=969609310 instance=ExtResource("30_u1stw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 85, -2, -23.66)
+
+[node name="cairnPillar88" parent="Setdressing/Pillars" unique_id=1006373896 instance=ExtResource("30_u1stw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 85, -2, -22.259998)
+
+[node name="cairnPillar89" parent="Setdressing/Pillars" unique_id=339770949 instance=ExtResource("30_u1stw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 87, -2, -23.66)
+
+[node name="cairnPillar90" parent="Setdressing/Pillars" unique_id=338852365 instance=ExtResource("30_u1stw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 87, -2, -22.259998)
+
+[node name="cairnPillar91" parent="Setdressing/Pillars" unique_id=1292775623 instance=ExtResource("30_u1stw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 89, -2, -23.66)
+
+[node name="cairnPillar92" parent="Setdressing/Pillars" unique_id=1399577855 instance=ExtResource("30_u1stw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 89, -2, -22.259998)
+
+[node name="cairnPillar93" parent="Setdressing/Pillars" unique_id=1988752782 instance=ExtResource("30_u1stw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 91, -2, -23.66)
+
+[node name="cairnPillar94" parent="Setdressing/Pillars" unique_id=1315824503 instance=ExtResource("30_u1stw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 91, -2, -22.259998)
+
+[node name="cairnPillar95" parent="Setdressing/Pillars" unique_id=149549895 instance=ExtResource("30_u1stw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 93, -2, -23.66)
+
+[node name="cairnPillar96" parent="Setdressing/Pillars" unique_id=79594099 instance=ExtResource("30_u1stw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 93, -2, -22.259998)
+
+[node name="cairnPillar97" parent="Setdressing/Pillars" unique_id=1683210615 instance=ExtResource("30_u1stw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 95, -2, -23.66)
+
+[node name="cairnPillar98" parent="Setdressing/Pillars" unique_id=1070394540 instance=ExtResource("30_u1stw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 95, -2, -22.259998)
+
+[node name="cairnPillar99" parent="Setdressing/Pillars" unique_id=1941642397 instance=ExtResource("30_u1stw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 98.9, -2, -3.8599997)
+
+[node name="cairnPillar84" parent="Setdressing/Pillars" unique_id=998340373 instance=ExtResource("30_u1stw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 98.9, -2, -22.060001)
+
+[node name="cairnPillar100" parent="Setdressing/Pillars" unique_id=1020340487 instance=ExtResource("30_u1stw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 97.1, -2, -3.8599997)
+
+[node name="cairnPillar101" parent="Setdressing/Pillars" unique_id=1420934249 instance=ExtResource("30_u1stw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 90.9, -2, -3.8599997)
+
+[node name="cairnPillar102" parent="Setdressing/Pillars" unique_id=1667524752 instance=ExtResource("30_u1stw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 89.1, -2, -8.06)
+
+[node name="pillardamaged20" parent="Setdressing/Pillars" unique_id=1366466194 instance=ExtResource("29_b3lts")]
+transform = Transform3D(-4.371139e-08, 0, 1, -0.25881904, 0.9659258, -1.131334e-08, -0.9659258, -0.25881904, -4.222196e-08, 95, -2, -2.1600027)
+
+[node name="pillardamaged21" parent="Setdressing/Pillars" unique_id=881289657 instance=ExtResource("29_b3lts")]
+transform = Transform3D(-4.371139e-08, 0, 1, -0.25881904, 0.9659258, -1.131334e-08, -0.9659258, -0.25881904, -4.222196e-08, 93, -2, -2.1600027)
+
+[node name="pillardamaged22" parent="Setdressing/Pillars" unique_id=327272371 instance=ExtResource("29_b3lts")]
+transform = Transform3D(1.281553e-07, 2.2626681e-08, -1, -0.25881907, 0.96592593, -1.13133405e-08, 0.96592593, 0.25881907, 1.2964475e-07, 93, -2, -3.760003)
+
+[node name="pillardamaged23" parent="Setdressing/Pillars" unique_id=221818622 instance=ExtResource("29_b3lts")]
+transform = Transform3D(1.281553e-07, 2.2626681e-08, -1, -0.25881907, 0.96592593, -1.13133405e-08, 0.96592593, 0.25881907, 1.2964475e-07, 95, -2, -3.760003)
+
+[node name="cairnPillar107" parent="Setdressing/Pillars" unique_id=690175660 instance=ExtResource("30_u1stw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 85.1, -2, -0.06000042)
+
+[node name="cairnPillar108" parent="Setdressing/Pillars" unique_id=740291996 instance=ExtResource("30_u1stw")]
+transform = Transform3D(-4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0, 1.4452969, 88.9, -2.078309, 2.1228027)
+
+[node name="cairnPillar109" parent="Setdressing/Pillars" unique_id=108728975 instance=ExtResource("30_u1stw")]
+transform = Transform3D(1.9106855e-15, 4.371139e-08, -1.4452969, 1, -4.371139e-08, 0, -4.371139e-08, -1, -6.317593e-08, 88.9, -2.078309, 4.0228033)
+
+[node name="cairnPillar110" parent="Setdressing/Pillars" unique_id=132799456 instance=ExtResource("30_u1stw")]
+transform = Transform3D(1.9106855e-15, 4.371139e-08, -1.4452969, 1, -4.371139e-08, 0, -4.371139e-08, -1, -6.317593e-08, 91, -2.078309, 10.022802)
+
+[node name="cairnPillar111" parent="Setdressing/Pillars" unique_id=1877572233 instance=ExtResource("30_u1stw")]
+transform = Transform3D(4.371139e-08, 1, 1.2635186e-07, 1, -4.371139e-08, 3.060535e-22, 3.8213714e-15, 8.742278e-08, -1.4452969, 87.1, -2.078309, 12.022802)
+
+[node name="cairnPillar112" parent="Setdressing/Pillars" unique_id=676726594 instance=ExtResource("30_u1stw")]
+transform = Transform3D(-5.732057e-15, -1.3113416e-07, 1.4452969, 1, -4.371139e-08, 6.12107e-22, 4.371139e-08, 1, 1.895278e-07, 93.1, -2.078309, 22.122803)
+
+[node name="cairnPillar113" parent="Setdressing/Pillars" unique_id=602683835 instance=ExtResource("30_u1stw")]
+transform = Transform3D(-5.732057e-15, -1.3113416e-07, 1.4452969, 1, -4.371139e-08, 6.12107e-22, 4.371139e-08, 1, 1.895278e-07, 102.99999, -2.078309, 22.122803)
+
+[node name="cairnPillar114" parent="Setdressing/Pillars" unique_id=522624433 instance=ExtResource("30_u1stw")]
+transform = Transform3D(-4.3711385e-08, -0.9999999, -1.4901161e-07, 1, -4.371139e-08, -2.0194837e-28, -5.3290705e-15, -1.3411045e-07, 1.4452968, 98.899994, -2.078309, 18.022802)
+
+[node name="cairnPillar115" parent="Setdressing/Pillars" unique_id=1110017856 instance=ExtResource("30_u1stw")]
+transform = Transform3D(-4.3711385e-08, -0.9999999, -1.4901161e-07, 1, -4.371139e-08, -2.0194837e-28, -5.3290705e-15, -1.3411045e-07, 1.4452968, 98.899994, -2.078309, 28.022802)
+
+[node name="cairnPillar116" parent="Setdressing/Pillars" unique_id=566084364 instance=ExtResource("30_u1stw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 88.9, -2, 22.14)
+
+[node name="cairnPillar117" parent="Setdressing/Pillars" unique_id=1574673049 instance=ExtResource("30_u1stw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 88.9, -2, 23.94)
+
+[node name="cairnPillar118" parent="Setdressing/Pillars" unique_id=2127902179 instance=ExtResource("30_u1stw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 107.1, -2, 23.94)
+
+[node name="cairnPillar119" parent="Setdressing/Pillars" unique_id=581505684 instance=ExtResource("30_u1stw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 107.1, -2, 32.14)
+
+[node name="cairnPillar120" parent="Setdressing/Pillars" unique_id=1457255058 instance=ExtResource("30_u1stw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 88.9, -2, 33.94)
+
+[node name="cairnPillar121" parent="Setdressing/Pillars" unique_id=936850459 instance=ExtResource("30_u1stw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 88.9, -2, 38.14)
+
+[node name="cairnPillar122" parent="Setdressing/Pillars" unique_id=1720530133 instance=ExtResource("30_u1stw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 87.1, -2, 38.14)
+
+[node name="cairnPillar125" parent="Setdressing/Pillars" unique_id=294817972 instance=ExtResource("30_u1stw")]
+transform = Transform3D(2.5, 0, 0, 0, 2.5, 0, 0, 0, 2.5, 107.100006, -2, 28.04)
+
+[node name="cairnPillar126" parent="Setdressing/Pillars" unique_id=955772460 instance=ExtResource("30_u1stw")]
+transform = Transform3D(2.5, 0, 0, 0, 2.5, 0, 0, 0, 2.5, 108.8, -2, 28.04)
+
+[node name="cairnPillar127" parent="Setdressing/Pillars" unique_id=1510362012 instance=ExtResource("30_u1stw")]
+transform = Transform3D(2.5, 0, 0, 0, 2.5, 0, 0, 0, 2.5, 107.100006, -2, 30.04)
+
+[node name="cairnPillar128" parent="Setdressing/Pillars" unique_id=1692545208 instance=ExtResource("30_u1stw")]
+transform = Transform3D(2.5, 0, 0, 0, 2.5, 0, 0, 0, 2.5, 108.8, -2, 30.04)
+
+[node name="cairnPillar129" parent="Setdressing/Pillars" unique_id=114679188 instance=ExtResource("30_u1stw")]
+transform = Transform3D(2.5, 0, 0, 0, 2.5, 0, 0, 0, 2.5, 107.100006, -2, 32.04)
+
+[node name="cairnPillar130" parent="Setdressing/Pillars" unique_id=1924129117 instance=ExtResource("30_u1stw")]
+transform = Transform3D(2.5, 0, 0, 0, 2.5, 0, 0, 0, 2.5, 108.8, -2, 32.04)
+
+[node name="cairnPillar131" parent="Setdressing/Pillars" unique_id=892323160 instance=ExtResource("30_u1stw")]
+transform = Transform3D(2.5, 0, 0, 0, 2.5, 0, 0, 0, 2.5, 107.100006, -2, 24.04)
+
+[node name="cairnPillar132" parent="Setdressing/Pillars" unique_id=1327510443 instance=ExtResource("30_u1stw")]
+transform = Transform3D(2.5, 0, 0, 0, 2.5, 0, 0, 0, 2.5, 108.8, -2, 24.04)
+
+[node name="cairnPillar133" parent="Setdressing/Pillars" unique_id=539130209 instance=ExtResource("30_u1stw")]
+transform = Transform3D(2.5, 0, 0, 0, 2.5, 0, 0, 0, 2.5, 107.100006, -2, 26.04)
+
+[node name="cairnPillar134" parent="Setdressing/Pillars" unique_id=1940199000 instance=ExtResource("30_u1stw")]
+transform = Transform3D(2.5, 0, 0, 0, 2.5, 0, 0, 0, 2.5, 108.8, -2, 26.04)
+
+[node name="cairnPillar135" parent="Setdressing/Pillars" unique_id=786162697 instance=ExtResource("30_u1stw")]
+transform = Transform3D(-1.09278474e-07, 0, -2.5, 0, 2.5, 0, 2.5, 0, -1.09278474e-07, 102.55001, -2, 32.18999)
+
+[node name="cairnPillar136" parent="Setdressing/Pillars" unique_id=310302560 instance=ExtResource("30_u1stw")]
+transform = Transform3D(-1.09278474e-07, 0, -2.5, 0, 2.5, 0, 2.5, 0, -1.09278474e-07, 102.55001, -2, 33.889988)
+
+[node name="cairnPillar137" parent="Setdressing/Pillars" unique_id=187952103 instance=ExtResource("30_u1stw")]
+transform = Transform3D(-1.09278474e-07, 0, -2.5, 0, 2.5, 0, 2.5, 0, -1.09278474e-07, 100.55001, -2, 32.18999)
+
+[node name="cairnPillar138" parent="Setdressing/Pillars" unique_id=1183693056 instance=ExtResource("30_u1stw")]
+transform = Transform3D(-1.09278474e-07, 0, -2.5, 0, 2.5, 0, 2.5, 0, -1.09278474e-07, 100.55001, -2, 33.889988)
+
+[node name="cairnPillar139" parent="Setdressing/Pillars" unique_id=161498590 instance=ExtResource("30_u1stw")]
+transform = Transform3D(-1.09278474e-07, 0, -2.5, 0, 2.5, 0, 2.5, 0, -1.09278474e-07, 98.55001, -2, 32.18999)
+
+[node name="cairnPillar140" parent="Setdressing/Pillars" unique_id=1620558586 instance=ExtResource("30_u1stw")]
+transform = Transform3D(-1.09278474e-07, 0, -2.5, 0, 2.5, 0, 2.5, 0, -1.09278474e-07, 98.55001, -2, 33.889988)
+
+[node name="cairnPillar141" parent="Setdressing/Pillars" unique_id=1886535395 instance=ExtResource("30_u1stw")]
+transform = Transform3D(-1.09278474e-07, 0, -2.5, 0, 2.5, 0, 2.5, 0, -1.09278474e-07, 106.55001, -2, 32.18999)
+
+[node name="cairnPillar142" parent="Setdressing/Pillars" unique_id=796399406 instance=ExtResource("30_u1stw")]
+transform = Transform3D(-1.09278474e-07, 0, -2.5, 0, 2.5, 0, 2.5, 0, -1.09278474e-07, 106.55001, -2, 33.889988)
+
+[node name="cairnPillar143" parent="Setdressing/Pillars" unique_id=527042395 instance=ExtResource("30_u1stw")]
+transform = Transform3D(-1.09278474e-07, 0, -2.5, 0, 2.5, 0, 2.5, 0, -1.09278474e-07, 104.55001, -2, 32.18999)
+
+[node name="cairnPillar144" parent="Setdressing/Pillars" unique_id=2124840559 instance=ExtResource("30_u1stw")]
+transform = Transform3D(-1.09278474e-07, 0, -2.5, 0, 2.5, 0, 2.5, 0, -1.09278474e-07, 104.55001, -2, 33.889988)
+
+[node name="cairnPillar145" parent="Setdressing/Pillars" unique_id=96109001 instance=ExtResource("30_u1stw")]
+transform = Transform3D(-1.09278474e-07, 0, -2.5, 0, 2.5, 0, 2.5, 0, -1.09278474e-07, 91.05001, -2, 32.18999)
+
+[node name="cairnPillar146" parent="Setdressing/Pillars" unique_id=1030027938 instance=ExtResource("30_u1stw")]
+transform = Transform3D(-1.09278474e-07, 0, -2.5, 0, 2.5, 0, 2.5, 0, -1.09278474e-07, 91.05001, -2, 33.889988)
+
+[node name="cairnPillar147" parent="Setdressing/Pillars" unique_id=189433494 instance=ExtResource("30_u1stw")]
+transform = Transform3D(-1.09278474e-07, 0, -2.5, 0, 2.5, 0, 2.5, 0, -1.09278474e-07, 89.05001, -2, 32.18999)
+
+[node name="cairnPillar148" parent="Setdressing/Pillars" unique_id=1719907199 instance=ExtResource("30_u1stw")]
+transform = Transform3D(-1.09278474e-07, 0, -2.5, 0, 2.5, 0, 2.5, 0, -1.09278474e-07, 89.05001, -2, 33.889988)
+
+[node name="cairnPillar151" parent="Setdressing/Pillars" unique_id=485334675 instance=ExtResource("30_u1stw")]
+transform = Transform3D(-1.09278474e-07, 0, -2.5, 0, 2.5, 0, 2.5, 0, -1.09278474e-07, 95.05001, -2, 32.18999)
+
+[node name="cairnPillar152" parent="Setdressing/Pillars" unique_id=1250548937 instance=ExtResource("30_u1stw")]
+transform = Transform3D(-1.09278474e-07, 0, -2.5, 0, 2.5, 0, 2.5, 0, -1.09278474e-07, 95.05001, -2, 33.889988)
+
+[node name="cairnPillar153" parent="Setdressing/Pillars" unique_id=451220549 instance=ExtResource("30_u1stw")]
+transform = Transform3D(-1.09278474e-07, 0, -2.5, 0, 2.5, 0, 2.5, 0, -1.09278474e-07, 93.05001, -2, 32.18999)
+
+[node name="cairnPillar154" parent="Setdressing/Pillars" unique_id=1090494606 instance=ExtResource("30_u1stw")]
+transform = Transform3D(-1.09278474e-07, 0, -2.5, 0, 2.5, 0, 2.5, 0, -1.09278474e-07, 93.05001, -2, 33.889988)
+
+[node name="cairnPillar123" parent="Setdressing/Pillars" unique_id=297856831 instance=ExtResource("30_u1stw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 80.9, -2, 39.94)
+
+[node name="cairnPillar124" parent="Setdressing/Pillars" unique_id=1640085224 instance=ExtResource("30_u1stw")]
+transform = Transform3D(-4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0, 1, 80.9, -2.0681593, 40.027096)
+
 [node name="extras" type="Node3D" parent="Setdressing" unique_id=1834793791]
 
 [node name="cairn_gate_setdressing" parent="Setdressing/extras" unique_id=1489346058 instance=ExtResource("32_hpkss")]
@@ -902,6 +1355,24 @@ transform = Transform3D(-4.265818e-08, 0.21819437, 0.9759054, 9.537577e-09, 0.97
 
 [node name="cairn_gate_setdressing3" parent="Setdressing/extras" unique_id=8649189 instance=ExtResource("32_hpkss")]
 transform = Transform3D(1, 0, 0, 0, 0.9659258, -0.25881904, 0, 0.25881904, 0.9659258, 28, -2, -16.5)
+
+[node name="TorchSconce_Lit" parent="Setdressing/extras" unique_id=694541195 instance=ExtResource("11_54i5u")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 67.100006, -1.7, -20.215538)
+
+[node name="TorchSconce_Lit2" parent="Setdressing/extras" unique_id=705458332 instance=ExtResource("11_54i5u")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 67.100006, -1.7, -18.315615)
+
+[node name="Skull" parent="Setdressing/extras" unique_id=1689684370 instance=ExtResource("33_hpkss")]
+transform = Transform3D(-1.049901e-08, 0.088572435, -0.24018936, 3.871624e-09, 0.24018936, 0.088572435, 0.256, 0, -1.11901155e-08, 67.110535, -1.3604057, -20.199303)
+
+[node name="Skull2" parent="Setdressing/extras" unique_id=371699958 instance=ExtResource("33_hpkss")]
+transform = Transform3D(-1.049901e-08, 0.088572435, -0.24018936, 3.871624e-09, 0.24018936, 0.088572435, 0.256, 0, -1.11901155e-08, 67.110535, -1.3604057, -18.300837)
+
+[node name="cairn_gate_setdressing4" parent="Setdressing/extras" unique_id=1218894992 instance=ExtResource("32_hpkss")]
+transform = Transform3D(-4.3476376e-08, 0.103556395, -0.99462366, 4.5265924e-09, 0.99462366, 0.103556395, 1, -4.879822e-16, -4.371139e-08, 67.55692, -2, -35.42155)
+
+[node name="cairn_gate_setdressing5" parent="Setdressing/extras" unique_id=1514341136 instance=ExtResource("32_hpkss")]
+transform = Transform3D(1, 0, 0, 0, 0.9659258, 0.25881904, 0, -0.25881904, 0.9659258, 84.6, -2, 24.699997)
 
 [connection signal="on_activated" from="Different_Sections/Inbetween_Sections/BallyBog_Area_Button" to="Different_Sections/Inbetween_Sections/BallyBog_Area_Gate" method="open_gate"]
 [connection signal="area_entered" from="Ender/Area3D" to="Ender" method="_on_area_3d_area_entered"]
