@@ -41,6 +41,7 @@
 [ext_resource type="PackedScene" uid="uid://b5g00fexnuwte" path="res://scenes/interactions/_special/the_observer/the_observer.tscn" id="39_x42l1"]
 [ext_resource type="Material" uid="uid://ioo51vym3k1d" path="res://scenes/interactions/_triggers/teleporter/m_teleport.tres" id="40_rv6yw"]
 [ext_resource type="Script" uid="uid://cpodi2t5yl3ks" path="res://scenes/_levels/Final_Puzzles/BallyBog_Puzzles/progress_bar_helper.gd" id="41_lckpc"]
+[ext_resource type="PackedScene" uid="uid://dhb1ju03ckwh4" path="res://scenes/interactions/_receivers/enabler_disabler_v1/collision_enabler_disabler.tscn" id="41_r1ap5"]
 
 [sub_resource type="Gradient" id="Gradient_ouj5r"]
 interpolation_mode = 2
@@ -211,6 +212,9 @@ size = Vector3(1.5, 2, 2)
 [sub_resource type="BoxMesh" id="BoxMesh_r1ap5"]
 material = ExtResource("40_rv6yw")
 size = Vector3(0.8, 2, 2)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_rv6yw"]
+size = Vector3(0.1, 1.9, 1.6)
 
 [sub_resource type="Gradient" id="Gradient_x42l1"]
 interpolation_mode = 2
@@ -733,6 +737,7 @@ metadata/date_generated = "2026-04-21T17:42:52"
 [node name="Gate" parent="_env/Gate_Entrance" unique_id=1514093504 instance=ExtResource("10_4mvj5")]
 transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, -1, 1, 2)
 disable_tp = false
+speed = 0.1
 start_open = true
 metadata/uid = "7726eb90-fbba-4551-89cf-6a3bb287e01a"
 metadata/lock_uid = true
@@ -743,6 +748,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 2, 1)
 trig_once = true
 
 [node name="Area3D" type="Area3D" parent="_env/Gate_Entrance/GateEntrace_Trigger" unique_id=968616497]
+collision_layer = 0
 monitorable = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="_env/Gate_Entrance/GateEntrace_Trigger/Area3D" unique_id=1900451313]
@@ -915,6 +921,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 2, 3)
 trig_once = true
 
 [node name="Area3D" type="Area3D" parent="BallyBog_Trigger" unique_id=1370552303]
+collision_layer = 0
 monitorable = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="BallyBog_Trigger/Area3D" unique_id=1364307751]
@@ -1026,6 +1033,19 @@ shape = SubResource("BoxShape3D_lckpc")
 visible = false
 mesh = SubResource("BoxMesh_r1ap5")
 
+[node name="StaticBody3D" type="StaticBody3D" parent="ItemNoPassZone" unique_id=1330353137]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1)
+collision_mask = 3
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ItemNoPassZone/StaticBody3D" unique_id=1512433605]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.1206244, -0.35000014, -0.3)
+shape = SubResource("BoxShape3D_rv6yw")
+disabled = true
+debug_color = Color(0, 0.6448386, 0.27909693, 0.41960785)
+
+[node name="CollisionEnabler_Disabler" parent="ItemNoPassZone/StaticBody3D" unique_id=768060295 node_paths=PackedStringArray("col") instance=ExtResource("41_r1ap5")]
+col = NodePath("../CollisionShape3D")
+
 [node name="SubViewport" type="SubViewport" parent="." unique_id=1107766681]
 disable_3d = true
 transparent_bg = true
@@ -1119,4 +1139,6 @@ linked_nodes = [NodePath("..")]
 [connection signal="area_entered" from="BallyBog_Trigger/Area3D" to="BallyBog_Trigger" method="_player_entered"]
 [connection signal="area_exited" from="BallyBog_Trigger/Area3D" to="BallyBog_Trigger" method="_player_exited"]
 [connection signal="on_enter_lockdown" from="ItemNoPassZone" to="_env/Gate_Entrance/Gate" method="close_gate"]
+[connection signal="on_enter_lockdown" from="ItemNoPassZone" to="ItemNoPassZone/StaticBody3D/CollisionEnabler_Disabler" method="enable_obj"]
 [connection signal="on_exit_lockdown" from="ItemNoPassZone" to="_env/Gate_Entrance/Gate" method="fully_open_gate"]
+[connection signal="on_exit_lockdown" from="ItemNoPassZone" to="ItemNoPassZone/StaticBody3D/CollisionEnabler_Disabler" method="disable_obj"]
