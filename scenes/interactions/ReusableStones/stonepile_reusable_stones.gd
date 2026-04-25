@@ -1,6 +1,7 @@
 extends Area3D
 
-@onready var my_stone: Grabbable_Item = $stonepile_stone
+@export var my_stone: Grabbable_Item
+@export var copy_me_for_correct_pos: Vector3 = Vector3(0.0, 0.286, 0.0)
 @onready var itm_mover: ItemMover = $ItemMover
 @onready var timer: Timer = $Timer
 

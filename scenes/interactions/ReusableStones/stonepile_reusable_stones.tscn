@@ -4,7 +4,6 @@
 [ext_resource type="Script" uid="uid://d3bv00f0bmt6j" path="res://scenes/interactions/ReusableStones/stonepile_reusable_stones.gd" id="1_vsa00"]
 [ext_resource type="ArrayMesh" uid="uid://bboxjdwpohtg0" path="res://assets/models/cairn/Props/Rockpile/Rock_pile.obj" id="2_vsa00"]
 [ext_resource type="Script" uid="uid://dpj75tckiwmsm" path="res://scenes/interactions/_receivers/wip__item_mover/itm_mover.gd" id="3_kmgx0"]
-[ext_resource type="PackedScene" uid="uid://clvus6c43ipdy" path="res://scenes/interactions/interactables/items/all_items/misc/item_stone.tscn" id="4_qsdh4"]
 [ext_resource type="Texture2D" uid="uid://1c406hs7su5a" path="res://assets/__not_ours_dontship/triskele_rough_01.png" id="6_kmgx0"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_qsdh4"]
@@ -53,13 +52,9 @@ script = ExtResource("1_vsa00")
 
 [node name="ItemMover" type="Node" parent="." unique_id=1734723238 node_paths=PackedStringArray("itms_2_move", "positions_to_move_to")]
 script = ExtResource("3_kmgx0")
-itms_2_move = [NodePath("../stonepile_stone")]
+itms_2_move = [NodePath("")]
 positions_to_move_to = [NodePath("../out_pos")]
 metadata/_custom_type_script = "uid://dpj75tckiwmsm"
-
-[node name="stonepile_stone" parent="." unique_id=234370081 instance=ExtResource("4_qsdh4")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.28610995, 0)
-item_weight = 2
 
 [node name="out_pos" type="Node3D" parent="." unique_id=1799811114]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.28610995, 0)
@@ -82,11 +77,13 @@ skeleton = NodePath("../..")
 
 [node name="_g_on" type="MeshInstance3D" parent="." unique_id=1967571280]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.01381889, 0)
+visible = false
 mesh = SubResource("PlaneMesh_qsdh4")
 skeleton = NodePath("")
 
 [node name="_g_waiting" type="MeshInstance3D" parent="." unique_id=1518445327]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.015, 0)
+visible = false
 mesh = SubResource("PlaneMesh_kgdm0")
 skeleton = NodePath("")
 
