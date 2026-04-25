@@ -16,6 +16,8 @@ var current_stage: int
 @export var statue_pieces: Array[MeshInstance3D]
 @export var itm_receiver: StatueReceiver
 
+@onready var audio_player: AudioStreamPlayer3D = $AudioStreamPlayer3D
+
 func insert_piece(num_received: int, item_received: Grabbable_Item, emit_sigs: bool = true) -> void:
 	current_stage = num_received
 	print(item_received.keywords)
@@ -42,20 +44,50 @@ func update_graphics() -> void:
 		2: piece_inserted_arm(false)
 		3: piece_inserted_head(false)
 
+var insert_tween: Tween
+
 func piece_inserted_base(emit_sigs: bool = true) -> void:
 	if emit_sigs: on_piece_inserted.emit("BASE")
-	statue_pieces[0].visible = true
+	
 	on_piece_inserted_base.emit(1.0)
+	
+	audio_player.play()
+	
+	statue_pieces[0].visible = true
+	insert_tween = get_tree().create_tween().bind_node(self).set_trans(Tween.TRANS_LINEAR)
+	insert_tween.set_ease(Tween.EASE_OUT_IN)
+	insert_tween.tween_property(statue_pieces[0].material_overlay, "emission", Color.TRANSPARENT, 4)
+	await insert_tween.finished
+	statue_pieces[0].material_overlay = null
+
 
 func piece_inserted_arm(emit_sigs: bool = true) -> void:
 	if emit_sigs: on_piece_inserted.emit("ARM")
-	statue_pieces[1].visible = true
+	
 	on_piece_inserted_arm.emit(1.0)
+	
+	audio_player.play()
+	
+	statue_pieces[1].visible = true
+	insert_tween = get_tree().create_tween().bind_node(self).set_trans(Tween.TRANS_LINEAR)
+	insert_tween.set_ease(Tween.EASE_IN)
+	insert_tween.tween_property(statue_pieces[1].material_overlay, "emission", Color.TRANSPARENT, 4)
+	await insert_tween.finished
+	statue_pieces[1].material_overlay = null
 
 func piece_inserted_head(emit_sigs: bool = true) -> void:
 	if emit_sigs: on_piece_inserted.emit("HEAD")
-	statue_pieces[2].visible = true
+	
 	on_piece_inserted_head.emit(1.0)
+	
+	audio_player.play()
+	
+	statue_pieces[2].visible = true
+	insert_tween = get_tree().create_tween().bind_node(self).set_trans(Tween.TRANS_ELASTIC)
+	insert_tween.set_ease(Tween.EASE_IN)
+	insert_tween.tween_property(statue_pieces[2].material_overlay, "emission", Color.TRANSPARENT, 4)
+	await insert_tween.finished
+	statue_pieces[2].material_overlay = null
 
 func quest_completed(emit_sigs: bool = true) -> void:
 	if emit_sigs: on_quest_completed.emit(1)
