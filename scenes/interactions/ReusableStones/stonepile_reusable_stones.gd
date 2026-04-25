@@ -8,9 +8,16 @@ var stone_inside: bool
 var waiting_to_start: bool
 
 @onready var g_on: Node3D = $_g_on
+@onready var g_waiting: Node3D = $_g_waiting
 @onready var g_off: Node3D = $_g_off
 
+@export var time_until_return: float = 2
+
+func _ready() -> void:
+	timer.wait_time = time_until_return
+
 func _process(delta: float) -> void:
+	g_waiting.visible = my_stone.is_grabbed and !stone_inside
 	g_on.visible = stone_inside
 	
 	if waiting_to_start and !my_stone.is_grabbed:
@@ -18,15 +25,31 @@ func _process(delta: float) -> void:
 		timer.stop()
 		timer.start()
 
-func on_stone_entered_return_areas(body: Node3D) -> void:
-	if body != my_stone: return
+func on_stone_area_entered_return_areas(area: Area3D) -> void:
+	if area.get_parent() != my_stone: return
+	print("hey jude")
+	stone_inside = false
+	waiting_to_start = false
+
+func on_stone_area_exited_return_areas(area: Area3D) -> void:
+	if area.get_parent() != my_stone: return
+	print("buy jude")
 	stone_inside = true
 	waiting_to_start = true
 
-func on_stone_exited_return_areas(body: Node3D) -> void:
+func on_stone_entered_return_areas(body: Node3D) -> void:
+	return
 	if body != my_stone: return
+	print("hey jude")
 	stone_inside = false
 	waiting_to_start = false
+
+func on_stone_exited_return_areas(body: Node3D) -> void:
+	return
+	if body != my_stone: return
+	print("buy jude")
+	stone_inside = true
+	waiting_to_start = true
 
 func on_tp_timeout() -> void:
 	if my_stone.is_grabbed or !stone_inside: 

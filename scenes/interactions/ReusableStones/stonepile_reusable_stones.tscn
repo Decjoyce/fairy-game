@@ -11,6 +11,18 @@
 radius = 0.72753906
 height = 1.4550781
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_317lc"]
+transparency = 1
+albedo_color = Color(1, 0.6, 0.6, 1)
+albedo_texture = ExtResource("6_kmgx0")
+emission_enabled = true
+emission = Color(1, 1, 1, 1)
+rim_enabled = true
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_qsdh4"]
+material = SubResource("StandardMaterial3D_317lc")
+size = Vector2(0.499, 0.5)
+
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kmgx0"]
 transparency = 1
 albedo_color = Color(0, 0.8494162, 1, 1)
@@ -19,7 +31,7 @@ emission_enabled = true
 emission = Color(0, 0.89420825, 1, 1)
 rim_enabled = true
 
-[sub_resource type="PlaneMesh" id="PlaneMesh_qsdh4"]
+[sub_resource type="PlaneMesh" id="PlaneMesh_kgdm0"]
 material = SubResource("StandardMaterial3D_kmgx0")
 size = Vector2(0.5, 0.5)
 
@@ -38,11 +50,6 @@ collision_layer = 0
 collision_mask = 2
 monitorable = false
 script = ExtResource("1_vsa00")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=651584812]
-transform = Transform3D(0.4, 0, 0, 0, 0.505, 0, 0, 0, 0.4, -1.148, -0.26655877, 0)
-material_override = ExtResource("1_670bk")
-mesh = ExtResource("2_vsa00")
 
 [node name="ItemMover" type="Node" parent="." unique_id=1734723238 node_paths=PackedStringArray("itms_2_move", "positions_to_move_to")]
 script = ExtResource("3_kmgx0")
@@ -67,17 +74,29 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.148, 0, 0)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.029663086, -0.22897023, 0)
 shape = SubResource("CapsuleShape3D_qsdh4")
 
+[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D" unique_id=651584812]
+transform = Transform3D(0.4, 0, 0, 0, 0.505, 0, 0, 0, 0.4, 0, -0.26655877, 0)
+material_override = ExtResource("1_670bk")
+mesh = ExtResource("2_vsa00")
+skeleton = NodePath("../..")
+
 [node name="_g_on" type="MeshInstance3D" parent="." unique_id=1967571280]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.01381889, 0)
-visible = false
 mesh = SubResource("PlaneMesh_qsdh4")
 skeleton = NodePath("")
 
+[node name="_g_waiting" type="MeshInstance3D" parent="." unique_id=1518445327]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.015, 0)
+mesh = SubResource("PlaneMesh_kgdm0")
+skeleton = NodePath("")
+
 [node name="_g_off" type="MeshInstance3D" parent="." unique_id=150059038]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.01381889, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.013, 0)
 mesh = SubResource("PlaneMesh_317lc")
 skeleton = NodePath("")
 
+[connection signal="area_entered" from="." to="." method="on_stone_area_entered_return_areas"]
+[connection signal="area_exited" from="." to="." method="on_stone_area_exited_return_areas"]
 [connection signal="body_entered" from="." to="." method="on_stone_entered_return_areas"]
 [connection signal="body_exited" from="." to="." method="on_stone_exited_return_areas"]
 [connection signal="timeout" from="Timer" to="." method="on_tp_timeout"]

@@ -34,7 +34,6 @@
 [ext_resource type="PackedScene" uid="uid://ije1mmh1wcad" path="res://scenes/interactions/interactables/items/all_items/torch/torch_mounted.tscn" id="28_rym0g"]
 [ext_resource type="Script" uid="uid://desaef8fc6y0v" path="res://scenes/interactions/_receivers/_logic/Caller/logic_caller.gd" id="31_1c2il"]
 [ext_resource type="Script" uid="uid://bul4myvyhnpjc" path="res://scripts/saving/uid_generator.gd" id="32_lu18g"]
-[ext_resource type="PackedScene" uid="uid://bq86osdembn58" path="res://scenes/_player/_player_test.tscn" id="35_70hwn"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ypdmq"]
 albedo_color = Color(0.29582244, 0.28200856, 0.27378577, 1)
@@ -2512,9 +2511,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 35, 1.4538984, 12.159149)
 
 [node name="TorchSconce_Lit4" parent="Inbetween_Areas" unique_id=1910771040 instance=ExtResource("14_ftbts")]
 transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 35, 1.4538984, 13.846838)
-
-[node name="player_test" parent="." unique_id=725727541 instance=ExtResource("35_70hwn")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 27, 1, -7)
 
 [connection signal="on_change" from="Beginning_Part(Easier)/First_Trap/First_Pressure_Plate" to="Beginning_Part(Easier)/First_Trap/trap_projectile3" method="trigger_trap"]
 [connection signal="on_change" from="Beginning_Part(Easier)/Second_Part/PressurePlate3" to="Beginning_Part(Easier)/Second_Part/Gate" method="open_gate"]
