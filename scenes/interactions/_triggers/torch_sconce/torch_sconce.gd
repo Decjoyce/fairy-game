@@ -3,6 +3,15 @@ extends ItemReceiver
 @onready var lit_torch: Node3D = $Lit_Sconce
 @onready var unlit_torch: Node3D = $Unlit_Sconce
 
+@export var start_lit: bool
+@export var allow_torch_light_up: bool = true
+
+func _ready() -> void:
+	if start_lit:
+		light_up_torch()
+	if !allow_torch_light_up:
+		col.set_deferred("disabled", true)
+
 func all_items_received() -> void:
 	super()
 	light_up_torch()
