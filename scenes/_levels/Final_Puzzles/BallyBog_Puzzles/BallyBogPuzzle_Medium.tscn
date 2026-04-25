@@ -42,6 +42,7 @@
 [ext_resource type="Material" uid="uid://ioo51vym3k1d" path="res://scenes/interactions/_triggers/teleporter/m_teleport.tres" id="40_rv6yw"]
 [ext_resource type="Script" uid="uid://cpodi2t5yl3ks" path="res://scenes/_levels/Final_Puzzles/BallyBog_Puzzles/progress_bar_helper.gd" id="41_lckpc"]
 [ext_resource type="PackedScene" uid="uid://dhb1ju03ckwh4" path="res://scenes/interactions/_receivers/enabler_disabler_v1/collision_enabler_disabler.tscn" id="41_r1ap5"]
+[ext_resource type="PackedScene" uid="uid://bq86osdembn58" path="res://scenes/_player/_player_test.tscn" id="43_r1ap5"]
 
 [sub_resource type="Gradient" id="Gradient_ouj5r"]
 interpolation_mode = 2
@@ -897,7 +898,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 1, -3)
 [node name="Node3D9" type="Node3D" parent="Bally_PatrolPoints" unique_id=1168897724]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 1, -7)
 
-[node name="GridMapPathFinding2" type="GridMap" parent="." unique_id=1929151095]
+[node name="GridMapPathFinding2" type="GridMap" parent="." unique_id=1929151095 groups=["GMPF"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.445, 0)
 visible = false
 mesh_library = ExtResource("26_p5orj")
@@ -1098,6 +1099,9 @@ omni_range = 26.025
 [node name="indicator_visenabler" type="Node" parent="SubViewport/MeshInstance3D" unique_id=2121420649 node_paths=PackedStringArray("linked_nodes")]
 script = ExtResource("13_lwb4l")
 linked_nodes = [NodePath("..")]
+
+[node name="player_test" parent="." unique_id=725727541 instance=ExtResource("43_r1ap5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 2, 3)
 
 [connection signal="on_change" from="_env/Gate_Left/Lever" to="_env/Items/HiddenItem/hiddentgate/AnimatedObject" method="play_animation"]
 [connection signal="on_activated" from="_env/Gate_Left/PressurePlates/PressurePlateTR" to="_env/Gate_Left/PressurePlates/PressurePlateTR/indicator_visenabler" method="enable_obj"]

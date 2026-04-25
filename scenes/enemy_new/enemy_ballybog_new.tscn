@@ -41,13 +41,13 @@
 [ext_resource type="Script" uid="uid://46pp7aerorca" path="res://scripts/stats.gd" id="33_p22w6"]
 [ext_resource type="Script" uid="uid://jxohgxu3vshf" path="res://scripts/improved_raycast.gd" id="34_0ak1w"]
 [ext_resource type="Script" uid="uid://buwlv4dpooytr" path="res://scripts/saving/persistent_objs/po_ballybog.gd" id="35_tsg0o"]
-[ext_resource type="Texture2D" uid="uid://ba1v617x2s4k6" path="res://assets/_editor_icons/icon_bb_sus.svg" id="41_ysfdd"]
+[ext_resource type="Texture2D" uid="uid://ckupakcl4fbb7" path="res://assets/sprites/Ballybog/ballybog_footprints.png" id="42_l6uyl"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_u6way"]
 radius = 0.3
 height = 1.3169571
 
-[sub_resource type="Shader" id="Shader_j8kvk"]
+[sub_resource type="Shader" id="Shader_hc104"]
 code = "shader_type spatial;
 render_mode diffuse_lambert_wrap,cull_disabled;
 
@@ -124,9 +124,9 @@ void fragment() {
 }
 "
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_l6uyl"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_oj3bs"]
 render_priority = 0
-shader = SubResource("Shader_j8kvk")
+shader = SubResource("Shader_hc104")
 shader_parameter/rows = 1.0
 shader_parameter/columns = 8.0
 shader_parameter/frame = 1.0
@@ -135,12 +135,12 @@ shader_parameter/sprite = ExtResource("10_egxrc")
 shader_parameter/mode = 0
 shader_parameter/Normal = ExtResource("11_ojypm")
 
-[sub_resource type="PlaneMesh" id="PlaneMesh_hc104"]
-material = SubResource("ShaderMaterial_l6uyl")
+[sub_resource type="PlaneMesh" id="PlaneMesh_s731o"]
+material = SubResource("ShaderMaterial_oj3bs")
 size = Vector2(1.62, 1.62)
 orientation = 2
 
-[sub_resource type="Resource" id="Resource_oj3bs"]
+[sub_resource type="Resource" id="Resource_1gxwg"]
 script = ExtResource("5_kmwqr")
 name = "walk"
 sprite = ExtResource("6_8sj3j")
@@ -148,7 +148,7 @@ texture_normal = ExtResource("7_r4p23")
 rows = 5.0
 columns = 8.0
 
-[sub_resource type="Resource" id="Resource_s731o"]
+[sub_resource type="Resource" id="Resource_it4pt"]
 script = ExtResource("5_kmwqr")
 name = "AttackN"
 sprite = ExtResource("3_lcqxn")
@@ -156,7 +156,7 @@ texture_normal = ExtResource("2_kkwvg")
 rows = 2.0
 columns = 8.0
 
-[sub_resource type="Resource" id="Resource_1gxwg"]
+[sub_resource type="Resource" id="Resource_byr2v"]
 script = ExtResource("5_kmwqr")
 name = "idle_rub"
 sprite = ExtResource("8_ba1g8")
@@ -164,14 +164,14 @@ texture_normal = ExtResource("9_3yfja")
 rows = 3.0
 columns = 8.0
 
-[sub_resource type="Resource" id="Resource_it4pt"]
+[sub_resource type="Resource" id="Resource_dduw1"]
 script = ExtResource("5_kmwqr")
 name = "Alert"
 sprite = ExtResource("10_egxrc")
 texture_normal = ExtResource("11_ojypm")
 columns = 8.0
 
-[sub_resource type="Resource" id="Resource_byr2v"]
+[sub_resource type="Resource" id="Resource_18meo"]
 script = ExtResource("5_kmwqr")
 name = "Stunned"
 sprite = ExtResource("12_tpbbe")
@@ -179,14 +179,14 @@ texture_normal = ExtResource("13_xqytu")
 rows = 2.0
 columns = 8.0
 
-[sub_resource type="Resource" id="Resource_dduw1"]
+[sub_resource type="Resource" id="Resource_cstbd"]
 script = ExtResource("5_kmwqr")
 name = "Dead"
 sprite = ExtResource("2_ehkwp")
 texture_normal = ExtResource("2_ehkwp")
 columns = 8.0
 
-[sub_resource type="Resource" id="Resource_18meo"]
+[sub_resource type="Resource" id="Resource_iwaed"]
 script = ExtResource("5_kmwqr")
 name = "DanceL"
 sprite = ExtResource("15_va8xr")
@@ -194,7 +194,7 @@ texture_normal = ExtResource("16_pncs0")
 rows = 2.0
 columns = 8.0
 
-[sub_resource type="Resource" id="Resource_cstbd"]
+[sub_resource type="Resource" id="Resource_ts4sr"]
 script = ExtResource("5_kmwqr")
 name = "DanceR"
 sprite = ExtResource("3_ysfdd")
@@ -676,9 +676,9 @@ disabled = true
 transform = Transform3D(-1, 0, -1.509958e-07, 0, 1, 0, 1.509958e-07, 0, -1, 0, 0.6596855, 0)
 layers = 2
 sorting_offset = 1.0
-mesh = SubResource("PlaneMesh_hc104")
+mesh = SubResource("PlaneMesh_s731o")
 script = ExtResource("4_neywx")
-animations_array = Array[ExtResource("5_kmwqr")]([SubResource("Resource_oj3bs"), SubResource("Resource_s731o"), SubResource("Resource_1gxwg"), SubResource("Resource_it4pt"), SubResource("Resource_byr2v"), SubResource("Resource_dduw1"), SubResource("Resource_18meo"), SubResource("Resource_cstbd")])
+animations_array = Array[ExtResource("5_kmwqr")]([SubResource("Resource_1gxwg"), SubResource("Resource_it4pt"), SubResource("Resource_byr2v"), SubResource("Resource_dduw1"), SubResource("Resource_18meo"), SubResource("Resource_cstbd"), SubResource("Resource_iwaed"), SubResource("Resource_ts4sr")])
 animation = 3
 frame = 1.0
 sprite_scale = 0.003
@@ -860,64 +860,64 @@ metadata/_custom_type_script = "uid://buwlv4dpooytr"
 
 [node name="_footsteps_1" type="Decal" parent="Footsteps" unique_id=864394099]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 50, 7.450581e-09)
-size = Vector3(1, 0.2, 1)
-texture_albedo = ExtResource("41_ysfdd")
+size = Vector3(0.5, 0.2, 0.5)
+texture_albedo = ExtResource("42_l6uyl")
 modulate = Color(0.14, 0.09625, 0.035, 0.5294118)
 cull_mask = 1048573
 
 [node name="_footsteps_2" type="Decal" parent="Footsteps" unique_id=1595608224]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 50, 7.450581e-09)
 visible = false
-size = Vector3(1, 0.2, 1)
-texture_albedo = ExtResource("41_ysfdd")
+size = Vector3(0.5, 0.2, 0.5)
+texture_albedo = ExtResource("42_l6uyl")
 modulate = Color(0.14, 0.09625, 0.035, 0.5294118)
 cull_mask = 1048573
 
 [node name="_footsteps_3" type="Decal" parent="Footsteps" unique_id=959026530]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 50, 7.450581e-09)
 visible = false
-size = Vector3(1, 0.2, 1)
-texture_albedo = ExtResource("41_ysfdd")
+size = Vector3(0.5, 0.2, 0.5)
+texture_albedo = ExtResource("42_l6uyl")
 modulate = Color(0.14, 0.09625, 0.035, 0.5294118)
 cull_mask = 1048573
 
 [node name="_footsteps_4" type="Decal" parent="Footsteps" unique_id=119543714]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 50, 7.450581e-09)
 visible = false
-size = Vector3(1, 0.2, 1)
-texture_albedo = ExtResource("41_ysfdd")
+size = Vector3(0.5, 0.2, 0.5)
+texture_albedo = ExtResource("42_l6uyl")
 modulate = Color(0.14, 0.09625, 0.035, 0.5294118)
 cull_mask = 1048573
 
 [node name="_footsteps_5" type="Decal" parent="Footsteps" unique_id=145119528]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 50, 7.450581e-09)
 visible = false
-size = Vector3(1, 0.2, 1)
-texture_albedo = ExtResource("41_ysfdd")
+size = Vector3(0.5, 0.2, 0.5)
+texture_albedo = ExtResource("42_l6uyl")
 modulate = Color(0.14, 0.09625, 0.035, 0.5294118)
 cull_mask = 1048573
 
 [node name="_footsteps_6" type="Decal" parent="Footsteps" unique_id=1662988889]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 50, 7.450581e-09)
 visible = false
-size = Vector3(1, 0.2, 1)
-texture_albedo = ExtResource("41_ysfdd")
+size = Vector3(0.5, 0.2, 0.5)
+texture_albedo = ExtResource("42_l6uyl")
 modulate = Color(0.14, 0.09625, 0.035, 0.5294118)
 cull_mask = 1048573
 
 [node name="_footsteps_7" type="Decal" parent="Footsteps" unique_id=1225514629]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 50, 7.450581e-09)
 visible = false
-size = Vector3(1, 0.2, 1)
-texture_albedo = ExtResource("41_ysfdd")
+size = Vector3(0.5, 0.2, 0.5)
+texture_albedo = ExtResource("42_l6uyl")
 modulate = Color(0.14, 0.09625, 0.035, 0.5294118)
 cull_mask = 1048573
 
 [node name="_footsteps_8" type="Decal" parent="Footsteps" unique_id=679012226]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 50, 7.450581e-09)
 visible = false
-size = Vector3(1, 0.2, 1)
-texture_albedo = ExtResource("41_ysfdd")
+size = Vector3(0.5, 0.2, 0.5)
+texture_albedo = ExtResource("42_l6uyl")
 modulate = Color(0.14, 0.09625, 0.035, 0.5294118)
 cull_mask = 1048573
 

@@ -230,5 +230,5 @@ var footstep_index: int
 func imprint_footstep() -> void:
 	footstep_decals[footstep_index].visible = true
 	footstep_decals[footstep_index].global_position = ballybog.global_position
-	footstep_decals[footstep_index].global_rotation = ballybog.graphics.global_rotation
+	footstep_decals[footstep_index].global_rotation_degrees = ballybog.graphics.global_rotation_degrees + Vector3(0, 180, 0)
 	footstep_index = wrapi(footstep_index+1, 0, footstep_decals.size())
