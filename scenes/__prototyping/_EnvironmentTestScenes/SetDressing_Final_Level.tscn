@@ -21,6 +21,7 @@
 [ext_resource type="Script" uid="uid://ubfk2a80dhfp" path="res://addons/grid_map_pathfinding/grid_map_pathfinding.gd" id="18_0tnxh"]
 [ext_resource type="Material" uid="uid://ciiy1aqgkcp5k" path="res://assets/models/cairn/Hall_BigRoof/Dirtfloor.tres" id="19_l4grf"]
 [ext_resource type="Script" uid="uid://c00pbq6pr77dd" path="res://scenes/_levels/menus/vs_menu_helper.gd" id="20_a8cig"]
+[ext_resource type="Shader" uid="uid://bf21vemgpxq1b" path="res://assets/shaders/oldfog.gdshader" id="20_ucuax"]
 [ext_resource type="PackedScene" uid="uid://2urw8kkhhaec" path="res://scenes/_levels/Vertical Slice/end_scene.tscn" id="21_yghrm"]
 [ext_resource type="PackedScene" uid="uid://d3x1l1brjvyre" path="res://scenes/item_catcher/item_catcher.tscn" id="22_03ler"]
 [ext_resource type="Script" uid="uid://d3su0hjvi88g4" path="res://scripts/save_sphere.gd" id="23_ynqbq"]
@@ -73,7 +74,11 @@ volumetric_fog_emission = Color(0.117735185, 0.20947376, 0.3003329, 1)
 
 [sub_resource type="FogMaterial" id="FogMaterial_62r4a"]
 density = 0.09
-emission = Color(0.26293278, 0.2629323, 0.26293254, 1)
+emission = Color(0.36282945, 0.36282945, 0.36282945, 1)
+
+[sub_resource type="FogMaterial" id="FogMaterial_ucuax"]
+density = 0.2
+emission = Color(0.47724462, 0.6018682, 0.6363491, 1)
 
 [sub_resource type="FogMaterial" id="FogMaterial_oqsm6"]
 density = 0.0351
@@ -81,6 +86,21 @@ emission = Color(0.08217584, 0.095120884, 0.13308424, 1)
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_jok38"]
 material = ExtResource("19_l4grf")
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_ag4il"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_l6x3k"]
+frequency = 0.0182
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_4bynk"]
+noise = SubResource("FastNoiseLite_l6x3k")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_54i5u"]
+render_priority = 0
+shader = ExtResource("20_ucuax")
+shader_parameter/noise_tex = SubResource("NoiseTexture2D_4bynk")
+shader_parameter/speed = 0.01
+shader_parameter/opacity = 0.05
 
 [sub_resource type="Animation" id="Animation_8o3kd"]
 length = 0.001
@@ -329,8 +349,19 @@ material = SubResource("FogMaterial_62r4a")
 
 [node name="FogVolume2" type="FogVolume" parent="Environment2" unique_id=217882469]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 66.149994, -5.8999996, -21.904997)
+visible = false
 size = Vector3(23.64, 6.12, 23.83)
 material = SubResource("FogMaterial_62r4a")
+
+[node name="FogVolume4" type="FogVolume" parent="Environment2" unique_id=1689456469]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 67.77999, -6.5999994, -20.569996)
+size = Vector3(26.9, 6.12, 26.5)
+material = SubResource("FogMaterial_ucuax")
+
+[node name="FogVolume5" type="FogVolume" parent="Environment2" unique_id=579240256]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 59.429993, -0.8399993, -19.269995)
+size = Vector3(5.4, 3.2, 11.900001)
+material = SubResource("FogMaterial_ucuax")
 
 [node name="fogstatueroom" type="FogVolume" parent="Environment2" unique_id=1029832959]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 68.7, 2.4499998, -19.75)
@@ -426,6 +457,16 @@ skeleton = NodePath("../..")
 transform = Transform3D(3.093087e-07, -0.20363069, -3.3798215, -14.15232, -1.7801964e-08, 1.2911881e-14, -5.3573865e-07, 0.3526987, -1.9513406, 80.759995, -7.2199993, -10.419998)
 mesh = SubResource("PlaneMesh_jok38")
 skeleton = NodePath("../..")
+
+[node name="FogGround" type="MeshInstance3D" parent="Environment2" unique_id=197036733]
+transform = Transform3D(23.980646, 0, 0, 0, 50, 0, 0, 0, 16.093115, 62.746, -1.848, 7.884)
+mesh = SubResource("PlaneMesh_ag4il")
+surface_material_override/0 = SubResource("ShaderMaterial_54i5u")
+
+[node name="FogGround2" type="MeshInstance3D" parent="Environment2" unique_id=1818132746]
+transform = Transform3D(7.4380693, 0, 0, 0, 50, 0, 0, 0, 10.580788, 68.63588, -1.8464658, -19.807453)
+mesh = SubResource("PlaneMesh_ag4il")
+surface_material_override/0 = SubResource("ShaderMaterial_54i5u")
 
 [node name="Ender" type="Node3D" parent="." unique_id=43994904 node_paths=PackedStringArray("anim_pl")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 85, 0, -27)

@@ -48,6 +48,7 @@
 [ext_resource type="PackedScene" uid="uid://ca2lcfvhjwslv" path="res://scenes/_levels/_palettes/cairn/props/cairn_saving_head.tscn" id="45_n5rhx"]
 [ext_resource type="PackedScene" uid="uid://c31ds8w8eyjvy" path="res://scenes/_levels/_palettes/cairn/props/cairn_mounted_torch.tscn" id="47_b3yur"]
 [ext_resource type="PackedScene" uid="uid://bapii1ncwhkan" path="res://scenes/_levels/_palettes/cairn/props/cairn_saving_totem.tscn" id="48_3tewx"]
+[ext_resource type="Shader" uid="uid://bf21vemgpxq1b" path="res://assets/shaders/oldfog.gdshader" id="49_3tewx"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_vor1c"]
 sky_horizon_color = Color(0, 0.37292683, 0.8185948, 1)
@@ -402,6 +403,21 @@ emission = Color(0.26293278, 0.2629323, 0.26293254, 1)
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_qyrbh"]
 material = ExtResource("18_n5rhx")
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_fp1gt"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_u55hi"]
+frequency = 0.0182
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_qyrbh"]
+noise = SubResource("FastNoiseLite_u55hi")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_1rfa5"]
+render_priority = 0
+shader = ExtResource("49_3tewx")
+shader_parameter/noise_tex = SubResource("NoiseTexture2D_qyrbh")
+shader_parameter/speed = 0.02
+shader_parameter/opacity = 0.165
 
 [node name="Tutorial_Area" type="Node3D" unique_id=872925716]
 
@@ -1733,6 +1749,11 @@ transform = Transform3D(3.093087e-07, -0.20363069, -3.3798215, -14.15232, -1.780
 visible = false
 mesh = SubResource("PlaneMesh_qyrbh")
 skeleton = NodePath("../..")
+
+[node name="FogGround" type="MeshInstance3D" parent="." unique_id=821710644]
+transform = Transform3D(50, 0, 0, 0, 50, 0, 0, 0, 50, 0, 1.677629, -10.731897)
+mesh = SubResource("PlaneMesh_fp1gt")
+surface_material_override/0 = SubResource("ShaderMaterial_1rfa5")
 
 [connection signal="on_activated" from="First Gate&Button/First_Button" to="First Gate&Button/First_Gate" method="open_gate"]
 [connection signal="on_change" from="Weighted_Gate_Puzzle/Tutorial_Weight_Puzzle" to="Weighted_Gate_Puzzle/Weight_Puzzle_Gate" method="open_gate"]
