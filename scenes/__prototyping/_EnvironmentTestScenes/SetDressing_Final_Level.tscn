@@ -90,7 +90,7 @@ material = ExtResource("19_l4grf")
 [sub_resource type="PlaneMesh" id="PlaneMesh_ag4il"]
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_l6x3k"]
-frequency = 0.0182
+frequency = 0.0261
 
 [sub_resource type="NoiseTexture2D" id="NoiseTexture2D_4bynk"]
 noise = SubResource("FastNoiseLite_l6x3k")
@@ -101,6 +101,32 @@ shader = ExtResource("20_ucuax")
 shader_parameter/noise_tex = SubResource("NoiseTexture2D_4bynk")
 shader_parameter/speed = 0.01
 shader_parameter/opacity = 0.05
+
+[sub_resource type="Curve" id="Curve_ucuax"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.6569343, 0.47191018), -1.1446267, -1.1446267, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_ag4il"]
+curve = SubResource("Curve_ucuax")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_l6x3k"]
+emission_shape_scale = Vector3(2.555, 2.31, 0.88)
+emission_shape = 3
+emission_box_extents = Vector3(1, 1, 1)
+gravity = Vector3(0, -0.055, 0)
+radial_accel_min = -2.2351742e-06
+radial_accel_max = -2.2351742e-06
+tangential_accel_min = -4.0400023
+tangential_accel_max = -2.2351742e-06
+scale_min = 0.01
+scale_max = 0.03
+scale_curve = SubResource("CurveTexture_ag4il")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_54i5u"]
+albedo_color = Color(0.3328807, 0.33288068, 0.33288068, 1)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_y7mrb"]
+material = SubResource("StandardMaterial3D_54i5u")
 
 [sub_resource type="Animation" id="Animation_8o3kd"]
 length = 0.001
@@ -359,8 +385,8 @@ size = Vector3(26.9, 6.12, 26.5)
 material = SubResource("FogMaterial_ucuax")
 
 [node name="FogVolume5" type="FogVolume" parent="Environment2" unique_id=579240256]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 59.429993, -0.8399993, -19.269995)
-size = Vector3(5.4, 3.2, 11.900001)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 58.622585, -0.8399993, -19.269995)
+size = Vector3(3.7851806, 3.2, 11.900001)
 material = SubResource("FogMaterial_ucuax")
 
 [node name="fogstatueroom" type="FogVolume" parent="Environment2" unique_id=1029832959]
@@ -467,6 +493,116 @@ surface_material_override/0 = SubResource("ShaderMaterial_54i5u")
 transform = Transform3D(7.4380693, 0, 0, 0, 50, 0, 0, 0, 10.580788, 68.63588, -1.8464658, -19.807453)
 mesh = SubResource("PlaneMesh_ag4il")
 surface_material_override/0 = SubResource("ShaderMaterial_54i5u")
+
+[node name="dust" type="GPUParticles3D" parent="Environment2" unique_id=669655960]
+transform = Transform3D(1, 0, 0, 0, -0.014869663, -0.99988943, 0, 0.99988943, -0.014869663, 0.13499522, 0.9576769, -2.953119)
+amount = 13
+lifetime = 6.0
+speed_scale = 0.58
+randomness = 1.0
+transform_align = 1
+process_material = SubResource("ParticleProcessMaterial_l6x3k")
+draw_pass_1 = SubResource("PlaneMesh_y7mrb")
+
+[node name="dust2" type="GPUParticles3D" parent="Environment2" unique_id=781481623]
+transform = Transform3D(1, 0, 0, 0, -0.014869663, -0.99988943, 0, 0.99988943, -0.014869663, 3.9987352, 0.9576769, -11.939548)
+amount = 13
+lifetime = 6.0
+speed_scale = 0.58
+randomness = 1.0
+transform_align = 1
+process_material = SubResource("ParticleProcessMaterial_l6x3k")
+draw_pass_1 = SubResource("PlaneMesh_y7mrb")
+
+[node name="dust4" type="GPUParticles3D" parent="Environment2" unique_id=241730247]
+transform = Transform3D(1, 0, 0, 0, -0.014869663, -0.99988943, 0, 0.99988943, -0.014869663, 21.780436, 0.9576769, -28.991129)
+amount = 13
+lifetime = 6.0
+speed_scale = 0.58
+randomness = 1.0
+transform_align = 1
+process_material = SubResource("ParticleProcessMaterial_l6x3k")
+draw_pass_1 = SubResource("PlaneMesh_y7mrb")
+
+[node name="dust5" type="GPUParticles3D" parent="Environment2" unique_id=167169274]
+transform = Transform3D(1, 0, 0, 0, -0.014869663, -0.99988943, 0, 0.99988943, -0.014869663, 30.147514, -0.9239888, -19.194149)
+amount = 13
+lifetime = 6.0
+speed_scale = 0.58
+randomness = 1.0
+transform_align = 1
+process_material = SubResource("ParticleProcessMaterial_l6x3k")
+draw_pass_1 = SubResource("PlaneMesh_y7mrb")
+
+[node name="dust6" type="GPUParticles3D" parent="Environment2" unique_id=357808456]
+transform = Transform3D(1, 0, 0, 0, -0.014869663, -0.99988943, 0, 0.99988943, -0.014869663, 48.07006, -1.0656238, -19.194149)
+amount = 13
+lifetime = 6.0
+speed_scale = 0.58
+randomness = 1.0
+transform_align = 1
+process_material = SubResource("ParticleProcessMaterial_l6x3k")
+draw_pass_1 = SubResource("PlaneMesh_y7mrb")
+
+[node name="dust7" type="GPUParticles3D" parent="Environment2" unique_id=313645829]
+transform = Transform3D(1, 0, 0, 0, -0.014869663, -0.99988943, 0, 0.99988943, -0.014869663, 67.14061, -1.0656238, -19.194149)
+amount = 13
+lifetime = 6.0
+speed_scale = 0.58
+randomness = 1.0
+transform_align = 1
+process_material = SubResource("ParticleProcessMaterial_l6x3k")
+draw_pass_1 = SubResource("PlaneMesh_y7mrb")
+
+[node name="dust8" type="GPUParticles3D" parent="Environment2" unique_id=1546788645]
+transform = Transform3D(1, 0, 0, 0, -0.014869663, -0.99988943, 0, 0.99988943, -0.014869663, 67.14061, -1.0656238, -39.15707)
+amount = 13
+lifetime = 6.0
+speed_scale = 0.58
+randomness = 1.0
+transform_align = 1
+process_material = SubResource("ParticleProcessMaterial_l6x3k")
+draw_pass_1 = SubResource("PlaneMesh_y7mrb")
+
+[node name="dust9" type="GPUParticles3D" parent="Environment2" unique_id=884473237]
+transform = Transform3D(1, 0, 0, 0, -0.014869663, -0.99988943, 0, 0.99988943, -0.014869663, 90.67664, -1.0656238, -47.14135)
+amount = 13
+lifetime = 6.0
+speed_scale = 0.58
+randomness = 1.0
+transform_align = 1
+process_material = SubResource("ParticleProcessMaterial_l6x3k")
+draw_pass_1 = SubResource("PlaneMesh_y7mrb")
+
+[node name="dust10" type="GPUParticles3D" parent="Environment2" unique_id=1469273175]
+transform = Transform3D(1, 0, 0, 0, -0.014869663, -0.99988943, 0, 0.99988943, -0.014869663, 98.701035, -1.0656238, -27.17379)
+amount = 13
+lifetime = 6.0
+speed_scale = 0.58
+randomness = 1.0
+transform_align = 1
+process_material = SubResource("ParticleProcessMaterial_l6x3k")
+draw_pass_1 = SubResource("PlaneMesh_y7mrb")
+
+[node name="dust11" type="GPUParticles3D" parent="Environment2" unique_id=1064865391]
+transform = Transform3D(1, 0, 0, 0, -0.014869663, -0.99988943, 0, 0.99988943, -0.014869663, 99.1685, -1.0656238, 8.783244)
+amount = 13
+lifetime = 6.0
+speed_scale = 0.58
+randomness = 1.0
+transform_align = 1
+process_material = SubResource("ParticleProcessMaterial_l6x3k")
+draw_pass_1 = SubResource("PlaneMesh_y7mrb")
+
+[node name="dust3" type="GPUParticles3D" parent="Environment2" unique_id=2009080289]
+transform = Transform3D(1, 0, 0, 0, -0.014869663, -0.99988943, 0, 0.99988943, -0.014869663, 4.2859325, 0.9576769, -26.993235)
+amount = 13
+lifetime = 6.0
+speed_scale = 0.58
+randomness = 1.0
+transform_align = 1
+process_material = SubResource("ParticleProcessMaterial_l6x3k")
+draw_pass_1 = SubResource("PlaneMesh_y7mrb")
 
 [node name="Ender" type="Node3D" parent="." unique_id=43994904 node_paths=PackedStringArray("anim_pl")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 85, 0, -27)
