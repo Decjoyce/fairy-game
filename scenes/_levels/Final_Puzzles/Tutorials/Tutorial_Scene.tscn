@@ -58,12 +58,15 @@ size = Vector3(8, 0.4650879, 13)
 [sub_resource type="BoxShape3D" id="BoxShape3D_qbrer"]
 size = Vector3(2.1363525, 10.775467, 14.223724)
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_kncr2"]
-size = Vector3(1.6546631, 1.8357239, 1.2929688)
+[sub_resource type="BoxShape3D" id="BoxShape3D_56l6l"]
+size = Vector3(1.8658326, 2, 2)
 
-[sub_resource type="BoxMesh" id="BoxMesh_pvb4u"]
+[sub_resource type="BoxMesh" id="BoxMesh_ea6e4"]
 material = ExtResource("29_56l6l")
-size = Vector3(2, 2, 2)
+size = Vector3(0.8, 2, 2)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_pvb4u"]
+size = Vector3(0.1, 1.9, 1.6)
 
 [node name="Main_Level" type="Node3D" unique_id=872925716]
 
@@ -509,27 +512,56 @@ transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -42.
 
 [node name="ItemHeadZones" type="Node3D" parent="Tutorial_Area" unique_id=848448568]
 
-[node name="ItemNoPassZone_PressurePlateRoom2" parent="Tutorial_Area/ItemHeadZones" unique_id=223074910 instance=ExtResource("28_kncr2")]
-transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 33.540073, -0.44681698, -6.381341)
+[node name="ItemNoPassZone_Second_PressurePlate_Room" parent="Tutorial_Area/ItemHeadZones" unique_id=223074910 instance=ExtResource("28_kncr2")]
+transform = Transform3D(-1, 0, 8.742278e-08, 2.262668e-08, 0.9659258, 0.25881904, -8.444392e-08, 0.25881904, -0.9659258, 39.851894, -0.88065016, -4.454461)
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Tutorial_Area/ItemHeadZones/ItemNoPassZone_PressurePlateRoom2" unique_id=702822024]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.4105253, -0.6436736, 0.35800934)
-shape = SubResource("BoxShape3D_kncr2")
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Tutorial_Area/ItemHeadZones/ItemNoPassZone_Second_PressurePlate_Room" unique_id=1854225002]
+transform = Transform3D(1.0000001, 2.2626825e-08, -2.978787e-09, -4.1378932e-08, 0.96592706, -0.2588193, 9.431822e-09, 0.2588193, 0.96592706, -1.650322, -0.29999924, 0.27689075)
+shape = SubResource("BoxShape3D_56l6l")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Tutorial_Area/ItemHeadZones/ItemNoPassZone_PressurePlateRoom2/CollisionShape3D" unique_id=1377011162]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Tutorial_Area/ItemHeadZones/ItemNoPassZone_Second_PressurePlate_Room/CollisionShape3D" unique_id=66431309]
 visible = false
-mesh = SubResource("BoxMesh_pvb4u")
+mesh = SubResource("BoxMesh_ea6e4")
 
-[node name="ItemNoPassZone_PressurePlateRoom" parent="Tutorial_Area/ItemHeadZones" unique_id=835143063 instance=ExtResource("28_kncr2")]
-transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 7.530026, 1.3, -14.530148)
+[node name="StaticBody3D" type="StaticBody3D" parent="Tutorial_Area/ItemHeadZones/ItemNoPassZone_Second_PressurePlate_Room" unique_id=611741117]
+transform = Transform3D(-1.0000005, 5.801697e-08, -1.8130154e-07, -4.9740375e-08, 0.96592706, 0.2588193, 1.4351562e-07, 0.25881934, -0.96592706, -3.2985992, 0.019896507, 0.34415293)
+collision_mask = 3
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Tutorial_Area/ItemHeadZones/ItemNoPassZone_PressurePlateRoom" unique_id=342521481]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.4105253, -0.36182845, 0.36240244)
-shape = SubResource("BoxShape3D_kncr2")
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Tutorial_Area/ItemHeadZones/ItemNoPassZone_Second_PressurePlate_Room/StaticBody3D" unique_id=252979799]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.1206244, -0.35000014, -0.3)
+shape = SubResource("BoxShape3D_pvb4u")
+disabled = true
+debug_color = Color(0, 0.6448386, 0.27909693, 0.41960785)
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Tutorial_Area/ItemHeadZones/ItemNoPassZone_PressurePlateRoom/CollisionShape3D" unique_id=1513663552]
+[node name="CollisionEnabler_Disabler" parent="Tutorial_Area/ItemHeadZones/ItemNoPassZone_Second_PressurePlate_Room/StaticBody3D" unique_id=1624400774 node_paths=PackedStringArray("col") instance=ExtResource("22_itmas")]
+col = NodePath("../CollisionShape3D")
+
+[node name="ItemNoPassZone_First_PressurePlate_Room" parent="Tutorial_Area/ItemHeadZones" unique_id=1104885076 instance=ExtResource("28_kncr2")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 7.4142656, 1.1573812, -14.43763)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Tutorial_Area/ItemHeadZones/ItemNoPassZone_First_PressurePlate_Room" unique_id=2066562947]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 1.1924915, -0.29999995, 0.27688885)
+shape = SubResource("BoxShape3D_56l6l")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Tutorial_Area/ItemHeadZones/ItemNoPassZone_First_PressurePlate_Room/CollisionShape3D" unique_id=738704491]
 visible = false
-mesh = SubResource("BoxMesh_pvb4u")
+mesh = SubResource("BoxMesh_ea6e4")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Tutorial_Area/ItemHeadZones/ItemNoPassZone_First_PressurePlate_Room" unique_id=191217176]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 1.6196156, 0, -1.7317309)
+collision_mask = 3
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Tutorial_Area/ItemHeadZones/ItemNoPassZone_First_PressurePlate_Room/StaticBody3D" unique_id=316968050]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.1206244, -0.35000014, -0.3)
+shape = SubResource("BoxShape3D_pvb4u")
+disabled = true
+debug_color = Color(0, 0.6448386, 0.27909693, 0.41960785)
+
+[node name="CollisionEnabler_Disabler" parent="Tutorial_Area/ItemHeadZones/ItemNoPassZone_First_PressurePlate_Room/StaticBody3D" unique_id=528118430 node_paths=PackedStringArray("col") instance=ExtResource("22_itmas")]
+col = NodePath("../CollisionShape3D")
+
+[node name="No_Acess_Gate" parent="Tutorial_Area/ItemHeadZones" unique_id=634748136 instance=ExtResource("4_elh88")]
+transform = Transform3D(-4.371139e-08, -2.980232e-08, -1.0000001, 2.9802322e-08, 1.0000005, 1.7763568e-15, 1.0000002, 2.9802322e-08, -2.6846717e-08, 42, -2, -5.0000005)
 
 [node name="Ambient_Noises" type="Node3D" parent="." unique_id=369290277]
 
@@ -588,3 +620,11 @@ metadata/_custom_type_script = "uid://bul4myvyhnpjc"
 [connection signal="area_exited" from="Tutorial_Area/Lever_Puzzle/PlayerAreaTrigger_AfterLeverPuzzle/Area3D" to="Tutorial_Area/Lever_Puzzle/PlayerAreaTrigger_AfterLeverPuzzle" method="_player_exited"]
 [connection signal="on_change" from="Tutorial_Area/Urn_key_puzzle/Urn_puzzle_Pressure_Plate" to="Tutorial_Area/Urn_key_puzzle/Slate_Gate" method="open_gate"]
 [connection signal="on_saved" from="Tutorial_Area/Save_Tutorial/SavingStone" to="Tutorial_Area/Save_Tutorial/Gate" method="open_gate"]
+[connection signal="on_enter_lockdown" from="Tutorial_Area/ItemHeadZones/ItemNoPassZone_Second_PressurePlate_Room" to="Tutorial_Area/ItemHeadZones/ItemNoPassZone_Second_PressurePlate_Room/StaticBody3D/CollisionEnabler_Disabler" method="enable_obj"]
+[connection signal="on_enter_lockdown" from="Tutorial_Area/ItemHeadZones/ItemNoPassZone_Second_PressurePlate_Room" to="Tutorial_Area/ItemHeadZones/No_Acess_Gate" method="close_gate"]
+[connection signal="on_exit_lockdown" from="Tutorial_Area/ItemHeadZones/ItemNoPassZone_Second_PressurePlate_Room" to="Tutorial_Area/ItemHeadZones/ItemNoPassZone_Second_PressurePlate_Room/StaticBody3D/CollisionEnabler_Disabler" method="disable_obj"]
+[connection signal="on_exit_lockdown" from="Tutorial_Area/ItemHeadZones/ItemNoPassZone_Second_PressurePlate_Room" to="Tutorial_Area/ItemHeadZones/No_Acess_Gate" method="fully_open_gate"]
+[connection signal="on_enter_lockdown" from="Tutorial_Area/ItemHeadZones/ItemNoPassZone_First_PressurePlate_Room" to="Tutorial_Area/Weighted_Gate_Puzzle/Weight_Puzzle_Gate" method="close_gate"]
+[connection signal="on_enter_lockdown" from="Tutorial_Area/ItemHeadZones/ItemNoPassZone_First_PressurePlate_Room" to="Tutorial_Area/ItemHeadZones/ItemNoPassZone_First_PressurePlate_Room/StaticBody3D/CollisionEnabler_Disabler" method="enable_obj"]
+[connection signal="on_exit_lockdown" from="Tutorial_Area/ItemHeadZones/ItemNoPassZone_First_PressurePlate_Room" to="Tutorial_Area/Weighted_Gate_Puzzle/Weight_Puzzle_Gate" method="fully_open_gate"]
+[connection signal="on_exit_lockdown" from="Tutorial_Area/ItemHeadZones/ItemNoPassZone_First_PressurePlate_Room" to="Tutorial_Area/ItemHeadZones/ItemNoPassZone_First_PressurePlate_Room/StaticBody3D/CollisionEnabler_Disabler" method="disable_obj"]
