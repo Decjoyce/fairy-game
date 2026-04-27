@@ -1,0 +1,19 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://c6ayo7klcqktj"]
+
+[ext_resource type="Texture2D" uid="uid://c7fg60ns2nht7" path="res://assets/models/cairn/Props/SavingStone/Gravestone_Base_color.png" id="1_5ese3"]
+[ext_resource type="Texture2D" uid="uid://dxdkmhbulbuxw" path="res://assets/models/cairn/Props/SavingStone/Gravestone_Mixed_AO.png" id="2_1avrk"]
+[ext_resource type="Texture2D" uid="uid://dn15gi2vh5tka" path="res://assets/models/cairn/Props/SavingStone/Gravestone_Metallic.png" id="3_wrgd8"]
+[ext_resource type="Material" uid="uid://dyejtq23uplk4" path="res://assets/shaders/Outline/outline.tres" id="4_7tx4a"]
+[ext_resource type="Texture2D" uid="uid://c7g0cxi5dmvw5" path="res://assets/models/cairn/Props/SavingStone/Gravestone_Normal_OpenGL.png" id="5_aib6i"]
+[ext_resource type="Texture2D" uid="uid://d17ro3hrgjxav" path="res://assets/models/cairn/Props/SavingStone/Gravestone_Roughness.png" id="6_wvh3n"]
+
+[resource]
+next_pass = ExtResource("4_7tx4a")
+albedo_texture = ExtResource("1_5ese3")
+metallic = 1.0
+metallic_texture = ExtResource("3_wrgd8")
+roughness_texture = ExtResource("6_wvh3n")
+normal_enabled = true
+normal_texture = ExtResource("5_aib6i")
+ao_enabled = true
+ao_texture = ExtResource("2_1avrk")
