@@ -16,6 +16,7 @@ var waiting_to_start: bool
 
 func _ready() -> void:
 	timer.wait_time = time_until_return
+	itm_mover.itms_2_move[0] = my_stone
 
 func _process(delta: float) -> void:
 	g_waiting.visible = my_stone.is_grabbed and !stone_inside
@@ -38,19 +39,19 @@ func on_stone_area_exited_return_areas(area: Area3D) -> void:
 	stone_inside = true
 	waiting_to_start = true
 
-func on_stone_entered_return_areas(body: Node3D) -> void:
-	return
-	if body != my_stone: return
-	print("hey jude")
-	stone_inside = false
-	waiting_to_start = false
-
-func on_stone_exited_return_areas(body: Node3D) -> void:
-	return
-	if body != my_stone: return
-	print("buy jude")
-	stone_inside = true
-	waiting_to_start = true
+#func on_stone_entered_return_areas(body: Node3D) -> void:
+	#return
+	#if body != my_stone: return
+	#print("hey jude")
+	#stone_inside = false
+	#waiting_to_start = false
+#
+#func on_stone_exited_return_areas(body: Node3D) -> void:
+	#return
+	#if body != my_stone: return
+	#print("buy jude")
+	#stone_inside = true
+	#waiting_to_start = true
 
 func on_tp_timeout() -> void:
 	if my_stone.is_grabbed or !stone_inside: 

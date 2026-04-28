@@ -22,7 +22,7 @@ rim_enabled = true
 material = SubResource("StandardMaterial3D_317lc")
 size = Vector2(0.499, 0.5)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kmgx0"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vsa00"]
 transparency = 1
 albedo_color = Color(0, 0.8494162, 1, 1)
 albedo_texture = ExtResource("6_kmgx0")
@@ -31,7 +31,7 @@ emission = Color(0, 0.89420825, 1, 1)
 rim_enabled = true
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_kgdm0"]
-material = SubResource("StandardMaterial3D_kmgx0")
+material = SubResource("StandardMaterial3D_vsa00")
 size = Vector2(0.5, 0.5)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qsdh4"]
@@ -52,7 +52,7 @@ script = ExtResource("1_vsa00")
 
 [node name="ItemMover" type="Node" parent="." unique_id=1734723238 node_paths=PackedStringArray("itms_2_move", "positions_to_move_to")]
 script = ExtResource("3_kmgx0")
-itms_2_move = [NodePath("")]
+itms_2_move = [null]
 positions_to_move_to = [NodePath("../out_pos")]
 metadata/_custom_type_script = "uid://dpj75tckiwmsm"
 
@@ -94,6 +94,4 @@ skeleton = NodePath("")
 
 [connection signal="area_entered" from="." to="." method="on_stone_area_entered_return_areas"]
 [connection signal="area_exited" from="." to="." method="on_stone_area_exited_return_areas"]
-[connection signal="body_entered" from="." to="." method="on_stone_entered_return_areas"]
-[connection signal="body_exited" from="." to="." method="on_stone_exited_return_areas"]
 [connection signal="timeout" from="Timer" to="." method="on_tp_timeout"]
