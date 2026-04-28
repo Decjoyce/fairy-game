@@ -35,6 +35,7 @@
 [ext_resource type="PackedScene" uid="uid://cpnmun20lswr" path="res://scenes/_levels/_palettes/cairn/props/cairn_pillar.tscn" id="30_u1stw"]
 [ext_resource type="PackedScene" uid="uid://b1clamofxlgo8" path="res://scenes/_levels/_palettes/cairn/props/cairn_gate_setdressing.tscn" id="32_hpkss"]
 [ext_resource type="PackedScene" uid="uid://pfnqccjh5kbs" path="res://scenes/_levels/_palettes/cairn/props/skull.tscn" id="33_hpkss"]
+[ext_resource type="PackedScene" uid="uid://cugb412hsfn16" path="res://scenes/_levels/_palettes/cairn/props/cairn_savingstone.tscn" id="36_ag4il"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_mtbvg"]
 sky_horizon_color = Color(0, 0.37292683, 0.8185948, 1)
@@ -1654,6 +1655,12 @@ transform = Transform3D(1, 0, 0, 0, 0.9659258, 0.25881904, 0, -0.25881904, 0.965
 
 [node name="cairn_gate_setdressing6" parent="Setdressing/extras" unique_id=269994853 instance=ExtResource("32_hpkss")]
 transform = Transform3D(1, 0, 0, 0, 0.9805325, 0.19635691, 0, -0.19635691, 0.9805325, 67.6, -2, 38.59998)
+
+[node name="cairn_savingstone" parent="." unique_id=135397878 instance=ExtResource("36_ag4il")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 68.790596, -1.8753141, -17.220928)
+
+[node name="cairn_savingstone2" parent="." unique_id=1726778690 instance=ExtResource("36_ag4il")]
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 48, -2, -19.1)
 
 [connection signal="on_activated" from="Different_Sections/Inbetween_Sections/BallyBog_Area_Button" to="Different_Sections/Inbetween_Sections/BallyBog_Area_Gate" method="open_gate"]
 [connection signal="area_entered" from="Ender/Area3D" to="Ender" method="_on_area_3d_area_entered"]
