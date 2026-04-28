@@ -8,13 +8,9 @@
 [ext_resource type="PackedScene" uid="uid://bsdlm8rcrt2j" path="res://scenes/interactions/_triggers/area_triggers/player_area_trigger.tscn" id="5_cvgf4"]
 [ext_resource type="PackedScene" uid="uid://dt13fur6twjep" path="res://scenes/interactions/_receivers/gate/gate.tscn" id="5_nfw6c"]
 [ext_resource type="PackedScene" uid="uid://xuo5buj0odhi" path="res://scenes/interactions/_triggers/torch_sconce/torch_sconce_lit.tscn" id="8_m8tlr"]
-[ext_resource type="Script" uid="uid://d3bv00f0bmt6j" path="res://scenes/interactions/ReusableStones/stonepile_reusable_stones.gd" id="14_qofka"]
-[ext_resource type="Material" uid="uid://dgrldudl0bdhu" path="res://assets/models/cairn/Props/Rockpile/Rock_pile.tres" id="15_0ox1x"]
-[ext_resource type="ArrayMesh" uid="uid://bboxjdwpohtg0" path="res://assets/models/cairn/Props/Rockpile/Rock_pile.obj" id="16_ru5qk"]
-[ext_resource type="Script" uid="uid://dpj75tckiwmsm" path="res://scenes/interactions/_receivers/wip__item_mover/itm_mover.gd" id="17_tnaar"]
+[ext_resource type="PackedScene" uid="uid://cwr2r7yxt4ust" path="res://scenes/interactions/ReusableStones/stonepile_reusable_stones.tscn" id="11_vlnct"]
 [ext_resource type="PackedScene" uid="uid://clvus6c43ipdy" path="res://scenes/interactions/interactables/items/all_items/misc/item_stone.tscn" id="18_r7etj"]
 [ext_resource type="PackedScene" uid="uid://csot2mi7746ll" path="res://scenes/interactions/_triggers/pressure_plate/pressure_plate.tscn" id="19_0ox1x"]
-[ext_resource type="Texture2D" uid="uid://1c406hs7su5a" path="res://assets/__not_ours_dontship/triskele_rough_01.png" id="19_g6es1"]
 [ext_resource type="PackedScene" uid="uid://dkx1fyyqx7cmp" path="res://scenes/interactions/_triggers/torch_sconce/torch_sconce_ceiling.tscn" id="19_qofka"]
 [ext_resource type="Script" uid="uid://bicoc8ibhscjw" path="res://scenes/interactions/_receivers/enabler_disabler_v1/group_visibility_enabler.gd" id="20_ru5qk"]
 [ext_resource type="PackedScene" uid="uid://ylg6mxx468cq" path="res://scenes/_levels/_palettes/cairn/props/Rocks/cairn_rock_1.tscn" id="21_jbn6s"]
@@ -26,7 +22,6 @@
 [ext_resource type="PackedScene" uid="uid://cpnmun20lswr" path="res://scenes/_levels/_palettes/cairn/props/cairn_pillar.tscn" id="26_pw1ys"]
 [ext_resource type="PackedScene" uid="uid://dpmxu8xwfcf5e" path="res://scenes/enemy/bb_line.tscn" id="28_r0k5g"]
 [ext_resource type="Script" uid="uid://ubfk2a80dhfp" path="res://addons/grid_map_pathfinding/grid_map_pathfinding.gd" id="29_211nq"]
-[ext_resource type="Material" uid="uid://ioo51vym3k1d" path="res://scenes/interactions/_triggers/teleporter/m_teleport.tres" id="32_tie2v"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_iw7gl"]
 
@@ -48,36 +43,8 @@ size = Vector3(2.3212585, 0.9329834, 1.6738892)
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_257qr"]
 
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_qsdh4"]
-radius = 0.72753906
-height = 1.4550781
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kmgx0"]
-transparency = 1
-albedo_color = Color(0, 0.8494162, 1, 1)
-albedo_texture = ExtResource("19_g6es1")
-emission_enabled = true
-emission = Color(0, 0.89420825, 1, 1)
-rim_enabled = true
-
-[sub_resource type="PlaneMesh" id="PlaneMesh_qsdh4"]
-material = SubResource("StandardMaterial3D_kmgx0")
-size = Vector2(0.5, 0.5)
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qsdh4"]
-transparency = 1
-albedo_color = Color(0, 0.09350002, 0.11, 1)
-albedo_texture = ExtResource("19_g6es1")
-emission = Color(0, 0.89420825, 1, 1)
-
-[sub_resource type="PlaneMesh" id="PlaneMesh_317lc"]
-material = SubResource("StandardMaterial3D_qsdh4")
-size = Vector2(0.5, 0.5)
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_qofka"]
-
-[sub_resource type="BoxMesh" id="BoxMesh_0ox1x"]
-material = ExtResource("32_tie2v")
+[sub_resource type="BoxShape3D" id="BoxShape3D_vlnct"]
+size = Vector3(1.1813965, 1, 1.2166748)
 
 [node name="Ballybog_Scene" type="Node3D" unique_id=842226877]
 
@@ -133,7 +100,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7, 0, -0.9999998)
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0.99999994, 0, -7)
 grid_map = NodePath("../GridMapPathFinding2")
 patrol_points = [NodePath("../Bally_1_PatrolPoints/Node3D2"), NodePath("../Bally_1_PatrolPoints/Node3D"), NodePath("../Bally_1_PatrolPoints/Node3D3"), NodePath("../Bally_1_PatrolPoints/Node3D5"), NodePath("../Bally_1_PatrolPoints/Node3D6")]
-metadata/lock_uid = true
+metadata/lock_uid = false
 metadata/uid = "80376abe-116c-4383-a2cb-3207494796ca"
 metadata/date_generated = "2026-04-21T14:01:21"
 
@@ -141,7 +108,7 @@ metadata/date_generated = "2026-04-21T14:01:21"
 
 [node name="First_Gate" parent="Sneaked_past" unique_id=2077487765 instance=ExtResource("5_nfw6c")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, -12.022409)
-metadata/lock_uid = true
+metadata/lock_uid = false
 metadata/uid = "9f396a67-166a-459b-acb8-20d1d0484c13"
 metadata/date_generated = "2026-04-21T14:01:21"
 
@@ -167,7 +134,7 @@ shape = SubResource("SphereShape3D_qofka")
 transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 1, 0, -9)
 weight_to_activate = 1.0
 metadata/uid = "c0ffa70e-eaa2-47d2-8140-acd37fb77dca"
-metadata/lock_uid = true
+metadata/lock_uid = false
 metadata/date_generated = "2026-04-21T14:01:21"
 
 [node name="TR_Indicator" type="Sprite3D" parent="Sneaked_past/PressurePlateLight" unique_id=285485071]
@@ -216,64 +183,19 @@ monitorable = false
 [node name="CollisionShape3D" type="CollisionShape3D" parent="BallyBog_Trigger/Area3D" unique_id=2036706290]
 shape = SubResource("SphereShape3D_257qr")
 
-[node name="Stonepile_ReusableStones" type="Area3D" parent="." unique_id=1682368129 node_paths=PackedStringArray("my_stone")]
+[node name="Stonepile_ReusableStones2" parent="." unique_id=1682368129 node_paths=PackedStringArray("my_stone") instance=ExtResource("11_vlnct")]
 transform = Transform3D(-0.25881907, 0, -0.9659258, 0, 1, 0, 0.9659258, 0, -0.25881907, -2.9033294, 0, -9.328729)
-collision_layer = 0
-collision_mask = 2
-monitorable = false
-script = ExtResource("14_qofka")
 my_stone = NodePath("stone")
 
-[node name="stone" parent="Stonepile_ReusableStones" unique_id=234370081 instance=ExtResource("18_r7etj")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.1744905, 0.3319087, -7.8661084)
+[node name="stone" parent="Stonepile_ReusableStones2" unique_id=234370081 instance=ExtResource("18_r7etj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.17449, 0.3319087, -7.866109)
 metadata/uid = "89fcb662-6581-4a47-be7f-ff9aea712d9d"
-metadata/lock_uid = true
+metadata/lock_uid = false
 metadata/date_generated = "2026-04-27T16:40:14"
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Stonepile_ReusableStones" unique_id=651584812]
-transform = Transform3D(0.4, 0, 0, 0, 0.505, 0, 0, 0, 0.4, -1.148, -0.26655877, 0)
-visible = false
-material_override = ExtResource("15_0ox1x")
-mesh = ExtResource("16_ru5qk")
-
-[node name="ItemMover" type="Node" parent="Stonepile_ReusableStones" unique_id=1734723238 node_paths=PackedStringArray("itms_2_move", "positions_to_move_to")]
-script = ExtResource("17_tnaar")
-itms_2_move = [NodePath("")]
-positions_to_move_to = [NodePath("../out_pos")]
-metadata/_custom_type_script = "uid://dpj75tckiwmsm"
-
-[node name="out_pos" type="Node3D" parent="Stonepile_ReusableStones" unique_id=1799811114]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.28610995, 0)
-
-[node name="Timer" type="Timer" parent="Stonepile_ReusableStones" unique_id=2127654294]
-wait_time = 2.0
-
-[node name="StaticBody3D" type="StaticBody3D" parent="Stonepile_ReusableStones" unique_id=941630500]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.148, 0, 0)
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Stonepile_ReusableStones/StaticBody3D" unique_id=652565633]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.029663086, -0.22897023, 0)
-shape = SubResource("CapsuleShape3D_qsdh4")
-disabled = true
-
-[node name="_g_on" type="MeshInstance3D" parent="Stonepile_ReusableStones" unique_id=1967571280]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.01381889, 0)
-visible = false
-mesh = SubResource("PlaneMesh_qsdh4")
-skeleton = NodePath("")
-
-[node name="_g_off" type="MeshInstance3D" parent="Stonepile_ReusableStones" unique_id=150059038]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.01381889, 0)
-mesh = SubResource("PlaneMesh_317lc")
-skeleton = NodePath("")
-
-[node name="CollisionShape3D3" type="CollisionShape3D" parent="Stonepile_ReusableStones" unique_id=659146393]
-transform = Transform3D(-0.25881907, 0, 0.9659258, 0, 1, 0, -0.9659258, 0, -0.25881907, -0.6823473, 0.6, -3.8777506)
-shape = SubResource("BoxShape3D_qofka")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Stonepile_ReusableStones/CollisionShape3D3" unique_id=140676877]
-visible = false
-mesh = SubResource("BoxMesh_0ox1x")
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Stonepile_ReusableStones2" unique_id=634624403]
+transform = Transform3D(0.9659258, 0, 0.25881904, 0, 1, 0, -0.25881904, 0, 0.9659258, -0.7185297, 0.6496775, -3.8574843)
+shape = SubResource("BoxShape3D_vlnct")
 
 [node name="TorchSconce_Lit3" parent="." unique_id=1729385187 instance=ExtResource("8_m8tlr")]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 1.8299166, 1.5393279, -11.385967)
@@ -363,6 +285,3 @@ size = Vector3(1.9, 0.005, 0.1942627)
 [connection signal="on_activated" from="BallyBog_Trigger" to="Ballybog2" method="enable_me"]
 [connection signal="area_entered" from="BallyBog_Trigger/Area3D" to="BallyBog_Trigger" method="_player_entered"]
 [connection signal="area_exited" from="BallyBog_Trigger/Area3D" to="BallyBog_Trigger" method="_player_exited"]
-[connection signal="body_entered" from="Stonepile_ReusableStones" to="Stonepile_ReusableStones" method="on_stone_entered_return_areas"]
-[connection signal="body_exited" from="Stonepile_ReusableStones" to="Stonepile_ReusableStones" method="on_stone_exited_return_areas"]
-[connection signal="timeout" from="Stonepile_ReusableStones/Timer" to="Stonepile_ReusableStones" method="on_tp_timeout"]

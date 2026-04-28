@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://1imsfywompor" path="res://zzz_GARBAGE/obs_Stonepile_itmspawner/stonepile_item_spawner.tscn" id="8_jjv43"]
 [ext_resource type="PackedScene" uid="uid://cwr2r7yxt4ust" path="res://scenes/interactions/ReusableStones/stonepile_reusable_stones.tscn" id="9_ufamh"]
 [ext_resource type="Material" uid="uid://ioo51vym3k1d" path="res://scenes/interactions/_triggers/teleporter/m_teleport.tres" id="10_54x8d"]
+[ext_resource type="PackedScene" uid="uid://clvus6c43ipdy" path="res://scenes/interactions/interactables/items/all_items/misc/item_stone.tscn" id="11_8egdi"]
 
 [sub_resource type="Environment" id="Environment_vu50v"]
 
@@ -84,8 +85,9 @@ keywords = "LEVER;"
 [node name="Stonepile_ItemSpawner" parent="." unique_id=1521572728 instance=ExtResource("8_jjv43")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, 0)
 
-[node name="Stonepile_ReusableStones" parent="." unique_id=1682368129 instance=ExtResource("9_ufamh")]
+[node name="Stonepile_ReusableStones" parent="." unique_id=1682368129 node_paths=PackedStringArray("my_stone") instance=ExtResource("9_ufamh")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 3)
+my_stone = NodePath("stone")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Stonepile_ReusableStones" unique_id=1451071940]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0.6, 0)
@@ -93,6 +95,9 @@ shape = SubResource("BoxShape3D_8egdi")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Stonepile_ReusableStones/CollisionShape3D" unique_id=2028408613]
 mesh = SubResource("BoxMesh_ncoiu")
+
+[node name="stone" parent="Stonepile_ReusableStones" unique_id=234370081 instance=ExtResource("11_8egdi")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.286, 0)
 
 [connection signal="on_change" from="Lever" to="Gate" method="open_gate"]
 [connection signal="on_activated" from="Lever2" to="skybox_changer" method="change_to_a"]
