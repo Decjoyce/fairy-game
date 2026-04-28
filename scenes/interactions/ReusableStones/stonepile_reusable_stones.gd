@@ -57,6 +57,7 @@ func on_tp_timeout() -> void:
 	if my_stone.is_grabbed or !stone_inside: 
 		timer.stop()
 		return
+	stone_inside = true
 	my_stone.rb.linear_velocity = Vector3.ZERO
 	itm_mover.move_all_items()
 	timer.stop()
