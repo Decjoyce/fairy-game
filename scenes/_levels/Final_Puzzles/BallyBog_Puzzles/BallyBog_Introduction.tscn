@@ -43,8 +43,6 @@ size = Vector3(2.3212585, 0.9329834, 1.6738892)
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_257qr"]
 
-[sub_resource type="SphereShape3D" id="SphereShape3D_656c1"]
-
 [sub_resource type="BoxShape3D" id="BoxShape3D_vlnct"]
 size = Vector3(1.1813965, 1, 1.2166748)
 
@@ -102,7 +100,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7, 0, -0.9999998)
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0.99999994, 0, -7)
 grid_map = NodePath("../GridMapPathFinding2")
 patrol_points = [NodePath("../Bally_1_PatrolPoints/Node3D2"), NodePath("../Bally_1_PatrolPoints/Node3D"), NodePath("../Bally_1_PatrolPoints/Node3D3"), NodePath("../Bally_1_PatrolPoints/Node3D5"), NodePath("../Bally_1_PatrolPoints/Node3D6")]
-metadata/lock_uid = true
+metadata/lock_uid = false
 metadata/uid = "80376abe-116c-4383-a2cb-3207494796ca"
 metadata/date_generated = "2026-04-21T14:01:21"
 
@@ -110,7 +108,7 @@ metadata/date_generated = "2026-04-21T14:01:21"
 
 [node name="First_Gate" parent="Sneaked_past" unique_id=2077487765 instance=ExtResource("5_nfw6c")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, -12.022409)
-metadata/lock_uid = true
+metadata/lock_uid = false
 metadata/uid = "9f396a67-166a-459b-acb8-20d1d0484c13"
 metadata/date_generated = "2026-04-21T14:01:21"
 
@@ -136,7 +134,7 @@ shape = SubResource("SphereShape3D_qofka")
 transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 1, 0, -9)
 weight_to_activate = 1.0
 metadata/uid = "c0ffa70e-eaa2-47d2-8140-acd37fb77dca"
-metadata/lock_uid = true
+metadata/lock_uid = false
 metadata/date_generated = "2026-04-21T14:01:21"
 
 [node name="TR_Indicator" type="Sprite3D" parent="Sneaked_past/PressurePlateLight" unique_id=285485071]
@@ -192,11 +190,8 @@ my_stone = NodePath("stone")
 [node name="stone" parent="Stonepile_ReusableStones2" unique_id=234370081 instance=ExtResource("18_r7etj")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.17449, 0.3319087, -7.866109)
 metadata/uid = "89fcb662-6581-4a47-be7f-ff9aea712d9d"
-metadata/lock_uid = true
+metadata/lock_uid = false
 metadata/date_generated = "2026-04-27T16:40:14"
-
-[node name="CollisionShape3D2" type="CollisionShape3D" parent="Stonepile_ReusableStones2/stone" unique_id=1588816352]
-shape = SubResource("SphereShape3D_656c1")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Stonepile_ReusableStones2" unique_id=634624403]
 transform = Transform3D(0.9659258, 0, 0.25881904, 0, 1, 0, -0.25881904, 0, 0.9659258, -0.7185297, 0.6496775, -3.8574843)
