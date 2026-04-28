@@ -26,6 +26,7 @@
 [ext_resource type="Texture2D" uid="uid://jub3n8100tqt" path="res://assets/__not_ours_dontship/Xbox Series/XboxSeriesX_RT.png" id="21_g8o0o"]
 [ext_resource type="Texture2D" uid="uid://by4r3xp6u2qur" path="res://scenes/_player/interaction/hand/assets/new/handOut.png" id="22_6q41x"]
 [ext_resource type="Texture2D" uid="uid://bsneap2rk48wi" path="res://scenes/_player/interaction/hand/assets/new/handHover.png" id="22_f0odu"]
+[ext_resource type="Texture2D" uid="uid://c13thpnkpuk2u" path="res://scenes/_player/interaction/hand/assets/new/handIdle.png" id="23_sbbqv"]
 [ext_resource type="Texture2D" uid="uid://dug1nta4aw3qf" path="res://scenes/_player/interaction/hand/assets/new/handLeverDown_side.png" id="25_1y63c"]
 [ext_resource type="Texture2D" uid="uid://bckoo5g7d6dkd" path="res://scenes/_player/interaction/hand/assets/new/handLeverUp.png" id="25_8icoj"]
 [ext_resource type="Texture2D" uid="uid://cjg2tybwcwyps" path="res://scenes/_player/interaction/hand/assets/new/handLeverMid.png" id="25_j5qgs"]
@@ -37,6 +38,7 @@
 [ext_resource type="Texture2D" uid="uid://iq8lng6ke6sg" path="res://scenes/_player/interaction/hand/assets/new/handRecieve.png" id="34_70n6f"]
 [ext_resource type="AudioStream" uid="uid://y2phwtxrytt4" path="res://assets/audio/sfx/player/throw/Player_throw_randomizer.tres" id="34_v48pp"]
 [ext_resource type="Script" uid="uid://oa1ip6f7wn5o" path="res://scripts/input_context_helper.gd" id="36_u1dts"]
+[ext_resource type="Script" uid="uid://c5ujekq2hgfil" path="res://scenes/_player/interaction/hand/states/handstate_endme.tscn.gd" id="36_ul0jp"]
 [ext_resource type="Script" uid="uid://dqspm2isfx5n1" path="res://scripts/input_context/joy_icons_master.gd" id="37_6uakc"]
 [ext_resource type="Resource" uid="uid://bvdc57ehdgnq3" path="res://scripts/input_context/joyicons_xbox.tres" id="38_4266y"]
 [ext_resource type="Resource" uid="uid://cuvbrqma8ltub" path="res://scripts/input_context/joyicons_ps4.tres" id="39_mny7c"]
@@ -105,7 +107,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("9_8icoj")]
+"values": [ExtResource("23_sbbqv")]
 }
 
 [sub_resource type="Animation" id="Animation_3efos"]
@@ -139,6 +141,23 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [ExtResource("22_6q41x"), ExtResource("20_j5qgs")]
+}
+
+[sub_resource type="Animation" id="Animation_70n6f"]
+resource_name = "end_anim"
+length = 2.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("_hand_sprite:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.73333335, 1.4333333),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [ExtResource("22_6q41x"), ExtResource("9_8icoj"), ExtResource("22_f0odu")]
 }
 
 [sub_resource type="Animation" id="Animation_jhcvy"]
@@ -570,6 +589,7 @@ _data = {
 &"a_hand_idle": SubResource("Animation_h6x2d"),
 &"a_hand_idle_grab_item": SubResource("Animation_3efos"),
 &"a_hand_pickup": SubResource("Animation_ft4o3"),
+&"end_anim": SubResource("Animation_70n6f"),
 &"hand_attack": SubResource("Animation_jhcvy"),
 &"hand_attack_idle": SubResource("Animation_b33uu"),
 &"hand_chain": SubResource("Animation_uwauf"),
@@ -708,6 +728,10 @@ turning_breaks_free = true
 crouching_breaks_free = true
 anim_idle = "hand_flat"
 metadata/_custom_type_script = "uid://cpdb2nffihnia"
+
+[node name="ENDME" type="Node" parent="Hand_Left/States" unique_id=1128793664]
+script = ExtResource("36_ul0jp")
+metadata/_custom_type_script = "uid://c5ujekq2hgfil"
 
 [node name="_hand_sprite" type="TextureRect" parent="Hand_Left" unique_id=4964372]
 layout_mode = 1
@@ -923,6 +947,10 @@ turning_breaks_free = true
 crouching_breaks_free = true
 anim_idle = "hand_flat"
 metadata/_custom_type_script = "uid://cpdb2nffihnia"
+
+[node name="ENDME" type="Node" parent="Hand_Right/States" unique_id=492068539]
+script = ExtResource("36_ul0jp")
+metadata/_custom_type_script = "uid://c5ujekq2hgfil"
 
 [node name="_hand_sprite" type="TextureRect" parent="Hand_Right" unique_id=2143479765]
 layout_mode = 1

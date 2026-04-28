@@ -31,6 +31,7 @@ var load_level_thing: float
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
+	if me_ending: return
 	match_hand_to_light(delta)
 	
 	if Input.is_action_just_pressed("reload_level"): 
@@ -99,3 +100,11 @@ func match_hand_to_light(_delta: float) -> void:
 
 @export_group("AUDIO") #AUDIO
 @export var throw_clips: Array[AudioStream] ## 0 = charge, 1 = release
+
+var me_ending: bool
+
+func enable_ending_stuff() -> void:
+	#me_ending = true
+	hand_left.state.finished.emit("ENDME")
+	hand_right.state.finished.emit("ENDME")
+	pass

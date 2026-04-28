@@ -5,9 +5,11 @@ extends Node3D
 @onready var anim_player: AnimationPlayer = $StaticBody3D/AnimationPlayer
 
 @export var opened: bool
+@export var opened_special: bool
 
 func _ready() -> void:
 	if opened: start_opened()
+	if opened_special: open_door(-1)
 
 func open_door(sig: float) -> void:
 	anim_player.play("door_open")

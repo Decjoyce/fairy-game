@@ -57,6 +57,7 @@ func _unhandled_input(event: InputEvent) -> void:
 	state.handle_input(event)
 
 func _process(delta: float) -> void:
+	if player_interact.me_ending: return
 	#if player.in_combat: return
 	if Input.is_action_just_pressed("testing_handlimit"):
 		test_handlimit = !test_handlimit
@@ -70,6 +71,7 @@ func _physics_process(delta: float) -> void:
 	state.physics_update(delta)
 
 func _transition_to_next_state(target_state_path: String, data: Dictionary = {}) -> void:
+	if player_interact.me_ending: return
 	if !get_child(0).has_node(target_state_path):
 		printerr(owner.name + ": Tring to transition to state " + target_state_path + " but it does not exist.")
 		return
@@ -172,6 +174,9 @@ func begin_interact() -> void:
 		hovering_interactable.InteractTypes.TEMP_SAVE:
 			current_interactable.begin_interact()
 			state.finished.emit(state.SAVING)
+		hovering_interactable.InteractTypes.TEMP_ENDME:
+			current_interactable.begin_interact(-1, self)
+			#state.finished.emit(state.ENDME)
 
 func on_player_moved(direction: Vector3, target: Vector3) -> void:
 	if !state.moving_breaks_free:

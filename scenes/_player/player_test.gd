@@ -140,7 +140,10 @@ var ending_override: bool
 var trigged_ending: bool
 func enable_ending_override() -> void:
 	freeze = true
+	interaction.enable_ending_stuff()
 	$Camera3D/EndingAnim.play("ending_anim")
+	EffectsPlayer.vignettize(0, 0, 1.0, 1, true, false)
 
 func do_ending() -> void:
 	get_tree().change_scene_to_file("res://scenes/_levels/Final_Puzzles/ENDING_SCENE/the_end_scene.tscn")
+	#EffectsPlayer.close_vignettize()
