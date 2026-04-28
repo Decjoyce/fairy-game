@@ -22,6 +22,7 @@ func _ready() -> void:
 func add_count(sig: float) -> void:
 	current_count += 1
 	if current_count <= max_count:
+		print(float(current_count)/float(max_count - min_count))
 		on_change.emit(float(current_count)/float(max_count - min_count))
 		on_change_use_current_count.emit(float(current_count))
 		on_change_use_current_count_as_int.emit(current_count)

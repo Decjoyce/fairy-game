@@ -16,6 +16,11 @@ func _ready() -> void:
 	anim_player.current_animation = anim_to_play
 	anim_player.play_section(anim_to_play, 0, 0.001)
 
+func re_init(sig: float) -> void:
+	update_anim_player(connnect_anim_player, anim_to_play)
+	anim_player.current_animation = anim_to_play
+	anim_player.play_section(anim_to_play, 0, 0.001)
+
 func play_animation(sig: float) -> void:
 	#print(sig)
 	end_pos = remap(sig, 0, 1, 0, anim_player.get_animation(anim_to_play).length)

@@ -134,7 +134,7 @@ func begin_interact() -> void:
 	match hovering_interactable.interaction_type:
 		hovering_interactable.InteractTypes.INSTANT:
 			if animation_player.has_animation(current_interactable.interact_animation):
-				current_interactable.begin_interact()
+				current_interactable.begin_interact(-1, self)
 				anim_override_current_animation(current_interactable.interact_animation)
 			
 		hovering_interactable.InteractTypes.GRAB_ITEM:

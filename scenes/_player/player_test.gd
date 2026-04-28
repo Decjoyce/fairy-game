@@ -34,7 +34,8 @@ func _ready() -> void:
 
 func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("ui_end"):
-		toggle_combat_new()
+		#toggle_combat_new()
+		Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 
 func toggle_combat() -> void:
 	pass
@@ -87,6 +88,7 @@ func return_to_menu() -> void:
 func _physics_process(delta: float) -> void:
 	if freeze: 
 		return
+	
 	movement.rotate_input()
 	
 	movement.rotate(delta)
@@ -129,3 +131,16 @@ func on_load_game(saved_data: SavedData_Player) -> void:
 	if saved_data.is_crouching:
 		movement.call_deferred("crouch", true)
 	#endregion
+
+func no_more_crouch() -> void:
+	movement.uncrouch()
+	movement.restrict_crouch = true
+
+var ending_override: bool
+var trigged_ending: bool
+func enable_ending_override() -> void:
+	freeze = true
+	$Camera3D/EndingAnim.play("ending_anim")
+
+func do_ending() -> void:
+	get_tree().change_scene_to_file("res://scenes/_levels/Final_Puzzles/ENDING_SCENE/the_end_scene.tscn")

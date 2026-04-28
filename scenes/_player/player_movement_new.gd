@@ -369,14 +369,21 @@ func rotate(delta: float):
 	if player.rotation.y <= target_rotation + 0.001 and player.rotation.y >= target_rotation - 0.001:
 		player.rotation.y = target_rotation
 
+func rotate_180() -> void:
+	target_rotation = target_rotation + PI
+	compass.global_rotation.y = target_rotation
+	on_turn.emit(target_rotation)
+
 # ↑ Rotating Stuff ↑
 # --------------------------------------------------------------------------------------------------
 # ↓ Crouching Stuff ↓
 
 var is_crouching: bool
 @onready var crouch_sfx: AudioStreamPlayer3D = $CrouchSFX
+var restrict_crouch: bool
 
 func toggle_crouch() -> void:
+	if restrict_crouch: return
 	if is_crouching: uncrouch()
 	else: crouch()
 	crouch_sfx.play()
@@ -468,6 +475,29 @@ func teleport_player(out_pos: Node3D) -> void:
 	player.global_rotation.y = new_rotation
 	
 	current_direction = MoveDirections.NOT_MOVING
+	
+	ray_north.force_shapecast_update()
+	ray_south.force_shapecast_update()
+	ray_east.force_shapecast_update()
+	ray_west.force_shapecast_update()
+	
+
+func teleport_player_alt(out_pos: Node3D) -> void:
+	var new_position := out_pos.global_position.floor()
+	#var new_rotation := out_pos.global_rotation.y
+	
+	#is_moving = false
+	
+	target_pos = new_position + Vector3(0, compass.global_position.y, -1)
+	#target_rotation = new_rotation
+	
+	compass.global_position = new_position + Vector3(0, compass.global_position.y, -1)
+	#compass.global_rotation.y = new_rotation
+	
+	player.global_position = new_position + Vector3(0, compass.global_position.y, 0)
+	#player.global_rotation.y = new_rotation
+	
+	#current_direction = MoveDirections.NOT_MOVING
 	
 	ray_north.force_shapecast_update()
 	ray_south.force_shapecast_update()
