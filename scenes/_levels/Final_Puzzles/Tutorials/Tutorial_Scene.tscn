@@ -59,7 +59,7 @@ size = Vector3(8, 0.4650879, 13)
 size = Vector3(2.1363525, 10.775467, 14.223724)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_56l6l"]
-size = Vector3(3.3735352, 2, 2)
+size = Vector3(2.6016846, 2, 2)
 
 [sub_resource type="BoxMesh" id="BoxMesh_ea6e4"]
 material = ExtResource("29_56l6l")
@@ -536,10 +536,10 @@ debug_color = Color(0, 0.6448386, 0.27909693, 0.41960785)
 col = NodePath("../CollisionShape3D")
 
 [node name="ItemNoPassZone_First_PressurePlate_Room" parent="Tutorial_Area/ItemHeadZones" unique_id=1104885076 instance=ExtResource("28_kncr2")]
-transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 7.4142656, 1.1573812, -14.43763)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.414265, 1.1573812, -15.43763)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Tutorial_Area/ItemHeadZones/ItemNoPassZone_First_PressurePlate_Room" unique_id=2066562947]
-transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 1.1924915, -0.29999995, 0.27688885)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.28544807, -0.29999995, 0.27688885)
 shape = SubResource("BoxShape3D_56l6l")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Tutorial_Area/ItemHeadZones/ItemNoPassZone_First_PressurePlate_Room/CollisionShape3D" unique_id=738704491]
@@ -547,7 +547,7 @@ visible = false
 mesh = SubResource("BoxMesh_ea6e4")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Tutorial_Area/ItemHeadZones/ItemNoPassZone_First_PressurePlate_Room" unique_id=191217176]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 1.6196156, 0, -1.7317309)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.6196156, 0, 0.7020359)
 collision_mask = 3
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Tutorial_Area/ItemHeadZones/ItemNoPassZone_First_PressurePlate_Room/StaticBody3D" unique_id=316968050]
@@ -560,10 +560,15 @@ debug_color = Color(0, 0.6448386, 0.27909693, 0.41960785)
 col = NodePath("../CollisionShape3D")
 
 [node name="No_Acess_Gate" parent="Tutorial_Area/ItemHeadZones" unique_id=634748136 instance=ExtResource("4_elh88")]
-transform = Transform3D(-4.371139e-08, -2.980232e-08, -1.0000001, 2.9802322e-08, 1.0000005, 1.7763568e-15, 1.0000002, 2.9802322e-08, -2.6846717e-08, 19, -2, -5.0000005)
+transform = Transform3D(-4.371139e-08, -2.980232e-08, -1.0000001, 2.9802322e-08, 1.0000005, 1.7763568e-15, 1.0000002, 2.9802322e-08, -2.6846717e-08, 19, 0, -5.0000005)
+start_open = true
 metadata/uid = "571315d2-4cd9-42fb-9ece-5ae388bb0aae"
 metadata/lock_uid = false
 metadata/date_generated = "2026-04-28T20:55:11"
+
+[node name="No_Acess_Gate_Throwing_Room" parent="Tutorial_Area/ItemHeadZones" unique_id=1390314354 instance=ExtResource("4_elh88")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 18, 2, -15)
+start_open = true
 
 [node name="Ambient_Noises" type="Node3D" parent="." unique_id=369290277]
 
@@ -626,7 +631,7 @@ metadata/_custom_type_script = "uid://bul4myvyhnpjc"
 [connection signal="on_enter_lockdown" from="Tutorial_Area/ItemHeadZones/ItemNoPassZone_Second_PressurePlate_Room" to="Tutorial_Area/ItemHeadZones/No_Acess_Gate" method="close_gate"]
 [connection signal="on_exit_lockdown" from="Tutorial_Area/ItemHeadZones/ItemNoPassZone_Second_PressurePlate_Room" to="Tutorial_Area/ItemHeadZones/ItemNoPassZone_Second_PressurePlate_Room/StaticBody3D/CollisionEnabler_Disabler" method="disable_obj"]
 [connection signal="on_exit_lockdown" from="Tutorial_Area/ItemHeadZones/ItemNoPassZone_Second_PressurePlate_Room" to="Tutorial_Area/ItemHeadZones/No_Acess_Gate" method="fully_open_gate"]
-[connection signal="on_enter_lockdown" from="Tutorial_Area/ItemHeadZones/ItemNoPassZone_First_PressurePlate_Room" to="Tutorial_Area/Lever_Puzzle/Lever_Gate" method="close_gate"]
 [connection signal="on_enter_lockdown" from="Tutorial_Area/ItemHeadZones/ItemNoPassZone_First_PressurePlate_Room" to="Tutorial_Area/ItemHeadZones/ItemNoPassZone_First_PressurePlate_Room/StaticBody3D/CollisionEnabler_Disabler" method="enable_obj"]
-[connection signal="on_exit_lockdown" from="Tutorial_Area/ItemHeadZones/ItemNoPassZone_First_PressurePlate_Room" to="Tutorial_Area/Lever_Puzzle/Lever_Gate" method="open_gate"]
+[connection signal="on_enter_lockdown" from="Tutorial_Area/ItemHeadZones/ItemNoPassZone_First_PressurePlate_Room" to="Tutorial_Area/ItemHeadZones/No_Acess_Gate_Throwing_Room" method="close_gate"]
 [connection signal="on_exit_lockdown" from="Tutorial_Area/ItemHeadZones/ItemNoPassZone_First_PressurePlate_Room" to="Tutorial_Area/ItemHeadZones/ItemNoPassZone_First_PressurePlate_Room/StaticBody3D/CollisionEnabler_Disabler" method="disable_obj"]
+[connection signal="on_exit_lockdown" from="Tutorial_Area/ItemHeadZones/ItemNoPassZone_First_PressurePlate_Room" to="Tutorial_Area/ItemHeadZones/No_Acess_Gate_Throwing_Room" method="open_gate"]
