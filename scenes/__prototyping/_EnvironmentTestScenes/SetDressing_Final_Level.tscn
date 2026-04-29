@@ -97,7 +97,7 @@ frequency = 0.0261
 noise = SubResource("FastNoiseLite_l6x3k")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_54i5u"]
-render_priority = 0
+render_priority = 1
 shader = ExtResource("20_ucuax")
 shader_parameter/noise_tex = SubResource("NoiseTexture2D_4bynk")
 shader_parameter/speed = 0.01
@@ -305,7 +305,7 @@ metadata/_editor_floor_ = Vector3(0, -1, 0)
 [node name="Save_points" type="Node3D" parent="." unique_id=984743412]
 
 [node name="SavingStone" parent="Save_points" unique_id=452927148 instance=ExtResource("14_qj3op")]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 69.00135, -2, -17.206364)
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 69.00135, -1.8779678, -17.206364)
 
 [node name="SavingStone2" parent="Save_points" unique_id=1131248924 instance=ExtResource("14_qj3op")]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 101.35215, -2, -37.0365)
@@ -491,7 +491,7 @@ mesh = SubResource("PlaneMesh_ag4il")
 surface_material_override/0 = SubResource("ShaderMaterial_54i5u")
 
 [node name="FogGround2" type="MeshInstance3D" parent="Environment2" unique_id=1818132746]
-transform = Transform3D(7.4380693, 0, 0, 0, 50, 0, 0, 0, 10.580788, 68.63588, -1.8464658, -19.807453)
+transform = Transform3D(7.4380693, 0, 0, 0, 50, 0, 0, 0, 10.580788, 68.64396, -1.871323, -19.8082)
 mesh = SubResource("PlaneMesh_ag4il")
 surface_material_override/0 = SubResource("ShaderMaterial_54i5u")
 
@@ -1304,7 +1304,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 79.1, -2, -26.060005)
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 66.30001, -1.9, -6.160001)
 
 [node name="pillardamaged19" parent="Setdressing/Pillars" unique_id=315035842 instance=ExtResource("29_b3lts")]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 66.30001, -1.9, -4.260001)
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 66.30001, -1.9, -3.7600012)
 
 [node name="cairnPillar77" parent="Setdressing/Pillars" unique_id=900688069 instance=ExtResource("30_u1stw")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 80.9, -2, -32.06)
@@ -1639,13 +1639,13 @@ transform = Transform3D(1, 0, 0, 0, 0.9659258, -0.25881904, 0, 0.25881904, 0.965
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 67.100006, -1.7, -20.215538)
 
 [node name="TorchSconce_Lit2" parent="Setdressing/extras" unique_id=705458332 instance=ExtResource("11_54i5u")]
-transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 67.100006, -1.7, -18.315615)
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 67.100006, -1.7, -17.815615)
 
 [node name="Skull" parent="Setdressing/extras" unique_id=1689684370 instance=ExtResource("33_hpkss")]
 transform = Transform3D(-1.049901e-08, 0.088572435, -0.24018936, 3.871624e-09, 0.24018936, 0.088572435, 0.256, 0, -1.11901155e-08, 67.110535, -1.3604057, -20.199303)
 
 [node name="Skull2" parent="Setdressing/extras" unique_id=371699958 instance=ExtResource("33_hpkss")]
-transform = Transform3D(-1.049901e-08, 0.088572435, -0.24018936, 3.871624e-09, 0.24018936, 0.088572435, 0.256, 0, -1.11901155e-08, 67.110535, -1.3604057, -18.300837)
+transform = Transform3D(-1.049901e-08, 0.088572435, -0.24018936, 3.871624e-09, 0.24018936, 0.088572435, 0.256, 0, -1.11901155e-08, 67.110535, -1.3604057, -17.800837)
 
 [node name="cairn_gate_setdressing4" parent="Setdressing/extras" unique_id=1218894992 instance=ExtResource("32_hpkss")]
 transform = Transform3D(-4.3476376e-08, 0.103556395, -0.99462366, 4.5265924e-09, 0.99462366, 0.103556395, 1, -4.879822e-16, -4.371139e-08, 67.55692, -2, -35.42155)
@@ -1656,11 +1656,9 @@ transform = Transform3D(1, 0, 0, 0, 0.9659258, 0.25881904, 0, -0.25881904, 0.965
 [node name="cairn_gate_setdressing6" parent="Setdressing/extras" unique_id=269994853 instance=ExtResource("32_hpkss")]
 transform = Transform3D(1, 0, 0, 0, 0.9805325, 0.19635691, 0, -0.19635691, 0.9805325, 67.6, -2, 38.59998)
 
-[node name="cairn_savingstone" parent="." unique_id=135397878 instance=ExtResource("36_ag4il")]
-transform = Transform3D(1, 0, 1.7484555e-07, 0, 1, 0, -1.7484555e-07, 0, 1, 65.6906, -1.8753141, -16.420929)
-
 [node name="cairn_savingstone2" parent="." unique_id=1726778690 instance=ExtResource("36_ag4il")]
 transform = Transform3D(1.3113416e-07, 0, 1, 0, 1, 0, -1, 0, 1.3113416e-07, 48.3, -2, -16.6)
+visible = false
 
 [connection signal="on_activated" from="Different_Sections/Inbetween_Sections/BallyBog_Area_Button" to="Different_Sections/Inbetween_Sections/BallyBog_Area_Gate" method="open_gate"]
 [connection signal="area_entered" from="Ender/Area3D" to="Ender" method="_on_area_3d_area_entered"]
