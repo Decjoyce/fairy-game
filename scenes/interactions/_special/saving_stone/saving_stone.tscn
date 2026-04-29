@@ -12,7 +12,6 @@
 [ext_resource type="PackedScene" uid="uid://gc2qo6ixywh3" path="res://scenes/decor/fire.tscn" id="8_jev3r"]
 [ext_resource type="Texture2D" uid="uid://d0mairuj2kbi" path="res://scenes/interactions/interactables/items/all_items/torch/ScontSprite/ScontSide_unlit.png" id="9_ha4h5"]
 [ext_resource type="Texture2D" uid="uid://dvp8s5j4heyx7" path="res://scenes/interactions/interactables/items/all_items/torch/ScontSprite/ScontFrontSide_unlit.png" id="10_eafuo"]
-[ext_resource type="Script" uid="uid://cc36kknugth5b" path="res://scripts/saving/persistent_objs/po_itmreceiver.gd" id="11_tfylk"]
 [ext_resource type="Material" uid="uid://cykgn4cpccw6q" path="res://assets/models/cairn/Props/MountedTorch/MountedTorch.tres" id="12_h6mu1"]
 [ext_resource type="ArrayMesh" uid="uid://bq3anitpbj6jj" path="res://assets/models/cairn/Props/MountedTorch/MountedTorch.obj" id="13_g7dhd"]
 [ext_resource type="ArrayMesh" uid="uid://deenfjj76xugt" path="res://assets/models/cairn/Props/MountedTorch/mountedtorch_nobackboard.obj" id="14_86xx6"]
@@ -165,10 +164,6 @@ monitoring = false
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.013073653, 0.13964444)
 shape = SubResource("CapsuleShape3D_xy4ik")
-
-[node name="PO_ItmReceiver" type="Node" parent="_graphics/TorchSconce_Unlit" unique_id=815735927 groups=["PO"]]
-script = ExtResource("11_tfylk")
-metadata/_custom_type_script = "uid://cc36kknugth5b"
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="_graphics/TorchSconce_Unlit" unique_id=2105665120]
 transform = Transform3D(-6.119594e-09, 0, -0.14, 0, 0.14, 0, 0.14, 0, -6.119594e-09, 0, -0.19999999, 0.018826813)
