@@ -25,6 +25,7 @@
 [ext_resource type="Script" uid="uid://cfmswqnu6u0bl" path="res://scenes/interactions/_receivers/_logic/counter/counter.gd" id="22_el7m8"]
 [ext_resource type="PackedScene" uid="uid://clvus6c43ipdy" path="res://scenes/interactions/interactables/items/all_items/misc/item_stone.tscn" id="24_fsl0s"]
 [ext_resource type="PackedScene" uid="uid://ije1mmh1wcad" path="res://scenes/interactions/interactables/items/all_items/torch/torch_mounted.tscn" id="28_rym0g"]
+[ext_resource type="Script" uid="uid://cb04xjhu5ksor" path="res://scenes/interactions/_receivers/enabler_disabler_v1/visibility_enabler.gd" id="29_g30tv"]
 [ext_resource type="PackedScene" uid="uid://cwr2r7yxt4ust" path="res://scenes/interactions/ReusableStones/stonepile_reusable_stones.tscn" id="30_dhg0u"]
 [ext_resource type="Script" uid="uid://desaef8fc6y0v" path="res://scenes/interactions/_receivers/_logic/Caller/logic_caller.gd" id="31_1c2il"]
 [ext_resource type="Script" uid="uid://bul4myvyhnpjc" path="res://scripts/saving/uid_generator.gd" id="32_lu18g"]
@@ -49,12 +50,6 @@ top_radius = 0.03
 bottom_radius = 0.03
 height = 0.8
 radial_segments = 4
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_fymop"]
-size = Vector3(5.008667, 1, 1.2246704)
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_rym0g"]
-size = Vector3(4.3468018, 1, 1.8029175)
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_7bdt6"]
 
@@ -115,12 +110,22 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_42tyc")
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_2pmk1"]
-size = Vector3(1.2971191, 1, 1.4063721)
-
 [sub_resource type="QuadMesh" id="QuadMesh_yemc1"]
 material = ExtResource("21_1wa6a")
 size = Vector2(10, 10)
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_fsl0s"]
+radius = 0.1
+height = 2.025
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_fymop"]
+size = Vector3(5.008667, 1, 1.2246704)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_rym0g"]
+size = Vector3(4.3468018, 1, 1.8029175)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_2pmk1"]
+size = Vector3(1.2971191, 1, 1.4063721)
 
 [node name="Traps_Puzzle" type="Node3D" unique_id=1530637846]
 
@@ -162,12 +167,6 @@ metadata/lock_uid = true
 metadata/date_generated = "2026-04-29T14:39:39"
 
 [node name="Second_Part" type="Node3D" parent="Beginning_Part(Easier)" unique_id=88189312]
-
-[node name="skull" parent="Beginning_Part(Easier)/Second_Part" unique_id=234370081 instance=ExtResource("5_dp00y")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.3409958, 1.0126112, -3.5627441)
-metadata/uid = "ec490e6c-90a0-443b-8e1b-f166607934a5"
-metadata/lock_uid = true
-metadata/date_generated = "2026-04-29T14:39:39"
 
 [node name="SpikeTrap" parent="Beginning_Part(Easier)/Second_Part" unique_id=1388700218 instance=ExtResource("6_jkfe6")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.8231583, 0, -9)
@@ -244,24 +243,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 1, -6.239393)
 metadata/uid = "c923323b-7a91-47c4-8174-4f1130d897a6"
 metadata/lock_uid = true
 metadata/date_generated = "2026-04-29T14:39:39"
-
-[node name="Stonepile_ReusableStones2" parent="Beginning_Part(Easier)/Second_Part" unique_id=1682368129 node_paths=PackedStringArray("my_stone") instance=ExtResource("30_dhg0u")]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 2, 0, -7)
-my_stone = NodePath("stone")
-
-[node name="stone" parent="Beginning_Part(Easier)/Second_Part/Stonepile_ReusableStones2" unique_id=1026949140 instance=ExtResource("24_fsl0s")]
-transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 0, 0.3099808, -9.536743e-07)
-metadata/uid = "f6d6a42d-96a6-4d76-8d79-ae385b973dfe"
-metadata/lock_uid = true
-metadata/date_generated = "2026-04-29T14:39:39"
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Beginning_Part(Easier)/Second_Part/Stonepile_ReusableStones2" unique_id=1899573017]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.99310386, 0.5902387, 4.0049744)
-shape = SubResource("BoxShape3D_fymop")
-
-[node name="CollisionShape3D2" type="CollisionShape3D" parent="Beginning_Part(Easier)/Second_Part/Stonepile_ReusableStones2" unique_id=2003198289]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.6734021, 0.5128404, 0.10458374)
-shape = SubResource("BoxShape3D_rym0g")
 
 [node name="Third_Part" type="Node3D" parent="Beginning_Part(Easier)" unique_id=1295854055]
 
@@ -356,18 +337,18 @@ transform = Transform3D(-6.993822e-09, -2.2626665e-09, -0.16, 0.080000006, 0.173
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 7, -11)
 
 [node name="TorchSconce_Lit" parent="Beginning_Part(Easier)/Third_Part/Ceiling_Torches" unique_id=1429042042 instance=ExtResource("20_uwed5")]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 2, 0.49018383, 0.048742294)
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 3, 0.49018383, 0.048742294)
 
 [node name="TorchSconce_Lit2" parent="Beginning_Part(Easier)/Third_Part/Ceiling_Torches" unique_id=607081284 instance=ExtResource("20_uwed5")]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -1, 0.49018383, 0.048742294)
 
 [node name="TorchSconce_Lit3" parent="Beginning_Part(Easier)/Third_Part/Ceiling_Torches" unique_id=973763166 instance=ExtResource("20_uwed5")]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0.49018383, 0.048742294)
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 1, 0.49018383, 0.048742294)
 
 [node name="Torches" type="Node3D" parent="Beginning_Part(Easier)" unique_id=1634841621]
 
 [node name="TorchSconce" parent="Beginning_Part(Easier)/Torches" unique_id=1729385187 instance=ExtResource("14_ftbts")]
-transform = Transform3D(0.25881907, 0.9659258, 0, -0.9659258, 0.25881907, 0, 0, 0, 1, 2, 0.13853383, -11)
+transform = Transform3D(0.34202015, 0.9396926, 0, -0.9396926, 0.34202015, 0, 0, 0, 1, 2, 0.13853383, -11)
 
 [node name="TorchSconce2" parent="Beginning_Part(Easier)/Torches" unique_id=1516041722 instance=ExtResource("14_ftbts")]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -1.2884445, 1.454347, -6.4117413)
@@ -1373,12 +1354,6 @@ metadata/uid = "bdeb79ce-0bda-4033-b3a1-e91a26de8bb5"
 metadata/lock_uid = true
 metadata/date_generated = "2026-04-29T14:39:40"
 
-[node name="skull" parent="Second_Part(Harder)/Final Projectile Part" unique_id=1240736835 instance=ExtResource("5_dp00y")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19.322329, 0.30186212, -17)
-metadata/uid = "be51a371-579d-44c0-ac16-0256415848e0"
-metadata/lock_uid = true
-metadata/date_generated = "2026-04-29T14:39:40"
-
 [node name="Gate_Puzzle" type="Node3D" parent="Second_Part(Harder)/Final Projectile Part" unique_id=779330908]
 
 [node name="Gate_Three" parent="Second_Part(Harder)/Final Projectile Part/Gate_Puzzle" unique_id=434887435 instance=ExtResource("7_wn42o")]
@@ -1434,20 +1409,8 @@ transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 29.6
 [node name="TorchSconce_Lit4" parent="Second_Part(Harder)/Final Projectile Part/Torches" unique_id=1356277031 instance=ExtResource("14_ftbts")]
 transform = Transform3D(1.3113416e-07, 0, 1, 0, 1, 0, -1, 0, 1.3113416e-07, 20.147305, 1.4791521, -18.828093)
 
-[node name="Torch" parent="Second_Part(Harder)/Final Projectile Part/Torches" unique_id=1479203938 instance=ExtResource("19_luwe3")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16, 0.6652323, -17)
-metadata/uid = "81aecd72-8c5b-45e1-919a-4bfbb68be332"
-metadata/lock_uid = true
-metadata/date_generated = "2026-04-29T14:39:40"
-
 [node name="Door" type="Node3D" parent="Second_Part(Harder)" unique_id=1359203133]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19, -1, -3)
-
-[node name="key" parent="Second_Part(Harder)/Door" unique_id=451440735 instance=ExtResource("20_y4ekb")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.494026, 1.2, -14)
-metadata/uid = "c46fbe4c-adb2-4b66-8232-a3270ae9c43b"
-metadata/lock_uid = true
-metadata/date_generated = "2026-04-29T14:39:40"
 
 [node name="Door" parent="Second_Part(Harder)/Door" unique_id=1088244080 instance=ExtResource("19_fymop")]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -3, 1, -8.1)
@@ -1475,8 +1438,15 @@ shape = SubResource("BoxShape3D_1c2il")
 script = ExtResource("21_6vcod")
 metadata/_custom_type_script = "uid://b4y0nvl1kcnqk"
 
+[node name="TorchSconce_Lit" parent="Second_Part(Harder)" unique_id=2005552011 instance=ExtResource("14_ftbts")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 35, 1.4538984, -7.840851)
+
+[node name="TorchSconce_Lit2" parent="Second_Part(Harder)" unique_id=1690978154 instance=ExtResource("14_ftbts")]
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 35, 1.4538984, -6.153162)
+
 [node name="Finale(Hardest)" type="Node3D" parent="." unique_id=1024305867]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 32.916615, 0, 4)
+visible = false
 
 [node name="Environment" type="Node3D" parent="Finale(Hardest)" unique_id=785255968]
 
@@ -1715,20 +1685,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.094774246, 0, 3.9513779)
 metadata/uid = "3ac3777c-ab11-41b1-b942-b50bee117dc9"
 metadata/lock_uid = true
 metadata/date_generated = "2026-04-29T14:39:40"
-
-[node name="Stonepile_ReusableStones2" parent="Finale(Hardest)/Timed_Traps/Gate_Part" unique_id=1317954668 node_paths=PackedStringArray("my_stone") instance=ExtResource("30_dhg0u")]
-transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 4.4908752, 0, -1)
-my_stone = NodePath("stone")
-
-[node name="stone" parent="Finale(Hardest)/Timed_Traps/Gate_Part/Stonepile_ReusableStones2" unique_id=983108914 instance=ExtResource("24_fsl0s")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.24860725, 0)
-metadata/uid = "948bfd64-8e46-4064-943d-c86a868a5b70"
-metadata/lock_uid = true
-metadata/date_generated = "2026-04-29T14:39:40"
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Finale(Hardest)/Timed_Traps/Gate_Part/Stonepile_ReusableStones2" unique_id=1210612834]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.461863, 0.606308, -0.062255383)
-shape = SubResource("BoxShape3D_2pmk1")
 
 [node name="PotHoles" type="Node3D" parent="Finale(Hardest)/Timed_Traps" unique_id=1276189036]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.9000001, 0)
@@ -2243,60 +2199,138 @@ transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -1.2
 [node name="TorchSconce_Lit6" parent="Finale(Hardest)/Torches" unique_id=449757255 instance=ExtResource("14_ftbts")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -8.785595, 1.2731092, -1)
 
-[node name="Temp_DirtWalls" type="Node3D" parent="." unique_id=610060350]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 32.083633, 0, 2.0104332)
+[node name="Temp_DirtWalls" type="Node3D" parent="Finale(Hardest)" unique_id=610060350]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.8329811, 0, -1.9895668)
 
-[node name="MeshInstance3D9" type="MeshInstance3D" parent="Temp_DirtWalls" unique_id=819478449]
+[node name="MeshInstance3D9" type="MeshInstance3D" parent="Finale(Hardest)/Temp_DirtWalls" unique_id=819478449]
 transform = Transform3D(4.3711392e-08, -1.0111054, 1.9106857e-15, 8.742279e-08, -1.6602636e-15, -1.0000001, 1.0000001, 4.419682e-08, 8.742279e-08, 0.8163681, 6.059318, -0.020313263)
 mesh = SubResource("QuadMesh_yemc1")
-skeleton = NodePath("../..")
+skeleton = NodePath("../../..")
 
-[node name="MeshInstance3D10" type="MeshInstance3D" parent="Temp_DirtWalls" unique_id=555766980]
+[node name="MeshInstance3D10" type="MeshInstance3D" parent="Finale(Hardest)/Temp_DirtWalls" unique_id=555766980]
 transform = Transform3D(4.371139e-08, -0.41945916, -0.90988904, 8.742279e-08, 0.9199935, -0.41485214, 1.0000001, -6.209326e-08, 7.604004e-08, 6.2175107, 2.083801, -0.02031315)
 mesh = SubResource("QuadMesh_yemc1")
-skeleton = NodePath("../..")
+skeleton = NodePath("../../..")
 
-[node name="MeshInstance3D11" type="MeshInstance3D" parent="Temp_DirtWalls" unique_id=1076836581]
+[node name="MeshInstance3D11" type="MeshInstance3D" parent="Finale(Hardest)/Temp_DirtWalls" unique_id=1076836581]
 transform = Transform3D(-1.0000001, 8.042839e-08, -3.6267533e-08, 8.742279e-08, 0.9199935, -0.41485214, -3.5527137e-15, -0.41945916, -0.90988904, 0.21751022, 6.897402, 3.7094822)
 mesh = SubResource("QuadMesh_yemc1")
-skeleton = NodePath("../..")
+skeleton = NodePath("../../..")
 
-[node name="MeshInstance3D12" type="MeshInstance3D" parent="Temp_DirtWalls" unique_id=1118940008]
+[node name="MeshInstance3D12" type="MeshInstance3D" parent="Finale(Hardest)/Temp_DirtWalls" unique_id=1118940008]
 transform = Transform3D(4.37114e-08, 0.41945916, 0.90988904, 8.742279e-08, 0.9199935, -0.41485214, -1.0000001, 9.8763536e-08, 3.5049794e-09, -2.7824898, 6.897402, 0.7094822)
 mesh = SubResource("QuadMesh_yemc1")
-skeleton = NodePath("../..")
+skeleton = NodePath("../../..")
 
-[node name="MeshInstance3D13" type="MeshInstance3D" parent="Temp_DirtWalls" unique_id=1923680866]
+[node name="MeshInstance3D13" type="MeshInstance3D" parent="Finale(Hardest)/Temp_DirtWalls" unique_id=1923680866]
 transform = Transform3D(1.0000001, -1.1709868e-07, -4.3277492e-08, 8.742279e-08, 0.9199935, -0.41485214, 8.742279e-08, 0.41945916, 0.90988904, 1.2175102, 6.897402, -3.6032944)
 mesh = SubResource("QuadMesh_yemc1")
-skeleton = NodePath("../..")
+skeleton = NodePath("../../..")
+
+[node name="TorchSconce_Lit3" parent="Finale(Hardest)" unique_id=2009477835 instance=ExtResource("14_ftbts")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.0833855, 1.4538984, 8.159149)
+
+[node name="TorchSconce_Lit4" parent="Finale(Hardest)" unique_id=1910771040 instance=ExtResource("14_ftbts")]
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 2.0833855, 1.4538984, 9.846838)
 
 [node name="UID_Generator" type="Node" parent="." unique_id=1160303552]
 script = ExtResource("32_lu18g")
 metadata/_custom_type_script = "uid://bul4myvyhnpjc"
 
-[node name="Inbetween_Areas" type="Node3D" parent="." unique_id=1008074179]
+[node name="Optimization" type="Node3D" parent="." unique_id=1263634142]
 
-[node name="Torch_Mounted" parent="Inbetween_Areas" unique_id=1328862979 instance=ExtResource("28_rym0g")]
+[node name="opti_enabler_last" parent="Optimization" unique_id=1315232042 instance=ExtResource("15_fs7hw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 28, 0, -7)
+trig_once = true
+
+[node name="Area3D" type="Area3D" parent="Optimization/opti_enabler_last" unique_id=307278852]
+collision_layer = 0
+monitorable = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Optimization/opti_enabler_last/Area3D" unique_id=1417106314]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.0125, 0)
+shape = SubResource("CapsuleShape3D_fsl0s")
+
+[node name="vis_enabler_last" type="Node" parent="Optimization/opti_enabler_last" unique_id=3990951 node_paths=PackedStringArray("linked_node")]
+script = ExtResource("29_g30tv")
+linked_node = NodePath("../../../Finale(Hardest)")
+
+[node name="vis_enabler_first" type="Node" parent="Optimization/opti_enabler_last" unique_id=996894233 node_paths=PackedStringArray("linked_node")]
+script = ExtResource("29_g30tv")
+linked_node = NodePath("../../../Beginning_Part(Easier)")
+
+[node name="Items" type="Node3D" parent="." unique_id=177523886]
+
+[node name="Itms_First" type="Node3D" parent="Items" unique_id=1489677110]
+
+[node name="skull" parent="Items/Itms_First" unique_id=234370081 instance=ExtResource("5_dp00y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.3409958, 1.0126112, -3.5627441)
+metadata/uid = "ec490e6c-90a0-443b-8e1b-f166607934a5"
+metadata/lock_uid = true
+metadata/date_generated = "2026-04-29T14:39:39"
+
+[node name="Stonepile_ReusableStones2" parent="Items/Itms_First" unique_id=1682368129 node_paths=PackedStringArray("my_stone") instance=ExtResource("30_dhg0u")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 2, 0, -7)
+my_stone = NodePath("stone")
+
+[node name="stone" parent="Items/Itms_First/Stonepile_ReusableStones2" unique_id=1026949140 instance=ExtResource("24_fsl0s")]
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 0, 0.3099808, -9.536743e-07)
+metadata/uid = "f6d6a42d-96a6-4d76-8d79-ae385b973dfe"
+metadata/lock_uid = true
+metadata/date_generated = "2026-04-29T14:39:39"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Items/Itms_First/Stonepile_ReusableStones2" unique_id=1899573017]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.99310386, 0.5902387, 4.0049744)
+shape = SubResource("BoxShape3D_fymop")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="Items/Itms_First/Stonepile_ReusableStones2" unique_id=2003198289]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.6734021, 0.5128404, 0.10458374)
+shape = SubResource("BoxShape3D_rym0g")
+
+[node name="Itms_Second" type="Node3D" parent="Items" unique_id=1714455100]
+
+[node name="skull" parent="Items/Itms_Second" unique_id=1240736835 instance=ExtResource("5_dp00y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19.322329, 0.30186212, -17)
+metadata/uid = "be51a371-579d-44c0-ac16-0256415848e0"
+metadata/lock_uid = true
+metadata/date_generated = "2026-04-29T14:39:40"
+
+[node name="Torch" parent="Items/Itms_Second" unique_id=1479203938 instance=ExtResource("19_luwe3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16, 0.6652323, -17)
+metadata/uid = "81aecd72-8c5b-45e1-919a-4bfbb68be332"
+metadata/lock_uid = true
+metadata/date_generated = "2026-04-29T14:39:40"
+
+[node name="key" parent="Items/Itms_Second" unique_id=451440735 instance=ExtResource("20_y4ekb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 31.494026, 0.20000005, -17)
+metadata/uid = "c46fbe4c-adb2-4b66-8232-a3270ae9c43b"
+metadata/lock_uid = true
+metadata/date_generated = "2026-04-29T14:39:40"
+
+[node name="Itms_Finale" type="Node3D" parent="Items" unique_id=465073679]
+
+[node name="Torch_Mounted" parent="Items/Itms_Finale" unique_id=1328862979 instance=ExtResource("28_rym0g")]
 transform = Transform3D(-3.7855173e-08, 2.1855694e-08, -1, 0.5, 0.8660254, 0, 0.8660254, -0.5, -4.371139e-08, 19, 1.4120927, -10.324027)
 
-[node name="Torch_Mounted3" parent="Inbetween_Areas" unique_id=1446391061 instance=ExtResource("28_rym0g")]
+[node name="Torch_Mounted3" parent="Items/Itms_Finale" unique_id=1446391061 instance=ExtResource("28_rym0g")]
 transform = Transform3D(-3.7855173e-08, 2.1855694e-08, -1, 0.5, 0.8660254, 0, 0.8660254, -0.5, -4.371139e-08, 32.902843, 1.2855823, 13.66509)
 
-[node name="Torch_Mounted2" parent="Inbetween_Areas" unique_id=11244730 instance=ExtResource("28_rym0g")]
+[node name="Torch_Mounted2" parent="Items/Itms_Finale" unique_id=11244730 instance=ExtResource("28_rym0g")]
 transform = Transform3D(-3.7855173e-08, 2.1855694e-08, -1, 0.5, 0.8660254, 0, 0.8660254, -0.5, -4.371139e-08, 16, 1.4120927, -6.3510513)
 
-[node name="TorchSconce_Lit" parent="Inbetween_Areas" unique_id=2005552011 instance=ExtResource("14_ftbts")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 35, 1.4538984, -7.840851)
+[node name="Stonepile_ReusableStones2" parent="Items/Itms_Finale" unique_id=1317954668 node_paths=PackedStringArray("my_stone") instance=ExtResource("30_dhg0u")]
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 37.40749, 0, 3)
+my_stone = NodePath("stone")
 
-[node name="TorchSconce_Lit2" parent="Inbetween_Areas" unique_id=1690978154 instance=ExtResource("14_ftbts")]
-transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 35, 1.4538984, -6.153162)
+[node name="stone" parent="Items/Itms_Finale/Stonepile_ReusableStones2" unique_id=983108914 instance=ExtResource("24_fsl0s")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.24860725, 0)
+metadata/uid = "948bfd64-8e46-4064-943d-c86a868a5b70"
+metadata/lock_uid = true
+metadata/date_generated = "2026-04-29T14:39:40"
 
-[node name="TorchSconce_Lit3" parent="Inbetween_Areas" unique_id=2009477835 instance=ExtResource("14_ftbts")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 35, 1.4538984, 12.159149)
-
-[node name="TorchSconce_Lit4" parent="Inbetween_Areas" unique_id=1910771040 instance=ExtResource("14_ftbts")]
-transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 35, 1.4538984, 13.846838)
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Items/Itms_Finale/Stonepile_ReusableStones2" unique_id=1210612834]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.461863, 0.606308, -0.062255383)
+shape = SubResource("BoxShape3D_2pmk1")
 
 [connection signal="on_change" from="Beginning_Part(Easier)/First_Trap/First_Pressure_Plate" to="Beginning_Part(Easier)/First_Trap/trap_projectile3" method="trigger_trap"]
 [connection signal="on_change" from="Beginning_Part(Easier)/Second_Part/PressurePlate3" to="Beginning_Part(Easier)/Second_Part/Gate" method="open_gate"]
@@ -2526,3 +2560,7 @@ transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 35, 
 [connection signal="on_activated" from="Finale(Hardest)/Timed_Traps/SpikeTrap_Pattern/Timed_SpikeTrap18/Counter" to="Finale(Hardest)/Timed_Traps/SpikeTrap_Pattern/Timed_SpikeTrap18/SpikeTrap" method="activate"]
 [connection signal="on_deactivated" from="Finale(Hardest)/Timed_Traps/SpikeTrap_Pattern/Timed_SpikeTrap18/Counter" to="Finale(Hardest)/Timed_Traps/SpikeTrap_Pattern/Timed_SpikeTrap18/SpikeTrap" method="deactivate"]
 [connection signal="timeout" from="Finale(Hardest)/Timed_Traps/SpikeTrap_Pattern/Timed_SpikeTrap18/Timer" to="Finale(Hardest)/Timed_Traps/SpikeTrap_Pattern/Timed_SpikeTrap18/Counter" method="add_count_no_sig"]
+[connection signal="on_activated" from="Optimization/opti_enabler_last" to="Optimization/opti_enabler_last/vis_enabler_last" method="enable_obj"]
+[connection signal="on_activated" from="Optimization/opti_enabler_last" to="Optimization/opti_enabler_last/vis_enabler_first" method="disable_obj"]
+[connection signal="area_entered" from="Optimization/opti_enabler_last/Area3D" to="Optimization/opti_enabler_last" method="_player_entered"]
+[connection signal="area_exited" from="Optimization/opti_enabler_last/Area3D" to="Optimization/opti_enabler_last" method="_player_exited"]

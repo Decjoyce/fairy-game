@@ -11,6 +11,7 @@ signal on_deactivated(sig: float)
 
 func _player_entered(area: Area3D) -> void:
 	if trig_once and triggered: return
+	prints("TRIGGGGGGGGGGGGED")
 	if area.get_parent() is PlayerTest:
 		on_activated.emit(1.0)
 		on_change.emit(0.0)
