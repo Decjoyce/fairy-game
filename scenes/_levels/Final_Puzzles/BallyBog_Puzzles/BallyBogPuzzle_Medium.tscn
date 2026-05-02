@@ -38,10 +38,8 @@
 [ext_resource type="PackedScene" uid="uid://v3a4kqxol6jl" path="res://scenes/_levels/_palettes/cairn/props/Rocks/cairn_rock_8.tscn" id="36_i5lll"]
 [ext_resource type="PackedScene" uid="uid://cnkngeiaucgql" path="res://scenes/_levels/_palettes/cairn/props/Rocks/cairn_rock_2.tscn" id="37_x42l1"]
 [ext_resource type="PackedScene" uid="uid://ylg6mxx468cq" path="res://scenes/_levels/_palettes/cairn/props/Rocks/cairn_rock_1.tscn" id="38_rv6yw"]
-[ext_resource type="PackedScene" uid="uid://b5g00fexnuwte" path="res://scenes/interactions/_special/the_observer/the_observer.tscn" id="39_x42l1"]
-[ext_resource type="Material" uid="uid://ioo51vym3k1d" path="res://scenes/interactions/_triggers/teleporter/m_teleport.tres" id="40_rv6yw"]
+[ext_resource type="Script" uid="uid://cb04xjhu5ksor" path="res://scenes/interactions/_receivers/enabler_disabler_v1/visibility_enabler.gd" id="40_x42l1"]
 [ext_resource type="Script" uid="uid://cpodi2t5yl3ks" path="res://scenes/_levels/Final_Puzzles/BallyBog_Puzzles/progress_bar_helper.gd" id="41_lckpc"]
-[ext_resource type="PackedScene" uid="uid://dhb1ju03ckwh4" path="res://scenes/interactions/_receivers/enabler_disabler_v1/collision_enabler_disabler.tscn" id="41_r1ap5"]
 
 [sub_resource type="Gradient" id="Gradient_ouj5r"]
 interpolation_mode = 2
@@ -205,16 +203,6 @@ _data = {
 }
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_060nb"]
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_lckpc"]
-size = Vector3(1.7, 2, 2)
-
-[sub_resource type="BoxMesh" id="BoxMesh_r1ap5"]
-material = ExtResource("40_rv6yw")
-size = Vector3(0.8, 2, 2)
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_rv6yw"]
-size = Vector3(0.1, 1.9, 1.6)
 
 [sub_resource type="Gradient" id="Gradient_x42l1"]
 interpolation_mode = 2
@@ -1022,45 +1010,20 @@ transform = Transform3D(0.26437333, -0.7305622, 0.62959164, 0.94032377, 0.340281
 [node name="cairn rock 2" parent="." unique_id=1404731225 instance=ExtResource("37_x42l1")]
 transform = Transform3D(-3.239805e-08, 0.9659258, -0.258819, 3.3488384e-08, 0.258819, 0.9659258, 1, 2.2626681e-08, -4.073253e-08, -5.82, 1.12, -5.22)
 
-[node name="ItemNoPassZone" parent="." unique_id=223074910 instance=ExtResource("39_x42l1")]
-transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -0.29999995, 2.3, 3.11576)
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="ItemNoPassZone" unique_id=1186143029]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.049999952, -0.29999995, 0.9)
-shape = SubResource("BoxShape3D_lckpc")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="ItemNoPassZone/CollisionShape3D" unique_id=1908048497]
-visible = false
-mesh = SubResource("BoxMesh_r1ap5")
-
-[node name="StaticBody3D" type="StaticBody3D" parent="ItemNoPassZone" unique_id=1330353137]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1)
-collision_mask = 3
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="ItemNoPassZone/StaticBody3D" unique_id=1512433605]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.1206244, -0.35000014, -0.3)
-shape = SubResource("BoxShape3D_rv6yw")
-disabled = true
-debug_color = Color(0, 0.6448386, 0.27909693, 0.41960785)
-
-[node name="CollisionEnabler_Disabler" parent="ItemNoPassZone/StaticBody3D" unique_id=768060295 node_paths=PackedStringArray("col") instance=ExtResource("41_r1ap5")]
-col = NodePath("../CollisionShape3D")
-
 [node name="SubViewport" type="SubViewport" parent="." unique_id=1107766681]
 disable_3d = true
 transparent_bg = true
 handle_input_locally = false
+anisotropic_filtering_level = 0
 gui_disable_input = true
 gui_embed_subwindows = true
 render_target_update_mode = 4
 
 [node name="Control" type="Control" parent="SubViewport" unique_id=929693510]
 layout_mode = 3
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -1080,13 +1043,14 @@ grow_horizontal = 2
 grow_vertical = 2
 max_value = 1.0
 step = 0.005
+value = 0.1
 fill_mode = 4
 texture_progress = SubResource("GradientTexture2D_rv6yw")
 script = ExtResource("41_lckpc")
 metadata/_edit_use_anchors_ = true
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="SubViewport" unique_id=1641035889]
-transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 3.6637948, 2.6061776, -2.9724278)
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 3.5637949, 2.7061775, -2.9724278)
 visible = false
 mesh = SubResource("QuadMesh_rv6yw")
 
@@ -1095,9 +1059,9 @@ light_color = Color(0, 0.65967244, 0.66711485, 1)
 light_energy = 0.137
 omni_range = 26.025
 
-[node name="indicator_visenabler" type="Node" parent="SubViewport/MeshInstance3D" unique_id=2121420649 node_paths=PackedStringArray("linked_nodes")]
-script = ExtResource("13_lwb4l")
-linked_nodes = [NodePath("..")]
+[node name="indicator_visenabler" type="Node" parent="SubViewport/MeshInstance3D" unique_id=2121420649 node_paths=PackedStringArray("linked_node")]
+script = ExtResource("40_x42l1")
+linked_node = NodePath("..")
 
 [connection signal="on_change" from="_env/Gate_Left/Lever" to="_env/Items/HiddenItem/hiddentgate/AnimatedObject" method="play_animation"]
 [connection signal="on_activated" from="_env/Gate_Left/PressurePlates/PressurePlateTR" to="_env/Gate_Left/PressurePlates/PressurePlateTR/indicator_visenabler" method="enable_obj"]
@@ -1138,7 +1102,3 @@ linked_nodes = [NodePath("..")]
 [connection signal="on_activated" from="BallyBog_Trigger" to="Ballybog" method="enable_me"]
 [connection signal="area_entered" from="BallyBog_Trigger/Area3D" to="BallyBog_Trigger" method="_player_entered"]
 [connection signal="area_exited" from="BallyBog_Trigger/Area3D" to="BallyBog_Trigger" method="_player_exited"]
-[connection signal="on_enter_lockdown" from="ItemNoPassZone" to="_env/Gate_Entrance/Gate" method="close_gate"]
-[connection signal="on_enter_lockdown" from="ItemNoPassZone" to="ItemNoPassZone/StaticBody3D/CollisionEnabler_Disabler" method="enable_obj"]
-[connection signal="on_exit_lockdown" from="ItemNoPassZone" to="_env/Gate_Entrance/Gate" method="fully_open_gate"]
-[connection signal="on_exit_lockdown" from="ItemNoPassZone" to="ItemNoPassZone/StaticBody3D/CollisionEnabler_Disabler" method="disable_obj"]

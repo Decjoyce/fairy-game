@@ -15,6 +15,8 @@ const MAX_SAVE_COUNT: int = 3
 
 var experimental_handlighting: bool = false
 
+var current_seq: int = 0
+
 func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("save_game"):
 		save_game()
@@ -42,6 +44,8 @@ func save_game() -> void:
 	saved_game.current_scene = get_tree().current_scene.scene_file_path
 	
 	saved_game.time_saved_at = Time.get_datetime_string_from_system()
+	
+	saved_game.current_seq = current_seq
 	
 	var player_data: SavedData_Player = SavedData_Player.new()
 	get_tree().call_group("Player", "on_save_game", player_data) 
@@ -76,6 +80,8 @@ func load_game() -> void:
 	on_before_load_game.emit()
 	get_tree().call_group("PO", "on_before_load_game")
 	
+	#current_seq = saved_game.current_seq
+	
 	uid_list.clear()
 	for i in get_tree().get_nodes_in_group("PO"):
 		assert(i is PersistentObject, "A node was marked as PO despite not being of type PersistentObject -- NOTIFY DECLAN ASAP")
@@ -93,10 +99,16 @@ func load_game() -> void:
 		else: # Nodes that were originally placed in the scene
 			if uid_list[obj.uid].has_method("on_load_game"):
 				uid_list[obj.uid].on_load_game(obj)
+	
 	EffectsPlayer.blur_out(0, delay_before_reload, 1, true)
 	EffectsPlayer.saturize(1, delay_before_reload, 0, true)
 	is_loading = false
 	on_loaded_game.emit()
+	
+	#await get_tree().create_timer(0.5).timeout
+	#get_tree().call_group("MrLevel", "setup_level_seq", saved_game.current_seq)
+	world_root.setup_level_seq(saved_game.current_seq)
+	current_seq = saved_game.current_seq
 
 func load_game_from_menu(scene_to_load: PackedScene) -> void:
 	if is_loading: return

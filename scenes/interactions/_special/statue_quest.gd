@@ -40,16 +40,24 @@ func insert_piece(num_received: int, item_received: Grabbable_Item, emit_sigs: b
 func update_graphics() -> void:
 	match current_stage:
 		0: pass
-		1: piece_inserted_base(false)
-		2: piece_inserted_arm(false)
-		3: piece_inserted_head(false)
+		1: piece_inserted_arm(false)
+		2: 
+			piece_inserted_arm(false)
+			piece_inserted_base(false)
+		3: 
+			piece_inserted_head(false)
+			piece_inserted_arm(false)
+			piece_inserted_base(false)
+			quest_completed(true)
 
 var insert_tween: Tween
 
 func piece_inserted_base(emit_sigs: bool = true) -> void:
-	if emit_sigs: on_piece_inserted.emit("BASE")
+	if emit_sigs: 
+		on_piece_inserted_base.emit(1.0)
+		on_piece_inserted.emit("BASE")
 	
-	on_piece_inserted_base.emit(1.0)
+	
 	
 	audio_player.play()
 	
@@ -62,9 +70,11 @@ func piece_inserted_base(emit_sigs: bool = true) -> void:
 
 
 func piece_inserted_arm(emit_sigs: bool = true) -> void:
-	if emit_sigs: on_piece_inserted.emit("ARM")
+	if emit_sigs: 
+		on_piece_inserted_arm.emit(1.0)
+		on_piece_inserted.emit("ARM")
 	
-	on_piece_inserted_arm.emit(1.0)
+	
 	
 	audio_player.play()
 	
@@ -76,9 +86,11 @@ func piece_inserted_arm(emit_sigs: bool = true) -> void:
 	statue_pieces[1].material_overlay = null
 
 func piece_inserted_head(emit_sigs: bool = true) -> void:
-	if emit_sigs: on_piece_inserted.emit("HEAD")
+	if emit_sigs: 
+		on_piece_inserted.emit("HEAD")
+		on_piece_inserted_head.emit(1.0)
 	
-	on_piece_inserted_head.emit(1.0)
+	
 	
 	audio_player.play()
 	

@@ -14,6 +14,8 @@ var weighted_things_inside: int
 var activated: bool
 var has_been_triggered: bool
 
+@export var do_not_save: bool
+
 func activate(sig: float = -1) -> void:
 	if has_been_triggered and only_trig_once: return
 	if activated: return
