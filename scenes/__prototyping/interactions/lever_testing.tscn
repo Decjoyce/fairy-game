@@ -23,6 +23,7 @@
 [ext_resource type="PackedScene" uid="uid://pfsmibp55qi" path="res://scenes/interactions/_receivers/bridge/bridge.tscn" id="21_h0f0v"]
 [ext_resource type="Script" uid="uid://bul4myvyhnpjc" path="res://scripts/saving/uid_generator.gd" id="23_0ff0n"]
 [ext_resource type="PackedScene" uid="uid://d3x1l1brjvyre" path="res://scenes/item_catcher/item_catcher.tscn" id="23_miusb"]
+[ext_resource type="PackedScene" uid="uid://dnorxmo52wwjn" path="res://scenes/interactions/_receivers/gate/stone_gate.tscn" id="24_miusb"]
 
 [sub_resource type="Environment" id="Environment_vu50v"]
 
@@ -337,12 +338,16 @@ mesh = SubResource("BoxMesh_5b781")
 [node name="Node3D" type="Node3D" parent="ItemCatcher" unique_id=1241330001]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.7, 0, 0)
 
+[node name="RockGate" parent="ItemCatcher" unique_id=2077487765 instance=ExtResource("24_miusb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 0.99999994, 3, -0.5, -3.9)
+
 [connection signal="on_activated" from="Lever" to="SpikeTrap" method="activate"]
 [connection signal="on_change" from="Lever" to="Gate" method="open_gate"]
 [connection signal="on_activated" from="Lever2" to="skybox_changer" method="change_to_a"]
 [connection signal="on_change" from="Lever2" to="Gate3" method="open_gate"]
 [connection signal="on_deactivated" from="Lever2" to="skybox_changer" method="change_to_b"]
 [connection signal="on_change" from="Lever3" to="Gate2" method="open_gate"]
+[connection signal="on_change" from="Lever3" to="ItemCatcher/RockGate" method="open_gate"]
 [connection signal="on_activated" from="BrokenLeverExample/BrokenLever" to="BrokenLeverExample/Lever_Fixed" method="enable"]
 [connection signal="on_change" from="BrokenLeverExample/Lever_Fixed" to="Bridge" method="move_bridge"]
 [connection signal="on_activated" from="ITMMOVERSTUFF/Button" to="ITMMOVERSTUFF/ITM_MOVER" method="move_item_from_index"]

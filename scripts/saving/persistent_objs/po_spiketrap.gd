@@ -5,6 +5,7 @@ extends PersistentObject
 @onready var parent_st: SpikeTrap = get_parent()
 
 func on_save_game(saved_data: Array[SavedData]) -> void:
+	if parent_st.do_not_save: return
 	super(saved_data)
 	
 	var my_data := SavedData_SpikeTrap.new()

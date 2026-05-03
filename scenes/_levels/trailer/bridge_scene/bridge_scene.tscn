@@ -4,10 +4,8 @@
 [ext_resource type="Material" uid="uid://dgrldudl0bdhu" path="res://assets/models/cairn/Props/Rockpile/Rock_pile.tres" id="10_nf8hc"]
 [ext_resource type="PackedScene" uid="uid://pfsmibp55qi" path="res://scenes/interactions/_receivers/bridge/bridge.tscn" id="13_ph00k"]
 [ext_resource type="PackedScene" uid="uid://chqox5wu7wm4q" path="res://scenes/_levels/_palettes/cairn/props/cairn_exit_pillars.tscn" id="21_qh25r"]
-[ext_resource type="Script" uid="uid://cqhq7vrwiw3m6" path="res://scenes/interactions/interactables/items/item_types/item_type.gd" id="22_d1q18"]
 [ext_resource type="Texture2D" uid="uid://1m8e2skdgkex" path="res://assets/sprites/item_sprites/skull_item.png" id="25_24qxk"]
 [ext_resource type="PackedScene" uid="uid://d2ict3hg28spx" path="res://scenes/_levels/_palettes/cairn/props/cairn_fake_wall.tscn" id="26_p4gjq"]
-[ext_resource type="Script" uid="uid://s5cfdf85lm5g" path="res://scenes/interactions/interactables/items/grabbable_item.gd" id="28_tpd2w"]
 [ext_resource type="PackedScene" uid="uid://djqcj61nf551b" path="res://scenes/_levels/_palettes/cairn/props/cairn_pillardamaged.tscn" id="43_siaob"]
 [ext_resource type="Texture2D" uid="uid://cek17ch4ko4ca" path="res://scenes/interactions/interactables/items/all_items/torch/torch.png" id="53_y56i0"]
 [ext_resource type="PackedScene" uid="uid://br01bblhowysi" path="res://assets/models/cairn/Z-Old-EnvironmentModels/Wall/Wall.glb" id="57_pikcs"]
@@ -122,18 +120,6 @@ metallic = 1.0
 [sub_resource type="BoxMesh" id="BoxMesh_8g5h0"]
 material = SubResource("StandardMaterial3D_ph00k")
 size = Vector3(5, 0.06, 7)
-
-[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_llc7q"]
-
-[sub_resource type="Resource" id="Resource_yadgr"]
-script = ExtResource("22_d1q18")
-metadata/_custom_type_script = "uid://cqhq7vrwiw3m6"
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_llc7q"]
-size = Vector3(0.5, 0.6, 0.5)
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_234jp"]
-size = Vector3(0.4, 0.5, 0.4)
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_mysk6"]
 _surfaces = [{
@@ -991,88 +977,11 @@ mesh = SubResource("BoxMesh_8g5h0")
 transform = Transform3D(0.12730426, -33.134613, -0.5, 0.98913836, 5.685994, 0, 0.07349914, -19.130276, 0.8660253, -12.582387, -3.5676022, -2.642952)
 mesh = SubResource("BoxMesh_8g5h0")
 
-[node name="OmniLight3D7" type="OmniLight3D" parent="BridgeScene" unique_id=1883267426]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 1, 6.235)
-light_color = Color(0.07733499, 0.05228477, 0.06481922, 1)
-light_energy = 1.665
-light_indirect_energy = 2.299
-light_volumetric_fog_energy = 0.0
-light_specular = 2.326
-shadow_enabled = true
-omni_range = 6.219
-omni_attenuation = 0.644
-
-[node name="OmniLight3D8" type="OmniLight3D" parent="BridgeScene" unique_id=1644237465]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.7, 1, 6.235)
-light_color = Color(0.07733499, 0.05228477, 0.06481922, 1)
-light_energy = 1.665
-light_indirect_energy = 2.299
-light_volumetric_fog_energy = 0.0
-light_specular = 2.326
-shadow_enabled = true
-omni_range = 6.219
-omni_attenuation = 0.644
-
 [node name="Node3D" type="Node3D" parent="BridgeScene" unique_id=178816166]
 transform = Transform3D(0.785, 0, 0, 0, 0.785, 0, 0, 0, 0.785, -0.537, 0.3614239, 5.966999)
 
 [node name="Node3D2" type="Node3D" parent="BridgeScene" unique_id=105740447]
 transform = Transform3D(0.785, 0, 0, 0, 0.785, 0, 0, 0, 0.785, 0.5966277, 0.36156303, 5.9674187)
-
-[node name="drinkvessel" type="RigidBody3D" parent="BridgeScene/Node3D2" unique_id=366036771 groups=["debug_PickableObjects"]]
-transform = Transform3D(0.9999998, 0, 0, 0, 0.9999998, 0, 0, 0, 0.9999998, -1.3630571, 0.52661145, 0)
-collision_layer = 2
-axis_lock_angular_x = true
-axis_lock_angular_z = true
-mass = 0.5
-physics_material_override = SubResource("PhysicsMaterial_llc7q")
-gravity_scale = 0.8
-contact_monitor = true
-max_contacts_reported = 1
-script = ExtResource("28_tpd2w")
-item_type = SubResource("Resource_yadgr")
-display_name = "Pitcher"
-item_weight = 3
-
-[node name="Area3D" type="Area3D" parent="BridgeScene/Node3D2/drinkvessel" unique_id=1956696384]
-collision_layer = 2
-
-[node name="RayCast3D" type="RayCast3D" parent="BridgeScene/Node3D2/drinkvessel" unique_id=1912348833]
-target_position = Vector3(0, -0.4, 0)
-hit_from_inside = true
-
-[node name="drinkvessel2" type="RigidBody3D" parent="BridgeScene/Node3D2" unique_id=1163434891 node_paths=PackedStringArray("col", "grab_col") groups=["debug_PickableObjects"]]
-transform = Transform3D(0.9999998, 0, 0, 0, 0.9999998, 0, 0, 0, 0.9999998, 0.29299384, 0.52661145, 3.9490433)
-collision_layer = 2
-axis_lock_angular_x = true
-axis_lock_angular_z = true
-mass = 0.5
-physics_material_override = SubResource("PhysicsMaterial_llc7q")
-gravity_scale = 0.8
-contact_monitor = true
-max_contacts_reported = 1
-script = ExtResource("28_tpd2w")
-item_type = SubResource("Resource_yadgr")
-display_name = "Pitcher"
-item_weight = 3
-col = NodePath("CollisionShape3D")
-grab_col = NodePath("Area3D/CollisionShape3D2")
-
-[node name="Area3D" type="Area3D" parent="BridgeScene/Node3D2/drinkvessel2" unique_id=507796565]
-collision_layer = 2
-
-[node name="CollisionShape3D2" type="CollisionShape3D" parent="BridgeScene/Node3D2/drinkvessel2/Area3D" unique_id=1429996274]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.050000012, 0)
-shape = SubResource("BoxShape3D_llc7q")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="BridgeScene/Node3D2/drinkvessel2" unique_id=1232059361]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.050000004, 0)
-shape = SubResource("BoxShape3D_234jp")
-debug_color = Color(0.8442249, 0.37985525, 5.7756904e-07, 0.41960785)
-
-[node name="RayCast3D" type="RayCast3D" parent="BridgeScene/Node3D2/drinkvessel2" unique_id=457771177]
-target_position = Vector3(0, -0.4, 0)
-hit_from_inside = true
 
 [node name="MainStuff" type="Node3D" parent="BridgeScene" unique_id=825617003]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1)

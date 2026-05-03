@@ -482,19 +482,20 @@ func teleport_player(out_pos: Node3D) -> void:
 	ray_west.force_shapecast_update()
 	
 
-func teleport_player_alt(out_pos: Node3D) -> void:
-	var new_position := out_pos.global_position.floor()
+func teleport_player_alt(out_pos: Vector3) -> void:
+	var new_position := out_pos.ceil()
 	#var new_rotation := out_pos.global_rotation.y
 	
+	print(new_position)
 	#is_moving = false
 	
-	target_pos = new_position + Vector3(0, compass.global_position.y, -1)
+	target_pos = new_position + Vector3(1, 0, 0)
 	#target_rotation = new_rotation
 	
-	compass.global_position = new_position + Vector3(0, compass.global_position.y, -1)
+	compass.global_position = new_position + Vector3(1, 0, 0)
 	#compass.global_rotation.y = new_rotation
 	
-	player.global_position = new_position + Vector3(0, compass.global_position.y, 0)
+	player.global_position = new_position + Vector3(0, 0, 0)
 	#player.global_rotation.y = new_rotation
 	
 	#current_direction = MoveDirections.NOT_MOVING

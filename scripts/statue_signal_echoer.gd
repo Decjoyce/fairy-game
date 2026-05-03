@@ -26,6 +26,7 @@ func delete_stuff_arm(sig: float) -> void:
 	da_stat.on_piece_inserted_arm.disconnect(delete_stuff_arm)
 
 func delete_stuff_base(sig: float) -> void:
+	#return
 	echo_piece_insert_base.emit(1.0)
 	for i in range(std_piece_base.size()-1, -1, -1):
 		print("base")

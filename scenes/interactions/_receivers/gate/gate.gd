@@ -10,7 +10,7 @@ var is_opening: bool
 var time_since_start: float = 0.0
 var _start_position: float
 var _end_position: float
-var open_pos: float = 1.8
+@export var open_pos: float = 1.8
 @export var disable_tp: bool = true
 @export var speed: float = 0.5
 @onready var graphics: Node3D = $gate
@@ -18,6 +18,7 @@ var open_pos: float = 1.8
 @export var height_to_toggle_player_barrier: float = 0.7
 @export var stay_open: bool
 @export var start_open: bool
+	
 @export_group("IGNORE")
 @export var tp_checker_col: CollisionShape3D
 @export var out_pos_back: Node3D
@@ -37,6 +38,7 @@ var last_value: float
 
 var player_col_should_enabled: bool
 var stop_player: bool
+
 
 func _ready() -> void:
 	if start_open:
