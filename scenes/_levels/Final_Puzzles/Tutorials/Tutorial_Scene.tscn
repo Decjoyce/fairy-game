@@ -432,6 +432,27 @@ transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -42.
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 8, 1, 0)
 destroy_items_on_receive = true
 
+[node name="Ballybog_Tease" type="Node3D" parent="Tutorial_Area" unique_id=113216871]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.999999, -1, -11)
+
+[node name="Walls" type="Node3D" parent="Tutorial_Area/Ballybog_Tease" unique_id=582559957]
+
+[node name="cairn_fake_wall" parent="Tutorial_Area/Ballybog_Tease" unique_id=2127319660 instance=ExtResource("24_5nqf6")]
+transform = Transform3D(-2.1855694e-08, -3.7855173e-08, -1, -0.2588191, 0.96592575, -3.090862e-08, 0.96592575, 0.2588191, -3.090862e-08, 0, 0.20115805, -0.11663151)
+
+[node name="cairn_fake_wall2" parent="Tutorial_Area/Ballybog_Tease" unique_id=1275059464 instance=ExtResource("24_5nqf6")]
+transform = Transform3D(1.131334e-08, 4.2221956e-08, -1, 0.49999988, -0.8660254, -3.0908616e-08, -0.8660254, -0.49999988, -3.0908616e-08, 0, 0.5661522, 1.2259293)
+
+[node name="cairn_fake_wall3" parent="Tutorial_Area/Ballybog_Tease" unique_id=1600281061 instance=ExtResource("24_5nqf6")]
+transform = Transform3D(1.131334e-08, 4.2221956e-08, -1, 0.49999988, -0.8660254, -3.0908616e-08, -0.8660254, -0.49999988, -3.0908616e-08, 0, -0.19276905, 0.11254597)
+
+[node name="SpotLight3D2" type="SpotLight3D" parent="Tutorial_Area/Ballybog_Tease" unique_id=1674662549]
+transform = Transform3D(-4.2484682e-08, 0.23524393, -0.9719364, 1.0282836e-08, 0.9719364, 0.23524393, 1, 1.7763568e-15, -4.3711385e-08, -1.639823, 1.3244582, 0.036355972)
+light_color = Color(0.683119, 0.6925642, 0.7601388, 1)
+light_energy = 3.55
+light_volumetric_fog_energy = 3.203
+spot_angle = 27.736124
+
 [node name="FirstBit" type="Node3D" parent="Tutorial_Area" unique_id=983255325]
 
 [node name="Lever_Puzzle" type="Node3D" parent="Tutorial_Area/FirstBit" unique_id=914674146]
@@ -651,27 +672,6 @@ max_distance = 10.0
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 19.947641, -1, -14.028069)
 visible = false
 
-[node name="Ballybog_Tease" type="Node3D" parent="Puzzles/Throwing_Puzzle" unique_id=113216871]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 3.0280685, 0, 7.9476423)
-
-[node name="Walls" type="Node3D" parent="Puzzles/Throwing_Puzzle/Ballybog_Tease" unique_id=582559957]
-
-[node name="cairn_fake_wall" parent="Puzzles/Throwing_Puzzle/Ballybog_Tease" unique_id=2127319660 instance=ExtResource("24_5nqf6")]
-transform = Transform3D(-2.1855694e-08, -3.7855173e-08, -1, -0.2588191, 0.96592575, -3.090862e-08, 0.96592575, 0.2588191, -3.090862e-08, 0, 0.20115805, -0.11663151)
-
-[node name="cairn_fake_wall2" parent="Puzzles/Throwing_Puzzle/Ballybog_Tease" unique_id=1275059464 instance=ExtResource("24_5nqf6")]
-transform = Transform3D(1.131334e-08, 4.2221956e-08, -1, 0.49999988, -0.8660254, -3.0908616e-08, -0.8660254, -0.49999988, -3.0908616e-08, 0, 0.5661522, 1.2259293)
-
-[node name="cairn_fake_wall3" parent="Puzzles/Throwing_Puzzle/Ballybog_Tease" unique_id=1600281061 instance=ExtResource("24_5nqf6")]
-transform = Transform3D(1.131334e-08, 4.2221956e-08, -1, 0.49999988, -0.8660254, -3.0908616e-08, -0.8660254, -0.49999988, -3.0908616e-08, 0, -0.19276905, 0.11254597)
-
-[node name="SpotLight3D2" type="SpotLight3D" parent="Puzzles/Throwing_Puzzle/Ballybog_Tease" unique_id=1674662549]
-transform = Transform3D(-4.2484682e-08, 0.23524393, -0.9719364, 1.0282836e-08, 0.9719364, 0.23524393, 1, 1.7763568e-15, -4.3711385e-08, -1.639823, 1.3244582, 0.036355972)
-light_color = Color(0.683119, 0.6925642, 0.7601388, 1)
-light_energy = 3.55
-light_volumetric_fog_energy = 3.203
-spot_angle = 27.736124
-
 [node name="UID_Generator" type="Node" parent="." unique_id=78198919]
 script = ExtResource("34_1qgam")
 metadata/_custom_type_script = "uid://bul4myvyhnpjc"
@@ -718,8 +718,8 @@ linked_node = NodePath("../../../Puzzles/Throwing_Puzzle")
 [connection signal="on_enter_lockdown" from="Tutorial_Area/ItemHeadZones/ItemNoPassZone_Second_PressurePlate_Room" to="Tutorial_Area/ItemHeadZones/No_Acess_Gate" method="close_gate"]
 [connection signal="on_exit_lockdown" from="Tutorial_Area/ItemHeadZones/ItemNoPassZone_Second_PressurePlate_Room" to="Tutorial_Area/ItemHeadZones/ItemNoPassZone_Second_PressurePlate_Room/StaticBody3D/CollisionEnabler_Disabler" method="disable_obj"]
 [connection signal="on_exit_lockdown" from="Tutorial_Area/ItemHeadZones/ItemNoPassZone_Second_PressurePlate_Room" to="Tutorial_Area/ItemHeadZones/No_Acess_Gate" method="fully_open_gate"]
-[connection signal="on_enter_lockdown" from="Tutorial_Area/ItemHeadZones/ItemNoPassZone_Second_PressurePlate_Room2" to="Tutorial_Area/ItemHeadZones/No_Acess_Gate" method="close_gate"]
 [connection signal="on_enter_lockdown" from="Tutorial_Area/ItemHeadZones/ItemNoPassZone_Second_PressurePlate_Room2" to="Tutorial_Area/ItemHeadZones/ItemNoPassZone_Second_PressurePlate_Room2/StaticBody3D/CollisionEnabler_Disabler" method="enable_obj"]
+[connection signal="on_enter_lockdown" from="Tutorial_Area/ItemHeadZones/ItemNoPassZone_Second_PressurePlate_Room2" to="Tutorial_Area/ItemHeadZones/No_Acess_Gate2" method="close_gate"]
 [connection signal="on_exit_lockdown" from="Tutorial_Area/ItemHeadZones/ItemNoPassZone_Second_PressurePlate_Room2" to="Tutorial_Area/ItemHeadZones/No_Acess_Gate" method="fully_open_gate"]
 [connection signal="on_exit_lockdown" from="Tutorial_Area/ItemHeadZones/ItemNoPassZone_Second_PressurePlate_Room2" to="Tutorial_Area/ItemHeadZones/ItemNoPassZone_Second_PressurePlate_Room2/StaticBody3D/CollisionEnabler_Disabler" method="disable_obj"]
 [connection signal="on_change" from="Tutorial_Area/LastBit/Urn_key_puzzle/Urn_puzzle_Pressure_Plate" to="Tutorial_Area/LastBit/Urn_key_puzzle/Slate_Gate" method="open_gate"]

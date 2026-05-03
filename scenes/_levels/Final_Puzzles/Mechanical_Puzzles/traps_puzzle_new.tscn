@@ -38,6 +38,8 @@
 [ext_resource type="Script" uid="uid://bbnwwbodc3xt3" path="res://scripts/level_sequencer.gd" id="32_2pmk1"]
 [ext_resource type="Script" uid="uid://bul4myvyhnpjc" path="res://scripts/saving/uid_generator.gd" id="32_lu18g"]
 
+[sub_resource type="SphereShape3D" id="SphereShape3D_7bdt6"]
+
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ypdmq"]
 albedo_color = Color(0.29582244, 0.28200856, 0.27378577, 1)
 
@@ -58,8 +60,6 @@ top_radius = 0.03
 bottom_radius = 0.03
 height = 0.8
 radial_segments = 4
-
-[sub_resource type="SphereShape3D" id="SphereShape3D_7bdt6"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_of2sk"]
 size = Vector3(3.5, 2, 3.8)
@@ -154,6 +154,17 @@ size = Vector3(1.6, 1.4, 1.7)
 [node name="Traps_Puzzle" type="Node3D" unique_id=1530637846 node_paths=PackedStringArray("subscenes")]
 script = ExtResource("1_dhg0u")
 subscenes = [NodePath("Beginning_Part(Easier)"), NodePath("Second_Part(Harder)"), NodePath("Finale(Hardest)")]
+
+[node name="PAT_potholesstop2" parent="." unique_id=917204587 instance=ExtResource("15_fs7hw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25, 1, 8.999996)
+trig_once = true
+
+[node name="Area3D" type="Area3D" parent="PAT_potholesstop2" unique_id=48954772]
+collision_layer = 0
+monitorable = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="PAT_potholesstop2/Area3D" unique_id=113979162]
+shape = SubResource("SphereShape3D_7bdt6")
 
 [node name="GridMap" type="GridMap" parent="." unique_id=1918316488]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
@@ -636,7 +647,7 @@ metadata/uid = "8637bfc9-afc3-48c7-9444-4f81437e92c7"
 metadata/lock_uid = true
 metadata/date_generated = "2026-04-29T14:39:39"
 
-[node name="PlayerAreaTrigger" parent="Beginning_Part(Easier)/Gate_Area_Finished" unique_id=917204587 instance=ExtResource("15_fs7hw")]
+[node name="PlayerAreaTrigger" parent="Beginning_Part(Easier)/Gate_Area_Finished" unique_id=961259408 instance=ExtResource("15_fs7hw")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -3.8146973e-06, 1, -4)
 
 [node name="Area3D" type="Area3D" parent="Beginning_Part(Easier)/Gate_Area_Finished/PlayerAreaTrigger" unique_id=2090231692]
@@ -2889,6 +2900,9 @@ shape = SubResource("BoxShape3D_6vcod")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.6104202, 0.806308, -0.015441418)
 shape = SubResource("BoxShape3D_2pmk1")
 
+[connection signal="on_activated" from="PAT_potholesstop2" to="Finale(Hardest)/Observer_End/No_Acess_Gate" method="close_gate"]
+[connection signal="area_entered" from="PAT_potholesstop2/Area3D" to="PAT_potholesstop2" method="_player_entered"]
+[connection signal="area_exited" from="PAT_potholesstop2/Area3D" to="PAT_potholesstop2" method="_player_exited"]
 [connection signal="on_change" from="Beginning_Part(Easier)/First_Trap/First_Pressure_Plate" to="Beginning_Part(Easier)/First_Trap/trap_projectile3" method="trigger_trap"]
 [connection signal="on_change" from="Beginning_Part(Easier)/Second_Part/PressurePlate3" to="Beginning_Part(Easier)/Second_Part/Gate" method="open_gate"]
 [connection signal="on_change" from="Beginning_Part(Easier)/Second_Part/PressurePlate3" to="Beginning_Part(Easier)/Second_Part/trap_projectile_Left" method="trigger_trap"]
@@ -3126,6 +3140,7 @@ shape = SubResource("BoxShape3D_2pmk1")
 [connection signal="on_enter_lockdown" from="Finale(Hardest)/Observer_End" to="Finale(Hardest)/Observer_End/No_Acess_Gate" method="close_gate"]
 [connection signal="on_exit_lockdown" from="Finale(Hardest)/Observer_End" to="Finale(Hardest)/Observer_End/StaticBody3D/CollisionEnabler_Disabler" method="disable_obj"]
 [connection signal="on_exit_lockdown" from="Finale(Hardest)/Observer_End" to="Finale(Hardest)/Observer_End/No_Acess_Gate" method="fully_open_gate"]
+[connection signal="on_activated" from="Optimization/opti_enabler_last" to="Beginning_Part(Easier)/Observer_SpikeTraps/No_Acess_Gate" method="close_gate"]
 [connection signal="on_activated" from="Optimization/opti_enabler_last" to="Optimization/opti_enabler_last/vis_enabler_last" method="enable_obj"]
 [connection signal="on_activated" from="Optimization/opti_enabler_last" to="Optimization/opti_enabler_last/vis_enabler_first" method="disable_obj"]
 [connection signal="on_activated" from="Optimization/opti_enabler_last" to="Optimization/LevelSequencer" method="set_seq_via_sig"]
