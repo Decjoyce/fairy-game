@@ -986,13 +986,12 @@ script = ExtResource("24_ftu2y")
 new_pos = Vector3(11.270657, 7.3665204, -0.14598529)
 thing_to_move = NodePath("..")
 
-[node name="Long_Bridge_Second" type="Node3D" parent="Exit_Door" unique_id=1917423869 node_paths=PackedStringArray("col", "pivot")]
+[node name="Long_Bridge_Second" type="Node3D" parent="Exit_Door" unique_id=1917423869 node_paths=PackedStringArray("pivot")]
 transform = Transform3D(0.58771455, 0.8090681, 0, -0.8090681, 0.58771455, 0, 0, 0, 1, 1.0439706, -1.5949808, 0)
 script = ExtResource("18_xhqui")
 speed = 0.3
 speed_curve = SubResource("Curve_y65r8")
 angle_to_toggle_barrier = 40.0
-col = NodePath("")
 pivot = NodePath("_pivot")
 metadata/_custom_type_script = "uid://cko3icuffehvs"
 metadata/uid = "8a53b2a8-f74d-491a-87b3-426ad9a67633"
@@ -2288,6 +2287,7 @@ shape = SubResource("SphereShape3D_7p2n5")
 [connection signal="on_quest_completed" from="Statue" to="Exit_Door/Door/OBJMOvER" method="move_the_thing"]
 [connection signal="on_change" from="To_From_Traps/ShortCut_Lever" to="RockGate2" method="open_gate"]
 [connection signal="on_change" from="To_From_BB_Bridge/Area_Two_lever" to="To_From_BB_Bridge/Area_Two_Bridge" method="move_bridge"]
+[connection signal="on_change" from="To_From_BB_Bridge/Area_Two_lever" to="RockGate4" method="open_gate"]
 [connection signal="on_activated" from="To_From_BB_Bridge/Statue_Piece_Pressure_Plate" to="To_From_BB_Bridge/Area_2_Gate/Gate" method="open_gate"]
 [connection signal="on_change" from="From_Tut/Lever_Big_Bridge_One" to="From_Tut/Long_Bridge_First" method="move_bridge"]
 [connection signal="on_activated" from="trap_trig_the_trig" to="trap_trig_shorcut/CollisionEnabler_Disabler" method="enable_obj"]
