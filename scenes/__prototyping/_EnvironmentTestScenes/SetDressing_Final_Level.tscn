@@ -163,6 +163,9 @@ size = Vector3(63, 2.3, 42.8)
 [sub_resource type="BoxShape3D" id="BoxShape3D_jok38"]
 size = Vector3(63, 1.6, 42.8)
 
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ynqbq"]
+radius = 0.035
+
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_mtbvg"]
 sky_horizon_color = Color(0, 0.37292683, 0.8185948, 1)
 sky_curve = 0.23537512
@@ -263,7 +266,9 @@ size = Vector3(1, 4.4, 2)
 [sub_resource type="BoxShape3D" id="BoxShape3D_bl27h"]
 size = Vector3(1, 2.5, 9)
 
-[node name="Final_Level" type="Node3D" unique_id=40124892 node_paths=PackedStringArray("tut_scene", "stat_scene", "trap_scene", "bb_scene", "bb_easy_scene", "bb_mid_scene", "bb_hard_scene", "bridge_scene") groups=["ABYSSRETURNER", "MrLevel"]]
+[sub_resource type="SphereMesh" id="SphereMesh_ynqbq"]
+
+[node name="Final_Level" type="Node3D" unique_id=40124892 node_paths=PackedStringArray("tut_scene", "stat_scene", "trap_scene", "bb_scene", "bb_easy_scene", "bb_mid_scene", "bb_hard_scene", "bridge_scene", "connector", "connector2") groups=["ABYSSRETURNER", "MrLevel"]]
 script = ExtResource("1_l4grf")
 tut_scene = NodePath("Different_Sections/Tutorial")
 stat_scene = NodePath("Different_Sections/Statue_Section")
@@ -273,6 +278,8 @@ bb_easy_scene = NodePath("Different_Sections/BallyBog_Section/Ballybog_Scene")
 bb_mid_scene = NodePath("Different_Sections/BallyBog_Section/Puzzle01")
 bb_hard_scene = NodePath("Different_Sections/BallyBog_Section/BallyBog_HardSection")
 bridge_scene = NodePath("Different_Sections/Bridge_Puzzle")
+connector = NodePath("Connections_GridMap")
+connector2 = NodePath("GridMap2")
 
 [node name="player_test" parent="." unique_id=725727541 instance=ExtResource("1_idqh5")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7, 0.89999986, 0.6)
@@ -758,6 +765,7 @@ draw_pass_1 = SubResource("PlaneMesh_y7mrb")
 
 [node name="Statue_Section" parent="Different_Sections" unique_id=1516115227 node_paths=PackedStringArray("instantiate_point") instance=ExtResource("3_b3lts")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 65, -2, -19)
+visible = false
 instantiate_point = NodePath("../BabyInstantiatePoint")
 baby_scene = ExtResource("32_a8cig")
 
@@ -844,6 +852,7 @@ skeleton = NodePath("")
 
 [node name="Traps_Puzzle" parent="Different_Sections" unique_id=1530637846 instance=ExtResource("4_u1stw")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 66, -2, -30)
+visible = false
 
 [node name="Pillars_Trap" type="Node3D" parent="Different_Sections/Traps_Puzzle" unique_id=2099427722]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -65, 2, 15.96)
@@ -1147,6 +1156,7 @@ transform = Transform3D(-4.371139e-08, 1, 4.371139e-08, 0, -4.371139e-08, 1, 1, 
 
 [node name="BallyBog_Section" type="Node3D" parent="Different_Sections" unique_id=1895157133]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 88, -2, 9)
+visible = false
 
 [node name="Ballybog_Scene" parent="Different_Sections/BallyBog_Section" unique_id=842226877 instance=ExtResource("5_icas2")]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 2, 0, -23)
@@ -1409,6 +1419,87 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 59.525887, -2.0527425, 52.464
 [node name="RockPile9" parent="Different_Sections/BallyBog_Section/Pillars_BB" unique_id=653130449 instance=ExtResource("13_oqsm6")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 57.35875, -2.057562, 54.449516)
 
+[node name="Pillars_Bridge2" type="Node3D" parent="Different_Sections/BallyBog_Section/Pillars_BB" unique_id=607168172]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 8.000002)
+
+[node name="cairnPillar160" parent="Different_Sections/BallyBog_Section/Pillars_BB/Pillars_Bridge2" unique_id=1762474780 instance=ExtResource("30_u1stw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 46.9, -2, 37.94)
+
+[node name="cairnPillar161" parent="Different_Sections/BallyBog_Section/Pillars_BB/Pillars_Bridge2" unique_id=628891807 instance=ExtResource("30_u1stw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 45.100002, -2, 37.94)
+
+[node name="cairnPillar162" parent="Different_Sections/BallyBog_Section/Pillars_BB/Pillars_Bridge2" unique_id=1885229974 instance=ExtResource("30_u1stw")]
+transform = Transform3D(-4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 0, 1, 45.042717, 7.4505806e-08, 37.94)
+
+[node name="cairnPillar157" parent="Different_Sections/BallyBog_Section/Pillars_BB/Pillars_Bridge2" unique_id=258174400 instance=ExtResource("30_u1stw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 57.100002, -2, 49.940002)
+
+[node name="cairnPillar158" parent="Different_Sections/BallyBog_Section/Pillars_BB/Pillars_Bridge2" unique_id=736263363 instance=ExtResource("30_u1stw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 46.9, -2, 49.940002)
+
+[node name="cairnPillar159" parent="Different_Sections/BallyBog_Section/Pillars_BB/Pillars_Bridge2" unique_id=1556972692 instance=ExtResource("30_u1stw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 46.9, -2, 48.14)
+
+[node name="cairnPillar167" parent="Different_Sections/BallyBog_Section/Pillars_BB/Pillars_Bridge2" unique_id=979955050 instance=ExtResource("30_u1stw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 51, -2, 49.739998)
+
+[node name="cairnPillar168" parent="Different_Sections/BallyBog_Section/Pillars_BB/Pillars_Bridge2" unique_id=1435476516 instance=ExtResource("30_u1stw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 51, -2, 48.339996)
+
+[node name="cairnPillar169" parent="Different_Sections/BallyBog_Section/Pillars_BB/Pillars_Bridge2" unique_id=870234075 instance=ExtResource("30_u1stw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 49, -2, 49.739998)
+
+[node name="cairnPillar170" parent="Different_Sections/BallyBog_Section/Pillars_BB/Pillars_Bridge2" unique_id=1202981387 instance=ExtResource("30_u1stw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 49, -2, 48.339996)
+
+[node name="cairnPillar171" parent="Different_Sections/BallyBog_Section/Pillars_BB/Pillars_Bridge2" unique_id=1760460225 instance=ExtResource("30_u1stw")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 45.300003, -2, 46.039993)
+
+[node name="cairnPillar172" parent="Different_Sections/BallyBog_Section/Pillars_BB/Pillars_Bridge2" unique_id=1547782236 instance=ExtResource("30_u1stw")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 46.700005, -2, 46.039993)
+
+[node name="cairnPillar173" parent="Different_Sections/BallyBog_Section/Pillars_BB/Pillars_Bridge2" unique_id=1304439596 instance=ExtResource("30_u1stw")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 45.300003, -2, 44.039993)
+
+[node name="cairnPillar174" parent="Different_Sections/BallyBog_Section/Pillars_BB/Pillars_Bridge2" unique_id=1793169954 instance=ExtResource("30_u1stw")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 46.700005, -2, 44.039993)
+
+[node name="cairnPillar175" parent="Different_Sections/BallyBog_Section/Pillars_BB/Pillars_Bridge2" unique_id=1035817270 instance=ExtResource("30_u1stw")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 45.300003, -2, 50.04)
+
+[node name="cairnPillar176" parent="Different_Sections/BallyBog_Section/Pillars_BB/Pillars_Bridge2" unique_id=943174325 instance=ExtResource("30_u1stw")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 46.700005, -2, 50.04)
+
+[node name="cairnPillar177" parent="Different_Sections/BallyBog_Section/Pillars_BB/Pillars_Bridge2" unique_id=1947746553 instance=ExtResource("30_u1stw")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 45.300003, -2, 48.04)
+
+[node name="cairnPillar178" parent="Different_Sections/BallyBog_Section/Pillars_BB/Pillars_Bridge2" unique_id=1337227232 instance=ExtResource("30_u1stw")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 46.700005, -2, 48.04)
+
+[node name="cairnPillar179" parent="Different_Sections/BallyBog_Section/Pillars_BB/Pillars_Bridge2" unique_id=1298836602 instance=ExtResource("30_u1stw")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 45.300003, -2, 42.039993)
+
+[node name="cairnPillar180" parent="Different_Sections/BallyBog_Section/Pillars_BB/Pillars_Bridge2" unique_id=1851674186 instance=ExtResource("30_u1stw")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 46.700005, -2, 42.039993)
+
+[node name="cairnPillar181" parent="Different_Sections/BallyBog_Section/Pillars_BB/Pillars_Bridge2" unique_id=980706058 instance=ExtResource("30_u1stw")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 45.300003, -2, 40.039993)
+
+[node name="cairnPillar182" parent="Different_Sections/BallyBog_Section/Pillars_BB/Pillars_Bridge2" unique_id=327300279 instance=ExtResource("30_u1stw")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 46.700005, -2, 40.039993)
+
+[node name="cairnPillar163" parent="Different_Sections/BallyBog_Section/Pillars_BB/Pillars_Bridge2" unique_id=1574985835 instance=ExtResource("30_u1stw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 55, -2, 49.739998)
+
+[node name="cairnPillar164" parent="Different_Sections/BallyBog_Section/Pillars_BB/Pillars_Bridge2" unique_id=36704641 instance=ExtResource("30_u1stw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 55, -2, 48.339996)
+
+[node name="cairnPillar165" parent="Different_Sections/BallyBog_Section/Pillars_BB/Pillars_Bridge2" unique_id=1686361375 instance=ExtResource("30_u1stw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 53, -2, 49.739998)
+
+[node name="cairnPillar166" parent="Different_Sections/BallyBog_Section/Pillars_BB/Pillars_Bridge2" unique_id=1211379893 instance=ExtResource("30_u1stw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 53, -2, 48.339996)
+
 [node name="RockP_BB" type="Node3D" parent="Different_Sections/BallyBog_Section" unique_id=529782536]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -86.95, 2, -23.060001)
 
@@ -1454,6 +1545,7 @@ draw_pass_1 = SubResource("PlaneMesh_y7mrb")
 
 [node name="Bridge_Puzzle" parent="Different_Sections" unique_id=935876353 instance=ExtResource("8_ucuax")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 52.082867, -3, 13.825678)
+visible = false
 
 [node name="FakeWall" type="MeshInstance3D" parent="Different_Sections/Bridge_Puzzle" unique_id=850347915]
 transform = Transform3D(3.6822482e-07, -1.0000001, -1.3288262e-06, -8.424001, -4.3711395e-08, 0, -3.219123e-14, 8.742278e-08, -15.199998, 31.207127, 1.3199999, -2.4756775)
@@ -1750,7 +1842,19 @@ debug_color = Color(0.10427118, 0.64838356, 0, 0.41960785)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.3999996, -13.200001)
 
 [node name="BabyInstantiatePoint" type="Node3D" parent="Different_Sections" unique_id=1977334126]
-transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 74.4, -0.84797066, -20.0057)
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 75, -1.248, -20.006)
+
+[node name="Player_Trigger" parent="Different_Sections/BabyInstantiatePoint" unique_id=917204587 instance=ExtResource("35_ucuax")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 2, -10)
+trig_once = true
+
+[node name="Area3D" type="Area3D" parent="Different_Sections/BabyInstantiatePoint/Player_Trigger" unique_id=1035907055]
+collision_layer = 0
+monitorable = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Different_Sections/BabyInstantiatePoint/Player_Trigger/Area3D" unique_id=548261264]
+shape = SubResource("CapsuleShape3D_ynqbq")
+debug_color = Color(0.56316596, 0.56157887, 0, 1)
 
 [node name="Connections_GridMap" type="GridMap" parent="." unique_id=1193872561]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
@@ -2303,7 +2407,7 @@ texture = ExtResource("4_f3rg8")
 
 [node name="Triggers" type="Node3D" parent="RockGates2" unique_id=809803604]
 
-[node name="trap_trig_entrance" parent="RockGates2/Triggers" unique_id=917204587 instance=ExtResource("35_ucuax")]
+[node name="trap_trig_entrance" parent="RockGates2/Triggers" unique_id=1824368335 instance=ExtResource("35_ucuax")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 1, -15)
 trig_once = true
 
@@ -2341,16 +2445,25 @@ disabled = true
 [node name="CollisionEnabler_Disabler" parent="RockGates2/Triggers/bridge_trig_shortcut" unique_id=1292044082 node_paths=PackedStringArray("col") instance=ExtResource("24_03ler")]
 col = NodePath("../Area3D/CollisionShape3D")
 
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1469494648]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 83, 0, -20)
+mesh = SubResource("SphereMesh_ynqbq")
+
 [connection signal="on_enter_lockdown" from="Different_Sections/BallyBog_Section/Ballybog_Scene/Observer_End" to="Different_Sections/BallyBog_Section/Ballybog_Scene/Observer_End/No_Acess_Gate" method="close_gate"]
 [connection signal="on_enter_lockdown" from="Different_Sections/BallyBog_Section/Ballybog_Scene/Observer_End" to="Different_Sections/BallyBog_Section/Ballybog_Scene/Observer_End/No_Acess_Gate/StaticBody3D/CollisionEnabler_Disabler" method="enable_obj"]
 [connection signal="on_exit_lockdown" from="Different_Sections/BallyBog_Section/Ballybog_Scene/Observer_End" to="Different_Sections/BallyBog_Section/Ballybog_Scene/Observer_End/No_Acess_Gate" method="fully_open_gate"]
 [connection signal="on_exit_lockdown" from="Different_Sections/BallyBog_Section/Ballybog_Scene/Observer_End" to="Different_Sections/BallyBog_Section/Ballybog_Scene/Observer_End/No_Acess_Gate/StaticBody3D/CollisionEnabler_Disabler" method="disable_obj"]
 [connection signal="on_activated" from="Different_Sections/Inbetween_Sections/BallyBog_Area_Button" to="Different_Sections/Inbetween_Sections/BallyBog_Area_Gate" method="open_gate"]
+[connection signal="on_activated" from="Different_Sections/BabyInstantiatePoint/Player_Trigger" to="." method="delete_stat"]
+[connection signal="area_entered" from="Different_Sections/BabyInstantiatePoint/Player_Trigger/Area3D" to="Different_Sections/BabyInstantiatePoint/Player_Trigger" method="_player_entered"]
+[connection signal="area_exited" from="Different_Sections/BabyInstantiatePoint/Player_Trigger/Area3D" to="Different_Sections/BabyInstantiatePoint/Player_Trigger" method="_player_exited"]
 [connection signal="area_entered" from="InitialSavePoint" to="InitialSavePoint" method="_on_area_entered"]
 [connection signal="echo_piece_insert_arm" from="OptimizationStuff/Statue_Signal_Echoer" to="OptimizationStuff/vis_enabler_trap" method="enable_obj"]
 [connection signal="echo_piece_insert_arm" from="OptimizationStuff/Statue_Signal_Echoer" to="OptimizationStuff/lseq_3" method="set_seq_via_sig"]
+[connection signal="echo_piece_insert_arm" from="OptimizationStuff/Statue_Signal_Echoer" to="RockGates2/RockGate" method="fully_open_gate"]
 [connection signal="echo_piece_insert_base" from="OptimizationStuff/Statue_Signal_Echoer" to="OptimizationStuff/vis_enabler_bb" method="enable_obj"]
 [connection signal="echo_piece_insert_base" from="OptimizationStuff/Statue_Signal_Echoer" to="OptimizationStuff/lseq_6" method="set_seq_via_sig"]
+[connection signal="echo_piece_insert_head" from="OptimizationStuff/Statue_Signal_Echoer" to="." method="delete_connector"]
 [connection signal="echo_piece_insert_head" from="OptimizationStuff/Statue_Signal_Echoer" to="OptimizationStuff/lseq_11" method="set_seq_via_sig"]
 [connection signal="on_activated" from="OptimizationStuff/PAT_Enable_BridgeSec" to="Different_Sections/Bridge_Puzzle/BridgeStopper_Gate" method="close_gate"]
 [connection signal="on_activated" from="OptimizationStuff/PAT_Enable_BridgeSec" to="OptimizationStuff/PAT_Enable_BridgeSec/vis_enabler_bridge" method="enable_obj"]

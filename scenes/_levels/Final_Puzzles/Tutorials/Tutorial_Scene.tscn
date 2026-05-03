@@ -201,7 +201,6 @@ metadata/date_generated = "2026-04-29T22:33:48"
 
 [node name="LastBit" type="Node3D" parent="Tutorial_Area" unique_id=25130377]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 26, -2, -5)
-visible = false
 
 [node name="Urn_key_puzzle" type="Node3D" parent="Tutorial_Area/LastBit" unique_id=67300331]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -26, 2, 5)
@@ -720,8 +719,8 @@ linked_node = NodePath("../../../Puzzles/Throwing_Puzzle")
 [connection signal="on_exit_lockdown" from="Tutorial_Area/ItemHeadZones/ItemNoPassZone_Second_PressurePlate_Room" to="Tutorial_Area/ItemHeadZones/No_Acess_Gate" method="fully_open_gate"]
 [connection signal="on_enter_lockdown" from="Tutorial_Area/ItemHeadZones/ItemNoPassZone_Second_PressurePlate_Room2" to="Tutorial_Area/ItemHeadZones/ItemNoPassZone_Second_PressurePlate_Room2/StaticBody3D/CollisionEnabler_Disabler" method="enable_obj"]
 [connection signal="on_enter_lockdown" from="Tutorial_Area/ItemHeadZones/ItemNoPassZone_Second_PressurePlate_Room2" to="Tutorial_Area/ItemHeadZones/No_Acess_Gate2" method="close_gate"]
-[connection signal="on_exit_lockdown" from="Tutorial_Area/ItemHeadZones/ItemNoPassZone_Second_PressurePlate_Room2" to="Tutorial_Area/ItemHeadZones/No_Acess_Gate" method="fully_open_gate"]
 [connection signal="on_exit_lockdown" from="Tutorial_Area/ItemHeadZones/ItemNoPassZone_Second_PressurePlate_Room2" to="Tutorial_Area/ItemHeadZones/ItemNoPassZone_Second_PressurePlate_Room2/StaticBody3D/CollisionEnabler_Disabler" method="disable_obj"]
+[connection signal="on_exit_lockdown" from="Tutorial_Area/ItemHeadZones/ItemNoPassZone_Second_PressurePlate_Room2" to="Tutorial_Area/ItemHeadZones/No_Acess_Gate2" method="fully_open_gate"]
 [connection signal="on_change" from="Tutorial_Area/LastBit/Urn_key_puzzle/Urn_puzzle_Pressure_Plate" to="Tutorial_Area/LastBit/Urn_key_puzzle/Slate_Gate" method="open_gate"]
 [connection signal="on_saved" from="Tutorial_Area/LastBit/Save_Tutorial/SavingStone" to="Tutorial_Area/LastBit/Save_Tutorial/Gate" method="open_gate"]
 [connection signal="on_activated" from="Tutorial_Area/FirstBit/Lever_Puzzle/BrokenLeverExample/BrokenLever" to="Tutorial_Area/FirstBit/Lever_Puzzle/BrokenLeverExample/Lever_Fixed" method="enable"]

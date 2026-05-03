@@ -8,6 +8,8 @@ extends daLevel
 @export var bb_mid_scene: Node3D
 @export var bb_hard_scene: Node3D
 @export var bridge_scene: Node3D
+@export var connector: Node3D
+@export var connector2: Node3D
 
 func setup_level_seq(seq: int) -> void:
 	#super(seq)
@@ -61,13 +63,14 @@ func setup_level_seq(seq: int) -> void:
 			delete_tut()
 			delete_trap()
 			delete_bb()
-			delete_bridge()
+			#delete_bridge()
 			stat_scene.visible = true
 		11:
 			delete_tut()
 			delete_trap()
 			delete_bridge()
 			delete_bb()
+			delete_connector()
 			stat_scene.visible = true
 			stat_scene.statue_finished()
 		_:
@@ -91,6 +94,13 @@ func delete_bridge() -> void:
 	if bridge_scene:
 		bridge_scene.queue_free()
 
+func delete_stat(sig: float = -1) -> void:
+	if stat_scene:
+		stat_scene.queue_free()
+
+func delete_connector(sig: float = -1) -> void:
+	connector.queue_free()
+	connector2.queue_free()
 
 func delete_scene(scn: Node3D) -> void:
 	if scn:

@@ -19,7 +19,7 @@ func _teleport_entity(area: Area3D) -> void:
 	if area.get_parent() is Entity:
 		if area.get_parent() is PlayerTest:
 			var p = area.get_parent() as PlayerTest
-			if do_not_rotate: p.movement.teleport_player_alt(out_pos)
+			if do_not_rotate: p.movement.teleport_player_alt(out_pos.global_position)
 			else: p.movement.teleport_player(out_pos)
 
 func teleport_player(sig: float) -> void:
