@@ -2,22 +2,49 @@ extends Node
 
 @onready var anim_player: AnimationPlayer = $Camera3D/AnimationPlayer
 @onready var fade_anim: AnimationPlayer = $FadeLayer/AnimationPlayer
+@export var animation_state_machine : AnimationNodeStateMachinePlayback
+@export var animationPlayer: AnimationPlayer
+@export var SkipUI: TextureRect
 
 var game_started := false
 
 @export var vs_scnee: PackedScene
+@export var Intro1: bool 
+@export var Intro2: bool 
 
 func _ready():
 	anim_player.play("CameraSlow")
+	animation_state_machine = $MainMenu/MenuAnimationTree.get("parameters/playback")
 	Input.set_mouse_mode(Input.MOUSE_MODE_CONFINED_HIDDEN)
 
 func _process(delta):
-	if game_started:
-		return
+	skip_stuff()
+
+func opening_done():
+	animation_state_machine.travel("Intro")
 	
-	##if Input.is_action_just_pressed("ui_StartButton"):
-	##	game_started = true
-	##	start_game()
+
+func skip_stuff():
+	pass
+	if Intro1:
+		if Input.is_action_just_pressed("dec_pause"):
+			animation_state_machine.travel("Intro")
+	#if Intro1:  #Is in intro?
+		#if Input.is_action_just_pressed("toggle_crouch"): #first press
+			###turn the skip ? on 
+			#SkipUI.visible = true
+			#$SkipUI/hide.start(6)
+			#$SkipUI/hide.timeout
+			#SkipUI.visible = false
+	#
+		#if Input.is_action_just_pressed("toggle_crouch"):# Second cofirm press
+			#$SkipUI/Timer.start(2)
+			#await $SkipUI/Timer.timeout
+			#Intro2 = true
+				#
+		#if Input.is_action_just_released("toggle_crouch"):
+			#$SkipUI/Timer.stop()
+			#Intro2 = false
 
 func start_game():
 	anim_player.play("SpeedIntoCavee") 

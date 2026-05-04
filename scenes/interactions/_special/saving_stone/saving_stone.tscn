@@ -1,8 +1,11 @@
 [gd_scene format=3 uid="uid://cruv8v8wh8l06"]
 
 [ext_resource type="Script" uid="uid://6i1hfjvhvouh" path="res://scenes/interactions/_special/saving_stone/saving_stone.gd" id="1_e6y8a"]
+[ext_resource type="AudioStream" uid="uid://dkg4cck485xvk" path="res://assets/audio/sfx/interactions/SaveStatueSFX/ChargeUp.tres" id="2_hqkad"]
+[ext_resource type="AudioStream" uid="uid://7o3h20m5bnu4" path="res://assets/audio/sfx/interactions/SaveStatueSFX/SAvedSound.wav" id="3_0nxlf"]
 [ext_resource type="Material" uid="uid://cxf35enu2b0f0" path="res://assets/models/cairn/Props/SavingStone/SavingStone1.tres" id="3_63wq0"]
 [ext_resource type="Texture2D" uid="uid://1c406hs7su5a" path="res://assets/__not_ours_dontship/triskele_rough_01.png" id="3_vmeem"]
+[ext_resource type="AudioStream" uid="uid://b4g3l5805446o" path="res://assets/audio/sfx/interactions/SaveStatueSFX/Decend_saveStone.tres" id="4_0nxlf"]
 [ext_resource type="PackedScene" uid="uid://ca2lcfvhjwslv" path="res://scenes/_levels/_palettes/cairn/props/cairn_saving_head.tscn" id="4_63wq0"]
 [ext_resource type="Texture2D" uid="uid://bac1td5bs4tmp" path="res://scenes/_player/interaction/hand/assets/new/handThrowRelease.png" id="4_kjtoo"]
 [ext_resource type="ArrayMesh" uid="uid://bpaeae7q0bsoj" path="res://assets/models/cairn/Props/SavingStone/SavingStone.obj" id="4_wjh1h"]
@@ -23,6 +26,10 @@ colors = PackedColorArray(0, 0, 0, 1, 1.4344496, 1.732344, 1.7281344, 1, 0, 18.8
 [sub_resource type="GradientTexture1D" id="GradientTexture1D_kjtoo"]
 gradient = SubResource("Gradient_vmeem")
 width = 16
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_jev3r"]
+streams_count = 1
+stream_0/stream = ExtResource("3_0nxlf")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_fm62s"]
 size = Vector3(0.06542969, 0.3682251, 0.81816214)
@@ -70,9 +77,12 @@ size = Vector3(1, 2, 2)
 [sub_resource type="BoxShape3D" id="BoxShape3D_hqkad"]
 size = Vector3(0.3, 2, 1.5)
 
-[node name="SavingStone" type="Node3D" unique_id=452927148 groups=["debug_PickableObjects"]]
+[node name="SavingStone" type="Node3D" unique_id=452927148 node_paths=PackedStringArray("audio") groups=["debug_PickableObjects"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -1)
 script = ExtResource("1_e6y8a")
 shine_gradient = SubResource("GradientTexture1D_kjtoo")
+audio = NodePath("AudioStreamPlayer3D")
+sounds = Array[AudioStream]([ExtResource("2_hqkad"), SubResource("AudioStreamRandomizer_jev3r"), ExtResource("4_0nxlf")])
 charge_length = 2.5
 interaction_type = 8
 prompt_text = "SAVE"
@@ -304,6 +314,12 @@ collision_mask = 0
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D2" unique_id=515368837]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.049999863, 0.99999994, 0.05000007)
 shape = SubResource("BoxShape3D_hqkad")
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="." unique_id=108557299]
+unit_size = 4.4
+max_distance = 8.0
+max_polyphony = 10
+bus = &"SaveSFX"
 
 [connection signal="on_saved" from="." to="_graphics/TorchSconce_Unlit" method="light_up_torch_with_sig"]
 [connection signal="on_saved" from="." to="_graphics/TorchSconce_Unlit2" method="light_up_torch_with_sig"]
