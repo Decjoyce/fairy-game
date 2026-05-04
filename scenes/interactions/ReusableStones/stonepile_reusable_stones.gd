@@ -22,6 +22,7 @@ func _process(delta: float) -> void:
 	g_waiting.visible = my_stone.is_grabbed and !stone_inside
 	g_on.visible = stone_inside
 	my_stone.special_graphics.visible = stone_inside and !my_stone.is_grabbed
+	my_stone.special_graphics.modulate.a = (timer.wait_time-timer.time_left)/timer.wait_time
 	
 	if waiting_to_start and !my_stone.is_grabbed:
 		waiting_to_start = false
@@ -30,13 +31,13 @@ func _process(delta: float) -> void:
 
 func on_stone_area_entered_return_areas(area: Area3D) -> void:
 	if area.get_parent() != my_stone: return
-	print("hey jude")
+	#print("hey jude")
 	stone_inside = false
 	waiting_to_start = false
 
 func on_stone_area_exited_return_areas(area: Area3D) -> void:
 	if area.get_parent() != my_stone: return
-	print("buy jude")
+	#print("buy jude")
 	stone_inside = true
 	waiting_to_start = true
 
