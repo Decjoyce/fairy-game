@@ -20,10 +20,14 @@
 [ext_resource type="Material" uid="uid://ciiy1aqgkcp5k" path="res://assets/models/cairn/Hall_BigRoof/Dirtfloor.tres" id="18_4qulk"]
 [ext_resource type="PackedScene" uid="uid://d2ict3hg28spx" path="res://scenes/_levels/_palettes/cairn/props/cairn_fake_wall.tscn" id="19_psrev"]
 [ext_resource type="Material" uid="uid://b0i2txe3meqnl" path="res://assets/models/cairn/Props/Pillar/Pillar.tres" id="20_882fo"]
+[ext_resource type="PackedScene" uid="uid://cruv8v8wh8l06" path="res://scenes/interactions/_special/saving_stone/saving_stone.tscn" id="20_o3qlx"]
 [ext_resource type="PackedScene" uid="uid://crnrdh5wu8ooa" path="res://scenes/interactions/_receivers/traps/projectile/trap_projectile.tscn" id="20_psrev"]
 [ext_resource type="PackedScene" uid="uid://ije1mmh1wcad" path="res://scenes/interactions/interactables/items/all_items/torch/torch_mounted.tscn" id="21_882fo"]
 [ext_resource type="Script" uid="uid://bul4myvyhnpjc" path="res://scripts/saving/uid_generator.gd" id="21_j7l2i"]
+[ext_resource type="PackedScene" uid="uid://cpyooys4p0yng" path="res://scenes/_levels/_palettes/cairn/props/cairn_stone_slab.tscn" id="21_sk5sf"]
 [ext_resource type="Script" uid="uid://di860i1v035oh" path="res://scenes/_levels/Final_Puzzles/Mechanical_Puzzles/special_timer.gd" id="21_tauea"]
+[ext_resource type="Material" uid="uid://ckjbpunwhc0rn" path="res://assets/models/cairn/Props/SpikeTrap/SpikeTrap.tres" id="26_iisit"]
+[ext_resource type="ArrayMesh" uid="uid://sakmnnwkwcdm" path="res://assets/models/cairn/Props/SpikeTrap/SpikeTrap.obj" id="27_sk5sf"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_sl5wy"]
 next_pass = ExtResource("8_pbkst")
@@ -119,10 +123,16 @@ mesh_library = ExtResource("1_ysc88")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 1, -5)
 
 [node name="Wall_Button" parent="Fourth_Bridge_Section" unique_id=1680194303 instance=ExtResource("7_qmfwb")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 1.0886493, 8.713636)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 1.0886493, 8.851028)
 metadata/lock_uid = true
 metadata/uid = "3e04de9c-390b-45a3-abf4-e0c79c34a689"
 metadata/date_generated = "2026-05-04T21:09:57"
+
+[node name="SpotLight3D" type="SpotLight3D" parent="Fourth_Bridge_Section/Wall_Button" unique_id=1805097896]
+transform = Transform3D(-1, 5.2272956e-08, -7.007337e-08, 0, 0.80154604, 0.5979329, 8.742278e-08, 0.59793293, -0.801546, 0.01572218, 1.0087267, -1.5583589)
+light_color = Color(1, 0.88666666, 0.65999997, 1)
+light_energy = 1.71
+spot_angle = 19.47353
 
 [node name="Bridge" parent="Fourth_Bridge_Section" unique_id=1972990767 instance=ExtResource("2_irjbx")]
 transform = Transform3D(1.0037953, 0, 0, 0, 1.0230876, 0, 0, 0, 0.99999994, 3, 0, 6)
@@ -174,7 +184,7 @@ metadata/uid = "c181ac42-a909-4528-97b7-8a9d7c5bc9dc"
 metadata/date_generated = "2026-05-04T21:09:57"
 
 [node name="First_Chain" parent="1st_Bridge_Section" unique_id=1694951827 instance=ExtResource("7_or868")]
-transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -5, 2.182617, 15.598361)
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -5, 2.182617, 15.345416)
 slowly_reset_when_not_used = false
 metadata/lock_uid = true
 metadata/uid = "bc0ea085-e24d-4c42-8cd0-d4bccd4e3aa3"
@@ -360,9 +370,6 @@ transform = Transform3D(1.85, 0, 0, 0, 1.85, 0, 0, 0, 1.85, -2.6284885, -8, 2.10
 
 [node name="Torches" type="Node3D" parent="Fifth_Bridge Section/Decoration" unique_id=1127174045]
 
-[node name="TorchSconce_Lit" parent="Fifth_Bridge Section/Decoration/Torches" unique_id=1729385187 instance=ExtResource("12_c3sjm")]
-transform = Transform3D(0.99996203, -0.0007302175, 0.00869593, 0, 0.9964926, 0.08367784, -0.008726536, -0.08367463, 0.9964549, 3.3793259, 0.7746513, -12.431039)
-
 [node name="TorchSconce_Lit6" parent="Fifth_Bridge Section/Decoration/Torches" unique_id=1957793831 instance=ExtResource("12_c3sjm")]
 transform = Transform3D(0.0087264925, 0.08367463, -0.9964549, 5.8205447e-11, 0.99649256, 0.083677836, 0.999962, -0.0007302138, 0.008695886, 3.1665707, -0.42646122, -12.783088)
 
@@ -374,6 +381,9 @@ transform = Transform3D(0.9977176, 0.06698727, 0.008518626, -0.041343663, 0.5062
 
 [node name="TorchSconce_Lit5" parent="Fifth_Bridge Section/Decoration/Torches" unique_id=2079009699 instance=ExtResource("12_c3sjm")]
 transform = Transform3D(-0.053390708, 0.8597892, -0.50785, -0.041343674, 0.506236, 0.8614035, 0.99771756, 0.066987306, 0.008518606, -13.904816, 0.28827477, -9.279201)
+
+[node name="TorchSconce_Lit8" parent="Fifth_Bridge Section/Decoration/Torches" unique_id=1729385187 instance=ExtResource("12_c3sjm")]
+transform = Transform3D(-1, 0, 8.7422784e-08, 0, 0.9999998, 0, -8.742278e-08, 0, -1.0000001, -17.692114, 0.5334945, 1.4956927)
 
 [node name="TorchSconce_Lit2" parent="Fifth_Bridge Section/Decoration/Torches" unique_id=588434207 instance=ExtResource("12_c3sjm")]
 transform = Transform3D(0.9977176, 0.06698727, 0.008518626, -0.041343663, 0.50623596, 0.8614036, 0.05339067, -0.8597893, 0.50785, -2.6200218, 0.3337934, 2.283072)
@@ -398,6 +408,10 @@ metadata/date_generated = "2026-05-04T21:09:57"
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Fifth_Bridge Section/Reuseable_Stones/Stonepile_ReusableStones4" unique_id=2075198936]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.25331306, 0.63831496, 0.21232319)
 shape = SubResource("BoxShape3D_tauea")
+
+[node name="SpotLight3D" type="SpotLight3D" parent="Fifth_Bridge Section/Reuseable_Stones/Stonepile_ReusableStones4" unique_id=1134486981]
+transform = Transform3D(0.95811284, -0.014913487, 0.28600237, -0.28639096, -0.049893264, 0.95681286, 1.7662677e-07, -0.9986432, -0.052074462, 0.3108694, 1.3469206, -0.0027471958)
+spot_angle = 30.643427
 
 [node name="Stonepile_ReusableStones2" parent="Fifth_Bridge Section/Reuseable_Stones" unique_id=1626455263 node_paths=PackedStringArray("my_stone") instance=ExtResource("11_j7l2i")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -8.8, 1.0281782, 4)
@@ -425,6 +439,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.2143264, 0.9861486, 4.49716
 shape = SubResource("BoxShape3D_psrev")
 debug_color = Color(0.175, 0, 0.7, 1)
 
+[node name="SpotLight3D" type="SpotLight3D" parent="Fifth_Bridge Section/Reuseable_Stones/Stonepile_ReusableStones2" unique_id=945723641]
+transform = Transform3D(0.95811284, -0.014913487, 0.28600237, -0.28639096, -0.049893264, 0.95681286, 1.7662677e-07, -0.9986432, -0.052074462, 0.3108694, 1.3469206, -0.0027471958)
+spot_angle = 30.643427
+
 [node name="Stonepile_ReusableStones" parent="Fifth_Bridge Section/Reuseable_Stones" unique_id=1394698610 node_paths=PackedStringArray("my_stone") instance=ExtResource("11_j7l2i")]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -16, 1.0281782, -12)
 my_stone = NodePath("stone")
@@ -447,6 +465,10 @@ shape = SubResource("BoxShape3D_4qulk")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Fifth_Bridge Section/Reuseable_Stones/Stonepile_ReusableStones" unique_id=971824345]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.8049593, 0.62836695, 0.14251709)
 shape = SubResource("BoxShape3D_cl670")
+
+[node name="SpotLight3D" type="SpotLight3D" parent="Fifth_Bridge Section/Reuseable_Stones/Stonepile_ReusableStones" unique_id=697866449]
+transform = Transform3D(0.95811284, -0.014913487, 0.28600237, -0.28639096, -0.049893264, 0.95681286, 1.7662677e-07, -0.9986432, -0.052074462, 0.3108694, 1.3469206, -0.0027471958)
+spot_angle = 30.643427
 
 [node name="Walls&Platforms" type="Node3D" parent="." unique_id=1503041004]
 
@@ -642,6 +664,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2, 0)
 
 [node name="BigHallPillar" type="MeshInstance3D" parent="Walls&Platforms/Platforms/Floor7/cairnPillar" unique_id=208025886]
 transform = Transform3D(0.128, 0, 0, 0, 0.128, 0, 0, 0, 0.128, 0, 0, 0)
+mesh = SubResource("ArrayMesh_akp82")
+
+[node name="BigHallPillar4" type="MeshInstance3D" parent="Walls&Platforms/Platforms/Floor7/cairnPillar" unique_id=510620057]
+transform = Transform3D(0.128, 0, 0, 0, 0.128, 0, 0, 0, 0.128, 5.7856, 1.7152001, -1.1520001)
 mesh = SubResource("ArrayMesh_akp82")
 
 [node name="BigHallPillar2" type="MeshInstance3D" parent="Walls&Platforms/Platforms/Floor7/cairnPillar" unique_id=1572005136]
@@ -1312,6 +1338,9 @@ mesh = SubResource("ArrayMesh_akp82")
 transform = Transform3D(0.12799998, 0, 0, 0, 0.12799998, 0, 0, 0, 0.12799998, 0, -3.7558684, 0)
 mesh = SubResource("ArrayMesh_akp82")
 
+[node name="SavingStone" parent="Walls&Platforms/Platforms/Floor43" unique_id=452927148 instance=ExtResource("20_o3qlx")]
+transform = Transform3D(-3.657857e-08, 0, 0.83682007, 0, 0.83682007, 0, -0.83682007, 0, -3.657857e-08, -4.9767323, 0.026983202, 0.3573594)
+
 [node name="Floor44" type="Node3D" parent="Walls&Platforms/Platforms" unique_id=169736354]
 transform = Transform3D(1.195, 0, 0, 0, 1.195, 0, 0, 0, 1.195, 27, 1, 7.015)
 
@@ -1702,7 +1731,7 @@ mesh = SubResource("ArrayMesh_akp82")
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1.4, 0, 1, 0, -4.371139e-08, -0.031000756, 0.9, 3.189567)
 
 [node name="cairn_fake_wall2" parent="Walls&Platforms/Walls_Collision" unique_id=1402763782 instance=ExtResource("19_psrev")]
-transform = Transform3D(-1.21, 0, 1.8270492e-07, 0, 1.694, 0, -1.8270492e-07, 0, -1.21, 7, 1, 4)
+transform = Transform3D(-1.21, 0, 1.8270492e-07, 0, 1.694, 0, -1.8270492e-07, 0, -1.21, 7, 1, 4.10439)
 
 [node name="cairn_fake_wall3" parent="Walls&Platforms/Walls_Collision" unique_id=2026766048 instance=ExtResource("19_psrev")]
 transform = Transform3D(2.3559572e-07, 0, 1.21, 0, 1.694, 0, -1.21, 0, 2.3559572e-07, 7.9, 1, 4.4)
@@ -1724,6 +1753,9 @@ transform = Transform3D(2.3559572e-07, 0, 1.21, 0, 1.694, 0, -1.21, 0, 2.3559572
 
 [node name="cairn_fake_wall6" parent="Walls&Platforms/Walls_Collision" unique_id=1228844119 instance=ExtResource("19_psrev")]
 transform = Transform3D(2.3559572e-07, 0, 1.21, 0, 1.694, 0, -1.21, 0, 2.3559572e-07, 6.1, 3, 4.4)
+
+[node name="StoneSlab" parent="Walls&Platforms/Walls_Collision" unique_id=1754334662 instance=ExtResource("21_sk5sf")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 7.0138407, 0.95202637, 3.982524)
 
 [node name="Torches" type="Node3D" parent="." unique_id=282948808]
 
@@ -1857,7 +1889,7 @@ mesh = SubResource("PlaneMesh_fisyt")
 skeleton = NodePath("../../../..")
 
 [node name="trap_projectile" parent="." unique_id=589372953 instance=ExtResource("20_psrev")]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 26.9, 2.2, -12.4)
+transform = Transform3D(-1.5, 0, -2.2649371e-07, 0, 1.5, 0, 2.2649371e-07, 0, -1.5, 27, 2.2555635, -12.4)
 metadata/uid = "d252540f-7778-4dc2-a799-9a3c9dbecf13"
 metadata/lock_uid = true
 metadata/date_generated = "2026-05-04T21:09:57"
@@ -1866,25 +1898,10 @@ metadata/date_generated = "2026-05-04T21:09:57"
 wait_time = 2.0
 script = ExtResource("21_tauea")
 
-[node name="trap_projectile2" parent="." unique_id=629086476 instance=ExtResource("20_psrev")]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 27.1, 2.2, -12.4)
-metadata/uid = "eacb3799-fafe-4780-9d76-55779eedacd8"
-metadata/lock_uid = true
-metadata/date_generated = "2026-05-04T21:09:57"
-
-[node name="Timer" type="Timer" parent="trap_projectile2" unique_id=142882528]
-wait_time = 4.0
-script = ExtResource("21_tauea")
-
-[node name="trap_projectile3" parent="." unique_id=2098367655 instance=ExtResource("20_psrev")]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 27, 2.3, -12.4)
-metadata/uid = "96acf48c-47f4-4f8c-8852-e2a4bc2c4dab"
-metadata/lock_uid = true
-metadata/date_generated = "2026-05-04T21:09:57"
-
-[node name="Timer" type="Timer" parent="trap_projectile3" unique_id=1699409130]
-wait_time = 6.0
-script = ExtResource("21_tauea")
+[node name="MeshInstance3D" type="MeshInstance3D" parent="trap_projectile" unique_id=253945717]
+transform = Transform3D(0.18, 1.5736099e-08, 6.878467e-16, 0, -7.86805e-09, 0.18, 1.5736099e-08, -0.18, -7.86805e-09, 0, 0, 0.06711006)
+material_override = ExtResource("26_iisit")
+mesh = ExtResource("27_sk5sf")
 
 [connection signal="on_activated" from="Fourth_Bridge_Section/Wall_Button" to="Fourth_Bridge_Section/Bridge" method="fully_open_bridge"]
 [connection signal="on_change" from="Fourth_Bridge_Section/Chain" to="Fourth_Bridge_Section/Gate" method="open_gate"]
@@ -1897,12 +1914,6 @@ script = ExtResource("21_tauea")
 [connection signal="on_activated" from="Fifth_Bridge Section/Button2" to="Fifth_Bridge Section/Bridge_Small2" method="fully_open_bridge"]
 [connection signal="on_activated" from="Fifth_Bridge Section/Button3" to="Third_Bridge_Section/Back_To_StatueRoom" method="fully_open_bridge"]
 [connection signal="on_activated" from="Fifth_Bridge Section/Button3" to="trap_projectile/Timer" method="stop_me"]
-[connection signal="on_activated" from="Fifth_Bridge Section/Button3" to="trap_projectile2/Timer" method="stop_me"]
-[connection signal="on_activated" from="Fifth_Bridge Section/Button3" to="trap_projectile3/Timer" method="stop_me"]
 [connection signal="on_activated" from="Fifth_Bridge Section/Button4" to="Fifth_Bridge Section/Bridge_Small3" method="fully_open_bridge"]
 [connection signal="on_activated" from="Fifth_Bridge Section/Button4" to="trap_projectile/Timer" method="start_me"]
-[connection signal="on_activated" from="Fifth_Bridge Section/Button4" to="trap_projectile2/Timer" method="start_me"]
-[connection signal="on_activated" from="Fifth_Bridge Section/Button4" to="trap_projectile3/Timer" method="start_me"]
 [connection signal="timeout" from="trap_projectile/Timer" to="trap_projectile" method="trigger_trap"]
-[connection signal="timeout" from="trap_projectile2/Timer" to="trap_projectile2" method="trigger_trap"]
-[connection signal="timeout" from="trap_projectile3/Timer" to="trap_projectile3" method="trigger_trap"]

@@ -321,13 +321,6 @@ metadata/_custom_type_script = "uid://bul4myvyhnpjc"
 [node name="To_From_Traps" type="Node3D" parent="." unique_id=414252301]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, -3)
 
-[node name="Area_One_Bridge" parent="To_From_Traps" unique_id=1119761856 instance=ExtResource("6_deeav")]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, -13, -1)
-speed = 1.0
-metadata/lock_uid = true
-metadata/uid = "33882ef7-e61f-415c-ad61-69aa3bcfb911"
-metadata/date_generated = "2026-04-21T17:03:08"
-
 [node name="Gate_1" type="Node3D" parent="To_From_Traps" unique_id=2035683473]
 transform = Transform3D(-4.0651592e-08, 0, 0.93, 0, 0.93, 0, -0.93, 0, -4.0651592e-08, -0.23261881, -0.29157495, -6.90456)
 
@@ -451,17 +444,11 @@ shape = SubResource("BoxShape3D_44q1p")
 transform = Transform3D(0.6427863, 0, -0.76604354, 0, 0.9999987, 0, 0.76604354, 0, 0.6427863, 0.07604408, 0.29999825, 8.296314)
 shape = SubResource("BoxShape3D_v6bop")
 
-[node name="cairn_exit_pillars" parent="To_From_Traps" unique_id=429478754 instance=ExtResource("4_1jgwr")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.02386856, -13, -1)
-
 [node name="ShortCut_Lever" parent="To_From_Traps" unique_id=2060032048 instance=ExtResource("3_lo7kx")]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 10, 1, -3.2817874)
 metadata/lock_uid = true
 metadata/uid = "47b8d54b-e0b1-42fe-8917-2700f09af1ea"
 metadata/date_generated = "2026-04-21T17:03:08"
-
-[node name="ShortCut_AfterTrapArea" parent="To_From_Traps" unique_id=896208307 instance=ExtResource("5_634vm")]
-transform = Transform3D(-0.99999994, 0, -8.742278e-08, 0, 0.99999994, 0, 8.742277e-08, 0, -1, 9, -23, -4)
 
 [node name="Gate_2" type="Node3D" parent="To_From_Traps" unique_id=147036324]
 transform = Transform3D(0.93, 0, 0, 0, 0.93, 0, 0, 0, 0.93, 7.393381, -0.29157495, -4.20756)
@@ -827,20 +814,8 @@ metadata/uid = "2c65e927-133f-4172-ab21-41901c17aad6"
 metadata/lock_uid = true
 metadata/date_generated = "2026-04-21T17:03:08"
 
-[node name="Going_To_BallybogLand" parent="To_From_BB_Bridge" unique_id=1695082893 instance=ExtResource("5_634vm")]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 9.427231, -20.7, 4)
-speed = 1.0
-metadata/uid = "ff47afe9-cc46-46d6-97f1-ec229c045bae"
-metadata/date_generated = "2026-04-21T17:03:08"
-
 [node name="Area_2_Gate" type="Node3D" parent="To_From_BB_Bridge" unique_id=1307250700]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, -1.7)
-
-[node name="Gate" parent="To_From_BB_Bridge/Area_2_Gate" unique_id=2077487765 instance=ExtResource("16_vodny")]
-transform = Transform3D(2.395, 0, 0, 0, 2.395, 0, 0, 0, 2.395, -1.2539177, -12.890968, 9.010145)
-metadata/uid = "12b1cf36-9939-421e-bff4-b7bdc56d20b6"
-metadata/lock_uid = true
-metadata/date_generated = "2026-04-21T17:03:08"
 
 [node name="Gate_3" type="Node3D" parent="To_From_BB_Bridge" unique_id=1085649963]
 transform = Transform3D(0.93, 0, 0, 0, 0.93, 0, 0, 0, 0.93, 7.393381, -0.29157495, 3.69244)
@@ -2343,15 +2318,50 @@ monitorable = false
 [node name="CollisionShape3D" type="CollisionShape3D" parent="bb_trig_entrance/Area3D" unique_id=1312657243]
 shape = SubResource("SphereShape3D_7p2n5")
 
-[connection signal="on_piece_inserted_arm" from="Statue" to="To_From_Traps/Area_One_Bridge" method="fully_open_bridge"]
-[connection signal="on_piece_inserted_base" from="Statue" to="To_From_BB_Bridge/Going_To_BallybogLand" method="fully_open_bridge"]
+[node name="SpotLight3D" type="SpotLight3D" parent="." unique_id=2119989959]
+transform = Transform3D(1, 0, 0, 0, 0.73619163, 0.6767732, 0, -0.6767732, 0.73619163, 2.9400156, 5.5948777, 18.351301)
+light_color = Color(0.5795553, 0.58138835, 0.66953516, 1)
+light_energy = 3.357
+spot_range = 15.372077
+spot_angle = 54.843742
+
+[node name="Node3D" type="Node3D" parent="." unique_id=188953684]
+visible = false
+
+[node name="Area_One_Bridge" parent="Node3D" unique_id=1119761856 instance=ExtResource("6_deeav")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 2, -13, -0.29751468)
+speed = 1.0
+metadata/lock_uid = true
+metadata/uid = "33882ef7-e61f-415c-ad61-69aa3bcfb911"
+metadata/date_generated = "2026-04-21T17:03:08"
+
+[node name="cairn_exit_pillars" parent="Node3D" unique_id=429478754 instance=ExtResource("4_1jgwr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.3996878, -13, -0.10558605)
+
+[node name="ShortCut_AfterTrapArea" parent="Node3D" unique_id=896208307 instance=ExtResource("5_634vm")]
+transform = Transform3D(-0.99999994, 0, -8.742278e-08, 0, 0.99999994, 0, 8.742277e-08, 0, -1, 2.1318374, -14.864542, -0.55768967)
+
+[node name="Going_To_BallybogLand" parent="Node3D" unique_id=1695082893 instance=ExtResource("5_634vm")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 3.86769, -18.455702, -1.8212566)
+speed = 1.0
+metadata/uid = "ff47afe9-cc46-46d6-97f1-ec229c045bae"
+metadata/date_generated = "2026-04-21T17:03:08"
+
+[node name="Gate" parent="Node3D" unique_id=2077487765 instance=ExtResource("16_vodny")]
+transform = Transform3D(2.395, 0, 0, 0, 2.395, 0, 0, 0, 2.395, 1.767879, -12.859597, -1.0068314)
+metadata/uid = "12b1cf36-9939-421e-bff4-b7bdc56d20b6"
+metadata/lock_uid = true
+metadata/date_generated = "2026-04-21T17:03:08"
+
+[connection signal="on_piece_inserted_arm" from="Statue" to="Node3D/Area_One_Bridge" method="fully_open_bridge"]
+[connection signal="on_piece_inserted_base" from="Statue" to="Node3D/Going_To_BallybogLand" method="fully_open_bridge"]
 [connection signal="on_piece_inserted_base" from="Statue" to="RockGate3" method="fully_open_gate"]
 [connection signal="on_quest_completed" from="Statue" to="." method="statue_finished"]
 [connection signal="on_quest_completed" from="Statue" to="Exit_Door/Door/OBJMOvER" method="move_the_thing"]
 [connection signal="on_change" from="To_From_Traps/ShortCut_Lever" to="RockGate2" method="open_gate"]
 [connection signal="on_change" from="To_From_BB_Bridge/Area_Two_lever" to="To_From_BB_Bridge/Area_Two_Bridge" method="move_bridge"]
 [connection signal="on_change" from="To_From_BB_Bridge/Area_Two_lever" to="RockGate4" method="open_gate"]
-[connection signal="on_activated" from="To_From_BB_Bridge/Statue_Piece_Pressure_Plate" to="To_From_BB_Bridge/Area_2_Gate/Gate" method="open_gate"]
+[connection signal="on_activated" from="To_From_BB_Bridge/Statue_Piece_Pressure_Plate" to="Node3D/Gate" method="open_gate"]
 [connection signal="on_change" from="From_Tut/Lever_Big_Bridge_One" to="From_Tut/Long_Bridge_First" method="move_bridge"]
 [connection signal="on_activated" from="trap_trig_the_trig" to="trap_trig_shorcut/CollisionEnabler_Disabler" method="enable_obj"]
 [connection signal="area_entered" from="trap_trig_the_trig/Area3D" to="trap_trig_the_trig" method="_player_entered"]
