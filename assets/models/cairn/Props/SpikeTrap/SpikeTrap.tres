@@ -1,0 +1,20 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://ckjbpunwhc0rn"]
+
+[ext_resource type="Texture2D" uid="uid://bbsk6djtivvwp" path="res://assets/models/cairn/Props/SpikeTrap/Textures/SpikeTrap_Base_color.png" id="1_dgrws"]
+[ext_resource type="Texture2D" uid="uid://j0t2jglws0l5" path="res://assets/models/cairn/Props/SpikeTrap/Textures/SpikeTrap_Mixed_AO.png" id="2_10xan"]
+[ext_resource type="Texture2D" uid="uid://b6t5k0wumb8g0" path="res://assets/models/cairn/Props/SpikeTrap/Textures/SpikeTrap_Metallic.png" id="3_e3cue"]
+[ext_resource type="Material" uid="uid://dyejtq23uplk4" path="res://assets/shaders/Outline/outline.tres" id="4_mwrj5"]
+[ext_resource type="Texture2D" uid="uid://betsmu5nv2sdk" path="res://assets/models/cairn/Props/SpikeTrap/Textures/SpikeTrap_Normal_OpenGL.png" id="5_ddmx5"]
+[ext_resource type="Texture2D" uid="uid://diqwxokxqkugk" path="res://assets/models/cairn/Props/SpikeTrap/Textures/SpikeTrap_Roughness.png" id="6_jrp3a"]
+
+[resource]
+next_pass = ExtResource("4_mwrj5")
+albedo_texture = ExtResource("1_dgrws")
+metallic = 0.2
+metallic_specular = 0.0
+metallic_texture = ExtResource("3_e3cue")
+roughness_texture = ExtResource("6_jrp3a")
+normal_enabled = true
+normal_texture = ExtResource("5_ddmx5")
+ao_enabled = true
+ao_texture = ExtResource("2_10xan")
