@@ -43,6 +43,8 @@
 [ext_resource type="Texture2D" uid="uid://d2ed2mhyecabg" path="res://assets/ui/flute/notes/notes_white/note_005.png" id="30_211r5"]
 [ext_resource type="PackedScene" uid="uid://bsdlm8rcrt2j" path="res://scenes/interactions/_triggers/area_triggers/player_area_trigger.tscn" id="32_1kgh0"]
 [ext_resource type="PackedScene" uid="uid://dhb1ju03ckwh4" path="res://scenes/interactions/_receivers/enabler_disabler_v1/collision_enabler_disabler.tscn" id="33_7p2n5"]
+[ext_resource type="PackedScene" uid="uid://d3x1l1brjvyre" path="res://scenes/item_catcher/item_catcher.tscn" id="44_g2esy"]
+[ext_resource type="PackedScene" uid="uid://cvs14wc2mqnjv" path="res://scenes/interactions/_receivers/enabler_disabler_v1/mass_collision_enabler_disabler.tscn" id="45_pbw8r"]
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_4g60i"]
 _surfaces = [{
@@ -271,6 +273,15 @@ size = Vector3(2.7, 7.6, 0.4)
 material = ExtResource("19_tsqmh")
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_1kgh0"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_pbw8r"]
+size = Vector3(17.4, 1.9, 2.3)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_g2esy"]
+size = Vector3(12.7, 1.9, 8.400001)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_vgaku"]
+size = Vector3(160, 1.9, 197)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_7p2n5"]
 size = Vector3(1, 2.5, 7.1)
@@ -2226,6 +2237,51 @@ monitorable = false
 [node name="CollisionShape3D" type="CollisionShape3D" parent="trap_trig_the_trig/Area3D" unique_id=1637285044]
 shape = SubResource("SphereShape3D_1kgh0")
 
+[node name="ItemCatcher_Traps" parent="." unique_id=2014139358 node_paths=PackedStringArray("return_point") instance=ExtResource("44_g2esy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 0, -7)
+collision_layer = 0
+collision_mask = 2
+monitorable = false
+return_point = NodePath("Node3D")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ItemCatcher_Traps" unique_id=48863963]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.4000015, 1.05, -0.1500001)
+shape = SubResource("BoxShape3D_pbw8r")
+disabled = true
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="ItemCatcher_Traps" unique_id=1207947051]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 15.000002, 1.05, 7.15)
+shape = SubResource("BoxShape3D_pbw8r")
+disabled = true
+
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="ItemCatcher_Traps" unique_id=507103801]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 20.050003, 1.05, 11.900001)
+shape = SubResource("BoxShape3D_g2esy")
+disabled = true
+
+[node name="Node3D" type="Node3D" parent="ItemCatcher_Traps" unique_id=1766530726]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 1.3, 0)
+
+[node name="CollisionEnabler_Disabler" parent="ItemCatcher_Traps" unique_id=768060295 node_paths=PackedStringArray("cols") instance=ExtResource("45_pbw8r")]
+cols = [NodePath("../CollisionShape3D"), NodePath("../CollisionShape3D2"), NodePath("../CollisionShape3D3")]
+
+[node name="ItemCatcher_Bridge" parent="." unique_id=1853996185 node_paths=PackedStringArray("return_point") instance=ExtResource("44_g2esy")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 1.8000002, 0, 13)
+collision_layer = 0
+collision_mask = 2
+monitorable = false
+return_point = NodePath("Node3D")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ItemCatcher_Bridge" unique_id=1691206486]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 78.7, 1.05, -21.800001)
+shape = SubResource("BoxShape3D_vgaku")
+
+[node name="Node3D" type="Node3D" parent="ItemCatcher_Bridge" unique_id=400201623]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 1.3, 0)
+
+[node name="CollisionEnabler_Disabler" parent="ItemCatcher_Bridge" unique_id=485523469 node_paths=PackedStringArray("cols") instance=ExtResource("45_pbw8r")]
+cols = [NodePath("../CollisionShape3D")]
+
 [node name="trap_trig_shorcut" parent="." unique_id=701714004 instance=ExtResource("32_1kgh0")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 1, -7)
 trig_once = true
@@ -2294,12 +2350,14 @@ shape = SubResource("SphereShape3D_7p2n5")
 [connection signal="area_entered" from="trap_trig_the_trig/Area3D" to="trap_trig_the_trig" method="_player_entered"]
 [connection signal="area_exited" from="trap_trig_the_trig/Area3D" to="trap_trig_the_trig" method="_player_exited"]
 [connection signal="on_activated" from="trap_trig_shorcut" to="RockGate2" method="close_gate"]
+[connection signal="on_activated" from="trap_trig_shorcut" to="ItemCatcher_Traps/CollisionEnabler_Disabler" method="enable_obj"]
 [connection signal="area_entered" from="trap_trig_shorcut/Area3D" to="trap_trig_shorcut" method="_player_entered"]
 [connection signal="area_exited" from="trap_trig_shorcut/Area3D" to="trap_trig_shorcut" method="_player_exited"]
 [connection signal="on_activated" from="bridge_trig_the_trig" to="bridge_trig_shortcut/CollisionEnabler_Disabler" method="enable_obj"]
 [connection signal="area_entered" from="bridge_trig_the_trig/Area3D" to="bridge_trig_the_trig" method="_player_entered"]
 [connection signal="area_exited" from="bridge_trig_the_trig/Area3D" to="bridge_trig_the_trig" method="_player_exited"]
 [connection signal="on_activated" from="bridge_trig_shortcut" to="RockGate4" method="close_gate"]
+[connection signal="on_activated" from="bridge_trig_shortcut" to="ItemCatcher_Bridge/CollisionEnabler_Disabler" method="enable_obj"]
 [connection signal="area_entered" from="bridge_trig_shortcut/Area3D" to="bridge_trig_shortcut" method="_player_entered"]
 [connection signal="area_exited" from="bridge_trig_shortcut/Area3D" to="bridge_trig_shortcut" method="_player_exited"]
 [connection signal="on_activated" from="bb_trig_entrance" to="RockGate3" method="close_gate"]
