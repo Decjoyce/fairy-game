@@ -5,6 +5,7 @@
 [ext_resource type="Material" uid="uid://cvaorh1jxnk23" path="res://assets/shaders/Outline/outline1.tres" id="3_konik"]
 [ext_resource type="Material" uid="uid://cw6t4hgt8cs61" path="res://assets/models/cairn/Props/Door_Wall/Walldoor.tres" id="4_ihvuo"]
 [ext_resource type="Material" uid="uid://b0i2txe3meqnl" path="res://assets/models/cairn/Props/Pillar/Pillar.tres" id="5_nowu0"]
+[ext_resource type="AudioStream" uid="uid://5ueun4gkhme1" path="res://assets/audio/sfx/Observer/Head_loop.wav" id="6_7542j"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_oxqej"]
 transparency = 1
@@ -146,11 +147,12 @@ material = SubResource("StandardMaterial3D_h8huj")
 radius = 0.025
 height = 0.05
 
-[node name="ItemNoPassZone" type="Area3D" unique_id=223074910 node_paths=PackedStringArray("itm_showers")]
+[node name="ItemNoPassZone" type="Area3D" unique_id=223074910 node_paths=PackedStringArray("audio", "itm_showers")]
 collision_layer = 0
 collision_mask = 3
 monitorable = false
 script = ExtResource("1_mhaui")
+audio = NodePath("AudioStreamPlayer3D")
 itm_showers = [NodePath("Item_Showers/itm_s_1"), NodePath("Item_Showers/itm_s_2"), NodePath("Item_Showers/itm_s_3"), NodePath("Item_Showers/itm_s_4"), NodePath("Item_Showers/itm_s_5"), NodePath("Item_Showers/itm_s_6"), NodePath("Item_Showers/itm_s_7"), NodePath("Item_Showers/itm_s_8")]
 
 [node name="Pivot" type="Node3D" parent="." unique_id=1679909858]
@@ -253,6 +255,14 @@ mesh = SubResource("SphereMesh_oxqej")
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Item_Showers/itm_s_8" unique_id=403742770]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.22942013, 0)
 mesh = SubResource("SphereMesh_oxqej")
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="." unique_id=153177149]
+stream = ExtResource("6_7542j")
+volume_db = -5.0
+unit_size = 6.93
+max_distance = 7.0
+max_polyphony = 5
+bus = &"SaveSFX"
 
 [connection signal="area_entered" from="." to="." method="on_item_area_entered"]
 [connection signal="area_exited" from="." to="." method="on_item_area_exited"]

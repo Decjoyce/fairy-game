@@ -71,6 +71,8 @@
 [ext_resource type="PackedScene" uid="uid://ije1mmh1wcad" path="res://scenes/interactions/interactables/items/all_items/torch/torch_mounted.tscn" id="66_7evwh"]
 [ext_resource type="Script" uid="uid://bul4myvyhnpjc" path="res://scripts/saving/uid_generator.gd" id="70_24qtj"]
 [ext_resource type="PackedScene" uid="uid://b5g00fexnuwte" path="res://scenes/interactions/_special/the_observer/the_observer.tscn" id="71_dri38"]
+[ext_resource type="PackedScene" uid="uid://cwr2r7yxt4ust" path="res://scenes/interactions/ReusableStones/stonepile_reusable_stones.tscn" id="72_v0o7u"]
+[ext_resource type="PackedScene" uid="uid://clvus6c43ipdy" path="res://scenes/interactions/interactables/items/all_items/misc/item_stone.tscn" id="73_x83fr"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_3wul1"]
 
@@ -944,6 +946,9 @@ metadata/_custom_type_script = "uid://beaf3digx88d0"
 
 [sub_resource type="BoxMesh" id="BoxMesh_dri38"]
 material = ExtResource("15_50n8y")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_x83fr"]
+size = Vector3(6.625183, 2.3624268, 5.985443)
 
 [node name="Playground_Interactions" type="Node3D" unique_id=1592069120]
 
@@ -6007,6 +6012,17 @@ shape = SubResource("BoxShape3D_dri38")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="ItemNoPassZone/CollisionShape3D" unique_id=252605463]
 mesh = SubResource("BoxMesh_dri38")
+
+[node name="Stonepile_ReusableStones" parent="." unique_id=1682368129 node_paths=PackedStringArray("my_stone") instance=ExtResource("72_v0o7u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -102.54084, 0.05008602, -23.222492)
+my_stone = NodePath("stone")
+
+[node name="stone" parent="Stonepile_ReusableStones" unique_id=664464806 instance=ExtResource("73_x83fr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.18116593, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Stonepile_ReusableStones" unique_id=51679725]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.9242859, 0.6812134, -0.6938629)
+shape = SubResource("BoxShape3D_x83fr")
 
 [connection signal="area_entered" from="Bin/Room_Items/Teleporter/Trigger" to="Bin/Room_Items/Teleporter" method="_teleport_entity"]
 [connection signal="body_entered" from="Bin/Room_Items/Teleporter/Trigger" to="Bin/Room_Items/Teleporter" method="_teleport_item"]

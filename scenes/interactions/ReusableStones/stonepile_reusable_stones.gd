@@ -13,6 +13,7 @@ var waiting_to_start: bool
 @onready var g_off: Node3D = $_g_off
 
 @export var time_until_return: float = 2
+@export var audio: AudioStreamPlayer3D
 
 func _ready() -> void:
 	timer.wait_time = time_until_return
@@ -23,6 +24,8 @@ func _process(delta: float) -> void:
 	g_on.visible = stone_inside
 	my_stone.special_graphics.visible = stone_inside and !my_stone.is_grabbed
 	my_stone.special_graphics.modulate.a = (timer.wait_time-timer.time_left)/timer.wait_time
+	
+	
 	
 	if waiting_to_start and !my_stone.is_grabbed:
 		waiting_to_start = false
@@ -63,3 +66,4 @@ func on_tp_timeout() -> void:
 	my_stone.rb.linear_velocity = Vector3.ZERO
 	itm_mover.move_all_items()
 	timer.stop()
+	audio.play()

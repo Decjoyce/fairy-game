@@ -11,6 +11,7 @@ var items_in_zone: Array[Grabbable_Item]
 
 @export var exempt_keyword: String = "PERM" ## Items with this keyword will not trigger the observer
 
+@export var audio: AudioStreamPlayer3D
 @export var itm_showers: Array[Node3D]
 
 var activated: bool
@@ -38,6 +39,7 @@ func enter_lockdown() -> void:
 	eye_tween = get_tree().create_tween().bind_node(self).set_trans(Tween.TRANS_CUBIC)
 	eye_tween.set_parallel(true)
 	eye_tween.tween_property(eyes, "scale", Vector3.ONE, 0.5)
+	audio.play()
 
 func exit_lockdown() -> void:
 	if !activated: return
@@ -49,6 +51,7 @@ func exit_lockdown() -> void:
 	eye_tween = get_tree().create_tween().bind_node(self).set_trans(Tween.TRANS_LINEAR)
 	eye_tween.set_parallel(true)
 	eye_tween.tween_property(eyes, "scale", Vector3.ZERO, 3)
+	audio.stop()
 
 func check_if_should_lockdown() -> bool:
 	return items_in_zone.size() > 0 and !disabled
