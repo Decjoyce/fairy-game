@@ -11,6 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://lxic7c72kvyt" path="res://scenes/interactions/interactables/items/all_items/misc/item_skull.tscn" id="8_xl0u5"]
 [ext_resource type="PackedScene" uid="uid://clnnqb1efkbei" path="res://scenes/interactions/_receivers/door/locked_door.tscn" id="9_fw3ye"]
 [ext_resource type="PackedScene" uid="uid://csot2mi7746ll" path="res://scenes/interactions/_triggers/pressure_plate/pressure_plate.tscn" id="10_rxxv5"]
+[ext_resource type="PackedScene" uid="uid://dpyn18jj5bdop" path="res://scenes/interactions/_receivers/gate/cage_room_suspended_gate.tscn" id="11_ea6e4"]
 [ext_resource type="PackedScene" uid="uid://bg3e8trp0vy58" path="res://scenes/interactions/prefabs/broken_lever.tscn" id="11_s8t13"]
 [ext_resource type="PackedScene" uid="uid://ck1b6l8s7xnxi" path="res://scenes/interactions/_triggers/lever/lever.tscn" id="12_jce6r"]
 [ext_resource type="PackedScene" uid="uid://d13vdgis1uvvv" path="res://scenes/interactions/interactables/items/all_items/keys/item_leverhandle.tscn" id="13_1itb0"]
@@ -60,6 +61,9 @@ size = Vector3(1.3928223, 1, 0.9602661)
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_60h8r"]
 radius = 1.0
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_ea6e4"]
+friction = 0.0
 
 [sub_resource type="Resource" id="Resource_7acmg"]
 script = ExtResource("7_0nxer")
@@ -201,13 +205,12 @@ metadata/date_generated = "2026-04-29T22:33:48"
 
 [node name="LastBit" type="Node3D" parent="Tutorial_Area" unique_id=25130377]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 26, -2, -5)
-visible = false
 
 [node name="Urn_key_puzzle" type="Node3D" parent="Tutorial_Area/LastBit" unique_id=67300331]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -26, 2, 5)
 
 [node name="QuickCage" type="MeshInstance3D" parent="Tutorial_Area/LastBit/Urn_key_puzzle" unique_id=1024437671]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 32, 1.3436376, -5)
+transform = Transform3D(0.9705242, 0, 0.16824926, 0, 0.985, 0, -0.16824926, 0, 0.9705242, 31.996538, 1.3436376, -4.9978623)
 mesh = ExtResource("17_h6q0i")
 skeleton = NodePath("../../../..")
 
@@ -218,11 +221,8 @@ metadata/uid = "64ecd2e5-3eb6-4642-a449-4d0c32081c4a"
 metadata/lock_uid = true
 metadata/date_generated = "2026-04-29T22:33:48"
 
-[node name="Slate_Gate" parent="Tutorial_Area/LastBit/Urn_key_puzzle" unique_id=1292456453 instance=ExtResource("4_elh88")]
-transform = Transform3D(0.705, 0, 0, 0, -3.081653e-08, 0.705, 0, -0.705, -3.081653e-08, 32.01162, 1.2980931, -4.2281075)
-metadata/uid = "c1d4de6d-0a85-4852-8ece-6ee2b6ee74c3"
-metadata/lock_uid = true
-metadata/date_generated = "2026-04-29T22:33:48"
+[node name="Cage_RoomSuspendedGate" parent="Tutorial_Area/LastBit/Urn_key_puzzle" unique_id=579965600 instance=ExtResource("11_ea6e4")]
+transform = Transform3D(0.6549999, 0, 0, 0, -2.8630955e-08, 0.6549999, 0, -0.6549999, -2.8630955e-08, 32.01714, 1.2745376, -4.4393644)
 
 [node name="Collision_Fix" type="Node3D" parent="Tutorial_Area/LastBit/Urn_key_puzzle" unique_id=480597949]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30, -2, -9)
@@ -575,6 +575,7 @@ metadata/date_generated = "2026-04-29T22:33:48"
 
 [node name="Key_Urn" parent="Tutorial_Area/Items" unique_id=530447260 instance=ExtResource("18_sc2t1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 31.988064, 1.7126392, -5)
+physics_material_override = SubResource("PhysicsMaterial_ea6e4")
 metadata/uid = "f35ea69b-278a-4636-a044-01aab3313bdf"
 metadata/lock_uid = true
 metadata/date_generated = "2026-04-29T22:33:48"
@@ -722,7 +723,7 @@ linked_node = NodePath("../../../Puzzles/Throwing_Puzzle")
 [connection signal="on_enter_lockdown" from="Tutorial_Area/ItemHeadZones/ItemNoPassZone_Second_PressurePlate_Room2" to="Tutorial_Area/ItemHeadZones/No_Acess_Gate2" method="close_gate"]
 [connection signal="on_exit_lockdown" from="Tutorial_Area/ItemHeadZones/ItemNoPassZone_Second_PressurePlate_Room2" to="Tutorial_Area/ItemHeadZones/ItemNoPassZone_Second_PressurePlate_Room2/StaticBody3D/CollisionEnabler_Disabler" method="disable_obj"]
 [connection signal="on_exit_lockdown" from="Tutorial_Area/ItemHeadZones/ItemNoPassZone_Second_PressurePlate_Room2" to="Tutorial_Area/ItemHeadZones/No_Acess_Gate2" method="fully_open_gate"]
-[connection signal="on_change" from="Tutorial_Area/LastBit/Urn_key_puzzle/Urn_puzzle_Pressure_Plate" to="Tutorial_Area/LastBit/Urn_key_puzzle/Slate_Gate" method="open_gate"]
+[connection signal="on_change" from="Tutorial_Area/LastBit/Urn_key_puzzle/Urn_puzzle_Pressure_Plate" to="Tutorial_Area/LastBit/Urn_key_puzzle/Cage_RoomSuspendedGate" method="open_gate"]
 [connection signal="on_saved" from="Tutorial_Area/LastBit/Save_Tutorial/SavingStone" to="Tutorial_Area/LastBit/Save_Tutorial/Gate" method="open_gate"]
 [connection signal="on_activated" from="Tutorial_Area/FirstBit/Lever_Puzzle/BrokenLeverExample/BrokenLever" to="Tutorial_Area/FirstBit/Lever_Puzzle/BrokenLeverExample/Lever_Fixed" method="enable"]
 [connection signal="on_change" from="Tutorial_Area/FirstBit/Lever_Puzzle/BrokenLeverExample/Lever_Fixed" to="Tutorial_Area/FirstBit/Lever_Puzzle/Lever_Gate" method="open_gate"]

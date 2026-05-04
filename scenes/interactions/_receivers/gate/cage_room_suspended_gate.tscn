@@ -1,0 +1,147 @@
+[gd_scene format=3 uid="uid://dpyn18jj5bdop"]
+
+[ext_resource type="Script" uid="uid://42c4j0jtwejr" path="res://scenes/interactions/_receivers/gate/gate.gd" id="1_p8p0o"]
+[ext_resource type="ArrayMesh" uid="uid://bmyoxyeoe0jfl" path="res://assets/Key_Items/Cage.obj" id="2_lepxo"]
+[ext_resource type="Script" uid="uid://3ihhc0me4bjf" path="res://scripts/saving/persistent_objs/po_gate.gd" id="3_12jnr"]
+[ext_resource type="AudioStream" uid="uid://cyo1b0ry2gwgu" path="res://assets/audio/sfx/player/death/Fight, Bodyfall, Asphalt, Concrete 01 SND120897.wav" id="4_b44e8"]
+[ext_resource type="Script" uid="uid://kg11gyciyied" path="res://scripts/audio_value_player.gd" id="5_l0ida"]
+[ext_resource type="AudioStream" path="res://assets/audio/sfx/environment/Doors/Gate/Gate_randomiser.tres" id="6_4idpv"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_p8p0o"]
+height = 0.09899902
+radius = 0.8535156
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_wx5q6"]
+size = Vector3(2, 0.001, 0.03)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_rophg"]
+size = Vector3(2, 0.001, 0.05)
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_lepxo"]
+height = 0.08609009
+radius = 0.88964844
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_rophg"]
+radius = 0.25
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_12jnr"]
+height = 0.12612915
+radius = 0.8779297
+
+[node name="Cage_RoomSuspendedGate" type="Node3D" unique_id=579965600 node_paths=PackedStringArray("tp_checker_col", "out_pos_back", "out_pos_front") groups=["debug_PickableObjects"]]
+transform = Transform3D(0.705, 0, 0, 0, -3.081653e-08, 0.705, 0, -0.705, -3.081653e-08, 0, 0, 0)
+script = ExtResource("1_p8p0o")
+height_to_toggle_player_barrier = 0.51
+tp_checker_col = NodePath("TPChecker_player/CollisionShape3D")
+out_pos_back = NodePath("out_pos_back")
+out_pos_front = NodePath("out_pos_front")
+metadata/_custom_type_script = "uid://42c4j0jtwejr"
+metadata/uid = "c1d4de6d-0a85-4852-8ece-6ee2b6ee74c3"
+metadata/lock_uid = true
+metadata/date_generated = "2026-04-29T22:33:48"
+
+[node name="gate" type="StaticBody3D" parent="." unique_id=824343726]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="gate" unique_id=1587428144]
+transform = Transform3D(1, 0, 0, 0, -4.3711392e-08, 1, 0, -1, -4.3711392e-08, -0.035199758, -0.1743282, 0.07054256)
+shape = SubResource("CylinderShape3D_p8p0o")
+debug_color = Color(13.972358, 9.491839, 0, 1)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="gate" unique_id=1647378736]
+transform = Transform3D(1.454722, 1.110223e-15, 0.34468603, -0.34468603, -6.5348516e-08, 1.454722, 1.5066705e-08, -1.495, -6.3587905e-08, -0.035192616, -0.16230278, 0.057211637)
+mesh = ExtResource("2_lepxo")
+
+[node name="_label" type="Label3D" parent="gate" unique_id=193399322]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.2, -0.099999994)
+visible = false
+billboard = 1
+text = "GATE"
+font_size = 67
+
+[node name="UnderChecker_items" type="Area3D" parent="gate" unique_id=1733968275]
+physics_interpolation_mode = 1
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.2, 0)
+collision_layer = 0
+collision_mask = 2
+monitorable = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="gate/UnderChecker_items" unique_id=1223249419]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.1994996, 0)
+shape = SubResource("BoxShape3D_wx5q6")
+
+[node name="UnderChecker_player" type="Area3D" parent="gate" unique_id=1349399911]
+physics_interpolation_mode = 1
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.2, 0)
+collision_layer = 0
+collision_mask = 2
+monitorable = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="gate/UnderChecker_player" unique_id=93484885]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.1994996, 0)
+shape = SubResource("BoxShape3D_rophg")
+
+[node name="PlayerCollision" type="StaticBody3D" parent="." unique_id=1488769995]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+collision_layer = 8
+collision_mask = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="PlayerCollision" unique_id=1062527831]
+transform = Transform3D(1, 0, 0, 0, -4.3711392e-08, -1, 0, 1, -4.3711392e-08, -0.034512866, -0.15563634, 0.067794845)
+shape = SubResource("CylinderShape3D_lepxo")
+debug_color = Color(13.972358, 9.491839, 0, 1)
+
+[node name="PO_Gate" type="Node" parent="." unique_id=1702887727 groups=["PO"]]
+script = ExtResource("3_12jnr")
+metadata/_custom_type_script = "uid://3ihhc0me4bjf"
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="." unique_id=2032379024]
+stream = ExtResource("4_b44e8")
+
+[node name="out_pos_back" type="Node3D" parent="." unique_id=574298134]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -1)
+
+[node name="Area3D" type="Area3D" parent="out_pos_back" unique_id=333627194]
+collision_layer = 0
+monitorable = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="out_pos_back/Area3D" unique_id=378841226]
+shape = SubResource("SphereShape3D_rophg")
+
+[node name="out_pos_front" type="Node3D" parent="." unique_id=513026084]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 1)
+
+[node name="Area3D" type="Area3D" parent="out_pos_front" unique_id=2108444803]
+collision_layer = 0
+monitorable = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="out_pos_front/Area3D" unique_id=2045465470]
+shape = SubResource("SphereShape3D_rophg")
+
+[node name="TPChecker_player" type="Area3D" parent="." unique_id=822367371]
+physics_interpolation_mode = 1
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+collision_layer = 0
+collision_mask = 2
+monitorable = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="TPChecker_player" unique_id=100186327]
+transform = Transform3D(1, 0, 0, 0, -4.3711392e-08, -1, 0, 1, -4.3711392e-08, -0.031205105, -0.17437619, 0.05729674)
+shape = SubResource("CylinderShape3D_12jnr")
+
+[node name="AudioValuePlayer" type="AudioStreamPlayer3D" parent="." unique_id=1097214493]
+volume_db = -5.0
+max_distance = 13.0
+max_polyphony = 4
+bus = &"items"
+script = ExtResource("5_l0ida")
+sounds = Array[AudioStream]([ExtResource("6_4idpv"), ExtResource("6_4idpv"), ExtResource("6_4idpv"), ExtResource("6_4idpv"), ExtResource("6_4idpv")])
+metadata/_custom_type_script = "uid://kg11gyciyied"
+
+[connection signal="body_entered" from="gate/UnderChecker_items" to="." method="_on_body_entered_under_checker"]
+[connection signal="body_exited" from="gate/UnderChecker_items" to="." method="_on_body_exited_under_checker"]
+[connection signal="area_entered" from="gate/UnderChecker_player" to="." method="_on_area_entered_under_checker_back"]
+[connection signal="area_exited" from="gate/UnderChecker_player" to="." method="_on_area_exited_under_checker"]
+[connection signal="area_entered" from="out_pos_back/Area3D" to="." method="out_pos_area_entered_back"]
+[connection signal="area_entered" from="out_pos_front/Area3D" to="." method="out_pos_area_entered_front"]
+[connection signal="area_entered" from="TPChecker_player" to="." method="tp_checker_entered"]
