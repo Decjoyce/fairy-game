@@ -9,6 +9,7 @@ extends Interactable
 @export var audio: AudioStreamPlayer3D
 @export var sounds: Array[AudioStream]
 @export var is_charging_sound: bool 
+@export var is_bothhands_on: bool
 @export var is_cancel: bool
 
 @export var charge_length: float = 1.5
@@ -21,9 +22,12 @@ var r_val: float
 var l_charged: bool
 var r_charged: bool
 
+var l_grabbed: bool
+var r_grabbed: bool
+
 func end_interact(sig: float = -1, hand: PlayerHand = null) -> void:
-	r_val = 0
-	l_val = 0
+	#r_val = 0
+	#l_val = 0
 	if !l_charged or !r_charged: update_decal()
 	l_charged = false
 	r_charged = false
@@ -52,12 +56,17 @@ func check_charged() -> bool:
 	
 
 func update_val(hand: int, val: float) -> bool:
-	if hand == 0: l_val = val
-	else: r_val = val
+	if hand == 0: 
+		l_val = val 
+		l_grabbed = true
+	else: 
+		r_val = val 
+		r_grabbed = true
 	if !is_charging_sound:
-		is_charging_sound = true 
-		audio.stream = sounds[0]
-		audio.play()
+		if r_grabbed and l_grabbed:
+			is_charging_sound = true 
+			audio.stream = sounds[0]
+			audio.play()
 	return check_charged()
 
 func update_decal() -> void:
@@ -67,3 +76,12 @@ func update_decal() -> void:
 func get_hand_place(hand: int) -> Decal:
 	if hand == 0: return hand_place_l
 	else: return hand_place_r
+	
+func what_hand_exit(hand: int):
+	if hand == 0:
+		l_grabbed = false
+		l_val = 0
+		
+	else: 
+		r_grabbed = false
+		r_val = 0

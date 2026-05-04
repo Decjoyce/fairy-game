@@ -34,6 +34,7 @@ func enter(previous_state_path: String, data := {}) -> void:
 
 func exit() -> void:
 	save_stone.end_interact()
+	save_stone.what_hand_exit(hand_controller.hand_type)
 	save_stone = null
 	begin_charging = false
 	tween.stop()
