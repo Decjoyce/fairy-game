@@ -5,7 +5,7 @@ extends Area3D
 @onready var itm_mover: ItemMover = $ItemMover
 @onready var timer: Timer = $Timer
 
-var stone_inside: bool
+var stone_inside: bool 
 var waiting_to_start: bool
 
 @onready var g_on: Node3D = $_g_on
@@ -21,6 +21,7 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	g_waiting.visible = my_stone.is_grabbed and !stone_inside
 	g_on.visible = stone_inside
+	my_stone.special_graphics.visible = stone_inside and !my_stone.is_grabbed
 	
 	if waiting_to_start and !my_stone.is_grabbed:
 		waiting_to_start = false

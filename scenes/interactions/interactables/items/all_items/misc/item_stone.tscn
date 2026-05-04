@@ -4,6 +4,7 @@
 [ext_resource type="Script" uid="uid://cqhq7vrwiw3m6" path="res://scenes/interactions/interactables/items/item_types/item_type.gd" id="2_vc21g"]
 [ext_resource type="Texture2D" uid="uid://d0xde7v5f357c" path="res://assets/sprites/item_sprites/stone.png" id="3_3y6sd"]
 [ext_resource type="AudioStream" uid="uid://c06ecuwypinuu" path="res://assets/audio/sfx/items/StoneHit/stonepile_hit_randomizer.tres" id="4_86mok"]
+[ext_resource type="Texture2D" uid="uid://b1t5mdlnbg0jt" path="res://assets/sprites/item_sprites/stone_outline.png" id="4_vc21g"]
 [ext_resource type="Script" uid="uid://bhf6r6nw14krj" path="res://scripts/saving/persistent_objs/po_item.gd" id="6_4pe46"]
 [ext_resource type="AudioStream" uid="uid://bny0b3bdsuco3" path="res://assets/audio/sfx/items/Grab/Rock_randomizer.tres" id="6_okfy6"]
 
@@ -55,6 +56,19 @@ pixel_size = 0.0016
 billboard = 1
 shaded = true
 texture = ExtResource("3_3y6sd")
+
+[node name="_returning_g" type="Sprite3D" parent="." unique_id=1573823853]
+visible = false
+layers = 4
+modulate = Color(0, 1.0324832, 1.0324832, 1)
+pixel_size = 0.0016
+billboard = 1
+render_priority = 1
+texture = ExtResource("4_vc21g")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="_returning_g" unique_id=1945541738]
+light_color = Color(0, 1, 1, 1)
+omni_range = 0.475
 
 [node name="_g_grabbed" type="Sprite3D" parent="." unique_id=1908776990]
 visible = false
