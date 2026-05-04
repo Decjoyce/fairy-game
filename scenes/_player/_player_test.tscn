@@ -249,7 +249,7 @@ tracks/4/keys = {
 
 [sub_resource type="Animation" id="Animation_j3cqb"]
 resource_name = "ending_anim"
-length = 2.0
+length = 3.0
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -257,10 +257,10 @@ tracks/0/path = NodePath(".:rotation")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0.9333334, 1.4333334),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(0, 1.5666667, 1.9000001),
+"transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
-"values": [Vector3(0, 0, 0), Vector3(0, 3.1415927, 0)]
+"values": [Vector3(0, 0, 0), Vector3(0, 0, 0), Vector3(0, 3.1415927, 0)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -269,7 +269,7 @@ tracks/1/path = NodePath("../Banshee:visible")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0.9333334),
+"times": PackedFloat32Array(1.1666666),
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [true]
@@ -281,10 +281,10 @@ tracks/2/path = NodePath("../Banshee:position")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0.9333334, 1.0666667, 1.7),
-"transitions": PackedFloat32Array(1, 1, 1),
+"times": PackedFloat32Array(1.5333334, 1.7333333, 2.266667),
+"transitions": PackedFloat32Array(1, 2, 1),
 "update": 0,
-"values": [Vector3(0, -0.3, 7), Vector3(0, -0.3, 7), Vector3(0, -0.3, 0.5)]
+"values": [Vector3(0, -0.3, 13), Vector3(0, -0.3, 12), Vector3(0, -0.42, 0.385)]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
@@ -293,10 +293,10 @@ tracks/3/path = NodePath("../Banshee:rotation")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0.9333334, 1.1833334, 1.2333333, 1.7),
+"times": PackedFloat32Array(1.5666667, 1.8166667, 1.8666667, 2.266667),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
-"values": [Vector3(0.26179942, 3.1415925, -2.342486e-08), Vector3(0.26179942, 3.1415925, -2.342486e-08), Vector3(0.26179942, 3.1415925, -2.342486e-08), Vector3(0, 3.1415927, 0)]
+"values": [Vector3(0.26179942, 3.1415925, -2.342486e-08), Vector3(0.26179942, 3.1415925, -2.342486e-08), Vector3(0.26179942, 3.1415925, -2.342486e-08), Vector3(0.06981317, 3.1415927, 0)]
 }
 tracks/4/type = "value"
 tracks/4/imported = false
@@ -305,7 +305,7 @@ tracks/4/path = NodePath("ColorRect:visible")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
-"times": PackedFloat32Array(1.8333334),
+"times": PackedFloat32Array(2.4),
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [true]
@@ -317,7 +317,7 @@ tracks/5/path = NodePath("..")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
-"times": PackedFloat32Array(2),
+"times": PackedFloat32Array(2.5666666),
 "transitions": PackedFloat32Array(1),
 "values": [{
 "args": [],
@@ -646,7 +646,7 @@ light_energy = 0.3
 omni_range = 2.149
 
 [node name="Banshee" type="Sprite3D" parent="." unique_id=819752946]
-transform = Transform3D(-1, 1.5655731e-08, 1.4585073e-07, -2.2626677e-08, 0.9659257, -0.25881904, -1.44933e-07, -0.25881904, -0.9659257, 0, -0.3, 7)
+transform = Transform3D(-1, 1.565573e-08, 1.4585072e-07, -2.2626677e-08, 0.9659256, -0.258819, -1.44933e-07, -0.258819, -0.9659256, 0, -0.3, 7)
 visible = false
 material_override = SubResource("StandardMaterial3D_l4n3m")
 pixel_size = 0.0016685

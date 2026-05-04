@@ -10,6 +10,8 @@ extends daLevel
 @export var bridge_scene: Node3D
 @export var connector: Node3D
 @export var connector2: Node3D
+@export var saving_stone: SavingStone
+@export var saving_stone_b: SavingStone
 
 func setup_level_seq(seq: int) -> void:
 	#super(seq)
@@ -70,6 +72,7 @@ func setup_level_seq(seq: int) -> void:
 			delete_trap()
 			delete_bridge()
 			delete_bb()
+			disabled_saving_stones()
 			delete_connector()
 			stat_scene.visible = true
 			stat_scene.statue_finished()
@@ -105,3 +108,7 @@ func delete_connector(sig: float = -1) -> void:
 func delete_scene(scn: Node3D) -> void:
 	if scn:
 		scn.queue_free()
+
+func disabled_saving_stones() -> void:
+	saving_stone.disable()
+	saving_stone_b.disable()

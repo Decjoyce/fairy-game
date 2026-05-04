@@ -85,3 +85,6 @@ func what_hand_exit(hand: int):
 	else: 
 		r_grabbed = false
 		r_val = 0
+
+func disable(sig: float = -1) -> void:
+	$_trigger/_col.set_deferred("disabled", true)

@@ -272,7 +272,7 @@ size = Vector3(1, 4.4, 2)
 [sub_resource type="BoxShape3D" id="BoxShape3D_bl27h"]
 size = Vector3(1, 2.5, 9)
 
-[node name="Final_Level" type="Node3D" unique_id=40124892 node_paths=PackedStringArray("tut_scene", "stat_scene", "trap_scene", "bb_scene", "bb_easy_scene", "bb_mid_scene", "bb_hard_scene", "bridge_scene", "connector", "connector2") groups=["ABYSSRETURNER", "MrLevel"]]
+[node name="Final_Level" type="Node3D" unique_id=40124892 node_paths=PackedStringArray("tut_scene", "stat_scene", "trap_scene", "bb_scene", "bb_easy_scene", "bb_mid_scene", "bb_hard_scene", "bridge_scene", "connector", "connector2", "saving_stone", "saving_stone_b") groups=["ABYSSRETURNER", "MrLevel"]]
 script = ExtResource("1_l4grf")
 tut_scene = NodePath("Different_Sections/Tutorial")
 stat_scene = NodePath("Different_Sections/Statue_Section")
@@ -284,6 +284,8 @@ bb_hard_scene = NodePath("Different_Sections/BallyBog_Section/BallyBog_HardSecti
 bridge_scene = NodePath("Different_Sections/Bridge_Puzzle")
 connector = NodePath("Connections_GridMap")
 connector2 = NodePath("GridMap2")
+saving_stone = NodePath("Save_points/SavingStone")
+saving_stone_b = NodePath("Save_points/SavingStone7")
 
 [node name="player_test" parent="." unique_id=725727541 instance=ExtResource("1_idqh5")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7, 0.89999986, 0.6)
@@ -2427,6 +2429,8 @@ col = NodePath("../Area3D/CollisionShape3D")
 [connection signal="echo_piece_insert_base" from="OptimizationStuff/Statue_Signal_Echoer" to="OptimizationStuff/vis_enabler_bb" method="enable_obj"]
 [connection signal="echo_piece_insert_base" from="OptimizationStuff/Statue_Signal_Echoer" to="OptimizationStuff/lseq_6" method="set_seq_via_sig"]
 [connection signal="echo_piece_insert_head" from="OptimizationStuff/Statue_Signal_Echoer" to="." method="delete_connector"]
+[connection signal="echo_piece_insert_head" from="OptimizationStuff/Statue_Signal_Echoer" to="Save_points/SavingStone" method="disable"]
+[connection signal="echo_piece_insert_head" from="OptimizationStuff/Statue_Signal_Echoer" to="Save_points/SavingStone7" method="disable"]
 [connection signal="echo_piece_insert_head" from="OptimizationStuff/Statue_Signal_Echoer" to="OptimizationStuff/lseq_11" method="set_seq_via_sig"]
 [connection signal="on_activated" from="OptimizationStuff/PAT_Enable_BridgeSec" to="Different_Sections/Bridge_Puzzle/BridgeStopper_Gate" method="close_gate"]
 [connection signal="on_activated" from="OptimizationStuff/PAT_Enable_BridgeSec" to="OptimizationStuff/PAT_Enable_BridgeSec/vis_enabler_bridge" method="enable_obj"]
