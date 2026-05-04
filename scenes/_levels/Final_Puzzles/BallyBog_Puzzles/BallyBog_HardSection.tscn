@@ -24,6 +24,7 @@
 [ext_resource type="PackedScene" uid="uid://cfhacobhksnxe" path="res://scenes/_levels/_palettes/cairn/props/cairn_dirtwall.tscn" id="20_86n7n"]
 [ext_resource type="PackedScene" uid="uid://dcb8oam7e21ji" path="res://scenes/interactions/_triggers/torch_sconce/torch_sconce_ceiling_unlit.tscn" id="20_fx3kc"]
 [ext_resource type="PackedScene" uid="uid://crnrdh5wu8ooa" path="res://scenes/interactions/_receivers/traps/projectile/trap_projectile.tscn" id="24_5jhwi"]
+[ext_resource type="AudioStream" uid="uid://cq7dtkcnrtjyk" path="res://assets/audio/sfx/environment/ambient/Ambience, Underground, Cave, Magic, Deep, Wind, Howling 01 SND46571.wav" id="27_edn4m"]
 [ext_resource type="PackedScene" uid="uid://kqw8pq8itb2k" path="res://scenes/interactions/_receivers/wip_spike_trap/timed_spike_trap.tscn" id="27_fx3kc"]
 [ext_resource type="Script" uid="uid://bul4myvyhnpjc" path="res://scripts/saving/uid_generator.gd" id="27_i5oae"]
 
@@ -1596,6 +1597,12 @@ metadata/_editor_floor_ = Vector3(0, 2, 0)
 script = ExtResource("27_i5oae")
 metadata/_custom_type_script = "uid://bul4myvyhnpjc"
 
+[node name="Ambiente" type="AudioStreamPlayer3D" parent="." unique_id=1897237086]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.9862537, -7.5682487, -10.966633)
+stream = ExtResource("27_edn4m")
+max_distance = 18.9
+bus = &"Ambient"
+
 [connection signal="on_activated" from="First_Part/BrokenLever/BrokenLever" to="First_Part/BrokenLever/Lever_Fixed" method="enable"]
 [connection signal="on_change" from="First_Part/BrokenLever/Lever_Fixed" to="Second_Part/Key_Gate" method="open_gate"]
 [connection signal="on_change" from="First_Part/BrokenLever/Lever_Fixed" to="Environment/CeilingTorches/TorchSconce_KeyGate" method="light_up_torch_with_sig"]
@@ -1612,8 +1619,8 @@ metadata/_custom_type_script = "uid://bul4myvyhnpjc"
 [connection signal="on_activated" from="Second_Part/Open_LeverPieceGate_Button" to="Environment/CeilingTorches/TorchSconce_LeverPiece" method="light_up_torch_with_sig"]
 [connection signal="on_activated" from="Second_Part/Open_Chain_Gate_Button" to="Second_Part/Unlock_LeverExit_Gate" method="open_gate"]
 [connection signal="on_activated" from="Second_Part/Open_Chain_Gate_Button" to="Environment/CeilingTorches/TorchSconce_Exit_Lever_1" method="light_up_torch_with_sig"]
-[connection signal="on_activated" from="Second_Part/Open_Chain_Gate_Button" to="Traps/SpikeTrap2" method="activate"]
 [connection signal="on_activated" from="Second_Part/Open_Chain_Gate_Button" to="Environment/CeilingTorches/TorchSconce_Exit_Lever_2" method="light_up_torch_with_sig"]
+[connection signal="on_activated" from="Second_Part/Open_Chain_Gate_Button" to="Traps/SpikeTrap2" method="activate"]
 [connection signal="on_activated" from="Third_Part/Door/ItemReceiver" to="Third_Part/Door/Door" method="open_door"]
 [connection signal="on_change" from="Third_Part/Exit_Gate_Lever" to="Third_Part/Exit_Gate" method="open_gate"]
 [connection signal="on_change" from="Third_Part/Exit_Gate_Lever" to="Environment/CeilingTorches/TorchSconce_ExitGate1" method="light_up_torch_with_sig"]

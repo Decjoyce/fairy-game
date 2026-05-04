@@ -37,6 +37,8 @@
 [ext_resource type="Script" uid="uid://desaef8fc6y0v" path="res://scenes/interactions/_receivers/_logic/Caller/logic_caller.gd" id="31_1c2il"]
 [ext_resource type="Script" uid="uid://bbnwwbodc3xt3" path="res://scripts/level_sequencer.gd" id="32_2pmk1"]
 [ext_resource type="Script" uid="uid://bul4myvyhnpjc" path="res://scripts/saving/uid_generator.gd" id="32_lu18g"]
+[ext_resource type="AudioStream" uid="uid://dv8231i6w3v4l" path="res://assets/audio/sfx/environment/ambient/abience with things falling.wav" id="38_dvre6"]
+[ext_resource type="AudioStream" uid="uid://ct5a2q0anr0lw" path="res://assets/audio/sfx/environment/ambient/Ambience with water bubles.wav" id="39_ibmbp"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_7bdt6"]
 
@@ -2911,6 +2913,20 @@ shape = SubResource("BoxShape3D_6vcod")
 [node name="CollisionShape3D2" type="CollisionShape3D" parent="Items/Itms_Finale/Stonepile_ReusableStones2" unique_id=347018244]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.6104202, 0.806308, -0.015441418)
 shape = SubResource("BoxShape3D_2pmk1")
+
+[node name="Ambiente" type="AudioStreamPlayer3D" parent="." unique_id=418863462]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 39.126133, 0.066129684, -8.933554)
+stream = ExtResource("38_dvre6")
+autoplay = true
+max_distance = 19.8
+bus = &"Ambient"
+
+[node name="Ambiente2" type="AudioStreamPlayer3D" parent="." unique_id=416215573]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.831272, 8.60462, -9.533062)
+stream = ExtResource("39_ibmbp")
+autoplay = true
+max_distance = 19.95
+bus = &"Ambient"
 
 [connection signal="on_activated" from="PAT_potholesstop2" to="Finale(Hardest)/Observer_End/No_Acess_Gate" method="close_gate"]
 [connection signal="area_entered" from="PAT_potholesstop2/Area3D" to="PAT_potholesstop2" method="_player_entered"]

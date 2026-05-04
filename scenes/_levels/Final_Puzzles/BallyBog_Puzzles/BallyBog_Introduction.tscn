@@ -15,6 +15,7 @@
 [ext_resource type="Script" uid="uid://bicoc8ibhscjw" path="res://scenes/interactions/_receivers/enabler_disabler_v1/group_visibility_enabler.gd" id="20_ru5qk"]
 [ext_resource type="PackedScene" uid="uid://ylg6mxx468cq" path="res://scenes/_levels/_palettes/cairn/props/Rocks/cairn_rock_1.tscn" id="21_jbn6s"]
 [ext_resource type="PackedScene" uid="uid://cnkngeiaucgql" path="res://scenes/_levels/_palettes/cairn/props/Rocks/cairn_rock_2.tscn" id="22_656c1"]
+[ext_resource type="AudioStream" uid="uid://cte56l5nhnq88" path="res://assets/audio/sfx/environment/ambient/Ambience, Underground, Cave, Magic, Cold, Deep, Wind, Eerie SND46573.wav" id="23_ft3kk"]
 [ext_resource type="PackedScene" uid="uid://dhanht7b5rwkq" path="res://scenes/_levels/_palettes/cairn/props/Rocks/cairn_rock_4.tscn" id="23_r0k5g"]
 [ext_resource type="PackedScene" uid="uid://v3a4kqxol6jl" path="res://scenes/_levels/_palettes/cairn/props/Rocks/cairn_rock_8.tscn" id="24_nn74u"]
 [ext_resource type="PackedScene" uid="uid://cfuq8lf22so06" path="res://scenes/_levels/_palettes/cairn/props/Rocks/cairn_rock_pile.tscn" id="25_o06uf"]
@@ -273,6 +274,13 @@ transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -0.0
 [node name="BB_Line4" parent="." unique_id=1357258337 instance=ExtResource("28_r0k5g")]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -2.0145192, -5.9604645e-08, -8.981891)
 size = Vector3(1.9, 0.005, 0.1942627)
+
+[node name="Ambiente" type="AudioStreamPlayer3D" parent="." unique_id=1879909389]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.2323284, -8.977147, -6.477399)
+stream = ExtResource("23_ft3kk")
+autoplay = true
+max_distance = 18.9
+bus = &"Ambient"
 
 [connection signal="area_entered" from="Sneaked_past/EnemyEnableTrig/Area3D" to="Sneaked_past/EnemyEnableTrig" method="_player_entered"]
 [connection signal="area_exited" from="Sneaked_past/EnemyEnableTrig/Area3D" to="Sneaked_past/EnemyEnableTrig" method="_player_exited"]

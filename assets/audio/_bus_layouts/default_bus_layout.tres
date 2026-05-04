@@ -29,6 +29,11 @@ spread = 0.68
 dry = 0.38
 wet = 0.72
 
+[sub_resource type="AudioEffectReverb" id="AudioEffectReverb_xk22m"]
+resource_name = "Reverb"
+room_size = 0.4
+damping = 0.15
+
 [resource]
 bus/0/effect/0/effect = SubResource("AudioEffectReverb_j3pel")
 bus/0/effect/0/enabled = false
@@ -68,3 +73,11 @@ bus/5/volume_db = -0.09049988
 bus/5/send = &"SFX"
 bus/5/effect/0/effect = SubResource("AudioEffectReverb_jgit8")
 bus/5/effect/0/enabled = true
+bus/6/name = &"Ambient"
+bus/6/solo = false
+bus/6/mute = false
+bus/6/bypass_fx = false
+bus/6/volume_db = 0.0
+bus/6/send = &"Music"
+bus/6/effect/0/effect = SubResource("AudioEffectReverb_xk22m")
+bus/6/effect/0/enabled = true
