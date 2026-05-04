@@ -147,6 +147,13 @@ size = Vector3(0.8, 1, 0.8)
 [sub_resource type="BoxShape3D" id="BoxShape3D_rym0g"]
 size = Vector3(4.3468018, 1, 1.8029175)
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_dvre6"]
+size = Vector3(1, 1, 1.1479492)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ygonl"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_4wcqb"]
+
 [sub_resource type="BoxShape3D" id="BoxShape3D_6vcod"]
 size = Vector3(0.7, 1.4, 0.90000004)
 
@@ -2870,11 +2877,24 @@ shape = SubResource("BoxShape3D_rym0g")
 
 [node name="Itms_Second" type="Node3D" parent="Items" unique_id=1714455100]
 
-[node name="skull" parent="Items/Itms_Second" unique_id=1240736835 instance=ExtResource("5_dp00y")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19.322329, 0.30186212, -17)
-metadata/uid = "be51a371-579d-44c0-ac16-0256415848e0"
-metadata/lock_uid = true
-metadata/date_generated = "2026-04-29T14:39:40"
+[node name="Stonepile_ReusableStones" parent="Items/Itms_Second" unique_id=1912167438 node_paths=PackedStringArray("my_stone") instance=ExtResource("30_dhg0u")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 19.322329, 0.0018565059, -17.012947)
+my_stone = NodePath("stone")
+
+[node name="stone" parent="Items/Itms_Second/Stonepile_ReusableStones" unique_id=727189478 instance=ExtResource("24_fsl0s")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.19417027, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Items/Itms_Second/Stonepile_ReusableStones" unique_id=287553114]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.9593058, 0.5385002, -3.709299)
+shape = SubResource("BoxShape3D_dvre6")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="Items/Itms_Second/Stonepile_ReusableStones" unique_id=996258594]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.0820131, 0.59915257, -9.677464)
+shape = SubResource("BoxShape3D_ygonl")
+
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="Items/Itms_Second/Stonepile_ReusableStones" unique_id=1542303034]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.9573536, 0.6090491, -1.7074356)
+shape = SubResource("BoxShape3D_4wcqb")
 
 [node name="key" parent="Items/Itms_Second" unique_id=451440735 instance=ExtResource("20_y4ekb")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 31.494026, 0.20000005, -17)
