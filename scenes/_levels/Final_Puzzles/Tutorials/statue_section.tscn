@@ -2309,6 +2309,20 @@ visible = false
 shaded = true
 texture = ExtResource("29_73n1l")
 
+[node name="RockGate5" parent="." unique_id=2077487765 instance=ExtResource("28_deeav")]
+transform = Transform3D(-1.172251e-07, 0, 1, 0, 1, 0, -1, 0, -1.172251e-07, -13.973959, -0.09362459, 0.008803368)
+speed = 3.0
+start_open = true
+metadata/uid = "15667b4a-446f-429b-936b-98bbd131e127"
+metadata/lock_uid = true
+metadata/date_generated = "2026-05-03T14:10:27"
+
+[node name="Sprite3D" type="Sprite3D" parent="RockGate5" unique_id=1948276015]
+transform = Transform3D(-8.940697e-08, -1, -3.7515733e-08, 1, -8.940697e-08, 2.8786832e-08, -2.8786836e-08, -3.751573e-08, 1, 0.081915215, 1.8426424, 0.3000002)
+visible = false
+shaded = true
+texture = ExtResource("29_73n1l")
+
 [node name="RockGate3" parent="." unique_id=1858990844 instance=ExtResource("28_deeav")]
 transform = Transform3D(2.9802322e-08, 0, -1, 0, 1, 0, 1, 0, 2.9802322e-08, 10.426041, -0.09362459, 6.8088036)
 speed = 3.0
@@ -2435,6 +2449,21 @@ disabled = true
 [node name="CollisionEnabler_Disabler" parent="bridge_trig_shortcut" unique_id=725839598 node_paths=PackedStringArray("col") instance=ExtResource("33_7p2n5")]
 col = NodePath("../Area3D/CollisionShape3D")
 
+[node name="entrance_trig" parent="." unique_id=118442585 instance=ExtResource("32_1kgh0")]
+transform = Transform3D(-1, 0, 8.940697e-08, 0, 1, 0, -8.940697e-08, 0, -1, -9.2, 1, 0.39999962)
+trig_once = true
+
+[node name="Area3D" type="Area3D" parent="entrance_trig" unique_id=1454452525]
+collision_layer = 0
+monitorable = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="entrance_trig/Area3D" unique_id=1355798547]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.049999952, 0.59999955)
+shape = SubResource("BoxShape3D_ded13")
+
+[node name="CollisionEnabler_Disabler" parent="entrance_trig" unique_id=1256932752 node_paths=PackedStringArray("col") instance=ExtResource("33_7p2n5")]
+col = NodePath("../Area3D/CollisionShape3D")
+
 [node name="bb_trig_entrance" parent="." unique_id=1804509753 instance=ExtResource("32_1kgh0")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.1, 1, 7)
 trig_once = true
@@ -2475,7 +2504,7 @@ speed = 1.0
 metadata/uid = "ff47afe9-cc46-46d6-97f1-ec229c045bae"
 metadata/date_generated = "2026-04-21T17:03:08"
 
-[node name="Gate" parent="Node3D" unique_id=2077487765 instance=ExtResource("16_vodny")]
+[node name="Gate" parent="Node3D" unique_id=256177076 instance=ExtResource("16_vodny")]
 transform = Transform3D(2.395, 0, 0, 0, 2.395, 0, 0, 0, 2.395, 1.767879, -12.859597, -1.0068314)
 metadata/uid = "12b1cf36-9939-421e-bff4-b7bdc56d20b6"
 metadata/lock_uid = true
@@ -2842,6 +2871,9 @@ spot_angle = 29.052675
 [connection signal="on_activated" from="bridge_trig_shortcut" to="ItemCatcher_Bridge/CollisionEnabler_Disabler" method="enable_obj"]
 [connection signal="area_entered" from="bridge_trig_shortcut/Area3D" to="bridge_trig_shortcut" method="_player_entered"]
 [connection signal="area_exited" from="bridge_trig_shortcut/Area3D" to="bridge_trig_shortcut" method="_player_exited"]
+[connection signal="on_activated" from="entrance_trig" to="RockGate5" method="close_gate"]
+[connection signal="area_entered" from="entrance_trig/Area3D" to="entrance_trig" method="_player_entered"]
+[connection signal="area_exited" from="entrance_trig/Area3D" to="entrance_trig" method="_player_exited"]
 [connection signal="on_activated" from="bb_trig_entrance" to="RockGate3" method="close_gate"]
 [connection signal="area_entered" from="bb_trig_entrance/Area3D" to="bb_trig_entrance" method="_player_entered"]
 [connection signal="area_exited" from="bb_trig_entrance/Area3D" to="bb_trig_entrance" method="_player_exited"]
