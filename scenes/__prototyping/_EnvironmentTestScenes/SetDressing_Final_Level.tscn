@@ -272,8 +272,6 @@ size = Vector3(1, 4.4, 2)
 [sub_resource type="BoxShape3D" id="BoxShape3D_bl27h"]
 size = Vector3(1, 2.5, 9)
 
-[sub_resource type="SphereMesh" id="SphereMesh_ynqbq"]
-
 [node name="Final_Level" type="Node3D" unique_id=40124892 node_paths=PackedStringArray("tut_scene", "stat_scene", "trap_scene", "bb_scene", "bb_easy_scene", "bb_mid_scene", "bb_hard_scene", "bridge_scene", "connector", "connector2") groups=["ABYSSRETURNER", "MrLevel"]]
 script = ExtResource("1_l4grf")
 tut_scene = NodePath("Different_Sections/Tutorial")
@@ -2533,10 +2531,6 @@ disabled = true
 
 [node name="CollisionEnabler_Disabler" parent="RockGates2/Triggers/bridge_trig_shortcut" unique_id=1292044082 node_paths=PackedStringArray("col") instance=ExtResource("24_03ler")]
 col = NodePath("../Area3D/CollisionShape3D")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1469494648]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 83, 0, -20)
-mesh = SubResource("SphereMesh_ynqbq")
 
 [connection signal="on_enter_lockdown" from="Different_Sections/BallyBog_Section/Ballybog_Scene/Observer_End" to="Different_Sections/BallyBog_Section/Ballybog_Scene/Observer_End/No_Acess_Gate" method="close_gate"]
 [connection signal="on_enter_lockdown" from="Different_Sections/BallyBog_Section/Ballybog_Scene/Observer_End" to="Different_Sections/BallyBog_Section/Ballybog_Scene/Observer_End/No_Acess_Gate/StaticBody3D/CollisionEnabler_Disabler" method="enable_obj"]
