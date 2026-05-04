@@ -25,9 +25,11 @@
 [ext_resource type="PackedScene" uid="uid://ije1mmh1wcad" path="res://scenes/interactions/interactables/items/all_items/torch/torch_mounted.tscn" id="21_882fo"]
 [ext_resource type="Script" uid="uid://bul4myvyhnpjc" path="res://scripts/saving/uid_generator.gd" id="21_j7l2i"]
 [ext_resource type="PackedScene" uid="uid://cpyooys4p0yng" path="res://scenes/_levels/_palettes/cairn/props/cairn_stone_slab.tscn" id="21_sk5sf"]
-[ext_resource type="Script" uid="uid://di860i1v035oh" path="res://scenes/_levels/Final_Puzzles/Mechanical_Puzzles/special_timer.gd" id="21_tauea"]
+[ext_resource type="Script" path="res://scenes/_levels/Final_Puzzles/Mechanical_Puzzles/special_timer.gd" id="21_tauea"]
 [ext_resource type="Material" uid="uid://ckjbpunwhc0rn" path="res://assets/models/cairn/Props/SpikeTrap/SpikeTrap.tres" id="26_iisit"]
 [ext_resource type="ArrayMesh" uid="uid://sakmnnwkwcdm" path="res://assets/models/cairn/Props/SpikeTrap/SpikeTrap.obj" id="27_sk5sf"]
+[ext_resource type="AudioStream" uid="uid://cej86o2w2i6wk" path="res://assets/audio/sfx/environment/ambient/Bridge ambiente.wav" id="29_1cyc0"]
+[ext_resource type="AudioStream" uid="uid://cegks3hgoxmlu" path="res://assets/audio/sfx/environment/ambient/Bridge v2.wav" id="30_t8f8x"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_sl5wy"]
 next_pass = ExtResource("8_pbkst")
@@ -1902,6 +1904,20 @@ script = ExtResource("21_tauea")
 transform = Transform3D(0.18, 1.5736099e-08, 6.878467e-16, 0, -7.86805e-09, 0.18, 1.5736099e-08, -0.18, -7.86805e-09, 0, 0, 0.06711006)
 material_override = ExtResource("26_iisit")
 mesh = ExtResource("27_sk5sf")
+
+[node name="statue music2" type="AudioStreamPlayer3D" parent="." unique_id=901440854]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.832817, 5.451128, 0.75692606)
+stream = ExtResource("29_1cyc0")
+autoplay = true
+max_distance = 16.09
+bus = &"Ambient"
+
+[node name="statue music3" type="AudioStreamPlayer3D" parent="." unique_id=303687530]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20.425447, 6.2580833, -0.13928962)
+stream = ExtResource("30_t8f8x")
+autoplay = true
+max_distance = 15.24
+bus = &"Ambient"
 
 [connection signal="on_activated" from="Fourth_Bridge_Section/Wall_Button" to="Fourth_Bridge_Section/Bridge" method="fully_open_bridge"]
 [connection signal="on_change" from="Fourth_Bridge_Section/Chain" to="Fourth_Bridge_Section/Gate" method="open_gate"]

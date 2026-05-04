@@ -45,6 +45,8 @@
 [ext_resource type="PackedScene" uid="uid://dhb1ju03ckwh4" path="res://scenes/interactions/_receivers/enabler_disabler_v1/collision_enabler_disabler.tscn" id="33_7p2n5"]
 [ext_resource type="PackedScene" uid="uid://d3x1l1brjvyre" path="res://scenes/item_catcher/item_catcher.tscn" id="44_g2esy"]
 [ext_resource type="PackedScene" uid="uid://cvs14wc2mqnjv" path="res://scenes/interactions/_receivers/enabler_disabler_v1/mass_collision_enabler_disabler.tscn" id="45_pbw8r"]
+[ext_resource type="AudioStream" uid="uid://qo0tpbnknlk8" path="res://assets/audio/music/music_ambience.wav" id="46_vgaku"]
+[ext_resource type="AudioStream" uid="uid://ce6qgojabgk7x" path="res://assets/audio/sfx/environment/ambient/OPen Ambiente.wav" id="47_a8qp2"]
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_4g60i"]
 _surfaces = [{
@@ -2353,9 +2355,24 @@ metadata/uid = "12b1cf36-9939-421e-bff4-b7bdc56d20b6"
 metadata/lock_uid = true
 metadata/date_generated = "2026-04-21T17:03:08"
 
+[node name="statue music" type="AudioStreamPlayer3D" parent="." unique_id=490865765]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.8138428, 0.8267622, -0.39297628)
+stream = ExtResource("46_vgaku")
+volume_db = -6.173
+autoplay = true
+max_distance = 6.29
+bus = &"Ambient"
+
+[node name="statue music2" type="AudioStreamPlayer3D" parent="." unique_id=915052643]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.8138428, 9.956077, -0.39297628)
+stream = ExtResource("47_a8qp2")
+autoplay = true
+max_distance = 18.34
+bus = &"Ambient"
+
 [connection signal="on_piece_inserted_arm" from="Statue" to="Node3D/Area_One_Bridge" method="fully_open_bridge"]
-[connection signal="on_piece_inserted_base" from="Statue" to="Node3D/Going_To_BallybogLand" method="fully_open_bridge"]
 [connection signal="on_piece_inserted_base" from="Statue" to="RockGate3" method="fully_open_gate"]
+[connection signal="on_piece_inserted_base" from="Statue" to="Node3D/Going_To_BallybogLand" method="fully_open_bridge"]
 [connection signal="on_quest_completed" from="Statue" to="." method="statue_finished"]
 [connection signal="on_quest_completed" from="Statue" to="Exit_Door/Door/OBJMOvER" method="move_the_thing"]
 [connection signal="on_change" from="To_From_Traps/ShortCut_Lever" to="RockGate2" method="open_gate"]
