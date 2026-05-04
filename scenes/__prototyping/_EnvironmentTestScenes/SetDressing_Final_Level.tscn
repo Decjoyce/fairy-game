@@ -28,7 +28,6 @@
 [ext_resource type="Script" uid="uid://ubfk2a80dhfp" path="res://addons/grid_map_pathfinding/grid_map_pathfinding.gd" id="18_0tnxh"]
 [ext_resource type="PackedScene" uid="uid://ciak43nkaxomm" path="res://scenes/interactions/_special/item_statue_head.tscn" id="18_57y3h"]
 [ext_resource type="PackedScene" uid="uid://b5g00fexnuwte" path="res://scenes/interactions/_special/the_observer/the_observer.tscn" id="19_0tnxh"]
-[ext_resource type="Material" uid="uid://ciiy1aqgkcp5k" path="res://assets/models/cairn/Hall_BigRoof/Dirtfloor.tres" id="19_l4grf"]
 [ext_resource type="Material" uid="uid://ioo51vym3k1d" path="res://scenes/interactions/_triggers/teleporter/m_teleport.tres" id="20_l4grf"]
 [ext_resource type="Shader" uid="uid://bf21vemgpxq1b" path="res://assets/shaders/oldfog.gdshader" id="20_ucuax"]
 [ext_resource type="PackedScene" uid="uid://dpmxu8xwfcf5e" path="res://scenes/enemy/bb_line.tscn" id="21_a8cig"]
@@ -157,9 +156,6 @@ size = Vector3(0.8, 2, 2)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ibmbp"]
 size = Vector3(0.1, 1.9, 1.6)
-
-[sub_resource type="PlaneMesh" id="PlaneMesh_jok38"]
-material = ExtResource("19_l4grf")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_62r4a"]
 size = Vector3(63, 2.3, 42.8)
@@ -776,7 +772,6 @@ draw_pass_1 = SubResource("PlaneMesh_y7mrb")
 
 [node name="Statue_Section" parent="Different_Sections" unique_id=1516115227 node_paths=PackedStringArray("instantiate_point") instance=ExtResource("3_b3lts")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 65, -2, -19)
-visible = false
 instantiate_point = NodePath("../BabyInstantiatePoint")
 baby_scene = ExtResource("32_a8cig")
 
@@ -1606,127 +1601,6 @@ draw_pass_1 = SubResource("PlaneMesh_y7mrb")
 
 [node name="Bridge_Puzzle" parent="Different_Sections" unique_id=935876353 instance=ExtResource("8_ucuax")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 52, -3, 14)
-visible = false
-
-[node name="FakeWall" type="MeshInstance3D" parent="Different_Sections/Bridge_Puzzle" unique_id=850347915]
-transform = Transform3D(3.6822482e-07, -1.0000001, -1.3288262e-06, -8.424001, -4.3711395e-08, 0, -3.219123e-14, 8.742278e-08, -15.199998, 31.207127, 1.3199999, -2.4756775)
-layers = 65537
-mesh = SubResource("PlaneMesh_jok38")
-skeleton = NodePath("../../..")
-
-[node name="FakeWall5" type="MeshInstance3D" parent="Different_Sections/Bridge_Puzzle" unique_id=1730295278]
-transform = Transform3D(29.484001, 8.74228e-08, 8.36422e-14, 2.5775735e-06, -1.0000002, -1.9135102e-06, -1.1266931e-13, 8.7422784e-08, -21.887997, 15.057125, 9.21, 1.3943214)
-layers = 65537
-mesh = SubResource("PlaneMesh_jok38")
-skeleton = NodePath("../../..")
-
-[node name="FakeWall2" type="MeshInstance3D" parent="Different_Sections/Bridge_Puzzle" unique_id=1348304467]
-transform = Transform3D(1.6095611e-14, -4.3711392e-08, 15.199998, -8.424001, -4.37114e-08, -1.1158388e-20, 3.682248e-07, -1, -6.644133e-07, 11.09713, 1.5800002, 17.984324)
-layers = 65537
-mesh = SubResource("PlaneMesh_jok38")
-skeleton = NodePath("../../..")
-
-[node name="FakeWall13" type="MeshInstance3D" parent="Different_Sections/Bridge_Puzzle" unique_id=584264571]
-transform = Transform3D(5.021831e-14, -4.371139e-08, 25.839994, -1.7735147e-13, 0.99999994, 1.1295027e-06, -26.28288, -1.065814e-14, 2.3297632e-13, 11.09713, -6.2599993, 2.8243217)
-layers = 65537
-mesh = SubResource("PlaneMesh_jok38")
-skeleton = NodePath("../../..")
-
-[node name="FakeWall6" type="MeshInstance3D" parent="Different_Sections/Bridge_Puzzle" unique_id=1697317328]
-transform = Transform3D(-3.6822476e-07, 0.9999999, 3.6834536e-13, -8.424001, -4.3711402e-08, -1.4600366e-20, -2.992807e-14, 0, 16.415998, -12.88287, 1.5800002, 3.9743214)
-layers = 65537
-mesh = SubResource("PlaneMesh_jok38")
-skeleton = NodePath("../../..")
-
-[node name="FakeWall10" type="MeshInstance3D" parent="Different_Sections/Bridge_Puzzle" unique_id=1623815176]
-transform = Transform3D(-1.546544e-07, 0.9999999, 9.208634e-14, -3.5380802, -4.3711402e-08, -3.6500916e-21, -1.2569789e-14, 0, 4.1039996, -12.88287, 6.71, -13.805677)
-layers = 65537
-mesh = SubResource("PlaneMesh_jok38")
-skeleton = NodePath("../../..")
-
-[node name="FakeWall12" type="MeshInstance3D" parent="Different_Sections/Bridge_Puzzle" unique_id=1580791485]
-transform = Transform3D(4.2632564e-14, 0.42261824, -11.314677, -8.845199, -3.9615976e-08, -2.3062658e-07, -3.8663597e-07, 0.90630764, 5.2761207, -7.0046654, 0.8900003, -15.4064)
-layers = 65537
-mesh = SubResource("PlaneMesh_jok38")
-skeleton = NodePath("../../..")
-
-[node name="FakeWall18" type="MeshInstance3D" parent="Different_Sections/Bridge_Puzzle" unique_id=1166174602]
-transform = Transform3D(-1.6187835, 0.18301275, -9.276131, -6.254499, -0.7071067, -8.1572745e-07, -6.041384, 0.68301266, 2.4855328, 2.214241, 14.417866, -13.819689)
-layers = 65537
-mesh = SubResource("PlaneMesh_jok38")
-skeleton = NodePath("../../..")
-
-[node name="FakeWall14" type="MeshInstance3D" parent="Different_Sections/Bridge_Puzzle" unique_id=2025100305]
-transform = Transform3D(1.1920929e-07, 2.2351742e-08, -9.603358, -5.073397, -0.81915194, 0, -7.2455635, 0.57357633, 0, 14.641064, 13.45904, -14.434927)
-layers = 65537
-mesh = SubResource("PlaneMesh_jok38")
-skeleton = NodePath("../../..")
-
-[node name="FakeWall19" type="MeshInstance3D" parent="Different_Sections/Bridge_Puzzle" unique_id=614791083]
-transform = Transform3D(5.7995415e-08, -0.42499992, -0.6839994, -2.5631418, 0.19052221, -0.102209516, 0.68679166, 0.7110387, -0.38145113, 23.347118, 6.9700003, -16.125675)
-layers = 65537
-mesh = SubResource("PlaneMesh_jok38")
-skeleton = NodePath("../../..")
-
-[node name="FakeWall15" type="MeshInstance3D" parent="Different_Sections/Bridge_Puzzle" unique_id=419988202]
-transform = Transform3D(2.131628e-14, 4.470349e-08, -9.507325, -3.5380793, -4.37114e-08, 8.156455e-15, -1.5465439e-07, 0.9999999, 0, 17.44714, -18.849998, -17.435677)
-layers = 65537
-mesh = SubResource("PlaneMesh_jok38")
-skeleton = NodePath("../../..")
-
-[node name="FakeWall16" type="MeshInstance3D" parent="Different_Sections/Bridge_Puzzle" unique_id=247458222]
-transform = Transform3D(-7.795966e-15, -1.3212626e-07, 9.507325, -3.5380797, -4.37114e-08, 8.156455e-15, 1.5465434e-07, -0.9999999, -8.3115674e-07, 17.44714, -12.849999, -17.435677)
-layers = 65537
-mesh = SubResource("PlaneMesh_jok38")
-skeleton = NodePath("../../..")
-
-[node name="FakeWall17" type="MeshInstance3D" parent="Different_Sections/Bridge_Puzzle" unique_id=1097534159]
-transform = Transform3D(-3.7385394e-08, 0.1342975, -5.952312, -6.368543, -4.371138e-08, 1.3810691e-14, -2.7585585e-07, 0.9909406, 0.80668837, 6.8959837, -7.5342712, -20.732601)
-layers = 65537
-mesh = SubResource("PlaneMesh_jok38")
-skeleton = NodePath("../../..")
-
-[node name="FakeWall20" type="MeshInstance3D" parent="Different_Sections/Bridge_Puzzle" unique_id=840465608]
-transform = Transform3D(-0.157271, 0.1342975, -6.674442, -6.366565, -4.377216e-08, 0.16790463, 0.021313917, 0.9909406, 0.9045552, 16.116375, -8.648458, -21.982197)
-layers = 65537
-mesh = SubResource("PlaneMesh_jok38")
-skeleton = NodePath("../../..")
-
-[node name="FakeWall11" type="MeshInstance3D" parent="Different_Sections/Bridge_Puzzle" unique_id=1233966182]
-transform = Transform3D(-2.629125e-07, 0.9999999, 9.208634e-14, -6.0147367, -4.3711402e-08, -3.6500916e-21, -2.1368642e-14, 0, 4.1039996, -12.88287, -2.71, -13.805677)
-layers = 65537
-mesh = SubResource("PlaneMesh_jok38")
-skeleton = NodePath("../../..")
-
-[node name="FakeWall7" type="MeshInstance3D" parent="Different_Sections/Bridge_Puzzle" unique_id=1114791432]
-transform = Transform3D(2.3021585e-14, -1.4901161e-07, 4.104, -9.09792, -4.3711402e-08, 8.943743e-15, 3.9768278e-07, -0.99999994, -1.4305115e-07, -10.13287, 0.46000004, 17.93432)
-layers = 65537
-mesh = SubResource("PlaneMesh_jok38")
-skeleton = NodePath("../../..")
-
-[node name="FakeWall8" type="MeshInstance3D" parent="Different_Sections/Bridge_Puzzle" unique_id=725641513]
-transform = Transform3D(1.6115108e-14, -1.4901161e-07, 1.2312001, -6.368544, -4.3711402e-08, 2.683123e-15, 2.7837794e-07, -0.99999994, -4.2915346e-08, -4.982868, 9.48, 17.93432)
-layers = 65537
-mesh = SubResource("PlaneMesh_jok38")
-skeleton = NodePath("../../..")
-
-[node name="FakeWall9" type="MeshInstance3D" parent="Different_Sections/Bridge_Puzzle" unique_id=1216290363]
-transform = Transform3D(1.6115108e-14, -1.4901161e-07, 1.2312001, -6.368544, -4.3711402e-08, 2.683123e-15, 2.7837794e-07, -0.99999994, -4.2915346e-08, -4.982868, -5.6500006, 17.93432)
-layers = 65537
-mesh = SubResource("PlaneMesh_jok38")
-skeleton = NodePath("../../..")
-
-[node name="FakeWall3" type="MeshInstance3D" parent="Different_Sections/Bridge_Puzzle" unique_id=1416149685]
-transform = Transform3D(4.3742875e-07, -0.45710677, 6.948021, -14.152321, -2.8257087e-08, -8.73922e-21, 4.3742864e-07, -0.4571067, -6.9480214, 27.137127, -3.88, 15.504324)
-layers = 65537
-mesh = SubResource("PlaneMesh_jok38")
-skeleton = NodePath("../../..")
-
-[node name="FakeWall4" type="MeshInstance3D" parent="Different_Sections/Bridge_Puzzle" unique_id=833366957]
-transform = Transform3D(3.976396e-07, -0.43194124, -6.3554487, -14.15232, -2.937324e-08, 4.0159557e-14, -4.738887e-07, 0.5147676, -5.3328543, 27.958637, -4.2199993, -16.660498)
-layers = 65537
-mesh = SubResource("PlaneMesh_jok38")
-skeleton = NodePath("../../..")
 
 [node name="FogVolume" type="FogVolume" parent="Different_Sections/Bridge_Puzzle" unique_id=15103820]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.977127, -0.18999958, 1.0743256)
