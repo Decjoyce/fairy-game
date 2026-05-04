@@ -16,6 +16,7 @@
 [ext_resource type="PackedScene" uid="uid://xuo5buj0odhi" path="res://scenes/interactions/_triggers/torch_sconce/torch_sconce_lit.tscn" id="11_54i5u"]
 [ext_resource type="PackedScene" uid="uid://ije1mmh1wcad" path="res://scenes/interactions/interactables/items/all_items/torch/torch_mounted.tscn" id="12_y7mrb"]
 [ext_resource type="MeshLibrary" uid="uid://bu208a8l5866i" path="res://scenes/_levels/_palettes/cairn/meshlibrary_cairn.tres" id="13_6rydq"]
+[ext_resource type="Texture2D" uid="uid://xp5i17uc8xjf" path="res://assets/sprites/Environment_Sprites/dust Particle Png.png" id="13_m3dqs"]
 [ext_resource type="PackedScene" uid="uid://cfuq8lf22so06" path="res://scenes/_levels/_palettes/cairn/props/Rocks/cairn_rock_pile.tscn" id="13_oqsm6"]
 [ext_resource type="PackedScene" uid="uid://cruv8v8wh8l06" path="res://scenes/interactions/_special/saving_stone/saving_stone.tscn" id="14_qj3op"]
 [ext_resource type="Script" uid="uid://bul4myvyhnpjc" path="res://scripts/saving/uid_generator.gd" id="15_57y3h"]
@@ -67,13 +68,16 @@ radial_accel_min = -2.2351742e-06
 radial_accel_max = -2.2351742e-06
 tangential_accel_min = -4.0400023
 tangential_accel_max = -2.2351742e-06
-scale_min = 0.01
-scale_max = 0.03
+scale_min = 0.02
+scale_max = 0.06
 scale_curve = SubResource("CurveTexture_ag4il")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_54i5u"]
 transparency = 1
-albedo_color = Color(0.8089983, 0.8089983, 0.8089982, 0.32156864)
+albedo_color = Color(1.160031, 1.160031, 1.160031, 1)
+albedo_texture = ExtResource("13_m3dqs")
+emission = Color(0.5662982, 0.5662982, 0.5662982, 1)
+emission_energy_multiplier = 4.27
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_y7mrb"]
 material = SubResource("StandardMaterial3D_54i5u")
