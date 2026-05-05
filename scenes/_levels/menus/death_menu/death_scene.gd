@@ -43,7 +43,7 @@ func replay_level() -> void:
 
 func play_end() -> void:
 	disable_buttons()
-	get_tree().change_scene_to_file("res://scenes/_levels/Vertical Slice/end_scene.tscn")
+	SceneLoader.load_scene("res://scenes/_levels/menus/main_menu/Main_Menu_UI_NEW/MainMenuScene_NEW_UI.tscn")
 	queue_free()
 
 func set_graphics(dmg_type: int) -> void:
