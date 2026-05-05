@@ -12,7 +12,6 @@
 [ext_resource type="PackedScene" uid="uid://pfnqccjh5kbs" path="res://scenes/_levels/_palettes/cairn/props/skull.tscn" id="10_634vm"]
 [ext_resource type="Material" uid="uid://b0i2txe3meqnl" path="res://assets/models/cairn/Props/Pillar/Pillar.tres" id="11_7p2n5"]
 [ext_resource type="PackedScene" uid="uid://dt13fur6twjep" path="res://scenes/interactions/_receivers/gate/gate.tscn" id="16_vodny"]
-[ext_resource type="PackedScene" uid="uid://csot2mi7746ll" path="res://scenes/interactions/_triggers/pressure_plate/pressure_plate.tscn" id="17_wmoe0"]
 [ext_resource type="PackedScene" uid="uid://cfusjb3qjgawr" path="res://scenes/_levels/_palettes/cairn/props/cairn_wall_single.tscn" id="18_7p2n5"]
 [ext_resource type="Script" uid="uid://cko3icuffehvs" path="res://scenes/interactions/_receivers/bridge/bridge_new.gd" id="18_xhqui"]
 [ext_resource type="Material" uid="uid://f0qp2o0ip83p" path="res://assets/models/cairn/Props/Wood_Door/Wood_Door.tres" id="19_g2esy"]
@@ -813,6 +812,11 @@ transform = Transform3D(0.9999999, 0, 0, 0, 0.9999999, 0, 0, 0, 1, -3.522667, 0.
 mesh = SubResource("ArrayMesh_1jgwr")
 skeleton = NodePath("../../../../..")
 
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="To_From_BB_Bridge/Gate_4/Entrance/Node3D19" unique_id=222018275]
+transform = Transform3D(0.9999999, 0, 0, 0, 0.9999999, 0, 0, 0, 1, -3.522667, 0.93174857, 0)
+mesh = SubResource("ArrayMesh_1jgwr")
+skeleton = NodePath("../../../../..")
+
 [node name="Node3D20" type="Node3D" parent="To_From_BB_Bridge/Gate_4/Entrance" unique_id=834277956]
 transform = Transform3D(-1.9014452e-08, 1.901445e-08, -0.435, 0.43499997, 0, -1.9014454e-08, 0, -0.43499997, -1.9014454e-08, 2.8451385, -1.3069994, -0.9217224)
 
@@ -847,12 +851,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 17.899998)
 [node name="Area_Two_Bridge" parent="To_From_BB_Bridge" unique_id=482359655 instance=ExtResource("5_634vm")]
 transform = Transform3D(-4.3711392e-08, 0, 1, 0, 1.0000001, 0, -1.0000001, 0, -4.371139e-08, 0, 0, 17.899998)
 metadata/uid = "e0883cf3-9972-4a8b-adce-7dc04f6e3386"
-metadata/date_generated = "2026-04-21T17:03:08"
-
-[node name="Statue_Piece_Pressure_Plate" parent="To_From_BB_Bridge" unique_id=790035545 instance=ExtResource("17_wmoe0")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.06205368, 0.110474825, 19.08913)
-metadata/uid = "2c65e927-133f-4172-ab21-41901c17aad6"
-metadata/lock_uid = true
 metadata/date_generated = "2026-04-21T17:03:08"
 
 [node name="Area_2_Gate" type="Node3D" parent="To_From_BB_Bridge" unique_id=1307250700]
@@ -1141,10 +1139,8 @@ transform = Transform3D(0.9999999, 1.4901161e-08, 0, -1.4901161e-08, 0.9999999, 
 [node name="From_Tut" type="Node3D" parent="." unique_id=1699149572]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0, 0)
 
-[node name="Long_Bridge_First" parent="From_Tut" unique_id=65216681 instance=ExtResource("5_634vm")]
-transform = Transform3D(0.99965745, -0.026176954, 0, 0.026176954, 0.99965745, 0, 0, 0, 1, -8.7004795, 0.036647737, 0)
-metadata/uid = "6d1d2d2c-a016-4814-a95f-53d398fe6a3e"
-metadata/date_generated = "2026-04-21T17:03:08"
+[node name="Bridge" parent="From_Tut" unique_id=1119761856 instance=ExtResource("6_deeav")]
+transform = Transform3D(0.199368, 0.9799248, 0, -0.9799248, 0.199368, 0, 0, 0, 1, -8.7004795, 0.036647737, 0)
 
 [node name="Lever_Big_Bridge_One" parent="From_Tut" unique_id=1692381032 instance=ExtResource("3_lo7kx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11, 1, -0.7552738)
@@ -1949,17 +1945,17 @@ mesh = SubResource("ArrayMesh_1jgwr")
 skeleton = NodePath("../../../..")
 
 [node name="MeshInstance3D2" type="MeshInstance3D" parent="env/Skirting/Node3D14" unique_id=190938239]
-transform = Transform3D(0.99898213, 0.011802549, 0.04353204, -0.003798084, 0.98374015, -0.1795564, -0.044943456, 0.17920823, 0.98278403, -0.59892726, -0.16000856, 70.22123)
+transform = Transform3D(0.9989822, 0.011802569, 0.043532047, -0.0037981123, 0.98374003, -0.17955637, -0.044943456, 0.17920825, 0.98278403, -0.5048108, 0.1912365, 70.58487)
 mesh = SubResource("ArrayMesh_1jgwr")
 skeleton = NodePath("../../../..")
 
 [node name="MeshInstance3D3" type="MeshInstance3D" parent="env/Skirting/Node3D14" unique_id=2109671155]
-transform = Transform3D(0.066987254, 0.24999999, 0.9659257, 0.2499999, 0.9330124, -0.25881907, -0.9659257, 0.25881904, -4.371139e-08, 9.859793, -4.5175714, 82.909096)
+transform = Transform3D(0.06698724, 0.24999999, 0.9659257, 0.24999984, 0.9330124, -0.25881907, -0.9659257, 0.25881904, -4.371139e-08, 9.953909, -4.1663256, 83.272736)
 mesh = SubResource("ArrayMesh_1jgwr")
 skeleton = NodePath("../../../..")
 
 [node name="MeshInstance3D4" type="MeshInstance3D" parent="env/Skirting/Node3D14" unique_id=1016478994]
-transform = Transform3D(-0.867043, 0.49620196, 0.04494339, 0.49620187, 0.8518503, 0.16773123, 0.04494351, 0.16773118, -0.98480755, 20.221968, -5.9849186, 70.00553)
+transform = Transform3D(-0.86704296, 0.49620196, 0.04494339, 0.49620184, 0.8518503, 0.16773121, 0.04494351, 0.16773121, -0.98480755, 20.316084, -5.6336737, 70.36917)
 mesh = SubResource("ArrayMesh_1jgwr")
 skeleton = NodePath("../../../..")
 
@@ -2485,7 +2481,7 @@ spot_angle = 54.843742
 [node name="Node3D" type="Node3D" parent="." unique_id=188953684]
 visible = false
 
-[node name="Area_One_Bridge" parent="Node3D" unique_id=1119761856 instance=ExtResource("6_deeav")]
+[node name="Area_One_Bridge" parent="Node3D" unique_id=17593050 instance=ExtResource("6_deeav")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 2, -13, -0.29751468)
 speed = 1.0
 metadata/lock_uid = true
@@ -2855,8 +2851,7 @@ spot_angle = 29.052675
 [connection signal="on_change" from="To_From_Traps/ShortCut_Lever" to="RockGate2" method="open_gate"]
 [connection signal="on_change" from="To_From_BB_Bridge/Area_Two_lever" to="To_From_BB_Bridge/Area_Two_Bridge" method="move_bridge"]
 [connection signal="on_change" from="To_From_BB_Bridge/Area_Two_lever" to="RockGate4" method="open_gate"]
-[connection signal="on_activated" from="To_From_BB_Bridge/Statue_Piece_Pressure_Plate" to="Node3D/Gate" method="open_gate"]
-[connection signal="on_change" from="From_Tut/Lever_Big_Bridge_One" to="From_Tut/Long_Bridge_First" method="move_bridge"]
+[connection signal="on_change" from="From_Tut/Lever_Big_Bridge_One" to="From_Tut/Bridge" method="move_bridge"]
 [connection signal="on_activated" from="trap_trig_the_trig" to="trap_trig_shorcut/CollisionEnabler_Disabler" method="enable_obj"]
 [connection signal="area_entered" from="trap_trig_the_trig/Area3D" to="trap_trig_the_trig" method="_player_entered"]
 [connection signal="area_exited" from="trap_trig_the_trig/Area3D" to="trap_trig_the_trig" method="_player_exited"]
