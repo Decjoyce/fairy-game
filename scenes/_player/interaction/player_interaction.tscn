@@ -37,11 +37,11 @@
 [ext_resource type="Texture2D" uid="uid://bjr37otryvvbb" path="res://scenes/_player/interaction/hand/assets/new/handLeverUp_side.png" id="28_onote"]
 [ext_resource type="Texture2D" uid="uid://iq8lng6ke6sg" path="res://scenes/_player/interaction/hand/assets/new/handRecieve.png" id="34_70n6f"]
 [ext_resource type="AudioStream" uid="uid://y2phwtxrytt4" path="res://assets/audio/sfx/player/throw/Player_throw_randomizer.tres" id="34_v48pp"]
-[ext_resource type="Script" uid="uid://oa1ip6f7wn5o" path="res://scripts/input_context_helper.gd" id="36_u1dts"]
 [ext_resource type="Script" uid="uid://c5ujekq2hgfil" path="res://scenes/_player/interaction/hand/states/handstate_endme.tscn.gd" id="36_ul0jp"]
 [ext_resource type="Script" uid="uid://dqspm2isfx5n1" path="res://scripts/input_context/joy_icons_master.gd" id="37_6uakc"]
 [ext_resource type="Resource" uid="uid://bvdc57ehdgnq3" path="res://scripts/input_context/joyicons_xbox.tres" id="38_4266y"]
 [ext_resource type="Resource" uid="uid://cuvbrqma8ltub" path="res://scripts/input_context/joyicons_ps4.tres" id="39_mny7c"]
+[ext_resource type="Script" uid="uid://bykhlgnvwymya" path="res://scripts/input_context_helper_two.gd" id="39_ul0jp"]
 [ext_resource type="Resource" uid="uid://cy86l8mtli3ke" path="res://scripts/input_context/joyicons_nintendo.tres" id="40_4266y"]
 [ext_resource type="Texture2D" uid="uid://bnuamqc7avcot" path="res://assets/__not_ours_dontship/Xbox Series/XboxSeriesX_Y.png" id="41_mny7c"]
 [ext_resource type="Texture2D" uid="uid://ccq1sgoc15kuf" path="res://assets/__not_ours_dontship/PS4/PS4_Circle.png" id="42_0v66h"]
@@ -1060,18 +1060,14 @@ bus = &"pl_footsteps"
 [node name="Audio_Grab" type="AudioStreamPlayer" parent="Hand_Right" unique_id=981864139]
 bus = &"pl_footsteps"
 
-[node name="InputContextHelpre" type="Node" parent="." unique_id=1056320993 node_paths=PackedStringArray("interact_action_left", "interact_action_right", "use_action_left", "use_action_right")]
-script = ExtResource("36_u1dts")
+[node name="InputContextHelpre" type="Node" parent="." unique_id=1056320993]
+script = ExtResource("39_ul0jp")
 joy_dict = Dictionary[String, ExtResource("37_6uakc")]({
 "DEFAULT": ExtResource("38_4266y"),
 "DualSense Wireless Controller": ExtResource("39_mny7c"),
 "Nintendo Switch Pro Controller": ExtResource("40_4266y"),
 "XInput Controller": ExtResource("38_4266y")
 })
-interact_action_left = NodePath("../Hand_Left/_hand_sprite/InputContexts/InteractAction/TextureRect")
-interact_action_right = NodePath("../Hand_Right/_hand_sprite/InputContexts/InteractAction/TextureRect")
-use_action_left = NodePath("../Hand_Left/_hand_sprite/InputContexts/UseAction/TextureRect")
-use_action_right = NodePath("../Hand_Right/_hand_sprite/InputContexts/UseAction/TextureRect")
 
 [node name="Control" type="Control" parent="." unique_id=1806043591]
 layout_mode = 1
