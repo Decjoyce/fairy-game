@@ -53,7 +53,8 @@ func start_game(scene):
 	
 	anim_player.play("SpeedIntoCavee") 
 	animation_state_machine.travel("IntroB")
-
+	visible = false
+	
 	await anim_player.animation_finished
 
 	fade_anim.play("FadetoBlack")

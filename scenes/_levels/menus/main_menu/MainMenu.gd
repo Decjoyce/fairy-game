@@ -13,7 +13,7 @@ var game_started := false
 @export var Intro2: bool 
 
 func _ready():
-	anim_player.play("CameraSlow")
+	#anim_player.play("CameraSlow")
 	animation_state_machine = $MainMenu/MenuAnimationTree.get("parameters/playback")
 	Input.set_mouse_mode(Input.MOUSE_MODE_CONFINED_HIDDEN)
 

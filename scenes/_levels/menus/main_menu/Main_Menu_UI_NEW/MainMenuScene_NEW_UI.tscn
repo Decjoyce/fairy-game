@@ -893,6 +893,61 @@ graph_offset = Vector2(-180.277, 49)
 
 [sub_resource type="CameraAttributesPhysical" id="CameraAttributesPhysical_lrn60"]
 
+[sub_resource type="Animation" id="Animation_fvlfn"]
+resource_name = "CameraIdle"
+length = 60.0
+loop_mode = 1
+tracks/0/type = "position_3d"
+tracks/0/imported = false
+tracks/0/enabled = false
+tracks/0/path = NodePath(".")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = PackedFloat32Array(0, 1, 0.80260944, 1.8404503, -34.29502)
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = false
+tracks/1/path = NodePath(".:fov")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [76.0]
+}
+tracks/2/type = "position_3d"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = PackedFloat32Array(0, 1, 0.80260944, 1.8404503, -28.55979)
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".:attributes:frustum_focal_length")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [35.0]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath(".:attributes")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [SubResource("CameraAttributesPhysical_lrn60")]
+}
+
 [sub_resource type="Animation" id="Animation_47rn7"]
 resource_name = "CameraSlow"
 length = 60.0
@@ -1002,19 +1057,31 @@ tracks/4/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [true]
+"values": [false]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Control/TextureRect:color")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 0, 0, 0)]
 }
 
 [sub_resource type="Animation" id="Animation_lrn60"]
 resource_name = "SpeedIntoCavee"
-length = 0.8
+length = 1.2
 tracks/0/type = "position_3d"
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/path = NodePath(".")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
-tracks/0/keys = PackedFloat32Array(0, 1, 0.80260944, 1.8404503, -34.29502, 0.8, 1, 0.80260944, 1.8404503, 5.204979)
+tracks/0/keys = PackedFloat32Array(0, 1, 0.80260944, 1.8404503, -34.29502, 1, 1, 0.80260944, 1.8404503, 5.204979)
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = false
@@ -1041,10 +1108,88 @@ tracks/3/path = NodePath(".:attributes:frustum_focal_length")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0, 0.53333336, 0.6, 0.8, 29.984974, 59.922073),
+"times": PackedFloat32Array(0, 0.73333335, 0.8, 1, 29.984974, 59.922073),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
 "update": 0,
 "values": [113.86, 9.43, 9.43, 153.42, 71.03, 118.42]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = false
+tracks/4/path = NodePath(".:attributes")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 59.833332, 59.922073, 60),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [SubResource("CameraAttributesPhysical_lrn60"), SubResource("CameraAttributesPhysical_lrn60"), SubResource("CameraAttributesPhysical_lrn60"), SubResource("CameraAttributesPhysical_lrn60")]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = false
+tracks/5/path = NodePath("../TextureRect:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Control/TextureRect:color")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 0.9333334, 1.1333334),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 0), Color(0, 0, 0, 0), Color(0, 0, 0, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_kl8e7"]
+resource_name = "SpeedIntoCavee_2"
+length = 1.5
+tracks/0/type = "position_3d"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = PackedFloat32Array(0, 1, 0.80260944, 1.8404503, -34.29502, 0.7333334, 1, 0.80260944, 1.8404503, -12.501915, 0.9, 1, 0.80260944, 1.8404503, -12.501915, 1.4250002, 1, 0.80260944, 1.8404503, 5.204979)
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = false
+tracks/1/path = NodePath(".:fov")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 29.903896),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [76.0, 1.0]
+}
+tracks/2/type = "position_3d"
+tracks/2/imported = false
+tracks/2/enabled = false
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = PackedFloat32Array(0, 1, 0.80260944, 1.8404503, -28.55979, 30, 1, 0.80260944, 1.8404503, -37.05979, 60.2, 1, 0.80260944, 1.8404503, -47.05979)
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".:attributes:frustum_focal_length")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.7333334, 0.8666667, 1.3916667, 29.984974, 59.922073),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [113.86, 9.43, 8.68, 153.42, 71.03, 118.42]
 }
 tracks/4/type = "value"
 tracks/4/imported = false
@@ -1071,11 +1216,92 @@ tracks/5/keys = {
 "values": [false]
 }
 
+[sub_resource type="Animation" id="Animation_53gik"]
+resource_name = "SpeedIntoCavee_3"
+length = 2.3
+tracks/0/type = "position_3d"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = PackedFloat32Array(0, 1, 0.803, 1.84, -40, 1.9666667, 1, 0.80260944, 1.8404503, 5.204979)
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = false
+tracks/1/path = NodePath(".:fov")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 29.903896),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [76.0, 1.0]
+}
+tracks/2/type = "position_3d"
+tracks/2/imported = false
+tracks/2/enabled = false
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = PackedFloat32Array(0, 1, 0.80260944, 1.8404503, -28.55979, 30, 1, 0.80260944, 1.8404503, -37.05979, 60.2, 1, 0.80260944, 1.8404503, -47.05979)
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".:attributes:frustum_focal_length")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 1.7, 1.7666667, 1.9666667, 29.984974, 59.922073),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [113.86, 6.57, 6.57, 153.42, 71.03, 118.42]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = false
+tracks/4/path = NodePath(".:attributes")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 59.833332, 59.922073, 60),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [SubResource("CameraAttributesPhysical_lrn60"), SubResource("CameraAttributesPhysical_lrn60"), SubResource("CameraAttributesPhysical_lrn60"), SubResource("CameraAttributesPhysical_lrn60")]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("../TextureRect:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 2.0333335),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Control/TextureRect:color")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(2.0333335, 2.2666667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 0), Color(0, 0, 0, 1)]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_17sr7"]
 _data = {
+&"CameraIdle": SubResource("Animation_fvlfn"),
 &"CameraSlow": SubResource("Animation_47rn7"),
 &"RESET": SubResource("Animation_mlkpy"),
-&"SpeedIntoCavee": SubResource("Animation_lrn60")
+&"SpeedIntoCavee": SubResource("Animation_lrn60"),
+&"SpeedIntoCavee_2": SubResource("Animation_kl8e7"),
+&"SpeedIntoCavee_3": SubResource("Animation_53gik")
 }
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_o6rx4"]
@@ -1429,10 +1655,11 @@ focus_neighbor_top = NodePath(".")
 focus_neighbor_right = NodePath(".")
 focus_neighbor_bottom = NodePath("../Playground")
 theme_override_font_sizes/font_size = 40
-text = "Play Demo"
+text = "Start Game"
 
 [node name="Playground" type="Button" parent="MainMenu/MenuContainer/MenuButtonsMargin/MenuButtonsContainer/MenuButtonsBoxContainer" unique_id=984087950]
 unique_name_in_owner = true
+visible = false
 layout_mode = 2
 focus_neighbor_left = NodePath(".")
 focus_neighbor_top = NodePath("../Play Demo")
@@ -1506,6 +1733,7 @@ horizontal_alignment = 1
 metadata/_edit_use_anchors_ = true
 
 [node name="RichTextLabel" type="RichTextLabel" parent="MainMenu/MenuContainer" unique_id=1013632441]
+visible = false
 layout_mode = 2
 focus_mode = 2
 mouse_filter = 2
@@ -1600,6 +1828,28 @@ spot_angle = 50.91361
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Camera3D" unique_id=1697016104]
 libraries/ = SubResource("AnimationLibrary_17sr7")
+autoplay = &"CameraIdle"
+
+[node name="Control" type="Control" parent="Camera3D" unique_id=1783080340]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+focus_behavior_recursive = 1
+mouse_filter = 2
+
+[node name="TextureRect" type="ColorRect" parent="Camera3D/Control" unique_id=646775487]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+focus_behavior_recursive = 1
+mouse_filter = 2
+color = Color(0, 0, 0, 0)
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=884828835]
 environment = SubResource("Environment_lrn60")
@@ -1686,6 +1936,7 @@ wait_time = 2.0
 wait_time = 2.0
 
 [node name="TextureRect" type="TextureRect" parent="." unique_id=1530201282]
+visible = false
 modulate = Color(1, 1, 1, 0)
 custom_minimum_size = Vector2(125, 125)
 anchors_preset = -1
