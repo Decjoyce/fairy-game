@@ -30,6 +30,8 @@
 [ext_resource type="ArrayMesh" uid="uid://sakmnnwkwcdm" path="res://assets/models/cairn/Props/SpikeTrap/SpikeTrap.obj" id="27_sk5sf"]
 [ext_resource type="AudioStream" uid="uid://cej86o2w2i6wk" path="res://assets/audio/sfx/environment/ambient/Bridge ambiente.wav" id="29_1cyc0"]
 [ext_resource type="AudioStream" uid="uid://cegks3hgoxmlu" path="res://assets/audio/sfx/environment/ambient/Bridge v2.wav" id="30_t8f8x"]
+[ext_resource type="Texture2D" uid="uid://dk0irgvufeg08" path="res://assets/menu_buttons/14-white-grunge-brush-stroke-13.png" id="31_etsjp"]
+[ext_resource type="PackedScene" uid="uid://lxic7c72kvyt" path="res://scenes/interactions/interactables/items/all_items/misc/item_skull.tscn" id="31_t8f8x"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_sl5wy"]
 next_pass = ExtResource("8_pbkst")
@@ -51,6 +53,27 @@ gradient = SubResource("Gradient_882fo")
 fill = 1
 fill_from = Vector2(0.5, 0.5)
 fill_to = Vector2(0.94, 0.43)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ypdmq"]
+albedo_color = Color(0.29582244, 0.28200856, 0.27378577, 1)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_etsjp"]
+material = SubResource("StandardMaterial3D_ypdmq")
+top_radius = 0.0
+bottom_radius = 0.05
+height = 0.5
+radial_segments = 4
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xbtjy"]
+albedo_color = Color(0.38039216, 0.28627452, 0.19215687, 1)
+metallic = 0.5
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_57n42"]
+material = SubResource("StandardMaterial3D_xbtjy")
+top_radius = 0.03
+bottom_radius = 0.03
+height = 0.8
+radial_segments = 4
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_tauea"]
 size = Vector3(3.9813232, 1.2494507, 1.9863892)
@@ -287,6 +310,19 @@ metadata/lock_uid = true
 metadata/uid = "c15eb9b3-dc4b-41cd-81aa-f1ebb7a5cb0c"
 metadata/date_generated = "2026-05-04T21:09:57"
 
+[node name="Arrow2" type="Node3D" parent="Fifth_Bridge Section/Bridge_Small3" unique_id=500084873]
+transform = Transform3D(-0.027748674, 0.022072434, 0.49874124, 0.0063289213, 0.4994865, -0.02175328, -0.49918932, 0.005105738, -0.027999561, 0.5205641, 1.1497822, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Fifth_Bridge Section/Bridge_Small3/Arrow2" unique_id=299387242]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, -1.2525717e-07, -0.5679159)
+material_overlay = ExtResource("8_pbkst")
+mesh = SubResource("CylinderMesh_etsjp")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Fifth_Bridge Section/Bridge_Small3/Arrow2" unique_id=1808425129]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, -2.1964206e-07, 0)
+material_overlay = ExtResource("8_pbkst")
+mesh = SubResource("CylinderMesh_57n42")
+
 [node name="Button" parent="Fifth_Bridge Section" unique_id=537533180 instance=ExtResource("7_qmfwb")]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 17, 2, -2)
 metadata/lock_uid = true
@@ -392,6 +428,9 @@ transform = Transform3D(0.9977176, 0.06698727, 0.008518626, -0.041343663, 0.5062
 
 [node name="TorchSconce_Lit3" parent="Fifth_Bridge Section/Decoration/Torches" unique_id=40899783 instance=ExtResource("12_c3sjm")]
 transform = Transform3D(-0.99771774, -0.06698737, -0.008518641, -0.041343674, 0.5062361, 0.86140364, -0.053390756, 0.85978913, -0.50785, 0.3413658, 0.31340384, 7.8025446)
+
+[node name="TorchSconce_Lit9" parent="Fifth_Bridge Section/Decoration/Torches" unique_id=77794323 instance=ExtResource("12_c3sjm")]
+transform = Transform3D(-0.9977177, -0.06698737, -0.008518638, -0.06748157, 0.9937011, 0.08946566, 0.0024718246, 0.08983585, -0.9959537, 3.9842033, 0.31340384, 6.415591)
 
 [node name="Reuseable_Stones" type="Node3D" parent="Fifth_Bridge Section" unique_id=825763209]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 23, 0, 2)
@@ -1361,6 +1400,12 @@ transform = Transform3D(-3.657857e-08, 0, 0.83682007, 0, 0.83682007, 0, -0.83682
 transform = Transform3D(0.95811284, -0.014913487, 0.28600237, -0.28639096, -0.049893264, 0.95681286, 1.7662677e-07, -0.9986432, -0.052074462, 0.7108693, 2.2469208, -0.002746582)
 spot_angle = 30.643427
 
+[node name="SpotLight3D2" type="SpotLight3D" parent="Walls&Platforms/Platforms/Floor43/SavingStone" unique_id=1769057721]
+transform = Transform3D(0.93337715, 0.02769114, 0.35782725, -0.3562816, -0.048657306, 0.9331109, 0.043249812, -0.9984316, -0.035549775, 1.8409023, 2.2469208, 5.502756)
+light_color = Color(1, 0.44, 0.44, 1)
+light_volumetric_fog_energy = 0.0
+spot_angle = 30.643427
+
 [node name="Floor44" type="Node3D" parent="Walls&Platforms/Platforms" unique_id=169736354]
 transform = Transform3D(1.195, 0, 0, 0, 1.195, 0, 0, 0, 1.195, 27, 1, 7.015)
 
@@ -1930,6 +1975,61 @@ stream = ExtResource("30_t8f8x")
 autoplay = true
 max_distance = 15.24
 bus = &"Ambient"
+
+[node name="Arrow" type="Node3D" parent="." unique_id=289625140]
+transform = Transform3D(-0.49366128, 0, 0.07936333, 0, 0.5, 0, -0.07936333, 0, -0.49366128, 26.88989, 2.213872, 6.1695557)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Arrow" unique_id=294282989]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, -1.2525717e-07, -0.5679159)
+material_overlay = ExtResource("8_pbkst")
+mesh = SubResource("CylinderMesh_etsjp")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Arrow" unique_id=1365551839]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, -2.1964206e-07, 0)
+material_overlay = ExtResource("8_pbkst")
+mesh = SubResource("CylinderMesh_57n42")
+
+[node name="Arrow2" type="Node3D" parent="." unique_id=449845]
+transform = Transform3D(-0.4966548, 0.006472104, -0.057376765, 0.0037869513, 0.4994305, 0.023555856, 0.057616323, 0.02296369, -0.4961381, 26.726894, 2.0881548, 6.1695557)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Arrow2" unique_id=1115823647]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, -1.2525717e-07, -0.5679159)
+material_overlay = ExtResource("8_pbkst")
+mesh = SubResource("CylinderMesh_etsjp")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Arrow2" unique_id=85044876]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, -2.1964206e-07, 0)
+material_overlay = ExtResource("8_pbkst")
+mesh = SubResource("CylinderMesh_57n42")
+
+[node name="Decal" type="Decal" parent="Arrow2" unique_id=1796271201]
+transform = Transform3D(1, 0, 3.501773e-07, -1.21071935e-08, 1, 2.1979213e-07, -3.784895e-06, 0, 1.0000033, -0.2741356, -2.1186824, 0.23077965)
+size = Vector3(3.258082, 0.32043457, 2.8350525)
+texture_albedo = ExtResource("31_etsjp")
+modulate = Color(0.19, 0, 0.02216669, 0.9137255)
+cull_mask = 1048569
+
+[node name="Decal3" type="Decal" parent="Arrow2" unique_id=54154201]
+transform = Transform3D(0.19893122, -0.040109843, 0.9791949, 0.052230995, 0.99817944, 0.030276466, -0.97862107, 0.0451213, 0.20066738, -0.3887291, -2.4012766, 1.2877426)
+size = Vector3(3.258082, 0.7876587, 2.8350525)
+texture_albedo = ExtResource("31_etsjp")
+modulate = Color(0.19, 0, 0.02216669, 0.9137255)
+cull_mask = 1048569
+
+[node name="Decal2" type="Decal" parent="Arrow2" unique_id=261008623]
+transform = Transform3D(1, 0, 3.501773e-07, -1.21071935e-08, 1, 2.1979213e-07, -3.784895e-06, 0, 1.0000033, -0.43844986, -0.77117014, -0.64487267)
+size = Vector3(1.0946426, 3.027588, 0.82177734)
+texture_albedo = ExtResource("31_etsjp")
+modulate = Color(0.19, 0, 0.02216669, 0.9137255)
+cull_mask = 1048569
+
+[node name="skull" parent="." unique_id=1229596765 instance=ExtResource("31_t8f8x")]
+transform = Transform3D(0.1587267, 0, 0.98732257, 0, 1, 0, -0.98732257, 0, 0.1587267, 26.87426, 2.2729743, 6.2183404)
+freeze = true
+start_frozen = true
+metadata/uid = "ec490e6c-90a0-443b-8e1b-f166607934a5"
+metadata/lock_uid = true
+metadata/date_generated = "2026-04-29T14:39:39"
 
 [connection signal="on_activated" from="Fourth_Bridge_Section/Wall_Button" to="Fourth_Bridge_Section/Bridge" method="fully_open_bridge"]
 [connection signal="on_change" from="Fourth_Bridge_Section/Chain" to="Fourth_Bridge_Section/Gate" method="open_gate"]

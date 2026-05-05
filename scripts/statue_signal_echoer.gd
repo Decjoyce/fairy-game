@@ -22,6 +22,7 @@ func delete_stuff_arm(sig: float) -> void:
 	if std_piece_head.size() > 0:
 		for i in range(std_piece_arm.size()-1, -1, -1):
 			print("arm")
+			if std_piece_head.size() <= 0: continue
 			if !std_piece_base[i]: continue
 			std_piece_arm[i].queue_free()
 			std_piece_arm.pop_back()
@@ -33,6 +34,7 @@ func delete_stuff_base(sig: float) -> void:
 	if std_piece_head.size() > 0:
 		for i in range(std_piece_base.size()-1, -1, -1):
 			print("base")
+			if std_piece_head.size() <= 0: continue
 			if !std_piece_base[i]: continue
 			std_piece_base[i].queue_free()
 			std_piece_base.pop_back()
@@ -44,6 +46,7 @@ func delete_stuff_head(sig: float) -> void:
 	if std_piece_head.size() > 0:
 		for i in range(std_piece_head.size()-1, -1, -1):
 			print("head")
+			if std_piece_head.size() <= 0: continue
 			if !std_piece_base[i]: continue
 			std_piece_head[i].queue_free()
 			std_piece_head.pop_back()
