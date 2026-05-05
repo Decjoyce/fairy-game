@@ -3,5 +3,37 @@
 [ext_resource type="PackedScene" uid="uid://cd0jbh4metflb" path="res://addons/maaacks_menus_template/base/nodes/loading_screen/loading_screen.tscn" id="1_2dnq1"]
 [ext_resource type="Script" uid="uid://mav2omdpqfbe" path="res://addons/maaacks_menus_template/examples/scenes/loading_screen/loading_screen.gd" id="2_5h2y6"]
 
+[sub_resource type="Gradient" id="Gradient_xab64"]
+offsets = PackedFloat32Array(0.36261982, 1)
+colors = PackedColorArray(0.040410012, 0.037800003, 0.09, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_xxaej"]
+gradient = SubResource("Gradient_xab64")
+width = 115
+fill = 1
+fill_from = Vector2(0.43931624, 0.51111114)
+
+[sub_resource type="Gradient" id="Gradient_0351v"]
+offsets = PackedFloat32Array(0.36261982, 1)
+colors = PackedColorArray(0.040410012, 0.037800003, 0.09, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_k633d"]
+gradient = SubResource("Gradient_0351v")
+fill = 1
+fill_from = Vector2(0.43931624, 0.51111114)
+
 [node name="LoadingScreen" unique_id=179842335 instance=ExtResource("1_2dnq1")]
 script = ExtResource("2_5h2y6")
+
+[node name="BackgroundTextureRect" parent="Control" parent_id_path=PackedInt32Array(1999015458) index="2" unique_id=630614432]
+visible = false
+texture = SubResource("GradientTexture2D_xxaej")
+
+[node name="BG" type="TextureRect" parent="Control" parent_id_path=PackedInt32Array(1999015458) index="3" unique_id=1897549418]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("GradientTexture2D_k633d")
