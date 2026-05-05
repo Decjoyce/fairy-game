@@ -1,0 +1,30 @@
+[gd_scene format=3 uid="uid://d1a4saxko3iy6"]
+
+[ext_resource type="Script" uid="uid://1nf36h0gms3q" path="res://addons/maaacks_menus_template/base/nodes/utilities/capture_focus.gd" id="1_2n82l"]
+[ext_resource type="Texture2D" uid="uid://bqbs8ojlfex0i" path="res://assets/Controlelr_UI/Controller_demo2.png" id="2_2n82l"]
+
+[node name="Inputs" type="MarginContainer" unique_id=998049297]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1869351161]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/separation = 8
+script = ExtResource("1_2n82l")
+search_depth = 5
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer" unique_id=561522128]
+layout_mode = 2
+theme_override_constants/margin_top = 32
+theme_override_constants/margin_bottom = 32
+
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer/MarginContainer" unique_id=1431332977]
+layout_mode = 2
+texture = ExtResource("2_2n82l")

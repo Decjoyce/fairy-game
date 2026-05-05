@@ -11,14 +11,14 @@
 [ext_resource type="Material" uid="uid://dgrldudl0bdhu" path="res://assets/models/cairn/Props/Rockpile/Rock_pile.tres" id="5_fdbqd"]
 [ext_resource type="PackedScene" uid="uid://y4t20bpdha47" path="res://UICOPY/scenes/windows/main_menu_credits_window.tscn" id="5_kmgne"]
 [ext_resource type="PackedScene" uid="uid://c0ttwojpiibfu" path="res://scenes/__prototyping/_EnvironmentTestScenes/SetDressing_Final_Level.tscn" id="6_fvlfn"]
-[ext_resource type="Script" uid="uid://b5oej1q4h7jvh" path="res://addons/maaacks_menus_template/base/nodes/autoloads/ui_sound_controller/ui_sound_controller.gd" id="6_q6106"]
+[ext_resource type="Script" uid="uid://ow5fg7u16pnf" path="res://addons/maaacks_menus_template/base/nodes/autoloads/ui_sound_controller/ui_sound_controller.gd" id="6_q6106"]
 [ext_resource type="PackedScene" uid="uid://38yo6y6rg7ak" path="res://scenes/__playground_scenes/puzzles/ThrowingPuzzles/puzzle_throw_2.tscn" id="7_0evim"]
 [ext_resource type="Texture2D" uid="uid://wpx72pcpea8n" path="res://assets/__not_ours_dontship/Xbox Series/XboxSeriesX_A.png" id="7_mpmb8"]
 [ext_resource type="PackedScene" uid="uid://bkcsjsk2ciff" path="res://addons/maaacks_menus_template/base/nodes/music_players/background_music_player.tscn" id="7_rgd0m"]
-[ext_resource type="Script" uid="uid://bkwlopi4qn32o" path="res://addons/maaacks_menus_template/base/nodes/labels/config_name_label.gd" id="8_0evim"]
+[ext_resource type="Script" uid="uid://y6prf5abagx4" path="res://addons/maaacks_menus_template/base/nodes/labels/config_name_label.gd" id="8_0evim"]
 [ext_resource type="Script" uid="uid://1nf36h0gms3q" path="res://addons/maaacks_menus_template/base/nodes/utilities/capture_focus.gd" id="9_xwrb1"]
 [ext_resource type="Texture2D" uid="uid://do8stwjtb55ya" path="res://assets/__not_ours_dontship/Switch/Switch_B.png" id="10_fvlfn"]
-[ext_resource type="Script" uid="uid://dmkubt2nsnsbn" path="res://addons/maaacks_menus_template/base/nodes/labels/config_version_label.gd" id="10_gmba7"]
+[ext_resource type="Script" uid="uid://qmgpsk8o2gq" path="res://addons/maaacks_menus_template/base/nodes/labels/config_version_label.gd" id="10_gmba7"]
 [ext_resource type="AudioStream" uid="uid://2j13alqx80jr" path="res://assets/audio/sfx/menu/UI/UI_Buttons_randomizer3.tres" id="11_0evim"]
 [ext_resource type="PackedScene" uid="uid://cwt4p3bufkke5" path="res://addons/maaacks_menus_template/base/nodes/windows/confirmation_overlaid_window.tscn" id="11_bus8x"]
 [ext_resource type="Texture2D" uid="uid://x6k27fenbl6w" path="res://assets/comic/frame_003.png" id="13_8kk3j"]
@@ -394,6 +394,18 @@ tracks/8/keys = {
 "update": 1,
 "values": [false]
 }
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("%MenuContainer/MenuButtonsMargin:visible")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
 
 [sub_resource type="Animation" id="4"]
 resource_name = "OpenSubMenu"
@@ -417,6 +429,18 @@ tracks/1/path = NodePath("OpeningScene:visible")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("%MenuContainer/MenuButtonsMargin:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
@@ -829,6 +853,18 @@ tracks/14/keys = {
 "update": 1,
 "values": [false]
 }
+tracks/15/type = "value"
+tracks/15/imported = false
+tracks/15/enabled = true
+tracks/15/path = NodePath("%MenuContainer/MenuButtonsMargin:visible")
+tracks/15/interp = 1
+tracks/15/loop_wrap = true
+tracks/15/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_2kqig"]
 _data = {
@@ -889,7 +925,7 @@ states/Opening_cutscene/node = SubResource("AnimationNodeAnimation_8kk3j")
 states/Opening_cutscene/position = Vector2(78.523, 131.77888)
 states/Start/position = Vector2(-94.799995, 115.799995)
 transitions = ["Intro", "OpenMainMenu", SubResource("11"), "OpenMainMenu", "OpenSubMenu", SubResource("14"), "OpenSubMenu", "OpenMainMenu", SubResource("AnimationNodeStateMachineTransition_63dxc"), "OpenMainMenu", "IntroB", SubResource("AnimationNodeStateMachineTransition_kmgne"), "Start", "Opening_cutscene", SubResource("AnimationNodeStateMachineTransition_jrgvd"), "Opening_cutscene", "Intro", SubResource("AnimationNodeStateMachineTransition_wsv17")]
-graph_offset = Vector2(-180.277, 49)
+graph_offset = Vector2(-40.276993, 38)
 
 [sub_resource type="CameraAttributesPhysical" id="CameraAttributesPhysical_lrn60"]
 
@@ -1504,7 +1540,7 @@ grow_vertical = 2
 alignment = 1
 
 [node name="TextureRect" type="TextureRect" parent="MainMenu/OpeningScene/BoxContainer" unique_id=2131277929]
-modulate = Color(0.6666667, 0.60784316, 0.5686275, 0)
+modulate = Color(0, 0, 0, 1)
 layout_mode = 2
 size_flags_horizontal = 3
 
@@ -1648,10 +1684,6 @@ lock = true
 [node name="Play Demo" type="Button" parent="MainMenu/MenuContainer/MenuButtonsMargin/MenuButtonsContainer/MenuButtonsBoxContainer" unique_id=971537016]
 unique_name_in_owner = true
 layout_mode = 2
-focus_neighbor_left = NodePath(".")
-focus_neighbor_top = NodePath(".")
-focus_neighbor_right = NodePath(".")
-focus_neighbor_bottom = NodePath("../Playground")
 theme_override_font_sizes/font_size = 40
 text = "Start Game"
 
@@ -1659,10 +1691,6 @@ text = "Start Game"
 unique_name_in_owner = true
 visible = false
 layout_mode = 2
-focus_neighbor_left = NodePath(".")
-focus_neighbor_top = NodePath("../Play Demo")
-focus_neighbor_right = NodePath(".")
-focus_neighbor_bottom = NodePath("../OptionsButton")
 text = "Playground"
 
 [node name="OptionsButton" type="Button" parent="MainMenu/MenuContainer/MenuButtonsMargin/MenuButtonsContainer/MenuButtonsBoxContainer" unique_id=1486236076]
@@ -1677,19 +1705,11 @@ text = "Options"
 [node name="CreditsButton" type="Button" parent="MainMenu/MenuContainer/MenuButtonsMargin/MenuButtonsContainer/MenuButtonsBoxContainer" unique_id=301223169]
 unique_name_in_owner = true
 layout_mode = 2
-focus_neighbor_left = NodePath(".")
-focus_neighbor_top = NodePath("../OptionsButton")
-focus_neighbor_right = NodePath(".")
-focus_neighbor_bottom = NodePath("../ExitButton")
 text = "Credits"
 
 [node name="ExitButton" type="Button" parent="MainMenu/MenuContainer/MenuButtonsMargin/MenuButtonsContainer/MenuButtonsBoxContainer" unique_id=1750454379]
 unique_name_in_owner = true
 layout_mode = 2
-focus_neighbor_left = NodePath(".")
-focus_neighbor_top = NodePath("../CreditsButton")
-focus_neighbor_right = NodePath(".")
-focus_neighbor_bottom = NodePath(".")
 text = "Exit"
 
 [node name="BB" type="Button" parent="MainMenu/MenuContainer/MenuButtonsMargin/MenuButtonsContainer/MenuButtonsBoxContainer" unique_id=1500278034]
