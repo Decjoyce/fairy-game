@@ -49,6 +49,7 @@ func check_charged() -> bool:
 	l_charged = l_val >= 1.0
 	r_charged = r_val >= 1.0
 	is_cancel = true
+	update_decal()
 	if r_charged and l_charged:
 		charge_complete()
 		return true
@@ -85,6 +86,7 @@ func what_hand_exit(hand: int):
 	else: 
 		r_grabbed = false
 		r_val = 0
+	update_decal()
 
 func disable(sig: float = -1) -> void:
 	$_trigger/_col.set_deferred("disabled", true)

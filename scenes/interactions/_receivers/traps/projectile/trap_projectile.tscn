@@ -7,12 +7,26 @@
 [ext_resource type="AudioStream" uid="uid://bl70njdpufmni" path="res://assets/audio/sfx/environment/Traps/Arrow/Weapons, Arrow, Arrows, Shot 04, Bowstring, Twang, Thwack, 8070 (Mono) SND127426 2.wav" id="3_v5yxh"]
 [ext_resource type="AudioStream" uid="uid://323itw85oonc" path="res://assets/audio/sfx/environment/Traps/Arrow/Weapons, Arrow, Arrows, Shot 04, Bowstring, Twang, Thwack, 8070 (Mono) SND127426.wav" id="4_iw5ko"]
 [ext_resource type="Script" uid="uid://djyhniwugtcsq" path="res://scripts/saving/persistent_objs/po_arrowtrap.gd" id="7_v5yxh"]
+[ext_resource type="Material" uid="uid://ckjbpunwhc0rn" path="res://assets/models/cairn/Props/SpikeTrap/SpikeTrap.tres" id="8_h1e0t"]
+[ext_resource type="ArrayMesh" uid="uid://sakmnnwkwcdm" path="res://assets/models/cairn/Props/SpikeTrap/SpikeTrap.obj" id="9_t5ra0"]
+[ext_resource type="Texture2D" uid="uid://moctry3iykqx" path="res://assets/models/cairn/Z-Old-HallModels/Hall/Hall_texture_Floordirt_Base_color.png" id="10_qultg"]
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_c1656"]
 streams_count = 3
 stream_0/stream = ExtResource("2_61h22")
 stream_1/stream = ExtResource("3_v5yxh")
 stream_2/stream = ExtResource("4_iw5ko")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2fpgg"]
+albedo_color = Color(0.78439564, 0.655934, 0.29867858, 1)
+albedo_texture = ExtResource("10_qultg")
+metallic = 0.14
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_evtgs"]
+material = SubResource("StandardMaterial3D_2fpgg")
+top_radius = 1.074
+bottom_radius = 1.194
+height = 0.076
 
 [node name="trap_projectile" type="Node3D" unique_id=589372953 node_paths=PackedStringArray("projectile_pool", "audio") groups=["debug_PickableObjects"]]
 script = ExtResource("1_fuppk")
@@ -27,6 +41,7 @@ max_polyphony = 5
 bus = &"SFX"
 
 [node name="_graphics" type="Sprite3D" parent="." unique_id=1919992750]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.009619057)
 pixel_size = 0.001306
 texture = ExtResource("1_27q8t")
 
@@ -46,3 +61,12 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.51508)
 [node name="PO_ArrowTrap" type="Node" parent="." unique_id=333408450 groups=["PO"]]
 script = ExtResource("7_v5yxh")
 metadata/_custom_type_script = "uid://djyhniwugtcsq"
+
+[node name="_g" type="MeshInstance3D" parent="." unique_id=805710472]
+transform = Transform3D(0.115, 7.627584e-09, 2.197288e-16, 0, -7.627585e-09, 0.115, 5.026809e-09, -0.1744988, -5.0268096e-09, 0, 0, 0.048701048)
+material_override = ExtResource("8_h1e0t")
+mesh = ExtResource("9_t5ra0")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="_g" unique_id=1742692787]
+transform = Transform3D(0.7950002, 1.058791e-21, -5.0487086e-29, -1.0587912e-21, 0.795, 1.06581444e-14, 5.04871e-29, -1.0658142e-14, 0.7950002, 0, 0.2753687, 0)
+mesh = SubResource("CylinderMesh_evtgs")
