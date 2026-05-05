@@ -176,14 +176,14 @@ monitorable = false
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, 0)
 shape = SubResource("SphereShape3D_1hgo1")
 
-[node name="BallyBogOne_Trigger2" parent="First_Part" unique_id=900281141 instance=ExtResource("12_g0t4t")]
+[node name="BallyBogTwo_Trigger" parent="First_Part" unique_id=900281141 instance=ExtResource("12_g0t4t")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16, 1, -11)
 
-[node name="Area3D" type="Area3D" parent="First_Part/BallyBogOne_Trigger2" unique_id=97359331]
+[node name="Area3D" type="Area3D" parent="First_Part/BallyBogTwo_Trigger" unique_id=97359331]
 collision_layer = 0
 monitorable = false
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="First_Part/BallyBogOne_Trigger2/Area3D" unique_id=2146439481]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="First_Part/BallyBogTwo_Trigger/Area3D" unique_id=2146439481]
 shape = SubResource("SphereShape3D_1hgo1")
 
 [node name="Open_SkullGate_Button" parent="First_Part" unique_id=1180276272 instance=ExtResource("6_vy3m1")]
@@ -205,7 +205,7 @@ metadata/uid = "ddf36f8f-080e-46e5-bef1-56189d19fce9"
 metadata/date_generated = "2026-05-04T18:15:48"
 
 [node name="BallyBogOne_Trigger2" parent="Second_Part" unique_id=482191571 instance=ExtResource("12_g0t4t")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 1, -7)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 1, -7)
 
 [node name="Area3D" type="Area3D" parent="Second_Part/BallyBogOne_Trigger2" unique_id=1379741942]
 collision_layer = 0
@@ -301,28 +301,6 @@ use_intervals = true
 metadata/uid = "eccf0714-6eb1-4189-8a9f-676b0130848d"
 metadata/date_generated = "2026-05-04T18:15:48"
 
-[node name="Enemies" type="Node3D" parent="." unique_id=160301403]
-
-[node name="Ballybog" parent="Enemies" unique_id=1712475425 node_paths=PackedStringArray("grid_map", "patrol_points") instance=ExtResource("11_4joy0")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, -14)
-grid_map = NodePath("../../GridMapPathFinding2")
-patrol_points = [NodePath("../../EnemyWanderPoints/BallyBog_One_WanderPoints/WP_1"), NodePath("../../EnemyWanderPoints/BallyBog_One_WanderPoints/WP_2"), NodePath("../../EnemyWanderPoints/BallyBog_One_WanderPoints/WP_3"), NodePath("../../EnemyWanderPoints/BallyBog_One_WanderPoints/WP_4"), NodePath("../../EnemyWanderPoints/BallyBog_One_WanderPoints/WP_5"), NodePath("../../EnemyWanderPoints/BallyBog_One_WanderPoints/WP_6"), NodePath("../../EnemyWanderPoints/BallyBog_One_WanderPoints/WP_7"), NodePath("../../EnemyWanderPoints/BallyBog_One_WanderPoints/WP_8"), NodePath("../../EnemyWanderPoints/BallyBog_One_WanderPoints/WP_9"), NodePath("../../EnemyWanderPoints/BallyBog_One_WanderPoints/WP_10"), NodePath("../../EnemyWanderPoints/BallyBog_One_WanderPoints/WP_11"), NodePath("../../EnemyWanderPoints/BallyBog_One_WanderPoints/WP_12"), NodePath("../../EnemyWanderPoints/BallyBog_One_WanderPoints/WP_13"), NodePath("../../EnemyWanderPoints/BallyBog_One_WanderPoints/WP_14"), NodePath("../../EnemyWanderPoints/BallyBog_One_WanderPoints/WP_15"), NodePath("../../EnemyWanderPoints/BallyBog_One_WanderPoints/WP_16"), NodePath("../../EnemyWanderPoints/BallyBog_One_WanderPoints/WP_17")]
-delay_between_points = 0.5
-time_before_giveup_chase = 2.0
-metadata/uid = "6e9f1694-8eff-47a3-a914-33b2c30bf2dd"
-metadata/lock_uid = false
-metadata/date_generated = "2026-05-04T18:15:48"
-
-[node name="Ballybog2" parent="Enemies" unique_id=772673308 node_paths=PackedStringArray("grid_map", "patrol_points") instance=ExtResource("11_4joy0")]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 9, 0, -9)
-grid_map = NodePath("../../GridMapPathFinding2")
-patrol_points = [NodePath("../../EnemyWanderPoints/Ballybog_Two_WanderPoints/WP_1"), NodePath("../../EnemyWanderPoints/Ballybog_Two_WanderPoints/WP_2"), NodePath("../../EnemyWanderPoints/Ballybog_Two_WanderPoints/WP_3"), NodePath("../../EnemyWanderPoints/Ballybog_Two_WanderPoints/WP_4"), NodePath("../../EnemyWanderPoints/Ballybog_Two_WanderPoints/WP_5"), NodePath("../../EnemyWanderPoints/Ballybog_Two_WanderPoints/WP_6"), NodePath("../../EnemyWanderPoints/Ballybog_Two_WanderPoints/WP_7"), NodePath("../../EnemyWanderPoints/Ballybog_Two_WanderPoints/WP_8"), NodePath("../../EnemyWanderPoints/Ballybog_Two_WanderPoints/WP_9"), NodePath("../../EnemyWanderPoints/Ballybog_Two_WanderPoints/WP_10"), NodePath("../../EnemyWanderPoints/Ballybog_Two_WanderPoints/WP_11"), NodePath("../../EnemyWanderPoints/Ballybog_Two_WanderPoints/WP_12"), NodePath("../../EnemyWanderPoints/Ballybog_Two_WanderPoints/WP_13"), NodePath("../../EnemyWanderPoints/Ballybog_Two_WanderPoints/WP_14"), NodePath("../../EnemyWanderPoints/Ballybog_Two_WanderPoints/WP_15"), NodePath("../../EnemyWanderPoints/Ballybog_Two_WanderPoints/WP_16"), NodePath("../../EnemyWanderPoints/Ballybog_Two_WanderPoints/WP_17"), NodePath("../../EnemyWanderPoints/Ballybog_Two_WanderPoints/WP_18")]
-delay_between_points = 0.5
-time_before_giveup_chase = 2.0
-metadata/uid = "60c588be-cacc-47d4-9583-9415931326f6"
-metadata/lock_uid = false
-metadata/date_generated = "2026-05-04T18:15:48"
-
 [node name="Torches" type="Node3D" parent="." unique_id=2025326532]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -10)
 
@@ -363,6 +341,29 @@ transform = Transform3D(0.22263771, -0.9416823, -0.25232297, -1.6888784e-07, -0.
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.6123486, 0.48849535, 7)
 metadata/lock_uid = false
 metadata/uid = "640c36b8-2954-4c58-94a1-3be3e005524f"
+metadata/date_generated = "2026-05-04T18:15:48"
+
+[node name="Enemies" type="Node3D" parent="Torches" unique_id=160301403]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 10)
+
+[node name="Ballybog" parent="Torches/Enemies" unique_id=1712475425 node_paths=PackedStringArray("grid_map", "patrol_points") instance=ExtResource("11_4joy0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, -14)
+grid_map = NodePath("../../../GridMapPathFinding2")
+patrol_points = [NodePath("../../../EnemyWanderPoints/BallyBog_One_WanderPoints/WP_1"), NodePath("../../../EnemyWanderPoints/BallyBog_One_WanderPoints/WP_2"), NodePath("../../../EnemyWanderPoints/BallyBog_One_WanderPoints/WP_3"), NodePath("../../../EnemyWanderPoints/BallyBog_One_WanderPoints/WP_4"), NodePath("../../../EnemyWanderPoints/BallyBog_One_WanderPoints/WP_5"), NodePath("../../../EnemyWanderPoints/BallyBog_One_WanderPoints/WP_6"), NodePath("../../../EnemyWanderPoints/BallyBog_One_WanderPoints/WP_7"), NodePath("../../../EnemyWanderPoints/BallyBog_One_WanderPoints/WP_8"), NodePath("../../../EnemyWanderPoints/BallyBog_One_WanderPoints/WP_9"), NodePath("../../../EnemyWanderPoints/BallyBog_One_WanderPoints/WP_10"), NodePath("../../../EnemyWanderPoints/BallyBog_One_WanderPoints/WP_11"), NodePath("../../../EnemyWanderPoints/BallyBog_One_WanderPoints/WP_12"), NodePath("../../../EnemyWanderPoints/BallyBog_One_WanderPoints/WP_13"), NodePath("../../../EnemyWanderPoints/BallyBog_One_WanderPoints/WP_14"), NodePath("../../../EnemyWanderPoints/BallyBog_One_WanderPoints/WP_15"), NodePath("../../../EnemyWanderPoints/BallyBog_One_WanderPoints/WP_16"), NodePath("../../../EnemyWanderPoints/BallyBog_One_WanderPoints/WP_17")]
+delay_between_points = 0.5
+time_before_giveup_chase = 2.0
+metadata/uid = "6e9f1694-8eff-47a3-a914-33b2c30bf2dd"
+metadata/lock_uid = false
+metadata/date_generated = "2026-05-04T18:15:48"
+
+[node name="Ballybog2" parent="Torches/Enemies" unique_id=772673308 node_paths=PackedStringArray("grid_map", "patrol_points") instance=ExtResource("11_4joy0")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 9, 0, -9)
+grid_map = NodePath("../../../GridMapPathFinding2")
+patrol_points = [NodePath("../../../EnemyWanderPoints/Ballybog_Two_WanderPoints/WP_3"), NodePath("../../../EnemyWanderPoints/Ballybog_Two_WanderPoints/WP_4"), NodePath("../../../EnemyWanderPoints/Ballybog_Two_WanderPoints/WP_5"), NodePath("../../../EnemyWanderPoints/Ballybog_Two_WanderPoints/WP_6"), NodePath("../../../EnemyWanderPoints/Ballybog_Two_WanderPoints/WP_7"), NodePath("../../../EnemyWanderPoints/Ballybog_Two_WanderPoints/WP_19"), NodePath("../../../EnemyWanderPoints/Ballybog_Two_WanderPoints/WP_8"), NodePath("../../../EnemyWanderPoints/Ballybog_Two_WanderPoints/WP_9"), NodePath("../../../EnemyWanderPoints/Ballybog_Two_WanderPoints/WP_8"), NodePath("../../../EnemyWanderPoints/Ballybog_Two_WanderPoints/WP_10"), NodePath("../../../EnemyWanderPoints/Ballybog_Two_WanderPoints/WP_11"), NodePath("../../../EnemyWanderPoints/Ballybog_Two_WanderPoints/WP_12"), NodePath("../../../EnemyWanderPoints/Ballybog_Two_WanderPoints/WP_13"), NodePath("../../../EnemyWanderPoints/Ballybog_Two_WanderPoints/WP_14"), NodePath("../../../EnemyWanderPoints/Ballybog_Two_WanderPoints/WP_13"), NodePath("../../../EnemyWanderPoints/Ballybog_Two_WanderPoints/WP_12"), NodePath("../../../EnemyWanderPoints/Ballybog_Two_WanderPoints/WP_10"), NodePath("../../../EnemyWanderPoints/Ballybog_Two_WanderPoints/WP_15"), NodePath("../../../EnemyWanderPoints/Ballybog_Two_WanderPoints/WP_16"), NodePath("../../../EnemyWanderPoints/Ballybog_Two_WanderPoints/WP_17"), NodePath("../../../EnemyWanderPoints/Ballybog_Two_WanderPoints/WP_16"), NodePath("../../../EnemyWanderPoints/Ballybog_Two_WanderPoints/WP_15"), NodePath("../../../EnemyWanderPoints/Ballybog_Two_WanderPoints/WP_10"), NodePath("../../../EnemyWanderPoints/Ballybog_Two_WanderPoints/WP_7"), NodePath("../../../EnemyWanderPoints/Ballybog_Two_WanderPoints/WP_6"), NodePath("../../../EnemyWanderPoints/Ballybog_Two_WanderPoints/WP_5"), NodePath("../../../EnemyWanderPoints/Ballybog_Two_WanderPoints/WP_4"), NodePath("../../../EnemyWanderPoints/Ballybog_Two_WanderPoints/WP_3")]
+delay_between_points = 0.5
+time_before_giveup_chase = 2.0
+metadata/uid = "60c588be-cacc-47d4-9583-9415931326f6"
+metadata/lock_uid = false
 metadata/date_generated = "2026-05-04T18:15:48"
 
 [node name="EnemyWanderPoints" type="Node3D" parent="." unique_id=118372553]
@@ -424,11 +425,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11, 0, -1.000001)
 [node name="Ballybog_Two_WanderPoints" type="Node3D" parent="EnemyWanderPoints" unique_id=1302129630]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 0, -7)
 
-[node name="WP_1" type="Node3D" parent="EnemyWanderPoints/Ballybog_Two_WanderPoints" unique_id=1525200499]
-
-[node name="WP_2" type="Node3D" parent="EnemyWanderPoints/Ballybog_Two_WanderPoints" unique_id=871664328]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2)
-
 [node name="WP_3" type="Node3D" parent="EnemyWanderPoints/Ballybog_Two_WanderPoints" unique_id=1559784521]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, -2)
 
@@ -439,10 +435,13 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 4)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 4)
 
 [node name="WP_6" type="Node3D" parent="EnemyWanderPoints/Ballybog_Two_WanderPoints" unique_id=782881057]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 2)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, 2)
 
 [node name="WP_7" type="Node3D" parent="EnemyWanderPoints/Ballybog_Two_WanderPoints" unique_id=1550245264]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, 0)
+
+[node name="WP_19" type="Node3D" parent="EnemyWanderPoints/Ballybog_Two_WanderPoints" unique_id=553305939]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 0)
 
 [node name="WP_8" type="Node3D" parent="EnemyWanderPoints/Ballybog_Two_WanderPoints" unique_id=2060454088]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, -2)
@@ -453,29 +452,26 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 0, -2)
 [node name="WP_10" type="Node3D" parent="EnemyWanderPoints/Ballybog_Two_WanderPoints" unique_id=602649951]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, -4)
 
-[node name="WP_11" type="Node3D" parent="EnemyWanderPoints/Ballybog_Two_WanderPoints" unique_id=1019402240]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -4)
-
-[node name="WP_12" type="Node3D" parent="EnemyWanderPoints/Ballybog_Two_WanderPoints" unique_id=1921359344]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -8)
-
-[node name="WP_13" type="Node3D" parent="EnemyWanderPoints/Ballybog_Two_WanderPoints" unique_id=1537673111]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, -6)
-
-[node name="WP_14" type="Node3D" parent="EnemyWanderPoints/Ballybog_Two_WanderPoints" unique_id=308011255]
+[node name="WP_15" type="Node3D" parent="EnemyWanderPoints/Ballybog_Two_WanderPoints" unique_id=1552969766]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, -10)
 
-[node name="WP_15" type="Node3D" parent="EnemyWanderPoints/Ballybog_Two_WanderPoints" unique_id=1478885674]
+[node name="WP_16" type="Node3D" parent="EnemyWanderPoints/Ballybog_Two_WanderPoints" unique_id=272174167]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, -10)
 
-[node name="WP_16" type="Node3D" parent="EnemyWanderPoints/Ballybog_Two_WanderPoints" unique_id=794771501]
+[node name="WP_17" type="Node3D" parent="EnemyWanderPoints/Ballybog_Two_WanderPoints" unique_id=1563676090]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, -4)
 
-[node name="WP_17" type="Node3D" parent="EnemyWanderPoints/Ballybog_Two_WanderPoints" unique_id=43256577]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, -10)
+[node name="WP_11" type="Node3D" parent="EnemyWanderPoints/Ballybog_Two_WanderPoints" unique_id=1019402240]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0, -4)
 
-[node name="WP_18" type="Node3D" parent="EnemyWanderPoints/Ballybog_Two_WanderPoints" unique_id=398340583]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, -10)
+[node name="WP_12" type="Node3D" parent="EnemyWanderPoints/Ballybog_Two_WanderPoints" unique_id=1921359344]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 0, -4)
+
+[node name="WP_13" type="Node3D" parent="EnemyWanderPoints/Ballybog_Two_WanderPoints" unique_id=1537673111]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 0, 3.6000004)
+
+[node name="WP_14" type="Node3D" parent="EnemyWanderPoints/Ballybog_Two_WanderPoints" unique_id=308011255]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 0, 4)
 
 [node name="Environment" type="Node3D" parent="." unique_id=1784027842]
 
@@ -1705,18 +1701,18 @@ metadata/date_generated = "2026-04-29T22:33:48"
 [connection signal="on_activated" from="First_Part/BrokenLever/BrokenLever" to="First_Part/BrokenLever/Lever_Fixed" method="enable"]
 [connection signal="on_change" from="First_Part/BrokenLever/Lever_Fixed" to="Second_Part/Key_Gate" method="open_gate"]
 [connection signal="on_change" from="First_Part/BrokenLever/Lever_Fixed" to="Environment/CeilingTorches/TorchSconce_KeyGate" method="light_up_torch_with_sig"]
-[connection signal="on_activated" from="First_Part/BallyBogOne_Trigger" to="Enemies/Ballybog" method="enable_me"]
+[connection signal="on_activated" from="First_Part/BallyBogOne_Trigger" to="Torches/Enemies/Ballybog" method="enable_me"]
 [connection signal="area_entered" from="First_Part/BallyBogOne_Trigger/Area3D" to="First_Part/BallyBogOne_Trigger" method="_player_entered"]
 [connection signal="area_exited" from="First_Part/BallyBogOne_Trigger/Area3D" to="First_Part/BallyBogOne_Trigger" method="_player_exited"]
-[connection signal="on_activated" from="First_Part/BallyBogOne_Trigger2" to="Third_Part/Door/Door" method="close_door"]
-[connection signal="on_activated" from="First_Part/BallyBogOne_Trigger2" to="Enemies/Ballybog" method="disable_me"]
-[connection signal="on_activated" from="First_Part/BallyBogOne_Trigger2" to="Enemies/Ballybog2" method="disable_me"]
-[connection signal="area_entered" from="First_Part/BallyBogOne_Trigger2/Area3D" to="First_Part/BallyBogOne_Trigger2" method="_player_entered"]
-[connection signal="area_exited" from="First_Part/BallyBogOne_Trigger2/Area3D" to="First_Part/BallyBogOne_Trigger2" method="_player_exited"]
+[connection signal="on_activated" from="First_Part/BallyBogTwo_Trigger" to="Third_Part/Door/Door" method="close_door"]
+[connection signal="on_activated" from="First_Part/BallyBogTwo_Trigger" to="Torches/Enemies/Ballybog" method="disable_me"]
+[connection signal="on_activated" from="First_Part/BallyBogTwo_Trigger" to="Torches/Enemies/Ballybog2" method="disable_me"]
+[connection signal="area_entered" from="First_Part/BallyBogTwo_Trigger/Area3D" to="First_Part/BallyBogTwo_Trigger" method="_player_entered"]
+[connection signal="area_exited" from="First_Part/BallyBogTwo_Trigger/Area3D" to="First_Part/BallyBogTwo_Trigger" method="_player_exited"]
 [connection signal="on_activated" from="First_Part/Open_SkullGate_Button" to="Second_Part/Skull_Gate" method="open_gate"]
 [connection signal="on_activated" from="First_Part/Open_SkullGate_Button" to="Environment/CeilingTorches/TorchSconce_SkullGate_1" method="light_up_torch_with_sig"]
 [connection signal="on_activated" from="First_Part/Open_SkullGate_Button" to="Environment/CeilingTorches/TorchSconce_SkullGate_2" method="light_up_torch_with_sig"]
-[connection signal="on_activated" from="Second_Part/BallyBogOne_Trigger2" to="Enemies/Ballybog2" method="enable_me"]
+[connection signal="on_activated" from="Second_Part/BallyBogOne_Trigger2" to="Torches/Enemies/Ballybog2" method="enable_me"]
 [connection signal="area_entered" from="Second_Part/BallyBogOne_Trigger2/Area3D" to="Second_Part/BallyBogOne_Trigger2" method="_player_entered"]
 [connection signal="area_exited" from="Second_Part/BallyBogOne_Trigger2/Area3D" to="Second_Part/BallyBogOne_Trigger2" method="_player_exited"]
 [connection signal="on_activated" from="Second_Part/Open_LeverPieceGate_Button" to="First_Part/Gate_With_leverPiece" method="open_gate"]
