@@ -7,7 +7,7 @@
 [ext_resource type="Shape3D" uid="uid://s7dtgfwvmtwe" path="res://scenes/_player/movement/p_col_shape_crouched.tres" id="2_svbpy"]
 [ext_resource type="PackedScene" uid="uid://dqojmsc2q6wf4" path="res://scenes/_player/interaction/player_interaction.tscn" id="3_3jgj8"]
 [ext_resource type="Script" uid="uid://46pp7aerorca" path="res://scripts/stats.gd" id="4_fhpxp"]
-[ext_resource type="AudioStream" uid="uid://cclyljwgkpd80" path="res://assets/audio/sfx/banshee/Scream.wav" id="5_5jit5"]
+[ext_resource type="AudioStream" uid="uid://dbi8il80ljppc" path="res://assets/audio/sfx/banshee/bansheeScream.wav" id="5_5jit5"]
 [ext_resource type="Texture2D" uid="uid://drwif87vii7ya" path="res://assets/ui/player/stats/HealthStaminaUI_border.png" id="5_bfirj"]
 [ext_resource type="Texture2D" uid="uid://c1iym2ocgoipj" path="res://scenes/enemy/Sprites/banshee/bansheeIdle_n.png" id="6_j3cqb"]
 [ext_resource type="Script" uid="uid://ckdu0p87yl30a" path="res://scenes/_player/player_movement_new.gd" id="6_ni6fa"]
@@ -698,8 +698,10 @@ light_volumetric_fog_energy = 0.0
 light_cull_mask = 4293951488
 
 [node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="Banshee" unique_id=725181352]
+volume_db = 8.649
+max_db = 6.0
 max_distance = 27.0
-bus = &"SaveSFX"
+bus = &"BansheeScream"
 
 [node name="PostProcessing" type="Node" parent="." unique_id=1157661822]
 
