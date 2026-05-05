@@ -7,6 +7,7 @@
 [ext_resource type="Shape3D" uid="uid://s7dtgfwvmtwe" path="res://scenes/_player/movement/p_col_shape_crouched.tres" id="2_svbpy"]
 [ext_resource type="PackedScene" uid="uid://dqojmsc2q6wf4" path="res://scenes/_player/interaction/player_interaction.tscn" id="3_3jgj8"]
 [ext_resource type="Script" uid="uid://46pp7aerorca" path="res://scripts/stats.gd" id="4_fhpxp"]
+[ext_resource type="AudioStream" uid="uid://cclyljwgkpd80" path="res://assets/audio/sfx/banshee/Scream.wav" id="5_5jit5"]
 [ext_resource type="Texture2D" uid="uid://drwif87vii7ya" path="res://assets/ui/player/stats/HealthStaminaUI_border.png" id="5_bfirj"]
 [ext_resource type="Texture2D" uid="uid://c1iym2ocgoipj" path="res://scenes/enemy/Sprites/banshee/bansheeIdle_n.png" id="6_j3cqb"]
 [ext_resource type="Script" uid="uid://ckdu0p87yl30a" path="res://scenes/_player/player_movement_new.gd" id="6_ni6fa"]
@@ -249,7 +250,7 @@ tracks/4/keys = {
 
 [sub_resource type="Animation" id="Animation_j3cqb"]
 resource_name = "ending_anim"
-length = 3.0
+length = 5.1666665
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -281,10 +282,10 @@ tracks/2/path = NodePath("../Banshee:position")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(1.5333334, 1.7333333, 2.266667),
-"transitions": PackedFloat32Array(1, 2, 1),
+"times": PackedFloat32Array(1.9666668, 2.3666666, 2.7000003),
+"transitions": PackedFloat32Array(1, 4.2870927, 1),
 "update": 0,
-"values": [Vector3(0, -0.3, 13), Vector3(0, -0.3, 12), Vector3(0, -0.42, 0.385)]
+"values": [Vector3(0, -0.3, 16.765), Vector3(0, -0.3, 12), Vector3(0, -0.42, 0.385)]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
@@ -293,7 +294,7 @@ tracks/3/path = NodePath("../Banshee:rotation")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(1.5666667, 1.8166667, 1.8666667, 2.266667),
+"times": PackedFloat32Array(1.9666663, 2.2166662, 2.2666664, 2.6666665),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
 "values": [Vector3(0.26179942, 3.1415925, -2.342486e-08), Vector3(0.26179942, 3.1415925, -2.342486e-08), Vector3(0.26179942, 3.1415925, -2.342486e-08), Vector3(0.06981317, 3.1415927, 0)]
@@ -305,7 +306,7 @@ tracks/4/path = NodePath("ColorRect:visible")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
-"times": PackedFloat32Array(2.4),
+"times": PackedFloat32Array(2.9333334),
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [true]
@@ -317,13 +318,28 @@ tracks/5/path = NodePath("..")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
-"times": PackedFloat32Array(2.5666666),
+"times": PackedFloat32Array(5.133333),
 "transitions": PackedFloat32Array(1),
 "values": [{
 "args": [],
 "method": &"do_ending"
 }]
 }
+tracks/6/type = "audio"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("../Banshee/AudioStreamPlayer3D")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("5_5jit5")
+}],
+"times": PackedFloat32Array(1.1333333)
+}
+tracks/6/use_blend = true
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_ijyi7"]
 _data = {
@@ -680,6 +696,10 @@ light_color = Color(0.52566993, 0, 0.039745845, 1)
 light_energy = 12.143
 light_volumetric_fog_energy = 0.0
 light_cull_mask = 4293951488
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="Banshee" unique_id=725181352]
+max_distance = 25.0
+bus = &"SaveSFX"
 
 [node name="PostProcessing" type="Node" parent="." unique_id=1157661822]
 

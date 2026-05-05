@@ -17,7 +17,7 @@ gradient = SubResource("Gradient_xab64")
 fill = 1
 fill_from = Vector2(0.43931624, 0.51111114)
 
-[sub_resource type="AnimationNodeStateMachinePlayback" id="AnimationNodeStateMachinePlayback_ir1y1"]
+[sub_resource type="AnimationNodeStateMachinePlayback" id="AnimationNodeStateMachinePlayback_muhwy"]
 
 [sub_resource type="Animation" id="Animation_03qc8"]
 length = 0.001
@@ -276,7 +276,7 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id="Animation_xab64"]
 resource_name = "post_credits"
-length = 14.1
+length = 17.866667
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -320,7 +320,7 @@ tracks/3/path = NodePath(".")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(13.633333),
+"times": PackedFloat32Array(17.5),
 "transitions": PackedFloat32Array(1),
 "values": [{
 "args": [],
@@ -334,7 +334,7 @@ tracks/4/path = NodePath("EndCredits")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
-"times": PackedFloat32Array(13.466666),
+"times": PackedFloat32Array(17.433332),
 "transitions": PackedFloat32Array(1),
 "values": [{
 "args": [],
@@ -344,7 +344,7 @@ tracks/4/keys = {
 
 [sub_resource type="Animation" id="Animation_wleya"]
 resource_name = "title"
-length = 13.066667
+length = 14.433333
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -352,7 +352,7 @@ tracks/0/path = NodePath("Fade_In:color")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.8, 2.0333333, 11.5, 12.833333),
+"times": PackedFloat32Array(4.366667, 5.166667, 6.4, 12.833334, 14.166666),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1),
 "update": 0,
 "values": [Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 0), Color(0, 0, 0, 0), Color(0, 0, 0, 0)]
@@ -364,7 +364,7 @@ tracks/1/path = NodePath("TitleSection/TextureRect:scale")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0.8333333, 7.3333335, 8.2, 9.966667),
+"times": PackedFloat32Array(0.8333333, 8.666667, 9.533333, 11.300001),
 "transitions": PackedFloat32Array(-2, 1, 1, 1),
 "update": 0,
 "values": [Vector2(0.75, 0.75), Vector2(1.5, 1.5), Vector2(1.5, 1.5), Vector2(1.4, 1.4)]
@@ -376,7 +376,7 @@ tracks/2/path = NodePath("TitleSection:modulate")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(9.066668, 10),
+"times": PackedFloat32Array(10.400002, 11.333334),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
@@ -388,7 +388,7 @@ tracks/3/path = NodePath("TitleSection:visible")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0, 10),
+"times": PackedFloat32Array(0, 11.333334),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [true, false]
@@ -457,7 +457,7 @@ texture = SubResource("GradientTexture2D_7bnfe")
 visible = false
 layout_mode = 1
 main_menu_scene_path = "uid://c1evlmyhcjgef"
-animation_state_machine = SubResource("AnimationNodeStateMachinePlayback_ir1y1")
+animation_state_machine = SubResource("AnimationNodeStateMachinePlayback_muhwy")
 input_scroll_speed = 60.0
 scroll_paused = true
 
@@ -483,7 +483,7 @@ offset_right = 295.0
 offset_bottom = 101.5
 grow_horizontal = 2
 grow_vertical = 2
-scale = Vector2(1e-05, 1e-05)
+scale = Vector2(0.75, 0.75)
 pivot_offset_ratio = Vector2(0.5, 0.5)
 texture = ExtResource("2_wleya")
 metadata/_edit_use_anchors_ = true
