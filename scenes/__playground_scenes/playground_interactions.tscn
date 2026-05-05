@@ -73,6 +73,7 @@
 [ext_resource type="PackedScene" uid="uid://b5g00fexnuwte" path="res://scenes/interactions/_special/the_observer/the_observer.tscn" id="71_dri38"]
 [ext_resource type="PackedScene" uid="uid://cwr2r7yxt4ust" path="res://scenes/interactions/ReusableStones/stonepile_reusable_stones.tscn" id="72_v0o7u"]
 [ext_resource type="PackedScene" uid="uid://clvus6c43ipdy" path="res://scenes/interactions/interactables/items/all_items/misc/item_stone.tscn" id="73_x83fr"]
+[ext_resource type="PackedScene" uid="uid://dpm2ettl06ilt" path="res://scenes/interactions/interactables/items/all_items/instruments/item_flute.tscn" id="74_4k31x"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_3wul1"]
 
@@ -5959,9 +5960,6 @@ font_size = 52
 [node name="Node3D" type="Node3D" parent="Room_Items/Sections/Sec_Instrument" unique_id=602190889]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 0, 0)
 
-[node name="TEST_Instrument" parent="Room_Items/Sections/Sec_Instrument/Node3D" unique_id=578488653 instance=ExtResource("36_poavi")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.5, 0.4, 0)
-
 [node name="Item_TP" type="Node3D" parent="Room_Items" unique_id=155812784 node_paths=PackedStringArray("out_pos")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -1)
 script = ExtResource("30_fksdy")
@@ -6023,6 +6021,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.18116593, 0)
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Stonepile_ReusableStones" unique_id=51679725]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.9242859, 0.6812134, -0.6938629)
 shape = SubResource("BoxShape3D_x83fr")
+
+[node name="Flute" parent="." unique_id=130412758 instance=ExtResource("74_4k31x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -36, 0.4, -1)
 
 [connection signal="area_entered" from="Bin/Room_Items/Teleporter/Trigger" to="Bin/Room_Items/Teleporter" method="_teleport_entity"]
 [connection signal="body_entered" from="Bin/Room_Items/Teleporter/Trigger" to="Bin/Room_Items/Teleporter" method="_teleport_item"]
