@@ -30,7 +30,6 @@
 [ext_resource type="AudioStream" uid="uid://1n0jula0gdsl" path="res://assets/audio/sfx/environment/Doors/Gate/Doors, Hardware, Metal Garage Gate, Key Handle, Lock, Rattle 02 SND108872 S01.wav" id="18_i38ct"]
 [ext_resource type="Script" uid="uid://cc36kknugth5b" path="res://scripts/saving/persistent_objs/po_itmreceiver.gd" id="19_gkkpx"]
 [ext_resource type="AudioStream" uid="uid://c33p2ls0qmgvf" path="res://assets/audio/sfx/environment/Doors/Gate/Doors, Hardware, Metal Garage Gate, Key Handle, Lock, Rattle 02 SND108872 S02.wav" id="20_7rero"]
-[ext_resource type="PackedScene" uid="uid://lxic7c72kvyt" path="res://scenes/interactions/interactables/items/all_items/misc/item_skull.tscn" id="21_t3acm"]
 [ext_resource type="Material" uid="uid://oodkfqgljt7k" path="res://assets/models/cairn/Props/Gate/GateNoKey.tres" id="22_u2nfe"]
 [ext_resource type="Script" uid="uid://c4t3ko70ihpyy" path="res://scenes/interactions/_receivers/animated_object/animated_object.gd" id="23_vubup"]
 [ext_resource type="PackedScene" uid="uid://dr3608osp2js" path="res://scenes/interactions/interactables/items/all_items/misc/item_bell.tscn" id="24_ralcv"]
@@ -40,9 +39,15 @@
 [ext_resource type="Script" uid="uid://bul4myvyhnpjc" path="res://scripts/saving/uid_generator.gd" id="28_qhdgp"]
 [ext_resource type="PackedScene" uid="uid://dpmxu8xwfcf5e" path="res://scenes/enemy/bb_line.tscn" id="28_x42l1"]
 [ext_resource type="PackedScene" uid="uid://bsdlm8rcrt2j" path="res://scenes/interactions/_triggers/area_triggers/player_area_trigger.tscn" id="29_b2mbs"]
+[ext_resource type="Script" uid="uid://s5cfdf85lm5g" path="res://scenes/interactions/interactables/items/grabbable_item.gd" id="32_hapmq"]
+[ext_resource type="Script" uid="uid://cqhq7vrwiw3m6" path="res://scenes/interactions/interactables/items/item_types/item_type.gd" id="33_dd1ot"]
+[ext_resource type="Texture2D" uid="uid://1m8e2skdgkex" path="res://assets/sprites/item_sprites/skull_item.png" id="34_cl4k4"]
 [ext_resource type="PackedScene" uid="uid://cpnmun20lswr" path="res://scenes/_levels/_palettes/cairn/props/cairn_pillar.tscn" id="34_j0le8"]
 [ext_resource type="PackedScene" uid="uid://cfuq8lf22so06" path="res://scenes/_levels/_palettes/cairn/props/Rocks/cairn_rock_pile.tscn" id="35_2cjid"]
+[ext_resource type="AudioStream" uid="uid://n3o78n2v01wi" path="res://assets/audio/sfx/items/skull/skull_hit_randomizer.tres" id="35_kspn4"]
 [ext_resource type="PackedScene" uid="uid://v3a4kqxol6jl" path="res://scenes/_levels/_palettes/cairn/props/Rocks/cairn_rock_8.tscn" id="36_i5lll"]
+[ext_resource type="Script" uid="uid://bhf6r6nw14krj" path="res://scripts/saving/persistent_objs/po_item.gd" id="36_qrne0"]
+[ext_resource type="AudioStream" uid="uid://c3aw2fw8oosx1" path="res://assets/audio/sfx/items/Grab/Ceramic_randomizer.tres" id="37_3vf0b"]
 [ext_resource type="PackedScene" uid="uid://cnkngeiaucgql" path="res://scenes/_levels/_palettes/cairn/props/Rocks/cairn_rock_2.tscn" id="37_x42l1"]
 [ext_resource type="PackedScene" uid="uid://ylg6mxx468cq" path="res://scenes/_levels/_palettes/cairn/props/Rocks/cairn_rock_1.tscn" id="38_rv6yw"]
 [ext_resource type="Script" uid="uid://cb04xjhu5ksor" path="res://scenes/interactions/_receivers/enabler_disabler_v1/visibility_enabler.gd" id="40_x42l1"]
@@ -112,6 +117,18 @@ radius = 0.1
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_6hp3v"]
 size = Vector3(1.6, 2, 0.3)
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_llc7q"]
+
+[sub_resource type="Resource" id="Resource_yadgr"]
+script = ExtResource("33_dd1ot")
+metadata/_custom_type_script = "uid://cqhq7vrwiw3m6"
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_llc7q"]
+size = Vector3(0.5, 0.5, 0.5)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_234jp"]
+size = Vector3(0.4, 0.4, 0.4)
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_xrsmt"]
 _surfaces = [{
@@ -1039,11 +1056,69 @@ metadata/_custom_type_script = "uid://b4y0nvl1kcnqk"
 
 [node name="Items" type="Node3D" parent="_env" unique_id=1821975207]
 
-[node name="skull" parent="_env/Items" unique_id=234370081 instance=ExtResource("21_t3acm")]
+[node name="skull" type="RigidBody3D" parent="_env/Items" unique_id=234370081 node_paths=PackedStringArray("col", "grab_col", "idle_graphics", "grabbed_graphics") groups=["debug_PickableObjects"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 2.1, 1.1)
+collision_layer = 2
+axis_lock_angular_x = true
+axis_lock_angular_z = true
+mass = 0.5
+physics_material_override = SubResource("PhysicsMaterial_llc7q")
+gravity_scale = 0.8
+contact_monitor = true
+max_contacts_reported = 1
+script = ExtResource("32_hapmq")
+item_type = SubResource("Resource_yadgr")
+display_name = "SKULL"
+item_weight = 3
+col = NodePath("CollisionShape3D")
+grab_col = NodePath("Area3D/CollisionShape3D2")
+idle_graphics = NodePath("_g_idle")
+grabbed_graphics = NodePath("_g_grabbed")
 metadata/uid = "1c8bc94f-4ac5-4e5c-8e8a-e00149ede09f"
 metadata/lock_uid = true
 metadata/date_generated = "2026-04-21T17:42:52"
+
+[node name="Area3D" type="Area3D" parent="_env/Items/skull" unique_id=1092598886]
+collision_layer = 2
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="_env/Items/skull/Area3D" unique_id=376822119]
+shape = SubResource("BoxShape3D_llc7q")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="_env/Items/skull" unique_id=1619528994]
+shape = SubResource("BoxShape3D_234jp")
+debug_color = Color(0.8442249, 0.37985525, 5.7756904e-07, 0.41960785)
+
+[node name="_g_idle" type="Sprite3D" parent="_env/Items/skull" unique_id=553540307]
+layers = 4
+pixel_size = 0.0008
+billboard = 2
+shaded = true
+texture = ExtResource("34_cl4k4")
+
+[node name="_g_grabbed" type="Sprite3D" parent="_env/Items/skull" unique_id=1908776990]
+visible = false
+layers = 4
+pixel_size = 0.0008
+billboard = 2
+shaded = true
+render_priority = 1
+texture = ExtResource("34_cl4k4")
+
+[node name="AudioPlayer" type="AudioStreamPlayer3D" parent="_env/Items/skull" unique_id=20800557]
+stream = ExtResource("35_kspn4")
+bus = &"items"
+
+[node name="RayCast3D" type="RayCast3D" parent="_env/Items/skull" unique_id=1070737100]
+target_position = Vector3(0, -0.4, 0)
+hit_from_inside = true
+
+[node name="PO_Item" type="Node" parent="_env/Items/skull" unique_id=2095926710]
+script = ExtResource("36_qrne0")
+metadata/_custom_type_script = "uid://bhf6r6nw14krj"
+
+[node name="Audio_Grabbed" type="AudioStreamPlayer3D" parent="_env/Items/skull" unique_id=367884033]
+stream = ExtResource("37_3vf0b")
+max_distance = 1.0
 
 [node name="HiddenItem" type="Node3D" parent="_env/Items" unique_id=1302901530]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 4.084178, -3)
