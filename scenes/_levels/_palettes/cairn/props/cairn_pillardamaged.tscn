@@ -1,6 +1,6 @@
-[gd_scene load_steps=6 format=4 uid="uid://djqcj61nf551b"]
+[gd_scene format=4 uid="uid://djqcj61nf551b"]
 
-[ext_resource type="Material" uid="uid://cap08gg28mor3" path="res://assets/models/cairn/Materials/props/Pillar/Damaged/Pillar_Damaged.tres" id="1_xejd8"]
+[ext_resource type="Material" uid="uid://cap08gg28mor3" path="res://assets/models/cairn/Props/Pillar/Pillar_Damaged.tres" id="1_xejd8"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_qnecf"]
 size = Vector3(2.319275, 2.1693115, 2.31781)
@@ -41,15 +41,16 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_impkm")
 
-[node name="cairn_pillardamaged" type="StaticBody3D"]
+[node name="cairn_pillardamaged" type="StaticBody3D" unique_id=107547527]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=530362131]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.031341553, 1.0861206, 0.092926025)
 shape = SubResource("BoxShape3D_qnecf")
 
-[node name="CollisionShape3D2" type="CollisionShape3D" parent="."]
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="." unique_id=2011238526]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.012263462, 2.1780002, 0)
 shape = SubResource("ConvexPolygonShape3D_xi5u0")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=121762397]
+visibility_range_end = 40.0
 mesh = SubResource("ArrayMesh_cv65a")

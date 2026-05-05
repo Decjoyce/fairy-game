@@ -1877,10 +1877,10 @@ metadata/_editor_floor_ = Vector3(0, -1, 0)
 [node name="Save_points" type="Node3D" parent="." unique_id=984743412]
 
 [node name="SavingStone" parent="Save_points" unique_id=452927148 instance=ExtResource("14_qj3op")]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 68.60135, -1.9779679, -15.9063635)
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 68.80135, -1.9779679, -15.9063635)
 
 [node name="SavingStone7" parent="Save_points" unique_id=1536817253 instance=ExtResource("14_qj3op")]
-transform = Transform3D(1.3113416e-07, 0, -1, 0, 1, 0, 1, 0, 1.3113416e-07, 64, -1.978, -28.7)
+transform = Transform3D(1.3113416e-07, 0, -1, 0, 1, 0, 1, 0, 1.3113416e-07, 64, -1.978, -28.8)
 
 [node name="SavingStone2" parent="Save_points" unique_id=1131248924 instance=ExtResource("14_qj3op")]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 100.9, -2, -37)
@@ -2143,6 +2143,10 @@ linked_node = NodePath("../../Different_Sections/Traps_Puzzle")
 [node name="vis_enabler_bb" type="Node" parent="OptimizationStuff" unique_id=1074697875 node_paths=PackedStringArray("linked_node")]
 script = ExtResource("36_ag4il")
 linked_node = NodePath("../../Different_Sections/BallyBog_Section")
+
+[node name="vis_enabler_bridge" type="Node" parent="OptimizationStuff" unique_id=1421569522 node_paths=PackedStringArray("linked_node")]
+script = ExtResource("36_ag4il")
+linked_node = NodePath("../../Different_Sections/Bridge_Puzzle")
 
 [node name="lseq_1" type="Node" parent="OptimizationStuff" unique_id=847597482]
 script = ExtResource("44_a8cig")
@@ -2630,8 +2634,8 @@ col = NodePath("../Area3D/CollisionShape3D")
 [connection signal="on_activated" from="OptimizationStuff/BBDisablers/PAT_E_Mid" to="OptimizationStuff/lseq_7" method="set_seq_via_sig"]
 [connection signal="area_entered" from="OptimizationStuff/BBDisablers/PAT_E_Mid/Area3D" to="OptimizationStuff/BBDisablers/PAT_E_Mid" method="_player_entered"]
 [connection signal="area_exited" from="OptimizationStuff/BBDisablers/PAT_E_Mid/Area3D" to="OptimizationStuff/BBDisablers/PAT_E_Mid" method="_player_exited"]
-[connection signal="on_activated" from="OptimizationStuff/BBDisablers/PAT_D_Mid" to="OptimizationStuff/lseq_8" method="set_seq_via_sig"]
 [connection signal="on_activated" from="OptimizationStuff/BBDisablers/PAT_D_Mid" to="OptimizationStuff/lseq_8" method="_on_pat_d_mid_on_activated"]
+[connection signal="on_activated" from="OptimizationStuff/BBDisablers/PAT_D_Mid" to="OptimizationStuff/lseq_8" method="set_seq_via_sig"]
 [connection signal="area_entered" from="OptimizationStuff/BBDisablers/PAT_D_Mid/Area3D" to="OptimizationStuff/BBDisablers/PAT_D_Mid" method="_player_entered"]
 [connection signal="area_exited" from="OptimizationStuff/BBDisablers/PAT_D_Mid/Area3D" to="OptimizationStuff/BBDisablers/PAT_D_Mid" method="_player_exited"]
 [connection signal="on_activated" from="OptimizationStuff/BBDisablers/PAT_E_Hard" to="OptimizationStuff/BBDisablers/PAT_E_Hard/vis_enabler_midbb" method="enable_obj"]
@@ -2643,6 +2647,7 @@ col = NodePath("../Area3D/CollisionShape3D")
 [connection signal="on_activated" from="RockGates2/Triggers/bridge_trig_the_trig" to="RockGates2/Triggers/bridge_trig_shortcut/CollisionEnabler_Disabler" method="enable_obj"]
 [connection signal="area_entered" from="RockGates2/Triggers/bridge_trig_the_trig/Area3D" to="RockGates2/Triggers/bridge_trig_the_trig" method="_player_entered"]
 [connection signal="area_exited" from="RockGates2/Triggers/bridge_trig_the_trig/Area3D" to="RockGates2/Triggers/bridge_trig_the_trig" method="_player_exited"]
+[connection signal="on_activated" from="RockGates2/Triggers/bridge_trig_shortcut" to="OptimizationStuff/PAT_Enable_BridgeSec/vis_enabler_bridge" method="disable_obj"]
 [connection signal="on_activated" from="RockGates2/Triggers/bridge_trig_shortcut" to="OptimizationStuff/lseq_10" method="set_seq_via_sig"]
 [connection signal="area_entered" from="RockGates2/Triggers/bridge_trig_shortcut/Area3D" to="RockGates2/Triggers/bridge_trig_shortcut" method="_player_entered"]
 [connection signal="area_exited" from="RockGates2/Triggers/bridge_trig_shortcut/Area3D" to="RockGates2/Triggers/bridge_trig_shortcut" method="_player_exited"]

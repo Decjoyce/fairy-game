@@ -1,6 +1,6 @@
-[gd_scene load_steps=7 format=4 uid="uid://chqox5wu7wm4q"]
+[gd_scene format=4 uid="uid://chqox5wu7wm4q"]
 
-[ext_resource type="Material" uid="uid://b0i2txe3meqnl" path="res://assets/models/cairn/Materials/props/Pillar/Normal/Pillar.tres" id="1_g6gs4"]
+[ext_resource type="Material" uid="uid://b0i2txe3meqnl" path="res://assets/models/cairn/Props/Pillar/Pillar.tres" id="1_g6gs4"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_g6gs4"]
 size = Vector3(0.24440917, 1.927832, 0.295)
@@ -59,20 +59,22 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_42tyc")
 
-[node name="cairn_exit_pillars" type="StaticBody3D"]
+[node name="cairn_exit_pillars" type="StaticBody3D" unique_id=1777257236]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=321416035]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.87118244, 0.9640293, 0)
 shape = SubResource("BoxShape3D_g6gs4")
 
-[node name="CollisionShape3D2" type="CollisionShape3D" parent="."]
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="." unique_id=336280952]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.86733526, 0.95920265, 0)
 shape = SubResource("BoxShape3D_oycn4")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1012629171]
 transform = Transform3D(-5.5950578e-09, 0, 0.135, 0, 0.135, 0, -0.128, 0, -5.9010374e-09, -0.86618245, -0.027053714, 0)
+visibility_range_end = 25.0
 mesh = SubResource("ArrayMesh_oycn4")
 
-[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="." unique_id=840596969]
 transform = Transform3D(-0.135, 0, -1.9327464e-08, 0, 0.135, 0, 2.0384434e-08, 0, -0.128, 0.869565, -0.027053714, 0)
+visibility_range_end = 25.0
 mesh = SubResource("ArrayMesh_fq5lr")
