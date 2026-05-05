@@ -4,6 +4,12 @@
 [ext_resource type="Script" uid="uid://cn3sc0vsd5b1r" path="res://addons/maaacks_menus_template/examples/scenes/end_credits/end_credits.gd" id="2_6pwj4"]
 [ext_resource type="Script" uid="uid://1nf36h0gms3q" path="res://addons/maaacks_menus_template/base/nodes/utilities/capture_focus.gd" id="3_aoilo"]
 [ext_resource type="PackedScene" uid="uid://bkcsjsk2ciff" path="res://addons/maaacks_menus_template/base/nodes/music_players/background_music_player.tscn" id="3_v7acr"]
+[ext_resource type="Theme" uid="uid://4rqtecgji27t" path="res://scenes/_levels/menus/main_menu/Main_Menu_UI_NEW/UI_themes/customised_brush_theme.tres" id="4_iym00"]
+[ext_resource type="Texture2D" uid="uid://4x0gk4cns8wi" path="res://scenes/_levels/menus/main_menu/Main_Menu_UI_NEW/UI_themes/ui_art/ui_border.png" id="5_jxdn3"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ggtvb"]
+texture = ExtResource("5_jxdn3")
+modulate_color = Color(0.23, 0.23, 0.23, 1)
 
 [node name="EndCredits" unique_id=613298766 instance=ExtResource("1_885d8")]
 script = ExtResource("2_6pwj4")
@@ -34,7 +40,7 @@ expand_mode = 1
 stretch_mode = 5
 
 [node name="ScrollContainer" parent="." index="3" unique_id=1039720129]
-scroll_vertical = 2075
+scroll_vertical = 1854
 
 [node name="HeaderSpace" parent="ScrollContainer/VBoxContainer" parent_id_path=PackedInt32Array(2067921385) index="0" unique_id=1552560353]
 custom_minimum_size = Vector2(0, 648)
@@ -110,9 +116,10 @@ mouse_filter = 2
 
 [node name="EndMessagePanel" type="Panel" parent="CenterContainer" index="0" unique_id=680051131]
 unique_name_in_owner = true
-visible = false
 custom_minimum_size = Vector2(360, 120)
 layout_mode = 2
+theme = ExtResource("4_iym00")
+theme_override_styles/panel = SubResource("StyleBoxTexture_ggtvb")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer/EndMessagePanel" index="0" unique_id=899651798]
 layout_mode = 0
@@ -123,7 +130,8 @@ anchor_bottom = 1.0
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
-text = "Thanks for playing!"
+theme_override_font_sizes/font_size = 25
+text = "Return to main menu?"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -139,21 +147,40 @@ size_flags_vertical = 3
 theme_override_constants/separation = 16
 script = ExtResource("3_aoilo")
 
-[node name="ExitButton" type="Button" parent="CenterContainer/EndMessagePanel/VBoxContainer/CenterContainer/HBoxContainer" index="0" unique_id=1382070624]
+[node name="Yes" type="Button" parent="CenterContainer/EndMessagePanel/VBoxContainer/CenterContainer/HBoxContainer" index="0" unique_id=1669075730]
 unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "Yes"
+
+[node name="No" type="Button" parent="CenterContainer/EndMessagePanel/VBoxContainer/CenterContainer/HBoxContainer" index="1" unique_id=345380982]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "No
+"
+
+[node name="ExitButton" type="Button" parent="CenterContainer/EndMessagePanel/VBoxContainer/CenterContainer/HBoxContainer" index="2" unique_id=1382070624]
+unique_name_in_owner = true
+visible = false
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 text = "Exit"
 
-[node name="MenuButton" type="Button" parent="CenterContainer/EndMessagePanel/VBoxContainer/CenterContainer/HBoxContainer" index="1" unique_id=1504498101]
+[node name="MenuButton" type="Button" parent="CenterContainer/EndMessagePanel/VBoxContainer/CenterContainer/HBoxContainer" index="3" unique_id=1504498101]
 unique_name_in_owner = true
+visible = false
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 text = "Menu"
 
-[node name="Timer" type="Timer" parent="." index="6" unique_id=1932092068]
+[node name="Timer" type="Timer" parent="." index="5" unique_id=1932092068]
 
+[connection signal="pressed" from="CenterContainer/EndMessagePanel/VBoxContainer/CenterContainer/HBoxContainer/Yes" to="." method="_on_menu_button_pressed"]
+[connection signal="pressed" from="CenterContainer/EndMessagePanel/VBoxContainer/CenterContainer/HBoxContainer/No" to="." method="_on_no_pressed"]
 [connection signal="pressed" from="CenterContainer/EndMessagePanel/VBoxContainer/CenterContainer/HBoxContainer/ExitButton" to="." method="_on_exit_button_pressed"]
 [connection signal="pressed" from="CenterContainer/EndMessagePanel/VBoxContainer/CenterContainer/HBoxContainer/MenuButton" to="." method="_on_menu_button_pressed"]

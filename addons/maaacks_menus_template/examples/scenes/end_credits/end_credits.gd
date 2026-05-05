@@ -64,3 +64,6 @@ func _on_exit_button_pressed():
 
 func _on_menu_button_pressed():
 	load_main_menu()
+
+func _on_no_pressed() -> void:
+	end_message_panel.hide()
