@@ -14,7 +14,9 @@
 [ext_resource type="PackedScene" uid="uid://dpyn18jj5bdop" path="res://scenes/interactions/_receivers/gate/cage_room_suspended_gate.tscn" id="11_ea6e4"]
 [ext_resource type="PackedScene" uid="uid://bg3e8trp0vy58" path="res://scenes/interactions/prefabs/broken_lever.tscn" id="11_s8t13"]
 [ext_resource type="PackedScene" uid="uid://ck1b6l8s7xnxi" path="res://scenes/interactions/_triggers/lever/lever.tscn" id="12_jce6r"]
+[ext_resource type="ArrayMesh" uid="uid://bmyoxyeoe0jfl" path="res://assets/Key_Items/Cage.obj" id="12_pvb4u"]
 [ext_resource type="PackedScene" uid="uid://d13vdgis1uvvv" path="res://scenes/interactions/interactables/items/all_items/keys/item_leverhandle.tscn" id="13_1itb0"]
+[ext_resource type="Script" uid="uid://c4t3ko70ihpyy" path="res://scenes/interactions/_receivers/animated_object/animated_object.gd" id="13_elh88"]
 [ext_resource type="PackedScene" uid="uid://bsdlm8rcrt2j" path="res://scenes/interactions/_triggers/area_triggers/player_area_trigger.tscn" id="14_scc03"]
 [ext_resource type="PackedScene" uid="uid://bry8rqyr2pf37" path="res://assets/models/cairn/Z-Old-EnvironmentModels/Rocks/Rocks.glb" id="15_n67lk"]
 [ext_resource type="PackedScene" uid="uid://dkx1fyyqx7cmp" path="res://scenes/interactions/_triggers/torch_sconce/torch_sconce_ceiling.tscn" id="16_jw1y0"]
@@ -52,6 +54,52 @@ size = Vector3(3.6000001, 2, 3.8)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_227be"]
 size = Vector3(8, 0.4650879, 13)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ogl71"]
+size = Vector3(1, 1, 0.1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_6xiwt"]
+size = Vector3(0.2, 1, 1.2)
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_pvb4u"]
+height = 0.0375
+radius = 0.6
+
+[sub_resource type="Animation" id="Animation_ogl71"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_6xiwt"]
+resource_name = "slate_open"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(-1.134464, 0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_0nxer"]
+_data = {
+&"RESET": SubResource("Animation_ogl71"),
+&"slate_open": SubResource("Animation_6xiwt")
+}
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_qbrer"]
 size = Vector3(2.1363525, 10.775467, 14.223724)
@@ -223,7 +271,8 @@ metadata/lock_uid = true
 metadata/date_generated = "2026-04-29T22:33:48"
 
 [node name="Cage_RoomSuspendedGate" parent="Tutorial_Area/LastBit/Urn_key_puzzle" unique_id=579965600 instance=ExtResource("11_ea6e4")]
-transform = Transform3D(0.6549999, 0, 0, 0, -2.8630955e-08, 0.6549999, 0, -0.6549999, -2.8630955e-08, 32.01714, 1.2745376, -4.4393644)
+transform = Transform3D(0.6549999, 0, 0, 0, -2.8630955e-08, 0.6549999, 0, -0.6549999, -2.8630955e-08, 32.01714, 5.2745376, -4.4393644)
+visible = false
 
 [node name="Collision_Fix" type="Node3D" parent="Tutorial_Area/LastBit/Urn_key_puzzle" unique_id=480597949]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30, -2, -9)
@@ -234,6 +283,44 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0.002911687, 6)
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Tutorial_Area/LastBit/Urn_key_puzzle/Collision_Fix/StaticBody3D2" unique_id=1242621365]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.0610962, -0.26745617, -0.5118408)
 shape = SubResource("BoxShape3D_227be")
+
+[node name="StaticBody3D2" type="StaticBody3D" parent="Tutorial_Area/LastBit/Urn_key_puzzle" unique_id=626037846]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 32.01714, 1.2745376, -4.4393644)
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="Tutorial_Area/LastBit/Urn_key_puzzle/StaticBody3D2" unique_id=1084821728]
+transform = Transform3D(1, -1.2434498e-14, 0, 0, 1, 0, 0, 0, 1, -0.03519249, 0.48144782, -0.99278784)
+shape = SubResource("BoxShape3D_ogl71")
+
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="Tutorial_Area/LastBit/Urn_key_puzzle/StaticBody3D2" unique_id=1743703993]
+transform = Transform3D(1, -1.2434498e-14, 0, 0, 1, 0, 0, 0, 1, -0.5351925, 0.48144782, -0.44278765)
+shape = SubResource("BoxShape3D_6xiwt")
+
+[node name="CollisionShape3D4" type="CollisionShape3D" parent="Tutorial_Area/LastBit/Urn_key_puzzle/StaticBody3D2" unique_id=728716433]
+transform = Transform3D(1, -1.2434498e-14, 0, 0, 1, 0, 0, 0, 1, 0.46480942, 0.48144782, -0.44278765)
+shape = SubResource("BoxShape3D_6xiwt")
+
+[node name="newgate" type="Node3D" parent="Tutorial_Area/LastBit/Urn_key_puzzle" unique_id=741670541]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 32.01714, 1.2745376, -4.4393644)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Tutorial_Area/LastBit/Urn_key_puzzle/newgate" unique_id=425811797]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Tutorial_Area/LastBit/Urn_key_puzzle/newgate/StaticBody3D" unique_id=486475661]
+transform = Transform3D(1.0752294, -1.8402758e-07, 0.25476792, -1.6685037e-07, -1.105, -9.3999525e-08, 0.25476792, 5.2998125e-08, -1.0752294, -0.03519249, 0.037697315, -0.542788)
+mesh = ExtResource("12_pvb4u")
+skeleton = NodePath("../..")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Tutorial_Area/LastBit/Urn_key_puzzle/newgate/StaticBody3D" unique_id=568416946]
+transform = Transform3D(1, -1.2434498e-14, 0, 0, 1, -7.1054274e-15, 0, 0, 1, -0.03519249, 0.08144748, -0.542788)
+shape = SubResource("CylinderShape3D_pvb4u")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Tutorial_Area/LastBit/Urn_key_puzzle/newgate" unique_id=388904376]
+libraries/ = SubResource("AnimationLibrary_0nxer")
+
+[node name="AnimatedObject" type="Node" parent="Tutorial_Area/LastBit/Urn_key_puzzle/newgate" unique_id=1609348832 node_paths=PackedStringArray("connnect_anim_player")]
+script = ExtResource("13_elh88")
+anim_to_play = "slate_open"
+connnect_anim_player = NodePath("../AnimationPlayer")
+metadata/_custom_type_script = "uid://c4t3ko70ihpyy"
 
 [node name="Walls_Parent" type="Node3D" parent="Tutorial_Area/LastBit" unique_id=777706606]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -26, 2, 5)
@@ -730,6 +817,7 @@ linked_node = NodePath("../../../Puzzles/Throwing_Puzzle")
 [connection signal="on_exit_lockdown" from="Tutorial_Area/ItemHeadZones/ItemNoPassZone_Second_PressurePlate_Room2" to="Tutorial_Area/ItemHeadZones/ItemNoPassZone_Second_PressurePlate_Room2/StaticBody3D/CollisionEnabler_Disabler" method="disable_obj"]
 [connection signal="on_exit_lockdown" from="Tutorial_Area/ItemHeadZones/ItemNoPassZone_Second_PressurePlate_Room2" to="Tutorial_Area/ItemHeadZones/No_Acess_Gate2" method="fully_open_gate"]
 [connection signal="on_change" from="Tutorial_Area/LastBit/Urn_key_puzzle/Urn_puzzle_Pressure_Plate" to="Tutorial_Area/LastBit/Urn_key_puzzle/Cage_RoomSuspendedGate" method="open_gate"]
+[connection signal="on_change" from="Tutorial_Area/LastBit/Urn_key_puzzle/Urn_puzzle_Pressure_Plate" to="Tutorial_Area/LastBit/Urn_key_puzzle/newgate/AnimatedObject" method="play_animation"]
 [connection signal="on_saved" from="Tutorial_Area/LastBit/Save_Tutorial/SavingStone" to="Tutorial_Area/LastBit/Save_Tutorial/Gate" method="open_gate"]
 [connection signal="on_activated" from="Tutorial_Area/FirstBit/Lever_Puzzle/BrokenLeverExample/BrokenLever" to="Tutorial_Area/FirstBit/Lever_Puzzle/BrokenLeverExample/Lever_Fixed" method="enable"]
 [connection signal="on_change" from="Tutorial_Area/FirstBit/Lever_Puzzle/BrokenLeverExample/Lever_Fixed" to="Tutorial_Area/FirstBit/Lever_Puzzle/Lever_Gate" method="open_gate"]
