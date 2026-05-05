@@ -61,6 +61,8 @@ func on_stone_area_exited_return_areas(area: Area3D) -> void:
 func on_tp_timeout() -> void:
 	if my_stone.is_grabbed or !stone_inside: 
 		timer.stop()
+		if stone_inside:
+			waiting_to_start = true
 		return
 	stone_inside = true
 	my_stone.rb.linear_velocity = Vector3.ZERO
