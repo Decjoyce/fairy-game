@@ -1,8 +1,13 @@
 [gd_scene format=3 uid="uid://ba0un2yhkkc3j"]
 
 [ext_resource type="Texture2D" uid="uid://bqbs8ojlfex0i" path="res://assets/Controlelr_UI/Controller_demo2.png" id="1_6ybjx"]
+[ext_resource type="Script" uid="uid://bykhlgnvwymya" path="res://scripts/input_context_helper_two.gd" id="1_gqisl"]
 [ext_resource type="Theme" uid="uid://4rqtecgji27t" path="res://scenes/_levels/menus/main_menu/Main_Menu_UI_NEW/UI_themes/customised_brush_theme.tres" id="2_hbu7d"]
+[ext_resource type="Script" uid="uid://dqspm2isfx5n1" path="res://scripts/input_context/joy_icons_master.gd" id="2_ru1jb"]
 [ext_resource type="Texture2D" uid="uid://38f8l0x5wt0x" path="res://scenes/_levels/menus/main_menu/Main_Menu_UI_NEW/UI_themes/ui_art/ui_button.png" id="3_gqisl"]
+[ext_resource type="Resource" uid="uid://bvdc57ehdgnq3" path="res://scripts/input_context/joyicons_xbox.tres" id="3_s2hb7"]
+[ext_resource type="Resource" uid="uid://cuvbrqma8ltub" path="res://scripts/input_context/joyicons_ps4.tres" id="4_wioyo"]
+[ext_resource type="Resource" uid="uid://cy86l8mtli3ke" path="res://scripts/input_context/joyicons_nintendo.tres" id="5_nhuu7"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_i7vcm"]
 texture = ExtResource("3_gqisl")
@@ -52,9 +57,18 @@ expand_margin_right = 10.0
 expand_margin_bottom = 5.0
 modulate_color = Color(0.7254902, 0.7254902, 0.7254902, 0)
 
-[node name="Control" type="Control" unique_id=520649011]
+[node name="Control" type="Control" unique_id=520649011 node_paths=PackedStringArray("controller_image")]
 layout_mode = 3
 anchors_preset = 0
+script = ExtResource("1_gqisl")
+joy_dict = Dictionary[String, ExtResource("2_ru1jb")]({
+"DEFAULT": ExtResource("3_s2hb7"),
+"DualSense Wireless Controller": ExtResource("4_wioyo"),
+"Nintendo Switch Pro Controller": ExtResource("5_nhuu7"),
+"PS4 Controller": ExtResource("4_wioyo"),
+"XInput Controller": ExtResource("3_s2hb7")
+})
+controller_image = NodePath("MarginContainer/TextureRect")
 metadata/_tab_index = 3
 
 [node name="MarginContainer" type="MarginContainer" parent="." unique_id=418553410]
