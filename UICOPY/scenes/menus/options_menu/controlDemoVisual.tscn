@@ -1,6 +1,56 @@
 [gd_scene format=3 uid="uid://ba0un2yhkkc3j"]
 
 [ext_resource type="Texture2D" uid="uid://bqbs8ojlfex0i" path="res://assets/Controlelr_UI/Controller_demo2.png" id="1_6ybjx"]
+[ext_resource type="Theme" uid="uid://4rqtecgji27t" path="res://scenes/_levels/menus/main_menu/Main_Menu_UI_NEW/UI_themes/customised_brush_theme.tres" id="2_hbu7d"]
+[ext_resource type="Texture2D" uid="uid://38f8l0x5wt0x" path="res://scenes/_levels/menus/main_menu/Main_Menu_UI_NEW/UI_themes/ui_art/ui_button.png" id="3_gqisl"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_i7vcm"]
+texture = ExtResource("3_gqisl")
+expand_margin_left = 10.0
+expand_margin_top = 5.0
+expand_margin_right = 10.0
+expand_margin_bottom = 5.0
+modulate_color = Color(0.7254902, 0.7254902, 0.7254902, 0)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_rxw5c"]
+texture = ExtResource("3_gqisl")
+expand_margin_left = 10.0
+expand_margin_top = 5.0
+expand_margin_right = 10.0
+expand_margin_bottom = 5.0
+modulate_color = Color(0.7254902, 0.7254902, 0.7254902, 0)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_yggyf"]
+texture = ExtResource("3_gqisl")
+expand_margin_left = 10.0
+expand_margin_top = 10.0
+expand_margin_right = 10.0
+expand_margin_bottom = 10.0
+modulate_color = Color(1, 1, 1, 0)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ru1jb"]
+texture = ExtResource("3_gqisl")
+expand_margin_left = 10.0
+expand_margin_top = 5.0
+expand_margin_right = 10.0
+expand_margin_bottom = 5.0
+modulate_color = Color(0.7254902, 0.7254902, 0.7254902, 0)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_s2hb7"]
+texture = ExtResource("3_gqisl")
+expand_margin_left = 10.0
+expand_margin_top = 10.0
+expand_margin_right = 10.0
+expand_margin_bottom = 10.0
+modulate_color = Color(0.5882353, 0.5882353, 0.5882353, 0)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_wioyo"]
+texture = ExtResource("3_gqisl")
+expand_margin_left = 10.0
+expand_margin_top = 5.0
+expand_margin_right = 10.0
+expand_margin_bottom = 5.0
+modulate_color = Color(0.7254902, 0.7254902, 0.7254902, 0)
 
 [node name="Control" type="Control" unique_id=520649011]
 layout_mode = 3
@@ -19,3 +69,14 @@ grow_vertical = 2
 layout_mode = 2
 texture = ExtResource("1_6ybjx")
 stretch_mode = 3
+
+[node name="Button" type="Button" parent="MarginContainer" unique_id=1848314119]
+layout_mode = 2
+size_flags_horizontal = 0
+theme = ExtResource("2_hbu7d")
+theme_override_styles/normal = SubResource("StyleBoxTexture_i7vcm")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_rxw5c")
+theme_override_styles/hover = SubResource("StyleBoxTexture_yggyf")
+theme_override_styles/hover_pressed = SubResource("StyleBoxTexture_ru1jb")
+theme_override_styles/disabled = SubResource("StyleBoxTexture_s2hb7")
+theme_override_styles/focus = SubResource("StyleBoxTexture_wioyo")
