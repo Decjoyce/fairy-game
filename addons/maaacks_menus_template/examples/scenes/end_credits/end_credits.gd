@@ -7,11 +7,12 @@ extends "res://addons/maaacks_menus_template/examples/scenes/credits/scrolling_c
 ## This option forces the mouse to be visible when the menu shows up.
 ## Useful for games that capture the mouse, and don't automatically return it.
 @export var force_mouse_mode_visible : bool = false
-
+@export var animation_state_machine : AnimationNodeStateMachinePlayback
 @onready var end_message_panel = %EndMessagePanel
 @onready var exit_button = %ExitButton
 @onready var menu_button = %MenuButton
 @onready var init_mouse_filter : MouseFilter = mouse_filter
+
 
 func get_main_menu_scene_path() -> String:
 	if main_menu_scene_path.is_empty():
@@ -19,11 +20,14 @@ func get_main_menu_scene_path() -> String:
 	return main_menu_scene_path
 
 func _end_reached() -> void:
+
 	end_message_panel.show()
 	mouse_filter = Control.MOUSE_FILTER_STOP
 	if force_mouse_mode_visible:
 		Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 	super._end_reached()
+
+
 
 func load_main_menu() -> void:
 	SceneLoader.load_scene(get_main_menu_scene_path())
@@ -40,6 +44,7 @@ func _on_visibility_changed() -> void:
 	super._on_visibility_changed()
 
 func _ready() -> void:
+	animation_state_machine = $"../AnimationTree".get("parameters/playback")
 	if get_main_menu_scene_path().is_empty():
 		menu_button.hide()
 	if OS.has_feature("web"):

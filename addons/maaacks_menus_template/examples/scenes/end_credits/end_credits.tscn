@@ -9,10 +9,12 @@
 script = ExtResource("2_6pwj4")
 main_menu_scene_path = ""
 force_mouse_mode_visible = false
+animation_state_machine = null
 
 [node name="BackgroundMusicPlayer" parent="." index="0" unique_id=1411252862 instance=ExtResource("3_v7acr")]
 
 [node name="BackgroundColor" type="ColorRect" parent="." index="1" unique_id=813188635]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -30,6 +32,73 @@ grow_horizontal = 2
 grow_vertical = 2
 expand_mode = 1
 stretch_mode = 5
+
+[node name="ScrollContainer" parent="." index="3" unique_id=1039720129]
+scroll_vertical = 2075
+
+[node name="HeaderSpace" parent="ScrollContainer/VBoxContainer" parent_id_path=PackedInt32Array(2067921385) index="0" unique_id=1552560353]
+custom_minimum_size = Vector2(0, 648)
+
+[node name="CreditsLabel" parent="ScrollContainer/VBoxContainer" parent_id_path=PackedInt32Array(2067921385) index="1" unique_id=1486745388]
+custom_minimum_size = Vector2(1152, 0)
+text = "[font_size=48]Developers[/font_size]
+
+[font_size=32]Role[/font_size]
+[url=https://aaronmccabe.itch.io/]Aaron McCabe[/url] - 3D/Environment Artist 
+[url=https://decooced.itch.io/]Declan Phillips[/url] - Programmer, Game Designer
+[url=https://archer-productions.itch.io/]Finn Archer[/url] - Game Designer, Level Designer
+[url=https://ma123.itch.io/]Minh Anh Pham[/url] - 2D/3D Artist, Musician 
+[url=https://funnymike09.itch.io/]Mikhail Fisenko[/url] - Project Lead, Programmer, Audio Engineer 
+
+
+[font_size=48]Sourced[/font_size]
+[font_size=32]Audio[/font_size]
+[font_size=24]All SFX and Ambient[/font_size]
+Author: Soundly 
+Source: [url=https://getsoundly.com/]Domain : https://getsoundly.com/[/url]  
+License: [url=https://getsoundly.com/faq/how-can-i-use-the-sounds/]License[/url]
+
+[font_size=24]Godot Engine Logo[/font_size]
+Author: Andrea Calabró  
+Source: [url=https://godotengine.org/press/]godotengine.org : press[/url]  
+License: [url=https://github.com/godotengine/godot/blob/master/LOGO_LICENSE.txt]CC BY 4.0 International[/url] 
+
+[font_size=48]Tools[/font_size]
+[font_size=24]Godot[/font_size]
+[img=80]res:///addons/maaacks_menus_template/examples/assets/godot_engine_logo/logo_vertical_color_dark.png[/img]  
+Author: [url=https://godotengine.org/contact]Juan Linietsky, Ariel Manzur, and contributors[/url]  
+Source: [url=https://godotengine.org/]godotengine.org[/url]  
+License: [url=https://github.com/godotengine/godot/blob/master/LICENSE.txt]MIT License[/url] 
+
+[font_size=24]Godot Menus Template[/font_size]
+[img=80]res:///addons/maaacks_menus_template/examples/assets/plugin_logo/logo.png[/img]  
+Author: [url=https://github.com/Maaack/Godot-Menus-Template/graphs/contributors]Marek Belski and contributors[/url]  
+Source: [url=https://github.com/Maaack/Godot-Menus-Template]github: Godot-Menus-Template[/url]  
+License: [url=LICENSE.txt]MIT License[/url]  
+
+[font_size=24]Git[/font_size]
+[img=80]res:///addons/maaacks_menus_template/examples/assets/git_logo/Git-Logo-2Color.png[/img]  
+Author: [url=https://github.com/torvalds]Linus Torvalds[/url]  
+Source: [url=https://git-scm.com/downloads]git-scm.com[/url]  
+License: [url=https://opensource.org/licenses/GPL-2.0]GNU General Public License version 2[/url]
+
+
+[font_size=24]GodotSprite3DPlus[/font_size]
+
+Author:  BlueMaster 
+Source: [url=https://github.com/23Bluemaster23/GodotSprite3DPlus?tab=readme-ov-file]Domain : GitHub[/url]  
+License: [url=https://github.com/23Bluemaster23/GodotSprite3DPlus?tab=readme-ov-file]MIT[/url]
+
+
+[font_size=24]GodotSprite3DPlus[/font_size]
+
+Author:  Antz 
+Source: [url=https://github.com/antzGames/Godot-A-Star-Pathfinding-for-Gridmaps]Domain : GitHub[/url]  
+License: [url=https://github.com/antzGames/Godot-A-Star-Pathfinding-for-Gridmaps/blob/master/LICENSE]MIT[/url]
+"
+
+[node name="FooterSpace" parent="ScrollContainer/VBoxContainer" parent_id_path=PackedInt32Array(2067921385) index="2" unique_id=1703782196]
+custom_minimum_size = Vector2(0, 648)
 
 [node name="CenterContainer" type="CenterContainer" parent="." index="4" unique_id=535959837]
 layout_mode = 0
@@ -83,6 +152,8 @@ layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 text = "Menu"
+
+[node name="Timer" type="Timer" parent="." index="6" unique_id=1932092068]
 
 [connection signal="pressed" from="CenterContainer/EndMessagePanel/VBoxContainer/CenterContainer/HBoxContainer/ExitButton" to="." method="_on_exit_button_pressed"]
 [connection signal="pressed" from="CenterContainer/EndMessagePanel/VBoxContainer/CenterContainer/HBoxContainer/MenuButton" to="." method="_on_menu_button_pressed"]
