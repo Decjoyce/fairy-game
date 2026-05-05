@@ -259,19 +259,6 @@ _data = {
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_060nb"]
 
-[sub_resource type="Gradient" id="Gradient_x42l1"]
-interpolation_mode = 2
-offsets = PackedFloat32Array(0.3402556, 0.52516776, 1)
-colors = PackedColorArray(0.17184411, 0.11207495, 0.06100855, 0, 0, 1.949028, 2.0331757, 1, 0, 0, 0, 0)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_rv6yw"]
-gradient = SubResource("Gradient_x42l1")
-width = 512
-height = 512
-fill = 1
-fill_from = Vector2(0.5, 0.5)
-fill_to = Vector2(0.94, 0.43)
-
 [sub_resource type="ViewportTexture" id="ViewportTexture_x42l1"]
 viewport_path = NodePath("SubViewport")
 
@@ -285,6 +272,19 @@ billboard_mode = 1
 resource_local_to_scene = true
 material = SubResource("StandardMaterial3D_x42l1")
 size = Vector2(0.5, 0.5)
+
+[sub_resource type="Gradient" id="Gradient_x42l1"]
+interpolation_mode = 2
+offsets = PackedFloat32Array(0.3402556, 0.52516776, 1)
+colors = PackedColorArray(0.17184411, 0.11207495, 0.06100855, 0, 0, 1.949028, 2.0331757, 1, 0, 0, 0, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_rv6yw"]
+gradient = SubResource("Gradient_x42l1")
+width = 512
+height = 512
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.94, 0.43)
 
 [node name="Puzzle01" type="Node3D" unique_id=2140837292]
 
@@ -1175,6 +1175,17 @@ monitorable = false
 [node name="CollisionShape3D" type="CollisionShape3D" parent="BallyBog_Trigger/Area3D" unique_id=1364307751]
 shape = SubResource("SphereShape3D_060nb")
 
+[node name="BallyBog_Trigger2" parent="." unique_id=734601123 instance=ExtResource("29_b2mbs")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 2, -12)
+trig_once = true
+
+[node name="Area3D" type="Area3D" parent="BallyBog_Trigger2" unique_id=557660762]
+collision_layer = 0
+monitorable = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="BallyBog_Trigger2/Area3D" unique_id=1527582186]
+shape = SubResource("SphereShape3D_060nb")
+
 [node name="SetDressing" type="Node3D" parent="." unique_id=1748671349]
 
 [node name="cairnPillar" parent="SetDressing" unique_id=607460616 instance=ExtResource("34_j0le8")]
@@ -1270,13 +1281,26 @@ transform = Transform3D(0.26437333, -0.7305622, 0.62959164, 0.94032377, 0.340281
 [node name="cairn rock 2" parent="." unique_id=1404731225 instance=ExtResource("37_x42l1")]
 transform = Transform3D(-3.239805e-08, 0.9659258, -0.258819, 3.3488384e-08, 0.258819, 0.9659258, 1, 2.2626681e-08, -4.073253e-08, -5.82, 1.12, -5.22)
 
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1641035889]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 3.5637949, 2.6061776, -2.9724278)
+mesh = SubResource("QuadMesh_rv6yw")
+skeleton = NodePath("../SubViewport")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="MeshInstance3D" unique_id=201425715]
+light_color = Color(0, 0.65967244, 0.66711485, 1)
+light_energy = 0.137
+omni_range = 26.025
+
+[node name="indicator_visenabler" type="Node" parent="MeshInstance3D" unique_id=2121420649 node_paths=PackedStringArray("linked_node")]
+script = ExtResource("40_x42l1")
+linked_node = NodePath("..")
+
 [node name="SubViewport" type="SubViewport" parent="." unique_id=1107766681]
 disable_3d = true
 transparent_bg = true
 handle_input_locally = false
 anisotropic_filtering_level = 0
 gui_disable_input = true
-gui_embed_subwindows = true
 render_target_update_mode = 4
 
 [node name="Control" type="Control" parent="SubViewport" unique_id=929693510]
@@ -1308,20 +1332,6 @@ fill_mode = 4
 texture_progress = SubResource("GradientTexture2D_rv6yw")
 script = ExtResource("41_lckpc")
 metadata/_edit_use_anchors_ = true
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="SubViewport" unique_id=1641035889]
-transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 3.5637949, 2.7061775, -2.9724278)
-visible = false
-mesh = SubResource("QuadMesh_rv6yw")
-
-[node name="OmniLight3D" type="OmniLight3D" parent="SubViewport/MeshInstance3D" unique_id=201425715]
-light_color = Color(0, 0.65967244, 0.66711485, 1)
-light_energy = 0.137
-omni_range = 26.025
-
-[node name="indicator_visenabler" type="Node" parent="SubViewport/MeshInstance3D" unique_id=2121420649 node_paths=PackedStringArray("linked_node")]
-script = ExtResource("40_x42l1")
-linked_node = NodePath("..")
 
 [connection signal="body_entered" from="_env/Gate_Left/Gate/gate/UnderChecker_items" to="_env/Gate_Left/Gate" method="_on_body_entered_under_checker"]
 [connection signal="body_exited" from="_env/Gate_Left/Gate/gate/UnderChecker_items" to="_env/Gate_Left/Gate" method="_on_body_exited_under_checker"]
@@ -1364,10 +1374,10 @@ linked_node = NodePath("..")
 [connection signal="area_entered" from="_env/Gate_Right/Gate/out_pos_front/Area3D" to="_env/Gate_Right/Gate" method="out_pos_area_entered_front"]
 [connection signal="area_entered" from="_env/Gate_Right/Gate/TPChecker_player" to="_env/Gate_Right/Gate" method="tp_checker_entered"]
 [connection signal="on_activated" from="_env/Gate_Right/Button" to="_env/Gate_Right/Gate" method="fully_open_gate"]
-[connection signal="on_activated" from="_env/Gate_Right/Button" to="SubViewport/MeshInstance3D/indicator_visenabler" method="enable_obj"]
+[connection signal="on_activated" from="_env/Gate_Right/Button" to="MeshInstance3D/indicator_visenabler" method="enable_obj"]
 [connection signal="on_change" from="_env/Gate_Right/Button" to="SubViewport/Control/TextureProgressBar" method="set_value"]
 [connection signal="on_deactivated" from="_env/Gate_Right/Button" to="_env/Gate_Right/Gate" method="close_gate"]
-[connection signal="on_deactivated" from="_env/Gate_Right/Button" to="SubViewport/MeshInstance3D/indicator_visenabler" method="disable_obj"]
+[connection signal="on_deactivated" from="_env/Gate_Right/Button" to="MeshInstance3D/indicator_visenabler" method="disable_obj"]
 [connection signal="on_activated" from="_env/Gate_Right/Button2" to="_env/Gate_Right/Gate" method="fully_open_gate"]
 [connection signal="on_activated" from="_env/Gate_Entrance/GateEntrace_Trigger" to="_env/Gate_Entrance/Gate" method="close_gate"]
 [connection signal="area_entered" from="_env/Gate_Entrance/GateEntrace_Trigger/Area3D" to="_env/Gate_Entrance/GateEntrace_Trigger" method="_player_entered"]
@@ -1376,3 +1386,7 @@ linked_node = NodePath("..")
 [connection signal="on_activated" from="BallyBog_Trigger" to="Ballybog" method="enable_me"]
 [connection signal="area_entered" from="BallyBog_Trigger/Area3D" to="BallyBog_Trigger" method="_player_entered"]
 [connection signal="area_exited" from="BallyBog_Trigger/Area3D" to="BallyBog_Trigger" method="_player_exited"]
+[connection signal="on_activated" from="BallyBog_Trigger2" to="_env/Door/Door" method="close_door"]
+[connection signal="on_activated" from="BallyBog_Trigger2" to="Ballybog" method="disable_me"]
+[connection signal="area_entered" from="BallyBog_Trigger2/Area3D" to="BallyBog_Trigger2" method="_player_entered"]
+[connection signal="area_exited" from="BallyBog_Trigger2/Area3D" to="BallyBog_Trigger2" method="_player_exited"]

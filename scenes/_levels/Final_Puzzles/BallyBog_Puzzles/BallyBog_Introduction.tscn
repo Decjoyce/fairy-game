@@ -124,11 +124,24 @@ shape = SubResource("SphereShape3D_iw7gl")
 
 [node name="GateAreaDoor_Trigger" parent="Sneaked_past" unique_id=917204587 instance=ExtResource("5_cvgf4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 1, -14)
+trig_once = true
 
 [node name="Area3D" type="Area3D" parent="Sneaked_past/GateAreaDoor_Trigger" unique_id=1986144694]
+collision_layer = 0
 monitorable = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Sneaked_past/GateAreaDoor_Trigger/Area3D" unique_id=410955833]
+shape = SubResource("SphereShape3D_qofka")
+
+[node name="GateAreaDoor_Trigger2" parent="Sneaked_past" unique_id=389520212 instance=ExtResource("5_cvgf4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 1, -17)
+trig_once = true
+
+[node name="Area3D" type="Area3D" parent="Sneaked_past/GateAreaDoor_Trigger2" unique_id=864603887]
+collision_layer = 0
+monitorable = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Sneaked_past/GateAreaDoor_Trigger2/Area3D" unique_id=532757362]
 shape = SubResource("SphereShape3D_qofka")
 
 [node name="PressurePlateLight" parent="Sneaked_past" unique_id=790035545 instance=ExtResource("19_0ox1x")]
@@ -177,8 +190,10 @@ shape = SubResource("BoxShape3D_1r4jb")
 
 [node name="BallyBog_Trigger" parent="." unique_id=1192877948 instance=ExtResource("5_cvgf4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 1, -1)
+trig_once = true
 
 [node name="Area3D" type="Area3D" parent="BallyBog_Trigger" unique_id=246956015]
+collision_layer = 0
 monitorable = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="BallyBog_Trigger/Area3D" unique_id=2036706290]
@@ -287,6 +302,9 @@ bus = &"Ambient"
 [connection signal="on_activated" from="Sneaked_past/GateAreaDoor_Trigger" to="Sneaked_past/First_Gate" method="close_gate"]
 [connection signal="area_entered" from="Sneaked_past/GateAreaDoor_Trigger/Area3D" to="Sneaked_past/GateAreaDoor_Trigger" method="_player_entered"]
 [connection signal="area_exited" from="Sneaked_past/GateAreaDoor_Trigger/Area3D" to="Sneaked_past/GateAreaDoor_Trigger" method="_player_exited"]
+[connection signal="on_activated" from="Sneaked_past/GateAreaDoor_Trigger2" to="Ballybog2" method="disable_me"]
+[connection signal="area_entered" from="Sneaked_past/GateAreaDoor_Trigger2/Area3D" to="Sneaked_past/GateAreaDoor_Trigger2" method="_player_entered"]
+[connection signal="area_exited" from="Sneaked_past/GateAreaDoor_Trigger2/Area3D" to="Sneaked_past/GateAreaDoor_Trigger2" method="_player_exited"]
 [connection signal="on_activated" from="Sneaked_past/PressurePlateLight" to="Sneaked_past/First_Gate" method="open_gate"]
 [connection signal="on_activated" from="Sneaked_past/PressurePlateLight" to="Sneaked_past/PressurePlateLight/indicator_visenabler" method="enable_obj"]
 [connection signal="on_deactivated" from="Sneaked_past/PressurePlateLight" to="Sneaked_past/PressurePlateLight/indicator_visenabler" method="disable_obj"]
