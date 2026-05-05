@@ -21,17 +21,27 @@
 [ext_resource type="PackedScene" uid="uid://d2ict3hg28spx" path="res://scenes/_levels/_palettes/cairn/props/cairn_fake_wall.tscn" id="19_psrev"]
 [ext_resource type="Material" uid="uid://b0i2txe3meqnl" path="res://assets/models/cairn/Props/Pillar/Pillar.tres" id="20_882fo"]
 [ext_resource type="PackedScene" uid="uid://cruv8v8wh8l06" path="res://scenes/interactions/_special/saving_stone/saving_stone.tscn" id="20_o3qlx"]
-[ext_resource type="PackedScene" uid="uid://crnrdh5wu8ooa" path="res://scenes/interactions/_receivers/traps/projectile/trap_projectile.tscn" id="20_psrev"]
 [ext_resource type="PackedScene" uid="uid://ije1mmh1wcad" path="res://scenes/interactions/interactables/items/all_items/torch/torch_mounted.tscn" id="21_882fo"]
 [ext_resource type="Script" uid="uid://bul4myvyhnpjc" path="res://scripts/saving/uid_generator.gd" id="21_j7l2i"]
 [ext_resource type="PackedScene" uid="uid://cpyooys4p0yng" path="res://scenes/_levels/_palettes/cairn/props/cairn_stone_slab.tscn" id="21_sk5sf"]
 [ext_resource type="Script" uid="uid://di860i1v035oh" path="res://scenes/_levels/Final_Puzzles/Mechanical_Puzzles/special_timer.gd" id="21_tauea"]
+[ext_resource type="Script" uid="uid://r8vvnup14amn" path="res://scenes/interactions/_receivers/traps/projectile/trap_projectile.gd" id="25_xccmv"]
+[ext_resource type="AudioStream" uid="uid://8u7k6rnkra3g" path="res://assets/audio/sfx/environment/Traps/Arrow/Weapons, Arrow, Arrows, Shot 04, Bowstring, Twang, Thwack, 8070 (Mono) SND127426 1.wav" id="26_cjig4"]
 [ext_resource type="Material" uid="uid://ckjbpunwhc0rn" path="res://assets/models/cairn/Props/SpikeTrap/SpikeTrap.tres" id="26_iisit"]
+[ext_resource type="AudioStream" uid="uid://bl70njdpufmni" path="res://assets/audio/sfx/environment/Traps/Arrow/Weapons, Arrow, Arrows, Shot 04, Bowstring, Twang, Thwack, 8070 (Mono) SND127426 2.wav" id="27_ahb3l"]
 [ext_resource type="ArrayMesh" uid="uid://sakmnnwkwcdm" path="res://assets/models/cairn/Props/SpikeTrap/SpikeTrap.obj" id="27_sk5sf"]
+[ext_resource type="AudioStream" uid="uid://323itw85oonc" path="res://assets/audio/sfx/environment/Traps/Arrow/Weapons, Arrow, Arrows, Shot 04, Bowstring, Twang, Thwack, 8070 (Mono) SND127426.wav" id="28_su45r"]
 [ext_resource type="AudioStream" uid="uid://cej86o2w2i6wk" path="res://assets/audio/sfx/environment/ambient/Bridge ambiente.wav" id="29_1cyc0"]
+[ext_resource type="Texture2D" uid="uid://ds2ryuxjpf5j1" path="res://scenes/interactions/_receivers/wip_spike_trap/blackcircle_tran.png" id="29_q3c25"]
+[ext_resource type="PackedScene" uid="uid://bwii7dbg7wd7s" path="res://scenes/interactions/_receivers/traps/projectile/arrow_projectile.tscn" id="30_pfc10"]
 [ext_resource type="AudioStream" uid="uid://cegks3hgoxmlu" path="res://assets/audio/sfx/environment/ambient/Bridge v2.wav" id="30_t8f8x"]
 [ext_resource type="Texture2D" uid="uid://dk0irgvufeg08" path="res://assets/menu_buttons/14-white-grunge-brush-stroke-13.png" id="31_etsjp"]
+[ext_resource type="Script" uid="uid://djyhniwugtcsq" path="res://scripts/saving/persistent_objs/po_arrowtrap.gd" id="31_ltn4s"]
 [ext_resource type="PackedScene" uid="uid://lxic7c72kvyt" path="res://scenes/interactions/interactables/items/all_items/misc/item_skull.tscn" id="31_t8f8x"]
+[ext_resource type="Texture2D" uid="uid://moctry3iykqx" path="res://assets/models/cairn/Z-Old-HallModels/Hall/Hall_texture_Floordirt_Base_color.png" id="34_yekw0"]
+[ext_resource type="PackedScene" uid="uid://bsdlm8rcrt2j" path="res://scenes/interactions/_triggers/area_triggers/player_area_trigger.tscn" id="40_ahb3l"]
+[ext_resource type="PackedScene" uid="uid://dhb1ju03ckwh4" path="res://scenes/interactions/_receivers/enabler_disabler_v1/collision_enabler_disabler.tscn" id="41_su45r"]
+[ext_resource type="PackedScene" uid="uid://4v23jnigirqc" path="res://scenes/interactions/_receivers/_logic/counter/Counter.tscn" id="42_su45r"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_sl5wy"]
 next_pass = ExtResource("8_pbkst")
@@ -134,6 +144,26 @@ shadow_mesh = SubResource("ArrayMesh_t622h")
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_fisyt"]
 material = ExtResource("18_4qulk")
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_c1656"]
+streams_count = 3
+stream_0/stream = ExtResource("26_cjig4")
+stream_1/stream = ExtResource("27_ahb3l")
+stream_2/stream = ExtResource("28_su45r")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2fpgg"]
+albedo_color = Color(0.78439564, 0.655934, 0.29867858, 1)
+albedo_texture = ExtResource("34_yekw0")
+metallic = 0.14
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_evtgs"]
+material = SubResource("StandardMaterial3D_2fpgg")
+top_radius = 1.074
+bottom_radius = 1.194
+height = 0.076
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_q3c25"]
+size = Vector3(1, 2.5, 2.196045)
 
 [node name="Bridge_Puzzle" type="Node3D" unique_id=935876353]
 
@@ -1947,15 +1977,58 @@ layers = 65537
 mesh = SubResource("PlaneMesh_fisyt")
 skeleton = NodePath("../../../..")
 
-[node name="trap_projectile" parent="." unique_id=589372953 instance=ExtResource("20_psrev")]
+[node name="trap_projectile" type="Node3D" parent="." unique_id=589372953 node_paths=PackedStringArray("projectile_pool", "audio") groups=["debug_PickableObjects"]]
 transform = Transform3D(-1.5, 0, -2.2649371e-07, 0, 1.5, 0, 2.2649371e-07, 0, -1.5, 27, 2.2555635, -12.4)
+script = ExtResource("25_xccmv")
+projectile_pool = [NodePath("_projectiles/ArrowProjectile"), NodePath("_projectiles/ArrowProjectile2"), NodePath("_projectiles/ArrowProjectile3"), NodePath("_projectiles/ArrowProjectile4"), NodePath("_projectiles/ArrowProjectile5")]
+audio = NodePath("AudioStreamPlayer3D")
+metadata/_custom_type_script = "uid://r8vvnup14amn"
 metadata/uid = "d252540f-7778-4dc2-a799-9a3c9dbecf13"
 metadata/lock_uid = true
 metadata/date_generated = "2026-05-04T21:09:57"
 
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="trap_projectile" unique_id=108284454]
+stream = SubResource("AudioStreamRandomizer_c1656")
+volume_db = 3.441
+max_distance = 136.63
+max_polyphony = 5
+bus = &"SFX"
+
+[node name="_graphics" type="Sprite3D" parent="trap_projectile" unique_id=1919992750]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.009619057)
+pixel_size = 0.001306
+texture = ExtResource("29_q3c25")
+
+[node name="_projectiles" type="Node3D" parent="trap_projectile" unique_id=714481185]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.51508)
+
+[node name="ArrowProjectile" parent="trap_projectile/_projectiles" unique_id=321342299 instance=ExtResource("30_pfc10")]
+
+[node name="ArrowProjectile2" parent="trap_projectile/_projectiles" unique_id=1497164146 instance=ExtResource("30_pfc10")]
+
+[node name="ArrowProjectile3" parent="trap_projectile/_projectiles" unique_id=660170205 instance=ExtResource("30_pfc10")]
+
+[node name="ArrowProjectile4" parent="trap_projectile/_projectiles" unique_id=1750565942 instance=ExtResource("30_pfc10")]
+
+[node name="ArrowProjectile5" parent="trap_projectile/_projectiles" unique_id=522591875 instance=ExtResource("30_pfc10")]
+
+[node name="PO_ArrowTrap" type="Node" parent="trap_projectile" unique_id=333408450 groups=["PO"]]
+script = ExtResource("31_ltn4s")
+metadata/_custom_type_script = "uid://djyhniwugtcsq"
+
+[node name="_g" type="MeshInstance3D" parent="trap_projectile" unique_id=805710472]
+transform = Transform3D(0.115, 7.627584e-09, 2.197288e-16, 0, -7.627585e-09, 0.115, 5.026809e-09, -0.1744988, -5.0268096e-09, 0, 0, 0.048701048)
+material_override = ExtResource("26_iisit")
+mesh = ExtResource("27_sk5sf")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="trap_projectile/_g" unique_id=1742692787]
+transform = Transform3D(0.7950002, 1.058791e-21, -5.0487086e-29, -1.0587912e-21, 0.795, 1.06581444e-14, 5.04871e-29, -1.0658142e-14, 0.7950002, 0, 0.2753687, 0)
+mesh = SubResource("CylinderMesh_evtgs")
+
 [node name="Timer" type="Timer" parent="trap_projectile" unique_id=1623306403]
 wait_time = 2.0
 script = ExtResource("21_tauea")
+new_wait_time = 2.0
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="trap_projectile" unique_id=253945717]
 transform = Transform3D(0.18, 1.5736099e-08, 6.878467e-16, 0, -7.86805e-09, 0.18, 1.5736099e-08, -0.18, -7.86805e-09, 0, 0, 0.06711006)
@@ -2031,6 +2104,24 @@ metadata/uid = "ec490e6c-90a0-443b-8e1b-f166607934a5"
 metadata/lock_uid = true
 metadata/date_generated = "2026-04-29T14:39:39"
 
+[node name="TrapTrig_Failsafe" parent="." unique_id=917204587 instance=ExtResource("40_ahb3l")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 27.886372, 1, 3.2340746)
+trig_once = true
+
+[node name="Area3D" type="Area3D" parent="TrapTrig_Failsafe" unique_id=2088049071]
+collision_layer = 0
+monitorable = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="TrapTrig_Failsafe/Area3D" unique_id=1688741572]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.049999952, -0.89816856)
+shape = SubResource("BoxShape3D_q3c25")
+disabled = true
+
+[node name="CollisionEnabler_Disabler" parent="TrapTrig_Failsafe" unique_id=768060295 node_paths=PackedStringArray("col") instance=ExtResource("41_su45r")]
+col = NodePath("../Area3D/CollisionShape3D")
+
+[node name="Counter" parent="TrapTrig_Failsafe" unique_id=1521904207 instance=ExtResource("42_su45r")]
+
 [connection signal="on_activated" from="Fourth_Bridge_Section/Wall_Button" to="Fourth_Bridge_Section/Bridge" method="fully_open_bridge"]
 [connection signal="on_change" from="Fourth_Bridge_Section/Chain" to="Fourth_Bridge_Section/Gate" method="open_gate"]
 [connection signal="on_activated" from="1st_Bridge_Section/Second_Button" to="1st_Bridge_Section/2nd_Bridge" method="fully_open_bridge"]
@@ -2043,5 +2134,11 @@ metadata/date_generated = "2026-04-29T14:39:39"
 [connection signal="on_activated" from="Fifth_Bridge Section/Button3" to="Third_Bridge_Section/Back_To_StatueRoom" method="fully_open_bridge"]
 [connection signal="on_activated" from="Fifth_Bridge Section/Button3" to="trap_projectile/Timer" method="stop_me"]
 [connection signal="on_activated" from="Fifth_Bridge Section/Button4" to="Fifth_Bridge Section/Bridge_Small3" method="fully_open_bridge"]
+[connection signal="on_activated" from="Fifth_Bridge Section/Button4" to="trap_projectile" method="trigger_trap"]
 [connection signal="on_activated" from="Fifth_Bridge Section/Button4" to="trap_projectile/Timer" method="start_me"]
+[connection signal="on_activated" from="Fifth_Bridge Section/Button4" to="TrapTrig_Failsafe/CollisionEnabler_Disabler" method="disable_obj"]
 [connection signal="timeout" from="trap_projectile/Timer" to="trap_projectile" method="trigger_trap"]
+[connection signal="on_activated" from="TrapTrig_Failsafe" to="trap_projectile" method="trigger_trap"]
+[connection signal="on_activated" from="TrapTrig_Failsafe" to="trap_projectile/Timer" method="start_me"]
+[connection signal="area_entered" from="TrapTrig_Failsafe/Area3D" to="TrapTrig_Failsafe" method="_player_entered"]
+[connection signal="area_exited" from="TrapTrig_Failsafe/Area3D" to="TrapTrig_Failsafe" method="_player_exited"]
