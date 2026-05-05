@@ -63,6 +63,29 @@ func open_gate(amount: float) -> void:
 	cur_value = amount
 	_end_position = 1 + (open_pos * amount)
 	
+	using_special = false
+	
+	check_if_disable_col(true)
+
+var using_special: bool
+
+func open_gate_special(amount: float) -> void:
+	if stay_open and cur_value >= 1: return
+	if override_signal_range: 
+		if amount < ovr_signal_min: amount = ovr_signal_min
+		elif amount > ovr_signal_max: amount = ovr_signal_max
+		#prints("before", amount)
+		amount = remap(amount, ovr_signal_min, ovr_signal_max, 0, 1.0)
+	time_since_start = 0
+	is_opening = true
+	_start_position = graphics.position.y
+	#prints("open: ", amount)
+	last_value = cur_value
+	cur_value = amount
+	_end_position = 1 + (open_pos * amount)
+	
+	using_special = true
+	
 	check_if_disable_col(true)
 
 func fully_open_gate(sig: float = -1) -> void:
@@ -72,6 +95,8 @@ func fully_open_gate(sig: float = -1) -> void:
 	last_value = cur_value
 	cur_value = 1
 	_end_position = 1 + (open_pos * 1)
+	
+	using_special = false
 	
 	check_if_disable_col()
 
@@ -83,6 +108,8 @@ func close_gate(sig: float = -1) -> void:
 	cur_value = 0
 	_end_position = 1 + (open_pos * 0)
 	
+	using_special = false
+	
 	check_if_disable_col()
 
 func toggle_gate(sig: float = -1) -> void:
@@ -91,7 +118,6 @@ func toggle_gate(sig: float = -1) -> void:
 
 func _process(delta: float) -> void:
 	
-	if avp: avp.play_me_bro(cur_value)
 	
 	if !things_under and player_col_should_enabled:
 		player_col.set_deferred("disabled",false)
@@ -99,6 +125,9 @@ func _process(delta: float) -> void:
 		player_col_should_enabled = false
 	
 	if is_opening:
+		
+		if avp and !using_special: avp.play_me_bro(cur_value)
+		
 		if (things_under and cur_value <= last_value): return
 		#print(time_since_start)
 		time_since_start += delta

@@ -28,15 +28,19 @@ var point_top: Vector3
 
 var current_value: float = 0
 
+var audio_init: bool
+
 func _ready() -> void:
 	super()
 	update_value(starting_value, emit_sig_when_using_start_value, true)
 	calc_top_n_end_points()
+	audio_init = true
 	if debug_mode: $Trigger/_debugmesh.visible = true
 	else: $Trigger/_debugmesh.visible = false
 
 func _process(delta: float) -> void:
-	avp.play_me_bro(current_value)
+	if audio_init:
+		avp.play_me_bro(current_value)
 	if !being_interacted_with and slowly_reset_when_not_used and current_value > 0:
 		if no_reset_if_activated and current_value == 1.0: return
 		slowly_reset_chain(delta)
@@ -44,6 +48,7 @@ func _process(delta: float) -> void:
 func update_value(amount: float, emit_sigs: bool = true, override_disabled: bool = false) -> void:
 	if !override_disabled and disabled: return
 	current_value = amount
+	
 	
 	update_graphics()
 	

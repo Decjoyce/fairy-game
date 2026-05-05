@@ -21,9 +21,12 @@ var current_value: float = 0
 @onready var hand_pos_bottom: Node3D = %pos_bottom
 @onready var avp: AudioValuePlayer = $AudioValuePlayer
 
+var audio_init: bool
+
 func _ready() -> void:
 	super()
 	update_value(starting_value, emit_sig_when_using_start_value, true)
+	audio_init = true
 
 func begin_interact(sig: float = -1, hand: PlayerHand = null) -> void:
 	pass
@@ -46,7 +49,8 @@ func update_value(amount: float, emit_sigs: bool = true, override_disabled: bool
 		current_value = snappedf(current_value, intervals)
 		#print(current_value)
 	
-	avp.play_me_bro(current_value)
+	if audio_init:
+		avp.play_me_bro(current_value)
 	
 	update_graphics()
 	if emit_sigs:

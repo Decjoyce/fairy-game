@@ -5,7 +5,8 @@ extends AudioStreamPlayer3D
 var last_sound: int
 
 func _ready() -> void:
-	play_me_bro(0.4)
+	pass
+	#play_me_bro(0.4)
 
 func play_me_bro(val: float) -> void:
 	var conv_val := floori(sounds.size() * val)-1
