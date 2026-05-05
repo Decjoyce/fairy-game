@@ -1691,11 +1691,16 @@ layout_mode = 2
 theme_override_font_sizes/font_size = 40
 text = "Start Game"
 
+[node name="LoadMe" type="Button" parent="MainMenu/MenuContainer/MenuButtonsMargin/MenuButtonsContainer/MenuButtonsBoxContainer" unique_id=877840502]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Load Game
+"
+
 [node name="Playground" type="Button" parent="MainMenu/MenuContainer/MenuButtonsMargin/MenuButtonsContainer/MenuButtonsBoxContainer" unique_id=984087950]
 unique_name_in_owner = true
-visible = false
 layout_mode = 2
-text = "Playground"
+text = "Dev Room"
 
 [node name="OptionsButton" type="Button" parent="MainMenu/MenuContainer/MenuButtonsMargin/MenuButtonsContainer/MenuButtonsBoxContainer" unique_id=1486236076]
 unique_name_in_owner = true
@@ -1973,6 +1978,7 @@ stretch_mode = 4
 metadata/_edit_use_anchors_ = true
 
 [connection signal="pressed" from="MainMenu/MenuContainer/MenuButtonsMargin/MenuButtonsContainer/MenuButtonsBoxContainer/Play Demo" to="MainMenu" method="_on_play_demo_pressed"]
+[connection signal="pressed" from="MainMenu/MenuContainer/MenuButtonsMargin/MenuButtonsContainer/MenuButtonsBoxContainer/LoadMe" to="MainMenu" method="_on_load_game_pressed"]
 [connection signal="pressed" from="MainMenu/MenuContainer/MenuButtonsMargin/MenuButtonsContainer/MenuButtonsBoxContainer/Playground" to="MainMenu" method="_on_playground_pressed"]
 [connection signal="pressed" from="MainMenu/MenuContainer/MenuButtonsMargin/MenuButtonsContainer/MenuButtonsBoxContainer/OptionsButton" to="MainMenu" method="_on_options_button_pressed"]
 [connection signal="pressed" from="MainMenu/MenuContainer/MenuButtonsMargin/MenuButtonsContainer/MenuButtonsBoxContainer/CreditsButton" to="MainMenu" method="_on_credits_button_pressed"]

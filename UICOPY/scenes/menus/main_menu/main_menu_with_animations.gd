@@ -49,6 +49,18 @@ func _on_playground_pressed() -> void:
 	pass # Replace with function body.
 	
 
+func _on_load_game_pressed() -> void:
+	anim_player.play("SpeedIntoCavee") 
+	animation_state_machine.travel("IntroB")
+	visible = false
+	
+	await anim_player.animation_finished
+
+	fade_anim.play("FadetoBlack")
+	await fade_anim.animation_finished
+	
+	TEMPSaveGameHandler.load_game_from_menu_new(demo_scnee)
+
 func start_game(scene):
 	
 	anim_player.play("SpeedIntoCavee") 

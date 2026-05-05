@@ -2372,12 +2372,13 @@ monitorable = false
 [node name="CollisionShape3D" type="CollisionShape3D" parent="trap_trig_the_trig/Area3D" unique_id=1637285044]
 shape = SubResource("SphereShape3D_1kgh0")
 
-[node name="ItemCatcher_Traps" parent="." unique_id=2014139358 node_paths=PackedStringArray("return_point") instance=ExtResource("44_g2esy")]
+[node name="ItemCatcher_Traps" parent="." unique_id=2014139358 node_paths=PackedStringArray("return_point", "ap") instance=ExtResource("44_g2esy")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 0, -7)
 collision_layer = 0
 collision_mask = 2
 monitorable = false
 return_point = NodePath("Node3D")
+ap = NodePath("Node3D/AudioStreamPlayer3D")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="ItemCatcher_Traps" unique_id=48863963]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.4000015, 1.05, -0.1500001)
@@ -2397,15 +2398,19 @@ disabled = true
 [node name="Node3D" type="Node3D" parent="ItemCatcher_Traps" unique_id=1766530726]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 1.3, 0)
 
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="ItemCatcher_Traps/Node3D" unique_id=1047580091]
+bus = &"items"
+
 [node name="CollisionEnabler_Disabler" parent="ItemCatcher_Traps" unique_id=768060295 node_paths=PackedStringArray("cols") instance=ExtResource("45_pbw8r")]
 cols = [NodePath("../CollisionShape3D"), NodePath("../CollisionShape3D2"), NodePath("../CollisionShape3D3")]
 
-[node name="ItemCatcher_Bridge" parent="." unique_id=1853996185 node_paths=PackedStringArray("return_point") instance=ExtResource("44_g2esy")]
+[node name="ItemCatcher_Bridge" parent="." unique_id=1853996185 node_paths=PackedStringArray("return_point", "ap") instance=ExtResource("44_g2esy")]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 1.8000002, 0, 13)
 collision_layer = 0
 collision_mask = 2
 monitorable = false
 return_point = NodePath("Node3D")
+ap = NodePath("Node3D/AudioStreamPlayer3D")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="ItemCatcher_Bridge" unique_id=1691206486]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 78.7, 1.05, -21.800001)
@@ -2414,6 +2419,9 @@ disabled = true
 
 [node name="Node3D" type="Node3D" parent="ItemCatcher_Bridge" unique_id=400201623]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 1.3, 0)
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="ItemCatcher_Bridge/Node3D" unique_id=145027087]
+bus = &"items"
 
 [node name="CollisionEnabler_Disabler" parent="ItemCatcher_Bridge" unique_id=485523469 node_paths=PackedStringArray("cols") instance=ExtResource("45_pbw8r")]
 cols = [NodePath("../CollisionShape3D")]
@@ -2860,15 +2868,15 @@ spot_range = 11.996297
 spot_angle = 29.052675
 
 [connection signal="on_piece_inserted_arm" from="Statue" to="Node3D/Area_One_Bridge" method="fully_open_bridge"]
+[connection signal="on_piece_inserted_base" from="Statue" to="To_From_BB_Bridge/Gate_3/TorchSconce_Unlit" method="light_up_torch_with_sig"]
+[connection signal="on_piece_inserted_base" from="Statue" to="To_From_BB_Bridge/Gate_3/TorchSconce_Unlit2" method="light_up_torch_with_sig"]
 [connection signal="on_piece_inserted_base" from="Statue" to="RockGate3" method="fully_open_gate"]
 [connection signal="on_piece_inserted_base" from="Statue" to="Node3D/Going_To_BallybogLand" method="fully_open_bridge"]
-[connection signal="on_piece_inserted_base" from="Statue" to="To_From_BB_Bridge/Gate_3/TorchSconce_Unlit2" method="light_up_torch_with_sig"]
-[connection signal="on_piece_inserted_base" from="Statue" to="To_From_BB_Bridge/Gate_3/TorchSconce_Unlit" method="light_up_torch_with_sig"]
 [connection signal="on_quest_completed" from="Statue" to="." method="statue_finished"]
 [connection signal="on_quest_completed" from="Statue" to="Exit_Door/Door/OBJMOvER" method="move_the_thing"]
-[connection signal="on_change" from="To_From_Traps/ShortCut_Lever" to="RockGate2" method="open_gate"]
-[connection signal="on_change" from="To_From_Traps/ShortCut_Lever" to="To_From_Traps/Gate_2/TorchSconce_Unlit" method="light_up_torch_with_sig"]
 [connection signal="on_change" from="To_From_Traps/ShortCut_Lever" to="To_From_Traps/Gate_2/TorchSconce_Unlit2" method="light_up_torch_with_sig"]
+[connection signal="on_change" from="To_From_Traps/ShortCut_Lever" to="To_From_Traps/Gate_2/TorchSconce_Unlit" method="light_up_torch_with_sig"]
+[connection signal="on_change" from="To_From_Traps/ShortCut_Lever" to="RockGate2" method="open_gate"]
 [connection signal="on_change" from="To_From_BB_Bridge/Area_Two_lever" to="To_From_BB_Bridge/Area_Two_Bridge" method="move_bridge"]
 [connection signal="on_change" from="To_From_BB_Bridge/Area_Two_lever" to="RockGate4" method="open_gate"]
 [connection signal="on_change" from="From_Tut/Lever_Big_Bridge_One" to="From_Tut/Bridge" method="move_bridge"]

@@ -29,12 +29,13 @@ func skip_stuff():
 	if Intro1:
 		if Input.is_action_just_pressed("dec_pause"):
 			animation_state_machine.travel("Intro")
+	
 	#if Intro1:  #Is in intro?
-		#if Input.is_action_just_pressed("toggle_crouch"): #first press
-			###turn the skip ? on 
+		#if Input.is_anything_pressed(): #first press
+			####turn the skip ? on 
 			#SkipUI.visible = true
 			#$SkipUI/hide.start(6)
-			#$SkipUI/hide.timeout
+			#await $SkipUI/hide.timeout
 			#SkipUI.visible = false
 	#
 		#if Input.is_action_just_pressed("toggle_crouch"):# Second cofirm press
@@ -45,6 +46,8 @@ func skip_stuff():
 		#if Input.is_action_just_released("toggle_crouch"):
 			#$SkipUI/Timer.stop()
 			#Intro2 = false
+
+
 
 func start_game():
 	anim_player.play("SpeedIntoCavee") 

@@ -158,10 +158,13 @@ size = Vector3(0.8, 2, 2)
 size = Vector3(0.1, 1.9, 1.6)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_62r4a"]
-size = Vector3(63, 2.3, 42.8)
+size = Vector3(63, 2.3, 36.410866)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_m3dqs"]
+size = Vector3(9.733704, 2.3, 4.025257)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_jok38"]
-size = Vector3(63, 1.6, 42.8)
+size = Vector3(63, 1.6, 46.600685)
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ynqbq"]
 radius = 0.035
@@ -831,7 +834,6 @@ draw_pass_1 = SubResource("PlaneMesh_y7mrb")
 
 [node name="Statue_Section" parent="Different_Sections" unique_id=1516115227 node_paths=PackedStringArray("instantiate_point") instance=ExtResource("3_b3lts")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 65, -2, -19)
-visible = false
 instantiate_point = NodePath("../BabyInstantiatePoint")
 baby_scene = ExtResource("32_a8cig")
 
@@ -1848,33 +1850,46 @@ transform = Transform3D(-3.7855173e-08, 2.1855694e-08, 1, 0.5, 0.8660254, 0, -0.
 [node name="Torch_Mounted5" parent="Different_Sections/Inbetween_Sections/Indicators&Torches" unique_id=31382356 instance=ExtResource("12_y7mrb")]
 transform = Transform3D(1.1356552e-07, -6.556708e-08, -1, 0.5, 0.8660254, 0, 0.8660254, -0.5, 1.3113416e-07, 106, -0.57103145, 9.637015)
 
-[node name="ItemCatcher_StatueRoom" parent="Different_Sections" unique_id=2014139358 node_paths=PackedStringArray("return_point") instance=ExtResource("22_03ler")]
+[node name="ItemCatcher_StatueRoom" parent="Different_Sections" unique_id=2014139358 node_paths=PackedStringArray("return_point", "ap") instance=ExtResource("22_03ler")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 67, -8, -22)
 collision_layer = 0
 collision_mask = 2
 return_point = NodePath("Node3D")
+ap = NodePath("Node3D/AudioStreamPlayer3D")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Different_Sections/ItemCatcher_StatueRoom" unique_id=725302252]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.1500001, -1.1000004)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.1500001, -4.294567)
 shape = SubResource("BoxShape3D_62r4a")
 debug_color = Color(0.9454445, 3.657937e-06, 0.59471697, 0.41960785)
 
-[node name="Node3D" type="Node3D" parent="Different_Sections/ItemCatcher_StatueRoom" unique_id=640711362]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.7999954, 6.3999996, 2.5999985)
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="Different_Sections/ItemCatcher_StatueRoom" unique_id=519235900]
+transform = Transform3D(0.95615155, 0, 0.29287237, 0, 1, 0, -0.29287237, 0, 0.95615155, -12.779514, 0.1500001, 13.320212)
+shape = SubResource("BoxShape3D_m3dqs")
+debug_color = Color(0.9454445, 3.657937e-06, 0.59471697, 0.41960785)
 
-[node name="ItemCatcher_Bridge" parent="Different_Sections" unique_id=1549977672 node_paths=PackedStringArray("return_point") instance=ExtResource("22_03ler")]
+[node name="Node3D" type="Node3D" parent="Different_Sections/ItemCatcher_StatueRoom" unique_id=640711362]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.802944, 6.3999996, 2.6772213)
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="Different_Sections/ItemCatcher_StatueRoom/Node3D" unique_id=1559798546]
+bus = &"items"
+
+[node name="ItemCatcher_Bridge" parent="Different_Sections" unique_id=1549977672 node_paths=PackedStringArray("return_point", "ap") instance=ExtResource("22_03ler")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 67, -7.1, 10.1)
 collision_layer = 0
 collision_mask = 2
 return_point = NodePath("Node3D")
+ap = NodePath("Node3D/AudioStreamPlayer3D")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Different_Sections/ItemCatcher_Bridge" unique_id=48829338]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.80000067, 7.1000004)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.80000067, 5.1996574)
 shape = SubResource("BoxShape3D_jok38")
 debug_color = Color(0.10427118, 0.64838356, 0, 0.41960785)
 
 [node name="Node3D" type="Node3D" parent="Different_Sections/ItemCatcher_Bridge" unique_id=2049297056]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.3999996, -13.200001)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.3999996, -4.250663)
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="Different_Sections/ItemCatcher_Bridge/Node3D" unique_id=676591998]
+bus = &"items"
 
 [node name="BabyInstantiatePoint" type="Node3D" parent="Different_Sections" unique_id=1977334126]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 75, -1.248, -20.006)
@@ -2236,6 +2251,7 @@ transform = Transform3D(0.99999994, 0, 0, 0, 0.99999994, 0, 0, 0, 0.99999994, 0,
 transform = Transform3D(-2.735, -4.1297363e-07, -1.8051646e-14, 0, -1.1955065e-07, 2.735, -4.1297363e-07, 2.735, 1.1955065e-07, 14.053085, 0.1269579, -7.0974407)
 modulate = Color(0, 5.0718627, 5.0718627, 1)
 double_sided = false
+render_priority = -1
 texture = SubResource("GradientTexture2D_l6x3k")
 
 [node name="OmniLight3D" type="OmniLight3D" parent="StatuePieces/Statue_Pieces_LightUp/Statue_Piece_Indicator_base" unique_id=1801293152]
@@ -2248,6 +2264,7 @@ omni_range = 26.025
 transform = Transform3D(-9.026405e-08, 2.065, 9.026405e-08, 0, -9.026405e-08, 2.065, 2.065, 9.026405e-08, 3.9455654e-15, -5.846657, 0.1605016, -0.345047)
 modulate = Color(0, 5.0718627, 5.0718627, 1)
 double_sided = false
+render_priority = -1
 texture = SubResource("GradientTexture2D_l6x3k")
 
 [node name="OmniLight3D" type="OmniLight3D" parent="StatuePieces/Statue_Pieces_LightUp/Statue_Piece_Indicator_Arm" unique_id=410558828]
@@ -2260,6 +2277,7 @@ omni_range = 26.025
 transform = Transform3D(-9.026411e-08, 2.065, 9.026411e-08, 0, -9.026411e-08, 2.065, 2.065, 9.026411e-08, 3.9455654e-15, 2.007698, 0.17318201, 24.783077)
 modulate = Color(0, 5.0718627, 5.0718627, 1)
 double_sided = false
+render_priority = -1
 texture = SubResource("GradientTexture2D_l6x3k")
 
 [node name="OmniLight3D" type="OmniLight3D" parent="StatuePieces/Statue_Pieces_LightUp/Statue_Piece_Indicator_Arm2" unique_id=773361275]
