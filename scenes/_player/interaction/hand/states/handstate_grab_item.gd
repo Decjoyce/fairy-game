@@ -90,6 +90,8 @@ func enter(previous_state_path: String, data := {}) -> void:
 	hand_controller.anim_override_current_animation("a_hand_pickup", true)
 	
 	var item_rot_z: float = grabbed_item.grabbed_rotation
+	if grabbed_item.use_grabbed_rotation_offsets and hand_controller.hand_type == 0: item_rot_z = grabbed_item.grabbed_rotation_left
+	
 	if hand_controller.hand_type == 0: 
 		if grabbed_item.use_alt_flipping: item_rot_z *= 0.25
 		else: item_rot_z *= -1
@@ -147,8 +149,16 @@ var is_against_wall: bool
 
 func set_grab_position() -> void:
 	var _grab_pos: Vector2
-	if is_charging:  _grab_pos = Vector2(grabbed_item.throwing_offset.x * hand_controller.hand_type_rotation_mult, grabbed_item.throwing_offset.y)
-	else:  _grab_pos = Vector2(grabbed_item.grabbed_offset.x * hand_controller.hand_type_rotation_mult, grabbed_item.grabbed_offset.y)
+	if is_charging:  
+		if grabbed_item.use_grabbed_individual_offsets and hand_controller.hand_type == 0:
+			_grab_pos = Vector2(grabbed_item.grabbed_offset_left.x * hand_controller.hand_type_rotation_mult, grabbed_item.grabbed_offset_left.y)
+		else:
+			_grab_pos = Vector2(grabbed_item.throwing_offset.x * hand_controller.hand_type_rotation_mult, grabbed_item.throwing_offset.y)
+	else:  
+		if grabbed_item.use_grabbed_individual_offsets and hand_controller.hand_type == 0:
+			_grab_pos = Vector2(grabbed_item.grabbed_offset_left.x * hand_controller.hand_type_rotation_mult, grabbed_item.grabbed_offset_left.y)
+		else:
+			_grab_pos = Vector2(grabbed_item.grabbed_offset.x * hand_controller.hand_type_rotation_mult, grabbed_item.grabbed_offset.y)
 	
 	var origin := hand_controller.cam.project_ray_origin(offset_helper.get_screen_position() + _grab_pos)
 	var end := origin + hand_controller.cam.project_ray_normal(offset_helper.global_position + _grab_pos) * GRAB_DIST

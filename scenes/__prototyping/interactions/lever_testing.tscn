@@ -24,6 +24,10 @@
 [ext_resource type="Script" uid="uid://bul4myvyhnpjc" path="res://scripts/saving/uid_generator.gd" id="23_0ff0n"]
 [ext_resource type="PackedScene" uid="uid://d3x1l1brjvyre" path="res://scenes/item_catcher/item_catcher.tscn" id="23_miusb"]
 [ext_resource type="PackedScene" uid="uid://dnorxmo52wwjn" path="res://scenes/interactions/_receivers/gate/stone_gate.tscn" id="24_miusb"]
+[ext_resource type="PackedScene" uid="uid://bq5fylqfw1ru7" path="res://scenes/interactions/_special/item_statue_arm.tscn" id="25_5b781"]
+[ext_resource type="PackedScene" uid="uid://u8or5ikxykcy" path="res://scenes/interactions/_special/item_statue_base.tscn" id="26_5i6cv"]
+[ext_resource type="PackedScene" uid="uid://ciak43nkaxomm" path="res://scenes/interactions/_special/item_statue_head.tscn" id="27_d6kqr"]
+[ext_resource type="PackedScene" uid="uid://dr3608osp2js" path="res://scenes/interactions/interactables/items/all_items/misc/item_bell.tscn" id="28_5i6cv"]
 
 [sub_resource type="Environment" id="Environment_vu50v"]
 
@@ -340,6 +344,21 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.7, 0, 0)
 
 [node name="RockGate" parent="ItemCatcher" unique_id=2077487765 instance=ExtResource("24_miusb")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 0.99999994, 3, -0.5, -3.9)
+
+[node name="key" parent="ItemCatcher" unique_id=1651342021 instance=ExtResource("11_vo06l")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19, 0.6, -1.9000001)
+
+[node name="StatuePiece_arm" parent="ItemCatcher" unique_id=234370081 instance=ExtResource("25_5b781")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15, 0.6, -2.9)
+
+[node name="StatuePiece_Base" parent="ItemCatcher" unique_id=493259448 instance=ExtResource("26_5i6cv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17, 0.6, -2.9)
+
+[node name="StatuePiece_Head" parent="ItemCatcher" unique_id=55949614 instance=ExtResource("27_d6kqr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17, 0.6, -3.9)
+
+[node name="bell" parent="ItemCatcher" unique_id=921639655 instance=ExtResource("28_5i6cv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16, 0.6, -5.9)
 
 [connection signal="on_activated" from="Lever" to="SpikeTrap" method="activate"]
 [connection signal="on_change" from="Lever" to="Gate" method="open_gate"]

@@ -23,7 +23,11 @@ enum item_weight_types {WEIGHTLESS, LIGHT, MEDIUM, HEAVY}
 
 @export_group("Grabbing")
 @export var grabbed_offset: Vector2 = Vector2.ZERO
+@export var use_grabbed_individual_offsets: bool
+@export var grabbed_offset_left: Vector2 = Vector2.ZERO
 @export var grabbed_rotation: float = 0.0
+@export var grabbed_rotation_left: float = 0.0
+@export var use_grabbed_rotation_offsets: bool
 @export var use_alt_flipping: bool = false
 @export var flip_graphics_with_hand: bool = false
 @export var no_screen_restrictions: bool = false
