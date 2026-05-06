@@ -100,28 +100,37 @@ func load_game() -> void:
 			if uid_list[obj.uid].has_method("on_load_game"):
 				uid_list[obj.uid].on_load_game(obj)
 	
-	EffectsPlayer.blur_out(0, delay_before_reload, 1, true)
-	EffectsPlayer.saturize(1, delay_before_reload, 0, true)
-	is_loading = false
+	#EffectsPlayer.blur_out(0, delay_before_reload, 1, true)
+	#EffectsPlayer.saturize(1, delay_before_reload, 0, true)
+	#is_loading = false
 	on_loaded_game.emit()
 	
-	#await get_tree().create_timer(0.5).timeout
+	await get_tree().create_timer(1).timeout
+	EffectsPlayer.blur_out(0, 1, 1, true)
+	EffectsPlayer.saturize(1, 1, 0, true)
+	is_loading = false
 	#get_tree().call_group("MrLevel", "setup_level_seq", saved_game.current_seq)
 	world_root.setup_level_seq(saved_game.current_seq)
 	current_seq = saved_game.current_seq
 
-func load_game_from_menu(scene_to_load: PackedScene) -> void:
+func load_game_from_button() -> void:
 	if is_loading: return
-	var saved_game: SavedGame = load("user://savegame.tres") as SavedGame
+	var saved_game: SavedGame = load("user://savegame_1.tres") as SavedGame
+	
+	#EffectsPlayer.blur_out(1, delay_before_reload, 0, true)
+	#EffectsPlayer.saturize(0, delay_before_reload/2, -1,true)
 	
 	is_loading = true
-	await load_scene_for_first_time(scene_to_load)
+	await get_tree().create_timer(delay_before_reload).timeout
+	await load_scene_root(saved_game.current_scene)
 	
 	get_tree().call_group("Player", "on_before_load_game") 
 	get_tree().call_group("Player", "on_load_game", saved_game.player_data) 
 	
 	on_before_load_game.emit()
 	get_tree().call_group("PO", "on_before_load_game")
+	
+	#current_seq = saved_game.current_seq
 	
 	uid_list.clear()
 	for i in get_tree().get_nodes_in_group("PO"):
@@ -140,17 +149,22 @@ func load_game_from_menu(scene_to_load: PackedScene) -> void:
 		else: # Nodes that were originally placed in the scene
 			if uid_list[obj.uid].has_method("on_load_game"):
 				uid_list[obj.uid].on_load_game(obj)
+	
+	#EffectsPlayer.blur_out(0, delay_before_reload, 1, true)
+	#EffectsPlayer.saturize(1, delay_before_reload, 0, true)
+	#is_loading = false
+	on_loaded_game.emit()
+	
+	await get_tree().create_timer(1).timeout
 	EffectsPlayer.blur_out(0, 1, 1, true)
 	EffectsPlayer.saturize(1, 1, 0, true)
 	is_loading = false
+	#get_tree().call_group("MrLevel", "setup_level_seq", saved_game.current_seq)
+	world_root.setup_level_seq(saved_game.current_seq)
+	current_seq = saved_game.current_seq
 
-func load_game_from_menu_new(scene_to_load: PackedScene) -> void:
+func load_game_from_menu(scene_to_load: PackedScene) -> void:
 	if is_loading: return
-	
-	if !FileAccess.file_exists("user://savegame_1.tres"):
-		get_tree().change_scene_to_packed(scene_to_load)
-		return
-	
 	var saved_game: SavedGame = load("user://savegame_1.tres") as SavedGame
 	
 	is_loading = true
@@ -179,9 +193,64 @@ func load_game_from_menu_new(scene_to_load: PackedScene) -> void:
 		else: # Nodes that were originally placed in the scene
 			if uid_list[obj.uid].has_method("on_load_game"):
 				uid_list[obj.uid].on_load_game(obj)
+	#EffectsPlayer.blur_out(0, 1, 1, true)
+	#EffectsPlayer.saturize(1, 1, 0, true)
+	#is_loading = false
+	
+	await get_tree().create_timer(1).timeout
 	EffectsPlayer.blur_out(0, 1, 1, true)
 	EffectsPlayer.saturize(1, 1, 0, true)
 	is_loading = false
+	#get_tree().call_group("MrLevel", "setup_level_seq", saved_game.current_seq)
+	world_root.setup_level_seq(saved_game.current_seq)
+	current_seq = saved_game.current_seq
+
+func load_game_from_menu_new(scene_to_load: PackedScene) -> void:
+	if is_loading: return
+	
+	if !FileAccess.file_exists("user://savegame_1.tres"):
+		get_tree().change_scene_to_packed(scene_to_load)
+		return
+	
+	var saved_game: SavedGame = load("user://savegame_1.tres") as SavedGame
+	
+	is_loading = true
+	await load_scene_for_first_time(scene_to_load)
+	
+	get_tree().call_group("Player", "on_before_load_game") 
+	get_tree().call_group("Player", "on_load_game", saved_game.player_data) 
+	
+	on_before_load_game.emit()
+	get_tree().call_group("PO", "on_before_load_game")
+	on_loaded_game.emit()
+	
+	uid_list.clear()
+	for i in get_tree().get_nodes_in_group("PO"):
+		assert(i is PersistentObject, "A node was marked as PO despite not being of type PersistentObject -- NOTIFY DECLAN ASAP")
+		if i.get_parent().has_meta("uid"):
+			uid_list[i.get_uid()] = i
+	
+	#print(uid_list)
+	
+	for obj in saved_game.saved_data:
+		if !uid_list[obj.uid]:
+			printerr("AN UID - Write A PROPER ERROR BRO - in SAVEGAMEHANDLER")
+			continue
+		if obj.uid == "[NONNATIVE]": # Nodes that were not placed in scene but spawned in after 
+			_load_non_native_objs(obj)
+		else: # Nodes that were originally placed in the scene
+			if uid_list[obj.uid].has_method("on_load_game"):
+				uid_list[obj.uid].on_load_game(obj)
+	
+	on_loaded_game.emit()
+	
+	await get_tree().create_timer(1).timeout
+	EffectsPlayer.blur_out(0, 1, 1, true)
+	EffectsPlayer.saturize(1, 1, 0, true)
+	is_loading = false
+	#get_tree().call_group("MrLevel", "setup_level_seq", saved_game.current_seq)
+	world_root.setup_level_seq(saved_game.current_seq)
+	current_seq = saved_game.current_seq
 
 
 func _load_non_native_objs(obj: SavedData) -> void:

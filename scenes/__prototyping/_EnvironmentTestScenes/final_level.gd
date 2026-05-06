@@ -65,6 +65,7 @@ func setup_level_seq(seq: int) -> void:
 			delete_tut()
 			delete_trap()
 			delete_bb()
+			print("D")
 			#delete_bridge()
 			stat_scene.visible = true
 		11:

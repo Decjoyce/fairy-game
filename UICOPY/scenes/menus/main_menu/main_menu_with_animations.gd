@@ -59,7 +59,7 @@ func _on_load_game_pressed() -> void:
 	fade_anim.play("FadetoBlack")
 	await fade_anim.animation_finished
 	
-	TEMPSaveGameHandler.load_game_from_menu_new(demo_scnee)
+	TEMPSaveGameHandler.load_game_from_button()
 
 func start_game(scene):
 	
