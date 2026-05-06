@@ -1,4 +1,4 @@
-extends VBoxContainer
+extends HBoxContainer
 
 @export var language_option: OptionButton
 
