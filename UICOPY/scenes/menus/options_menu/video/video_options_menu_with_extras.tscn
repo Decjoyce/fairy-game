@@ -2,16 +2,13 @@
 
 [ext_resource type="PackedScene" uid="uid://b2numvphf2kau" path="res://addons/maaacks_menus_template/base/nodes/menus/options_menu/video/video_options_menu.tscn" id="1_euu8j"]
 [ext_resource type="PackedScene" uid="uid://b6bl3n5mp3m1e" path="res://addons/maaacks_menus_template/base/nodes/menus/options_menu/option_control/list_option_control.tscn" id="2_guhhv"]
-[ext_resource type="Script" uid="uid://dih58pk3jpxm3" path="res://addons/maaacks_menus_template/base/nodes/menus/options_menu/option_control/option_control.gd" id="3_guhhv"]
+[ext_resource type="Script" uid="uid://cafqki2b08kwu" path="res://addons/maaacks_menus_template/base/nodes/menus/options_menu/option_control/option_control.gd" id="3_guhhv"]
 [ext_resource type="Script" uid="uid://b13bmar5n5t3b" path="res://UICOPY/scenes/menus/options_menu/video/Language_Changer.gd" id="4_c5o0y"]
 
 [node name="Video" unique_id=2066056515 instance=ExtResource("1_euu8j")]
 
 [node name="VBoxContainer" parent="." index="0" unique_id=1251699420]
 theme_override_constants/separation = 20
-
-[node name="ResolutionControl" parent="VBoxContainer" index="1" unique_id=646319285]
-option_titles = Array[String](["640 x 360", "960 x 540", "1024 x 576", "1280 x 720", "1600 x 900", "1902 x 1033", "1920 x 1080", "2048 x 1152", "2560 x 1440", "3200 x 1800", "3840 x 2160"])
 
 [node name="VSyncControl" parent="VBoxContainer" index="2" unique_id=2127470729]
 visible = false
@@ -48,7 +45,6 @@ vertical_alignment = 1
 
 [node name="CheckButton" type="CheckButton" parent="VBoxContainer/ExperimentalHandLightingControl" index="1" unique_id=1452268147]
 layout_mode = 2
-button_pressed = true
 
 [node name="CameraShakeControl" parent="VBoxContainer" index="5" unique_id=683521251 instance=ExtResource("2_guhhv")]
 visible = false
@@ -77,6 +73,7 @@ property_type = 21
 default_value = 1.0
 
 [node name="Language" type="HBoxContainer" parent="VBoxContainer" index="7" unique_id=664892697 node_paths=PackedStringArray("language_option")]
+visible = false
 layout_mode = 2
 script = ExtResource("4_c5o0y")
 language_option = NodePath("OptionButton")
