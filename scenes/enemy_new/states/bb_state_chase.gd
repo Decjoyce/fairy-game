@@ -15,6 +15,30 @@ var in_rad: bool
 var react_time: float = 1
 var has_reacted: bool 
 
+func load_me(previous_state_path: String, data : SavedData_Ballybog) -> void:
+	super(previous_state_path, data)
+	failsafe_timer.timeout.connect(failsafe_trigged)
+	wait_timer.timeout.connect(wait_delay_over)
+	
+	failsafe_timer.start()
+	
+	last_known_location = data.chase_last_known_loc
+	has_reacted = data.chase_has_reacted
+	lost_player = data.chase_lost_player
+	
+	if data.time_left > 0: wait_timer.wait_time = data.time_left
+	
+	if has_reacted:
+		ballybog.movement.set_destination_to_player()
+		update_destination()
+		ballybog.movement.start_movement()
+		has_reacted = true
+		return
+	ballybog.graphics.look_at(ballybog.player.global_position, Vector3.UP)
+	ballybog.graphics.rotation_degrees.y += 180
+	wait_timer.start()
+	ballybog.anim_player.play("Alert")
+
 func enter(previous_state_path: String, data := {}) -> void:
 	super(previous_state_path, data)
 	failsafe_timer.timeout.connect(failsafe_trigged)
@@ -94,9 +118,15 @@ func set_destination()-> void:
 
 func reached_destination() -> void:
 	if !active: return
-	#set_destination()
+	#if !ballybog.movement.can_reach_destination():
+		#finished.emit(sm.default_state.name)
+		#return
 
 func update_destination(d: Vector3 = Vector3.ZERO,e: Vector3 = Vector3.ZERO) -> void:
+	if !ballybog.movement.can_reach_destination():
+		finished.emit(sm.default_state.name)
+		return
+	
 	if lost_player: return
 	ballybog.movement.add_player_pos_to_destination()
 	if !ballybog.movement.is_moving:
@@ -107,7 +137,7 @@ func failsafe_trigged() -> void:
 	if !active: return
 	var fs_string: String = "FAILSAFE TRIGGERED: "
 	if lost_player:
-		finished.emit(sm.get_default_state())
+		finished.emit(sm.default_state.name)
 		fs_string+= "I LOST PLAYER"
 	else:
 		ballybog.movement.stop_movement()

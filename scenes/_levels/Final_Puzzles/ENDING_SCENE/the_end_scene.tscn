@@ -1,0 +1,583 @@
+[gd_scene format=3 uid="uid://b5xtwusj7e0rh"]
+
+[ext_resource type="Texture2D" uid="uid://cqsisturdjudn" path="res://assets/comic/frame_005.png" id="1_8jb7e"]
+[ext_resource type="Theme" uid="uid://4rqtecgji27t" path="res://scenes/_levels/menus/main_menu/Main_Menu_UI_NEW/UI_themes/customised_brush_theme.tres" id="1_towvs"]
+[ext_resource type="Script" uid="uid://nf8r0kp6gvx5" path="res://scenes/_levels/Final_Puzzles/ENDING_SCENE/the_end_scene.gd" id="2_m2cbw"]
+[ext_resource type="Texture2D" uid="uid://bq13iqrm63evk" path="res://scenes/_levels/menus/main_menu/Main_Menu_UI_NEW/UI_themes/ui_art/title_colour.png" id="2_wleya"]
+[ext_resource type="Texture2D" uid="uid://cy4dgo657l07i" path="res://assets/comic/frame_013.png" id="2_xab64"]
+[ext_resource type="AudioStream" uid="uid://t6istygx1c3b" path="res://assets/audio/music/music_ambience_002.wav" id="3_muhwy"]
+[ext_resource type="PackedScene" uid="uid://bagraegk311h0" path="res://addons/maaacks_menus_template/examples/scenes/end_credits/end_credits.tscn" id="6_m2cbw"]
+
+[sub_resource type="Gradient" id="Gradient_xab64"]
+offsets = PackedFloat32Array(0.36261982, 1)
+colors = PackedColorArray(0.040410012, 0.037800003, 0.09, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_7bnfe"]
+gradient = SubResource("Gradient_xab64")
+fill = 1
+fill_from = Vector2(0.43931624, 0.51111114)
+
+[sub_resource type="AnimationNodeStateMachinePlayback" id="AnimationNodeStateMachinePlayback_muhwy"]
+
+[sub_resource type="Animation" id="Animation_03qc8"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Fade_In:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 0, 0, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("PostCreditSection/Baby:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("PostCreditSection:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("TitleSection:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("TitleSection:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Credits:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("EndCredits:visible")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("EndCredits:scroll_paused")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_towvs"]
+resource_name = "credits"
+length = 41.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Credits:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Fade_In:color")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(1.7999992, 3.8, 38.4, 40.866665),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 0), Color(0, 0, 0, 0), Color(0, 0, 0, 0), Color(0, 0, 0, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("EndCredits:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(6.9666667),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("EndCredits:scroll_paused")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(4.3333335),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Fade_In:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(),
+"transitions": PackedFloat32Array(),
+"update": 0,
+"values": []
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("PostCreditSection:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/6/type = "method"
+tracks/6/imported = false
+tracks/6/enabled = false
+tracks/6/path = NodePath("EndCredits")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(),
+"transitions": PackedFloat32Array(),
+"values": []
+}
+
+[sub_resource type="Animation" id="Animation_m2cbw"]
+resource_name = "end button "
+length = 2.7333333
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PostCreditSection:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("EndCredits:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("EndCredits")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(1.6333333),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"_end_reached"
+}]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("EndCredits:scroll_paused")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.03333333),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_8jb7e"]
+resource_name = "fade_in"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Fade_In:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 1), Color(0, 0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_xab64"]
+resource_name = "post_credits"
+length = 17.866667
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PostCreditSection/Baby:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(3.0333333, 5.9, 8.933332),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Fade_In:color")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 3.0333333, 12.433333, 12.833333),
+"transitions": PackedFloat32Array(1, 0, 1, 0),
+"update": 0,
+"values": [Color(0, 0, 0, 1), Color(0, 0, 0, 0), Color(0, 0, 0, 0), Color(0, 0, 0, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("PostCreditSection:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.0333333, 13.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/3/type = "method"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(17.5),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"return_to_menu"
+}]
+}
+tracks/4/type = "method"
+tracks/4/imported = false
+tracks/4/enabled = false
+tracks/4/path = NodePath("EndCredits")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(17.433332),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"_end_reached"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_wleya"]
+resource_name = "title"
+length = 13.633333
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Fade_In:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(4.366667, 5.166667, 6.4, 12.833334, 13.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 0), Color(0, 0, 0, 0), Color(0, 0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("TitleSection/TextureRect:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.8333333, 8.666667, 9.9, 12.666667),
+"transitions": PackedFloat32Array(-2, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0.75, 0.75), Vector2(1.5, 1.5), Vector2(1.5, 1.5), Vector2(1.4, 1.4)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("TitleSection:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(11.200001, 12.133333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("TitleSection:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 12.133333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_8jb7e"]
+_data = {
+&"RESET": SubResource("Animation_03qc8"),
+&"credits": SubResource("Animation_towvs"),
+&"end button ": SubResource("Animation_m2cbw"),
+&"fade_in": SubResource("Animation_8jb7e"),
+&"post_credits": SubResource("Animation_xab64"),
+&"title": SubResource("Animation_wleya")
+}
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_m2cbw"]
+animation = &"credits"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_7bnfe"]
+animation = &"post_credits"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_muhwy"]
+animation = &"title"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_pb6or"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_muhwy"]
+switch_mode = 2
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_tia45"]
+switch_mode = 2
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_xab64"]
+states/End/position = Vector2(960, 100.8)
+states/credits/node = SubResource("AnimationNodeAnimation_m2cbw")
+states/credits/position = Vector2(550.8, 100.72207)
+states/post_credits/node = SubResource("AnimationNodeAnimation_7bnfe")
+states/post_credits/position = Vector2(705.99994, 83.821945)
+states/title/node = SubResource("AnimationNodeAnimation_muhwy")
+states/title/position = Vector2(355.6, 100.896)
+transitions = ["Start", "title", SubResource("AnimationNodeStateMachineTransition_pb6or"), "title", "credits", SubResource("AnimationNodeStateMachineTransition_muhwy"), "credits", "post_credits", SubResource("AnimationNodeStateMachineTransition_tia45")]
+
+[node name="TheEndScene" type="Control" unique_id=76747269]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_towvs")
+script = ExtResource("2_m2cbw")
+
+[node name="BG" type="TextureRect" parent="." unique_id=1585858881]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("GradientTexture2D_7bnfe")
+
+[node name="EndCredits" parent="." unique_id=613298766 instance=ExtResource("6_m2cbw")]
+visible = false
+layout_mode = 1
+main_menu_scene_path = "uid://c1evlmyhcjgef"
+force_mouse_mode_visible = true
+animation_state_machine = SubResource("AnimationNodeStateMachinePlayback_muhwy")
+input_scroll_speed = 60.0
+scroll_paused = true
+
+[node name="TitleSection" type="Control" parent="." unique_id=370161977]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="TitleSection" unique_id=670939978]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -295.0
+offset_top = -101.5
+offset_right = 295.0
+offset_bottom = 101.5
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1e-05, 1e-05)
+pivot_offset_ratio = Vector2(0.5, 0.5)
+texture = ExtResource("2_wleya")
+metadata/_edit_use_anchors_ = true
+
+[node name="Credits" type="Control" parent="." unique_id=588308836]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_towvs")
+metadata/_edit_use_anchors_ = true
+
+[node name="Control" type="Control" parent="Credits" unique_id=1442086400]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 940.0
+offset_top = 1040.0
+offset_right = 940.0
+offset_bottom = 1040.0005
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Credits/Control" unique_id=910129620]
+custom_minimum_size = Vector2(800, 5000)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.29166666
+anchor_top = 1.0000005
+anchor_right = 0.7083333
+anchor_bottom = 5.629632
+grow_horizontal = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Credits/Control/VBoxContainer" unique_id=211787228]
+layout_mode = 2
+text = "JOE Ravioli - Supreme Leader"
+fit_content = true
+horizontal_alignment = 3
+
+[node name="PostCreditSection" type="Control" parent="." unique_id=809421012]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Babybog" type="TextureRect" parent="PostCreditSection" unique_id=1473005389]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_xab64")
+
+[node name="Baby" type="TextureRect" parent="PostCreditSection" unique_id=1375804340]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_8jb7e")
+
+[node name="Fade_In" type="ColorRect" parent="." unique_id=1643278380]
+modulate = Color(0, 0, 0, 1)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=182881327]
+libraries/ = SubResource("AnimationLibrary_8jb7e")
+
+[node name="AnimationTree" type="AnimationTree" parent="." unique_id=1301454510]
+tree_root = SubResource("AnimationNodeStateMachine_xab64")
+anim_player = NodePath("../AnimationPlayer")
+
+[node name="AudioListener2D" type="AudioListener2D" parent="." unique_id=575185374]
+current = true
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=1187729740]
+stream = ExtResource("3_muhwy")
+volume_db = -6.363
+autoplay = true

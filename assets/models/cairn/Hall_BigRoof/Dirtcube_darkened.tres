@@ -1,0 +1,17 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://xns6w0dobn8x"]
+
+[ext_resource type="Texture2D" uid="uid://d3vygfueklo72" path="res://assets/models/cairn/Z-Old-HallModels/DirtCube/DirtE/DirtEnd_DirtCube_BaseColor-DirtCube_Alpha.png" id="1_us88a"]
+[ext_resource type="Texture2D" uid="uid://cv8weq2p25oil" path="res://assets/models/cairn/Z-Old-HallModels/DirtCube/DirtE/DirtEnd_DirtCube_Emission.png" id="2_u6v25"]
+[ext_resource type="Material" uid="uid://dyejtq23uplk4" path="res://assets/shaders/Outline/outline.tres" id="3_h07sl"]
+[ext_resource type="Texture2D" uid="uid://c01dghhekspud" path="res://assets/models/cairn/Z-Old-HallModels/DirtCube/DirtE/DirtEnd_DirtCube_Normal.png" id="4_08o40"]
+[ext_resource type="Texture2D" uid="uid://bwup55iq0grfy" path="res://assets/models/cairn/Z-Old-HallModels/DirtCube/DirtE/DirtEnd_DirtCube_Metallic-DirtCube_Roughness.png" id="5_inrxa"]
+
+[resource]
+next_pass = ExtResource("3_h07sl")
+albedo_color = Color(0.27, 0.08100001, 0.08100001, 1)
+albedo_texture = ExtResource("1_us88a")
+roughness_texture = ExtResource("5_inrxa")
+emission_enabled = true
+emission_texture = ExtResource("2_u6v25")
+normal_enabled = true
+normal_texture = ExtResource("4_08o40")

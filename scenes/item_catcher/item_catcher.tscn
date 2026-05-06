@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://d3x1l1brjvyre"]
+
+[ext_resource type="Script" uid="uid://byfosjys2jd58" path="res://item_catcher.gd" id="1_w0t0s"]
+[ext_resource type="AudioStream" uid="uid://ccx4d7canpf4y" path="res://assets/audio/sfx/items/StoneReturn/Return_sfx.tres" id="2_1acy1"]
+
+[node name="ItemCatcher" type="Area3D" unique_id=2014139358]
+script = ExtResource("1_w0t0s")
+ap_clip = ExtResource("2_1acy1")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

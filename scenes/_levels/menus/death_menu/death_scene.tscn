@@ -1,11 +1,10 @@
-[gd_scene load_steps=45 format=3 uid="uid://ds04v2o1xwpoj"]
+[gd_scene format=3 uid="uid://ds04v2o1xwpoj"]
 
-[ext_resource type="Texture2D" uid="uid://2t1cw83o71dn" path="res://assets/ui/combat/enemy_border.png" id="1_e3yli"]
 [ext_resource type="Script" uid="uid://dt16ne7di65xe" path="res://scenes/_levels/menus/death_menu/death_scene.gd" id="1_lr4ww"]
-[ext_resource type="PackedScene" uid="uid://bssask2v64ogc" path="res://scenes/_levels/Vertical Slice/_vertical_slice.tscn" id="2_g8o4m"]
-[ext_resource type="MeshLibrary" uid="uid://bu208a8l5866i" path="res://scenes/_levels/_palettes/cairn/meshlibrary_cairn.tres" id="2_lr4ww"]
-[ext_resource type="PackedScene" uid="uid://2urw8kkhhaec" path="res://scenes/_levels/Vertical Slice/end_scene.tscn" id="3_nmorq"]
+[ext_resource type="Material" uid="uid://c4cxp8ll7n087" path="res://assets/models/cairn/Props/Skull/skull_texture.tres" id="3_4ng54"]
+[ext_resource type="ArrayMesh" uid="uid://bqoxxkvdnwixn" path="res://assets/models/cairn/Props/Skull/skull.obj" id="3_81pop"]
 [ext_resource type="Texture2D" uid="uid://bajdgu88x35py" path="res://scenes/enemy/Sprites/ballybog/walk/ballyWalkSheet_n.png" id="3_yj678"]
+[ext_resource type="Theme" uid="uid://4rqtecgji27t" path="res://scenes/_levels/menus/main_menu/Main_Menu_UI_NEW/UI_themes/customised_brush_theme.tres" id="4_7v44r"]
 [ext_resource type="Texture2D" uid="uid://dl3etwft2mhxm" path="res://scenes/enemy/Sprites/ballybog/walk/ballyWalkSheet.png" id="4_g8o4m"]
 [ext_resource type="Script" uid="uid://b5653u7w56pqw" path="res://addons/extras_sprites/scripts/sprite_3D_billboard.gd" id="5_nmorq"]
 [ext_resource type="Script" uid="uid://b4m0sglcg4smw" path="res://addons/extras_sprites/scripts/animatio_data.gd" id="6_74o25"]
@@ -24,12 +23,10 @@
 [ext_resource type="Texture2D" uid="uid://dqyfvagjygkha" path="res://scenes/enemy/Sprites/ballybog/attacks/ballyAttack_RTop.png" id="19_ksddr"]
 [ext_resource type="Texture2D" uid="uid://bnrfxmw0nk1dq" path="res://scenes/enemy/Sprites/ballybog/attacks/ballyAttack_RTop_n.png" id="20_ecwat"]
 [ext_resource type="Script" uid="uid://c00pbq6pr77dd" path="res://scenes/_levels/menus/vs_menu_helper.gd" id="21_vle7j"]
+[ext_resource type="Texture2D" uid="uid://c7lfp47776dxr" path="res://assets/ui/player/attack_indicators/Lmid.png" id="25_7uxcs"]
 
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_m0l0g"]
-texture = ExtResource("1_e3yli")
-texture_margin_left = 13.0
-texture_margin_right = 79.0
-modulate_color = Color(0.26006752, 0.106126174, 0.106126174, 1)
+[sub_resource type="ViewportTexture" id="ViewportTexture_4ng54"]
+viewport_path = NodePath("SubViewport")
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_qhysk"]
 sky_horizon_color = Color(0, 0.37292683, 0.8185948, 1)
@@ -213,23 +210,26 @@ texture_normal = ExtResource("20_ecwat")
 rows = 2.0
 columns = 8.0
 
-[sub_resource type="Environment" id="Environment_70w5w"]
-background_color = Color(0.26006752, 0, 0.19966345, 1)
-sky = SubResource("Sky_uqgcp")
-ambient_light_source = 2
-ambient_light_color = Color(0.27515882, 8.2724725e-08, 6.016344e-08, 1)
-reflected_light_source = 1
-tonemap_mode = 4
-tonemap_exposure = 1.5
-ssao_enabled = true
-fog_enabled = true
-fog_light_color = Color(0, 0, 0, 1)
-fog_light_energy = 0.85
-fog_density = 0.2735
-volumetric_fog_enabled = true
-volumetric_fog_density = 0.02
-volumetric_fog_emission = Color(0.13725491, 0.16862746, 0.1882353, 1)
-volumetric_fog_sky_affect = 0.0
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5yqwi"]
+albedo_color = Color(0.29582244, 0.28200856, 0.27378577, 1)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_7uxcs"]
+material = SubResource("StandardMaterial3D_5yqwi")
+top_radius = 0.0
+bottom_radius = 0.05
+height = 0.5
+radial_segments = 4
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8dywv"]
+albedo_color = Color(0.38039216, 0.28627452, 0.19215687, 1)
+metallic = 0.5
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_7v44r"]
+material = SubResource("StandardMaterial3D_8dywv")
+top_radius = 0.03
+bottom_radius = 0.03
+height = 0.8
+radial_segments = 4
 
 [sub_resource type="Animation" id="Animation_8o3kd"]
 length = 0.001
@@ -258,6 +258,22 @@ tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0, 2),
 "transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 1), Color(0, 0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_k8stp"]
+resource_name = "fade_in_2"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(5.2780294, 0),
 "update": 0,
 "values": [Color(0, 0, 0, 1), Color(0, 0, 0, 0)]
 }
@@ -295,23 +311,41 @@ tracks/1/keys = {
 _data = {
 &"RESET": SubResource("Animation_8o3kd"),
 &"fade_in": SubResource("Animation_e7sjl"),
+&"fade_in_2": SubResource("Animation_k8stp"),
 &"fade_out": SubResource("Animation_j4a7u")
 }
 
-[node name="death_screen" type="Node3D"]
+[node name="death_screen" type="Node3D" unique_id=368601352 node_paths=PackedStringArray("ui", "ui_container", "death_bg", "reload_button", "replay_button", "exit_button", "fade_anim", "dmg_graphics")]
 script = ExtResource("1_lr4ww")
-game_scene = ExtResource("2_g8o4m")
-end_scene = ExtResource("3_nmorq")
+ui = NodePath("Control")
+ui_container = NodePath("Control/MarginContainer")
+death_bg = NodePath("Control/TextureRect")
+reload_button = NodePath("Control/MarginContainer/VBoxContainer/Reload")
+replay_button = NodePath("Control/MarginContainer/VBoxContainer/Replay")
+exit_button = NodePath("Control/MarginContainer/VBoxContainer/Exit")
+fade_anim = NodePath("Ender/AnimationPlayer")
+dmg_graphics = [NodePath("SubViewport/Node3D/DeathGraphics/Deafult"), NodePath("SubViewport/Node3D/DeathGraphics/Sprite3DBillBoard"), NodePath("SubViewport/Node3D/DeathGraphics/Spikes"), NodePath("SubViewport/Node3D/DeathGraphics/Arrow")]
 
-[node name="Control" type="Control" parent="."]
+[node name="Control" type="Control" parent="." unique_id=1399005180]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("4_7v44r")
 
-[node name="MarginContainer" type="MarginContainer" parent="Control"]
+[node name="TextureRect" type="TextureRect" parent="Control" unique_id=984654632]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("ViewportTexture_4ng54")
+metadata/_edit_use_anchors_ = true
+
+[node name="MarginContainer" type="MarginContainer" parent="Control" unique_id=1365532743]
 custom_minimum_size = Vector2(320, 279.045)
 layout_mode = 1
 anchors_preset = -1
@@ -323,17 +357,17 @@ grow_horizontal = 2
 grow_vertical = 0
 metadata/_edit_use_anchors_ = true
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Control/MarginContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/MarginContainer" unique_id=1093148946]
 layout_mode = 2
 theme_override_constants/separation = 19
 
-[node name="Button" type="Button" parent="Control/MarginContainer/VBoxContainer"]
+[node name="Reload" type="Button" parent="Control/MarginContainer/VBoxContainer" unique_id=379027622]
 custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
-theme_override_font_sizes/font_size = 21
-theme_override_styles/normal = SubResource("StyleBoxTexture_m0l0g")
+theme = ExtResource("4_7v44r")
 
-[node name="ColorRect" type="ColorRect" parent="Control/MarginContainer/VBoxContainer/Button"]
+[node name="ColorRect" type="ColorRect" parent="Control/MarginContainer/VBoxContainer/Reload" unique_id=464630037]
+visible = false
 show_behind_parent = true
 layout_mode = 1
 anchors_preset = 15
@@ -348,7 +382,7 @@ grow_vertical = 2
 mouse_filter = 2
 color = Color(0.12156863, 0.16470589, 0.13725491, 1)
 
-[node name="RichTextLabel" type="RichTextLabel" parent="Control/MarginContainer/VBoxContainer/Button"]
+[node name="RichTextLabel" type="RichTextLabel" parent="Control/MarginContainer/VBoxContainer/Reload" unique_id=1955660904]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -358,17 +392,52 @@ grow_vertical = 2
 mouse_filter = 2
 theme_override_font_sizes/bold_font_size = 26
 bbcode_enabled = true
-text = "[b]Replay[/b]"
+text = "[b]Reload Last Save[/b]"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Button2" type="Button" parent="Control/MarginContainer/VBoxContainer"]
+[node name="Replay" type="Button" parent="Control/MarginContainer/VBoxContainer" unique_id=1532565274]
 custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
-theme_override_font_sizes/font_size = 21
-theme_override_styles/normal = SubResource("StyleBoxTexture_m0l0g")
+theme = ExtResource("4_7v44r")
 
-[node name="ColorRect" type="ColorRect" parent="Control/MarginContainer/VBoxContainer/Button2"]
+[node name="ColorRect" type="ColorRect" parent="Control/MarginContainer/VBoxContainer/Replay" unique_id=599301777]
+visible = false
+show_behind_parent = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 5.0
+offset_top = 4.0
+offset_right = -4.0
+offset_bottom = -2.7050018
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0.12156863, 0.16470589, 0.13725491, 1)
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Control/MarginContainer/VBoxContainer/Replay" unique_id=1010245652]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_font_sizes/bold_font_size = 26
+bbcode_enabled = true
+text = "[b]Restart Level[/b]"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Exit" type="Button" parent="Control/MarginContainer/VBoxContainer" unique_id=2091363599]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+theme = ExtResource("4_7v44r")
+
+[node name="ColorRect" type="ColorRect" parent="Control/MarginContainer/VBoxContainer/Exit" unique_id=638285929]
+visible = false
 show_behind_parent = true
 layout_mode = 1
 anchors_preset = 15
@@ -383,7 +452,7 @@ grow_vertical = 2
 mouse_filter = 2
 color = Color(0.12053465, 0.16360441, 0.13638422, 1)
 
-[node name="RichTextLabel" type="RichTextLabel" parent="Control/MarginContainer/VBoxContainer/Button2"]
+[node name="RichTextLabel" type="RichTextLabel" parent="Control/MarginContainer/VBoxContainer/Exit" unique_id=1636445490]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -398,20 +467,43 @@ text = "Exit To Menu"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="GridMap" type="GridMap" parent="."]
-visible = false
-mesh_library = ExtResource("2_lr4ww")
-data = {
-"cells": PackedInt32Array(65535, 65535, 0, 65535, 0, 0, 65535, 1, 0, 65534, 1, 0, 65534, 0, 0, 65534, 65535, 0, 65534, 65534, 0, 65535, 65534, 0, 0, 65534, 0, 0, 65535, 0, 0, 0, 0, 0, 1, 0, 1, 1, 0, 1, 0, 0, 1, 65535, 0, 1, 65534, 0, 1, 65533, 0, 1, 65532, 0, 0, 65532, 0, 65535, 65532, 0, 0, 65533, 0, 65535, 65533, 0, 65534, 65533, 0, 65533, 65533, 0, 65533, 65532, 0, 65534, 65532, 0, 65532, 65533, 0, 65532, 65534, 0, 65532, 65535, 0, 65532, 0, 0, 65533, 0, 0, 65533, 65535, 0, 65533, 65534, 0, 65533, 1, 0, 65532, 1, 0, 65532, 65532, 0, 0, 2, 0, 65535, 2, 0, 65534, 2, 0, 65533, 2, 0, 65532, 2, 0, 1, 2, 0, 2, 65533, 0, 2, 65534, 0, 2, 65535, 0, 2, 0, 0, 2, 1, 0, 2, 2, 0, 2, 65532, 0, 3, 65532, 1048577, 3, 65533, 1048577, 3, 65534, 1048577, 3, 65535, 1048577, 3, 0, 1048577, 3, 1, 1048577, 3, 2, 1048577, 3, 3, 3, 65531, 3, 1441795, 65531, 65531, 655363, 3, 65531, 1048579, 2, 65531, 655361, 1, 65531, 655361, 0, 65531, 655361, 65535, 65531, 655361, 65534, 65531, 655361, 65533, 65531, 655361, 65532, 65531, 655361, 65531, 65532, 1441793, 65531, 65533, 1441793, 65531, 65534, 1441793, 65531, 65535, 1441793, 65531, 0, 1441793, 65531, 1, 1441793, 65531, 2, 1441793, 65532, 3, 1, 65533, 3, 1, 65534, 3, 1, 65535, 3, 1, 0, 3, 1, 1, 3, 1, 2, 3, 1)
-}
+[node name="SubViewport" type="SubViewport" parent="." unique_id=1711490779]
+size = Vector2i(1920, 1080)
 
-[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+[node name="Node3D" type="Node3D" parent="SubViewport" unique_id=533384093]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5000, 5000)
+
+[node name="Camera3D" type="Camera3D" parent="SubViewport/Node3D" unique_id=735959470]
+transform = Transform3D(1, 0, 0, 0, 0.9937679, -0.11146893, 0, 0.11146893, 0.9937679, 0, 0.022, 1.048)
+cull_mask = 6144
 environment = SubResource("Environment_t8lt0")
+current = true
+fov = 44.0
 
-[node name="Sprite3DBillBoard" type="MeshInstance3D" parent="."]
-layers = 3
+[node name="DeathGraphics" type="Node3D" parent="SubViewport/Node3D" unique_id=1285894730]
+
+[node name="Deafult" type="Node3D" parent="SubViewport/Node3D/DeathGraphics" unique_id=1825076192]
+visible = false
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="SubViewport/Node3D/DeathGraphics/Deafult" unique_id=1145350491]
+transform = Transform3D(0.205, 0, 0, 0, 0.19496658, -0.06334849, 0, 0.06334849, 0.19496658, 0, 0.01, 0.01)
+layers = 6144
+material_override = ExtResource("3_4ng54")
+mesh = ExtResource("3_81pop")
+
+[node name="SpotLight3D" type="SpotLight3D" parent="SubViewport/Node3D/DeathGraphics/Deafult" unique_id=242565760]
+transform = Transform3D(1, 0, 0, 0, 0.3338068, -0.9426415, 0, 0.9426415, 0.3338068, 0, -1.1999999, 0.6)
+layers = 6144
+light_color = Color(0.41029748, 0, 0.0031420956, 1)
+light_energy = 8.485
+spot_angle = 4.33
+
+[node name="Sprite3DBillBoard" type="MeshInstance3D" parent="SubViewport/Node3D/DeathGraphics" unique_id=519065693]
+visible = false
+layers = 6144
 sorting_offset = 1.0
 mesh = SubResource("PlaneMesh_7v44r")
+skeleton = NodePath("../../../..")
 script = ExtResource("5_nmorq")
 animations_array = Array[ExtResource("6_74o25")]([SubResource("Resource_2hmt0"), SubResource("Resource_w33ic"), SubResource("Resource_c8dny"), SubResource("Resource_p7dpa"), SubResource("Resource_oeq6h"), SubResource("Resource_1xfku"), SubResource("Resource_qwor7"), SubResource("Resource_7lite")])
 animation = 1
@@ -419,22 +511,116 @@ frame = 1.0
 sprite_scale = 0.0016
 metadata/_custom_type_script = "uid://b5653u7w56pqw"
 
-[node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.99376786, -0.111468926, 0, 0.111468926, 0.99376786, 0, 0.022, 1.048)
-environment = SubResource("Environment_70w5w")
-fov = 44.0
-
-[node name="SpotLight3D" type="SpotLight3D" parent="."]
+[node name="SpotLight3D" type="SpotLight3D" parent="SubViewport/Node3D/DeathGraphics/Sprite3DBillBoard" unique_id=1717876881]
 transform = Transform3D(1, 0, 0, 0, 0.3338068, -0.9426415, 0, 0.9426415, 0.3338068, 0, -1.1999999, 0.6)
+layers = 6144
 light_color = Color(0.41029748, 0, 0.0031420956, 1)
 light_energy = 8.485
 spot_angle = 15.929221
 
-[node name="Ender" type="Node3D" parent="." node_paths=PackedStringArray("anim_pl")]
+[node name="Spikes" type="Node3D" parent="SubViewport/Node3D/DeathGraphics" unique_id=519648984]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.08, 0)
+visible = false
+
+[node name="Spike" type="Node3D" parent="SubViewport/Node3D/DeathGraphics/Spikes" unique_id=93162696]
+transform = Transform3D(1, 0, 0, 0, -0.66131186, -0.7501111, 0, 0.7501111, -0.66131186, 0, -0.615, -0.63)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="SubViewport/Node3D/DeathGraphics/Spikes/Spike" unique_id=1528526930]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, -1.1920929e-07, -1.0353832)
+layers = 6144
+mesh = SubResource("CylinderMesh_7uxcs")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="SubViewport/Node3D/DeathGraphics/Spikes/Spike" unique_id=1507748259]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, -2.3841858e-07, -0.38961193)
+layers = 6144
+mesh = SubResource("CylinderMesh_7v44r")
+
+[node name="Decal" type="Decal" parent="SubViewport/Node3D/DeathGraphics/Spikes/Spike" unique_id=1223356923]
+transform = Transform3D(1, 0, 0, 0, -0.66131186, 0.7501111, 0, -0.7501111, -0.66131186, 0.07, 0.23838876, -1.0300466)
+layers = 6144
+size = Vector3(0.43, 1.395, 1.05)
+texture_albedo = ExtResource("25_7uxcs")
+modulate = Color(0.81, 0, 0.013499794, 1)
+upper_fade = 0.17230484
+lower_fade = 15.064025
+
+[node name="SpotLight3D" type="SpotLight3D" parent="SubViewport/Node3D/DeathGraphics/Spikes" unique_id=1610300583]
+transform = Transform3D(1, 0, 0, 0, 0.3338068, -0.9426415, 0, 0.9426415, 0.3338068, 0, -1.1999999, 0.6)
+layers = 6144
+light_color = Color(0.31106284, 0.15423101, 0.14200884, 1)
+light_energy = 16.0
+light_cull_mask = 4293924864
+spot_angle = 19.69
+
+[node name="Arrow" type="Node3D" parent="SubViewport/Node3D/DeathGraphics" unique_id=236413425]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.445, 0.18, -0.32)
+visible = false
+
+[node name="Spike" type="Node3D" parent="SubViewport/Node3D/DeathGraphics/Arrow" unique_id=505568904]
+transform = Transform3D(0.07984308, 0.9396926, -0.33257017, 0.9723699, -4.250364e-08, 0.23344538, 0.21936688, -0.3420202, -0.91372883, 0, 0, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="SubViewport/Node3D/DeathGraphics/Arrow/Spike" unique_id=546877403]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, -1.1920929e-07, -1.0353832)
+layers = 6144
+mesh = SubResource("CylinderMesh_7uxcs")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="SubViewport/Node3D/DeathGraphics/Arrow/Spike" unique_id=285251690]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, -2.3841858e-07, -0.38961193)
+layers = 6144
+mesh = SubResource("CylinderMesh_7v44r")
+
+[node name="Decal" type="Decal" parent="SubViewport/Node3D/DeathGraphics/Arrow/Spike" unique_id=1919585819]
+transform = Transform3D(1, 0, 0, 0, -0.66131186, 0.7501111, 0, -0.7501111, -0.66131186, 0.07, 0.13073504, -1.0476098)
+layers = 6144
+size = Vector3(0.43, 1.395, 1.05)
+texture_albedo = ExtResource("25_7uxcs")
+modulate = Color(0.81, 0, 0.013499794, 1)
+upper_fade = 0.17230484
+lower_fade = 15.064025
+
+[node name="Spike2" type="Node3D" parent="SubViewport/Node3D/DeathGraphics/Arrow" unique_id=1158754740]
+transform = Transform3D(0.07678308, 0.95969176, 0.27036315, 0.9968092, -0.067955635, -0.04187565, -0.02181502, 0.27271587, -0.96184725, 0.81868005, -0.42634928, -0.22412401)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="SubViewport/Node3D/DeathGraphics/Arrow/Spike2" unique_id=212589143]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, -1.1920929e-07, -1.0353832)
+layers = 6144
+mesh = SubResource("CylinderMesh_7uxcs")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="SubViewport/Node3D/DeathGraphics/Arrow/Spike2" unique_id=158034460]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, -2.3841858e-07, -0.38961193)
+layers = 6144
+mesh = SubResource("CylinderMesh_7v44r")
+
+[node name="Decal" type="Decal" parent="SubViewport/Node3D/DeathGraphics/Arrow/Spike2" unique_id=333265844]
+transform = Transform3D(1, 0, 0, 0, -0.66131186, 0.7501111, 0, -0.7501111, -0.66131186, 0.07, 0.13073504, -1.0476098)
+layers = 6144
+size = Vector3(0.43, 1.395, 1.05)
+texture_albedo = ExtResource("25_7uxcs")
+modulate = Color(0.81, 0, 0.013499794, 1)
+upper_fade = 0.17230484
+lower_fade = 15.064025
+
+[node name="SpotLight3D" type="SpotLight3D" parent="SubViewport/Node3D/DeathGraphics/Arrow" unique_id=1084720294]
+transform = Transform3D(0.8910065, -0.30962077, 0.33202764, 0, 0.73135364, 0.6819984, -0.45399052, -0.60766494, 0.65164095, 0.637, 0.44, 1.284)
+layers = 6144
+light_color = Color(0.31106284, 0.15423101, 0.14200884, 1)
+light_energy = 2.82
+light_cull_mask = 4293924864
+spot_angle = 33.27
+
+[node name="SpotLight3D" type="SpotLight3D" parent="SubViewport/Node3D" unique_id=850831161]
+transform = Transform3D(1, 0, 0, 0, 0.3338068, -0.9426415, 0, 0.9426415, 0.3338068, 0, -1.1999999, 0.6)
+visible = false
+light_color = Color(0.41029748, 0, 0.0031420956, 1)
+light_energy = 8.485
+light_cull_mask = 4293924864
+spot_angle = 15.929221
+
+[node name="Ender" type="Node3D" parent="." unique_id=2133282928 node_paths=PackedStringArray("anim_pl")]
 script = ExtResource("21_vle7j")
 anim_pl = NodePath("AnimationPlayer")
 
-[node name="ColorRect" type="ColorRect" parent="Ender"]
+[node name="ColorRect" type="ColorRect" parent="Ender" unique_id=207082004]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -443,10 +629,9 @@ grow_vertical = 2
 mouse_filter = 2
 color = Color(0, 0, 0, 1)
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Ender"]
-libraries = {
-&"": SubResource("AnimationLibrary_e7sjl")
-}
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Ender" unique_id=1331986270]
+libraries/ = SubResource("AnimationLibrary_e7sjl")
 
-[connection signal="pressed" from="Control/MarginContainer/VBoxContainer/Button" to="." method="play_game"]
-[connection signal="pressed" from="Control/MarginContainer/VBoxContainer/Button2" to="." method="play_end"]
+[connection signal="pressed" from="Control/MarginContainer/VBoxContainer/Reload" to="." method="load_last_save"]
+[connection signal="pressed" from="Control/MarginContainer/VBoxContainer/Replay" to="." method="replay_level"]
+[connection signal="pressed" from="Control/MarginContainer/VBoxContainer/Exit" to="." method="play_end"]

@@ -11,6 +11,7 @@ const KEY = "KEY"
 const CHAIN = "CHAIN"
 const VALVE = "VALVE"
 const SAVING = "SAVING"
+const ENDME = "ENDME"
 
 var hand_controller: PlayerHand
 var player: PlayerTest

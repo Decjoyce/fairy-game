@@ -1,0 +1,36 @@
+[gd_scene format=3 uid="uid://wyg20wvsg5p1"]
+
+[ext_resource type="Script" uid="uid://c3mignmhuvvq4" path="res://addons/maaacks_menus_template/base/nodes/menus/options_menu/paginated_tab_container.gd" id="1_5typp"]
+[ext_resource type="Theme" uid="uid://4rqtecgji27t" path="res://scenes/_levels/menus/main_menu/Main_Menu_UI_NEW/UI_themes/customised_brush_theme.tres" id="1_8rtnr"]
+[ext_resource type="PackedScene" uid="uid://ba0un2yhkkc3j" path="res://UICOPY/scenes/menus/options_menu/controlDemoVisual.tscn" id="4_5typp"]
+[ext_resource type="PackedScene" uid="uid://ku64rbxkdlm2" path="res://UICOPY/scenes/menus/options_menu/audio/audio_options_menu.tscn" id="4_jxhu2"]
+[ext_resource type="PackedScene" uid="uid://bmpi0054r0day" path="res://UICOPY/scenes/menus/options_menu/video/video_options_menu_with_extras.tscn" id="5_nv2pl"]
+
+[node name="MasterOptionsMenu" type="TabContainer" unique_id=1111795112]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_8rtnr")
+theme_override_font_sizes/font_size = 32
+tab_alignment = 1
+current_tab = 0
+all_tabs_in_front = true
+switch_on_drag_hover = false
+script = ExtResource("1_5typp")
+
+[node name="Audio" parent="." unique_id=506115522 instance=ExtResource("4_jxhu2")]
+layout_mode = 2
+hide_busses = Array[String](["pl_footsteps", "items", "SaveSFX"])
+metadata/_tab_index = 0
+
+[node name="Control" parent="." unique_id=520649011 instance=ExtResource("4_5typp")]
+visible = false
+layout_mode = 2
+metadata/_tab_index = 1
+
+[node name="Video" parent="." unique_id=382045299 instance=ExtResource("5_nv2pl")]
+visible = false
+layout_mode = 2
+metadata/_tab_index = 2

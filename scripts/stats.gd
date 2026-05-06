@@ -31,9 +31,12 @@ func _process(delta: float) -> void:
 var is_regen_health: bool = true
 var time_since_began_regen: float = 0
 
-func take_damage(amount: float) -> bool:
+var last_dmg_type: int = 0
+
+func take_damage(amount: float, damage_type: int = 0) -> bool:
 	if is_dead: return true
 	current_health -= amount
+	last_dmg_type = damage_type
 	if !check_if_dead():
 		play_hit_fx()
 		if can_regen_health: health_regen_timer.start()
@@ -65,12 +68,13 @@ func play_hit_fx() -> void:
 	on_hit.emit(current_health)
 	hit_sfx.play()
 	# ↓ temp stuff ↓
+	if !health_regen_timer: return
 	var length = (max_health - current_health) / (health_regen_rate) + health_regen_timer.wait_time
 	prints(current_health, length)
 	var new_color: Color = Color.CRIMSON
-	new_color.a = (max_health - current_health)/max_health
+	new_color.a = ((max_health - current_health)/max_health) * 0.8
 	prints(Color.CRIMSON, new_color)
-	EffectsPlayer.colorize(new_color, new_color * Color.TRANSPARENT, length, true, true)
+	owner.local_effect_player.colorize(new_color, new_color * Color.TRANSPARENT, length, true, true)
 
 # ↑ Health Stuff ↑
 # --------------------------------------------------------------------------------------------------

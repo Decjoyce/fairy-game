@@ -1,0 +1,101 @@
+[gd_scene format=3 uid="uid://brgf3euo0od1y"]
+
+[ext_resource type="Script" uid="uid://drkcm6snb4co7" path="res://scenes/_managers/effects_player/effect_player.gd" id="1_xs5gj"]
+[ext_resource type="Shader" uid="uid://b1ry6810b0o1l" path="res://assets/shaders/transitions/save_trans.gdshader" id="2_ibtss"]
+[ext_resource type="Shader" uid="uid://d3s7n6vhxao3e" path="res://assets/shaders/post_processing/saturation.gdshader" id="3_3q0fe"]
+[ext_resource type="Shader" uid="uid://vldhix8qu4l5" path="res://assets/shaders/post_processing/colorize.gdshader" id="4_qth1t"]
+[ext_resource type="Shader" uid="uid://ds5tc8ibwpu8h" path="res://assets/shaders/post_processing/vignette.gdshader" id="5_ibtss"]
+
+[sub_resource type="Gradient" id="Gradient_a2lus"]
+offsets = PackedFloat32Array(1)
+colors = PackedColorArray(0, 0.050708726, 0.050708726, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_7hjlp"]
+gradient = SubResource("Gradient_a2lus")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_w5vm8"]
+shader = ExtResource("2_ibtss")
+shader_parameter/to_tex = SubResource("GradientTexture1D_7hjlp")
+shader_parameter/progress = 0.0
+shader_parameter/blur_strength = 0.3
+shader_parameter/samples = 20
+shader_parameter/blur_center = Vector2(0.5, 0.5)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_xs6ce"]
+shader = ExtResource("3_3q0fe")
+shader_parameter/saturation = 1.0000000475
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_bgohy"]
+shader = ExtResource("4_qth1t")
+shader_parameter/new_color = Color(1, 1, 1, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_3q0fe"]
+shader = ExtResource("5_ibtss")
+shader_parameter/alpha = 1.0
+shader_parameter/inner_radius = 0.0
+shader_parameter/outer_radius = 2.0
+
+[node name="EffectPlayer" type="Node" unique_id=1469880449 node_paths=PackedStringArray("blur_out_effect", "saturation_effect", "colorize_effect", "vignette_effect")]
+script = ExtResource("1_xs5gj")
+blur_out_effect = NodePath("Blur/BlurEffect")
+saturation_effect = NodePath("Saturate/SaturateEffect")
+colorize_effect = NodePath("Colorize/Colorize")
+vignette_effect = NodePath("Vignette/Vignette")
+metadata/_custom_type_script = "uid://drkcm6snb4co7"
+
+[node name="Blur" type="CanvasLayer" parent="." unique_id=897778376]
+
+[node name="BlurEffect" type="ColorRect" parent="Blur" unique_id=888301433]
+unique_name_in_owner = true
+material = SubResource("ShaderMaterial_w5vm8")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="Saturate" type="CanvasLayer" parent="." unique_id=1057450742]
+
+[node name="SaturateEffect" type="ColorRect" parent="Saturate" unique_id=2132393517]
+unique_name_in_owner = true
+visible = false
+z_index = -1
+material = SubResource("ShaderMaterial_xs6ce")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0.5747226, 0.50857943, 0.49505764, 0.03529412)
+
+[node name="Colorize" type="CanvasLayer" parent="." unique_id=1544894433]
+
+[node name="Colorize" type="ColorRect" parent="Colorize" unique_id=1630707913]
+unique_name_in_owner = true
+visible = false
+z_index = -1
+material = SubResource("ShaderMaterial_bgohy")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0.5747226, 0.50857943, 0.49505764, 0.03529412)
+
+[node name="Vignette" type="CanvasLayer" parent="." unique_id=8269680]
+
+[node name="Vignette" type="ColorRect" parent="Vignette" unique_id=1458706880]
+visible = false
+z_index = -1
+material = SubResource("ShaderMaterial_3q0fe")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0.5747226, 0.50857943, 0.49505764, 0.03529412)

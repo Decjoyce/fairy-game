@@ -3,8 +3,9 @@
 [ext_resource type="Script" uid="uid://s5cfdf85lm5g" path="res://scenes/interactions/interactables/items/grabbable_item.gd" id="1_youxa"]
 [ext_resource type="Script" uid="uid://cqhq7vrwiw3m6" path="res://scenes/interactions/interactables/items/item_types/item_type.gd" id="2_dbiq4"]
 [ext_resource type="Texture2D" uid="uid://fi7u5hje4qql" path="res://assets/sprites/item_sprites/bell.png" id="3_youxa"]
-[ext_resource type="AudioStream" uid="uid://dutddyikwuiut" path="res://assets/audio/sfx/combat/misc/hittingsound_shorter.wav" id="4_g5p5d"]
+[ext_resource type="AudioStream" uid="uid://bbqnhfeniq7gu" path="res://assets/audio/sfx/items/bell/bell_hit_randomizer.tres" id="4_youxa"]
 [ext_resource type="Script" uid="uid://bhf6r6nw14krj" path="res://scripts/saving/persistent_objs/po_item.gd" id="5_ypg6s"]
+[ext_resource type="AudioStream" uid="uid://ct8n131fcmf8r" path="res://assets/audio/sfx/items/Grab/CupHandle.tres" id="6_dbiq4"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_llc7q"]
 
@@ -29,7 +30,7 @@ contact_monitor = true
 max_contacts_reported = 1
 script = ExtResource("1_youxa")
 item_type = SubResource("Resource_yadgr")
-display_name = "SKULL"
+display_name = "BELL"
 item_weight = 3
 col = NodePath("CollisionShape3D")
 grab_col = NodePath("Area3D/CollisionShape3D2")
@@ -54,6 +55,7 @@ shaded = true
 texture = ExtResource("3_youxa")
 
 [node name="_g_grabbed" type="Sprite3D" parent="." unique_id=1304977173]
+visible = false
 layers = 4
 pixel_size = 0.0015
 billboard = 2
@@ -62,7 +64,7 @@ render_priority = 1
 texture = ExtResource("3_youxa")
 
 [node name="AudioPlayer" type="AudioStreamPlayer3D" parent="." unique_id=20800557]
-stream = ExtResource("4_g5p5d")
+stream = ExtResource("4_youxa")
 bus = &"items"
 
 [node name="RayCast3D" type="RayCast3D" parent="." unique_id=1070737100]
@@ -72,3 +74,8 @@ hit_from_inside = true
 [node name="PO_Item" type="Node" parent="." unique_id=2095926710 groups=["PO"]]
 script = ExtResource("5_ypg6s")
 metadata/_custom_type_script = "uid://bhf6r6nw14krj"
+
+[node name="Audio_Grabbed" type="AudioStreamPlayer3D" parent="." unique_id=1108259553]
+stream = ExtResource("6_dbiq4")
+max_distance = 1.0
+max_polyphony = 5

@@ -2,8 +2,10 @@
 
 [ext_resource type="Script" uid="uid://qtbq6ey4f3lb" path="res://scenes/interactions/_triggers/button/button.gd" id="1_drqat"]
 [ext_resource type="Texture2D" uid="uid://cm7goh62m0nv2" path="res://assets/ui/misc/TEMP_inv_slot.png" id="2_hacnr"]
+[ext_resource type="AudioStream" uid="uid://7y6qf0bx8soh" path="res://assets/audio/sfx/environment/Button/Bunnon_ON.tres" id="4_mquva"]
 [ext_resource type="Material" uid="uid://c22pex7gucglg" path="res://assets/models/cairn/Props/Button/Button/Button.tres" id="4_t7mcd"]
 [ext_resource type="Material" uid="uid://bhu52kgm23cmj" path="res://assets/models/cairn/Props/Button/ButtonBack/ButtonBack.tres" id="4_wyfxs"]
+[ext_resource type="AudioStream" uid="uid://cd1acmp47kdqo" path="res://assets/audio/sfx/environment/Button/Bunnon_OFF.tres" id="5_smy3u"]
 [ext_resource type="Script" uid="uid://7lo6ukgtr84g" path="res://scripts/saving/persistent_objs/po_button.gd" id="5_wv7xb"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_t7mcd"]
@@ -77,6 +79,21 @@ tracks/0/keys = {
 "update": 0,
 "values": [Vector3(0, 0, 0), Vector3(0, 0, 0.045)]
 }
+tracks/1/type = "audio"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Audio")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("4_mquva")
+}],
+"times": PackedFloat32Array(0)
+}
+tracks/1/use_blend = true
 
 [sub_resource type="Animation" id="Animation_xia2v"]
 resource_name = "button_reset"
@@ -93,6 +110,21 @@ tracks/0/keys = {
 "update": 0,
 "values": [Vector3(0, 0, 0.045), Vector3(0, 0, 0)]
 }
+tracks/1/type = "audio"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Audio")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.21000001,
+"stream": ExtResource("5_smy3u")
+}],
+"times": PackedFloat32Array(0.009999989)
+}
+tracks/1/use_blend = true
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_xia2v"]
 _data = {
@@ -183,6 +215,9 @@ mesh = SubResource("ArrayMesh_wyfxs")
 [node name="PO_Button" type="Node" parent="." unique_id=1229540181 groups=["PO"]]
 script = ExtResource("5_wv7xb")
 metadata/_custom_type_script = "uid://7lo6ukgtr84g"
+
+[node name="Audio" type="AudioStreamPlayer3D" parent="." unique_id=62880431]
+bus = &"items"
 
 [connection signal="area_entered" from="Trigger" to="." method="_on_item_entered"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

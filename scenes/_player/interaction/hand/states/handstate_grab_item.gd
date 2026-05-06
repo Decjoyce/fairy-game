@@ -16,7 +16,6 @@ var offset_og_pos: Vector2
 var current_grab_prompt: String
 var current_hand_prompt: String
 
-
 func handle_input(_event: InputEvent) -> void:
 	pass
 
@@ -47,21 +46,28 @@ func update(_delta: float) -> void:
 	else:
 		if hand_controller.anim_is_prompting:
 			hand_controller.anim_is_prompting = false
-			hand_controller.input_controls.disable_use_action()
+			if grabbed_item.item_type.item_type == ItemType.ItemTypes.INSTRUMENT: 
+				print("d")
+				hand_controller.input_controls.enable_use_action(grabbed_item.use_prompt)
+			else: hand_controller.input_controls.disable_use_action()
 			hand_controller.anim_change_prompt_anim(anim_prompt)
 	
 	if !is_charging and Input.is_action_just_pressed("use_" + hand_controller.stringed_hand_type):
 		use()
 	
-	#if !item_receiver and Input.is_action_pressed("use_" + hand_controller.stringed_hand_type):
-		#use()
+	if !item_receiver and !is_charging and Input.is_action_pressed("use_" + hand_controller.stringed_hand_type):
+		using()
+	
+	if !is_charging and !item_receiver and Input.is_action_just_released("use_" + hand_controller.stringed_hand_type):
+		end_use()
 	
 	if is_ready:
 		grabbing()
 
 func physics_update(_delta: float) -> void:
-	if !item_receiver and Input.is_action_pressed("use_" + hand_controller.stringed_hand_type):
-		use()
+	pass
+	#if !item_receiver and Input.is_action_pressed("use_" + hand_controller.stringed_hand_type):
+		#use()
 
 func enter(previous_state_path: String, data := {}) -> void:
 	grabbed_item = hand_controller.hovering_interactable
@@ -84,7 +90,11 @@ func enter(previous_state_path: String, data := {}) -> void:
 	hand_controller.anim_override_current_animation("a_hand_pickup", true)
 	
 	var item_rot_z: float = grabbed_item.grabbed_rotation
-	if hand_controller.hand_type == 0: item_rot_z *= -1
+	if grabbed_item.use_grabbed_rotation_offsets and hand_controller.hand_type == 0: item_rot_z = grabbed_item.grabbed_rotation_left
+	
+	if hand_controller.hand_type == 0: 
+		if grabbed_item.use_alt_flipping: item_rot_z *= 0.25
+		else: item_rot_z *= -1
 	
 	#var new_rot: Quaternion = Quaternion.from_euler(Vector3(0, player.global_rotation.y, item_rot_z))
 	var new_rot: Vector3 = Vector3(0.0, player.global_rotation.y, item_rot_z)
@@ -97,8 +107,14 @@ func enter(previous_state_path: String, data := {}) -> void:
 	await tween.finished
 	grabbed_item.global_rotation = new_rot
 	
+	if grabbed_item.item_type.item_type == ItemType.ItemTypes.INSTRUMENT: 
+		print("d")
+		hand_controller.input_controls.enable_use_action(grabbed_item.use_prompt)
+	
 	is_ready = true
 	time_held_down = 0
+	
+	if grabbed_item.no_screen_restrictions: hand_controller.test_handlimit = false
 
 func exit() -> void:
 	player.current_weight -= grabbed_item.get_weight()
@@ -112,7 +128,7 @@ func exit() -> void:
 	offset_helper.position = offset_og_pos
 	hand_controller.input_controls.disable_interact_action()
 	t_bob = 0.0
-	
+	hand_controller.test_handlimit = true
 	#is_exiting = true
 	#grabbed_item = null
 
@@ -129,10 +145,20 @@ var item_at_edge_of_screen: bool
 
 var _space_state: PhysicsDirectSpaceState3D
 
+var is_against_wall: bool
+
 func set_grab_position() -> void:
 	var _grab_pos: Vector2
-	if is_charging:  _grab_pos = Vector2(grabbed_item.throwing_offset.x * hand_controller.hand_type_rotation_mult, grabbed_item.throwing_offset.y)
-	else:  _grab_pos = Vector2(grabbed_item.grabbed_offset.x * hand_controller.hand_type_rotation_mult, grabbed_item.grabbed_offset.y)
+	if is_charging:  
+		if grabbed_item.use_grabbed_individual_offsets and hand_controller.hand_type == 0:
+			_grab_pos = Vector2(grabbed_item.grabbed_offset_left.x * hand_controller.hand_type_rotation_mult, grabbed_item.grabbed_offset_left.y)
+		else:
+			_grab_pos = Vector2(grabbed_item.throwing_offset.x * hand_controller.hand_type_rotation_mult, grabbed_item.throwing_offset.y)
+	else:  
+		if grabbed_item.use_grabbed_individual_offsets and hand_controller.hand_type == 0:
+			_grab_pos = Vector2(grabbed_item.grabbed_offset_left.x * hand_controller.hand_type_rotation_mult, grabbed_item.grabbed_offset_left.y)
+		else:
+			_grab_pos = Vector2(grabbed_item.grabbed_offset.x * hand_controller.hand_type_rotation_mult, grabbed_item.grabbed_offset.y)
 	
 	var origin := hand_controller.cam.project_ray_origin(offset_helper.get_screen_position() + _grab_pos)
 	var end := origin + hand_controller.cam.project_ray_normal(offset_helper.global_position + _grab_pos) * GRAB_DIST
@@ -144,8 +170,9 @@ func set_grab_position() -> void:
 	
 	if !result or !result.collider:
 		grab_position = end
+		is_against_wall = false
 	else:
-		#print(result.collider)
+		is_against_wall = true
 		grab_position = result.position + (result.normal * 0.1)
 
 func grabbing() -> void:
@@ -187,16 +214,35 @@ func use():
 			ItemType.ItemTypes.CONSUMABLE:
 				return
 			ItemType.ItemTypes.INSTRUMENT:
-				var freq : int
-				if !hand_controller.test_handlimit:
-					freq = int(remap(hand_controller.get_screen_position().x/player_interact.size.x, 0, 1, 0, 7))
-				else:
-					freq = int(remap(hand_controller.get_screen_position().x, hand_controller.test_screen_limit_x_min, hand_controller.test_screen_limit_x_max - hand_controller.size.x, 0, 6))
-				print(freq)
-				grabbed_item.using_item([freq])
+				pass
 			_:
 				return
 	
+
+func using()-> void:
+	match current_item_type.item_type:
+			ItemType.ItemTypes.DEFAULT:
+				return # maybe an inspect?
+			ItemType.ItemTypes.TORCH:
+				return
+			ItemType.ItemTypes.CONSUMABLE:
+				return
+			ItemType.ItemTypes.INSTRUMENT:
+				var freq : int
+				if !hand_controller.test_handlimit:
+					freq = int(remap((hand_controller.get_screen_position().x+(hand_controller.size.x/2))/player_interact.size.x, 0, 1, 0, 7))
+				else:
+					freq = int(remap(hand_controller.get_screen_position().x, hand_controller.test_screen_limit_x_min, hand_controller.test_screen_limit_x_max - hand_controller.size.x, 0, 6))
+				#print(freq)
+				grabbed_item.using_item([freq])
+			_:
+				return
+
+func end_use() -> void:
+	if item_receiver and item_receiver.receive_item(grabbed_item): pass
+	else:
+		grabbed_item.end_using_item([])
+		return
 
 # ↑ Using Stuff ↑
 # --------------------------------------------------------------------------------------------------
@@ -211,6 +257,8 @@ var BOB_FREQ: float = 0.75
 var BOB_AMP: float = 6.5
 var t_bob: float = 0.0
 
+var played_sfx: bool
+
 func begin_charge() -> void:
 	is_charging = true
 	charge_amount = 0
@@ -220,23 +268,33 @@ func begin_charge() -> void:
 	grabbed_item.rotation_degrees.z = -grabbed_item.throwing_rotation * hand_controller.hand_type_rotation_mult
 	hand_controller.input_controls.enable_interact_action(tr("RELEASE_TO_THROW"))
 	
+
 func charging(_delta: float) -> void:
 	if !is_charging: return
 	time_held_down += _delta
 	var _charged_amount = time_held_down / delay_before_max_charge
+	
+	if !played_sfx and charge_amount >= 0.1:
+		hand_controller.audio_throw.stream = player_interact.throw_clips[0] #AUDIO
+		hand_controller.audio_throw.play() #AUDIO
+		played_sfx = true
 	
 	charge_amount = clampf(_charged_amount, 0.0, 1.0)
 	t_bob += _delta * charge_amount * 50
 	if charge_amount > 0.1:
 		t_bob += _delta * charge_amount * 50
 		offset_helper.position = offset_og_pos + _headbob(t_bob)
+		
 
 func end_charge() -> void:
 	hand_controller.anim_override_current_animation("a_hand_grab_item_charge", true)
-	if charge_amount < 0.1: grabbed_item.end_interact()
+	if charge_amount < 0.1 or is_against_wall: grabbed_item.end_interact()
 	else: 
 		if !_testing_throw_alt:
 			grabbed_item.throw(charge_amount)
+			
+			hand_controller.audio_throw.stream = player_interact.throw_clips[1] #AUDIO
+			hand_controller.audio_throw.play() #AUDIO
 		else:
 			var origin := hand_controller.cam.project_ray_origin(player_interact.get_rect().get_center())
 			var end := origin + hand_controller.cam.project_ray_normal(offset_helper.global_position) * GRAB_DIST
@@ -248,7 +306,9 @@ func end_charge() -> void:
 	charge_amount = 0
 	time_held_down = 0
 	grabbed_item.is_grabbed = false
+	played_sfx = false
 	finished.emit(FREE)
+
 
 func _headbob(time: float) -> Vector2:
 	var pos = Vector2.ZERO

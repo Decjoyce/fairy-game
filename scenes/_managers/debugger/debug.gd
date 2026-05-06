@@ -16,6 +16,7 @@ var cam: Camera3D
 #@export var destroyed_item_cell: Node3D
 
 func _ready() -> void:
+	TEMPSaveGameHandler.on_loaded_game.connect(_init_me)
 	_init_me()
 
 func _process(delta: float) -> void:
@@ -51,6 +52,10 @@ func freeze_player() -> void:
 func unfreeze_player() -> void:
 	if !player: return
 	player.freeze = false
+
+func player_enter_combat() -> void:
+	if !player: return
+	player.toggle_combat_new()
 
 func teleport_player_to_coord(x: float, y: float, z: float) -> void:
 	if !player: return

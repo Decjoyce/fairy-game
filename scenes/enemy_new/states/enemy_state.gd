@@ -21,6 +21,10 @@ func _ready() -> void:
 	ballybog = owner as Enemy_Ballybog_New
 	assert(ballybog != null, "The Enemy state type must be used only in the Enemy scene. It needs the owner to be a enemy_ballybog_new node.")
 
+func load_me(previous_state_path: String, data : SavedData_Ballybog) -> void:
+	active = true
+	pass
+
 func enter(previous_state_path: String, data := {}) -> void:
 	active = true
 	pass

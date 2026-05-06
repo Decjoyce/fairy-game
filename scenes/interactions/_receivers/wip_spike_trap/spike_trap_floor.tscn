@@ -3,8 +3,8 @@
 [ext_resource type="Texture2D" uid="uid://ds2ryuxjpf5j1" path="res://scenes/interactions/_receivers/wip_spike_trap/blackcircle_tran.png" id="1_23lq1"]
 [ext_resource type="Script" uid="uid://dcbg0ho5ff6uu" path="res://scenes/interactions/_receivers/wip_spike_trap/spike_trap.gd" id="1_oarp6"]
 [ext_resource type="Material" uid="uid://dyejtq23uplk4" path="res://assets/shaders/Outline/outline.tres" id="2_512if"]
-[ext_resource type="AudioStream" uid="uid://b124myn6efxg3" path="res://assets/audio/sfx/environment/Traps/Spikes/Mechanical, Gears, Mechanical Texture, Metal   Wood, Creak, Movement, Friction, Vintage 01 SND117044 1.wav" id="4_8dywv"]
-[ext_resource type="AudioStream" uid="uid://d15ljkqmmt4ee" path="res://assets/audio/sfx/environment/Traps/Spikes/Metal, Impact, Heavy, Powerful, Big, Slide, Movement, Variations 01 SND117149.wav" id="5_r8g5n"]
+[ext_resource type="AudioStream" uid="uid://51rnupkbo7so" path="res://assets/audio/sfx/environment/Traps/Spikes/spike_trap_off_randomizer.tres" id="4_3gx0s"]
+[ext_resource type="AudioStream" uid="uid://dy6y81wuipv4l" path="res://assets/audio/sfx/environment/Traps/Spikes/spike_trap_on_randomizer.tres" id="5_bbm3x"]
 [ext_resource type="Script" uid="uid://dh3jjn72a6w1u" path="res://scripts/saving/persistent_objs/po_spiketrap.gd" id="6_3gx0s"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5yqwi"]
@@ -29,7 +29,7 @@ height = 0.8
 radial_segments = 4
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_oarp6"]
-size = Vector3(1.3, 1.39, 1.3)
+size = Vector3(1.5588653, 1.39, 1.4996094)
 
 [sub_resource type="Animation" id="Animation_oarp6"]
 length = 0.001
@@ -71,7 +71,7 @@ tracks/2/use_blend = true
 
 [sub_resource type="Animation" id="Animation_0k2xd"]
 resource_name = "spike_down"
-length = 2.1666667
+length = 2.0
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -106,7 +106,7 @@ tracks/2/keys = {
 "clips": [{
 "end_offset": 0.0,
 "start_offset": 0.0,
-"stream": ExtResource("4_8dywv")
+"stream": ExtResource("4_3gx0s")
 }],
 "times": PackedFloat32Array(0)
 }
@@ -114,7 +114,7 @@ tracks/2/use_blend = true
 
 [sub_resource type="Animation" id="Animation_512if"]
 resource_name = "spike_up"
-length = 0.9
+length = 0.96666664
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -148,8 +148,8 @@ tracks/2/loop_wrap = true
 tracks/2/keys = {
 "clips": [{
 "end_offset": 0.0,
-"start_offset": 0.15543126,
-"stream": ExtResource("5_r8g5n")
+"start_offset": 0.11,
+"stream": ExtResource("5_bbm3x")
 }],
 "times": PackedFloat32Array(0)
 }
@@ -163,9 +163,10 @@ _data = {
 }
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_512if"]
-size = Vector3(1, 0.083, 1)
+size = Vector3(1.303833, 0.083, 1.2644043)
 
 [node name="SpikeTrap" type="Node3D" unique_id=1388700218 groups=["debug_PickableObjects"]]
+transform = Transform3D(1.2, 0, 0, 0, 1.2, 0, 0, 0, 1.2, 0, 0, 0)
 script = ExtResource("1_oarp6")
 metadata/_custom_type_script = "uid://dcbg0ho5ff6uu"
 
@@ -369,6 +370,7 @@ collision_layer = 8
 collision_mask = 0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Spikes/StaticBody3D" unique_id=109602190]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.016966343, 0, -0.006152451)
 shape = SubResource("BoxShape3D_oarp6")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1300958917]
@@ -380,10 +382,12 @@ collision_mask = 3
 monitorable = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" unique_id=788205735]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.9367798, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.002380371, -0.9367798, 0.013793945)
 shape = SubResource("BoxShape3D_512if")
 
 [node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="." unique_id=952584298]
+volume_db = -25.0
+bus = &"items"
 
 [node name="PO_SpikeTrap" type="Node" parent="." unique_id=786041174 groups=["PO"]]
 script = ExtResource("6_3gx0s")

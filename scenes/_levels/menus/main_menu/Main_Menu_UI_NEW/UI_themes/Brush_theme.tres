@@ -1,0 +1,31 @@
+[gd_resource type="Theme" format=3 uid="uid://eetsri354afg"]
+
+[ext_resource type="Texture2D" uid="uid://dk0irgvufeg08" path="res://assets/menu_buttons/14-white-grunge-brush-stroke-13.png" id="1_a17p2"]
+[ext_resource type="StyleBox" uid="uid://c7j38glyfdgb4" path="res://scenes/_levels/menus/main_menu/Main_Menu_UI_NEW/UI_themes/Brush_base.tres" id="2_bv4nc"]
+[ext_resource type="FontFile" uid="uid://w5ypnv2fycet" path="res://assets/fonts/IMFellGreatPrimerSC-Regular.ttf" id="3_qsfgr"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_xwrb1"]
+texture = ExtResource("1_a17p2")
+modulate_color = Color(1, 1, 1, 0.17254902)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_gmba7"]
+texture = ExtResource("1_a17p2")
+modulate_color = Color(1, 1, 1, 0.49411765)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_bus8x"]
+texture = ExtResource("1_a17p2")
+modulate_color = Color(1, 1, 1, 0.5137255)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_0mj70"]
+texture = ExtResource("1_a17p2")
+modulate_color = Color(1, 1, 1, 0.3137255)
+
+[resource]
+default_base_scale = 1.01
+default_font = ExtResource("3_qsfgr")
+default_font_size = 16
+Button/styles/disabled = SubResource("StyleBoxTexture_xwrb1")
+Button/styles/focus = SubResource("StyleBoxTexture_gmba7")
+Button/styles/hover = SubResource("StyleBoxTexture_bus8x")
+Button/styles/normal = ExtResource("2_bv4nc")
+Button/styles/pressed = SubResource("StyleBoxTexture_0mj70")

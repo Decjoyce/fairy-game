@@ -1,0 +1,17 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://cmka6cht1a0mp"]
+
+[ext_resource type="Texture2D" uid="uid://cdagn01hcuiec" path="res://assets/models/cairn/Props/Totem/textures/nose/TotemNose_Base_color.png" id="1_dndpu"]
+[ext_resource type="Texture2D" uid="uid://dao6kpg123h0y" path="res://assets/models/cairn/Props/Totem/textures/nose/TotemNose_Mixed_AO.png" id="2_dvt55"]
+[ext_resource type="Material" uid="uid://dyejtq23uplk4" path="res://assets/shaders/Outline/outline.tres" id="4_n7p54"]
+[ext_resource type="Texture2D" uid="uid://b7xcqk1xp8eqx" path="res://assets/models/cairn/Props/Totem/textures/nose/TotemNose_Normal_OpenGL.png" id="4_tsiwa"]
+[ext_resource type="Texture2D" uid="uid://cdck5jo2uuuoq" path="res://assets/models/cairn/Props/Totem/textures/nose/TotemNose_Roughness.png" id="5_7wsrv"]
+
+[resource]
+next_pass = ExtResource("4_n7p54")
+albedo_texture = ExtResource("1_dndpu")
+metallic = 1.0
+roughness_texture = ExtResource("5_7wsrv")
+normal_enabled = true
+normal_texture = ExtResource("4_tsiwa")
+ao_enabled = true
+ao_texture = ExtResource("2_dvt55")

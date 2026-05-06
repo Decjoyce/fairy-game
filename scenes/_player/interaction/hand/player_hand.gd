@@ -57,7 +57,8 @@ func _unhandled_input(event: InputEvent) -> void:
 	state.handle_input(event)
 
 func _process(delta: float) -> void:
-	if player.in_combat: return
+	if player_interact.me_ending: return
+	#if player.in_combat: return
 	if Input.is_action_just_pressed("testing_handlimit"):
 		test_handlimit = !test_handlimit
 	if Input.is_action_just_pressed("testing_handlimit_change"):
@@ -70,6 +71,7 @@ func _physics_process(delta: float) -> void:
 	state.physics_update(delta)
 
 func _transition_to_next_state(target_state_path: String, data: Dictionary = {}) -> void:
+	if player_interact.me_ending: return
 	if !get_child(0).has_node(target_state_path):
 		printerr(owner.name + ": Tring to transition to state " + target_state_path + " but it does not exist.")
 		return
@@ -134,7 +136,7 @@ func begin_interact() -> void:
 	match hovering_interactable.interaction_type:
 		hovering_interactable.InteractTypes.INSTANT:
 			if animation_player.has_animation(current_interactable.interact_animation):
-				current_interactable.begin_interact()
+				current_interactable.begin_interact(-1, self)
 				anim_override_current_animation(current_interactable.interact_animation)
 			
 		hovering_interactable.InteractTypes.GRAB_ITEM:
@@ -143,7 +145,7 @@ func begin_interact() -> void:
 					player_interact.free_interaction_on_other_hand(hand_type) # replace with signal
 			current_interactable.begin_interact(-1.0, self)
 			state.finished.emit(state.GRAB_ITEM)
-			
+			audio_grab.play()
 		hovering_interactable.InteractTypes.GRAB_OBJ:
 			current_interactable.begin_interact()
 			state.finished.emit(state.GRAB_OBJ)
@@ -172,6 +174,9 @@ func begin_interact() -> void:
 		hovering_interactable.InteractTypes.TEMP_SAVE:
 			current_interactable.begin_interact()
 			state.finished.emit(state.SAVING)
+		hovering_interactable.InteractTypes.TEMP_ENDME:
+			current_interactable.begin_interact(-1, self)
+			#state.finished.emit(state.ENDME)
 
 func on_player_moved(direction: Vector3, target: Vector3) -> void:
 	if !state.moving_breaks_free:
@@ -249,10 +254,10 @@ func interact_checker_enemy(): # -> Interactable:
 	
 	var result = space_state.intersect_ray(query)
 	
-	if !result or !result.collider or result.collider.get_parent() is not Tempp_Enemy:
+	if !result or !result.collider or result.collider.get_parent() is not Enemy_Ballybog_New:
 		return null
 	
-	var _enemy: Tempp_Enemy = result.collider.get_parent() as Tempp_Enemy
+	var _enemy: Enemy_Ballybog_New = result.collider.get_parent() as Enemy_Ballybog_New
 	
 	
 	return _enemy
@@ -325,3 +330,7 @@ func force_grab_item(itm: Grabbable_Item) -> void:
 			player_interact.free_interaction_on_other_hand(hand_type) # replace with signal
 	current_interactable.begin_interact()
 	state.finished.emit(state.GRAB_ITEM)
+
+@export_group("AUDIO")
+@onready var audio_throw: AudioStreamPlayer = $Audio_Throw #AUDIO
+@onready var audio_grab: AudioStreamPlayer = $Audio_Grab #AUDIO

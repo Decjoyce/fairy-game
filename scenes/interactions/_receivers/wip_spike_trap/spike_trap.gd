@@ -14,10 +14,12 @@ var weighted_things_inside: int
 var activated: bool
 var has_been_triggered: bool
 
+@export var do_not_save: bool
+
 func activate(sig: float = -1) -> void:
 	if has_been_triggered and only_trig_once: return
 	if activated: return
-	print("activated")
+	#print("activated")
 	activated = true
 	anim.play("spike_up")
 	col.set_deferred("disabled", false)
@@ -26,7 +28,7 @@ func activate(sig: float = -1) -> void:
 
 func deactivate(sig: float = -1) -> void:
 	if !activated: return
-	print("deactivated")
+	#print("deactivated")
 	
 	activated = false
 	if anim.current_animation == "spike_down": return
@@ -36,7 +38,7 @@ func deactivate(sig: float = -1) -> void:
 
 func dmg_things_inide() -> void:
 	for peep in people_inside:
-		peep.stats.take_damage(100)
+		peep.stats.take_damage(100, 2)
 	for itm in itms_inside:
 		if itm.can_break:
 			if itm.item_weight == Grabbable_Item.item_weight_types.HEAVY: weighted_things_inside -= 1

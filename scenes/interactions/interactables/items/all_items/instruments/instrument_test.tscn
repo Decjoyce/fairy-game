@@ -1,7 +1,6 @@
 [gd_scene format=3 uid="uid://civmqin21rnce"]
 
 [ext_resource type="Script" uid="uid://1ab2j8l1hg1h" path="res://scenes/interactions/interactables/items/all_items/instruments/instrument.gd" id="1_xuf04"]
-[ext_resource type="AudioStream" uid="uid://c53eyfix2k16e" path="res://assets/audio/sfx/items/instrument_notes/kalimba/kalimba_a.wav" id="2_m3m7e"]
 [ext_resource type="AudioStream" uid="uid://b8c4c8kicey7c" path="res://assets/audio/sfx/items/instrument_notes/kalimba/kalimba_b.wav" id="3_4hlo3"]
 [ext_resource type="Texture2D" uid="uid://cgyj66wq3420m" path="res://assets/ui/misc/original-10983455-2.jpg" id="3_xuf04"]
 [ext_resource type="AudioStream" uid="uid://dja6pitt00t5d" path="res://assets/audio/sfx/items/instrument_notes/kalimba/kalimba_c.wav" id="4_7b6xx"]
@@ -9,14 +8,16 @@
 [ext_resource type="AudioStream" uid="uid://e023i1tw57mh" path="res://assets/audio/sfx/items/instrument_notes/kalimba/kalimba_d.wav" id="5_cf1a1"]
 [ext_resource type="AudioStream" uid="uid://d3478poal24w2" path="res://assets/audio/sfx/items/instrument_notes/kalimba/kalimba_e.wav" id="6_p3nmw"]
 [ext_resource type="AudioStream" uid="uid://bo8yi7nwdj4j8" path="res://assets/audio/sfx/items/instrument_notes/kalimba/kalimba_f.wav" id="7_6dj48"]
+[ext_resource type="AudioStream" uid="uid://nrvsiy70204w" path="res://assets/audio/sfx/items/instrument_notes/floot/sustain_notes/flute_stustain_a.wav" id="7_m3m7e"]
 [ext_resource type="AudioStream" uid="uid://cn5rugil2wr8c" path="res://assets/audio/sfx/items/instrument_notes/kalimba/kalimba_g.wav" id="8_h2fm7"]
-[ext_resource type="Script" path="res://scenes/interactions/interactables/items/item_types/itemtype_instrument.gd" id="9_8h3jj"]
+[ext_resource type="Script" uid="uid://cfxwq2a75x5r4" path="res://scenes/interactions/interactables/items/item_types/itemtype_instrument.gd" id="9_8h3jj"]
+[ext_resource type="Texture2D" uid="uid://fn4v0r2yystc" path="res://icon.svg" id="12_4hlo3"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_llc7q"]
 
 [sub_resource type="Resource" id="Resource_3g5fp"]
 script = ExtResource("9_8h3jj")
-note_sound_files = Array[AudioStream]([ExtResource("4_7b6xx"), ExtResource("5_cf1a1"), ExtResource("6_p3nmw"), ExtResource("7_6dj48"), ExtResource("8_h2fm7"), ExtResource("2_m3m7e"), ExtResource("3_4hlo3")])
+note_sound_files = Array[AudioStream]([ExtResource("4_7b6xx"), ExtResource("5_cf1a1"), ExtResource("6_p3nmw"), ExtResource("7_6dj48"), ExtResource("8_h2fm7"), ExtResource("7_m3m7e"), ExtResource("3_4hlo3")])
 item_type = 5
 metadata/_custom_type_script = "uid://cfxwq2a75x5r4"
 
@@ -27,6 +28,24 @@ size = Vector3(0.5, 0.5, 0.5)
 size = Vector3(0.4, 0.4, 0.4)
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_m3m7e"]
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_7b6xx"]
+direction = Vector3(0, 0, 1)
+spread = 79.826
+initial_velocity_max = 0.19999999
+gravity = Vector3(0, 1, 0)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_byysy"]
+transparency = 1
+albedo_texture = ExtResource("12_4hlo3")
+billboard_mode = 3
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="QuadMesh" id="QuadMesh_cf1a1"]
+material = SubResource("StandardMaterial3D_byysy")
+size = Vector2(0.1, 0.1)
 
 [node name="TEST_Instrument" type="RigidBody3D" unique_id=130412758 node_paths=PackedStringArray("music_player", "col", "grab_col", "idle_graphics") groups=["debug_PickableObjects"]]
 collision_layer = 2
@@ -43,6 +62,7 @@ item_type = SubResource("Resource_3g5fp")
 display_name = "Kazoo"
 col = NodePath("CollisionShape3D")
 grab_col = NodePath("Area3D/CollisionShape3D2")
+no_screen_restrictions = true
 idle_graphics = NodePath("Sprite3D")
 
 [node name="Area3D" type="Area3D" parent="." unique_id=1930827065]
@@ -79,6 +99,10 @@ hit_from_inside = true
 wait_time = 0.2
 one_shot = true
 
+[node name="timer_endnote" type="Timer" parent="." unique_id=402911]
+wait_time = 0.2
+one_shot = true
+
 [node name="MusicCol" type="Area3D" parent="." unique_id=1546735738]
 collision_layer = 256
 collision_mask = 0
@@ -86,3 +110,11 @@ monitoring = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="MusicCol" unique_id=1875582206]
 shape = SubResource("SphereShape3D_m3m7e")
+
+[node name="MusicParticles" type="GPUParticles3D" parent="." unique_id=882809990]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.3)
+emitting = false
+amount = 3
+speed_scale = 0.45
+process_material = SubResource("ParticleProcessMaterial_7b6xx")
+draw_pass_1 = SubResource("QuadMesh_cf1a1")

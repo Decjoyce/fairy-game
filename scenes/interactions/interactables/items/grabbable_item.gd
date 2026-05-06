@@ -9,7 +9,9 @@ var is_grabbed: bool = false
 @export_group("Item Type")
 @export var item_type: ItemType
 @export var display_name: String
-@export var keywords: String ## Separate keywords with ,
+@export var keywords: String ## Separate keywords with ;
+@export var start_frozen: bool
+@export var use_prompt: String
 
 @export_group("Weight")
 enum item_weight_types {WEIGHTLESS, LIGHT, MEDIUM, HEAVY}
@@ -21,7 +23,14 @@ enum item_weight_types {WEIGHTLESS, LIGHT, MEDIUM, HEAVY}
 
 @export_group("Grabbing")
 @export var grabbed_offset: Vector2 = Vector2.ZERO
+@export var use_grabbed_individual_offsets: bool
+@export var grabbed_offset_left: Vector2 = Vector2.ZERO
 @export var grabbed_rotation: float = 0.0
+@export var grabbed_rotation_left: float = 0.0
+@export var use_grabbed_rotation_offsets: bool
+@export var use_alt_flipping: bool = false
+@export var flip_graphics_with_hand: bool = false
+@export var no_screen_restrictions: bool = false
 
 @export_group("Throwing")
 @export var throw_distance : float = 8.0
@@ -41,9 +50,11 @@ var is_broken: bool
 @export var idle_graphics: Node3D
 @export var grabbed_graphics: Node3D
 @export var untouched_graphics: Node3D
+@export var special_graphics: Node3D
 
 @export_group("Audio")
 @onready var audio_player: AudioStreamPlayer3D = $AudioPlayer
+@onready var audio_grabbed: AudioStreamPlayer3D = $Audio_Grabbed
 @export var base_volume: float = 1.0
 
 var prev_velocity: Vector3
@@ -84,11 +95,15 @@ func begin_interact(sig: float = -1, hand: PlayerHand = null) -> void:
 		if untouched_graphics: untouched_graphics.visible = false
 		idle_graphics.visible = false
 		grabbed_graphics.visible = true
-		if grabbed_graphics is Sprite3D: grabbed_graphics.render_priority = 1
+		if grabbed_graphics is Sprite3D:
+			if flip_graphics_with_hand:
+				grabbed_graphics.flip_v = hand.hand_type == 1
 	has_been_picked_up = true
 	rb.freeze = true
 	rb.linear_velocity = Vector3.ZERO
 	grabbed_hand = hand
+	on_begin_interact.emit(1)
+	audio_grabbed.play()
 
 func interacting(sig: float = -1, hand: PlayerHand = null) -> void:
 	pass
@@ -101,6 +116,7 @@ func end_interact(sig: float = -1, hand: PlayerHand = null) -> void:
 	rb.freeze = false
 	rb.force_update_transform()
 	rb.linear_velocity = Vector3.ZERO
+	on_end_interact.emit(0)
 
 # ↑ Interacting Stuff ↑
 # --------------------------------------------------------------------------------------------------
@@ -125,13 +141,13 @@ func disable_me()-> void:
 # --------------------------------------------------------------------------------------------------
 # ↓ Use Stuff ↓
 
-func begin_using_item() -> void:
+func begin_using_item(arg) -> void:
 	pass
 
 func using_item(arg) -> void:
 	pass
 
-func end_using_item() -> void:
+func end_using_item(arg) -> void:
 	pass
 
 # ↑ Use Stuff ↑
@@ -139,6 +155,7 @@ func end_using_item() -> void:
 # ↓ Throw Stuff ↓
 
 var init_impact: bool
+var last_throw_force: float
 
 func throw(_throw_mult: float) -> void:
 	if grabbed_graphics: grabbed_graphics.visible = false
@@ -151,6 +168,7 @@ func throw(_throw_mult: float) -> void:
 	#prints(_throw_mult, throw_distance * _throw_mult, throw_force)
 	rb.apply_central_impulse(-global_basis.z * throw_force * rb.mass)
 	rb.force_update_transform()
+	last_throw_force = throw_force
 
 func throw_alt(_throw_mult: float, dir: Vector3) -> void:##[-]
 	if grabbed_graphics: grabbed_graphics.visible = false
@@ -163,6 +181,7 @@ func throw_alt(_throw_mult: float, dir: Vector3) -> void:##[-]
 	#prints(_throw_mult, throw_distance * _throw_mult, throw_force)
 	rb.apply_central_impulse(dir * (throw_force/1.25) * rb.mass)
 	rb.force_update_transform()
+	last_throw_force = throw_force
 
 # ↑ Throw Stuff ↑
 # --------------------------------------------------------------------------------------------------

@@ -5,6 +5,22 @@ extends EnemyState
 @onready var wait_timer: Timer = $_wait_timer
 
 var current_patrol_point: int = 0
+var bounce_mult: int = -1
+
+func load_me(previous_state_path: String, data : SavedData_Ballybog) -> void:
+	super(previous_state_path, data)
+	current_patrol_point = data.patrol_current_patrol_point
+	
+	if data.time_left > 0: wait_timer.wait_time = data.time_left
+	else: wait_timer.wait_time = ballybog.delay_between_points
+	
+	wait_timer.timeout.connect(wait_delay_over)
+	ballybog.movement.on_reached_destination.connect(reached_destination)
+	
+	ballybog.current_alertness = ballybog.ALERTNESS.CHILL
+	
+	ballybog.movement.set_new_destination(ballybog.patrol_points[current_patrol_point].global_position)
+	ballybog.movement.start_movement()
 
 func enter(previous_state_path: String, data := {}) -> void:
 	super(previous_state_path, data)
@@ -36,12 +52,24 @@ func physics_update(_delta: float) -> void:
 
 func get_new_point() -> void:
 	if !active: return
-	current_patrol_point = wrapi(current_patrol_point+1, 0, ballybog.patrol_points.size())
+	match ballybog.patrol_loop_mode:
+		0: current_patrol_point = wrapi(current_patrol_point+1, 0, ballybog.patrol_points.size())
+		1:
+			if current_patrol_point == 0 or current_patrol_point == ballybog.patrol_points.size()-1:
+				print("k")
+				bounce_mult*=-1
+			prints("d", current_patrol_point)
+			current_patrol_point = current_patrol_point + bounce_mult
+		2: return
+		3: current_patrol_point = ballybog.patrol_points.pick_random()
 	ballybog.movement.set_new_destination(ballybog.patrol_points[current_patrol_point].global_position)
 	ballybog.movement.start_movement()
 
 func reached_destination() -> void:
 	if !active: return 
+	print("reachdestination")
+	ballybog.do_idle()
+	wait_timer.wait_time = ballybog.delay_between_points
 	wait_timer.start()
 
 func wait_delay_over() -> void:

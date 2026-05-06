@@ -1,6 +1,5 @@
 [gd_scene format=4 uid="uid://deq6xwcfpykga"]
 
-[ext_resource type="Script" uid="uid://c3qlhg6btpxc" path="res://scenes/_managers/level_manager.gd" id="1_owq6r"]
 [ext_resource type="PackedScene" uid="uid://bq86osdembn58" path="res://scenes/_player/_player_test.tscn" id="1_vcj7m"]
 [ext_resource type="MeshLibrary" uid="uid://bu208a8l5866i" path="res://scenes/_levels/_palettes/cairn/meshlibrary_cairn.tres" id="2_cqdjp"]
 [ext_resource type="PackedScene" uid="uid://d2ict3hg28spx" path="res://scenes/_levels/_palettes/cairn/props/cairn_fake_wall.tscn" id="3_m6iax"]
@@ -21,8 +20,7 @@
 [ext_resource type="Material" uid="uid://c6lv8pfrvktb8" path="res://assets/models/cairn/Hall_BigRoof/Wall.tres" id="15_ntrdj"]
 [ext_resource type="PackedScene" uid="uid://cpnmun20lswr" path="res://scenes/_levels/_palettes/cairn/props/cairn_pillar.tscn" id="19_37gbc"]
 [ext_resource type="PackedScene" uid="uid://br35er4x4b6av" path="res://scenes/interactions/_triggers/torch_sconce/torch_sconce_unlit.tscn" id="20_ntrdj"]
-[ext_resource type="PackedScene" uid="uid://cjmys4ssiclk5" path="res://scripts/checkpoint_manager/checkpoint.tscn" id="21_lufm1"]
-[ext_resource type="Script" uid="uid://oq8j5fypv13a" path="res://scenes/interactions/_triggers/area_triggers/player_area_trigger.gd" id="23_xfits"]
+[ext_resource type="PackedScene" uid="uid://kqw8pq8itb2k" path="res://scenes/interactions/_receivers/wip_spike_trap/timed_spike_trap.tscn" id="22_owq6r"]
 [ext_resource type="Script" uid="uid://bul4myvyhnpjc" path="res://scripts/saving/uid_generator.gd" id="24_d308h"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_2vnbd"]
@@ -179,13 +177,7 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_mdfrn")
 
-[sub_resource type="SphereShape3D" id="SphereShape3D_owq6r"]
-radius = 0.1
-
-[node name="Puzzle01" type="Node3D" unique_id=2140837292 node_paths=PackedStringArray("player", "checkpoints") groups=["Level"]]
-script = ExtResource("1_owq6r")
-player = NodePath("player_test")
-checkpoints = [NodePath("CP_0"), NodePath("CP_1")]
+[node name="Puzzle01" type="Node3D" unique_id=2140837292 groups=["Level"]]
 
 [node name="player_test" parent="." unique_id=725727541 instance=ExtResource("1_vcj7m")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 2.1, 3)
@@ -327,6 +319,9 @@ spot_angle = 24.539555
 [node name="Gate" parent="Room01" unique_id=132524367 instance=ExtResource("4_qd8o2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -3.9)
 stay_open = true
+metadata/uid = "21504340-a8c7-402d-a827-4f48e552303b"
+metadata/lock_uid = true
+metadata/date_generated = "2026-04-09T13:39:19"
 
 [node name="Gate2" parent="Room01" unique_id=1826333091 instance=ExtResource("4_qd8o2")]
 transform = Transform3D(-2.8849517e-08, 0, 0.66, 0, 0.66, 0, -0.66, 0, -2.8849517e-08, -1.9503357, 0.6, -1)
@@ -334,9 +329,15 @@ speed = 0.2
 height_to_toggle_player_barrier = 2.42
 override_signal_range = true
 ovr_signal_min = 0.9
+metadata/uid = "6d56c855-1cf8-4579-b0e3-fc1e79b7cc6e"
+metadata/lock_uid = true
+metadata/date_generated = "2026-04-09T13:39:19"
 
 [node name="Button" parent="Room01" unique_id=1164325605 instance=ExtResource("6_x2hu8")]
 transform = Transform3D(-5.6824803e-08, 0, -1.3, 0, 1.3, 0, 1.3, 0, -5.6824803e-08, -2.4587426, 1.0999999, -1)
+metadata/uid = "0f398027-07c0-4038-ae34-34c9f11d727a"
+metadata/lock_uid = true
+metadata/date_generated = "2026-04-09T13:39:19"
 
 [node name="skull" parent="Room01" unique_id=234370081 instance=ExtResource("7_6emgk")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.39999998, 0.3)
@@ -346,6 +347,9 @@ metadata/lock_uid = true
 [node name="PressurePlate" parent="Room01" unique_id=247380468 instance=ExtResource("10_5hc0a")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1)
 weight_to_activate = 10.0
+metadata/uid = "c284b6f7-d34b-449a-a343-29e824dc1798"
+metadata/lock_uid = true
+metadata/date_generated = "2026-04-09T13:39:19"
 
 [node name="Torch" parent="Room01" unique_id=1479203938 instance=ExtResource("12_ldimk")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 1.3)
@@ -377,18 +381,24 @@ transform = Transform3D(2.8144472e-08, -0.12825754, 0.35238475, 0.032683432, -0.
 [node name="SpotLight3D" type="SpotLight3D" parent="Room02/_decor" unique_id=431112461]
 transform = Transform3D(1, 0, 0, 0, 0.49999997, 0.86602545, 0, -0.86602545, 0.49999997, 0, 2.7, -4)
 
-[node name="SpikeTrap" parent="Room02" unique_id=610712147 instance=ExtResource("8_1whn7")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -4)
-
 [node name="SpikeTrap2" parent="Room02" unique_id=1491806634 instance=ExtResource("8_1whn7")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.7, 0, -2.6000004)
+metadata/uid = "b17cd6e8-9d95-43aa-af2d-9f9be153422b"
+metadata/lock_uid = true
+metadata/date_generated = "2026-04-09T13:39:19"
 
 [node name="Button" parent="Room02" unique_id=1648241021 instance=ExtResource("6_x2hu8")]
 transform = Transform3D(-1.3, 0, -1.9629454e-07, 0, 1.3, 0, 1.9629454e-07, 0, -1.3, 0, 1, -4.725974)
+metadata/uid = "48ac2b97-69f5-44d0-a2aa-f424b0daa521"
+metadata/lock_uid = true
+metadata/date_generated = "2026-04-09T13:39:19"
 
 [node name="Gate" parent="Room02" unique_id=1095573463 instance=ExtResource("4_qd8o2")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -0.9, 0, -0.9999995)
 stay_open = true
+metadata/uid = "c1433753-38f5-445d-8c18-fdb7fb9d7a46"
+metadata/lock_uid = true
+metadata/date_generated = "2026-04-09T13:39:19"
 
 [node name="Room03" type="Node3D" parent="." unique_id=1635108421]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17, 1, -7)
@@ -625,9 +635,15 @@ transform = Transform3D(-0.7071068, 0, 0.7071067, 0, 1, 0, -0.7071067, 0, -0.707
 
 [node name="TorchSconce6" parent="Room03/_lights" unique_id=945488960 instance=ExtResource("20_ntrdj")]
 transform = Transform3D(0.70710665, 0, 0.70710677, 0, 1, 0, -0.70710677, 0, 0.70710665, -2.5464458, 1.3229525, -2.5292902)
+metadata/uid = "1efb04c0-b307-4ce4-9d46-ac453b75071c"
+metadata/lock_uid = true
+metadata/date_generated = "2026-04-09T13:39:19"
 
 [node name="TorchSconce3" parent="Room03/_lights" unique_id=1523174574 instance=ExtResource("20_ntrdj")]
 transform = Transform3D(-0.7071068, 0, 0.7071067, 0, 1, 0, -0.7071067, 0, -0.7071068, -2.617157, 3.5229526, 2.6000004)
+metadata/uid = "d94410fd-a01a-49e5-b2dc-2c2a7b86e13e"
+metadata/lock_uid = true
+metadata/date_generated = "2026-04-09T13:39:19"
 
 [node name="TorchSconce5" parent="Room03/_lights" unique_id=1301123229 instance=ExtResource("7_18d3f")]
 transform = Transform3D(0.70710665, 0, 0.70710677, 0, 1, 0, -0.70710677, 0, 0.70710665, -2.5464463, 3.5229526, -2.5292888)
@@ -637,6 +653,9 @@ transform = Transform3D(0.9999999, 0, 5.9604645e-08, 0, 1, 0, -5.9604645e-08, 0,
 
 [node name="TorchSconce10" parent="Room03/_lights" unique_id=359485601 instance=ExtResource("20_ntrdj")]
 transform = Transform3D(0.70710677, 0, -0.70710677, 0, 1, 0, 0.70710677, 0, 0.70710677, 2.5535517, 1.3229525, -2.6292896)
+metadata/uid = "1f053301-ce5e-4acb-b047-7f74faee67d7"
+metadata/lock_uid = true
+metadata/date_generated = "2026-04-09T13:39:19"
 
 [node name="TorchSconce7" parent="Room03/_lights" unique_id=1198063315 instance=ExtResource("7_18d3f")]
 transform = Transform3D(-0.7071067, 0, -0.7071067, 0, 1, 0, 0.7071067, 0, -0.7071067, 2.4828405, 1.3229525, 2.5000005)
@@ -649,56 +668,48 @@ transform = Transform3D(-0.7071067, 0, -0.7071067, 0, 1, 0, 0.7071067, 0, -0.707
 
 [node name="PressurePlate_L" parent="Room03" unique_id=1206040788 instance=ExtResource("10_5hc0a")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.2570415, 3.9)
+metadata/uid = "480a6695-ab11-44fd-b028-58bacfdac696"
+metadata/lock_uid = true
+metadata/date_generated = "2026-04-09T13:39:19"
 
 [node name="Gate_L" parent="Room03" unique_id=1250930695 instance=ExtResource("4_qd8o2")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0.90000004, 2.2, 3.9)
+metadata/uid = "2c77b36b-fc25-4f09-9b36-d0805213d3ad"
+metadata/lock_uid = true
+metadata/date_generated = "2026-04-09T13:39:19"
 
 [node name="PressurePlate_R" parent="Room03" unique_id=1199643590 instance=ExtResource("10_5hc0a")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.2543468, -3.8999996)
+metadata/uid = "ad41c8b6-170e-4800-9f53-b3742bfe00cf"
+metadata/lock_uid = true
+metadata/date_generated = "2026-04-09T13:39:19"
 
 [node name="Gate_RT" parent="Room03" unique_id=974221747 instance=ExtResource("4_qd8o2")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0.8999997, 2.2, -4)
+metadata/uid = "a2e24754-5231-48e4-8bee-fcd84cf539ab"
+metadata/lock_uid = true
+metadata/date_generated = "2026-04-09T13:39:19"
 
 [node name="Gate_RB" parent="Room03" unique_id=1008092371 instance=ExtResource("4_qd8o2")]
 transform = Transform3D(-1, -8.742278e-08, 0, 8.742278e-08, -1, 0, 0, 0, 1, 0, 2, -2.8000002)
+metadata/uid = "496be6d6-89f2-47ac-b299-441c91adb4ea"
+metadata/lock_uid = true
+metadata/date_generated = "2026-04-09T13:39:19"
 
 [node name="skull" parent="Room03" unique_id=2126113278 instance=ExtResource("7_6emgk")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.4326153, 2.5511937, 4.0778875)
 metadata/uid = "21d95d55-59be-47b0-9e1b-5452914dea8f"
 metadata/lock_uid = true
 
-[node name="CP_0" parent="." unique_id=1899616095 node_paths=PackedStringArray("spawn_pos") instance=ExtResource("21_lufm1")]
-spawn_pos = NodePath("sp")
-
-[node name="sp" type="Node3D" parent="CP_0" unique_id=156156790]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 2, 3)
-
-[node name="CP_1" parent="." unique_id=2022102153 node_paths=PackedStringArray("spawn_pos") instance=ExtResource("21_lufm1")]
-spawn_pos = NodePath("sp")
-
-[node name="sp" type="Node3D" parent="CP_1" unique_id=1487525959]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -13, 2, -7)
-
-[node name="_checkpoint_trig" type="Area3D" parent="CP_1" unique_id=1790786682]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.5, 1.7, -7)
-monitorable = false
-script = ExtResource("23_xfits")
-trig_once = true
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="CP_1/_checkpoint_trig" unique_id=262578095]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.39999962, 0, 0)
-shape = SubResource("SphereShape3D_owq6r")
-
 [node name="UID_Generator" type="Node" parent="." unique_id=909288222]
 script = ExtResource("24_d308h")
 metadata/_custom_type_script = "uid://bul4myvyhnpjc"
 
+[node name="Timed_SpikeTrap" parent="." unique_id=1857500516 instance=ExtResource("22_owq6r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 1, -10)
+
 [connection signal="on_activated" from="Room01/Button" to="Room01/Gate" method="open_gate"]
 [connection signal="on_change" from="Room01/PressurePlate" to="Room01/Gate2" method="open_gate"]
-[connection signal="on_activated" from="Room02/Button" to="Room02/SpikeTrap" method="activate"]
 [connection signal="on_activated" from="Room02/Button" to="Room02/Gate" method="fully_open_gate"]
 [connection signal="on_change" from="Room03/PressurePlate_L" to="Room03/Gate_RT" method="open_gate"]
 [connection signal="on_change" from="Room03/PressurePlate_R" to="Room03/Gate_RB" method="open_gate"]
-[connection signal="on_loaded_checkpoint" from="CP_1" to="Room02/Gate" method="close_gate"]
-[connection signal="area_entered" from="CP_1/_checkpoint_trig" to="CP_1/_checkpoint_trig" method="_player_entered"]
-[connection signal="on_activated" from="CP_1/_checkpoint_trig" to="CP_1" method="reached_this_checkpoint"]

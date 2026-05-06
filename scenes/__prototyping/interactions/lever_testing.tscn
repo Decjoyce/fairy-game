@@ -22,6 +22,12 @@
 [ext_resource type="Script" uid="uid://cfmswqnu6u0bl" path="res://scenes/interactions/_receivers/_logic/counter/counter.gd" id="20_7ghgf"]
 [ext_resource type="PackedScene" uid="uid://pfsmibp55qi" path="res://scenes/interactions/_receivers/bridge/bridge.tscn" id="21_h0f0v"]
 [ext_resource type="Script" uid="uid://bul4myvyhnpjc" path="res://scripts/saving/uid_generator.gd" id="23_0ff0n"]
+[ext_resource type="PackedScene" uid="uid://d3x1l1brjvyre" path="res://scenes/item_catcher/item_catcher.tscn" id="23_miusb"]
+[ext_resource type="PackedScene" uid="uid://dnorxmo52wwjn" path="res://scenes/interactions/_receivers/gate/stone_gate.tscn" id="24_miusb"]
+[ext_resource type="PackedScene" uid="uid://bq5fylqfw1ru7" path="res://scenes/interactions/_special/item_statue_arm.tscn" id="25_5b781"]
+[ext_resource type="PackedScene" uid="uid://u8or5ikxykcy" path="res://scenes/interactions/_special/item_statue_base.tscn" id="26_5i6cv"]
+[ext_resource type="PackedScene" uid="uid://ciak43nkaxomm" path="res://scenes/interactions/_special/item_statue_head.tscn" id="27_d6kqr"]
+[ext_resource type="PackedScene" uid="uid://dr3608osp2js" path="res://scenes/interactions/interactables/items/all_items/misc/item_bell.tscn" id="28_5i6cv"]
 
 [sub_resource type="Environment" id="Environment_vu50v"]
 
@@ -31,6 +37,15 @@
 material = ExtResource("10_rc6n0")
 radius = 0.14
 height = 0.105
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_2w57q"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_yy6wh"]
+transparency = 1
+albedo_color = Color(0, 2.8215237, 1.4582423, 0.45882353)
+
+[sub_resource type="BoxMesh" id="BoxMesh_5b781"]
+material = SubResource("StandardMaterial3D_yy6wh")
 
 [node name="LeverTesting" type="Node3D" unique_id=1969717916]
 
@@ -311,12 +326,47 @@ metadata/date_generated = "2026-03-18T00:24:12"
 [node name="UID_Generator" type="Node" parent="." unique_id=1339389628]
 script = ExtResource("23_0ff0n")
 
+[node name="ItemCatcher" parent="." unique_id=2014139358 node_paths=PackedStringArray("return_point") instance=ExtResource("23_miusb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0.4, 2.9)
+collision_layer = 0
+collision_mask = 2
+monitorable = false
+return_point = NodePath("Node3D")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ItemCatcher" unique_id=104025511]
+shape = SubResource("BoxShape3D_2w57q")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="ItemCatcher/CollisionShape3D" unique_id=912397495]
+mesh = SubResource("BoxMesh_5b781")
+
+[node name="Node3D" type="Node3D" parent="ItemCatcher" unique_id=1241330001]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.7, 0, 0)
+
+[node name="RockGate" parent="ItemCatcher" unique_id=2077487765 instance=ExtResource("24_miusb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 0.99999994, 3, -0.5, -3.9)
+
+[node name="key" parent="ItemCatcher" unique_id=1651342021 instance=ExtResource("11_vo06l")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19, 0.6, -1.9000001)
+
+[node name="StatuePiece_arm" parent="ItemCatcher" unique_id=234370081 instance=ExtResource("25_5b781")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15, 0.6, -2.9)
+
+[node name="StatuePiece_Base" parent="ItemCatcher" unique_id=493259448 instance=ExtResource("26_5i6cv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17, 0.6, -2.9)
+
+[node name="StatuePiece_Head" parent="ItemCatcher" unique_id=55949614 instance=ExtResource("27_d6kqr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17, 0.6, -3.9)
+
+[node name="bell" parent="ItemCatcher" unique_id=921639655 instance=ExtResource("28_5i6cv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16, 0.6, -5.9)
+
 [connection signal="on_activated" from="Lever" to="SpikeTrap" method="activate"]
 [connection signal="on_change" from="Lever" to="Gate" method="open_gate"]
 [connection signal="on_activated" from="Lever2" to="skybox_changer" method="change_to_a"]
 [connection signal="on_change" from="Lever2" to="Gate3" method="open_gate"]
 [connection signal="on_deactivated" from="Lever2" to="skybox_changer" method="change_to_b"]
 [connection signal="on_change" from="Lever3" to="Gate2" method="open_gate"]
+[connection signal="on_change" from="Lever3" to="ItemCatcher/RockGate" method="open_gate"]
 [connection signal="on_activated" from="BrokenLeverExample/BrokenLever" to="BrokenLeverExample/Lever_Fixed" method="enable"]
 [connection signal="on_change" from="BrokenLeverExample/Lever_Fixed" to="Bridge" method="move_bridge"]
 [connection signal="on_activated" from="ITMMOVERSTUFF/Button" to="ITMMOVERSTUFF/ITM_MOVER" method="move_item_from_index"]

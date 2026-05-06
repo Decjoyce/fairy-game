@@ -1,0 +1,20 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://cykgn4cpccw6q"]
+
+[ext_resource type="Texture2D" uid="uid://y37q4lnxchg6" path="res://assets/models/cairn/Props/MountedTorch/Textures/MountedTorch_Base_color.png" id="1_affpv"]
+[ext_resource type="Texture2D" uid="uid://dvxqdtu0e44tk" path="res://assets/models/cairn/Props/MountedTorch/Textures/MountedTorch_Mixed_AO.png" id="2_j7w2e"]
+[ext_resource type="Texture2D" uid="uid://bijuppdqab4rx" path="res://assets/models/cairn/Props/MountedTorch/Textures/MountedTorch_Metallic.png" id="3_of8sd"]
+[ext_resource type="Material" uid="uid://dyejtq23uplk4" path="res://assets/shaders/Outline/outline.tres" id="4_hklki"]
+[ext_resource type="Texture2D" uid="uid://b7ees6yv0symm" path="res://assets/models/cairn/Props/MountedTorch/Textures/MountedTorch_Normal_OpenGL.png" id="5_2tfg6"]
+[ext_resource type="Texture2D" uid="uid://dt51657xfkc60" path="res://assets/models/cairn/Props/MountedTorch/Textures/MountedTorch_Roughness.png" id="6_fm8h7"]
+
+[resource]
+next_pass = ExtResource("4_hklki")
+albedo_texture = ExtResource("1_affpv")
+metallic = 1.0
+metallic_specular = 0.23
+metallic_texture = ExtResource("3_of8sd")
+roughness_texture = ExtResource("6_fm8h7")
+normal_enabled = true
+normal_texture = ExtResource("5_2tfg6")
+ao_enabled = true
+ao_texture = ExtResource("2_j7w2e")

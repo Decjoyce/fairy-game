@@ -1,0 +1,59 @@
+[gd_scene format=3 uid="uid://dyra8p7j2wy70"]
+
+[ext_resource type="PackedScene" uid="uid://do8s3hp8fpr0c" path="res://scenes/_levels/Final_Puzzles/baby_section/baby_section.tscn" id="1_aqj14"]
+[ext_resource type="PackedScene" uid="uid://bq86osdembn58" path="res://scenes/_player/_player_test.tscn" id="2_h8iro"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_aqj14"]
+sky_horizon_color = Color(0, 0.37292683, 0.8185948, 1)
+sky_curve = 0.23537512
+ground_horizon_color = Color(0.3529412, 0.30588236, 0.2509804, 1)
+ground_curve = 0.060628746
+
+[sub_resource type="Sky" id="Sky_l4grf"]
+sky_material = SubResource("ProceduralSkyMaterial_aqj14")
+
+[sub_resource type="Environment" id="Environment_h8iro"]
+background_mode = 1
+background_color = Color(0.21568628, 0.2, 0.20784314, 1)
+sky = SubResource("Sky_l4grf")
+ambient_light_source = 2
+ambient_light_color = Color(0, 0.046818696, 0.12593761, 1)
+ambient_light_energy = 6.0
+tonemap_mode = 4
+tonemap_exposure = 2.0
+ssao_enabled = true
+ssao_radius = 0.05
+ssao_intensity = 1.0
+sdfgi_read_sky_light = false
+sdfgi_bounce_feedback = 1.99
+sdfgi_cascades = 8
+sdfgi_min_cell_size = 19.315624
+sdfgi_energy = 4.035
+sdfgi_normal_bias = 6.215
+sdfgi_probe_bias = 2.94
+glow_enabled = true
+glow_intensity = 0.2
+glow_strength = 0.4
+volumetric_fog_enabled = true
+volumetric_fog_density = 0.025
+volumetric_fog_albedo = Color(0.74509805, 0.34509805, 0, 1)
+volumetric_fog_emission = Color(0.117735185, 0.20947376, 0.3003329, 1)
+
+[node name="BabySectionTester" type="Node3D" unique_id=1181656416]
+
+[node name="BabyInstantiatePoint" type="Node3D" parent="." unique_id=272199688]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 75, -1.248, -20.006)
+
+[node name="BabySection" parent="BabyInstantiatePoint" unique_id=1081376213 instance=ExtResource("1_aqj14")]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=286907346]
+transform = Transform3D(-0.944665, 0.32516113, -0.04333894, -0.039370164, 0.018778611, 0.99904823, 0.32566544, 0.94547224, -0.0049378504, 3.5, 12.124357, -6.0621777)
+visible = false
+light_color = Color(0.15849423, 0.16554698, 0.18437496, 1)
+shadow_enabled = true
+
+[node name="WorldEnvironment2" type="WorldEnvironment" parent="." unique_id=966531299]
+environment = SubResource("Environment_h8iro")
+
+[node name="player_test" parent="." unique_id=725727541 instance=ExtResource("2_h8iro")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 76, 0.752, -19.006)

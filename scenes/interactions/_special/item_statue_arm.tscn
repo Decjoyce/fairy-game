@@ -4,12 +4,13 @@
 [ext_resource type="Script" uid="uid://cqhq7vrwiw3m6" path="res://scenes/interactions/interactables/items/item_types/item_type.gd" id="2_6h4j4"]
 [ext_resource type="Texture2D" uid="uid://45unr26com5s" path="res://assets/sprites/item_sprites/statue/statue_spritesheets/statue_piece_arm_n.png" id="3_ai671"]
 [ext_resource type="Texture2D" uid="uid://cqvplgp1sfvfm" path="res://assets/sprites/item_sprites/statue/statue_spritesheets/statue_piece_arm.png" id="4_4o0cs"]
-[ext_resource type="AudioStream" uid="uid://dutddyikwuiut" path="res://assets/audio/sfx/combat/misc/hittingsound_shorter.wav" id="4_ijcvq"]
 [ext_resource type="Script" uid="uid://dk36d8kuwrwnv" path="res://addons/extras_sprites/scripts/simple_sprite_3D_billboard.gd" id="5_5hu3d"]
 [ext_resource type="Texture2D" uid="uid://708dtid1lpq2" path="res://assets/sprites/item_sprites/statue/statue_piece_arm.png" id="6_4o0cs"]
 [ext_resource type="Texture2D" uid="uid://fhu8mpyetofc" path="res://assets/sprites/item_sprites/statue/statue_piece_arm_n_single.png" id="7_5hu3d"]
 [ext_resource type="Script" uid="uid://bhf6r6nw14krj" path="res://scripts/saving/persistent_objs/po_item.gd" id="7_ijcvq"]
 [ext_resource type="Shader" uid="uid://bxy4s1fhoupka" path="res://assets/shaders/special_sprite_shine/new_special_sprite_shine.gdshader" id="8_bv4e3"]
+[ext_resource type="AudioStream" uid="uid://c06ecuwypinuu" path="res://assets/audio/sfx/items/StoneHit/stonepile_hit_randomizer.tres" id="9_bv4e3"]
+[ext_resource type="AudioStream" uid="uid://bny0b3bdsuco3" path="res://assets/audio/sfx/items/Grab/Rock_randomizer.tres" id="11_nkd1j"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_llc7q"]
 
@@ -18,12 +19,12 @@ script = ExtResource("2_6h4j4")
 metadata/_custom_type_script = "uid://cqhq7vrwiw3m6"
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_llc7q"]
-size = Vector3(0.5, 0.5, 0.5)
+size = Vector3(0.5, 0.60253906, 0.5)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_234jp"]
-size = Vector3(0.4, 0.4, 0.4)
+size = Vector3(0.4, 0.5292969, 0.4)
 
-[sub_resource type="Shader" id="Shader_4qxnt"]
+[sub_resource type="Shader" id="Shader_bv4e3"]
 code = "shader_type spatial;
 render_mode diffuse_lambert_wrap,cull_disabled;
 
@@ -100,9 +101,9 @@ void fragment() {
 }
 "
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_bv4e3"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_nkd1j"]
 render_priority = 0
-shader = SubResource("Shader_4qxnt")
+shader = SubResource("Shader_bv4e3")
 shader_parameter/rows = 1.0
 shader_parameter/columns = 8.0
 shader_parameter/frame = 0.0
@@ -111,8 +112,8 @@ shader_parameter/sprite = ExtResource("4_4o0cs")
 shader_parameter/mode = 0
 shader_parameter/Normal = ExtResource("3_ai671")
 
-[sub_resource type="PlaneMesh" id="PlaneMesh_nkd1j"]
-material = SubResource("ShaderMaterial_bv4e3")
+[sub_resource type="PlaneMesh" id="PlaneMesh_tyjdn"]
+material = SubResource("ShaderMaterial_nkd1j")
 size = Vector2(0.512, 0.512)
 orientation = 2
 
@@ -158,6 +159,7 @@ size = Vector2(0.75, 0.75)
 
 [node name="StatuePiece_arm" type="RigidBody3D" unique_id=234370081 node_paths=PackedStringArray("col", "grab_col", "idle_graphics", "grabbed_graphics") groups=["debug_PickableObjects"]]
 collision_layer = 2
+collision_mask = 4097
 axis_lock_angular_x = true
 axis_lock_angular_z = true
 mass = 0.5
@@ -168,10 +170,15 @@ max_contacts_reported = 1
 script = ExtResource("1_vxcfy")
 item_type = SubResource("Resource_yadgr")
 display_name = "STATUE_PIECE_ARM"
-keywords = "ARM"
+keywords = "ARM;PERM;"
 item_weight = 3
 col = NodePath("CollisionShape3D")
 grab_col = NodePath("Area3D/CollisionShape3D2")
+grabbed_offset = Vector2(49.63, 1.855)
+use_grabbed_individual_offsets = true
+grabbed_rotation = 0.915
+grabbed_rotation_left = 0.49
+use_grabbed_rotation_offsets = true
 idle_graphics = NodePath("_g_idle2")
 grabbed_graphics = NodePath("_g_grabbed")
 
@@ -179,16 +186,18 @@ grabbed_graphics = NodePath("_g_grabbed")
 collision_layer = 2
 
 [node name="CollisionShape3D2" type="CollisionShape3D" parent="Area3D" unique_id=376822119]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.05126953, 0)
 shape = SubResource("BoxShape3D_llc7q")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1619528994]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.06464844, 0)
 shape = SubResource("BoxShape3D_234jp")
 debug_color = Color(0.8442249, 0.37985525, 5.7756904e-07, 0.41960785)
 
 [node name="_g_idle" type="MeshInstance3D" parent="." unique_id=1979781240]
 visible = false
 layers = 4
-mesh = SubResource("PlaneMesh_nkd1j")
+mesh = SubResource("PlaneMesh_tyjdn")
 script = ExtResource("5_5hu3d")
 sprite = ExtResource("4_4o0cs")
 sprite_scale = 0.001
@@ -208,7 +217,7 @@ visible = false
 mesh = SubResource("QuadMesh_bv4e3")
 
 [node name="AudioPlayer" type="AudioStreamPlayer3D" parent="." unique_id=20800557]
-stream = ExtResource("4_ijcvq")
+stream = ExtResource("9_bv4e3")
 bus = &"items"
 
 [node name="RayCast3D" type="RayCast3D" parent="." unique_id=1070737100]
@@ -218,3 +227,15 @@ hit_from_inside = true
 [node name="PO_Item" type="Node" parent="." unique_id=1122030167 groups=["PO"]]
 script = ExtResource("7_ijcvq")
 metadata/_custom_type_script = "uid://bhf6r6nw14krj"
+
+[node name="Audio_Grabbed" type="AudioStreamPlayer3D" parent="." unique_id=1697561012]
+stream = ExtResource("11_nkd1j")
+max_distance = 1.0
+
+[node name="OmniLight3D2" type="OmniLight3D" parent="." unique_id=484325436]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0050979257, 0)
+light_color = Color(0.32915837, 0.3291584, 0.3291584, 1)
+light_energy = 0.11
+distance_fade_enabled = true
+distance_fade_begin = 21.45
+omni_range = 1.18

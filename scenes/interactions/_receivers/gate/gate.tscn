@@ -4,6 +4,8 @@
 [ext_resource type="Material" uid="uid://c6ic70i7jpqeu" path="res://assets/models/cairn/Props/Gate/Gate.tres" id="2_7y3tx"]
 [ext_resource type="Script" uid="uid://3ihhc0me4bjf" path="res://scripts/saving/persistent_objs/po_gate.gd" id="3_oueqo"]
 [ext_resource type="AudioStream" uid="uid://cyo1b0ry2gwgu" path="res://assets/audio/sfx/player/death/Fight, Bodyfall, Asphalt, Concrete 01 SND120897.wav" id="4_rophg"]
+[ext_resource type="Script" uid="uid://kg11gyciyied" path="res://scripts/audio_value_player.gd" id="5_poaq6"]
+[ext_resource type="AudioStream" uid="uid://cm72tdl825h2" path="res://assets/audio/sfx/environment/Doors/Gate/Gate_randomiser.tres" id="6_ycxvs"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_i1hti"]
 size = Vector3(2, 2, 0.2)
@@ -42,11 +44,23 @@ blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_cw6yt")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_wx5q6"]
-size = Vector3(2, 0.4, 0.03)
+size = Vector3(2, 0.5, 0.03)
 
-[node name="Gate" type="Node3D" unique_id=2077487765 groups=["debug_PickableObjects"]]
+[sub_resource type="BoxShape3D" id="BoxShape3D_rophg"]
+size = Vector3(2, 0.5, 0.05)
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_rophg"]
+radius = 0.25
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ycxvs"]
+size = Vector3(2, 2, 0.2)
+
+[node name="Gate" type="Node3D" unique_id=2077487765 node_paths=PackedStringArray("tp_checker_col", "out_pos_back", "out_pos_front") groups=["debug_PickableObjects"]]
 script = ExtResource("1_cm4qh")
 height_to_toggle_player_barrier = 0.51
+tp_checker_col = NodePath("TPChecker_player/CollisionShape3D")
+out_pos_back = NodePath("out_pos_back")
+out_pos_front = NodePath("out_pos_front")
 metadata/_custom_type_script = "uid://42c4j0jtwejr"
 
 [node name="gate" type="StaticBody3D" parent="." unique_id=316557696]
@@ -54,7 +68,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="gate" unique_id=340802356]
 shape = SubResource("BoxShape3D_i1hti")
-debug_color = Color(0.7263446, 0.47620404, 1.92523e-07, 1)
+debug_color = Color(13.972358, 9.491839, 0, 1)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="gate" unique_id=517457797]
 transform = Transform3D(0.135, 0, 0, 0, 0.135, 0, 0, 0, 0.135, 0, -1, 0)
@@ -67,13 +81,27 @@ billboard = 1
 text = "GATE"
 font_size = 67
 
-[node name="UnderChecker" type="Area3D" parent="gate" unique_id=379725726]
+[node name="UnderChecker_items" type="Area3D" parent="gate" unique_id=379725726]
+physics_interpolation_mode = 1
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.2, 0)
 collision_layer = 0
 collision_mask = 2
+monitorable = false
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="gate/UnderChecker" unique_id=1495217223]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="gate/UnderChecker_items" unique_id=1495217223]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.050000012, 0)
 shape = SubResource("BoxShape3D_wx5q6")
+
+[node name="UnderChecker_player" type="Area3D" parent="gate" unique_id=1292407627]
+physics_interpolation_mode = 1
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.2, 0)
+collision_layer = 0
+collision_mask = 2
+monitorable = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="gate/UnderChecker_player" unique_id=1344037531]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.050000012, 0)
+shape = SubResource("BoxShape3D_rophg")
 
 [node name="PlayerCollision" type="StaticBody3D" parent="." unique_id=670546705]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
@@ -82,7 +110,7 @@ collision_mask = 0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="PlayerCollision" unique_id=1797764377]
 shape = SubResource("BoxShape3D_i1hti")
-debug_color = Color(0.7263446, 0.47620404, 1.92523e-07, 1)
+debug_color = Color(13.972358, 9.491839, 0, 1)
 
 [node name="PO_Gate" type="Node" parent="." unique_id=724632479 groups=["PO"]]
 script = ExtResource("3_oueqo")
@@ -91,7 +119,49 @@ metadata/_custom_type_script = "uid://3ihhc0me4bjf"
 [node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="." unique_id=746212478]
 stream = ExtResource("4_rophg")
 
-[connection signal="area_entered" from="gate/UnderChecker" to="." method="_on_area_entered_under_checker"]
-[connection signal="area_exited" from="gate/UnderChecker" to="." method="_on_area_exited_under_checker"]
-[connection signal="body_entered" from="gate/UnderChecker" to="." method="_on_body_entered_under_checker"]
-[connection signal="body_exited" from="gate/UnderChecker" to="." method="_on_body_exited_under_checker"]
+[node name="out_pos_back" type="Node3D" parent="." unique_id=2137923254]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -1)
+
+[node name="Area3D" type="Area3D" parent="out_pos_back" unique_id=908202577]
+collision_layer = 0
+monitorable = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="out_pos_back/Area3D" unique_id=2078576496]
+shape = SubResource("SphereShape3D_rophg")
+
+[node name="out_pos_front" type="Node3D" parent="." unique_id=1301618955]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 1)
+
+[node name="Area3D" type="Area3D" parent="out_pos_front" unique_id=1045673248]
+collision_layer = 0
+monitorable = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="out_pos_front/Area3D" unique_id=79661122]
+shape = SubResource("SphereShape3D_rophg")
+
+[node name="TPChecker_player" type="Area3D" parent="." unique_id=906156806]
+physics_interpolation_mode = 1
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+collision_layer = 0
+collision_mask = 2
+monitorable = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="TPChecker_player" unique_id=600236291]
+shape = SubResource("BoxShape3D_ycxvs")
+
+[node name="AudioValuePlayer" type="AudioStreamPlayer3D" parent="." unique_id=438728741]
+volume_db = -5.0
+max_distance = 13.0
+max_polyphony = 4
+bus = &"items"
+script = ExtResource("5_poaq6")
+sounds = Array[AudioStream]([ExtResource("6_ycxvs"), ExtResource("6_ycxvs"), ExtResource("6_ycxvs"), ExtResource("6_ycxvs"), ExtResource("6_ycxvs")])
+metadata/_custom_type_script = "uid://kg11gyciyied"
+
+[connection signal="body_entered" from="gate/UnderChecker_items" to="." method="_on_body_entered_under_checker"]
+[connection signal="body_exited" from="gate/UnderChecker_items" to="." method="_on_body_exited_under_checker"]
+[connection signal="area_entered" from="gate/UnderChecker_player" to="." method="_on_area_entered_under_checker_back"]
+[connection signal="area_exited" from="gate/UnderChecker_player" to="." method="_on_area_exited_under_checker"]
+[connection signal="area_entered" from="out_pos_back/Area3D" to="." method="out_pos_area_entered_back"]
+[connection signal="area_entered" from="out_pos_front/Area3D" to="." method="out_pos_area_entered_front"]
+[connection signal="area_entered" from="TPChecker_player" to="." method="tp_checker_entered"]

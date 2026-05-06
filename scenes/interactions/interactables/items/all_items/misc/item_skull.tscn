@@ -3,8 +3,9 @@
 [ext_resource type="Script" uid="uid://s5cfdf85lm5g" path="res://scenes/interactions/interactables/items/grabbable_item.gd" id="1_jhrhg"]
 [ext_resource type="Script" uid="uid://cqhq7vrwiw3m6" path="res://scenes/interactions/interactables/items/item_types/item_type.gd" id="2_i0ofu"]
 [ext_resource type="Texture2D" uid="uid://1m8e2skdgkex" path="res://assets/sprites/item_sprites/skull_item.png" id="3_jhrhg"]
-[ext_resource type="AudioStream" uid="uid://dutddyikwuiut" path="res://assets/audio/sfx/combat/misc/hittingsound_shorter.wav" id="4_citxp"]
+[ext_resource type="AudioStream" uid="uid://n3o78n2v01wi" path="res://assets/audio/sfx/items/skull/skull_hit_randomizer.tres" id="4_lkkmc"]
 [ext_resource type="Script" uid="uid://bhf6r6nw14krj" path="res://scripts/saving/persistent_objs/po_item.gd" id="5_lkkmc"]
+[ext_resource type="AudioStream" uid="uid://c3aw2fw8oosx1" path="res://assets/audio/sfx/items/Grab/Ceramic_randomizer.tres" id="6_obr4d"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_llc7q"]
 
@@ -54,6 +55,7 @@ shaded = true
 texture = ExtResource("3_jhrhg")
 
 [node name="_g_grabbed" type="Sprite3D" parent="." unique_id=1908776990]
+visible = false
 layers = 4
 pixel_size = 0.0008
 billboard = 2
@@ -62,7 +64,7 @@ render_priority = 1
 texture = ExtResource("3_jhrhg")
 
 [node name="AudioPlayer" type="AudioStreamPlayer3D" parent="." unique_id=20800557]
-stream = ExtResource("4_citxp")
+stream = ExtResource("4_lkkmc")
 bus = &"items"
 
 [node name="RayCast3D" type="RayCast3D" parent="." unique_id=1070737100]
@@ -72,3 +74,7 @@ hit_from_inside = true
 [node name="PO_Item" type="Node" parent="." unique_id=2095926710 groups=["PO"]]
 script = ExtResource("5_lkkmc")
 metadata/_custom_type_script = "uid://bhf6r6nw14krj"
+
+[node name="Audio_Grabbed" type="AudioStreamPlayer3D" parent="." unique_id=367884033]
+stream = ExtResource("6_obr4d")
+max_distance = 1.0

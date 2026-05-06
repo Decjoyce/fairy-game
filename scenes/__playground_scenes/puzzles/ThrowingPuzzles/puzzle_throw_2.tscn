@@ -1,12 +1,13 @@
 [gd_scene format=4 uid="uid://38yo6y6rg7ak"]
 
 [ext_resource type="PackedScene" uid="uid://bq86osdembn58" path="res://scenes/_player/_player_test.tscn" id="1_33mfq"]
-[ext_resource type="MeshLibrary" uid="uid://bu208a8l5866i" path="res://scenes/_levels/_palettes/cairn/meshlibrary_cairn.tres" id="2_phv6h"]
+[ext_resource type="MeshLibrary" uid="uid://bhdjk8h6chf0o" path="res://scenes/_levels/_palettes/cairn/mossy/meshlibrary_mossy_cairn.meshlib" id="2_5tq18"]
 [ext_resource type="PackedScene" uid="uid://dt13fur6twjep" path="res://scenes/interactions/_receivers/gate/gate.tscn" id="3_p6t5v"]
 [ext_resource type="PackedScene" uid="uid://cfkoaxhngk3gf" path="res://scenes/interactions/interactables/items/all_items/keys/item_key.tscn" id="4_wygpq"]
 [ext_resource type="PackedScene" uid="uid://ck1b6l8s7xnxi" path="res://scenes/interactions/_triggers/lever/lever.tscn" id="5_1lnmj"]
 [ext_resource type="PackedScene" uid="uid://csot2mi7746ll" path="res://scenes/interactions/_triggers/pressure_plate/pressure_plate.tscn" id="5_gq2py"]
 [ext_resource type="PackedScene" uid="uid://d2ict3hg28spx" path="res://scenes/_levels/_palettes/cairn/props/cairn_fake_wall.tscn" id="5_pdgyx"]
+[ext_resource type="PackedScene" uid="uid://dkx1fyyqx7cmp" path="res://scenes/interactions/_triggers/torch_sconce/torch_sconce_ceiling.tscn" id="5_yp11f"]
 [ext_resource type="Script" uid="uid://bicoc8ibhscjw" path="res://scenes/interactions/_receivers/enabler_disabler_v1/group_visibility_enabler.gd" id="6_3ucu1"]
 [ext_resource type="PackedScene" uid="uid://ue3520w5p7fo" path="res://scenes/_levels/_palettes/cairn/props/cairn_fake_doorway.tscn" id="6_33mfq"]
 [ext_resource type="PackedScene" uid="uid://4v23jnigirqc" path="res://scenes/interactions/_receivers/_logic/counter/Counter.tscn" id="6_eju3j"]
@@ -25,8 +26,7 @@
 [ext_resource type="Script" uid="uid://c4t3ko70ihpyy" path="res://scenes/interactions/_receivers/animated_object/animated_object.gd" id="20_e1ua7"]
 [ext_resource type="PackedScene" uid="uid://dr3608osp2js" path="res://scenes/interactions/interactables/items/all_items/misc/item_bell.tscn" id="21_kngx6"]
 [ext_resource type="PackedScene" uid="uid://drsdttca4hc5w" path="res://scenes/enemy_new/enemy_ballybog_new.tscn" id="24_jsiwv"]
-[ext_resource type="Texture2D" uid="uid://bj1t77t2jchxa" path="res://assets/_dev/textures/prototype_512x512_white.png" id="25_dx54j"]
-[ext_resource type="Texture2D" uid="uid://kh7r551pp0h7" path="res://assets/_dev/textures/prototype_512x512_red.png" id="26_5tq18"]
+[ext_resource type="MeshLibrary" uid="uid://br861hnjhp6ry" path="res://scenes/_levels/_palettes/gmpf_meshlib.tres" id="26_5tq18"]
 [ext_resource type="Script" uid="uid://ubfk2a80dhfp" path="res://addons/grid_map_pathfinding/grid_map_pathfinding.gd" id="27_yp11f"]
 [ext_resource type="Script" uid="uid://bul4myvyhnpjc" path="res://scripts/saving/uid_generator.gd" id="29_yp11f"]
 
@@ -225,43 +225,10 @@ _data = {
 &"open_da_grate": SubResource("Animation_kngx6")
 }
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_02yal"]
-shading_mode = 0
-diffuse_mode = 3
-albedo_color = Color(0.19192207, 0.2795341, 0.22862524, 1)
-albedo_texture = ExtResource("25_dx54j")
-
-[sub_resource type="BoxMesh" id="BoxMesh_vugc7"]
-material = SubResource("StandardMaterial3D_02yal")
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_uj1yh"]
-shading_mode = 0
-diffuse_mode = 3
-albedo_texture = ExtResource("26_5tq18")
-
-[sub_resource type="BoxMesh" id="BoxMesh_cns1u"]
-material = SubResource("StandardMaterial3D_uj1yh")
-
-[sub_resource type="MeshLibrary" id="MeshLibrary_uhcqc"]
-item/0/name = "WLKE"
-item/0/mesh = SubResource("BoxMesh_vugc7")
-item/0/mesh_transform = Transform3D(1, 0, 0, 0, 0.09, 0, 0, 0, 1, 0, 0, 0)
-item/0/mesh_cast_shadow = 1
-item/0/shapes = []
-item/0/navigation_mesh_transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
-item/0/navigation_layers = 1
-item/1/name = "NO WALKE"
-item/1/mesh = SubResource("BoxMesh_cns1u")
-item/1/mesh_transform = Transform3D(1, 0, 0, 0, 0.09, 0, 0, 0, 1, 0, 0, 0)
-item/1/mesh_cast_shadow = 0
-item/1/shapes = []
-item/1/navigation_mesh_transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
-item/1/navigation_layers = 1
-
 [node name="Puzzle01" type="Node3D" unique_id=2140837292]
 
 [node name="player_test" parent="." unique_id=725727541 instance=ExtResource("1_33mfq")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 2.1000001, 3)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 2.1000001, 2.7)
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=654468544]
 environment = SubResource("Environment_dx54j")
@@ -272,9 +239,9 @@ light_energy = 0.061
 sky_mode = 1
 
 [node name="GridMap" type="GridMap" parent="." unique_id=694687736]
-mesh_library = ExtResource("2_phv6h")
+mesh_library = ExtResource("2_5tq18")
 data = {
-"cells": PackedInt32Array(65535, 1, 4, 65535, 0, 0, 0, 0, 1441794, 65534, 0, 1441794, 1, 0, 3, 65533, 0, 1441795, 65533, 65535, 655362, 65533, 65534, 1441792, 65533, 65533, 2, 65533, 65532, 655363, 65534, 65532, 1048578, 1, 65535, 2, 1, 65533, 2, 65535, 65535, 2, 65535, 65533, 2, 0, 65532, 1441794, 0, 65534, 1441794, 65534, 65534, 1441794, 65535, 65534, 1048592, 1, 65534, 1441792, 65535, 65532, 1048576, 65535, 65531, 2, 65535, 65530, 2, 65532, 65534, 1441796, 2, 65534, 1048580, 1, 65532, 1048579)
+"cells": PackedInt32Array(65535, 1, 4, 65535, 0, 0, 0, 0, 1441794, 65534, 0, 1441794, 1, 0, 3, 65533, 0, 1441795, 65533, 65535, 655362, 65533, 65534, 1441792, 65533, 65533, 2, 65533, 65532, 655363, 65534, 65532, 1048578, 1, 65535, 2, 1, 65533, 2, 65535, 65535, 2, 65535, 65533, 2, 0, 65532, 1441794, 0, 65534, 1441794, 65534, 65534, 1441794, 65535, 65534, 1441811, 1, 65534, 1441792, 65535, 65532, 1048576, 65535, 65531, 2, 65535, 65530, 2, 65532, 65534, 1441796, 2, 65534, 1048580, 1, 65532, 1048579, 65532, 3, 4)
 }
 metadata/_editor_floor_ = Vector3(0, 0, 0)
 
@@ -285,10 +252,7 @@ metadata/_editor_floor_ = Vector3(0, 0, 0)
 [node name="_lights" type="Node3D" parent="_env/_decor" unique_id=1344103282]
 
 [node name="TorchSconce_Lit" parent="_env/_decor/_lights" unique_id=1729385187 instance=ExtResource("13_c4s1r")]
-transform = Transform3D(0.9659258, 0, -0.25881904, 0, 1, 0, 0.25881904, 0, 0.9659258, -3, 2.1000001, 0.20000002)
-
-[node name="TorchSconce_Lit2" parent="_env/_decor/_lights" unique_id=18470100 instance=ExtResource("13_c4s1r")]
-transform = Transform3D(0.9659258, 0, -0.25881904, 0, 1, 0, 0.25881904, 0, 0.9659258, -3, 2.1000001, -3.8000002)
+transform = Transform3D(0.99999994, 0, 0, 0, 1, 0, 0, 0, 0.99999994, -3, 2.045, 0.21)
 
 [node name="TorchSconce_Lit4" parent="_env/_decor/_lights" unique_id=1008576657 instance=ExtResource("13_c4s1r")]
 transform = Transform3D(0.9659258, 0, -0.25881904, 0, 1, 0, 0.25881904, 0, 0.9659258, -6.883576, 2.1000001, -3.7251482)
@@ -297,22 +261,25 @@ transform = Transform3D(0.9659258, 0, -0.25881904, 0, 1, 0, 0.25881904, 0, 0.965
 transform = Transform3D(-0.96592593, 0, 0.25881916, 0, 1, 0, -0.25881916, 0, -0.96592593, -6.883576, 2.1000001, -2.3291874)
 
 [node name="TorchSconce_Lit3" parent="_env/_decor/_lights" unique_id=2095231742 instance=ExtResource("13_c4s1r")]
-transform = Transform3D(0.9659258, 0, -0.25881904, 0, 1, 0, 0.25881904, 0, 0.9659258, 0.19999993, 2.1716464, -7.6467614)
+transform = Transform3D(0.99999994, 0, 0, 0, 1, 0, 0, 0, 0.99999994, 0.19999993, 2.1716464, -7.787)
 
 [node name="TorchSconce_Lit6" parent="_env/_decor/_lights" unique_id=1112573980 instance=ExtResource("13_c4s1r")]
-transform = Transform3D(0.9659258, 0, -0.25881904, 0, 1, 0, 0.25881904, 0, 0.9659258, 0.19999993, 2.1716464, -7.6467614)
+transform = Transform3D(0.99999994, 0, 0, 0, 1, 0, 0, 0, 0.99999994, 0.19999993, 2.1716464, -7.787)
 
 [node name="TorchSconce_Unlit" parent="_env/_decor/_lights" unique_id=1431723012 instance=ExtResource("14_78v0c")]
-transform = Transform3D(0.9659258, 0, -0.25881904, 0, 1, 0, 0.25881904, 0, 0.9659258, 1, 2.1000001, 0.3)
+transform = Transform3D(0.99999994, 0, 0, 0, 1, 0, 0, 0, 0.99999994, 1, 2.1, 0.275)
 metadata/uid = "f141fd01-5540-4b8f-a8e0-26dc966727be"
 metadata/lock_uid = true
 metadata/date_generated = "2026-03-25T10:07:13"
 
 [node name="TorchSconce_Unlit2" parent="_env/_decor/_lights" unique_id=1975511268 instance=ExtResource("14_78v0c")]
-transform = Transform3D(-0.96592593, 0, 0.25881916, 0, 1, 0, -0.25881916, 0, -0.96592593, 1, 2.1000001, -2.4)
+transform = Transform3D(-1.0000001, 0, -8.7422784e-08, 0, 1, 0, 8.7422784e-08, 0, -1.0000001, 1, 2.1, -2.21)
 metadata/uid = "9b6c1b5f-3615-4b64-a15f-b8b6eb9b7f86"
 metadata/lock_uid = true
 metadata/date_generated = "2026-03-25T10:07:13"
+
+[node name="TorchSconce_Lit2" parent="_env/_decor/_lights" unique_id=1925507860 instance=ExtResource("5_yp11f")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 2.9, -3)
 
 [node name="roofthing" type="Node3D" parent="_env/_decor" unique_id=1439106267]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 3.2, -3)
@@ -671,8 +638,12 @@ metadata/date_generated = "2026-03-25T10:07:13"
 
 [node name="Ballybog" parent="." unique_id=1712475425 node_paths=PackedStringArray("patrol_points") instance=ExtResource("24_jsiwv")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 1, -7)
+disabled = false
 patrol_points = [NodePath("../Bally_PatrolPoints/Node3D"), NodePath("../Bally_PatrolPoints/Node3D2"), NodePath("../Bally_PatrolPoints/Node3D3"), NodePath("../Bally_PatrolPoints/Node3D4"), NodePath("../Bally_PatrolPoints/Node3D5"), NodePath("../Bally_PatrolPoints/Node3D6"), NodePath("../Bally_PatrolPoints/Node3D8"), NodePath("../Bally_PatrolPoints/Node3D9")]
 delay_between_points = 0.5
+metadata/uid = "04268245-3666-4c99-be5e-57044cf0bf23"
+metadata/lock_uid = true
+metadata/date_generated = "2026-04-10T11:47:31"
 
 [node name="Bally_PatrolPoints" type="Node3D" parent="." unique_id=1888786832]
 
@@ -703,16 +674,16 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 1, -7)
 [node name="GridMapPathFinding2" type="GridMap" parent="." unique_id=1929151095 groups=["GMPF"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.445, 0)
 visible = false
-mesh_library = SubResource("MeshLibrary_uhcqc")
+mesh_library = ExtResource("26_5tq18")
 cell_size = Vector3(1, 1, 1)
 cell_octant_size = 4
 data = {
-"cells": PackedInt32Array(23, 18, 0, 196604, 65528, 1048577, 196605, 65528, 1048577, 196606, 65528, 1048577, 196607, 65528, 1048577, 131072, 65528, 1048577, 131073, 65528, 1048577, 131074, 65528, 1048577, 131075, 65528, 1048577, 131075, 65530, 1048576, 131075, 65529, 1048576, 131075, 65531, 1048576, 131075, 65532, 1048576, 131075, 65533, 0, 131075, 65534, 1048576, 131075, 0, 1048576, 131075, 65535, 1048576, 131075, 1, 0, 131074, 1, 0, 131073, 1, 0, 131072, 1, 0, 196607, 1, 0, 196606, 1, 0, 196602, 1, 1048577, 196603, 1, 0, 196604, 1, 0, 196605, 1, 0, 196602, 0, 1048577, 196602, 65535, 1048577, 196602, 65534, 1048577, 196602, 65533, 1048577, 196602, 65532, 1048577, 196602, 65531, 1048577, 196602, 65530, 1048577, 196602, 65529, 1048577, 196602, 65528, 1048577, 196603, 65528, 1048577, 196603, 65532, 1048576, 196604, 65532, 1, 196605, 65532, 1, 196606, 65532, 1, 196606, 65529, 1048576, 196606, 65530, 1048577, 196606, 65531, 1048577, 196606, 65533, 0, 196606, 65534, 1048577, 196606, 65535, 1048577, 196606, 0, 1, 196607, 65533, 1048576, 131072, 65533, 0, 131073, 65533, 0, 131074, 65533, 0, 196607, 65529, 1048576, 196607, 65530, 1048576, 196607, 65531, 1048576, 196607, 65532, 1048576, 131072, 65532, 1, 131073, 65532, 1, 131074, 65532, 1, 131074, 65531, 1048577, 131074, 65530, 1048577, 131074, 65529, 1048576, 131073, 65529, 1048576, 131072, 65529, 1048576, 131072, 65530, 1048577, 131072, 65531, 1048577, 131073, 65531, 1048577, 131073, 65530, 1048577, 196605, 65531, 1048577, 196604, 65531, 1, 196603, 65531, 1048576, 196603, 65530, 1048576, 196603, 65529, 1048576, 196604, 65529, 1048576, 196605, 65529, 1048576, 196605, 65530, 1048577, 196604, 65530, 1048577, 196603, 0, 1048576, 196603, 65535, 1048576, 196603, 65534, 1048576, 196603, 65533, 1048576, 196604, 65533, 0, 196604, 65534, 1048577, 196604, 65535, 1048577, 196604, 0, 1, 196605, 0, 1, 196605, 65535, 1048577, 196605, 65534, 1048577, 196605, 65533, 0, 131074, 65534, 1048577, 131073, 65534, 1048577, 131072, 65534, 1048577, 196607, 65534, 1048576, 196607, 65535, 1048576, 196607, 0, 0, 131072, 0, 1, 131072, 65535, 1048577, 131073, 65535, 1048577, 131073, 0, 1, 131074, 0, 1, 131074, 65535, 1048577)
+"cells": PackedInt32Array(196604, 65528, 1048577, 196605, 65528, 1048577, 196606, 65528, 1048577, 196607, 65528, 1048577, 131072, 65528, 1048577, 131073, 65528, 1048577, 131074, 65528, 1048577, 131075, 65528, 1048577, 131075, 65530, 1048576, 131075, 65529, 1048576, 131075, 65531, 1048576, 131075, 65532, 1048576, 131075, 65533, 1048576, 131075, 65534, 1048576, 131075, 0, 1048576, 131075, 65535, 1048576, 131075, 1, 1048576, 131074, 1, 1048576, 131073, 1, 1048576, 131072, 1, 1048576, 196607, 1, 1048576, 196606, 1, 1048576, 196603, 1, 1048576, 196604, 1, 1048576, 196605, 1, 1048576, 196602, 0, 1048577, 196602, 65535, 1048577, 196602, 65534, 1048577, 196602, 65533, 1048577, 196602, 65532, 1048577, 196602, 65531, 1048577, 196602, 65530, 1048577, 196602, 65529, 1048577, 196602, 65528, 1048577, 196603, 65528, 1048577, 196603, 65532, 1048576, 196604, 65532, 1, 196605, 65532, 1, 196606, 65532, 1, 196606, 65529, 1048576, 196606, 65530, 1048577, 196606, 65531, 1048577, 196606, 65533, 0, 196606, 65534, 1048577, 196606, 65535, 1048577, 196606, 0, 1048577, 196607, 65533, 1048576, 131072, 65533, 0, 131073, 65533, 0, 131074, 65533, 1048576, 196607, 65529, 1048576, 196607, 65530, 1048576, 196607, 65531, 1048576, 196607, 65532, 1048576, 131072, 65532, 1, 131073, 65532, 1, 131074, 65532, 1048577, 131074, 65531, 1048577, 131074, 65530, 1048577, 131074, 65529, 1048576, 131073, 65529, 1048576, 131072, 65529, 1048576, 131072, 65530, 1048577, 131072, 65531, 1048577, 131073, 65531, 1048577, 131073, 65530, 1048577, 196605, 65531, 1048577, 196604, 65531, 1, 196603, 65531, 1048576, 196603, 65530, 1048576, 196604, 65529, 1048576, 196605, 65530, 1048577, 196604, 65530, 1048577, 196603, 0, 1048576, 196603, 65535, 1048576, 196603, 65534, 1048576, 196603, 65533, 1048576, 196604, 65533, 0, 196604, 65534, 1048577, 196604, 65535, 1048577, 196604, 0, 1048577, 196605, 0, 1048577, 196605, 65535, 1048577, 196605, 65534, 1048577, 196605, 65533, 0, 131074, 65534, 1048577, 131073, 65534, 1048577, 131072, 65534, 1048577, 196607, 65534, 1048576, 196607, 65535, 1048576, 196607, 0, 1048576, 131072, 0, 1048577, 131072, 65535, 1048577, 131073, 65535, 1048577, 131073, 0, 1048577, 131074, 0, 1048577, 131074, 65535, 1048577, 196602, 1, 1048577, 131076, 65528, 1048577, 196603, 65529, 1048576, 196605, 65529, 1048576)
 }
 script = ExtResource("27_yp11f")
 walkable_items = Array[int]([0])
-debug_start_cell = Vector3i(-14, 0, 4)
-debug_end_cell = Vector3i(-9, 0, 5)
+debug_start_cell = Vector3i(-3, 2, -7)
+debug_end_cell = Vector3i(0, 2, 1)
 metadata/_editor_floor_ = Vector3(0, 2, 0)
 
 [node name="UID_Generator" type="Node" parent="." unique_id=950764856]

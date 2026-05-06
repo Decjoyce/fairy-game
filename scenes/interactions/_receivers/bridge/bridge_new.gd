@@ -9,6 +9,7 @@ extends Node3D
 @export var angle_to_toggle_barrier: float
 @export var open_angle: float
 @export var close_angle: float = 80
+@onready var avp: AudioValuePlayer = $AudioValuePlayer
 
 @export_group("IgnoreMe")
 @export var col: StaticBody3D
@@ -31,6 +32,8 @@ func _process(delta: float) -> void:
 	if is_opening:
 		time_since_start += delta
 		var percentage_complete = clamp(time_since_start / speed, 0, 1)
+		
+		avp.play_me_bro(cur_value)
 		
 		pivot.rotation_degrees.z = bridge_lerp(_start_angle, _end_angle, percentage_complete)
 		
@@ -64,10 +67,12 @@ func begin_bridge_motion(percent: float) -> void:
 	cur_value = percent
 	_end_angle = close_angle * (1 - percent)
 	
-	if _end_angle >= angle_to_toggle_barrier:
-		col.set_collision_layer_value(1, true)
-	else:
-		col.set_collision_layer_value(1, false)
+	#if _end_angle >= angle_to_toggle_barrier:
+		#col.set_collision_layer_value(1, true)
+		#print("KOKOKOOKOOKOK")
+	#else:
+		#col.set_collision_layer_value(1, false)
+		#print("lplplplplplplplplp")
 
 func toggle_gate(sig: float = -1) -> void:
 	if cur_value > 0.5: close_bridge()

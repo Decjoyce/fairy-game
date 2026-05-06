@@ -3,6 +3,10 @@
 [ext_resource type="Script" uid="uid://c7ghu7bwjvv0k" path="res://scenes/interactions/_triggers/pressure_plate/pressure_plate.gd" id="1_i6vjq"]
 [ext_resource type="Material" uid="uid://beaom2cndegce" path="res://assets/models/cairn/Props/PressurePlate/PressurePlate.tres" id="2_237o0"]
 [ext_resource type="Script" uid="uid://0u8kvsvjv11k" path="res://scripts/saving/persistent_objs/po_pressureplate.gd" id="3_sfnck"]
+[ext_resource type="Script" uid="uid://kg11gyciyied" path="res://scripts/audio_value_player.gd" id="4_dhg3m"]
+[ext_resource type="AudioStream" uid="uid://d4a0fcr7wcnf3" path="res://assets/audio/sfx/environment/preassurePlate/PlateRandom.tres" id="5_7ufpd"]
+[ext_resource type="AudioStream" uid="uid://cl4mc27ijn544" path="res://assets/audio/sfx/environment/preassurePlate/Rocks, Movement, Sewer Cover Plate, Stone, Drag And Drop On Asphalt, Concrete, Debris SND69549 S04.wav" id="6_di2xw"]
+[ext_resource type="AudioStream" uid="uid://bvp3wd3scup4t" path="res://assets/audio/sfx/environment/preassurePlate/Doors, Hardware, Hotel Door, Lock SND112853 S03.wav" id="7_h2knw"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_i6vjq"]
 size = Vector3(1, 0.1, 1)
@@ -91,6 +95,14 @@ mesh = SubResource("ArrayMesh_jqphk")
 [node name="PO_PressurePlate" type="Node" parent="." unique_id=2017023874 groups=["PO"]]
 script = ExtResource("3_sfnck")
 metadata/_custom_type_script = "uid://0u8kvsvjv11k"
+
+[node name="AudioValuePlayer" type="AudioStreamPlayer3D" parent="." unique_id=598333734]
+max_distance = 10.0
+max_polyphony = 3
+bus = &"SFX"
+script = ExtResource("4_dhg3m")
+sounds = Array[AudioStream]([ExtResource("5_7ufpd"), ExtResource("7_h2knw"), ExtResource("6_di2xw"), ExtResource("5_7ufpd")])
+metadata/_custom_type_script = "uid://kg11gyciyied"
 
 [connection signal="body_entered" from="Graphics/Trigger_Item" to="." method="_on_body_entered_trigger"]
 [connection signal="body_exited" from="Graphics/Trigger_Item" to="." method="_on_body_exited_trigger"]

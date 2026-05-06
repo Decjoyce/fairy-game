@@ -12,6 +12,7 @@ var current_move_type: MOVETYPES
 @export var floor_detector: ImprovedRaycast
 
 func _ready() -> void:
+	#if ballybog.grid_map: grid_map = ballybog.grid_map
 	grid_map = get_tree().get_first_node_in_group("GMPF")
 	await get_parent().ready
 	player = ballybog.player
@@ -21,6 +22,7 @@ func update_idle(delta: float) -> void:
 	pass
 	
 func update_physics(delta: float) -> void:
+	move_particles.emitting = is_moving or is_turning
 	movement(delta)
 	turning(delta)
 
@@ -40,10 +42,12 @@ func set_new_destination(new_loc: Vector3) -> void:
 	current_path = grid_map.find_path(current_grid_pos,current_destination)
 	current_path.pop_front()
 	has_reached_destination = false
+	#prints("-------------------------\n", grid_map.astar.get_closest_position_in_segment(ballybog.global_position), current_path)
 
 func set_destination_to_player() -> void:
 	current_grid_pos = grid_map.astar.get_closest_position_in_segment(ballybog.global_position)
 	current_destination = grid_map.astar.get_closest_position_in_segment(ballybog.player.movement.target_pos)
+	#can_reach_destination()
 	current_path = grid_map.find_path(current_grid_pos,current_destination)
 	#has_reached_destination = false
 	#if current_path[0] == current_grid_pos:
@@ -65,6 +69,7 @@ func add_player_pos_to_destination() -> void:
 		set_destination_to_player()
 	else:
 		var path_to_player := grid_map.find_path(current_path[current_path.size()-1],grid_map.astar.get_closest_position_in_segment(player.movement.target_pos))
+		#can_reach_destination()
 		current_path.pop_back()
 		#current_path.pop_front
 		current_path.append_array(path_to_player)
@@ -73,7 +78,14 @@ func check_if_reached_destination() -> bool:
 	return current_path.size() <= 0
 
 func update_current_move_direction() -> void:
-	current_move_direction = _start_pos.direction_to(_end_pos)
+	current_move_direction = (_start_pos * Vector3(1, 0, 1)).direction_to((_end_pos * Vector3(1, 0, 1)))
+
+func can_reach_destination() -> bool:
+	var a:= grid_map.astar.get_closest_point(ballybog.player.movement.target_pos)
+	var b:= grid_map.astar.get_point_position(a) * Vector3(1, 0, 1)
+	var c:= (ballybog.player.movement.target_pos * Vector3(1, 0, 1)).round()
+	prints("MOVEMOVEMOVE", a, b, c, b <= c + Vector3(1, 0, 1), b >= c + Vector3(-1, 0, -1))
+	return b <= c + Vector3(1, 0, 1) and b >= c + Vector3(-1, 0, -1)
 
 func stop_movement() -> void:
 	is_moving = false
@@ -94,7 +106,6 @@ var _time_started_moving: float
 var _start_pos: Vector3
 var _end_pos: Vector3
 
-
 signal on_reached_destination
 
 func start_movement() -> void: ## probs should rename this to new movement
@@ -102,13 +113,14 @@ func start_movement() -> void: ## probs should rename this to new movement
 	#print("-----------------")
 	#print("Started_Movement")
 	
-	_start_pos = grid_map.astar.get_closest_position_in_segment(ballybog.global_position)
-	_end_pos = current_path[0]
-	#prints(_start_pos, _end_pos, current_destination)
-	
+	_start_pos = ballybog.global_position #grid_map.astar.get_closest_position_in_segment(ballybog.global_position)
+	_end_pos = grid_map.to_global(grid_map.map_to_local(current_path[0]).floor())
+
 	if check_if_needs_to_turn():
+		#print("turning")
 		start_turn()
 	else:
+		#print("not turning")
 		_begin_movement()
 
 func _begin_movement() -> void:
@@ -127,17 +139,19 @@ func movement(delta: float) -> void:
 		lerped_pos.y = floor_detector.get_collision_point().y
 	ballybog.global_position = lerped_pos
 	
+	
 	if percentage_complete >= 1.0:
+		imprint_footstep()
 		complete_movement()
 
 func complete_movement() -> void:
 	is_moving = false
 	current_path.pop_front()
-	has_reached_destination = current_path.size() <= 0
+	has_reached_destination = !current_path
 	#print("Completed_Movement")
 	#print("-----------------")
 	if has_reached_destination:
-		#print("REACHED DESTINATION")
+		#prints("MOVEMOVEMOVE", "REACHED DESTINATION")
 		ballybog.do_idle()
 		current_move_type = MOVETYPES.NOT_MOVING
 		on_reached_destination.emit()
@@ -162,6 +176,7 @@ signal has_turned
 func check_if_needs_to_turn() -> bool:
 	var prev_dir:= current_move_direction
 	update_current_move_direction()
+	#prints("dests: ", prev_dir, current_move_direction )
 	return current_move_direction != prev_dir
 
 func start_turn():
@@ -184,6 +199,7 @@ func turning(delta: float) -> void:
 	ballybog.graphics.global_rotation.y = lerped_rot
 	
 	if percentage_complete >= 1.0:
+		imprint_footstep()
 		complete_turn()
 
 func complete_turn() -> void:
@@ -202,3 +218,17 @@ func lerp_me(start: Vector3, end: Vector3, percentage: float) -> Vector3:
 	var _percentage = clampf(percentage, 0.0, 1)
 	var start_to_finish = end - start
 	return (1-_percentage)*start + _percentage*end
+
+# ↑ Turning Stuff ↑
+# --------------------------------------------------------------------------------------------------
+# ↓ VFX Stuff ↓
+
+@export var footstep_decals: Array[Decal]
+var footstep_index: int
+@export var move_particles: GPUParticles3D
+
+func imprint_footstep() -> void:
+	footstep_decals[footstep_index].visible = true
+	footstep_decals[footstep_index].global_position = ballybog.global_position
+	footstep_decals[footstep_index].global_rotation_degrees = ballybog.graphics.global_rotation_degrees + Vector3(0, 180, 0)
+	footstep_index = wrapi(footstep_index+1, 0, footstep_decals.size())

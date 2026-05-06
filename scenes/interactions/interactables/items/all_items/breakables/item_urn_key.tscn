@@ -2,9 +2,9 @@
 
 [ext_resource type="Script" uid="uid://s5cfdf85lm5g" path="res://scenes/interactions/interactables/items/grabbable_item.gd" id="1_2k741"]
 [ext_resource type="PackedScene" uid="uid://cfkoaxhngk3gf" path="res://scenes/interactions/interactables/items/all_items/keys/item_key.tscn" id="3_d8h7e"]
+[ext_resource type="AudioStream" uid="uid://cmlk4ndscpe3t" path="res://assets/audio/sfx/items/Thrown/pitcher_hit_randomizer.tres" id="5_srh1v"]
 [ext_resource type="Script" uid="uid://beaf3digx88d0" path="res://scenes/interactions/interactables/items/item_types/itemtype_breakable.gd" id="6_ix4o8"]
 [ext_resource type="Texture2D" uid="uid://ce58r2n0vi63r" path="res://assets/sprites/item_sprites/urn_item.png" id="7_nwc2n"]
-[ext_resource type="AudioStream" uid="uid://dutddyikwuiut" path="res://assets/audio/sfx/combat/misc/hittingsound_shorter.wav" id="8_smy8y"]
 [ext_resource type="AudioStream" uid="uid://bfj0nvx74o1sk" path="res://assets/audio/sfx/items/urn/Pot_Break-001.wav" id="9_ieuho"]
 [ext_resource type="AudioStream" uid="uid://b05sd7acgid3n" path="res://assets/audio/sfx/items/urn/Pot_Break-002.wav" id="10_fyuru"]
 [ext_resource type="AudioStream" uid="uid://gg1eh8n03me0" path="res://assets/audio/sfx/items/urn/Pot_Break-003.wav" id="11_lxsqr"]
@@ -12,6 +12,7 @@
 [ext_resource type="AudioStream" uid="uid://b2wyku3cc6qng" path="res://assets/audio/sfx/items/urn/Pot_Break-005.wav" id="13_poukt"]
 [ext_resource type="AudioStream" uid="uid://dq7fnct8thxc1" path="res://assets/audio/sfx/items/urn/Pot_Break-006.wav" id="14_veit1"]
 [ext_resource type="AudioStream" uid="uid://fuh5gdonebeu" path="res://assets/audio/sfx/items/urn/Pot_Break-007.wav" id="15_elxmy"]
+[ext_resource type="AudioStream" uid="uid://c3aw2fw8oosx1" path="res://assets/audio/sfx/items/Grab/Ceramic_randomizer.tres" id="16_2k741"]
 [ext_resource type="Script" uid="uid://bhf6r6nw14krj" path="res://scripts/saving/persistent_objs/po_item.gd" id="16_srh1v"]
 [ext_resource type="AudioStream" uid="uid://mg4lgqchj0p5" path="res://assets/audio/sfx/items/urn/Pot_Break-008.wav" id="16_v227s"]
 [ext_resource type="AudioStream" uid="uid://plsapuaavdu" path="res://assets/audio/sfx/items/urn/Pot_Break-009.wav" id="17_78co4"]
@@ -37,19 +38,6 @@ blend_mode = 1
 shading_mode = 0
 albedo_color = Color(1, 1, 1, 0.044000003)
 albedo_texture = ExtResource("7_nwc2n")
-billboard_mode = 1
-
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_hgehc"]
-load_path = "res://.godot/imported/urn_item.png-a865bb42c1dd5f9effd8c6077babc439.s3tc.ctex"
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_18pev"]
-render_priority = 3
-transparency = 1
-blend_mode = 1
-shading_mode = 0
-diffuse_mode = 3
-albedo_color = Color(0.69135684, 0.6913568, 0.69135684, 1)
-albedo_texture = SubResource("CompressedTexture2D_hgehc")
 billboard_mode = 1
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_52tl6"]
@@ -110,7 +98,6 @@ hframes = 2
 [node name="_grabbed_graphics" type="Sprite3D" parent="." unique_id=1652422443]
 visible = false
 layers = 4
-material_overlay = SubResource("StandardMaterial3D_18pev")
 pixel_size = 0.0007
 shaded = true
 render_priority = 1
@@ -118,7 +105,7 @@ texture = ExtResource("7_nwc2n")
 hframes = 2
 
 [node name="AudioPlayer" type="AudioStreamPlayer3D" parent="." unique_id=2108934192]
-stream = ExtResource("8_smy8y")
+stream = ExtResource("5_srh1v")
 bus = &"items"
 
 [node name="RayCast3D" type="RayCast3D" parent="." unique_id=1235912565]
@@ -144,3 +131,7 @@ frame = 1
 [node name="PO_Item" type="Node" parent="." unique_id=1974872002 groups=["PO"]]
 script = ExtResource("16_srh1v")
 metadata/_custom_type_script = "uid://bhf6r6nw14krj"
+
+[node name="Audio_Grabbed" type="AudioStreamPlayer3D" parent="." unique_id=1843764710]
+stream = ExtResource("16_2k741")
+max_distance = 1.0

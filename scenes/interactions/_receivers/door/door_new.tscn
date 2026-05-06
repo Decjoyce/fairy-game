@@ -4,7 +4,9 @@
 [ext_resource type="Material" uid="uid://f0qp2o0ip83p" path="res://assets/models/cairn/Props/Wood_Door/Wood_Door.tres" id="2_k4rlk"]
 [ext_resource type="Material" uid="uid://c17eub34k5hf8" path="res://assets/models/cairn/Props/Wood_Door/Wood_Screw.tres" id="3_7c41o"]
 [ext_resource type="Material" uid="uid://c57e6lcor8yqp" path="res://assets/models/cairn/Props/Wood_Door/KeyHold.tres" id="4_y7ll1"]
+[ext_resource type="AudioStream" uid="uid://igbh0gu3cstl" path="res://assets/audio/sfx/environment/Doors/Wood/Doors, Dungeon, Medieval Door, Stable, Close SND122521 S00.wav" id="5_a6jgr"]
 [ext_resource type="AudioStream" uid="uid://bp3lie48u35pl" path="res://assets/audio/sfx/interactions/Rocks, Movement, Stone, Slab, Scrape SND18188.wav" id="5_nihpw"]
+[ext_resource type="AudioStream" uid="uid://b5gjaupd5ysjr" path="res://assets/audio/sfx/environment/Doors/Wood/Doors, Wood, Office Building, Unlock, Open, Close SND145672.wav" id="6_kpdi2"]
 [ext_resource type="Script" uid="uid://bjetkulhipi6e" path="res://scripts/saving/persistent_objs/po_door.gd" id="6_ujkw6"]
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_mbfle"]
@@ -226,34 +228,21 @@ tracks/2/keys = {
 "update": 1,
 "values": [false]
 }
-tracks/3/type = "method"
+tracks/3/type = "audio"
 tracks/3/imported = false
 tracks/3/enabled = true
 tracks/3/path = NodePath("AudioStreamPlayer3D")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0.1),
-"transitions": PackedFloat32Array(1),
-"values": [{
-"args": [0.0],
-"method": &"play"
-}]
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("5_a6jgr")
+}],
+"times": PackedFloat32Array(0.16666667)
 }
-tracks/4/type = "method"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("AudioStreamPlayer3D2")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(0.2),
-"transitions": PackedFloat32Array(1),
-"values": [{
-"args": [0.0],
-"method": &"play"
-}]
-}
+tracks/3/use_blend = true
 
 [sub_resource type="Animation" id="Animation_c053m"]
 resource_name = "door_open"
@@ -294,34 +283,21 @@ tracks/2/keys = {
 "update": 1,
 "values": [false, true]
 }
-tracks/3/type = "method"
+tracks/3/type = "audio"
 tracks/3/imported = false
 tracks/3/enabled = true
 tracks/3/path = NodePath("AudioStreamPlayer3D")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0.1),
-"transitions": PackedFloat32Array(1),
-"values": [{
-"args": [0.0],
-"method": &"play"
-}]
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("6_kpdi2")
+}],
+"times": PackedFloat32Array(0)
 }
-tracks/4/type = "method"
-tracks/4/imported = false
-tracks/4/enabled = false
-tracks/4/path = NodePath("AudioStreamPlayer3D2")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(0.2),
-"transitions": PackedFloat32Array(1),
-"values": [{
-"args": [0.0],
-"method": &"play"
-}]
-}
+tracks/3/use_blend = true
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_8d8ch"]
 _data = {
@@ -360,7 +336,6 @@ shape = SubResource("BoxShape3D_c053m")
 libraries/ = SubResource("AnimationLibrary_8d8ch")
 
 [node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="StaticBody3D" unique_id=1723654764]
-stream = ExtResource("5_nihpw")
 pitch_scale = 0.7
 
 [node name="AudioStreamPlayer3D2" type="AudioStreamPlayer3D" parent="StaticBody3D" unique_id=1771122033]

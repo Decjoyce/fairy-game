@@ -1,0 +1,20 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://durbgudfjii6c"]
+
+[ext_resource type="Texture2D" uid="uid://b6vi6yup081xf" path="res://assets/models/cairn/Props/chainlink/Textures/ChainLink_Base_color.png" id="1_iimqs"]
+[ext_resource type="Texture2D" uid="uid://b61xxsx8w0n0" path="res://assets/models/cairn/Props/chainlink/Textures/ChainLink_Mixed_AO.png" id="2_axvxl"]
+[ext_resource type="Texture2D" uid="uid://cccxn1qy7vrob" path="res://assets/models/cairn/Props/chainlink/Textures/ChainLink_Metallic.png" id="3_5bpyo"]
+[ext_resource type="Material" uid="uid://dyejtq23uplk4" path="res://assets/shaders/Outline/outline.tres" id="3_5tjc5"]
+[ext_resource type="Texture2D" uid="uid://btmu2pptkbnn7" path="res://assets/models/cairn/Props/chainlink/Textures/ChainLink_Normal_OpenGL.png" id="5_mljg6"]
+[ext_resource type="Texture2D" uid="uid://fxaf71l1irwj" path="res://assets/models/cairn/Props/chainlink/Textures/ChainLink_Roughness.png" id="6_ojcni"]
+
+[resource]
+next_pass = ExtResource("3_5tjc5")
+albedo_texture = ExtResource("1_iimqs")
+metallic = 0.15
+metallic_specular = 0.0
+metallic_texture = ExtResource("3_5bpyo")
+roughness_texture = ExtResource("6_ojcni")
+normal_enabled = true
+normal_texture = ExtResource("5_mljg6")
+ao_enabled = true
+ao_texture = ExtResource("2_axvxl")

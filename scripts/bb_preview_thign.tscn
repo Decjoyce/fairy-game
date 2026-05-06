@@ -1,0 +1,280 @@
+[gd_scene format=3 uid="uid://cvcjqrcyf5l6w"]
+
+[ext_resource type="Texture2D" uid="uid://bvtdxjcgroiyv" path="res://scenes/enemy/Sprites/ballybog/idle/ballybogIdle_n2.png" id="1_gwar3"]
+[ext_resource type="Texture2D" uid="uid://bc2eyl21qhxrj" path="res://scenes/enemy/Sprites/ballybog/idle/ballyIdleSheet.png" id="2_kbcht"]
+[ext_resource type="Script" uid="uid://b5653u7w56pqw" path="res://addons/extras_sprites/scripts/sprite_3D_billboard.gd" id="3_1vws7"]
+[ext_resource type="Script" uid="uid://b4m0sglcg4smw" path="res://addons/extras_sprites/scripts/animatio_data.gd" id="4_x12l5"]
+[ext_resource type="Texture2D" uid="uid://cshw8doe2356i" path="res://scenes/enemy/Sprites/ballybog_new/walk/bally_walk.png" id="5_kvwqy"]
+[ext_resource type="Texture2D" uid="uid://bjlsyaal4awd1" path="res://scenes/enemy/Sprites/ballybog_new/walk/bally_walk_n.png" id="6_pmjfa"]
+[ext_resource type="Texture2D" uid="uid://c02du17ak7gdq" path="res://scenes/enemy/Sprites/ballybog_new/attack/bally_attack.png" id="7_lt1qb"]
+[ext_resource type="Texture2D" uid="uid://c3wp34r7rytko" path="res://scenes/enemy/Sprites/ballybog_new/attack/bally_attack_n.png" id="8_wh3pa"]
+[ext_resource type="Texture2D" uid="uid://drd32dydartq7" path="res://scenes/enemy/Sprites/ballybog_new/idle/bally_bellyrub.png" id="9_h1xop"]
+[ext_resource type="Texture2D" uid="uid://cahysgebfxaqb" path="res://scenes/enemy/Sprites/ballybog_new/idle/bally_bellyrub_n.png" id="10_hfnuf"]
+[ext_resource type="Texture2D" uid="uid://vqyj6bqstkc6" path="res://scenes/enemy/Sprites/ballybog_new/alert/bally_alert.png" id="11_8vd8x"]
+[ext_resource type="Texture2D" uid="uid://c4n44m5bobhg4" path="res://scenes/enemy/Sprites/ballybog_new/alert/bally_alert_n.png" id="12_0y4ap"]
+[ext_resource type="Texture2D" uid="uid://04lgkaffi6nf" path="res://scenes/enemy/Sprites/ballybog_new/stunned/bally_stunned.png" id="13_ieihf"]
+[ext_resource type="Texture2D" uid="uid://da1va2x3xe8dm" path="res://scenes/enemy/Sprites/ballybog_new/stunned/bally_stunned_n.png" id="14_crmdk"]
+[ext_resource type="Texture2D" uid="uid://da4oookht0gsp" path="res://scenes/enemy/Sprites/ballybog_new/death/bally_death.png" id="15_typhk"]
+[ext_resource type="Texture2D" uid="uid://fohbvfmbnsw7" path="res://scenes/enemy/Sprites/ballybog/attacks/ballyAttack_LMid.png" id="16_i4v7s"]
+[ext_resource type="Texture2D" uid="uid://d2eurcnwm514j" path="res://scenes/enemy/Sprites/ballybog/attacks/ballyAttack_LMid_n.png" id="17_3gpyh"]
+[ext_resource type="Texture2D" uid="uid://d32p1mrham4j6" path="res://scenes/enemy/Sprites/ballybog/attacks/ballyAttack_RMid.png" id="18_7el7n"]
+[ext_resource type="Texture2D" uid="uid://bjd7yeekbvmx0" path="res://scenes/enemy/Sprites/ballybog/attacks/ballyAttack_RMid_n.png" id="19_gv1sw"]
+
+[sub_resource type="Environment" id="Environment_5ssw0"]
+background_mode = 1
+background_color = Color(0.101960786, 0.1254902, 0.13725491, 1)
+
+[sub_resource type="Shader" id="Shader_lfrh3"]
+code = "shader_type spatial;
+render_mode diffuse_lambert_wrap,cull_disabled;
+
+uniform float rows:hint_range(1.0, 100.0, 1) = 1;
+uniform float columns:hint_range(1.0, 100.0, 1) = 1;
+uniform float frame:hint_range(0.0, 100.0, 1) = 0;
+uniform bool invert_rows_columns = false;
+uniform sampler2D sprite:filter_nearest_mipmap;
+uniform int mode:hint_range(0, 1, 1) = 1;
+varying vec3 look_dir;
+uniform sampler2D Normal;
+
+
+float billboard_mode_a(vec3 CAMERA_POSITION,vec3 NODE_POSITION, mat4 MODEL_MAT,float directions){
+	vec3 direction_to_camera = normalize(CAMERA_POSITION-NODE_POSITION);
+	float angle_to_camera = atan(direction_to_camera.x,direction_to_camera.z);
+	vec4 model_direction = MODEL_MAT*vec4(1.0,0.0,0.0,0.0);
+	float y_angle = atan(model_direction.x,model_direction.z)-PI/2.0;
+	float final_angle = angle_to_camera-y_angle;
+	float int_y_angle = round((final_angle / TAU) * float(directions)) / float(directions);
+	return int_y_angle;
+}
+float billboard_mobe_b(vec3 CAMERA_POSITION,mat4 MODEL_MAT,mat4 VIEW_MAT,float directions,int ret){
+
+    vec3 ray_origin = CAMERA_POSITION;
+
+    vec3 object_origin = (MODEL_MAT * vec4(0.0,0.0,0.0,1.0)).xyz;
+    vec3 cam_dir = object_origin - ray_origin;
+    cam_dir = normalize((VIEW_MAT * vec4(cam_dir, 0.0)).xyz);
+
+    float angle = 180.0 - degrees(acos(dot(normalize(cam_dir.xz), normalize(look_dir.xz))));
+    float _direction = round(angle/180.0 * directions);
+
+    float flip = sign((look_dir.x * cam_dir.z) - (look_dir.z * cam_dir.x));
+
+    flip = mix(flip, 1.0, max(step(_direction, 0.0), step(directions, _direction)));
+	float retu = ret == 0 ? _direction : flip;
+	return retu ;
+}
+void vertex() {
+		 MODELVIEW_MATRIX = VIEW_MATRIX * mat4(vec4(normalize(cross(vec3(0.0, 1.0, 0.0), INV_VIEW_MATRIX[2].xyz)), 0.0), vec4(0.0, 1.0, 0.0, 0.0), vec4(normalize(cross(INV_VIEW_MATRIX[0].xyz, vec3(0.0, 1.0, 0.0))), 0.0), MODEL_MATRIX[3]);
+		look_dir = MODELVIEW_NORMAL_MATRIX * NORMAL;
+		MODELVIEW_NORMAL_MATRIX = mat3(MODELVIEW_MATRIX);
+	switch (mode){
+		case 0:
+			float y = invert_rows_columns == true ? billboard_mode_a(CAMERA_POSITION_WORLD,NODE_POSITION_WORLD,MODEL_MATRIX,rows) : billboard_mode_a(CAMERA_POSITION_WORLD,NODE_POSITION_WORLD,MODEL_MATRIX,columns);
+			float x = invert_rows_columns == true ? frame/columns:frame/rows;
+			UV /= vec2(rows,columns);
+			UV += invert_rows_columns == true ?vec2(y,x):vec2(x,y);
+			break;
+		case 1:
+			float x = invert_rows_columns == true ? frame/columns:frame/rows;
+			float y = billboard_mobe_b(CAMERA_POSITION_WORLD,MODEL_MATRIX,VIEW_MATRIX,rows,0);
+			float f = billboard_mobe_b(CAMERA_POSITION_WORLD,MODEL_MATRIX,VIEW_MATRIX,rows,1);
+			if (invert_rows_columns){
+				y = billboard_mobe_b(CAMERA_POSITION_WORLD,MODEL_MATRIX,VIEW_MATRIX,columns,0);
+				f = billboard_mobe_b(CAMERA_POSITION_WORLD,MODEL_MATRIX,VIEW_MATRIX,columns,1);
+			}
+			UV.y += invert_rows_columns == true ? x:y;
+			UV /=vec2(rows,columns);
+			UV.x +=  invert_rows_columns == true ? y : x;
+			UV *= invert_rows_columns == true ? vec2(1.0,f):vec2(f,1.0);
+			break;
+	};
+}
+
+void fragment() {
+	vec3 VNormal = texture(Normal,UV).rgb;
+	vec4 sprite_texture;
+	sprite_texture = texture(sprite,UV);
+	ALBEDO = sprite_texture.rgb;
+	ALPHA = sprite_texture.a;
+	NORMAL_MAP = VNormal;
+}
+"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_4j2wu"]
+render_priority = 0
+shader = SubResource("Shader_lfrh3")
+shader_parameter/rows = 1.0
+shader_parameter/columns = 8.0
+shader_parameter/frame = 1.0
+shader_parameter/invert_rows_columns = false
+shader_parameter/sprite = ExtResource("2_kbcht")
+shader_parameter/mode = 0
+shader_parameter/Normal = ExtResource("1_gwar3")
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_bpttd"]
+material = SubResource("ShaderMaterial_4j2wu")
+size = Vector2(3.24, 3.24)
+orientation = 2
+
+[sub_resource type="Resource" id="Resource_y1qj8"]
+script = ExtResource("4_x12l5")
+name = "walk"
+sprite = ExtResource("5_kvwqy")
+texture_normal = ExtResource("6_pmjfa")
+rows = 5.0
+columns = 8.0
+
+[sub_resource type="Resource" id="Resource_qgcov"]
+script = ExtResource("4_x12l5")
+name = "AttackN"
+sprite = ExtResource("7_lt1qb")
+texture_normal = ExtResource("8_wh3pa")
+rows = 2.0
+columns = 8.0
+
+[sub_resource type="Resource" id="Resource_jan5w"]
+script = ExtResource("4_x12l5")
+name = "idle_rub"
+sprite = ExtResource("9_h1xop")
+texture_normal = ExtResource("10_hfnuf")
+rows = 3.0
+columns = 8.0
+
+[sub_resource type="Resource" id="Resource_5f1gc"]
+script = ExtResource("4_x12l5")
+name = "Alert"
+sprite = ExtResource("11_8vd8x")
+texture_normal = ExtResource("12_0y4ap")
+columns = 8.0
+
+[sub_resource type="Resource" id="Resource_gvvni"]
+script = ExtResource("4_x12l5")
+name = "Stunned"
+sprite = ExtResource("13_ieihf")
+texture_normal = ExtResource("14_crmdk")
+rows = 2.0
+columns = 8.0
+
+[sub_resource type="Resource" id="Resource_gncw5"]
+script = ExtResource("4_x12l5")
+name = "Dead"
+sprite = ExtResource("15_typhk")
+texture_normal = ExtResource("15_typhk")
+columns = 8.0
+
+[sub_resource type="Resource" id="Resource_e2p6j"]
+script = ExtResource("4_x12l5")
+name = "DanceL"
+sprite = ExtResource("16_i4v7s")
+texture_normal = ExtResource("17_3gpyh")
+rows = 2.0
+columns = 8.0
+
+[sub_resource type="Resource" id="Resource_y8f4e"]
+script = ExtResource("4_x12l5")
+name = "DanceR"
+sprite = ExtResource("18_7el7n")
+texture_normal = ExtResource("19_gv1sw")
+rows = 2.0
+columns = 8.0
+
+[sub_resource type="Resource" id="Resource_oine6"]
+script = ExtResource("4_x12l5")
+name = "idley"
+sprite = ExtResource("2_kbcht")
+texture_normal = ExtResource("1_gwar3")
+columns = 8.0
+
+[sub_resource type="Animation" id="Animation_gwar3"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Node3D:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_kbcht"]
+resource_name = "cam_spin"
+length = 3.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Node3D:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 6.2831855, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_1vws7"]
+_data = {
+&"RESET": SubResource("Animation_gwar3"),
+&"cam_spin": SubResource("Animation_kbcht")
+}
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_gwar3"]
+animation = &"cam_spin"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_kbcht"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_1vws7"]
+states/Start/position = Vector2(168, 100.64)
+states/cam_spin/node = SubResource("AnimationNodeAnimation_gwar3")
+states/cam_spin/position = Vector2(277.2, 107.2)
+transitions = ["Start", "cam_spin", SubResource("AnimationNodeStateMachineTransition_kbcht")]
+
+[sub_resource type="BoxMesh" id="BoxMesh_gwar3"]
+
+[node name="BB_PreviewThign" type="Node3D" unique_id=935407991]
+
+[node name="Node3D" type="Node3D" parent="." unique_id=1940899327]
+
+[node name="Camera3D" type="Camera3D" parent="Node3D" unique_id=1383084812]
+transform = Transform3D(-1, 9.89654e-09, -8.6860815e-08, 0, 0.9935719, 0.11320321, 8.742278e-08, 0.11320321, -0.9935719, 0, 1.315, -4.46)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1932798255]
+environment = SubResource("Environment_5ssw0")
+
+[node name="_graphics" type="MeshInstance3D" parent="." unique_id=994083288]
+transform = Transform3D(-1, 0, -1.509958e-07, 0, 1, 0, 1.509958e-07, 0, -1, 0, 0.6596855, 0)
+layers = 2
+sorting_offset = 1.0
+mesh = SubResource("PlaneMesh_bpttd")
+script = ExtResource("3_1vws7")
+animations_array = Array[ExtResource("4_x12l5")]([SubResource("Resource_y1qj8"), SubResource("Resource_qgcov"), SubResource("Resource_jan5w"), SubResource("Resource_5f1gc"), SubResource("Resource_gvvni"), SubResource("Resource_gncw5"), SubResource("Resource_e2p6j"), SubResource("Resource_y8f4e"), SubResource("Resource_oine6")])
+animation = 8
+frame = 1.0
+sprite_scale = 0.003
+metadata/_custom_type_script = "uid://b5653u7w56pqw"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=284971699]
+libraries/ = SubResource("AnimationLibrary_1vws7")
+
+[node name="AnimationTree" type="AnimationTree" parent="." unique_id=993015014]
+tree_root = SubResource("AnimationNodeStateMachine_1vws7")
+anim_player = NodePath("../AnimationPlayer")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=774449644]
+transform = Transform3D(20, 0, 0, 0, 0.175, 0, 0, 0, 20, 0, -0.8, 0)
+visible = false
+mesh = SubResource("BoxMesh_gwar3")
+
+[node name="SpotLight3D" type="SpotLight3D" parent="." unique_id=369104118]
+transform = Transform3D(-1, 0, -8.742278e-08, -5.0143644e-08, 0.81915206, 0.57357645, 7.1612554e-08, 0.57357645, -0.81915206, 0.3975634, 4.389746, -5.796677)
+light_color = Color(1, 0.8667443, 0.81228524, 1)
+light_energy = 3.99
+spot_range = 4096.0
+spot_angle = 16.42

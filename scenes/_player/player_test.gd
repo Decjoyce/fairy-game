@@ -12,6 +12,7 @@ const PLAYER_HEIGHT_CROUCHED: float = 0.65
 const PLAYER_WEIGHT: float = 10
 @onready var cam: Camera3D = $Camera3D
 
+@export var death_scene: PackedScene
 
 @export var stats_ui: Control
 
@@ -24,12 +25,17 @@ var freeze : bool
 
 @export var post_processing: Shader
 
+@onready var local_effect_player: EffectPlayer = $LocalEffectPlayer
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	current_weight = PLAYER_WEIGHT
+	Input.set_mouse_mode(Input.MOUSE_MODE_CONFINED_HIDDEN)
 
 func _process(delta: float) -> void:
-	pass
+	if Input.is_action_just_pressed("ui_end"):
+		#toggle_combat_new()
+		Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 
 func toggle_combat() -> void:
 	pass
@@ -37,17 +43,22 @@ func toggle_combat() -> void:
 	#if in_combat: combat.enter_combat_mode()
 	#else: combat.exit_combat_mode()
 
+func toggle_combat_new() -> void:
+	in_combat = !in_combat
+	if in_combat: 
+		interaction.force_stop_interacting("ATTACK", true, true)
+	else: 
+		interaction.force_stop_interacting("FREE", false, true)
 
 func die():
 	Debug.play_death_player()
 	$Camera3D/DeathAnimationPlayer.play("death_anim")
-	#combat.exit_combat_mode()
 	interaction.force_stop_interacting()
 	interaction.visible = false
 	death_ui.visible = true
 	freeze = true
 	stats_ui.visible = false
-	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+	#Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 
 var fake_dies: int
 func fake_die(fakestring: StringName):
@@ -65,12 +76,19 @@ func fake_die(fakestring: StringName):
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 
 func return_to_menu() -> void:
-	get_tree().change_scene_to_file("res://scenes/_levels/menus/death_menu/death_scene.tscn")
+	var d_scene: DeathScene = death_scene.instantiate() as DeathScene
+	d_scene.set_graphics(stats.last_dmg_type)
+	visible = false
+	get_parent().add_child(d_scene)
+	interaction.visible = false
+	death_ui.visible = false
+	$OmniLight3D.visible = false
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta: float) -> void:
 	if freeze: 
 		return
+	
 	movement.rotate_input()
 	
 	movement.rotate(delta)
@@ -78,6 +96,7 @@ func _physics_process(delta: float) -> void:
 	movement.movement(delta)
 	
 	movement.movement_input()
+	movement.movement_input_sprint()
 
 func on_save_game(saved_data: SavedData_Player) -> void:
 	#region General Data
@@ -112,3 +131,19 @@ func on_load_game(saved_data: SavedData_Player) -> void:
 	if saved_data.is_crouching:
 		movement.call_deferred("crouch", true)
 	#endregion
+
+func no_more_crouch() -> void:
+	movement.uncrouch()
+	movement.restrict_crouch = true
+
+var ending_override: bool
+var trigged_ending: bool
+func enable_ending_override() -> void:
+	freeze = true
+	interaction.enable_ending_stuff()
+	$Camera3D/EndingAnim.play("ending_anim")
+	EffectsPlayer.vignettize(0, 0, 1.0, 1, true, false)
+
+func do_ending() -> void:
+	get_tree().change_scene_to_file("res://scenes/_levels/Final_Puzzles/ENDING_SCENE/the_end_scene.tscn")
+	#EffectsPlayer.close_vignettize()

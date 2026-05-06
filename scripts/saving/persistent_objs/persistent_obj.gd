@@ -24,7 +24,7 @@ func get_uid() -> String:
 
 func on_save_game(saved_data: Array[SavedData]) -> void:
 	if Engine.is_editor_hint(): return
-	assert(get_parent().has_meta("uid"), "ERROR: Could not find UID on - " + get_parent().name + " - please generate UIDs")
+	assert(get_parent().has_meta("uid"), "ERROR: Could not find UID on - " + get_parent().name + " - please generate UIDs" + "in " + str(get_parent().get_path()))
 	assert(get_parent().get_meta("uid") != "", "ERROR: Invalid UID found on - " + get_parent().name + " - please generate UIDs")
 
 func on_before_load_game() -> void:

@@ -1,0 +1,91 @@
+[gd_scene format=3 uid="uid://bmpi0054r0day"]
+
+[ext_resource type="PackedScene" uid="uid://b2numvphf2kau" path="res://addons/maaacks_menus_template/base/nodes/menus/options_menu/video/video_options_menu.tscn" id="1_euu8j"]
+[ext_resource type="PackedScene" uid="uid://b6bl3n5mp3m1e" path="res://addons/maaacks_menus_template/base/nodes/menus/options_menu/option_control/list_option_control.tscn" id="2_guhhv"]
+[ext_resource type="Script" uid="uid://cafqki2b08kwu" path="res://addons/maaacks_menus_template/base/nodes/menus/options_menu/option_control/option_control.gd" id="3_guhhv"]
+[ext_resource type="Script" uid="uid://b13bmar5n5t3b" path="res://UICOPY/scenes/menus/options_menu/video/Language_Changer.gd" id="4_c5o0y"]
+
+[node name="Video" unique_id=2066056515 instance=ExtResource("1_euu8j")]
+
+[node name="VBoxContainer" parent="." index="0" unique_id=1251699420]
+theme_override_constants/separation = 20
+
+[node name="VSyncControl" parent="VBoxContainer" index="2" unique_id=2127470729]
+visible = false
+
+[node name="AntiAliasingControl" parent="VBoxContainer" index="3" unique_id=1035813408 instance=ExtResource("2_guhhv")]
+layout_mode = 2
+lock_titles = true
+option_values = [0, 1, 2, 3]
+option_titles = Array[String](["Disabled (Fastest)", "2x", "4x", "8x (Slowest)"])
+option_name = "Anti-Aliasing"
+option_section = 3
+key = "Anti-aliasing"
+section = "VideoSettings"
+property_type = 2
+default_value = 0
+
+[node name="ExperimentalHandLightingControl" type="HBoxContainer" parent="VBoxContainer" index="4" unique_id=1563851297]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+script = ExtResource("3_guhhv")
+option_name = "Experimental Hand Lighting"
+option_section = 3
+key = "ExperimentalHandLighting"
+section = "VideoSettings"
+default_value = false
+
+[node name="OptionLabel" type="Label" parent="VBoxContainer/ExperimentalHandLightingControl" index="0" unique_id=1854788461]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Experimental Hand Lighting :"
+vertical_alignment = 1
+
+[node name="CheckButton" type="CheckButton" parent="VBoxContainer/ExperimentalHandLightingControl" index="1" unique_id=1452268147]
+layout_mode = 2
+
+[node name="CameraShakeControl" parent="VBoxContainer" index="5" unique_id=683521251 instance=ExtResource("2_guhhv")]
+visible = false
+layout_mode = 2
+lock_titles = true
+option_values = [1.0, 0.75, 0.5, 0.0]
+option_titles = Array[String](["Normal", "Reduced", "Minimal", "None"])
+option_name = "Camera Shake"
+option_section = 3
+key = "CameraShake"
+section = "VideoSettings"
+property_type = 3
+default_value = 1.0
+
+[node name="CameraShakeControl2" parent="VBoxContainer" index="6" unique_id=16284350 instance=ExtResource("2_guhhv")]
+visible = false
+layout_mode = 2
+lock_titles = true
+option_values = [&"en", &"es", &"ru", &"it", &"fr", &"cn", &"je", &"de", &"br", &"ga"]
+option_titles = Array[String](["English", "Spanish", "Russian", "Italian", "French", "Chinese ", "Japanese ", "de", "br", "ga"])
+option_name = "Language"
+option_section = 5
+key = "Language"
+section = "ApplicationSettings"
+property_type = 21
+default_value = 1.0
+
+[node name="Language" type="HBoxContainer" parent="VBoxContainer" index="7" unique_id=664892697 node_paths=PackedStringArray("language_option")]
+visible = false
+layout_mode = 2
+script = ExtResource("4_c5o0y")
+language_option = NodePath("OptionButton")
+
+[node name="OptionLabel" type="Label" parent="VBoxContainer/Language" index="0" unique_id=1741447522]
+layout_mode = 2
+size_flags_horizontal = 3
+text = " Language :"
+vertical_alignment = 1
+
+[node name="OptionButton" type="OptionButton" parent="VBoxContainer/Language" index="1" unique_id=1694932225]
+unique_name_in_owner = true
+layout_mode = 2
+
+[connection signal="setting_changed" from="VBoxContainer/ExperimentalHandLightingControl" to="." method="_handlighting_chaged"]

@@ -12,6 +12,17 @@ var move_to_pos: Tween
 
 var player_left_radius: bool
 
+var killed_player: bool
+
+func load_me(previous_state_path: String, data : SavedData_Ballybog) -> void:
+	super(previous_state_path, data)
+	wait_timer.timeout.connect(wait_delay_over)
+	move_to_pos = get_tree().create_tween().bind_node(self).set_trans(Tween.TRANS_CUBIC)
+	move_to_pos.set_parallel(true)
+	move_to_pos.tween_property(ballybog, "global_position", ballybog.global_position.round(), 0.15)
+	charge_attack()
+	ballybog.current_alertness = ballybog.ALERTNESS.FIGHT
+
 func enter(previous_state_path: String, data := {}) -> void:
 	super(previous_state_path, data)
 	wait_timer.timeout.connect(wait_delay_over)
@@ -55,13 +66,20 @@ func attack() -> void:
 	if !active: return
 	ballybog.anim_player.play("attack")
 	print("i attack u")
-	ballybog.player.stats.take_damage(25.0)
+	killed_player = ballybog.player.stats.take_damage(33.0, 1)
+	
+	if killed_player:
+		if ballybog.rng.randf_range(0, 1) > 0.75:
+			ballybog.anim_player.play("boogie")
+		else: ballybog.do_idle()
+		return
 	
 	wait_timer.wait_time = charge_delay
 	wait_timer.start()
 
 func wait_delay_over() -> void:
 	if !active: return
+	if killed_player: return
 	is_attacking = !is_attacking
 	if is_attacking:
 		attack()

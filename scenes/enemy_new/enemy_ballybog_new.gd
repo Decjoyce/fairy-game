@@ -2,12 +2,17 @@
 class_name Enemy_Ballybog_New
 extends Entity
 
-var enemy_id: int = 20
+@export var grid_map: GridMapPathFinding 
+
+@export_range(20, 30) var enemy_id: int
 var player: PlayerTest
 
 const BB_WEIGHT: int = 10
 var freeze : bool
 
+@export var disabled: bool = true
+
+@export var my_body: CharacterBody3D
 @onready var movement: EnemyMovement = $EnemyMovement
 @onready var state_machine: StateMachine_Enemy = $StateMachine
 @onready var graphics: Sprite3DBillBoard = $_graphics
@@ -27,9 +32,11 @@ enum DEFUALT_STATES {IDLE, PATROL, WANDER}
 @export var default_state: DEFUALT_STATES = DEFUALT_STATES.PATROL
 
 @export_subgroup("Patrol")
+enum LOOP_MODES {LOOP, BOUNCE, DO_ONCE, RANDOM}
 @export var patrol_points: Array[Node3D]
+@export var patrol_loop_mode: LOOP_MODES
 @export var delay_between_points: float = 3
-@export var use_random_points: bool = false
+#@export var use_random_points: bool = false
 
 @export_subgroup("Wander")
 @export var wander_starting_pos: Node3D
@@ -49,6 +56,11 @@ func _ready() -> void:
 	if wander_starting_pos: wander_point = wander_starting_pos.global_position
 	else: wander_point = global_position
 	
+	if disabled:
+		disable_me()
+	else:
+		enable_me()
+	
 	OMT.on_item_broke.connect(heard_sound)
 
 func _process(delta: float) -> void:
@@ -57,9 +69,33 @@ func _process(delta: float) -> void:
 func die() -> void:
 	freeze = true
 	OMT.on_item_broke.disconnect(heard_sound)
-	anim_player.play("die")
+	state_machine.process_mode = Node.PROCESS_MODE_DISABLED
+	anim_player.play("death")
+	await anim_player.animation_finished
+	graphics.reparent(get_parent())
+	queue_free()
 
 # ↑ General Stuff ↑
+# --------------------------------------------------------------------------------------------------
+# ↓ Enable/Disable Stuff ↓
+
+func enable_me(sig: float = -1) -> void:
+	disabled = false
+	if disabled: process_mode = ProcessMode.PROCESS_MODE_DISABLED
+	else: process_mode = ProcessMode.PROCESS_MODE_INHERIT
+
+func disable_me(sig: float = -1) -> void:
+	disabled = true
+	if disabled: process_mode = ProcessMode.PROCESS_MODE_DISABLED
+	else: process_mode = ProcessMode.PROCESS_MODE_INHERIT
+
+func enable_visiblity(sig: float = -1) -> void:
+	graphics.visible = true
+
+func disable_visiblity(sig: float = -1) -> void:
+	graphics.visible = false
+
+# ↑ Enable/Disable Stuff ↑
 # --------------------------------------------------------------------------------------------------
 # ↓ Player Checking Stuff ↓
 
@@ -80,6 +116,8 @@ func _something_exited_awareness_trig(area: Area3D) -> void:
 func check_for_player_in_LOS(_delta: float) -> void:
 	if !check_for_player: return
 	if Engine.get_process_frames() % (10 + enemy_id) != 0: return # stops it running every frame
+	
+	if !movement.can_reach_destination(): return
 	
 	var dir_to: Vector3 = (global_position * Vector3(1, 0, 1)).direction_to(player.global_position * Vector3(1, 0, 1))
 	var angle:float = rad_to_deg((graphics.basis.z).dot(dir_to))
@@ -149,7 +187,7 @@ func _on_item_entered(body: Node3D) -> void:
 	if body is Grabbable_Item:
 		if body.is_grabbed: return
 		if body.prev_velocity.length() > 2:
-			state_machine.state.on_hit_with_item(body as Grabbable_Item, body.prev_velocity.length())
+			state_machine.state.on_hit_with_item(body as Grabbable_Item, body.last_throw_force)
 			body.rb.linear_velocity = (-body.prev_velocity * 0.2)
 
 func heard_sound(loc: Vector3) -> void:

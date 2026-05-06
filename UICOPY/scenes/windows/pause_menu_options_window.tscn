@@ -1,0 +1,30 @@
+[gd_scene format=3 uid="uid://bp5w33g1hroc2"]
+
+[ext_resource type="PackedScene" uid="uid://crndfbb22ri4s" path="res://addons/maaacks_menus_template/base/nodes/windows/overlaid_window_scene_container.tscn" id="1_glkc6"]
+[ext_resource type="PackedScene" uid="uid://wyg20wvsg5p1" path="res://UICOPY/scenes/menus/options_menu/master_options_menu_with_tabs.tscn" id="2_a5pej"]
+[ext_resource type="Theme" uid="uid://4rqtecgji27t" path="res://scenes/_levels/menus/main_menu/Main_Menu_UI_NEW/UI_themes/customised_brush_theme.tres" id="3_a5pej"]
+
+[node name="PauseMenuOptionsOverlaidWindow" unique_id=701085877 instance=ExtResource("1_glkc6")]
+process_mode = 3
+anchors_preset = 15
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 0.0
+offset_top = 0.0
+offset_right = 0.0
+offset_bottom = 0.0
+packed_scene = ExtResource("2_a5pej")
+title_visible = false
+
+[node name="TitleMargin" parent="ContentContainer/BoxContainer" parent_id_path=PackedInt32Array(394030069) index="0" unique_id=1262022916]
+visible = false
+
+[node name="TitleLabel" parent="ContentContainer/BoxContainer/TitleMargin/BoxContainer" parent_id_path=PackedInt32Array(1788474031) index="0" unique_id=1049966061]
+text = "Options"
+
+[node name="CloseButton" parent="ContentContainer/BoxContainer/MenuButtonsMargin/MenuButtons" parent_id_path=PackedInt32Array(1371114575) index="0" unique_id=314526102]
+size_flags_horizontal = 4
+theme = ExtResource("3_a5pej")
+text = "Back"

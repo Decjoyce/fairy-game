@@ -13,6 +13,29 @@ var current_poi: Vector3
 
 var current_investigate_state: int = 0 # 0 -> Reacting to noise , 1 -> Investigating Noise , 2 -> Searching Area
 
+func load_me(previous_state_path: String, data : SavedData_Ballybog) -> void:
+	super(previous_state_path, data)
+	wait_timer.timeout.connect(wait_delay_over)
+	giveup_timer.timeout.connect(give_up)
+	ballybog.movement.on_reached_destination.connect(reached_destination)
+	
+	current_investigate_state = data.inv_current_investigate_state
+	current_poi = data.inv_poi
+	wait_timer.wait_time = data.time_left
+	
+	match current_investigate_state:
+		1: 
+			ballybog.movement.set_new_destination(current_poi)
+			ballybog.movement.start_movement()
+			wait_timer.start()
+		2:
+			giveup_timer.wait_time = data.inv_giveup_timeleft
+			giveup_timer.start()
+			wait_timer.start()
+		3:
+			get_ran_pos()
+			wait_timer.start()
+
 func enter(previous_state_path: String, data := {}) -> void:
 	super(previous_state_path, data)
 	

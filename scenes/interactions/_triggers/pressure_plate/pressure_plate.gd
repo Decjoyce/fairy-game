@@ -21,6 +21,16 @@ var current_weight: float
 
 var loading_locked: bool #used to stop pp triggering after loading
 
+@onready var avp: AudioValuePlayer = $AudioValuePlayer
+
+@export var disabled: bool
+
+func disabled_me(sig: float) -> void:
+	disabled = true
+
+func enable_me(sig: float) -> void:
+	disabled = false
+
 # ↑ General Stuff ↑
 # --------------------------------------------------------------------------------------------------
 # ↓ Triggering Stuff ↓
@@ -39,6 +49,7 @@ func _on_area_entered_trigger(area_rid: RID, area: Area3D, area_shape_index: int
 		entity_entered_pressure_plate(area.get_parent() as Entity)
 
 func _on_area_exited_trigger(area_rid: RID, area: Area3D, area_shape_index: int, local_shape_index: int) -> void:
+	if !area: return
 	if area.get_parent() is Entity:
 		entity_exited_pressure_plate(area.get_parent() as Entity)
 
@@ -69,6 +80,7 @@ func entity_exited_pressure_plate(entity: Entity) -> void:
 	if entities_on_plate.has(entity): entities_on_plate.erase(entity)
 	#print("exited")
 	check_weight()
+	if disabled: return
 	if always_emit_on_change: emit_on_change()
 
 # ↑ Triggering Stuff ↑
@@ -84,6 +96,7 @@ func update_weight_of_entity(entity: Entity) -> void:
 	check_weight()
 
 func check_weight() -> void:
+	if disabled: return
 	update_total_weight()
 	animate_plate()
 	if current_weight >= weight_to_activate: activate()
@@ -98,6 +111,8 @@ func update_total_weight() -> float:
 	for entity in entities_on_plate:
 		updated_weight += entities_on_plate[entity]
 	current_weight = updated_weight
+	prints("OOOOOOOOOOOOOO", current_weight/weight_to_activate)
+	avp.play_me_bro(clampf(current_weight/weight_to_activate, 0, 1))
 	return current_weight
 
 # ↑ Checking Stuff ↑

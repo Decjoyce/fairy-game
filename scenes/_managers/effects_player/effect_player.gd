@@ -62,5 +62,32 @@ func colorize(from_color: Color, to_color: Color, length: float, override_effect
 
 func close_colorize() -> void:
 	colorize_effect.visible = false
-	cur_colorize_effect.finished.disconnect(close_colorize)
+	if cur_colorize_effect:
+		cur_colorize_effect.finished.disconnect(close_colorize)
 	cur_colorize_effect = null
+
+# ↑ Colorize Stuff ↑
+# --------------------------------------------------------------------------------------------------
+# ↓ Vignette Effect ↓
+
+var cur_vignette_effect: Tween
+@export var vignette_effect: ColorRect
+@onready var vignette_mat: ShaderMaterial = vignette_effect.material
+
+func vignettize(alpha: float, inner_rad: float, outer_rad: float, length: float, override_effect: bool = false, play_once: bool = false) -> Tween:
+	if cur_vignette_effect and !override_effect: return
+	if override_effect and cur_vignette_effect and cur_vignette_effect.is_running(): cur_vignette_effect.stop()
+	vignette_effect.visible = true
+	cur_vignette_effect = create_tween().bind_node(self).set_trans(Tween.TRANS_QUAD)
+	cur_vignette_effect.set_parallel()
+	cur_vignette_effect.tween_property(vignette_mat, "shader_parameter/alpha", alpha, length)
+	cur_vignette_effect.tween_property(vignette_mat, "shader_parameter/inner_radius", inner_rad, length)
+	cur_vignette_effect.tween_property(vignette_mat, "shader_parameter/outer_radius", outer_rad, length)
+	if play_once: cur_vignette_effect.finished.connect(close_vignettize)
+	return cur_vignette_effect
+
+func close_vignettize() -> void:
+	colorize_effect.visible = false
+	if cur_vignette_effect:
+		cur_vignette_effect.finished.disconnect(close_colorize)
+	cur_vignette_effect = null

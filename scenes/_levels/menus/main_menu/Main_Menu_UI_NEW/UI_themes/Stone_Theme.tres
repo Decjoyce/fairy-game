@@ -1,0 +1,38 @@
+[gd_resource type="Theme" format=3 uid="uid://dpa7cj0od41dk"]
+
+[ext_resource type="Texture2D" uid="uid://csm3q4eiv50ik" path="res://assets/menu_buttons/paper-texture-background-png-transparent-opacity-screen-mode-usage-overlay-paper-texture-background-png-transparent-opacity-359192297.webp" id="1_iewsg"]
+[ext_resource type="StyleBox" uid="uid://bw3h3v01s35dj" path="res://scenes/_levels/menus/main_menu/Main_Menu_UI_NEW/UI_themes/Stone button base.tres" id="2_363xp"]
+[ext_resource type="FontFile" uid="uid://w5ypnv2fycet" path="res://assets/fonts/IMFellGreatPrimerSC-Regular.ttf" id="3_pfh46"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_0evim"]
+texture = ExtResource("1_iewsg")
+axis_stretch_horizontal = 1
+axis_stretch_vertical = 1
+modulate_color = Color(0.10933425, 0.10933355, 0.09686581, 0.06666667)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_xwrb1"]
+texture = ExtResource("1_iewsg")
+axis_stretch_horizontal = 1
+axis_stretch_vertical = 1
+modulate_color = Color(0.19607843, 0.19607843, 0.1764706, 0.35686275)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_gmba7"]
+texture = ExtResource("1_iewsg")
+axis_stretch_horizontal = 1
+axis_stretch_vertical = 1
+modulate_color = Color(0.19607843, 0.19607843, 0.1764706, 0.35686275)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_bus8x"]
+texture = ExtResource("1_iewsg")
+axis_stretch_horizontal = 1
+axis_stretch_vertical = 1
+modulate_color = Color(0.13300797, 0.13300774, 0.11878482, 0.21568628)
+
+[resource]
+default_font = ExtResource("3_pfh46")
+default_font_size = 20
+Button/styles/disabled = SubResource("StyleBoxTexture_0evim")
+Button/styles/focus = SubResource("StyleBoxTexture_xwrb1")
+Button/styles/hover = SubResource("StyleBoxTexture_gmba7")
+Button/styles/normal = ExtResource("2_363xp")
+Button/styles/pressed = SubResource("StyleBoxTexture_bus8x")

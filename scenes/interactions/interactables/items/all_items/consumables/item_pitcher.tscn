@@ -3,8 +3,9 @@
 [ext_resource type="Script" uid="uid://s5cfdf85lm5g" path="res://scenes/interactions/interactables/items/grabbable_item.gd" id="1_f2rkp"]
 [ext_resource type="Script" uid="uid://cqhq7vrwiw3m6" path="res://scenes/interactions/interactables/items/item_types/item_type.gd" id="2_fnxl4"]
 [ext_resource type="Texture2D" uid="uid://7lk2ld8qj3i0" path="res://assets/sprites/item_sprites/drinkingVessel_item.png" id="3_cd30j"]
-[ext_resource type="AudioStream" uid="uid://dutddyikwuiut" path="res://assets/audio/sfx/combat/misc/hittingsound_shorter.wav" id="4_fpq24"]
+[ext_resource type="AudioStream" uid="uid://cmlk4ndscpe3t" path="res://assets/audio/sfx/items/Thrown/pitcher_hit_randomizer.tres" id="4_gg8t1"]
 [ext_resource type="Script" uid="uid://bhf6r6nw14krj" path="res://scripts/saving/persistent_objs/po_item.gd" id="4_vhdm2"]
+[ext_resource type="AudioStream" uid="uid://d1omkb4cvms1o" path="res://assets/audio/sfx/items/Grab/Grab_audio_Wood.tres" id="6_gg8t1"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_llc7q"]
 
@@ -65,7 +66,7 @@ render_priority = 1
 texture = ExtResource("3_cd30j")
 
 [node name="AudioPlayer" type="AudioStreamPlayer3D" parent="." unique_id=127510879]
-stream = ExtResource("4_fpq24")
+stream = ExtResource("4_gg8t1")
 bus = &"items"
 
 [node name="RayCast3D" type="RayCast3D" parent="." unique_id=1146106517]
@@ -75,3 +76,7 @@ hit_from_inside = true
 [node name="PO_Item" type="Node" parent="." unique_id=611978815 groups=["PO"]]
 script = ExtResource("4_vhdm2")
 metadata/_custom_type_script = "uid://bhf6r6nw14krj"
+
+[node name="Audio_Grabbed" type="AudioStreamPlayer3D" parent="." unique_id=1679171585]
+stream = ExtResource("6_gg8t1")
+max_distance = 1.0

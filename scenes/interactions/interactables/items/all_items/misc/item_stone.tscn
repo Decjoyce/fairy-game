@@ -1,0 +1,112 @@
+[gd_scene format=3 uid="uid://clvus6c43ipdy"]
+
+[ext_resource type="Script" uid="uid://s5cfdf85lm5g" path="res://scenes/interactions/interactables/items/grabbable_item.gd" id="1_okfy6"]
+[ext_resource type="Script" uid="uid://cqhq7vrwiw3m6" path="res://scenes/interactions/interactables/items/item_types/item_type.gd" id="2_vc21g"]
+[ext_resource type="Texture2D" uid="uid://d0xde7v5f357c" path="res://assets/sprites/item_sprites/stone.png" id="3_3y6sd"]
+[ext_resource type="AudioStream" uid="uid://c06ecuwypinuu" path="res://assets/audio/sfx/items/StoneHit/stonepile_hit_randomizer.tres" id="4_86mok"]
+[ext_resource type="Texture2D" uid="uid://b1t5mdlnbg0jt" path="res://assets/sprites/item_sprites/stone_outline.png" id="4_vc21g"]
+[ext_resource type="Script" uid="uid://bhf6r6nw14krj" path="res://scripts/saving/persistent_objs/po_item.gd" id="6_4pe46"]
+[ext_resource type="AudioStream" uid="uid://bny0b3bdsuco3" path="res://assets/audio/sfx/items/Grab/Rock_randomizer.tres" id="6_okfy6"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_llc7q"]
+
+[sub_resource type="Resource" id="Resource_yadgr"]
+script = ExtResource("2_vc21g")
+metadata/_custom_type_script = "uid://cqhq7vrwiw3m6"
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_llc7q"]
+size = Vector3(0.5757202, 0.47738037, 0.60964966)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_234jp"]
+size = Vector3(0.44658202, 0.3019928, 0.46377715)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vc21g"]
+render_priority = 1
+transparency = 1
+albedo_color = Color(0, 1, 0.7833333, 1)
+albedo_texture = ExtResource("4_vc21g")
+emission_enabled = true
+emission = Color(0, 1.0879109, 1.1422393, 1)
+billboard_mode = 1
+
+[node name="stone" type="RigidBody3D" unique_id=234370081 node_paths=PackedStringArray("col", "grab_col", "idle_graphics", "grabbed_graphics", "special_graphics") groups=["debug_PickableObjects"]]
+collision_layer = 2
+axis_lock_angular_x = true
+axis_lock_angular_z = true
+mass = 0.5
+physics_material_override = SubResource("PhysicsMaterial_llc7q")
+gravity_scale = 0.8
+contact_monitor = true
+max_contacts_reported = 1
+script = ExtResource("1_okfy6")
+item_type = SubResource("Resource_yadgr")
+display_name = "STONE"
+item_weight = 3
+col = NodePath("CollisionShape3D")
+grab_col = NodePath("Area3D/CollisionShape3D2")
+idle_graphics = NodePath("_g_idle")
+grabbed_graphics = NodePath("_g_grabbed")
+special_graphics = NodePath("_returning_g")
+
+[node name="Area3D" type="Area3D" parent="." unique_id=1092598886]
+collision_layer = 2
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="Area3D" unique_id=376822119]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0030334443, -0.030450478, 0.0052948)
+shape = SubResource("BoxShape3D_llc7q")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1619528994]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0035645217, -0.033741698, 0.00051955134)
+shape = SubResource("BoxShape3D_234jp")
+debug_color = Color(0.8442249, 0.37985525, 5.7756904e-07, 0.41960785)
+
+[node name="_g_idle" type="Sprite3D" parent="." unique_id=553540307]
+layers = 4
+pixel_size = 0.0016
+billboard = 1
+shaded = true
+texture = ExtResource("3_3y6sd")
+
+[node name="_returning_g" type="Sprite3D" parent="." unique_id=1573823853]
+layers = 4
+material_overlay = SubResource("StandardMaterial3D_vc21g")
+pixel_size = 0.0016
+billboard = 1
+texture = ExtResource("4_vc21g")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="_returning_g" unique_id=1945541738]
+light_color = Color(0, 0.9000001, 1, 1)
+omni_range = 0.475
+
+[node name="_g_grabbed" type="Sprite3D" parent="." unique_id=1908776990]
+visible = false
+layers = 4
+pixel_size = 0.002
+billboard = 2
+shaded = true
+render_priority = 1
+texture = ExtResource("3_3y6sd")
+
+[node name="AudioPlayer" type="AudioStreamPlayer3D" parent="." unique_id=20800557]
+stream = ExtResource("4_86mok")
+bus = &"items"
+
+[node name="RayCast3D" type="RayCast3D" parent="." unique_id=1070737100]
+target_position = Vector3(0, -0.4, 0)
+hit_from_inside = true
+
+[node name="PO_Item" type="Node" parent="." unique_id=2095926710 groups=["PO"]]
+script = ExtResource("6_4pe46")
+metadata/_custom_type_script = "uid://bhf6r6nw14krj"
+
+[node name="Audio_Grabbed" type="AudioStreamPlayer3D" parent="." unique_id=2132005903]
+stream = ExtResource("6_okfy6")
+max_distance = 1.0
+
+[node name="OmniLight3D" type="OmniLight3D" parent="." unique_id=241870631]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0050979257, 0)
+light_color = Color(0.32915837, 0.3291584, 0.3291584, 1)
+light_energy = 0.73
+distance_fade_enabled = true
+distance_fade_begin = 21.45
+omni_range = 1.18
