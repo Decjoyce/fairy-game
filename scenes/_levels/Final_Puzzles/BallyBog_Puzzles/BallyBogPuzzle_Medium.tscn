@@ -2,6 +2,7 @@
 
 [ext_resource type="MeshLibrary" uid="uid://bhdjk8h6chf0o" path="res://scenes/_levels/_palettes/cairn/mossy/meshlibrary_mossy_cairn.meshlib" id="1_i5lll"]
 [ext_resource type="MeshLibrary" uid="uid://bu208a8l5866i" path="res://scenes/_levels/_palettes/cairn/meshlibrary_cairn.tres" id="2_rpyid"]
+[ext_resource type="PackedScene" uid="uid://br01bblhowysi" path="res://assets/models/cairn/Z-Old-EnvironmentModels/Wall/Wall.glb" id="3_dd1ot"]
 [ext_resource type="PackedScene" uid="uid://xuo5buj0odhi" path="res://scenes/interactions/_triggers/torch_sconce/torch_sconce_lit.tscn" id="3_jjjpb"]
 [ext_resource type="PackedScene" uid="uid://br35er4x4b6av" path="res://scenes/interactions/_triggers/torch_sconce/torch_sconce_unlit.tscn" id="4_kixsx"]
 [ext_resource type="Material" uid="uid://cykgn4cpccw6q" path="res://assets/models/cairn/Props/MountedTorch/MountedTorch.tres" id="5_8sy4o"]
@@ -318,6 +319,15 @@ data = {
 "cells": PackedInt32Array(65535, 1, 2, 65535, 65531, 2, 65535, 65530, 2, 65532, 65534, 1441796, 2, 65534, 1048580)
 }
 metadata/_editor_floor_ = Vector3(0, 0, 0)
+
+[node name="Wall" parent="." unique_id=1508266697 instance=ExtResource("3_dd1ot")]
+transform = Transform3D(0, 0.04101219, 0.04101219, -0.058, -1.7926998e-09, 1.7926998e-09, 2.5352604e-09, -0.04101219, 0.04101219, -1.0666684, 3.579835, -3.085332)
+
+[node name="Wall2" parent="." unique_id=1692458629 instance=ExtResource("3_dd1ot")]
+transform = Transform3D(2.220446e-16, -0.015011506, 0.056023695, -0.058, -2.4488733e-09, -6.5617367e-10, 2.5352604e-09, -0.056023695, -0.015011506, -0.90423995, 3.579835, -2.342494)
+
+[node name="Wall3" parent="." unique_id=460116950 instance=ExtResource("3_dd1ot")]
+transform = Transform3D(2.220446e-16, -0.057999995, 0, -0.058, -3.330669e-16, -2.5352602e-09, 2.5352604e-09, 0, -0.057999995, -1.0162048, 3.579835, -2.9810174)
 
 [node name="_env" type="Node3D" parent="." unique_id=626225477]
 
@@ -1407,6 +1417,15 @@ fill_mode = 4
 texture_progress = SubResource("GradientTexture2D_rv6yw")
 script = ExtResource("41_lckpc")
 metadata/_edit_use_anchors_ = true
+
+[node name="SpotLight3D" type="SpotLight3D" parent="." unique_id=2125624239]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, -1, 4.329249, -3)
+light_color = Color(0.39087665, 0.50084233, 0.5852908, 1)
+light_energy = 1.784
+light_volumetric_fog_energy = 7.639
+spot_range = 4.304
+spot_attenuation = 0.7
+spot_angle = 6.95
 
 [connection signal="body_entered" from="_env/Gate_Left/Gate/gate/UnderChecker_items" to="_env/Gate_Left/Gate" method="_on_body_entered_under_checker"]
 [connection signal="body_exited" from="_env/Gate_Left/Gate/gate/UnderChecker_items" to="_env/Gate_Left/Gate" method="_on_body_exited_under_checker"]
