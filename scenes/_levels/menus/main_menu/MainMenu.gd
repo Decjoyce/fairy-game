@@ -21,6 +21,8 @@ func _process(delta):
 	skip_stuff()
 
 func opening_done():
+	
+	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	animation_state_machine.travel("Intro")
 	
 

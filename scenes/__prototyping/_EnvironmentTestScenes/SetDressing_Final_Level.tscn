@@ -47,7 +47,6 @@
 [ext_resource type="PackedScene" uid="uid://b1clamofxlgo8" path="res://scenes/_levels/_palettes/cairn/props/cairn_gate_setdressing.tscn" id="32_hpkss"]
 [ext_resource type="PackedScene" uid="uid://bsdlm8rcrt2j" path="res://scenes/interactions/_triggers/area_triggers/player_area_trigger.tscn" id="35_ucuax"]
 [ext_resource type="Script" uid="uid://cb04xjhu5ksor" path="res://scenes/interactions/_receivers/enabler_disabler_v1/visibility_enabler.gd" id="36_ag4il"]
-[ext_resource type="Script" uid="uid://bckm0n6o38tj5" path="res://scripts/fps_counter.gd" id="37_54i5u"]
 [ext_resource type="Script" uid="uid://dn7unjhtwlq3s" path="res://scripts/statue_signal_echoer.gd" id="37_l6x3k"]
 [ext_resource type="Script" uid="uid://bbnwwbodc3xt3" path="res://scripts/level_sequencer.gd" id="44_a8cig"]
 
@@ -2000,25 +1999,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.04, 0, -13.849999)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, -14.04)
 
 [node name="extras" type="Node3D" parent="Setdressing" unique_id=1834793791]
-
-[node name="FPSCOUNTERQUICK" type="Control" parent="." unique_id=1942008450]
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="Label" type="Label" parent="FPSCOUNTERQUICK" unique_id=1763560015]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_font_sizes/font_size = 78
-text = "FPS: "
-script = ExtResource("37_54i5u")
 
 [node name="OptimizationStuff" type="Node3D" parent="." unique_id=1368147089]
 

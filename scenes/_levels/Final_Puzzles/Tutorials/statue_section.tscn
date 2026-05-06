@@ -17,7 +17,6 @@
 [ext_resource type="Script" uid="uid://cko3icuffehvs" path="res://scenes/interactions/_receivers/bridge/bridge_new.gd" id="18_xhqui"]
 [ext_resource type="Material" uid="uid://f0qp2o0ip83p" path="res://assets/models/cairn/Props/Wood_Door/Wood_Door.tres" id="19_g2esy"]
 [ext_resource type="Material" uid="uid://ciiy1aqgkcp5k" path="res://assets/models/cairn/Hall_BigRoof/Dirtfloor.tres" id="19_tsqmh"]
-[ext_resource type="Script" uid="uid://bckm0n6o38tj5" path="res://scripts/fps_counter.gd" id="20_i1d28"]
 [ext_resource type="Material" uid="uid://c17eub34k5hf8" path="res://assets/models/cairn/Props/Wood_Door/Wood_Screw.tres" id="20_pbw8r"]
 [ext_resource type="Material" uid="uid://dgrldudl0bdhu" path="res://assets/models/cairn/Props/Rockpile/Rock_pile.tres" id="22_6y050"]
 [ext_resource type="PackedScene" uid="uid://byhplifug2ygp" path="res://scenes/_levels/_palettes/cairn/props/cairn_pillar_damaged.tscn" id="22_634vm"]
@@ -2232,25 +2231,6 @@ transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 2.30
 
 [node name="pillardamaged19" parent="env/_decor/extras_stat" unique_id=1798150586 instance=ExtResource("22_634vm")]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 2.3000107, 0.100000024, 1.1999989)
-
-[node name="FPSCOUNTERQUICK" type="Control" parent="." unique_id=318477301]
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="Label" type="Label" parent="FPSCOUNTERQUICK" unique_id=1724019831]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_font_sizes/font_size = 78
-text = "FPS: "
-script = ExtResource("20_i1d28")
 
 [node name="OldSetDressing" type="Node3D" parent="." unique_id=89518029]
 
