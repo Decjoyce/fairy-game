@@ -177,6 +177,10 @@ monitorable = false
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, 0)
 shape = SubResource("SphereShape3D_1hgo1")
 
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="First_Part/BallyBogOne_Trigger/Area3D" unique_id=358712822]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, -4)
+shape = SubResource("SphereShape3D_1hgo1")
+
 [node name="BallyBogTwo_Trigger" parent="First_Part" unique_id=900281141 instance=ExtResource("12_g0t4t")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16, 1, -11)
 trig_once = true
@@ -215,6 +219,10 @@ collision_layer = 0
 monitorable = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Second_Part/BallyBogOne_Trigger2/Area3D" unique_id=101860901]
+shape = SubResource("SphereShape3D_1hgo1")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="Second_Part/BallyBogOne_Trigger2/Area3D" unique_id=816996224]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -4)
 shape = SubResource("SphereShape3D_1hgo1")
 
 [node name="Open_LeverPieceGate_Button" parent="Second_Part" unique_id=1144332830 instance=ExtResource("6_vy3m1")]

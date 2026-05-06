@@ -1318,11 +1318,9 @@ col = NodePath("../CollisionShape3D")
 
 [node name="Puzzle01" parent="Different_Sections/BallyBog_Section" unique_id=2140837292 instance=ExtResource("6_hpkss")]
 transform = Transform3D(1.3113416e-07, 0, -1, 0, 1, 0, 1, 0, 1.3113416e-07, 8, -1, 1)
-visible = false
 
 [node name="BallyBog_HardSection" parent="Different_Sections/BallyBog_Section" unique_id=818137965 instance=ExtResource("7_oqsm6")]
 transform = Transform3D(-1, 0, 8.742277e-08, 0, 1, 0, -8.742277e-08, 0, -1, -6, 0, 19)
-visible = false
 
 [node name="Pillars_BB" type="Node3D" parent="Different_Sections/BallyBog_Section" unique_id=568937697]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -87, 2, -23.04)
@@ -1775,13 +1773,6 @@ metadata/uid = "14f8ef72-b6fd-4920-8271-3bea0258b076"
 metadata/lock_uid = true
 metadata/date_generated = "2026-04-21T13:58:34"
 
-[node name="BallyBog_Area_Gate" parent="Different_Sections/Inbetween_Sections" unique_id=1022074259 instance=ExtResource("10_l6x3k")]
-transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 84.000565, -2, -15)
-disable_tp = false
-metadata/uid = "e00f64a6-574c-4a54-b97d-88e8b4fe27e4"
-metadata/lock_uid = true
-metadata/date_generated = "2026-04-21T13:58:34"
-
 [node name="Indicators&Torches" type="Node3D" parent="Different_Sections/Inbetween_Sections" unique_id=1891940840]
 
 [node name="TorchSconce_Lit" parent="Different_Sections/Inbetween_Sections/Indicators&Torches" unique_id=1729385187 instance=ExtResource("11_54i5u")]
@@ -1878,6 +1869,21 @@ monitorable = false
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Different_Sections/BabyInstantiatePoint/Player_Trigger/Area3D" unique_id=548261264]
 shape = SubResource("CapsuleShape3D_ynqbq")
 debug_color = Color(0.56316596, 0.56157887, 0, 1)
+
+[node name="BallyBog_Area_Gate" parent="Different_Sections" unique_id=1022074259 instance=ExtResource("10_l6x3k")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 84.000565, -2, -15)
+disable_tp = false
+metadata/uid = "e00f64a6-574c-4a54-b97d-88e8b4fe27e4"
+metadata/lock_uid = true
+metadata/date_generated = "2026-04-21T13:58:34"
+
+[node name="BallyBog_Area_Gate2" parent="Different_Sections" unique_id=2077487765 instance=ExtResource("10_l6x3k")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 109.000565, -2, 10)
+disable_tp = false
+start_open = true
+metadata/uid = "7fa794c5-42f5-47f7-a435-49f6b2d0e530"
+metadata/lock_uid = true
+metadata/date_generated = "2026-05-06T15:00:03"
 
 [node name="Connections_GridMap" type="GridMap" parent="." unique_id=1193872561]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
@@ -2142,6 +2148,7 @@ collision_layer = 0
 monitorable = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="OptimizationStuff/BBDisablers/PAT_D_Mid/Area3D" unique_id=1696771400]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1)
 shape = SubResource("CapsuleShape3D_ucuax")
 
 [node name="vis_enabler_midbb" type="Node" parent="OptimizationStuff/BBDisablers/PAT_D_Mid" unique_id=672296825 node_paths=PackedStringArray("linked_node")]
@@ -2623,7 +2630,7 @@ bake_mask = 4293922816
 [node name="RockGates2" type="Node3D" parent="." unique_id=776325204]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 65, -2, -19)
 
-[node name="RockGate" parent="RockGates2" unique_id=2077487765 instance=ExtResource("3_m3dqs")]
+[node name="RockGate" parent="RockGates2" unique_id=1178279887 instance=ExtResource("3_m3dqs")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.9260404, -0.09362459, -10.691196)
 speed = 3.0
 metadata/uid = "f72d0569-051b-479f-8241-866f11814b45"
@@ -2680,7 +2687,7 @@ col = NodePath("../Area3D/CollisionShape3D")
 [connection signal="on_enter_lockdown" from="Different_Sections/BallyBog_Section/Ballybog_Scene/Observer_End" to="Different_Sections/BallyBog_Section/Ballybog_Scene/Observer_End/No_Acess_Gate/StaticBody3D/CollisionEnabler_Disabler" method="enable_obj"]
 [connection signal="on_exit_lockdown" from="Different_Sections/BallyBog_Section/Ballybog_Scene/Observer_End" to="Different_Sections/BallyBog_Section/Ballybog_Scene/Observer_End/No_Acess_Gate" method="fully_open_gate"]
 [connection signal="on_exit_lockdown" from="Different_Sections/BallyBog_Section/Ballybog_Scene/Observer_End" to="Different_Sections/BallyBog_Section/Ballybog_Scene/Observer_End/No_Acess_Gate/StaticBody3D/CollisionEnabler_Disabler" method="disable_obj"]
-[connection signal="on_activated" from="Different_Sections/Inbetween_Sections/BallyBog_Area_Button" to="Different_Sections/Inbetween_Sections/BallyBog_Area_Gate" method="open_gate"]
+[connection signal="on_activated" from="Different_Sections/Inbetween_Sections/BallyBog_Area_Button" to="Different_Sections/BallyBog_Area_Gate" method="open_gate"]
 [connection signal="on_activated" from="Different_Sections/BabyInstantiatePoint/Player_Trigger" to="." method="delete_stat"]
 [connection signal="area_entered" from="Different_Sections/BabyInstantiatePoint/Player_Trigger/Area3D" to="Different_Sections/BabyInstantiatePoint/Player_Trigger" method="_player_entered"]
 [connection signal="area_exited" from="Different_Sections/BabyInstantiatePoint/Player_Trigger/Area3D" to="Different_Sections/BabyInstantiatePoint/Player_Trigger" method="_player_exited"]
@@ -2707,7 +2714,7 @@ col = NodePath("../Area3D/CollisionShape3D")
 [connection signal="on_activated" from="OptimizationStuff/StatueDisablers/PAT_Disable_StatueSec2" to="OptimizationStuff/StatueDisablers/PAT_Disable_StatueSec2/vis_enabler_stat" method="disable_obj"]
 [connection signal="area_entered" from="OptimizationStuff/StatueDisablers/PAT_Disable_StatueSec2/Area3D" to="OptimizationStuff/StatueDisablers/PAT_Disable_StatueSec2" method="_player_entered"]
 [connection signal="area_exited" from="OptimizationStuff/StatueDisablers/PAT_Disable_StatueSec2/Area3D" to="OptimizationStuff/StatueDisablers/PAT_Disable_StatueSec2" method="_player_exited"]
-[connection signal="on_activated" from="OptimizationStuff/StatueDisablers/PAT_Disable_StatueSec3" to="Different_Sections/Inbetween_Sections/BallyBog_Area_Gate" method="close_gate"]
+[connection signal="on_activated" from="OptimizationStuff/StatueDisablers/PAT_Disable_StatueSec3" to="Different_Sections/BallyBog_Area_Gate" method="close_gate"]
 [connection signal="on_activated" from="OptimizationStuff/StatueDisablers/PAT_Disable_StatueSec3" to="OptimizationStuff/StatueDisablers/PAT_Disable_StatueSec3/vis_enabler_stat" method="disable_obj"]
 [connection signal="area_entered" from="OptimizationStuff/StatueDisablers/PAT_Disable_StatueSec3/Area3D" to="OptimizationStuff/StatueDisablers/PAT_Disable_StatueSec3" method="_player_entered"]
 [connection signal="area_exited" from="OptimizationStuff/StatueDisablers/PAT_Disable_StatueSec3/Area3D" to="OptimizationStuff/StatueDisablers/PAT_Disable_StatueSec3" method="_player_exited"]
@@ -2725,6 +2732,7 @@ col = NodePath("../Area3D/CollisionShape3D")
 [connection signal="on_activated" from="OptimizationStuff/BBDisablers/PAT_E_Mid" to="OptimizationStuff/lseq_7" method="set_seq_via_sig"]
 [connection signal="area_entered" from="OptimizationStuff/BBDisablers/PAT_E_Mid/Area3D" to="OptimizationStuff/BBDisablers/PAT_E_Mid" method="_player_entered"]
 [connection signal="area_exited" from="OptimizationStuff/BBDisablers/PAT_E_Mid/Area3D" to="OptimizationStuff/BBDisablers/PAT_E_Mid" method="_player_exited"]
+[connection signal="on_activated" from="OptimizationStuff/BBDisablers/PAT_D_Mid" to="Different_Sections/BallyBog_Area_Gate2" method="close_gate"]
 [connection signal="on_activated" from="OptimizationStuff/BBDisablers/PAT_D_Mid" to="OptimizationStuff/lseq_8" method="_on_pat_d_mid_on_activated"]
 [connection signal="on_activated" from="OptimizationStuff/BBDisablers/PAT_D_Mid" to="OptimizationStuff/lseq_8" method="set_seq_via_sig"]
 [connection signal="area_entered" from="OptimizationStuff/BBDisablers/PAT_D_Mid/Area3D" to="OptimizationStuff/BBDisablers/PAT_D_Mid" method="_player_entered"]

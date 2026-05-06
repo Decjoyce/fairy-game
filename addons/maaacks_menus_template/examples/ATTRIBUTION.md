@@ -8,6 +8,12 @@
 [Minh Anh Pham](https://ma123.itch.io/) - 2D/3D Artist, Musician 
 [Mikhail Fisenko](https://funnymike09.itch.io/) - Project Lead, Programmer, Audio Engineer 
 
+### Special Thanks To:
+Peter Lynch - Project Supervisor
+Alex Cahill - Project Supervisor
+John Healy - Lecturer
+
+Without your help, this game would not have been possible.
 
 ## Sourced
 ### Audio
