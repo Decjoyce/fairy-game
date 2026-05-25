@@ -1,16 +1,51 @@
 [gd_scene format=3 uid="uid://ku64rbxkdlm2"]
 
-[ext_resource type="PackedScene" uid="uid://c8vnncjwqcpab" path="res://addons/maaacks_menus_template/base/nodes/menus/options_menu/audio/audio_options_menu.tscn" id="1_788kv"]
+[ext_resource type="Theme" uid="uid://4rqtecgji27t" path="res://scenes/_levels/menus/main_menu/Main_Menu_UI_NEW/UI_themes/customised_brush_theme.tres" id="1_k3wqr"]
 [ext_resource type="Script" uid="uid://bbhkmbqpnw3bt" path="res://UICOPY/scenes/menus/options_menu/audio/audio_control_container.gd" id="2_8gim0"]
+[ext_resource type="Script" uid="uid://bwugqn2cjr41e" path="res://addons/maaacks_menus_template/base/nodes/menus/options_menu/audio/audio_options_menu.gd" id="2_c5ked"]
 [ext_resource type="PackedScene" uid="uid://ddg87ox8s8gae" path="res://UICOPY/scenes/menus/options_menu/audio/audio_input_option_control.tscn" id="2_oh45s"]
+[ext_resource type="PackedScene" uid="uid://cl416gdb1fgwr" path="res://addons/maaacks_menus_template/base/nodes/menus/options_menu/option_control/slider_option_control.tscn" id="3_u8b5r"]
+[ext_resource type="Script" uid="uid://1nf36h0gms3q" path="res://addons/maaacks_menus_template/base/nodes/utilities/capture_focus.gd" id="4_xhai8"]
+[ext_resource type="PackedScene" uid="uid://bsxh6v7j0257h" path="res://addons/maaacks_menus_template/base/nodes/menus/options_menu/option_control/toggle_option_control.tscn" id="6_xh1sm"]
 
-[node name="Audio" unique_id=651805888 instance=ExtResource("1_788kv")]
+[node name="Audio" type="MarginContainer" unique_id=651805888]
+custom_minimum_size = Vector2(305, 0)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_k3wqr")
+theme_override_constants/margin_top = 24
+theme_override_constants/margin_bottom = 24
+script = ExtResource("2_c5ked")
+audio_control_scene = ExtResource("3_u8b5r")
 
-[node name="VBoxContainer" parent="." index="0" unique_id=1265848630]
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1265848630]
+custom_minimum_size = Vector2(750, 0)
+layout_mode = 2
+size_flags_horizontal = 4
 theme_override_constants/separation = 15
+alignment = 1
+script = ExtResource("4_xhai8")
+search_depth = 3
 
-[node name="AudioControlContainer" parent="VBoxContainer" index="0" unique_id=2086522930]
+[node name="AudioControlContainer" type="VBoxContainer" parent="VBoxContainer" unique_id=2086522930]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_constants/separation = 8
 script = ExtResource("2_8gim0")
 
-[node name="AudioInputOptionControl" parent="VBoxContainer" index="2" unique_id=774781052 instance=ExtResource("2_oh45s")]
+[node name="MuteControl" parent="VBoxContainer" unique_id=372694560 instance=ExtResource("6_xh1sm")]
+unique_name_in_owner = true
 layout_mode = 2
+option_name = "Mute"
+option_section = 2
+key = "Mute"
+section = "AudioSettings"
+
+[node name="AudioInputOptionControl" parent="VBoxContainer" unique_id=774781052 instance=ExtResource("2_oh45s")]
+visible = true
+layout_mode = 2
+
+[connection signal="setting_changed" from="VBoxContainer/MuteControl" to="." method="_on_mute_control_setting_changed"]

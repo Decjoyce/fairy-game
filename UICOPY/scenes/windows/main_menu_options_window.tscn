@@ -1,38 +1,102 @@
 [gd_scene format=3 uid="uid://dpic53cok00p4"]
 
-[ext_resource type="PackedScene" uid="uid://crndfbb22ri4s" path="res://addons/maaacks_menus_template/base/nodes/windows/overlaid_window_scene_container.tscn" id="1_qodjs"]
+[ext_resource type="Script" uid="uid://c6pmyo50c1tqy" path="res://addons/maaacks_menus_template/base/nodes/windows/overlaid_window_scene_container.gd" id="2_dwrxv"]
 [ext_resource type="PackedScene" uid="uid://wyg20wvsg5p1" path="res://UICOPY/scenes/menus/options_menu/master_options_menu_with_tabs.tscn" id="2_ffnov"]
 [ext_resource type="Theme" uid="uid://4rqtecgji27t" path="res://scenes/_levels/menus/main_menu/Main_Menu_UI_NEW/UI_themes/customised_brush_theme.tres" id="2_t8l3r"]
+[ext_resource type="Script" uid="uid://1nf36h0gms3q" path="res://addons/maaacks_menus_template/base/nodes/utilities/capture_focus.gd" id="4_4fkkm"]
 
-[node name="MainMenuOptionsOverlaidWindow" unique_id=1787637973 instance=ExtResource("1_qodjs")]
+[node name="MainMenuOptionsOverlaidWindow" type="PanelContainer" unique_id=1787637973]
 anchors_preset = 15
-anchor_left = 0.0
-anchor_top = 0.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 0.0
-offset_top = 0.0
-offset_right = 0.0
-offset_bottom = 0.0
+grow_horizontal = 2
+grow_vertical = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 theme = ExtResource("2_t8l3r")
+script = ExtResource("2_dwrxv")
 packed_scene = ExtResource("2_ffnov")
 makes_mouse_visible = false
+exclusive_background_color = Color(0, 0, 0, 0.5)
 update_content = true
 close_button_text = "Back"
 title_visible = false
 
-[node name="TitleMargin" parent="ContentContainer/BoxContainer" parent_id_path=PackedInt32Array(394030069) index="0" unique_id=1262022916]
-visible = false
+[node name="ContentContainer" type="MarginContainer" parent="." unique_id=1755486830]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 16
 
-[node name="DescriptionLabel" parent="ContentContainer/BoxContainer/BodyMargin" parent_id_path=PackedInt32Array(590613964) index="0" unique_id=617407155]
-visible = false
+[node name="BoxContainer" type="BoxContainer" parent="ContentContainer" unique_id=394030069]
+layout_mode = 2
+vertical = true
 
-[node name="MenuButtons" parent="ContentContainer/BoxContainer/MenuButtonsMargin" parent_id_path=PackedInt32Array(1413292752) index="0" unique_id=1371114575]
+[node name="TitleMargin" type="MarginContainer" parent="ContentContainer/BoxContainer" unique_id=1262022916]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+theme_override_constants/margin_left = -14
+theme_override_constants/margin_top = -14
+theme_override_constants/margin_right = -14
+theme_override_constants/margin_bottom = 8
+
+[node name="BoxContainer" type="BoxContainer" parent="ContentContainer/BoxContainer/TitleMargin" unique_id=1788474031]
+layout_mode = 2
+theme_override_constants/separation = 0
+vertical = true
+
+[node name="TitleLabel" type="Label" parent="ContentContainer/BoxContainer/TitleMargin/BoxContainer" unique_id=1049966061]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 16
+text = "Menu"
+horizontal_alignment = 1
+
+[node name="HSeparator" type="HSeparator" parent="ContentContainer/BoxContainer/TitleMargin/BoxContainer" unique_id=33373596]
+layout_mode = 2
+
+[node name="BodyMargin" type="MarginContainer" parent="ContentContainer/BoxContainer" unique_id=590613964]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="DescriptionLabel" type="RichTextLabel" parent="ContentContainer/BoxContainer/BodyMargin" unique_id=617407155]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+bbcode_enabled = true
+fit_content = true
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="SceneContainer" type="MarginContainer" parent="ContentContainer/BoxContainer/BodyMargin" unique_id=1464754606]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="MenuButtonsMargin" type="MarginContainer" parent="ContentContainer/BoxContainer" unique_id=1413292752]
+layout_mode = 2
+theme_override_constants/margin_top = 8
+
+[node name="MenuButtons" type="BoxContainer" parent="ContentContainer/BoxContainer/MenuButtonsMargin" unique_id=1371114575]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(128, 0)
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/separation = 16
+alignment = 1
+vertical = true
+script = ExtResource("4_4fkkm")
 search_depth = 2
 
-[node name="CloseButton" parent="ContentContainer/BoxContainer/MenuButtonsMargin/MenuButtons" index="0" unique_id=314526102]
+[node name="CloseButton" type="Button" parent="ContentContainer/BoxContainer/MenuButtonsMargin/MenuButtons" unique_id=314526102]
+unique_name_in_owner = true
+layout_mode = 2
 size_flags_horizontal = 4
 theme_override_font_sizes/font_size = 40
 text = "Back"
+
+[connection signal="pressed" from="ContentContainer/BoxContainer/MenuButtonsMargin/MenuButtons/CloseButton" to="." method="_on_close_button_pressed"]
