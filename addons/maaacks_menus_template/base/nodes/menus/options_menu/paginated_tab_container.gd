@@ -11,3 +11,6 @@ func _unhandled_input(event : InputEvent) -> void:
 			current_tab = get_tab_count()-1
 		else:
 			current_tab = current_tab-1
+func _ready():
+	for i in range(get_tab_count()):
+		set_tab_title(i,tr(get_tab_title(i)))

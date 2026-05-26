@@ -1516,6 +1516,7 @@ stream = ExtResource("21_xwrb1")
 volume_db = -6.0
 autoplay = false
 max_polyphony = 5
+bus = &"Master"
 
 [node name="BackgroundTextureRect" type="TextureRect" parent="MainMenu" unique_id=1940176448]
 visible = false
@@ -1574,7 +1575,6 @@ size_flags_horizontal = 3
 
 [node name="OpeningSong" type="AudioStreamPlayer3D" parent="MainMenu/OpeningScene" unique_id=451357941]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -16.4)
-bus = &"Music"
 
 [node name="OpeningSFX" type="AudioStreamPlayer3D" parent="MainMenu/OpeningScene" unique_id=33700100]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -16.4)
@@ -1936,7 +1936,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.6, 0)
 stream = ExtResource("21_xwrb1")
 volume_db = 0.001
 max_distance = 100.0
-bus = &"Music"
 
 [node name="SkipUI" type="TextureRect" parent="." unique_id=650050272]
 visible = false

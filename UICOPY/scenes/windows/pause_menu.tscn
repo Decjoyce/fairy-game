@@ -27,7 +27,7 @@ pauses_game = true
 
 [node name="TitleLabel" parent="ContentContainer/BoxContainer/TitleMargin/BoxContainer" parent_id_path=PackedInt32Array(1788474031) index="0" unique_id=1049966061]
 theme_override_font_sizes/font_size = 30
-text = "Paused"
+text = "PAUSED"
 
 [node name="BodyMargin" parent="ContentContainer/BoxContainer" parent_id_path=PackedInt32Array(394030069) index="1" unique_id=590613964]
 visible = false
@@ -36,36 +36,36 @@ visible = false
 size_flags_vertical = 3
 
 [node name="CloseButton" parent="ContentContainer/BoxContainer/MenuButtonsMargin/MenuButtons" parent_id_path=PackedInt32Array(1371114575) index="0" unique_id=314526102]
-text = "Resume"
+text = "RESUME"
 
 [node name="LoadButton" type="Button" parent="ContentContainer/BoxContainer/MenuButtonsMargin/MenuButtons" parent_id_path=PackedInt32Array(1371114575) index="1" unique_id=1371657172]
 layout_mode = 2
-text = "Load Last Save"
+text = "RELOAD_LAST_SAVE"
 
 [node name="RestartButton2" type="Button" parent="ContentContainer/BoxContainer/MenuButtonsMargin/MenuButtons" parent_id_path=PackedInt32Array(1371114575) index="2" unique_id=1092099725]
 layout_mode = 2
-text = "Restart"
+text = "RESTART_LEVEL"
 
 [node name="OptionsButton" type="Button" parent="ContentContainer/BoxContainer/MenuButtonsMargin/MenuButtons" parent_id_path=PackedInt32Array(1371114575) index="3" unique_id=1126383675]
 unique_name_in_owner = true
 layout_mode = 2
-text = "Options"
+text = "OPTIONS"
 
 [node name="MainMenuButton" type="Button" parent="ContentContainer/BoxContainer/MenuButtonsMargin/MenuButtons" parent_id_path=PackedInt32Array(1371114575) index="4" unique_id=928043706]
 unique_name_in_owner = true
 layout_mode = 2
-text = "Main Menu"
+text = "EXIT_TO_MENU"
 
 [node name="ExitButton" type="Button" parent="ContentContainer/BoxContainer/MenuButtonsMargin/MenuButtons" parent_id_path=PackedInt32Array(1371114575) index="5" unique_id=1398257582]
 unique_name_in_owner = true
 layout_mode = 2
-text = "Exit Game"
+text = "EXIT"
 
 [node name="RestartConfirmation" parent="." index="1" unique_id=1405814931 instance=ExtResource("4_qnj2a")]
 unique_name_in_owner = true
 visible = false
 layout_mode = 2
-text = "Restart the game?"
+text = "RESTART_THE_GAME_CONFIRM"
 title = "Confirm Restart"
 
 [node name="MainMenuConfirmation" parent="." index="2" unique_id=1770307648 instance=ExtResource("4_qnj2a")]
@@ -73,13 +73,14 @@ unique_name_in_owner = true
 visible = false
 custom_minimum_size = Vector2(220, 0)
 layout_mode = 2
-text = "Exit to the main menu?"
+text = "EXIT_MAIN_MENU_CONFIRM"
 title = "Confirm Exit"
 
 [node name="ExitConfirmation" parent="." index="3" unique_id=1587469343 instance=ExtResource("4_qnj2a")]
 unique_name_in_owner = true
 visible = false
 layout_mode = 2
+confirm_button_text = "CONFIRM"
 text = "Exit the game?"
 title = "Confirm Exit"
 

@@ -17,7 +17,7 @@ func _add_audio_control(bus_name : String, bus_value : float, bus_iter : int, it
 	%AudioControlContainer.call_deferred("add_child", audio_control)
 	if audio_control is OptionControl:
 		audio_control.option_section = OptionControl.OptionSections.AUDIO
-		audio_control.option_name = bus_name
+		audio_control.option_name = tr(bus_name)
 		audio_control.value = bus_value
 		audio_control.connect("setting_changed", _on_bus_changed.bind(bus_iter))
 		if itep == 0:
