@@ -74,7 +74,7 @@ var cur_graphics: Node3D
 func _ready() -> void:
 	interaction_type = InteractTypes.GRAB_ITEM
 	rb.body_entered.connect(_on_collide)
-	prompt_text = tr("GRAB") + tr(display_name)
+	prompt_text = tr(display_name)
 	starting_pos = global_position
 	if item_type is ItemType_Breakable and !is_broken:
 		var _item_to_spawn: PackedScene = item_type.get_item_to_spawn()

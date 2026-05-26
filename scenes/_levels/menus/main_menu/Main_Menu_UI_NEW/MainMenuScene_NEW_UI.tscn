@@ -1480,6 +1480,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+scale = Vector2(1.001537, 1)
 theme = ExtResource("3_0evim")
 script = ExtResource("3_nbyns")
 anim_player = NodePath("../Camera3D/AnimationPlayer")
@@ -1554,10 +1555,9 @@ grow_vertical = 2
 alignment = 1
 
 [node name="TextureRect" type="TextureRect" parent="MainMenu/OpeningScene/BoxContainer" unique_id=2131277929]
-modulate = Color(1, 1, 1, 0)
+modulate = Color(0, 0, 0, 1)
 layout_mode = 2
 size_flags_horizontal = 3
-texture = ExtResource("17_el2iu")
 
 [node name="BoxContainer2" type="BoxContainer" parent="MainMenu/OpeningScene" unique_id=634655637]
 layout_mode = 1
@@ -1571,7 +1571,6 @@ alignment = 1
 [node name="TextureRect" type="TextureRect" parent="MainMenu/OpeningScene/BoxContainer2" unique_id=1603334626]
 layout_mode = 2
 size_flags_horizontal = 3
-texture = ExtResource("23_maif7")
 
 [node name="OpeningSong" type="AudioStreamPlayer3D" parent="MainMenu/OpeningScene" unique_id=451357941]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -16.4)
@@ -1703,33 +1702,32 @@ lock = true
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_font_sizes/font_size = 40
-text = "Start Game"
+text = "START_GAME"
 
 [node name="LoadMe" type="Button" parent="MainMenu/MenuContainer/MenuButtonsMargin/MenuButtonsContainer/MenuButtonsBoxContainer" unique_id=877840502]
 unique_name_in_owner = true
 layout_mode = 2
-text = "Load Game
-"
+text = "LOAD_GAME"
 
 [node name="Playground" type="Button" parent="MainMenu/MenuContainer/MenuButtonsMargin/MenuButtonsContainer/MenuButtonsBoxContainer" unique_id=984087950]
 unique_name_in_owner = true
 layout_mode = 2
-text = "Dev Room"
+text = "DEV_ROOM"
 
 [node name="OptionsButton" type="Button" parent="MainMenu/MenuContainer/MenuButtonsMargin/MenuButtonsContainer/MenuButtonsBoxContainer" unique_id=1486236076]
 unique_name_in_owner = true
 layout_mode = 2
-text = "Options"
+text = "OPTIONS"
 
 [node name="CreditsButton" type="Button" parent="MainMenu/MenuContainer/MenuButtonsMargin/MenuButtonsContainer/MenuButtonsBoxContainer" unique_id=301223169]
 unique_name_in_owner = true
 layout_mode = 2
-text = "Credits"
+text = "CREDITS"
 
 [node name="ExitButton" type="Button" parent="MainMenu/MenuContainer/MenuButtonsMargin/MenuButtonsContainer/MenuButtonsBoxContainer" unique_id=1750454379]
 unique_name_in_owner = true
 layout_mode = 2
-text = "Exit"
+text = "EXIT"
 
 [node name="BB" type="Button" parent="MainMenu/MenuContainer/MenuButtonsMargin/MenuButtonsContainer/MenuButtonsBoxContainer" unique_id=1500278034]
 unique_name_in_owner = true
@@ -1824,7 +1822,7 @@ offset_top = -53.0
 grow_horizontal = 0
 grow_vertical = 0
 theme_override_font_sizes/font_size = 35
-text = "vBeta.0.9"
+text = "v1.0"
 horizontal_alignment = 2
 script = ExtResource("10_gmba7")
 
