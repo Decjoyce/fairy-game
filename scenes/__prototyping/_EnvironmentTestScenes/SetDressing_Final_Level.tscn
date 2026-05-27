@@ -52,8 +52,10 @@
 [ext_resource type="Material" uid="uid://c6ic70i7jpqeu" path="res://assets/models/cairn/Props/Gate/Gate.tres" id="49_pl4g1"]
 [ext_resource type="Material" uid="uid://jlw3srg0kwwt" path="res://assets/models/cairn/Props/StoneSlab/Stone_Slab.tres" id="50_w1win"]
 [ext_resource type="ArrayMesh" uid="uid://bkkfbe0ou2fkl" path="res://assets/models/cairn/Props/StoneSlab/Stone_Slab.obj" id="51_q727c"]
+[ext_resource type="Texture2D" uid="uid://dkgrwko1jecyt" path="res://assets/ui/flute/notes/cnote_004.png" id="53_pl4g1"]
 [ext_resource type="Script" uid="uid://3ihhc0me4bjf" path="res://scripts/saving/persistent_objs/po_gate.gd" id="53_sx5h4"]
 [ext_resource type="AudioStream" uid="uid://cyo1b0ry2gwgu" path="res://assets/audio/sfx/player/death/Fight, Bodyfall, Asphalt, Concrete 01 SND120897.wav" id="54_uffg5"]
+[ext_resource type="Texture2D" uid="uid://bvh23tmbunj42" path="res://assets/ui/flute/notes/cnote_003.png" id="54_w1win"]
 [ext_resource type="Script" uid="uid://kg11gyciyied" path="res://scripts/audio_value_player.gd" id="55_hmno6"]
 [ext_resource type="AudioStream" uid="uid://bp3lie48u35pl" path="res://assets/audio/sfx/interactions/Rocks, Movement, Stone, Slab, Scrape SND18188.wav" id="56_ta8vn"]
 
@@ -1941,6 +1943,14 @@ metadata/uid = "7fa794c5-42f5-47f7-a435-49f6b2d0e530"
 metadata/lock_uid = true
 metadata/date_generated = "2026-05-06T15:00:03"
 
+[node name="hidden_melodies" type="Node3D" parent="Different_Sections" unique_id=1170215448]
+
+[node name="note_01" type="Sprite3D" parent="Different_Sections/hidden_melodies" unique_id=1917224303]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.965515, 1.0993567, -13.981972)
+pixel_size = 0.0031175
+shaded = true
+texture = ExtResource("4_f3rg8")
+
 [node name="Connections_GridMap" type="GridMap" parent="." unique_id=1193872561]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
 mesh_library = ExtResource("13_6rydq")
@@ -2735,13 +2745,15 @@ visible = false
 
 [node name="Sprite3D" type="Sprite3D" parent="RockGates2/RockGate/gate/Node3D2/MusicNotes" unique_id=1645024303]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.6522665, 0, 9.536743e-07)
+modulate = Color(1, 1, 1, 0.4627451)
 shaded = true
-texture = ExtResource("4_f3rg8")
+texture = ExtResource("53_pl4g1")
 
 [node name="Sprite3D2" type="Sprite3D" parent="RockGates2/RockGate/gate/Node3D2/MusicNotes" unique_id=1851837750]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.7134776, 0, 9.536743e-07)
+modulate = Color(1, 1, 1, 0.4627451)
 shaded = true
-texture = ExtResource("4_f3rg8")
+texture = ExtResource("54_w1win")
 
 [node name="enabler_notes" type="Node" parent="RockGates2/RockGate/gate/Node3D2/MusicNotes" unique_id=2036671567 node_paths=PackedStringArray("linked_node")]
 script = ExtResource("36_ag4il")

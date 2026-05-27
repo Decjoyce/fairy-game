@@ -551,6 +551,18 @@ tracks/0/keys = {
 "update": 0,
 "values": [Color(0, 0, 0, 1)]
 }
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../ColorRect2:color")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 0, 0, 1)]
+}
 
 [sub_resource type="Animation" id="Animation_mrcbo"]
 resource_name = "fade_in"
@@ -567,11 +579,52 @@ tracks/0/keys = {
 "update": 0,
 "values": [Color(0, 0, 0, 1), Color(0, 0, 0, 0)]
 }
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../ColorRect2:color")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_e26fk"]
+resource_name = "fade_out"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = false
+tracks/0/path = NodePath(".:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 0), Color(0.6666667, 0.60784316, 0.5686275, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../ColorRect2:color")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 0), Color(0.6666667, 0.60784316, 0.5686275, 1)]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_e26fk"]
 _data = {
 &"RESET": SubResource("Animation_r8yq5"),
-&"fade_in": SubResource("Animation_mrcbo")
+&"fade_in": SubResource("Animation_mrcbo"),
+&"fade_out": SubResource("Animation_e26fk")
 }
 
 [node name="Thanksforplaying" type="Node3D" unique_id=40124892 groups=["ABYSSRETURNER", "MrLevel"]]
@@ -2595,7 +2648,7 @@ col = NodePath("../Area3D/CollisionShape3D")
 transform = Transform3D(-4.371139e-08, -0.23344538, -0.9723699, 0, 0.9723699, -0.23344538, 1, -1.02042215e-08, -4.250364e-08, 58.458, -0.973, -19)
 current = true
 
-[node name="Control" type="Control" parent="." unique_id=1952943978]
+[node name="Control" type="Control" parent="." unique_id=1952943978 node_paths=PackedStringArray("ap")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -2604,6 +2657,7 @@ grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("53_i4n8d")
 script = ExtResource("47_r8yq5")
+ap = NodePath("ColorRect/AnimationPlayer")
 
 [node name="ColorRect" type="ColorRect" parent="Control" unique_id=2052990151]
 layout_mode = 1
@@ -2635,10 +2689,21 @@ grow_vertical = 0
 theme_override_constants/outline_size = 26
 theme_override_constants/align_to_largest_stylebox = 17
 theme_override_font_sizes/font_size = 75
-text = "Return to Menu"
+text = "Begin"
+
+[node name="ColorRect2" type="ColorRect" parent="Control" unique_id=251992175]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 1)
 
 [node name="Label3D" type="Label3D" parent="." unique_id=63320731]
 transform = Transform3D(-4.222196e-08, -0.25881904, -0.9659258, -1.131334e-08, 0.9659258, -0.25881904, 1, 0, -4.371139e-08, 68.292, 5.006, -19)
+visible = false
 layers = 32768
 shaded = true
 double_sided = false

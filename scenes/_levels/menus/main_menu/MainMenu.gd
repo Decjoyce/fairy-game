@@ -40,6 +40,8 @@ func skip_stuff():
 			animation_state_machine.travel("Intro")
 		elif Input.is_action_just_released("dec_pause"):
 			$SkipUI/hide.start()
+	else:
+		SkipUI.visible = false
 	
 	#if Intro1:  #Is in intro?
 		#if Input.is_anything_pressed(): #first press
