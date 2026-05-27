@@ -1,0 +1,82 @@
+[gd_scene format=3 uid="uid://bt35oiny8avw8"]
+
+[ext_resource type="Script" uid="uid://s5cfdf85lm5g" path="res://scenes/interactions/interactables/items/grabbable_item.gd" id="1_n8q5a"]
+[ext_resource type="Script" uid="uid://cqhq7vrwiw3m6" path="res://scenes/interactions/interactables/items/item_types/item_type.gd" id="2_ykgar"]
+[ext_resource type="Texture2D" uid="uid://bsduc3iepom6j" path="res://assets/__not_ours_dontship/n64_sphere_sprite.png" id="3_bhnpf"]
+[ext_resource type="AudioStream" uid="uid://bg3t028pgxv30" path="res://assets/audio/sfx/items/ball/ball_hit_randomizer.tres" id="4_gd6n3"]
+[ext_resource type="Script" uid="uid://bhf6r6nw14krj" path="res://scripts/saving/persistent_objs/po_item.gd" id="5_nfx5a"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_a71ib"]
+bounce = 1.0
+
+[sub_resource type="Resource" id="Resource_po0fx"]
+script = ExtResource("2_ykgar")
+item_type = null
+metadata/_custom_type_script = "uid://cqhq7vrwiw3m6"
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_llc7q"]
+size = Vector3(0.5, 0.5, 0.5)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_234jp"]
+size = Vector3(0.4, 0.4, 0.4)
+
+[sub_resource type="SphereMesh" id="SphereMesh_234jp"]
+radius = 0.25
+height = 0.5
+
+[node name="Plushy" type="RigidBody3D" unique_id=1345304804 node_paths=PackedStringArray("idle_graphics", "grabbed_graphics")]
+collision_layer = 2
+axis_lock_angular_x = true
+axis_lock_angular_z = true
+mass = 0.151
+physics_material_override = SubResource("PhysicsMaterial_a71ib")
+gravity_scale = 1.477
+script = ExtResource("1_n8q5a")
+item_type = SubResource("Resource_po0fx")
+display_name = "Mr. Ballybog"
+idle_graphics = NodePath("_g_idle")
+grabbed_graphics = NodePath("_g_grabbed")
+
+[node name="Area3D" type="Area3D" parent="." unique_id=1213660990]
+collision_layer = 2
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="Area3D" unique_id=1004624062]
+shape = SubResource("BoxShape3D_llc7q")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1492495846]
+shape = SubResource("BoxShape3D_234jp")
+debug_color = Color(0.8442249, 0.37985525, 5.7756904e-07, 0.41960785)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=573429152]
+visible = false
+mesh = SubResource("SphereMesh_234jp")
+
+[node name="_g_idle" type="Sprite3D" parent="." unique_id=1574294457]
+modulate = Color(18.892157, 0, 18.892157, 1)
+pixel_size = 0.0064
+billboard = 1
+texture_filter = 0
+texture = ExtResource("3_bhnpf")
+
+[node name="_g_grabbed" type="Sprite3D" parent="." unique_id=374449956]
+modulate = Color(18.892157, 0, 18.892157, 1)
+pixel_size = 0.0064
+billboard = 1
+texture_filter = 0
+render_priority = 1
+texture = ExtResource("3_bhnpf")
+
+[node name="AudioPlayer" type="AudioStreamPlayer3D" parent="." unique_id=849548537]
+stream = ExtResource("4_gd6n3")
+bus = &"items"
+
+[node name="RayCast3D" type="RayCast3D" parent="." unique_id=955759660]
+target_position = Vector3(0, -0.4, 0)
+hit_from_inside = true
+
+[node name="PO_Item" type="Node" parent="." unique_id=1114825548 groups=["PO"]]
+script = ExtResource("5_nfx5a")
+metadata/_custom_type_script = "uid://bhf6r6nw14krj"
+
+[node name="Audio_Grabbed" type="AudioStreamPlayer3D" parent="." unique_id=1670693475]
+max_distance = 1.0

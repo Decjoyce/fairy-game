@@ -1,6 +1,9 @@
 [gd_scene format=4 uid="uid://b6yxusckbk4fk"]
 
 [ext_resource type="Script" uid="uid://djy3mmt6h4b4v" path="res://scenes/interactions/_special/statue_quest.gd" id="3_hdmdk"]
+[ext_resource type="Material" uid="uid://bjys0duvxoslc" path="res://assets/shaders/statue/m_statue_inserted_base.tres" id="5_7c68x"]
+[ext_resource type="Material" uid="uid://coujkdod457km" path="res://assets/shaders/statue/m_statue_inserted_head.tres" id="5_b5j2e"]
+[ext_resource type="Material" uid="uid://cudyvjixv85p1" path="res://assets/shaders/statue/m_statue_inserted.tres" id="5_m36xt"]
 [ext_resource type="AudioStream" uid="uid://my7cva6gy4b0" path="res://assets/audio/music/music_statue.wav" id="7_m36xt"]
 [ext_resource type="Script" uid="uid://dsp7b0nc36qiw" path="res://scenes/interactions/_special/statue_receiver.gd" id="7_w1v47"]
 [ext_resource type="Material" uid="uid://bmeftoetp5u32" path="res://assets/models/statue/statue_texture.tres" id="10_nfmnu"]
@@ -55,12 +58,6 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_dcn1m")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_13x82"]
-transparency = 1
-albedo_color = Color(1, 1, 1, 0.011764706)
-emission_enabled = true
-emission = Color(18.892157, 4.5246453, 0, 1)
-
 [sub_resource type="ArrayMesh" id="ArrayMesh_5jyvj"]
 _surfaces = [{
 "aabb": AABB(-0.26015005, 4.447202, -0.22187725, 0.22698088, 0.43331337, 0.23671386),
@@ -95,12 +92,6 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_5jyvj")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hcu48"]
-transparency = 1
-albedo_color = Color(1, 1, 1, 0.011764706)
-emission_enabled = true
-emission = Color(18.892157, 4.5246453, 0, 1)
-
 [sub_resource type="ArrayMesh" id="ArrayMesh_htjbh"]
 _surfaces = [{
 "aabb": AABB(-1.3534772, -0.021049561, -1.2218692, 0.71055734, 0.8001525, 0.8898786),
@@ -134,12 +125,6 @@ _surfaces = [{
 }]
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_htjbh")
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_y3qa0"]
-transparency = 1
-albedo_color = Color(1, 1, 1, 0.011764706)
-emission_enabled = true
-emission = Color(18.892157, 4.5246453, 0, 1)
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_8ces4"]
 _surfaces = [{
@@ -240,14 +225,14 @@ light_energy = 1.605
 transform = Transform3D(0.92963684, 0, 0.36847714, 0, 1, 0, -0.36847714, 0, 0.92963684, -0.21067953, 0.0042261775, 0.0124226855)
 visible = false
 material_override = ExtResource("10_nfmnu")
-material_overlay = SubResource("StandardMaterial3D_13x82")
+material_overlay = ExtResource("5_b5j2e")
 mesh = SubResource("ArrayMesh_3klxh")
 skeleton = NodePath("")
 
 [node name="BasePiece" type="MeshInstance3D" parent="Statue_States/Statue2" unique_id=810577167]
 visible = false
 material_override = ExtResource("10_nfmnu")
-material_overlay = SubResource("StandardMaterial3D_hcu48")
+material_overlay = ExtResource("5_7c68x")
 mesh = SubResource("ArrayMesh_4hvtk")
 skeleton = NodePath("")
 
@@ -255,7 +240,7 @@ skeleton = NodePath("")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.67202055, 0.67503846, 0.7519529)
 visible = false
 material_override = ExtResource("10_nfmnu")
-material_overlay = SubResource("StandardMaterial3D_y3qa0")
+material_overlay = ExtResource("5_m36xt")
 mesh = SubResource("ArrayMesh_hdr1y")
 skeleton = NodePath("")
 

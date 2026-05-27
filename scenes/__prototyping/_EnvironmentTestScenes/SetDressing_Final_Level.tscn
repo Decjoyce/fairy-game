@@ -58,6 +58,8 @@
 [ext_resource type="Texture2D" uid="uid://bvh23tmbunj42" path="res://assets/ui/flute/notes/cnote_003.png" id="54_w1win"]
 [ext_resource type="Script" uid="uid://kg11gyciyied" path="res://scripts/audio_value_player.gd" id="55_hmno6"]
 [ext_resource type="AudioStream" uid="uid://bp3lie48u35pl" path="res://assets/audio/sfx/interactions/Rocks, Movement, Stone, Slab, Scrape SND18188.wav" id="56_ta8vn"]
+[ext_resource type="PackedScene" uid="uid://dpm2ettl06ilt" path="res://scenes/interactions/interactables/items/all_items/instruments/item_flute.tscn" id="59_q727c"]
+[ext_resource type="PackedScene" uid="uid://bt35oiny8avw8" path="res://scenes/interactions/interactables/items/all_items/misc/item_plushy.tscn" id="60_sx5h4"]
 
 [sub_resource type="Curve" id="Curve_ucuax"]
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.6569343, 0.47191018), -1.1446267, -1.1446267, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
@@ -219,13 +221,13 @@ shadow_mesh = SubResource("ArrayMesh_42tyc")
 radius = 0.1
 height = 4.05
 
-[sub_resource type="Gradient" id="Gradient_fv00s"]
+[sub_resource type="Gradient" id="Gradient_sx5h4"]
 interpolation_mode = 2
 offsets = PackedFloat32Array(0.3402556, 0.53355706, 1)
 colors = PackedColorArray(0.17184411, 0.11207495, 0.06100855, 0, 0, 1.9492192, 2.0330758, 0.69000006, 0, 0, 0, 0)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_l6x3k"]
-gradient = SubResource("Gradient_fv00s")
+gradient = SubResource("Gradient_sx5h4")
 fill = 1
 fill_from = Vector2(0.5, 0.5)
 fill_to = Vector2(0.94, 0.43)
@@ -890,6 +892,7 @@ draw_pass_1 = SubResource("PlaneMesh_y7mrb")
 
 [node name="Statue_Section" parent="Different_Sections" unique_id=1516115227 node_paths=PackedStringArray("instantiate_point") instance=ExtResource("3_b3lts")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 65, -2, -19)
+visible = false
 instantiate_point = NodePath("../BabyInstantiatePoint")
 baby_scene = ExtResource("32_a8cig")
 
@@ -2890,6 +2893,15 @@ disabled = true
 
 [node name="CollisionEnabler_Disabler" parent="RockGates2/Triggers/bridge_trig_shortcut" unique_id=1292044082 node_paths=PackedStringArray("col") instance=ExtResource("24_03ler")]
 col = NodePath("../Area3D/CollisionShape3D")
+
+[node name="Flute" parent="." unique_id=130412758 instance=ExtResource("59_q727c")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -32.165184, -1.4, -15.137341)
+metadata/uid = "80278306-7f49-4f2b-a911-77156572af7f"
+metadata/lock_uid = true
+metadata/date_generated = "2026-05-27T21:37:42"
+
+[node name="Plushy" parent="." unique_id=1345304804 instance=ExtResource("60_sx5h4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -50.980366, -0.708, -18)
 
 [connection signal="on_enter_lockdown" from="Different_Sections/BallyBog_Section/Ballybog_Scene/Observer_End" to="Different_Sections/BallyBog_Section/Ballybog_Scene/Observer_End/No_Acess_Gate" method="close_gate"]
 [connection signal="on_enter_lockdown" from="Different_Sections/BallyBog_Section/Ballybog_Scene/Observer_End" to="Different_Sections/BallyBog_Section/Ballybog_Scene/Observer_End/No_Acess_Gate/StaticBody3D/CollisionEnabler_Disabler" method="enable_obj"]

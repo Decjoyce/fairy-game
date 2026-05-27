@@ -48,7 +48,7 @@ func on_note_heard(note: int, instrument: Instrument) -> void:
 func correct_note() -> void:
 	prints("c_1", cur_note)
 	cur_note += 1
-	if cur_note >= cur_sequence.size() :
+	if cur_note >= cur_sequence.size():
 		print("c_2")
 		current_melody += 1
 		if current_melody >= melodies.size(): 
