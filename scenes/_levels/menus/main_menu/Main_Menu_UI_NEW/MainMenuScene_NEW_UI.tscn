@@ -634,7 +634,7 @@ tracks/8/path = NodePath("OpeningScene/BoxContainer3/Logos:texture")
 tracks/8/interp = 1
 tracks/8/loop_wrap = true
 tracks/8/keys = {
-"times": PackedFloat32Array(0, 4.1666665),
+"times": PackedFloat32Array(0.033333335, 4.1666665),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [ExtResource("26_ca2qk"), ExtResource("25_kimvy")]
@@ -798,7 +798,7 @@ tracks/8/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Color(1, 1, 1, 1)]
+"values": [Color(0.6666667, 0.60784316, 0.5686275, 1)]
 }
 tracks/9/type = "value"
 tracks/9/imported = false
@@ -834,7 +834,7 @@ tracks/11/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Color(1, 1, 1, 1)]
+"values": [Color(1, 1, 1, 0)]
 }
 tracks/12/type = "value"
 tracks/12/imported = false
@@ -923,8 +923,6 @@ advance_condition = &"intro_done"
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_63dxc"]
 
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_kmgne"]
-
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_jrgvd"]
 advance_mode = 2
 
@@ -943,8 +941,8 @@ states/OpenSubMenu/position = Vector2(734, 123)
 states/Opening_cutscene/node = SubResource("AnimationNodeAnimation_8kk3j")
 states/Opening_cutscene/position = Vector2(78.523, 131.77888)
 states/Start/position = Vector2(-94.799995, 115.799995)
-transitions = ["Intro", "OpenMainMenu", SubResource("11"), "OpenMainMenu", "OpenSubMenu", SubResource("14"), "OpenSubMenu", "OpenMainMenu", SubResource("AnimationNodeStateMachineTransition_63dxc"), "OpenMainMenu", "IntroB", SubResource("AnimationNodeStateMachineTransition_kmgne"), "Start", "Opening_cutscene", SubResource("AnimationNodeStateMachineTransition_jrgvd"), "Opening_cutscene", "Intro", SubResource("AnimationNodeStateMachineTransition_wsv17")]
-graph_offset = Vector2(-40.276993, 38)
+transitions = ["Intro", "OpenMainMenu", SubResource("11"), "OpenMainMenu", "OpenSubMenu", SubResource("14"), "OpenSubMenu", "OpenMainMenu", SubResource("AnimationNodeStateMachineTransition_63dxc"), "Start", "Opening_cutscene", SubResource("AnimationNodeStateMachineTransition_jrgvd"), "Opening_cutscene", "Intro", SubResource("AnimationNodeStateMachineTransition_wsv17")]
+graph_offset = Vector2(-123.27698, 66)
 
 [sub_resource type="CameraAttributesPhysical" id="CameraAttributesPhysical_lrn60"]
 
@@ -1550,6 +1548,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 3
+color = Color(0.6666667, 0.60784316, 0.5686275, 1)
 
 [node name="BoxContainer" type="BoxContainer" parent="MainMenu/OpeningScene" unique_id=404333305]
 layout_mode = 1
@@ -1561,7 +1560,7 @@ grow_vertical = 2
 alignment = 1
 
 [node name="TextureRect" type="TextureRect" parent="MainMenu/OpeningScene/BoxContainer" unique_id=2131277929]
-modulate = Color(0.6666667, 0.60784316, 0.5686275, 0)
+modulate = Color(0, 0, 0, 1)
 layout_mode = 2
 size_flags_horizontal = 3
 
@@ -1602,6 +1601,7 @@ grow_vertical = 2
 alignment = 1
 
 [node name="Logos" type="TextureRect" parent="MainMenu/OpeningScene/BoxContainer3" unique_id=38404484]
+modulate = Color(1, 1, 1, 0)
 layout_mode = 2
 size_flags_horizontal = 3
 texture = ExtResource("25_kimvy")
