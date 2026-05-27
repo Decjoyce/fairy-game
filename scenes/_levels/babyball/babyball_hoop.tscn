@@ -1,0 +1,61 @@
+[gd_scene format=3 uid="uid://da8jmxsuq7td1"]
+
+[ext_resource type="Script" uid="uid://4nk4hhg5x7el" path="res://scenes/interactions/_triggers/item_trigger/item_trigger.gd" id="1_gmsbo"]
+[ext_resource type="Material" uid="uid://bmx5kbkw1qnpa" path="res://assets/_dev/materials/_dev_m_grey.tres" id="2_65yqu"]
+[ext_resource type="Material" uid="uid://cfsra4dny0m23" path="res://assets/_dev/materials/_dev_m_white.tres" id="3_8k8xl"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_1v0qu"]
+resource_local_to_scene = true
+radius = 0.2
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_i8eml"]
+size = Vector3(0.15, 1.9, 0.15)
+
+[sub_resource type="BoxMesh" id="BoxMesh_i8eml"]
+material = ExtResource("2_65yqu")
+size = Vector3(0.15, 1.9, 0.15)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_aqp1t"]
+size = Vector3(1, 0.6, 0.1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_aqp1t"]
+material = ExtResource("3_8k8xl")
+size = Vector3(1, 0.6, 0.1)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_s85sr"]
+top_radius = 0.2
+bottom_radius = 0.15
+height = 0.3
+
+[node name="BabyballHoop" type="Area3D" unique_id=485308689]
+collision_mask = 3
+monitorable = false
+script = ExtResource("1_gmsbo")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=117713165]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.7, 0.3)
+shape = SubResource("SphereShape3D_1v0qu")
+
+[node name="Graphics" type="StaticBody3D" parent="." unique_id=228627139]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Graphics" unique_id=99235536]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.95, 0)
+shape = SubResource("BoxShape3D_i8eml")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Graphics/CollisionShape3D" unique_id=477779446]
+mesh = SubResource("BoxMesh_i8eml")
+skeleton = NodePath("../..")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="Graphics" unique_id=2090457189]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.024999991, 2.0999997, 0.125)
+shape = SubResource("BoxShape3D_aqp1t")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Graphics/CollisionShape3D2" unique_id=856417037]
+mesh = SubResource("BoxMesh_aqp1t")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Graphics" unique_id=82971604]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.6999999, 0.3)
+mesh = SubResource("CylinderMesh_s85sr")
+
+[connection signal="body_entered" from="." to="." method="_on_item_entered"]
+[connection signal="body_exited" from="." to="." method="_on_item_exited"]

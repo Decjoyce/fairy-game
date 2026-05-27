@@ -1,7 +1,7 @@
 class_name HandState_Grab_Item
 extends HandState
 
-var _testing_throw_alt: bool = false
+var testing_throw_alt: bool = false
 # ↑ A/B TESTING Stuff ↑
 # -
 
@@ -24,7 +24,7 @@ func update(_delta: float) -> void:
 	
 	set_grab_position()
 	
-	if Input.is_action_just_pressed("testing_altthrow"): _testing_throw_alt = !_testing_throw_alt
+	if Input.is_action_just_pressed("testing_altthrow"): testing_throw_alt = !testing_throw_alt
 	
 	hand_controller.joystick_movement(_delta)
 	if Input.is_action_just_pressed("change_hand_speed_" + hand_controller.stringed_hand_type): hand_controller.change_hand_speed()
@@ -290,7 +290,7 @@ func end_charge() -> void:
 	hand_controller.anim_override_current_animation("a_hand_grab_item_charge", true)
 	if charge_amount < 0.1 or is_against_wall: grabbed_item.end_interact()
 	else: 
-		if !_testing_throw_alt:
+		if !testing_throw_alt:
 			grabbed_item.throw(charge_amount)
 			
 			hand_controller.audio_throw.stream = player_interact.throw_clips[1] #AUDIO

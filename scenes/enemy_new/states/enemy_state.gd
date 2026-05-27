@@ -6,6 +6,7 @@ signal finished(next_state_path: String, data: Dictionary)
 const IDLE = "IDLE"
 const WANDER = "WANDER"
 const PATROL = "PATROL"
+const BABYBALL = "BABYBALL"
 const INVESTIGATE = "INVESTIGATE"
 const CHASE = "CHASE"
 const FIGHT = "FIGHT"

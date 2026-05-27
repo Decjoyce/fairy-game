@@ -1,0 +1,265 @@
+[gd_scene format=3 uid="uid://dbe8ikxd32i22"]
+
+[ext_resource type="PackedScene" uid="uid://d2pk1l2expq4i" path="res://scenes/_levels/_palettes/__dev/source/open/dev_open_middle_a.tscn" id="1_4j64p"]
+[ext_resource type="PackedScene" uid="uid://cyc4m8e7nw3lx" path="res://scenes/_player/_player_babyball.tscn" id="2_lk4md"]
+[ext_resource type="PackedScene" uid="uid://brxr85hbqpapm" path="res://scenes/interactions/interactables/items/all_items/breakables/item_baby.tscn" id="3_s5kbi"]
+[ext_resource type="PackedScene" uid="uid://da8jmxsuq7td1" path="res://scenes/_levels/babyball/babyball_hoop.tscn" id="4_oxheg"]
+[ext_resource type="PackedScene" uid="uid://4v23jnigirqc" path="res://scenes/interactions/_receivers/_logic/counter/Counter.tscn" id="5_ucbyt"]
+[ext_resource type="Script" uid="uid://dxxyu0p8vmsmh" path="res://scripts/label_var_displayer.gd" id="6_d0oun"]
+[ext_resource type="PackedScene" uid="uid://d3x1l1brjvyre" path="res://scenes/item_catcher/item_catcher.tscn" id="7_7jl2g"]
+[ext_resource type="Script" uid="uid://dpj75tckiwmsm" path="res://scenes/interactions/_receivers/wip__item_mover/itm_mover.gd" id="8_ou1m8"]
+[ext_resource type="Script" uid="uid://ubfk2a80dhfp" path="res://addons/grid_map_pathfinding/grid_map_pathfinding.gd" id="9_kmfd7"]
+[ext_resource type="MeshLibrary" uid="uid://br861hnjhp6ry" path="res://scenes/_levels/_palettes/gmpf_meshlib.tres" id="9_vrbek"]
+[ext_resource type="PackedScene" uid="uid://dk0c8okd5obiv" path="res://scenes/_levels/babyball/enemy_ballybog_babyball.tscn" id="11_lk4md"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ou1m8"]
+size = Vector3(100, 1, 100)
+
+[node name="BabyBall" type="Node3D" unique_id=517390624]
+
+[node name="_env" type="Node3D" parent="." unique_id=1423295234]
+
+[node name="_dev_open_middle_a" parent="_env" unique_id=717903972 instance=ExtResource("1_4j64p")]
+
+[node name="_dev_open_middle_a2" parent="_env" unique_id=860473322 instance=ExtResource("1_4j64p")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2)
+
+[node name="_dev_open_middle_a3" parent="_env" unique_id=1848470653 instance=ExtResource("1_4j64p")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -4)
+
+[node name="_dev_open_middle_a4" parent="_env" unique_id=423980498 instance=ExtResource("1_4j64p")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -6)
+
+[node name="_dev_open_middle_a5" parent="_env" unique_id=1031754692 instance=ExtResource("1_4j64p")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -8)
+
+[node name="_dev_open_middle_a6" parent="_env" unique_id=709461449 instance=ExtResource("1_4j64p")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 0)
+
+[node name="_dev_open_middle_a7" parent="_env" unique_id=1597188367 instance=ExtResource("1_4j64p")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, -2)
+
+[node name="_dev_open_middle_a8" parent="_env" unique_id=2057084608 instance=ExtResource("1_4j64p")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, -4)
+
+[node name="_dev_open_middle_a9" parent="_env" unique_id=743105492 instance=ExtResource("1_4j64p")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, -6)
+
+[node name="_dev_open_middle_a10" parent="_env" unique_id=1143820649 instance=ExtResource("1_4j64p")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, -8)
+
+[node name="_dev_open_middle_a11" parent="_env" unique_id=1268325767 instance=ExtResource("1_4j64p")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 0)
+
+[node name="_dev_open_middle_a12" parent="_env" unique_id=719685885 instance=ExtResource("1_4j64p")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, -2)
+
+[node name="_dev_open_middle_a13" parent="_env" unique_id=997787983 instance=ExtResource("1_4j64p")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, -4)
+
+[node name="_dev_open_middle_a14" parent="_env" unique_id=479770319 instance=ExtResource("1_4j64p")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, -6)
+
+[node name="_dev_open_middle_a15" parent="_env" unique_id=690173670 instance=ExtResource("1_4j64p")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, -8)
+
+[node name="_dev_open_middle_a21" parent="_env" unique_id=468874096 instance=ExtResource("1_4j64p")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, 0)
+
+[node name="_dev_open_middle_a22" parent="_env" unique_id=1243002828 instance=ExtResource("1_4j64p")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, -2)
+
+[node name="_dev_open_middle_a23" parent="_env" unique_id=757402090 instance=ExtResource("1_4j64p")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, -4)
+
+[node name="_dev_open_middle_a24" parent="_env" unique_id=1137467420 instance=ExtResource("1_4j64p")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, -6)
+
+[node name="_dev_open_middle_a25" parent="_env" unique_id=661616089 instance=ExtResource("1_4j64p")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, -8)
+
+[node name="_dev_open_middle_a26" parent="_env" unique_id=626904289 instance=ExtResource("1_4j64p")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, 0)
+
+[node name="_dev_open_middle_a31" parent="_env" unique_id=384385225 instance=ExtResource("1_4j64p")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2)
+
+[node name="_dev_open_middle_a32" parent="_env" unique_id=948647611 instance=ExtResource("1_4j64p")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 2)
+
+[node name="_dev_open_middle_a33" parent="_env" unique_id=1978976134 instance=ExtResource("1_4j64p")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 2)
+
+[node name="_dev_open_middle_a34" parent="_env" unique_id=1480692279 instance=ExtResource("1_4j64p")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, 2)
+
+[node name="_dev_open_middle_a35" parent="_env" unique_id=325716564 instance=ExtResource("1_4j64p")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, 2)
+
+[node name="_dev_open_middle_a36" parent="_env" unique_id=1045298177 instance=ExtResource("1_4j64p")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 4)
+
+[node name="_dev_open_middle_a37" parent="_env" unique_id=108460286 instance=ExtResource("1_4j64p")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 4)
+
+[node name="_dev_open_middle_a38" parent="_env" unique_id=1467755078 instance=ExtResource("1_4j64p")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 4)
+
+[node name="_dev_open_middle_a39" parent="_env" unique_id=234615803 instance=ExtResource("1_4j64p")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, 4)
+
+[node name="_dev_open_middle_a40" parent="_env" unique_id=430593610 instance=ExtResource("1_4j64p")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, 4)
+
+[node name="_dev_open_middle_a41" parent="_env" unique_id=845697405 instance=ExtResource("1_4j64p")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 6)
+
+[node name="_dev_open_middle_a42" parent="_env" unique_id=571034087 instance=ExtResource("1_4j64p")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 6)
+
+[node name="_dev_open_middle_a43" parent="_env" unique_id=1873749850 instance=ExtResource("1_4j64p")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 6)
+
+[node name="_dev_open_middle_a44" parent="_env" unique_id=959526252 instance=ExtResource("1_4j64p")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, 6)
+
+[node name="_dev_open_middle_a45" parent="_env" unique_id=305450892 instance=ExtResource("1_4j64p")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, 6)
+
+[node name="_dev_open_middle_a46" parent="_env" unique_id=1360567915 instance=ExtResource("1_4j64p")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 8)
+
+[node name="_dev_open_middle_a47" parent="_env" unique_id=1593738024 instance=ExtResource("1_4j64p")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 8)
+
+[node name="_dev_open_middle_a48" parent="_env" unique_id=176175767 instance=ExtResource("1_4j64p")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 8)
+
+[node name="_dev_open_middle_a49" parent="_env" unique_id=1220999400 instance=ExtResource("1_4j64p")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, 8)
+
+[node name="_dev_open_middle_a50" parent="_env" unique_id=166921060 instance=ExtResource("1_4j64p")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, 8)
+
+[node name="_dev_open_middle_a27" parent="_env" unique_id=89858105 instance=ExtResource("1_4j64p")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, -2)
+
+[node name="_dev_open_middle_a28" parent="_env" unique_id=1580875290 instance=ExtResource("1_4j64p")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, -4)
+
+[node name="_dev_open_middle_a29" parent="_env" unique_id=2032533079 instance=ExtResource("1_4j64p")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, -6)
+
+[node name="_dev_open_middle_a30" parent="_env" unique_id=1200659058 instance=ExtResource("1_4j64p")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, -8)
+
+[node name="_dev_open_middle_a16" parent="_env" unique_id=513552358 instance=ExtResource("1_4j64p")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 0)
+
+[node name="_dev_open_middle_a17" parent="_env" unique_id=1284316679 instance=ExtResource("1_4j64p")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, -2)
+
+[node name="_dev_open_middle_a18" parent="_env" unique_id=2036902325 instance=ExtResource("1_4j64p")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, -4)
+
+[node name="_dev_open_middle_a19" parent="_env" unique_id=1051156899 instance=ExtResource("1_4j64p")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, -6)
+
+[node name="_dev_open_middle_a20" parent="_env" unique_id=1477792693 instance=ExtResource("1_4j64p")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, -8)
+
+[node name="floor" type="Node3D" parent="_env" unique_id=1264038648]
+
+[node name="player_test2" parent="." unique_id=725727541 instance=ExtResource("2_lk4md")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 3)
+babyball_mode = true
+
+[node name="BabyDude" parent="." unique_id=1376443271 groups=["ABYSSRETURNER"] instance=ExtResource("3_s5kbi")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+keywords = "BABYBALL;"
+
+[node name="BBHoop" parent="." unique_id=485308689 node_paths=PackedStringArray("specific_item") instance=ExtResource("4_oxheg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -8)
+specific_item = NodePath("../BabyDude")
+
+[node name="YourScoreLabel" type="Label3D" parent="BBHoop" unique_id=1103376460 node_paths=PackedStringArray("node_to_examine")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0.4000001)
+pixel_size = 0.0105
+billboard = 1
+text = "SCORE:
+"
+script = ExtResource("6_d0oun")
+node_to_examine = NodePath("../../YourScore")
+vars_to_display = Array[String](["current_count"])
+
+[node name="YourHoop" parent="." unique_id=1497984110 node_paths=PackedStringArray("specific_item") instance=ExtResource("4_oxheg")]
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 0, 0, 8)
+specific_item = NodePath("../BabyDude")
+
+[node name="BBScoreLabel" type="Label3D" parent="YourHoop" unique_id=8879063 node_paths=PackedStringArray("node_to_examine")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 1.3987642e-07, 3, 1.5999999)
+pixel_size = 0.0105
+billboard = 1
+text = "SCORE:
+"
+script = ExtResource("6_d0oun")
+node_to_examine = NodePath("../../YourScore")
+vars_to_display = Array[String](["current_count"])
+
+[node name="YourScore" parent="." unique_id=1521904207 instance=ExtResource("5_ucbyt")]
+max_count = 69
+loop = false
+
+[node name="BBScore" parent="." unique_id=146322595 instance=ExtResource("5_ucbyt")]
+max_count = 69
+loop = false
+
+[node name="ItemCatcher" parent="." unique_id=2014139358 node_paths=PackedStringArray("return_point") instance=ExtResource("7_7jl2g")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3, 0)
+collision_layer = 0
+collision_mask = 2
+monitorable = false
+return_point = NodePath("../baby_return_point")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ItemCatcher" unique_id=1529869062]
+shape = SubResource("BoxShape3D_ou1m8")
+debug_color = Color(0.8370001, 0, 0.93, 1)
+
+[node name="baby_return_point" type="Node3D" parent="." unique_id=149129338]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="baby_return_point" unique_id=730729222]
+
+[node name="ItemMover" type="Node" parent="." unique_id=850636485 node_paths=PackedStringArray("itms_2_move", "positions_to_move_to")]
+script = ExtResource("8_ou1m8")
+itms_2_move = [NodePath("../BabyDude")]
+positions_to_move_to = [NodePath("../baby_return_point")]
+reset_vel = true
+metadata/_custom_type_script = "uid://dpj75tckiwmsm"
+
+[node name="GridMapPathFinding2" type="GridMap" parent="." unique_id=992428846 groups=["GMPF"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.53, 0)
+mesh_library = ExtResource("9_vrbek")
+cell_size = Vector3(1, 1, 1)
+cell_octant_size = 4
+data = {
+"cells": PackedInt32Array(131075, 7, 0, 131075, 6, 0, 131075, 5, 0, 131075, 4, 0, 131075, 3, 0, 131075, 2, 0, 131075, 1, 0, 131075, 0, 0, 131075, 65535, 0, 131075, 65534, 0, 131075, 65533, 0, 131075, 65532, 0, 131075, 65531, 0, 131075, 65530, 0, 131075, 65529, 0, 131075, 65528, 0, 131074, 65528, 0, 131074, 65527, 0, 131073, 65527, 0, 131073, 65528, 0, 131072, 65528, 0, 131072, 65527, 0, 131075, 65527, 0, 196607, 65528, 0, 196607, 65527, 0, 196606, 65527, 0, 196605, 65527, 0, 196605, 65528, 0, 196604, 65528, 0, 196604, 65527, 0, 196606, 65528, 0, 196604, 65529, 0, 196604, 65530, 0, 196604, 65531, 0, 196604, 65532, 0, 196604, 65533, 0, 196604, 65534, 0, 196604, 65535, 0, 196604, 0, 0, 196604, 1, 0, 196604, 2, 0, 196604, 3, 0, 196604, 4, 0, 196604, 5, 0, 196604, 6, 0, 196604, 7, 0, 196605, 7, 0, 196605, 8, 0, 196604, 8, 0, 196606, 8, 0, 196607, 8, 0, 131072, 8, 0, 131073, 8, 0, 131074, 8, 0, 131075, 8, 0, 196605, 65532, 0, 196606, 65533, 0, 196605, 65529, 0, 196605, 65530, 0, 196605, 65531, 0, 196605, 65533, 0, 196605, 65534, 0, 196605, 65535, 0, 196605, 0, 0, 196605, 1, 0, 196605, 2, 0, 196605, 3, 0, 196605, 4, 0, 196605, 5, 0, 196605, 6, 0, 196606, 65529, 0, 196606, 65530, 0, 196606, 65531, 0, 196606, 65532, 0, 196606, 65534, 0, 196606, 65535, 0, 196606, 0, 0, 196606, 1, 0, 196606, 2, 0, 196606, 3, 0, 196606, 4, 0, 196606, 5, 0, 196606, 6, 0, 196606, 7, 0, 196607, 65529, 0, 196607, 65530, 0, 196607, 65531, 0, 196607, 65532, 0, 196607, 65533, 0, 196607, 65534, 0, 196607, 65535, 0, 196607, 0, 0, 196607, 1, 0, 196607, 2, 0, 196607, 3, 0, 196607, 4, 0, 196607, 5, 0, 196607, 6, 0, 196607, 7, 0, 131072, 65529, 0, 131072, 65530, 0, 131072, 65531, 0, 131072, 65532, 0, 131072, 65533, 0, 131072, 65534, 0, 131072, 65535, 0, 131072, 0, 0, 131072, 1, 0, 131072, 2, 0, 131072, 3, 0, 131072, 4, 0, 131072, 5, 0, 131072, 6, 0, 131072, 7, 0, 131073, 65529, 0, 131073, 65530, 0, 131073, 65531, 0, 131073, 65532, 0, 131073, 65533, 0, 131073, 65534, 0, 131073, 65535, 0, 131073, 0, 0, 131073, 1, 0, 131073, 2, 0, 131073, 3, 0, 131073, 4, 0, 131073, 5, 0, 131073, 6, 0, 131073, 7, 0, 131074, 65529, 0, 131074, 65530, 0, 131074, 65531, 0, 131074, 65532, 0, 131074, 65533, 0, 131074, 65534, 0, 131074, 65535, 0, 131074, 0, 0, 131074, 1, 0, 131074, 2, 0, 131074, 3, 0, 131074, 4, 0, 131074, 5, 0, 131074, 6, 0, 131074, 7, 0)
+}
+script = ExtResource("9_kmfd7")
+walkable_items = Array[int]([0])
+debug_start_cell = Vector3i(-3, 2, -7)
+debug_end_cell = Vector3i(0, 2, 1)
+show_debug = false
+metadata/_editor_floor_ = Vector3(0, 2, 0)
+
+[node name="Ballybog" parent="." unique_id=1712475425 node_paths=PackedStringArray("wander_starting_pos") instance=ExtResource("11_lk4md")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, -4)
+default_state = 2
+wander_starting_pos = NodePath("../baby_return_point")
+
+[connection signal="on_activated" from="BBHoop" to="YourScore" method="add_count"]
+[connection signal="on_activated" from="YourHoop" to="BBScore" method="add_count"]
+[connection signal="on_change" from="YourScore" to="BBHoop/YourScoreLabel" method="update_text"]
+[connection signal="on_change" from="YourScore" to="ItemMover" method="smooth_move_item_from_index"]
+[connection signal="on_change" from="BBScore" to="YourHoop/BBScoreLabel" method="update_text"]
+[connection signal="on_change" from="BBScore" to="ItemMover" method="smooth_move_item_from_index"]

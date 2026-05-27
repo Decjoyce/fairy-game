@@ -27,10 +27,15 @@ var freeze : bool
 
 @onready var local_effect_player: EffectPlayer = $LocalEffectPlayer
 
+@export var babyball_mode: bool
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	current_weight = PLAYER_WEIGHT
 	Input.set_mouse_mode(Input.MOUSE_MODE_CONFINED_HIDDEN)
+	if babyball_mode:
+		interaction.enable_alt_throwing()
+		
 
 func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("ui_end"):

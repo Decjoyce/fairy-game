@@ -9,6 +9,7 @@ func _on_body_entered(body: Node3D) -> void:
 	if body is Grabbable_Item and body.is_in_group("ABYSSRETURNER"):
 		body.global_position = return_point.global_position
 		body.global_rotation = return_point.global_rotation
+		body.rb.linear_velocity = Vector3.ZERO
 		if !ap: return
 		ap.stream = ap_clip
 		ap.play()

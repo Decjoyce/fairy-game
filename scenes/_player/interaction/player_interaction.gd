@@ -81,6 +81,10 @@ func test_player_moved()-> void:
 	hand_left.on_player_moved(Vector3.ZERO, Vector3.ZERO)
 	
 
+func enable_alt_throwing() -> void:
+	hand_left.get_child(0).get_node("GRAB_ITEM").testing_throw_alt = true
+	hand_right.get_child(0).get_node("GRAB_ITEM").testing_throw_alt = true
+
 #const NO_LIGHT_COLOR: Color = Color("20415e")
 #@export var hand_light_gradient: Gradient
 

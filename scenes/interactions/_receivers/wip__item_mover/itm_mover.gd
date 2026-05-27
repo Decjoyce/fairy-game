@@ -10,6 +10,8 @@ var tween: Tween
 
 @export var cur_item_index: int = 0 ## This item will be moved when "move_item_from_index" is called
 
+@export var reset_vel: bool
+
 func _ready() -> void:
 	if positions_to_move_to.size() <= 0 and get_child_count() > 0: 
 		for i in get_children():
@@ -33,6 +35,9 @@ func smooth_move_item_from_index(sig: float = -1) -> void:
 	
 	var new_pos: Node3D = positions_to_move_to[0]
 	if positions_to_move_to[cur_item_index]: new_pos = positions_to_move_to[cur_item_index]
+	
+	if reset_vel:
+		itms_2_move[cur_item_index].rb.linear_velocity = Vector3.ZERO
 	
 	tween = get_tree().create_tween().bind_node(self).set_trans(Tween.TRANS_LINEAR)
 	tween.set_parallel(true)
