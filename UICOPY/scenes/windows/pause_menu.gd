@@ -111,6 +111,9 @@ func _on_restart_confirmation_confirmed() -> void:
 	close()
 
 func _on_main_menu_confirmation_confirmed():
+	_load_scene("res://scenes/_levels/menus/thanksforplaying/thanksforplayingscene.tscn")
+
+func _on_main_menu_confirmation_confirmed_old():
 	_load_scene(get_main_menu_scene_path())
 
 func _on_exit_confirmation_confirmed():
