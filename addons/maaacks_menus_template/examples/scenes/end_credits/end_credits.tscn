@@ -18,6 +18,7 @@ force_mouse_mode_visible = false
 animation_state_machine = null
 
 [node name="BackgroundMusicPlayer" parent="." index="0" unique_id=1411252862 instance=ExtResource("3_v7acr")]
+bus = &"Master"
 
 [node name="BackgroundColor" type="ColorRect" parent="." index="1" unique_id=813188635]
 visible = false
@@ -40,32 +41,45 @@ expand_mode = 1
 stretch_mode = 5
 
 [node name="ScrollContainer" parent="." index="3" unique_id=1039720129]
-scroll_vertical = 2014
+scroll_vertical = 2386
 
 [node name="HeaderSpace" parent="ScrollContainer/VBoxContainer" parent_id_path=PackedInt32Array(2067921385) index="0" unique_id=1552560353]
 custom_minimum_size = Vector2(0, 648)
 
 [node name="CreditsLabel" parent="ScrollContainer/VBoxContainer" parent_id_path=PackedInt32Array(2067921385) index="1" unique_id=1486745388]
 custom_minimum_size = Vector2(1152, 0)
-text = "[font_size=48]Developers[/font_size]
+text = "[font_size=48]Game by[/font_size]
 
-[font_size=32]Role[/font_size]
+[img=80]res:///assets/ui/jobless_designs.png[/img]
+
+[font_size=32]The Team[/font_size]
 [url=https://aaronmccabe.itch.io/]Aaron McCabe[/url] - 3D/Environment Artist 
 [url=https://decooced.itch.io/]Declan Phillips[/url] - Programmer, Game Designer
-[url=https://archer-productions.itch.io/]Finn Archer[/url] - Game Designer, Level Designer
+[url=https://sites.google.com/view/finnarchergamedesignportfolio]Finn Archer[/url] - Game Designer, Level Designer
 [url=https://ma123.itch.io/]Minh Anh Pham[/url] - 2D/3D Artist, Musician 
-[url=https://funnymike09.itch.io/]Mikhail Fisenko[/url] - Project Lead, Programmer, Audio Engineer 
+[url=https://sites.google.com/view/mikhail-fisenko-gamedesign]Mikhail Fisenko[/url] - Project Lead, Programmer, Audio Engineer 
 
 [font_size=32]Special Thanks To:[/font_size]
 Peter Lynch - Project Supervisor
 Alex Cahill - Project Supervisor
 John Healy - Lecturer
 
-Without your help, this game would not have been possible.
+Ivan Saraev - German Translation 
+Jake Duffy - Irish Translation
+Evgenia Malliou - Greek Translation
+Dilara Özileri - Turkish, French Translation
+Oleksandr Romash - Ukrainian Translation
+Goosebatss - Spanish Translation
+Koko - Japanese Translation
 
-[font_size=48]Sourced[/font_size]
+Without your help and guidance this game would not have been possible.
+
+
+
+
+[font_size=32]Sourced[/font_size]
 [font_size=32]Audio[/font_size]
-[font_size=24]All SFX and Ambient[/font_size]
+[font_size=24]SFX and Ambient[/font_size]
 Author: Soundly 
 Source: [url=https://getsoundly.com/]Domain : https://getsoundly.com/[/url]  
 License: [url=https://getsoundly.com/faq/how-can-i-use-the-sounds/]License[/url]
@@ -137,7 +151,7 @@ layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 theme_override_font_sizes/font_size = 25
-text = "Return to main menu?"
+text = "EXIT_MAIN_MANU_CONFIRM"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -158,15 +172,14 @@ unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
-text = "Yes"
+text = "CONFIRM"
 
 [node name="No" type="Button" parent="CenterContainer/EndMessagePanel/VBoxContainer/CenterContainer/HBoxContainer" index="1" unique_id=345380982]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
-text = "No
-"
+text = "BACK"
 
 [node name="ExitButton" type="Button" parent="CenterContainer/EndMessagePanel/VBoxContainer/CenterContainer/HBoxContainer" index="2" unique_id=1382070624]
 unique_name_in_owner = true
