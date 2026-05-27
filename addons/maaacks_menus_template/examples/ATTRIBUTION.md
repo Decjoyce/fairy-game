@@ -1,23 +1,36 @@
 # Attribution
-## Developers
+## Game by
 
-### Role
+![Jobless Designs](/assets/ui/jobless_designs.png)
+
+### The Team
 [Aaron McCabe](https://aaronmccabe.itch.io/) - 3D/Environment Artist 
 [Declan Phillips](https://decooced.itch.io/) - Programmer, Game Designer
-[Finn Archer](https://archer-productions.itch.io/) - Game Designer, Level Designer
+[Finn Archer](https://sites.google.com/view/finnarchergamedesignportfolio) - Game Designer, Level Designer
 [Minh Anh Pham](https://ma123.itch.io/) - 2D/3D Artist, Musician 
-[Mikhail Fisenko](https://funnymike09.itch.io/) - Project Lead, Programmer, Audio Engineer 
+[Mikhail Fisenko](https://sites.google.com/view/mikhail-fisenko-gamedesign) - Project Lead, Programmer, Audio Engineer 
 
 ### Special Thanks To:
 Peter Lynch - Project Supervisor
 Alex Cahill - Project Supervisor
 John Healy - Lecturer
 
-Without your help, this game would not have been possible.
+Ivan Saraev - German Translation 
+Jake Duffy - Irish Translation
+Evgenia Malliou - Greek Translation
+Dilara Özileri - Turkish, French Translation
+Oleksandr Romash - Ukrainian Translation
+Goosebatss - Spanish Translation
+Koko - Japanese Translation
 
-## Sourced
+Without your help and guidance this game would not have been possible.
+
+
+
+
+### Sourced
 ### Audio
-#### All SFX and Ambient
+#### SFX and Ambient
 Author: Soundly 
 Source: [Domain : https://getsoundly.com/](https://getsoundly.com/)  
 License: [License](https://getsoundly.com/faq/how-can-i-use-the-sounds/)
