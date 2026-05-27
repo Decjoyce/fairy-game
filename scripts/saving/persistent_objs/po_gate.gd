@@ -15,6 +15,8 @@ func on_save_game(saved_data: Array[SavedData]) -> void:
 	my_data.end_pos = parent_gate._end_position
 	my_data.start_pos = parent_gate._start_position
 	my_data.graphics_pos = parent_gate.graphics.global_position.y
+	if parent_gate.use_special_thing:
+		my_data.special_thing = parent_gate.special_thing.visible
 	
 	saved_data.append(my_data)
 
@@ -32,3 +34,5 @@ func on_load_game(saved_data: SavedData) -> void:
 		parent_gate.last_value = saved_data.last_value
 		parent_gate.open_gate_special(saved_data.current_value)
 		parent_gate.check_if_disable_col(true)
+		if parent_gate.use_special_thing:
+			parent_gate.special_thing.visible = saved_data.special_thing

@@ -25,6 +25,9 @@ var _end_position: float
 @export var out_pos_front: Node3D
 @onready var avp: AudioValuePlayer = $AudioValuePlayer
 var current_out_pos: Vector3
+@export var use_special_thing: bool
+@export var special_thing: Node3D
+
 
 var things_under: Array[Node3D]
 
@@ -109,6 +112,13 @@ func close_gate(sig: float = -1) -> void:
 	_end_position = 1 + (open_pos * 0)
 	
 	using_special = false
+	
+	on_deactivated.emit(0)
+	
+	if use_special_thing:
+		special_thing.visible = true
+		
+	
 	
 	check_if_disable_col()
 

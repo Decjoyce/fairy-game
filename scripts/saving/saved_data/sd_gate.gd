@@ -10,3 +10,5 @@ extends SavedData
 @export var end_pos: float
 
 @export var graphics_pos: float
+
+@export var special_thing: bool
