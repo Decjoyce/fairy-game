@@ -30,7 +30,14 @@ func skip_stuff():
 	pass
 	if Intro1:
 		if Input.is_action_just_pressed("dec_pause"):
+			SkipUI.visible = false
+			$SkipUI/hide.stop()
 			animation_state_machine.travel("Intro")
+		elif Input.is_action_just_released("dec_pause"):
+			$SkipUI/hide.start()
+		elif Input.is_anything_pressed():
+			SkipUI.visible = true
+			$SkipUI/hide.start()
 	
 	#if Intro1:  #Is in intro?
 		#if Input.is_anything_pressed(): #first press
