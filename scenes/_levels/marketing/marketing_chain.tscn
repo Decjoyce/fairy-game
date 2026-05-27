@@ -88,7 +88,7 @@ metadata/_custom_type_script = "uid://beaf3digx88d0"
 [sub_resource type="PlaneMesh" id="PlaneMesh_mu72n"]
 material = ExtResource("23_aeyxi")
 
-[sub_resource type="Shader" id="Shader_hx0uk"]
+[sub_resource type="Shader" id="Shader_hoogx"]
 code = "shader_type spatial;
 render_mode diffuse_lambert_wrap,cull_disabled;
 
@@ -165,9 +165,9 @@ void fragment() {
 }
 "
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_18gjf"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_vp1j3"]
 render_priority = 0
-shader = SubResource("Shader_hx0uk")
+shader = SubResource("Shader_hoogx")
 shader_parameter/rows = 1.0
 shader_parameter/columns = 8.0
 shader_parameter/frame = 0.0
@@ -176,12 +176,12 @@ shader_parameter/sprite = ExtResource("26_vp1j3")
 shader_parameter/mode = 0
 shader_parameter/Normal = ExtResource("25_hoogx")
 
-[sub_resource type="PlaneMesh" id="PlaneMesh_xlt7h"]
-material = SubResource("ShaderMaterial_18gjf")
+[sub_resource type="PlaneMesh" id="PlaneMesh_h4k8c"]
+material = SubResource("ShaderMaterial_vp1j3")
 size = Vector2(1.08, 1.08)
 orientation = 2
 
-[sub_resource type="Resource" id="Resource_oyv35"]
+[sub_resource type="Resource" id="Resource_kkqvb"]
 script = ExtResource("28_kkqvb")
 name = "walk"
 sprite = ExtResource("29_rcp2m")
@@ -189,7 +189,7 @@ texture_normal = ExtResource("30_226xu")
 rows = 5.0
 columns = 8.0
 
-[sub_resource type="Resource" id="Resource_uwpwp"]
+[sub_resource type="Resource" id="Resource_rcp2m"]
 script = ExtResource("28_kkqvb")
 name = "AttackN"
 sprite = ExtResource("31_ufr5i")
@@ -197,7 +197,7 @@ texture_normal = ExtResource("32_7mhts")
 rows = 2.0
 columns = 8.0
 
-[sub_resource type="Resource" id="Resource_0h7uj"]
+[sub_resource type="Resource" id="Resource_226xu"]
 script = ExtResource("28_kkqvb")
 name = "idle_rub"
 sprite = ExtResource("33_x5mb5")
@@ -205,14 +205,14 @@ texture_normal = ExtResource("34_0pm4j")
 rows = 3.0
 columns = 8.0
 
-[sub_resource type="Resource" id="Resource_6sd3i"]
+[sub_resource type="Resource" id="Resource_ufr5i"]
 script = ExtResource("28_kkqvb")
 name = "Alert"
 sprite = ExtResource("35_ptebd")
 texture_normal = ExtResource("36_porox")
 columns = 8.0
 
-[sub_resource type="Resource" id="Resource_pvbpj"]
+[sub_resource type="Resource" id="Resource_7mhts"]
 script = ExtResource("28_kkqvb")
 name = "Stunned"
 sprite = ExtResource("37_7xot0")
@@ -220,14 +220,14 @@ texture_normal = ExtResource("38_cg4l3")
 rows = 2.0
 columns = 8.0
 
-[sub_resource type="Resource" id="Resource_kl0by"]
+[sub_resource type="Resource" id="Resource_x5mb5"]
 script = ExtResource("28_kkqvb")
 name = "Dead"
 sprite = ExtResource("39_n2f3w")
 texture_normal = ExtResource("39_n2f3w")
 columns = 8.0
 
-[sub_resource type="Resource" id="Resource_c7qoj"]
+[sub_resource type="Resource" id="Resource_0pm4j"]
 script = ExtResource("28_kkqvb")
 name = "DanceL"
 sprite = ExtResource("40_1nnq1")
@@ -235,7 +235,7 @@ texture_normal = ExtResource("41_6qos8")
 rows = 2.0
 columns = 8.0
 
-[sub_resource type="Resource" id="Resource_74wqn"]
+[sub_resource type="Resource" id="Resource_ptebd"]
 script = ExtResource("28_kkqvb")
 name = "DanceR"
 sprite = ExtResource("42_ecywn")
@@ -243,7 +243,7 @@ texture_normal = ExtResource("43_e7x3o")
 rows = 2.0
 columns = 8.0
 
-[sub_resource type="Resource" id="Resource_whs01"]
+[sub_resource type="Resource" id="Resource_porox"]
 script = ExtResource("28_kkqvb")
 name = "idley"
 sprite = ExtResource("26_vp1j3")
@@ -447,18 +447,6 @@ transform = Transform3D(-1.3113416e-07, 0, 3, 0, 1.19, 0, -3, 0, -1.3113416e-07,
 [node name="cairnPillar19" parent="Node3D" unique_id=876547526 instance=ExtResource("20_vra7s")]
 transform = Transform3D(-1.3113416e-07, 0, 3, 0, 1.19, 0, -3, 0, -1.3113416e-07, 13.04814, 0, -17)
 
-[node name="cairnPillar20" parent="Node3D" unique_id=923268717 instance=ExtResource("20_vra7s")]
-transform = Transform3D(-8.567432e-08, 0, 1.96, 0, 0.777, 0, -1.96, 0, -8.567432e-08, -17.625679, 0, -17.99591)
-
-[node name="cairnPillar21" parent="Node3D" unique_id=717956591 instance=ExtResource("20_vra7s")]
-transform = Transform3D(-8.567432e-08, 0, 1.96, 0, 0.777, 0, -1.96, 0, -8.567432e-08, -17.625679, 1.4, -17.99591)
-
-[node name="cairnPillar22" parent="Node3D" unique_id=2043043281 instance=ExtResource("20_vra7s")]
-transform = Transform3D(2.5702292e-07, 0, -1.9599998, 0, 0.777, 0, 1.9599998, 0, 2.5702292e-07, -17.618237, 0, -20.072529)
-
-[node name="cairnPillar23" parent="Node3D" unique_id=660174001 instance=ExtResource("20_vra7s")]
-transform = Transform3D(2.5702292e-07, 0, -1.9599998, 0, 0.777, 0, 1.9599998, 0, 2.5702292e-07, -17.618237, 1.4, -20.072529)
-
 [node name="TorchSconce_Lit10" parent="Node3D" unique_id=226228109 instance=ExtResource("13_8e35v")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11, 1.2, -18.7)
 
@@ -492,9 +480,6 @@ visible = false
 [node name="Torch" parent="Node3D" unique_id=1479203938 instance=ExtResource("17_ef72y")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.4597025, 0.5886272, -17.047998)
 visible = false
-
-[node name="Bridge" parent="." unique_id=1119761856 instance=ExtResource("20_wy486")]
-transform = Transform3D(-0.99999994, 0, 8.742278e-08, 0, 0.99999994, 0, -8.742277e-08, 0, -1, -18.098417, -0.035354555, -19)
 
 [node name="Node3D2" type="Node3D" parent="." unique_id=1917816500]
 
@@ -530,24 +515,6 @@ transform = Transform3D(0.17508277, -0.05554828, 8.781811e-09, -0.06372491, -0.1
 
 [node name="Wall172" parent="Node3D2" unique_id=1878453640 instance=ExtResource("21_2vbpv")]
 transform = Transform3D(0.17508277, -0.05554828, 8.781811e-09, -0.06372491, -0.15261765, -1.5536115e-08, 1.5797381e-08, 1.1770443e-08, -0.16000001, -24.007143, 0.10399726, -19.046669)
-
-[node name="Wall173" parent="Node3D2" unique_id=2122344252 instance=ExtResource("21_2vbpv")]
-transform = Transform3D(-0.17508277, 0.05554828, 6.3565775e-09, -0.06372492, -0.15261766, -1.8970356e-08, -4.911591e-10, -1.6626629e-08, 0.19536784, -18.007143, 0.10399726, -18.023073)
-
-[node name="Wall180" parent="Node3D2" unique_id=654337168 instance=ExtResource("21_2vbpv")]
-transform = Transform3D(-0.17508277, 0.05554828, 3.6615333e-09, -0.06372492, -0.15261766, -1.0927357e-08, -4.911591e-10, -1.6626629e-08, 0.11253632, -18.007143, 0.10399726, -20.023073)
-
-[node name="Wall174" parent="Node3D2" unique_id=464936006 instance=ExtResource("21_2vbpv")]
-transform = Transform3D(6.2451195e-09, 9.650174e-09, -0.16000001, -0.06372492, -0.15261765, -1.5536113e-08, -0.17508276, 0.055548277, -1.7879889e-09, -17.107143, 0.10399726, -20.709814)
-
-[node name="Wall179" parent="Node3D2" unique_id=1218120079 instance=ExtResource("21_2vbpv")]
-transform = Transform3D(6.24512e-09, 9.650175e-09, -0.16000003, -0.06372492, -0.15261765, -1.5536115e-08, -0.17508276, 0.055548273, -1.7879894e-09, -17.107143, 0.10399726, -17.346668)
-
-[node name="Wall177" parent="Node3D2" unique_id=418622325 instance=ExtResource("21_2vbpv")]
-transform = Transform3D(-0.17508277, 0.055548284, 5.205835e-09, -0.06372492, -0.15261765, -1.5536115e-08, -4.911609e-10, -1.6626629e-08, 0.16000001, -16.107143, 0.10399726, -21.66172)
-
-[node name="Wall178" parent="Node3D2" unique_id=1449690046 instance=ExtResource("21_2vbpv")]
-transform = Transform3D(-0.17508277, 0.055548284, 5.205835e-09, -0.06372492, -0.15261765, -1.5536115e-08, -4.911609e-10, -1.6626629e-08, 0.16000001, -16.107143, 0.10399726, -16.14667)
 
 [node name="Wall251" parent="Node3D2" unique_id=385277511 instance=ExtResource("21_2vbpv")]
 transform = Transform3D(0.19999999, 1.490116e-09, 1.3987645e-08, 1.8626451e-09, -0.16, -1.3987645e-08, 1.7484552e-08, 1.3987644e-08, -0.16, -25.90714, 2.0039985, -23.066666)
@@ -597,15 +564,6 @@ transform = Transform3D(0.20600222, 0.038946677, 1.8267666e-08, 0.051869273, -0.
 [node name="Wall185" parent="Node3D2" unique_id=760414267 instance=ExtResource("21_2vbpv")]
 transform = Transform3D(0.20079425, -0.009926332, 0.052557167, 3.5817467e-09, -0.16459557, -0.027095623, 0.07308314, 0.027272372, -0.1443996, -26.20714, 2.0839984, -15.466667)
 
-[node name="Dirtfloor" parent="Node3D2" unique_id=437194402 instance=ExtResource("22_kcbhy")]
-transform = Transform3D(0.13499998, 0, 0, 0, 1, 0, 0, 0, 0.059999987, -16.959078, 0, -17.6)
-
-[node name="Dirtfloor2" parent="Node3D2" unique_id=632004176 instance=ExtResource("22_kcbhy")]
-transform = Transform3D(0.13499998, 0, 0, 0, 1, 0, 0, 0, 0.059999987, -16.959078, 0, -20.296703)
-
-[node name="SpotLight3D" type="SpotLight3D" parent="." unique_id=326180431]
-transform = Transform3D(1, 0, 0, 0, 0.49999997, 0.86602545, 0, -0.86602545, 0.49999997, -17.923004, 2.7, -18.277409)
-
 [node name="SpotLight3D2" type="SpotLight3D" parent="." unique_id=1557660632]
 transform = Transform3D(0.17648506, -0.30953944, 0.93436515, -0.16940817, 0.9255482, 0.3386168, -0.9696153, -0.2180499, 0.110906914, -22.344032, 1.7434471, -18.908112)
 light_energy = 1.475
@@ -626,11 +584,53 @@ transform = Transform3D(6.624512, 0.94079614, 4.278506, -24.373274, 0.33631477, 
 mesh = SubResource("PlaneMesh_mu72n")
 skeleton = NodePath("../../..")
 
-[node name="TorchSconce_Lit" parent="." unique_id=1261538983 instance=ExtResource("13_8e35v")]
-transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, -17.614515, 1.6746005, -18.21101)
+[node name="cairnPillar20" parent="SpotLight3D2" unique_id=923268717 instance=ExtResource("20_vra7s")]
+transform = Transform3D(1.9004459, -0.13163017, 0.34591085, 0.42737785, 0.71915096, -0.6066973, -0.21737768, 0.2631052, 1.8313557, 0.24359035, -3.2730665, 3.9194736)
 
-[node name="TorchSconce_Lit2" parent="." unique_id=1342076311 instance=ExtResource("13_8e35v")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.6294, 1.67115, -19.896572)
+[node name="cairnPillar21" parent="SpotLight3D2" unique_id=717956591 instance=ExtResource("20_vra7s")]
+transform = Transform3D(1.9004459, -0.13163017, 0.34591085, 0.42737785, 0.71915096, -0.6066973, -0.21737768, 0.2631052, 1.8313557, 0.006418228, -1.9772987, 4.3935375)
+
+[node name="cairnPillar22" parent="SpotLight3D2" unique_id=2043043281 instance=ExtResource("20_vra7s")]
+transform = Transform3D(-1.9004457, -0.13163017, -0.34591097, -0.42737785, 0.71915096, 0.6066972, 0.21737781, 0.2631052, -1.8313556, 2.2584248, -2.8225641, 3.6961155)
+
+[node name="cairnPillar23" parent="SpotLight3D2" unique_id=660174001 instance=ExtResource("20_vra7s")]
+transform = Transform3D(-1.9004457, -0.13163017, -0.34591097, -0.42737785, 0.71915096, 0.6066972, 0.21737781, 0.2631052, -1.8313556, 2.0212536, -1.5267963, 4.1701794)
+
+[node name="Wall173" parent="SpotLight3D2" unique_id=2122344252 instance=ExtResource("21_2vbpv")]
+transform = Transform3D(-0.020103972, 0.03565814, -0.18943165, -0.0047854595, -0.15844938, -0.042599957, -0.18516956, 0.00022348204, 0.021667648, 0.18498611, -3.0528116, 3.5952492)
+
+[node name="Wall180" parent="SpotLight3D2" unique_id=654337168 instance=ExtResource("21_2vbpv")]
+transform = Transform3D(-0.020103972, 0.03565814, -0.109116934, -0.0047854595, -0.15844938, -0.024538545, -0.18516956, 0.00022348204, 0.012481058, 2.124218, -2.6167116, 3.373436)
+
+[node name="Wall174" parent="SpotLight3D2" unique_id=464936006 instance=ExtResource("21_2vbpv")]
+transform = Transform3D(0.18055844, -0.028005779, -0.028237611, -0.020803709, -0.15336728, 0.0495263, -0.04099621, -0.045518193, -0.14949843, 2.9489288, -2.745553, 4.138199)
+
+[node name="Wall179" parent="SpotLight3D2" unique_id=1218120079 instance=ExtResource("21_2vbpv")]
+transform = Transform3D(0.18055844, -0.028005775, -0.028237613, -0.020803709, -0.15336728, 0.049526304, -0.04099621, -0.045518193, -0.14949845, -0.31202888, -3.4788866, 4.511196)
+
+[node name="Wall177" parent="SpotLight3D2" unique_id=418622325 instance=ExtResource("21_2vbpv")]
+transform = Transform3D(-0.020103972, 0.035658136, -0.15513846, -0.0047854595, -0.15844938, -0.034888003, -0.18516956, 0.0002234895, 0.017745111, 4.048395, -2.8475304, 4.9669914)
+
+[node name="Wall178" parent="SpotLight3D2" unique_id=1449690046 instance=ExtResource("21_2vbpv")]
+transform = Transform3D(-0.020103972, 0.035658136, -0.15513846, -0.0047854595, -0.15844938, -0.034888003, -0.18516956, 0.0002234895, 0.017745111, -1.2990818, -4.050086, 5.5786495)
+
+[node name="Dirtfloor" parent="SpotLight3D2" unique_id=437194402 instance=ExtResource("22_kcbhy")]
+transform = Transform3D(0.023825482, -0.16940819, -0.058176905, -0.041787818, 0.9255482, -0.013082991, 0.12613927, 0.33861673, 0.006654415, -0.022644997, -3.565734, 4.586231)
+
+[node name="Dirtfloor2" parent="SpotLight3D2" unique_id=632004176 instance=ExtResource("22_kcbhy")]
+transform = Transform3D(0.023825482, -0.16940819, -0.058176905, -0.041787818, 0.9255482, -0.013082991, 0.12613927, 0.33861673, 0.006654415, 2.5921192, -2.9777184, 4.2871494)
+
+[node name="TorchSconce_Lit" parent="SpotLight3D2" unique_id=1261538983 instance=ExtResource("13_8e35v")]
+transform = Transform3D(-0.17648499, -0.16940819, 0.9696153, 0.30953947, 0.9255482, 0.21804987, -0.93436515, 0.33861673, -0.110906854, 0.17043209, -1.6796961, 4.473097)
+
+[node name="TorchSconce_Lit2" parent="SpotLight3D2" unique_id=1342076311 instance=ExtResource("13_8e35v")]
+transform = Transform3D(0.17648508, -0.16940819, -0.9696153, -0.30953944, 0.9255482, -0.2180499, 0.93436515, 0.33861673, 0.110906936, 1.8027382, -1.3107462, 4.271078)
+
+[node name="Bridge" parent="SpotLight3D2" unique_id=1119761856 instance=ExtResource("20_wy486")]
+transform = Transform3D(-0.17648497, -0.16940817, 0.9696153, 0.30953944, 0.92554814, 0.21804987, -0.9343651, 0.3386167, -0.110906854, 1.1397276, -2.9405165, 3.3544312)
+
+[node name="SpotLight3D" type="SpotLight3D" parent="SpotLight3D2" unique_id=326180431]
+transform = Transform3D(0.17648508, 0.7550074, -0.63151944, -0.30953944, 0.65161085, 0.69252336, 0.93436515, 0.07326012, 0.34870416, 0.0066604614, -0.6206722, 4.524708)
 
 [node name="Lever" parent="." unique_id=1692381032 instance=ExtResource("24_mu72n")]
 transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, -17.620028, 1.0022151, -18.20126)
@@ -647,9 +647,9 @@ transform = Transform3D(-1, -7.619397e-09, 8.709011e-08, 0, 0.9961947, 0.0871557
 transform = Transform3D(0.009424741, 0, -0.9999556, 0, 1, 0, 0.9999556, 0, 0.009424741, 0, -0.191, 0)
 layers = 2
 sorting_offset = 1.0
-mesh = SubResource("PlaneMesh_xlt7h")
+mesh = SubResource("PlaneMesh_h4k8c")
 script = ExtResource("27_h4k8c")
-animations_array = Array[ExtResource("28_kkqvb")]([SubResource("Resource_oyv35"), SubResource("Resource_uwpwp"), SubResource("Resource_0h7uj"), SubResource("Resource_6sd3i"), SubResource("Resource_pvbpj"), SubResource("Resource_kl0by"), SubResource("Resource_c7qoj"), SubResource("Resource_74wqn"), SubResource("Resource_whs01")])
+animations_array = Array[ExtResource("28_kkqvb")]([SubResource("Resource_kkqvb"), SubResource("Resource_rcp2m"), SubResource("Resource_226xu"), SubResource("Resource_ufr5i"), SubResource("Resource_7mhts"), SubResource("Resource_x5mb5"), SubResource("Resource_0pm4j"), SubResource("Resource_ptebd"), SubResource("Resource_porox")])
 animation = 8
 frame = 1.0
 sprite_scale = 0.001
@@ -668,4 +668,4 @@ spot_range = 3.508
 libraries/ = SubResource("AnimationLibrary_0ay72")
 
 [connection signal="on_change" from="Node3D/Chain" to="Node3D/Gate" method="open_gate"]
-[connection signal="on_change" from="Lever" to="Bridge" method="move_bridge"]
+[connection signal="on_change" from="Lever" to="SpotLight3D2/Bridge" method="move_bridge"]

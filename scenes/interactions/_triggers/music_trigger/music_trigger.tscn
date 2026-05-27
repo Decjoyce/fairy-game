@@ -6,13 +6,13 @@
 [sub_resource type="BoxShape3D" id="BoxShape3D_xjgvg"]
 size = Vector3(2, 3, 2)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xjgvg"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_d0sxf"]
 transparency = 1
 albedo_color = Color(0.45350236, 0.45350236, 0, 0.286)
 grow_amount = -1.749
 
 [sub_resource type="BoxMesh" id="BoxMesh_xjgvg"]
-material = SubResource("StandardMaterial3D_xjgvg")
+material = SubResource("StandardMaterial3D_d0sxf")
 flip_faces = true
 size = Vector3(3, 3, 3)
 
@@ -21,12 +21,14 @@ script = ExtResource("1_gifsh")
 
 [node name="Trigger" type="Area3D" parent="." unique_id=137977604]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
+visible = false
 collision_layer = 0
 collision_mask = 256
 monitorable = false
 
 [node name="_col" type="CollisionShape3D" parent="Trigger" unique_id=1065702028]
 shape = SubResource("BoxShape3D_xjgvg")
+disabled = true
 
 [node name="DebugGraphics2" type="MeshInstance3D" parent="Trigger" unique_id=452173016]
 mesh = SubResource("BoxMesh_xjgvg")

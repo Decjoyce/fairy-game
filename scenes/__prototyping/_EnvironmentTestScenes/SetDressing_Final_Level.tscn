@@ -929,7 +929,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.7000008, 0, 5.799999)
 transform = Transform3D(-2.2766226e-07, 1.3675526e-07, 4.37, 4.3025603, 0.764776, 2.0021588e-07, -0.764776, 4.3025603, -1.7448704e-07, 6.0999985, 1.0000001, -10.117596)
 
 [node name="cairn rock2" parent="Different_Sections/Statue_Section/Setdressing/rocks" unique_id=1458130688 instance=ExtResource("26_f0xeo")]
-transform = Transform3D(3.186974, 1.777304, -0.4762272, -4.7489607e-08, 0.9524542, 3.5546072, 1.8400003, -3.0783799, 0.8248495, -1.2831802, 0.5, 9.847504)
+transform = Transform3D(3.186974, 1.777304, -0.4762272, -4.7489607e-08, 0.9524542, 3.5546072, 1.8400003, -3.0783799, 0.8248495, -1.5900298, 0.53353465, 10.378983)
 
 [node name="cairnrock5" parent="Different_Sections/Statue_Section/Setdressing/rocks" unique_id=1242058058 instance=ExtResource("27_wg6q8")]
 transform = Transform3D(0.87510085, 0, 1.0345161, 0, 1.355, 0, -1.0345161, 0, 0.87510085, 4.7929306, -0.10079861, -9.4663315)
@@ -1254,6 +1254,7 @@ transform = Transform3D(-4.371139e-08, 1, 4.371139e-08, 0, -4.371139e-08, 1, 1, 
 
 [node name="BallyBog_Section" type="Node3D" parent="Different_Sections" unique_id=1895157133]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 88, -2, 9)
+visible = false
 
 [node name="Ballybog_Scene" parent="Different_Sections/BallyBog_Section" unique_id=842226877 instance=ExtResource("5_icas2")]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 2, 0, -23)
@@ -2733,8 +2734,8 @@ col = NodePath("../Area3D/CollisionShape3D")
 [connection signal="area_entered" from="OptimizationStuff/BBDisablers/PAT_E_Mid/Area3D" to="OptimizationStuff/BBDisablers/PAT_E_Mid" method="_player_entered"]
 [connection signal="area_exited" from="OptimizationStuff/BBDisablers/PAT_E_Mid/Area3D" to="OptimizationStuff/BBDisablers/PAT_E_Mid" method="_player_exited"]
 [connection signal="on_activated" from="OptimizationStuff/BBDisablers/PAT_D_Mid" to="Different_Sections/BallyBog_Area_Gate2" method="close_gate"]
-[connection signal="on_activated" from="OptimizationStuff/BBDisablers/PAT_D_Mid" to="OptimizationStuff/lseq_8" method="_on_pat_d_mid_on_activated"]
 [connection signal="on_activated" from="OptimizationStuff/BBDisablers/PAT_D_Mid" to="OptimizationStuff/lseq_8" method="set_seq_via_sig"]
+[connection signal="on_activated" from="OptimizationStuff/BBDisablers/PAT_D_Mid" to="OptimizationStuff/lseq_8" method="_on_pat_d_mid_on_activated"]
 [connection signal="area_entered" from="OptimizationStuff/BBDisablers/PAT_D_Mid/Area3D" to="OptimizationStuff/BBDisablers/PAT_D_Mid" method="_player_entered"]
 [connection signal="area_exited" from="OptimizationStuff/BBDisablers/PAT_D_Mid/Area3D" to="OptimizationStuff/BBDisablers/PAT_D_Mid" method="_player_exited"]
 [connection signal="on_activated" from="OptimizationStuff/BBDisablers/PAT_E_Hard" to="OptimizationStuff/BBDisablers/PAT_E_Hard/vis_enabler_midbb" method="enable_obj"]

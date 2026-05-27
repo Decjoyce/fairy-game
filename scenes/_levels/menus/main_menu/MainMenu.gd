@@ -25,18 +25,20 @@ func opening_done():
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	animation_state_machine.travel("Intro")
 	
+var skipped: bool
 
 func skip_stuff():
 	pass
 	if Intro1:
+		if Input.is_anything_pressed() and !Input.is_action_just_pressed("dec_pause"):
+			SkipUI.visible = true
+			$SkipUI/hide.start()
 		if Input.is_action_just_pressed("dec_pause"):
 			SkipUI.visible = false
+			skipped = true
 			#$SkipUI/hide.stop()
 			animation_state_machine.travel("Intro")
 		elif Input.is_action_just_released("dec_pause"):
-			$SkipUI/hide.start()
-		if Input.is_anything_pressed() and !Input.is_action_just_pressed("dec_pause"):
-			SkipUI.visible = true
 			$SkipUI/hide.start()
 	
 	#if Intro1:  #Is in intro?
