@@ -14,9 +14,10 @@ var languages: = {
 	"German": "de",
 	#"Portuguese(Brazilian)": "br",
 	"Irish": "ga",
-	"Turkish": "tk",
+	"Turkish": "tr",
 	"Ukranian": "uk",
-	"Greek": "el"
+	"Greek": "el",
+	"BallyBog": "gay"
 	
 	
 }
