@@ -7,14 +7,16 @@ var languages: = {
 	"English": "en",
 	"Spanish": "es",
 	"Russian": "ru",
-	"Italian": "it",
+	#"Italian": "it",
 	"French": "fr",
-	"Chinese": "cn",
+	#"Chinese": "cn",
 	"Japanese": "ja",
 	"German": "de",
-	"Portuguese(Brazilian)": "br",
-	"Irish": "ga"
-	
+	#"Portuguese(Brazilian)": "br",
+	"Irish": "ga",
+	"Turkish": "tk",
+	"Ukranian": "uk",
+	"Greek": "el"
 	
 	
 }
@@ -35,9 +37,27 @@ func _ready() -> void:
 func _on_languagae_selected(index: int):
 	var lang_name := language_option.get_item_text(index)
 	var locale = languages[lang_name]
-	TranslationServer.set_locale(lang_name)
+	var loaded_lang = TranslationServer.get_loaded_locales()
+	
+	TranslationServer.set_locale(locale)
 	print("Locale set to:",locale)
+	print(loaded_lang)
+	
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	pass
+
+func _notification(what):
+	if what == NOTIFICATION_TRANSLATION_CHANGED:
+		update_text()
+
+func update_text():
+	# Assuming you have UI elements that use the tr() function for keys
+#	get_tree().root.propagate_call("update_text")
+	pass
+	
+	
+	
+	
+	

@@ -1,65 +1,22 @@
 [gd_scene format=3 uid="uid://ba0un2yhkkc3j"]
 
-[ext_resource type="Texture2D" uid="uid://bqbs8ojlfex0i" path="res://assets/Controlelr_UI/Controller_demo2.png" id="1_6ybjx"]
 [ext_resource type="Script" uid="uid://bykhlgnvwymya" path="res://scripts/input_context_helper_two.gd" id="1_gqisl"]
 [ext_resource type="Theme" uid="uid://4rqtecgji27t" path="res://scenes/_levels/menus/main_menu/Main_Menu_UI_NEW/UI_themes/customised_brush_theme.tres" id="2_hbu7d"]
 [ext_resource type="Script" uid="uid://dqspm2isfx5n1" path="res://scripts/input_context/joy_icons_master.gd" id="2_ru1jb"]
-[ext_resource type="Texture2D" uid="uid://38f8l0x5wt0x" path="res://scenes/_levels/menus/main_menu/Main_Menu_UI_NEW/UI_themes/ui_art/ui_button.png" id="3_gqisl"]
 [ext_resource type="Resource" uid="uid://bvdc57ehdgnq3" path="res://scripts/input_context/joyicons_xbox.tres" id="3_s2hb7"]
 [ext_resource type="Resource" uid="uid://cuvbrqma8ltub" path="res://scripts/input_context/joyicons_ps4.tres" id="4_wioyo"]
 [ext_resource type="Resource" uid="uid://cy86l8mtli3ke" path="res://scripts/input_context/joyicons_nintendo.tres" id="5_nhuu7"]
-
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_i7vcm"]
-texture = ExtResource("3_gqisl")
-expand_margin_left = 10.0
-expand_margin_top = 5.0
-expand_margin_right = 10.0
-expand_margin_bottom = 5.0
-modulate_color = Color(0.7254902, 0.7254902, 0.7254902, 0)
-
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_rxw5c"]
-texture = ExtResource("3_gqisl")
-expand_margin_left = 10.0
-expand_margin_top = 5.0
-expand_margin_right = 10.0
-expand_margin_bottom = 5.0
-modulate_color = Color(0.7254902, 0.7254902, 0.7254902, 0)
-
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_yggyf"]
-texture = ExtResource("3_gqisl")
-expand_margin_left = 10.0
-expand_margin_top = 10.0
-expand_margin_right = 10.0
-expand_margin_bottom = 10.0
-modulate_color = Color(1, 1, 1, 0)
-
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ru1jb"]
-texture = ExtResource("3_gqisl")
-expand_margin_left = 10.0
-expand_margin_top = 5.0
-expand_margin_right = 10.0
-expand_margin_bottom = 5.0
-modulate_color = Color(0.7254902, 0.7254902, 0.7254902, 0)
-
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_s2hb7"]
-texture = ExtResource("3_gqisl")
-expand_margin_left = 10.0
-expand_margin_top = 10.0
-expand_margin_right = 10.0
-expand_margin_bottom = 10.0
-modulate_color = Color(0.5882353, 0.5882353, 0.5882353, 0)
-
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_wioyo"]
-texture = ExtResource("3_gqisl")
-expand_margin_left = 10.0
-expand_margin_top = 5.0
-expand_margin_right = 10.0
-expand_margin_bottom = 5.0
-modulate_color = Color(0.7254902, 0.7254902, 0.7254902, 0)
+[ext_resource type="Texture2D" uid="uid://crbwrflkncel3" path="res://assets/Controlelr_UI/Controller2.png" id="6_ru1jb"]
 
 [node name="Control" type="Control" unique_id=520649011 node_paths=PackedStringArray("controller_image")]
 layout_mode = 3
-anchors_preset = 0
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
 script = ExtResource("1_gqisl")
 joy_dict = Dictionary[String, ExtResource("2_ru1jb")]({
 "DEFAULT": ExtResource("3_s2hb7"),
@@ -73,24 +30,139 @@ metadata/_tab_index = 3
 
 [node name="MarginContainer" type="MarginContainer" parent="." unique_id=418553410]
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -960.0
+offset_top = -540.0
+offset_right = 960.0
+offset_bottom = 540.0
 grow_horizontal = 2
 grow_vertical = 2
 
 [node name="TextureRect" type="TextureRect" parent="MarginContainer" unique_id=209512142]
 layout_mode = 2
-texture = ExtResource("1_6ybjx")
+texture = ExtResource("6_ru1jb")
 stretch_mode = 3
 
-[node name="Button" type="Button" parent="MarginContainer" unique_id=1848314119]
-layout_mode = 2
-size_flags_horizontal = 0
+[node name="Label" type="Label" parent="MarginContainer/TextureRect" unique_id=1069394703]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5442708
+anchor_top = 0.15046297
+anchor_right = 0.5442708
+anchor_bottom = 0.15046297
+offset_left = -109.0
+offset_top = -32.5
+offset_right = 109.0
+offset_bottom = 32.5
+grow_horizontal = 2
+grow_vertical = 2
 theme = ExtResource("2_hbu7d")
-theme_override_styles/normal = SubResource("StyleBoxTexture_i7vcm")
-theme_override_styles/pressed = SubResource("StyleBoxTexture_rxw5c")
-theme_override_styles/hover = SubResource("StyleBoxTexture_yggyf")
-theme_override_styles/hover_pressed = SubResource("StyleBoxTexture_ru1jb")
-theme_override_styles/disabled = SubResource("StyleBoxTexture_s2hb7")
-theme_override_styles/focus = SubResource("StyleBoxTexture_wioyo")
+theme_override_font_sizes/font_size = 42
+text = "PAUSE"
+
+[node name="Label2" type="Label" parent="MarginContainer/TextureRect" unique_id=1245483590]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.11770833
+anchor_top = 0.05925926
+anchor_right = 0.11770833
+anchor_bottom = 0.05925926
+offset_right = 252.0
+offset_bottom = 65.0
+theme = ExtResource("2_hbu7d")
+theme_override_font_sizes/font_size = 42
+text = "GRAB_LEFT"
+
+[node name="Label3" type="Label" parent="MarginContainer/TextureRect" unique_id=2131389329]
+layout_mode = 0
+offset_left = 191.0
+offset_top = 163.0
+offset_right = 443.0
+offset_bottom = 228.0
+theme = ExtResource("2_hbu7d")
+theme_override_font_sizes/font_size = 42
+text = "GRAB_LEFT"
+
+[node name="Label4" type="Label" parent="MarginContainer/TextureRect" unique_id=7756115]
+layout_mode = 0
+offset_left = 1355.0
+offset_top = 48.0
+offset_right = 1632.0
+offset_bottom = 113.0
+theme = ExtResource("2_hbu7d")
+theme_override_font_sizes/font_size = 42
+text = "GRAB_RIGHT"
+
+[node name="Label5" type="Label" parent="MarginContainer/TextureRect" unique_id=442351033]
+layout_mode = 0
+offset_left = 1370.0
+offset_top = 131.0
+offset_right = 1647.0
+offset_bottom = 196.0
+theme = ExtResource("2_hbu7d")
+theme_override_font_sizes/font_size = 42
+text = "TURN_RIGHT"
+
+[node name="Label6" type="Label" parent="MarginContainer/TextureRect" unique_id=1747625324]
+layout_mode = 0
+offset_left = 149.0
+offset_top = 338.0
+offset_right = 437.0
+offset_bottom = 403.0
+theme = ExtResource("2_hbu7d")
+theme_override_font_sizes/font_size = 42
+text = "LEFT_HAND"
+
+[node name="Label7" type="Label" parent="MarginContainer/TextureRect" unique_id=640994389]
+layout_mode = 0
+offset_left = 1049.0
+offset_top = 924.0
+offset_right = 1344.0
+offset_bottom = 989.0
+theme = ExtResource("2_hbu7d")
+theme_override_font_sizes/font_size = 42
+text = "RIGHT_HAND"
+
+[node name="Label8" type="Label" parent="MarginContainer/TextureRect" unique_id=1141693074]
+layout_mode = 0
+offset_left = 737.0
+offset_top = 928.0
+offset_right = 1032.0
+offset_bottom = 993.0
+theme = ExtResource("2_hbu7d")
+theme_override_font_sizes/font_size = 42
+text = "WALKING"
+
+[node name="Label9" type="Label" parent="MarginContainer/TextureRect" unique_id=148510518]
+layout_mode = 0
+offset_left = 1494.0
+offset_top = 508.0
+offset_right = 2015.0
+offset_bottom = 573.0
+theme = ExtResource("2_hbu7d")
+theme_override_font_sizes/font_size = 42
+text = "USE_RIGHT"
+
+[node name="Label11" type="Label" parent="MarginContainer/TextureRect" unique_id=1705069839]
+layout_mode = 0
+offset_left = 1489.0
+offset_top = 612.0
+offset_right = 1784.0
+offset_bottom = 677.0
+theme = ExtResource("2_hbu7d")
+theme_override_font_sizes/font_size = 42
+text = "CROUCH"
+
+[node name="Label10" type="Label" parent="MarginContainer/TextureRect" unique_id=305707231]
+layout_mode = 0
+offset_left = 1385.0
+offset_top = 358.0
+offset_right = 1881.0
+offset_bottom = 423.0
+theme = ExtResource("2_hbu7d")
+theme_override_font_sizes/font_size = 42
+text = "USE_LEFT"

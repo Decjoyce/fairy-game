@@ -66,7 +66,8 @@ unique_name_in_owner = true
 visible = false
 layout_mode = 2
 text = "RESTART_THE_GAME_CONFIRM"
-title = "Confirm Restart"
+close_button_text = "CANCEL"
+title = "CONFIRM_RESTART"
 
 [node name="MainMenuConfirmation" parent="." index="2" unique_id=1770307648 instance=ExtResource("4_qnj2a")]
 unique_name_in_owner = true
@@ -74,15 +75,17 @@ visible = false
 custom_minimum_size = Vector2(220, 0)
 layout_mode = 2
 text = "EXIT_MAIN_MENU_CONFIRM"
-title = "Confirm Exit"
+close_button_text = "CANCEL"
+title = "CONFIRM_EXIT"
 
 [node name="ExitConfirmation" parent="." index="3" unique_id=1587469343 instance=ExtResource("4_qnj2a")]
 unique_name_in_owner = true
 visible = false
 layout_mode = 2
 confirm_button_text = "CONFIRM"
-text = "Exit the game?"
-title = "Confirm Exit"
+text = "EXIT_GAME_CONFIRM"
+close_button_text = "CANCEL"
+title = "CONFIRM_EXIT"
 
 [connection signal="pressed" from="ContentContainer/BoxContainer/MenuButtonsMargin/MenuButtons/LoadButton" to="." method="_on_Load_Save_confirmed"]
 [connection signal="pressed" from="ContentContainer/BoxContainer/MenuButtonsMargin/MenuButtons/RestartButton2" to="." method="_on_restart_button_pressed"]
