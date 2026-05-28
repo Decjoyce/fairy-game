@@ -74,6 +74,7 @@
 [ext_resource type="PackedScene" uid="uid://cwr2r7yxt4ust" path="res://scenes/interactions/ReusableStones/stonepile_reusable_stones.tscn" id="72_v0o7u"]
 [ext_resource type="PackedScene" uid="uid://clvus6c43ipdy" path="res://scenes/interactions/interactables/items/all_items/misc/item_stone.tscn" id="73_x83fr"]
 [ext_resource type="PackedScene" uid="uid://dpm2ettl06ilt" path="res://scenes/interactions/interactables/items/all_items/instruments/item_flute.tscn" id="74_4k31x"]
+[ext_resource type="PackedScene" uid="uid://bt35oiny8avw8" path="res://scenes/interactions/interactables/items/all_items/misc/item_plushy.tscn" id="75_gh5yd"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_3wul1"]
 
@@ -6030,6 +6031,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -36, 0.4, -1)
 metadata/uid = "b4e08890-33c7-466e-b417-dcf8f74af212"
 metadata/lock_uid = true
 metadata/date_generated = "2026-05-06T00:57:58"
+
+[node name="Plushy" parent="." unique_id=42461688 instance=ExtResource("75_gh5yd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -113.93401, 0.4957545, -5.621668)
 
 [connection signal="area_entered" from="Bin/Room_Items/Teleporter/Trigger" to="Bin/Room_Items/Teleporter" method="_teleport_entity"]
 [connection signal="body_entered" from="Bin/Room_Items/Teleporter/Trigger" to="Bin/Room_Items/Teleporter" method="_teleport_item"]

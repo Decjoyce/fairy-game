@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://s5cfdf85lm5g" path="res://scenes/interactions/interactables/items/grabbable_item.gd" id="1_n8q5a"]
 [ext_resource type="Script" uid="uid://cqhq7vrwiw3m6" path="res://scenes/interactions/interactables/items/item_types/item_type.gd" id="2_ykgar"]
-[ext_resource type="Texture2D" uid="uid://bsduc3iepom6j" path="res://assets/__not_ours_dontship/n64_sphere_sprite.png" id="3_bhnpf"]
+[ext_resource type="Texture2D" uid="uid://piclpqp3t10" path="res://assets/sprites/Ballybog/BBPlush3.png" id="3_ykgar"]
 [ext_resource type="AudioStream" uid="uid://bg3t028pgxv30" path="res://assets/audio/sfx/items/ball/ball_hit_randomizer.tres" id="4_gd6n3"]
 [ext_resource type="Script" uid="uid://bhf6r6nw14krj" path="res://scripts/saving/persistent_objs/po_item.gd" id="5_nfx5a"]
 
@@ -35,7 +35,7 @@ script = ExtResource("1_n8q5a")
 item_type = SubResource("Resource_po0fx")
 display_name = "Mr. Ballybog"
 idle_graphics = NodePath("_g_idle")
-grabbed_graphics = NodePath("_g_grabbed")
+grabbed_graphics = NodePath("_g_idle2")
 
 [node name="Area3D" type="Area3D" parent="." unique_id=1213660990]
 collision_layer = 2
@@ -52,19 +52,30 @@ visible = false
 mesh = SubResource("SphereMesh_234jp")
 
 [node name="_g_idle" type="Sprite3D" parent="." unique_id=1574294457]
-modulate = Color(18.892157, 0, 18.892157, 1)
-pixel_size = 0.0064
+transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0, 0, 0)
+pixel_size = 0.002
 billboard = 1
+shaded = true
 texture_filter = 0
-texture = ExtResource("3_bhnpf")
+texture = ExtResource("3_ykgar")
+
+[node name="_g_idle2" type="Sprite3D" parent="." unique_id=613549614]
+transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0, 0, 0)
+visible = false
+pixel_size = 0.002
+billboard = 1
+shaded = true
+texture_filter = 0
+texture = ExtResource("3_ykgar")
 
 [node name="_g_grabbed" type="Sprite3D" parent="." unique_id=374449956]
-modulate = Color(18.892157, 0, 18.892157, 1)
-pixel_size = 0.0064
+visible = false
+pixel_size = 0.0002
 billboard = 1
+shaded = true
 texture_filter = 0
 render_priority = 1
-texture = ExtResource("3_bhnpf")
+texture = ExtResource("3_ykgar")
 
 [node name="AudioPlayer" type="AudioStreamPlayer3D" parent="." unique_id=849548537]
 stream = ExtResource("4_gd6n3")
