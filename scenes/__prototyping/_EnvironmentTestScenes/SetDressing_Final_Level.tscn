@@ -892,7 +892,6 @@ draw_pass_1 = SubResource("PlaneMesh_y7mrb")
 
 [node name="Statue_Section" parent="Different_Sections" unique_id=1516115227 node_paths=PackedStringArray("instantiate_point") instance=ExtResource("3_b3lts")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 65, -2, -19)
-visible = false
 instantiate_point = NodePath("../BabyInstantiatePoint")
 baby_scene = ExtResource("32_a8cig")
 
@@ -1001,6 +1000,15 @@ transform = Transform3D(2.45, 0, 0, 0, 4.9049, 0, 0, 0, 1.9844999, -5.5, 0, -3.1
 
 [node name="StoneSlab3" parent="Different_Sections/Statue_Section/Setdressing/Slabs" unique_id=921748083 instance=ExtResource("30_icas2")]
 transform = Transform3D(-2.45, 0, -1.7349049e-07, 0, 4.9048996, 0, 2.1418579e-07, 0, -1.9844997, -5.5, 0, 2.999998)
+
+[node name="SpotLight3D2" type="SpotLight3D" parent="Different_Sections/Statue_Section" unique_id=2101898859]
+transform = Transform3D(0.9999999, -1.1118894e-07, 1.0188579e-07, 8.1030166e-08, -0.17364816, -0.9848078, 1.2719201e-07, 0.98480767, -0.17364813, -8.7290325, -2.0650012, -0.43983412)
+
+[node name="SpotLight3D3" type="SpotLight3D" parent="Different_Sections/Statue_Section" unique_id=1042440915]
+transform = Transform3D(3.778507e-08, 0.9848078, -0.17364816, 8.1030166e-08, -0.17364816, -0.9848078, -1, 2.3140291e-08, -8.6360444e-08, -2.9851427, -1.7136307, 7.9702883)
+light_color = Color(0, 1.1697807, 1.1481984, 1)
+light_volumetric_fog_energy = 16.0
+spot_angle = 23.3
 
 [node name="Traps_Puzzle" parent="Different_Sections" unique_id=1530637846 instance=ExtResource("4_u1stw")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 66, -2, -30)
@@ -2902,6 +2910,10 @@ metadata/date_generated = "2026-05-27T21:37:42"
 
 [node name="Plushy" parent="." unique_id=1345304804 instance=ExtResource("60_sx5h4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -50.980366, -0.708, -18)
+keywords = "PERM;"
+metadata/uid = "5cfc7c58-6b1d-4c9c-b649-d2723dc3ed07"
+metadata/lock_uid = true
+metadata/date_generated = "2026-05-29T09:16:47"
 
 [connection signal="on_enter_lockdown" from="Different_Sections/BallyBog_Section/Ballybog_Scene/Observer_End" to="Different_Sections/BallyBog_Section/Ballybog_Scene/Observer_End/No_Acess_Gate" method="close_gate"]
 [connection signal="on_enter_lockdown" from="Different_Sections/BallyBog_Section/Ballybog_Scene/Observer_End" to="Different_Sections/BallyBog_Section/Ballybog_Scene/Observer_End/No_Acess_Gate/StaticBody3D/CollisionEnabler_Disabler" method="enable_obj"]
