@@ -2,6 +2,7 @@
 class_name PlayerTest
 extends Entity
 
+@export var player_index: int
 @export var testing_mode: bool
 
 @onready var movement: PlayerMovement = $Movement
@@ -28,6 +29,9 @@ var freeze : bool
 @onready var local_effect_player: EffectPlayer = $LocalEffectPlayer
 
 @export var babyball_mode: bool
+
+func set_up_mp(_p_index: int) -> void:
+	pass
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -98,10 +102,16 @@ func _physics_process(delta: float) -> void:
 	
 	movement.rotate(delta)
 	
-	movement.movement(delta)
+	if babyball_mode:
+		movement.movement_babyball(delta)
+		
+		movement.movement_input_babyball()
+	else:
 	
-	movement.movement_input()
-	movement.movement_input_sprint()
+		movement.movement(delta)
+		
+		movement.movement_input()
+		movement.movement_input_sprint()
 
 func on_save_game(saved_data: SavedData_Player) -> void:
 	#region General Data

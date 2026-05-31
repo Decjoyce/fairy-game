@@ -220,7 +220,7 @@ func check_can_move_right() -> bool:
 # ↓ Sprinting Stuff ↓
 
 var current_sprint_step: int
-var max_sprint_step: int = 12
+var max_sprint_step: int = 24
 
 var is_recovering: bool
 var current_recovery_time: float = 0
@@ -550,3 +550,75 @@ func _headbob(time: float) -> Vector2:
 		
 	
 	return pos
+
+# ↑ Teleport Stuff ↑
+# --------------------------------------------------------------------------------------------------
+# ↓ Headbob & Footsteps Stuff ↓
+
+func movement_babyball(delta: float) -> void:
+	target_pos.round() 
+	
+	#print(floor_detector.is_colliding())
+	gravity(delta)
+	
+	target_pos.y = player.global_position.y
+	dist_to_target = player.global_position.distance_to(target_pos)
+	
+	if dist_to_target > 0.001: ## This is conditioned so we can know if player is moving, to stop them from being able to attack while moving
+		#t_bob += delta * (target_pos - player.position).length() * speed ## some headbobbing formula i used before. Its really bad.
+		var weight = 1 - exp(-speed * delta)
+		player.global_position.x = lerpf(player.global_position.x, target_pos.x, weight)
+		player.global_position.z = lerpf(player.global_position.z, target_pos.z, weight)
+		
+		if floor_detector.is_colliding():
+			player.global_position.y = floor_detector.get_collision_point().y + player.current_player_height
+		
+		t_bob += delta * ((target_pos - player.global_position).length() * speed)
+		var bob := _headbob(t_bob)
+		player.cam.h_offset = bob.x
+		player.cam.v_offset = bob.y
+		
+		is_moving = true
+	else:
+		is_moving = false
+		player.global_position = target_pos 
+
+func movement_input_babyball() -> void:
+	## MOVEINPUT
+	#--> NORTH
+	if Input.is_action_just_pressed("move_up") and check_can_move_up():
+		target_pos = target_pos - compass.basis.z * Vector3.ONE
+		current_direction = MoveDirections.VERTICAL
+		
+		on_move.emit(Vector3.FORWARD, target_pos)
+		on_move_up.emit(target_pos)
+	#--> SOUTH
+	elif Input.is_action_just_pressed("move_down") and check_can_move_down():
+		target_pos = target_pos + compass.basis.z * Vector3.ONE
+		current_direction = MoveDirections.VERTICAL
+		
+		on_move.emit(Vector3.BACK, target_pos)
+		on_move_down.emit(target_pos)
+	#--> EAST
+	elif Input.is_action_just_pressed("move_left") and check_can_move_left():
+		target_pos = target_pos - compass.basis.x * Vector3.ONE
+		
+		current_direction = MoveDirections.HORIZONTAL
+		
+		on_move.emit(Vector3.LEFT, target_pos)
+		on_move_left.emit(target_pos)
+	#--> WEST
+	elif Input.is_action_just_pressed("move_right") and check_can_move_right():
+		target_pos = target_pos + compass.basis.x * Vector3.ONE
+		current_direction = MoveDirections.HORIZONTAL
+		
+		on_move.emit(Vector3.RIGHT, target_pos)
+		on_move_right.emit(target_pos)
+	## MOVEINPUT
+	##----------
+	#if floor_detector.is_colliding() and Input.is_action_just_pressed("toggle_crouch") and dist_to_target <= 0.6:
+		#toggle_crouch()
+	
+	target_pos.round() 
+	target_pos.y = player.global_position.y
+	compass.global_position = target_pos
