@@ -2,6 +2,8 @@
 
 [ext_resource type="PackedScene" uid="uid://d2pk1l2expq4i" path="res://scenes/_levels/_palettes/__dev/source/open/dev_open_middle_a.tscn" id="1_4j64p"]
 [ext_resource type="Script" uid="uid://bwif81g4r6g28" path="res://scenes/_levels/babyball/baby_ball_manager.gd" id="1_vrbek"]
+[ext_resource type="Material" uid="uid://bal0h0rtcbhxl" path="res://assets/shaders/m_red_team.tres" id="2_lk4md"]
+[ext_resource type="Material" uid="uid://co6t4es0ri6ho" path="res://assets/shaders/m_blue_team.tres" id="3_1qagb"]
 [ext_resource type="PackedScene" uid="uid://brxr85hbqpapm" path="res://scenes/interactions/interactables/items/all_items/breakables/item_baby.tscn" id="3_s5kbi"]
 [ext_resource type="PackedScene" uid="uid://da8jmxsuq7td1" path="res://scenes/_levels/babyball/babyball_hoop.tscn" id="4_oxheg"]
 [ext_resource type="PackedScene" uid="uid://4v23jnigirqc" path="res://scenes/interactions/_receivers/_logic/counter/Counter.tscn" id="5_ucbyt"]
@@ -17,6 +19,8 @@ size = Vector3(100, 1, 100)
 script = ExtResource("1_vrbek")
 spawn_positions_red_holder = NodePath("SpawnPositions/SP_RED")
 spawn_positions_blue_holder = NodePath("SpawnPositions/SP_Blue")
+red_team_mat = ExtResource("2_lk4md")
+blue_team_mat = ExtResource("3_1qagb")
 
 [node name="_sky" type="Node3D" parent="." unique_id=454924888]
 

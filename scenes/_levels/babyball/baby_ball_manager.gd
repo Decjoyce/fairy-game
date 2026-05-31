@@ -6,6 +6,8 @@ var team_blue: Array[PlayerTest]
 @export var spawn_positions_red_holder: Node3D
 @export var spawn_positions_blue_holder: Node3D
 
+@export var red_team_mat: Material
+@export var blue_team_mat: Material
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -24,11 +26,13 @@ func on_player_spawned(_player: PlayerTest, _index: int) -> void:
 	print(is_team_blue)
 	if is_team_blue: 
 		team_blue.append(_player)
+		_player.jersey.material_override = blue_team_mat
 		
 		await get_tree().create_timer(0.5).timeout
 		_player.movement.teleport_player(spawn_positions_blue_holder.get_child(team_blue.size()-1))
 	else: 
 		team_red.append(_player)
+		_player.jersey.material_override = red_team_mat
 		
 		await get_tree().create_timer(0.5).timeout
 		_player.movement.teleport_player(spawn_positions_red_holder.get_child(team_red.size()-1))

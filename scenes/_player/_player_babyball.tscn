@@ -5,6 +5,7 @@
 [ext_resource type="Shape3D" uid="uid://fpddyf5ita81" path="res://scenes/_player/movement/p_col_shape.tres" id="3_2u1il"]
 [ext_resource type="Shape3D" uid="uid://s7dtgfwvmtwe" path="res://scenes/_player/movement/p_col_shape_crouched.tres" id="4_nff77"]
 [ext_resource type="Material" uid="uid://cvaorh1jxnk23" path="res://assets/shaders/Outline/outline1.tres" id="5_2ji4n"]
+[ext_resource type="Material" uid="uid://bal0h0rtcbhxl" path="res://assets/shaders/m_red_team.tres" id="5_wf3e5"]
 [ext_resource type="Material" uid="uid://dyejtq23uplk4" path="res://assets/shaders/Outline/outline.tres" id="6_36b5p"]
 [ext_resource type="Script" uid="uid://jxohgxu3vshf" path="res://scripts/improved_raycast.gd" id="6_wce2w"]
 [ext_resource type="Script" uid="uid://ckdu0p87yl30a" path="res://scenes/_player/player_movement_new.gd" id="7_mxtkd"]
@@ -21,7 +22,11 @@
 [ext_resource type="Script" uid="uid://cyh0d64pfygbl" path="res://addons/maaacks_menus_template/base/nodes/utilities/pause_menu_controller.gd" id="22_xxfet"]
 [ext_resource type="PackedScene" uid="uid://dpb4loi6o0aum" path="res://UICOPY/scenes/windows/pause_menu.tscn" id="23_0s5d5"]
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wf3e5"]
+next_pass = ExtResource("6_36b5p")
+
 [sub_resource type="SphereMesh" id="SphereMesh_36b5p"]
+material = SubResource("StandardMaterial3D_wf3e5")
 radius = 0.1
 height = 0.2
 
@@ -179,16 +184,9 @@ _data = {
 &"death_anim": SubResource("Animation_gcklq")
 }
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1snfn"]
-next_pass = ExtResource("6_36b5p")
-albedo_color = Color(1, 0.15294118, 1, 1)
-
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_1snfn"]
 radius = 0.2
 height = 1.25
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wf3e5"]
-next_pass = ExtResource("6_36b5p")
 
 [sub_resource type="SphereMesh" id="SphereMesh_enba8"]
 material = SubResource("StandardMaterial3D_wf3e5")
@@ -258,13 +256,15 @@ shader_parameter/contrast_boost = 1.15
 shader_parameter/saturation = 0.7650000363375
 shader_parameter/new_color = Color(1, 1, 1, 1)
 
-[node name="player_test" type="Node3D" unique_id=725727541 node_paths=PackedStringArray("stats_ui", "death_ui", "all_visuals") groups=["Player"]]
+[node name="player_test" type="Node3D" unique_id=725727541 node_paths=PackedStringArray("stats_ui", "death_ui", "all_visuals", "jersey", "jersey_num") groups=["Player"]]
 script = ExtResource("1_d4jkp")
 death_scene = ExtResource("2_wm71h")
 stats_ui = NodePath("Stats/UI")
 death_ui = NodePath("DeathUI")
 babyball_mode = true
 all_visuals = [NodePath("Camera3D/MeshInstance3D"), NodePath("Camera3D/MeshInstance3D/MeshInstance3D"), NodePath("Camera3D/MeshInstance3D/MeshInstance3D/MeshInstance3D"), NodePath("Camera3D/MeshInstance3D/MeshInstance3D/MeshInstance3D2"), NodePath("Camera3D/MeshInstance3D/MeshInstance3D/MeshInstance3D3"), NodePath("Camera3D/g_hand_holder/hand_l"), NodePath("Camera3D/g_hand_holder/hand_r")]
+jersey = NodePath("Camera3D/MeshInstance3D")
+jersey_num = NodePath("Camera3D/MeshInstance3D/Label3D")
 metadata/uid = "[PLAYER]"
 
 [node name="Collision" type="Area3D" parent="." unique_id=457696524 groups=["Player"]]
@@ -321,7 +321,7 @@ color = Color(0, 0, 0, 1)
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Camera3D" unique_id=1223838266]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, -0.375, 0)
 layers = 0
-material_override = SubResource("StandardMaterial3D_1snfn")
+material_override = ExtResource("5_wf3e5")
 mesh = SubResource("CapsuleMesh_1snfn")
 skeleton = NodePath("../..")
 
@@ -344,6 +344,11 @@ mesh = SubResource("SphereMesh_wf3e5")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.2, 0.1, -0.056)
 layers = 0
 mesh = SubResource("SphereMesh_wf3e5")
+
+[node name="Label3D" type="Label3D" parent="Camera3D/MeshInstance3D" unique_id=559839095]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0.2317071, 0, 1.0128239e-08)
+text = "1"
+font_size = 47
 
 [node name="FloorDetector" type="RayCast3D" parent="." unique_id=1907868752]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)

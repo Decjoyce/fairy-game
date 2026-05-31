@@ -31,9 +31,12 @@ var freeze : bool
 @export var babyball_mode: bool
 
 @export var all_visuals: Array[MeshInstance3D]
+@export var jersey: MeshInstance3D
+@export var jersey_num: Label3D
 
 func set_up_mp(_p_index: int) -> void:
 	player_index = _p_index
+	jersey_num.text = str(_p_index)
 	match _p_index:
 		1:
 			cam.set_cull_mask_value(6, false)
