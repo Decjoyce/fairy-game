@@ -13,6 +13,8 @@ const INT_RAY_LENGTH = 1.5
 @export var hand_right: PlayerHand # index = 1
 @export var hand_left_sprite: TextureRect
 @export var hand_right_sprite: TextureRect
+@export var hand_left_3d: MeshInstance3D
+@export var hand_right_3d: MeshInstance3D
 
 @export var light_checker: LightChecker
 
@@ -89,7 +91,7 @@ func enable_alt_throwing() -> void:
 #@export var hand_light_gradient: Gradient
 
 func match_hand_to_light(_delta: float) -> void:
-	
+	return
 	if TEMPSaveGameHandler.experimental_handlighting:
 		hand_left_sprite.self_modulate = light_checker.lerped_current_light_avgcolor
 		hand_right_sprite.self_modulate = light_checker.lerped_current_light_avgcolor

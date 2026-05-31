@@ -91,6 +91,9 @@ func _physics_process(delta: float) -> void:
 	prev_velocity = rb.linear_velocity
 
 func begin_interact(sig: float = -1, hand: PlayerHand = null) -> void:
+	if is_grabbed and hand.player.player_index != grabbed_hand.player.player_index:
+		grabbed_hand.force_stop_interacting("FREE", false)
+	
 	if grabbed_graphics:
 		if untouched_graphics: untouched_graphics.visible = false
 		idle_graphics.visible = false

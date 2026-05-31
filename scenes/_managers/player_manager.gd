@@ -30,5 +30,6 @@ func add_player() -> void:
 	new_player.name = "Player_" + str(players.size())
 	new_player.set_up_mp(players.size())
 	
-	split_screen_container.columns = players.size()
+	if split_screen_container.columns == 1:
+		split_screen_container.columns = 2
 	player_spawned.emit(new_player, players.size())

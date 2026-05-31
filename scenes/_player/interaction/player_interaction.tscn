@@ -658,8 +658,10 @@ metadata/_edit_use_anchors_ = true
 
 [node name="States" type="Node" parent="Hand_Left" unique_id=797793001]
 
-[node name="FREE" type="Node" parent="Hand_Left/States" unique_id=1391622457]
+[node name="FREE" type="Node" parent="Hand_Left/States" unique_id=1391622457 node_paths=PackedStringArray("offset_helper")]
 script = ExtResource("3_7baq5")
+offset_helper = NodePath("../../_hand_sprite/_pickup_pos")
+grab_ray_collision_mask = 1
 anim_idle = "a_hand_idle"
 anim_prompt = "hand_prompt_default"
 
@@ -877,8 +879,10 @@ metadata/_edit_use_anchors_ = true
 
 [node name="States" type="Node" parent="Hand_Right" unique_id=600845926]
 
-[node name="FREE" type="Node" parent="Hand_Right/States" unique_id=2058095872]
+[node name="FREE" type="Node" parent="Hand_Right/States" unique_id=2058095872 node_paths=PackedStringArray("offset_helper")]
 script = ExtResource("3_7baq5")
+offset_helper = NodePath("../../_hand_sprite/_pickup_pos")
+grab_ray_collision_mask = 1
 anim_idle = "a_hand_idle"
 anim_prompt = "hand_prompt_default"
 

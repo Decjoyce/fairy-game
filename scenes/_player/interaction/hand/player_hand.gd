@@ -31,10 +31,18 @@ enum HandTypes {LEFT, RIGHT}
 
 @onready var input_controls: InputContexts = $_hand_sprite/InputContexts
 
+var hand_model: MeshInstance3D
+
 func _ready() -> void:
 	#animation_player.animation_finished.connect(play_queued_animation)
 	if hand_type == 0: hand_type_rotation_mult = -1
 	else: hand_type_rotation_mult = 1
+	
+	if !hand_model:
+		if hand_type == 0:
+			hand_model = player_interact.hand_left_3d
+		else:
+			hand_model = player_interact.hand_right_3d
 	
 	_init_states()
 

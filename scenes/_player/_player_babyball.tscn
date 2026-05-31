@@ -21,6 +21,10 @@
 [ext_resource type="Script" uid="uid://cyh0d64pfygbl" path="res://addons/maaacks_menus_template/base/nodes/utilities/pause_menu_controller.gd" id="22_xxfet"]
 [ext_resource type="PackedScene" uid="uid://dpb4loi6o0aum" path="res://UICOPY/scenes/windows/pause_menu.tscn" id="23_0s5d5"]
 
+[sub_resource type="SphereMesh" id="SphereMesh_36b5p"]
+radius = 0.1
+height = 0.2
+
 [sub_resource type="Animation" id="Animation_svbpy"]
 resource_name = "ENDING_ANIM"
 length = 5.0
@@ -176,6 +180,7 @@ _data = {
 }
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1snfn"]
+next_pass = ExtResource("6_36b5p")
 albedo_color = Color(1, 0.15294118, 1, 1)
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_1snfn"]
@@ -183,6 +188,7 @@ radius = 0.2
 height = 1.25
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wf3e5"]
+next_pass = ExtResource("6_36b5p")
 
 [sub_resource type="SphereMesh" id="SphereMesh_enba8"]
 material = SubResource("StandardMaterial3D_wf3e5")
@@ -252,12 +258,13 @@ shader_parameter/contrast_boost = 1.15
 shader_parameter/saturation = 0.7650000363375
 shader_parameter/new_color = Color(1, 1, 1, 1)
 
-[node name="player_test" type="Node3D" unique_id=725727541 node_paths=PackedStringArray("stats_ui", "death_ui") groups=["Player"]]
+[node name="player_test" type="Node3D" unique_id=725727541 node_paths=PackedStringArray("stats_ui", "death_ui", "all_visuals") groups=["Player"]]
 script = ExtResource("1_d4jkp")
 death_scene = ExtResource("2_wm71h")
 stats_ui = NodePath("Stats/UI")
 death_ui = NodePath("DeathUI")
 babyball_mode = true
+all_visuals = [NodePath("Camera3D/MeshInstance3D"), NodePath("Camera3D/MeshInstance3D/MeshInstance3D"), NodePath("Camera3D/MeshInstance3D/MeshInstance3D/MeshInstance3D"), NodePath("Camera3D/MeshInstance3D/MeshInstance3D/MeshInstance3D2"), NodePath("Camera3D/MeshInstance3D/MeshInstance3D/MeshInstance3D3"), NodePath("Camera3D/g_hand_holder/hand_l"), NodePath("Camera3D/g_hand_holder/hand_r")]
 metadata/uid = "[PLAYER]"
 
 [node name="Collision" type="Area3D" parent="." unique_id=457696524 groups=["Player"]]
@@ -285,6 +292,17 @@ cull_mask = 524287
 current = true
 fov = 100.0
 
+[node name="g_hand_holder" type="Node3D" parent="Camera3D" unique_id=381721029]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 0, 0)
+
+[node name="hand_l" type="MeshInstance3D" parent="Camera3D/g_hand_holder" unique_id=2050994897]
+layers = 0
+mesh = SubResource("SphereMesh_36b5p")
+
+[node name="hand_r" type="MeshInstance3D" parent="Camera3D/g_hand_holder" unique_id=443486278]
+layers = 0
+mesh = SubResource("SphereMesh_36b5p")
+
 [node name="DeathAnimationPlayer" type="AnimationPlayer" parent="Camera3D" unique_id=482069440]
 libraries/ = SubResource("AnimationLibrary_uus6m")
 
@@ -302,29 +320,29 @@ color = Color(0, 0, 0, 1)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Camera3D" unique_id=1223838266]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, -0.375, 0)
-layers = 512
+layers = 0
 material_override = SubResource("StandardMaterial3D_1snfn")
 mesh = SubResource("CapsuleMesh_1snfn")
 skeleton = NodePath("../..")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Camera3D/MeshInstance3D" unique_id=1105061973]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.4, 0)
-layers = 512
+layers = 0
 mesh = SubResource("SphereMesh_enba8")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Camera3D/MeshInstance3D/MeshInstance3D" unique_id=1133786667]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.2, 0, 0)
-layers = 512
+layers = 0
 mesh = SubResource("SphereMesh_2ji4n")
 
 [node name="MeshInstance3D2" type="MeshInstance3D" parent="Camera3D/MeshInstance3D/MeshInstance3D" unique_id=479883068]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.2, 0.099999994, 0.055829242)
-layers = 512
+layers = 0
 mesh = SubResource("SphereMesh_wf3e5")
 
 [node name="MeshInstance3D3" type="MeshInstance3D" parent="Camera3D/MeshInstance3D/MeshInstance3D" unique_id=557619036]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.2, 0.1, -0.056)
-layers = 512
+layers = 0
 mesh = SubResource("SphereMesh_wf3e5")
 
 [node name="FloorDetector" type="RayCast3D" parent="." unique_id=1907868752]
@@ -401,10 +419,11 @@ unique_name_in_owner = true
 stream = ExtResource("9_dv3jk")
 volume_db = 6.0
 
-[node name="Interaction" parent="." unique_id=336913977 node_paths=PackedStringArray("movement", "cam", "light_checker") instance=ExtResource("10_etw4g")]
+[node name="Interaction" parent="." unique_id=336913977 node_paths=PackedStringArray("movement", "cam", "hand_left_3d", "hand_right_3d") instance=ExtResource("10_etw4g")]
 movement = NodePath("../Movement")
 cam = NodePath("../Camera3D")
-light_checker = NodePath("")
+hand_left_3d = NodePath("../Camera3D/g_hand_holder/hand_l")
+hand_right_3d = NodePath("../Camera3D/g_hand_holder/hand_r")
 
 [node name="Stats" type="Node" parent="." unique_id=1718418828 node_paths=PackedStringArray("who_owns", "hit_sfx", "health_regen_timer")]
 script = ExtResource("11_ofly7")

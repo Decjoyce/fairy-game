@@ -70,6 +70,7 @@ func physics_update(_delta: float) -> void:
 		#use()
 
 func enter(previous_state_path: String, data := {}) -> void:
+
 	grabbed_item = hand_controller.hovering_interactable
 	grabbed_item.is_grabbed = true
 	
@@ -178,6 +179,7 @@ func set_grab_position() -> void:
 func grabbing() -> void:
 	grabbed_item.global_position = grab_position
 	grabbed_item.global_rotation.y = hand_controller.player.rotation.y
+	hand_controller.hand_model.global_position = grab_position
 	#if grabbed_item is Torch:
 		#if hand_controller.get_screen_position().x < player_interact.size.x * 0.2 or hand_controller.get_screen_position().x > player_interact.size.x * 0.8:
 			#if !item_at_edge_of_screen:
