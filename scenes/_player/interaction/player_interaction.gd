@@ -34,23 +34,23 @@ var load_level_thing: float
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	if me_ending: return
-	match_hand_to_light(delta)
-	
-	if Input.is_action_just_pressed("reload_level"): 
-		load_level_thing = 0
-		load_game_graphics.get_parent().visible = true
-		is_reloading = true
-	
-	if is_reloading and Input.is_action_pressed("reload_level"): 
-		load_level_thing+= delta
-		load_game_graphics.value = load_level_thing/5
-		if load_level_thing >= 5:
-			TEMPSaveGameHandler.load_game()
-	
-	if Input.is_action_just_released("reload_level"): 
-		load_level_thing = 0
-		load_game_graphics.get_parent().visible = false
-		is_reloading = false
+	#match_hand_to_light(delta)
+	#
+	#if Input.is_action_just_pressed("reload_level"): 
+		#load_level_thing = 0
+		#load_game_graphics.get_parent().visible = true
+		#is_reloading = true
+	#
+	#if is_reloading and Input.is_action_pressed("reload_level"): 
+		#load_level_thing+= delta
+		#load_game_graphics.value = load_level_thing/5
+		#if load_level_thing >= 5:
+			#TEMPSaveGameHandler.load_game()
+	#
+	#if Input.is_action_just_released("reload_level"): 
+		#load_level_thing = 0
+		#load_game_graphics.get_parent().visible = false
+		#is_reloading = false
 
 func make_hands_inactive() -> void:
 	hand_left.state.finished.emit(hand_left.state.FREE)

@@ -97,7 +97,7 @@ func _process(delta: float) -> void:
 func movement_input() -> void:
 	## MOVEINPUT
 	#--> NORTH
-	if Input.is_action_pressed("move_up") and !Input.is_action_just_pressed("move_up") and !Input.is_action_just_released("move_up") and check_can_move_up():
+	if Input.is_action_pressed("move_up") and !MultiplayerInput.is_action_just_pressed(player.device,"move_up") and !Input.is_action_just_released("move_up") and check_can_move_up():
 		if dist_to_target > 0.2: return
 		var prev_target: Vector3 = target_pos
 		target_pos = target_pos - compass.basis.z * Vector3.ONE
@@ -111,7 +111,7 @@ func movement_input() -> void:
 		was_holding = true
 		footstep_audio.play()
 	#--> SOUTH
-	elif (Input.is_action_pressed("move_down") or Input.is_action_just_pressed("move_down")) and check_can_move_down() :# and !Input.is_action_just_pressed("move_down") and !Input.is_action_just_released("move_down")
+	elif (Input.is_action_pressed("move_down") or MultiplayerInput.is_action_just_pressed(player.device,"move_down")) and check_can_move_down() :# and !MultiplayerInput.is_action_just_pressed(player.device,"move_down") and !Input.is_action_just_released("move_down")
 		if dist_to_target > 0.2: return
 		var prev_target: Vector3 = target_pos
 		target_pos = target_pos + compass.basis.z * Vector3.ONE
@@ -125,7 +125,7 @@ func movement_input() -> void:
 		footstep_audio.play()
 		was_holding = true
 	#--> EAST
-	elif (Input.is_action_pressed("move_left") or Input.is_action_just_pressed("move_left")) and check_can_move_left() :# and !Input.is_action_just_pressed("move_left") and !Input.is_action_just_released("move_left")
+	elif (Input.is_action_pressed("move_left") or MultiplayerInput.is_action_just_pressed(player.device,"move_left")) and check_can_move_left() :# and !MultiplayerInput.is_action_just_pressed(player.device,"move_left") and !Input.is_action_just_released("move_left")
 		if dist_to_target > 0.2: return
 		var prev_target: Vector3 = target_pos
 		target_pos = target_pos - compass.basis.x * Vector3.ONE
@@ -140,7 +140,7 @@ func movement_input() -> void:
 		footstep_audio.play()
 		was_holding = true
 	#--> WEST
-	elif (Input.is_action_pressed("move_right") or Input.is_action_just_pressed("move_right")) and check_can_move_right() :# and !Input.is_action_just_pressed("move_right") and !Input.is_action_just_released("move_right"):
+	elif (MultiplayerInput.is_action_just_pressed(player.device, "move_right") or MultiplayerInput.is_action_just_pressed(player.device,"move_right")) and check_can_move_right() :# and !MultiplayerInput.is_action_just_pressed(player.device,"move_right") and !Input.is_action_just_released("move_right"):
 		if dist_to_target > 0.2: return
 		var prev_target: Vector3 = target_pos
 		target_pos = target_pos + compass.basis.x * Vector3.ONE
@@ -155,7 +155,7 @@ func movement_input() -> void:
 		was_holding = true
 	## MOVEINPUT
 	##----------
-	if floor_detector.is_colliding() and Input.is_action_just_pressed("toggle_crouch") and dist_to_target <= 0.6:
+	if floor_detector.is_colliding() and MultiplayerInput.is_action_just_pressed(player.device,"toggle_crouch") and dist_to_target <= 0.6:
 		toggle_crouch()
 	
 	target_pos.round() 
@@ -352,12 +352,12 @@ var target_rotation: float
 var rotation_speed: float = 8
 
 func rotate_input() -> void:
-	if Input.is_action_just_pressed("turn_left"):
+	if MultiplayerInput.is_action_just_pressed(player.device,"turn_left"):
 		target_rotation = target_rotation + 1.5708
 		compass.global_rotation.y = target_rotation
 		on_turn.emit(target_rotation)
 		on_turn_left.emit(target_rotation)
-	elif Input.is_action_just_pressed("turn_right"):
+	elif MultiplayerInput.is_action_just_pressed(player.device,"turn_right"):
 		target_rotation = target_rotation - 1.5708
 		compass.global_rotation.y = target_rotation
 		on_turn.emit(target_rotation)
@@ -586,21 +586,21 @@ func movement_babyball(delta: float) -> void:
 func movement_input_babyball() -> void:
 	## MOVEINPUT
 	#--> NORTH
-	if Input.is_action_just_pressed("move_up") and check_can_move_up():
+	if MultiplayerInput.is_action_just_pressed(player.device,"move_up") and check_can_move_up():
 		target_pos = target_pos - compass.basis.z * Vector3.ONE
 		current_direction = MoveDirections.VERTICAL
 		
 		on_move.emit(Vector3.FORWARD, target_pos)
 		on_move_up.emit(target_pos)
 	#--> SOUTH
-	elif Input.is_action_just_pressed("move_down") and check_can_move_down():
+	elif MultiplayerInput.is_action_just_pressed(player.device,"move_down") and check_can_move_down():
 		target_pos = target_pos + compass.basis.z * Vector3.ONE
 		current_direction = MoveDirections.VERTICAL
 		
 		on_move.emit(Vector3.BACK, target_pos)
 		on_move_down.emit(target_pos)
 	#--> EAST
-	elif Input.is_action_just_pressed("move_left") and check_can_move_left():
+	elif MultiplayerInput.is_action_just_pressed(player.device,"move_left") and check_can_move_left():
 		target_pos = target_pos - compass.basis.x * Vector3.ONE
 		
 		current_direction = MoveDirections.HORIZONTAL
@@ -608,7 +608,7 @@ func movement_input_babyball() -> void:
 		on_move.emit(Vector3.LEFT, target_pos)
 		on_move_left.emit(target_pos)
 	#--> WEST
-	elif Input.is_action_just_pressed("move_right") and check_can_move_right():
+	elif MultiplayerInput.is_action_just_pressed(player.device,"move_right") and check_can_move_right():
 		target_pos = target_pos + compass.basis.x * Vector3.ONE
 		current_direction = MoveDirections.HORIZONTAL
 		
@@ -616,7 +616,7 @@ func movement_input_babyball() -> void:
 		on_move_right.emit(target_pos)
 	## MOVEINPUT
 	##----------
-	#if floor_detector.is_colliding() and Input.is_action_just_pressed("toggle_crouch") and dist_to_target <= 0.6:
+	#if floor_detector.is_colliding() and MultiplayerInput.is_action_just_pressed(player.device,"toggle_crouch") and dist_to_target <= 0.6:
 		#toggle_crouch()
 	
 	target_pos.round() 

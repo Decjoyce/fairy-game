@@ -8,13 +8,13 @@ func handle_input(_event: InputEvent) -> void:
 
 func update(_delta: float) -> void:
 	hand_controller.joystick_movement(_delta)
-	if Input.is_action_just_pressed("change_hand_speed_" + hand_controller.stringed_hand_type): hand_controller.change_hand_speed()
+	if MultiplayerInput.is_action_just_pressed(player.device,"change_hand_speed_" + hand_controller.stringed_hand_type): hand_controller.change_hand_speed()
 	
-	if Input.is_action_just_pressed("action_" + hand_controller.stringed_hand_type): 
+	if MultiplayerInput.is_action_just_pressed(player.device,"action_" + hand_controller.stringed_hand_type): 
 		interact()
 		return
 	
-	#if Input.is_action_just_pressed("enter_paint_mode_" + hand_controller.stringed_hand_type):
+	#if MultiplayerInput.is_action_just_pressed(player.device,"enter_paint_mode_" + hand_controller.stringed_hand_type):
 		#finished.emit(ATTACK)
 		#return
 	

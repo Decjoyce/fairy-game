@@ -24,17 +24,17 @@ func update(_delta: float) -> void:
 	
 	set_grab_position()
 	
-	if Input.is_action_just_pressed("testing_altthrow"): testing_throw_alt = !testing_throw_alt
+	#if MultiplayerInput.is_action_just_pressed(player.device,"testing_altthrow"): testing_throw_alt = !testing_throw_alt
 	
 	hand_controller.joystick_movement(_delta)
-	if Input.is_action_just_pressed("change_hand_speed_" + hand_controller.stringed_hand_type): hand_controller.change_hand_speed()
+	if MultiplayerInput.is_action_just_pressed(player.device,"change_hand_speed_" + hand_controller.stringed_hand_type): hand_controller.change_hand_speed()
 	
 	if is_ready:
-		if Input.is_action_just_pressed("action_" + hand_controller.stringed_hand_type):
+		if MultiplayerInput.is_action_just_pressed(player.device,"action_" + hand_controller.stringed_hand_type):
 			begin_charge()
-	if Input.is_action_pressed("action_" + hand_controller.stringed_hand_type):
+	if MultiplayerInput.is_action_pressed(player.device,"action_" + hand_controller.stringed_hand_type):
 			charging(_delta)
-	if is_charging and Input.is_action_just_released("action_" + hand_controller.stringed_hand_type):
+	if is_charging and MultiplayerInput.is_action_just_released(player.device,"action_" + hand_controller.stringed_hand_type):
 			end_charge()
 	
 	if !is_charging: item_receiver = hand_controller.interact_checker_item_receiver()
@@ -52,10 +52,10 @@ func update(_delta: float) -> void:
 			else: hand_controller.input_controls.disable_use_action()
 			hand_controller.anim_change_prompt_anim(anim_prompt)
 	
-	if !is_charging and Input.is_action_just_pressed("use_" + hand_controller.stringed_hand_type):
+	if !is_charging and MultiplayerInput.is_action_just_pressed(player.device,"use_" + hand_controller.stringed_hand_type):
 		use()
 	
-	if !item_receiver and !is_charging and Input.is_action_pressed("use_" + hand_controller.stringed_hand_type):
+	if !item_receiver and !is_charging and MultiplayerInput.is_action_pressed(player.device,"use_" + hand_controller.stringed_hand_type):
 		using()
 	
 	if !is_charging and !item_receiver and Input.is_action_just_released("use_" + hand_controller.stringed_hand_type):
@@ -66,7 +66,7 @@ func update(_delta: float) -> void:
 
 func physics_update(_delta: float) -> void:
 	pass
-	#if !item_receiver and Input.is_action_pressed("use_" + hand_controller.stringed_hand_type):
+	#if !item_receiver and MultiplayerInput.is_action_pressed(player.device,"use_" + hand_controller.stringed_hand_type):
 		#use()
 
 func enter(previous_state_path: String, data := {}) -> void:

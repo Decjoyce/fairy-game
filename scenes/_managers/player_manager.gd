@@ -3,6 +3,7 @@ extends Node
 signal player_spawned(p: PlayerTest, i: int)
 
 var players: Array[PlayerTest]
+var players_devices: Array[String]
 
 var split_screen_container: GridContainer 
 
@@ -17,6 +18,7 @@ func _ready() -> void:
 
 func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("toggle_crouch"):
+		print("F")
 		add_player()
 
 func add_player() -> void:
@@ -27,9 +29,9 @@ func add_player() -> void:
 	
 	var new_player: PlayerTest = new_player_screen.get_child(0).get_child(0)
 	players.append(new_player)
-	new_player.name = "Player_" + str(players.size())
-	new_player.set_up_mp(players.size())
+	new_player.name = "Player_" + str(players.size()-1)
+	new_player.set_up_mp(players.size()-1)
 	
 	if split_screen_container.columns == 1:
 		split_screen_container.columns = 2
-	player_spawned.emit(new_player, players.size())
+	player_spawned.emit(new_player, players.size()-1)

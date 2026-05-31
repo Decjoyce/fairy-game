@@ -34,23 +34,26 @@ var freeze : bool
 @export var jersey: MeshInstance3D
 @export var jersey_num: Label3D
 
+var device: int
+
 func set_up_mp(_p_index: int) -> void:
 	player_index = _p_index
+	device = _p_index
 	jersey_num.text = str(_p_index)
 	match _p_index:
-		1:
+		0:
 			cam.set_cull_mask_value(6, false)
 			for i in all_visuals:
 				i.set_layer_mask_value(6, true)
-		2:
+		1:
 			cam.set_cull_mask_value(7, false)
 			for i in all_visuals:
 				i.set_layer_mask_value(7, true)
-		3:
+		2:
 			cam.set_cull_mask_value(8, false)
 			for i in all_visuals:
 				i.set_layer_mask_value(8, true)
-		4:
+		3:
 			cam.set_cull_mask_value(9, false)
 			for i in all_visuals:
 				i.set_layer_mask_value(9, true)
