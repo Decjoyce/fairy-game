@@ -32,7 +32,7 @@ func end_interact(sig: float = -1, hand: PlayerHand = null) -> void:
 	l_charged = false
 	r_charged = false
 	is_charging_sound = false
-	if is_cancel:
+	if is_cancel and l_val >0.1 and r_val > 0.1:
 		audio.stream = sounds[2]
 		audio.play()
 
