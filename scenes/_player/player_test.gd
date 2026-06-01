@@ -33,6 +33,8 @@ var freeze : bool
 @export var all_visuals: Array[MeshInstance3D]
 @export var jersey: MeshInstance3D
 @export var jersey_num: Label3D
+@export var col: StaticBody3D
+@export var compass: Node3D
 
 var device: int
 
@@ -43,20 +45,40 @@ func set_up_mp(_p_index: int) -> void:
 	match _p_index:
 		0:
 			cam.set_cull_mask_value(6, false)
+			jersey_num.set_layer_mask_value(6, true)
+			col.set_collision_layer_value(6, true)
 			for i in all_visuals:
 				i.set_layer_mask_value(6, true)
+			for j in compass.get_children():
+				if j is not ShapeCast3D: continue
+				j.set_collision_mask_value(6, false)
 		1:
 			cam.set_cull_mask_value(7, false)
+			jersey_num.set_layer_mask_value(7, true)
+			col.set_collision_layer_value(7, true)
 			for i in all_visuals:
 				i.set_layer_mask_value(7, true)
+			for j in compass.get_children():
+				if j is not ShapeCast3D: continue
+				j.set_collision_mask_value(7, false)
 		2:
 			cam.set_cull_mask_value(8, false)
+			jersey_num.set_layer_mask_value(8, true)
+			col.set_collision_layer_value(8, true)
 			for i in all_visuals:
 				i.set_layer_mask_value(8, true)
+			for j in compass.get_children():
+				if j is not ShapeCast3D: continue
+				j.set_collision_mask_value(8, false)
 		3:
 			cam.set_cull_mask_value(9, false)
+			jersey_num.set_layer_mask_value(9, true)
+			col.set_collision_layer_value(9, true)
 			for i in all_visuals:
 				i.set_layer_mask_value(9, true)
+			for j in compass.get_children():
+				if j is not ShapeCast3D: continue
+				j.set_collision_mask_value(9, false)
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:

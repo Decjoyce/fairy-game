@@ -17,8 +17,7 @@ func _ready() -> void:
 	#add_player()
 
 func _process(delta: float) -> void:
-	if Input.is_action_just_pressed("toggle_crouch"):
-		print("F")
+	if Input.is_action_just_pressed("add_player"):
 		add_player()
 
 func add_player() -> void:

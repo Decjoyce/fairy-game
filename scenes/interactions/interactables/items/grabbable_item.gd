@@ -159,9 +159,11 @@ func end_using_item(arg) -> void:
 
 var init_impact: bool
 var last_throw_force: float
+var last_throw_pos: Vector3
 
 func throw(_throw_mult: float) -> void:
 	if grabbed_graphics: grabbed_graphics.visible = false
+	last_throw_pos = global_position
 	grabbed_hand = null
 	idle_graphics.visible = true
 	rb.linear_velocity = Vector3.ZERO

@@ -6,21 +6,34 @@
 [ext_resource type="Material" uid="uid://co6t4es0ri6ho" path="res://assets/shaders/m_blue_team.tres" id="3_1qagb"]
 [ext_resource type="PackedScene" uid="uid://brxr85hbqpapm" path="res://scenes/interactions/interactables/items/all_items/breakables/item_baby.tscn" id="3_s5kbi"]
 [ext_resource type="PackedScene" uid="uid://da8jmxsuq7td1" path="res://scenes/_levels/babyball/babyball_hoop.tscn" id="4_oxheg"]
-[ext_resource type="PackedScene" uid="uid://4v23jnigirqc" path="res://scenes/interactions/_receivers/_logic/counter/Counter.tscn" id="5_ucbyt"]
-[ext_resource type="Script" uid="uid://dxxyu0p8vmsmh" path="res://scripts/label_var_displayer.gd" id="6_d0oun"]
 [ext_resource type="PackedScene" uid="uid://d3x1l1brjvyre" path="res://scenes/item_catcher/item_catcher.tscn" id="7_7jl2g"]
 [ext_resource type="Script" uid="uid://dpj75tckiwmsm" path="res://scenes/interactions/_receivers/wip__item_mover/itm_mover.gd" id="8_ou1m8"]
 [ext_resource type="Environment" uid="uid://bgtm5vgme227i" path="res://assets/skyboxes/skyboxes_testing.tres" id="9_kmfd7"]
 
+[sub_resource type="QuadMesh" id="QuadMesh_vrbek"]
+
 [sub_resource type="BoxShape3D" id="BoxShape3D_ou1m8"]
 size = Vector3(100, 1, 100)
 
-[node name="BabyBall" type="Node3D" unique_id=517390624 node_paths=PackedStringArray("spawn_positions_red_holder", "spawn_positions_blue_holder")]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kmfd7"]
+bg_color = Color(1, 0.3244254, 0.40407234, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lk4md"]
+bg_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vrbek"]
+bg_color = Color(0.32, 0.8753333, 1, 1)
+
+[node name="BabyBall" type="Node3D" unique_id=517390624 node_paths=PackedStringArray("spawn_positions_red_holder", "spawn_positions_blue_holder", "red_score_label", "blue_score_label", "info_label", "itm_mover")]
 script = ExtResource("1_vrbek")
 spawn_positions_red_holder = NodePath("SpawnPositions/SP_RED")
 spawn_positions_blue_holder = NodePath("SpawnPositions/SP_Blue")
 red_team_mat = ExtResource("2_lk4md")
 blue_team_mat = ExtResource("3_1qagb")
+red_score_label = NodePath("Control/HBoxContainer/RedLabel")
+blue_score_label = NodePath("Control/HBoxContainer/BlueLabel")
+info_label = NodePath("Control/Label")
+itm_mover = NodePath("ItemMover")
 
 [node name="_sky" type="Node3D" parent="." unique_id=454924888]
 
@@ -187,41 +200,23 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, -8)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 keywords = "BABYBALL;"
 
-[node name="BBHoop" parent="." unique_id=485308689 node_paths=PackedStringArray("specific_item") instance=ExtResource("4_oxheg")]
+[node name="Hoop_Red" parent="." unique_id=485308689 node_paths=PackedStringArray("specific_item") instance=ExtResource("4_oxheg")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -8)
 specific_item = NodePath("../BabyDude")
 
-[node name="YourScoreLabel" type="Label3D" parent="BBHoop" unique_id=1103376460 node_paths=PackedStringArray("node_to_examine")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0.4000001)
-pixel_size = 0.0105
-billboard = 1
-text = "SCORE:
-"
-script = ExtResource("6_d0oun")
-node_to_examine = NodePath("../../Score_P1")
-vars_to_display = Array[String](["current_count"])
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Hoop_Red" unique_id=1614557238]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.1, 0.099999905)
+material_override = ExtResource("2_lk4md")
+mesh = SubResource("QuadMesh_vrbek")
 
-[node name="YourHoop" parent="." unique_id=1497984110 node_paths=PackedStringArray("specific_item") instance=ExtResource("4_oxheg")]
+[node name="Hoop_Blue" parent="." unique_id=1497984110 node_paths=PackedStringArray("specific_item") instance=ExtResource("4_oxheg")]
 transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 0, 0, 8)
 specific_item = NodePath("../BabyDude")
 
-[node name="BBScoreLabel" type="Label3D" parent="YourHoop" unique_id=8879063 node_paths=PackedStringArray("node_to_examine")]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 1.3987642e-07, 3, 1.5999999)
-pixel_size = 0.0105
-billboard = 1
-text = "SCORE:
-"
-script = ExtResource("6_d0oun")
-node_to_examine = NodePath("../../Score_P1")
-vars_to_display = Array[String](["current_count"])
-
-[node name="Score_P1" parent="." unique_id=1521904207 instance=ExtResource("5_ucbyt")]
-max_count = 69
-loop = false
-
-[node name="Score_P2" parent="." unique_id=146322595 instance=ExtResource("5_ucbyt")]
-max_count = 69
-loop = false
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Hoop_Blue" unique_id=2007998282]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.1, 0.099999905)
+material_override = ExtResource("3_1qagb")
+mesh = SubResource("QuadMesh_vrbek")
 
 [node name="ItemCatcher" parent="." unique_id=2014139358 node_paths=PackedStringArray("return_point") instance=ExtResource("7_7jl2g")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3, 0)
@@ -283,9 +278,66 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 0)
 [node name="SP_B_P4" type="Node3D" parent="SpawnPositions/SP_Blue" unique_id=1117052143]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 0)
 
-[connection signal="on_activated" from="BBHoop" to="Score_P1" method="add_count"]
-[connection signal="on_activated" from="YourHoop" to="Score_P2" method="add_count"]
-[connection signal="on_change" from="Score_P1" to="BBHoop/YourScoreLabel" method="update_text"]
-[connection signal="on_change" from="Score_P1" to="ItemMover" method="smooth_move_item_from_index"]
-[connection signal="on_change" from="Score_P2" to="YourHoop/BBScoreLabel" method="update_text"]
-[connection signal="on_change" from="Score_P2" to="ItemMover" method="smooth_move_item_from_index"]
+[node name="Control" type="Control" parent="." unique_id=635657851]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Control" unique_id=785680476]
+layout_mode = 0
+anchor_left = 0.36979166
+anchor_right = 0.6302083
+anchor_bottom = 0.037037037
+grow_horizontal = 2
+alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="RedLabel" type="Label" parent="Control/HBoxContainer" unique_id=675995720]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/outline_size = 14
+theme_override_font_sizes/font_size = 69
+theme_override_styles/normal = SubResource("StyleBoxFlat_kmfd7")
+text = "0"
+horizontal_alignment = 1
+
+[node name="Label3" type="Label" parent="Control/HBoxContainer" unique_id=1108344802]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/outline_size = 14
+theme_override_font_sizes/font_size = 59
+theme_override_styles/normal = SubResource("StyleBoxFlat_lk4md")
+text = "Score"
+horizontal_alignment = 1
+
+[node name="BlueLabel" type="Label" parent="Control/HBoxContainer" unique_id=482082135]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/outline_size = 14
+theme_override_font_sizes/font_size = 69
+theme_override_styles/normal = SubResource("StyleBoxFlat_vrbek")
+text = "0"
+horizontal_alignment = 1
+
+[node name="Label" type="Label" parent="Control" unique_id=668676310]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -99.0
+offset_top = -23.0
+offset_right = 99.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_font_sizes/font_size = 36
+text = "First to score X wins
+Press [Space] to add player
+Press [X] to hide this text"
+
+[connection signal="scored" from="Hoop_Red" to="." method="add_score_blue"]
+[connection signal="scored" from="Hoop_Blue" to="." method="add_score_red"]

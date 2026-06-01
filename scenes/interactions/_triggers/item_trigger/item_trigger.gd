@@ -1,3 +1,4 @@
+class_name ItemTrigger
 extends Area3D
 
 signal on_activated(sig: float)

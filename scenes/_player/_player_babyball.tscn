@@ -226,6 +226,8 @@ size = Vector3(0.5, 0.9, 1.1)
 [sub_resource type="BoxShape3D" id="BoxShape3D_xwuyi"]
 size = Vector3(1.1, 0.9, 0.5)
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_wf3e5"]
+
 [sub_resource type="Gradient" id="Gradient_imes0"]
 offsets = PackedFloat32Array(0, 0.31578946, 1)
 colors = PackedColorArray(0.47993267, 0.07172013, 0.060350247, 1, 0.67502344, 0.12257505, 0.10578546, 1, 0.7764706, 0.14901961, 0.12941177, 1)
@@ -256,7 +258,7 @@ shader_parameter/contrast_boost = 1.15
 shader_parameter/saturation = 0.7650000363375
 shader_parameter/new_color = Color(1, 1, 1, 1)
 
-[node name="player_test" type="Node3D" unique_id=725727541 node_paths=PackedStringArray("stats_ui", "death_ui", "all_visuals", "jersey", "jersey_num") groups=["Player"]]
+[node name="player_test" type="Node3D" unique_id=725727541 node_paths=PackedStringArray("stats_ui", "death_ui", "all_visuals", "jersey", "jersey_num", "col", "compass") groups=["Player"]]
 script = ExtResource("1_d4jkp")
 death_scene = ExtResource("2_wm71h")
 stats_ui = NodePath("Stats/UI")
@@ -265,6 +267,8 @@ babyball_mode = true
 all_visuals = [NodePath("Camera3D/MeshInstance3D"), NodePath("Camera3D/MeshInstance3D/MeshInstance3D"), NodePath("Camera3D/MeshInstance3D/MeshInstance3D/MeshInstance3D"), NodePath("Camera3D/MeshInstance3D/MeshInstance3D/MeshInstance3D2"), NodePath("Camera3D/MeshInstance3D/MeshInstance3D/MeshInstance3D3"), NodePath("Camera3D/g_hand_holder/hand_l"), NodePath("Camera3D/g_hand_holder/hand_r")]
 jersey = NodePath("Camera3D/MeshInstance3D")
 jersey_num = NodePath("Camera3D/MeshInstance3D/Label3D")
+col = NodePath("Movement/Compass/Player_Collision")
+compass = NodePath("Movement/Compass")
 metadata/uid = "[PLAYER]"
 
 [node name="Collision" type="Area3D" parent="." unique_id=457696524 groups=["Player"]]
@@ -347,6 +351,7 @@ mesh = SubResource("SphereMesh_wf3e5")
 
 [node name="Label3D" type="Label3D" parent="Camera3D/MeshInstance3D" unique_id=559839095]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0.2317071, 0, 1.0128239e-08)
+layers = 0
 text = "1"
 font_size = 47
 
@@ -386,34 +391,42 @@ BOB_AMP = 0.04
 metadata/_custom_type_script = "uid://by88p7ijbixe5"
 
 [node name="Compass" type="Node3D" parent="Movement" unique_id=1229802818]
+unique_name_in_owner = true
 
 [node name="North" type="ShapeCast3D" parent="Movement/Compass" unique_id=1707693672]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.1, -0.55)
 shape = SubResource("BoxShape3D_3jgj8")
 target_position = Vector3(0, 0, 0)
-collision_mask = 9
+collision_mask = 489
 debug_shape_custom_color = Color(0.32798007, 0.4496488, 0.99998206, 1)
 
 [node name="East" type="ShapeCast3D" parent="Movement/Compass" unique_id=1092941304]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.55, -0.1, 0)
 shape = SubResource("BoxShape3D_xwuyi")
 target_position = Vector3(0, 0, 0)
-collision_mask = 9
+collision_mask = 489
 debug_shape_custom_color = Color(1, 0.64589864, 0.7194342, 1)
 
 [node name="South" type="ShapeCast3D" parent="Movement/Compass" unique_id=538684290]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.1, 0.55)
 shape = SubResource("BoxShape3D_3jgj8")
 target_position = Vector3(0, 0, 0)
-collision_mask = 9
+collision_mask = 489
 debug_shape_custom_color = Color(1, 0.8018582, 0.08261081, 1)
 
 [node name="West" type="ShapeCast3D" parent="Movement/Compass" unique_id=69390728]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.55, -0.1, 0)
 shape = SubResource("BoxShape3D_xwuyi")
 target_position = Vector3(0, 0, 0)
-collision_mask = 9
+collision_mask = 489
 debug_shape_custom_color = Color(0, 0.79870725, 0.7254093, 1)
+
+[node name="Player_Collision" type="StaticBody3D" parent="Movement/Compass" unique_id=1959947056]
+collision_layer = 0
+collision_mask = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Movement/Compass/Player_Collision" unique_id=1919471780]
+shape = SubResource("BoxShape3D_wf3e5")
 
 [node name="CrouchSFX" type="AudioStreamPlayer3D" parent="Movement" unique_id=2066927461]
 stream = ExtResource("8_4v7uu")

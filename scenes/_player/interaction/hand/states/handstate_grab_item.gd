@@ -137,7 +137,7 @@ func exit() -> void:
 # --------------------------------------------------------------------------------------------------
 # ↓ Grabbing Stuff ↓
 
-const GRAB_DIST = 1.0
+const GRAB_DIST = 0.75
 var grabbed_item: Grabbable_Item
 var grab_position: Vector3
 @export_flags_2d_physics var grab_ray_collision_mask: int
