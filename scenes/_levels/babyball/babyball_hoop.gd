@@ -18,10 +18,11 @@ func _on_item_exited(body: Node3D) -> void:
 func netted() -> void:
 	var num_points: int
 	var _con_throw_pos: Vector2 = Vector2(specific_item.last_throw_pos.x, specific_item.last_throw_pos.z)
-	var dist_from_net: float = _con_throw_pos.distance_squared_to(Vector2(global_position.x, global_position.z))
-	if dist_from_net >= 1: 
+	var dist_from_net: float = _con_throw_pos.distance_to(Vector2(global_position.x, global_position.z))
+	print(dist_from_net)
+	if dist_from_net <= 4: 
 		num_points = 1
-	elif dist_from_net > 3:
+	elif dist_from_net < 12:
 		num_points = 2
 	else:
 		num_points = 3

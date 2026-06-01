@@ -11,6 +11,8 @@ var player_viewport_scene: PackedScene = preload("res://scenes/_levels/babyball/
 
 const MAX_PLAYERS: int = 4
 
+var prev_winners: Array[int]
+
 func _ready() -> void:
 	split_screen_container = get_tree().get_first_node_in_group("SSC")
 	#add_player()
@@ -22,6 +24,7 @@ func _process(delta: float) -> void:
 
 func add_player() -> void:
 	if players.size() == MAX_PLAYERS: return
+	split_screen_container = get_tree().get_first_node_in_group("SSC")
 	var new_player_screen: Node = player_viewport_scene.instantiate()
 	split_screen_container.add_child(new_player_screen)
 	
@@ -30,6 +33,7 @@ func add_player() -> void:
 	players.append(new_player)
 	new_player.name = "Player_" + str(players.size()-1)
 	new_player.set_up_mp(players.size()-1)
+	if prev_winners.has(new_player.player_index): new_player.prev_crown.visible = true
 	
 	if split_screen_container.columns == 1:
 		split_screen_container.columns = 2

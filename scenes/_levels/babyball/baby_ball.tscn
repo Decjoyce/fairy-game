@@ -24,7 +24,7 @@ bg_color = Color(0, 0, 0, 1)
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vrbek"]
 bg_color = Color(0.32, 0.8753333, 1, 1)
 
-[node name="BabyBall" type="Node3D" unique_id=517390624 node_paths=PackedStringArray("spawn_positions_red_holder", "spawn_positions_blue_holder", "red_score_label", "blue_score_label", "info_label", "itm_mover")]
+[node name="BabyBall" type="Node3D" unique_id=517390624 node_paths=PackedStringArray("spawn_positions_red_holder", "spawn_positions_blue_holder", "red_score_label", "blue_score_label", "info_label", "win_label", "itm_mover")]
 script = ExtResource("1_vrbek")
 spawn_positions_red_holder = NodePath("SpawnPositions/SP_RED")
 spawn_positions_blue_holder = NodePath("SpawnPositions/SP_Blue")
@@ -33,6 +33,7 @@ blue_team_mat = ExtResource("3_1qagb")
 red_score_label = NodePath("Control/HBoxContainer/RedLabel")
 blue_score_label = NodePath("Control/HBoxContainer/BlueLabel")
 info_label = NodePath("Control/Label")
+win_label = NodePath("Control/Label2")
 itm_mover = NodePath("ItemMover")
 
 [node name="_sky" type="Node3D" parent="." unique_id=454924888]
@@ -251,7 +252,7 @@ grow_vertical = 2
 [node name="SpawnPositions" type="Node3D" parent="." unique_id=872229288]
 
 [node name="SP_RED" type="Node3D" parent="SpawnPositions" unique_id=1880172525]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 3)
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 2, -3)
 
 [node name="SP_R_P1" type="Node3D" parent="SpawnPositions/SP_RED" unique_id=1140785104]
 
@@ -265,7 +266,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 0)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 0)
 
 [node name="SP_Blue" type="Node3D" parent="SpawnPositions" unique_id=143933412]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 2, -3)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 3)
 
 [node name="SP_B_P1" type="Node3D" parent="SpawnPositions/SP_Blue" unique_id=423857970]
 
@@ -338,6 +339,22 @@ theme_override_font_sizes/font_size = 36
 text = "First to score X wins
 Press [Space] to add player
 Press [X] to hide this text"
+horizontal_alignment = 1
+
+[node name="Label2" type="Label" parent="Control" unique_id=742439922]
+visible = false
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -25.0
+offset_bottom = 25.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 122
+text = "dddd"
+horizontal_alignment = 1
 
 [connection signal="scored" from="Hoop_Red" to="." method="add_score_blue"]
 [connection signal="scored" from="Hoop_Blue" to="." method="add_score_red"]

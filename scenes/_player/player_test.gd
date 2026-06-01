@@ -36,6 +36,9 @@ var freeze : bool
 @export var col: StaticBody3D
 @export var compass: Node3D
 
+@export var crown: MeshInstance3D
+@export var prev_crown: MeshInstance3D
+
 var device: int
 
 func set_up_mp(_p_index: int) -> void:

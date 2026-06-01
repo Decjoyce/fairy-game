@@ -6,6 +6,8 @@ var team_blue: Array[PlayerTest]
 var score_red: int
 var score_blue: int
 
+var score_to_win: int = 15
+
 @export var spawn_positions_red_holder: Node3D
 @export var spawn_positions_blue_holder: Node3D
 
@@ -16,6 +18,7 @@ var score_blue: int
 @export var blue_score_label: Label
 
 @export var info_label: Label
+@export var win_label: Label
 
 @export var itm_mover: ItemMover
 
@@ -34,11 +37,25 @@ func add_score_red(_points: int) -> void:
 	score_red+= _points
 	red_score_label.text = str(score_red)
 	itm_mover.move_item_from_index()
+	if score_red >= score_to_win: 
+		win_label.text = "RED TEAM WINS"
+		win_label.visible = true
+		for i in team_red:
+			i.crown.visible = true
+			i.prev_crown.visible = false
+			PlayerManager.prev_winners.append(i.player_index)
 
 func add_score_blue(_points: int) -> void:
 	score_blue+= _points
 	blue_score_label.text = str(score_blue)
 	itm_mover.move_item_from_index()
+	if score_blue >= score_to_win: 
+		win_label.text = "BLUE TEAM WINS"
+		win_label.visible = true
+		for i in team_blue:
+			i.crown.visible = true
+			i.prev_crown.visible = false
+			PlayerManager.prev_winners.append(i.player_index)
 
 func on_player_spawned(_player: PlayerTest, _index: int) -> void:
 	print(_index)
