@@ -1,6 +1,6 @@
 extends Node
 
-@export var joy_dict: Dictionary[String, JoyIcons]
+@export var joy_dict: Dictionary[String, Control]
 
 @export var controller_image: TextureRect
 
@@ -11,8 +11,11 @@ func _ready() -> void:
 
 
 func update_me() -> void:
-	if joy_dict.has(Input.get_joy_name(0)): set_icons(joy_dict[Input.get_joy_name(0)])
-	else:  set_icons(joy_dict["DEFAULT"])
+	if joy_dict.has(Input.get_joy_name(0)): set_icons(Input.get_joy_name(0))
+	else:  set_icons("DEFAULT")
 
-func set_icons(icons: JoyIcons) -> void:
-	controller_image.texture = icons.controls
+func set_icons(joy_name: String) -> void:
+	for i in get_child(0).get_children():
+		i.visible = false
+	
+	joy_dict[joy_name].visible = true
