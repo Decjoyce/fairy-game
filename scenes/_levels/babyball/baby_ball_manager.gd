@@ -23,6 +23,7 @@ var score_to_win: int = 15
 
 @export var info_label: Label
 @export var win_label: Label
+@export var team_scores: Control
 
 @export var itm_mover: ItemMover
 
@@ -48,6 +49,10 @@ func _process(delta: float) -> void:
 func reset_game(sig:float=-1) -> void:
 	current_match_state = MatchStates.PRE_MATCH
 	
+	team_scores.visible = true
+	
+	win_label.visible = false
+	
 	game_timer.timeout.disconnect(reset_game)
 	
 	prematch_stuff.visible = true
@@ -64,6 +69,8 @@ func reset_game(sig:float=-1) -> void:
 func begin_game(sig:float=-1) -> void:
 	if current_match_state == MatchStates.MATCH: return
 	current_match_state = MatchStates.MATCH
+	
+	team_scores.visible = false
 	
 	win_label.visible = false
 	

@@ -70,12 +70,29 @@ debug_color = Color(0.8442249, 0.37985525, 5.7756904e-07, 0.41960785)
 layers = 4
 pixel_size = 0.0015
 billboard = 1
+render_priority = 1
+texture = ExtResource("4_jgox5")
+
+[node name="_idle_graphics" type="Sprite3D" parent="_idle_graphics" unique_id=1390611379]
+layers = 4
+modulate = Color(0, 0, 0, 1)
+pixel_size = 0.0015945
+billboard = 1
+render_priority = -1
 texture = ExtResource("4_jgox5")
 
 [node name="_grabbed_graphics" type="Sprite3D" parent="." unique_id=1144728069]
 visible = false
 layers = 4
 pixel_size = 0.0015
+billboard = 1
+render_priority = 2
+texture = ExtResource("5_jgox5")
+
+[node name="_grabbed_graphics" type="Sprite3D" parent="_grabbed_graphics" unique_id=1487506084]
+layers = 4
+modulate = Color(0, 0, 0, 1)
+pixel_size = 0.001627
 billboard = 1
 render_priority = 1
 texture = ExtResource("5_jgox5")

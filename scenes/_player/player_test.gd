@@ -154,7 +154,6 @@ func _physics_process(delta: float) -> void:
 	
 	if babyball_mode:
 		movement.movement_babyball(delta)
-		
 		movement.movement_input_babyball()
 	else:
 	

@@ -185,6 +185,7 @@ func throw(_throw_mult: float) -> void:
 func throw_alt(_throw_mult: float, dir: Vector3) -> void:##[-]
 	if grabbed_graphics: grabbed_graphics.visible = false
 	#global_rotation = dir
+	last_throw_pos = global_position
 	idle_graphics.visible = true
 	rb.linear_velocity = Vector3.ZERO
 	rb.freeze = false

@@ -19,12 +19,15 @@ func netted() -> void:
 	var num_points: int
 	var _con_throw_pos: Vector2 = Vector2(specific_item.last_throw_pos.x, specific_item.last_throw_pos.z)
 	var dist_from_net: float = _con_throw_pos.distance_to(Vector2(global_position.x, global_position.z))
-	print(dist_from_net)
+	#print(dist_from_net)
 	if dist_from_net <= 4: 
+		prints("SCORE = 1", dist_from_net)
 		num_points = 1
 	elif dist_from_net < 12:
+		prints("SCORE = 2", dist_from_net)
 		num_points = 2
 	else:
+		prints("SCORE = 3", dist_from_net)
 		num_points = 3
 	scored.emit(num_points)
 

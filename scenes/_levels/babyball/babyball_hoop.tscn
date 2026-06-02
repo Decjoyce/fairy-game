@@ -4,28 +4,26 @@
 [ext_resource type="Material" uid="uid://bmx5kbkw1qnpa" path="res://assets/_dev/materials/_dev_m_grey.tres" id="2_65yqu"]
 [ext_resource type="Material" uid="uid://cfsra4dny0m23" path="res://assets/_dev/materials/_dev_m_white.tres" id="3_8k8xl"]
 
-[sub_resource type="SphereShape3D" id="SphereShape3D_1v0qu"]
-resource_local_to_scene = true
-radius = 0.2
+[sub_resource type="BoxShape3D" id="BoxShape3D_6ibgk"]
+size = Vector3(1, 1.6, 0.4)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_i8eml"]
-size = Vector3(0.15, 1.9, 0.15)
+size = Vector3(0.15, 1.9, 1)
 
 [sub_resource type="BoxMesh" id="BoxMesh_i8eml"]
 material = ExtResource("2_65yqu")
-size = Vector3(0.15, 1.9, 0.15)
+size = Vector3(0.15, 1.9, 1)
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_aqp1t"]
-size = Vector3(1, 0.6, 0.1)
+[sub_resource type="BoxShape3D" id="BoxShape3D_65yqu"]
+size = Vector3(2, 1.9, 0.1)
 
-[sub_resource type="BoxMesh" id="BoxMesh_aqp1t"]
+[sub_resource type="BoxMesh" id="BoxMesh_8k8xl"]
 material = ExtResource("3_8k8xl")
-size = Vector3(1, 0.6, 0.1)
+size = Vector3(2, 1.9, 0.015)
 
-[sub_resource type="CylinderMesh" id="CylinderMesh_s85sr"]
-top_radius = 0.2
-bottom_radius = 0.15
-height = 0.3
+[sub_resource type="BoxMesh" id="BoxMesh_65yqu"]
+material = ExtResource("3_8k8xl")
+size = Vector3(1.91, 0.07, 0.075)
 
 [node name="BabyballHoop" type="Area3D" unique_id=485308689]
 collision_mask = 3
@@ -33,29 +31,48 @@ monitorable = false
 script = ExtResource("1_65yqu")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=117713165]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.7, 0.3)
-shape = SubResource("SphereShape3D_1v0qu")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.8, -0.7)
+shape = SubResource("BoxShape3D_6ibgk")
+debug_color = Color(16.38383, 0, 16.916626, 1)
 
 [node name="Graphics" type="StaticBody3D" parent="." unique_id=228627139]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Graphics" unique_id=99235536]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.95, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0.95, -0.5)
 shape = SubResource("BoxShape3D_i8eml")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Graphics/CollisionShape3D" unique_id=477779446]
 mesh = SubResource("BoxMesh_i8eml")
 skeleton = NodePath("../..")
 
-[node name="CollisionShape3D2" type="CollisionShape3D" parent="Graphics" unique_id=2090457189]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.024999991, 2.0999997, 0.125)
-shape = SubResource("BoxShape3D_aqp1t")
+[node name="CollisionShape3D4" type="CollisionShape3D" parent="Graphics" unique_id=1093822162]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.025, 0.95, -0.9)
+shape = SubResource("BoxShape3D_65yqu")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Graphics/CollisionShape3D2" unique_id=856417037]
-mesh = SubResource("BoxMesh_aqp1t")
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Graphics/CollisionShape3D4" unique_id=472132830]
+mesh = SubResource("BoxMesh_8k8xl")
+skeleton = NodePath("../..")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Graphics" unique_id=82971604]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.6999999, 0.3)
-mesh = SubResource("CylinderMesh_s85sr")
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Graphics/CollisionShape3D4" unique_id=1427468553]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.95, 0.9)
+mesh = SubResource("BoxMesh_65yqu")
+skeleton = NodePath("../..")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="Graphics" unique_id=717464008]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0.95, -0.5)
+shape = SubResource("BoxShape3D_i8eml")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Graphics/CollisionShape3D2" unique_id=1552425100]
+mesh = SubResource("BoxMesh_i8eml")
+skeleton = NodePath("../..")
+
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="Graphics" unique_id=1338012620]
+transform = Transform3D(-4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0, 1, 0, 1.825, -0.5)
+shape = SubResource("BoxShape3D_i8eml")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Graphics/CollisionShape3D3" unique_id=839781524]
+mesh = SubResource("BoxMesh_i8eml")
+skeleton = NodePath("../..")
 
 [connection signal="body_entered" from="." to="." method="_on_item_entered"]
 [connection signal="body_exited" from="." to="." method="_on_item_exited"]

@@ -9,7 +9,7 @@ var split_screen_container: GridContainer
 
 var player_viewport_scene: PackedScene = preload("res://scenes/_levels/babyball/player_splitscreen_holder.tscn") 
 
-const MAX_PLAYERS: int = 4
+var MAX_PLAYERS: int = 4
 
 var prev_winners: Array[int]
 
@@ -21,6 +21,9 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("add_player"):
 		add_player()
+
+func dbg_increase_player_count(amount: int) -> void:
+	MAX_PLAYERS += amount
 
 func drop_all_items() -> void:
 	#return
@@ -36,7 +39,7 @@ func unfreeze_players() -> void:
 		i.freeze = false
 
 func add_player() -> void:
-	if players.size() == MAX_PLAYERS: return
+	if players.size() == MAX_PLAYERS or Input.get_connected_joypads().size() <= players.size(): return
 	split_screen_container = get_tree().get_first_node_in_group("SSC")
 	var new_player_screen: Node = player_viewport_scene.instantiate()
 	split_screen_container.add_child(new_player_screen)

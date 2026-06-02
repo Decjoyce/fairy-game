@@ -587,6 +587,8 @@ func movement_input_babyball() -> void:
 	## MOVEINPUT
 	#--> NORTH
 	if MultiplayerInput.is_action_just_pressed(player.device,"move_up") and check_can_move_up():
+		last_frame_request_input = Engine.get_physics_frames()
+		last_pos = target_pos
 		target_pos = target_pos - compass.basis.z * Vector3.ONE
 		current_direction = MoveDirections.VERTICAL
 		
@@ -594,6 +596,8 @@ func movement_input_babyball() -> void:
 		on_move_up.emit(target_pos)
 	#--> SOUTH
 	elif MultiplayerInput.is_action_just_pressed(player.device,"move_down") and check_can_move_down():
+		last_frame_request_input = Engine.get_physics_frames()
+		last_pos = target_pos
 		target_pos = target_pos + compass.basis.z * Vector3.ONE
 		current_direction = MoveDirections.VERTICAL
 		
@@ -601,6 +605,8 @@ func movement_input_babyball() -> void:
 		on_move_down.emit(target_pos)
 	#--> EAST
 	elif MultiplayerInput.is_action_just_pressed(player.device,"move_left") and check_can_move_left():
+		last_frame_request_input = Engine.get_physics_frames()
+		last_pos = target_pos
 		target_pos = target_pos - compass.basis.x * Vector3.ONE
 		
 		current_direction = MoveDirections.HORIZONTAL
@@ -609,11 +615,14 @@ func movement_input_babyball() -> void:
 		on_move_left.emit(target_pos)
 	#--> WEST
 	elif MultiplayerInput.is_action_just_pressed(player.device,"move_right") and check_can_move_right():
+		last_frame_request_input = Engine.get_physics_frames()
+		last_pos = target_pos
 		target_pos = target_pos + compass.basis.x * Vector3.ONE
 		current_direction = MoveDirections.HORIZONTAL
 		
 		on_move.emit(Vector3.RIGHT, target_pos)
 		on_move_right.emit(target_pos)
+		
 	## MOVEINPUT
 	##----------
 	#if floor_detector.is_colliding() and MultiplayerInput.is_action_just_pressed(player.device,"toggle_crouch") and dist_to_target <= 0.6:
@@ -622,3 +631,6 @@ func movement_input_babyball() -> void:
 	target_pos.round() 
 	target_pos.y = player.global_position.y
 	compass.global_position = target_pos
+
+var last_frame_request_input: int
+var last_pos: Vector3

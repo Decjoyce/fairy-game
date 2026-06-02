@@ -11,7 +11,9 @@
 [ext_resource type="Script" uid="uid://36bqr8r0f50t" path="res://scenes/_levels/babyball/timereader.gd" id="8_8mrhv"]
 [ext_resource type="Script" uid="uid://dpj75tckiwmsm" path="res://scenes/interactions/_receivers/wip__item_mover/itm_mover.gd" id="8_ou1m8"]
 [ext_resource type="Script" uid="uid://xqw4e8e8sen3" path="res://scenes/_levels/babyball/player_catcher.gd" id="10_vrbek"]
+[ext_resource type="PackedScene" uid="uid://cj7d0607dh76" path="res://scenes/_levels/babyball/babyball_net.tscn" id="11_13blu"]
 [ext_resource type="PackedScene" uid="uid://qu5rxgbydmet" path="res://scenes/interactions/_triggers/button/button.tscn" id="11_lk4md"]
+[ext_resource type="Material" uid="uid://dyejtq23uplk4" path="res://assets/shaders/Outline/outline.tres" id="11_x70sc"]
 [ext_resource type="Script" uid="uid://dxxyu0p8vmsmh" path="res://scripts/label_var_displayer.gd" id="12_1qagb"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_lk4md"]
@@ -41,12 +43,62 @@ bg_color = Color(0, 0, 0, 1)
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vrbek"]
 bg_color = Color(0.32, 0.8753333, 1, 1)
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_x70sc"]
+bg_color = Color(0.32, 0.8753333, 1, 1)
+border_width_left = 15
+border_width_top = 15
+border_width_right = 15
+border_width_bottom = 15
+border_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_13blu"]
+bg_color = Color(1, 0.3254902, 0.40392157, 1)
+border_width_left = 15
+border_width_top = 15
+border_width_right = 15
+border_width_bottom = 15
+border_color = Color(0, 0, 0, 1)
+
 [sub_resource type="BoxShape3D" id="BoxShape3D_lk4md"]
 size = Vector3(50, 5, 50)
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qbcw0"]
+next_pass = ExtResource("11_x70sc")
+albedo_color = Color(0, 0, 0, 1)
+
+[sub_resource type="PrismMesh" id="PrismMesh_2d4mo"]
+material = SubResource("StandardMaterial3D_qbcw0")
+size = Vector3(0.755, 0.035, 7.8)
+
 [sub_resource type="QuadMesh" id="QuadMesh_vrbek"]
 
-[node name="BabyBall" type="Node3D" unique_id=517390624 node_paths=PackedStringArray("spawn_positions_red_holder", "spawn_positions_blue_holder", "red_score_label", "blue_score_label", "info_label", "win_label", "itm_mover", "game_timer", "prematch_stuff", "venues", "venue_disabler_helper")]
+[sub_resource type="BoxShape3D" id="BoxShape3D_qbcw0"]
+size = Vector3(0.2, 0.1, 9)
+
+[sub_resource type="PrismMesh" id="PrismMesh_rerno"]
+material = ExtResource("3_1qagb")
+size = Vector3(0.2, 0.1, 9)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_x70sc"]
+size = Vector3(0.2, 0.1, 7.8)
+
+[sub_resource type="PrismMesh" id="PrismMesh_x70sc"]
+material = ExtResource("3_1qagb")
+size = Vector3(0.2, 0.1, 7.8)
+
+[sub_resource type="PrismMesh" id="PrismMesh_13blu"]
+material = ExtResource("2_lk4md")
+size = Vector3(0.2, 0.1, 9)
+
+[sub_resource type="PrismMesh" id="PrismMesh_qbcw0"]
+material = ExtResource("2_lk4md")
+size = Vector3(0.2, 0.1, 9)
+
+[sub_resource type="PrismMesh" id="PrismMesh_3jcrv"]
+material = ExtResource("2_lk4md")
+size = Vector3(0.2, 0.1, 7.8)
+
+[node name="BabyBall" type="Node3D" unique_id=517390624 node_paths=PackedStringArray("spawn_positions_red_holder", "spawn_positions_blue_holder", "red_score_label", "blue_score_label", "info_label", "win_label", "team_scores", "itm_mover", "game_timer", "prematch_stuff", "venues", "venue_disabler_helper")]
 script = ExtResource("1_vrbek")
 spawn_positions_red_holder = NodePath("SpawnPositions/SP_RED")
 spawn_positions_blue_holder = NodePath("SpawnPositions/SP_Blue")
@@ -56,6 +108,7 @@ red_score_label = NodePath("CrappyUI/HBoxContainer/RedLabel")
 blue_score_label = NodePath("CrappyUI/HBoxContainer/BlueLabel")
 info_label = NodePath("CrappyUI/Label")
 win_label = NodePath("CrappyUI/Label2")
+team_scores = NodePath("CrappyUI/Control")
 itm_mover = NodePath("ItemMover")
 game_timer = NodePath("GameTimer")
 prematch_stuff = NodePath("Pre_Match_Stuff")
@@ -239,6 +292,50 @@ theme_override_font_sizes/font_size = 122
 text = "dddd"
 horizontal_alignment = 1
 
+[node name="Control" type="Control" parent="CrappyUI" unique_id=2037194430]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="BlueLabel" type="Label" parent="CrappyUI/Control" unique_id=614516149]
+visible = false
+z_index = 1
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.060416665
+anchor_bottom = 0.085185185
+offset_right = 4.0
+offset_bottom = -16.0
+size_flags_horizontal = 3
+theme_override_constants/outline_size = 14
+theme_override_font_sizes/font_size = 33
+theme_override_styles/normal = SubResource("StyleBoxFlat_x70sc")
+text = "0"
+horizontal_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="RedLabel" type="Label" parent="CrappyUI/Control" unique_id=1669417064]
+visible = false
+z_index = 1
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -119.0
+offset_right = 1.0
+offset_bottom = 76.0
+grow_horizontal = 0
+size_flags_horizontal = 3
+theme_override_constants/outline_size = 14
+theme_override_font_sizes/font_size = 33
+theme_override_styles/normal = SubResource("StyleBoxFlat_13blu")
+text = "0"
+horizontal_alignment = 1
+
 [node name="PlayerCatcher" type="Area3D" parent="." unique_id=548486217 node_paths=PackedStringArray("bb_ball")]
 monitorable = false
 script = ExtResource("10_vrbek")
@@ -406,7 +503,12 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, -8)
 
 [node name="floor" type="Node3D" parent="Venues/Bedug/_env" unique_id=1264038648]
 
-[node name="Hoop_Red" parent="Venues/Bedug" unique_id=485308689 node_paths=PackedStringArray("specific_item") instance=ExtResource("4_oxheg")]
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Venues/Bedug" unique_id=629363680]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, -0.0067999475, -0.00019838661)
+mesh = SubResource("PrismMesh_2d4mo")
+skeleton = NodePath("../_dev_floor_guide/_guide_r3")
+
+[node name="Hoop_Red" parent="Venues/Bedug" unique_id=485308689 node_paths=PackedStringArray("specific_item") instance=ExtResource("11_13blu")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -8)
 specific_item = NodePath("../../../BabyDude")
 
@@ -414,8 +516,9 @@ specific_item = NodePath("../../../BabyDude")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.1, 0.099999905)
 material_override = ExtResource("2_lk4md")
 mesh = SubResource("QuadMesh_vrbek")
+skeleton = NodePath("")
 
-[node name="Hoop_Blue" parent="Venues/Bedug" unique_id=1497984110 node_paths=PackedStringArray("specific_item") instance=ExtResource("4_oxheg")]
+[node name="Hoop_Blue" parent="Venues/Bedug" unique_id=1518528215 node_paths=PackedStringArray("specific_item") instance=ExtResource("11_13blu")]
 transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 0, 0, 8)
 specific_item = NodePath("../../../BabyDude")
 
@@ -423,178 +526,226 @@ specific_item = NodePath("../../../BabyDude")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.1, 0.099999905)
 material_override = ExtResource("3_1qagb")
 mesh = SubResource("QuadMesh_vrbek")
+skeleton = NodePath("")
 
-[node name="OtherOne" type="Node3D" parent="Venues" unique_id=197702942]
+[node name="_dev_floor_guide" type="StaticBody3D" parent="Venues/Bedug" unique_id=1898951457]
+
+[node name="_guide_r" type="CollisionShape3D" parent="Venues/Bedug/_dev_floor_guide" unique_id=280720499]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.9, 0.05, 4.5)
+shape = SubResource("BoxShape3D_qbcw0")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Venues/Bedug/_dev_floor_guide/_guide_r" unique_id=362083533]
+mesh = SubResource("PrismMesh_rerno")
+
+[node name="_guide_r2" type="CollisionShape3D" parent="Venues/Bedug/_dev_floor_guide" unique_id=1363255190]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.9, 0.05, 4.5)
+shape = SubResource("BoxShape3D_qbcw0")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Venues/Bedug/_dev_floor_guide/_guide_r2" unique_id=150820941]
+mesh = SubResource("PrismMesh_rerno")
+
+[node name="_guide_r3" type="CollisionShape3D" parent="Venues/Bedug/_dev_floor_guide" unique_id=725464293]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 0.05, 8.9)
+shape = SubResource("BoxShape3D_x70sc")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Venues/Bedug/_dev_floor_guide/_guide_r3" unique_id=1046472288]
+mesh = SubResource("PrismMesh_x70sc")
+
+[node name="_dev_floor_guide2" type="StaticBody3D" parent="Venues/Bedug" unique_id=507926100]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, 0)
+
+[node name="_guide_r" type="CollisionShape3D" parent="Venues/Bedug/_dev_floor_guide2" unique_id=938785336]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.9, 0.05, 4.5)
+shape = SubResource("BoxShape3D_qbcw0")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Venues/Bedug/_dev_floor_guide2/_guide_r" unique_id=1762826191]
+mesh = SubResource("PrismMesh_13blu")
+
+[node name="_guide_r2" type="CollisionShape3D" parent="Venues/Bedug/_dev_floor_guide2" unique_id=1165649866]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.9, 0.05, 4.5)
+shape = SubResource("BoxShape3D_qbcw0")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Venues/Bedug/_dev_floor_guide2/_guide_r2" unique_id=573814607]
+mesh = SubResource("PrismMesh_qbcw0")
+
+[node name="_guide_r3" type="CollisionShape3D" parent="Venues/Bedug/_dev_floor_guide2" unique_id=859920296]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 0.05, 8.9)
+shape = SubResource("BoxShape3D_x70sc")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Venues/Bedug/_dev_floor_guide2/_guide_r3" unique_id=426492297]
+mesh = SubResource("PrismMesh_3jcrv")
+
+[node name="Netball" type="Node3D" parent="Venues" unique_id=477455004]
 visible = false
 
-[node name="_env" type="Node3D" parent="Venues/OtherOne" unique_id=1158657970]
+[node name="_env" type="Node3D" parent="Venues/Netball" unique_id=762455294]
 
-[node name="_dev_open_middle_a" parent="Venues/OtherOne/_env" unique_id=1337986127 instance=ExtResource("1_4j64p")]
+[node name="_dev_open_middle_a" parent="Venues/Netball/_env" unique_id=483200169 instance=ExtResource("1_4j64p")]
 
-[node name="_dev_open_middle_a2" parent="Venues/OtherOne/_env" unique_id=1790074792 instance=ExtResource("1_4j64p")]
+[node name="_dev_open_middle_a2" parent="Venues/Netball/_env" unique_id=1517664255 instance=ExtResource("1_4j64p")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2)
 
-[node name="_dev_open_middle_a3" parent="Venues/OtherOne/_env" unique_id=144795179 instance=ExtResource("1_4j64p")]
+[node name="_dev_open_middle_a3" parent="Venues/Netball/_env" unique_id=551970621 instance=ExtResource("1_4j64p")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -4)
 
-[node name="_dev_open_middle_a4" parent="Venues/OtherOne/_env" unique_id=711243005 instance=ExtResource("1_4j64p")]
+[node name="_dev_open_middle_a4" parent="Venues/Netball/_env" unique_id=195782960 instance=ExtResource("1_4j64p")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -6)
 
-[node name="_dev_open_middle_a5" parent="Venues/OtherOne/_env" unique_id=874209484 instance=ExtResource("1_4j64p")]
+[node name="_dev_open_middle_a5" parent="Venues/Netball/_env" unique_id=1787147090 instance=ExtResource("1_4j64p")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -8)
 
-[node name="_dev_open_middle_a6" parent="Venues/OtherOne/_env" unique_id=359425615 instance=ExtResource("1_4j64p")]
+[node name="_dev_open_middle_a6" parent="Venues/Netball/_env" unique_id=864952467 instance=ExtResource("1_4j64p")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 0)
 
-[node name="_dev_open_middle_a7" parent="Venues/OtherOne/_env" unique_id=895701937 instance=ExtResource("1_4j64p")]
+[node name="_dev_open_middle_a7" parent="Venues/Netball/_env" unique_id=1564116756 instance=ExtResource("1_4j64p")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, -2)
 
-[node name="_dev_open_middle_a8" parent="Venues/OtherOne/_env" unique_id=248582626 instance=ExtResource("1_4j64p")]
+[node name="_dev_open_middle_a8" parent="Venues/Netball/_env" unique_id=118735967 instance=ExtResource("1_4j64p")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, -4)
 
-[node name="_dev_open_middle_a9" parent="Venues/OtherOne/_env" unique_id=1484141081 instance=ExtResource("1_4j64p")]
+[node name="_dev_open_middle_a9" parent="Venues/Netball/_env" unique_id=1070405297 instance=ExtResource("1_4j64p")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, -6)
 
-[node name="_dev_open_middle_a10" parent="Venues/OtherOne/_env" unique_id=530411061 instance=ExtResource("1_4j64p")]
+[node name="_dev_open_middle_a10" parent="Venues/Netball/_env" unique_id=1450988068 instance=ExtResource("1_4j64p")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, -8)
 
-[node name="_dev_open_middle_a11" parent="Venues/OtherOne/_env" unique_id=1482765892 instance=ExtResource("1_4j64p")]
+[node name="_dev_open_middle_a11" parent="Venues/Netball/_env" unique_id=1772785812 instance=ExtResource("1_4j64p")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 0)
 
-[node name="_dev_open_middle_a12" parent="Venues/OtherOne/_env" unique_id=1483239939 instance=ExtResource("1_4j64p")]
+[node name="_dev_open_middle_a12" parent="Venues/Netball/_env" unique_id=10683096 instance=ExtResource("1_4j64p")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, -2)
 
-[node name="_dev_open_middle_a13" parent="Venues/OtherOne/_env" unique_id=151812639 instance=ExtResource("1_4j64p")]
+[node name="_dev_open_middle_a13" parent="Venues/Netball/_env" unique_id=843645925 instance=ExtResource("1_4j64p")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, -4)
 
-[node name="_dev_open_middle_a14" parent="Venues/OtherOne/_env" unique_id=1598229082 instance=ExtResource("1_4j64p")]
+[node name="_dev_open_middle_a14" parent="Venues/Netball/_env" unique_id=1054371893 instance=ExtResource("1_4j64p")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, -6)
 
-[node name="_dev_open_middle_a15" parent="Venues/OtherOne/_env" unique_id=1498106483 instance=ExtResource("1_4j64p")]
+[node name="_dev_open_middle_a15" parent="Venues/Netball/_env" unique_id=1144359249 instance=ExtResource("1_4j64p")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, -8)
 
-[node name="_dev_open_middle_a21" parent="Venues/OtherOne/_env" unique_id=803265923 instance=ExtResource("1_4j64p")]
+[node name="_dev_open_middle_a21" parent="Venues/Netball/_env" unique_id=889987482 instance=ExtResource("1_4j64p")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, 0)
 
-[node name="_dev_open_middle_a22" parent="Venues/OtherOne/_env" unique_id=952498574 instance=ExtResource("1_4j64p")]
+[node name="_dev_open_middle_a22" parent="Venues/Netball/_env" unique_id=1961530031 instance=ExtResource("1_4j64p")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, -2)
 
-[node name="_dev_open_middle_a23" parent="Venues/OtherOne/_env" unique_id=2027373550 instance=ExtResource("1_4j64p")]
+[node name="_dev_open_middle_a23" parent="Venues/Netball/_env" unique_id=1832697591 instance=ExtResource("1_4j64p")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, -4)
 
-[node name="_dev_open_middle_a24" parent="Venues/OtherOne/_env" unique_id=313382345 instance=ExtResource("1_4j64p")]
+[node name="_dev_open_middle_a24" parent="Venues/Netball/_env" unique_id=1334301920 instance=ExtResource("1_4j64p")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, -6)
 
-[node name="_dev_open_middle_a25" parent="Venues/OtherOne/_env" unique_id=2008101993 instance=ExtResource("1_4j64p")]
+[node name="_dev_open_middle_a25" parent="Venues/Netball/_env" unique_id=357599982 instance=ExtResource("1_4j64p")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, -8)
 
-[node name="_dev_open_middle_a26" parent="Venues/OtherOne/_env" unique_id=1351558002 instance=ExtResource("1_4j64p")]
+[node name="_dev_open_middle_a26" parent="Venues/Netball/_env" unique_id=1819011791 instance=ExtResource("1_4j64p")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, 0)
 
-[node name="_dev_open_middle_a31" parent="Venues/OtherOne/_env" unique_id=590989225 instance=ExtResource("1_4j64p")]
+[node name="_dev_open_middle_a31" parent="Venues/Netball/_env" unique_id=1666373540 instance=ExtResource("1_4j64p")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2)
 
-[node name="_dev_open_middle_a32" parent="Venues/OtherOne/_env" unique_id=571092858 instance=ExtResource("1_4j64p")]
+[node name="_dev_open_middle_a32" parent="Venues/Netball/_env" unique_id=1337279337 instance=ExtResource("1_4j64p")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 2)
 
-[node name="_dev_open_middle_a33" parent="Venues/OtherOne/_env" unique_id=1866879055 instance=ExtResource("1_4j64p")]
+[node name="_dev_open_middle_a33" parent="Venues/Netball/_env" unique_id=766266708 instance=ExtResource("1_4j64p")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 2)
 
-[node name="_dev_open_middle_a34" parent="Venues/OtherOne/_env" unique_id=1832530451 instance=ExtResource("1_4j64p")]
+[node name="_dev_open_middle_a34" parent="Venues/Netball/_env" unique_id=300993207 instance=ExtResource("1_4j64p")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, 2)
 
-[node name="_dev_open_middle_a35" parent="Venues/OtherOne/_env" unique_id=92162957 instance=ExtResource("1_4j64p")]
+[node name="_dev_open_middle_a35" parent="Venues/Netball/_env" unique_id=1498979500 instance=ExtResource("1_4j64p")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, 2)
 
-[node name="_dev_open_middle_a36" parent="Venues/OtherOne/_env" unique_id=1964744783 instance=ExtResource("1_4j64p")]
+[node name="_dev_open_middle_a36" parent="Venues/Netball/_env" unique_id=1241219904 instance=ExtResource("1_4j64p")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 4)
 
-[node name="_dev_open_middle_a37" parent="Venues/OtherOne/_env" unique_id=1282317203 instance=ExtResource("1_4j64p")]
+[node name="_dev_open_middle_a37" parent="Venues/Netball/_env" unique_id=2012748401 instance=ExtResource("1_4j64p")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 4)
 
-[node name="_dev_open_middle_a38" parent="Venues/OtherOne/_env" unique_id=1964545738 instance=ExtResource("1_4j64p")]
+[node name="_dev_open_middle_a38" parent="Venues/Netball/_env" unique_id=150420243 instance=ExtResource("1_4j64p")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 4)
 
-[node name="_dev_open_middle_a39" parent="Venues/OtherOne/_env" unique_id=150105457 instance=ExtResource("1_4j64p")]
+[node name="_dev_open_middle_a39" parent="Venues/Netball/_env" unique_id=492496788 instance=ExtResource("1_4j64p")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, 4)
 
-[node name="_dev_open_middle_a40" parent="Venues/OtherOne/_env" unique_id=453747643 instance=ExtResource("1_4j64p")]
+[node name="_dev_open_middle_a40" parent="Venues/Netball/_env" unique_id=1625145335 instance=ExtResource("1_4j64p")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, 4)
 
-[node name="_dev_open_middle_a41" parent="Venues/OtherOne/_env" unique_id=1944875232 instance=ExtResource("1_4j64p")]
+[node name="_dev_open_middle_a41" parent="Venues/Netball/_env" unique_id=1138822291 instance=ExtResource("1_4j64p")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 6)
 
-[node name="_dev_open_middle_a42" parent="Venues/OtherOne/_env" unique_id=287613154 instance=ExtResource("1_4j64p")]
+[node name="_dev_open_middle_a42" parent="Venues/Netball/_env" unique_id=1708387633 instance=ExtResource("1_4j64p")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 6)
 
-[node name="_dev_open_middle_a43" parent="Venues/OtherOne/_env" unique_id=666029919 instance=ExtResource("1_4j64p")]
+[node name="_dev_open_middle_a43" parent="Venues/Netball/_env" unique_id=1345606406 instance=ExtResource("1_4j64p")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 6)
 
-[node name="_dev_open_middle_a44" parent="Venues/OtherOne/_env" unique_id=64727291 instance=ExtResource("1_4j64p")]
+[node name="_dev_open_middle_a44" parent="Venues/Netball/_env" unique_id=961779996 instance=ExtResource("1_4j64p")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, 6)
 
-[node name="_dev_open_middle_a45" parent="Venues/OtherOne/_env" unique_id=309016835 instance=ExtResource("1_4j64p")]
+[node name="_dev_open_middle_a45" parent="Venues/Netball/_env" unique_id=1514138007 instance=ExtResource("1_4j64p")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, 6)
 
-[node name="_dev_open_middle_a46" parent="Venues/OtherOne/_env" unique_id=1988260056 instance=ExtResource("1_4j64p")]
+[node name="_dev_open_middle_a46" parent="Venues/Netball/_env" unique_id=242466000 instance=ExtResource("1_4j64p")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 8)
 
-[node name="_dev_open_middle_a47" parent="Venues/OtherOne/_env" unique_id=2116590107 instance=ExtResource("1_4j64p")]
+[node name="_dev_open_middle_a47" parent="Venues/Netball/_env" unique_id=980962132 instance=ExtResource("1_4j64p")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 8)
 
-[node name="_dev_open_middle_a48" parent="Venues/OtherOne/_env" unique_id=1931772897 instance=ExtResource("1_4j64p")]
+[node name="_dev_open_middle_a48" parent="Venues/Netball/_env" unique_id=647551328 instance=ExtResource("1_4j64p")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 8)
 
-[node name="_dev_open_middle_a49" parent="Venues/OtherOne/_env" unique_id=380252813 instance=ExtResource("1_4j64p")]
+[node name="_dev_open_middle_a49" parent="Venues/Netball/_env" unique_id=2066966152 instance=ExtResource("1_4j64p")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, 8)
 
-[node name="_dev_open_middle_a50" parent="Venues/OtherOne/_env" unique_id=1387439903 instance=ExtResource("1_4j64p")]
+[node name="_dev_open_middle_a50" parent="Venues/Netball/_env" unique_id=1572142428 instance=ExtResource("1_4j64p")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, 8)
 
-[node name="_dev_open_middle_a27" parent="Venues/OtherOne/_env" unique_id=499330415 instance=ExtResource("1_4j64p")]
+[node name="_dev_open_middle_a27" parent="Venues/Netball/_env" unique_id=226051364 instance=ExtResource("1_4j64p")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, -2)
 
-[node name="_dev_open_middle_a28" parent="Venues/OtherOne/_env" unique_id=904991998 instance=ExtResource("1_4j64p")]
+[node name="_dev_open_middle_a28" parent="Venues/Netball/_env" unique_id=1987829785 instance=ExtResource("1_4j64p")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, -4)
 
-[node name="_dev_open_middle_a29" parent="Venues/OtherOne/_env" unique_id=1897822925 instance=ExtResource("1_4j64p")]
+[node name="_dev_open_middle_a29" parent="Venues/Netball/_env" unique_id=1266963417 instance=ExtResource("1_4j64p")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, -6)
 
-[node name="_dev_open_middle_a30" parent="Venues/OtherOne/_env" unique_id=1743454075 instance=ExtResource("1_4j64p")]
+[node name="_dev_open_middle_a30" parent="Venues/Netball/_env" unique_id=706449722 instance=ExtResource("1_4j64p")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, -8)
 
-[node name="_dev_open_middle_a16" parent="Venues/OtherOne/_env" unique_id=123626675 instance=ExtResource("1_4j64p")]
+[node name="_dev_open_middle_a16" parent="Venues/Netball/_env" unique_id=1361441338 instance=ExtResource("1_4j64p")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 0)
 
-[node name="_dev_open_middle_a17" parent="Venues/OtherOne/_env" unique_id=119315412 instance=ExtResource("1_4j64p")]
+[node name="_dev_open_middle_a17" parent="Venues/Netball/_env" unique_id=1547916096 instance=ExtResource("1_4j64p")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, -2)
 
-[node name="_dev_open_middle_a18" parent="Venues/OtherOne/_env" unique_id=566279058 instance=ExtResource("1_4j64p")]
+[node name="_dev_open_middle_a18" parent="Venues/Netball/_env" unique_id=222649857 instance=ExtResource("1_4j64p")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, -4)
 
-[node name="_dev_open_middle_a19" parent="Venues/OtherOne/_env" unique_id=194081020 instance=ExtResource("1_4j64p")]
+[node name="_dev_open_middle_a19" parent="Venues/Netball/_env" unique_id=101734397 instance=ExtResource("1_4j64p")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, -6)
 
-[node name="_dev_open_middle_a20" parent="Venues/OtherOne/_env" unique_id=1599195417 instance=ExtResource("1_4j64p")]
+[node name="_dev_open_middle_a20" parent="Venues/Netball/_env" unique_id=1667797986 instance=ExtResource("1_4j64p")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, -8)
 
-[node name="floor" type="Node3D" parent="Venues/OtherOne/_env" unique_id=1674044529]
+[node name="floor" type="Node3D" parent="Venues/Netball/_env" unique_id=1937918949]
 
-[node name="Hoop_Red" parent="Venues/OtherOne" unique_id=1098796606 node_paths=PackedStringArray("specific_item") instance=ExtResource("4_oxheg")]
-transform = Transform3D(-1, 0, -8.742278e-08, 6.181724e-08, 0.70710677, -0.70710677, 6.181724e-08, -0.70710677, -0.70710677, 0, 0, -8)
+[node name="Net_Red" parent="Venues/Netball" unique_id=1978832590 node_paths=PackedStringArray("specific_item") instance=ExtResource("4_oxheg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -8)
 specific_item = NodePath("../../../BabyDude")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Venues/OtherOne/Hoop_Red" unique_id=319935254]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.1, 0.099999905)
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Venues/Netball/Net_Red" unique_id=488074622]
+transform = Transform3D(1.95, 0, 0, 0, 1, 0, 0, 0, 0.99999994, -5.2453686e-08, 2.3, -0.5)
 material_override = ExtResource("2_lk4md")
 mesh = SubResource("QuadMesh_vrbek")
 
-[node name="Hoop_Blue" parent="Venues/OtherOne" unique_id=1383541775 node_paths=PackedStringArray("specific_item") instance=ExtResource("4_oxheg")]
-transform = Transform3D(1, 0, 0, 0, 0.49999997, -0.86602545, 0, 0.86602545, 0.49999997, 0, 0, 8)
+[node name="Net_Blue" parent="Venues/Netball" unique_id=1005313143 node_paths=PackedStringArray("specific_item") instance=ExtResource("4_oxheg")]
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 0, 0, 8)
 specific_item = NodePath("../../../BabyDude")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Venues/OtherOne/Hoop_Blue" unique_id=886573076]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.1, 0.099999905)
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Venues/Netball/Net_Blue" unique_id=1945191854]
+transform = Transform3D(1.95, 0, 0, 0, 1, 0, 0, 0, 0.99999994, -5.2453686e-08, 2.3, -0.5)
 material_override = ExtResource("3_1qagb")
 mesh = SubResource("QuadMesh_vrbek")
 
@@ -751,8 +902,8 @@ one_shot = true
 
 [connection signal="scored" from="Venues/Bedug/Hoop_Red" to="." method="add_score_blue"]
 [connection signal="scored" from="Venues/Bedug/Hoop_Blue" to="." method="add_score_red"]
-[connection signal="scored" from="Venues/OtherOne/Hoop_Red" to="." method="add_score_blue"]
-[connection signal="scored" from="Venues/OtherOne/Hoop_Blue" to="." method="add_score_red"]
+[connection signal="scored" from="Venues/Netball/Net_Red" to="." method="add_score_blue"]
+[connection signal="scored" from="Venues/Netball/Net_Blue" to="." method="add_score_red"]
 [connection signal="on_activated" from="Pre_Match_Stuff/BeginMatch" to="." method="begin_game"]
 [connection signal="on_activated" from="Pre_Match_Stuff/BeginMatch2" to="." method="begin_game"]
 [connection signal="on_activated" from="Pre_Match_Stuff/ScoreChanger/Button2" to="." method="decrease_score_to_win"]

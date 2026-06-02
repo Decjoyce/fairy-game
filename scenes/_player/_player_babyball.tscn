@@ -270,6 +270,8 @@ size = Vector3(1.1, 0.9, 0.5)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_wf3e5"]
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_0bd2n"]
+
 [sub_resource type="Gradient" id="Gradient_imes0"]
 offsets = PackedFloat32Array(0, 0.31578946, 1)
 colors = PackedColorArray(0.47993267, 0.07172013, 0.060350247, 1, 0.67502344, 0.12257505, 0.10578546, 1, 0.7764706, 0.14901961, 0.12941177, 1)
@@ -487,6 +489,14 @@ collision_mask = 0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Movement/Compass/Player_Collision" unique_id=1919471780]
 shape = SubResource("BoxShape3D_wf3e5")
+debug_color = Color(0.86830604, 0.0005344439, 0.85595554, 0.41960785)
+
+[node name="TP_THING" type="Area3D" parent="Movement/Compass" unique_id=1588189180]
+monitorable = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Movement/Compass/TP_THING" unique_id=1309190122]
+shape = SubResource("BoxShape3D_0bd2n")
+debug_color = Color(0.86830604, 0.0005344439, 0.85595554, 0.41960785)
 
 [node name="CrouchSFX" type="AudioStreamPlayer3D" parent="Movement" unique_id=2066927461]
 stream = ExtResource("8_4v7uu")
