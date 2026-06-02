@@ -144,8 +144,9 @@ func begin_interact() -> void:
 	match hovering_interactable.interaction_type:
 		hovering_interactable.InteractTypes.INSTANT:
 			if animation_player.has_animation(current_interactable.interact_animation):
-				current_interactable.begin_interact(-1, self)
 				anim_override_current_animation(current_interactable.interact_animation)
+				current_interactable.begin_interact(-1, self)
+				
 			
 		hovering_interactable.InteractTypes.GRAB_ITEM:
 			if player_interact.get_other_hand_state(hand_type) is HandState_Grab_Item:
@@ -203,7 +204,7 @@ func on_player_crouched(crouched: bool) -> void:
 
 func force_stop_interacting(next_state: String = "FREE", call_end_func_on_interactable: bool = true, call_end_func_on_state: bool = true) -> void:
 	if call_end_func_on_state: state.finished.emit(next_state)
-	if current_interactable and call_end_func_on_interactable: current_interactable.end_interact()
+	if state.name != "FREE" and current_interactable and call_end_func_on_interactable: current_interactable.end_interact()
 	current_interactable = null
 
 func interact_checker(): # -> Interactable:

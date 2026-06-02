@@ -6,11 +6,28 @@
 [ext_resource type="Material" uid="uid://co6t4es0ri6ho" path="res://assets/shaders/m_blue_team.tres" id="3_1qagb"]
 [ext_resource type="PackedScene" uid="uid://brxr85hbqpapm" path="res://scenes/interactions/interactables/items/all_items/breakables/item_baby.tscn" id="3_s5kbi"]
 [ext_resource type="PackedScene" uid="uid://da8jmxsuq7td1" path="res://scenes/_levels/babyball/babyball_hoop.tscn" id="4_oxheg"]
+[ext_resource type="Texture2D" uid="uid://b51emwu4c1lps" path="res://assets/__not_ours_dontship/full-seamless-spherical-hdr-panorama-360-degrees-angle-view-in-empty-gym-with-gymnasium-basketball-court-in-equirectangular-projection-ar-vr-content-2HWKRE6.jpg" id="4_vrbek"]
 [ext_resource type="PackedScene" uid="uid://d3x1l1brjvyre" path="res://scenes/item_catcher/item_catcher.tscn" id="7_7jl2g"]
+[ext_resource type="Script" uid="uid://36bqr8r0f50t" path="res://scenes/_levels/babyball/timereader.gd" id="8_8mrhv"]
 [ext_resource type="Script" uid="uid://dpj75tckiwmsm" path="res://scenes/interactions/_receivers/wip__item_mover/itm_mover.gd" id="8_ou1m8"]
-[ext_resource type="Environment" uid="uid://bgtm5vgme227i" path="res://assets/skyboxes/skyboxes_testing.tres" id="9_kmfd7"]
+[ext_resource type="Script" uid="uid://xqw4e8e8sen3" path="res://scenes/_levels/babyball/player_catcher.gd" id="10_vrbek"]
+[ext_resource type="PackedScene" uid="uid://qu5rxgbydmet" path="res://scenes/interactions/_triggers/button/button.tscn" id="11_lk4md"]
+[ext_resource type="Script" uid="uid://dxxyu0p8vmsmh" path="res://scripts/label_var_displayer.gd" id="12_1qagb"]
 
-[sub_resource type="QuadMesh" id="QuadMesh_vrbek"]
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_lk4md"]
+panorama = ExtResource("4_vrbek")
+filter = false
+
+[sub_resource type="Sky" id="Sky_1qagb"]
+sky_material = SubResource("PanoramaSkyMaterial_lk4md")
+radiance_size = 0
+
+[sub_resource type="Environment" id="Environment_8mrhv"]
+background_mode = 2
+background_color = Color(1, 1, 1, 1)
+sky = SubResource("Sky_1qagb")
+ambient_light_source = 2
+ambient_light_color = Color(0.8862616, 0.88626146, 0.8862615, 1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ou1m8"]
 size = Vector3(100, 1, 100)
@@ -24,200 +41,38 @@ bg_color = Color(0, 0, 0, 1)
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vrbek"]
 bg_color = Color(0.32, 0.8753333, 1, 1)
 
-[node name="BabyBall" type="Node3D" unique_id=517390624 node_paths=PackedStringArray("spawn_positions_red_holder", "spawn_positions_blue_holder", "red_score_label", "blue_score_label", "info_label", "win_label", "itm_mover")]
+[sub_resource type="BoxShape3D" id="BoxShape3D_lk4md"]
+size = Vector3(50, 5, 50)
+
+[sub_resource type="QuadMesh" id="QuadMesh_vrbek"]
+
+[node name="BabyBall" type="Node3D" unique_id=517390624 node_paths=PackedStringArray("spawn_positions_red_holder", "spawn_positions_blue_holder", "red_score_label", "blue_score_label", "info_label", "win_label", "itm_mover", "game_timer", "prematch_stuff", "venues", "venue_disabler_helper")]
 script = ExtResource("1_vrbek")
 spawn_positions_red_holder = NodePath("SpawnPositions/SP_RED")
 spawn_positions_blue_holder = NodePath("SpawnPositions/SP_Blue")
 red_team_mat = ExtResource("2_lk4md")
 blue_team_mat = ExtResource("3_1qagb")
-red_score_label = NodePath("Control/HBoxContainer/RedLabel")
-blue_score_label = NodePath("Control/HBoxContainer/BlueLabel")
-info_label = NodePath("Control/Label")
-win_label = NodePath("Control/Label2")
+red_score_label = NodePath("CrappyUI/HBoxContainer/RedLabel")
+blue_score_label = NodePath("CrappyUI/HBoxContainer/BlueLabel")
+info_label = NodePath("CrappyUI/Label")
+win_label = NodePath("CrappyUI/Label2")
 itm_mover = NodePath("ItemMover")
+game_timer = NodePath("GameTimer")
+prematch_stuff = NodePath("Pre_Match_Stuff")
+venues = NodePath("Venues")
+venue_disabler_helper = NodePath("Disabled_Venue_Position")
 
 [node name="_sky" type="Node3D" parent="." unique_id=454924888]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="_sky" unique_id=512477059]
-environment = ExtResource("9_kmfd7")
+environment = SubResource("Environment_8mrhv")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="_sky" unique_id=1686935305]
 transform = Transform3D(1, 0, 0, 0, -0.25881898, 0.9659258, 0, -0.9659258, -0.25881898, 0, 0, 0)
 
-[node name="_env" type="Node3D" parent="." unique_id=1423295234]
-
-[node name="_dev_open_middle_a" parent="_env" unique_id=717903972 instance=ExtResource("1_4j64p")]
-
-[node name="_dev_open_middle_a2" parent="_env" unique_id=860473322 instance=ExtResource("1_4j64p")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2)
-
-[node name="_dev_open_middle_a3" parent="_env" unique_id=1848470653 instance=ExtResource("1_4j64p")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -4)
-
-[node name="_dev_open_middle_a4" parent="_env" unique_id=423980498 instance=ExtResource("1_4j64p")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -6)
-
-[node name="_dev_open_middle_a5" parent="_env" unique_id=1031754692 instance=ExtResource("1_4j64p")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -8)
-
-[node name="_dev_open_middle_a6" parent="_env" unique_id=709461449 instance=ExtResource("1_4j64p")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 0)
-
-[node name="_dev_open_middle_a7" parent="_env" unique_id=1597188367 instance=ExtResource("1_4j64p")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, -2)
-
-[node name="_dev_open_middle_a8" parent="_env" unique_id=2057084608 instance=ExtResource("1_4j64p")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, -4)
-
-[node name="_dev_open_middle_a9" parent="_env" unique_id=743105492 instance=ExtResource("1_4j64p")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, -6)
-
-[node name="_dev_open_middle_a10" parent="_env" unique_id=1143820649 instance=ExtResource("1_4j64p")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, -8)
-
-[node name="_dev_open_middle_a11" parent="_env" unique_id=1268325767 instance=ExtResource("1_4j64p")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 0)
-
-[node name="_dev_open_middle_a12" parent="_env" unique_id=719685885 instance=ExtResource("1_4j64p")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, -2)
-
-[node name="_dev_open_middle_a13" parent="_env" unique_id=997787983 instance=ExtResource("1_4j64p")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, -4)
-
-[node name="_dev_open_middle_a14" parent="_env" unique_id=479770319 instance=ExtResource("1_4j64p")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, -6)
-
-[node name="_dev_open_middle_a15" parent="_env" unique_id=690173670 instance=ExtResource("1_4j64p")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, -8)
-
-[node name="_dev_open_middle_a21" parent="_env" unique_id=468874096 instance=ExtResource("1_4j64p")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, 0)
-
-[node name="_dev_open_middle_a22" parent="_env" unique_id=1243002828 instance=ExtResource("1_4j64p")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, -2)
-
-[node name="_dev_open_middle_a23" parent="_env" unique_id=757402090 instance=ExtResource("1_4j64p")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, -4)
-
-[node name="_dev_open_middle_a24" parent="_env" unique_id=1137467420 instance=ExtResource("1_4j64p")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, -6)
-
-[node name="_dev_open_middle_a25" parent="_env" unique_id=661616089 instance=ExtResource("1_4j64p")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, -8)
-
-[node name="_dev_open_middle_a26" parent="_env" unique_id=626904289 instance=ExtResource("1_4j64p")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, 0)
-
-[node name="_dev_open_middle_a31" parent="_env" unique_id=384385225 instance=ExtResource("1_4j64p")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2)
-
-[node name="_dev_open_middle_a32" parent="_env" unique_id=948647611 instance=ExtResource("1_4j64p")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 2)
-
-[node name="_dev_open_middle_a33" parent="_env" unique_id=1978976134 instance=ExtResource("1_4j64p")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 2)
-
-[node name="_dev_open_middle_a34" parent="_env" unique_id=1480692279 instance=ExtResource("1_4j64p")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, 2)
-
-[node name="_dev_open_middle_a35" parent="_env" unique_id=325716564 instance=ExtResource("1_4j64p")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, 2)
-
-[node name="_dev_open_middle_a36" parent="_env" unique_id=1045298177 instance=ExtResource("1_4j64p")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 4)
-
-[node name="_dev_open_middle_a37" parent="_env" unique_id=108460286 instance=ExtResource("1_4j64p")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 4)
-
-[node name="_dev_open_middle_a38" parent="_env" unique_id=1467755078 instance=ExtResource("1_4j64p")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 4)
-
-[node name="_dev_open_middle_a39" parent="_env" unique_id=234615803 instance=ExtResource("1_4j64p")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, 4)
-
-[node name="_dev_open_middle_a40" parent="_env" unique_id=430593610 instance=ExtResource("1_4j64p")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, 4)
-
-[node name="_dev_open_middle_a41" parent="_env" unique_id=845697405 instance=ExtResource("1_4j64p")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 6)
-
-[node name="_dev_open_middle_a42" parent="_env" unique_id=571034087 instance=ExtResource("1_4j64p")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 6)
-
-[node name="_dev_open_middle_a43" parent="_env" unique_id=1873749850 instance=ExtResource("1_4j64p")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 6)
-
-[node name="_dev_open_middle_a44" parent="_env" unique_id=959526252 instance=ExtResource("1_4j64p")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, 6)
-
-[node name="_dev_open_middle_a45" parent="_env" unique_id=305450892 instance=ExtResource("1_4j64p")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, 6)
-
-[node name="_dev_open_middle_a46" parent="_env" unique_id=1360567915 instance=ExtResource("1_4j64p")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 8)
-
-[node name="_dev_open_middle_a47" parent="_env" unique_id=1593738024 instance=ExtResource("1_4j64p")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 8)
-
-[node name="_dev_open_middle_a48" parent="_env" unique_id=176175767 instance=ExtResource("1_4j64p")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 8)
-
-[node name="_dev_open_middle_a49" parent="_env" unique_id=1220999400 instance=ExtResource("1_4j64p")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, 8)
-
-[node name="_dev_open_middle_a50" parent="_env" unique_id=166921060 instance=ExtResource("1_4j64p")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, 8)
-
-[node name="_dev_open_middle_a27" parent="_env" unique_id=89858105 instance=ExtResource("1_4j64p")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, -2)
-
-[node name="_dev_open_middle_a28" parent="_env" unique_id=1580875290 instance=ExtResource("1_4j64p")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, -4)
-
-[node name="_dev_open_middle_a29" parent="_env" unique_id=2032533079 instance=ExtResource("1_4j64p")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, -6)
-
-[node name="_dev_open_middle_a30" parent="_env" unique_id=1200659058 instance=ExtResource("1_4j64p")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, -8)
-
-[node name="_dev_open_middle_a16" parent="_env" unique_id=513552358 instance=ExtResource("1_4j64p")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 0)
-
-[node name="_dev_open_middle_a17" parent="_env" unique_id=1284316679 instance=ExtResource("1_4j64p")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, -2)
-
-[node name="_dev_open_middle_a18" parent="_env" unique_id=2036902325 instance=ExtResource("1_4j64p")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, -4)
-
-[node name="_dev_open_middle_a19" parent="_env" unique_id=1051156899 instance=ExtResource("1_4j64p")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, -6)
-
-[node name="_dev_open_middle_a20" parent="_env" unique_id=1477792693 instance=ExtResource("1_4j64p")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, -8)
-
-[node name="floor" type="Node3D" parent="_env" unique_id=1264038648]
-
 [node name="BabyDude" parent="." unique_id=1376443271 groups=["ABYSSRETURNER"] instance=ExtResource("3_s5kbi")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 keywords = "BABYBALL;"
-
-[node name="Hoop_Red" parent="." unique_id=485308689 node_paths=PackedStringArray("specific_item") instance=ExtResource("4_oxheg")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -8)
-specific_item = NodePath("../BabyDude")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Hoop_Red" unique_id=1614557238]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.1, 0.099999905)
-material_override = ExtResource("2_lk4md")
-mesh = SubResource("QuadMesh_vrbek")
-
-[node name="Hoop_Blue" parent="." unique_id=1497984110 node_paths=PackedStringArray("specific_item") instance=ExtResource("4_oxheg")]
-transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 0, 0, 8)
-specific_item = NodePath("../BabyDude")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Hoop_Blue" unique_id=2007998282]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.1, 0.099999905)
-material_override = ExtResource("3_1qagb")
-mesh = SubResource("QuadMesh_vrbek")
 
 [node name="ItemCatcher" parent="." unique_id=2014139358 node_paths=PackedStringArray("return_point") instance=ExtResource("7_7jl2g")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3, 0)
@@ -279,7 +134,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 0)
 [node name="SP_B_P4" type="Node3D" parent="SpawnPositions/SP_Blue" unique_id=1117052143]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 0)
 
-[node name="Control" type="Control" parent="." unique_id=635657851]
+[node name="CrappyUI" type="Control" parent="." unique_id=635657851]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -287,7 +142,8 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Control" unique_id=785680476]
+[node name="HBoxContainer" type="HBoxContainer" parent="CrappyUI" unique_id=785680476]
+z_index = 1
 layout_mode = 0
 anchor_left = 0.36979166
 anchor_right = 0.6302083
@@ -296,7 +152,8 @@ grow_horizontal = 2
 alignment = 1
 metadata/_edit_use_anchors_ = true
 
-[node name="RedLabel" type="Label" parent="Control/HBoxContainer" unique_id=675995720]
+[node name="RedLabel" type="Label" parent="CrappyUI/HBoxContainer" unique_id=675995720]
+z_index = 1
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_constants/outline_size = 14
@@ -305,7 +162,8 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_kmfd7")
 text = "0"
 horizontal_alignment = 1
 
-[node name="Label3" type="Label" parent="Control/HBoxContainer" unique_id=1108344802]
+[node name="Label3" type="Label" parent="CrappyUI/HBoxContainer" unique_id=1108344802]
+z_index = 1
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_constants/outline_size = 14
@@ -314,7 +172,30 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_lk4md")
 text = "Score"
 horizontal_alignment = 1
 
-[node name="BlueLabel" type="Label" parent="Control/HBoxContainer" unique_id=482082135]
+[node name="Label3" type="Label" parent="CrappyUI/HBoxContainer/Label3" unique_id=431013716 node_paths=PackedStringArray("timer")]
+z_index = 1
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.503
+anchor_bottom = 1.0
+offset_left = -131.0
+offset_top = -4.0
+offset_right = 133.508
+offset_bottom = 78.0
+grow_horizontal = 2
+size_flags_horizontal = 3
+theme_override_constants/outline_size = 14
+theme_override_font_sizes/font_size = 59
+theme_override_styles/normal = SubResource("StyleBoxFlat_lk4md")
+text = "0:00"
+horizontal_alignment = 1
+script = ExtResource("8_8mrhv")
+timer = NodePath("../../../../GameTimer")
+
+[node name="BlueLabel" type="Label" parent="CrappyUI/HBoxContainer" unique_id=482082135]
+z_index = 1
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_constants/outline_size = 14
@@ -323,7 +204,8 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_vrbek")
 text = "0"
 horizontal_alignment = 1
 
-[node name="Label" type="Label" parent="Control" unique_id=668676310]
+[node name="Label" type="Label" parent="CrappyUI" unique_id=668676310]
+z_index = 1
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
@@ -341,8 +223,9 @@ Press [Space] to add player
 Press [X] to hide this text"
 horizontal_alignment = 1
 
-[node name="Label2" type="Label" parent="Control" unique_id=742439922]
+[node name="Label2" type="Label" parent="CrappyUI" unique_id=742439922]
 visible = false
+z_index = 1
 layout_mode = 1
 anchors_preset = 14
 anchor_top = 0.5
@@ -356,5 +239,535 @@ theme_override_font_sizes/font_size = 122
 text = "dddd"
 horizontal_alignment = 1
 
-[connection signal="scored" from="Hoop_Red" to="." method="add_score_blue"]
-[connection signal="scored" from="Hoop_Blue" to="." method="add_score_red"]
+[node name="PlayerCatcher" type="Area3D" parent="." unique_id=548486217 node_paths=PackedStringArray("bb_ball")]
+monitorable = false
+script = ExtResource("10_vrbek")
+bb_ball = NodePath("..")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="PlayerCatcher" unique_id=221488975]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -4, 0)
+shape = SubResource("BoxShape3D_lk4md")
+debug_color = Color(0, 11.618606, 13.50434, 1)
+
+[node name="Venues" type="Node3D" parent="." unique_id=1029967010]
+
+[node name="Bedug" type="Node3D" parent="Venues" unique_id=1110402334]
+
+[node name="_env" type="Node3D" parent="Venues/Bedug" unique_id=1423295234]
+
+[node name="_dev_open_middle_a" parent="Venues/Bedug/_env" unique_id=717903972 instance=ExtResource("1_4j64p")]
+
+[node name="_dev_open_middle_a2" parent="Venues/Bedug/_env" unique_id=860473322 instance=ExtResource("1_4j64p")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2)
+
+[node name="_dev_open_middle_a3" parent="Venues/Bedug/_env" unique_id=1848470653 instance=ExtResource("1_4j64p")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -4)
+
+[node name="_dev_open_middle_a4" parent="Venues/Bedug/_env" unique_id=423980498 instance=ExtResource("1_4j64p")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -6)
+
+[node name="_dev_open_middle_a5" parent="Venues/Bedug/_env" unique_id=1031754692 instance=ExtResource("1_4j64p")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -8)
+
+[node name="_dev_open_middle_a6" parent="Venues/Bedug/_env" unique_id=709461449 instance=ExtResource("1_4j64p")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 0)
+
+[node name="_dev_open_middle_a7" parent="Venues/Bedug/_env" unique_id=1597188367 instance=ExtResource("1_4j64p")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, -2)
+
+[node name="_dev_open_middle_a8" parent="Venues/Bedug/_env" unique_id=2057084608 instance=ExtResource("1_4j64p")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, -4)
+
+[node name="_dev_open_middle_a9" parent="Venues/Bedug/_env" unique_id=743105492 instance=ExtResource("1_4j64p")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, -6)
+
+[node name="_dev_open_middle_a10" parent="Venues/Bedug/_env" unique_id=1143820649 instance=ExtResource("1_4j64p")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, -8)
+
+[node name="_dev_open_middle_a11" parent="Venues/Bedug/_env" unique_id=1268325767 instance=ExtResource("1_4j64p")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 0)
+
+[node name="_dev_open_middle_a12" parent="Venues/Bedug/_env" unique_id=719685885 instance=ExtResource("1_4j64p")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, -2)
+
+[node name="_dev_open_middle_a13" parent="Venues/Bedug/_env" unique_id=997787983 instance=ExtResource("1_4j64p")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, -4)
+
+[node name="_dev_open_middle_a14" parent="Venues/Bedug/_env" unique_id=479770319 instance=ExtResource("1_4j64p")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, -6)
+
+[node name="_dev_open_middle_a15" parent="Venues/Bedug/_env" unique_id=690173670 instance=ExtResource("1_4j64p")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, -8)
+
+[node name="_dev_open_middle_a21" parent="Venues/Bedug/_env" unique_id=468874096 instance=ExtResource("1_4j64p")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, 0)
+
+[node name="_dev_open_middle_a22" parent="Venues/Bedug/_env" unique_id=1243002828 instance=ExtResource("1_4j64p")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, -2)
+
+[node name="_dev_open_middle_a23" parent="Venues/Bedug/_env" unique_id=757402090 instance=ExtResource("1_4j64p")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, -4)
+
+[node name="_dev_open_middle_a24" parent="Venues/Bedug/_env" unique_id=1137467420 instance=ExtResource("1_4j64p")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, -6)
+
+[node name="_dev_open_middle_a25" parent="Venues/Bedug/_env" unique_id=661616089 instance=ExtResource("1_4j64p")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, -8)
+
+[node name="_dev_open_middle_a26" parent="Venues/Bedug/_env" unique_id=626904289 instance=ExtResource("1_4j64p")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, 0)
+
+[node name="_dev_open_middle_a31" parent="Venues/Bedug/_env" unique_id=384385225 instance=ExtResource("1_4j64p")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2)
+
+[node name="_dev_open_middle_a32" parent="Venues/Bedug/_env" unique_id=948647611 instance=ExtResource("1_4j64p")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 2)
+
+[node name="_dev_open_middle_a33" parent="Venues/Bedug/_env" unique_id=1978976134 instance=ExtResource("1_4j64p")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 2)
+
+[node name="_dev_open_middle_a34" parent="Venues/Bedug/_env" unique_id=1480692279 instance=ExtResource("1_4j64p")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, 2)
+
+[node name="_dev_open_middle_a35" parent="Venues/Bedug/_env" unique_id=325716564 instance=ExtResource("1_4j64p")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, 2)
+
+[node name="_dev_open_middle_a36" parent="Venues/Bedug/_env" unique_id=1045298177 instance=ExtResource("1_4j64p")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 4)
+
+[node name="_dev_open_middle_a37" parent="Venues/Bedug/_env" unique_id=108460286 instance=ExtResource("1_4j64p")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 4)
+
+[node name="_dev_open_middle_a38" parent="Venues/Bedug/_env" unique_id=1467755078 instance=ExtResource("1_4j64p")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 4)
+
+[node name="_dev_open_middle_a39" parent="Venues/Bedug/_env" unique_id=234615803 instance=ExtResource("1_4j64p")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, 4)
+
+[node name="_dev_open_middle_a40" parent="Venues/Bedug/_env" unique_id=430593610 instance=ExtResource("1_4j64p")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, 4)
+
+[node name="_dev_open_middle_a41" parent="Venues/Bedug/_env" unique_id=845697405 instance=ExtResource("1_4j64p")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 6)
+
+[node name="_dev_open_middle_a42" parent="Venues/Bedug/_env" unique_id=571034087 instance=ExtResource("1_4j64p")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 6)
+
+[node name="_dev_open_middle_a43" parent="Venues/Bedug/_env" unique_id=1873749850 instance=ExtResource("1_4j64p")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 6)
+
+[node name="_dev_open_middle_a44" parent="Venues/Bedug/_env" unique_id=959526252 instance=ExtResource("1_4j64p")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, 6)
+
+[node name="_dev_open_middle_a45" parent="Venues/Bedug/_env" unique_id=305450892 instance=ExtResource("1_4j64p")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, 6)
+
+[node name="_dev_open_middle_a46" parent="Venues/Bedug/_env" unique_id=1360567915 instance=ExtResource("1_4j64p")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 8)
+
+[node name="_dev_open_middle_a47" parent="Venues/Bedug/_env" unique_id=1593738024 instance=ExtResource("1_4j64p")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 8)
+
+[node name="_dev_open_middle_a48" parent="Venues/Bedug/_env" unique_id=176175767 instance=ExtResource("1_4j64p")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 8)
+
+[node name="_dev_open_middle_a49" parent="Venues/Bedug/_env" unique_id=1220999400 instance=ExtResource("1_4j64p")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, 8)
+
+[node name="_dev_open_middle_a50" parent="Venues/Bedug/_env" unique_id=166921060 instance=ExtResource("1_4j64p")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, 8)
+
+[node name="_dev_open_middle_a27" parent="Venues/Bedug/_env" unique_id=89858105 instance=ExtResource("1_4j64p")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, -2)
+
+[node name="_dev_open_middle_a28" parent="Venues/Bedug/_env" unique_id=1580875290 instance=ExtResource("1_4j64p")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, -4)
+
+[node name="_dev_open_middle_a29" parent="Venues/Bedug/_env" unique_id=2032533079 instance=ExtResource("1_4j64p")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, -6)
+
+[node name="_dev_open_middle_a30" parent="Venues/Bedug/_env" unique_id=1200659058 instance=ExtResource("1_4j64p")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, -8)
+
+[node name="_dev_open_middle_a16" parent="Venues/Bedug/_env" unique_id=513552358 instance=ExtResource("1_4j64p")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 0)
+
+[node name="_dev_open_middle_a17" parent="Venues/Bedug/_env" unique_id=1284316679 instance=ExtResource("1_4j64p")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, -2)
+
+[node name="_dev_open_middle_a18" parent="Venues/Bedug/_env" unique_id=2036902325 instance=ExtResource("1_4j64p")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, -4)
+
+[node name="_dev_open_middle_a19" parent="Venues/Bedug/_env" unique_id=1051156899 instance=ExtResource("1_4j64p")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, -6)
+
+[node name="_dev_open_middle_a20" parent="Venues/Bedug/_env" unique_id=1477792693 instance=ExtResource("1_4j64p")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, -8)
+
+[node name="floor" type="Node3D" parent="Venues/Bedug/_env" unique_id=1264038648]
+
+[node name="Hoop_Red" parent="Venues/Bedug" unique_id=485308689 node_paths=PackedStringArray("specific_item") instance=ExtResource("4_oxheg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -8)
+specific_item = NodePath("../../../BabyDude")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Venues/Bedug/Hoop_Red" unique_id=1614557238]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.1, 0.099999905)
+material_override = ExtResource("2_lk4md")
+mesh = SubResource("QuadMesh_vrbek")
+
+[node name="Hoop_Blue" parent="Venues/Bedug" unique_id=1497984110 node_paths=PackedStringArray("specific_item") instance=ExtResource("4_oxheg")]
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 0, 0, 8)
+specific_item = NodePath("../../../BabyDude")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Venues/Bedug/Hoop_Blue" unique_id=2007998282]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.1, 0.099999905)
+material_override = ExtResource("3_1qagb")
+mesh = SubResource("QuadMesh_vrbek")
+
+[node name="OtherOne" type="Node3D" parent="Venues" unique_id=197702942]
+visible = false
+
+[node name="_env" type="Node3D" parent="Venues/OtherOne" unique_id=1158657970]
+
+[node name="_dev_open_middle_a" parent="Venues/OtherOne/_env" unique_id=1337986127 instance=ExtResource("1_4j64p")]
+
+[node name="_dev_open_middle_a2" parent="Venues/OtherOne/_env" unique_id=1790074792 instance=ExtResource("1_4j64p")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2)
+
+[node name="_dev_open_middle_a3" parent="Venues/OtherOne/_env" unique_id=144795179 instance=ExtResource("1_4j64p")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -4)
+
+[node name="_dev_open_middle_a4" parent="Venues/OtherOne/_env" unique_id=711243005 instance=ExtResource("1_4j64p")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -6)
+
+[node name="_dev_open_middle_a5" parent="Venues/OtherOne/_env" unique_id=874209484 instance=ExtResource("1_4j64p")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -8)
+
+[node name="_dev_open_middle_a6" parent="Venues/OtherOne/_env" unique_id=359425615 instance=ExtResource("1_4j64p")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 0)
+
+[node name="_dev_open_middle_a7" parent="Venues/OtherOne/_env" unique_id=895701937 instance=ExtResource("1_4j64p")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, -2)
+
+[node name="_dev_open_middle_a8" parent="Venues/OtherOne/_env" unique_id=248582626 instance=ExtResource("1_4j64p")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, -4)
+
+[node name="_dev_open_middle_a9" parent="Venues/OtherOne/_env" unique_id=1484141081 instance=ExtResource("1_4j64p")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, -6)
+
+[node name="_dev_open_middle_a10" parent="Venues/OtherOne/_env" unique_id=530411061 instance=ExtResource("1_4j64p")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, -8)
+
+[node name="_dev_open_middle_a11" parent="Venues/OtherOne/_env" unique_id=1482765892 instance=ExtResource("1_4j64p")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 0)
+
+[node name="_dev_open_middle_a12" parent="Venues/OtherOne/_env" unique_id=1483239939 instance=ExtResource("1_4j64p")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, -2)
+
+[node name="_dev_open_middle_a13" parent="Venues/OtherOne/_env" unique_id=151812639 instance=ExtResource("1_4j64p")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, -4)
+
+[node name="_dev_open_middle_a14" parent="Venues/OtherOne/_env" unique_id=1598229082 instance=ExtResource("1_4j64p")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, -6)
+
+[node name="_dev_open_middle_a15" parent="Venues/OtherOne/_env" unique_id=1498106483 instance=ExtResource("1_4j64p")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, -8)
+
+[node name="_dev_open_middle_a21" parent="Venues/OtherOne/_env" unique_id=803265923 instance=ExtResource("1_4j64p")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, 0)
+
+[node name="_dev_open_middle_a22" parent="Venues/OtherOne/_env" unique_id=952498574 instance=ExtResource("1_4j64p")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, -2)
+
+[node name="_dev_open_middle_a23" parent="Venues/OtherOne/_env" unique_id=2027373550 instance=ExtResource("1_4j64p")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, -4)
+
+[node name="_dev_open_middle_a24" parent="Venues/OtherOne/_env" unique_id=313382345 instance=ExtResource("1_4j64p")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, -6)
+
+[node name="_dev_open_middle_a25" parent="Venues/OtherOne/_env" unique_id=2008101993 instance=ExtResource("1_4j64p")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, -8)
+
+[node name="_dev_open_middle_a26" parent="Venues/OtherOne/_env" unique_id=1351558002 instance=ExtResource("1_4j64p")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, 0)
+
+[node name="_dev_open_middle_a31" parent="Venues/OtherOne/_env" unique_id=590989225 instance=ExtResource("1_4j64p")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2)
+
+[node name="_dev_open_middle_a32" parent="Venues/OtherOne/_env" unique_id=571092858 instance=ExtResource("1_4j64p")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 2)
+
+[node name="_dev_open_middle_a33" parent="Venues/OtherOne/_env" unique_id=1866879055 instance=ExtResource("1_4j64p")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 2)
+
+[node name="_dev_open_middle_a34" parent="Venues/OtherOne/_env" unique_id=1832530451 instance=ExtResource("1_4j64p")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, 2)
+
+[node name="_dev_open_middle_a35" parent="Venues/OtherOne/_env" unique_id=92162957 instance=ExtResource("1_4j64p")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, 2)
+
+[node name="_dev_open_middle_a36" parent="Venues/OtherOne/_env" unique_id=1964744783 instance=ExtResource("1_4j64p")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 4)
+
+[node name="_dev_open_middle_a37" parent="Venues/OtherOne/_env" unique_id=1282317203 instance=ExtResource("1_4j64p")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 4)
+
+[node name="_dev_open_middle_a38" parent="Venues/OtherOne/_env" unique_id=1964545738 instance=ExtResource("1_4j64p")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 4)
+
+[node name="_dev_open_middle_a39" parent="Venues/OtherOne/_env" unique_id=150105457 instance=ExtResource("1_4j64p")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, 4)
+
+[node name="_dev_open_middle_a40" parent="Venues/OtherOne/_env" unique_id=453747643 instance=ExtResource("1_4j64p")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, 4)
+
+[node name="_dev_open_middle_a41" parent="Venues/OtherOne/_env" unique_id=1944875232 instance=ExtResource("1_4j64p")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 6)
+
+[node name="_dev_open_middle_a42" parent="Venues/OtherOne/_env" unique_id=287613154 instance=ExtResource("1_4j64p")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 6)
+
+[node name="_dev_open_middle_a43" parent="Venues/OtherOne/_env" unique_id=666029919 instance=ExtResource("1_4j64p")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 6)
+
+[node name="_dev_open_middle_a44" parent="Venues/OtherOne/_env" unique_id=64727291 instance=ExtResource("1_4j64p")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, 6)
+
+[node name="_dev_open_middle_a45" parent="Venues/OtherOne/_env" unique_id=309016835 instance=ExtResource("1_4j64p")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, 6)
+
+[node name="_dev_open_middle_a46" parent="Venues/OtherOne/_env" unique_id=1988260056 instance=ExtResource("1_4j64p")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 8)
+
+[node name="_dev_open_middle_a47" parent="Venues/OtherOne/_env" unique_id=2116590107 instance=ExtResource("1_4j64p")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 8)
+
+[node name="_dev_open_middle_a48" parent="Venues/OtherOne/_env" unique_id=1931772897 instance=ExtResource("1_4j64p")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 8)
+
+[node name="_dev_open_middle_a49" parent="Venues/OtherOne/_env" unique_id=380252813 instance=ExtResource("1_4j64p")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, 8)
+
+[node name="_dev_open_middle_a50" parent="Venues/OtherOne/_env" unique_id=1387439903 instance=ExtResource("1_4j64p")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, 8)
+
+[node name="_dev_open_middle_a27" parent="Venues/OtherOne/_env" unique_id=499330415 instance=ExtResource("1_4j64p")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, -2)
+
+[node name="_dev_open_middle_a28" parent="Venues/OtherOne/_env" unique_id=904991998 instance=ExtResource("1_4j64p")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, -4)
+
+[node name="_dev_open_middle_a29" parent="Venues/OtherOne/_env" unique_id=1897822925 instance=ExtResource("1_4j64p")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, -6)
+
+[node name="_dev_open_middle_a30" parent="Venues/OtherOne/_env" unique_id=1743454075 instance=ExtResource("1_4j64p")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, -8)
+
+[node name="_dev_open_middle_a16" parent="Venues/OtherOne/_env" unique_id=123626675 instance=ExtResource("1_4j64p")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 0)
+
+[node name="_dev_open_middle_a17" parent="Venues/OtherOne/_env" unique_id=119315412 instance=ExtResource("1_4j64p")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, -2)
+
+[node name="_dev_open_middle_a18" parent="Venues/OtherOne/_env" unique_id=566279058 instance=ExtResource("1_4j64p")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, -4)
+
+[node name="_dev_open_middle_a19" parent="Venues/OtherOne/_env" unique_id=194081020 instance=ExtResource("1_4j64p")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, -6)
+
+[node name="_dev_open_middle_a20" parent="Venues/OtherOne/_env" unique_id=1599195417 instance=ExtResource("1_4j64p")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, -8)
+
+[node name="floor" type="Node3D" parent="Venues/OtherOne/_env" unique_id=1674044529]
+
+[node name="Hoop_Red" parent="Venues/OtherOne" unique_id=1098796606 node_paths=PackedStringArray("specific_item") instance=ExtResource("4_oxheg")]
+transform = Transform3D(-1, 0, -8.742278e-08, 6.181724e-08, 0.70710677, -0.70710677, 6.181724e-08, -0.70710677, -0.70710677, 0, 0, -8)
+specific_item = NodePath("../../../BabyDude")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Venues/OtherOne/Hoop_Red" unique_id=319935254]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.1, 0.099999905)
+material_override = ExtResource("2_lk4md")
+mesh = SubResource("QuadMesh_vrbek")
+
+[node name="Hoop_Blue" parent="Venues/OtherOne" unique_id=1383541775 node_paths=PackedStringArray("specific_item") instance=ExtResource("4_oxheg")]
+transform = Transform3D(1, 0, 0, 0, 0.49999997, -0.86602545, 0, 0.86602545, 0.49999997, 0, 0, 8)
+specific_item = NodePath("../../../BabyDude")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Venues/OtherOne/Hoop_Blue" unique_id=886573076]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.1, 0.099999905)
+material_override = ExtResource("3_1qagb")
+mesh = SubResource("QuadMesh_vrbek")
+
+[node name="Disabled_Venue_Position" type="Node3D" parent="." unique_id=153777112]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 26, 0)
+visible = false
+
+[node name="Pre_Match_Stuff" type="Node3D" parent="." unique_id=322148178]
+
+[node name="BeginMatch" parent="Pre_Match_Stuff" unique_id=1164325605 instance=ExtResource("11_lk4md")]
+transform = Transform3D(-7.999184e-08, 0, 1.83, 0, 1.83, 0, -1.83, 0, -7.999184e-08, 4, 1, 0)
+
+[node name="Label3D" type="Label3D" parent="Pre_Match_Stuff/BeginMatch" unique_id=602429676]
+transform = Transform3D(-1, 0, -8.742277e-08, 0, 1, 0, 8.742277e-08, 0, -1, 0, 0.39999998, 0)
+text = "BEGIN MATCH"
+
+[node name="BeginMatch2" parent="Pre_Match_Stuff" unique_id=1825946942 instance=ExtResource("11_lk4md")]
+transform = Transform3D(-7.999184e-08, 0, -1.83, 0, 1.83, 0, 1.83, 0, -7.999184e-08, -4, 1, 0)
+
+[node name="Label3D" type="Label3D" parent="Pre_Match_Stuff/BeginMatch2" unique_id=1524037033]
+transform = Transform3D(-1, 0, -8.742277e-08, 0, 1, 0, 8.742277e-08, 0, -1, 0, 0.39999998, 0)
+text = "BEGIN MATCH"
+
+[node name="ScoreChanger" type="Node3D" parent="Pre_Match_Stuff" unique_id=1283850184]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 4, 0.8, -2)
+
+[node name="Label3D" type="Label3D" parent="Pre_Match_Stuff/ScoreChanger" unique_id=2119076148]
+transform = Transform3D(-1, 0, -8.742277e-08, 0, 1, 0, 8.742277e-08, 0, -1, 0, 0.50000006, 0)
+text = "Score To Win"
+
+[node name="Label3D2" type="Label3D" parent="Pre_Match_Stuff/ScoreChanger" unique_id=618755501 node_paths=PackedStringArray("node_to_examine")]
+transform = Transform3D(-1, 0, -8.742277e-08, 0, 1, 0, 8.742277e-08, 0, -1, 0, 0.30000013, 0)
+text = "15"
+script = ExtResource("12_1qagb")
+node_to_examine = NodePath("../../..")
+vars_to_display = Array[String](["score_to_win"])
+include_var_name = false
+
+[node name="Button2" parent="Pre_Match_Stuff/ScoreChanger" unique_id=277520247 instance=ExtResource("11_lk4md")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.39999998, 0, 0)
+delay_before_reset = 0.3
+
+[node name="Label3D" type="Label3D" parent="Pre_Match_Stuff/ScoreChanger/Button2" unique_id=2038478642]
+transform = Transform3D(-1, 0, -8.742277e-08, 0, 1, 0, 8.742277e-08, 0, -1, 0, -0.29999995, 0)
+text = "-1"
+
+[node name="Button3" parent="Pre_Match_Stuff/ScoreChanger" unique_id=129730407 instance=ExtResource("11_lk4md")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.4, 0, 0)
+delay_before_reset = 0.3
+
+[node name="Label3D" type="Label3D" parent="Pre_Match_Stuff/ScoreChanger/Button3" unique_id=851614071]
+transform = Transform3D(-1, 0, -8.742277e-08, 0, 1, 0, 8.742277e-08, 0, -1, 0, -0.29999995, 0)
+text = "+1"
+
+[node name="TimeLimitChanger" type="Node3D" parent="Pre_Match_Stuff" unique_id=1924835410]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 4, 0.8, 2)
+
+[node name="Label3D" type="Label3D" parent="Pre_Match_Stuff/TimeLimitChanger" unique_id=1491050711]
+transform = Transform3D(-1, 0, -8.742277e-08, 0, 1, 0, 8.742277e-08, 0, -1, 0, 0.50000006, 0)
+text = "Time Limit"
+
+[node name="Label3D2" type="Label3D" parent="Pre_Match_Stuff/TimeLimitChanger" unique_id=1427375174 node_paths=PackedStringArray("node_to_examine")]
+transform = Transform3D(-1, 0, -8.742277e-08, 0, 1, 0, 8.742277e-08, 0, -1, 0, 0.30000013, 0)
+text = "90"
+script = ExtResource("12_1qagb")
+node_to_examine = NodePath("../../..")
+vars_to_display = Array[String](["time_limit"])
+include_var_name = false
+
+[node name="Button2" parent="Pre_Match_Stuff/TimeLimitChanger" unique_id=200712989 instance=ExtResource("11_lk4md")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.39999998, 0, 0)
+delay_before_reset = 0.3
+
+[node name="Label3D" type="Label3D" parent="Pre_Match_Stuff/TimeLimitChanger/Button2" unique_id=20949545]
+transform = Transform3D(-1, 0, -8.742277e-08, 0, 1, 0, 8.742277e-08, 0, -1, 0, -0.29999995, 0)
+text = "-10"
+
+[node name="Button4" parent="Pre_Match_Stuff/TimeLimitChanger" unique_id=485201088 instance=ExtResource("11_lk4md")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.8000001, 0, 0)
+delay_before_reset = 0.3
+
+[node name="Label3D" type="Label3D" parent="Pre_Match_Stuff/TimeLimitChanger/Button4" unique_id=169038714]
+transform = Transform3D(-1, 0, -8.742277e-08, 0, 1, 0, 8.742277e-08, 0, -1, 0, -0.29999995, 0)
+text = "-30"
+
+[node name="Button3" parent="Pre_Match_Stuff/TimeLimitChanger" unique_id=1566043884 instance=ExtResource("11_lk4md")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.4, 0, 0)
+delay_before_reset = 0.3
+
+[node name="Label3D" type="Label3D" parent="Pre_Match_Stuff/TimeLimitChanger/Button3" unique_id=347857850]
+transform = Transform3D(-1, 0, -8.742277e-08, 0, 1, 0, 8.742277e-08, 0, -1, 0, -0.29999995, 0)
+text = "+10"
+
+[node name="Button5" parent="Pre_Match_Stuff/TimeLimitChanger" unique_id=1359193168 instance=ExtResource("11_lk4md")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.8000002, 0, -2.3841858e-07)
+delay_before_reset = 0.3
+
+[node name="Label3D" type="Label3D" parent="Pre_Match_Stuff/TimeLimitChanger/Button5" unique_id=1226145683]
+transform = Transform3D(-1, 0, -8.742277e-08, 0, 1, 0, 8.742277e-08, 0, -1, 0, -0.29999995, 0)
+text = "+30"
+
+[node name="VenueChanger" type="Node3D" parent="Pre_Match_Stuff" unique_id=2145169847]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -4, 0.8, -2)
+
+[node name="Label3D" type="Label3D" parent="Pre_Match_Stuff/VenueChanger" unique_id=2081253464]
+transform = Transform3D(-1, 0, -8.742277e-08, 0, 1, 0, 8.742277e-08, 0, -1, 0, 0.50000006, 0)
+text = "Venue"
+
+[node name="Label3D2" type="Label3D" parent="Pre_Match_Stuff/VenueChanger" unique_id=92239104 node_paths=PackedStringArray("node_to_examine")]
+transform = Transform3D(-1, 0, -8.742277e-08, 0, 1, 0, 8.742277e-08, 0, -1, 0, 0.30000013, 0)
+text = "Bedug"
+font_size = 24
+script = ExtResource("12_1qagb")
+node_to_examine = NodePath("../../..")
+vars_to_display = Array[String](["score_to_win"])
+
+[node name="Button2" parent="Pre_Match_Stuff/VenueChanger" unique_id=1187823403 instance=ExtResource("11_lk4md")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.39999998, 0, 0)
+delay_before_reset = 0.3
+
+[node name="Label3D" type="Label3D" parent="Pre_Match_Stuff/VenueChanger/Button2" unique_id=2030171689]
+transform = Transform3D(-1, 0, -8.742277e-08, 0, 1, 0, 8.742277e-08, 0, -1, 0, -0.29999995, 0)
+text = "Prev"
+
+[node name="Button3" parent="Pre_Match_Stuff/VenueChanger" unique_id=1915974543 instance=ExtResource("11_lk4md")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.4, 0, 0)
+delay_before_reset = 0.3
+
+[node name="Label3D" type="Label3D" parent="Pre_Match_Stuff/VenueChanger/Button3" unique_id=1735680678]
+transform = Transform3D(-1, 0, -8.742277e-08, 0, 1, 0, 8.742277e-08, 0, -1, 0, -0.29999995, 0)
+text = "Next"
+
+[node name="EnableItems" type="Node3D" parent="Pre_Match_Stuff" unique_id=646805587]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -4, 0.8, 2)
+
+[node name="Label3D" type="Label3D" parent="Pre_Match_Stuff/EnableItems" unique_id=1536710181]
+transform = Transform3D(-1, 0, -8.742277e-08, 0, 1, 0, 8.742277e-08, 0, -1, 0, 0.50000006, 0)
+text = "Use Items"
+
+[node name="Label3D2" type="Label3D" parent="Pre_Match_Stuff/EnableItems" unique_id=1359541405 node_paths=PackedStringArray("node_to_examine")]
+transform = Transform3D(-1, 0, -8.742277e-08, 0, 1, 0, 8.742277e-08, 0, -1, 0, 0.30000013, 0)
+text = "False"
+font_size = 24
+script = ExtResource("12_1qagb")
+node_to_examine = NodePath("../../..")
+vars_to_display = Array[String](["use_items"])
+include_var_name = false
+
+[node name="Button2" parent="Pre_Match_Stuff/EnableItems" unique_id=792936229 instance=ExtResource("11_lk4md")]
+delay_before_reset = 0.3
+
+[node name="GameTimer" type="Timer" parent="." unique_id=1726836718]
+one_shot = true
+
+[connection signal="scored" from="Venues/Bedug/Hoop_Red" to="." method="add_score_blue"]
+[connection signal="scored" from="Venues/Bedug/Hoop_Blue" to="." method="add_score_red"]
+[connection signal="scored" from="Venues/OtherOne/Hoop_Red" to="." method="add_score_blue"]
+[connection signal="scored" from="Venues/OtherOne/Hoop_Blue" to="." method="add_score_red"]
+[connection signal="on_activated" from="Pre_Match_Stuff/BeginMatch" to="." method="begin_game"]
+[connection signal="on_activated" from="Pre_Match_Stuff/BeginMatch2" to="." method="begin_game"]
+[connection signal="on_activated" from="Pre_Match_Stuff/ScoreChanger/Button2" to="." method="decrease_score_to_win"]
+[connection signal="on_activated" from="Pre_Match_Stuff/ScoreChanger/Button2" to="Pre_Match_Stuff/ScoreChanger/Label3D2" method="update_text"]
+[connection signal="on_activated" from="Pre_Match_Stuff/ScoreChanger/Button3" to="." method="increase_score_to_win"]
+[connection signal="on_activated" from="Pre_Match_Stuff/ScoreChanger/Button3" to="Pre_Match_Stuff/ScoreChanger/Label3D2" method="update_text"]
+[connection signal="on_activated" from="Pre_Match_Stuff/TimeLimitChanger/Button2" to="." method="decrease_time_limit_by_ten"]
+[connection signal="on_activated" from="Pre_Match_Stuff/TimeLimitChanger/Button2" to="Pre_Match_Stuff/TimeLimitChanger/Label3D2" method="update_text"]
+[connection signal="on_activated" from="Pre_Match_Stuff/TimeLimitChanger/Button4" to="." method="decrease_time_limit_by_thirty"]
+[connection signal="on_activated" from="Pre_Match_Stuff/TimeLimitChanger/Button4" to="Pre_Match_Stuff/TimeLimitChanger/Label3D2" method="update_text"]
+[connection signal="on_activated" from="Pre_Match_Stuff/TimeLimitChanger/Button3" to="." method="increase_time_limit_by_ten"]
+[connection signal="on_activated" from="Pre_Match_Stuff/TimeLimitChanger/Button3" to="Pre_Match_Stuff/TimeLimitChanger/Label3D2" method="update_text"]
+[connection signal="on_activated" from="Pre_Match_Stuff/TimeLimitChanger/Button5" to="." method="increase_time_limit_by_thirty"]
+[connection signal="on_activated" from="Pre_Match_Stuff/TimeLimitChanger/Button5" to="Pre_Match_Stuff/TimeLimitChanger/Label3D2" method="update_text"]
+[connection signal="on_activated" from="Pre_Match_Stuff/VenueChanger/Button2" to="." method="change_venue_decrease"]
+[connection signal="on_activated" from="Pre_Match_Stuff/VenueChanger/Button3" to="." method="change_venue_increase"]
+[connection signal="on_activated" from="Pre_Match_Stuff/EnableItems/Button2" to="." method="toggle_use_items"]
+[connection signal="on_activated" from="Pre_Match_Stuff/EnableItems/Button2" to="Pre_Match_Stuff/EnableItems/Label3D2" method="update_text"]

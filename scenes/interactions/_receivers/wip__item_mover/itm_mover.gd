@@ -29,6 +29,16 @@ func move_item_from_index(sig: float = -1) -> void:
 	itms_2_move[cur_item_index].global_position = new_pos.global_position
 	itms_2_move[cur_item_index].global_rotation = new_pos.global_rotation
 
+func special_move_item_from_index(sig: float = -1) -> void:
+	assert(positions_to_move_to[0], "ITM_MOVER: No positions assigned")
+	assert(itms_2_move[0], "ITM_MOVER: No items assigned")
+	
+	var new_pos: Node3D = positions_to_move_to[0]
+	if positions_to_move_to[cur_item_index]: new_pos = positions_to_move_to[cur_item_index]
+	itms_2_move[cur_item_index].global_position = new_pos.global_position
+	itms_2_move[cur_item_index].global_rotation = new_pos.global_rotation
+	itms_2_move[cur_item_index].rb.linear_velocity = Vector3.ZERO
+
 func smooth_move_item_from_index(sig: float = -1) -> void:
 	assert(positions_to_move_to[0], "ITM_MOVER: No positions assigned")
 	assert(itms_2_move[0], "ITM_MOVER: No items assigned")

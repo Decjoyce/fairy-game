@@ -22,6 +22,19 @@ func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("add_player"):
 		add_player()
 
+func drop_all_items() -> void:
+	#return
+	for i in players:
+		i.interaction.force_stop_interacting("FREE", false, true)
+
+func freeze_players() -> void:
+	for i in players:
+		i.freeze = true
+
+func unfreeze_players() -> void:
+	for i in players:
+		i.freeze = false
+
 func add_player() -> void:
 	if players.size() == MAX_PLAYERS: return
 	split_screen_container = get_tree().get_first_node_in_group("SSC")
