@@ -21,7 +21,9 @@ Evgenia Malliou - Greek Translation
 Dilara Özileri - Turkish, French Translation
 Oleksandr Romash - Ukrainian Translation
 Goosebatss - Spanish Translation
-Koko - Japanese Translation
+Kokone Shimamura - Japanese Translation
+Minh Anh Pham - Vietnamese Translation 
+Mikhail Fisenko - Russian Translation
 
 Without your help and guidance this game would not have been possible.
 

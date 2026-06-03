@@ -7,7 +7,7 @@ extends EnemyState
 var reaction_delay: float = 2
 var time_to_investigate: float = 3
 var time_before_new_pos: float = 2
-var time_before_giveup: float = 15
+var time_before_giveup: float = 7
 
 var current_poi: Vector3
 
