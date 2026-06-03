@@ -34,6 +34,7 @@ var freeze : bool
 @export var jersey: MeshInstance3D
 @export var jersey_num: Label3D
 @export var col: StaticBody3D
+@export var returntrig: ImprovedRaycast
 @export var compass: Node3D
 
 @export var crown: MeshInstance3D
@@ -48,6 +49,7 @@ func set_up_mp(_p_index: int) -> void:
 	match _p_index:
 		0:
 			cam.set_cull_mask_value(6, false)
+			returntrig.set_collision_mask_value(6, false)
 			jersey_num.set_layer_mask_value(6, true)
 			col.set_collision_layer_value(6, true)
 			for i in all_visuals:
@@ -57,6 +59,7 @@ func set_up_mp(_p_index: int) -> void:
 				j.set_collision_mask_value(6, false)
 		1:
 			cam.set_cull_mask_value(7, false)
+			returntrig.set_collision_mask_value(7, false)
 			jersey_num.set_layer_mask_value(7, true)
 			col.set_collision_layer_value(7, true)
 			for i in all_visuals:
@@ -66,6 +69,7 @@ func set_up_mp(_p_index: int) -> void:
 				j.set_collision_mask_value(7, false)
 		2:
 			cam.set_cull_mask_value(8, false)
+			returntrig.set_collision_mask_value(8, false)
 			jersey_num.set_layer_mask_value(8, true)
 			col.set_collision_layer_value(8, true)
 			for i in all_visuals:
@@ -75,6 +79,7 @@ func set_up_mp(_p_index: int) -> void:
 				j.set_collision_mask_value(8, false)
 		3:
 			cam.set_cull_mask_value(9, false)
+			returntrig.set_collision_mask_value(9, false)
 			jersey_num.set_layer_mask_value(9, true)
 			col.set_collision_layer_value(9, true)
 			for i in all_visuals:
@@ -92,9 +97,16 @@ func _ready() -> void:
 		
 
 func _process(delta: float) -> void:
+	if freeze: 
+		return
+	
+	if babyball_mode:
+		movement.movement_input_babyball()
+	
 	if Input.is_action_just_pressed("ui_end"):
 		#toggle_combat_new()
 		Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
+	
 
 func toggle_combat() -> void:
 	pass
@@ -154,7 +166,7 @@ func _physics_process(delta: float) -> void:
 	
 	if babyball_mode:
 		movement.movement_babyball(delta)
-		movement.movement_input_babyball()
+		#movement.movement_input_babyball()
 	else:
 	
 		movement.movement(delta)
@@ -211,3 +223,12 @@ func enable_ending_override() -> void:
 func do_ending() -> void:
 	get_tree().change_scene_to_file("res://scenes/_levels/Final_Puzzles/ENDING_SCENE/the_end_scene.tscn")
 	#EffectsPlayer.close_vignettize()
+
+func player_intersected(obj: Object) -> void:
+	prints("HEY INTERSECITON", obj.owner)
+	if obj.owner is PlayerTest:
+		print("f")
+		var his_dad: PlayerTest = obj.owner 
+		if movement.last_frame_request_input < his_dad.movement.last_frame_request_input:
+			print(player_index)
+			movement.target_pos = movement.last_pos

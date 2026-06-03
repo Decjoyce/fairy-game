@@ -587,25 +587,27 @@ func movement_input_babyball() -> void:
 	## MOVEINPUT
 	#--> NORTH
 	if MultiplayerInput.is_action_just_pressed(player.device,"move_up") and check_can_move_up():
-		last_frame_request_input = Engine.get_physics_frames()
+		last_frame_request_input = Engine.get_physics_frames()+player.player_index
 		last_pos = target_pos
 		target_pos = target_pos - compass.basis.z * Vector3.ONE
 		current_direction = MoveDirections.VERTICAL
 		
 		on_move.emit(Vector3.FORWARD, target_pos)
 		on_move_up.emit(target_pos)
+		player.returntrig.force_raycast_update()
 	#--> SOUTH
 	elif MultiplayerInput.is_action_just_pressed(player.device,"move_down") and check_can_move_down():
-		last_frame_request_input = Engine.get_physics_frames()
+		last_frame_request_input = Engine.get_physics_frames()+player.player_index
 		last_pos = target_pos
 		target_pos = target_pos + compass.basis.z * Vector3.ONE
 		current_direction = MoveDirections.VERTICAL
 		
 		on_move.emit(Vector3.BACK, target_pos)
 		on_move_down.emit(target_pos)
+		player.returntrig.force_raycast_update()
 	#--> EAST
 	elif MultiplayerInput.is_action_just_pressed(player.device,"move_left") and check_can_move_left():
-		last_frame_request_input = Engine.get_physics_frames()
+		last_frame_request_input = Engine.get_physics_frames()+player.player_index
 		last_pos = target_pos
 		target_pos = target_pos - compass.basis.x * Vector3.ONE
 		
@@ -613,16 +615,17 @@ func movement_input_babyball() -> void:
 		
 		on_move.emit(Vector3.LEFT, target_pos)
 		on_move_left.emit(target_pos)
+		player.returntrig.force_raycast_update()
 	#--> WEST
 	elif MultiplayerInput.is_action_just_pressed(player.device,"move_right") and check_can_move_right():
-		last_frame_request_input = Engine.get_physics_frames()
+		last_frame_request_input = Engine.get_physics_frames()+player.player_index
 		last_pos = target_pos
 		target_pos = target_pos + compass.basis.x * Vector3.ONE
 		current_direction = MoveDirections.HORIZONTAL
 		
 		on_move.emit(Vector3.RIGHT, target_pos)
 		on_move_right.emit(target_pos)
-		
+		player.returntrig.force_raycast_update()
 	## MOVEINPUT
 	##----------
 	#if floor_detector.is_colliding() and MultiplayerInput.is_action_just_pressed(player.device,"toggle_crouch") and dist_to_target <= 0.6:

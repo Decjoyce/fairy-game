@@ -270,8 +270,6 @@ size = Vector3(1.1, 0.9, 0.5)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_wf3e5"]
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_0bd2n"]
-
 [sub_resource type="Gradient" id="Gradient_imes0"]
 offsets = PackedFloat32Array(0, 0.31578946, 1)
 colors = PackedColorArray(0.47993267, 0.07172013, 0.060350247, 1, 0.67502344, 0.12257505, 0.10578546, 1, 0.7764706, 0.14901961, 0.12941177, 1)
@@ -302,7 +300,7 @@ shader_parameter/contrast_boost = 1.15
 shader_parameter/saturation = 0.7650000363375
 shader_parameter/new_color = Color(1, 1, 1, 1)
 
-[node name="player_test" type="Node3D" unique_id=725727541 node_paths=PackedStringArray("stats_ui", "death_ui", "all_visuals", "jersey", "jersey_num", "col", "compass", "crown", "prev_crown") groups=["Player"]]
+[node name="player_test" type="Node3D" unique_id=725727541 node_paths=PackedStringArray("stats_ui", "death_ui", "all_visuals", "jersey", "jersey_num", "col", "returntrig", "compass", "crown", "prev_crown") groups=["Player"]]
 script = ExtResource("1_d4jkp")
 death_scene = ExtResource("2_wm71h")
 stats_ui = NodePath("Stats/UI")
@@ -312,6 +310,7 @@ all_visuals = [NodePath("Camera3D/MeshInstance3D"), NodePath("Camera3D/MeshInsta
 jersey = NodePath("Camera3D/MeshInstance3D")
 jersey_num = NodePath("Camera3D/MeshInstance3D/Label3D")
 col = NodePath("Movement/Compass/Player_Collision")
+returntrig = NodePath("Movement/Compass/ImprovedRaycast")
 compass = NodePath("Movement/Compass")
 crown = NodePath("Camera3D/MeshInstance3D/crown_chimney")
 prev_crown = NodePath("Camera3D/MeshInstance3D/crown_prev")
@@ -491,12 +490,11 @@ collision_mask = 0
 shape = SubResource("BoxShape3D_wf3e5")
 debug_color = Color(0.86830604, 0.0005344439, 0.85595554, 0.41960785)
 
-[node name="TP_THING" type="Area3D" parent="Movement/Compass" unique_id=1588189180]
-monitorable = false
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Movement/Compass/TP_THING" unique_id=1309190122]
-shape = SubResource("BoxShape3D_0bd2n")
-debug_color = Color(0.86830604, 0.0005344439, 0.85595554, 0.41960785)
+[node name="ImprovedRaycast" type="RayCast3D" parent="Movement/Compass" unique_id=884129374]
+collision_mask = 480
+hit_from_inside = true
+script = ExtResource("6_wce2w")
+metadata/_custom_type_script = "uid://jxohgxu3vshf"
 
 [node name="CrouchSFX" type="AudioStreamPlayer3D" parent="Movement" unique_id=2066927461]
 stream = ExtResource("8_4v7uu")
@@ -657,5 +655,6 @@ color = Color(0.5747226, 0.50857943, 0.49505764, 0.03529412)
 script = ExtResource("22_xxfet")
 pause_menu_packed = ExtResource("23_0s5d5")
 
+[connection signal="on_body_entered" from="Movement/Compass/ImprovedRaycast" to="." method="player_intersected"]
 [connection signal="timeout" from="Stats/Timer" to="Stats" method="begin_regen_health"]
 [connection signal="pressed" from="DeathUI/Button" to="." method="return_to_menu"]
