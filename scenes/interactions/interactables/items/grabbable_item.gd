@@ -230,6 +230,7 @@ func break_item() -> void:
 		destroyed_item.visible = true
 		destroyed_audio.play()
 		destroyed_item.global_position = raycast.get_collision_point()
+		if destroyed_item.has_method("boogie"): destroyed_item.boogie()
 		if item_spawn_on_destroyed: 
 			item_spawn_on_destroyed.enable_me()
 			item_spawn_on_destroyed.reparent(get_tree().current_scene)

@@ -109,7 +109,7 @@ func end_game(sig:float=-1) -> void:
 	game_timer.timeout.connect(reset_game)
 
 func check_who_won() -> void:
-	if score_red >= score_to_win or score_red > score_blue: 
+	if score_red >= score_to_win: 
 		win_label.text = "RED TEAM WINS"
 		win_label.visible = true
 		for i in team_red:
@@ -117,7 +117,25 @@ func check_who_won() -> void:
 			i.prev_crown.visible = false
 			PlayerManager.prev_winners.append(i.player_index)
 		end_game()
-	elif score_blue >= score_to_win or score_blue > score_red: 
+	elif score_blue >= score_to_win: 
+		win_label.text = "BLUE TEAM WINS"
+		win_label.visible = true
+		for i in team_blue:
+			i.crown.visible = true
+			i.prev_crown.visible = false
+			PlayerManager.prev_winners.append(i.player_index)
+		end_game()
+
+func check_who_won_after_timeout() -> void:
+	if score_red > score_blue: 
+		win_label.text = "RED TEAM WINS"
+		win_label.visible = true
+		for i in team_red: 
+			i.crown.visible = true
+			i.prev_crown.visible = false
+			PlayerManager.prev_winners.append(i.player_index)
+		end_game()
+	elif score_blue > score_red: 
 		win_label.text = "BLUE TEAM WINS"
 		win_label.visible = true
 		for i in team_blue:

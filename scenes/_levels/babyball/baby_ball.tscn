@@ -13,7 +13,6 @@
 [ext_resource type="Script" uid="uid://xqw4e8e8sen3" path="res://scenes/_levels/babyball/player_catcher.gd" id="10_vrbek"]
 [ext_resource type="PackedScene" uid="uid://cj7d0607dh76" path="res://scenes/_levels/babyball/babyball_net.tscn" id="11_13blu"]
 [ext_resource type="PackedScene" uid="uid://qu5rxgbydmet" path="res://scenes/interactions/_triggers/button/button.tscn" id="11_lk4md"]
-[ext_resource type="Material" uid="uid://dyejtq23uplk4" path="res://assets/shaders/Outline/outline.tres" id="11_x70sc"]
 [ext_resource type="Script" uid="uid://dxxyu0p8vmsmh" path="res://scripts/label_var_displayer.gd" id="12_1qagb"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_lk4md"]
@@ -63,7 +62,6 @@ border_color = Color(0, 0, 0, 1)
 size = Vector3(50, 5, 50)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qbcw0"]
-next_pass = ExtResource("11_x70sc")
 albedo_color = Color(0, 0, 0, 1)
 
 [sub_resource type="PrismMesh" id="PrismMesh_2d4mo"]
@@ -125,6 +123,8 @@ transform = Transform3D(1, 0, 0, 0, -0.25881898, 0.9659258, 0, -0.9659258, -0.25
 
 [node name="BabyDude" parent="." unique_id=1376443271 groups=["ABYSSRETURNER"] instance=ExtResource("3_s5kbi")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+mass = 0.015
+gravity_scale = 1.0
 keywords = "BABYBALL;"
 
 [node name="ItemCatcher" parent="." unique_id=2014139358 node_paths=PackedStringArray("return_point") instance=ExtResource("7_7jl2g")]
@@ -133,6 +133,7 @@ collision_layer = 0
 collision_mask = 2
 monitorable = false
 return_point = NodePath("../baby_return_point")
+delete_other_items = true
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="ItemCatcher" unique_id=1529869062]
 shape = SubResource("BoxShape3D_ou1m8")
@@ -360,12 +361,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2)
 [node name="_dev_open_middle_a3" parent="Venues/Bedug/_env" unique_id=1848470653 instance=ExtResource("1_4j64p")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -4)
 
-[node name="_dev_open_middle_a4" parent="Venues/Bedug/_env" unique_id=423980498 instance=ExtResource("1_4j64p")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -6)
-
-[node name="_dev_open_middle_a5" parent="Venues/Bedug/_env" unique_id=1031754692 instance=ExtResource("1_4j64p")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -8)
-
 [node name="_dev_open_middle_a6" parent="Venues/Bedug/_env" unique_id=709461449 instance=ExtResource("1_4j64p")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 0)
 
@@ -375,12 +370,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, -2)
 [node name="_dev_open_middle_a8" parent="Venues/Bedug/_env" unique_id=2057084608 instance=ExtResource("1_4j64p")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, -4)
 
-[node name="_dev_open_middle_a9" parent="Venues/Bedug/_env" unique_id=743105492 instance=ExtResource("1_4j64p")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, -6)
-
-[node name="_dev_open_middle_a10" parent="Venues/Bedug/_env" unique_id=1143820649 instance=ExtResource("1_4j64p")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, -8)
-
 [node name="_dev_open_middle_a11" parent="Venues/Bedug/_env" unique_id=1268325767 instance=ExtResource("1_4j64p")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 0)
 
@@ -389,12 +378,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, -2)
 
 [node name="_dev_open_middle_a13" parent="Venues/Bedug/_env" unique_id=997787983 instance=ExtResource("1_4j64p")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, -4)
-
-[node name="_dev_open_middle_a14" parent="Venues/Bedug/_env" unique_id=479770319 instance=ExtResource("1_4j64p")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, -6)
-
-[node name="_dev_open_middle_a15" parent="Venues/Bedug/_env" unique_id=690173670 instance=ExtResource("1_4j64p")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, -8)
 
 [node name="_dev_open_middle_a21" parent="Venues/Bedug/_env" unique_id=468874096 instance=ExtResource("1_4j64p")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, 0)
@@ -407,9 +390,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, -4)
 
 [node name="_dev_open_middle_a24" parent="Venues/Bedug/_env" unique_id=1137467420 instance=ExtResource("1_4j64p")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, -6)
-
-[node name="_dev_open_middle_a25" parent="Venues/Bedug/_env" unique_id=661616089 instance=ExtResource("1_4j64p")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, -8)
 
 [node name="_dev_open_middle_a26" parent="Venues/Bedug/_env" unique_id=626904289 instance=ExtResource("1_4j64p")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, 0)
@@ -483,9 +463,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, -4)
 [node name="_dev_open_middle_a29" parent="Venues/Bedug/_env" unique_id=2032533079 instance=ExtResource("1_4j64p")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, -6)
 
-[node name="_dev_open_middle_a30" parent="Venues/Bedug/_env" unique_id=1200659058 instance=ExtResource("1_4j64p")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, -8)
-
 [node name="_dev_open_middle_a16" parent="Venues/Bedug/_env" unique_id=513552358 instance=ExtResource("1_4j64p")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 0)
 
@@ -502,6 +479,115 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, -6)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, -8)
 
 [node name="floor" type="Node3D" parent="Venues/Bedug/_env" unique_id=1264038648]
+
+[node name="_dev_open_middle_a4" parent="Venues/Bedug/_env/floor" unique_id=423980498 instance=ExtResource("1_4j64p")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -6)
+
+[node name="_dev_open_middle_a5" parent="Venues/Bedug/_env/floor" unique_id=1031754692 instance=ExtResource("1_4j64p")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -8)
+
+[node name="_dev_open_middle_a9" parent="Venues/Bedug/_env/floor" unique_id=743105492 instance=ExtResource("1_4j64p")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, -6)
+
+[node name="_dev_open_middle_a10" parent="Venues/Bedug/_env/floor" unique_id=1143820649 instance=ExtResource("1_4j64p")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, -8)
+
+[node name="_dev_open_middle_a14" parent="Venues/Bedug/_env/floor" unique_id=479770319 instance=ExtResource("1_4j64p")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, -6)
+
+[node name="_dev_open_middle_a15" parent="Venues/Bedug/_env/floor" unique_id=690173670 instance=ExtResource("1_4j64p")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, -8)
+
+[node name="_dev_open_middle_a25" parent="Venues/Bedug/_env/floor" unique_id=661616089 instance=ExtResource("1_4j64p")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, -8)
+
+[node name="_dev_open_middle_a30" parent="Venues/Bedug/_env/floor" unique_id=1200659058 instance=ExtResource("1_4j64p")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, -8)
+
+[node name="1Pointer" type="Node3D" parent="Venues/Bedug/_env" unique_id=572329673]
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="Venues/Bedug/_env/1Pointer" unique_id=241469148]
+transform = Transform3D(0.7071067, 0, 0.1343503, 0, 1, 0, -0.7071068, 0, 0.13435027, -0.505228, -0.0067999475, -4.5054264)
+mesh = SubResource("PrismMesh_2d4mo")
+skeleton = NodePath("../../../_dev_floor_guide/_guide_r3")
+
+[node name="MeshInstance3D5" type="MeshInstance3D" parent="Venues/Bedug/_env/1Pointer" unique_id=38719767]
+transform = Transform3D(-5.9604645e-08, 0, 0.15199998, 0, 1, 0, -0.9999999, 0, -1.7881394e-08, -1.505228, -0.0067999475, -5.0054264)
+mesh = SubResource("PrismMesh_2d4mo")
+skeleton = NodePath("../../../_dev_floor_guide/_guide_r3")
+
+[node name="MeshInstance3D8" type="MeshInstance3D" parent="Venues/Bedug/_env/1Pointer" unique_id=669815519]
+transform = Transform3D(-5.9604645e-08, 0, 0.15199998, 0, 1, 0, -0.9999999, 0, -1.7881394e-08, 1.494772, -0.0067999475, -5.0054264)
+mesh = SubResource("PrismMesh_2d4mo")
+skeleton = NodePath("../../../_dev_floor_guide/_guide_r3")
+
+[node name="MeshInstance3D6" type="MeshInstance3D" parent="Venues/Bedug/_env/1Pointer" unique_id=1493024524]
+transform = Transform3D(1, 0, 9.832608e-09, 0, 1, 0, -1.589327e-08, 0, 0.133, -2.005228, -0.0067999475, -5.5054264)
+mesh = SubResource("PrismMesh_2d4mo")
+skeleton = NodePath("../../../_dev_floor_guide/_guide_r3")
+
+[node name="MeshInstance3D9" type="MeshInstance3D" parent="Venues/Bedug/_env/1Pointer" unique_id=703824154]
+transform = Transform3D(1, 0, 9.832608e-09, 0, 1, 0, -1.589327e-08, 0, 0.133, 1.994772, -0.0067999475, -5.5054264)
+mesh = SubResource("PrismMesh_2d4mo")
+skeleton = NodePath("../../../_dev_floor_guide/_guide_r3")
+
+[node name="MeshInstance3D7" type="MeshInstance3D" parent="Venues/Bedug/_env/1Pointer" unique_id=1594693040]
+transform = Transform3D(-5.960466e-08, 0, 0.2611455, 0, 1, 0, -1, 0, -3.0721356e-08, -2.9052281, -0.0067999475, -6.0054264)
+mesh = SubResource("PrismMesh_2d4mo")
+skeleton = NodePath("../../../_dev_floor_guide/_guide_r3")
+
+[node name="MeshInstance3D10" type="MeshInstance3D" parent="Venues/Bedug/_env/1Pointer" unique_id=1023652989]
+transform = Transform3D(-5.960466e-08, 0, 0.2611455, 0, 1, 0, -1, 0, -3.0721356e-08, 2.894772, -0.0067999475, -6.0054264)
+mesh = SubResource("PrismMesh_2d4mo")
+skeleton = NodePath("../../../_dev_floor_guide/_guide_r3")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="Venues/Bedug/_env/1Pointer" unique_id=583409978]
+transform = Transform3D(-0.7071069, 0, 0.13435027, 0, 1, 0, -0.70710665, 0, -0.1343503, 0.49477202, -0.0067999475, -4.5054264)
+mesh = SubResource("PrismMesh_2d4mo")
+skeleton = NodePath("../../../_dev_floor_guide/_guide_r3")
+
+[node name="1Pointer2" type="Node3D" parent="Venues/Bedug/_env" unique_id=1362411336]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, 0)
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="Venues/Bedug/_env/1Pointer2" unique_id=1405700073]
+transform = Transform3D(0.7071067, 0, 0.1343503, 0, 1, 0, -0.7071068, 0, 0.13435027, -0.505228, -0.0067999475, -4.5054264)
+mesh = SubResource("PrismMesh_2d4mo")
+skeleton = NodePath("../../../_dev_floor_guide/_guide_r3")
+
+[node name="MeshInstance3D5" type="MeshInstance3D" parent="Venues/Bedug/_env/1Pointer2" unique_id=707836486]
+transform = Transform3D(-5.9604645e-08, 0, 0.15199998, 0, 1, 0, -0.9999999, 0, -1.7881394e-08, -1.505228, -0.0067999475, -5.0054264)
+mesh = SubResource("PrismMesh_2d4mo")
+skeleton = NodePath("../../../_dev_floor_guide/_guide_r3")
+
+[node name="MeshInstance3D8" type="MeshInstance3D" parent="Venues/Bedug/_env/1Pointer2" unique_id=683670227]
+transform = Transform3D(-5.9604645e-08, 0, 0.15199998, 0, 1, 0, -0.9999999, 0, -1.7881394e-08, 1.494772, -0.0067999475, -5.0054264)
+mesh = SubResource("PrismMesh_2d4mo")
+skeleton = NodePath("../../../_dev_floor_guide/_guide_r3")
+
+[node name="MeshInstance3D6" type="MeshInstance3D" parent="Venues/Bedug/_env/1Pointer2" unique_id=225573863]
+transform = Transform3D(1, 0, 9.832608e-09, 0, 1, 0, -1.589327e-08, 0, 0.133, -2.005228, -0.0067999475, -5.5054264)
+mesh = SubResource("PrismMesh_2d4mo")
+skeleton = NodePath("../../../_dev_floor_guide/_guide_r3")
+
+[node name="MeshInstance3D9" type="MeshInstance3D" parent="Venues/Bedug/_env/1Pointer2" unique_id=825305714]
+transform = Transform3D(1, 0, 9.832608e-09, 0, 1, 0, -1.589327e-08, 0, 0.133, 1.994772, -0.0067999475, -5.5054264)
+mesh = SubResource("PrismMesh_2d4mo")
+skeleton = NodePath("../../../_dev_floor_guide/_guide_r3")
+
+[node name="MeshInstance3D7" type="MeshInstance3D" parent="Venues/Bedug/_env/1Pointer2" unique_id=1784775480]
+transform = Transform3D(-5.960466e-08, 0, 0.2611455, 0, 1, 0, -1, 0, -3.0721356e-08, -2.9052281, -0.0067999475, -6.0054264)
+mesh = SubResource("PrismMesh_2d4mo")
+skeleton = NodePath("../../../_dev_floor_guide/_guide_r3")
+
+[node name="MeshInstance3D10" type="MeshInstance3D" parent="Venues/Bedug/_env/1Pointer2" unique_id=964225322]
+transform = Transform3D(-5.960466e-08, 0, 0.2611455, 0, 1, 0, -1, 0, -3.0721356e-08, 2.894772, -0.0067999475, -6.0054264)
+mesh = SubResource("PrismMesh_2d4mo")
+skeleton = NodePath("../../../_dev_floor_guide/_guide_r3")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="Venues/Bedug/_env/1Pointer2" unique_id=94017387]
+transform = Transform3D(-0.7071069, 0, 0.13435027, 0, 1, 0, -0.70710665, 0, -0.1343503, 0.49477202, -0.0067999475, -4.5054264)
+mesh = SubResource("PrismMesh_2d4mo")
+skeleton = NodePath("../../../_dev_floor_guide/_guide_r3")
 
 [node name="MeshInstance3D2" type="MeshInstance3D" parent="Venues/Bedug" unique_id=629363680]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, -0.0067999475, -0.00019838661)
@@ -576,7 +662,7 @@ shape = SubResource("BoxShape3D_x70sc")
 mesh = SubResource("PrismMesh_3jcrv")
 
 [node name="Netball" type="Node3D" parent="Venues" unique_id=477455004]
-visible = false
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 100, 0)
 
 [node name="_env" type="Node3D" parent="Venues/Netball" unique_id=762455294]
 
@@ -749,6 +835,143 @@ transform = Transform3D(1.95, 0, 0, 0, 1, 0, 0, 0, 0.99999994, -5.2453686e-08, 2
 material_override = ExtResource("3_1qagb")
 mesh = SubResource("QuadMesh_vrbek")
 
+[node name="_dev_floor_guide" type="StaticBody3D" parent="Venues/Netball" unique_id=222761462]
+
+[node name="_guide_r" type="CollisionShape3D" parent="Venues/Netball/_dev_floor_guide" unique_id=1605443622]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.9, 0.05, 4.5)
+shape = SubResource("BoxShape3D_qbcw0")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Venues/Netball/_dev_floor_guide/_guide_r" unique_id=1942836500]
+mesh = SubResource("PrismMesh_rerno")
+
+[node name="_guide_r2" type="CollisionShape3D" parent="Venues/Netball/_dev_floor_guide" unique_id=228619446]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.9, 0.05, 4.5)
+shape = SubResource("BoxShape3D_qbcw0")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Venues/Netball/_dev_floor_guide/_guide_r2" unique_id=863394865]
+mesh = SubResource("PrismMesh_rerno")
+
+[node name="_guide_r3" type="CollisionShape3D" parent="Venues/Netball/_dev_floor_guide" unique_id=605249178]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 0.05, 8.9)
+shape = SubResource("BoxShape3D_x70sc")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Venues/Netball/_dev_floor_guide/_guide_r3" unique_id=1031079112]
+mesh = SubResource("PrismMesh_x70sc")
+
+[node name="_dev_floor_guide2" type="StaticBody3D" parent="Venues/Netball" unique_id=1967778263]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, 0)
+
+[node name="_guide_r" type="CollisionShape3D" parent="Venues/Netball/_dev_floor_guide2" unique_id=864784878]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.9, 0.05, 4.5)
+shape = SubResource("BoxShape3D_qbcw0")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Venues/Netball/_dev_floor_guide2/_guide_r" unique_id=288121622]
+mesh = SubResource("PrismMesh_13blu")
+
+[node name="_guide_r2" type="CollisionShape3D" parent="Venues/Netball/_dev_floor_guide2" unique_id=1819715488]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.9, 0.05, 4.5)
+shape = SubResource("BoxShape3D_qbcw0")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Venues/Netball/_dev_floor_guide2/_guide_r2" unique_id=18497515]
+mesh = SubResource("PrismMesh_qbcw0")
+
+[node name="_guide_r3" type="CollisionShape3D" parent="Venues/Netball/_dev_floor_guide2" unique_id=1515994881]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 0.05, 8.9)
+shape = SubResource("BoxShape3D_x70sc")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Venues/Netball/_dev_floor_guide2/_guide_r3" unique_id=1749961875]
+mesh = SubResource("PrismMesh_3jcrv")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Venues/Netball" unique_id=831224734]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, -0.0067999475, -0.00019838661)
+mesh = SubResource("PrismMesh_2d4mo")
+skeleton = NodePath("../_dev_floor_guide/_guide_r3")
+
+[node name="1Pointer" type="Node3D" parent="Venues/Netball" unique_id=806180668]
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="Venues/Netball/1Pointer" unique_id=167682105]
+transform = Transform3D(0.7071067, 0, 0.1343503, 0, 1, 0, -0.7071068, 0, 0.13435027, -0.505228, -0.0067999475, -4.5054264)
+mesh = SubResource("PrismMesh_2d4mo")
+skeleton = NodePath("../../../_dev_floor_guide/_guide_r3")
+
+[node name="MeshInstance3D5" type="MeshInstance3D" parent="Venues/Netball/1Pointer" unique_id=999126132]
+transform = Transform3D(-5.9604645e-08, 0, 0.15199998, 0, 1, 0, -0.9999999, 0, -1.7881394e-08, -1.505228, -0.0067999475, -5.0054264)
+mesh = SubResource("PrismMesh_2d4mo")
+skeleton = NodePath("../../../_dev_floor_guide/_guide_r3")
+
+[node name="MeshInstance3D8" type="MeshInstance3D" parent="Venues/Netball/1Pointer" unique_id=1802641448]
+transform = Transform3D(-5.9604645e-08, 0, 0.15199998, 0, 1, 0, -0.9999999, 0, -1.7881394e-08, 1.494772, -0.0067999475, -5.0054264)
+mesh = SubResource("PrismMesh_2d4mo")
+skeleton = NodePath("../../../_dev_floor_guide/_guide_r3")
+
+[node name="MeshInstance3D6" type="MeshInstance3D" parent="Venues/Netball/1Pointer" unique_id=738425303]
+transform = Transform3D(1, 0, 9.832608e-09, 0, 1, 0, -1.589327e-08, 0, 0.133, -2.005228, -0.0067999475, -5.5054264)
+mesh = SubResource("PrismMesh_2d4mo")
+skeleton = NodePath("../../../_dev_floor_guide/_guide_r3")
+
+[node name="MeshInstance3D9" type="MeshInstance3D" parent="Venues/Netball/1Pointer" unique_id=1378317432]
+transform = Transform3D(1, 0, 9.832608e-09, 0, 1, 0, -1.589327e-08, 0, 0.133, 1.994772, -0.0067999475, -5.5054264)
+mesh = SubResource("PrismMesh_2d4mo")
+skeleton = NodePath("../../../_dev_floor_guide/_guide_r3")
+
+[node name="MeshInstance3D7" type="MeshInstance3D" parent="Venues/Netball/1Pointer" unique_id=643406792]
+transform = Transform3D(-5.960466e-08, 0, 0.2611455, 0, 1, 0, -1, 0, -3.0721356e-08, -2.9052281, -0.0067999475, -6.0054264)
+mesh = SubResource("PrismMesh_2d4mo")
+skeleton = NodePath("../../../_dev_floor_guide/_guide_r3")
+
+[node name="MeshInstance3D10" type="MeshInstance3D" parent="Venues/Netball/1Pointer" unique_id=1814763771]
+transform = Transform3D(-5.960466e-08, 0, 0.2611455, 0, 1, 0, -1, 0, -3.0721356e-08, 2.894772, -0.0067999475, -6.0054264)
+mesh = SubResource("PrismMesh_2d4mo")
+skeleton = NodePath("../../../_dev_floor_guide/_guide_r3")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="Venues/Netball/1Pointer" unique_id=1819868360]
+transform = Transform3D(-0.7071069, 0, 0.13435027, 0, 1, 0, -0.70710665, 0, -0.1343503, 0.49477202, -0.0067999475, -4.5054264)
+mesh = SubResource("PrismMesh_2d4mo")
+skeleton = NodePath("../../../_dev_floor_guide/_guide_r3")
+
+[node name="1Pointer2" type="Node3D" parent="Venues/Netball" unique_id=1647891251]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, 0)
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="Venues/Netball/1Pointer2" unique_id=685365448]
+transform = Transform3D(0.7071067, 0, 0.1343503, 0, 1, 0, -0.7071068, 0, 0.13435027, -0.505228, -0.0067999475, -4.5054264)
+mesh = SubResource("PrismMesh_2d4mo")
+skeleton = NodePath("../../../_dev_floor_guide/_guide_r3")
+
+[node name="MeshInstance3D5" type="MeshInstance3D" parent="Venues/Netball/1Pointer2" unique_id=312822298]
+transform = Transform3D(-5.9604645e-08, 0, 0.15199998, 0, 1, 0, -0.9999999, 0, -1.7881394e-08, -1.505228, -0.0067999475, -5.0054264)
+mesh = SubResource("PrismMesh_2d4mo")
+skeleton = NodePath("../../../_dev_floor_guide/_guide_r3")
+
+[node name="MeshInstance3D8" type="MeshInstance3D" parent="Venues/Netball/1Pointer2" unique_id=1393327111]
+transform = Transform3D(-5.9604645e-08, 0, 0.15199998, 0, 1, 0, -0.9999999, 0, -1.7881394e-08, 1.494772, -0.0067999475, -5.0054264)
+mesh = SubResource("PrismMesh_2d4mo")
+skeleton = NodePath("../../../_dev_floor_guide/_guide_r3")
+
+[node name="MeshInstance3D6" type="MeshInstance3D" parent="Venues/Netball/1Pointer2" unique_id=1491197249]
+transform = Transform3D(1, 0, 9.832608e-09, 0, 1, 0, -1.589327e-08, 0, 0.133, -2.005228, -0.0067999475, -5.5054264)
+mesh = SubResource("PrismMesh_2d4mo")
+skeleton = NodePath("../../../_dev_floor_guide/_guide_r3")
+
+[node name="MeshInstance3D9" type="MeshInstance3D" parent="Venues/Netball/1Pointer2" unique_id=606123563]
+transform = Transform3D(1, 0, 9.832608e-09, 0, 1, 0, -1.589327e-08, 0, 0.133, 1.994772, -0.0067999475, -5.5054264)
+mesh = SubResource("PrismMesh_2d4mo")
+skeleton = NodePath("../../../_dev_floor_guide/_guide_r3")
+
+[node name="MeshInstance3D7" type="MeshInstance3D" parent="Venues/Netball/1Pointer2" unique_id=1606557161]
+transform = Transform3D(-5.960466e-08, 0, 0.2611455, 0, 1, 0, -1, 0, -3.0721356e-08, -2.9052281, -0.0067999475, -6.0054264)
+mesh = SubResource("PrismMesh_2d4mo")
+skeleton = NodePath("../../../_dev_floor_guide/_guide_r3")
+
+[node name="MeshInstance3D10" type="MeshInstance3D" parent="Venues/Netball/1Pointer2" unique_id=1398718158]
+transform = Transform3D(-5.960466e-08, 0, 0.2611455, 0, 1, 0, -1, 0, -3.0721356e-08, 2.894772, -0.0067999475, -6.0054264)
+mesh = SubResource("PrismMesh_2d4mo")
+skeleton = NodePath("../../../_dev_floor_guide/_guide_r3")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="Venues/Netball/1Pointer2" unique_id=521282563]
+transform = Transform3D(-0.7071069, 0, 0.13435027, 0, 1, 0, -0.70710665, 0, -0.1343503, 0.49477202, -0.0067999475, -4.5054264)
+mesh = SubResource("PrismMesh_2d4mo")
+skeleton = NodePath("../../../_dev_floor_guide/_guide_r3")
+
 [node name="Disabled_Venue_Position" type="Node3D" parent="." unique_id=153777112]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 26, 0)
 visible = false
@@ -860,7 +1083,8 @@ text = "Bedug"
 font_size = 24
 script = ExtResource("12_1qagb")
 node_to_examine = NodePath("../../..")
-vars_to_display = Array[String](["score_to_win"])
+vars_to_display = Array[String](["current_venue_name"])
+include_var_name = false
 
 [node name="Button2" parent="Pre_Match_Stuff/VenueChanger" unique_id=1187823403 instance=ExtResource("11_lk4md")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.39999998, 0, 0)
@@ -919,6 +1143,8 @@ one_shot = true
 [connection signal="on_activated" from="Pre_Match_Stuff/TimeLimitChanger/Button5" to="." method="increase_time_limit_by_thirty"]
 [connection signal="on_activated" from="Pre_Match_Stuff/TimeLimitChanger/Button5" to="Pre_Match_Stuff/TimeLimitChanger/Label3D2" method="update_text"]
 [connection signal="on_activated" from="Pre_Match_Stuff/VenueChanger/Button2" to="." method="change_venue_decrease"]
+[connection signal="on_activated" from="Pre_Match_Stuff/VenueChanger/Button2" to="Pre_Match_Stuff/VenueChanger/Label3D2" method="update_text"]
 [connection signal="on_activated" from="Pre_Match_Stuff/VenueChanger/Button3" to="." method="change_venue_increase"]
+[connection signal="on_activated" from="Pre_Match_Stuff/VenueChanger/Button3" to="Pre_Match_Stuff/VenueChanger/Label3D2" method="update_text"]
 [connection signal="on_activated" from="Pre_Match_Stuff/EnableItems/Button2" to="." method="toggle_use_items"]
 [connection signal="on_activated" from="Pre_Match_Stuff/EnableItems/Button2" to="Pre_Match_Stuff/EnableItems/Label3D2" method="update_text"]

@@ -23,7 +23,7 @@ func netted() -> void:
 	if dist_from_net <= 4: 
 		prints("SCORE = 1", dist_from_net)
 		num_points = 1
-	elif dist_from_net < 12:
+	elif dist_from_net < 8:
 		prints("SCORE = 2", dist_from_net)
 		num_points = 2
 	else:

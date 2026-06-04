@@ -16,7 +16,10 @@ var has_been_triggered: bool
 
 @export var do_not_save: bool
 
+@export var disabled: bool
+
 func activate(sig: float = -1) -> void:
+	if disabled: return
 	if has_been_triggered and only_trig_once: return
 	if activated: return
 	#print("activated")
@@ -37,6 +40,7 @@ func deactivate(sig: float = -1) -> void:
 	dmg_things_inide()
 
 func dmg_things_inide() -> void:
+	if disabled: return
 	for peep in people_inside:
 		peep.stats.take_damage(100, 2)
 	for itm in itms_inside:
@@ -46,6 +50,7 @@ func dmg_things_inide() -> void:
 			itms_inside.erase(itm)
 
 func _on_area_3d_area_entered(area: Area3D) -> void:
+	if disabled: return
 	if area.get_parent() is Entity and !people_inside.has(area.get_parent()):
 		people_inside.append(area.get_parent())
 		weighted_things_inside += 1
@@ -58,6 +63,7 @@ func _on_area_3d_area_exited(area: Area3D) -> void:
 	people_inside.erase(area.get_parent())
 	print(people_inside)
 	weighted_things_inside -= 1
+	if disabled: return
 	if weighted_things_inside <= 0:
 		if trigger_when_in: deactivate(-1)
 
@@ -73,6 +79,7 @@ func _on_area_3d_body_entered(body: Node3D) -> void:
 		print(itms_inside)
 		if body.item_weight == Grabbable_Item.item_weight_types.HEAVY:
 			weighted_things_inside += 1
+			if disabled: return
 			if trigger_when_in: activate(-1) 
 
 
@@ -84,4 +91,5 @@ func _on_area_3d_body_exited(body: Node3D) -> void:
 			weighted_things_inside -= 1
 	itms_inside.erase(body)
 	if weighted_things_inside <= 0:
+		if disabled: return
 		if trigger_when_in: deactivate(-1)

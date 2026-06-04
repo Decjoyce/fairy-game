@@ -51,6 +51,6 @@ func add_player() -> void:
 	new_player.set_up_mp(players.size()-1)
 	if prev_winners.has(new_player.player_index): new_player.prev_crown.visible = true
 	
-	if split_screen_container.columns == 1:
+	if players.size() > 1:
 		split_screen_container.columns = 2
 	player_spawned.emit(new_player, players.size()-1)

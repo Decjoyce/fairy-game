@@ -4,6 +4,8 @@ extends Area3D
 @export var ap: AudioStreamPlayer3D
 @export var ap_clip: AudioStream
 
+@export var delete_other_items: bool
+
 func _on_body_entered(body: Node3D) -> void:
 	print("hello")
 	if body is Grabbable_Item and body.is_in_group("ABYSSRETURNER"):
@@ -14,3 +16,5 @@ func _on_body_entered(body: Node3D) -> void:
 		ap.stream = ap_clip
 		ap.play()
 		print("DEDED")
+	elif body is Grabbable_Item and delete_other_items:
+		body.queue_free() 
