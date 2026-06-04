@@ -22,6 +22,7 @@ Dilara Özileri - Turkish, French Translation
 Oleksandr Romash - Ukrainian Translation
 Goosebatss - Spanish Translation
 Kokone Shimamura - Japanese Translation
+Eva Kondela - Slovak Translation
 Minh Anh Pham - Vietnamese Translation 
 Mikhail Fisenko - Russian Translation
 

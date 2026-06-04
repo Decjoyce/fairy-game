@@ -17,7 +17,9 @@ var languages: = {
 	"Turkish": "tr",
 	"Ukranian": "uk",
 	"Greek": "el",
-	#"BallyBog": "gay"
+	"Slovak": "sk",
+	"Vietnamese": "vi"
+	
 	
 	
 }
