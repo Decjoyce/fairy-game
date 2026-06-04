@@ -32,6 +32,9 @@
 [ext_resource type="Material" uid="uid://ioo51vym3k1d" path="res://scenes/interactions/_triggers/teleporter/m_teleport.tres" id="30_yufbx"]
 [ext_resource type="PackedScene" uid="uid://dhb1ju03ckwh4" path="res://scenes/interactions/_receivers/enabler_disabler_v1/collision_enabler_disabler.tscn" id="31_q6pfj"]
 [ext_resource type="PackedScene" uid="uid://dpmxu8xwfcf5e" path="res://scenes/enemy/bb_line.tscn" id="32_u3nag"]
+[ext_resource type="PackedScene" uid="uid://br35er4x4b6av" path="res://scenes/interactions/_triggers/torch_sconce/torch_sconce_unlit.tscn" id="33_yufbx"]
+[ext_resource type="Material" uid="uid://dyejtq23uplk4" path="res://assets/shaders/Outline/outline.tres" id="34_q6pfj"]
+[ext_resource type="PackedScene" uid="uid://pfnqccjh5kbs" path="res://scenes/_levels/_palettes/cairn/props/skull.tscn" id="35_u3nag"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_1hgo1"]
 
@@ -114,6 +117,27 @@ size = Vector3(0.8, 2, 2)
 [sub_resource type="BoxShape3D" id="BoxShape3D_yoaa4"]
 size = Vector3(0.1, 1.9, 1.6)
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ypdmq"]
+albedo_color = Color(0.29582244, 0.28200856, 0.27378577, 1)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_bwo3n"]
+material = SubResource("StandardMaterial3D_ypdmq")
+top_radius = 0.0
+bottom_radius = 0.05
+height = 0.5
+radial_segments = 4
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xbtjy"]
+albedo_color = Color(0.38039216, 0.28627452, 0.19215687, 1)
+metallic = 0.5
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_ueblh"]
+material = SubResource("StandardMaterial3D_xbtjy")
+top_radius = 0.03
+bottom_radius = 0.03
+height = 0.8
+radial_segments = 4
+
 [node name="BallyBog_HardSection" type="Node3D" unique_id=818137965]
 
 [node name="GridMap2" type="GridMap" parent="." unique_id=753268824]
@@ -136,9 +160,9 @@ metadata/_editor_floor_ = Vector3(0, 0, 0)
 
 [node name="Gate_With_leverPiece" parent="First_Part" unique_id=893706790 instance=ExtResource("5_1nwec")]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -8.1, 0, -9)
-metadata/lock_uid = false
-metadata/uid = "5112ca0c-f80b-45c3-91ad-38986b7ec80e"
-metadata/date_generated = "2026-05-04T18:15:47"
+metadata/lock_uid = true
+metadata/uid = "1a93c441-2dd3-4e21-86b2-03a410217535"
+metadata/date_generated = "2026-06-04T15:27:19"
 
 [node name="BrokenLever" type="Node3D" parent="First_Part" unique_id=2660761]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.1489944, 1.0864971, -11)
@@ -146,24 +170,25 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.1489944, 1.0864971, -11)
 [node name="BrokenLever" parent="First_Part/BrokenLever" unique_id=525346541 instance=ExtResource("9_4joy0")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -0.6354332, 0, 0.385643)
 keywords_needed = "LEVER;"
-metadata/uid = "616721eb-2a1c-4058-8f78-6b8875f4e7ab"
-metadata/lock_uid = false
-metadata/date_generated = "2026-05-04T18:15:48"
+metadata/uid = "13a77bd1-ea24-4241-984e-4e500ae01cfa"
+metadata/lock_uid = true
+metadata/date_generated = "2026-06-04T15:27:19"
 
 [node name="Lever_Fixed" parent="First_Part/BrokenLever" unique_id=1692381032 instance=ExtResource("10_0jeu4")]
 transform = Transform3D(1.3113416e-07, 0, 1, 0, 1, 0, -1, 0, 1.3113416e-07, -0.6354332, 0, 0.385643)
 use_intervals = true
 hand_prompt = "hand_prompt_lever"
 disabled = true
-metadata/uid = "1c561141-c882-41d6-a522-915ed86d7efb"
-metadata/date_generated = "2026-05-04T18:15:48"
+metadata/lock_uid = true
+metadata/uid = "ace30049-cbaf-4a7d-8487-a8158d270edd"
+metadata/date_generated = "2026-06-04T15:27:19"
 
 [node name="LeverHandle" parent="First_Part/BrokenLever" unique_id=1226645142 instance=ExtResource("11_llrke")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, -0.7798259, 1.9669609)
 keywords = "LEVER;"
-metadata/uid = "885f26be-2afa-45de-97d4-3684cc8ccf0b"
-metadata/lock_uid = false
-metadata/date_generated = "2026-05-04T18:15:48"
+metadata/uid = "8f699645-b906-4d9e-ba46-4ed4a023925e"
+metadata/lock_uid = true
+metadata/date_generated = "2026-06-04T15:27:19"
 
 [node name="BallyBogOne_Trigger" parent="First_Part" unique_id=917204587 instance=ExtResource("12_g0t4t")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 1, -7)
@@ -192,86 +217,95 @@ monitorable = false
 [node name="CollisionShape3D" type="CollisionShape3D" parent="First_Part/BallyBogTwo_Trigger/Area3D" unique_id=2146439481]
 shape = SubResource("SphereShape3D_1hgo1")
 
+[node name="BallyBogOne_Trigger2" parent="First_Part" unique_id=482191571 instance=ExtResource("12_g0t4t")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 1, -7)
+trig_once = true
+
+[node name="Area3D" type="Area3D" parent="First_Part/BallyBogOne_Trigger2" unique_id=1379741942]
+collision_layer = 0
+monitorable = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="First_Part/BallyBogOne_Trigger2/Area3D" unique_id=101860901]
+shape = SubResource("SphereShape3D_1hgo1")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="First_Part/BallyBogOne_Trigger2/Area3D" unique_id=816996224]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -4)
+shape = SubResource("SphereShape3D_1hgo1")
+
 [node name="Open_SkullGate_Button" parent="First_Part" unique_id=1180276272 instance=ExtResource("6_vy3m1")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -0.28836185, 1, -5.185108)
-metadata/lock_uid = false
-metadata/uid = "341403f2-2aab-4520-9976-700c28ce8063"
-metadata/date_generated = "2026-05-04T18:15:48"
+metadata/lock_uid = true
+metadata/uid = "14c2f31e-3545-4af8-ae1e-82db8c834101"
+metadata/date_generated = "2026-06-04T15:27:19"
 
 [node name="Timed_SpikeTrap" parent="First_Part" unique_id=1714444948 instance=ExtResource("27_fx3kc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7, 0, -5)
+
+[node name="Timed_SpikeTrap3" parent="First_Part" unique_id=22643543 instance=ExtResource("27_fx3kc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0, -15)
+
+[node name="Timed_SpikeTrap4" parent="First_Part" unique_id=1934888376 instance=ExtResource("27_fx3kc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0, -13)
+
+[node name="Timed_SpikeTrap2" parent="First_Part" unique_id=205777712 instance=ExtResource("27_fx3kc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 0, -7)
 
 [node name="Second_Part" type="Node3D" parent="." unique_id=700111724]
 
 [node name="Key_Gate" parent="Second_Part" unique_id=244480145 instance=ExtResource("5_1nwec")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, -18)
 disable_tp = false
-metadata/lock_uid = false
-metadata/uid = "ddf36f8f-080e-46e5-bef1-56189d19fce9"
-metadata/date_generated = "2026-05-04T18:15:48"
-
-[node name="BallyBogOne_Trigger2" parent="Second_Part" unique_id=482191571 instance=ExtResource("12_g0t4t")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 1, -7)
-trig_once = true
-
-[node name="Area3D" type="Area3D" parent="Second_Part/BallyBogOne_Trigger2" unique_id=1379741942]
-collision_layer = 0
-monitorable = false
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Second_Part/BallyBogOne_Trigger2/Area3D" unique_id=101860901]
-shape = SubResource("SphereShape3D_1hgo1")
-
-[node name="CollisionShape3D2" type="CollisionShape3D" parent="Second_Part/BallyBogOne_Trigger2/Area3D" unique_id=816996224]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -4)
-shape = SubResource("SphereShape3D_1hgo1")
+metadata/lock_uid = true
+metadata/uid = "762fa853-8b60-43c8-94cc-37e4ffda148b"
+metadata/date_generated = "2026-06-04T15:27:19"
 
 [node name="Open_LeverPieceGate_Button" parent="Second_Part" unique_id=1144332830 instance=ExtResource("6_vy3m1")]
-transform = Transform3D(1.3113416e-07, 0, -1, 0, 1, 0, 1, 0, 1.3113416e-07, -5.7016463, 1, -15)
-metadata/lock_uid = false
-metadata/uid = "0e7fbef1-2c38-482e-874f-139e4ad97c86"
-metadata/date_generated = "2026-05-04T18:15:48"
+transform = Transform3D(-4.371138e-08, 0, 1, 0, 1, 0, -1, 0, -4.371138e-08, -2.2981253, 1, -14.456208)
+metadata/lock_uid = true
+metadata/uid = "4053d6ab-74ce-41fb-b7e5-0e046ab66063"
+metadata/date_generated = "2026-06-04T15:27:19"
 
 [node name="Unlock_LeverExit_Gate" parent="Second_Part" unique_id=809765223 instance=ExtResource("5_1nwec")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 3.9, 0, -9)
 disable_tp = false
-metadata/lock_uid = false
-metadata/uid = "d8c4ef9d-890f-472d-960d-1e99a8fb3621"
-metadata/date_generated = "2026-05-04T18:15:48"
+metadata/lock_uid = true
+metadata/uid = "06cccb39-324d-47c7-8fe4-d1d61e0feccb"
+metadata/date_generated = "2026-06-04T15:27:19"
 
 [node name="Skull_Gate" parent="Second_Part" unique_id=1534145998 instance=ExtResource("5_1nwec")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, -6)
 disable_tp = false
-metadata/lock_uid = false
-metadata/uid = "c1fbbfd7-43f2-4f40-af9b-220d022676fe"
-metadata/date_generated = "2026-05-04T18:15:48"
+metadata/lock_uid = true
+metadata/uid = "4b24459b-8375-496a-a050-972ab4e78cc7"
+metadata/date_generated = "2026-06-04T15:27:19"
 
 [node name="Open_Chain_Gate_Button" parent="Second_Part" unique_id=1978014964 instance=ExtResource("6_vy3m1")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 7.719819, 1, -5)
-metadata/lock_uid = false
-metadata/uid = "ddf93378-47f8-4f64-96b9-c7a301926f14"
-metadata/date_generated = "2026-05-04T18:15:48"
+metadata/lock_uid = true
+metadata/uid = "a70681b7-80d4-40b7-816d-6d10468772ec"
+metadata/date_generated = "2026-06-04T15:27:19"
 
 [node name="Third_Part" type="Node3D" parent="." unique_id=1246019401]
 
 [node name="SpikeTrap" parent="Third_Part" unique_id=2005212729 instance=ExtResource("11_0jeu4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, -13)
-metadata/lock_uid = false
-metadata/uid = "617f0cfd-81c7-4dd9-80d3-59a10d829c0d"
-metadata/date_generated = "2026-05-04T18:15:48"
+metadata/lock_uid = true
+metadata/uid = "b1530943-f91a-4777-9994-4bf077b34654"
+metadata/date_generated = "2026-06-04T15:27:19"
 
 [node name="Door" type="Node3D" parent="Third_Part" unique_id=338601177]
 
 [node name="key" parent="Third_Part/Door" unique_id=451440735 instance=ExtResource("11_feors")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 1.2, -19)
-metadata/uid = "7aa679d4-f274-4bb5-b659-4ed217cbe683"
-metadata/lock_uid = false
-metadata/date_generated = "2026-05-04T18:15:48"
+metadata/uid = "9c9be492-4cb5-4593-8268-4bb6f8786ccd"
+metadata/lock_uid = true
+metadata/date_generated = "2026-06-04T15:27:19"
 
 [node name="Door" parent="Third_Part/Door" unique_id=1088244080 instance=ExtResource("14_feors")]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 10, 0, -11)
-metadata/uid = "0e37ebd4-f276-4f23-b313-1da2bf78191b"
-metadata/lock_uid = false
-metadata/date_generated = "2026-05-04T18:15:48"
+metadata/uid = "ca2a42f7-2b4f-4e46-afd5-7404f288d315"
+metadata/lock_uid = true
+metadata/date_generated = "2026-06-04T15:27:19"
 
 [node name="ItemReceiver" type="Node3D" parent="Third_Part/Door" unique_id=2031514434 groups=["debug_PickableObjects"]]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 10, 1, -11.1)
@@ -295,22 +329,23 @@ metadata/_custom_type_script = "uid://b4y0nvl1kcnqk"
 
 [node name="skull" parent="Third_Part" unique_id=234370081 instance=ExtResource("15_57qbt")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0.40989137, -3)
-metadata/lock_uid = false
-metadata/uid = "80d9837c-b41b-44e8-8811-d3290268b07d"
-metadata/date_generated = "2026-05-04T18:15:48"
+metadata/lock_uid = true
+metadata/uid = "ac804c1d-78a9-4d08-ac3c-72bbb6e017c6"
+metadata/date_generated = "2026-06-04T15:27:19"
 
 [node name="Exit_Gate" parent="Third_Part" unique_id=1018557165 instance=ExtResource("5_1nwec")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, -12)
 disable_tp = false
-metadata/lock_uid = false
-metadata/uid = "44353304-8b67-427f-a9ef-398b4798c8c7"
-metadata/date_generated = "2026-05-04T18:15:48"
+metadata/lock_uid = true
+metadata/uid = "fa0120d7-eb62-478c-962a-6d1f50635061"
+metadata/date_generated = "2026-06-04T15:27:19"
 
-[node name="Exit_Gate_Lever" parent="Third_Part" unique_id=1810684424 instance=ExtResource("10_0jeu4")]
+[node name="Lever_Piece_Open_Lever" parent="Third_Part" unique_id=1810684424 instance=ExtResource("10_0jeu4")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -3.7466524, 1.2034434, -9)
 use_intervals = true
-metadata/uid = "eccf0714-6eb1-4189-8a9f-676b0130848d"
-metadata/date_generated = "2026-05-04T18:15:48"
+metadata/lock_uid = true
+metadata/uid = "e138d164-9b54-474a-abe8-2627c3ad2ef8"
+metadata/date_generated = "2026-06-04T15:27:19"
 
 [node name="Torches" type="Node3D" parent="." unique_id=2025326532]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -10)
@@ -328,16 +363,10 @@ transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -3.8
 transform = Transform3D(1.3113416e-07, 0, -1, 0, 1, 0, 1, 0, 1.3113416e-07, -0.33172446, 1.5145273, 4.79589)
 
 [node name="TorchSconce_Lit10" parent="Torches" unique_id=206004437 instance=ExtResource("16_g0t4t")]
-transform = Transform3D(-4.371138e-08, 0, 1, 0, 1, 0, -1, 0, -4.371138e-08, -5.7190847, 1.5145273, -5.0034714)
+transform = Transform3D(-4.3711395e-08, 0, -1, 0, 1, 0, 1, 0, -4.3711395e-08, -2.2806869, 1.5145273, -4.452737)
 
 [node name="TorchSconce_Lit3" parent="Torches" unique_id=1865730810 instance=ExtResource("16_g0t4t")]
 transform = Transform3D(0.12278795, -0.70710677, -0.6963642, 0.9848077, 2.9802322e-08, 0.17364836, -0.122787915, -0.70710677, 0.6963642, -6.6112485, 0.04715694, 4.8325763)
-
-[node name="TorchSconce_Lit4" parent="Torches" unique_id=1094412383 instance=ExtResource("16_g0t4t")]
-transform = Transform3D(-2.1855695e-07, 0, 1, 0, 1, 0, -1, 0, -2.1855695e-07, -9.837907, 1.5145273, 1.1239128)
-
-[node name="TorchSconce_Lit5" parent="Torches" unique_id=972321886 instance=ExtResource("16_g0t4t")]
-transform = Transform3D(1, 0, 1.7484555e-07, 0, 1, 0, -1.7484555e-07, 0, 1, 0.81685746, 1.5145273, -9.815786)
 
 [node name="TorchSconce_Lit6" parent="Torches" unique_id=1934993162 instance=ExtResource("16_g0t4t")]
 transform = Transform3D(0.22263771, -0.9416823, -0.25232297, -1.6888784e-07, -0.25881907, 0.96592593, -0.9749014, -0.2150515, -0.057623047, 2.8168573, -0.057905674, -2.715786)
@@ -350,9 +379,9 @@ transform = Transform3D(0.22263771, -0.9416823, -0.25232297, -1.6888784e-07, -0.
 
 [node name="Torch" parent="Torches" unique_id=1479203938 instance=ExtResource("18_57qbt")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.6123486, 0.48849535, 7)
-metadata/lock_uid = false
-metadata/uid = "640c36b8-2954-4c58-94a1-3be3e005524f"
-metadata/date_generated = "2026-05-04T18:15:48"
+metadata/lock_uid = true
+metadata/uid = "7a628f86-dc8b-49dc-b969-4542d8df5ac9"
+metadata/date_generated = "2026-06-04T15:27:19"
 
 [node name="Enemies" type="Node3D" parent="Torches" unique_id=160301403]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 10)
@@ -363,9 +392,9 @@ grid_map = NodePath("../../../GridMapPathFinding2")
 patrol_points = [NodePath("../../../EnemyWanderPoints/BallyBog_One_WanderPoints/WP_1"), NodePath("../../../EnemyWanderPoints/BallyBog_One_WanderPoints/WP_2"), NodePath("../../../EnemyWanderPoints/BallyBog_One_WanderPoints/WP_3"), NodePath("../../../EnemyWanderPoints/BallyBog_One_WanderPoints/WP_4"), NodePath("../../../EnemyWanderPoints/BallyBog_One_WanderPoints/WP_5"), NodePath("../../../EnemyWanderPoints/BallyBog_One_WanderPoints/WP_6"), NodePath("../../../EnemyWanderPoints/BallyBog_One_WanderPoints/WP_7"), NodePath("../../../EnemyWanderPoints/BallyBog_One_WanderPoints/WP_8"), NodePath("../../../EnemyWanderPoints/BallyBog_One_WanderPoints/WP_9"), NodePath("../../../EnemyWanderPoints/BallyBog_One_WanderPoints/WP_10"), NodePath("../../../EnemyWanderPoints/BallyBog_One_WanderPoints/WP_11"), NodePath("../../../EnemyWanderPoints/BallyBog_One_WanderPoints/WP_12"), NodePath("../../../EnemyWanderPoints/BallyBog_One_WanderPoints/WP_13"), NodePath("../../../EnemyWanderPoints/BallyBog_One_WanderPoints/WP_14"), NodePath("../../../EnemyWanderPoints/BallyBog_One_WanderPoints/WP_15"), NodePath("../../../EnemyWanderPoints/BallyBog_One_WanderPoints/WP_16"), NodePath("../../../EnemyWanderPoints/BallyBog_One_WanderPoints/WP_17")]
 delay_between_points = 0.5
 time_before_giveup_chase = 2.0
-metadata/uid = "6e9f1694-8eff-47a3-a914-33b2c30bf2dd"
-metadata/lock_uid = false
-metadata/date_generated = "2026-05-04T18:15:48"
+metadata/uid = "827f40d9-a5b8-4da9-af46-be22649b24d6"
+metadata/lock_uid = true
+metadata/date_generated = "2026-06-04T15:27:19"
 
 [node name="Ballybog2" parent="Torches/Enemies" unique_id=772673308 node_paths=PackedStringArray("grid_map", "patrol_points") instance=ExtResource("11_4joy0")]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 9, 0, -9)
@@ -373,9 +402,9 @@ grid_map = NodePath("../../../GridMapPathFinding2")
 patrol_points = [NodePath("../../../EnemyWanderPoints/Ballybog_Two_WanderPoints/WP_3"), NodePath("../../../EnemyWanderPoints/Ballybog_Two_WanderPoints/WP_4"), NodePath("../../../EnemyWanderPoints/Ballybog_Two_WanderPoints/WP_5"), NodePath("../../../EnemyWanderPoints/Ballybog_Two_WanderPoints/WP_6"), NodePath("../../../EnemyWanderPoints/Ballybog_Two_WanderPoints/WP_7"), NodePath("../../../EnemyWanderPoints/Ballybog_Two_WanderPoints/WP_19"), NodePath("../../../EnemyWanderPoints/Ballybog_Two_WanderPoints/WP_8"), NodePath("../../../EnemyWanderPoints/Ballybog_Two_WanderPoints/WP_9"), NodePath("../../../EnemyWanderPoints/Ballybog_Two_WanderPoints/WP_8"), NodePath("../../../EnemyWanderPoints/Ballybog_Two_WanderPoints/WP_10"), NodePath("../../../EnemyWanderPoints/Ballybog_Two_WanderPoints/WP_11"), NodePath("../../../EnemyWanderPoints/Ballybog_Two_WanderPoints/WP_12"), NodePath("../../../EnemyWanderPoints/Ballybog_Two_WanderPoints/WP_13"), NodePath("../../../EnemyWanderPoints/Ballybog_Two_WanderPoints/WP_14"), NodePath("../../../EnemyWanderPoints/Ballybog_Two_WanderPoints/WP_13"), NodePath("../../../EnemyWanderPoints/Ballybog_Two_WanderPoints/WP_12"), NodePath("../../../EnemyWanderPoints/Ballybog_Two_WanderPoints/WP_10"), NodePath("../../../EnemyWanderPoints/Ballybog_Two_WanderPoints/WP_15"), NodePath("../../../EnemyWanderPoints/Ballybog_Two_WanderPoints/WP_16"), NodePath("../../../EnemyWanderPoints/Ballybog_Two_WanderPoints/WP_17"), NodePath("../../../EnemyWanderPoints/Ballybog_Two_WanderPoints/WP_16"), NodePath("../../../EnemyWanderPoints/Ballybog_Two_WanderPoints/WP_15"), NodePath("../../../EnemyWanderPoints/Ballybog_Two_WanderPoints/WP_10"), NodePath("../../../EnemyWanderPoints/Ballybog_Two_WanderPoints/WP_7"), NodePath("../../../EnemyWanderPoints/Ballybog_Two_WanderPoints/WP_6"), NodePath("../../../EnemyWanderPoints/Ballybog_Two_WanderPoints/WP_5"), NodePath("../../../EnemyWanderPoints/Ballybog_Two_WanderPoints/WP_4"), NodePath("../../../EnemyWanderPoints/Ballybog_Two_WanderPoints/WP_3")]
 delay_between_points = 0.5
 time_before_giveup_chase = 2.0
-metadata/uid = "60c588be-cacc-47d4-9583-9415931326f6"
-metadata/lock_uid = false
-metadata/date_generated = "2026-05-04T18:15:48"
+metadata/uid = "2cf8f6ac-f085-4d52-8f5c-d245744cd2db"
+metadata/lock_uid = true
+metadata/date_generated = "2026-06-04T15:27:19"
 
 [node name="EnemyWanderPoints" type="Node3D" parent="." unique_id=118372553]
 
@@ -1236,10 +1265,10 @@ transform = Transform3D(0.12799999, 2.9802322e-08, 0, -1.8626451e-09, 0.03312885
 [node name="CeilingTorches" type="Node3D" parent="Environment" unique_id=1518433331]
 
 [node name="TorchSconce_ExitGate1" parent="Environment/CeilingTorches" unique_id=934024094 instance=ExtResource("20_fx3kc")]
-transform = Transform3D(2.355, 0, 0, 0, 2.355, 0, 0, 0, 2.355, 3.9001698, 2.2140806, -12.410069)
-metadata/uid = "1a5eb7d7-9f09-4312-9412-1e3ed1b7f69a"
-metadata/lock_uid = false
-metadata/date_generated = "2026-05-04T18:15:48"
+transform = Transform3D(2.355, 0, 0, 0, 2.355, 0, 0, 0, 2.355, 3.9001698, 3.0195143, -12.410069)
+metadata/uid = "25596e1b-1e72-4f07-aedd-bdc2584055e9"
+metadata/lock_uid = true
+metadata/date_generated = "2026-06-04T15:27:19"
 
 [node name="temp_graphics" type="Node3D" parent="Environment/CeilingTorches/TorchSconce_ExitGate1" unique_id=1419077052]
 transform = Transform3D(0.4959661, 0, 0, 0, 0.4959661, 0, 0, 0, 0.4959661, 0.001, 0.73, 0.138)
@@ -1272,10 +1301,10 @@ mesh = SubResource("ArrayMesh_3omk6")
 skeleton = NodePath("")
 
 [node name="TorchSconce_ExitGate2" parent="Environment/CeilingTorches" unique_id=1794729243 instance=ExtResource("20_fx3kc")]
-transform = Transform3D(2.355, 0, 0, 0, 2.355, 0, 0, 0, 2.355, 6.042809, 2.2140806, -12.410069)
-metadata/uid = "23901f4b-7a8c-41af-9305-1ba604d2da8d"
-metadata/lock_uid = false
-metadata/date_generated = "2026-05-04T18:15:48"
+transform = Transform3D(2.355, 0, 0, 0, 2.355, 0, 0, 0, 2.355, 6.042809, 3.0195143, -12.410069)
+metadata/uid = "ddec10ec-9be7-4a74-b8ae-2c285b5493e2"
+metadata/lock_uid = true
+metadata/date_generated = "2026-06-04T15:27:19"
 
 [node name="temp_graphics" type="Node3D" parent="Environment/CeilingTorches/TorchSconce_ExitGate2" unique_id=1383459333]
 transform = Transform3D(0.4959661, 0, 0, 0, 0.4959661, 0, 0, 0, 0.4959661, 0.001, 0.73, 0.138)
@@ -1309,9 +1338,9 @@ skeleton = NodePath("")
 
 [node name="TorchSconce_Door_Exit" parent="Environment/CeilingTorches" unique_id=222549236 instance=ExtResource("20_fx3kc")]
 transform = Transform3D(2.355, 0, 0, 0, 2.355, 0, 0, 0, 2.355, 9.042809, 2.699439, -11.410069)
-metadata/uid = "c0293446-d968-406d-895e-e57698b893fb"
-metadata/lock_uid = false
-metadata/date_generated = "2026-05-04T18:15:48"
+metadata/uid = "4950f149-b601-445d-b6fe-a4ac473ba25c"
+metadata/lock_uid = true
+metadata/date_generated = "2026-06-04T15:27:19"
 
 [node name="temp_graphics" type="Node3D" parent="Environment/CeilingTorches/TorchSconce_Door_Exit" unique_id=1548019911]
 transform = Transform3D(0.4959661, 0, 0, 0, 0.4959661, 0, 0, 0, 0.4959661, 0.001, 0.73, 0.138)
@@ -1344,10 +1373,10 @@ mesh = SubResource("ArrayMesh_3omk6")
 skeleton = NodePath("")
 
 [node name="TorchSconce_SkullGate_1" parent="Environment/CeilingTorches" unique_id=296049582 instance=ExtResource("20_fx3kc")]
-transform = Transform3D(2.355, 0, 0, 0, 2.355, 0, 0, 0, 2.355, 1.9379306, 2.3079555, -6.4100695)
-metadata/uid = "4d4b90b3-e74c-4b78-8e99-65c24a0bcc18"
-metadata/lock_uid = false
-metadata/date_generated = "2026-05-04T18:15:48"
+transform = Transform3D(2.355, 0, 0, 0, 2.355, 0, 0, 0, 2.355, 1.9379306, 2.8965, -6.4100695)
+metadata/uid = "a5bd7946-0569-4707-83ac-b966fac7e680"
+metadata/lock_uid = true
+metadata/date_generated = "2026-06-04T15:27:19"
 
 [node name="temp_graphics" type="Node3D" parent="Environment/CeilingTorches/TorchSconce_SkullGate_1" unique_id=2017784998]
 transform = Transform3D(0.4959661, 0, 0, 0, 0.4959661, 0, 0, 0, 0.4959661, 0.001, 0.73, 0.138)
@@ -1380,10 +1409,10 @@ mesh = SubResource("ArrayMesh_3omk6")
 skeleton = NodePath("")
 
 [node name="TorchSconce_SkullGate_2" parent="Environment/CeilingTorches" unique_id=1606093627 instance=ExtResource("20_fx3kc")]
-transform = Transform3D(2.355, 0, 0, 0, 2.355, 0, 0, 0, 2.355, 4.1027117, 2.3079555, -6.4100695)
-metadata/uid = "aa1824c6-47f9-4f39-8fdc-255a7c7b3379"
-metadata/lock_uid = false
-metadata/date_generated = "2026-05-04T18:15:48"
+transform = Transform3D(2.355, 0, 0, 0, 2.355, 0, 0, 0, 2.355, 4.1027117, 2.8965, -6.4100695)
+metadata/uid = "41a8978e-99b4-4798-be4c-93da8dbc3565"
+metadata/lock_uid = true
+metadata/date_generated = "2026-06-04T15:27:19"
 
 [node name="temp_graphics" type="Node3D" parent="Environment/CeilingTorches/TorchSconce_SkullGate_2" unique_id=642097482]
 transform = Transform3D(0.4959661, 0, 0, 0, 0.4959661, 0, 0, 0, 0.4959661, 0.001, 0.73, 0.138)
@@ -1416,10 +1445,10 @@ mesh = SubResource("ArrayMesh_3omk6")
 skeleton = NodePath("")
 
 [node name="TorchSconce_LeverPiece" parent="Environment/CeilingTorches" unique_id=1735380211 instance=ExtResource("20_fx3kc")]
-transform = Transform3D(2.355, 0, 0, 0, 2.355, 0, 0, 0, 2.355, -7.639449, 2.7764604, -9.410069)
-metadata/uid = "f76c185e-af43-4e9c-bd55-cf5c994baba1"
-metadata/lock_uid = false
-metadata/date_generated = "2026-05-04T18:15:48"
+transform = Transform3D(2.355, 0, 0, 0, 2.355, 0, 0, 0, 2.355, -7.639449, 3.3009322, -9.410069)
+metadata/uid = "75d91b48-263e-4321-9221-39ecec9c9d8b"
+metadata/lock_uid = true
+metadata/date_generated = "2026-06-04T15:27:19"
 
 [node name="temp_graphics" type="Node3D" parent="Environment/CeilingTorches/TorchSconce_LeverPiece" unique_id=195454988]
 transform = Transform3D(0.4959661, 0, 0, 0, 0.4959661, 0, 0, 0, 0.4959661, 0.001, 0.73, 0.138)
@@ -1453,9 +1482,9 @@ skeleton = NodePath("")
 
 [node name="TorchSconce_KeyGate" parent="Environment/CeilingTorches" unique_id=1026147125 instance=ExtResource("20_fx3kc")]
 transform = Transform3D(2.355, 0, 0, 0, 2.355, 0, 0, 0, 2.355, 0.956128, 2.099625, -17.285889)
-metadata/uid = "e9d62deb-583b-4bdb-bb1b-7411b825a9ae"
-metadata/lock_uid = false
-metadata/date_generated = "2026-05-04T18:15:48"
+metadata/uid = "8437781c-a7b1-45ae-8a69-90ac5c05ed19"
+metadata/lock_uid = true
+metadata/date_generated = "2026-06-04T15:27:19"
 
 [node name="temp_graphics" type="Node3D" parent="Environment/CeilingTorches/TorchSconce_KeyGate" unique_id=318706310]
 transform = Transform3D(0.4959661, 0, 0, 0, 0.4959661, 0, 0, 0, 0.4959661, 0.001, 0.73, 0.138)
@@ -1488,10 +1517,10 @@ mesh = SubResource("ArrayMesh_3omk6")
 skeleton = NodePath("")
 
 [node name="TorchSconce_Exit_Lever_1" parent="Environment/CeilingTorches" unique_id=1350102502 instance=ExtResource("20_fx3kc")]
-transform = Transform3D(2.355, 0, 0, 0, 2.355, 0, 0, 0, 2.355, 3.9379306, 2.259553, -10.419448)
-metadata/uid = "da4392b2-8066-4b32-9ad1-d052b1e9748c"
-metadata/lock_uid = false
-metadata/date_generated = "2026-05-04T18:15:48"
+transform = Transform3D(2.355, 0, 0, 0, 2.355, 0, 0, 0, 2.355, 3.9379306, 2.8049634, -10.419448)
+metadata/uid = "5b9c48b4-bb1b-43e5-9983-0f4b20619363"
+metadata/lock_uid = true
+metadata/date_generated = "2026-06-04T15:27:19"
 
 [node name="temp_graphics" type="Node3D" parent="Environment/CeilingTorches/TorchSconce_Exit_Lever_1" unique_id=102635393]
 transform = Transform3D(0.4959661, 0, 0, 0, 0.4959661, 0, 0, 0, 0.4959661, 0.001, 0.73, 0.138)
@@ -1524,10 +1553,10 @@ mesh = SubResource("ArrayMesh_3omk6")
 skeleton = NodePath("")
 
 [node name="TorchSconce_Exit_Lever_2" parent="Environment/CeilingTorches" unique_id=1323515775 instance=ExtResource("20_fx3kc")]
-transform = Transform3D(2.355, 0, 0, 0, 2.355, 0, 0, 0, 2.355, 3.9379306, 2.259553, -8.235033)
-metadata/uid = "63a52405-e1ed-4322-99c8-8584822ef34b"
-metadata/lock_uid = false
-metadata/date_generated = "2026-05-04T18:15:48"
+transform = Transform3D(2.355, 0, 0, 0, 2.355, 0, 0, 0, 2.355, 3.9379306, 2.8049634, -8.235033)
+metadata/uid = "e86fcbef-dceb-445a-a3c7-de47a59732eb"
+metadata/lock_uid = true
+metadata/date_generated = "2026-06-04T15:27:19"
 
 [node name="temp_graphics" type="Node3D" parent="Environment/CeilingTorches/TorchSconce_Exit_Lever_2" unique_id=1544593201]
 transform = Transform3D(0.4959661, 0, 0, 0, 0.4959661, 0, 0, 0, 0.4959661, 0.001, 0.73, 0.138)
@@ -1559,6 +1588,12 @@ transform = Transform3D(1, 0, -3.5527137e-15, 0, 1, 0, 3.5527137e-15, 0, 1, 0, -
 mesh = SubResource("ArrayMesh_3omk6")
 skeleton = NodePath("")
 
+[node name="TorchSconce_Unlit" parent="Environment/CeilingTorches" unique_id=359768917 instance=ExtResource("33_yufbx")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 7.8496017, 1.437866, -5)
+metadata/lock_uid = true
+metadata/uid = "a8846fb8-c3b2-4dc2-995a-fb6f6f333f45"
+metadata/date_generated = "2026-06-04T15:27:19"
+
 [node name="Dirt_Walls" type="Node3D" parent="Environment" unique_id=2035941083]
 
 [node name="Dirt Wall" parent="Environment/Dirt_Walls" unique_id=1855664681 instance=ExtResource("20_86n7n")]
@@ -1581,34 +1616,34 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, -9)
 
 [node name="Arrow_Trap" parent="Traps" unique_id=790035545 instance=ExtResource("7_w1ddp")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9, 0, -3)
-metadata/lock_uid = false
-metadata/uid = "5d3afac5-dca8-453d-a91c-fb510f147808"
-metadata/date_generated = "2026-05-04T18:15:48"
+metadata/lock_uid = true
+metadata/uid = "67adc934-4795-4c37-84b6-50162615a4c5"
+metadata/date_generated = "2026-06-04T15:27:19"
 
 [node name="trap_projectile" parent="Traps/Arrow_Trap" unique_id=589372953 instance=ExtResource("24_5jhwi")]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 1.3192202, -5.765753)
-metadata/lock_uid = false
-metadata/uid = "4177a3b5-d8a0-428b-8a13-3228240050bd"
-metadata/date_generated = "2026-05-04T18:15:48"
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 1.2523541, -5.765753)
+metadata/lock_uid = true
+metadata/uid = "9b8655c0-c3dc-4f48-a19f-8f722ef3bb89"
+metadata/date_generated = "2026-06-04T15:27:19"
 
 [node name="Arrow_Trap2" parent="Traps" unique_id=601196083 instance=ExtResource("7_w1ddp")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, -5)
-metadata/lock_uid = false
-metadata/uid = "f467712e-76a1-48af-8dd2-479525960d2c"
-metadata/date_generated = "2026-05-04T18:15:48"
+metadata/lock_uid = true
+metadata/uid = "41e8de1a-d103-4bc9-bec8-0d080cf80e85"
+metadata/date_generated = "2026-06-04T15:27:19"
 
 [node name="trap_projectile" parent="Traps/Arrow_Trap2" unique_id=667408271 instance=ExtResource("24_5jhwi")]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 1.2496095, -3.7657528)
-metadata/lock_uid = false
-metadata/uid = "55f8cf14-36e4-483b-b54c-ed0965c72152"
-metadata/date_generated = "2026-05-04T18:15:48"
+metadata/lock_uid = true
+metadata/uid = "d7ea0f77-dce5-4c73-bdb4-303ad302a885"
+metadata/date_generated = "2026-06-04T15:27:19"
 
 [node name="SpikeTrap2" parent="Traps" unique_id=1518703143 instance=ExtResource("11_0jeu4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.2679, 0, 4)
 trigger_when_in = false
-metadata/lock_uid = false
-metadata/uid = "c5ae23ff-d8e2-4a59-beed-f571135490fb"
-metadata/date_generated = "2026-05-04T18:15:48"
+metadata/lock_uid = true
+metadata/uid = "a1f98393-fbe3-4245-aa63-0254d91f06b4"
+metadata/date_generated = "2026-06-04T15:27:19"
 
 [node name="GridMapPathFinding2" type="GridMap" parent="." unique_id=1647210820]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.5, 0)
@@ -1633,7 +1668,6 @@ metadata/_custom_type_script = "uid://bul4myvyhnpjc"
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.9862537, -7.5682487, -10.966633)
 stream = ExtResource("27_edn4m")
 max_distance = 18.9
-bus = &"Ambient"
 
 [node name="cairnPillar149" parent="." unique_id=607460616 instance=ExtResource("28_edn4m")]
 transform = Transform3D(3.5527137e-15, 1, 8.742278e-08, 1, 0, -4.371139e-08, -4.3711385e-08, 8.742278e-08, -1, 1.6610328e-07, -8.305164e-08, -1.9)
@@ -1705,15 +1739,73 @@ transform = Transform3D(-4.3711395e-08, -2.980232e-08, -1.0000001, 2.9802322e-08
 disable_tp = false
 speed = 0.3
 start_open = true
-metadata/uid = "da4f9aa0-c9df-4442-af8b-c24a6e20fff5"
+metadata/uid = "375cf353-210c-44b5-8e14-83368982aede"
 metadata/lock_uid = true
-metadata/date_generated = "2026-04-29T22:33:48"
+metadata/date_generated = "2026-06-04T15:27:19"
 
 [node name="TorchSconce_Lit" parent="." unique_id=924443470 instance=ExtResource("16_g0t4t")]
 transform = Transform3D(-1, -2.980232e-08, -7.4620004e-08, -2.9802319e-08, 1, -3.0908623e-08, 7.462001e-08, -3.0908623e-08, -1, -3.5479944, 1.479728, -8.187031)
 
 [node name="TorchSconce_Lit2" parent="." unique_id=1318618161 instance=ExtResource("16_g0t4t")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.5349584, 1.4932413, -9.8317585)
+
+[node name="Maze_Direction_Indication" type="Node3D" parent="." unique_id=789422924]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -9)
+
+[node name="lever_Piece_Gate_Indication" parent="Maze_Direction_Indication" unique_id=1195345372 instance=ExtResource("33_yufbx")]
+transform = Transform3D(2.9802322e-08, 0, 1, 0, 1, 0, -1, 0, 2.9802322e-08, -9.83248, 1.2488832, 0)
+metadata/lock_uid = true
+metadata/uid = "3239928d-bb7b-454b-b499-40e3fcd04757"
+metadata/date_generated = "2026-06-04T15:27:19"
+
+[node name="Gate_With_Key_Indication" parent="Maze_Direction_Indication" unique_id=2132472004 instance=ExtResource("33_yufbx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 1.1872947, -10.824944)
+metadata/lock_uid = true
+metadata/uid = "05e1a1bc-2587-47ea-89a6-dc5907551496"
+metadata/date_generated = "2026-06-04T15:27:19"
+
+[node name="Spike_With_Skull_In_It" type="Node3D" parent="Maze_Direction_Indication" unique_id=1114445493]
+
+[node name="Spike" type="Node3D" parent="Maze_Direction_Indication/Spike_With_Skull_In_It" unique_id=993755155]
+transform = Transform3D(0.5, 0, 0, 0, 6.556708e-08, -0.5, 0, 0.5, 6.556708e-08, -7, 2.0289583, 2)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Maze_Direction_Indication/Spike_With_Skull_In_It/Spike" unique_id=931489720]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, -1.2525717e-07, -0.5679159)
+material_overlay = ExtResource("34_q6pfj")
+mesh = SubResource("CylinderMesh_bwo3n")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Maze_Direction_Indication/Spike_With_Skull_In_It/Spike" unique_id=1101599646]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, -2.1964206e-07, 0)
+material_overlay = ExtResource("34_q6pfj")
+mesh = SubResource("CylinderMesh_ueblh")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="Maze_Direction_Indication/Spike_With_Skull_In_It/Spike" unique_id=23903269]
+transform = Transform3D(1, 0, 0, 0, -4.3711395e-08, 1, 0, -1, -4.3711395e-08, 0, 0, 0.7676611)
+material_overlay = ExtResource("34_q6pfj")
+mesh = SubResource("CylinderMesh_ueblh")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="Maze_Direction_Indication/Spike_With_Skull_In_It/Spike" unique_id=68552631]
+transform = Transform3D(1, 0, 0, 0, -4.3711395e-08, 1, 0, -1, -4.3711395e-08, 0, 0, 1.5324117)
+material_overlay = ExtResource("34_q6pfj")
+mesh = SubResource("CylinderMesh_ueblh")
+
+[node name="MeshInstance3D5" type="MeshInstance3D" parent="Maze_Direction_Indication/Spike_With_Skull_In_It/Spike" unique_id=897059956]
+transform = Transform3D(1, 0, 0, 0, -4.3711395e-08, 1, 0, -1, -4.3711395e-08, 0, 0, 2.278252)
+material_overlay = ExtResource("34_q6pfj")
+mesh = SubResource("CylinderMesh_ueblh")
+
+[node name="MeshInstance3D6" type="MeshInstance3D" parent="Maze_Direction_Indication/Spike_With_Skull_In_It/Spike" unique_id=1497164289]
+transform = Transform3D(1, 0, 0, 0, -4.3711395e-08, 1, 0, -1, -4.3711395e-08, 0, -9.536743e-07, 2.9784093)
+material_overlay = ExtResource("34_q6pfj")
+mesh = SubResource("CylinderMesh_ueblh")
+
+[node name="MeshInstance3D7" type="MeshInstance3D" parent="Maze_Direction_Indication/Spike_With_Skull_In_It/Spike" unique_id=312851698]
+transform = Transform3D(1, 0, 0, 0, -4.3711395e-08, 1, 0, -1, -4.3711395e-08, 0, -1.9073486e-06, 3.7096407)
+material_overlay = ExtResource("34_q6pfj")
+mesh = SubResource("CylinderMesh_ueblh")
+
+[node name="Skull" parent="Maze_Direction_Indication/Spike_With_Skull_In_It" unique_id=1689684370 instance=ExtResource("35_u3nag")]
+transform = Transform3D(-0.16913885, 0.097652346, 0.17162767, 0.13, 0.22516659, 1.1364961e-08, -0.14863391, 0.085813835, -0.19530472, -7.0845976, 1.9999999, 1.9332595)
 
 [connection signal="on_activated" from="First_Part/BrokenLever/BrokenLever" to="First_Part/BrokenLever/Lever_Fixed" method="enable"]
 [connection signal="on_change" from="First_Part/BrokenLever/Lever_Fixed" to="Second_Part/Key_Gate" method="open_gate"]
@@ -1726,23 +1818,23 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.5349584, 1.4932413, -9.831
 [connection signal="on_activated" from="First_Part/BallyBogTwo_Trigger" to="Torches/Enemies/Ballybog2" method="disable_me"]
 [connection signal="area_entered" from="First_Part/BallyBogTwo_Trigger/Area3D" to="First_Part/BallyBogTwo_Trigger" method="_player_entered"]
 [connection signal="area_exited" from="First_Part/BallyBogTwo_Trigger/Area3D" to="First_Part/BallyBogTwo_Trigger" method="_player_exited"]
+[connection signal="on_activated" from="First_Part/BallyBogOne_Trigger2" to="Torches/Enemies/Ballybog2" method="enable_me"]
+[connection signal="area_entered" from="First_Part/BallyBogOne_Trigger2/Area3D" to="First_Part/BallyBogOne_Trigger2" method="_player_entered"]
+[connection signal="area_exited" from="First_Part/BallyBogOne_Trigger2/Area3D" to="First_Part/BallyBogOne_Trigger2" method="_player_exited"]
 [connection signal="on_activated" from="First_Part/Open_SkullGate_Button" to="Second_Part/Skull_Gate" method="open_gate"]
 [connection signal="on_activated" from="First_Part/Open_SkullGate_Button" to="Environment/CeilingTorches/TorchSconce_SkullGate_1" method="light_up_torch_with_sig"]
 [connection signal="on_activated" from="First_Part/Open_SkullGate_Button" to="Environment/CeilingTorches/TorchSconce_SkullGate_2" method="light_up_torch_with_sig"]
-[connection signal="on_activated" from="Second_Part/BallyBogOne_Trigger2" to="Torches/Enemies/Ballybog2" method="enable_me"]
-[connection signal="area_entered" from="Second_Part/BallyBogOne_Trigger2/Area3D" to="Second_Part/BallyBogOne_Trigger2" method="_player_entered"]
-[connection signal="area_exited" from="Second_Part/BallyBogOne_Trigger2/Area3D" to="Second_Part/BallyBogOne_Trigger2" method="_player_exited"]
-[connection signal="on_activated" from="Second_Part/Open_LeverPieceGate_Button" to="First_Part/Gate_With_leverPiece" method="open_gate"]
-[connection signal="on_activated" from="Second_Part/Open_LeverPieceGate_Button" to="Environment/CeilingTorches/TorchSconce_LeverPiece" method="light_up_torch_with_sig"]
+[connection signal="on_activated" from="Second_Part/Open_LeverPieceGate_Button" to="Third_Part/Exit_Gate" method="open_gate"]
+[connection signal="on_activated" from="Second_Part/Open_LeverPieceGate_Button" to="Environment/CeilingTorches/TorchSconce_ExitGate1" method="light_up_torch_with_sig"]
+[connection signal="on_activated" from="Second_Part/Open_LeverPieceGate_Button" to="Environment/CeilingTorches/TorchSconce_ExitGate2" method="light_up_torch_with_sig"]
 [connection signal="on_activated" from="Second_Part/Open_Chain_Gate_Button" to="Second_Part/Unlock_LeverExit_Gate" method="open_gate"]
 [connection signal="on_activated" from="Second_Part/Open_Chain_Gate_Button" to="Environment/CeilingTorches/TorchSconce_Exit_Lever_1" method="light_up_torch_with_sig"]
 [connection signal="on_activated" from="Second_Part/Open_Chain_Gate_Button" to="Environment/CeilingTorches/TorchSconce_Exit_Lever_2" method="light_up_torch_with_sig"]
 [connection signal="on_activated" from="Second_Part/Open_Chain_Gate_Button" to="Traps/SpikeTrap2" method="activate"]
 [connection signal="on_activated" from="Third_Part/Door/ItemReceiver" to="Third_Part/Door/Door" method="open_door"]
-[connection signal="on_change" from="Third_Part/Exit_Gate_Lever" to="Third_Part/Exit_Gate" method="open_gate"]
-[connection signal="on_change" from="Third_Part/Exit_Gate_Lever" to="Environment/CeilingTorches/TorchSconce_ExitGate1" method="light_up_torch_with_sig"]
-[connection signal="on_change" from="Third_Part/Exit_Gate_Lever" to="Environment/CeilingTorches/TorchSconce_ExitGate2" method="light_up_torch_with_sig"]
-[connection signal="on_change" from="Third_Part/Exit_Gate_Lever" to="Environment/CeilingTorches/TorchSconce_Door_Exit" method="light_up_torch_with_sig"]
+[connection signal="on_change" from="Third_Part/Lever_Piece_Open_Lever" to="First_Part/Gate_With_leverPiece" method="open_gate"]
+[connection signal="on_change" from="Third_Part/Lever_Piece_Open_Lever" to="Environment/CeilingTorches/TorchSconce_LeverPiece" method="light_up_torch_with_sig"]
+[connection signal="on_change" from="Third_Part/Lever_Piece_Open_Lever" to="Maze_Direction_Indication/lever_Piece_Gate_Indication" method="light_up_torch_with_sig"]
 [connection signal="on_activated" from="Traps/Arrow_Trap" to="Traps/Arrow_Trap/trap_projectile" method="trigger_trap"]
 [connection signal="on_activated" from="Traps/Arrow_Trap2" to="Traps/Arrow_Trap2/trap_projectile" method="trigger_trap"]
 [connection signal="on_enter_lockdown" from="Observer_SpikeTraps" to="Observer_SpikeTraps/StaticBody3D/CollisionEnabler_Disabler" method="enable_obj"]
