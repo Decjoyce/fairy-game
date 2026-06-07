@@ -10,6 +10,7 @@ const ATTACK = "ATTACK"
 const KEY = "KEY"
 const CHAIN = "CHAIN"
 const VALVE = "VALVE"
+const VAULT = "VAULT"
 const SAVING = "SAVING"
 const ENDME = "ENDME"
 

@@ -20,6 +20,7 @@
 [ext_resource type="Texture2D" uid="uid://dou0xes0jegud" path="res://scenes/_player/interaction/hand/assets/new/handThrowCharge.png" id="13_g103e"]
 [ext_resource type="Texture2D" uid="uid://5u5xfynp8cio" path="res://scenes/_player/interaction/hand/assets/new/handTorch.png" id="13_j5qgs"]
 [ext_resource type="Texture2D" uid="uid://bac1td5bs4tmp" path="res://scenes/_player/interaction/hand/assets/new/handThrowRelease.png" id="14_adext"]
+[ext_resource type="Script" uid="uid://b2k0ko2b53rlk" path="res://scenes/_player/interaction/hand/states/handstate_vault.gd" id="15_pgndf"]
 [ext_resource type="Texture2D" uid="uid://2k4dl70eoi6v" path="res://scenes/_player/interaction/hand/assets/new/handGrab.png" id="18_adext"]
 [ext_resource type="Texture2D" uid="uid://ip3mcc0c48rf" path="res://scenes/_player/interaction/hand/assets/new/handPick.png" id="20_j5qgs"]
 [ext_resource type="Texture2D" uid="uid://bvp14xwrxbn3n" path="res://assets/__not_ours_dontship/Xbox Series/XboxSeriesX_B.png" id="20_x8mhs"]
@@ -720,6 +721,13 @@ turning_breaks_free = true
 crouching_breaks_free = true
 metadata/_custom_type_script = "uid://oentb1btlj35"
 
+[node name="VAULT" type="Node" parent="Hand_Left/States" unique_id=1996547186]
+script = ExtResource("15_pgndf")
+moving_breaks_free = true
+turning_breaks_free = true
+crouching_breaks_free = true
+metadata/_custom_type_script = "uid://b2k0ko2b53rlk"
+
 [node name="SAVING" type="Node" parent="Hand_Left/States" unique_id=1559804149]
 script = ExtResource("12_um574")
 moving_breaks_free = true
@@ -938,6 +946,15 @@ moving_breaks_free = true
 turning_breaks_free = true
 crouching_breaks_free = true
 metadata/_custom_type_script = "uid://oentb1btlj35"
+
+[node name="VAULT" type="Node" parent="Hand_Right/States" unique_id=1765668110]
+script = ExtResource("15_pgndf")
+moving_breaks_free = true
+turning_breaks_free = true
+crouching_breaks_free = true
+anim_idle = "a_hand_idle_grab_item"
+anim_prompt = "hand_prompt_key"
+metadata/_custom_type_script = "uid://b2k0ko2b53rlk"
 
 [node name="SAVING" type="Node" parent="Hand_Right/States" unique_id=33907322]
 script = ExtResource("12_um574")

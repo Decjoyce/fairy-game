@@ -20,7 +20,15 @@ func update(_delta: float) -> void:
 	
 	var same_frame_check: int = 0
 	
-	hand_controller.hovering_interactable = hand_controller.interact_checker()
+	var cached_hover_int:Interactable= hand_controller.interact_checker()
+	if cached_hover_int:
+		if cached_hover_int != hand_controller.hovering_interactable:
+			if hand_controller.hovering_interactable: hand_controller.hovering_interactable.end_hover(hand_controller)
+			cached_hover_int.begin_hover(hand_controller)
+	else:
+		if hand_controller.hovering_interactable: hand_controller.hovering_interactable.end_hover(hand_controller)
+	
+	hand_controller.hovering_interactable = cached_hover_int
 	if hand_controller.hovering_interactable:
 		if hand_controller.anim_is_prompting: return
 		hand_controller.anim_is_prompting = true

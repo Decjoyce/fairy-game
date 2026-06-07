@@ -5,7 +5,7 @@ signal on_begin_interact(sig: float)
 signal on_interacting(sig: float)
 signal on_end_interact(sig: float)
 
-enum InteractTypes {INSTANT, GRAB_ITEM, GRAB_OBJ, LEVER, TEMP_ATTACK, TEMP_KEYHOLE, TEMP_CHAIN, TEMP_VALVE, TEMP_SAVE, TEMP_ENDME} # might move all the enums to a global class
+enum InteractTypes {INSTANT, GRAB_ITEM, GRAB_OBJ, LEVER, TEMP_ATTACK, TEMP_KEYHOLE, TEMP_CHAIN, TEMP_VALVE, TEMP_SAVE, TEMP_ENDME, TEMP_VAULT} # might move all the enums to a global class
 @export var interaction_type : InteractTypes
 
 @export var hand_prompt : String = "hand_prompt_default"
@@ -14,6 +14,7 @@ enum InteractTypes {INSTANT, GRAB_ITEM, GRAB_OBJ, LEVER, TEMP_ATTACK, TEMP_KEYHO
 @export var disabled: bool
 
 var being_interacted_with: bool
+var hovering: bool
 
 func _ready() -> void:
 	if disabled: disable()
@@ -28,6 +29,12 @@ func interacting(sig: float = -1, hand: PlayerHand = null) -> void:
 func end_interact(sig: float = -1, hand: PlayerHand = null) -> void:
 	being_interacted_with = false
 	pass
+
+func begin_hover(hand: PlayerHand = null) -> void:
+	hovering = true
+
+func end_hover(hand: PlayerHand = null) -> void:
+	hovering = false
 
 func enable(sig: float = -1) -> void:
 	pass

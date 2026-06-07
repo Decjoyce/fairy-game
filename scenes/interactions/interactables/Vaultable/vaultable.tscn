@@ -1,0 +1,41 @@
+[gd_scene format=3 uid="uid://cx0eu46pbg8lg"]
+
+[ext_resource type="Script" uid="uid://584ntuutmujs" path="res://scenes/interactions/interactables/Vaultable/vaultable.gd" id="1_78w65"]
+[ext_resource type="Material" uid="uid://ioo51vym3k1d" path="res://scenes/interactions/_triggers/teleporter/m_teleport.tres" id="2_7weny"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_1a7gj"]
+radius = 0.1
+height = 1.2
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_78w65"]
+material = ExtResource("2_7weny")
+radius = 0.1
+height = 1.2
+
+[node name="Vaultable" type="Node3D" unique_id=585421707 node_paths=PackedStringArray("positions", "trigger")]
+script = ExtResource("1_78w65")
+positions = [NodePath("Positions/p1"), NodePath("Positions/p2"), NodePath("Positions/p3")]
+trigger = NodePath("_Trig")
+interaction_type = 10
+prompt_text = "GRAB LEDGE"
+
+[node name="_Trig" type="Area3D" parent="." unique_id=196070806]
+transform = Transform3D(-4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0, 1, 0, 0, 0.20000002)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="_Trig" unique_id=661346653]
+shape = SubResource("CapsuleShape3D_1a7gj")
+debug_color = Color(18.892157, 15.000957, 0, 1)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="_Trig/CollisionShape3D" unique_id=1113677639]
+mesh = SubResource("CapsuleMesh_78w65")
+
+[node name="Positions" type="Node3D" parent="." unique_id=1417353813]
+
+[node name="p1" type="Node3D" parent="Positions" unique_id=1334289684]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.39999998, 1)
+
+[node name="p2" type="Node3D" parent="Positions" unique_id=98159403]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.6, 1)
+
+[node name="p3" type="Node3D" parent="Positions" unique_id=368249151]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.3, 0)

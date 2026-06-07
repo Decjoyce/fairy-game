@@ -1,0 +1,86 @@
+[gd_scene format=3 uid="uid://c3ye2sb0hjql8"]
+
+[ext_resource type="Script" uid="uid://dlt285fy2jxth" path="res://scenes/interactions/interactables/MovableObject/movable_object.gd" id="1_2b1mw"]
+[ext_resource type="Material" uid="uid://bk8gbrrgpacoj" path="res://assets/_dev/materials/_dev_m_source.tres" id="1_tskhe"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_2b1mw"]
+material = ExtResource("1_tskhe")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_2b1mw"]
+size = Vector3(0.8, 1, 0.8)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_tskhe"]
+size = Vector3(1, 0.1, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_yl4pn"]
+size = Vector3(0.5, 0.9, 1.1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_aewp4"]
+size = Vector3(1.1, 0.9, 0.5)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_5dpd4"]
+size = Vector3(1, 1, 0.1)
+
+[node name="MovableObject_Test" type="Node3D" unique_id=1266450107 node_paths=PackedStringArray("checkers", "cols")]
+script = ExtResource("1_2b1mw")
+checkers = [NodePath("Area3D/North"), NodePath("Area3D/East"), NodePath("Area3D/South"), NodePath("Area3D/West")]
+cols = [NodePath("Collision/South"), NodePath("Collision/West"), NodePath("Collision/North"), NodePath("Collision/East")]
+metadata/_custom_type_script = "uid://dlt285fy2jxth"
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=879653886]
+mesh = SubResource("BoxMesh_2b1mw")
+
+[node name="Area3D" type="Area3D" parent="." unique_id=1464903316]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" unique_id=735511038]
+shape = SubResource("BoxShape3D_2b1mw")
+
+[node name="ShapeCast3D" type="ShapeCast3D" parent="Area3D" unique_id=1072244001]
+shape = SubResource("BoxShape3D_tskhe")
+target_position = Vector3(0, -0.55, 0)
+
+[node name="North" type="ShapeCast3D" parent="Area3D" unique_id=26154768]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.55)
+shape = SubResource("BoxShape3D_yl4pn")
+target_position = Vector3(0, 0, 0)
+debug_shape_custom_color = Color(0.32798007, 0.4496488, 0.99998206, 1)
+
+[node name="East" type="ShapeCast3D" parent="Area3D" unique_id=1020302144]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.55, 0, 0)
+shape = SubResource("BoxShape3D_aewp4")
+target_position = Vector3(0, 0, 0)
+debug_shape_custom_color = Color(1, 0.64589864, 0.7194342, 1)
+
+[node name="South" type="ShapeCast3D" parent="Area3D" unique_id=596632996]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.55)
+shape = SubResource("BoxShape3D_yl4pn")
+target_position = Vector3(0, 0, 0)
+debug_shape_custom_color = Color(1, 0.8018582, 0.08261081, 1)
+
+[node name="West" type="ShapeCast3D" parent="Area3D" unique_id=1457240262]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.55, 0, 0)
+shape = SubResource("BoxShape3D_aewp4")
+target_position = Vector3(0, 0, 0)
+debug_shape_custom_color = Color(0, 0.79870725, 0.7254093, 1)
+
+[node name="Collision" type="StaticBody3D" parent="." unique_id=877286526]
+collision_layer = 8
+collision_mask = 0
+
+[node name="South" type="CollisionShape3D" parent="Collision" unique_id=825177449]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.45)
+shape = SubResource("BoxShape3D_5dpd4")
+
+[node name="West" type="CollisionShape3D" parent="Collision" unique_id=1178036335]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -0.45, 0, 0)
+shape = SubResource("BoxShape3D_5dpd4")
+
+[node name="North" type="CollisionShape3D" parent="Collision" unique_id=1476164787]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.45)
+shape = SubResource("BoxShape3D_5dpd4")
+
+[node name="East" type="CollisionShape3D" parent="Collision" unique_id=550120275]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0.45, 0, 0)
+shape = SubResource("BoxShape3D_5dpd4")
+
+[connection signal="area_entered" from="Area3D" to="." method="on_entity_entered"]

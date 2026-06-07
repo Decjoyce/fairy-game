@@ -388,7 +388,7 @@ func toggle_crouch() -> void:
 	else: crouch()
 	crouch_sfx.play()
 
-func crouch(bypass_floor_detection: bool = false) -> void:
+func crouch(bypass_floor_detection: bool = false, emit_sig: bool = true) -> void:
 	if !bypass_floor_detection and !floor_detector.get_collision_point(): return
 	is_crouching = true
 	
@@ -404,7 +404,7 @@ func crouch(bypass_floor_detection: bool = false) -> void:
 	player.global_position.y = floor_detector.get_collision_point().y + player.current_player_height
 	roof_detector.enabled = true
 
-func uncrouch() -> void:
+func uncrouch(emit_sig: bool = true) -> void:
 	if !floor_detector.is_colliding(): return
 	if roof_detector.is_colliding(): return
 	is_crouching = false

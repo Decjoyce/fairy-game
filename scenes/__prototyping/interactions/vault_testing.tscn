@@ -1,0 +1,51 @@
+[gd_scene format=3 uid="uid://bcpsoi8otwi4e"]
+
+[ext_resource type="Material" uid="uid://bmx5kbkw1qnpa" path="res://assets/_dev/materials/_dev_m_grey.tres" id="1_qjo3n"]
+[ext_resource type="PackedScene" uid="uid://c3ye2sb0hjql8" path="res://scenes/interactions/interactables/MovableObject/movable_object_test.tscn" id="2_dg4a4"]
+[ext_resource type="PackedScene" uid="uid://bq86osdembn58" path="res://scenes/_player/_player_test.tscn" id="3_g7cgs"]
+[ext_resource type="PackedScene" uid="uid://cx0eu46pbg8lg" path="res://scenes/interactions/interactables/Vaultable/vaultable.tscn" id="3_ljssg"]
+
+[sub_resource type="Environment" id="Environment_d0ohw"]
+background_mode = 1
+background_color = Color(1, 1, 1, 1)
+
+[node name="DoorTesting" type="Node3D" unique_id=935010750]
+
+[node name="_env" type="Node3D" parent="." unique_id=1166213138]
+
+[node name="CSGBox3D" type="CSGBox3D" parent="_env" unique_id=1807627627]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.25, 2)
+use_collision = true
+size = Vector3(10, 0.5, 14)
+material = ExtResource("1_qjo3n")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="_env" unique_id=2116786980]
+environment = SubResource("Environment_d0ohw")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="_env" unique_id=31654209]
+transform = Transform3D(1, 0, 0, 0, -0.50000006, 0.8660254, 0, -0.8660254, -0.50000006, 0, 1.8000001, 0)
+shadow_enabled = true
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="_env" unique_id=1079230210]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.20000005, -3.338817)
+use_collision = true
+size = Vector3(8.735, 2.4, 3)
+material = ExtResource("1_qjo3n")
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="_env" unique_id=1684690205]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.3999996, -17.2, -1.6388168)
+use_collision = true
+size = Vector3(8.735, 2.4, 3)
+material = ExtResource("1_qjo3n")
+
+[node name="player_test" parent="." unique_id=725727541 instance=ExtResource("3_g7cgs")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, -3)
+
+[node name="Vaultable" parent="." unique_id=585421707 instance=ExtResource("3_ljssg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -2)
+
+[node name="MovableObject_Test" parent="." unique_id=1820223950 instance=ExtResource("2_dg4a4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0.5, 3)
+
+[node name="Vaultable" parent="MovableObject_Test" unique_id=1894788439 instance=ExtResource("3_ljssg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0.29999995)

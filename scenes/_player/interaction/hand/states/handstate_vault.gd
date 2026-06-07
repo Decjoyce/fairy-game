@@ -1,0 +1,105 @@
+class_name HandState_Vault
+extends HandState
+
+var current_value: float = 0
+var object_to_vault: Vaultable
+
+
+func enter(previous_state_path: String, data := {}) -> void:
+	hand_controller.hovering_interactable = null
+	object_to_vault = hand_controller.current_interactable
+	player.freeze = true
+	#player.movement.uncrouch(false)
+	update_graphics()
+
+## Called by the state machine before changing the active state. Use this function
+## to clean up the state.
+func exit() -> void:
+	player.freeze = false
+	if current_value >= 0.95:
+		player.movement.target_pos = object_to_vault.global_position.round()
+	
+	current_value = 0
+	hand_controller.anim_change_idle_anim("a_hand_idle")
+	#player.movement.disable_gravity = false
+	
+
+func handle_input(_event: InputEvent) -> void:
+	pass
+
+## Called by the state machine on the engine's main loop tick.
+func update(_delta: float) -> void:
+	if player.movement.dist_to_target > 0:
+		update_graphics()
+	
+	if Input.is_action_just_pressed("action_" + hand_controller.stringed_hand_type): 
+		finished.emit(FREE)
+
+## Called by the state machine on the engine's physics update tick.
+func physics_update(_delta: float) -> void:
+	controls(_delta)
+
+## Called by the state machine upon changing the active state. The `data` parameter
+## is a dictionary with arbitrary data the state can use to initialize itself.
+
+
+# ↑ State Stuff ↑
+# --------------------------------------------------------------------------------------------------
+# ↓ Controls Stuff ↓
+
+func controls(_delta: float) -> void:
+	var cur_incr: float = 0
+	if Input.is_action_pressed(hand_controller.stringed_hand_type + "_joystick_down"):
+		cur_incr += 1 - exp(-1 * _delta)
+	elif Input.is_action_pressed(hand_controller.stringed_hand_type + "_joystick_up"):
+		cur_incr -= 1 - exp(-1 * _delta)
+	else: cur_incr -= 1 - exp(-0.3 * _delta)
+	current_value = clampf(current_value+cur_incr, 0, 1.0)
+	#object_to_vault.update_value(current_value)
+	update_graphics()
+	vaulting()
+
+# ↑ Controls Stuff ↑
+# --------------------------------------------------------------------------------------------------
+# ↓ Move Stuff ↓
+
+var has_vaulted: bool
+
+func vaulting() -> void:
+	var em := _quardatic_bezier(object_to_vault.positions[0].global_position, object_to_vault.positions[1].global_position, object_to_vault.positions[2].global_position, current_value)
+	player.global_position = em
+
+# ↑ Move Stuff ↑
+# --------------------------------------------------------------------------------------------------
+# ↓ Graphics Stuff ↓
+
+var dir_string: String # for animation
+
+func update_graphics() -> void:
+	#print(calc_hand_pos())
+	#if get_viewport().get_camera_3d().is_position_behind(calc_hand_pos()): return
+	#var screen_pos:= get_viewport().get_camera_3d().unproject_position(calc_hand_pos())
+	#hand_controller.position = screen_pos - Vector2(hand_controller.size.x/2, hand_controller.size.y/2)
+	update_hand_sprite()
+	
+
+func update_hand_sprite() -> void:
+	if current_value < 0.2:
+		hand_controller.anim_change_idle_anim("hand_lever_up" + dir_string)
+	elif current_value <= 0.8:
+		hand_controller.anim_change_idle_anim("hand_lever_mid" + dir_string)
+	else:
+		hand_controller.anim_change_idle_anim("hand_lever_down" + dir_string)
+
+
+func calc_hand_pos() -> Vector3:
+	#var y_pos = remap(current_value, 0, 1, lever.hand_pos_bottom.global_position.y, lever.hand_pos_top.global_position.y)
+	#return Vector3(lever.hand_pos_bottom.global_position.)
+	#return lerp(lever.hand_pos_top.global_position, lever.hand_pos_bottom.global_position, current_value)
+	return _quardatic_bezier(object_to_vault.hand_pos_top.global_position, object_to_vault.hand_pos_mid.global_position, object_to_vault.hand_pos_bottom.global_position, current_value)
+
+func _quardatic_bezier(p0: Vector3, p1: Vector3, p2: Vector3, t: float) -> Vector3:
+	var q0 = p0.lerp(p1, t)
+	var q1 = p1.lerp(p2, t)
+	var r = q0.lerp(q1, t)
+	return r
