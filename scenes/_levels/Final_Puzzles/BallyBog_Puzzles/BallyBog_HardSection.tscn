@@ -241,12 +241,6 @@ metadata/date_generated = "2026-06-04T15:27:19"
 [node name="Timed_SpikeTrap" parent="First_Part" unique_id=1714444948 instance=ExtResource("27_fx3kc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7, 0, -5)
 
-[node name="Timed_SpikeTrap3" parent="First_Part" unique_id=22643543 instance=ExtResource("27_fx3kc")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0, -15)
-
-[node name="Timed_SpikeTrap4" parent="First_Part" unique_id=1934888376 instance=ExtResource("27_fx3kc")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0, -13)
-
 [node name="Timed_SpikeTrap2" parent="First_Part" unique_id=205777712 instance=ExtResource("27_fx3kc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 0, -7)
 
@@ -1770,17 +1764,32 @@ metadata/date_generated = "2026-06-04T15:27:19"
 transform = Transform3D(0.5, 0, 0, 0, 6.556708e-08, -0.5, 0, 0.5, 6.556708e-08, -7, 2.0289583, 2)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Maze_Direction_Indication/Spike_With_Skull_In_It/Spike" unique_id=931489720]
-transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, -1.2525717e-07, -0.5679159)
+transform = Transform3D(1, 0, 0, 0, -4.3711395e-08, 1, 0, -1, -4.3711395e-08, 0, 0, -2.0694962)
 material_overlay = ExtResource("34_q6pfj")
 mesh = SubResource("CylinderMesh_bwo3n")
 
 [node name="MeshInstance3D2" type="MeshInstance3D" parent="Maze_Direction_Indication/Spike_With_Skull_In_It/Spike" unique_id=1101599646]
-transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, -2.1964206e-07, 0)
+transform = Transform3D(1, 0, 0, 0, -4.3711395e-08, 1, 0, -1, -4.3711395e-08, 0, 0, -1.5015802)
 material_overlay = ExtResource("34_q6pfj")
 mesh = SubResource("CylinderMesh_ueblh")
 
 [node name="MeshInstance3D3" type="MeshInstance3D" parent="Maze_Direction_Indication/Spike_With_Skull_In_It/Spike" unique_id=23903269]
 transform = Transform3D(1, 0, 0, 0, -4.3711395e-08, 1, 0, -1, -4.3711395e-08, 0, 0, 0.7676611)
+material_overlay = ExtResource("34_q6pfj")
+mesh = SubResource("CylinderMesh_ueblh")
+
+[node name="MeshInstance3D8" type="MeshInstance3D" parent="Maze_Direction_Indication/Spike_With_Skull_In_It/Spike" unique_id=1408896027]
+transform = Transform3D(1, 0, 0, 0, -4.3711395e-08, 1, 0, -1, -4.3711395e-08, 0, 0, 0.11944914)
+material_overlay = ExtResource("34_q6pfj")
+mesh = SubResource("CylinderMesh_ueblh")
+
+[node name="MeshInstance3D9" type="MeshInstance3D" parent="Maze_Direction_Indication/Spike_With_Skull_In_It/Spike" unique_id=495502891]
+transform = Transform3D(1, 0, 0, 0, -4.3711395e-08, 1, 0, -1, -4.3711395e-08, 0, 0, -0.5029702)
+material_overlay = ExtResource("34_q6pfj")
+mesh = SubResource("CylinderMesh_ueblh")
+
+[node name="MeshInstance3D10" type="MeshInstance3D" parent="Maze_Direction_Indication/Spike_With_Skull_In_It/Spike" unique_id=222287822]
+transform = Transform3D(1, 0, 0, 0, -4.3711395e-08, 1, 0, -1, -4.3711395e-08, 0, 0, -0.91630125)
 material_overlay = ExtResource("34_q6pfj")
 mesh = SubResource("CylinderMesh_ueblh")
 
@@ -1805,7 +1814,7 @@ material_overlay = ExtResource("34_q6pfj")
 mesh = SubResource("CylinderMesh_ueblh")
 
 [node name="Skull" parent="Maze_Direction_Indication/Spike_With_Skull_In_It" unique_id=1689684370 instance=ExtResource("35_u3nag")]
-transform = Transform3D(-0.16913885, 0.097652346, 0.17162767, 0.13, 0.22516659, 1.1364961e-08, -0.14863391, 0.085813835, -0.19530472, -7.0845976, 1.9999999, 1.9332595)
+transform = Transform3D(-0.16913885, 0.097652346, 0.17162767, 0.13, 0.22516659, 1.1364961e-08, -0.14863391, 0.085813835, -0.19530472, -7.0845976, 3.0174122, 1.9332595)
 
 [connection signal="on_activated" from="First_Part/BrokenLever/BrokenLever" to="First_Part/BrokenLever/Lever_Fixed" method="enable"]
 [connection signal="on_change" from="First_Part/BrokenLever/Lever_Fixed" to="Second_Part/Key_Gate" method="open_gate"]
