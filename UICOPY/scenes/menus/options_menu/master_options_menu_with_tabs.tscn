@@ -25,9 +25,16 @@ layout_mode = 2
 hide_busses = Array[String](["pl_footsteps", "items", "SaveSFX"])
 metadata/_tab_index = 0
 
-[node name="CONTROLS" parent="." unique_id=520649011 instance=ExtResource("4_5typp")]
+[node name="CONTROLS" parent="." unique_id=520649011 node_paths=PackedStringArray("joy_dict") instance=ExtResource("4_5typp")]
 visible = false
 layout_mode = 2
+joy_dict = {
+"DEFAULT": NodePath("MarginContainer/XBOXController"),
+"DualSense Wireless Controller": NodePath("MarginContainer/PS4 Controller"),
+"Nintendo Switch Pro Controller": NodePath("MarginContainer/ProController"),
+"PS4 Controller": NodePath("MarginContainer/PS4 Controller"),
+"XInput Controller": NodePath("MarginContainer/XBOXController")
+}
 metadata/_tab_index = 1
 
 [node name="VIDEO" parent="." unique_id=382045299 instance=ExtResource("5_nv2pl")]

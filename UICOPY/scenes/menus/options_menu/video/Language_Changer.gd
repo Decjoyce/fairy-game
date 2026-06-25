@@ -18,7 +18,8 @@ var languages: = {
 	"Ukranian": "uk",
 	"Greek": "el",
 	"Slovak": "sk",
-	"Vietnamese": "vi"
+	"Vietnamese": "vi",
+	"Italian": "it"
 	
 	
 	
