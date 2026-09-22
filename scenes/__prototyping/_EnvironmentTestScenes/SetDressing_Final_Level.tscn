@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://cieiwvi0168kv" path="res://scenes/_levels/Final_Puzzles/Mechanical_Puzzles/traps_puzzle_new.tscn" id="4_u1stw"]
 [ext_resource type="PackedScene" uid="uid://bvj3a43avx5bu" path="res://scenes/_levels/Final_Puzzles/BallyBog_Puzzles/BallyBog_Introduction.tscn" id="5_icas2"]
 [ext_resource type="PackedScene" uid="uid://d1urmoxnqqkkl" path="res://scenes/_levels/Final_Puzzles/BallyBog_Puzzles/BallyBogPuzzle_Medium.tscn" id="6_hpkss"]
+[ext_resource type="PackedScene" uid="uid://chqox5wu7wm4q" path="res://scenes/_levels/_palettes/cairn/props/cairn_exit_pillars.tscn" id="6_uffg5"]
 [ext_resource type="PackedScene" uid="uid://8ur6fpvfuoah" path="res://scenes/_levels/Final_Puzzles/BallyBog_Puzzles/BallyBog_HardSection.tscn" id="7_oqsm6"]
 [ext_resource type="PackedScene" uid="uid://dacn4eoc5kfd3" path="res://scenes/_levels/Final_Puzzles/Mechanical_Puzzles/bridge_puzzle.tscn" id="8_ucuax"]
 [ext_resource type="PackedScene" uid="uid://qu5rxgbydmet" path="res://scenes/interactions/_triggers/button/button.tscn" id="9_ag4il"]
@@ -434,12 +435,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.1248577, -0.025569972, 0.13
 [node name="cairnPillar6" parent="Different_Sections/Tutorial/Pillars_TUT" unique_id=848200620 instance=ExtResource("30_u1stw")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.9289093, -0.025569972, 0.13989925)
 
-[node name="cairnPillar7" parent="Different_Sections/Tutorial/Pillars_TUT" unique_id=962231601 instance=ExtResource("30_u1stw")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.1248577, -0.025569972, -8.143689)
-
-[node name="cairnPillar8" parent="Different_Sections/Tutorial/Pillars_TUT" unique_id=240391131 instance=ExtResource("30_u1stw")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.8689094, -0.025569972, -8.143689)
-
 [node name="cairnPillar13" parent="Different_Sections/Tutorial/Pillars_TUT" unique_id=1720148870 instance=ExtResource("30_u1stw")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.1248577, -0.025569972, -17.904274)
 
@@ -447,34 +442,19 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.1248577, -0.025569972, -17.
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.8689094, -0.025569972, -17.904274)
 
 [node name="cairnPillar15" parent="Different_Sections/Tutorial/Pillars_TUT" unique_id=1199042822 instance=ExtResource("30_u1stw")]
-transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 7.921075, -0.025569972, -13.853116)
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 7.921075, -2.02557, -13.853116)
 
 [node name="cairnPillar16" parent="Different_Sections/Tutorial/Pillars_TUT" unique_id=124580823 instance=ExtResource("30_u1stw")]
-transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 7.911215, -0.025569972, -12.109063)
-
-[node name="cairnPillar9" parent="Different_Sections/Tutorial/Pillars_TUT" unique_id=1465905095 instance=ExtResource("30_u1stw")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.124382615, -0.025569972, -10.098565)
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 7.911215, -2.02557, -12.109063)
 
 [node name="cairnPillar10" parent="Different_Sections/Tutorial/Pillars_TUT" unique_id=36481988 instance=ExtResource("30_u1stw")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.900594, -0.025569972, -10.118367)
-
-[node name="cairnPillar11" parent="Different_Sections/Tutorial/Pillars_TUT" unique_id=1205253914 instance=ExtResource("30_u1stw")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.124382615, -0.025569972, -15.8424425)
-
-[node name="cairnPillar12" parent="Different_Sections/Tutorial/Pillars_TUT" unique_id=765773277 instance=ExtResource("30_u1stw")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.900594, -0.025569972, -15.8622465)
 
 [node name="pillardamaged" parent="Different_Sections/Tutorial/Pillars_TUT" unique_id=46075599 instance=ExtResource("29_b3lts")]
 transform = Transform3D(-0.70710677, 0, -0.70710677, 0, 1, 0, 0.70710677, 0, -0.70710677, 7.471037, 0, 0.59385395)
 
 [node name="pillardamaged2" parent="Different_Sections/Tutorial/Pillars_TUT" unique_id=1390430760 instance=ExtResource("29_b3lts")]
 transform = Transform3D(0.3996772, 0.91665596, 1.7470441e-08, -0.9166559, 0.39967722, -4.006829e-08, -4.3711378e-08, 0, 0.9999999, 6.4665537, 0.17054182, 0.59385395)
-
-[node name="cairnPillar17" parent="Different_Sections/Tutorial/Pillars_TUT" unique_id=454689980 instance=ExtResource("30_u1stw")]
-transform = Transform3D(3, 0, 0, 0, 1.19, 0, 0, 0, 3, 1, 0, -13.000001)
-
-[node name="cairnPillar18" parent="Different_Sections/Tutorial/Pillars_TUT" unique_id=514220294 instance=ExtResource("30_u1stw")]
-transform = Transform3D(3, 0, 0, 0, 1.19, 0, 0, 0, 3, 5, 0, -13.000001)
 
 [node name="cairnPillar19" parent="Different_Sections/Tutorial/Pillars_TUT" unique_id=341439342 instance=ExtResource("30_u1stw")]
 transform = Transform3D(1, 0, 0, 0, 1.2, 0, 0, 0, 1, 25.931816, -2.05, -4.0090685)
@@ -543,25 +523,16 @@ transform = Transform3D(1.3113416e-07, 0, -1, 0, 1, 0, 1, 0, 1.3113416e-07, 14.4
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 15.993334, -2.03, -11.600005)
 
 [node name="cairnPillar30" parent="Different_Sections/Tutorial/Pillars_TUT" unique_id=856247748 instance=ExtResource("30_u1stw")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.91, -0.03, -14.06)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.91, -2.03, -14.06)
 
 [node name="cairnPillar31" parent="Different_Sections/Tutorial/Pillars_TUT" unique_id=397969203 instance=ExtResource("30_u1stw")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.039999, 0, -15.87)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.039999, -2, -19.869999)
 
 [node name="cairnPillar24" parent="Different_Sections/Tutorial/Pillars_TUT" unique_id=840526519 instance=ExtResource("30_u1stw")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.11, -0.03, -13.829999)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.11, -2.03, -18.113785)
 
 [node name="cairnPillar28" parent="Different_Sections/Tutorial/Pillars_TUT" unique_id=85683138 instance=ExtResource("30_u1stw")]
 transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 29, -2, -2.000001)
-
-[node name="cairnPillar32" parent="Different_Sections/Tutorial/Pillars_TUT" unique_id=929189189 instance=ExtResource("30_u1stw")]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 19.1, 0, -17.439999)
-
-[node name="cairnPillar33" parent="Different_Sections/Tutorial/Pillars_TUT" unique_id=328786893 instance=ExtResource("30_u1stw")]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 22.7, 0, -17.439999)
-
-[node name="pillardamaged7" parent="Different_Sections/Tutorial/Pillars_TUT" unique_id=617279909 instance=ExtResource("29_b3lts")]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 21, 0, -12.660001)
 
 [node name="cairnPillar34" parent="Different_Sections/Tutorial/Pillars_TUT" unique_id=1558888611 instance=ExtResource("30_u1stw")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24.1, -2, -11.86)
@@ -621,7 +592,19 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 41.999996, -2, -5.660001)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.900001, -2, -5.8599997)
 
 [node name="cairnPillar54" parent="Different_Sections/Tutorial/Pillars_TUT" unique_id=815950503 instance=ExtResource("30_u1stw")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.059998, 0, -14.12)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.960171, -2, -21.844269)
+
+[node name="cairn_exit_pillars" parent="Different_Sections/Tutorial/Pillars_TUT" unique_id=1777257236 instance=ExtResource("6_uffg5")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 18, -2, -18.96)
+
+[node name="cairn_exit_pillars2" parent="Different_Sections/Tutorial/Pillars_TUT" unique_id=560524346 instance=ExtResource("6_uffg5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13, -2, -23.96)
+
+[node name="cairnPillar7" parent="Different_Sections/Tutorial/Pillars_TUT" unique_id=66280276 instance=ExtResource("30_u1stw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 49.915356, -2.0397816, -4.292403)
+
+[node name="cairnPillar8" parent="Different_Sections/Tutorial/Pillars_TUT" unique_id=7625043 instance=ExtResource("30_u1stw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 49.928333, -2.044613, -5.619611)
 
 [node name="RockP_Tut" type="Node3D" parent="Different_Sections/Tutorial" unique_id=225246090]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.049999952, 0, -0.06000042)
@@ -656,11 +639,8 @@ transform = Transform3D(0.25881907, 0.9659258, 0, -0.81931233, 0.21953411, -0.52
 [node name="cairnrock6" parent="Different_Sections/Tutorial/RockP_Tut" unique_id=370152071 instance=ExtResource("27_wg6q8")]
 transform = Transform3D(0.95867586, 0, -0.2845006, 0, 1, 0, 0.2845006, 0, 0.95867586, 5.569952, -0.028719984, 0.57381535)
 
-[node name="BigRockPile3" parent="Different_Sections/Tutorial/RockP_Tut" unique_id=1493649634 instance=ExtResource("24_m3dqs")]
-transform = Transform3D(1, 0, 0, 0, 0.15888178, -0.98729765, 0, 0.98729765, 0.15888178, 2.9463453, 0.7339358, -20.943901)
-
 [node name="Rock3" parent="Different_Sections/Tutorial/RockP_Tut" unique_id=572763286 instance=ExtResource("25_f3rg8")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.266186, -0.07070248, -5.5274267)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.26618576, -0.07070248, -5.5274267)
 
 [node name="cairn rock4" parent="Different_Sections/Tutorial/RockP_Tut" unique_id=1837279184 instance=ExtResource("26_f0xeo")]
 transform = Transform3D(0.15120907, -0.9885018, 0, 0.9885018, 0.15120907, 0, 0, 0, 1, 3.7880251, 0.21863519, -1.99051)
@@ -668,44 +648,14 @@ transform = Transform3D(0.15120907, -0.9885018, 0, 0.9885018, 0.15120907, 0, 0, 
 [node name="cairnrock7" parent="Different_Sections/Tutorial/RockP_Tut" unique_id=1177328400 instance=ExtResource("27_wg6q8")]
 transform = Transform3D(-0.33069563, 0.94373745, 0, -0.94373745, -0.33069563, 0, 0, 0, 1, 3.5597527, 0.2821488, -1.0283852)
 
-[node name="cairn rock 2" parent="Different_Sections/Tutorial/RockP_Tut" unique_id=1288006308 instance=ExtResource("28_2r4l7")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, -12.4442)
-
-[node name="cairn rock5" parent="Different_Sections/Tutorial/RockP_Tut" unique_id=1254346467 instance=ExtResource("26_f0xeo")]
-transform = Transform3D(0.13192756, 1.99339, -0.094825506, 0.044415765, 0.092075884, 1.9973853, 1.9951501, -0.13386104, -0.03819521, 1.3144963, 0.2239763, -12.933503)
-
-[node name="Rock4" parent="Different_Sections/Tutorial/RockP_Tut" unique_id=1265249565 instance=ExtResource("25_f3rg8")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.48612738, -0.027900588, -17.344402)
-
-[node name="BigRockPile4" parent="Different_Sections/Tutorial/RockP_Tut" unique_id=1423726761 instance=ExtResource("24_m3dqs")]
-transform = Transform3D(-0.011178852, 0.6997825, -0.7142687, -0.932203, 0.25113514, 0.26063162, 0.36176336, 0.6687568, 0.6495317, -1.8734369, 0.33836186, -15.696149)
-
-[node name="cairn rock6" parent="Different_Sections/Tutorial/RockP_Tut" unique_id=599703455 instance=ExtResource("26_f0xeo")]
-transform = Transform3D(0.5363277, -0.8440098, 0, 0.8440098, 0.5363277, 0, 0, 0, 1, 7.774233, -0.028591532, -14.9903)
-
-[node name="cairn rock 3" parent="Different_Sections/Tutorial/RockP_Tut" unique_id=1616545323 instance=ExtResource("28_2r4l7")]
-transform = Transform3D(0.9276995, 0, -0.37332782, 0, 1, 0, 0.37332782, 0, 0.9276995, 7.4507723, -0.01902558, -15.505265)
-
-[node name="cairnrock8" parent="Different_Sections/Tutorial/RockP_Tut" unique_id=2004753364 instance=ExtResource("27_wg6q8")]
-transform = Transform3D(0.4959892, -0.8683287, 0, 0.8683287, 0.4959892, 0, 0, 0, 1, 7.6851034, 0.27365032, -10.49989)
-
-[node name="cairn rock8" parent="Different_Sections/Tutorial/RockP_Tut" unique_id=610999360 instance=ExtResource("26_f0xeo")]
-transform = Transform3D(1, 0, 0, 0, 0.2112395, -0.97743434, 0, 0.97743434, 0.2112395, 11.641879, 0.07439239, -13.774289)
-
 [node name="cairn rock7" parent="Different_Sections/Tutorial/RockP_Tut" unique_id=2075933497 instance=ExtResource("26_f0xeo")]
 transform = Transform3D(1.2964259, 1.5205317, 0.085223906, 0, 0.11192185, -1.9968659, -1.5229182, 1.2943944, 0.07254919, 5.195732, 0.18813695, -8.842954)
-
-[node name="cairn rock 4" parent="Different_Sections/Tutorial/RockP_Tut" unique_id=1651611734 instance=ExtResource("28_2r4l7")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.6085415, -0.01902552, -13.634526)
 
 [node name="cairn rock 5" parent="Different_Sections/Tutorial/RockP_Tut" unique_id=124222756 instance=ExtResource("28_2r4l7")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.53281, -2.0390255, -5.6240892)
 
 [node name="Rock5" parent="Different_Sections/Tutorial/RockP_Tut" unique_id=1528196220 instance=ExtResource("25_f3rg8")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.465979, -2.0479007, -4.2688303)
-
-[node name="cairnrock9" parent="Different_Sections/Tutorial/RockP_Tut" unique_id=1452210462 instance=ExtResource("27_wg6q8")]
-transform = Transform3D(1, 0, 0, 0, 0.28949958, 0.9571781, 0, -0.9571781, 0.28949958, 11.273492, 0.18399009, -12.120509)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.465979, -2.0479007, -4.1110487)
 
 [node name="BigRockPile6" parent="Different_Sections/Tutorial/RockP_Tut" unique_id=1324945102 instance=ExtResource("24_m3dqs")]
 transform = Transform3D(0.99705386, 0.074908815, 0.01650215, -0.053902347, 0.83730865, -0.5440669, -0.054572783, 0.5415744, 0.8388795, 29.287924, -1.6433643, -10.5416765)
@@ -758,12 +708,6 @@ transform = Transform3D(0.065281264, 0, 0.9978669, 0, 1, 0, -0.9978669, 0, 0.065
 [node name="cairn rock 7" parent="Different_Sections/Tutorial/RockP_Tut" unique_id=1591252284 instance=ExtResource("28_2r4l7")]
 transform = Transform3D(-0.9997811, 0, -0.02092491, 0, 1, 0, 0.02092491, 0, -0.9997811, 28.962492, -2.0191689, -2.5337248)
 
-[node name="BigRockPile5" parent="Different_Sections/Tutorial/RockP_Tut" unique_id=22051432 instance=ExtResource("24_m3dqs")]
-transform = Transform3D(0.49497473, -0.49497473, -2.5963239e-08, 0, -3.059797e-08, 0.84000003, -0.49497473, -0.49497473, -2.5963239e-08, 23.450003, 0.1, -12.339999)
-
-[node name="BigRockPile10" parent="Different_Sections/Tutorial/RockP_Tut" unique_id=630324343 instance=ExtResource("24_m3dqs")]
-transform = Transform3D(0.4949747, 0.49497476, 2.5963246e-08, 0, -3.059797e-08, 0.84000003, 0.49497476, -0.4949747, -2.5963237e-08, 18.250004, 0.1, -12.339999)
-
 [node name="cairn rock13" parent="Different_Sections/Tutorial/RockP_Tut" unique_id=800976194 instance=ExtResource("26_f0xeo")]
 transform = Transform3D(-0.50000006, -0.8660254, 0, 0.8660254, -0.50000006, 0, 0, 0, 1, 44.433212, -1.7285913, -2.8534079)
 
@@ -802,9 +746,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 14)
 
 [node name="cairn_gate_setdressing2" parent="Different_Sections/Tutorial/extras_tut" unique_id=791825885 instance=ExtResource("32_hpkss")]
 transform = Transform3D(-4.265818e-08, 0.21819437, 0.9759054, 9.537577e-09, 0.9759054, -0.21819437, -1, 0, -4.371139e-08, 14.314696, -2.0000002, -20.7)
-
-[node name="cairn_gate_setdressing" parent="Different_Sections/Tutorial/extras_tut" unique_id=1489346058 instance=ExtResource("32_hpkss")]
-transform = Transform3D(-4.276379e-08, -0.20709218, -0.9783215, -9.052286e-09, 0.9783215, -0.20709218, 1, 0, -4.371139e-08, 3.6504319, 0, -21.1)
 
 [node name="cairn_gate_setdressing3" parent="Different_Sections/Tutorial/extras_tut" unique_id=8649189 instance=ExtResource("32_hpkss")]
 transform = Transform3D(1, 0, 0, 0, 0.9659258, -0.25881904, 0, 0.25881904, 0.9659258, 28, -2, -16.5)
@@ -1961,6 +1902,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.459238, 1.0993567, -13.981
 pixel_size = 0.0031175
 shaded = true
 texture = ExtResource("4_f3rg8")
+
+[node name="cairnPillar" parent="Different_Sections" unique_id=1234468123 instance=ExtResource("30_u1stw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20, -2, -32)
 
 [node name="Connections_GridMap" type="GridMap" parent="." unique_id=1193872561]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
