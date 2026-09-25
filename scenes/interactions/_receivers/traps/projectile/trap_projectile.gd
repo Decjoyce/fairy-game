@@ -13,3 +13,7 @@ func trigger_trap(sig: float = -1) -> void:
 	cur_index += 1
 	if cur_index >= projectile_pool.size(): cur_index = 0
 	elif cur_index < 0: cur_index = projectile_pool.size() - 1
+
+
+func _on_pressure_plate_final_door_on_activated(sig: float) -> void:
+	pass # Replace with function body.
