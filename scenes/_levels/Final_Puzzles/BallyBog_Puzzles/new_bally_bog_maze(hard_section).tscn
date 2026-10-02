@@ -9,12 +9,12 @@
 [ext_resource type="PackedScene" uid="uid://dkx1fyyqx7cmp" path="res://scenes/interactions/_triggers/torch_sconce/torch_sconce_ceiling.tscn" id="6_q35vm"]
 [ext_resource type="PackedScene" uid="uid://qu5rxgbydmet" path="res://scenes/interactions/_triggers/button/button.tscn" id="7_mx3uf"]
 [ext_resource type="PackedScene" uid="uid://dt13fur6twjep" path="res://scenes/interactions/_receivers/gate/gate.tscn" id="8_kflwk"]
+[ext_resource type="PackedScene" uid="uid://drsdttca4hc5w" path="res://scenes/enemy_new/enemy_ballybog_new.tscn" id="8_x137h"]
 [ext_resource type="PackedScene" uid="uid://cfkoaxhngk3gf" path="res://scenes/interactions/interactables/items/all_items/keys/item_key.tscn" id="9_nv8p8"]
+[ext_resource type="MeshLibrary" uid="uid://br861hnjhp6ry" path="res://scenes/_levels/_palettes/gmpf_meshlib.tres" id="9_wnse2"]
+[ext_resource type="Script" uid="uid://ubfk2a80dhfp" path="res://addons/grid_map_pathfinding/grid_map_pathfinding.gd" id="10_1tv7g"]
 [ext_resource type="Script" uid="uid://ejuiwwsmyrgi" path="res://scenes/interactions/_triggers/item_receiver/item_receiver.gd" id="11_r2lcc"]
 [ext_resource type="Script" uid="uid://cc36kknugth5b" path="res://scripts/saving/persistent_objs/po_itmreceiver.gd" id="12_x137h"]
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_4btwm"]
-size = Vector3(1.6, 2, 0.5)
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_wuei3"]
 sky_horizon_color = Color(0, 0.37292683, 0.8185948, 1)
@@ -52,6 +52,9 @@ volumetric_fog_density = 0.025
 volumetric_fog_albedo = Color(0.74509805, 0.34509805, 0, 1)
 volumetric_fog_emission = Color(0.117735185, 0.20947376, 0.3003329, 1)
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_4btwm"]
+size = Vector3(1.6, 2, 0.5)
+
 [node name="New_BallyBog_Maze(Hard_Section)" type="Node3D" unique_id=349789215]
 
 [node name="player_test" parent="." unique_id=725727541 instance=ExtResource("1_7he20")]
@@ -65,124 +68,8 @@ metadata/_custom_type_script = "uid://bul4myvyhnpjc"
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
 mesh_library = ExtResource("3_q4so3")
 data = {
-"cells": PackedInt32Array(65535, 0, 4, 65535, 65535, 2, 65534, 65534, 1441795, 0, 65534, 1, 65534, 65533, 1441793, 65533, 65532, 1048578, 65534, 65532, 1048576, 65534, 65531, 655363, 0, 65531, 1048579, 1, 65532, 1048578, 0, 65533, 1048577, 1, 65534, 1048578, 65535, 65530, 2, 65535, 65529, 2, 65535, 65531, 0, 65535, 65532, 0, 0, 65532, 0, 65535, 65533, 0, 65535, 65534, 0, 65532, 65532, 1441794, 65531, 65532, 1441794, 65530, 65532, 1441796, 2, 65532, 1441794, 3, 65532, 1441794, 4, 65532, 1048580, 2, 65534, 1048579, 2, 65535, 2, 2, 0, 2, 2, 1, 4, 65535, 65528, 655364)
+"cells": PackedInt32Array(65535, 65535, 2, 65534, 65534, 1441795, 0, 65534, 1, 65534, 65533, 1441793, 65533, 65532, 1048578, 65534, 65532, 1048576, 65534, 65531, 655363, 0, 65531, 1048579, 1, 65532, 1048578, 0, 65533, 1048577, 1, 65534, 1048578, 65535, 65530, 2, 65535, 65529, 2, 65535, 65531, 0, 65535, 65532, 0, 0, 65532, 0, 65535, 65533, 0, 65535, 65534, 0, 65532, 65532, 1441794, 2, 65532, 1441794, 3, 65532, 1441794, 4, 65532, 1048580, 2, 65534, 1048579, 2, 65535, 2, 2, 0, 2, 2, 1, 4, 65535, 65528, 655364, 65535, 0, 2, 65531, 65532, 1048578, 65530, 65531, 1048579, 65530, 65533, 3, 65528, 65531, 655363, 65528, 65533, 1441795, 65529, 65530, 655362, 65527, 65532, 1048578, 65529, 65534, 2, 65529, 65531, 0, 65529, 65532, 0, 65530, 65532, 0, 65529, 65533, 0, 65528, 65532, 0, 65529, 65529, 2, 65529, 65528, 2, 65529, 65535, 2, 65529, 0, 2, 65526, 65532, 1441794, 65529, 65527, 1048579, 65529, 1, 3, 65528, 65527, 1441794, 65527, 65527, 1441794, 65526, 65527, 1441794, 65528, 1, 1441794, 65527, 1, 1441794, 65526, 1, 1441794, 65525, 65527, 1441794, 65525, 1, 1048578, 65524, 65533, 1048577, 65524, 65531, 1048577, 65524, 65532, 1048576, 65525, 65532, 1048578, 65523, 65531, 655361, 65523, 65532, 1048576, 65522, 65532, 1048576, 65521, 65532, 1048578, 65520, 65532, 1048578, 65519, 65532, 1048578, 65518, 65531, 1048577, 65518, 65533, 1048577, 65518, 65530, 1048577, 65518, 65534, 1048577, 65518, 65529, 1048579, 65518, 65535, 3, 65523, 65533, 1, 65516, 65529, 655361, 65516, 65535, 1, 65517, 65528, 655362, 65517, 0, 655362, 65516, 65534, 1441792, 65516, 65533, 1441792, 65516, 65532, 1441792, 65516, 65531, 1441792, 65516, 65530, 1441792, 65517, 65529, 1441792, 65517, 65530, 1441792, 65517, 65531, 1441792, 65517, 65532, 1441792, 65518, 65532, 1441792, 65517, 65533, 1441792, 65517, 65534, 1441792, 65517, 65535, 1441792, 65515, 65535, 1441795, 65515, 65529, 655363, 65515, 65534, 1441793, 65515, 65533, 1441793, 65515, 65532, 1441793, 65515, 65531, 1441793, 65515, 65530, 1441793, 65517, 1, 1441795, 65517, 65527, 655363, 65518, 65527, 1048578, 65519, 65527, 1048578, 65520, 65527, 1048578, 65518, 1, 1048578, 65519, 1, 1048578, 65520, 1, 1048578, 65524, 1, 1441795, 65524, 0, 655362, 65524, 65535, 655362, 65524, 65534, 655362, 65524, 65527, 655363, 65524, 65528, 2, 65524, 65529, 2, 65524, 65530, 2, 65521, 65527, 1441794, 65522, 65527, 1048579, 65522, 65528, 2, 65522, 65529, 2, 65522, 65530, 2, 65522, 65531, 1441793, 65521, 1, 1048578, 65522, 1, 3, 65522, 0, 655362, 65522, 65535, 655362, 65522, 65534, 655362, 65522, 65533, 1441793)
 }
-
-[node name="Main_Area" type="Node3D" parent="." unique_id=1409963160]
-
-[node name="Torch_Mounted" parent="Main_Area" unique_id=1479203938 instance=ExtResource("4_wuei3")]
-transform = Transform3D(-2.980232e-08, -0.49999997, -0.86602545, 1, -5.9604645e-08, 0, -5.161914e-08, -0.86602545, 0.49999997, -0.90000004, 0.099999994, -3.2)
-
-[node name="Main_Door" parent="Main_Area" unique_id=1088244080 instance=ExtResource("4_jn06b")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, -10)
-metadata/uid = "418ad1e3-5f04-415c-81f8-d1fb893ce7dc"
-metadata/lock_uid = true
-metadata/date_generated = "2026-10-02T15:37:58"
-
-[node name="ItemReceiver" type="Node3D" parent="Main_Area" unique_id=1454064110 groups=["debug_PickableObjects"]]
-transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, -1, 1, -10.1)
-script = ExtResource("11_r2lcc")
-num_needed_by_type = 1
-destroy_items_on_receive = true
-prompt_text = "Unlock Door"
-metadata/_custom_type_script = "uid://ejuiwwsmyrgi"
-
-[node name="Trigger" type="Area3D" parent="Main_Area/ItemReceiver" unique_id=1007266153]
-collision_layer = 32
-monitoring = false
-
-[node name="_col" type="CollisionShape3D" parent="Main_Area/ItemReceiver/Trigger" unique_id=1350662255]
-unique_name_in_owner = true
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.10000038)
-shape = SubResource("BoxShape3D_4btwm")
-
-[node name="PersistentObject" type="Node" parent="Main_Area/ItemReceiver" unique_id=948738603]
-script = ExtResource("12_x137h")
-metadata/_custom_type_script = "uid://b4y0nvl1kcnqk"
-
-[node name="Area_Segments" type="Node3D" parent="Main_Area" unique_id=1219135076]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, -7)
-
-[node name="Final_Key" parent="Main_Area/Area_Segments" unique_id=451440735 instance=ExtResource("9_nv8p8")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0.3, 10)
-metadata/uid = "035ddd0e-b2ce-40a4-a742-3078f5af7cb9"
-metadata/lock_uid = true
-metadata/date_generated = "2026-10-02T15:37:58"
-
-[node name="Area_One" type="Node3D" parent="Main_Area/Area_Segments" unique_id=1030286154]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, 0)
-
-[node name="Area_One_Entrance" type="Node3D" parent="Main_Area/Area_Segments/Area_One" unique_id=1559585224]
-
-[node name="Gate_Area_One" parent="Main_Area/Area_Segments/Area_One/Area_One_Entrance" unique_id=2077487765 instance=ExtResource("8_kflwk")]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 0, 0)
-disable_tp = false
-metadata/uid = "0b2c0d6e-65b7-4d4d-ab32-dd4b1013c667"
-metadata/lock_uid = true
-metadata/date_generated = "2026-10-02T15:37:58"
-
-[node name="TorchSconce_Lit_First_Button" parent="Main_Area/Area_Segments/Area_One/Area_One_Entrance" unique_id=1729385187 instance=ExtResource("6_q35vm")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5999999, 1.9999999, -1.9000006)
-
-[node name="TorchSconce_Unlit_Area_One" parent="Main_Area/Area_Segments/Area_One/Area_One_Entrance" unique_id=1970890633 instance=ExtResource("5_q35vm")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.60000014, 1.5, -0.099999905)
-metadata/uid = "9e248f93-02d4-4f33-ba81-f8f633b7da1a"
-metadata/lock_uid = true
-metadata/date_generated = "2026-10-02T15:37:58"
-
-[node name="Button_First_Area" parent="Main_Area/Area_Segments/Area_One/Area_One_Entrance" unique_id=1164325605 instance=ExtResource("7_mx3uf")]
-transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 0.29999995, 1, -1.8999996)
-metadata/uid = "0fcce8d0-e3ba-4aa1-8e83-8373ed534780"
-metadata/lock_uid = true
-metadata/date_generated = "2026-10-02T15:37:58"
-
-[node name="Area_Two" type="Node3D" parent="Main_Area/Area_Segments" unique_id=1179053703]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, 0)
-
-[node name="Area_Two_Enterance" type="Node3D" parent="Main_Area/Area_Segments/Area_Two" unique_id=680690470]
-
-[node name="Gate_AreaTwo" parent="Main_Area/Area_Segments/Area_Two/Area_Two_Enterance" unique_id=1217998501 instance=ExtResource("8_kflwk")]
-transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 0, 0, 0)
-disable_tp = false
-metadata/uid = "3434da3c-e5b6-426e-991e-7372994156ff"
-metadata/lock_uid = true
-metadata/date_generated = "2026-10-02T15:37:58"
-
-[node name="TorchSconce_Unlit" parent="Main_Area/Area_Segments/Area_Two/Area_Two_Enterance" unique_id=1172729273 instance=ExtResource("5_q35vm")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 1.5, -0.099999905)
-metadata/uid = "e7753df7-3293-4664-a472-a4f8d8726309"
-metadata/lock_uid = true
-metadata/date_generated = "2026-10-02T15:37:58"
-
-[node name="Button_AreaTwo_Entrance" parent="Main_Area/Area_Segments/Area_Two/Area_Two_Enterance" unique_id=1537961517 instance=ExtResource("7_mx3uf")]
-transform = Transform3D(1.3113416e-07, 0, -1, 0, 1, 0, 1, 0, 1.3113416e-07, -13.7, 1, 0)
-metadata/uid = "495f6459-ddbb-45c8-8354-e1584b93c7f9"
-metadata/lock_uid = true
-metadata/date_generated = "2026-10-02T15:37:58"
-
-[node name="Area_Three" type="Node3D" parent="Main_Area/Area_Segments" unique_id=1955148654]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, 4)
-
-[node name="Area_Three_Enterance" type="Node3D" parent="Main_Area/Area_Segments/Area_Three" unique_id=1661824691]
-
-[node name="TorchSconce_Unlit" parent="Main_Area/Area_Segments/Area_Three/Area_Three_Enterance" unique_id=1135767357 instance=ExtResource("5_q35vm")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.6, 1.5, -0.20000005)
-metadata/uid = "8d71faf1-eb80-407b-b469-1a8e282ad04f"
-metadata/lock_uid = true
-metadata/date_generated = "2026-10-02T15:37:58"
-
-[node name="Gate_Area_Three_Enterance" parent="Main_Area/Area_Segments/Area_Three/Area_Three_Enterance" unique_id=414557617 instance=ExtResource("8_kflwk")]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 0, 0)
-disable_tp = false
-metadata/uid = "cfbc7320-4566-4f58-9feb-4441e2af6212"
-metadata/lock_uid = true
-metadata/date_generated = "2026-10-02T15:37:58"
-
-[node name="Button_Area_Three" parent="Main_Area/Area_Segments/Area_Three/Area_Three_Enterance" unique_id=527734634 instance=ExtResource("7_mx3uf")]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 7.7, 1, -4)
-metadata/uid = "3cfdcf16-0bb5-4492-b0e3-bf0ec2779dc5"
-metadata/lock_uid = true
-metadata/date_generated = "2026-10-02T15:37:58"
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=996040274]
 transform = Transform3D(-0.944665, 0.32516113, -0.04333894, -0.039370164, 0.018778611, 0.99904823, 0.32566544, 0.94547224, -0.0049378504, 3.5, 12.124357, -6.0621777)
@@ -201,10 +88,169 @@ shadow_enabled = true
 [node name="WorldEnvironment2" type="WorldEnvironment" parent="Environment2" unique_id=612952307]
 environment = SubResource("Environment_r2lcc")
 
-[connection signal="on_activated" from="Main_Area/ItemReceiver" to="Main_Area/Main_Door" method="open_door"]
-[connection signal="on_activated" from="Main_Area/Area_Segments/Area_One/Area_One_Entrance/Button_First_Area" to="Main_Area/Area_Segments/Area_One/Area_One_Entrance/TorchSconce_Unlit_Area_One" method="light_up_torch_with_sig"]
-[connection signal="on_activated" from="Main_Area/Area_Segments/Area_One/Area_One_Entrance/Button_First_Area" to="Main_Area/Area_Segments/Area_One/Area_One_Entrance/Gate_Area_One" method="open_gate"]
-[connection signal="on_activated" from="Main_Area/Area_Segments/Area_Two/Area_Two_Enterance/Button_AreaTwo_Entrance" to="Main_Area/Area_Segments/Area_Two/Area_Two_Enterance/Gate_AreaTwo" method="open_gate"]
-[connection signal="on_activated" from="Main_Area/Area_Segments/Area_Two/Area_Two_Enterance/Button_AreaTwo_Entrance" to="Main_Area/Area_Segments/Area_Two/Area_Two_Enterance/TorchSconce_Unlit" method="light_up_torch_with_sig"]
-[connection signal="on_activated" from="Main_Area/Area_Segments/Area_Three/Area_Three_Enterance/Button_Area_Three" to="Main_Area/Area_Segments/Area_Three/Area_Three_Enterance/Gate_Area_Three_Enterance" method="open_gate"]
-[connection signal="on_activated" from="Main_Area/Area_Segments/Area_Three/Area_Three_Enterance/Button_Area_Three" to="Main_Area/Area_Segments/Area_Three/Area_Three_Enterance/TorchSconce_Unlit" method="light_up_torch_with_sig"]
+[node name="Areas" type="Node3D" parent="." unique_id=374822583]
+
+[node name="Area_Segments" type="Node3D" parent="Areas" unique_id=1219135076]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, -7)
+
+[node name="Area_One" type="Node3D" parent="Areas/Area_Segments" unique_id=1030286154]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, 0)
+
+[node name="Torches" type="Node3D" parent="Areas/Area_Segments/Area_One" unique_id=359700751]
+
+[node name="TorchSconce_Lit" parent="Areas/Area_Segments/Area_One/Torches" unique_id=1729385187 instance=ExtResource("6_q35vm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -37.6, 2, 0)
+
+[node name="Gates" type="Node3D" parent="Areas/Area_Segments/Area_One" unique_id=1087115414]
+
+[node name="Gate_AreaOne_1" parent="Areas/Area_Segments/Area_One/Gates" unique_id=2077487765 instance=ExtResource("8_kflwk")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -12.1, 0, 0)
+
+[node name="Gate_AreaOne_2" parent="Areas/Area_Segments/Area_One/Gates" unique_id=1294166521 instance=ExtResource("8_kflwk")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -24.1, 0, 0)
+
+[node name="Gate_AreaOne_3" parent="Areas/Area_Segments/Area_One/Gates" unique_id=1319139456 instance=ExtResource("8_kflwk")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -29.900002, 0, 0)
+
+[node name="Area_One_Entrance" type="Node3D" parent="Areas/Area_Segments/Area_One" unique_id=1559585224]
+
+[node name="Gate_Area_One" parent="Areas/Area_Segments/Area_One/Area_One_Entrance" unique_id=537703174 instance=ExtResource("8_kflwk")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 0, 0)
+disable_tp = false
+metadata/uid = "0b2c0d6e-65b7-4d4d-ab32-dd4b1013c667"
+metadata/lock_uid = true
+metadata/date_generated = "2026-10-02T15:37:58"
+
+[node name="TorchSconce_Lit_First_Button" parent="Areas/Area_Segments/Area_One/Area_One_Entrance" unique_id=46808175 instance=ExtResource("6_q35vm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5999999, 1.9999999, -1.9000006)
+
+[node name="TorchSconce_Unlit_Area_One" parent="Areas/Area_Segments/Area_One/Area_One_Entrance" unique_id=1970890633 instance=ExtResource("5_q35vm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.60000014, 1.5, -0.099999905)
+metadata/uid = "9e248f93-02d4-4f33-ba81-f8f633b7da1a"
+metadata/lock_uid = true
+metadata/date_generated = "2026-10-02T15:37:58"
+
+[node name="Button_First_Area" parent="Areas/Area_Segments/Area_One/Area_One_Entrance" unique_id=1164325605 instance=ExtResource("7_mx3uf")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 0.29999995, 1, -1.8999996)
+metadata/uid = "0fcce8d0-e3ba-4aa1-8e83-8373ed534780"
+metadata/lock_uid = true
+metadata/date_generated = "2026-10-02T15:37:58"
+
+[node name="BallyBog_Area_One" type="Node3D" parent="Areas/Area_Segments/Area_One" unique_id=1752159910]
+
+[node name="Ballybog_AreaOne" parent="Areas/Area_Segments/Area_One/BallyBog_Area_One" unique_id=1712475425 node_paths=PackedStringArray("grid_map") instance=ExtResource("8_x137h")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -22, 0, 0)
+grid_map = NodePath("../GridMapPathFinding_Ballybog_One")
+
+[node name="GridMapPathFinding_Ballybog_One" type="GridMap" parent="Areas/Area_Segments/Area_One/BallyBog_Area_One" unique_id=2053346449]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.5, 0)
+mesh_library = ExtResource("9_wnse2")
+cell_size = Vector3(1, 1, 1)
+cell_octant_size = 4
+data = {
+"cells": PackedInt32Array(196604, 65528, 1048577, 196605, 65528, 1048577, 196606, 65528, 1048577, 196607, 65528, 1048577, 131072, 65528, 1048577, 131073, 65528, 1048577, 131074, 65528, 1048577, 131075, 65528, 655361, 131075, 65530, 1048576, 131075, 65529, 1048576, 131075, 65531, 1048576, 131075, 65532, 1048576, 131075, 65533, 1048576, 196602, 65533, 1048577, 196602, 65532, 1048577, 196602, 65531, 1048577, 196602, 65530, 1048577, 196602, 65529, 1048577, 196602, 65528, 1048577, 196603, 65528, 655360, 196603, 65532, 1048576, 196604, 65532, 1, 196605, 65532, 1, 196606, 65532, 1, 196606, 65529, 1048576, 196606, 65530, 1048577, 196606, 65531, 1048577, 196606, 65533, 0, 196607, 65533, 1048576, 131072, 65533, 655361, 131073, 65533, 655360, 131074, 65533, 1048576, 196607, 65529, 1048576, 196607, 65530, 1048576, 196607, 65531, 1048576, 196607, 65532, 1048576, 131072, 65532, 1, 131073, 65532, 655360, 131074, 65532, 1048577, 131074, 65531, 1048577, 131074, 65530, 1048577, 131073, 65529, 1048576, 131072, 65529, 1048576, 131072, 65530, 1048577, 131072, 65531, 1048577, 131073, 65531, 655360, 131073, 65530, 655360, 196605, 65531, 1048577, 196604, 65531, 1, 196603, 65531, 1048576, 196603, 65530, 1048576, 196604, 65529, 1048576, 196605, 65530, 1048577, 196604, 65530, 1048577, 196603, 65533, 1048576, 196604, 65533, 0, 196605, 65533, 0, 131073, 65534, 655360, 131072, 65534, 1048577, 131072, 0, 1048577, 131072, 65535, 1048577, 131073, 65535, 1048577, 131073, 0, 1048577, 196603, 65529, 1048576, 196605, 65529, 1048576, 131073, 1, 655361, 196601, 65533, 655360, 196601, 65532, 655360, 196601, 65531, 655360, 196601, 65530, 655361, 196600, 65530, 655361, 196600, 65531, 655361, 196600, 65532, 655361, 196600, 65533, 655361, 131072, 1, 655361, 131074, 65529, 655361, 196603, 65527, 655360, 196603, 65526, 655360, 196603, 65525, 655360, 196604, 65525, 655360, 196606, 65525, 655360, 196605, 65525, 655360, 196607, 65525, 655360, 131073, 65525, 655360, 131072, 65525, 655360, 131074, 65525, 655360, 131075, 65525, 655360, 131076, 65525, 655360, 196598, 65526, 655361, 196599, 65526, 655361, 196599, 65527, 655361, 196598, 65527, 655361, 196602, 65526, 655360, 196601, 65526, 655360, 196601, 65525, 655360, 196601, 65524, 655360, 196601, 65523, 655360, 196601, 65522, 655360, 196601, 65521, 655360, 196601, 65520, 655360, 196601, 65519, 655360, 196602, 65519, 655360, 196603, 65519, 655360, 196604, 65519, 655360, 196606, 65519, 655360, 196605, 65519, 655360, 196607, 65519, 655360, 196607, 65520, 655360, 196607, 65521, 655360, 196607, 65522, 655360, 196607, 65523, 655360, 196606, 65523, 655360, 196605, 65523, 655360, 196604, 65523, 655360, 196603, 65523, 655360, 196602, 65523, 655361, 196602, 65522, 655361, 196602, 65521, 655361, 196602, 65520, 655361, 196603, 65522, 655360, 196603, 65521, 655360, 196603, 65520, 655361, 196604, 65520, 655361, 196605, 65520, 655361, 196604, 65521, 655360, 196605, 65521, 1, 196604, 65522, 655360, 196605, 65522, 655361, 196606, 65522, 655361, 196606, 65521, 655361, 196606, 65520, 655361, 196607, 65518, 655361, 196606, 65518, 655361, 196604, 65518, 655361, 196605, 65518, 655361, 196603, 65518, 655361, 196601, 65517, 655361, 196602, 65518, 655361, 196600, 65518, 655361, 196601, 65518, 655361, 196600, 65519, 655361, 196600, 65520, 655361, 196600, 65521, 655361, 196600, 65522, 655361, 196600, 65523, 655361, 196600, 65524, 655361, 196600, 65525, 655361, 196600, 65526, 655361, 196600, 65527, 655361, 196601, 65527, 655361, 196602, 65527, 655361, 196602, 65524, 655361, 196602, 65525, 655361, 196603, 65524, 655361, 196604, 65524, 655361, 196605, 65524, 655361, 196606, 65524, 655361, 196607, 65524, 655361, 131073, 65524, 655360, 131073, 65523, 655360, 131073, 65522, 655360, 131073, 65521, 655360, 131073, 65520, 655360, 131073, 65519, 655360, 131073, 65518, 655360, 131072, 65518, 655361, 131072, 65519, 655361, 131072, 65521, 655361, 131072, 65520, 655361, 131072, 65522, 655361, 131072, 65523, 655361, 131072, 65524, 655361, 131072, 65516, 655361, 131073, 65516, 655361, 131073, 65517, 655361, 131072, 65517, 655361, 131077, 65525, 655360, 131077, 65526, 655360, 131077, 65527, 655360, 131076, 65527, 655360, 131075, 65527, 655360, 131073, 65527, 655360, 131074, 65527, 655360, 131072, 65527, 655360, 196607, 65527, 655360, 196605, 65527, 655360, 196606, 65527, 655360, 196604, 65527, 655360, 196604, 65526, 655361, 196605, 65526, 655361, 196606, 65526, 655361, 196607, 65526, 655361, 131072, 65526, 655361, 131074, 65526, 655361, 131073, 65526, 655361, 131075, 65526, 655361, 131076, 65526, 655361, 131074, 65524, 655361, 131076, 65524, 655361, 131075, 65524, 655361, 131077, 65524, 655360, 131077, 65523, 655360, 131077, 65522, 655360, 131077, 65521, 655360, 131077, 65520, 655360, 131077, 65519, 655360, 131076, 65519, 655360, 131075, 65519, 655360, 131075, 65520, 655360, 131075, 65521, 655360, 131074, 65521, 655361, 131074, 65520, 655361, 131074, 65519, 655361, 131074, 65518, 655361, 131075, 65518, 655361, 131076, 65518, 655361, 131077, 65518, 655361, 131078, 65518, 655361, 131078, 65519, 655360, 131079, 65519, 655360, 131080, 65519, 655360, 131081, 65519, 655360, 131081, 65520, 655360, 131081, 65521, 655360, 131081, 65522, 655360, 131081, 65523, 655360, 131081, 65524, 655360, 131081, 65525, 655360, 131080, 65525, 655360, 131080, 65524, 655361, 131080, 65523, 655361, 131080, 65522, 655361, 131080, 65521, 655361, 131080, 65520, 655361, 131079, 65518, 655361, 131080, 65518, 655361, 131081, 65518, 655361, 131079, 65525, 655360, 131079, 65524, 655360, 131079, 65523, 655360, 131079, 65522, 655360, 131079, 65521, 655360, 131079, 65520, 655360, 131078, 65520, 655361, 131078, 65521, 655361, 131078, 65522, 655361, 131078, 65523, 655361, 131078, 65524, 655361, 131078, 65525, 655361, 131076, 65523, 655361, 131076, 65522, 655361, 131076, 65521, 655361, 131076, 65520, 655361, 131077, 65528, 655360, 131077, 65529, 655360, 131077, 65530, 655360, 131077, 65531, 655360, 131078, 65531, 655361, 131078, 65530, 655361, 131079, 65530, 655361, 131079, 65531, 655361, 131074, 65522, 655361, 131075, 65522, 655361, 131075, 65523, 655361, 131074, 65523, 655361, 131079, 65529, 655360, 131079, 65528, 655360, 131079, 65527, 655360, 131080, 65527, 655360, 131081, 65527, 655360, 131081, 65528, 655360, 131081, 65529, 655360, 131081, 65530, 655360, 131081, 65531, 655360, 131081, 65532, 655360, 131081, 65533, 655360, 131080, 65533, 655360, 131079, 65533, 655360, 131078, 65533, 655360, 131077, 65533, 655360, 131076, 65533, 655360, 131078, 65529, 655361, 131078, 65528, 655361, 131078, 65527, 655361, 131078, 65526, 655361, 131079, 65526, 655361, 131080, 65526, 655361, 131081, 65526, 655361, 131080, 65528, 655361, 131080, 65529, 655361, 131080, 65530, 655361, 131080, 65531, 655361, 131080, 65532, 655361, 131079, 65532, 655361, 131078, 65532, 655361, 131077, 65532, 655361, 131076, 65532, 655361, 131076, 65531, 655361, 131076, 65530, 655361, 131076, 65529, 655361, 131076, 65528, 655361, 196600, 65529, 1, 196600, 65528, 1, 196601, 65528, 1, 196601, 65529, 1)
+}
+script = ExtResource("10_1tv7g")
+walkable_items = Array[int]([0])
+debug_start_cell = Vector3i(-3, 2, -7)
+debug_end_cell = Vector3i(0, 2, 1)
+metadata/_editor_floor_ = Vector3(0, 2, 0)
+
+[node name="Patrol_Points" type="Node3D" parent="Areas/Area_Segments/Area_One/BallyBog_Area_One" unique_id=1461762908]
+
+[node name="Area_Two" type="Node3D" parent="Areas/Area_Segments" unique_id=1179053703]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, 0)
+
+[node name="Area_Two_Enterance" type="Node3D" parent="Areas/Area_Segments/Area_Two" unique_id=680690470]
+
+[node name="Gate_AreaTwo" parent="Areas/Area_Segments/Area_Two/Area_Two_Enterance" unique_id=1217998501 instance=ExtResource("8_kflwk")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 0, 0, 0)
+disable_tp = false
+metadata/uid = "3434da3c-e5b6-426e-991e-7372994156ff"
+metadata/lock_uid = true
+metadata/date_generated = "2026-10-02T15:37:58"
+
+[node name="TorchSconce_Unlit" parent="Areas/Area_Segments/Area_Two/Area_Two_Enterance" unique_id=1172729273 instance=ExtResource("5_q35vm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 1.5, -0.099999905)
+metadata/uid = "e7753df7-3293-4664-a472-a4f8d8726309"
+metadata/lock_uid = true
+metadata/date_generated = "2026-10-02T15:37:58"
+
+[node name="Button_AreaTwo_Entrance" parent="Areas/Area_Segments/Area_Two/Area_Two_Enterance" unique_id=1537961517 instance=ExtResource("7_mx3uf")]
+transform = Transform3D(1.3113416e-07, 0, -1, 0, 1, 0, 1, 0, 1.3113416e-07, -43.7, 1, 0)
+metadata/uid = "495f6459-ddbb-45c8-8354-e1584b93c7f9"
+metadata/lock_uid = true
+metadata/date_generated = "2026-10-02T15:37:58"
+
+[node name="Area_Three" type="Node3D" parent="Areas/Area_Segments" unique_id=1955148654]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, 4)
+
+[node name="Area_Three_Enterance" type="Node3D" parent="Areas/Area_Segments/Area_Three" unique_id=1661824691]
+
+[node name="TorchSconce_Unlit" parent="Areas/Area_Segments/Area_Three/Area_Three_Enterance" unique_id=1135767357 instance=ExtResource("5_q35vm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.6, 1.5, -0.20000005)
+metadata/uid = "8d71faf1-eb80-407b-b469-1a8e282ad04f"
+metadata/lock_uid = true
+metadata/date_generated = "2026-10-02T15:37:58"
+
+[node name="Gate_Area_Three_Enterance" parent="Areas/Area_Segments/Area_Three/Area_Three_Enterance" unique_id=414557617 instance=ExtResource("8_kflwk")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 0, 0)
+disable_tp = false
+metadata/uid = "cfbc7320-4566-4f58-9feb-4441e2af6212"
+metadata/lock_uid = true
+metadata/date_generated = "2026-10-02T15:37:58"
+
+[node name="Button_Area_Three" parent="Areas/Area_Segments/Area_Three/Area_Three_Enterance" unique_id=527734634 instance=ExtResource("7_mx3uf")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 7.7, 1, -4)
+metadata/uid = "3cfdcf16-0bb5-4492-b0e3-bf0ec2779dc5"
+metadata/lock_uid = true
+metadata/date_generated = "2026-10-02T15:37:58"
+
+[node name="Main_Area" type="Node3D" parent="Areas" unique_id=1409963160]
+
+[node name="Torch_Mounted" parent="Areas/Main_Area" unique_id=1479203938 instance=ExtResource("4_wuei3")]
+transform = Transform3D(-2.980232e-08, -0.49999997, -0.86602545, 1, -5.9604645e-08, 0, -5.161914e-08, -0.86602545, 0.49999997, -0.90000004, 0.099999994, -3.2)
+
+[node name="Final_Key" parent="Areas/Main_Area" unique_id=451440735 instance=ExtResource("9_nv8p8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0.3, 3)
+metadata/uid = "035ddd0e-b2ce-40a4-a742-3078f5af7cb9"
+metadata/lock_uid = true
+metadata/date_generated = "2026-10-02T15:37:58"
+
+[node name="Main_Door" parent="Areas/Main_Area" unique_id=1088244080 instance=ExtResource("4_jn06b")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, -10)
+metadata/uid = "418ad1e3-5f04-415c-81f8-d1fb893ce7dc"
+metadata/lock_uid = true
+metadata/date_generated = "2026-10-02T15:37:58"
+
+[node name="ItemReceiver" type="Node3D" parent="Areas/Main_Area" unique_id=1454064110 groups=["debug_PickableObjects"]]
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, -1, 1, -10.1)
+script = ExtResource("11_r2lcc")
+num_needed_by_type = 1
+destroy_items_on_receive = true
+prompt_text = "Unlock Door"
+metadata/_custom_type_script = "uid://ejuiwwsmyrgi"
+
+[node name="Trigger" type="Area3D" parent="Areas/Main_Area/ItemReceiver" unique_id=1007266153]
+collision_layer = 32
+monitoring = false
+
+[node name="_col" type="CollisionShape3D" parent="Areas/Main_Area/ItemReceiver/Trigger" unique_id=1350662255]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.10000038)
+shape = SubResource("BoxShape3D_4btwm")
+
+[node name="PersistentObject" type="Node" parent="Areas/Main_Area/ItemReceiver" unique_id=948738603]
+script = ExtResource("12_x137h")
+metadata/_custom_type_script = "uid://b4y0nvl1kcnqk"
+
+[connection signal="on_activated" from="Areas/Area_Segments/Area_One/Area_One_Entrance/Button_First_Area" to="Areas/Area_Segments/Area_One/Area_One_Entrance/Gate_Area_One" method="open_gate"]
+[connection signal="on_activated" from="Areas/Area_Segments/Area_One/Area_One_Entrance/Button_First_Area" to="Areas/Area_Segments/Area_One/Area_One_Entrance/TorchSconce_Unlit_Area_One" method="light_up_torch_with_sig"]
+[connection signal="on_activated" from="Areas/Area_Segments/Area_Two/Area_Two_Enterance/Button_AreaTwo_Entrance" to="Areas/Area_Segments/Area_Two/Area_Two_Enterance/Gate_AreaTwo" method="open_gate"]
+[connection signal="on_activated" from="Areas/Area_Segments/Area_Two/Area_Two_Enterance/Button_AreaTwo_Entrance" to="Areas/Area_Segments/Area_Two/Area_Two_Enterance/TorchSconce_Unlit" method="light_up_torch_with_sig"]
+[connection signal="on_activated" from="Areas/Area_Segments/Area_Two/Area_Two_Enterance/Button_AreaTwo_Entrance" to="Areas/Area_Segments/Area_One/Gates/Gate_AreaOne_1" method="open_gate"]
+[connection signal="on_activated" from="Areas/Area_Segments/Area_Two/Area_Two_Enterance/Button_AreaTwo_Entrance" to="Areas/Area_Segments/Area_One/Gates/Gate_AreaOne_2" method="open_gate"]
+[connection signal="on_activated" from="Areas/Area_Segments/Area_Two/Area_Two_Enterance/Button_AreaTwo_Entrance" to="Areas/Area_Segments/Area_One/Gates/Gate_AreaOne_3" method="open_gate"]
+[connection signal="on_activated" from="Areas/Area_Segments/Area_Three/Area_Three_Enterance/Button_Area_Three" to="Areas/Area_Segments/Area_Three/Area_Three_Enterance/TorchSconce_Unlit" method="light_up_torch_with_sig"]
+[connection signal="on_activated" from="Areas/Area_Segments/Area_Three/Area_Three_Enterance/Button_Area_Three" to="Areas/Area_Segments/Area_Three/Area_Three_Enterance/Gate_Area_Three_Enterance" method="open_gate"]
+[connection signal="on_activated" from="Areas/Main_Area/ItemReceiver" to="Areas/Main_Area/Main_Door" method="open_door"]
