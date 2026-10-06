@@ -2,6 +2,7 @@
 
 [ext_resource type="MeshLibrary" uid="uid://bu208a8l5866i" path="res://scenes/_levels/_palettes/cairn/meshlibrary_cairn.tres" id="1_56l6l"]
 [ext_resource type="Script" uid="uid://dovihf7h5o4po" path="res://scripts/da_levels.gd" id="1_ea6e4"]
+[ext_resource type="PackedScene" uid="uid://bq86osdembn58" path="res://scenes/_player/_player_test.tscn" id="2_ogl71"]
 [ext_resource type="PackedScene" uid="uid://xuo5buj0odhi" path="res://scenes/interactions/_triggers/torch_sconce/torch_sconce_lit.tscn" id="3_pvb4u"]
 [ext_resource type="PackedScene" uid="uid://dt13fur6twjep" path="res://scenes/interactions/_receivers/gate/gate.tscn" id="4_elh88"]
 [ext_resource type="PackedScene" uid="uid://qu5rxgbydmet" path="res://scenes/interactions/_triggers/button/button.tscn" id="5_ogl71"]
@@ -130,17 +131,67 @@ metadata/_custom_type_script = "uid://beaf3digx88d0"
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_qbrer"]
 radius = 0.1
 
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_ogl71"]
+sky_horizon_color = Color(0, 0.37292683, 0.8185948, 1)
+sky_curve = 0.23537512
+ground_horizon_color = Color(0.3529412, 0.30588236, 0.2509804, 1)
+ground_curve = 0.060628746
+
+[sub_resource type="Sky" id="Sky_ynqbq"]
+sky_material = SubResource("ProceduralSkyMaterial_ogl71")
+
+[sub_resource type="Environment" id="Environment_6xiwt"]
+background_mode = 1
+background_color = Color(0.21568628, 0.2, 0.20784314, 1)
+sky = SubResource("Sky_ynqbq")
+ambient_light_source = 2
+ambient_light_color = Color(0, 0.046818696, 0.12593761, 1)
+ambient_light_energy = 6.0
+tonemap_mode = 4
+tonemap_exposure = 2.0
+ssao_enabled = true
+ssao_radius = 0.05
+ssao_intensity = 1.0
+sdfgi_read_sky_light = false
+sdfgi_bounce_feedback = 1.99
+sdfgi_cascades = 8
+sdfgi_min_cell_size = 19.315624
+sdfgi_energy = 4.035
+sdfgi_normal_bias = 6.215
+sdfgi_probe_bias = 2.94
+glow_enabled = true
+glow_intensity = 0.2
+glow_strength = 0.4
+volumetric_fog_enabled = true
+volumetric_fog_density = 0.025
+volumetric_fog_albedo = Color(0.74509805, 0.34509805, 0, 1)
+volumetric_fog_emission = Color(0.117735185, 0.20947376, 0.3003329, 1)
+
 [node name="Main_Level" type="Node3D" unique_id=872925716 node_paths=PackedStringArray("subscenes")]
 script = ExtResource("1_ea6e4")
 subscenes = [NodePath("Tutorial_Area/FirstBit"), NodePath("Puzzles/Throwing_Puzzle"), NodePath("Tutorial_Area/LastBit")]
+
+[node name="Labels" type="Node3D" parent="." unique_id=2061838607]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11, -2, -9)
+
+[node name="Ballybog_Tease" type="Label3D" parent="Labels" unique_id=798606956]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 1.1, -2.1999998)
+text = "Ballybog Tease"
+
+[node name="Falling_urn" type="Label3D" parent="Labels" unique_id=1093550610]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -4.7725697, 1, -3.9630537)
+text = "falling urn here"
+
+[node name="player_test" parent="." unique_id=725727541 instance=ExtResource("2_ogl71")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0.89999986, 16.6)
 
 [node name="GridMap" type="GridMap" parent="." unique_id=977673662]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.03, 0)
 mesh_library = ExtResource("1_56l6l")
 data = {
-"cells": PackedInt32Array(65535, 5, 655373, 65535, 6, 2, 65535, 7, 2, 0, 5, 1441794, 1, 2, 2, 1, 3, 2, 1, 4, 2, 1, 5, 3, 2, 1, 1, 1, 65535, 2, 65535, 1, 1441795, 0, 1, 1, 3, 1, 3, 3, 0, 1048579, 2, 0, 655361, 1, 1, 655360, 1, 0, 655360, 1, 65534, 655362, -65519, 65533, 1048578, -65520, 65533, 1441808, -65521, 65532, 1441808, -65521, 65533, 1441808, -65521, 65534, 1441808, -65522, 65534, 1441808, -65522, 65533, 1441808, -65523, 65533, 1441808, -65518, 65533, 1441794, -65517, 65533, 1441794, 65535, 0, 655373, 0, 0, 655371, -65516, 65533, 1441794, -65515, 65533, 1441794, -65520, 65534, 1048593, -65523, 65534, 18, -65523, 65535, 655369, -65523, 0, 1441800, -65522, 0, 1441799, -65521, 0, 8, -65522, 65535, 16, -65520, 65532, 655377, -65521, 65531, 655377, -65523, 65532, 1441809, -65521, 65535, 655378, -65523, 65529, 3, -65524, 65529, 655363, -65524, 65530, 3, -65525, 65530, 1441794, -65526, 65530, 1441794, -65529, 65530, 1441794, -65530, 65530, 655361, -65530, 65531, 655362, -65530, 65532, 655362, -65530, 65533, 1441795, -65529, 65533, 1441794, -65528, 65533, 1441794, -65527, 65533, 1441794, -65526, 65533, 1441794, -65525, 65533, 1441794, -65524, 65533, 1441794, -65531, 65530, 1441809, -65531, 65531, 1441793, -65531, 65532, 1441793, -65514, 65532, 655373, -65514, 65534, 1441805, -65512, 65534, 13, -65512, 65532, 1048579, -65513, 65532, 655371, -65513, 65534, 11, -65512, 65533, 1441792, -65513, 65533, 1441792, -65514, 65533, 1441792, -65509, 65533, 1441794, -65522, 65532, 16, -65522, 65531, 1441809, 65535, 8, 2, 65535, 9, 2, 65535, 10, 2, 65535, 11, 3, 65534, 11, 1441796, -65535, 65529, 1441812, -65534, 65529, 1441804, -65533, 65529, 1441804, -65532, 65529, 3, -65527, 65526, 1048578, -65528, 65525, 1048579, -65528, 65527, 1048577, -65528, 65528, 3, -65529, 65529, 3, -65531, 65529, 1441795, -65530, 65529, 1, -65530, 65523, 655364, -65531, 65524, 655363, -65529, 65524, 1048579, -65531, 65525, 1441793, -65532, 65528, 655362, -65532, 65527, 655362, -65532, 65526, 655363, -65531, 65528, 1441793, -65531, 65527, 1441793, -65531, 65526, 1441792, -65530, 65524, 1441792, -65530, 65525, 1441792, -65530, 65526, 1441792, -65530, 65527, 1441792, -65530, 65528, 1441792, -65529, 65528, 1441792, -65529, 65527, 1441792, -65529, 65526, 1441792, -65529, 65525, 1441792, -65528, 65526, 1441792, -65526, 65526, 1441794, -65525, 65526, 1441794, -65524, 65526, 1441794, -65523, 65526, 1048579, -65523, 65527, 2, -65523, 65528, 2, -65527, 65530, 1441794, -65528, 65530, 1441794, -65511, 65533, 1048578, -65510, 65533, 1048578)
+"cells": PackedInt32Array(65535, 5, 655373, 65535, 6, 2, 65535, 7, 2, 0, 5, 1441794, 1, 2, 2, 1, 3, 2, 1, 4, 2, 1, 5, 3, 1, 65535, 2, 1, 65534, 655362, -65519, 65533, 1048578, -65520, 65533, 1441808, -65521, 65532, 1441808, -65521, 65533, 1441808, -65521, 65534, 1441808, -65522, 65534, 1441808, -65522, 65533, 1441808, -65523, 65533, 1441808, -65518, 65533, 1441794, -65517, 65533, 1441794, -65516, 65533, 1441794, -65515, 65533, 1441794, -65520, 65534, 1048593, -65523, 65534, 18, -65523, 65535, 655369, -65523, 0, 1441800, -65522, 0, 1441799, -65521, 0, 8, -65522, 65535, 16, -65520, 65532, 655377, -65521, 65531, 655377, -65523, 65532, 1441809, -65521, 65535, 655378, -65523, 65529, 3, -65524, 65529, 655363, -65524, 65530, 3, -65525, 65530, 1441794, -65526, 65530, 1441794, -65529, 65530, 1441794, -65530, 65530, 655361, -65530, 65531, 655362, -65530, 65532, 655362, -65530, 65533, 1441795, -65529, 65533, 1441794, -65528, 65533, 1441794, -65527, 65533, 1441794, -65526, 65533, 1441794, -65525, 65533, 1441794, -65524, 65533, 1441794, -65531, 65530, 1441809, -65531, 65531, 1441793, -65531, 65532, 1441793, -65514, 65532, 655373, -65514, 65534, 1441805, -65512, 65534, 13, -65512, 65532, 1048579, -65513, 65532, 655371, -65513, 65534, 11, -65512, 65533, 1441792, -65513, 65533, 1441792, -65514, 65533, 1441792, -65509, 65533, 1441794, -65522, 65532, 16, -65522, 65531, 1441809, 65535, 8, 2, 65535, 9, 2, 65535, 10, 2, 65535, 11, 3, 65534, 11, 1441796, -65535, 65529, 1441812, -65534, 65529, 1441804, -65533, 65529, 1441804, -65532, 65529, 3, -65527, 65526, 1048578, -65528, 65525, 1048579, -65528, 65527, 1048577, -65528, 65528, 3, -65529, 65529, 3, -65531, 65529, 1441795, -65530, 65529, 1, -65530, 65523, 655364, -65531, 65524, 655363, -65529, 65524, 1048579, -65531, 65525, 1441793, -65532, 65528, 655362, -65532, 65527, 655362, -65532, 65526, 655363, -65531, 65528, 1441793, -65531, 65527, 1441793, -65531, 65526, 1441792, -65530, 65524, 1441792, -65530, 65525, 1441792, -65530, 65526, 1441792, -65530, 65527, 1441792, -65530, 65528, 1441792, -65529, 65528, 1441792, -65529, 65527, 1441792, -65529, 65526, 1441792, -65529, 65525, 1441792, -65528, 65526, 1441792, -65526, 65526, 1441794, -65525, 65526, 1441794, -65524, 65526, 1441794, -65523, 65526, 1048579, -65523, 65527, 2, -65523, 65528, 2, -65527, 65530, 1441794, -65528, 65530, 1441794, -65511, 65533, 1048578, -65510, 65533, 1048578, 1, 0, 12, 1, 1, 12)
 }
-metadata/_editor_floor_ = Vector3(0, -1, 0)
+metadata/_editor_floor_ = Vector3(0, 0, 0)
 
 [node name="Tutorial_Area" type="Node3D" parent="." unique_id=13914294]
 
@@ -576,24 +627,19 @@ metadata/lock_uid = true
 metadata/date_generated = "2026-04-29T22:33:48"
 
 [node name="First_Button" parent="Tutorial_Area/FirstBit/First Gate&Button" unique_id=1598172844 instance=ExtResource("5_ogl71")]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 4.69701, 2, 0.30636936)
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 2.99701, 2.3000002, 3.0063694)
 metadata/uid = "1c8c4b92-711e-4989-805b-5f06aaba14c6"
 metadata/lock_uid = true
 metadata/date_generated = "2026-04-29T22:33:48"
 
-[node name="TorchSconce_Lit" parent="Tutorial_Area/FirstBit/First Gate&Button" unique_id=1729385187 instance=ExtResource("3_pvb4u")]
-transform = Transform3D(-4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 0, 1, 3, 1.090425, -16)
-
 [node name="Torches" type="Node3D" parent="Tutorial_Area/FirstBit" unique_id=1073021904]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.37721205, 0, -2.0954456)
-
-[node name="TorchSconce_Lit2" parent="Tutorial_Area/FirstBit/Torches" unique_id=208426548 instance=ExtResource("3_pvb4u")]
-transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 7.3594427, 1.5076159, -17.797235)
 
 [node name="TorchSconce_Lit4" parent="Tutorial_Area/FirstBit/Torches" unique_id=358549991 instance=ExtResource("3_pvb4u")]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 17.33335, -0.49238408, -15.635286)
 
 [node name="First_Crouch Point" type="Node3D" parent="Tutorial_Area/FirstBit" unique_id=1254819612]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2)
 
 [node name="cairn_fake_wall" parent="Tutorial_Area/FirstBit/First_Crouch Point" unique_id=1734874945 instance=ExtResource("24_5nqf6")]
 transform = Transform3D(0.9999998, 1.03316026e-07, -2.1855692e-08, 1.0331604e-07, -0.99999994, 8.1566554e-08, -2.1855689e-08, -8.156654e-08, -0.9999999, 3, 2.3734426, 4.6641173)
@@ -624,8 +670,14 @@ transform = Transform3D(-3.7855173e-08, 0.8660253, -0.49999997, -1, -4.371138e-0
 
 [node name="Items" type="Node3D" parent="Tutorial_Area" unique_id=1371521770]
 
+[node name="skull3" parent="Tutorial_Area/Items" unique_id=1351238258 instance=ExtResource("8_xl0u5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.9, 0.3, -7.4)
+metadata/uid = "29dd6d8e-3fea-48b7-b180-5b6f8cd067be"
+metadata/lock_uid = true
+metadata/date_generated = "2026-10-06T16:35:14"
+
 [node name="Torch" parent="Tutorial_Area/Items" unique_id=1021080000 instance=ExtResource("20_nyk0u")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 1, 10.9)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 1, 10.199999)
 metadata/uid = "d211d6dd-249f-4158-8bfa-68f843b5076a"
 metadata/lock_uid = true
 metadata/date_generated = "2026-04-29T22:33:48"
@@ -665,8 +717,8 @@ metadata/uid = "b1941047-ff96-4e00-a3df-80e48772dfb4"
 metadata/lock_uid = true
 metadata/date_generated = "2026-04-29T22:33:48"
 
-[node name="skull" parent="Tutorial_Area/Items" unique_id=234370081 instance=ExtResource("8_xl0u5")]
-transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 2.9338465, 0.39999998, -7.0280685)
+[node name="skull" parent="Tutorial_Area/Items" unique_id=1504982327 instance=ExtResource("8_xl0u5")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 2.9338465, 2.4, -8.928068)
 metadata/uid = "25b91df3-8c71-4177-bfb9-b9cabd57d5df"
 metadata/lock_uid = true
 metadata/date_generated = "2026-04-21T14:06:08"
@@ -784,13 +836,27 @@ light_color = Color(0.59332174, 0.7391751, 0.7804581, 1)
 transform = Transform3D(0.4332729, 0.008668824, -0.9012212, 0.89951915, 0.058012657, 0.4330127, 0.056035914, -0.9982781, 0.017337525, 13.348161, -1.8567532, -18)
 
 [node name="Torch_Mounted2" parent="." unique_id=317376923 instance=ExtResource("23_gyl80")]
-transform = Transform3D(-3.7855173e-08, 2.1855694e-08, 1, 0.5, 0.8660254, 0, -0.8660254, 0.5, -4.371139e-08, 4.258149, 1.2659206, 0.36915243)
-
-[node name="Torch_Mounted3" parent="." unique_id=1960526535 instance=ExtResource("23_gyl80")]
-transform = Transform3D(-3.7855173e-08, 2.1855694e-08, 1, 0.5, 0.8660254, 0, -0.8660254, 0.5, -4.371139e-08, 1.6740992, 1.2659206, 0.36915243)
+transform = Transform3D(-3.7855173e-08, 2.1855694e-08, 1, -1, -5.9604645e-08, -3.7855173e-08, 5.9604645e-08, -1, 2.1855696e-08, 2.9581492, 0.065920636, 0.76915246)
 
 [node name="Torch_Mounted4" parent="." unique_id=978047513 instance=ExtResource("23_gyl80")]
 transform = Transform3D(0.8660254, -0.5, 0, 0.5, 0.8660254, 0, 0, 0, 1, 9.635434, -0.62164927, -13)
+
+[node name="Environment2" type="Node3D" parent="." unique_id=2101117762]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="Environment2" unique_id=85045604]
+transform = Transform3D(-0.944665, 0.32516113, -0.04333894, -0.039370164, 0.018778611, 0.99904823, 0.32566544, 0.94547224, -0.0049378504, 3.5, 12.124357, -6.0621777)
+visible = false
+light_color = Color(0.15849423, 0.16554698, 0.18437496, 1)
+shadow_enabled = true
+
+[node name="WorldEnvironment2" type="WorldEnvironment" parent="Environment2" unique_id=652232448]
+environment = SubResource("Environment_6xiwt")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1638404029]
+transform = Transform3D(-0.944665, 0.32516113, -0.04333894, -0.039370164, 0.018778611, 0.99904823, 0.32566544, 0.94547224, -0.0049378504, 3.5, 12.124357, -6.0621777)
+visible = false
+light_color = Color(0.15849423, 0.16554698, 0.18437496, 1)
+shadow_enabled = true
 
 [connection signal="on_enter_lockdown" from="Tutorial_Area/ItemHeadZones/ItemNoPassZone_Second_PressurePlate_Room" to="Tutorial_Area/ItemHeadZones/ItemNoPassZone_Second_PressurePlate_Room/StaticBody3D/CollisionEnabler_Disabler" method="enable_obj"]
 [connection signal="on_enter_lockdown" from="Tutorial_Area/ItemHeadZones/ItemNoPassZone_Second_PressurePlate_Room" to="Tutorial_Area/ItemHeadZones/No_Acess_Gate" method="close_gate"]
