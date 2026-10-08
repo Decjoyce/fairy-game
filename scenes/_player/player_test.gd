@@ -41,6 +41,9 @@ func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("ui_end"):
 		#toggle_combat_new()
 		Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
+		
+	if Input.is_action_just_pressed("Teleport_back"):
+		get_tree().change_scene_to_file("res://scenes/_levels/Level_Testing/level_test_hub.tscn")
 
 func toggle_combat() -> void:
 	pass

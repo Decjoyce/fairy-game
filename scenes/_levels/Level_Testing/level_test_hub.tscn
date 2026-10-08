@@ -1,0 +1,192 @@
+[gd_scene format=3 uid="uid://dhg2qva6aoay0"]
+
+[ext_resource type="MeshLibrary" uid="uid://bu208a8l5866i" path="res://scenes/_levels/_palettes/cairn/meshlibrary_cairn.tres" id="1_ht7uj"]
+[ext_resource type="PackedScene" uid="uid://bq86osdembn58" path="res://scenes/_player/_player_test.tscn" id="2_a26lg"]
+[ext_resource type="Script" uid="uid://pt0dmduhj14i" path="res://scripts/Level_Hub_Teleportation_Script.gd" id="3_a26lg"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_ht7uj"]
+sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+ground_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+
+[sub_resource type="Sky" id="Sky_a26lg"]
+sky_material = SubResource("ProceduralSkyMaterial_ht7uj")
+
+[sub_resource type="Environment" id="Environment_c6v80"]
+background_mode = 2
+sky = SubResource("Sky_a26lg")
+tonemap_mode = 2
+glow_enabled = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4n8n6"]
+albedo_color = Color(0.26414046, 0.7279989, 0, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_4n8n6"]
+size = Vector3(1, 1.9, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_olhvg"]
+albedo_color = Color(0.73263586, 0.7326821, 0.705846, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_a26lg"]
+albedo_color = Color(0.9928114, 0.405388, 0, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_c6v80"]
+albedo_color = Color(1, 0.30737025, 0.6341758, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bgc3f"]
+albedo_color = Color(0.7264872, 0.60330766, 0, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_87iki"]
+albedo_color = Color(0.28556833, 0.621869, 1, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rd7im"]
+albedo_color = Color(0.7666272, 0.43187797, 1, 1)
+
+[node name="Level_Test_Hub" type="Node3D" unique_id=644898788]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1526239091]
+environment = SubResource("Environment_c6v80")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=898432507]
+transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545, -0.50000006, 0.75, -0.43301266, 0, 0, 0)
+shadow_enabled = true
+
+[node name="GridMap" type="GridMap" parent="." unique_id=1182783734]
+mesh_library = ExtResource("1_ht7uj")
+data = {
+"cells": PackedInt32Array(-1, 65535, 1048594, -65536, 65535, 1048594, -2, 65535, 1048594, -65535, 65535, 1048594, -65534, 65535, 1048593, -3, 65535, 17, -65534, 65534, 655378, -65534, 65533, 655378, -65534, 65532, 655378, -3, 65534, 18, -3, 65533, 18, -3, 65532, 18, -3, 65531, 18, -65534, 65531, 655378, -2, 65531, 655376, -1, 65531, 655376, -65536, 65531, 655376, -65535, 65531, 655376, -65535, 65532, 655376, -65536, 65532, 655376, -1, 65532, 655376, -2, 65532, 655376, -2, 65533, 655376, -1, 65533, 655376, -65536, 65533, 655376, -65535, 65533, 655376, -65535, 65534, 655376, -65536, 65534, 655376, -1, 65534, 655376, -2, 65534, 655376, -65535, 65530, 655376, -65536, 65530, 655376, -1, 65530, 655376, -2, 65530, 655376, -65534, 65530, 655378, -3, 65530, 18, -3, 65529, 18, -65534, 65529, 655378, -65534, 65528, 655378, -3, 65528, 18, -65535, 65529, 16, -65536, 65529, 16, -1, 65529, 16, -2, 65529, 16, -2, 65528, 16, -1, 65528, 16, -65536, 65528, 16, -65535, 65528, 16)
+}
+metadata/_editor_floor_ = Vector3(0, -1, 0)
+
+[node name="player_test" parent="." unique_id=725727541 instance=ExtResource("2_a26lg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1)
+
+[node name="Teleport_To_Tutorial" type="Area3D" parent="." unique_id=1096467699]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 5, 0, -2.1999998)
+script = ExtResource("3_a26lg")
+test_scenes = "uid://ckuw7ho3cogrs"
+
+[node name="CSGBox3D" type="CSGBox3D" parent="Teleport_To_Tutorial" unique_id=589503468]
+size = Vector3(1, 1.9465821, 1)
+material = SubResource("StandardMaterial3D_4n8n6")
+
+[node name="Teleport_To_Tutorial" type="Label3D" parent="Teleport_To_Tutorial" unique_id=935099899]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.5999999)
+text = "Teleport to Tutorial"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Teleport_To_Tutorial" unique_id=160835113]
+shape = SubResource("BoxShape3D_4n8n6")
+debug_color = Color(0.380743, 0.6128661, 0, 1)
+
+[node name="Teleport_To_Final_Build" type="Area3D" parent="." unique_id=782135842]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -13.2)
+script = ExtResource("3_a26lg")
+test_scenes = "uid://c0ttwojpiibfu"
+
+[node name="CSGBox3D" type="CSGBox3D" parent="Teleport_To_Final_Build" unique_id=398778955]
+size = Vector3(1, 1.9465821, 1)
+material = SubResource("StandardMaterial3D_olhvg")
+
+[node name="Teleport_To_Tutorial" type="Label3D" parent="Teleport_To_Final_Build" unique_id=484333530]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.5999999)
+text = "Teleport to Set_Dressing_Final_Scene"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Teleport_To_Final_Build" unique_id=593842215]
+shape = SubResource("BoxShape3D_4n8n6")
+debug_color = Color(0.380743, 0.6128661, 0, 1)
+
+[node name="Teleport_To_Traps_Puzzle" type="Area3D" parent="." unique_id=2131216833]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 5, 0, -6.3)
+script = ExtResource("3_a26lg")
+test_scenes = "uid://cieiwvi0168kv"
+
+[node name="CSGBox3D" type="CSGBox3D" parent="Teleport_To_Traps_Puzzle" unique_id=953122436]
+size = Vector3(1, 1.9465821, 1)
+material = SubResource("StandardMaterial3D_a26lg")
+
+[node name="Teleport_To_Tutorial" type="Label3D" parent="Teleport_To_Traps_Puzzle" unique_id=1768631672]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.5999999)
+text = "Teleport to Traps Puzzle"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Teleport_To_Traps_Puzzle" unique_id=972240681]
+shape = SubResource("BoxShape3D_4n8n6")
+debug_color = Color(0.380743, 0.6128661, 0, 1)
+
+[node name="Teleport_To_Ballybog_Hard_Section" type="Area3D" parent="." unique_id=104127486]
+transform = Transform3D(1.3113416e-07, 0, 1, 0, 1, 0, -1, 0, 1.3113416e-07, -5, 0, -10.3)
+script = ExtResource("3_a26lg")
+test_scenes = "uid://cdxx7mclyl0e2"
+
+[node name="CSGBox3D" type="CSGBox3D" parent="Teleport_To_Ballybog_Hard_Section" unique_id=856995322]
+size = Vector3(1, 1.9465821, 1)
+material = SubResource("StandardMaterial3D_c6v80")
+
+[node name="Teleport_To_Ballybog_Hard_Section" type="Label3D" parent="Teleport_To_Ballybog_Hard_Section" unique_id=469473583]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.5999999)
+text = "Teleport To Ballybog Hard Section"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Teleport_To_Ballybog_Hard_Section" unique_id=1243259213]
+shape = SubResource("BoxShape3D_4n8n6")
+debug_color = Color(0.380743, 0.6128661, 0, 1)
+
+[node name="Teleport_To_Ballybog_Introduction_Section2" type="Area3D" parent="." unique_id=1890442079]
+transform = Transform3D(1.3113416e-07, 0, 1, 0, 1, 0, -1, 0, 1.3113416e-07, -5, 0, -2.3000002)
+script = ExtResource("3_a26lg")
+test_scenes = "uid://bvj3a43avx5bu"
+
+[node name="CSGBox3D" type="CSGBox3D" parent="Teleport_To_Ballybog_Introduction_Section2" unique_id=686945457]
+size = Vector3(1, 1.9465821, 1)
+material = SubResource("StandardMaterial3D_bgc3f")
+
+[node name="Teleport_To_Ballybog_Hard_Section" type="Label3D" parent="Teleport_To_Ballybog_Introduction_Section2" unique_id=1185189261]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.5999999)
+text = "Teleport To Ballybog Introduction Section"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Teleport_To_Ballybog_Introduction_Section2" unique_id=500533239]
+shape = SubResource("BoxShape3D_4n8n6")
+debug_color = Color(0.380743, 0.6128661, 0, 1)
+
+[node name="Teleport_To_Bridge_Section2" type="Area3D" parent="." unique_id=486613588]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 5, 0, -10.3)
+script = ExtResource("3_a26lg")
+test_scenes = "uid://dacn4eoc5kfd3"
+
+[node name="CSGBox3D" type="CSGBox3D" parent="Teleport_To_Bridge_Section2" unique_id=1351694553]
+size = Vector3(1, 1.9465821, 1)
+material = SubResource("StandardMaterial3D_87iki")
+
+[node name="Teleport_To_Ballybog_Hard_Section" type="Label3D" parent="Teleport_To_Bridge_Section2" unique_id=338535579]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.5999999)
+text = "Teleport to Bridge Section"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Teleport_To_Bridge_Section2" unique_id=671743124]
+shape = SubResource("BoxShape3D_4n8n6")
+debug_color = Color(0.380743, 0.6128661, 0, 1)
+
+[node name="Teleport_To_BallyBog_Medium_Puzzle" type="Area3D" parent="." unique_id=1328545061]
+transform = Transform3D(1.3113416e-07, 0, 1, 0, 1, 0, -1, 0, 1.3113416e-07, -5, 0, -6.3)
+script = ExtResource("3_a26lg")
+test_scenes = "uid://d1urmoxnqqkkl"
+
+[node name="CSGBox3D" type="CSGBox3D" parent="Teleport_To_BallyBog_Medium_Puzzle" unique_id=781425412]
+size = Vector3(1, 1.9465821, 1)
+material = SubResource("StandardMaterial3D_rd7im")
+
+[node name="Teleport_To_Ballybog_Hard_Section" type="Label3D" parent="Teleport_To_BallyBog_Medium_Puzzle" unique_id=1063594636]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.5999999)
+text = "Teleport to Ballybog Medium Section"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Teleport_To_BallyBog_Medium_Puzzle" unique_id=1733835661]
+shape = SubResource("BoxShape3D_4n8n6")
+debug_color = Color(0.380743, 0.6128661, 0, 1)
+
+[node name="Label3D" type="Label3D" parent="." unique_id=2064668899]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, -5.067922)
+text = "Press T to teleport back to Level Hub!"
+
+[connection signal="area_entered" from="Teleport_To_Tutorial" to="Teleport_To_Tutorial" method="_on_area_entered"]
+[connection signal="area_entered" from="Teleport_To_Final_Build" to="Teleport_To_Final_Build" method="_on_area_entered"]
+[connection signal="area_entered" from="Teleport_To_Traps_Puzzle" to="Teleport_To_Traps_Puzzle" method="_on_area_entered"]
+[connection signal="area_entered" from="Teleport_To_Ballybog_Hard_Section" to="Teleport_To_Ballybog_Hard_Section" method="_on_area_entered"]
+[connection signal="area_entered" from="Teleport_To_Ballybog_Introduction_Section2" to="Teleport_To_Ballybog_Introduction_Section2" method="_on_area_entered"]
+[connection signal="area_entered" from="Teleport_To_Bridge_Section2" to="Teleport_To_Bridge_Section2" method="_on_area_entered"]
+[connection signal="area_entered" from="Teleport_To_BallyBog_Medium_Puzzle" to="Teleport_To_BallyBog_Medium_Puzzle" method="_on_area_entered"]
