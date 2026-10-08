@@ -95,6 +95,24 @@ transform = Transform3D(0.99999994, 0, 0, 0, 0.99999994, 0, 0, 0, 1, 0, 0.3, 0)
 pixel_size = 0.0015925
 billboard = 0
 
+[node name="Observer_highlight" type="Sprite3D" parent="Node3D" unique_id=1976909844]
+transform = Transform3D(1.1517972, 0, 0, 0, 1.0541422, 0, 0, 0, 1, 0, 0, 0)
+layers = 4
+pixel_size = 0.0013
+shaded = true
+render_priority = 1
+texture = ExtResource("2_20p6n")
+
+[node name="Fire" parent="Node3D/Observer_highlight" unique_id=826709862 instance=ExtResource("4_nxhne")]
+transform = Transform3D(0.99999994, 0, 0, 0, 0.99999994, 0, 0, 0, 1, 0, 0.3, 0)
+pixel_size = 0.0015925
+billboard = 0
+
+[node name="Outline" parent="Node3D/Observer_highlight" unique_id=481829891 instance=ExtResource("4_nxhne")]
+transform = Transform3D(0.99999994, 0, 0, 0, 0.99999994, 0, 0, 0, 1, 0, 0.3, 0)
+pixel_size = 0.0015925
+billboard = 0
+
 [node name="TorchLight" type="OmniLight3D" parent="." unique_id=314174637]
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.2236549, 0)
