@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://gc2qo6ixywh3" path="res://scenes/decor/fire.tscn" id="4_nxhne"]
 [ext_resource type="AudioStream" uid="uid://rc1825amqk33" path="res://assets/__not_ours_dontship/lego_mavelsuperheroes/FIRESML_LP.WAV" id="5_7yijt"]
 [ext_resource type="AudioStream" uid="uid://dutddyikwuiut" path="res://assets/audio/sfx/combat/misc/hittingsound_shorter.wav" id="5_j22s6"]
+[ext_resource type="Shader" uid="uid://dnl1384j3uyy6" path="res://Observer_Outline.gdshader" id="5_puabl"]
 [ext_resource type="Script" uid="uid://bhf6r6nw14krj" path="res://scripts/saving/persistent_objs/po_item.gd" id="6_hwxea"]
 [ext_resource type="AudioStream" uid="uid://bbl7dke2rpp5q" path="res://assets/audio/sfx/combat/_streams/sfx_shield_block.tres" id="8_ind4y"]
 
@@ -32,6 +33,18 @@ height = 0.6900085
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_j22s6"]
 radius = 0.10888672
 height = 0.9732544
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_4kxuq"]
+render_priority = 0
+shader = ExtResource("5_puabl")
+shader_parameter/sprite_texture = ExtResource("2_20p6n")
+shader_parameter/enable_billboard = false
+shader_parameter/enable_outline = true
+shader_parameter/simple_outline_color = Color(1, 0, 0, 1)
+shader_parameter/simple_outline_width = 7.70400036594
+shader_parameter/flash_speed = 1.9300000884151203
+shader_parameter/flash_min_alpha = 0.51200002432
+shader_parameter/flash_max_alpha = 0.2070000098325
 
 [node name="Torch" type="RigidBody3D" unique_id=1479203938 node_paths=PackedStringArray("col", "grab_col", "idle_graphics", "grabbed_graphics")]
 collision_layer = 2
@@ -71,6 +84,7 @@ shape = SubResource("CapsuleShape3D_j22s6")
 [node name="Node3D" type="Node3D" parent="." unique_id=1022163972]
 
 [node name="Idle" type="Sprite3D" parent="Node3D" unique_id=1936945662]
+visible = false
 layers = 4
 pixel_size = 0.0013
 billboard = 1
@@ -81,9 +95,17 @@ texture = ExtResource("2_20p6n")
 transform = Transform3D(0.99999994, 0, 0, 0, 0.99999994, 0, 0, 0, 1, 0, 0.3, 0)
 pixel_size = 0.002024
 
+[node name="Outline_Idle" type="Sprite3D" parent="Node3D/Idle" unique_id=798282044]
+visible = false
+layers = 4
+material_overlay = SubResource("ShaderMaterial_4kxuq")
+pixel_size = 0.0013
+billboard = 1
+shaded = true
+texture = ExtResource("2_20p6n")
+
 [node name="Grabbed" type="Sprite3D" parent="Node3D" unique_id=1749190379]
 transform = Transform3D(0.99999994, 0, 0, 0, 0.99999994, 0, 0, 0, 1, 0, 0, 0)
-visible = false
 layers = 4
 pixel_size = 0.0013
 shaded = true
@@ -95,23 +117,12 @@ transform = Transform3D(0.99999994, 0, 0, 0, 0.99999994, 0, 0, 0, 1, 0, 0.3, 0)
 pixel_size = 0.0015925
 billboard = 0
 
-[node name="Observer_highlight" type="Sprite3D" parent="Node3D" unique_id=1976909844]
-transform = Transform3D(1.1517972, 0, 0, 0, 1.0541422, 0, 0, 0, 1, 0, 0, 0)
+[node name="Outline_Idle" type="Sprite3D" parent="Node3D/Grabbed" unique_id=1304794933]
 layers = 4
+material_overlay = SubResource("ShaderMaterial_4kxuq")
 pixel_size = 0.0013
 shaded = true
-render_priority = 1
 texture = ExtResource("2_20p6n")
-
-[node name="Fire" parent="Node3D/Observer_highlight" unique_id=826709862 instance=ExtResource("4_nxhne")]
-transform = Transform3D(0.99999994, 0, 0, 0, 0.99999994, 0, 0, 0, 1, 0, 0.3, 0)
-pixel_size = 0.0015925
-billboard = 0
-
-[node name="Outline" parent="Node3D/Observer_highlight" unique_id=481829891 instance=ExtResource("4_nxhne")]
-transform = Transform3D(0.99999994, 0, 0, 0, 0.99999994, 0, 0, 0, 1, 0, 0.3, 0)
-pixel_size = 0.0015925
-billboard = 0
 
 [node name="TorchLight" type="OmniLight3D" parent="." unique_id=314174637]
 unique_name_in_owner = true
