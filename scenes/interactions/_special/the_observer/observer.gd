@@ -80,6 +80,7 @@ func hover_shower() -> void:
 		else: itm_showers[i].reparent(items_in_zone[i])
 		itm_showers[i].position = Vector3.ZERO
 
+
 func keyword_checker(_item: Grabbable_Item) -> bool:
 	var split_keywords_items := _item.keywords.split(";", false)
 	

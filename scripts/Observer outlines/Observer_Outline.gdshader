@@ -1,5 +1,5 @@
-// ref : https://godotshaders.com/shader/sprite3d-outline-working-billboard/
-// 描边+闪烁
+// ref : https://godotshaders.com/shader/sprite3d-outline-working-billboard/ but they were in chinese so i addapted a bit to our use
+// Outline + Fade
 shader_type spatial;
 render_mode unshaded, blend_mix, depth_prepass_alpha, cull_disabled, specular_disabled;
 
@@ -7,11 +7,11 @@ uniform sampler2D sprite_texture : source_color, filter_nearest;
 uniform bool enable_billboard = true;
 uniform bool enable_outline = true;
 
-// 简单像素描边参数
+// Pixel Outline Parameters
 uniform vec4 simple_outline_color : source_color = vec4(1.0, 1.0, 1.0, 1.0);
 uniform float simple_outline_width : hint_range(0, 10) = 1.0;
 
-// 闪烁控制参数
+// Flicker Control Parameters
 uniform float flash_speed : hint_range(0.1, 10.0) = 5.0;
 uniform float flash_min_alpha : hint_range(0.0, 1.0) = 0.2;
 uniform float flash_max_alpha : hint_range(0.0, 1.0) = 0.8;
@@ -36,40 +36,40 @@ void vertex() {
 void fragment() {
     vec4 col = texture(sprite_texture, UV);
 
-    // 初始设置为完全透明
+    // fully transparent by default
     ALPHA = 0.0;
 
     if (enable_outline) {
-        // 简单像素描边+闪烁模式
+        // Simple Pixel Outline + Fade Mode
         vec2 pixel_size = simple_outline_width / vec2(textureSize(sprite_texture, 0));
 
-        // 8方向采样（更平滑的描边）
+        // 8-Direction Sampling (smoother result)
         float max_alpha = 0.0;
         for (int x = -1; x <= 1; x++) {
             for (int y = -1; y <= 1; y++) {
-                if (x == 0 && y == 0) continue; // 跳过中心点
+                if (x == 0 && y == 0) continue; // Skip the center point
                 vec2 offset = vec2(float(x), float(y)) * pixel_size;
                 float sample_alpha = texture(sprite_texture, UV + offset).a;
                 max_alpha = max(max_alpha, sample_alpha);
             }
         }
 
-        // 计算闪烁因子（0~1 平滑变化）
+        //the flicker factor (smoothly varying between 0 and 1)
         float flash_factor = (sin(TIME * flash_speed * 3.14159) + 1.0) * 0.5;
         float flash_alpha = mix(flash_min_alpha, flash_max_alpha, flash_factor);
 
-        // 只显示描边区域，不显示中心内容
+        // Show only the outlined area; do not show the content in the center
         if (col.a < 0.99 && max_alpha > 0.01) {
-            // 描边区域（应用闪烁）
+            // Outline Area (Apply Fade)
             ALBEDO = simple_outline_color.rgb;
-            ALPHA = simple_outline_color.a * flash_alpha; // 仅描边闪烁
+            ALPHA = simple_outline_color.a * flash_alpha; // Only the outline flickers
         } else {
-            // 中心区域保持完全透明
+            // The central area remains completely transparent
             ALPHA = 0.0;
         }
 
     } else {
-        // 不启用描边时显示原纹理
+        // Display the original texture when stroke is disabled
         ALBEDO = col.rgb;
         ALPHA = col.a;
     }
