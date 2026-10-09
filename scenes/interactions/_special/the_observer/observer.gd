@@ -62,6 +62,7 @@ func on_item_area_entered(area: Area3D) -> void:
 	if keyword_checker(area.get_parent()): return
 	items_in_zone.append(area.get_parent())
 	hover_shower()
+	outline_enable(area.get_parent(),true)
 	if check_if_should_lockdown():
 		enter_lockdown()
 
@@ -70,6 +71,7 @@ func on_item_area_exited(area: Area3D) -> void:
 	if !items_in_zone.has(area.get_parent()): return
 	items_in_zone.erase(area.get_parent())
 	hover_shower()
+	outline_enable(area.get_parent(),false)
 	if !check_if_should_lockdown():
 		exit_lockdown()
 		print("d")
@@ -80,6 +82,16 @@ func hover_shower() -> void:
 		else: itm_showers[i].reparent(items_in_zone[i])
 		itm_showers[i].position = Vector3.ZERO
 
+func outline_enable(item: Node3D, state: bool) -> void:
+	#item.get_node("sprites/Idle").enable_outline(state)
+	#item.get_node("sprites/Grabbed").enable_outline(state)
+	
+	for i in item.get_children():
+		if i.has_method("enable_outline"):
+			i.enable_outline(state)
+			print("Outline enable bruh")
+	
+	#print("Outline enable bruh")
 
 func keyword_checker(_item: Grabbable_Item) -> bool:
 	var split_keywords_items := _item.keywords.split(";", false)

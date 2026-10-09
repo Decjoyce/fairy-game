@@ -32,13 +32,13 @@ func _ready() -> void:
 func _process(_delta: float) -> void:
   # Check if the material assigned to ‘material_override’ has changed since the last frame.
   # This can happen if you change it in the editor or via code.
-  if material_override != _last_material:
+  if material_overlay != _last_material:
    _update_shader_material()
 
 # This function is called when the material itself is swapped out.
 func _update_shader_material() -> void:
   # Update our internal cache with the new material reference.
-  _last_material = material_override as ShaderMaterial
+  _last_material = material_overlay as ShaderMaterial
  
   # After a new material is assigned, we must immediately update its
   # texture parameter to match the sprite’s current texture.
@@ -49,7 +49,7 @@ func _update_shader_material() -> void:
 func _update_shader_texture() -> void:
   # Safely get the material. The ‘as ShaderMaterial’ will result in `null`
   # if the material is not a ShaderMaterial, preventing crashes.
-  var mat := material_override as ShaderMaterial
+  var mat := material_overlay as ShaderMaterial
  
   # Only proceed if we have a valid shader material AND a valid texture assigned.
   # This prevents errors if either property is unassigned.
@@ -59,7 +59,7 @@ func _update_shader_texture() -> void:
 # — Public API —
 # A helper function to allow other scripts or animations to easily change the line color.
 func set_line_color(color: Color) -> void:
-  var mat := material_override as ShaderMaterial
+  var mat := material_overlay as ShaderMaterial
   if mat:
    mat.set_shader_parameter("line_color", color)
   else:
@@ -68,7 +68,7 @@ func set_line_color(color: Color) -> void:
    push_warning("Missing ShaderMaterial in material_override – can’t set line_color.")
 
 func enable_outline(enable: bool) -> void:
-  var mat := material_override as ShaderMaterial
+  var mat := material_overlay as ShaderMaterial
   if mat:
    mat.set_shader_parameter("enable_outline", enable)
   else:

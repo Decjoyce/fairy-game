@@ -5,6 +5,7 @@ render_mode  blend_mix, depth_prepass_alpha, cull_disabled, specular_disabled;
 
 uniform sampler2D sprite_texture : source_color, filter_nearest;
 uniform bool enable_billboard = true;
+uniform bool enable_Ybillboard = false;
 uniform bool enable_outline = true;
 
 // Pixel Outline Parameters
@@ -28,10 +29,12 @@ void vertex() {
             + cam_right * local.x * scale_x
             + cam_up    * local.y * scale_y;
         POSITION = PROJECTION_MATRIX * VIEW_MATRIX * vec4(world_billboard, 1.0);
-    } else {
+    } 
+	else {
         POSITION = PROJECTION_MATRIX * VIEW_MATRIX * (MODEL_MATRIX * vec4(VERTEX, 1.0));
     }
 }
+// there Oprion to have Y billboard neeed i fkn do not now how yet
 
 void fragment() {
     vec4 col = texture(sprite_texture, UV);

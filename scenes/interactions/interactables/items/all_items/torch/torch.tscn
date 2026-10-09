@@ -5,6 +5,7 @@
 [ext_resource type="Script" uid="uid://d3averdt6fuqm" path="res://scenes/interactions/interactables/items/item_types/itemtype_torch.gd" id="2_t5i1y"]
 [ext_resource type="PackedScene" uid="uid://gc2qo6ixywh3" path="res://scenes/decor/fire.tscn" id="4_nxhne"]
 [ext_resource type="AudioStream" uid="uid://rc1825amqk33" path="res://assets/__not_ours_dontship/lego_mavelsuperheroes/FIRESML_LP.WAV" id="5_7yijt"]
+[ext_resource type="Shader" uid="uid://bnosysjuihfre" path="res://scripts/Observer outlines/Observer_Outline_Grabbed.gdshader" id="5_fvha2"]
 [ext_resource type="AudioStream" uid="uid://dutddyikwuiut" path="res://assets/audio/sfx/combat/misc/hittingsound_shorter.wav" id="5_j22s6"]
 [ext_resource type="Shader" uid="uid://dnl1384j3uyy6" path="res://scripts/Observer outlines/Observer_Outline.gdshader" id="5_puabl"]
 [ext_resource type="Script" uid="uid://cx6bhs5iiw7ss" path="res://scripts/Observer outlines/Outline_shader_attacher.gd" id="6_fvha2"]
@@ -35,17 +36,29 @@ height = 0.6900085
 radius = 0.10888672
 height = 0.9732544
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_fvha2"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_goe30"]
 render_priority = 0
 shader = ExtResource("5_puabl")
 shader_parameter/sprite_texture = ExtResource("2_20p6n")
 shader_parameter/enable_billboard = true
-shader_parameter/enable_outline = true
-shader_parameter/simple_outline_color = Color(0.95486575, 0.21067205, 9.62615e-07, 1)
-shader_parameter/simple_outline_width = 6.562000311695
-shader_parameter/flash_speed = 2.34200010798512
+shader_parameter/enable_outline = false
+shader_parameter/simple_outline_color = Color(1, 0, 0, 1)
+shader_parameter/simple_outline_width = 3.0000001425
+shader_parameter/flash_speed = 2.00000009174012
 shader_parameter/flash_min_alpha = 0.2
-shader_parameter/flash_max_alpha = 0.6630000314925
+shader_parameter/flash_max_alpha = 0.8
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_xxjwt"]
+render_priority = 0
+shader = ExtResource("5_fvha2")
+shader_parameter/sprite_texture = ExtResource("2_20p6n")
+shader_parameter/enable_billboard = false
+shader_parameter/enable_outline = false
+shader_parameter/simple_outline_color = Color(1, 0, 0, 1)
+shader_parameter/simple_outline_width = 3.0000001425
+shader_parameter/flash_speed = 2.00000009174012
+shader_parameter/flash_min_alpha = 0.2
+shader_parameter/flash_max_alpha = 0.74000003515
 
 [node name="Torch" type="RigidBody3D" unique_id=1479203938 node_paths=PackedStringArray("col", "grab_col", "idle_graphics", "grabbed_graphics")]
 collision_layer = 2
@@ -66,8 +79,8 @@ grabbed_offset = Vector2(-74.79, -106.125)
 grabbed_rotation = 0.785
 throwing_offset = Vector2(113.195, -112.81)
 throwing_rotation = 15.0
-idle_graphics = NodePath("Node3D/Idle")
-grabbed_graphics = NodePath("Node3D/Grabbed")
+idle_graphics = NodePath("Idle")
+grabbed_graphics = NodePath("Grabbed")
 interaction_type = 1
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1691311431]
@@ -82,54 +95,41 @@ collision_layer = 2
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.027594477, 0)
 shape = SubResource("CapsuleShape3D_j22s6")
 
-[node name="Node3D" type="Node3D" parent="." unique_id=1022163972]
-
-[node name="Idle" type="Sprite3D" parent="Node3D" unique_id=1936945662]
+[node name="Idle" type="Sprite3D" parent="." unique_id=1936945662]
 layers = 4
+material_overlay = SubResource("ShaderMaterial_goe30")
 pixel_size = 0.0013
 billboard = 1
 shaded = true
 texture = ExtResource("2_20p6n")
+script = ExtResource("6_fvha2")
 
-[node name="Fire" parent="Node3D/Idle" unique_id=531285147 instance=ExtResource("4_nxhne")]
+[node name="Fire" parent="Idle" unique_id=531285147 instance=ExtResource("4_nxhne")]
 transform = Transform3D(0.99999994, 0, 0, 0, 0.99999994, 0, 0, 0, 1, 0, 0.3, 0)
 pixel_size = 0.002024
 
-[node name="Outline_Idle" type="Sprite3D" parent="Node3D/Idle" unique_id=31630869]
-visible = false
-layers = 4
-material_override = SubResource("ShaderMaterial_fvha2")
-pixel_size = 0.0013
-shaded = true
-texture = ExtResource("2_20p6n")
-script = ExtResource("6_fvha2")
-
-[node name="Grabbed" type="Sprite3D" parent="Node3D" unique_id=1749190379]
+[node name="Grabbed" type="Sprite3D" parent="." unique_id=1749190379]
 transform = Transform3D(0.99999994, 0, 0, 0, 0.99999994, 0, 0, 0, 1, 0, 0, 0)
 visible = false
 layers = 4
+material_overlay = SubResource("ShaderMaterial_xxjwt")
 pixel_size = 0.0013
 shaded = true
 render_priority = 1
 texture = ExtResource("2_20p6n")
+script = ExtResource("6_fvha2")
 
-[node name="Fire" parent="Node3D/Grabbed" unique_id=593035744 instance=ExtResource("4_nxhne")]
+[node name="Fire" parent="Grabbed" unique_id=593035744 instance=ExtResource("4_nxhne")]
 transform = Transform3D(0.99999994, 0, 0, 0, 0.99999994, 0, 0, 0, 1, 0, 0.3, 0)
 pixel_size = 0.0015925
 billboard = 0
 
-[node name="Outline_Idle" type="Sprite3D" parent="Node3D/Grabbed" unique_id=1304794933]
-visible = false
-layers = 4
-material_override = SubResource("ShaderMaterial_fvha2")
-pixel_size = 0.0013
-shaded = true
-texture = ExtResource("2_20p6n")
-script = ExtResource("6_fvha2")
+[node name="Node3D" type="Node3D" parent="." unique_id=1022163972]
 
 [node name="TorchLight" type="OmniLight3D" parent="." unique_id=314174637]
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.2236549, 0)
+visible = false
 light_color = Color(0.7468442, 0.34661883, 0, 1)
 light_size = 0.058
 light_cull_mask = 4294966271

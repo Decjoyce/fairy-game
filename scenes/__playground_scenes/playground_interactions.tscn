@@ -6035,6 +6035,12 @@ metadata/date_generated = "2026-05-06T00:57:58"
 [node name="Plushy" parent="." unique_id=42461688 instance=ExtResource("75_gh5yd")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -113.93401, 0.4957545, -5.621668)
 
+[node name="skull" parent="." unique_id=739328824 instance=ExtResource("36_temsp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -106.60211, 0.27496332, -15.785512)
+
+[node name="Torch" parent="." unique_id=1693070906 instance=ExtResource("29_lryfm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -107.18561, 0.6308291, -14.98259)
+
 [connection signal="area_entered" from="Bin/Room_Items/Teleporter/Trigger" to="Bin/Room_Items/Teleporter" method="_teleport_entity"]
 [connection signal="body_entered" from="Bin/Room_Items/Teleporter/Trigger" to="Bin/Room_Items/Teleporter" method="_teleport_item"]
 [connection signal="area_entered" from="Bin/Room_Animation/Teleporter/Trigger" to="Bin/Room_Animation/Teleporter" method="_teleport_entity"]
