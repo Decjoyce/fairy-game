@@ -5,6 +5,7 @@
 [ext_resource type="Theme" uid="uid://4rqtecgji27t" path="res://scenes/_levels/menus/main_menu/Main_Menu_UI_NEW/UI_themes/customised_brush_theme.tres" id="3_0evim"]
 [ext_resource type="LightmapGIData" uid="uid://bqiy8iqbdsnh" path="res://scenes/_levels/lightmap_data/LightMapBake/MainMenuScene.lmbake" id="3_buqdy"]
 [ext_resource type="Script" uid="uid://c3xgbfrig5y5w" path="res://UICOPY/scenes/menus/main_menu/main_menu_with_animations.gd" id="3_nbyns"]
+[ext_resource type="Theme" uid="uid://ktuc4glx3wgp" path="res://scenes/_levels/menus/main_menu/Main_Menu_UI_NEW/UI_themes/redesigned_ui_theme.tres" id="3_ue1se"]
 [ext_resource type="PackedScene" uid="uid://dpic53cok00p4" path="res://UICOPY/scenes/windows/main_menu_options_window.tscn" id="4_2wrwt"]
 [ext_resource type="PackedScene" uid="uid://btcpx55r5ma3v" path="res://assets/models/cairn/Props/Menu/Moutainrocks5.glb" id="4_ckx4x"]
 [ext_resource type="PackedScene" uid="uid://dw2dbsjbocxi7" path="res://scenes/__playground_scenes/playground_interactions.tscn" id="4_kmgne"]
@@ -1484,7 +1485,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(1.001537, 1)
-theme = ExtResource("3_0evim")
+theme = ExtResource("3_ue1se")
 script = ExtResource("3_nbyns")
 anim_player = NodePath("../Camera3D/AnimationPlayer")
 fade_anim = NodePath("../FadeLayer/AnimationPlayer")
@@ -1560,9 +1561,10 @@ grow_vertical = 2
 alignment = 1
 
 [node name="TextureRect" type="TextureRect" parent="MainMenu/OpeningScene/BoxContainer" unique_id=2131277929]
-modulate = Color(0.6666667, 0.60784316, 0.5686275, 0)
+modulate = Color(1, 1, 1, 0)
 layout_mode = 2
 size_flags_horizontal = 3
+texture = ExtResource("16_ca2qk")
 
 [node name="BoxContainer2" type="BoxContainer" parent="MainMenu/OpeningScene" unique_id=634655637]
 layout_mode = 1
@@ -1576,6 +1578,7 @@ alignment = 1
 [node name="TextureRect" type="TextureRect" parent="MainMenu/OpeningScene/BoxContainer2" unique_id=1603334626]
 layout_mode = 2
 size_flags_horizontal = 3
+texture = ExtResource("22_a2y8v")
 
 [node name="OpeningSong" type="AudioStreamPlayer3D" parent="MainMenu/OpeningScene" unique_id=451357941]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -16.4)
@@ -1858,6 +1861,7 @@ metadata/_edit_lock_ = true
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, -32.12275)
 attributes = SubResource("CameraAttributesPhysical_lrn60")
 current = true
+fov = 37.849285
 
 [node name="SpotLight3D" type="SpotLight3D" parent="Camera3D" unique_id=1213487362]
 transform = Transform3D(-1, -7.642742e-15, 8.742278e-08, 0, -1, -8.742278e-08, 8.742278e-08, -8.742278e-08, 1, 0.8026093, -1.8404503, -1.295021)
