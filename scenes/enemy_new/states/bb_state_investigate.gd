@@ -18,6 +18,7 @@ func load_me(previous_state_path: String, data : SavedData_Ballybog) -> void:
 	wait_timer.timeout.connect(wait_delay_over)
 	giveup_timer.timeout.connect(give_up)
 	ballybog.movement.on_reached_destination.connect(reached_destination)
+	ballybog.movement.path_failed.connect(reached_destination)
 	
 	current_investigate_state = data.inv_current_investigate_state
 	current_poi = data.inv_poi
@@ -42,6 +43,7 @@ func enter(previous_state_path: String, data := {}) -> void:
 	wait_timer.timeout.connect(wait_delay_over)
 	giveup_timer.timeout.connect(give_up)
 	ballybog.movement.on_reached_destination.connect(reached_destination)
+	ballybog.movement.path_failed.connect(reached_destination)
 	
 	assert(data.has("poi"), "Ballybog tried entering INVESTIGATE state but a [poi] was never passed in")
 	assert(data["poi"] is Vector3, "Ballybog tried entering INVESTIGATE state. A [poi] was passed in but it was not a Vector3")
@@ -65,6 +67,7 @@ func exit() -> void:
 	wait_timer.timeout.disconnect(wait_delay_over)
 	giveup_timer.timeout.disconnect(give_up)
 	ballybog.movement.on_reached_destination.disconnect(reached_destination)
+	ballybog.movement.path_failed.disconnect(reached_destination)
 	wait_timer.stop()
 	giveup_timer.stop()
 

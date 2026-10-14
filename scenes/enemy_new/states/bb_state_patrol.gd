@@ -16,6 +16,7 @@ func load_me(previous_state_path: String, data : SavedData_Ballybog) -> void:
 	
 	wait_timer.timeout.connect(wait_delay_over)
 	ballybog.movement.on_reached_destination.connect(reached_destination)
+	ballybog.movement.path_failed.connect(skip_unreachable_point)
 	
 	ballybog.current_alertness = ballybog.ALERTNESS.CHILL
 	
@@ -29,6 +30,7 @@ func enter(previous_state_path: String, data := {}) -> void:
 	
 	wait_timer.timeout.connect(wait_delay_over)
 	ballybog.movement.on_reached_destination.connect(reached_destination)
+	ballybog.movement.path_failed.connect(skip_unreachable_point)
 	
 	ballybog.current_alertness = ballybog.ALERTNESS.CHILL
 	
@@ -39,6 +41,7 @@ func exit() -> void:
 	super()
 	wait_timer.timeout.disconnect(wait_delay_over)
 	ballybog.movement.on_reached_destination.disconnect(reached_destination)
+	ballybog.movement.path_failed.disconnect(skip_unreachable_point)
 	wait_timer.stop()
 
 func handle_input(_event: InputEvent) -> void:
@@ -75,3 +78,9 @@ func reached_destination() -> void:
 func wait_delay_over() -> void:
 	if !active: return
 	get_new_point()
+	
+func skip_unreachable_point() -> void:
+	if !active: return
+	push_warning("%s: can't reach patrol point %s, skipping it" % [ballybog.name, ballybog.patrol_points[current_patrol_point].name])
+	wait_timer.wait_time = ballybog.delay_between_points
+	wait_timer.start()

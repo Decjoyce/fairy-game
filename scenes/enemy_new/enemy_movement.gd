@@ -131,9 +131,15 @@ var _start_pos: Vector3
 var _end_pos: Vector3
 
 signal on_reached_destination
+signal path_failed
 
 func start_movement() -> void: ## probs should rename this to new movement
-	if current_path.size() <= 0: return
+	if current_path.size() <= 0: 
+		if current_grid_pos == current_destination:
+			on_reached_destination.emit() # already standing on the target
+		else:
+			path_failed.emit() # no route to the target
+		return
 	#print("-----------------")
 	#print("Started_Movement")
 	

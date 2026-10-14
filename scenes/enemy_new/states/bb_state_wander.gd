@@ -9,6 +9,7 @@ func load_me(previous_state_path: String, data : SavedData_Ballybog) -> void:
 	super(previous_state_path, data)
 	wait_timer.timeout.connect(wait_delay_over)
 	ballybog.movement.on_reached_destination.connect(reached_pos)
+	ballybog.movement.path_failed.connect(reached_pos)
 	print(data)
 	get_new_pos()
 	ballybog.current_alertness = ballybog.ALERTNESS.CHILL
@@ -17,6 +18,7 @@ func enter(previous_state_path: String, data := {}) -> void:
 	super(previous_state_path, data)
 	wait_timer.timeout.connect(wait_delay_over)
 	ballybog.movement.on_reached_destination.connect(reached_pos)
+	ballybog.movement.path_failed.connect(reached_pos)
 	print(data)
 	get_new_pos()
 	ballybog.current_alertness = ballybog.ALERTNESS.CHILL
@@ -24,6 +26,7 @@ func enter(previous_state_path: String, data := {}) -> void:
 func exit() -> void:
 	super()
 	ballybog.movement.on_reached_destination.disconnect(reached_pos)
+	ballybog.movement.path_failed.disconnect(reached_pos)
 	wait_timer.timeout.disconnect(wait_delay_over)
 	wait_timer.stop()
 
