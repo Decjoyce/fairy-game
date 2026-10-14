@@ -12,11 +12,18 @@ var current_move_type: MOVETYPES
 @export var floor_detector: ImprovedRaycast
 
 func _ready() -> void:
-	#if ballybog.grid_map: grid_map = ballybog.grid_map
-	grid_map = get_tree().get_first_node_in_group("GMPF")
+	grid_map = ballybog.grid_map
+	if grid_map == null:
+		grid_map = get_tree().get_first_node_in_group("GMPF")
+		if grid_map != null:
+			push_warning("%s: grid_map nott set, using the level's GMPF grid" % ballybog.name)
 	await get_parent().ready
 	player = ballybog.player
-	grid_map.setup_astar_grid(grid_map.walkable_items)
+	if grid_map == null:
+		push_error("%s: no nav grid. Set grid_map on this Ballybog." % ballybog.name)
+		return
+	grid_map.ensure_astar_built()
+	print("%s uses grid %s (%d cells)" % [ballybog.name, grid_map.get_path(), grid_map.astar.get_point_count()])
 
 func update_idle(delta: float) -> void:
 	pass
@@ -59,6 +66,7 @@ func set_new_destination(new_loc: Vector3) -> void:
 	current_grid_pos = world_to_cell(ballybog.global_position)
 	current_destination = world_to_cell(new_loc)
 	current_path = grid_map.find_path(current_grid_pos,current_destination)
+	print("%s: path %s -> %s = %d cells" % [ballybog.name, current_grid_pos, current_destination, current_path.size()])
 	current_path.pop_front()
 	has_reached_destination = false
 	#prints("-------------------------\n", grid_map.astar.get_closest_position_in_segment(ballybog.global_position), current_path)
