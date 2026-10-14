@@ -31,22 +31,41 @@ func update_physics(delta: float) -> void:
 # --------------------------------------------------------------------------------------------------
 # ↓ Destination Stuff ↓
 
-var current_grid_pos: Vector3
-var current_destination: Vector3
+var current_grid_pos: Vector3i
+var current_destination: Vector3i
 var current_path: Array
 var rng := RandomNumberGenerator.new()
 
+## World position -> nearest walkable cell on the nav grid.
+## to_local undoes the grid node's offset and rotation
+## get_closest_point snaps to a real cell,
+## the old get_closest_position in segment could return a point between two cells,
+## and Vector3i() then rounded it unpredictably
+func world_to_cell(world_pos: Vector3) -> Vector3i:
+	var local_pos: Vector3 = grid_map.to_local(world_pos) / grid_map.cell_size
+	var point_id: int = grid_map.astar.get_closest_point(local_pos)
+	if point_id == -1:
+		push_error("%s: nav grid has no walkable cells" % ballybog.name)
+		return Vector3i.ZERO
+	return Vector3i(grid_map.astar.get_point_position(point_id))
+
+## Nav Cell -> the world position the Ballybogs stands on for that cell.
+## Gives the same result as (to_global(map_to_local(c).floor()) for these 1m grids,
+## Walk targets don't move, so the existing nav point stays valid.
+func cell_to_world(cell: Vector3i) -> Vector3:
+	return grid_map.to_global(Vector3(cell) * grid_map.cell_size)
+	
 func set_new_destination(new_loc: Vector3) -> void:
-	current_grid_pos = grid_map.astar.get_closest_position_in_segment(ballybog.global_position)
-	current_destination = grid_map.astar.get_closest_position_in_segment(new_loc)
+	current_grid_pos = world_to_cell(ballybog.global_position)
+	current_destination = world_to_cell(new_loc)
 	current_path = grid_map.find_path(current_grid_pos,current_destination)
 	current_path.pop_front()
 	has_reached_destination = false
 	#prints("-------------------------\n", grid_map.astar.get_closest_position_in_segment(ballybog.global_position), current_path)
 
 func set_destination_to_player() -> void:
-	current_grid_pos = grid_map.astar.get_closest_position_in_segment(ballybog.global_position)
-	current_destination = grid_map.astar.get_closest_position_in_segment(ballybog.player.movement.target_pos)
+	current_grid_pos = world_to_cell(ballybog.global_position)
+	current_destination = world_to_cell(player.movement.target_pos)
 	#can_reach_destination()
 	current_path = grid_map.find_path(current_grid_pos,current_destination)
 	#has_reached_destination = false
@@ -54,13 +73,11 @@ func set_destination_to_player() -> void:
 	current_path.pop_front()
 
 func get_random_destination(use_wander_point: bool = false) -> void:
-	current_grid_pos = grid_map.astar.get_closest_position_in_segment(ballybog.global_position)
-	var current_grid_pos_index: int
-	if use_wander_point: current_grid_pos_index = grid_map.astar.get_closest_point(ballybog.wander_point)
-	else: current_grid_pos_index = grid_map.astar.get_closest_point(ballybog.global_position)
-	var neigbours = grid_map.astar.get_point_connections(current_grid_pos_index)
-	var random_number = rng.randi_range(0, neigbours.size() -1)
-	current_destination = grid_map.astar.get_point_position(neigbours[random_number])
+	current_grid_pos = world_to_cell(ballybog.global_position)
+	var anchor_cell: Vector3i = world_to_cell(ballybog.wander_point) if use_wander_point else current_grid_pos
+	var neighbours = grid_map.astar.get_point_connections(grid_map.point_id_map[anchor_cell])
+	var random_number = rng.randi_range(0, neighbours.size() -1)
+	current_destination = Vector3i(grid_map.astar.get_point_position(neighbours[random_number]))
 	current_path = grid_map.find_path(current_grid_pos,current_destination)
 	current_path.pop_front()
 
@@ -68,11 +85,11 @@ func add_player_pos_to_destination() -> void:
 	if current_path.size() <= 0:
 		set_destination_to_player()
 	else:
-		var path_to_player := grid_map.find_path(current_path[current_path.size()-1],grid_map.astar.get_closest_position_in_segment(player.movement.target_pos))
-		#can_reach_destination()
+		var last_cell := Vector3i(current_path[current_path.size() -1])
+		var path_to_player := grid_map.find_path(last_cell, world_to_cell(player.movement.target_pos))
 		current_path.pop_back()
-		#current_path.pop_front
 		current_path.append_array(path_to_player)
+		
 
 func check_if_reached_destination() -> bool:
 	return current_path.size() <= 0
@@ -81,11 +98,10 @@ func update_current_move_direction() -> void:
 	current_move_direction = (_start_pos * Vector3(1, 0, 1)).direction_to((_end_pos * Vector3(1, 0, 1)))
 
 func can_reach_destination() -> bool:
-	var a:= grid_map.astar.get_closest_point(ballybog.player.movement.target_pos)
-	var b:= grid_map.astar.get_point_position(a) * Vector3(1, 0, 1)
-	var c:= (ballybog.player.movement.target_pos * Vector3(1, 0, 1)).round()
-	prints("MOVEMOVEMOVE", a, b, c, b <= c + Vector3(1, 0, 1), b >= c + Vector3(-1, 0, -1))
-	return b <= c + Vector3(1, 0, 1) and b >= c + Vector3(-1, 0, -1)
+	# is the player standing within one cell of a walkable cell
+	var target: Vector3 = player.movement.target_pos
+	var nearest: Vector3 = cell_to_world(world_to_cell(target))
+	return absf(nearest.x - target.x) <= 1.0 and absf(nearest.z - target.z) <= 1.0
 
 func stop_movement() -> void:
 	is_moving = false
@@ -114,8 +130,13 @@ func start_movement() -> void: ## probs should rename this to new movement
 	#print("Started_Movement")
 	
 	_start_pos = ballybog.global_position #grid_map.astar.get_closest_position_in_segment(ballybog.global_position)
-	_end_pos = grid_map.to_global(grid_map.map_to_local(current_path[0]).floor())
-
+	_end_pos = cell_to_world(Vector3i(current_path[0]))
+	
+	# TEMP: every step should be exactly one cell
+	var step_len := Vector2(_end_pos.x - _start_pos.x, _end_pos.z - _start_pos.z).length()
+	if absf(step_len - 1.0) > 0.05:
+		push_warning("%s: step of %.2f m from %s to %s" % [ballybog.name, step_len, _start_pos, _end_pos])
+		
 	if check_if_needs_to_turn():
 		#print("turning")
 		start_turn()
