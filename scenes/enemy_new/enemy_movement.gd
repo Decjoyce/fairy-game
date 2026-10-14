@@ -114,8 +114,6 @@ func can_reach_destination() -> bool:
 func stop_movement() -> void:
 	is_moving = false
 	has_reached_destination = false
-	_time_started_moving = 0
-	_time_started_turning = 0
 	current_path.clear()
 
 # ↑ Destination Stuff ↑
@@ -126,7 +124,7 @@ func stop_movement() -> void:
 
 var has_reached_destination: bool
 var is_moving: bool
-var _time_started_moving: float
+var _turn_elapsed: float
 var _start_pos: Vector3
 var _end_pos: Vector3
 
@@ -160,14 +158,14 @@ func start_movement() -> void: ## probs should rename this to new movement
 
 func _begin_movement() -> void:
 	is_moving = true
-	_time_started_moving = Time.get_ticks_msec()
+	_move_elapsed = 0.0
 	ballybog.anim_player.play("Walk2", -1, 2)
 	current_move_type = MOVETYPES.MOVING
 
 func movement(delta: float) -> void:
 	if !is_moving or is_turning: return
-	var time_since_start := Time.get_ticks_msec() - _time_started_moving
-	var percentage_complete : = time_since_start / time_to_move
+	_move_elapsed += delta
+	var percentage_complete := _move_elapsed / (time_to_move / 1000.0)
 	
 	var lerped_pos = lerp_me(_start_pos, _end_pos, percentage_complete)
 	if floor_detector.is_colliding():
@@ -202,7 +200,7 @@ func complete_movement() -> void:
 
 var current_move_direction: Vector3
 var is_turning: bool
-var _time_started_turning: float
+var _move_elapsed: float
 var _start_rot: float
 var _end_rot: float
 
@@ -218,7 +216,7 @@ func start_turn():
 	#print("Started_Turning")
 	#ballybog.do_idle()
 	is_turning = true
-	_time_started_turning = Time.get_ticks_msec()
+	_turn_elapsed = 0.0
 	
 	_start_rot = ballybog.graphics.global_rotation.y
 	_end_rot = atan2(current_move_direction.x, current_move_direction.z)
@@ -227,8 +225,8 @@ func start_turn():
 
 func turning(delta: float) -> void:
 	if !is_turning: return
-	var time_since_start := Time.get_ticks_msec() - _time_started_turning
-	var percentage_complete : = clampf(time_since_start / time_to_turn, 0.0, 1.0)
+	_turn_elapsed += delta
+	var percentage_complete := clampf(_turn_elapsed / (time_to_turn / 1000.0), 0.0, 1.0)
 	
 	var lerped_rot = lerp_angle(_start_rot, _end_rot, percentage_complete)
 	ballybog.graphics.global_rotation.y = lerped_rot
