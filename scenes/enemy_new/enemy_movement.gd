@@ -62,6 +62,30 @@ func world_to_cell(world_pos: Vector3) -> Vector3i:
 func cell_to_world(cell: Vector3i) -> Vector3:
 	return grid_map.to_global(Vector3(cell) * grid_map.cell_size)
 	
+## True if something solid (wall, closed gate) sits between the Ballybog and this cell.
+## Same layers as the player's step check (1 and 4 = mask 8). Areas are ignored
+## Layer 4 only (mask 8): gates and other things that open/close. Walls are already handled by the nav grid.
+func _is_blocked(cell: Vector3i) -> bool:
+	var from := ballybog.global_position + Vector3.UP * 0.8
+	var to := cell_to_world(cell)
+	to.y = from.y
+	var query := PhysicsRayQueryParameters3D.create(from, to, 8)
+	var hit := ballybog.get_world_3d().direct_space_state.intersect_ray(query)
+	if !hit.is_empty():
+		print("%s: blocked by %s at %s" % [ballybog.name, hit.collider.get_path(), hit.position]) # TEMP
+	return !hit.is_empty()
+	
+## The next cell is blocked: path around it. The cell is switched off only for this one search,
+## so other Ballybogs on the same grid aren't affected.
+func _repath_around(blocked: Vector3i) -> bool:
+	var id: int = grid_map.point_id_map[blocked]
+	current_grid_pos = world_to_cell(ballybog.global_position)
+	grid_map.astar.set_point_disabled(id, true)
+	current_path = grid_map.find_path(current_grid_pos, current_destination)
+	grid_map.astar.set_point_disabled(id, false)
+	current_path.pop_front()
+	return !current_path.is_empty()
+	
 func set_new_destination(new_loc: Vector3) -> void:
 	current_grid_pos = world_to_cell(ballybog.global_position)
 	current_destination = world_to_cell(new_loc)
@@ -138,6 +162,15 @@ func start_movement() -> void: ## probs should rename this to new movement
 		else:
 			path_failed.emit() # no route to the target
 		return
+	if _is_blocked(Vector3i(current_path[0])):
+		push_warning("%s: step to %s blocked, re-pathing" % [ballybog.name, current_path[0]]) # TEMP
+		## Checks around a detour that's also blocked, in this case we give up instead of looping
+		if !_repath_around(Vector3i(current_path[0])) or _is_blocked(Vector3i(current_path[0])):
+			current_path.clear()
+			ballybog.do_idle()
+			current_move_type = MOVETYPES.NOT_MOVING
+			path_failed.emit()
+			return
 	#print("-----------------")
 	#print("Started_Movement")
 	
