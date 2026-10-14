@@ -16,13 +16,14 @@ func _ready() -> void:
 	if grid_map == null:
 		grid_map = get_tree().get_first_node_in_group("GMPF")
 		if grid_map != null:
-			push_warning("%s: grid_map nott set, using the level's GMPF grid" % ballybog.name)
+			push_warning("%s: grid_map not set, using the level's GMPF grid" % ballybog.name)
 	await get_parent().ready
 	player = ballybog.player
 	if grid_map == null:
 		push_error("%s: no nav grid. Set grid_map on this Ballybog." % ballybog.name)
 		return
 	grid_map.ensure_astar_built()
+	_validate_patrol_points()
 	print("%s uses grid %s (%d cells)" % [ballybog.name, grid_map.get_path(), grid_map.astar.get_point_count()])
 
 func update_idle(delta: float) -> void:
@@ -62,8 +63,7 @@ func world_to_cell(world_pos: Vector3) -> Vector3i:
 func cell_to_world(cell: Vector3i) -> Vector3:
 	return grid_map.to_global(Vector3(cell) * grid_map.cell_size)
 	
-## True if something solid (wall, closed gate) sits between the Ballybog and this cell.
-## Same layers as the player's step check (1 and 4 = mask 8). Areas are ignored
+## True if something solid (closed gate) sits between the Ballybog and this cell.
 ## Layer 4 only (mask 8): gates and other things that open/close. Walls are already handled by the nav grid.
 func _is_blocked(cell: Vector3i) -> bool:
 	var from := ballybog.global_position + Vector3.UP * 0.8
@@ -85,6 +85,24 @@ func _repath_around(blocked: Vector3i) -> bool:
 	grid_map.astar.set_point_disabled(id, false)
 	current_path.pop_front()
 	return !current_path.is_empty()
+	
+## Warns once at load about patrol points that are off the nav grid or can't be reached.
+func _validate_patrol_points() -> void:
+	var first_cell = null
+	for i in ballybog.patrol_points.size():
+		var point := ballybog.patrol_points[i]
+		if point == null:
+			push_warning("%s: patrol point slot %d is empty" % [ballybog.name, i])
+			continue
+		var cell := world_to_cell(point.global_position)
+		var on_grid := cell_to_world(cell)
+		var off := Vector2(on_grid.x - point.global_position.x, on_grid.z - point.global_position.z).length()
+		if off > 0.5:
+			push_warning("%s: patrol point %s is %.1f m off the nav grid, using cell %s" % [ballybog.name, point.name, off, cell])
+		if first_cell == null:
+			first_cell = cell
+		elif cell != first_cell and grid_map.find_path(first_cell, cell).is_empty():
+			push_warning("%s: patrol point %s can't be reached from the first patrol point" % [ballybog.name, point.name])
 	
 func set_new_destination(new_loc: Vector3) -> void:
 	current_grid_pos = world_to_cell(ballybog.global_position)
