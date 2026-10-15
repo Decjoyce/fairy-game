@@ -5,7 +5,6 @@ render_mode  blend_mix, depth_prepass_alpha, cull_disabled, specular_disabled;
 
 uniform sampler2D sprite_texture : source_color, filter_nearest;
 uniform bool enable_billboard = true;
-uniform bool enable_Ybillboard = false;
 uniform bool enable_outline = true;
 
 // Pixel Outline Parameters
