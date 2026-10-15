@@ -61,7 +61,7 @@ func on_item_area_entered(area: Area3D) -> void:
 	if items_in_zone.has(area.get_parent()): return
 	if keyword_checker(area.get_parent()): return
 	items_in_zone.append(area.get_parent())
-	hover_shower()
+	#hover_shower()
 	outline_enable(area.get_parent(),true)
 	if check_if_should_lockdown():
 		enter_lockdown()
@@ -70,7 +70,7 @@ func on_item_area_exited(area: Area3D) -> void:
 	if area.get_parent() is not Grabbable_Item: return
 	if !items_in_zone.has(area.get_parent()): return
 	items_in_zone.erase(area.get_parent())
-	hover_shower()
+	#hover_shower()
 	outline_enable(area.get_parent(),false)
 	if !check_if_should_lockdown():
 		exit_lockdown()
