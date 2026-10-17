@@ -22,7 +22,6 @@
 [ext_resource type="AudioStream" uid="uid://2j13alqx80jr" path="res://assets/audio/sfx/menu/UI/UI_Buttons_randomizer3.tres" id="11_0evim"]
 [ext_resource type="PackedScene" uid="uid://cwt4p3bufkke5" path="res://addons/maaacks_menus_template/base/nodes/windows/confirmation_overlaid_window.tscn" id="11_bus8x"]
 [ext_resource type="Texture2D" uid="uid://x6k27fenbl6w" path="res://assets/comic/frame_003.png" id="13_8kk3j"]
-[ext_resource type="Texture2D" uid="uid://bq13iqrm63evk" path="res://scenes/_levels/menus/main_menu/Main_Menu_UI_NEW/UI_themes/ui_art/title_colour.png" id="14_gmba7"]
 [ext_resource type="Texture2D" uid="uid://cqsisturdjudn" path="res://assets/comic/frame_005.png" id="14_jrgvd"]
 [ext_resource type="Texture2D" uid="uid://45woosbuhm3t" path="res://assets/comic/frame_007.png" id="15_kimvy"]
 [ext_resource type="Texture2D" uid="uid://dm35utre3x8qc" path="res://assets/comic/frame_009.png" id="16_ca2qk"]
@@ -52,6 +51,7 @@
 [ext_resource type="AudioStream" uid="uid://dffo4e4y54vr2" path="res://assets/audio/intro/Voices, Baby, Newborn, Maternity Ward, Baby Crying SND47313.wav" id="35_jvguq"]
 [ext_resource type="AudioStream" uid="uid://dttod2jdf75fn" path="res://assets/audio/intro/Footsteps, Human, Forest Footsteps, Heavy, Running SND73380.wav" id="36_ue1se"]
 [ext_resource type="AudioStream" uid="uid://ufieywfpqnjn" path="res://assets/audio/intro/Wind, Gust, Cold, Strong Wind, Gale, Night SND137534.wav" id="37_i1xur"]
+[ext_resource type="Texture2D" uid="uid://b130ydwvscbfr" path="res://assets/ui/new_redesigned_ui/new_gametitle.png" id="43_ue1se"]
 [ext_resource type="Texture2D" uid="uid://bxjnfybjp7kl2" path="res://assets/__not_ours_dontship/PS4/PS4_Options.png" id="51_jvguq"]
 [ext_resource type="Script" uid="uid://b0fs2mt3af1wd" path="res://scripts/input_context_helper_three.gd" id="52_jvguq"]
 [ext_resource type="Script" uid="uid://dqspm2isfx5n1" path="res://scripts/input_context/joy_icons_master.gd" id="53_ue1se"]
@@ -1564,7 +1564,8 @@ alignment = 1
 modulate = Color(1, 1, 1, 0)
 layout_mode = 2
 size_flags_horizontal = 3
-texture = ExtResource("16_ca2qk")
+texture = ExtResource("17_el2iu")
+expand_mode = 1
 
 [node name="BoxContainer2" type="BoxContainer" parent="MainMenu/OpeningScene" unique_id=634655637]
 layout_mode = 1
@@ -1578,7 +1579,8 @@ alignment = 1
 [node name="TextureRect" type="TextureRect" parent="MainMenu/OpeningScene/BoxContainer2" unique_id=1603334626]
 layout_mode = 2
 size_flags_horizontal = 3
-texture = ExtResource("22_a2y8v")
+texture = ExtResource("23_maif7")
+expand_mode = 1
 
 [node name="OpeningSong" type="AudioStreamPlayer3D" parent="MainMenu/OpeningScene" unique_id=451357941]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -16.4)
@@ -1595,20 +1597,22 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -172.5
-offset_top = -256.0
-offset_right = 172.5
-offset_bottom = 256.0
+offset_left = -196.96677
+offset_top = -248.0
+offset_right = 196.96677
+offset_bottom = 248.0
 grow_horizontal = 2
 grow_vertical = 2
 alignment = 1
 
 [node name="Logos" type="TextureRect" parent="MainMenu/OpeningScene/BoxContainer3" unique_id=38404484]
 modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
 size_flags_horizontal = 3
 texture = ExtResource("25_kimvy")
 expand_mode = 3
+stretch_mode = 4
 
 [node name="MenuContainer" type="MarginContainer" parent="MainMenu" unique_id=396616752]
 unique_name_in_owner = true
@@ -1621,7 +1625,7 @@ grow_vertical = 2
 
 [node name="TitleMargin" type="MarginContainer" parent="MainMenu/MenuContainer" unique_id=2112060331]
 layout_mode = 2
-theme_override_constants/margin_top = 24
+theme_override_constants/margin_top = 33
 
 [node name="TitleContainer" type="Control" parent="MainMenu/MenuContainer/TitleMargin" unique_id=556427956]
 modulate = Color(1, 1, 1, 0)
@@ -1650,8 +1654,8 @@ offset_left = -324.0
 offset_right = 324.0
 offset_bottom = 239.0
 grow_horizontal = 2
-texture = ExtResource("14_gmba7")
-expand_mode = 2
+texture = ExtResource("43_ue1se")
+expand_mode = 3
 
 [node name="SubTitleMargin" type="MarginContainer" parent="MainMenu/MenuContainer" unique_id=1510335937]
 visible = false
@@ -1688,16 +1692,12 @@ mouse_filter = 2
 [node name="MenuButtonsBoxContainer" type="BoxContainer" parent="MainMenu/MenuContainer/MenuButtonsMargin/MenuButtonsContainer" unique_id=2017477786]
 unique_name_in_owner = true
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
+anchors_preset = 4
 anchor_top = 0.5
-anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -64.0
-offset_top = -104.0
-offset_right = 64.0
-offset_bottom = 104.0
-grow_horizontal = 2
+offset_top = -200.5
+offset_right = 297.0
+offset_bottom = 200.5
 grow_vertical = 2
 size_flags_horizontal = 4
 theme_override_constants/separation = 19
@@ -1709,40 +1709,54 @@ lock = true
 [node name="Play Demo" type="Button" parent="MainMenu/MenuContainer/MenuButtonsMargin/MenuButtonsContainer/MenuButtonsBoxContainer" unique_id=971537016]
 unique_name_in_owner = true
 layout_mode = 2
+theme_type_variation = &"title_screen_button"
 theme_override_font_sizes/font_size = 40
 text = "START_GAME"
+alignment = 0
 
 [node name="LoadMe" type="Button" parent="MainMenu/MenuContainer/MenuButtonsMargin/MenuButtonsContainer/MenuButtonsBoxContainer" unique_id=877840502]
 unique_name_in_owner = true
 layout_mode = 2
+theme_type_variation = &"title_screen_button"
 text = "LOAD_GAME"
+alignment = 0
 
 [node name="Playground" type="Button" parent="MainMenu/MenuContainer/MenuButtonsMargin/MenuButtonsContainer/MenuButtonsBoxContainer" unique_id=984087950]
 unique_name_in_owner = true
 layout_mode = 2
+theme_type_variation = &"title_screen_button"
 text = "DEV_ROOM"
+alignment = 0
 
 [node name="OptionsButton" type="Button" parent="MainMenu/MenuContainer/MenuButtonsMargin/MenuButtonsContainer/MenuButtonsBoxContainer" unique_id=1486236076]
 unique_name_in_owner = true
 layout_mode = 2
+theme_type_variation = &"title_screen_button"
 text = "OPTIONS"
+alignment = 0
 
 [node name="CreditsButton" type="Button" parent="MainMenu/MenuContainer/MenuButtonsMargin/MenuButtonsContainer/MenuButtonsBoxContainer" unique_id=301223169]
 unique_name_in_owner = true
 layout_mode = 2
+theme_type_variation = &"title_screen_button"
 text = "CREDITS"
+alignment = 0
 
 [node name="ExitButton" type="Button" parent="MainMenu/MenuContainer/MenuButtonsMargin/MenuButtonsContainer/MenuButtonsBoxContainer" unique_id=1750454379]
 unique_name_in_owner = true
 layout_mode = 2
+theme_type_variation = &"title_screen_button"
 text = "EXIT"
+alignment = 0
 
 [node name="BB" type="Button" parent="MainMenu/MenuContainer/MenuButtonsMargin/MenuButtonsContainer/MenuButtonsBoxContainer" unique_id=1500278034]
 unique_name_in_owner = true
 visible = false
 layout_mode = 2
+theme_type_variation = &"title_screen_button"
 theme_override_font_sizes/font_size = 40
 text = "The Creature"
+alignment = 0
 
 [node name="TextureRect2" type="TextureRect" parent="MainMenu/MenuContainer/MenuButtonsMargin/MenuButtonsContainer" unique_id=593327020]
 visible = false

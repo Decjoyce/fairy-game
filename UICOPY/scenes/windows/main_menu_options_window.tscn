@@ -1,8 +1,8 @@
 [gd_scene format=3 uid="uid://dpic53cok00p4"]
 
+[ext_resource type="Theme" uid="uid://ktuc4glx3wgp" path="res://scenes/_levels/menus/main_menu/Main_Menu_UI_NEW/UI_themes/redesigned_ui_theme.tres" id="1_t8l3r"]
 [ext_resource type="Script" uid="uid://c6pmyo50c1tqy" path="res://addons/maaacks_menus_template/base/nodes/windows/overlaid_window_scene_container.gd" id="2_dwrxv"]
 [ext_resource type="PackedScene" uid="uid://wyg20wvsg5p1" path="res://UICOPY/scenes/menus/options_menu/master_options_menu_with_tabs.tscn" id="2_ffnov"]
-[ext_resource type="Theme" uid="uid://4rqtecgji27t" path="res://scenes/_levels/menus/main_menu/Main_Menu_UI_NEW/UI_themes/customised_brush_theme.tres" id="2_t8l3r"]
 [ext_resource type="Script" uid="uid://1nf36h0gms3q" path="res://addons/maaacks_menus_template/base/nodes/utilities/capture_focus.gd" id="4_4fkkm"]
 
 [node name="MainMenuOptionsOverlaidWindow" type="PanelContainer" unique_id=1787637973]
@@ -13,7 +13,7 @@ grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
-theme = ExtResource("2_t8l3r")
+theme = ExtResource("1_t8l3r")
 script = ExtResource("2_dwrxv")
 packed_scene = ExtResource("2_ffnov")
 makes_mouse_visible = false
@@ -78,6 +78,7 @@ layout_mode = 2
 size_flags_vertical = 3
 
 [node name="MenuButtonsMargin" type="MarginContainer" parent="ContentContainer/BoxContainer" unique_id=1413292752]
+visible = false
 layout_mode = 2
 theme_override_constants/margin_top = 8
 
