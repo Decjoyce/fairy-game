@@ -1,7 +1,6 @@
 [gd_scene format=3 uid="uid://wyg20wvsg5p1"]
 
 [ext_resource type="Script" uid="uid://c3mignmhuvvq4" path="res://addons/maaacks_menus_template/base/nodes/menus/options_menu/paginated_tab_container.gd" id="1_5typp"]
-[ext_resource type="Theme" uid="uid://4rqtecgji27t" path="res://scenes/_levels/menus/main_menu/Main_Menu_UI_NEW/UI_themes/customised_brush_theme.tres" id="1_8rtnr"]
 [ext_resource type="PackedScene" uid="uid://ba0un2yhkkc3j" path="res://UICOPY/scenes/menus/options_menu/controlDemoVisual.tscn" id="4_5typp"]
 [ext_resource type="PackedScene" uid="uid://ku64rbxkdlm2" path="res://UICOPY/scenes/menus/options_menu/audio/audio_options_menu.tscn" id="4_jxhu2"]
 [ext_resource type="PackedScene" uid="uid://bmpi0054r0day" path="res://UICOPY/scenes/menus/options_menu/video/video_options_menu_with_extras.tscn" id="5_nv2pl"]
@@ -13,7 +12,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme = ExtResource("1_8rtnr")
+theme = ExtResource("6_8rtnr")
 theme_override_font_sizes/font_size = 32
 tab_alignment = 1
 current_tab = 1
@@ -23,10 +22,22 @@ script = ExtResource("1_5typp")
 [node name="AUDIO" parent="." unique_id=506115522 instance=ExtResource("4_jxhu2")]
 visible = false
 layout_mode = 2
+theme_override_constants/margin_left = 32
+theme_override_constants/margin_top = 0
+theme_override_constants/margin_right = 32
+theme_override_constants/margin_bottom = 0
 hide_busses = Array[String](["pl_footsteps", "items", "SaveSFX"])
 metadata/_tab_index = 0
 
-[node name="CONTROLS" parent="." unique_id=520649011 node_paths=PackedStringArray("joy_dict") instance=ExtResource("4_5typp")]
+[node name="CONTROLS" type="MarginContainer" parent="." unique_id=315291628]
+layout_mode = 2
+theme_override_constants/margin_left = 32
+theme_override_constants/margin_top = 0
+theme_override_constants/margin_right = 32
+theme_override_constants/margin_bottom = 0
+metadata/_tab_index = 1
+
+[node name="CONTROLS" parent="CONTROLS" unique_id=520649011 node_paths=PackedStringArray("joy_dict") instance=ExtResource("4_5typp")]
 layout_mode = 2
 joy_dict = {
 "DEFAULT": NodePath("MarginContainer/XBOXController"),
@@ -35,10 +46,12 @@ joy_dict = {
 "PS4 Controller": NodePath("MarginContainer/PS4 Controller"),
 "XInput Controller": NodePath("MarginContainer/XBOXController")
 }
-metadata/_tab_index = 1
 
 [node name="VIDEO" parent="." unique_id=382045299 instance=ExtResource("5_nv2pl")]
 visible = false
 layout_mode = 2
-theme = ExtResource("6_8rtnr")
+theme_override_constants/margin_left = 32
+theme_override_constants/margin_top = 0
+theme_override_constants/margin_right = 32
+theme_override_constants/margin_bottom = 0
 metadata/_tab_index = 2

@@ -4,6 +4,9 @@
 [ext_resource type="Script" uid="uid://c6pmyo50c1tqy" path="res://addons/maaacks_menus_template/base/nodes/windows/overlaid_window_scene_container.gd" id="2_dwrxv"]
 [ext_resource type="PackedScene" uid="uid://wyg20wvsg5p1" path="res://UICOPY/scenes/menus/options_menu/master_options_menu_with_tabs.tscn" id="2_ffnov"]
 [ext_resource type="Script" uid="uid://1nf36h0gms3q" path="res://addons/maaacks_menus_template/base/nodes/utilities/capture_focus.gd" id="4_4fkkm"]
+[ext_resource type="Texture2D" uid="uid://d37ah0yki8cpv" path="res://assets/__not_ours_dontship/Xbox Series/XboxSeriesX_Dpad.png" id="4_vcrgx"]
+[ext_resource type="Texture2D" uid="uid://wpx72pcpea8n" path="res://assets/__not_ours_dontship/Xbox Series/XboxSeriesX_A.png" id="5_qgfo3"]
+[ext_resource type="Texture2D" uid="uid://bvp14xwrxbn3n" path="res://assets/__not_ours_dontship/Xbox Series/XboxSeriesX_B.png" id="6_1yd0q"]
 
 [node name="MainMenuOptionsOverlaidWindow" type="PanelContainer" unique_id=1787637973]
 anchors_preset = 15
@@ -25,10 +28,10 @@ title_visible = false
 [node name="ContentContainer" type="MarginContainer" parent="." unique_id=1755486830]
 unique_name_in_owner = true
 layout_mode = 2
-theme_override_constants/margin_left = 16
-theme_override_constants/margin_top = 16
-theme_override_constants/margin_right = 16
-theme_override_constants/margin_bottom = 16
+theme_override_constants/margin_left = 19
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 18
+theme_override_constants/margin_bottom = 8
 
 [node name="BoxContainer" type="BoxContainer" parent="ContentContainer" unique_id=394030069]
 layout_mode = 2
@@ -62,6 +65,8 @@ layout_mode = 2
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 3
+theme_override_constants/margin_left = 32
+theme_override_constants/margin_right = 32
 
 [node name="DescriptionLabel" type="RichTextLabel" parent="ContentContainer/BoxContainer/BodyMargin" unique_id=617407155]
 unique_name_in_owner = true
@@ -76,6 +81,73 @@ vertical_alignment = 1
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 3
+
+[node name="InputPromptMargin" type="MarginContainer" parent="ContentContainer/BoxContainer" unique_id=876445014]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="ContentContainer/BoxContainer/InputPromptMargin" unique_id=414153122]
+layout_mode = 2
+theme_override_constants/separation = 16
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="ContentContainer/BoxContainer/InputPromptMargin/HBoxContainer" unique_id=1512074605]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="ContentContainer/BoxContainer/InputPromptMargin/HBoxContainer/HBoxContainer2" unique_id=1579236466]
+custom_minimum_size = Vector2(25, 25)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("4_vcrgx")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="ContentContainer/BoxContainer/InputPromptMargin/HBoxContainer/HBoxContainer2" unique_id=2051001050]
+layout_mode = 2
+size_flags_vertical = 1
+theme_override_colors/font_color = Color(0.9098039, 0.9098039, 0.9098039, 1)
+theme_override_font_sizes/font_size = 15
+text = "Select"
+vertical_alignment = 1
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="ContentContainer/BoxContainer/InputPromptMargin/HBoxContainer" unique_id=1723122020]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="ContentContainer/BoxContainer/InputPromptMargin/HBoxContainer/HBoxContainer3" unique_id=521335695]
+custom_minimum_size = Vector2(25, 25)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("5_qgfo3")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="ContentContainer/BoxContainer/InputPromptMargin/HBoxContainer/HBoxContainer3" unique_id=681490201]
+layout_mode = 2
+size_flags_vertical = 1
+theme_override_colors/font_color = Color(0.9098039, 0.9098039, 0.9098039, 1)
+theme_override_font_sizes/font_size = 15
+text = "Confirm"
+vertical_alignment = 1
+
+[node name="HBoxContainer4" type="HBoxContainer" parent="ContentContainer/BoxContainer/InputPromptMargin/HBoxContainer" unique_id=1151411978]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="ContentContainer/BoxContainer/InputPromptMargin/HBoxContainer/HBoxContainer4" unique_id=1854745503]
+custom_minimum_size = Vector2(25, 25)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("6_1yd0q")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="ContentContainer/BoxContainer/InputPromptMargin/HBoxContainer/HBoxContainer4" unique_id=1309774384]
+layout_mode = 2
+size_flags_vertical = 1
+theme_override_colors/font_color = Color(0.9098039, 0.9098039, 0.9098039, 1)
+theme_override_font_sizes/font_size = 15
+text = "Back"
+vertical_alignment = 1
 
 [node name="MenuButtonsMargin" type="MarginContainer" parent="ContentContainer/BoxContainer" unique_id=1413292752]
 visible = false
