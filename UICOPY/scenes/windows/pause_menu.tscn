@@ -2,20 +2,35 @@
 
 [ext_resource type="PackedScene" uid="uid://6gdbfi0172ji" path="res://addons/maaacks_menus_template/base/nodes/windows/overlaid_window.tscn" id="1_iqqot"]
 [ext_resource type="Script" uid="uid://fhe0hsd7xxma" path="res://UICOPY/scenes/windows/pause_menu.gd" id="2_nqejx"]
-[ext_resource type="Theme" uid="uid://4rqtecgji27t" path="res://scenes/_levels/menus/main_menu/Main_Menu_UI_NEW/UI_themes/customised_brush_theme.tres" id="2_sv8q1"]
+[ext_resource type="Theme" uid="uid://ktuc4glx3wgp" path="res://scenes/_levels/menus/main_menu/Main_Menu_UI_NEW/UI_themes/redesigned_ui_theme.tres" id="2_qnj2a"]
+[ext_resource type="Texture2D" uid="uid://c03vh38db0gvb" path="res://assets/ui/new_redesigned_ui/pause_menu_background.png" id="3_ec6cq"]
 [ext_resource type="PackedScene" uid="uid://bp5w33g1hroc2" path="res://UICOPY/scenes/windows/pause_menu_options_window.tscn" id="3_sv8q1"]
 [ext_resource type="PackedScene" uid="uid://cwt4p3bufkke5" path="res://addons/maaacks_menus_template/base/nodes/windows/confirmation_overlaid_window.tscn" id="4_qnj2a"]
+[ext_resource type="Texture2D" uid="uid://cx5eb7lqx2000" path="res://assets/ui/new_redesigned_ui/pause_menu.png" id="6_g5ljo"]
+[ext_resource type="PackedScene" uid="uid://onp0ebxn1ify" path="res://UICOPY/scenes/windows/input_prompt_margin.tscn" id="8_ec6cq"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_jgit8"]
+texture = ExtResource("3_ec6cq")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_mctgh"]
+texture = ExtResource("6_g5ljo")
 
 [node name="PauseMenu" unique_id=156357199 instance=ExtResource("1_iqqot")]
 process_mode = 3
 custom_minimum_size = Vector2(256, 312)
-offset_left = -128.0
-offset_top = -155.0
-offset_right = 128.0
-offset_bottom = 157.0
+anchors_preset = 15
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 0.0
+offset_top = 0.0
+offset_right = 0.0
+offset_bottom = 0.0
 size_flags_horizontal = 1
 size_flags_vertical = 1
-theme = ExtResource("2_sv8q1")
+theme = ExtResource("2_qnj2a")
+theme_override_styles/panel = SubResource("StyleBoxTexture_jgit8")
 script = ExtResource("2_nqejx")
 options_menu_scene = ExtResource("3_sv8q1")
 main_menu_scene_path = "uid://c1evlmyhcjgef"
@@ -25,69 +40,133 @@ exit_confirmation_node_path = NodePath("ExitConfirmation")
 menu_container_node_path = NodePath("..")
 pauses_game = true
 
-[node name="TitleLabel" parent="ContentContainer/BoxContainer/TitleMargin/BoxContainer" parent_id_path=PackedInt32Array(1788474031) index="0" unique_id=1049966061]
-theme_override_font_sizes/font_size = 30
-text = "PAUSED"
+[node name="PausePanel" type="PanelContainer" parent="." index="0" unique_id=1152086363]
+custom_minimum_size = Vector2(410, 500)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme = ExtResource("2_qnj2a")
+theme_override_styles/panel = SubResource("StyleBoxTexture_mctgh")
 
-[node name="BodyMargin" parent="ContentContainer/BoxContainer" parent_id_path=PackedInt32Array(394030069) index="1" unique_id=590613964]
+[node name="ContentContainer" parent="." index="1" unique_id=1755486830]
+custom_minimum_size = Vector2(400, 450)
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="BoxContainer" parent="ContentContainer" index="0" unique_id=394030069]
+theme_override_constants/separation = -3
+
+[node name="TitleMargin" parent="ContentContainer/BoxContainer" index="0" unique_id=1262022916]
+theme_override_constants/margin_left = 0
+theme_override_constants/margin_top = 0
+theme_override_constants/margin_right = 0
+theme_override_constants/margin_bottom = 0
+
+[node name="TitleLabel" parent="ContentContainer/BoxContainer/TitleMargin/BoxContainer" parent_id_path=PackedInt32Array(1788474031) index="0" unique_id=1049966061]
+theme_override_colors/font_color = Color(0.38039216, 0.22745098, 0.015686275, 1)
+theme_override_font_sizes/font_size = 64
+text = "PAUSED"
+vertical_alignment = 1
+
+[node name="HSeparator" parent="ContentContainer/BoxContainer/TitleMargin/BoxContainer" parent_id_path=PackedInt32Array(1788474031) index="1" unique_id=33373596]
 visible = false
 
-[node name="MenuButtonsMargin" parent="ContentContainer/BoxContainer" parent_id_path=PackedInt32Array(394030069) index="2" unique_id=1413292752]
-size_flags_vertical = 3
+[node name="BodyMargin" parent="ContentContainer/BoxContainer" index="1" unique_id=590613964]
+visible = false
 
-[node name="CloseButton" parent="ContentContainer/BoxContainer/MenuButtonsMargin/MenuButtons" parent_id_path=PackedInt32Array(1371114575) index="0" unique_id=314526102]
+[node name="MenuButtonsMargin" parent="ContentContainer/BoxContainer" index="2" unique_id=1413292752]
+theme = ExtResource("2_qnj2a")
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_right = 24
+
+[node name="MenuButtons" parent="ContentContainer/BoxContainer/MenuButtonsMargin" index="0" unique_id=1371114575]
+theme_override_constants/separation = 8
+
+[node name="CloseButton" parent="ContentContainer/BoxContainer/MenuButtonsMargin/MenuButtons" index="0" unique_id=314526102]
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_font_sizes/font_size = 28
 text = "RESUME"
 
-[node name="LoadButton" type="Button" parent="ContentContainer/BoxContainer/MenuButtonsMargin/MenuButtons" parent_id_path=PackedInt32Array(1371114575) index="1" unique_id=1371657172]
+[node name="LoadButton" type="Button" parent="ContentContainer/BoxContainer/MenuButtonsMargin/MenuButtons" index="1" unique_id=1371657172]
 layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_font_sizes/font_size = 28
 text = "RELOAD_LAST_SAVE"
 
-[node name="RestartButton2" type="Button" parent="ContentContainer/BoxContainer/MenuButtonsMargin/MenuButtons" parent_id_path=PackedInt32Array(1371114575) index="2" unique_id=1092099725]
+[node name="RestartButton2" type="Button" parent="ContentContainer/BoxContainer/MenuButtonsMargin/MenuButtons" index="2" unique_id=1092099725]
 layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_font_sizes/font_size = 28
 text = "RESTART_LEVEL"
 
-[node name="OptionsButton" type="Button" parent="ContentContainer/BoxContainer/MenuButtonsMargin/MenuButtons" parent_id_path=PackedInt32Array(1371114575) index="3" unique_id=1126383675]
+[node name="OptionsButton" type="Button" parent="ContentContainer/BoxContainer/MenuButtonsMargin/MenuButtons" index="3" unique_id=1126383675]
 unique_name_in_owner = true
 layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_font_sizes/font_size = 28
 text = "OPTIONS"
 
-[node name="MainMenuButton" type="Button" parent="ContentContainer/BoxContainer/MenuButtonsMargin/MenuButtons" parent_id_path=PackedInt32Array(1371114575) index="4" unique_id=928043706]
+[node name="MainMenuButton" type="Button" parent="ContentContainer/BoxContainer/MenuButtonsMargin/MenuButtons" index="4" unique_id=928043706]
 unique_name_in_owner = true
 layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_font_sizes/font_size = 28
 text = "EXIT_TO_MENU"
 
-[node name="ExitButton" type="Button" parent="ContentContainer/BoxContainer/MenuButtonsMargin/MenuButtons" parent_id_path=PackedInt32Array(1371114575) index="5" unique_id=1398257582]
+[node name="ExitButton" type="Button" parent="ContentContainer/BoxContainer/MenuButtonsMargin/MenuButtons" index="5" unique_id=1398257582]
 unique_name_in_owner = true
 layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_font_sizes/font_size = 28
 text = "EXIT"
 
-[node name="RestartConfirmation" parent="." index="1" unique_id=1405814931 instance=ExtResource("4_qnj2a")]
+[node name="RestartConfirmation" parent="." index="2" unique_id=1405814931 instance=ExtResource("4_qnj2a")]
 unique_name_in_owner = true
-visible = false
 layout_mode = 2
+size_flags_horizontal = 1
+size_flags_vertical = 1
 confirm_button_text = "CONFIRM"
 text = "RESTART_THE_GAME_CONFIRM"
 close_button_text = "CANCEL"
 title = "CONFIRM_RESTART"
+title_visible = false
 
-[node name="MainMenuConfirmation" parent="." index="2" unique_id=1770307648 instance=ExtResource("4_qnj2a")]
+[node name="MainMenuConfirmation" parent="." index="3" unique_id=1770307648 instance=ExtResource("4_qnj2a")]
 unique_name_in_owner = true
 visible = false
-custom_minimum_size = Vector2(220, 0)
 layout_mode = 2
+size_flags_horizontal = 1
+size_flags_vertical = 1
 confirm_button_text = "CONFIRM"
 text = "EXIT_MAIN_MANU_CONFIRM"
 close_button_text = "CANCEL"
 title = "CONFIRM_EXIT"
+title_visible = false
 
-[node name="ExitConfirmation" parent="." index="3" unique_id=1587469343 instance=ExtResource("4_qnj2a")]
+[node name="ExitConfirmation" parent="." index="4" unique_id=1587469343 instance=ExtResource("4_qnj2a")]
 unique_name_in_owner = true
 visible = false
 layout_mode = 2
+size_flags_horizontal = 1
+size_flags_vertical = 1
 confirm_button_text = "CONFIRM"
 text = "EXIT_GAME_CONFIRM"
 close_button_text = "CANCEL"
 title = "CONFIRM_EXIT"
+title_visible = false
+
+[node name="InputPromptMargin" parent="." index="5" unique_id=1104021911 instance=ExtResource("8_ec6cq")]
+layout_mode = 2
+size_flags_vertical = 8
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 8
 
 [connection signal="pressed" from="ContentContainer/BoxContainer/MenuButtonsMargin/MenuButtons/LoadButton" to="." method="_on_Load_Save_confirmed"]
 [connection signal="pressed" from="ContentContainer/BoxContainer/MenuButtonsMargin/MenuButtons/RestartButton2" to="." method="_on_restart_button_pressed"]
