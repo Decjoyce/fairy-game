@@ -1,26 +1,38 @@
 [gd_scene format=3 uid="uid://cwt4p3bufkke5"]
 
 [ext_resource type="PackedScene" uid="uid://6gdbfi0172ji" path="res://addons/maaacks_menus_template/base/nodes/windows/overlaid_window.tscn" id="1_vfkm2"]
+[ext_resource type="Theme" uid="uid://ktuc4glx3wgp" path="res://scenes/_levels/menus/main_menu/Main_Menu_UI_NEW/UI_themes/redesigned_ui_theme.tres" id="2_1as5l"]
 [ext_resource type="Script" uid="uid://bgthh72eu0du" path="res://addons/maaacks_menus_template/base/nodes/windows/confirmation_overlaid_window.gd" id="2_sw7p1"]
+[ext_resource type="Texture2D" uid="uid://c03vh38db0gvb" path="res://assets/ui/new_redesigned_ui/pause_menu_background.png" id="3_satmm"]
+[ext_resource type="Texture2D" uid="uid://8331ns4ulr5r" path="res://assets/ui/new_redesigned_ui/confirm_menu_panel.png" id="5_satmm"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_xk22m"]
+texture = ExtResource("3_satmm")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_i43wx"]
+texture = ExtResource("5_satmm")
 
 [node name="ConfirmationOverlaidWindow" unique_id=1482267070 instance=ExtResource("1_vfkm2")]
+theme = ExtResource("2_1as5l")
+theme_override_styles/panel = SubResource("StyleBoxTexture_xk22m")
 script = ExtResource("2_sw7p1")
 confirm_button_text = "Confirm"
 update_content = true
 close_button_text = "Cancel"
 
-[node name="TitleLabel" parent="ContentContainer/BoxContainer/TitleMargin/BoxContainer" parent_id_path=PackedInt32Array(1788474031) index="0" unique_id=1049966061]
-text = "MENU"
+[node name="PanelContainer2" parent="." index="0" unique_id=1162410073]
+custom_minimum_size = Vector2(500, 300)
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_styles/panel = SubResource("StyleBoxTexture_i43wx")
 
-[node name="MenuButtons" parent="ContentContainer/BoxContainer/MenuButtonsMargin" parent_id_path=PackedInt32Array(1413292752) index="0" unique_id=1371114575]
-vertical = false
+[node name="HBoxContainer" parent="PanelContainer2/PanelContainer/ContentContainer/BoxContainer/MenuButtonsMargin/MenuButtons" parent_id_path=PackedInt32Array(1371114575) index="0" unique_id=1691235534]
+theme_override_constants/separation = 128
 
-[node name="CloseButton" parent="ContentContainer/BoxContainer/MenuButtonsMargin/MenuButtons" index="0" unique_id=314526102]
-text = "CANCEL"
+[node name="CloseButton" parent="PanelContainer2/PanelContainer/ContentContainer/BoxContainer/MenuButtonsMargin/MenuButtons/HBoxContainer" index="0" unique_id=314526102]
+text = "Cancel"
 
-[node name="ConfirmButton" type="Button" parent="ContentContainer/BoxContainer/MenuButtonsMargin/MenuButtons" index="1" unique_id=1052970550]
-unique_name_in_owner = true
+[node name="ConfirmButton" type="Button" parent="PanelContainer2/PanelContainer/ContentContainer/BoxContainer/MenuButtonsMargin/MenuButtons/HBoxContainer" index="1" unique_id=1218340836]
 layout_mode = 2
-text = "CONFIRM"
-
-[connection signal="pressed" from="ContentContainer/BoxContainer/MenuButtonsMargin/MenuButtons/ConfirmButton" to="." method="_on_confirm_button_pressed"]
+theme_override_font_sizes/font_size = 24
+text = "confirm"
