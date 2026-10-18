@@ -1,6 +1,7 @@
 [gd_resource type="Theme" format=3 uid="uid://ktuc4glx3wgp"]
 
 [ext_resource type="Texture2D" uid="uid://8331ns4ulr5r" path="res://assets/ui/new_redesigned_ui/confirm_menu_panel.png" id="1_1w5tj"]
+[ext_resource type="Texture2D" uid="uid://8pc02yat0dyx" path="res://assets/ui/new_redesigned_ui/text_panel.png" id="1_qyvi8"]
 [ext_resource type="Texture2D" uid="uid://bbplgpcwaykbm" path="res://assets/ui/new_redesigned_ui/select_icon.png" id="2_hivor"]
 [ext_resource type="Texture2D" uid="uid://bqo1kbr5fs24a" path="res://assets/ui/new_redesigned_ui/button_main.png" id="3_yi4f8"]
 [ext_resource type="Texture2D" uid="uid://cj0vp74c0f3x5" path="res://assets/ui/new_redesigned_ui/checkbutton_checked.png" id="4_qyvi8"]
@@ -22,8 +23,12 @@
 [ext_resource type="Texture2D" uid="uid://dqdvne7xla30o" path="res://assets/ui/new_redesigned_ui/button_dark.png" id="19_0iqwb"]
 [ext_resource type="Texture2D" uid="uid://iupav240kvt2" path="res://assets/ui/new_redesigned_ui/scroll_panel.png" id="19_qyvi8"]
 
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ngmgk"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_5dasj"]
+
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_1wlv4"]
-texture = ExtResource("1_1w5tj")
+texture = ExtResource("1_qyvi8")
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_e0fnb"]
 
@@ -58,10 +63,7 @@ modulate_color = Color(0.691604, 0.5983299, 0.6189915, 1)
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_edsg5"]
 
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_g5ljo"]
-texture = ExtResource("3_yi4f8")
-texture_margin_left = 10.0
-texture_margin_right = 10.0
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_5typp"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ttm6m"]
 
@@ -181,6 +183,9 @@ modulate_color = Color(0.19434929, 0.19434926, 0.19434926, 1)
 [resource]
 default_font = ExtResource("11_yi4f8")
 default_font_size = 36
+AcceptDialog/constants/buttons_separation = 16
+AcceptDialog/styles/embedded_border = SubResource("StyleBoxEmpty_ngmgk")
+AcceptDialog/styles/embedded_unfocused_border = SubResource("StyleBoxEmpty_5dasj")
 AcceptDialog/styles/panel = SubResource("StyleBoxTexture_1wlv4")
 Button/colors/font_color = Color(0.15686275, 0.15686275, 0.15686275, 1)
 Button/colors/font_disabled_color = Color(0.15686275, 0.15686275, 0.15686275, 0.45882353)
@@ -213,7 +218,7 @@ CheckButton/icons/checked = ExtResource("4_qyvi8")
 CheckButton/icons/icon = SubResource("PlaceholderTexture2D_qyvi8")
 CheckButton/icons/unchecked = ExtResource("5_gyk8x")
 CheckButton/styles/disabled = SubResource("StyleBoxEmpty_edsg5")
-CheckButton/styles/hover = SubResource("StyleBoxTexture_g5ljo")
+CheckButton/styles/hover = SubResource("StyleBoxEmpty_5typp")
 CheckButton/styles/hover_pressed = SubResource("StyleBoxEmpty_ttm6m")
 CheckButton/styles/pressed = SubResource("StyleBoxEmpty_ttm6m")
 HSlider/constants/center_grabber = 1

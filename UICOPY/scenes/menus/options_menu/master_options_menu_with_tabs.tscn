@@ -7,15 +7,19 @@
 [ext_resource type="Theme" uid="uid://ktuc4glx3wgp" path="res://scenes/_levels/menus/main_menu/Main_Menu_UI_NEW/UI_themes/redesigned_ui_theme.tres" id="6_8rtnr"]
 
 [node name="MasterOptionsMenu" type="TabContainer" unique_id=1111795112]
+custom_minimum_size = Vector2(1100, 580)
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
 theme = ExtResource("6_8rtnr")
 theme_override_font_sizes/font_size = 32
 tab_alignment = 1
-current_tab = 1
+current_tab = 2
+clip_tabs = false
 switch_on_drag_hover = false
 script = ExtResource("1_5typp")
 
@@ -30,11 +34,8 @@ hide_busses = Array[String](["pl_footsteps", "items", "SaveSFX"])
 metadata/_tab_index = 0
 
 [node name="CONTROLS" type="MarginContainer" parent="." unique_id=315291628]
+visible = false
 layout_mode = 2
-theme_override_constants/margin_left = 32
-theme_override_constants/margin_top = 0
-theme_override_constants/margin_right = 32
-theme_override_constants/margin_bottom = 0
 metadata/_tab_index = 1
 
 [node name="CONTROLS" parent="CONTROLS" unique_id=520649011 node_paths=PackedStringArray("joy_dict") instance=ExtResource("4_5typp")]
@@ -48,7 +49,6 @@ joy_dict = {
 }
 
 [node name="VIDEO" parent="." unique_id=382045299 instance=ExtResource("5_nv2pl")]
-visible = false
 layout_mode = 2
 theme_override_constants/margin_left = 32
 theme_override_constants/margin_top = 0

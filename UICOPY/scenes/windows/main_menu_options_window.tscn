@@ -5,6 +5,8 @@
 [ext_resource type="PackedScene" uid="uid://wyg20wvsg5p1" path="res://UICOPY/scenes/menus/options_menu/master_options_menu_with_tabs.tscn" id="2_ffnov"]
 [ext_resource type="Script" uid="uid://1nf36h0gms3q" path="res://addons/maaacks_menus_template/base/nodes/utilities/capture_focus.gd" id="4_4fkkm"]
 [ext_resource type="PackedScene" uid="uid://onp0ebxn1ify" path="res://UICOPY/scenes/windows/input_prompt_margin.tscn" id="4_dwrxv"]
+[ext_resource type="Texture2D" uid="uid://cxdo34r31ubrc" path="res://assets/__not_ours_dontship/Xbox Series/XboxSeriesX_LB.png" id="6_vcrgx"]
+[ext_resource type="Texture2D" uid="uid://1ayujx2kfkpk" path="res://assets/__not_ours_dontship/Xbox Series/XboxSeriesX_RB.png" id="7_qgfo3"]
 
 [node name="MainMenuOptionsOverlaidWindow" type="PanelContainer" unique_id=1787637973]
 anchors_preset = 15
@@ -27,9 +29,34 @@ title_visible = false
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_constants/margin_left = 19
-theme_override_constants/margin_top = 8
+theme_override_constants/margin_top = 0
 theme_override_constants/margin_right = 18
 theme_override_constants/margin_bottom = 8
+
+[node name="TabInputPromptMargin" type="MarginContainer" parent="ContentContainer" unique_id=1593479768]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_constants/margin_left = 200
+theme_override_constants/margin_right = 200
+
+[node name="TextureRect" type="TextureRect" parent="ContentContainer/TabInputPromptMargin" unique_id=771505683]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+texture = ExtResource("6_vcrgx")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="TextureRect2" type="TextureRect" parent="ContentContainer/TabInputPromptMargin" unique_id=951848994]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 4
+texture = ExtResource("7_qgfo3")
+expand_mode = 1
+stretch_mode = 5
 
 [node name="BoxContainer" type="BoxContainer" parent="ContentContainer" unique_id=394030069]
 layout_mode = 2
@@ -63,8 +90,7 @@ layout_mode = 2
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 3
-theme_override_constants/margin_left = 32
-theme_override_constants/margin_right = 32
+theme_override_constants/margin_bottom = 20
 
 [node name="DescriptionLabel" type="RichTextLabel" parent="ContentContainer/BoxContainer/BodyMargin" unique_id=617407155]
 unique_name_in_owner = true
