@@ -2,76 +2,12 @@
 
 [ext_resource type="PackedScene" uid="uid://6gdbfi0172ji" path="res://addons/maaacks_menus_template/base/nodes/windows/overlaid_window.tscn" id="1_07348"]
 [ext_resource type="Script" uid="uid://c6pmyo50c1tqy" path="res://addons/maaacks_menus_template/base/nodes/windows/overlaid_window_scene_container.gd" id="2_p673y"]
-[ext_resource type="Script" uid="uid://1nf36h0gms3q" path="res://addons/maaacks_menus_template/base/nodes/utilities/capture_focus.gd" id="3_0sfys"]
 
 [node name="OverlaidWindowSceneContainer" unique_id=232665413 instance=ExtResource("1_07348")]
 script = ExtResource("2_p673y")
 packed_scene = null
 
-[node name="ContentContainer" type="MarginContainer" parent="." index="0" unique_id=1755486830]
-visible = false
-layout_mode = 2
-theme_override_constants/margin_left = 16
-theme_override_constants/margin_top = 16
-theme_override_constants/margin_right = 16
-theme_override_constants/margin_bottom = 16
-
-[node name="BoxContainer" type="BoxContainer" parent="ContentContainer" index="0" unique_id=394030069]
-layout_mode = 2
-vertical = true
-
-[node name="TitleMargin" type="MarginContainer" parent="ContentContainer/BoxContainer" index="0" unique_id=1262022916]
-layout_mode = 2
-theme_override_constants/margin_left = -14
-theme_override_constants/margin_top = -14
-theme_override_constants/margin_right = -14
-theme_override_constants/margin_bottom = 8
-
-[node name="BoxContainer" type="BoxContainer" parent="ContentContainer/BoxContainer/TitleMargin" index="0" unique_id=1788474031]
-layout_mode = 2
-theme_override_constants/separation = 0
-vertical = true
-
-[node name="TitleLabel" type="Label" parent="ContentContainer/BoxContainer/TitleMargin/BoxContainer" index="0" unique_id=1049966061]
-layout_mode = 2
-theme_override_font_sizes/font_size = 16
-text = "Menu"
-horizontal_alignment = 1
-
-[node name="HSeparator" type="HSeparator" parent="ContentContainer/BoxContainer/TitleMargin/BoxContainer" index="1" unique_id=33373596]
-layout_mode = 2
-
-[node name="BodyMargin" type="MarginContainer" parent="ContentContainer/BoxContainer" index="1" unique_id=590613964]
-layout_mode = 2
-size_flags_vertical = 3
-
-[node name="DescriptionLabel" type="RichTextLabel" parent="ContentContainer/BoxContainer/BodyMargin" index="0" unique_id=617407155]
-layout_mode = 2
-bbcode_enabled = true
-fit_content = true
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="SceneContainer" type="MarginContainer" parent="ContentContainer/BoxContainer/BodyMargin" index="1" unique_id=1464754606]
+[node name="SceneContainer" type="MarginContainer" parent="ContentContainer/BoxContainer/BodyMargin" parent_id_path=PackedInt32Array(590613964) index="1" unique_id=1464754606]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 3
-
-[node name="MenuButtonsMargin" type="MarginContainer" parent="ContentContainer/BoxContainer" index="2" unique_id=1413292752]
-layout_mode = 2
-theme_override_constants/margin_top = 8
-
-[node name="MenuButtons" type="BoxContainer" parent="ContentContainer/BoxContainer/MenuButtonsMargin" index="0" unique_id=1371114575]
-custom_minimum_size = Vector2(128, 0)
-layout_mode = 2
-size_flags_vertical = 3
-theme_override_constants/separation = 16
-alignment = 1
-vertical = true
-script = ExtResource("3_0sfys")
-
-[node name="CloseButton" type="Button" parent="ContentContainer/BoxContainer/MenuButtonsMargin/MenuButtons" index="0" unique_id=314526102]
-layout_mode = 2
-text = "Close"
-
-[connection signal="pressed" from="ContentContainer/BoxContainer/MenuButtonsMargin/MenuButtons/CloseButton" to="." method="_on_close_button_pressed"]

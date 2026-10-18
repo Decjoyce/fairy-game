@@ -3,9 +3,9 @@
 [ext_resource type="Texture2D" uid="uid://cqsisturdjudn" path="res://assets/comic/frame_005.png" id="1_8jb7e"]
 [ext_resource type="Theme" uid="uid://4rqtecgji27t" path="res://scenes/_levels/menus/main_menu/Main_Menu_UI_NEW/UI_themes/customised_brush_theme.tres" id="1_towvs"]
 [ext_resource type="Script" uid="uid://nf8r0kp6gvx5" path="res://scenes/_levels/Final_Puzzles/ENDING_SCENE/the_end_scene.gd" id="2_m2cbw"]
+[ext_resource type="Texture2D" uid="uid://bq13iqrm63evk" path="res://scenes/_levels/menus/main_menu/Main_Menu_UI_NEW/UI_themes/ui_art/title_colour.png" id="2_wleya"]
 [ext_resource type="Texture2D" uid="uid://cy4dgo657l07i" path="res://assets/comic/frame_013.png" id="2_xab64"]
 [ext_resource type="AudioStream" uid="uid://t6istygx1c3b" path="res://assets/audio/music/music_ambience_002.wav" id="3_muhwy"]
-[ext_resource type="Texture2D" uid="uid://b130ydwvscbfr" path="res://assets/ui/new_redesigned_ui/new_gametitle.png" id="4_muhwy"]
 [ext_resource type="PackedScene" uid="uid://bagraegk311h0" path="res://addons/maaacks_menus_template/examples/scenes/end_credits/end_credits.tscn" id="6_m2cbw"]
 
 [sub_resource type="Gradient" id="Gradient_xab64"]
@@ -486,9 +486,7 @@ grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(1e-05, 1e-05)
 pivot_offset_ratio = Vector2(0.5, 0.5)
-texture = ExtResource("4_muhwy")
-expand_mode = 1
-stretch_mode = 5
+texture = ExtResource("2_wleya")
 metadata/_edit_use_anchors_ = true
 
 [node name="Credits" type="Control" parent="." unique_id=588308836]
@@ -549,8 +547,6 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("2_xab64")
-expand_mode = 1
-stretch_mode = 5
 
 [node name="Baby" type="TextureRect" parent="PostCreditSection" unique_id=1375804340]
 layout_mode = 1
@@ -560,8 +556,6 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("1_8jb7e")
-expand_mode = 1
-stretch_mode = 5
 
 [node name="Fade_In" type="ColorRect" parent="." unique_id=1643278380]
 modulate = Color(0, 0, 0, 1)
