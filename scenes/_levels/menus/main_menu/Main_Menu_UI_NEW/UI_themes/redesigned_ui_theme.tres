@@ -54,13 +54,16 @@ modulate_color = Color(0.691604, 0.5983299, 0.6189915, 1)
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_mgnb0"]
 
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_qyvi8"]
+
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_edsg5"]
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_crop8"]
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_g5ljo"]
+texture = ExtResource("3_yi4f8")
+texture_margin_left = 10.0
+texture_margin_right = 10.0
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ttm6m"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_0vxx0"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_qaxnk"]
 texture = ExtResource("8_wv26j")
@@ -151,18 +154,16 @@ expand_margin_bottom = 5.0
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_jdqk5"]
 texture = ExtResource("18_yi4f8")
-texture_margin_left = 10.0
-texture_margin_top = 10.0
-texture_margin_right = 10.0
-texture_margin_bottom = 10.0
+texture_margin_left = 5.0
+texture_margin_top = 5.0
+texture_margin_right = 5.0
+texture_margin_bottom = 5.0
 draw_center = false
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_sjcn1"]
 texture = ExtResource("19_qyvi8")
-texture_margin_left = 10.0
-texture_margin_top = 10.0
-texture_margin_right = 10.0
-texture_margin_bottom = 10.0
+texture_margin_left = 5.0
+texture_margin_right = 5.0
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_d54k5"]
 texture = ExtResource("19_0iqwb")
@@ -209,11 +210,12 @@ CheckBox/styles/normal = SubResource("StyleBoxEmpty_35qlc")
 CheckBox/styles/pressed = SubResource("StyleBoxEmpty_mgnb0")
 CheckButton/constants/icon_max_width = 54
 CheckButton/icons/checked = ExtResource("4_qyvi8")
+CheckButton/icons/icon = SubResource("PlaceholderTexture2D_qyvi8")
 CheckButton/icons/unchecked = ExtResource("5_gyk8x")
 CheckButton/styles/disabled = SubResource("StyleBoxEmpty_edsg5")
-CheckButton/styles/hover = SubResource("StyleBoxEmpty_crop8")
+CheckButton/styles/hover = SubResource("StyleBoxTexture_g5ljo")
 CheckButton/styles/hover_pressed = SubResource("StyleBoxEmpty_ttm6m")
-CheckButton/styles/pressed = SubResource("StyleBoxEmpty_0vxx0")
+CheckButton/styles/pressed = SubResource("StyleBoxEmpty_ttm6m")
 HSlider/constants/center_grabber = 1
 HSlider/constants/grabber_offset = -3
 HSlider/constants/tick_offset = 5
@@ -225,6 +227,7 @@ HSlider/styles/grabber_area_highlight = SubResource("StyleBoxTexture_qaxnk")
 HSlider/styles/slider = SubResource("StyleBoxTexture_eyvm1")
 Label/colors/font_color = Color(0.023529412, 0.023529412, 0.023529412, 1)
 Label/font_sizes/font_size = 32
+LineEdit/colors/font_color = Color(0.875, 0.875, 0.875, 1)
 LineEdit/font_sizes/font_size = 32
 LineEdit/styles/focus = SubResource("StyleBoxTexture_n6eud")
 LineEdit/styles/normal = SubResource("StyleBoxTexture_n6eud")
@@ -242,7 +245,7 @@ OptionButton/styles/normal = SubResource("StyleBoxTexture_70hm5")
 OptionButton/styles/pressed = SubResource("StyleBoxTexture_qyvi8")
 Panel/styles/panel = SubResource("StyleBoxTexture_rholg")
 PanelContainer/styles/panel = SubResource("StyleBoxTexture_prdxi")
-Pause_Panel/base_type = &"Panel"
+Pause_Panel/base_type = &"PanelContainer"
 Pause_Panel/styles/panel = SubResource("StyleBoxTexture_07ql7")
 PopupMenu/colors/font_color = Color(0.15686275, 0.15686275, 0.15686275, 1)
 PopupMenu/colors/font_hover_color = Color(0.9098039, 0.9098039, 0.9098039, 1)
