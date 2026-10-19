@@ -212,7 +212,7 @@ data = {
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
 mesh_library = ExtResource("4_r0k5g")
 data = {
-"cells": PackedInt32Array(2, 0, 1441794, 1, 0, 1441795, 1, 65535, 1048579, 0, 65535, 1441795, 0, 65534, 655362, 0, 65533, 655362, 0, 65532, 655362, 0, 65531, 655362)
+"cells": PackedInt32Array(2, 0, 1441794, 1, 0, 1441795, 1, 65535, 1048579, 0, 65535, 1441795, 0, 65534, 655362, 0, 65533, 655362, 0, 65532, 655362, 0, 65531, 655362, 0, 65525, 2, 0, 65524, 2)
 }
 metadata/_editor_floor_ = Vector3(0, 0, 0)
 
@@ -220,12 +220,21 @@ metadata/_editor_floor_ = Vector3(0, 0, 0)
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -4.98333, 0, -15)
 
 [node name="BB_PP_1" type="Node3D" parent="Bally_1_PatrolPoints" unique_id=1338408777]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -6.9999995)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -9)
+
+[node name="BB_PP_2" type="Node3D" parent="Bally_1_PatrolPoints" unique_id=156579010]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, -9)
+
+[node name="BB_PP_3" type="Node3D" parent="Bally_1_PatrolPoints" unique_id=1819434784]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, -3)
+
+[node name="BB_PP_4" type="Node3D" parent="Bally_1_PatrolPoints" unique_id=1171748018]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2.9999998)
 
 [node name="Ballybog" parent="." unique_id=1712475425 node_paths=PackedStringArray("grid_map", "patrol_points") instance=ExtResource("3_nfw6c")]
 transform = Transform3D(8.940697e-08, 0, -1, 0, 1, 0, 1, 0, 8.940697e-08, -5, 0, -15)
 grid_map = NodePath("../GridMapPathFinding2")
-patrol_points = [NodePath("../Bally_1_PatrolPoints/BB_PP_1")]
+patrol_points = [NodePath("../Bally_1_PatrolPoints/BB_PP_4"), NodePath("../Bally_1_PatrolPoints/BB_PP_1"), NodePath("../Bally_1_PatrolPoints/BB_PP_2"), NodePath("../Bally_1_PatrolPoints/BB_PP_3")]
 patrol_loop_mode = 1
 metadata/lock_uid = false
 metadata/uid = "80376abe-116c-4383-a2cb-3207494796ca"
@@ -361,26 +370,26 @@ trig_once = true
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Urn_Area/EnemyEnableTrig/Area3D" unique_id=218991855]
 shape = SubResource("SphereShape3D_iw7gl")
 
-[node name="GateAreaDoor_Trigger" parent="Urn_Area" unique_id=917204587 instance=ExtResource("5_cvgf4")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 1, -11)
+[node name="GateAreaDoor_Trigger_Enter" parent="Urn_Area" unique_id=917204587 instance=ExtResource("5_cvgf4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 1, -12)
 trig_once = true
 
-[node name="Area3D" type="Area3D" parent="Urn_Area/GateAreaDoor_Trigger" unique_id=1986144694]
+[node name="Area3D" type="Area3D" parent="Urn_Area/GateAreaDoor_Trigger_Enter" unique_id=1986144694]
 collision_layer = 0
 monitorable = false
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Urn_Area/GateAreaDoor_Trigger/Area3D" unique_id=410955833]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Urn_Area/GateAreaDoor_Trigger_Enter/Area3D" unique_id=410955833]
 shape = SubResource("SphereShape3D_qofka")
 
-[node name="GateAreaDoor_Trigger2" parent="Urn_Area" unique_id=389520212 instance=ExtResource("5_cvgf4")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 1, -21)
+[node name="GateAreaDoor_Trigger_Exit" parent="Urn_Area" unique_id=389520212 instance=ExtResource("5_cvgf4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 1, -22)
 trig_once = true
 
-[node name="Area3D" type="Area3D" parent="Urn_Area/GateAreaDoor_Trigger2" unique_id=864603887]
+[node name="Area3D" type="Area3D" parent="Urn_Area/GateAreaDoor_Trigger_Exit" unique_id=864603887]
 collision_layer = 0
 monitorable = false
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Urn_Area/GateAreaDoor_Trigger2/Area3D" unique_id=532757362]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Urn_Area/GateAreaDoor_Trigger_Exit/Area3D" unique_id=532757362]
 shape = SubResource("SphereShape3D_qofka")
 
 [node name="PressurePlateLight" parent="Urn_Area" unique_id=309180978 instance=ExtResource("19_0ox1x")]
@@ -477,6 +486,9 @@ metadata/uid = "418ad1e3-5f04-415c-81f8-d1fb893ce7dc"
 metadata/lock_uid = true
 metadata/date_generated = "2026-10-02T15:37:58"
 
+[node name="Exit_Gate" parent="Urn_Area" unique_id=2077487765 instance=ExtResource("5_nfw6c")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 2, -20)
+
 [node name="Crouching_Part" type="Node3D" parent="." unique_id=268499608]
 
 [node name="BallyBog_Trigger" parent="." unique_id=1192877948 instance=ExtResource("5_cvgf4")]
@@ -514,7 +526,7 @@ size = Vector3(2.0447266, 0.005, 0.15)
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -0.02, 0, -3)
 
 [node name="BB_Line4" parent="." unique_id=1357258337 instance=ExtResource("28_r0k5g")]
-transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -2.0145192, -5.9604645e-08, -8.981891)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.9854808, -5.9604645e-08, -19.981892)
 size = Vector3(1.9, 0.005, 0.1942627)
 
 [node name="Ambiente" type="AudioStreamPlayer3D" parent="." unique_id=1879909389]
@@ -545,13 +557,14 @@ player"
 [connection signal="area_entered" from="Urn_Area/Ballybog_Secret_Door/TPChecker_player" to="Urn_Area/Ballybog_Secret_Door" method="tp_checker_entered"]
 [connection signal="area_entered" from="Urn_Area/EnemyEnableTrig/Area3D" to="Urn_Area/EnemyEnableTrig" method="_player_entered"]
 [connection signal="area_exited" from="Urn_Area/EnemyEnableTrig/Area3D" to="Urn_Area/EnemyEnableTrig" method="_player_exited"]
-[connection signal="on_activated" from="Urn_Area/GateAreaDoor_Trigger" to="Urn_Area/Ballybog_Secret_Door" method="open_gate"]
-[connection signal="on_activated" from="Urn_Area/GateAreaDoor_Trigger" to="Urn_Area/First_Gate" method="close_gate"]
-[connection signal="area_entered" from="Urn_Area/GateAreaDoor_Trigger/Area3D" to="Urn_Area/GateAreaDoor_Trigger" method="_player_entered"]
-[connection signal="area_exited" from="Urn_Area/GateAreaDoor_Trigger/Area3D" to="Urn_Area/GateAreaDoor_Trigger" method="_player_exited"]
-[connection signal="on_activated" from="Urn_Area/GateAreaDoor_Trigger2" to="Ballybog" method="disable_me"]
-[connection signal="area_entered" from="Urn_Area/GateAreaDoor_Trigger2/Area3D" to="Urn_Area/GateAreaDoor_Trigger2" method="_player_entered"]
-[connection signal="area_exited" from="Urn_Area/GateAreaDoor_Trigger2/Area3D" to="Urn_Area/GateAreaDoor_Trigger2" method="_player_exited"]
+[connection signal="on_activated" from="Urn_Area/GateAreaDoor_Trigger_Enter" to="Urn_Area/Ballybog_Secret_Door" method="open_gate"]
+[connection signal="on_activated" from="Urn_Area/GateAreaDoor_Trigger_Enter" to="Urn_Area/First_Gate" method="close_gate"]
+[connection signal="area_entered" from="Urn_Area/GateAreaDoor_Trigger_Enter/Area3D" to="Urn_Area/GateAreaDoor_Trigger_Enter" method="_player_entered"]
+[connection signal="area_exited" from="Urn_Area/GateAreaDoor_Trigger_Enter/Area3D" to="Urn_Area/GateAreaDoor_Trigger_Enter" method="_player_exited"]
+[connection signal="on_activated" from="Urn_Area/GateAreaDoor_Trigger_Exit" to="Ballybog" method="disable_me"]
+[connection signal="on_activated" from="Urn_Area/GateAreaDoor_Trigger_Exit" to="Urn_Area/Exit_Gate" method="close_gate"]
+[connection signal="area_entered" from="Urn_Area/GateAreaDoor_Trigger_Exit/Area3D" to="Urn_Area/GateAreaDoor_Trigger_Exit" method="_player_entered"]
+[connection signal="area_exited" from="Urn_Area/GateAreaDoor_Trigger_Exit/Area3D" to="Urn_Area/GateAreaDoor_Trigger_Exit" method="_player_exited"]
 [connection signal="on_activated" from="Urn_Area/PressurePlateLight" to="Urn_Area/First_Gate" method="open_gate"]
 [connection signal="on_deactivated" from="Urn_Area/PressurePlateLight" to="Urn_Area/PressurePlateLight/indicator_visenabler" method="disable_obj"]
 [connection signal="on_activated" from="Urn_Area/ItemReceiver" to="Urn_Area/Main_Door" method="open_door"]
