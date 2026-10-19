@@ -403,6 +403,9 @@ func crouch(bypass_floor_detection: bool = false, emit_sig: bool = true) -> void
 	speed = SPEED_CROUCH
 	player.global_position.y = floor_detector.get_collision_point().y + player.current_player_height
 	roof_detector.enabled = true
+	
+	#crouch UI stuff
+	interact.crouched_UI_toggle(true)
 
 func uncrouch(emit_sig: bool = true) -> void:
 	if !floor_detector.is_colliding(): return
@@ -421,6 +424,9 @@ func uncrouch(emit_sig: bool = true) -> void:
 	player.global_position.y = floor_detector.get_collision_point().y + player.current_player_height
 	
 	roof_detector.enabled = false
+	
+	#crouch UI stuff
+	interact.crouched_UI_toggle(false)
 
 # ↑ Crouching Stuff ↑
 # --------------------------------------------------------------------------------------------------
