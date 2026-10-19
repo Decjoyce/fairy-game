@@ -1,0 +1,43 @@
+[gd_scene load_steps=7 format=3 uid="uid://c2muxfvby0ojx"]
+
+[ext_resource type="Script" uid="uid://mjv5xwl3wbdm" path="res://scenes/enemy/combat/enemy_combat.gd" id="1_2wgg8"]
+[ext_resource type="Script" uid="uid://c27axnnaakeuo" path="res://scenes/combat/combathand_attack.gd" id="2_2wgg8"]
+[ext_resource type="Script" uid="uid://cjs7vohjf5dsq" path="res://scenes/enemy/combat/enemy_combathand.gd" id="2_yr33c"]
+[ext_resource type="Script" uid="uid://cjssruwuxjia0" path="res://scenes/combat/attack_sequence.gd" id="3_jaarr"]
+[ext_resource type="Script" uid="uid://446bgqyk22na" path="res://scenes/combat/stance.gd" id="4_a35si"]
+[ext_resource type="Resource" uid="uid://bo6jynbmofv6l" path="res://scenes/enemy/combat/attacks/attckseq_bb_test.tres" id="4_s2c0g"]
+
+[node name="Combat" type="Node" node_paths=PackedStringArray("combat_hands")]
+script = ExtResource("1_2wgg8")
+combat_hands = [NodePath("CombatHand_Left")]
+
+[node name="CombatHand_Left" type="Node" parent="."]
+script = ExtResource("2_yr33c")
+attack_sequences = Array[ExtResource("3_jaarr")]([ExtResource("4_s2c0g")])
+current_slot = 1
+restricted_slots = "11111111"
+metadata/_custom_type_script = "uid://cjs7vohjf5dsq"
+
+[node name="Attack" type="Node" parent="CombatHand_Left"]
+script = ExtResource("2_2wgg8")
+metadata/_custom_type_script = "uid://c27axnnaakeuo"
+
+[node name="Timer_Telegraph" type="Timer" parent="CombatHand_Left/Attack"]
+one_shot = true
+
+[node name="Timer_Attack" type="Timer" parent="CombatHand_Left/Attack"]
+one_shot = true
+
+[node name="Timer_Recover" type="Timer" parent="CombatHand_Left/Attack"]
+one_shot = true
+
+[node name="Timer_Stagger" type="Timer" parent="CombatHand_Left"]
+
+[node name="Stance" type="Node" parent="."]
+script = ExtResource("4_a35si")
+metadata/_custom_type_script = "uid://446bgqyk22na"
+
+[connection signal="timeout" from="CombatHand_Left/Attack/Timer_Telegraph" to="CombatHand_Left/Attack" method="end_telegraph"]
+[connection signal="timeout" from="CombatHand_Left/Attack/Timer_Attack" to="CombatHand_Left/Attack" method="end_attack"]
+[connection signal="timeout" from="CombatHand_Left/Attack/Timer_Recover" to="CombatHand_Left/Attack" method="end_recover"]
+[connection signal="timeout" from="CombatHand_Left/Timer_Stagger" to="CombatHand_Left" method="end_staggered"]

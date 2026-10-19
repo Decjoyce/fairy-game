@@ -1,0 +1,59 @@
+[gd_scene format=3 uid="uid://1imsfywompor"]
+
+[ext_resource type="Script" uid="uid://j5nar7xricxy" path="res://zzz_GARBAGE/obs_Stonepile_itmspawner/stonepile_item_spawner.gd" id="1_0kl3r"]
+[ext_resource type="Material" uid="uid://dgrldudl0bdhu" path="res://assets/models/cairn/Props/Rockpile/Rock_pile.tres" id="1_5te3v"]
+[ext_resource type="ArrayMesh" uid="uid://bboxjdwpohtg0" path="res://assets/models/cairn/Props/Rockpile/Rock_pile.obj" id="1_dyaht"]
+[ext_resource type="Script" uid="uid://dpj75tckiwmsm" path="res://scenes/interactions/_receivers/wip__item_mover/itm_mover.gd" id="2_5te3v"]
+[ext_resource type="PackedScene" uid="uid://clvus6c43ipdy" path="res://scenes/interactions/interactables/items/all_items/misc/item_stone.tscn" id="3_0kl3r"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_yyop1"]
+radius = 0.3
+height = 0.6
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_0kl3r"]
+size = Vector3(0.5, 0.041, 0.5)
+
+[node name="Stonepile_ItemSpawner" type="Node3D" unique_id=1521572728]
+script = ExtResource("1_0kl3r")
+
+[node name="Area3D" type="Area3D" parent="." unique_id=232778976]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" unique_id=1608364609]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.025000028, 0)
+shape = SubResource("CapsuleShape3D_yyop1")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=522562756]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, -0.1, 0)
+material_override = ExtResource("1_5te3v")
+mesh = ExtResource("1_dyaht")
+
+[node name="ItemMover" type="Node" parent="." unique_id=555363572 node_paths=PackedStringArray("itms_2_move", "positions_to_move_to", "alt_positions_to_move_to")]
+script = ExtResource("2_5te3v")
+itms_2_move = [NodePath("../stonepile_stone_a"), NodePath("../stonepile_stone_b")]
+positions_to_move_to = [NodePath("../out_pos")]
+alt_positions_to_move_to = [NodePath("../hidden_pos")]
+metadata/_custom_type_script = "uid://dpj75tckiwmsm"
+
+[node name="stonepile_stone_a" parent="." unique_id=234370081 instance=ExtResource("3_0kl3r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0.1492803, 0)
+
+[node name="stonepile_stone_b" parent="." unique_id=574059820 instance=ExtResource("3_0kl3r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.18958393, 0)
+freeze = true
+
+[node name="out_pos" type="Node3D" parent="." unique_id=140487257]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0.1492803, 0)
+
+[node name="hidden_pos" type="Node3D" parent="." unique_id=2108110904]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.18958393, 0)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=1118358378]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.31993812, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" unique_id=1717288146]
+shape = SubResource("BoxShape3D_0kl3r")
+
+[connection signal="on_begin_interact" from="stonepile_stone_a" to="." method="on_taken_stone"]
+[connection signal="on_end_interact" from="stonepile_stone_a" to="." method="on_drop_stone"]
+[connection signal="on_begin_interact" from="stonepile_stone_b" to="." method="on_taken_stone"]
+[connection signal="on_end_interact" from="stonepile_stone_b" to="." method="on_drop_stone"]

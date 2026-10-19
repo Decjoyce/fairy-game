@@ -1,0 +1,30 @@
+[gd_scene load_steps=4 format=3 uid="uid://gte6h5vrv3rd"]
+
+[ext_resource type="Script" uid="uid://bn3vetyr18j2y" path="res://scenes/combat/combat_hand.gd" id="1_8aev0"]
+[ext_resource type="Script" uid="uid://c27axnnaakeuo" path="res://scenes/combat/combathand_attack.gd" id="2_f2i0m"]
+[ext_resource type="Resource" uid="uid://di84gt54hi01c" path="res://scenes/combat/test_attack_data.tres" id="3_evm7x"]
+
+[node name="Combat" type="Node"]
+
+[node name="CombatHand_Left" type="Node" parent="."]
+script = ExtResource("1_8aev0")
+
+[node name="CombatHand_Attack" type="Node" parent="CombatHand_Left"]
+script = ExtResource("2_f2i0m")
+test_data = ExtResource("3_evm7x")
+metadata/_custom_type_script = "uid://c27axnnaakeuo"
+
+[node name="Timer_Telegraph" type="Timer" parent="CombatHand_Left/CombatHand_Attack"]
+one_shot = true
+
+[node name="Timer_Attack" type="Timer" parent="CombatHand_Left/CombatHand_Attack"]
+one_shot = true
+
+[node name="Timer_Recover" type="Timer" parent="CombatHand_Left/CombatHand_Attack"]
+one_shot = true
+
+[node name="Timer_Stagger" type="Timer" parent="CombatHand_Left"]
+
+[connection signal="timeout" from="CombatHand_Left/CombatHand_Attack/Timer_Telegraph" to="CombatHand_Left/CombatHand_Attack" method="end_telegraph"]
+[connection signal="timeout" from="CombatHand_Left/CombatHand_Attack/Timer_Attack" to="CombatHand_Left/CombatHand_Attack" method="end_attack"]
+[connection signal="timeout" from="CombatHand_Left/CombatHand_Attack/Timer_Recover" to="CombatHand_Left/CombatHand_Attack" method="end_recover"]
