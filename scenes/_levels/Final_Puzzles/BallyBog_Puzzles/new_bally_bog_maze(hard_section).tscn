@@ -1,6 +1,5 @@
 [gd_scene format=4 uid="uid://cdxx7mclyl0e2"]
 
-[ext_resource type="PackedScene" uid="uid://bq86osdembn58" path="res://scenes/_player/_player_test.tscn" id="1_7he20"]
 [ext_resource type="Script" uid="uid://bul4myvyhnpjc" path="res://scripts/saving/uid_generator.gd" id="2_06yte"]
 [ext_resource type="MeshLibrary" uid="uid://bhdjk8h6chf0o" path="res://scenes/_levels/_palettes/cairn/mossy/meshlibrary_mossy_cairn.meshlib" id="3_q4so3"]
 [ext_resource type="PackedScene" uid="uid://oqosqgdkwcrb" path="res://scenes/interactions/_receivers/door/door_new.tscn" id="4_jn06b"]
@@ -46,42 +45,6 @@
 [ext_resource type="PackedScene" uid="uid://br35er4x4b6av" path="res://scenes/interactions/_triggers/torch_sconce/torch_sconce_unlit.tscn" id="40_381eb"]
 [ext_resource type="Material" uid="uid://cw6t4hgt8cs61" path="res://assets/models/cairn/Props/Door_Wall/Walldoor.tres" id="40_bod5u"]
 [ext_resource type="Material" uid="uid://c6lv8pfrvktb8" path="res://assets/models/cairn/Hall_BigRoof/Wall.tres" id="41_4itte"]
-
-[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_wuei3"]
-sky_horizon_color = Color(0, 0.37292683, 0.8185948, 1)
-sky_curve = 0.23537512
-ground_horizon_color = Color(0.3529412, 0.30588236, 0.2509804, 1)
-ground_curve = 0.060628746
-
-[sub_resource type="Sky" id="Sky_86onw"]
-sky_material = SubResource("ProceduralSkyMaterial_wuei3")
-
-[sub_resource type="Environment" id="Environment_r2lcc"]
-background_mode = 1
-background_color = Color(0.21568628, 0.2, 0.20784314, 1)
-sky = SubResource("Sky_86onw")
-ambient_light_source = 2
-ambient_light_color = Color(0, 0.046818696, 0.12593761, 1)
-ambient_light_energy = 6.0
-tonemap_mode = 4
-tonemap_exposure = 2.0
-ssao_enabled = true
-ssao_radius = 0.05
-ssao_intensity = 1.0
-sdfgi_read_sky_light = false
-sdfgi_bounce_feedback = 1.99
-sdfgi_cascades = 8
-sdfgi_min_cell_size = 19.315624
-sdfgi_energy = 4.035
-sdfgi_normal_bias = 6.215
-sdfgi_probe_bias = 2.94
-glow_enabled = true
-glow_intensity = 0.2
-glow_strength = 0.4
-volumetric_fog_enabled = true
-volumetric_fog_density = 0.025
-volumetric_fog_albedo = Color(0.74509805, 0.34509805, 0, 1)
-volumetric_fog_emission = Color(0.117735185, 0.20947376, 0.3003329, 1)
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_xy4ik"]
 radius = 0.15350685
@@ -225,9 +188,6 @@ debug_start_cell = Vector3i(-3, 2, -7)
 debug_end_cell = Vector3i(0, 2, 1)
 metadata/_editor_floor_ = Vector3(0, 2, 0)
 
-[node name="player_test" parent="." unique_id=725727541 instance=ExtResource("1_7he20")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 1, 0)
-
 [node name="UID_Generator" type="Node" parent="." unique_id=1838124892]
 script = ExtResource("2_06yte")
 metadata/_custom_type_script = "uid://bul4myvyhnpjc"
@@ -245,17 +205,6 @@ transform = Transform3D(-0.944665, 0.32516113, -0.04333894, -0.039370164, 0.0187
 visible = false
 light_color = Color(0.15849423, 0.16554698, 0.18437496, 1)
 shadow_enabled = true
-
-[node name="Environment2" type="Node3D" parent="." unique_id=526187310]
-
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="Environment2" unique_id=1323762815]
-transform = Transform3D(-0.944665, 0.32516113, -0.04333894, -0.039370164, 0.018778611, 0.99904823, 0.32566544, 0.94547224, -0.0049378504, 3.5, 12.124357, -6.0621777)
-visible = false
-light_color = Color(0.15849423, 0.16554698, 0.18437496, 1)
-shadow_enabled = true
-
-[node name="WorldEnvironment2" type="WorldEnvironment" parent="Environment2" unique_id=612952307]
-environment = SubResource("Environment_r2lcc")
 
 [node name="Areas" type="Node3D" parent="." unique_id=374822583]
 

@@ -2,7 +2,6 @@
 
 [ext_resource type="MeshLibrary" uid="uid://bu208a8l5866i" path="res://scenes/_levels/_palettes/cairn/meshlibrary_cairn.tres" id="1_56l6l"]
 [ext_resource type="Script" uid="uid://dovihf7h5o4po" path="res://scripts/da_levels.gd" id="1_ea6e4"]
-[ext_resource type="PackedScene" uid="uid://bq86osdembn58" path="res://scenes/_player/_player_test.tscn" id="2_ogl71"]
 [ext_resource type="PackedScene" uid="uid://xuo5buj0odhi" path="res://scenes/interactions/_triggers/torch_sconce/torch_sconce_lit.tscn" id="3_pvb4u"]
 [ext_resource type="PackedScene" uid="uid://dt13fur6twjep" path="res://scenes/interactions/_receivers/gate/gate.tscn" id="4_elh88"]
 [ext_resource type="PackedScene" uid="uid://qu5rxgbydmet" path="res://scenes/interactions/_triggers/button/button.tscn" id="5_ogl71"]
@@ -39,7 +38,7 @@
 [ext_resource type="Script" uid="uid://cb04xjhu5ksor" path="res://scenes/interactions/_receivers/enabler_disabler_v1/visibility_enabler.gd" id="33_227be"]
 [ext_resource type="PackedScene" uid="uid://b1ug372yre60k" path="res://scenes/_levels/Final_Puzzles/Tutorials/throwing_puzzle_new.tscn" id="33_ughci"]
 [ext_resource type="Script" uid="uid://bul4myvyhnpjc" path="res://scripts/saving/uid_generator.gd" id="34_1qgam"]
-[ext_resource type="PackedScene" uid="uid://06nlxsaqyh8q" path="res://scenes/interactions/interactables/items/all_items/breakables/funny_mike_object.tscn" id="34_nyk0u"]
+[ext_resource type="Script" uid="uid://d3averdt6fuqm" path="res://scenes/interactions/interactables/items/item_types/itemtype_torch.gd" id="34_nyk0u"]
 [ext_resource type="Script" uid="uid://s5cfdf85lm5g" path="res://scenes/interactions/interactables/items/grabbable_item.gd" id="40_h6q0i"]
 [ext_resource type="Texture2D" uid="uid://ce58r2n0vi63r" path="res://assets/sprites/item_sprites/urn_item.png" id="41_sc2t1"]
 [ext_resource type="AudioStream" uid="uid://dutddyikwuiut" path="res://assets/audio/sfx/combat/misc/hittingsound_shorter.wav" id="42_g531u"]
@@ -67,6 +66,9 @@ size = Vector3(0.1, 1.9, 1.6)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_kncr2"]
 size = Vector3(2, 2, 4.019397)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_nyk0u"]
+load_path = "res://.godot/imported/ui_linestroke.png-4802ad23796bd9be841b0278f03df734.ctex"
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_227be"]
 size = Vector3(8, 0.4650879, 13)
@@ -136,58 +138,48 @@ specific_item_to_drop = ExtResource("8_xl0u5")
 item_type = 4
 metadata/_custom_type_script = "uid://beaf3digx88d0"
 
-[sub_resource type="Resource" id="Resource_nyk0u"]
-script = ExtResource("7_0nxer")
-use_random_item = true
-specific_item_to_drop = ExtResource("34_nyk0u")
-item_type = 4
-metadata/_custom_type_script = "uid://beaf3digx88d0"
+[sub_resource type="Resource" id="Resource_itmas"]
+script = ExtResource("34_nyk0u")
+metadata/_custom_type_script = "uid://d3averdt6fuqm"
 
-[sub_resource type="Resource" id="Resource_bsnhk"]
+[sub_resource type="Resource" id="Resource_gyl80"]
 script = ExtResource("7_0nxer")
 use_random_item = true
 specific_item_to_drop = ExtResource("8_xl0u5")
 item_type = 4
 metadata/_custom_type_script = "uid://beaf3digx88d0"
 
+[sub_resource type="Resource" id="Resource_vxxbb"]
+script = ExtResource("7_0nxer")
+use_random_item = true
+specific_item_to_drop = ExtResource("8_xl0u5")
+item_type = 4
+metadata/_custom_type_script = "uid://beaf3digx88d0"
+
+[sub_resource type="Resource" id="Resource_5nqf6"]
+script = ExtResource("7_0nxer")
+use_random_item = true
+specific_item_to_drop = ExtResource("19_g531u")
+item_type = 4
+metadata/_custom_type_script = "uid://beaf3digx88d0"
+
+[sub_resource type="Resource" id="Resource_nyk0u"]
+script = ExtResource("7_0nxer")
+use_random_item = true
+specific_item_to_drop = ExtResource("19_g531u")
+item_type = 4
+metadata/_custom_type_script = "uid://beaf3digx88d0"
+
+[sub_resource type="Resource" id="Resource_cm8jj"]
+script = ExtResource("7_0nxer")
+metadata/_custom_type_script = "uid://beaf3digx88d0"
+
+[sub_resource type="Resource" id="Resource_2x1ae"]
+script = ExtResource("34_nyk0u")
+metadata/_custom_type_script = "uid://d3averdt6fuqm"
+
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_qbrer"]
 radius = 0.1
-
-[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_ogl71"]
-sky_horizon_color = Color(0, 0.37292683, 0.8185948, 1)
-sky_curve = 0.23537512
-ground_horizon_color = Color(0.3529412, 0.30588236, 0.2509804, 1)
-ground_curve = 0.060628746
-
-[sub_resource type="Sky" id="Sky_ynqbq"]
-sky_material = SubResource("ProceduralSkyMaterial_ogl71")
-
-[sub_resource type="Environment" id="Environment_6xiwt"]
-background_mode = 1
-background_color = Color(0.21568628, 0.2, 0.20784314, 1)
-sky = SubResource("Sky_ynqbq")
-ambient_light_source = 2
-ambient_light_color = Color(0, 0.046818696, 0.12593761, 1)
-ambient_light_energy = 6.0
-tonemap_mode = 4
-tonemap_exposure = 2.0
-ssao_enabled = true
-ssao_radius = 0.05
-ssao_intensity = 1.0
-sdfgi_read_sky_light = false
-sdfgi_bounce_feedback = 1.99
-sdfgi_cascades = 8
-sdfgi_min_cell_size = 19.315624
-sdfgi_energy = 4.035
-sdfgi_normal_bias = 6.215
-sdfgi_probe_bias = 2.94
-glow_enabled = true
-glow_intensity = 0.2
-glow_strength = 0.4
-volumetric_fog_enabled = true
-volumetric_fog_density = 0.025
-volumetric_fog_albedo = Color(0.74509805, 0.34509805, 0, 1)
-volumetric_fog_emission = Color(0.117735185, 0.20947376, 0.3003329, 1)
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_ogl71"]
 radius = 0.33564422
@@ -259,9 +251,6 @@ transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -4.7
 visible = false
 text = "falling urn here"
 
-[node name="player_test" parent="." unique_id=725727541 instance=ExtResource("2_ogl71")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0.89999986, 16.6)
-
 [node name="GridMap" type="GridMap" parent="." unique_id=977673662]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.03, 0)
 mesh_library = ExtResource("1_56l6l")
@@ -297,13 +286,11 @@ debug_color = Color(0, 0.6448386, 0.27909693, 0.41960785)
 [node name="CollisionEnabler_Disabler" parent="Tutorial_Area/ItemHeadZones/ItemNoPassZone_Second_PressurePlate_Room/StaticBody3D" unique_id=1624400774 node_paths=PackedStringArray("col") instance=ExtResource("22_itmas")]
 col = NodePath("../CollisionShape3D")
 
-[node name="BB_Line" parent="Tutorial_Area/ItemHeadZones/ItemNoPassZone_Second_PressurePlate_Room" unique_id=674068649 instance=ExtResource("8_kncr2")]
-transform = Transform3D(0.9999999, -1.7763564e-15, -1.4210855e-14, 1.7763564e-15, 0.9999999, 1.05879093e-22, 1.4210855e-14, 1.7763564e-15, 1, -0.12310219, -1.350053, 4.4455395)
-size = Vector3(2.5, 0.005, 0.2)
+[node name="BB_Line3" parent="Tutorial_Area/ItemHeadZones/ItemNoPassZone_Second_PressurePlate_Room" unique_id=674068649 instance=ExtResource("8_kncr2")]
+transform = Transform3D(-1, -3.5527128e-15, 8.742279e-08, -1.7763565e-15, 0.9999999, 4.9414954e-23, -8.742276e-08, 4.941493e-23, -0.9999999, -0.14310169, -1.5037469, 4.4455395)
 
-[node name="BB_Line2" parent="Tutorial_Area/ItemHeadZones/ItemNoPassZone_Second_PressurePlate_Room" unique_id=426071149 instance=ExtResource("8_kncr2")]
-transform = Transform3D(0.9999999, -1.7763564e-15, -1.4210855e-14, 1.7763564e-15, 0.9999999, 1.05879093e-22, 1.4210855e-14, 1.7763564e-15, 1, 0.1768961, -1.350053, -0.13589764)
-size = Vector3(2.5, 0.005, 0.2)
+[node name="BB_Line4" parent="Tutorial_Area/ItemHeadZones/ItemNoPassZone_Second_PressurePlate_Room" unique_id=1071740196 instance=ExtResource("8_kncr2")]
+transform = Transform3D(-1, -3.5527128e-15, 8.742279e-08, -1.7763565e-15, 0.9999999, 4.9414954e-23, -8.742276e-08, 4.941493e-23, -0.9999999, -0.14310169, -1.5037469, -0.15445805)
 
 [node name="No_Acess_Gate" parent="Tutorial_Area/ItemHeadZones" unique_id=634748136 instance=ExtResource("4_elh88")]
 transform = Transform3D(-4.371139e-08, -2.980232e-08, -1.0000001, 2.9802322e-08, 1.0000005, 1.7763568e-15, 1.0000002, 2.9802322e-08, -2.6846717e-08, 15.8, -2, -11)
@@ -333,13 +320,14 @@ debug_color = Color(0, 0.6448386, 0.27909693, 0.41960785)
 [node name="CollisionEnabler_Disabler" parent="Tutorial_Area/ItemHeadZones/ItemNoPassZone_Second_PressurePlate_Room2/StaticBody3D" unique_id=768060295 node_paths=PackedStringArray("col") instance=ExtResource("22_itmas")]
 col = NodePath("../CollisionShape3D")
 
-[node name="BB_Line" parent="Tutorial_Area/ItemHeadZones/ItemNoPassZone_Second_PressurePlate_Room2" unique_id=764360268 instance=ExtResource("8_kncr2")]
-transform = Transform3D(0.9999999, -1.7763564e-15, -1.4210855e-14, 1.7763564e-15, 0.9999999, 1.0587908e-22, 1.5987212e-14, 1.7763564e-15, 1, -0.023109436, -1.3500528, 3.913063)
-size = Vector3(2.5, 0.005, 0.2)
+[node name="BB_Line3" parent="Tutorial_Area/ItemHeadZones/ItemNoPassZone_Second_PressurePlate_Room2" unique_id=666341756 instance=ExtResource("8_kncr2")]
+transform = Transform3D(-0.9999999, -1.7763563e-15, 8.7422784e-08, -1.7763563e-15, 0.9999999, 1.5529402e-22, -8.742279e-08, 1.7763565e-15, -1, -0.043109417, -1.5520523, 3.913063)
+size = Vector3(1.9, 0.001, 0.15)
+texture_albedo = SubResource("CompressedTexture2D_nyk0u")
 
-[node name="BB_Line2" parent="Tutorial_Area/ItemHeadZones/ItemNoPassZone_Second_PressurePlate_Room2" unique_id=81815528 instance=ExtResource("8_kncr2")]
-transform = Transform3D(0.9999999, -1.7763564e-15, -1.4210855e-14, 1.7763564e-15, 0.9999999, 1.0587908e-22, 1.5987212e-14, 1.7763564e-15, 1, -0.023105621, -1.3500528, 0.07493973)
-size = Vector3(2.5, 0.005, 0.2)
+[node name="BB_Line4" parent="Tutorial_Area/ItemHeadZones/ItemNoPassZone_Second_PressurePlate_Room2" unique_id=1123006175 instance=ExtResource("8_kncr2")]
+transform = Transform3D(-0.9999999, -1.7763563e-15, 8.7422784e-08, -1.7763563e-15, 0.9999999, 1.5529402e-22, -8.742279e-08, 1.7763565e-15, -1, -0.04310894, -1.5520523, -2.086937)
+size = Vector3(1.9, 0.001, 0.15)
 
 [node name="No_Acess_Gate2" parent="Tutorial_Area/ItemHeadZones" unique_id=2077487765 instance=ExtResource("4_elh88")]
 transform = Transform3D(-4.371139e-08, -2.980232e-08, -1.0000001, 2.9802322e-08, 1.0000005, 1.7763568e-15, 1.0000002, 2.9802322e-08, -2.6846717e-08, 53.899998, -2, -5)
@@ -586,7 +574,7 @@ transform = Transform3D(3.4959998, 0, 0, 0, 3.4959998, 0, 0, 0, 3.4959998, 0.259
 transform = Transform3D(3.4959998, 0, 0, 0, 3.4959998, 0, 0, 0, 3.4959998, 3.2006645, 5.8186073, -7.352941)
 
 [node name="TorchSconce_Lit4" parent="Tutorial_Area/LastBit/Second_Crouch Point" unique_id=1517405374 instance=ExtResource("3_pvb4u")]
-transform = Transform3D(0.2553649, 6.330486e-08, -1.4482466, 1.4482466, -1.1162353e-08, 0.2553649, 1.1067742e-22, -1.4705882, -6.4281444e-08, 0.25948715, -1.7513307, 0)
+transform = Transform3D(0.2553649, 6.330486e-08, -1.4482466, 1.4482466, -1.1162353e-08, 0.2553649, 1.1067742e-22, -1.4705882, -6.4281444e-08, 0.25948715, -1.7513305, 1.4705882)
 
 [node name="Save_Tutorial" type="Node3D" parent="Tutorial_Area/LastBit" unique_id=2032179810]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21, 0, 0)
@@ -791,28 +779,28 @@ metadata/date_generated = "2026-04-29T22:33:48"
 
 [node name="Urn3" parent="Tutorial_Area/Items" unique_id=1376443271 instance=ExtResource("6_6xiwt")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15, -1.6540679, -15)
-item_type = SubResource("Resource_7acmg")
+item_type = SubResource("Resource_itmas")
 metadata/uid = "bda107f4-b0f2-4e96-981e-2c702f17d5bb"
 metadata/lock_uid = true
 metadata/date_generated = "2026-04-29T22:33:48"
 
 [node name="Urn8" parent="Tutorial_Area/Items" unique_id=1755524959 instance=ExtResource("6_6xiwt")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13, -1.6540679, -16)
-item_type = SubResource("Resource_7acmg")
+item_type = SubResource("Resource_gyl80")
 metadata/uid = "bda107f4-b0f2-4e96-981e-2c702f17d5bb"
 metadata/lock_uid = true
 metadata/date_generated = "2026-04-29T22:33:48"
 
 [node name="Urn4" parent="Tutorial_Area/Items" unique_id=1362361830 instance=ExtResource("6_6xiwt")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15, -1.6540679, -23)
-item_type = SubResource("Resource_7acmg")
+item_type = SubResource("Resource_vxxbb")
 metadata/uid = "bda107f4-b0f2-4e96-981e-2c702f17d5bb"
 metadata/lock_uid = true
 metadata/date_generated = "2026-04-29T22:33:48"
 
 [node name="Urn5" parent="Tutorial_Area/Items" unique_id=2126164257 instance=ExtResource("6_6xiwt")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17, -1.6540679, -21)
-item_type = SubResource("Resource_7acmg")
+item_type = SubResource("Resource_5nqf6")
 metadata/uid = "bda107f4-b0f2-4e96-981e-2c702f17d5bb"
 metadata/lock_uid = true
 metadata/date_generated = "2026-04-29T22:33:48"
@@ -826,14 +814,14 @@ metadata/date_generated = "2026-04-29T22:33:48"
 
 [node name="Urn7" parent="Tutorial_Area/Items" unique_id=1173710723 instance=ExtResource("6_6xiwt")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, -1.6540679, -17)
-item_type = SubResource("Resource_7acmg")
+item_type = SubResource("Resource_cm8jj")
 metadata/uid = "bda107f4-b0f2-4e96-981e-2c702f17d5bb"
 metadata/lock_uid = true
 metadata/date_generated = "2026-04-29T22:33:48"
 
 [node name="Urn2" parent="Tutorial_Area/Items" unique_id=1277825634 instance=ExtResource("6_6xiwt")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13, -1.5716884, -23.1)
-item_type = SubResource("Resource_bsnhk")
+item_type = SubResource("Resource_2x1ae")
 metadata/uid = "b1941047-ff96-4e00-a3df-80e48772dfb4"
 metadata/lock_uid = true
 metadata/date_generated = "2026-04-29T22:33:48"
@@ -953,22 +941,8 @@ text = "
 transform = Transform3D(1, 3.3484866e-08, 7.180853e-08, -3.348486e-08, -0.64278764, 0.7660444, 7.180853e-08, -0.7660444, -0.64278764, 0, 0, -0.70000005)
 light_color = Color(0.59332174, 0.7391751, 0.7804581, 1)
 
-[node name="Torch_Mounted" parent="." unique_id=628772193 instance=ExtResource("23_gyl80")]
-transform = Transform3D(-0.34720734, -0.50664634, 0.78914917, 0.8995191, 0.058012653, 0.43301266, -0.2651649, 0.8601997, 0.43559575, 17.148159, -1.9567533, -21.9)
-
 [node name="Torch_Mounted2" parent="." unique_id=317376923 instance=ExtResource("23_gyl80")]
 transform = Transform3D(-3.7855173e-08, 2.1855694e-08, 1, -1, -5.9604645e-08, -3.7855173e-08, 5.9604645e-08, -1, 2.1855696e-08, 2.9581492, 0.065920636, 0.76915246)
-
-[node name="Environment2" type="Node3D" parent="." unique_id=2101117762]
-
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="Environment2" unique_id=85045604]
-transform = Transform3D(-0.944665, 0.32516113, -0.04333894, -0.039370164, 0.018778611, 0.99904823, 0.32566544, 0.94547224, -0.0049378504, 3.5, 12.124357, -6.0621777)
-visible = false
-light_color = Color(0.15849423, 0.16554698, 0.18437496, 1)
-shadow_enabled = true
-
-[node name="WorldEnvironment2" type="WorldEnvironment" parent="Environment2" unique_id=652232448]
-environment = SubResource("Environment_6xiwt")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1638404029]
 transform = Transform3D(-0.944665, 0.32516113, -0.04333894, -0.039370164, 0.018778611, 0.99904823, 0.32566544, 0.94547224, -0.0049378504, 3.5, 12.124357, -6.0621777)
