@@ -4,7 +4,7 @@
 [ext_resource type="Script" uid="uid://c6pmyo50c1tqy" path="res://addons/maaacks_menus_template/base/nodes/windows/overlaid_window_scene_container.gd" id="2_dwrxv"]
 [ext_resource type="PackedScene" uid="uid://wyg20wvsg5p1" path="res://UICOPY/scenes/menus/options_menu/master_options_menu_with_tabs.tscn" id="2_ffnov"]
 [ext_resource type="Script" uid="uid://1nf36h0gms3q" path="res://addons/maaacks_menus_template/base/nodes/utilities/capture_focus.gd" id="4_4fkkm"]
-[ext_resource type="PackedScene" uid="uid://onp0ebxn1ify" path="res://UICOPY/scenes/windows/input_prompt_margin.tscn" id="4_dwrxv"]
+[ext_resource type="PackedScene" uid="uid://onp0ebxn1ify" path="res://UICOPY/scenes/menus/options_menu/input/input_prompt_margin.tscn" id="4_dwrxv"]
 [ext_resource type="Texture2D" uid="uid://cxdo34r31ubrc" path="res://assets/__not_ours_dontship/Xbox Series/XboxSeriesX_LB.png" id="6_vcrgx"]
 [ext_resource type="Texture2D" uid="uid://1ayujx2kfkpk" path="res://assets/__not_ours_dontship/Xbox Series/XboxSeriesX_RB.png" id="7_qgfo3"]
 
@@ -28,20 +28,19 @@ title_visible = false
 [node name="ContentContainer" type="MarginContainer" parent="." unique_id=1755486830]
 unique_name_in_owner = true
 layout_mode = 2
-theme_override_constants/margin_left = 19
-theme_override_constants/margin_top = 0
-theme_override_constants/margin_right = 18
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_right = 20
 theme_override_constants/margin_bottom = 8
 
 [node name="TabInputPromptMargin" type="MarginContainer" parent="ContentContainer" unique_id=1593479768]
-custom_minimum_size = Vector2(0, 50)
+custom_minimum_size = Vector2(0, 45)
 layout_mode = 2
 size_flags_vertical = 0
-theme_override_constants/margin_left = 200
-theme_override_constants/margin_right = 200
+theme_override_constants/margin_left = 220
+theme_override_constants/margin_right = 220
 
 [node name="TextureRect" type="TextureRect" parent="ContentContainer/TabInputPromptMargin" unique_id=771505683]
-custom_minimum_size = Vector2(40, 40)
+custom_minimum_size = Vector2(35, 35)
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 4
@@ -50,7 +49,7 @@ expand_mode = 1
 stretch_mode = 5
 
 [node name="TextureRect2" type="TextureRect" parent="ContentContainer/TabInputPromptMargin" unique_id=951848994]
-custom_minimum_size = Vector2(40, 40)
+custom_minimum_size = Vector2(35, 35)
 layout_mode = 2
 size_flags_horizontal = 8
 size_flags_vertical = 4
@@ -89,7 +88,8 @@ layout_mode = 2
 [node name="BodyMargin" type="MarginContainer" parent="ContentContainer/BoxContainer" unique_id=590613964]
 unique_name_in_owner = true
 layout_mode = 2
-size_flags_vertical = 3
+size_flags_horizontal = 4
+size_flags_vertical = 6
 theme_override_constants/margin_bottom = 20
 
 [node name="DescriptionLabel" type="RichTextLabel" parent="ContentContainer/BoxContainer/BodyMargin" unique_id=617407155]

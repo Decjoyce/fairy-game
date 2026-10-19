@@ -1962,8 +1962,7 @@ volume_db = 0.001
 max_distance = 100.0
 
 [node name="SkipUI" type="TextureRect" parent="." unique_id=650050272 node_paths=PackedStringArray("skip_image")]
-visible = false
-custom_minimum_size = Vector2(32, 32)
+custom_minimum_size = Vector2(25, 25)
 anchors_preset = -1
 anchor_left = 0.0484375
 anchor_top = 0.8425926
@@ -1971,8 +1970,11 @@ anchor_right = 0.0953125
 anchor_bottom = 0.9259259
 grow_horizontal = 0
 grow_vertical = 0
+size_flags_horizontal = 4
+size_flags_vertical = 4
 texture = ExtResource("51_jvguq")
-expand_mode = 1
+expand_mode = 3
+stretch_mode = 5
 script = ExtResource("52_jvguq")
 joy_dict = Dictionary[String, ExtResource("53_ue1se")]({
 "DEFAULT": ExtResource("54_i1xur"),
@@ -1987,15 +1989,16 @@ metadata/_edit_use_anchors_ = true
 [node name="Label" type="Label" parent="SkipUI" unique_id=883172805]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.9791667
-anchor_top = 0.22777778
-anchor_right = 2.1916666
-anchor_bottom = 0.7722222
+anchor_left = 1.188889
+anchor_top = -0.061342593
+anchor_right = 2.401389
+anchor_bottom = 0.9872685
 offset_top = 6.3125
 offset_bottom = -6.3125
 grow_vertical = 2
-theme = ExtResource("3_0evim")
-theme_override_font_sizes/font_size = 32
+theme = ExtResource("3_ue1se")
+theme_override_colors/font_color = Color(0.9098039, 0.9098039, 0.9098039, 1)
+theme_override_font_sizes/font_size = 28
 text = "SKIP"
 metadata/_edit_use_anchors_ = true
 

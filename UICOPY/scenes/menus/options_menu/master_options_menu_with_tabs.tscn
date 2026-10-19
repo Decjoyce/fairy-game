@@ -16,9 +16,10 @@ grow_vertical = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 theme = ExtResource("6_8rtnr")
+theme_override_constants/tab_separation = 80
 theme_override_font_sizes/font_size = 32
 tab_alignment = 1
-current_tab = 2
+current_tab = 1
 clip_tabs = false
 switch_on_drag_hover = false
 script = ExtResource("1_5typp")
@@ -26,15 +27,14 @@ script = ExtResource("1_5typp")
 [node name="AUDIO" parent="." unique_id=506115522 instance=ExtResource("4_jxhu2")]
 visible = false
 layout_mode = 2
-theme_override_constants/margin_left = 32
+theme_override_constants/margin_left = 64
 theme_override_constants/margin_top = 0
-theme_override_constants/margin_right = 32
+theme_override_constants/margin_right = 64
 theme_override_constants/margin_bottom = 0
 hide_busses = Array[String](["pl_footsteps", "items", "SaveSFX"])
 metadata/_tab_index = 0
 
 [node name="CONTROLS" type="MarginContainer" parent="." unique_id=315291628]
-visible = false
 layout_mode = 2
 metadata/_tab_index = 1
 
@@ -49,9 +49,10 @@ joy_dict = {
 }
 
 [node name="VIDEO" parent="." unique_id=382045299 instance=ExtResource("5_nv2pl")]
+visible = false
 layout_mode = 2
-theme_override_constants/margin_left = 32
+theme_override_constants/margin_left = 64
 theme_override_constants/margin_top = 0
-theme_override_constants/margin_right = 32
+theme_override_constants/margin_right = 64
 theme_override_constants/margin_bottom = 0
 metadata/_tab_index = 2
