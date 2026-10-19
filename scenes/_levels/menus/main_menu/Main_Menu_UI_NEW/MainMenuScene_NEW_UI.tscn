@@ -1,7 +1,6 @@
 [gd_scene format=4 uid="uid://c1evlmyhcjgef"]
 
 [ext_resource type="Script" uid="uid://bp08osynnpvb5" path="res://scenes/_levels/menus/main_menu/MainMenu.gd" id="1_oitgu"]
-[ext_resource type="PackedScene" uid="uid://bssask2v64ogc" path="res://scenes/_levels/Vertical Slice/_vertical_slice.tscn" id="2_35d2q"]
 [ext_resource type="Theme" uid="uid://4rqtecgji27t" path="res://scenes/_levels/menus/main_menu/Main_Menu_UI_NEW/UI_themes/customised_brush_theme.tres" id="3_0evim"]
 [ext_resource type="LightmapGIData" uid="uid://bqiy8iqbdsnh" path="res://scenes/_levels/lightmap_data/LightMapBake/MainMenuScene.lmbake" id="3_buqdy"]
 [ext_resource type="Script" uid="uid://c3xgbfrig5y5w" path="res://UICOPY/scenes/menus/main_menu/main_menu_with_animations.gd" id="3_nbyns"]
@@ -1474,7 +1473,6 @@ _data = {
 script = ExtResource("1_oitgu")
 animationPlayer = NodePath("MainMenu/MenuAnimationPlayer")
 SkipUI = NodePath("SkipUI")
-vs_scnee = ExtResource("2_35d2q")
 
 [node name="MainMenu" type="Control" parent="." unique_id=589811630 node_paths=PackedStringArray("anim_player", "fade_anim")]
 layout_mode = 3
@@ -1858,6 +1856,7 @@ metadata/_edit_lock_ = true
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, -32.12275)
 attributes = SubResource("CameraAttributesPhysical_lrn60")
 current = true
+fov = 37.849285
 
 [node name="SpotLight3D" type="SpotLight3D" parent="Camera3D" unique_id=1213487362]
 transform = Transform3D(-1, -7.642742e-15, 8.742278e-08, 0, -1, -8.742278e-08, 8.742278e-08, -8.742278e-08, 1, 0.8026093, -1.8404503, -1.295021)
