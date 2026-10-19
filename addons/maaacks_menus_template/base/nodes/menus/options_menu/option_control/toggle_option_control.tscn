@@ -1,10 +1,14 @@
 [gd_scene format=3 uid="uid://bsxh6v7j0257h"]
 
 [ext_resource type="PackedScene" uid="uid://d7te75il06t7" path="res://addons/maaacks_menus_template/base/nodes/menus/options_menu/option_control/option_control.tscn" id="1_8rnmo"]
+[ext_resource type="PackedScene" uid="uid://cj7ixenf4rtp7" path="res://addons/maaacks_menus_template/base/nodes/menus/options_menu/option_control/hover_highlight_control.tscn" id="2_0uu4k"]
 
 [node name="OptionControl" unique_id=1563851297 instance=ExtResource("1_8rnmo")]
 
-[node name="CheckButton" type="CheckButton" parent="." index="1" unique_id=1452268147]
+[node name="HoverHighlightControl" parent="." index="0" unique_id=816583202 instance=ExtResource("2_0uu4k")]
+layout_mode = 2
+
+[node name="CheckButton" type="CheckButton" parent="." index="2" unique_id=1452268147]
 custom_minimum_size = Vector2(50, 0)
 layout_mode = 2
 size_flags_vertical = 4
