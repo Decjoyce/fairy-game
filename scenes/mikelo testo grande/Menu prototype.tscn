@@ -1,0 +1,51 @@
+[gd_scene format=3 uid="uid://ea6ej3lmewm"]
+
+[ext_resource type="PackedScene" uid="uid://bq86osdembn58" path="res://scenes/_player/_player_test.tscn" id="1_28rsc"]
+[ext_resource type="MeshLibrary" uid="uid://bu208a8l5866i" path="res://scenes/_levels/_palettes/cairn/meshlibrary_cairn.tres" id="1_grecy"]
+[ext_resource type="PackedScene" uid="uid://dde66nwtb1gv1" path="res://scenes/interactions/_triggers/item_receiver/torch_scont/torch_scont.tscn" id="2_28rsc"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_0hwfc"]
+sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+sky_curve = 0.13058276
+ground_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+
+[sub_resource type="Sky" id="Sky_rj5h8"]
+sky_material = SubResource("ProceduralSkyMaterial_0hwfc")
+
+[sub_resource type="Environment" id="Environment_hxe7j"]
+background_mode = 1
+background_color = Color(0.21430236, 0.20071769, 0.20977312, 1)
+sky = SubResource("Sky_rj5h8")
+ambient_light_color = Color(0.096089296, 0.120830394, 0.20651546, 1)
+tonemap_mode = 2
+glow_enabled = true
+volumetric_fog_enabled = true
+
+[node name="MenuPrototype" type="Node3D" unique_id=1372976988]
+
+[node name="player_test" parent="." unique_id=725727541 instance=ExtResource("1_28rsc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.89208144, 0)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=655199782]
+environment = SubResource("Environment_hxe7j")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1633029289]
+transform = Transform3D(0.03349372, 0.99102545, -0.12940946, 0.019242018, 0.1288187, 0.9914814, 0.99925363, -0.03569847, -0.014754742, 3.5, 12.124357, -6.0621777)
+light_color = Color(0.3227734, 0.33385244, 0.3646147, 1)
+shadow_enabled = true
+
+[node name="GridMap" type="GridMap" parent="." unique_id=1924105818]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.03, 0)
+mesh_library = ExtResource("1_grecy")
+data = {
+"cells": PackedInt32Array(-65511, 65533, 16, -65510, 65533, 16, -65511, 65532, 16, -65510, 65532, 16, -65511, 65534, 16, -65510, 65534, 16, -65509, 65533, 1441811, -65508, 65533, 1441811, -65507, 65533, 1441811, -65506, 65533, 1441811, -65505, 65533, 1441811, -65504, 65533, 1441811, -65503, 65533, 1441808, -65503, 65532, 1441808, -65503, 65534, 1441808, -65502, 65534, 1441808, -65502, 65533, 1441808, -65502, 65532, 1441808, -65511, 65528, 16, -65510, 65528, 16, -65510, 65527, 16, -65511, 65527, 16, -65511, 2, 16, -65510, 2, 16, -65510, 3, 16, -65511, 3, 16, 0, 0, 1, 1, 65535, 1048577, 65535, 1, 12, 65535, 2, 2, 65535, 3, 2, 65535, 4, 2, 1, 65534, 1048579, 65535, 0, 0, 65535, 65535, 0, 0, 65535, 0, 0, 65534, 655361, 65535, 65534, 655361, 65534, 65535, 0, 65534, 65534, 655361, 65534, 0, 1, 1, 0, 3, 65533, 0, 1441795, 65533, 65534, 655363, 65533, 65535, 1441793)
+}
+metadata/_editor_floor_ = Vector3(0, 0, 0)
+
+[node name="torches" type="Node3D" parent="." unique_id=1496027361]
+
+[node name="TorchScont2" parent="torches" unique_id=813345400 instance=ExtResource("2_28rsc")]
+transform = Transform3D(-0.99999994, 0, 5.9604645e-08, 0, 1, 0, -5.9604645e-08, 0, -0.99999994, 0.8670119, 1.2788017, 1.5566201)
+
+[node name="TorchScont3" parent="torches" unique_id=359190509 instance=ExtResource("2_28rsc")]
+transform = Transform3D(-0.99999994, 0, 5.9604645e-08, 0, 1, 0, -5.9604645e-08, 0, -0.99999994, -2.9264798, 1.2788017, 1.5566201)
