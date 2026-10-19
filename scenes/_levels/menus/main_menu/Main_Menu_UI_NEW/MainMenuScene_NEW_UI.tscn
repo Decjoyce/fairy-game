@@ -52,12 +52,13 @@
 [ext_resource type="AudioStream" uid="uid://dttod2jdf75fn" path="res://assets/audio/intro/Footsteps, Human, Forest Footsteps, Heavy, Running SND73380.wav" id="36_ue1se"]
 [ext_resource type="AudioStream" uid="uid://ufieywfpqnjn" path="res://assets/audio/intro/Wind, Gust, Cold, Strong Wind, Gale, Night SND137534.wav" id="37_i1xur"]
 [ext_resource type="Texture2D" uid="uid://b130ydwvscbfr" path="res://assets/ui/new_redesigned_ui/new_gametitle.png" id="43_ue1se"]
+[ext_resource type="PackedScene" uid="uid://onp0ebxn1ify" path="res://UICOPY/scenes/menus/options_menu/input/input_prompt_margin.tscn" id="47_i1xur"]
 [ext_resource type="Texture2D" uid="uid://bxjnfybjp7kl2" path="res://assets/__not_ours_dontship/PS4/PS4_Options.png" id="51_jvguq"]
 [ext_resource type="Script" uid="uid://b0fs2mt3af1wd" path="res://scripts/input_context_helper_three.gd" id="52_jvguq"]
-[ext_resource type="Script" uid="uid://dqspm2isfx5n1" path="res://scripts/input_context/joy_icons_master.gd" id="53_ue1se"]
-[ext_resource type="Resource" uid="uid://bvdc57ehdgnq3" path="res://scripts/input_context/joyicons_xbox.tres" id="54_i1xur"]
-[ext_resource type="Resource" uid="uid://cuvbrqma8ltub" path="res://scripts/input_context/joyicons_ps4.tres" id="55_y85mu"]
-[ext_resource type="Resource" uid="uid://cy86l8mtli3ke" path="res://scripts/input_context/joyicons_nintendo.tres" id="56_rs180"]
+[ext_resource type="Script" uid="uid://dqspm2isfx5n1" path="res://scripts/input_context/joy_icons_master.gd" id="55_i1xur"]
+[ext_resource type="Resource" uid="uid://bvdc57ehdgnq3" path="res://scripts/input_context/joyicons_xbox.tres" id="56_y85mu"]
+[ext_resource type="Resource" uid="uid://cuvbrqma8ltub" path="res://scripts/input_context/joyicons_ps4.tres" id="57_rs180"]
+[ext_resource type="Resource" uid="uid://cy86l8mtli3ke" path="res://scripts/input_context/joyicons_nintendo.tres" id="58_gax4k"]
 
 [sub_resource type="Animation" id="1"]
 resource_name = "Intro"
@@ -127,7 +128,7 @@ tracks/4/keys = {
 tracks/5/type = "value"
 tracks/5/imported = false
 tracks/5/enabled = true
-tracks/5/path = NodePath("VersionMargin/VersionContainer:modulate")
+tracks/5/path = NodePath("MenuContainer/VersionMargin/VersionContainer:modulate")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
@@ -281,7 +282,7 @@ tracks/4/keys = {
 tracks/5/type = "value"
 tracks/5/imported = false
 tracks/5/enabled = true
-tracks/5/path = NodePath("VersionMargin/VersionContainer:modulate")
+tracks/5/path = NodePath("MenuContainer/VersionMargin/VersionContainer:modulate")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
@@ -369,7 +370,7 @@ tracks/4/keys = {
 tracks/5/type = "value"
 tracks/5/imported = false
 tracks/5/enabled = true
-tracks/5/path = NodePath("VersionMargin/VersionContainer:modulate")
+tracks/5/path = NodePath("MenuContainer/VersionMargin/VersionContainer:modulate")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
@@ -756,7 +757,7 @@ tracks/4/keys = {
 tracks/5/type = "value"
 tracks/5/imported = false
 tracks/5/enabled = true
-tracks/5/path = NodePath("VersionMargin/VersionContainer:modulate")
+tracks/5/path = NodePath("MenuContainer/VersionMargin/VersionContainer:modulate")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
@@ -1561,10 +1562,9 @@ grow_vertical = 2
 alignment = 1
 
 [node name="TextureRect" type="TextureRect" parent="MainMenu/OpeningScene/BoxContainer" unique_id=2131277929]
-modulate = Color(1, 1, 1, 0)
+modulate = Color(0, 0, 0, 1)
 layout_mode = 2
 size_flags_horizontal = 3
-texture = ExtResource("17_el2iu")
 expand_mode = 1
 
 [node name="BoxContainer2" type="BoxContainer" parent="MainMenu/OpeningScene" unique_id=634655637]
@@ -1579,7 +1579,6 @@ alignment = 1
 [node name="TextureRect" type="TextureRect" parent="MainMenu/OpeningScene/BoxContainer2" unique_id=1603334626]
 layout_mode = 2
 size_flags_horizontal = 3
-texture = ExtResource("23_maif7")
 expand_mode = 1
 
 [node name="OpeningSong" type="AudioStreamPlayer3D" parent="MainMenu/OpeningScene" unique_id=451357941]
@@ -1646,13 +1645,11 @@ vertical_alignment = 1
 script = ExtResource("8_0evim")
 
 [node name="TextureRect" type="TextureRect" parent="MainMenu/MenuContainer/TitleMargin/TitleContainer" unique_id=956686403]
+custom_minimum_size = Vector2(0, 150)
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -324.0
-offset_right = 324.0
-offset_bottom = 239.0
 grow_horizontal = 2
 texture = ExtResource("43_ue1se")
 expand_mode = 3
@@ -1681,9 +1678,10 @@ vertical_alignment = 1
 [node name="MenuButtonsMargin" type="MarginContainer" parent="MainMenu/MenuContainer" unique_id=210553886]
 layout_mode = 2
 size_flags_vertical = 3
-theme_override_constants/margin_left = 64
-theme_override_constants/margin_top = 136
-theme_override_constants/margin_bottom = 11
+theme_override_constants/margin_left = 48
+theme_override_constants/margin_top = 190
+theme_override_constants/margin_right = 64
+theme_override_constants/margin_bottom = 32
 
 [node name="MenuButtonsContainer" type="Control" parent="MainMenu/MenuContainer/MenuButtonsMargin" unique_id=116448484]
 modulate = Color(1, 1, 1, 0)
@@ -1701,8 +1699,7 @@ offset_right = 297.0
 offset_bottom = 200.5
 grow_vertical = 2
 size_flags_horizontal = 4
-theme_override_constants/separation = 16
-alignment = 1
+theme_override_constants/separation = 8
 vertical = true
 script = ExtResource("9_xwrb1")
 lock = true
@@ -1711,6 +1708,7 @@ lock = true
 unique_name_in_owner = true
 layout_mode = 2
 theme_type_variation = &"title_screen_button"
+theme_override_constants/outline_size = 3
 text = "START_GAME"
 alignment = 0
 
@@ -1754,7 +1752,6 @@ unique_name_in_owner = true
 visible = false
 layout_mode = 2
 theme_type_variation = &"title_screen_button"
-theme_override_font_sizes/font_size = 40
 text = "The Creature"
 alignment = 0
 
@@ -1814,36 +1811,33 @@ tab_size = 7
 horizontal_alignment = 1
 selection_enabled = true
 
-[node name="VersionMargin" type="MarginContainer" parent="MainMenu" unique_id=1732528471]
+[node name="VersionMargin" type="MarginContainer" parent="MainMenu/MenuContainer" unique_id=1732528471]
+layout_mode = 2
+size_flags_vertical = 8
+mouse_filter = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 32
+theme_override_constants/margin_bottom = 8
+
+[node name="InputPromptMargin" parent="MainMenu/MenuContainer/VersionMargin" unique_id=1104021911 instance=ExtResource("47_i1xur")]
+layout_mode = 2
+size_flags_vertical = 1
+
+[node name="VersionContainer" type="Control" parent="MainMenu/MenuContainer/VersionMargin" unique_id=1603969262]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 2
+mouse_filter = 2
+
+[node name="VersionLabel" type="Label" parent="MainMenu/MenuContainer/VersionMargin/VersionContainer" unique_id=793266470]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-mouse_filter = 2
-theme_override_constants/margin_left = 8
-theme_override_constants/margin_top = 8
-theme_override_constants/margin_right = 8
-theme_override_constants/margin_bottom = 8
-
-[node name="VersionContainer" type="Control" parent="MainMenu/VersionMargin" unique_id=1603969262]
-modulate = Color(1, 1, 1, 0)
-layout_mode = 2
-mouse_filter = 2
-
-[node name="VersionLabel" type="Label" parent="MainMenu/VersionMargin/VersionContainer" unique_id=793266470]
-layout_mode = 1
-anchors_preset = 3
-anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -156.0
-offset_top = -53.0
-grow_horizontal = 0
-grow_vertical = 0
-theme_override_font_sizes/font_size = 35
+theme_override_colors/font_color = Color(0.9098039, 0.9098039, 0.9098039, 1)
+theme_override_font_sizes/font_size = 16
 text = "v1.3 GradX"
 horizontal_alignment = 2
 script = ExtResource("10_gmba7")
@@ -1967,7 +1961,6 @@ anchor_left = 0.0484375
 anchor_top = 0.8425926
 anchor_right = 0.0953125
 anchor_bottom = 0.9259259
-grow_horizontal = 0
 grow_vertical = 0
 size_flags_horizontal = 4
 size_flags_vertical = 4
@@ -1975,15 +1968,14 @@ texture = ExtResource("51_jvguq")
 expand_mode = 3
 stretch_mode = 5
 script = ExtResource("52_jvguq")
-joy_dict = Dictionary[String, ExtResource("53_ue1se")]({
-"DEFAULT": ExtResource("54_i1xur"),
-"DualSense Wireless Controller": ExtResource("55_y85mu"),
-"Nintendo Switch Pro Controller": ExtResource("56_rs180"),
-"PS4 Controller": ExtResource("55_y85mu"),
-"XInput Controller": ExtResource("54_i1xur")
+joy_dict = Dictionary[String, ExtResource("55_i1xur")]({
+"DEFAULT": ExtResource("56_y85mu"),
+"DualSense Wireless": ExtResource("57_rs180"),
+"Nintendo Switch": ExtResource("58_gax4k"),
+"PS4 Controller": ExtResource("57_rs180"),
+"XInput Controller": ExtResource("56_y85mu")
 })
 skip_image = NodePath(".")
-metadata/_edit_use_anchors_ = true
 
 [node name="Label" type="Label" parent="SkipUI" unique_id=883172805]
 layout_mode = 1

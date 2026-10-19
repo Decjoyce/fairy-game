@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://onp0ebxn1ify"]
 
-[ext_resource type="Texture2D" uid="uid://d37ah0yki8cpv" path="res://assets/__not_ours_dontship/Xbox Series/XboxSeriesX_Dpad.png" id="1_i7ysb"]
+[ext_resource type="Texture2D" uid="uid://chkhs0oc05mdy" path="res://assets/__not_ours_dontship/Xbox Series/XboxSeriesX_Left_Stick.png" id="1_vlcg0"]
 [ext_resource type="Texture2D" uid="uid://wpx72pcpea8n" path="res://assets/__not_ours_dontship/Xbox Series/XboxSeriesX_A.png" id="2_33p4j"]
 [ext_resource type="Texture2D" uid="uid://bvp14xwrxbn3n" path="res://assets/__not_ours_dontship/Xbox Series/XboxSeriesX_B.png" id="3_lskhm"]
 
@@ -14,23 +14,23 @@ grow_horizontal = 2
 grow_vertical = 0
 size_flags_vertical = 4
 
-[node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=1805157838]
+[node name="InputContainer" type="HBoxContainer" parent="." unique_id=1805157838]
 layout_mode = 2
 theme_override_constants/separation = 16
 
-[node name="HBoxContainer2" type="HBoxContainer" parent="HBoxContainer" unique_id=740264555]
+[node name="SelectContainer" type="HBoxContainer" parent="InputContainer" unique_id=740264555]
 layout_mode = 2
 
-[node name="TextureRect" type="TextureRect" parent="HBoxContainer/HBoxContainer2" unique_id=1174975758]
-custom_minimum_size = Vector2(20, 20)
+[node name="TextureRect" type="TextureRect" parent="InputContainer/SelectContainer" unique_id=1174975758]
+custom_minimum_size = Vector2(25, 25)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
-texture = ExtResource("1_i7ysb")
+texture = ExtResource("1_vlcg0")
 expand_mode = 1
 stretch_mode = 5
 
-[node name="Label" type="Label" parent="HBoxContainer/HBoxContainer2" unique_id=130449953]
+[node name="Label" type="Label" parent="InputContainer/SelectContainer" unique_id=130449953]
 layout_mode = 2
 size_flags_vertical = 1
 theme_override_colors/font_color = Color(0.9098039, 0.9098039, 0.9098039, 1)
@@ -38,10 +38,10 @@ theme_override_font_sizes/font_size = 15
 text = "Select"
 vertical_alignment = 1
 
-[node name="HBoxContainer3" type="HBoxContainer" parent="HBoxContainer" unique_id=91327778]
+[node name="ConfirmContainer" type="HBoxContainer" parent="InputContainer" unique_id=91327778]
 layout_mode = 2
 
-[node name="TextureRect" type="TextureRect" parent="HBoxContainer/HBoxContainer3" unique_id=1160157928]
+[node name="TextureRect" type="TextureRect" parent="InputContainer/ConfirmContainer" unique_id=1160157928]
 custom_minimum_size = Vector2(25, 25)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -50,7 +50,7 @@ texture = ExtResource("2_33p4j")
 expand_mode = 1
 stretch_mode = 5
 
-[node name="Label" type="Label" parent="HBoxContainer/HBoxContainer3" unique_id=954174994]
+[node name="Label" type="Label" parent="InputContainer/ConfirmContainer" unique_id=954174994]
 layout_mode = 2
 size_flags_vertical = 1
 theme_override_colors/font_color = Color(0.9098039, 0.9098039, 0.9098039, 1)
@@ -58,10 +58,10 @@ theme_override_font_sizes/font_size = 15
 text = "Confirm"
 vertical_alignment = 1
 
-[node name="HBoxContainer4" type="HBoxContainer" parent="HBoxContainer" unique_id=299845169]
+[node name="BackContainer" type="HBoxContainer" parent="InputContainer" unique_id=299845169]
 layout_mode = 2
 
-[node name="TextureRect" type="TextureRect" parent="HBoxContainer/HBoxContainer4" unique_id=1435681599]
+[node name="TextureRect" type="TextureRect" parent="InputContainer/BackContainer" unique_id=1435681599]
 custom_minimum_size = Vector2(25, 25)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -70,7 +70,7 @@ texture = ExtResource("3_lskhm")
 expand_mode = 1
 stretch_mode = 5
 
-[node name="Label" type="Label" parent="HBoxContainer/HBoxContainer4" unique_id=1370157357]
+[node name="Label" type="Label" parent="InputContainer/BackContainer" unique_id=1370157357]
 layout_mode = 2
 size_flags_vertical = 1
 theme_override_colors/font_color = Color(0.9098039, 0.9098039, 0.9098039, 1)
