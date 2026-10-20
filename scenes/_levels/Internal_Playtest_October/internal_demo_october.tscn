@@ -8,6 +8,8 @@
 [ext_resource type="MeshLibrary" uid="uid://bu208a8l5866i" path="res://scenes/_levels/_palettes/cairn/meshlibrary_cairn.tres" id="5_0w1e1"]
 [ext_resource type="PackedScene" uid="uid://d1urmoxnqqkkl" path="res://scenes/_levels/Final_Puzzles/BallyBog_Puzzles/BallyBogPuzzle_Medium.tscn" id="6_lxg08"]
 [ext_resource type="PackedScene" uid="uid://cdxx7mclyl0e2" path="res://scenes/_levels/Final_Puzzles/BallyBog_Puzzles/new_bally_bog_maze(hard_section).tscn" id="7_fj03w"]
+[ext_resource type="PackedScene" uid="uid://cruv8v8wh8l06" path="res://scenes/interactions/_special/saving_stone/saving_stone.tscn" id="9_scxfw"]
+[ext_resource type="PackedScene" uid="uid://xuo5buj0odhi" path="res://scenes/interactions/_triggers/torch_sconce/torch_sconce_lit.tscn" id="10_daakw"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_vlydn"]
 sky_horizon_color = Color(0, 0.37292683, 0.8185948, 1)
@@ -47,6 +49,17 @@ volumetric_fog_emission = Color(0.117735185, 0.20947376, 0.3003329, 1)
 
 [node name="Internal_Demo_October" type="Node3D" unique_id=1522441394]
 
+[node name="GridMap_IS" type="GridMap" parent="." unique_id=1922051830]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, -1)
+mesh_library = ExtResource("5_0w1e1")
+data = {
+"cells": PackedInt32Array(-65506, 65526, 1048578, -65504, 3, 1048578, -65505, 2, 655364, -65505, 3, 1, -65506, 3, 1441795, -65506, 2, 1048579, -65507, 2, 655363, -65520, 5, 655363, -65520, 6, 655362, -65521, 7, 1441796, -65520, 7, 1048577, -65520, 8, 2, -65520, 17, 3, -65521, 17, 1441794, -65522, 17, 1441794, -65523, 17, 655363, -65523, 18, 3, -65525, 18, 1441794, -65526, 18, 655363, -65507, 65526, 1441794, -65524, 18, 1441794)
+}
+metadata/_editor_floor_ = Vector3(0, -1, 0)
+
+[node name="player_test" parent="." unique_id=725727541 instance=ExtResource("1_miwyq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0.8, 1)
+
 [node name="UID_Generator" type="Node" parent="." unique_id=1587670252]
 script = ExtResource("1_ybkin")
 metadata/_custom_type_script = "uid://bul4myvyhnpjc"
@@ -57,9 +70,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, -15)
 [node name="Traps_Puzzle" parent="." unique_id=1530637846 instance=ExtResource("2_vlydn")]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 84, -2, -21)
 script = null
-
-[node name="player_test" parent="." unique_id=725727541 instance=ExtResource("1_miwyq")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0.8, 1)
 
 [node name="Environment" type="Node3D" parent="." unique_id=1390868247]
 
@@ -83,45 +93,47 @@ transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 32, 
 [node name="New_BallyBog_Maze(Hard_Section)" parent="Ballybog_Section" unique_id=349789215 instance=ExtResource("7_fj03w")]
 transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 20, -2, 39)
 
-[node name="GridMap_IS" type="GridMap" parent="." unique_id=1922051830]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, -1)
-mesh_library = ExtResource("5_0w1e1")
-data = {
-"cells": PackedInt32Array(-65507, 65527, 4, -65507, 65526, 655361, -65506, 65526, 1048578, -65504, 3, 1048578, -65505, 2, 655364, -65505, 3, 1, -65506, 3, 1441795, -65506, 2, 1048579, -65507, 2, 655363, -65520, 5, 655363, -65520, 6, 655362, -65521, 7, 1441796, -65520, 7, 1048577, -65520, 8, 2, -65520, 17, 3, -65521, 17, 1441794, -65522, 17, 1441794, -65523, 17, 655363, -65523, 18, 3, -65524, 17, 655364, -65524, 18, 1, -65525, 18, 1441794, -65526, 18, 655363)
-}
-metadata/_editor_floor_ = Vector3(0, -1, 0)
-
 [node name="Save_Points" type="Node3D" parent="." unique_id=545637590]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 58.98239, -1, -18.662453)
 
-[node name="Save_Point" type="Label3D" parent="Save_Points" unique_id=245650792]
-transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 0, 0, 1)
-text = "Save Point"
+[node name="SavingStone" parent="Save_Points" unique_id=452927148 instance=ExtResource("9_scxfw")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 36.01761, -0.9515213, -3.3375473)
 
-[node name="Save_Point2" type="Label3D" parent="Save_Points" unique_id=1948585937]
-transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 12, 0, 33)
-text = "Save Point"
+[node name="SavingStone2" parent="Save_Points" unique_id=835859965 instance=ExtResource("9_scxfw")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 12.017609, -0.9609362, 32.862453)
 
-[node name="Save_Point3" type="Label3D" parent="Save_Points" unique_id=40301429]
-transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 32, 0, 33)
-text = "Save Point"
-
-[node name="Save_Point4" type="Label3D" parent="Save_Points" unique_id=1965623691]
-transform = Transform3D(1, 0, -1.7484555e-07, 0, 1, 0, 1.7484555e-07, 0, 1, 36, 0, -3)
-text = "Save Point"
-
-[node name="Save_Point5" type="Label3D" parent="Save_Points" unique_id=461770034]
-transform = Transform3D(1, 0, -1.7484555e-07, 0, 1, 0, 1.7484555e-07, 0, 1, 4, 0, 22)
-text = "Save Point"
-
-[node name="Save_Point6" type="Label3D" parent="Save_Points" unique_id=1202185867]
-transform = Transform3D(1.3113416e-07, 0, 1, 0, 1, 0, -1, 0, 1.3113416e-07, -28, 0, 32.6)
-text = "Save Point"
-
-[node name="Save_Point7" type="Label3D" parent="Save_Points" unique_id=1233045309]
-transform = Transform3D(1, 0, -1.7484555e-07, 0, 1, 0, 1.7484555e-07, 0, 1, -34, 0, 52.6)
-text = "Save Point"
+[node name="SavingStone3" parent="Save_Points" unique_id=1120212353 instance=ExtResource("9_scxfw")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 32.01761, -0.960518, 33.062454)
 
 [node name="Trigger that goes to Survey" type="Label3D" parent="Save_Points" unique_id=238038122]
 transform = Transform3D(-1, 0, 2.6226832e-07, 0, 1, 0, -2.6226832e-07, 0, -1, -38, 0, 72.6)
 text = "Survey Trigger"
+
+[node name="SavingStone4" parent="Save_Points" unique_id=1202174187 instance=ExtResource("9_scxfw")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 4.0176086, -1, 22.662453)
+
+[node name="Save_Point_Torches" type="Node3D" parent="Save_Points" unique_id=1263711613]
+
+[node name="TorchSconce_Lit3" parent="Save_Points/Save_Point_Torches" unique_id=1729385187 instance=ExtResource("10_daakw")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 36.792038, 0.5, -2.737547)
+
+[node name="TorchSconce_Lit4" parent="Save_Points/Save_Point_Torches" unique_id=618382933 instance=ExtResource("10_daakw")]
+transform = Transform3D(-0.25881898, 0, 0.9659258, 0, 1, 0, -0.9659258, 0, -0.25881898, 35.249, 0.5, -2.737547)
+
+[node name="TorchSconce_Lit" parent="Save_Points/Save_Point_Torches" unique_id=1092551822 instance=ExtResource("10_daakw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -27.482391, 0.5, 31.862453)
+
+[node name="TorchSconce_Lit2" parent="Save_Points/Save_Point_Torches" unique_id=1526953915 instance=ExtResource("10_daakw")]
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, -27.482391, 0.5, 33.462456)
+
+[node name="SavingStone5" parent="Save_Points" unique_id=1326817946 instance=ExtResource("9_scxfw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -27.982391, -1, 32.662453)
+
+[node name="SavingStone6" parent="Save_Points" unique_id=1203691997 instance=ExtResource("9_scxfw")]
+transform = Transform3D(1.3113416e-07, 0, 1, 0, 1, 0, -1, 0, 1.3113416e-07, -31.982391, -1, 66.66245)
+
+[node name="SavingStone7" parent="Save_Points" unique_id=1774145605 instance=ExtResource("9_scxfw")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -47.98239, -1, 62.662453)
+
+[node name="SavingStone8" parent="Save_Points" unique_id=399797637 instance=ExtResource("9_scxfw")]
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, -41.98239, -1, 54.662453)
