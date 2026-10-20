@@ -2,25 +2,69 @@
 
 [ext_resource type="PackedScene" uid="uid://6gdbfi0172ji" path="res://addons/maaacks_menus_template/base/nodes/windows/overlaid_window.tscn" id="1_vfkm2"]
 [ext_resource type="Script" uid="uid://bgthh72eu0du" path="res://addons/maaacks_menus_template/base/nodes/windows/confirmation_overlaid_window.gd" id="2_sw7p1"]
+[ext_resource type="Theme" uid="uid://ktuc4glx3wgp" path="res://scenes/_levels/menus/main_menu/Main_Menu_UI_NEW/UI_themes/redesigned_ui_theme.tres" id="2_vi2bo"]
+[ext_resource type="Texture2D" uid="uid://8331ns4ulr5r" path="res://assets/ui/new_redesigned_ui/confirm_menu_panel.png" id="3_pkrdn"]
+[ext_resource type="Texture2D" uid="uid://c03vh38db0gvb" path="res://assets/ui/new_redesigned_ui/pause_menu_background.png" id="3_satmm"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_qnj2a"]
+texture = ExtResource("3_satmm")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_8tmnb"]
+texture = ExtResource("3_pkrdn")
 
 [node name="ConfirmationOverlaidWindow" unique_id=1482267070 instance=ExtResource("1_vfkm2")]
+custom_minimum_size = Vector2(430, 250)
+anchors_preset = 15
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 0.0
+offset_top = 0.0
+offset_right = 0.0
+offset_bottom = 0.0
+theme = ExtResource("2_vi2bo")
+theme_override_styles/panel = SubResource("StyleBoxTexture_qnj2a")
 script = ExtResource("2_sw7p1")
 confirm_button_text = "Confirm"
 update_content = true
 close_button_text = "Cancel"
 
-[node name="TitleLabel" parent="ContentContainer/BoxContainer/TitleMargin/BoxContainer" parent_id_path=PackedInt32Array(1788474031) index="0" unique_id=1049966061]
-text = "MENU"
+[node name="PanelContainer" type="PanelContainer" parent="." index="0" unique_id=2062308364]
+custom_minimum_size = Vector2(430, 260)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_styles/panel = SubResource("StyleBoxTexture_8tmnb")
 
-[node name="MenuButtons" parent="ContentContainer/BoxContainer/MenuButtonsMargin" parent_id_path=PackedInt32Array(1413292752) index="0" unique_id=1371114575]
+[node name="ContentContainer" parent="." index="1" unique_id=1755486830]
+custom_minimum_size = Vector2(430, 250)
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/margin_top = 32
+theme_override_constants/margin_bottom = 32
+
+[node name="HSeparator" parent="ContentContainer/BoxContainer/TitleMargin/BoxContainer" parent_id_path=PackedInt32Array(1788474031) index="1" unique_id=33373596]
+visible = false
+
+[node name="DescriptionLabel" parent="ContentContainer/BoxContainer/BodyMargin" parent_id_path=PackedInt32Array(590613964) index="0" unique_id=617407155]
+theme = ExtResource("2_vi2bo")
+
+[node name="MenuButtonsMargin" parent="ContentContainer/BoxContainer" parent_id_path=PackedInt32Array(394030069) index="2" unique_id=1413292752]
+theme_override_constants/margin_top = 0
+
+[node name="MenuButtons" parent="ContentContainer/BoxContainer/MenuButtonsMargin" index="0" unique_id=1371114575]
+theme_override_constants/separation = 42
 vertical = false
 
 [node name="CloseButton" parent="ContentContainer/BoxContainer/MenuButtonsMargin/MenuButtons" index="0" unique_id=314526102]
-text = "CANCEL"
+theme_override_font_sizes/font_size = 24
+text = "Cancel"
 
 [node name="ConfirmButton" type="Button" parent="ContentContainer/BoxContainer/MenuButtonsMargin/MenuButtons" index="1" unique_id=1052970550]
 unique_name_in_owner = true
 layout_mode = 2
+theme_override_font_sizes/font_size = 24
 text = "CONFIRM"
 
 [connection signal="pressed" from="ContentContainer/BoxContainer/MenuButtonsMargin/MenuButtons/ConfirmButton" to="." method="_on_confirm_button_pressed"]

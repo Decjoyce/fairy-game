@@ -1,0 +1,81 @@
+[gd_scene format=3 uid="uid://cuu6itqchsh6g"]
+
+[ext_resource type="Script" uid="uid://r8vvnup14amn" path="res://scenes/interactions/_receivers/traps/projectile/trap_projectile.gd" id="1_556o6"]
+[ext_resource type="AudioStream" uid="uid://8u7k6rnkra3g" path="res://assets/audio/sfx/environment/Traps/Arrow/Weapons, Arrow, Arrows, Shot 04, Bowstring, Twang, Thwack, 8070 (Mono) SND127426 1.wav" id="2_pplin"]
+[ext_resource type="AudioStream" uid="uid://bl70njdpufmni" path="res://assets/audio/sfx/environment/Traps/Arrow/Weapons, Arrow, Arrows, Shot 04, Bowstring, Twang, Thwack, 8070 (Mono) SND127426 2.wav" id="3_7mrgs"]
+[ext_resource type="AudioStream" uid="uid://323itw85oonc" path="res://assets/audio/sfx/environment/Traps/Arrow/Weapons, Arrow, Arrows, Shot 04, Bowstring, Twang, Thwack, 8070 (Mono) SND127426.wav" id="4_icj7q"]
+[ext_resource type="Texture2D" uid="uid://ds2ryuxjpf5j1" path="res://scenes/interactions/_receivers/wip_spike_trap/blackcircle_tran.png" id="5_80qe2"]
+[ext_resource type="PackedScene" uid="uid://bwii7dbg7wd7s" path="res://scenes/interactions/_receivers/traps/projectile/arrow_projectile.tscn" id="6_svmbl"]
+[ext_resource type="Script" uid="uid://djyhniwugtcsq" path="res://scripts/saving/persistent_objs/po_arrowtrap.gd" id="7_rkl07"]
+[ext_resource type="Material" uid="uid://ckjbpunwhc0rn" path="res://assets/models/cairn/Props/SpikeTrap/SpikeTrap.tres" id="8_70vtf"]
+[ext_resource type="ArrayMesh" uid="uid://sakmnnwkwcdm" path="res://assets/models/cairn/Props/SpikeTrap/SpikeTrap.obj" id="9_rvuaa"]
+[ext_resource type="Texture2D" uid="uid://moctry3iykqx" path="res://assets/models/cairn/Z-Old-HallModels/Hall/Hall_texture_Floordirt_Base_color.png" id="10_3ad6x"]
+[ext_resource type="Script" uid="uid://di860i1v035oh" path="res://scenes/_levels/Final_Puzzles/Mechanical_Puzzles/special_timer.gd" id="11_dbee8"]
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_c1656"]
+streams_count = 3
+stream_0/stream = ExtResource("2_pplin")
+stream_1/stream = ExtResource("3_7mrgs")
+stream_2/stream = ExtResource("4_icj7q")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2fpgg"]
+albedo_color = Color(0.78439564, 0.655934, 0.29867858, 1)
+albedo_texture = ExtResource("10_3ad6x")
+metallic = 0.14
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_evtgs"]
+material = SubResource("StandardMaterial3D_2fpgg")
+top_radius = 1.074
+bottom_radius = 1.194
+height = 0.076
+
+[node name="Timed_trap_projectile" type="Node3D" unique_id=370900415 node_paths=PackedStringArray("projectile_pool", "audio") groups=["debug_PickableObjects"]]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 0, 0, 0)
+script = ExtResource("1_556o6")
+projectile_pool = [NodePath("_projectiles/ArrowProjectile"), NodePath("_projectiles/ArrowProjectile2"), NodePath("_projectiles/ArrowProjectile3"), NodePath("_projectiles/ArrowProjectile4"), NodePath("_projectiles/ArrowProjectile5")]
+audio = NodePath("AudioStreamPlayer3D")
+metadata/_custom_type_script = "uid://r8vvnup14amn"
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="." unique_id=714463159]
+stream = SubResource("AudioStreamRandomizer_c1656")
+max_distance = 20.0
+max_polyphony = 5
+bus = &"SFX"
+
+[node name="_graphics" type="Sprite3D" parent="." unique_id=1884001997]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.009619057)
+pixel_size = 0.001306
+texture = ExtResource("5_80qe2")
+
+[node name="_projectiles" type="Node3D" parent="." unique_id=256526845]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.51508)
+
+[node name="ArrowProjectile" parent="_projectiles" unique_id=36937432 instance=ExtResource("6_svmbl")]
+
+[node name="ArrowProjectile2" parent="_projectiles" unique_id=696026497 instance=ExtResource("6_svmbl")]
+
+[node name="ArrowProjectile3" parent="_projectiles" unique_id=1279472601 instance=ExtResource("6_svmbl")]
+
+[node name="ArrowProjectile4" parent="_projectiles" unique_id=1677497127 instance=ExtResource("6_svmbl")]
+
+[node name="ArrowProjectile5" parent="_projectiles" unique_id=308090328 instance=ExtResource("6_svmbl")]
+
+[node name="PO_ArrowTrap" type="Node" parent="." unique_id=1540609517 groups=["PO"]]
+script = ExtResource("7_rkl07")
+metadata/_custom_type_script = "uid://djyhniwugtcsq"
+
+[node name="_g" type="MeshInstance3D" parent="." unique_id=1606539556]
+transform = Transform3D(0.115, 7.627584e-09, 2.197288e-16, 0, -7.627585e-09, 0.115, 5.026809e-09, -0.1744988, -5.0268096e-09, 0, 0, 0.048701048)
+material_override = ExtResource("8_70vtf")
+mesh = ExtResource("9_rvuaa")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="_g" unique_id=1450182920]
+transform = Transform3D(0.7950002, 1.058791e-21, -5.0487086e-29, -1.0587912e-21, 0.795, 1.06581444e-14, 5.04871e-29, -1.0658142e-14, 0.7950002, 0, 0.2753687, 0)
+mesh = SubResource("CylinderMesh_evtgs")
+
+[node name="Timer" type="Timer" parent="." unique_id=1074662986]
+wait_time = 2.0
+script = ExtResource("11_dbee8")
+new_wait_time = 2.0
+
+[connection signal="timeout" from="Timer" to="." method="trigger_trap"]
