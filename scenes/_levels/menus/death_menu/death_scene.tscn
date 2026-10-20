@@ -1,10 +1,10 @@
 [gd_scene format=3 uid="uid://ds04v2o1xwpoj"]
 
 [ext_resource type="Script" uid="uid://dt16ne7di65xe" path="res://scenes/_levels/menus/death_menu/death_scene.gd" id="1_lr4ww"]
-[ext_resource type="Theme" uid="uid://ktuc4glx3wgp" path="res://scenes/_levels/menus/main_menu/Main_Menu_UI_NEW/UI_themes/redesigned_ui_theme.tres" id="2_4ng54"]
 [ext_resource type="Material" uid="uid://c4cxp8ll7n087" path="res://assets/models/cairn/Props/Skull/skull_texture.tres" id="3_4ng54"]
 [ext_resource type="ArrayMesh" uid="uid://bqoxxkvdnwixn" path="res://assets/models/cairn/Props/Skull/skull.obj" id="3_81pop"]
 [ext_resource type="Texture2D" uid="uid://bajdgu88x35py" path="res://scenes/enemy/Sprites/ballybog/walk/ballyWalkSheet_n.png" id="3_yj678"]
+[ext_resource type="Theme" uid="uid://4rqtecgji27t" path="res://scenes/_levels/menus/main_menu/Main_Menu_UI_NEW/UI_themes/customised_brush_theme.tres" id="4_7v44r"]
 [ext_resource type="Texture2D" uid="uid://dl3etwft2mhxm" path="res://scenes/enemy/Sprites/ballybog/walk/ballyWalkSheet.png" id="4_g8o4m"]
 [ext_resource type="Script" uid="uid://b5653u7w56pqw" path="res://addons/extras_sprites/scripts/sprite_3D_billboard.gd" id="5_nmorq"]
 [ext_resource type="Script" uid="uid://b4m0sglcg4smw" path="res://addons/extras_sprites/scripts/animatio_data.gd" id="6_74o25"]
@@ -55,7 +55,7 @@ volumetric_fog_density = 0.02
 volumetric_fog_emission = Color(0.13725491, 0.16862746, 0.1882353, 1)
 volumetric_fog_sky_affect = 0.0
 
-[sub_resource type="Shader" id="Shader_7uxcs"]
+[sub_resource type="Shader" id="Shader_4ng54"]
 code = "shader_type spatial;
 render_mode diffuse_lambert_wrap,cull_disabled;
 
@@ -132,9 +132,9 @@ void fragment() {
 }
 "
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_7v44r"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_7uxcs"]
 render_priority = 0
-shader = SubResource("Shader_7uxcs")
+shader = SubResource("Shader_4ng54")
 shader_parameter/rows = 5.0
 shader_parameter/columns = 8.0
 shader_parameter/frame = 0.0
@@ -143,18 +143,18 @@ shader_parameter/sprite = ExtResource("4_g8o4m")
 shader_parameter/mode = 0
 shader_parameter/Normal = ExtResource("3_yj678")
 
-[sub_resource type="PlaneMesh" id="PlaneMesh_2hmt0"]
-material = SubResource("ShaderMaterial_7v44r")
+[sub_resource type="PlaneMesh" id="PlaneMesh_7v44r"]
+material = SubResource("ShaderMaterial_7uxcs")
 size = Vector2(1.7279999, 1.7279999)
 orientation = 2
 
-[sub_resource type="Resource" id="Resource_w33ic"]
+[sub_resource type="Resource" id="Resource_2hmt0"]
 script = ExtResource("6_74o25")
 sprite = ExtResource("7_vxt8m")
 texture_normal = ExtResource("8_56ufw")
 columns = 8.0
 
-[sub_resource type="Resource" id="Resource_c8dny"]
+[sub_resource type="Resource" id="Resource_w33ic"]
 script = ExtResource("6_74o25")
 name = "walk"
 sprite = ExtResource("4_g8o4m")
@@ -162,7 +162,7 @@ texture_normal = ExtResource("3_yj678")
 rows = 5.0
 columns = 8.0
 
-[sub_resource type="Resource" id="Resource_p7dpa"]
+[sub_resource type="Resource" id="Resource_c8dny"]
 script = ExtResource("6_74o25")
 name = "Attack_LbBottom"
 sprite = ExtResource("9_2nyhg")
@@ -170,7 +170,7 @@ texture_normal = ExtResource("10_mn8ay")
 rows = 2.0
 columns = 8.0
 
-[sub_resource type="Resource" id="Resource_oeq6h"]
+[sub_resource type="Resource" id="Resource_p7dpa"]
 script = ExtResource("6_74o25")
 name = "Attack_LMid"
 sprite = ExtResource("11_bvdh5")
@@ -178,7 +178,7 @@ texture_normal = ExtResource("12_m3s8k")
 rows = 2.0
 columns = 8.0
 
-[sub_resource type="Resource" id="Resource_1xfku"]
+[sub_resource type="Resource" id="Resource_oeq6h"]
 script = ExtResource("6_74o25")
 name = "Attack_LTop"
 sprite = ExtResource("13_o2380")
@@ -186,7 +186,7 @@ texture_normal = ExtResource("14_2ild3")
 rows = 2.0
 columns = 8.0
 
-[sub_resource type="Resource" id="Resource_qwor7"]
+[sub_resource type="Resource" id="Resource_1xfku"]
 script = ExtResource("6_74o25")
 name = "Attack_RBottom"
 sprite = ExtResource("15_o7mud")
@@ -194,7 +194,7 @@ texture_normal = ExtResource("16_jopyp")
 rows = 2.0
 columns = 8.0
 
-[sub_resource type="Resource" id="Resource_7lite"]
+[sub_resource type="Resource" id="Resource_qwor7"]
 script = ExtResource("6_74o25")
 name = "Attack_RMid"
 sprite = ExtResource("17_pbwvr")
@@ -202,7 +202,7 @@ texture_normal = ExtResource("18_1hbeu")
 rows = 2.0
 columns = 8.0
 
-[sub_resource type="Resource" id="Resource_7ujrv"]
+[sub_resource type="Resource" id="Resource_7lite"]
 script = ExtResource("6_74o25")
 name = "Attack_RTop"
 sprite = ExtResource("19_ksddr")
@@ -333,7 +333,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme = ExtResource("2_4ng54")
+theme = ExtResource("4_7v44r")
 
 [node name="TextureRect" type="TextureRect" parent="Control" unique_id=984654632]
 layout_mode = 1
@@ -364,6 +364,7 @@ theme_override_constants/separation = 19
 [node name="Reload" type="Button" parent="Control/MarginContainer/VBoxContainer" unique_id=379027622]
 custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
+theme = ExtResource("4_7v44r")
 
 [node name="ColorRect" type="ColorRect" parent="Control/MarginContainer/VBoxContainer/Reload" unique_id=464630037]
 visible = false
@@ -389,7 +390,6 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
-theme_override_colors/default_color = Color(0.9098039, 0.9098039, 0.9098039, 1)
 theme_override_font_sizes/bold_font_size = 26
 bbcode_enabled = true
 text = "RELOAD_LAST_SAVE"
@@ -399,6 +399,7 @@ vertical_alignment = 1
 [node name="Replay" type="Button" parent="Control/MarginContainer/VBoxContainer" unique_id=1532565274]
 custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
+theme = ExtResource("4_7v44r")
 
 [node name="ColorRect" type="ColorRect" parent="Control/MarginContainer/VBoxContainer/Replay" unique_id=599301777]
 visible = false
@@ -424,9 +425,6 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
-theme_override_colors/default_color = Color(0.9098039, 0.9098039, 0.9098039, 1)
-theme_override_colors/font_selected_color = Color(0.9098039, 0.9098039, 0.9098039, 1)
-theme_override_colors/font_outline_color = Color(0.9098039, 0.9098039, 0.9098039, 1)
 theme_override_font_sizes/bold_font_size = 26
 bbcode_enabled = true
 text = "RESTART_LEVEL"
@@ -436,6 +434,7 @@ vertical_alignment = 1
 [node name="Exit" type="Button" parent="Control/MarginContainer/VBoxContainer" unique_id=2091363599]
 custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
+theme = ExtResource("4_7v44r")
 
 [node name="ColorRect" type="ColorRect" parent="Control/MarginContainer/VBoxContainer/Exit" unique_id=638285929]
 visible = false
@@ -461,9 +460,6 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
-theme_override_colors/default_color = Color(0.9098039, 0.9098039, 0.9098039, 1)
-theme_override_colors/font_selected_color = Color(0.9098039, 0.9098039, 0.9098039, 1)
-theme_override_colors/font_outline_color = Color(0.9098039, 0.9098039, 0.9098039, 1)
 theme_override_font_sizes/normal_font_size = 21
 theme_override_font_sizes/bold_font_size = 26
 bbcode_enabled = true
@@ -506,10 +502,10 @@ spot_angle = 4.33
 visible = false
 layers = 6144
 sorting_offset = 1.0
-mesh = SubResource("PlaneMesh_2hmt0")
+mesh = SubResource("PlaneMesh_7v44r")
 skeleton = NodePath("../../../..")
 script = ExtResource("5_nmorq")
-animations_array = Array[ExtResource("6_74o25")]([SubResource("Resource_w33ic"), SubResource("Resource_c8dny"), SubResource("Resource_p7dpa"), SubResource("Resource_oeq6h"), SubResource("Resource_1xfku"), SubResource("Resource_qwor7"), SubResource("Resource_7lite"), SubResource("Resource_7ujrv")])
+animations_array = Array[ExtResource("6_74o25")]([SubResource("Resource_2hmt0"), SubResource("Resource_w33ic"), SubResource("Resource_c8dny"), SubResource("Resource_p7dpa"), SubResource("Resource_oeq6h"), SubResource("Resource_1xfku"), SubResource("Resource_qwor7"), SubResource("Resource_7lite")])
 animation = 1
 frame = 1.0
 sprite_scale = 0.0016
