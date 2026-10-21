@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://cdxx7mclyl0e2" path="res://scenes/_levels/Final_Puzzles/BallyBog_Puzzles/new_bally_bog_maze(hard_section).tscn" id="7_fj03w"]
 [ext_resource type="PackedScene" uid="uid://cruv8v8wh8l06" path="res://scenes/interactions/_special/saving_stone/saving_stone.tscn" id="9_scxfw"]
 [ext_resource type="PackedScene" uid="uid://xuo5buj0odhi" path="res://scenes/interactions/_triggers/torch_sconce/torch_sconce_lit.tscn" id="10_daakw"]
+[ext_resource type="Script" uid="uid://d3su0hjvi88g4" path="res://scripts/save_sphere.gd" id="11_7exi5"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_vlydn"]
 sky_horizon_color = Color(0, 0.37292683, 0.8185948, 1)
@@ -46,6 +47,8 @@ volumetric_fog_enabled = true
 volumetric_fog_density = 0.025
 volumetric_fog_albedo = Color(0.74509805, 0.34509805, 0, 1)
 volumetric_fog_emission = Color(0.117735185, 0.20947376, 0.3003329, 1)
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_t2k7r"]
 
 [node name="Internal_Demo_October" type="Node3D" unique_id=1522441394]
 
@@ -137,3 +140,14 @@ transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -47.
 
 [node name="SavingStone8" parent="Save_Points" unique_id=399797637 instance=ExtResource("9_scxfw")]
 transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, -41.98239, -1, 54.662453)
+
+[node name="InitialSavePoint" type="Area3D" parent="." unique_id=1401781846]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0.8, 0.29999995)
+monitorable = false
+script = ExtResource("11_7exi5")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="InitialSavePoint" unique_id=893508633]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1)
+shape = SubResource("SphereShape3D_t2k7r")
+
+[connection signal="area_entered" from="InitialSavePoint" to="InitialSavePoint" method="_on_area_entered"]

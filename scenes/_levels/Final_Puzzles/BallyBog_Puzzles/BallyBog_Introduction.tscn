@@ -232,14 +232,17 @@ transform = Transform3D(8.940697e-08, 0, -1, 0, 1, 0, 1, 0, 8.940697e-08, -5, 0,
 grid_map = NodePath("../GridMapPathFinding2")
 patrol_points = [NodePath("../Bally_1_PatrolPoints/BB_PP_4"), NodePath("../Bally_1_PatrolPoints/BB_PP_1"), NodePath("../Bally_1_PatrolPoints/BB_PP_2"), NodePath("../Bally_1_PatrolPoints/BB_PP_3")]
 patrol_loop_mode = 1
-metadata/lock_uid = false
-metadata/uid = "80376abe-116c-4383-a2cb-3207494796ca"
-metadata/date_generated = "2026-04-21T14:01:21"
+metadata/lock_uid = true
+metadata/uid = "694d3ba2-ea56-491e-bdbb-146068568bb4"
+metadata/date_generated = "2026-10-21T15:38:46"
 
 [node name="Urn_Area" type="Node3D" parent="." unique_id=233466530]
 
 [node name="Urn_Key" parent="Urn_Area" unique_id=530447260 instance=ExtResource("6_ewppu")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.4, 0.4, -15)
+metadata/uid = "9cb6d490-4f5e-4525-9a11-6d089ac7f590"
+metadata/lock_uid = true
+metadata/date_generated = "2026-10-21T15:48:11"
 
 [node name="Ballybog_Secret_Door" type="Node3D" parent="Urn_Area" unique_id=121809898 node_paths=PackedStringArray("tp_checker_col", "out_pos_back", "out_pos_front") groups=["debug_PickableObjects"]]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -4, 0, -15)
@@ -250,6 +253,9 @@ tp_checker_col = NodePath("TPChecker_player/CollisionShape3D")
 out_pos_back = NodePath("out_pos_back")
 out_pos_front = NodePath("out_pos_front")
 metadata/_custom_type_script = "uid://42c4j0jtwejr"
+metadata/uid = "0b3349e2-f3f2-48fb-af70-64753a5b2874"
+metadata/lock_uid = true
+metadata/date_generated = "2026-10-21T15:38:46"
 
 [node name="gate" type="StaticBody3D" parent="Urn_Area/Ballybog_Secret_Door" unique_id=316557696]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
@@ -353,9 +359,9 @@ metadata/_custom_type_script = "uid://kg11gyciyied"
 
 [node name="First_Gate" parent="Urn_Area" unique_id=960759523 instance=ExtResource("5_nfw6c")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, -10.022409)
-metadata/lock_uid = false
-metadata/uid = "9f396a67-166a-459b-acb8-20d1d0484c13"
-metadata/date_generated = "2026-04-21T14:01:21"
+metadata/lock_uid = true
+metadata/uid = "e456c519-19ca-49b8-8137-79d1f713da52"
+metadata/date_generated = "2026-10-21T15:38:46"
 
 [node name="EnemyEnableTrig" parent="Urn_Area" unique_id=1987765279 instance=ExtResource("5_cvgf4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, -3, -1)
@@ -391,9 +397,9 @@ shape = SubResource("SphereShape3D_qofka")
 [node name="PressurePlateLight" parent="Urn_Area" unique_id=309180978 instance=ExtResource("19_0ox1x")]
 transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 1, 0, -9)
 weight_to_activate = 1.0
-metadata/uid = "c0ffa70e-eaa2-47d2-8140-acd37fb77dca"
-metadata/lock_uid = false
-metadata/date_generated = "2026-04-21T14:01:21"
+metadata/uid = "26ad117e-9c64-4486-8d10-9493a64952ed"
+metadata/lock_uid = true
+metadata/date_generated = "2026-10-21T15:38:46"
 
 [node name="TR_Indicator" type="Sprite3D" parent="Urn_Area/PressurePlateLight" unique_id=285485071]
 transform = Transform3D(-2.7818125e-08, 0, 0.99999994, 0, 1, 0, -0.99999994, 0, -2.7818125e-08, -0.7020326, 1.3248484, 0.037664413)
@@ -418,42 +424,72 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, -16)
 [node name="Urn2" parent="Urn_Area/Urns" unique_id=1376443271 instance=ExtResource("12_vqsr6")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0.4, 0)
 item_type = SubResource("Resource_vlnct")
+metadata/uid = "6b563003-058b-43e2-aa34-53d3f35e5738"
+metadata/lock_uid = true
+metadata/date_generated = "2026-10-21T15:38:46"
 
 [node name="Urn3" parent="Urn_Area/Urns" unique_id=1239501814 instance=ExtResource("12_vqsr6")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0.4, 0)
 item_type = SubResource("Resource_jbn6s")
+metadata/uid = "f2693c6b-9a62-4d8d-a109-57c141186dbb"
+metadata/lock_uid = true
+metadata/date_generated = "2026-10-21T15:38:46"
 
 [node name="Urn4" parent="Urn_Area/Urns" unique_id=826293136 instance=ExtResource("12_vqsr6")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0.4, 2)
 item_type = SubResource("Resource_o06uf")
+metadata/uid = "31afaa5d-da9e-458d-9299-fd201dfe9547"
+metadata/lock_uid = true
+metadata/date_generated = "2026-10-21T15:38:46"
 
 [node name="Urn5" parent="Urn_Area/Urns" unique_id=1185915612 instance=ExtResource("12_vqsr6")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.4, 2)
 item_type = SubResource("Resource_pw1ys")
+metadata/uid = "bb901198-d088-439f-b9bc-1611d2061e22"
+metadata/lock_uid = true
+metadata/date_generated = "2026-10-21T15:38:46"
 
 [node name="Urn6" parent="Urn_Area/Urns" unique_id=1538121186 instance=ExtResource("12_vqsr6")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0.4, 2)
 item_type = SubResource("Resource_r0k5g")
+metadata/uid = "75754d6e-2463-4a9b-98b8-aae7a552df05"
+metadata/lock_uid = true
+metadata/date_generated = "2026-10-21T15:38:46"
 
 [node name="Urn7" parent="Urn_Area/Urns" unique_id=1755294493 instance=ExtResource("12_vqsr6")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0.4, 4)
 item_type = SubResource("Resource_jbn6s")
+metadata/uid = "f6bd4fb0-b6d2-4077-a1dd-bab744bdfb30"
+metadata/lock_uid = true
+metadata/date_generated = "2026-10-21T15:38:46"
 
 [node name="Urn8" parent="Urn_Area/Urns" unique_id=1843547262 instance=ExtResource("12_vqsr6")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.4, 4)
 item_type = SubResource("Resource_656c1")
+metadata/uid = "029beaa7-121d-4ee1-971b-e4cfb435cd5e"
+metadata/lock_uid = true
+metadata/date_generated = "2026-10-21T15:38:46"
 
 [node name="Urn9" parent="Urn_Area/Urns" unique_id=1703179587 instance=ExtResource("12_vqsr6")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0.4, 4)
 item_type = SubResource("Resource_yb2g6")
+metadata/uid = "3a6fed3f-2bb7-462e-8a05-a1c2ef6ce860"
+metadata/lock_uid = true
+metadata/date_generated = "2026-10-21T15:38:46"
 
 [node name="Urn10" parent="Urn_Area/Urns" unique_id=1240700418 instance=ExtResource("12_vqsr6")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0.4, 2)
 item_type = SubResource("Resource_pac4h")
+metadata/uid = "ada493a5-68b0-4553-93da-9b1938f03b33"
+metadata/lock_uid = true
+metadata/date_generated = "2026-10-21T15:38:46"
 
 [node name="Urn_Torch" parent="Urn_Area/Urns" unique_id=1303000934 instance=ExtResource("12_vqsr6")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.4, 0)
 item_type = SubResource("Resource_4n8n6")
+metadata/uid = "aee44c19-a85b-4bc9-8a26-25644be58689"
+metadata/lock_uid = true
+metadata/date_generated = "2026-10-21T15:38:46"
 
 [node name="ItemReceiver" type="Node3D" parent="Urn_Area" unique_id=988742846 groups=["debug_PickableObjects"]]
 transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 1, 1, -18)
@@ -484,6 +520,9 @@ metadata/date_generated = "2026-10-02T15:37:58"
 
 [node name="Exit_Gate" parent="Urn_Area" unique_id=2077487765 instance=ExtResource("5_nfw6c")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 2, -20)
+metadata/uid = "f283ae14-af34-4533-8d00-b58b8c9da84b"
+metadata/lock_uid = true
+metadata/date_generated = "2026-10-21T15:38:46"
 
 [node name="Crouching_Part" type="Node3D" parent="." unique_id=268499608]
 
