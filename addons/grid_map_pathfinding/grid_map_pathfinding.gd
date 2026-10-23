@@ -82,6 +82,14 @@ func setup_astar_grid(grid_walkable_items: Array[int]):
 				if not astar.are_points_connected(point_id, neighbor_id):
 					astar.connect_points(point_id, neighbor_id)
 
+## Builds the AStar graph once; later calls do nothing
+## Checks the point count instead of using a flag because the grid may already 
+## have built itself when the scene loaded
+func ensure_astar_built() -> void:
+	if astar.get_point_count() > 0:
+		return
+	setup_astar_grid(walkable_items)
+	
 ## Call when you need to find the path between two actor positions.[br][br]
 ## Both start and end positions must be walkable cells in the [GridMap].[br][br]
 ## Note: the actor postions have to be on the same y-position as the grid map tiles
