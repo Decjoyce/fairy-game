@@ -578,36 +578,36 @@ transform = Transform3D(3.4959998, 0, 0, 0, 3.4959998, 0, 0, 0, 3.4959998, 3.200
 [node name="TorchSconce_Lit4" parent="Tutorial_Area/LastBit/Second_Crouch Point" unique_id=1517405374 instance=ExtResource("3_pvb4u")]
 transform = Transform3D(0.2553649, 6.330486e-08, -1.4482466, 1.4482466, -1.1162353e-08, 0.2553649, 1.1067742e-22, -1.4705882, -6.4281444e-08, 0.25948715, -1.7513305, 1.4705882)
 
-[node name="Save_Tutorial" type="Node3D" parent="Tutorial_Area/LastBit" unique_id=2032179810]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21, 0, 0)
+[node name="Door" parent="Tutorial_Area/LastBit" unique_id=1205913056 instance=ExtResource("9_fw3ye")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 8, 1, 0)
+destroy_items_on_receive = true
 
-[node name="Gate" parent="Tutorial_Area/LastBit/Save_Tutorial" unique_id=2072897166 instance=ExtResource("4_elh88")]
+[node name="Save_Tutorial" type="Node3D" parent="Tutorial_Area" unique_id=2032179810]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 47, -2, -5)
+
+[node name="Gate" parent="Tutorial_Area/Save_Tutorial" unique_id=2072897166 instance=ExtResource("4_elh88")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 2.8999999, 0, 9.179392e-08)
 disable_tp = false
 metadata/uid = "54fd1222-a6f0-419c-94b7-32896c8c2df8"
 metadata/lock_uid = true
 metadata/date_generated = "2026-10-21T15:44:41"
 
-[node name="SavingStone" parent="Tutorial_Area/LastBit/Save_Tutorial" unique_id=452927148 instance=ExtResource("27_ea6e4")]
+[node name="SavingStone" parent="Tutorial_Area/Save_Tutorial" unique_id=452927148 instance=ExtResource("27_ea6e4")]
 transform = Transform3D(-1, 0, 8.940697e-08, 0, 1, 0, -8.940697e-08, 0, -1, -0.2, -0.01, 0)
 
-[node name="Environment" type="Node3D" parent="Tutorial_Area/LastBit/Save_Tutorial" unique_id=468420931]
+[node name="Environment" type="Node3D" parent="Tutorial_Area/Save_Tutorial" unique_id=468420931]
 
-[node name="Torches" type="Node3D" parent="Tutorial_Area/LastBit/Save_Tutorial/Environment" unique_id=891606685]
+[node name="Torches" type="Node3D" parent="Tutorial_Area/Save_Tutorial/Environment" unique_id=891606685]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 1, 0)
 
-[node name="TorchSconce_Lit" parent="Tutorial_Area/LastBit/Save_Tutorial/Environment/Torches" unique_id=1062016048 instance=ExtResource("3_pvb4u")]
+[node name="TorchSconce_Lit" parent="Tutorial_Area/Save_Tutorial/Environment/Torches" unique_id=1062016048 instance=ExtResource("3_pvb4u")]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -0.30166626, 0.5142746, -1.1426411)
 
-[node name="TorchSconce_Lit2" parent="Tutorial_Area/LastBit/Save_Tutorial/Environment/Torches" unique_id=104641397 instance=ExtResource("3_pvb4u")]
+[node name="TorchSconce_Lit2" parent="Tutorial_Area/Save_Tutorial/Environment/Torches" unique_id=104641397 instance=ExtResource("3_pvb4u")]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -0.07966614, 0.5142746, 1.2891049)
 
-[node name="cairn_exit_pillars" parent="Tutorial_Area/LastBit/Save_Tutorial/Environment/Torches" unique_id=1384657963 instance=ExtResource("27_qbrer")]
+[node name="cairn_exit_pillars" parent="Tutorial_Area/Save_Tutorial/Environment/Torches" unique_id=1384657963 instance=ExtResource("27_qbrer")]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -42.042828, 1, -8)
-
-[node name="Door" parent="Tutorial_Area/LastBit" unique_id=1205913056 instance=ExtResource("9_fw3ye")]
-transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 8, 1, 0)
-destroy_items_on_receive = true
 
 [node name="Ballybog_Tease" type="Node3D" parent="Tutorial_Area" unique_id=113216871]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.999999, -1, -11)
@@ -1114,7 +1114,7 @@ omni_range = 1.4122742
 [connection signal="on_exit_lockdown" from="Tutorial_Area/ItemHeadZones/ItemNoPassZone_Second_PressurePlate_Room2" to="Tutorial_Area/ItemHeadZones/No_Acess_Gate2" method="fully_open_gate"]
 [connection signal="on_change" from="Tutorial_Area/LastBit/Urn_key_puzzle/Urn_puzzle_Pressure_Plate" to="Tutorial_Area/LastBit/Urn_key_puzzle/Cage_RoomSuspendedGate" method="open_gate"]
 [connection signal="on_change" from="Tutorial_Area/LastBit/Urn_key_puzzle/Urn_puzzle_Pressure_Plate" to="Tutorial_Area/LastBit/Urn_key_puzzle/newgate/AnimatedObject" method="play_animation"]
-[connection signal="on_saved" from="Tutorial_Area/LastBit/Save_Tutorial/SavingStone" to="Tutorial_Area/LastBit/Save_Tutorial/Gate" method="open_gate"]
+[connection signal="on_saved" from="Tutorial_Area/Save_Tutorial/SavingStone" to="Tutorial_Area/Save_Tutorial/Gate" method="open_gate"]
 [connection signal="on_activated" from="Tutorial_Area/FirstBit/Lever_Puzzle/BrokenLeverExample/BrokenLever" to="Tutorial_Area/FirstBit/Lever_Puzzle/BrokenLeverExample/Lever_Fixed" method="enable"]
 [connection signal="on_change" from="Tutorial_Area/FirstBit/Lever_Puzzle/BrokenLeverExample/Lever_Fixed" to="Tutorial_Area/FirstBit/Lever_Puzzle/Lever_Gate" method="open_gate"]
 [connection signal="on_activated" from="Tutorial_Area/FirstBit/Lever_Puzzle/PlayerAreaTrigger_AfterLeverPuzzle" to="Tutorial_Area/FirstBit/Lever_Puzzle/Lever_Gate" method="close_gate"]

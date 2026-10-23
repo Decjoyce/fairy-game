@@ -2,6 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://ckuw7ho3cogrs" path="res://scenes/_levels/Final_Puzzles/Tutorials/Tutorial_Scene.tscn" id="1_k6v8j"]
 [ext_resource type="PackedScene" uid="uid://bq86osdembn58" path="res://scenes/_player/_player_test.tscn" id="1_miwyq"]
+[ext_resource type="Script" uid="uid://dovihf7h5o4po" path="res://scripts/da_levels.gd" id="1_t2k7r"]
 [ext_resource type="Script" uid="uid://bul4myvyhnpjc" path="res://scripts/saving/uid_generator.gd" id="1_ybkin"]
 [ext_resource type="PackedScene" uid="uid://cieiwvi0168kv" path="res://scenes/_levels/Final_Puzzles/Mechanical_Puzzles/traps_puzzle_new.tscn" id="2_vlydn"]
 [ext_resource type="PackedScene" uid="uid://bvj3a43avx5bu" path="res://scenes/_levels/Final_Puzzles/BallyBog_Puzzles/BallyBog_Introduction.tscn" id="4_d33vt"]
@@ -51,12 +52,13 @@ volumetric_fog_emission = Color(0.117735185, 0.20947376, 0.3003329, 1)
 [sub_resource type="SphereShape3D" id="SphereShape3D_t2k7r"]
 
 [node name="Internal_Demo_October" type="Node3D" unique_id=1522441394]
+script = ExtResource("1_t2k7r")
 
 [node name="GridMap_IS" type="GridMap" parent="." unique_id=1922051830]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, -1)
 mesh_library = ExtResource("5_0w1e1")
 data = {
-"cells": PackedInt32Array(-65506, 65526, 1048578, -65504, 3, 1048578, -65505, 2, 655364, -65505, 3, 1, -65506, 3, 1441795, -65506, 2, 1048579, -65507, 2, 655363, -65520, 5, 655363, -65520, 6, 655362, -65521, 7, 1441796, -65520, 7, 1048577, -65520, 8, 2, -65520, 17, 3, -65521, 17, 1441794, -65522, 17, 1441794, -65523, 17, 655363, -65523, 18, 3, -65525, 18, 1441794, -65526, 18, 655363, -65507, 65526, 1441794, -65524, 18, 1441794)
+"cells": PackedInt32Array(-65506, 65526, 1048578, -65504, 3, 1048578, -65520, 5, 655363, -65520, 6, 655362, -65521, 7, 1441796, -65520, 7, 1048577, -65520, 8, 2, -65520, 17, 3, -65521, 17, 1441794, -65522, 17, 1441794, -65523, 17, 655363, -65523, 18, 3, -65525, 18, 1441794, -65526, 18, 655363, -65507, 65526, 1441794, -65524, 18, 1441794, -65505, 3, 1441795, -65505, 2, 1048579, -65507, 2, 655363, -65506, 2, 1048578)
 }
 metadata/_editor_floor_ = Vector3(0, -1, 0)
 
@@ -100,10 +102,10 @@ transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 20, 
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 58.98239, -1, -18.662453)
 
 [node name="SavingStone" parent="Save_Points" unique_id=452927148 instance=ExtResource("9_scxfw")]
-transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 36.01761, -0.9515213, -3.3375473)
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 36.01761, -0.9515213, -3.0375462)
 
 [node name="SavingStone2" parent="Save_Points" unique_id=835859965 instance=ExtResource("9_scxfw")]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 12.017609, -0.9609362, 32.862453)
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 12.017609, -0.9609362, 32.162453)
 
 [node name="SavingStone3" parent="Save_Points" unique_id=1120212353 instance=ExtResource("9_scxfw")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 32.01761, -0.960518, 33.062454)
@@ -112,34 +114,31 @@ transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 32.0
 transform = Transform3D(-1, 0, 2.6226832e-07, 0, 1, 0, -2.6226832e-07, 0, -1, -38, 0, 72.6)
 text = "Survey Trigger"
 
-[node name="SavingStone4" parent="Save_Points" unique_id=1202174187 instance=ExtResource("9_scxfw")]
-transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 4.0176086, -1, 22.662453)
-
 [node name="Save_Point_Torches" type="Node3D" parent="Save_Points" unique_id=1263711613]
 
 [node name="TorchSconce_Lit3" parent="Save_Points/Save_Point_Torches" unique_id=1729385187 instance=ExtResource("10_daakw")]
-transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 36.792038, 0.5, -2.737547)
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 36.792038, 0.5, -2.4375458)
 
 [node name="TorchSconce_Lit4" parent="Save_Points/Save_Point_Torches" unique_id=618382933 instance=ExtResource("10_daakw")]
-transform = Transform3D(-0.25881898, 0, 0.9659258, 0, 1, 0, -0.9659258, 0, -0.25881898, 35.249, 0.5, -2.737547)
+transform = Transform3D(-0.25881898, 0, 0.9659258, 0, 1, 0, -0.9659258, 0, -0.25881898, 35.249, 0.5, -2.4375458)
 
 [node name="TorchSconce_Lit" parent="Save_Points/Save_Point_Torches" unique_id=1092551822 instance=ExtResource("10_daakw")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -27.482391, 0.5, 31.862453)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -27.28239, 0.5, 31.862453)
 
 [node name="TorchSconce_Lit2" parent="Save_Points/Save_Point_Torches" unique_id=1526953915 instance=ExtResource("10_daakw")]
-transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, -27.482391, 0.5, 33.462456)
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, -27.28239, 0.5, 33.462456)
 
 [node name="SavingStone5" parent="Save_Points" unique_id=1326817946 instance=ExtResource("9_scxfw")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -27.982391, -1, 32.662453)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -27.78239, -1, 32.662453)
 
 [node name="SavingStone6" parent="Save_Points" unique_id=1203691997 instance=ExtResource("9_scxfw")]
-transform = Transform3D(1.3113416e-07, 0, 1, 0, 1, 0, -1, 0, 1.3113416e-07, -31.982391, -1, 66.66245)
+transform = Transform3D(1.3113416e-07, 0, 1, 0, 1, 0, -1, 0, 1.3113416e-07, -31.982391, -1, 66.36246)
 
 [node name="SavingStone7" parent="Save_Points" unique_id=1774145605 instance=ExtResource("9_scxfw")]
-transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -47.98239, -1, 62.662453)
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -47.98239, -1, 62.862453)
 
 [node name="SavingStone8" parent="Save_Points" unique_id=399797637 instance=ExtResource("9_scxfw")]
-transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, -41.98239, -1, 54.662453)
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, -42.182392, -1, 54.662453)
 
 [node name="InitialSavePoint" type="Area3D" parent="." unique_id=1401781846]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0.8, 0.29999995)
