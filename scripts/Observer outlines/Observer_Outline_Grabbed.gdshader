@@ -73,6 +73,6 @@ void fragment() {
     } else {
         // Display the original texture when stroke is disabled
         ALBEDO = col.rgb;
-        ALPHA = col.a;
+        ALPHA = 0.0;
     }
 }
