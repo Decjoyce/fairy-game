@@ -46,6 +46,7 @@
 [ext_resource type="Script" uid="uid://djyhniwugtcsq" path="res://scripts/saving/persistent_objs/po_arrowtrap.gd" id="23_bblx1"]
 [ext_resource type="PackedScene" uid="uid://clvus6c43ipdy" path="res://scenes/interactions/interactables/items/all_items/misc/item_stone.tscn" id="24_fsl0s"]
 [ext_resource type="Material" uid="uid://ckjbpunwhc0rn" path="res://assets/models/cairn/Props/SpikeTrap/SpikeTrap.tres" id="24_hhdgw"]
+[ext_resource type="PackedScene" uid="uid://it7ju6xowpsg" path="res://scenes/mikelo testo grande/crouch_prompt.tscn" id="24_ypegw"]
 [ext_resource type="Material" uid="uid://cykgn4cpccw6q" path="res://assets/models/cairn/Props/MountedTorch/MountedTorch.tres" id="25_dhg0u"]
 [ext_resource type="ArrayMesh" uid="uid://sakmnnwkwcdm" path="res://assets/models/cairn/Props/SpikeTrap/SpikeTrap.obj" id="25_ypegw"]
 [ext_resource type="ArrayMesh" uid="uid://deenfjj76xugt" path="res://assets/models/cairn/Props/MountedTorch/mountedtorch_nobackboard.obj" id="26_2pmk1"]
@@ -609,6 +610,9 @@ shape = SubResource("BoxShape3D_2fpgg")
 
 [node name="RightSide_Puzzle" type="Node3D" parent="Beginning_Part(Easier)/Second_Part" unique_id=1860354207]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13, 0, 18)
+
+[node name="CrouchPrompt" parent="Beginning_Part(Easier)/Second_Part/RightSide_Puzzle" unique_id=364992487 instance=ExtResource("24_ypegw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 2.717, 0, 0.5, 0.9999981)
 
 [node name="Part_1" type="Node3D" parent="Beginning_Part(Easier)/Second_Part/RightSide_Puzzle" unique_id=1403351719]
 

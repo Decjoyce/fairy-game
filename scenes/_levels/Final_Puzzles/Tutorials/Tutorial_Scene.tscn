@@ -53,6 +53,7 @@
 [ext_resource type="AudioStream" uid="uid://plsapuaavdu" path="res://assets/audio/sfx/items/urn/Pot_Break-009.wav" id="51_k1g5s"]
 [ext_resource type="AudioStream" uid="uid://6okv7s2vv1l2" path="res://assets/__not_ours_dontship/widngust.mp3" id="52_sc2t1"]
 [ext_resource type="PackedScene" uid="uid://ue3520w5p7fo" path="res://scenes/_levels/_palettes/cairn/props/cairn_fake_doorway.tscn" id="53_g531u"]
+[ext_resource type="PackedScene" uid="uid://it7ju6xowpsg" path="res://scenes/mikelo testo grande/crouch_prompt.tscn" id="54_nyk0u"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_56l6l"]
 size = Vector3(4.0224, 2, 2)
@@ -740,15 +741,15 @@ transform = Transform3D(-3.7855173e-08, 0.8660253, -0.49999997, -1, -4.371138e-0
 
 [node name="Items" type="Node3D" parent="Tutorial_Area" unique_id=1371521770]
 
+[node name="Torch" parent="Tutorial_Area/Items" unique_id=1479203938 instance=ExtResource("20_nyk0u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0.39999998, 10.4)
+metadata/uid = "88e4f364-ff1d-4642-9e2e-c8febefc2bf9"
+metadata/lock_uid = true
+metadata/date_generated = "2026-10-24T11:10:50"
+
 [node name="skull3" parent="Tutorial_Area/Items" unique_id=1351238258 instance=ExtResource("8_xl0u5")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.9, 0.3, -7.4)
 metadata/uid = "827ebf03-ca45-4e14-97a4-8f7d73820a31"
-metadata/lock_uid = true
-metadata/date_generated = "2026-10-21T15:44:41"
-
-[node name="Torch" parent="Tutorial_Area/Items" unique_id=1021080000 instance=ExtResource("20_nyk0u")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 1, 10.199999)
-metadata/uid = "33ce377b-af14-4fcc-b5d0-5133cbef5a37"
 metadata/lock_uid = true
 metadata/date_generated = "2026-10-21T15:44:41"
 
@@ -834,7 +835,7 @@ metadata/uid = "a1f02bb1-57f2-43e4-b997-dfef0072da06"
 metadata/lock_uid = true
 metadata/date_generated = "2026-10-21T15:44:41"
 
-[node name="Torch_Mounted3" parent="Tutorial_Area/Items" unique_id=1479203938 instance=ExtResource("23_gyl80")]
+[node name="Torch_Mounted3" parent="Tutorial_Area/Items" unique_id=1057031818 instance=ExtResource("23_gyl80")]
 transform = Transform3D(-3.7855173e-08, 2.1855694e-08, -1, 0.5, 0.8660254, 0, 0.8660254, -0.5, -4.371139e-08, 27, -0.8856605, -12.311693)
 
 [node name="Torch_Mounted4" parent="Tutorial_Area/Items" unique_id=57073105 instance=ExtResource("23_gyl80")]
@@ -1103,6 +1104,14 @@ transform = Transform3D(1.0000001, -1.4901161e-08, 4.4703484e-08, 1.4901161e-08,
 light_color = Color(0.654902, 0.7647059, 0.8666667, 1)
 light_volumetric_fog_energy = 2.315
 omni_range = 1.4122742
+
+[node name="Crouch_Prompts" type="Node3D" parent="." unique_id=954135390]
+
+[node name="CrouchPrompt" parent="Crouch_Prompts" unique_id=364992487 instance=ExtResource("54_nyk0u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0.5, 3.4999998)
+
+[node name="CrouchPrompt2" parent="Crouch_Prompts" unique_id=561107481 instance=ExtResource("54_nyk0u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 31, -1.5, -0.7579452)
 
 [connection signal="on_enter_lockdown" from="Tutorial_Area/ItemHeadZones/ItemNoPassZone_Second_PressurePlate_Room" to="Tutorial_Area/ItemHeadZones/ItemNoPassZone_Second_PressurePlate_Room/StaticBody3D/CollisionEnabler_Disabler" method="enable_obj"]
 [connection signal="on_enter_lockdown" from="Tutorial_Area/ItemHeadZones/ItemNoPassZone_Second_PressurePlate_Room" to="Tutorial_Area/ItemHeadZones/No_Acess_Gate" method="close_gate"]

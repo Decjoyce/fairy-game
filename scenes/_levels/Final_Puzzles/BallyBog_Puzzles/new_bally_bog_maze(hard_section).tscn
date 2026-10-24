@@ -45,6 +45,7 @@
 [ext_resource type="PackedScene" uid="uid://br35er4x4b6av" path="res://scenes/interactions/_triggers/torch_sconce/torch_sconce_unlit.tscn" id="40_381eb"]
 [ext_resource type="Material" uid="uid://cw6t4hgt8cs61" path="res://assets/models/cairn/Props/Door_Wall/Walldoor.tres" id="40_bod5u"]
 [ext_resource type="Material" uid="uid://c6lv8pfrvktb8" path="res://assets/models/cairn/Hall_BigRoof/Wall.tres" id="41_4itte"]
+[ext_resource type="PackedScene" uid="uid://it7ju6xowpsg" path="res://scenes/mikelo testo grande/crouch_prompt.tscn" id="43_raajj"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_xy4ik"]
 radius = 0.15350685
@@ -1643,6 +1644,9 @@ mesh = SubResource("ArrayMesh_dfv8v")
 [node name="CollisionShape3D2" type="CollisionShape3D" parent="Areas/Area_Segments/Kill_Balllybog_Area/Safety_Area/Safety Area/WallSingle/StaticBody3D" unique_id=2017674382]
 transform = Transform3D(1, 0, 0, 0, 1.0000001, 0, 0, 0, 1, 6.9501, 9.725199, 0.026245117)
 shape = SubResource("BoxShape3D_bod5u")
+
+[node name="CrouchPrompt" parent="Areas/Area_Segments" unique_id=364992487 instance=ExtResource("43_raajj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.6, 0.5, 24)
 
 [node name="Main_Area" type="Node3D" parent="Areas" unique_id=1409963160]
 
