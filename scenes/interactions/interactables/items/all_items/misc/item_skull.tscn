@@ -2,8 +2,8 @@
 
 [ext_resource type="Script" uid="uid://s5cfdf85lm5g" path="res://scenes/interactions/interactables/items/grabbable_item.gd" id="1_jhrhg"]
 [ext_resource type="Script" uid="uid://cqhq7vrwiw3m6" path="res://scenes/interactions/interactables/items/item_types/item_type.gd" id="2_i0ofu"]
+[ext_resource type="Shader" uid="uid://dyuchmad2ip5d" path="res://scripts/Observer outlines/Observer_Outline_YBillboard.gdshader" id="3_1qycu"]
 [ext_resource type="Texture2D" uid="uid://1m8e2skdgkex" path="res://assets/sprites/item_sprites/skull_item.png" id="3_jhrhg"]
-[ext_resource type="Shader" uid="uid://dnl1384j3uyy6" path="res://scripts/Observer outlines/Observer_Outline.gdshader" id="3_tu0hv"]
 [ext_resource type="AudioStream" uid="uid://n3o78n2v01wi" path="res://assets/audio/sfx/items/skull/skull_hit_randomizer.tres" id="4_lkkmc"]
 [ext_resource type="Script" uid="uid://cx6bhs5iiw7ss" path="res://scripts/Observer outlines/Outline_shader_attacher.gd" id="5_1qycu"]
 [ext_resource type="Script" uid="uid://bhf6r6nw14krj" path="res://scripts/saving/persistent_objs/po_item.gd" id="5_lkkmc"]
@@ -24,11 +24,11 @@ size = Vector3(0.4, 0.4, 0.4)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_y073s"]
 render_priority = 0
-shader = ExtResource("3_tu0hv")
+shader = ExtResource("3_1qycu")
 shader_parameter/sprite_texture = ExtResource("3_jhrhg")
 shader_parameter/enable_billboard = true
-shader_parameter/enable_outline = false
-shader_parameter/simple_outline_color = Color(1, 0, 0, 1)
+shader_parameter/enable_outline = true
+shader_parameter/simple_outline_color = Color(2.5713813, 0, 0, 1)
 shader_parameter/simple_outline_width = 10.0
 shader_parameter/flash_speed = 2.00000009174012
 shader_parameter/flash_min_alpha = 0.2
@@ -38,9 +38,9 @@ shader_parameter/flash_max_alpha = 0.8
 render_priority = 0
 shader = ExtResource("6_1qycu")
 shader_parameter/sprite_texture = ExtResource("3_jhrhg")
-shader_parameter/enable_billboard = false
+shader_parameter/enable_billboard = true
 shader_parameter/enable_outline = false
-shader_parameter/simple_outline_color = Color(1, 0, 0, 1)
+shader_parameter/simple_outline_color = Color(3.6144817, 0, 0, 1)
 shader_parameter/simple_outline_width = 10.0
 shader_parameter/flash_speed = 2.00000009174012
 shader_parameter/flash_min_alpha = 0.2
@@ -88,7 +88,7 @@ visible = false
 layers = 4
 material_overlay = SubResource("ShaderMaterial_urhtp")
 pixel_size = 0.0008
-billboard = 2
+billboard = 1
 shaded = true
 render_priority = 1
 texture = ExtResource("3_jhrhg")

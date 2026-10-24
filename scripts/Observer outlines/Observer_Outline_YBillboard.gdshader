@@ -1,4 +1,4 @@
-// ref : https://godotshaders.com/shader/sprite3d-outline-working-billboard/ but they were in chinese so i addapted a bit to our use
+// ref : https://godotshaders.com/shader/sprite3d-outline-shader-with-twinkle-for-godot4support-billboard/ but they were in chinese so i addapted a bit to our use
 // Outline + Fade
 shader_type spatial;
 render_mode  blend_mix, depth_prepass_alpha, cull_disabled, specular_disabled;
@@ -20,14 +20,14 @@ void vertex() {
     if (enable_billboard) {
         vec3 world_origin = (MODEL_MATRIX * vec4(0.0, 0.0, 0.0, 1.0)).xyz;
         float scale_x = length(MODEL_MATRIX[0].xyz);
-        float scale_y = length(MODEL_MATRIX[1].xyz);
+        float scale_y = length(MODEL_MATRIX[0].xyz);
         vec3 cam_right = normalize(INV_VIEW_MATRIX[0].xyz);
         vec3 cam_up    = normalize(INV_VIEW_MATRIX[1].xyz);
         vec2 local = VERTEX.xy;
         vec3 world_billboard = world_origin
-            - cam_right * local.x * scale_x
-            + cam_up  * local.y * scale_y;
-        POSITION = PROJECTION_MATRIX * VIEW_MATRIX * vec4(world_billboard, 1.0);
+            + cam_right * local.x * scale_x
+            + cam_up    * local.y * scale_y;
+        POSITION = PROJECTION_MATRIX * VIEW_MATRIX * (MODEL_MATRIX * vec4(world_billboard, 1.0));
     } else {
         POSITION = PROJECTION_MATRIX * VIEW_MATRIX * (MODEL_MATRIX * vec4(VERTEX, 1.0));
     }
@@ -71,6 +71,6 @@ void fragment() {
     } else {
         // Display the original texture when stroke is disabled
         ALBEDO = col.rgb;
-        ALPHA = col.a;
+        ALPHA = 0.0;
     }
 }
