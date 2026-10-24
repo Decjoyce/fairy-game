@@ -43,9 +43,12 @@
 [ext_resource type="Resource" uid="uid://bvdc57ehdgnq3" path="res://scripts/input_context/joyicons_xbox.tres" id="38_4266y"]
 [ext_resource type="Resource" uid="uid://cuvbrqma8ltub" path="res://scripts/input_context/joyicons_ps4.tres" id="39_mny7c"]
 [ext_resource type="Script" uid="uid://oa1ip6f7wn5o" path="res://scripts/input_context_helper.gd" id="39_ul0jp"]
+[ext_resource type="Texture2D" uid="uid://wpx72pcpea8n" path="res://assets/__not_ours_dontship/Xbox Series/XboxSeriesX_A.png" id="40_45hl8"]
 [ext_resource type="Resource" uid="uid://cy86l8mtli3ke" path="res://scripts/input_context/joyicons_nintendo.tres" id="40_4266y"]
 [ext_resource type="Texture2D" uid="uid://bnuamqc7avcot" path="res://assets/__not_ours_dontship/Xbox Series/XboxSeriesX_Y.png" id="41_mny7c"]
 [ext_resource type="Texture2D" uid="uid://ccq1sgoc15kuf" path="res://assets/__not_ours_dontship/PS4/PS4_Circle.png" id="42_0v66h"]
+[ext_resource type="Texture2D" uid="uid://bs5yncq44ovif" path="res://assets/__not_ours_dontship/placeholder/stand_placeholder.png" id="45_ensnv"]
+[ext_resource type="Texture2D" uid="uid://dqs4pdp3ax3e2" path="res://assets/__not_ours_dontship/placeholder/crouched_placeholder.png" id="46_43feg"]
 
 [sub_resource type="Animation" id="Animation_434r6"]
 length = 0.001
@@ -617,7 +620,7 @@ _data = {
 &"hand_valve_side": SubResource("Animation_4266y")
 }
 
-[node name="Interaction" type="Control" unique_id=1977560016 node_paths=PackedStringArray("hand_left", "hand_right", "hand_left_sprite", "hand_right_sprite")]
+[node name="Interaction" type="Control" unique_id=1977560016 node_paths=PackedStringArray("hand_left", "hand_right", "hand_left_sprite", "hand_right_sprite", "Stand_icon", "Crouch_icon")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -635,6 +638,8 @@ hand_left = NodePath("Hand_Left")
 hand_right = NodePath("Hand_Right")
 hand_left_sprite = NodePath("Hand_Left/_hand_sprite")
 hand_right_sprite = NodePath("Hand_Right/_hand_sprite")
+Stand_icon = NodePath("Control/Stand_icon/Stand")
+Crouch_icon = NodePath("Control/Stand_icon/Crouch")
 throw_clips = Array[AudioStream]([ExtResource("2_bxsda"), ExtResource("34_v48pp")])
 
 [node name="Hand_Left" type="Control" parent="." unique_id=342954462 node_paths=PackedStringArray("initial_state")]
@@ -1015,7 +1020,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="InputContexts" type="VBoxContainer" parent="Hand_Right/_hand_sprite" unique_id=596981118]
+[node name="InputContexts" type="VBoxContainer" parent="Hand_Right/_hand_sprite" unique_id=596981118 node_paths=PackedStringArray("crouch_action", "crouch_action_text")]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.18
@@ -1025,6 +1030,8 @@ anchor_bottom = 1.8066666
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("9_pdn2y")
+crouch_action = NodePath("CrouchPrompt")
+crouch_action_text = NodePath("CrouchPrompt/RichTextLabel")
 metadata/_edit_use_anchors_ = true
 
 [node name="UseAction" type="HBoxContainer" parent="Hand_Right/_hand_sprite/InputContexts" unique_id=1110406165]
@@ -1067,6 +1074,27 @@ text = "Hold to Throw
 scroll_active = false
 vertical_alignment = 1
 
+[node name="CrouchPrompt" type="HBoxContainer" parent="Hand_Right/_hand_sprite/InputContexts" unique_id=923316934]
+visible = false
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="Hand_Right/_hand_sprite/InputContexts/CrouchPrompt" unique_id=1895048221]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+texture = ExtResource("40_45hl8")
+expand_mode = 1
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Hand_Right/_hand_sprite/InputContexts/CrouchPrompt" unique_id=560357726]
+custom_minimum_size = Vector2(20, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/outline_size = 10
+theme_override_font_sizes/normal_font_size = 20
+text = "Press to Crouch
+"
+scroll_active = false
+vertical_alignment = 1
+
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Hand_Right" unique_id=415381061]
 callback_mode_method = 1
 libraries/ = SubResource("AnimationLibrary_3efos")
@@ -1102,6 +1130,32 @@ offset_left = -40.0
 offset_top = -40.0
 grow_horizontal = 0
 grow_vertical = 0
+
+[node name="Stand_icon" type="Control" parent="Control" unique_id=36318872]
+anchors_preset = 0
+offset_left = -1300.0
+offset_top = -683.0
+offset_right = -1300.0
+offset_bottom = -683.0
+
+[node name="Stand" type="TextureRect" parent="Control/Stand_icon" unique_id=2051528557]
+layout_mode = 0
+offset_left = -243.99998
+offset_top = -154.0
+offset_right = 3220.0
+offset_bottom = 3310.0
+scale = Vector2(0.077312306, 0.062875964)
+texture = ExtResource("45_ensnv")
+
+[node name="Crouch" type="TextureRect" parent="Control/Stand_icon" unique_id=1993167597]
+visible = false
+layout_mode = 0
+offset_left = -171.0
+offset_top = -108.0
+offset_right = 189.0
+offset_bottom = 432.0
+scale = Vector2(0.3699191, 0.25261647)
+texture = ExtResource("46_43feg")
 
 [node name="TextureRect" type="TextureRect" parent="Control" unique_id=799360397]
 visible = false

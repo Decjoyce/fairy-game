@@ -5,6 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://527wal6n3lqs" path="res://assets/sprites/item_sprites/key.png" id="3_i4wxb"]
 [ext_resource type="AudioStream" uid="uid://dutddyikwuiut" path="res://assets/audio/sfx/combat/misc/hittingsound_shorter.wav" id="4_jbrpq"]
 [ext_resource type="Script" uid="uid://bhf6r6nw14krj" path="res://scripts/saving/persistent_objs/po_item.gd" id="5_8m1kt"]
+[ext_resource type="Script" uid="uid://cx6bhs5iiw7ss" path="res://scripts/Observer outlines/Outline_shader_attacher.gd" id="5_afiul"]
 [ext_resource type="AudioStream" uid="uid://dytft82vafsv1" path="res://assets/audio/sfx/items/Grab/Key_grab.tres" id="6_1aeak"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_llc7q"]
@@ -68,12 +69,12 @@ shape = SubResource("BoxShape3D_234jp")
 debug_color = Color(0.8442249, 0.37985525, 5.7756904e-07, 0.41960785)
 
 [node name="_g_idle" type="Sprite3D" parent="." unique_id=1609679013]
-visible = false
 layers = 4
 pixel_size = 0.0008
 billboard = 2
 shaded = true
 texture = ExtResource("3_i4wxb")
+script = ExtResource("5_afiul")
 
 [node name="_g_grabbed" type="Sprite3D" parent="." unique_id=416879076]
 visible = false
@@ -81,6 +82,7 @@ layers = 4
 pixel_size = 0.0008
 render_priority = 1
 texture = ExtResource("3_i4wxb")
+script = ExtResource("5_afiul")
 
 [node name="AudioPlayer" type="AudioStreamPlayer3D" parent="." unique_id=1100606253]
 stream = ExtResource("4_jbrpq")
@@ -95,6 +97,7 @@ script = ExtResource("5_8m1kt")
 metadata/_custom_type_script = "uid://bhf6r6nw14krj"
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=366071288]
+visible = false
 mesh = SubResource("QuadMesh_1aeak")
 
 [node name="Audio_Grabbed" type="AudioStreamPlayer3D" parent="." unique_id=1584303311]

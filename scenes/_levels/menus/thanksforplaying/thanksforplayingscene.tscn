@@ -42,12 +42,13 @@
 [ext_resource type="Script" uid="uid://bbnwwbodc3xt3" path="res://scripts/level_sequencer.gd" id="44_iolwd"]
 [ext_resource type="PackedScene" uid="uid://bq5fylqfw1ru7" path="res://scenes/interactions/_special/item_statue_arm.tscn" id="45_3vym4"]
 [ext_resource type="PackedScene" uid="uid://u8or5ikxykcy" path="res://scenes/interactions/_special/item_statue_base.tscn" id="46_glsn6"]
+[ext_resource type="Theme" uid="uid://ktuc4glx3wgp" path="res://scenes/_levels/menus/main_menu/Main_Menu_UI_NEW/UI_themes/redesigned_ui_theme.tres" id="46_r8yq5"]
 [ext_resource type="FontFile" uid="uid://d0mryystoe8gs" path="res://assets/fonts/IMFellGreatPrimerSC-Regular.ttf" id="47_kebi5"]
 [ext_resource type="Script" uid="uid://dyjr0lgrqhmvh" path="res://scenes/_levels/menus/thanksforplaying/j.gd" id="47_r8yq5"]
 [ext_resource type="PackedScene" uid="uid://ciak43nkaxomm" path="res://scenes/interactions/_special/item_statue_head.tscn" id="47_wviay"]
 [ext_resource type="PackedScene" uid="uid://dnorxmo52wwjn" path="res://scenes/interactions/_receivers/gate/stone_gate.tscn" id="48_58gow"]
+[ext_resource type="Texture2D" uid="uid://dqdvne7xla30o" path="res://assets/ui/new_redesigned_ui/button_dark.png" id="48_mrcbo"]
 [ext_resource type="Texture2D" uid="uid://bskvcnav7uepj" path="res://assets/ui/flute/notes/notes_white/note_007.png" id="49_r7yqd"]
-[ext_resource type="Theme" uid="uid://4rqtecgji27t" path="res://scenes/_levels/menus/main_menu/Main_Menu_UI_NEW/UI_themes/customised_brush_theme.tres" id="53_i4n8d"]
 
 [sub_resource type="Curve" id="Curve_ucuax"]
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.6569343, 0.47191018), -1.1446267, -1.1446267, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
@@ -627,6 +628,23 @@ _data = {
 &"fade_out": SubResource("Animation_e26fk")
 }
 
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_mrcbo"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_mrcbo"]
+content_margin_left = 10.0
+content_margin_right = 10.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_e26fk"]
+texture = ExtResource("48_mrcbo")
+texture_margin_left = 10.0
+texture_margin_right = 10.0
+modulate_color = Color(0.3069225, 0.30692276, 0.30692258, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_l508d"]
+texture = ExtResource("48_mrcbo")
+texture_margin_left = 10.0
+texture_margin_right = 10.0
+
 [node name="Thanksforplaying" type="Node3D" unique_id=40124892 groups=["ABYSSRETURNER", "MrLevel"]]
 
 [node name="Different_Sections" type="Node3D" parent="." unique_id=1678989516]
@@ -1060,6 +1078,7 @@ lifetime = 6.0
 speed_scale = 0.58
 randomness = 1.0
 transform_align = 1
+transform_align_channel_filter = 1
 process_material = SubResource("ParticleProcessMaterial_l6x3k")
 draw_pass_1 = SubResource("PlaneMesh_y7mrb")
 
@@ -1070,6 +1089,7 @@ lifetime = 6.0
 speed_scale = 0.58
 randomness = 1.0
 transform_align = 1
+transform_align_channel_filter = 1
 process_material = SubResource("ParticleProcessMaterial_l6x3k")
 draw_pass_1 = SubResource("PlaneMesh_y7mrb")
 
@@ -1080,6 +1100,7 @@ lifetime = 6.0
 speed_scale = 0.58
 randomness = 1.0
 transform_align = 1
+transform_align_channel_filter = 1
 process_material = SubResource("ParticleProcessMaterial_l6x3k")
 draw_pass_1 = SubResource("PlaneMesh_y7mrb")
 
@@ -1090,6 +1111,7 @@ lifetime = 6.0
 speed_scale = 0.58
 randomness = 1.0
 transform_align = 1
+transform_align_channel_filter = 1
 process_material = SubResource("ParticleProcessMaterial_l6x3k")
 draw_pass_1 = SubResource("PlaneMesh_y7mrb")
 
@@ -1100,6 +1122,7 @@ lifetime = 6.0
 speed_scale = 0.58
 randomness = 1.0
 transform_align = 1
+transform_align_channel_filter = 1
 process_material = SubResource("ParticleProcessMaterial_l6x3k")
 draw_pass_1 = SubResource("PlaneMesh_y7mrb")
 
@@ -1110,6 +1133,7 @@ lifetime = 6.0
 speed_scale = 0.58
 randomness = 1.0
 transform_align = 1
+transform_align_channel_filter = 1
 process_material = SubResource("ParticleProcessMaterial_l6x3k")
 draw_pass_1 = SubResource("PlaneMesh_y7mrb")
 
@@ -1195,6 +1219,7 @@ lifetime = 6.0
 speed_scale = 0.58
 randomness = 1.0
 transform_align = 1
+transform_align_channel_filter = 1
 process_material = SubResource("ParticleProcessMaterial_l6x3k")
 draw_pass_1 = SubResource("PlaneMesh_y7mrb")
 
@@ -1593,6 +1618,7 @@ lifetime = 6.0
 speed_scale = 0.58
 randomness = 1.0
 transform_align = 1
+transform_align_channel_filter = 1
 process_material = SubResource("ParticleProcessMaterial_l6x3k")
 draw_pass_1 = SubResource("PlaneMesh_y7mrb")
 
@@ -1603,6 +1629,7 @@ lifetime = 6.0
 speed_scale = 0.58
 randomness = 1.0
 transform_align = 1
+transform_align_channel_filter = 1
 process_material = SubResource("ParticleProcessMaterial_l6x3k")
 draw_pass_1 = SubResource("PlaneMesh_y7mrb")
 
@@ -1613,6 +1640,7 @@ lifetime = 6.0
 speed_scale = 0.58
 randomness = 1.0
 transform_align = 1
+transform_align_channel_filter = 1
 process_material = SubResource("ParticleProcessMaterial_l6x3k")
 draw_pass_1 = SubResource("PlaneMesh_y7mrb")
 
@@ -2655,7 +2683,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme = ExtResource("53_i4n8d")
+theme = ExtResource("46_r8yq5")
 script = ExtResource("47_r8yq5")
 ap = NodePath("ColorRect/AnimationPlayer")
 
@@ -2674,22 +2702,31 @@ libraries/ = SubResource("AnimationLibrary_e26fk")
 autoplay = &"fade_in"
 
 [node name="Button" type="Button" parent="Control" unique_id=363859637]
+custom_minimum_size = Vector2(500, 0)
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -316.0
-offset_top = -289.0
-offset_right = 316.0
-offset_bottom = -162.0
+offset_left = -148.0
+offset_top = -202.0
+offset_right = 149.0
+offset_bottom = -80.0
 grow_horizontal = 2
 grow_vertical = 0
-theme_override_constants/outline_size = 26
-theme_override_constants/align_to_largest_stylebox = 17
-theme_override_font_sizes/font_size = 75
-text = "Begin"
+theme = ExtResource("46_r8yq5")
+theme_type_variation = &"title_screen_button"
+theme_override_colors/font_color = Color(0.9098039, 0.9098039, 0.9098039, 1)
+theme_override_colors/font_outline_color = Color(0.9098039, 0.9098039, 0.9098039, 1)
+theme_override_constants/outline_size = 6
+theme_override_font_sizes/font_size = 80
+theme_override_icons/icon = SubResource("PlaceholderTexture2D_mrcbo")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_mrcbo")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_e26fk")
+theme_override_styles/hover = SubResource("StyleBoxTexture_l508d")
+theme_override_styles/focus = SubResource("StyleBoxTexture_l508d")
+text = "BEGIN"
 
 [node name="ColorRect2" type="ColorRect" parent="Control" unique_id=251992175]
 layout_mode = 1
