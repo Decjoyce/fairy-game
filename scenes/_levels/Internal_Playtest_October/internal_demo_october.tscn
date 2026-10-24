@@ -12,6 +12,10 @@
 [ext_resource type="PackedScene" uid="uid://cruv8v8wh8l06" path="res://scenes/interactions/_special/saving_stone/saving_stone.tscn" id="9_scxfw"]
 [ext_resource type="PackedScene" uid="uid://xuo5buj0odhi" path="res://scenes/interactions/_triggers/torch_sconce/torch_sconce_lit.tscn" id="10_daakw"]
 [ext_resource type="Script" uid="uid://d3su0hjvi88g4" path="res://scripts/save_sphere.gd" id="11_7exi5"]
+[ext_resource type="AudioStream" uid="uid://cte56l5nhnq88" path="res://assets/audio/sfx/environment/ambient/Ambience, Underground, Cave, Magic, Cold, Deep, Wind, Eerie SND46573.wav" id="13_cfydp"]
+[ext_resource type="AudioStream" uid="uid://bscs1lnw8crcv" path="res://assets/audio/sfx/environment/ambient/Ambience, Underground, Cave, Magic, Dangling Metal SND46572.wav" id="14_8bmk3"]
+[ext_resource type="AudioStream" uid="uid://cej86o2w2i6wk" path="res://assets/audio/sfx/environment/ambient/Bridge ambiente.wav" id="15_fi1p5"]
+[ext_resource type="AudioStream" uid="uid://dv8231i6w3v4l" path="res://assets/audio/sfx/environment/ambient/abience with things falling.wav" id="16_nwpe1"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_vlydn"]
 sky_horizon_color = Color(0, 0.37292683, 0.8185948, 1)
@@ -52,7 +56,7 @@ volumetric_fog_emission = Color(0.117735185, 0.20947376, 0.3003329, 1)
 [sub_resource type="SphereShape3D" id="SphereShape3D_t2k7r"]
 
 [sub_resource type="BoxOccluder3D" id="BoxOccluder3D_t2k7r"]
-size = Vector3(0.26496887, 4.33489, 17.159233)
+size = Vector3(0.26496887, 3.7533395, 17.86456)
 
 [node name="Internal_Demo_October" type="Node3D" unique_id=1522441394]
 script = ExtResource("1_t2k7r")
@@ -155,10 +159,166 @@ layers = 4096
 occluder = SubResource("BoxOccluder3D_t2k7r")
 bake_mask = 4293922816
 
+[node name="OccluderInstance3D39" type="OccluderInstance3D" parent="Occluderholder1" unique_id=1782712070]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1.4874197, 0, 1, 0, -4.371139e-08, 13.711815, -0.19538105, 10.3452)
+layers = 4096
+occluder = SubResource("BoxOccluder3D_t2k7r")
+bake_mask = 4293922816
+
+[node name="OccluderInstance3D49" type="OccluderInstance3D" parent="Occluderholder1" unique_id=1348416098]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1.4874197, 0, 1, 0, -4.371139e-08, -12.519482, -0.19538105, 9.653973)
+layers = 4096
+occluder = SubResource("BoxOccluder3D_t2k7r")
+bake_mask = 4293922816
+
+[node name="OccluderInstance3D28" type="OccluderInstance3D" parent="Occluderholder1" unique_id=871125141]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 23.711815, 4.106504, 3.3451996)
+layers = 4096
+occluder = SubResource("BoxOccluder3D_t2k7r")
+bake_mask = 4293922816
+
+[node name="OccluderInstance3D29" type="OccluderInstance3D" parent="Occluderholder1" unique_id=1621512232]
+transform = Transform3D(1, 0, 0, 0, 1.3987105, 0, 0, 0, 1, 53.11467, -2.030559, 14.124367)
+layers = 4096
+occluder = SubResource("BoxOccluder3D_t2k7r")
+bake_mask = 4293922816
+
+[node name="OccluderInstance3D30" type="OccluderInstance3D" parent="Occluderholder1" unique_id=1000978695]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 58.219627, -2.030559, -8.289625)
+layers = 4096
+occluder = SubResource("BoxOccluder3D_t2k7r")
+bake_mask = 4293922816
+
+[node name="OccluderInstance3D31" type="OccluderInstance3D" parent="Occluderholder1" unique_id=1135573730]
+transform = Transform3D(0.99999994, 0, 0, 0, 1.6459479, 0, 0, 0, 0.99999994, 67.91752, -2.030559, 31.911827)
+layers = 4096
+occluder = SubResource("BoxOccluder3D_t2k7r")
+bake_mask = 4293922816
+
+[node name="OccluderInstance3D32" type="OccluderInstance3D" parent="Occluderholder1" unique_id=1107373594]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1.5599144, 0, -1, 0, -4.371139e-08, 73.62431, -2.030559, 41.789825)
+layers = 4096
+occluder = SubResource("BoxOccluder3D_t2k7r")
+bake_mask = 4293922816
+
+[node name="OccluderInstance3D33" type="OccluderInstance3D" parent="Occluderholder1" unique_id=287806185]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 51.99739, -2.030558, 43.06482)
+layers = 4096
+occluder = SubResource("BoxOccluder3D_t2k7r")
+bake_mask = 4293922816
+
+[node name="OccluderInstance3D34" type="OccluderInstance3D" parent="Occluderholder1" unique_id=799446816]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1.749264, 0, -1, 0, -4.371139e-08, 28.99739, -0.6378789, 37.06482)
+layers = 4096
+occluder = SubResource("BoxOccluder3D_t2k7r")
+bake_mask = 4293922816
+
+[node name="OccluderInstance3D40" type="OccluderInstance3D" parent="Occluderholder1" unique_id=919567205]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 2.5375364, 0, -1, 0, -4.371139e-08, 26.346542, -0.63787985, 56.945045)
+layers = 4096
+occluder = SubResource("BoxOccluder3D_t2k7r")
+bake_mask = 4293922816
+
+[node name="OccluderInstance3D41" type="OccluderInstance3D" parent="Occluderholder1" unique_id=1701277310]
+transform = Transform3D(0.7071067, 0, 0.7071068, 0, 2.5375364, 0, -0.7071068, 0, 0.7071067, 39.780777, -0.63787985, 63.062798)
+layers = 4096
+occluder = SubResource("BoxOccluder3D_t2k7r")
+bake_mask = 4293922816
+
+[node name="OccluderInstance3D42" type="OccluderInstance3D" parent="Occluderholder1" unique_id=217360346]
+transform = Transform3D(0.70710677, 0, -0.70710677, 0, 2.5375366, 0, 0.70710677, 0, 0.70710677, 32.788578, -0.63787985, 80.40499)
+layers = 4096
+occluder = SubResource("BoxOccluder3D_t2k7r")
+bake_mask = 4293922816
+
+[node name="OccluderInstance3D43" type="OccluderInstance3D" parent="Occluderholder1" unique_id=67418342]
+transform = Transform3D(0, 0, -0.52799386, 0, 1.8497844, 0, 0.99999994, 0, 0, 10.5870285, -0.8734851, 57.040474)
+layers = 4096
+occluder = SubResource("BoxOccluder3D_t2k7r")
+bake_mask = 4293922816
+
+[node name="OccluderInstance3D37" type="OccluderInstance3D" parent="Occluderholder1" unique_id=208772300]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 3.646522, 0, -1, 0, -4.371139e-08, -15.955582, -0.6378789, 35.06482)
+layers = 4096
+occluder = SubResource("BoxOccluder3D_t2k7r")
+bake_mask = 4293922816
+
+[node name="OccluderInstance3D38" type="OccluderInstance3D" parent="Occluderholder1" unique_id=1948617504]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 3.7783728, 0, 8.742278e-08, 0, -1, -27.124664, -0.6378789, 45.510986)
+layers = 4096
+occluder = SubResource("BoxOccluder3D_t2k7r")
+bake_mask = 4293922816
+
+[node name="OccluderInstance3D44" type="OccluderInstance3D" parent="Occluderholder1" unique_id=480253302]
+transform = Transform3D(1.3113416e-07, 0, -1, 0, 3.7783728, 0, 1, 0, 1.3113416e-07, -34.614265, -0.6378808, 60.86171)
+layers = 4096
+occluder = SubResource("BoxOccluder3D_t2k7r")
+bake_mask = 4293922816
+
+[node name="OccluderInstance3D45" type="OccluderInstance3D" parent="Occluderholder1" unique_id=751567153]
+transform = Transform3D(1, 0, 1.7484555e-07, 0, 3.7783728, 0, -1.7484555e-07, 0, 1, -47.614265, -0.6378808, 71.86171)
+layers = 4096
+occluder = SubResource("BoxOccluder3D_t2k7r")
+bake_mask = 4293922816
+
+[node name="OccluderInstance3D46" type="OccluderInstance3D" parent="Occluderholder1" unique_id=2136728605]
+transform = Transform3D(-2.1855695e-07, 0, 1, 0, 1.5224171, 0, -1, 0, -2.1855695e-07, -12.334328, -0.6378808, 80.86171)
+layers = 4096
+occluder = SubResource("BoxOccluder3D_t2k7r")
+bake_mask = 4293922816
+
+[node name="OccluderInstance3D47" type="OccluderInstance3D" parent="Occluderholder1" unique_id=1386385180]
+transform = Transform3D(-2.1855695e-07, 0, 1, 0, 1.5224171, 0, -1, 0, -2.1855695e-07, 9.246273, -0.6378808, 83.43247)
+layers = 4096
+occluder = SubResource("BoxOccluder3D_t2k7r")
+bake_mask = 4293922816
+
+[node name="OccluderInstance3D35" type="OccluderInstance3D" parent="Occluderholder1" unique_id=1145387406]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1.749264, 0, -1, 0, -4.371139e-08, 28.99739, -0.6378789, 24.06482)
+layers = 4096
+occluder = SubResource("BoxOccluder3D_t2k7r")
+bake_mask = 4293922816
+
+[node name="OccluderInstance3D48" type="OccluderInstance3D" parent="Occluderholder1" unique_id=1742011232]
+transform = Transform3D(-0.5, 0, 0.8660253, 0, 1.7492642, 0, -0.8660253, 0, -0.5, 8.762962, -1.2557712, 27.368347)
+layers = 4096
+occluder = SubResource("BoxOccluder3D_t2k7r")
+bake_mask = 4293922816
+
+[node name="OccluderInstance3D36" type="OccluderInstance3D" parent="Occluderholder1" unique_id=351200801]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1.749264, 0, -1, 0, -4.371139e-08, 46.99739, -0.6378789, 24.06482)
+layers = 4096
+occluder = SubResource("BoxOccluder3D_t2k7r")
+bake_mask = 4293922816
+
 [node name="OccluderInstance3D27" type="OccluderInstance3D" parent="Occluderholder1" unique_id=70062805]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 23.711815, -0.19538105, -6.6548004)
 layers = 4096
 occluder = SubResource("BoxOccluder3D_t2k7r")
 bake_mask = 4293922816
+
+[node name="Ambiente" type="AudioStreamPlayer3D" parent="." unique_id=294176768]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 63.343895, -8.977149, 46.608803)
+stream = ExtResource("13_cfydp")
+autoplay = true
+max_distance = 18.9
+
+[node name="Ambiente2" type="AudioStreamPlayer3D" parent="." unique_id=412772504]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30.343895, 9.854454, 46.608803)
+stream = ExtResource("14_8bmk3")
+autoplay = true
+max_distance = 18.9
+
+[node name="Ambiente3" type="AudioStreamPlayer3D" parent="." unique_id=34119315]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18.750414, 9.854454, 46.608803)
+stream = ExtResource("15_fi1p5")
+autoplay = true
+max_distance = 18.9
+
+[node name="Ambiente4" type="AudioStreamPlayer3D" parent="." unique_id=480844182]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 44.11622, 7.228202, 19.452564)
+stream = ExtResource("16_nwpe1")
+autoplay = true
+max_distance = 18.9
 
 [connection signal="area_entered" from="InitialSavePoint" to="InitialSavePoint" method="_on_area_entered"]

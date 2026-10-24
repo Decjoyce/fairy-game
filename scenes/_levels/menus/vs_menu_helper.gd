@@ -5,7 +5,8 @@ extends Node3D
 @export var end_screen: PackedScene
 
 func _ready() -> void:
-	anim_pl.play("fade_in")
+	pass
+	#anim_pl.play("fade_in")
 
 func to_menu():
 	get_tree().change_scene_to_packed(end_screen)

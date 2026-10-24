@@ -46,7 +46,9 @@
 [ext_resource type="Material" uid="uid://cw6t4hgt8cs61" path="res://assets/models/cairn/Props/Door_Wall/Walldoor.tres" id="40_bod5u"]
 [ext_resource type="Material" uid="uid://c6lv8pfrvktb8" path="res://assets/models/cairn/Hall_BigRoof/Wall.tres" id="41_4itte"]
 [ext_resource type="PackedScene" uid="uid://it7ju6xowpsg" path="res://scenes/mikelo testo grande/crouch_prompt.tscn" id="43_raajj"]
+[ext_resource type="Script" uid="uid://c00pbq6pr77dd" path="res://scenes/_levels/menus/vs_menu_helper.gd" id="45_fbbig"]
 [ext_resource type="PackedScene" uid="uid://b5g00fexnuwte" path="res://scenes/interactions/_special/the_observer/the_observer.tscn" id="45_gsksc"]
+[ext_resource type="PackedScene" uid="uid://2urw8kkhhaec" path="res://scenes/_levels/Vertical Slice/end_scene.tscn" id="46_pc8lt"]
 [ext_resource type="PackedScene" uid="uid://dhb1ju03ckwh4" path="res://scenes/interactions/_receivers/enabler_disabler_v1/collision_enabler_disabler.tscn" id="46_yhrw5"]
 [ext_resource type="PackedScene" uid="uid://dpmxu8xwfcf5e" path="res://scenes/enemy/bb_line.tscn" id="47_fbbig"]
 
@@ -171,6 +173,64 @@ size = Vector3(2.3780518, 10.7, 15.97583)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_4btwm"]
 size = Vector3(1.6, 2, 0.5)
+
+[sub_resource type="Animation" id="Animation_8o3kd"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_e7sjl"]
+resource_name = "fade_in"
+length = 2.0
+
+[sub_resource type="Animation" id="Animation_j4a7u"]
+resource_name = "fade_out"
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(1),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"to_menu"
+}]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ColorRect:color")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.96666664),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 0), Color(0, 0, 0, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_s0bha"]
+_data = {
+&"RESET": SubResource("Animation_8o3kd"),
+&"fade_in": SubResource("Animation_e7sjl"),
+&"fade_out": SubResource("Animation_j4a7u")
+}
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_dgqtw"]
+radius = 1.7361357
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_pc8lt"]
 size = Vector3(2, 2.1000001, 3)
@@ -1720,6 +1780,33 @@ visible = false
 [node name="Overall_Objective" type="Label3D" parent="Areas/Main_Area/Temporary_Notes" unique_id=399348532]
 text = "Overall Objective."
 
+[node name="Ender" type="Node3D" parent="Areas/Main_Area" unique_id=332209159 node_paths=PackedStringArray("anim_pl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -12.8870125)
+script = ExtResource("45_fbbig")
+anim_pl = NodePath("AnimationPlayer")
+end_screen = ExtResource("46_pc8lt")
+
+[node name="ColorRect" type="ColorRect" parent="Areas/Main_Area/Ender" unique_id=2047978979]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 0)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Areas/Main_Area/Ender" unique_id=850819230]
+libraries/ = SubResource("AnimationLibrary_s0bha")
+
+[node name="Area3D" type="Area3D" parent="Areas/Main_Area/Ender" unique_id=1561817790]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.033518, 0.5182469, 7.5514584)
+collision_layer = 0
+monitorable = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Areas/Main_Area/Ender/Area3D" unique_id=105610238]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.8989525, 0.35207927, -6.6944714)
+shape = SubResource("SphereShape3D_dgqtw")
+
 [node name="ItemNoPassZone_Second_PressurePlate_Room2" parent="Areas" unique_id=223074910 instance=ExtResource("45_gsksc")]
 transform = Transform3D(-1.172251e-07, 0, 1.0000001, -1.7763568e-15, 1.0000001, 0, -1, 0, -1.1722511e-07, 6.0239067, 1.5345287, -6.999999)
 
@@ -1829,6 +1916,7 @@ shape = SubResource("BoxShape3D_a25eu")
 [connection signal="area_entered" from="Areas/Area_Segments/Kill_Balllybog_Area/Ballybogs/PlayerAreaTrigger/Area3D" to="Areas/Area_Segments/Kill_Balllybog_Area/Ballybogs/PlayerAreaTrigger" method="_player_entered"]
 [connection signal="area_exited" from="Areas/Area_Segments/Kill_Balllybog_Area/Ballybogs/PlayerAreaTrigger/Area3D" to="Areas/Area_Segments/Kill_Balllybog_Area/Ballybogs/PlayerAreaTrigger" method="_player_exited"]
 [connection signal="on_activated" from="Areas/Main_Area/ItemReceiver" to="Areas/Main_Area/Main_Door" method="open_door"]
+[connection signal="area_entered" from="Areas/Main_Area/Ender/Area3D" to="Areas/Main_Area/Ender" method="_on_area_3d_area_entered"]
 [connection signal="on_enter_lockdown" from="Areas/ItemNoPassZone_Second_PressurePlate_Room2" to="Areas/ItemNoPassZone_Second_PressurePlate_Room2/StaticBody3D/CollisionEnabler_Disabler" method="enable_obj"]
 [connection signal="on_enter_lockdown" from="Areas/ItemNoPassZone_Second_PressurePlate_Room2" to="Areas/No_Acess_Gate2" method="close_gate"]
 [connection signal="on_exit_lockdown" from="Areas/ItemNoPassZone_Second_PressurePlate_Room2" to="Areas/ItemNoPassZone_Second_PressurePlate_Room2/StaticBody3D/CollisionEnabler_Disabler" method="disable_obj"]

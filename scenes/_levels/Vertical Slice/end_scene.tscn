@@ -14,12 +14,19 @@
 [ext_resource type="PackedScene" uid="uid://lxic7c72kvyt" path="res://scenes/interactions/interactables/items/all_items/misc/item_skull.tscn" id="12_3fl8b"]
 [ext_resource type="PackedScene" uid="uid://bw752cs1fru6w" path="res://scenes/interactions/interactables/items/all_items/consumables/item_pitcher.tscn" id="13_w2mht"]
 [ext_resource type="PackedScene" uid="uid://dqh8lru4mt2ap" path="res://scenes/interactions/interactables/items/all_items/breakables/item_urn.tscn" id="14_sxycd"]
+[ext_resource type="AudioStream" uid="uid://kkcenjulpnj3" path="res://assets/audio/sfx/enemy/ballybog/BB v2/noises/BB TALK1.wav" id="14_y8ebg"]
+[ext_resource type="AudioStream" uid="uid://d178kw4kefaq7" path="res://assets/audio/sfx/enemy/ballybog/BB v2/noises/BB TALK2.wav" id="15_3f577"]
 [ext_resource type="Script" uid="uid://beaf3digx88d0" path="res://scenes/interactions/interactables/items/item_types/itemtype_breakable.gd" id="15_qc4m8"]
+[ext_resource type="AudioStream" uid="uid://dqybgl0vtoijh" path="res://assets/audio/sfx/enemy/ballybog/BB v2/noises/Creatures, Humanoid, Goblin, Vocalisation, Funny 01 SND22325.wav" id="16_c2wdu"]
 [ext_resource type="PackedScene" uid="uid://cfkoaxhngk3gf" path="res://scenes/interactions/interactables/items/all_items/keys/item_key.tscn" id="16_ggbk2"]
 [ext_resource type="PackedScene" uid="uid://clnnqb1efkbei" path="res://scenes/interactions/_receivers/door/locked_door.tscn" id="17_7pe67"]
+[ext_resource type="AudioStream" uid="uid://bims586gy1s5c" path="res://assets/audio/sfx/enemy/ballybog/BB v2/noises/Creatures, Misc, Goblin's Pug, Voice 03 SND8967.wav" id="17_twbo1"]
+[ext_resource type="AudioStream" uid="uid://dxnwgo5ifq8pn" path="res://assets/audio/sfx/enemy/ballybog/BB v2/noises/Creatures, Small, Male Goblin, Laugh SND113493.wav" id="18_iskxt"]
 [ext_resource type="Material" uid="uid://f0qp2o0ip83p" path="res://assets/models/cairn/Props/Wood_Door/Wood_Door.tres" id="18_sg48w"]
 [ext_resource type="Material" uid="uid://c17eub34k5hf8" path="res://assets/models/cairn/Props/Wood_Door/Wood_Screw.tres" id="19_h5b8w"]
+[ext_resource type="AudioStream" uid="uid://eonxrwfd5es4" path="res://assets/audio/sfx/enemy/ballybog/BB v2/noises/Creatures, Small, Weird Dog, Voice 04 SND8843.wav" id="19_xdkfd"]
 [ext_resource type="Script" uid="uid://c4t3ko70ihpyy" path="res://scenes/interactions/_receivers/animated_object/animated_object.gd" id="20_i2fy6"]
+[ext_resource type="AudioStream" uid="uid://clmlcqa374dx1" path="res://assets/audio/sfx/enemy/ballybog/BB v2/noises/Creatures, Small, Weird Dog, Voice 05 SND8842.wav" id="20_yh5mv"]
 [ext_resource type="PackedScene" uid="uid://chqox5wu7wm4q" path="res://scenes/_levels/_palettes/cairn/props/cairn_exit_pillars.tscn" id="21_4xi4b"]
 [ext_resource type="PackedScene" uid="uid://bh7tcs2xgbni1" path="res://scenes/_levels/_palettes/cairn/props/cairn_doorway_wall.tscn" id="22_nhqle"]
 [ext_resource type="AudioStream" uid="uid://cq7dtkcnrtjyk" path="res://assets/audio/sfx/environment/ambient/Ambience, Underground, Cave, Magic, Deep, Wind, Howling 01 SND46571.wav" id="23_fbcwi"]
@@ -42,7 +49,7 @@
 [ext_resource type="PackedScene" uid="uid://dhb1ju03ckwh4" path="res://scenes/interactions/_receivers/enabler_disabler_v1/collision_enabler_disabler.tscn" id="40_h56lm"]
 [ext_resource type="PackedScene" uid="uid://bsdlm8rcrt2j" path="res://scenes/interactions/_triggers/area_triggers/player_area_trigger.tscn" id="41_33vs3"]
 [ext_resource type="AudioStream" uid="uid://6okv7s2vv1l2" path="res://assets/__not_ours_dontship/widngust.mp3" id="42_fynmy"]
-[ext_resource type="FontFile" uid="uid://w5ypnv2fycet" path="res://assets/fonts/IMFellGreatPrimerSC-Regular.ttf" id="43_15x1q"]
+[ext_resource type="FontFile" uid="uid://d0mryystoe8gs" path="res://assets/fonts/IMFellGreatPrimerSC-Regular.ttf" id="43_15x1q"]
 [ext_resource type="PackedScene" uid="uid://djqcj61nf551b" path="res://scenes/_levels/_palettes/cairn/props/cairn_pillardamaged.tscn" id="43_o0olm"]
 [ext_resource type="PackedScene" uid="uid://coqlsoq6q20cf" path="res://scenes/_levels/Vertical Slice/event_scenes/bossroom_torch.tscn" id="44_5mt5x"]
 [ext_resource type="Texture2D" uid="uid://2t1cw83o71dn" path="res://assets/ui/combat/enemy_border.png" id="44_ii7os"]
@@ -120,6 +127,18 @@ radius = 0.3
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_b7rhe"]
 radius = 0.3
+
+[sub_resource type="AudioStreamPlaylist" id="AudioStreamPlaylist_4kxuq"]
+shuffle = true
+fade_time = 0.11
+stream_count = 7
+stream_0 = ExtResource("14_y8ebg")
+stream_1 = ExtResource("15_3f577")
+stream_2 = ExtResource("16_c2wdu")
+stream_3 = ExtResource("17_twbo1")
+stream_4 = ExtResource("18_iskxt")
+stream_5 = ExtResource("19_xdkfd")
+stream_6 = ExtResource("20_yh5mv")
 
 [sub_resource type="Resource" id="Resource_qsjgh"]
 script = ExtResource("15_qc4m8")
@@ -467,7 +486,7 @@ _data = {
 &"fade_out": SubResource("Animation_j4a7u")
 }
 
-[sub_resource type="Shader" id="Shader_g1vbu"]
+[sub_resource type="Shader" id="Shader_w3odh"]
 code = "shader_type spatial;
 render_mode diffuse_lambert_wrap,cull_disabled;
 
@@ -544,9 +563,9 @@ void fragment() {
 }
 "
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_tskgo"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_vbcpi"]
 render_priority = 0
-shader = SubResource("Shader_g1vbu")
+shader = SubResource("Shader_w3odh")
 shader_parameter/rows = 5.0
 shader_parameter/columns = 8.0
 shader_parameter/frame = 0.0
@@ -555,18 +574,18 @@ shader_parameter/sprite = ExtResource("51_nhqle")
 shader_parameter/mode = 0
 shader_parameter/Normal = ExtResource("50_4xi4b")
 
-[sub_resource type="PlaneMesh" id="PlaneMesh_wssqf"]
-material = SubResource("ShaderMaterial_tskgo")
+[sub_resource type="PlaneMesh" id="PlaneMesh_g1vbu"]
+material = SubResource("ShaderMaterial_vbcpi")
 size = Vector2(1.7279999, 1.7279999)
 orientation = 2
 
-[sub_resource type="Resource" id="Resource_46xf5"]
+[sub_resource type="Resource" id="Resource_tskgo"]
 script = ExtResource("53_b43h7")
 sprite = ExtResource("54_juvur")
 texture_normal = ExtResource("55_36u6w")
 columns = 8.0
 
-[sub_resource type="Resource" id="Resource_s4se0"]
+[sub_resource type="Resource" id="Resource_wssqf"]
 script = ExtResource("53_b43h7")
 name = "walk"
 sprite = ExtResource("51_nhqle")
@@ -574,7 +593,7 @@ texture_normal = ExtResource("50_4xi4b")
 rows = 5.0
 columns = 8.0
 
-[sub_resource type="Resource" id="Resource_y8ebg"]
+[sub_resource type="Resource" id="Resource_46xf5"]
 script = ExtResource("53_b43h7")
 name = "Attack_LbBottom"
 sprite = ExtResource("56_e1i07")
@@ -582,7 +601,7 @@ texture_normal = ExtResource("57_4tonh")
 rows = 2.0
 columns = 8.0
 
-[sub_resource type="Resource" id="Resource_3f577"]
+[sub_resource type="Resource" id="Resource_s4se0"]
 script = ExtResource("53_b43h7")
 name = "Attack_LMid"
 sprite = ExtResource("58_qhokm")
@@ -590,7 +609,7 @@ texture_normal = ExtResource("59_7bvpj")
 rows = 2.0
 columns = 8.0
 
-[sub_resource type="Resource" id="Resource_c2wdu"]
+[sub_resource type="Resource" id="Resource_y8ebg"]
 script = ExtResource("53_b43h7")
 name = "Attack_LTop"
 sprite = ExtResource("60_oy8hb")
@@ -598,7 +617,7 @@ texture_normal = ExtResource("61_1oeiy")
 rows = 2.0
 columns = 8.0
 
-[sub_resource type="Resource" id="Resource_twbo1"]
+[sub_resource type="Resource" id="Resource_3f577"]
 script = ExtResource("53_b43h7")
 name = "Attack_RBottom"
 sprite = ExtResource("62_aplly")
@@ -606,7 +625,7 @@ texture_normal = ExtResource("63_3wk16")
 rows = 2.0
 columns = 8.0
 
-[sub_resource type="Resource" id="Resource_iskxt"]
+[sub_resource type="Resource" id="Resource_c2wdu"]
 script = ExtResource("53_b43h7")
 name = "Attack_RMid"
 sprite = ExtResource("64_vajfy")
@@ -614,7 +633,7 @@ texture_normal = ExtResource("65_cdcvb")
 rows = 2.0
 columns = 8.0
 
-[sub_resource type="Resource" id="Resource_xdkfd"]
+[sub_resource type="Resource" id="Resource_twbo1"]
 script = ExtResource("53_b43h7")
 name = "Attack_RTop"
 sprite = ExtResource("66_pyvp0")
@@ -631,7 +650,7 @@ torches = NodePath("Torches")
 environment = SubResource("Environment_lwsdr")
 
 [node name="Camera3D" type="Camera3D" parent="." unique_id=1281765417]
-transform = Transform3D(-0.70710677, 0.030843563, 0.7064338, 0, 0.99904823, -0.043619387, -0.70710677, -0.030843563, -0.7064338, -2.549, 0.974, -15.426)
+transform = Transform3D(0, 0.043619387, 0.99904823, 0, 0.99904823, -0.043619387, -1, 0, 0, -0.91466343, 1.0505009, -13.068719)
 current = true
 
 [node name="StaticBody3D2" type="StaticBody3D" parent="." unique_id=695580534]
@@ -748,7 +767,6 @@ texture = ExtResource("7_uo43y")
 visible = false
 sconted = true
 item_type = SubResource("Resource_d0jyt")
-item_weight = 0
 
 [node name="TorchLight" type="OmniLight3D" parent="Torches/TorchScont7" unique_id=301047652]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.123654895, 0.2)
@@ -794,7 +812,6 @@ texture = ExtResource("7_uo43y")
 visible = false
 sconted = true
 item_type = SubResource("Resource_d0jyt")
-item_weight = 0
 
 [node name="TorchLight" type="OmniLight3D" parent="Torches/TorchScont9" unique_id=2028318750]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.123654895, 0.2)
@@ -889,6 +906,12 @@ transform = Transform3D(2.9802322e-08, 0, -1, 0, 1, 0, 1, 0, 2.9802322e-08, -0.7
 
 [node name="skull" parent="Node3D3" unique_id=1789509416 instance=ExtResource("12_3fl8b")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.9620705, 0.7448646, -15.1147785)
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="Node3D3/skull" unique_id=576530797]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5423234, 0.25336897, 2.229515)
+stream = SubResource("AudioStreamPlaylist_4kxuq")
+volume_db = -1.203
+autoplay = true
 
 [node name="Node3D2" type="Node3D" parent="Node3D3" unique_id=1788295358]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.962071, 0.63938737, -19.482779)
@@ -1297,23 +1320,27 @@ layout_mode = 1
 anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
-offset_left = 187.0
-offset_top = -339.0
-offset_right = 476.7782
-offset_bottom = -76.0
+offset_left = 826.0
+offset_top = -634.0
+offset_right = 1115.7782
+offset_bottom = -371.0
 grow_vertical = 0
 texture = ExtResource("50_w3odh")
 expand_mode = 1
 
 [node name="Label" type="Label" parent="Ender/ColorRect/TextureRect" unique_id=1327339858]
 layout_mode = 0
-offset_left = -150.0
-offset_top = -60.0
-offset_right = 480.0
-offset_bottom = 52.0
+offset_left = -216.0
+offset_top = -191.0
+offset_right = 522.0
+offset_bottom = 2.0
 theme = ExtResource("51_vbcpi")
 theme_override_font_sizes/font_size = 30
-text = "PLEASE FILL OUT THE FEEDBACK FORM "
+text = "THANKS FOR TESTING
+Please fill out the form
+Feel free to message us directly about the experience 
+(Change this for a proper one ) :)"
+horizontal_alignment = 1
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Ender" unique_id=698778890]
 libraries/ = SubResource("AnimationLibrary_4xi4b")
@@ -1322,9 +1349,9 @@ libraries/ = SubResource("AnimationLibrary_4xi4b")
 transform = Transform3D(0.0975481, 0, 0.9952308, 0, 1, 0, -0.9952308, 0, 0.0975481, -8.632547, 1.1772481, -17.09639)
 layers = 3
 sorting_offset = 1.0
-mesh = SubResource("PlaneMesh_wssqf")
+mesh = SubResource("PlaneMesh_g1vbu")
 script = ExtResource("52_fbcwi")
-animations_array = Array[ExtResource("53_b43h7")]([SubResource("Resource_46xf5"), SubResource("Resource_s4se0"), SubResource("Resource_y8ebg"), SubResource("Resource_3f577"), SubResource("Resource_c2wdu"), SubResource("Resource_twbo1"), SubResource("Resource_iskxt"), SubResource("Resource_xdkfd")])
+animations_array = Array[ExtResource("53_b43h7")]([SubResource("Resource_tskgo"), SubResource("Resource_wssqf"), SubResource("Resource_46xf5"), SubResource("Resource_s4se0"), SubResource("Resource_y8ebg"), SubResource("Resource_3f577"), SubResource("Resource_c2wdu"), SubResource("Resource_twbo1")])
 animation = 1
 frame = 1.0
 sprite_scale = 0.0016

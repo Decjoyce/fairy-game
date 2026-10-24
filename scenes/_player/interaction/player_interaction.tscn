@@ -1122,43 +1122,28 @@ crouch_action_right = NodePath("../Hand_Right/_hand_sprite/InputContexts/CrouchP
 
 [node name="Control" type="Control" parent="." unique_id=1806043591]
 layout_mode = 1
-anchors_preset = 3
-anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -40.0
-offset_top = -40.0
-grow_horizontal = 0
-grow_vertical = 0
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
 
 [node name="Stand_icon" type="Control" parent="Control" unique_id=36318872]
 anchors_preset = 0
-offset_left = -1300.0
-offset_top = -683.0
-offset_right = -1300.0
-offset_bottom = -683.0
 
 [node name="Stand" type="TextureRect" parent="Control/Stand_icon" unique_id=2051528557]
-modulate = Color(1, 1, 1, 0.39215687)
+self_modulate = Color(0.6517693, 0.65176934, 0.6517693, 1)
 layout_mode = 0
-offset_left = 281.0
-offset_top = 137.99998
-offset_right = 3745.0
-offset_bottom = 3602.0
-scale = Vector2(0.026839064, 0.025005084)
+offset_right = 128.0
+offset_bottom = 128.0
+scale = Vector2(1.202, 1.2)
 texture = ExtResource("46_45hl8")
-expand_mode = 1
 
 [node name="Crouch" type="TextureRect" parent="Control/Stand_icon" unique_id=1993167597]
 visible = false
-modulate = Color(1, 1, 1, 0.39215687)
+self_modulate = Color(0.6517693, 0.65176934, 0.6517693, 1)
 layout_mode = 0
-offset_left = 276.0
-offset_top = 134.0
-offset_right = 636.0
-offset_bottom = 674.0
-scale = Vector2(0.2665302, 0.17909957)
+offset_right = 128.0
+offset_bottom = 128.0
+scale = Vector2(1.202, 1.2)
 texture = ExtResource("47_irbp0")
 
 [node name="TextureRect" type="TextureRect" parent="Control" unique_id=799360397]
