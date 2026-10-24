@@ -1020,7 +1020,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="InputContexts" type="VBoxContainer" parent="Hand_Right/_hand_sprite" unique_id=596981118]
+[node name="InputContexts" type="VBoxContainer" parent="Hand_Right/_hand_sprite" unique_id=596981118 node_paths=PackedStringArray("crouch_action", "crouch_action_text")]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.18
@@ -1030,6 +1030,8 @@ anchor_bottom = 1.8066666
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("9_pdn2y")
+crouch_action = NodePath("CrouchPrompt")
+crouch_action_text = NodePath("CrouchPrompt/RichTextLabel")
 metadata/_edit_use_anchors_ = true
 
 [node name="UseAction" type="HBoxContainer" parent="Hand_Right/_hand_sprite/InputContexts" unique_id=1110406165]
@@ -1073,6 +1075,7 @@ scroll_active = false
 vertical_alignment = 1
 
 [node name="CrouchPrompt" type="HBoxContainer" parent="Hand_Right/_hand_sprite/InputContexts" unique_id=923316934]
+visible = false
 layout_mode = 2
 
 [node name="TextureRect" type="TextureRect" parent="Hand_Right/_hand_sprite/InputContexts/CrouchPrompt" unique_id=1895048221]

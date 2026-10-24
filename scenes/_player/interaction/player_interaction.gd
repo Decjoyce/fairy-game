@@ -131,3 +131,13 @@ func crouched_UI_toggle(state: bool) -> void :
 		
 	pass
 	
+func enable_crouch_promt() -> void:
+	print("ligma")
+	var context = hand_right_sprite.get_node("InputContexts")
+	context.enable_crouch_action()
+
+
+func disable_crouch_promt() -> void:
+	var context = hand_right_sprite.get_node("InputContexts")
+	context.disable_crouch_action()
+ 

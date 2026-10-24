@@ -51,6 +51,9 @@ volumetric_fog_emission = Color(0.117735185, 0.20947376, 0.3003329, 1)
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_t2k7r"]
 
+[sub_resource type="BoxOccluder3D" id="BoxOccluder3D_t2k7r"]
+size = Vector3(0.26496887, 4.33489, 17.159233)
+
 [node name="Internal_Demo_October" type="Node3D" unique_id=1522441394]
 script = ExtResource("1_t2k7r")
 
@@ -148,5 +151,20 @@ script = ExtResource("11_7exi5")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="InitialSavePoint" unique_id=893508633]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1)
 shape = SubResource("SphereShape3D_t2k7r")
+
+[node name="Occluderholder1" type="Node3D" parent="." unique_id=1047532909]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 29.148254, 0, -23.935251)
+
+[node name="OccluderInstance3D26" type="OccluderInstance3D" parent="Occluderholder1" unique_id=813676160]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 23.711815, -0.19538105, 14.3452)
+layers = 4096
+occluder = SubResource("BoxOccluder3D_t2k7r")
+bake_mask = 4293922816
+
+[node name="OccluderInstance3D27" type="OccluderInstance3D" parent="Occluderholder1" unique_id=70062805]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 23.711815, -0.19538105, -6.6548004)
+layers = 4096
+occluder = SubResource("BoxOccluder3D_t2k7r")
+bake_mask = 4293922816
 
 [connection signal="area_entered" from="InitialSavePoint" to="InitialSavePoint" method="_on_area_entered"]

@@ -44,7 +44,6 @@ func _process(delta: float) -> void:
 		
 	if Input.is_action_just_pressed("Teleport_back"):
 		get_tree().change_scene_to_file("res://scenes/_levels/Level_Testing/level_test_hub.tscn")
-
 func toggle_combat() -> void:
 	pass
 	#in_combat = !in_combat
