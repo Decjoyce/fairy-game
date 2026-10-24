@@ -11,6 +11,7 @@ const INVESTIGATE = "INVESTIGATE"
 const CHASE = "CHASE"
 const FIGHT = "FIGHT"
 const STUNNED = "STUNNED"
+const DEAD = "DEAD"
 
 var sm: StateMachine_Enemy
 var ballybog: Enemy_Ballybog_New

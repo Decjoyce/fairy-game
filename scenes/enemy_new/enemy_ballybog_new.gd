@@ -47,6 +47,9 @@ var wander_point: Vector3
 @export_subgroup("CHASE")
 @export_range(2, 15) var time_before_giveup_chase: float = 2
 
+@export_group("Death")
+@export var drop_item: PackedScene ## spawned where the body vanishes; empty = no drop
+
 var rng:= RandomNumberGenerator.new()
 
 func _ready() -> void:
@@ -67,19 +70,15 @@ func _process(delta: float) -> void:
 	check_for_player_in_LOS(delta)
 
 func die() -> void:
-	freeze = true
 	OMT.on_item_broke.disconnect(heard_sound)
-	state_machine.process_mode = Node.PROCESS_MODE_DISABLED
-	anim_player.play("death")
-	await anim_player.animation_finished
-	graphics.reparent(get_parent())
-	queue_free()
+	state_machine._transition_to_next_state(EnemyState.DEAD)
 
 # ↑ General Stuff ↑
 # --------------------------------------------------------------------------------------------------
 # ↓ Enable/Disable Stuff ↓
 
 func enable_me(sig: float = -1) -> void:
+	if stats.is_dead: return # area triggers can fire again after it died
 	disabled = false
 	if disabled: process_mode = ProcessMode.PROCESS_MODE_DISABLED
 	else: process_mode = ProcessMode.PROCESS_MODE_INHERIT
