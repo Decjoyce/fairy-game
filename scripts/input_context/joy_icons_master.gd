@@ -15,3 +15,6 @@ extends Resource
 @export var bumper_right: Texture
 
 @export var pause_button: Texture
+@export var Lstick: Texture
+@export var Rstick: Texture
+@export var Dpad: Texture

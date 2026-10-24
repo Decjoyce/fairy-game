@@ -3,6 +3,9 @@ extends Node
 @export var joy_dict: Dictionary[String, JoyIcons]
 
 @export var skip_image: TextureRect
+@export var confirm_image: TextureRect
+@export var back_image: TextureRect
+@export var select_image: TextureRect
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:

@@ -7,6 +7,7 @@ extends Node
 
 @export var use_action_left: TextureRect
 @export var use_action_right: TextureRect
+@export var crouch_action_right: TextureRect
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -24,3 +25,4 @@ func set_icons(icons: JoyIcons) -> void:
 	
 	use_action_left.texture = icons.button_west
 	use_action_right.texture = icons.button_east
+	crouch_action_right.texture = icons.button_south

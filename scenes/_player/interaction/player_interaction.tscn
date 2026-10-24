@@ -47,8 +47,8 @@
 [ext_resource type="Resource" uid="uid://cy86l8mtli3ke" path="res://scripts/input_context/joyicons_nintendo.tres" id="40_4266y"]
 [ext_resource type="Texture2D" uid="uid://bnuamqc7avcot" path="res://assets/__not_ours_dontship/Xbox Series/XboxSeriesX_Y.png" id="41_mny7c"]
 [ext_resource type="Texture2D" uid="uid://ccq1sgoc15kuf" path="res://assets/__not_ours_dontship/PS4/PS4_Circle.png" id="42_0v66h"]
-[ext_resource type="Texture2D" uid="uid://bs5yncq44ovif" path="res://assets/__not_ours_dontship/placeholder/stand_placeholder.png" id="45_ensnv"]
-[ext_resource type="Texture2D" uid="uid://dqs4pdp3ax3e2" path="res://assets/__not_ours_dontship/placeholder/crouched_placeholder.png" id="46_43feg"]
+[ext_resource type="Texture2D" uid="uid://ihcnvdhmlbge" path="res://assets/ui/player/standing_icon.png" id="46_45hl8"]
+[ext_resource type="Texture2D" uid="uid://c8drwmpuqxu56" path="res://assets/ui/player/crouch_icon.png" id="47_irbp0"]
 
 [sub_resource type="Animation" id="Animation_434r6"]
 length = 0.001
@@ -1105,7 +1105,7 @@ bus = &"pl_footsteps"
 [node name="Audio_Grab" type="AudioStreamPlayer" parent="Hand_Right" unique_id=981864139]
 bus = &"pl_footsteps"
 
-[node name="InputContextHelpre" type="Node" parent="." unique_id=1056320993 node_paths=PackedStringArray("interact_action_left", "interact_action_right", "use_action_left", "use_action_right")]
+[node name="InputContextHelpre" type="Node" parent="." unique_id=1056320993 node_paths=PackedStringArray("interact_action_left", "interact_action_right", "use_action_left", "use_action_right", "crouch_action_right")]
 script = ExtResource("39_ul0jp")
 joy_dict = Dictionary[String, ExtResource("37_6uakc")]({
 "DEFAULT": ExtResource("38_4266y"),
@@ -1118,6 +1118,7 @@ interact_action_left = NodePath("../Hand_Left/_hand_sprite/InputContexts/Interac
 interact_action_right = NodePath("../Hand_Right/_hand_sprite/InputContexts/InteractAction/TextureRect")
 use_action_left = NodePath("../Hand_Left/_hand_sprite/InputContexts/UseAction/TextureRect")
 use_action_right = NodePath("../Hand_Right/_hand_sprite/InputContexts/UseAction/TextureRect")
+crouch_action_right = NodePath("../Hand_Right/_hand_sprite/InputContexts/CrouchPrompt/TextureRect")
 
 [node name="Control" type="Control" parent="." unique_id=1806043591]
 layout_mode = 1
@@ -1139,23 +1140,26 @@ offset_right = -1300.0
 offset_bottom = -683.0
 
 [node name="Stand" type="TextureRect" parent="Control/Stand_icon" unique_id=2051528557]
+modulate = Color(1, 1, 1, 0.39215687)
 layout_mode = 0
-offset_left = -243.99998
-offset_top = -154.0
-offset_right = 3220.0
-offset_bottom = 3310.0
-scale = Vector2(0.077312306, 0.062875964)
-texture = ExtResource("45_ensnv")
+offset_left = 281.0
+offset_top = 137.99998
+offset_right = 3745.0
+offset_bottom = 3602.0
+scale = Vector2(0.026839064, 0.025005084)
+texture = ExtResource("46_45hl8")
+expand_mode = 1
 
 [node name="Crouch" type="TextureRect" parent="Control/Stand_icon" unique_id=1993167597]
 visible = false
+modulate = Color(1, 1, 1, 0.39215687)
 layout_mode = 0
-offset_left = -171.0
-offset_top = -108.0
-offset_right = 189.0
-offset_bottom = 432.0
-scale = Vector2(0.3699191, 0.25261647)
-texture = ExtResource("46_43feg")
+offset_left = 276.0
+offset_top = 134.0
+offset_right = 636.0
+offset_bottom = 674.0
+scale = Vector2(0.2665302, 0.17909957)
+texture = ExtResource("47_irbp0")
 
 [node name="TextureRect" type="TextureRect" parent="Control" unique_id=799360397]
 visible = false
