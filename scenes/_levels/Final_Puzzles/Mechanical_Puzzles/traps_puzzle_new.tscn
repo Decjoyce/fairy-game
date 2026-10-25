@@ -46,7 +46,6 @@
 [ext_resource type="Script" uid="uid://djyhniwugtcsq" path="res://scripts/saving/persistent_objs/po_arrowtrap.gd" id="23_bblx1"]
 [ext_resource type="PackedScene" uid="uid://clvus6c43ipdy" path="res://scenes/interactions/interactables/items/all_items/misc/item_stone.tscn" id="24_fsl0s"]
 [ext_resource type="Material" uid="uid://ckjbpunwhc0rn" path="res://assets/models/cairn/Props/SpikeTrap/SpikeTrap.tres" id="24_hhdgw"]
-[ext_resource type="PackedScene" uid="uid://it7ju6xowpsg" path="res://scenes/mikelo testo grande/crouch_prompt.tscn" id="24_ypegw"]
 [ext_resource type="Material" uid="uid://cykgn4cpccw6q" path="res://assets/models/cairn/Props/MountedTorch/MountedTorch.tres" id="25_dhg0u"]
 [ext_resource type="ArrayMesh" uid="uid://sakmnnwkwcdm" path="res://assets/models/cairn/Props/SpikeTrap/SpikeTrap.obj" id="25_ypegw"]
 [ext_resource type="ArrayMesh" uid="uid://deenfjj76xugt" path="res://assets/models/cairn/Props/MountedTorch/mountedtorch_nobackboard.obj" id="26_2pmk1"]
@@ -364,6 +363,12 @@ transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, -
 material_overlay = ExtResource("2_nwl5k")
 mesh = SubResource("CylinderMesh_ueblh")
 
+[node name="Intro_Gate" parent="Beginning_Part(Easier)/First_Trap" unique_id=1911008714 instance=ExtResource("7_wn42o")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 12)
+metadata/uid = "6706d313-1d54-4603-af78-056c48d437b1"
+metadata/lock_uid = true
+metadata/date_generated = "2026-10-25T11:15:12"
+
 [node name="First_Pressure_Plate" parent="Beginning_Part(Easier)/First_Trap" unique_id=790035545 instance=ExtResource("3_nevts")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 15)
 metadata/uid = "7d9f4a83-9432-4358-b348-ab533e2a28fc"
@@ -526,7 +531,6 @@ transform = Transform3D(1.9106855e-15, -4.371139e-08, 1, -1, -4.371139e-08, 0, 4
 
 [node name="skull_LeftSide" parent="Beginning_Part(Easier)/Second_Part/LeftSide_Puzzle" unique_id=637668706 instance=ExtResource("5_dp00y")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.4234438, -2)
-item_weight = 2
 metadata/uid = "cdaa1a2d-b3b0-4848-9f14-95aac4328126"
 metadata/lock_uid = true
 metadata/date_generated = "2026-09-29T17:43:36"
@@ -644,19 +648,16 @@ shape = SubResource("BoxShape3D_2fpgg")
 [node name="RightSide_Puzzle" type="Node3D" parent="Beginning_Part(Easier)/Second_Part" unique_id=1860354207]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13, 0, 18)
 
-[node name="CrouchPrompt" parent="Beginning_Part(Easier)/Second_Part/RightSide_Puzzle" unique_id=364992487 instance=ExtResource("24_ypegw")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 2.717, 0, 0.5, 0.9999981)
-
 [node name="Part_1" type="Node3D" parent="Beginning_Part(Easier)/Second_Part/RightSide_Puzzle" unique_id=1403351719]
 
 [node name="trap_projectile" parent="Beginning_Part(Easier)/Second_Part/RightSide_Puzzle/Part_1" unique_id=362653895 instance=ExtResource("4_krfnm")]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 2.6942654, 1.1672944, -1)
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 2.6942654, 1.1672944, -1.3999996)
 metadata/uid = "46e0d9e6-4d50-4928-8438-f94ee597922f"
 metadata/lock_uid = true
 metadata/date_generated = "2026-09-30T15:35:08"
 
 [node name="trap_projectile2" parent="Beginning_Part(Easier)/Second_Part/RightSide_Puzzle/Part_1" unique_id=1119410102 instance=ExtResource("4_krfnm")]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 2.6942654, 0.56729436, -1)
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 2.6942654, 0.56729436, -1.3999996)
 metadata/uid = "dde01d34-4f11-4463-ada6-40f4f61d2a58"
 metadata/lock_uid = true
 metadata/date_generated = "2026-09-30T15:28:59"
@@ -671,13 +672,13 @@ metadata/date_generated = "2026-09-30T15:28:59"
 [node name="Part_2" type="Node3D" parent="Beginning_Part(Easier)/Second_Part/RightSide_Puzzle" unique_id=1016932755]
 
 [node name="trap_projectile" parent="Beginning_Part(Easier)/Second_Part/RightSide_Puzzle/Part_2" unique_id=116424379 instance=ExtResource("4_krfnm")]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 2.719757, 1.1, 3)
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 2.719757, 1.1, 2.6000004)
 metadata/uid = "6a707faa-f71a-4bf7-b2c3-1b68c6ba289c"
 metadata/lock_uid = true
 metadata/date_generated = "2026-09-30T15:28:59"
 
 [node name="trap_projectile2" parent="Beginning_Part(Easier)/Second_Part/RightSide_Puzzle/Part_2" unique_id=1270778852 instance=ExtResource("4_krfnm")]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 2.719757, 0.5, 3)
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 2.719757, 0.5, 2.6000004)
 metadata/uid = "959f0428-9328-4fa1-ac35-5f3b0e764ada"
 metadata/lock_uid = true
 metadata/date_generated = "2026-09-30T15:28:59"
@@ -772,7 +773,6 @@ new_wait_time = 2.0
 
 [node name="skull_RightSide" parent="Beginning_Part(Easier)/Second_Part/RightSide_Puzzle" unique_id=1298691742 instance=ExtResource("5_dp00y")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.34554842, 5)
-item_weight = 2
 metadata/uid = "b2b49b4b-cb76-41b0-9c9a-47f63371dc1a"
 metadata/lock_uid = true
 metadata/date_generated = "2026-09-29T17:43:36"
@@ -846,6 +846,7 @@ metadata/date_generated = "2026-09-29T17:43:36"
 
 [node name="PressurePlate_Door_Left" parent="Beginning_Part(Easier)/Second_Part/Left_Door" unique_id=157696588 instance=ExtResource("3_nevts")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 11)
+weight_to_activate = 8.0
 metadata/uid = "bcd193b3-efa2-4e2e-a429-8f4acfe134d0"
 metadata/lock_uid = true
 metadata/date_generated = "2026-09-29T17:43:36"
@@ -854,7 +855,7 @@ metadata/date_generated = "2026-09-29T17:43:36"
 
 [node name="PressurePlate_Door_Right" parent="Beginning_Part(Easier)/Second_Part/Right_Door" unique_id=278188506 instance=ExtResource("3_nevts")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, 11)
-weight_to_activate = 4.0
+weight_to_activate = 16.0
 metadata/uid = "530e6031-1507-49a4-9e38-59c42d11f271"
 metadata/lock_uid = true
 metadata/date_generated = "2026-09-29T17:43:36"
@@ -888,7 +889,7 @@ transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 4, 0
 
 [node name="PressurePlate_Final_Door" parent="Beginning_Part(Easier)/Second_Part/Gate_Area_Finished" unique_id=1881767194 instance=ExtResource("3_nevts")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 20, 0, 2.999999)
-weight_to_activate = 8.0
+weight_to_activate = 24.0
 metadata/uid = "7021291f-9f53-44f2-98ec-afb93df7f44e"
 metadata/lock_uid = true
 metadata/date_generated = "2026-09-29T17:43:36"
@@ -3384,7 +3385,6 @@ metadata/_custom_type_script = "uid://bbnwwbodc3xt3"
 
 [node name="skull" parent="Items/Itms_First" unique_id=2042549531 instance=ExtResource("5_dp00y")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 2.4, 15)
-item_weight = 2
 metadata/uid = "bd699b5e-5ba5-4fb4-99a2-ec033c41b279"
 metadata/lock_uid = true
 metadata/date_generated = "2026-10-21T15:38:35"
@@ -3501,7 +3501,7 @@ transform = Transform3D(0.9999999, -1.7763564e-15, -6.3948846e-14, 1.7763564e-15
 size = Vector3(2.5, 0.005, 0.2)
 
 [node name="No_Acess_Gate" parent="Observer_SpikeTraps" unique_id=962374873 instance=ExtResource("7_wn42o")]
-transform = Transform3D(1.0000002, 2.9802317e-08, 1.6864664e-08, 2.9802326e-08, 1.0000005, 3.5527133e-15, 3.907985e-14, 2.9802315e-08, 1.0000001, 0.099999905, -1.53527, -0.013092041)
+transform = Transform3D(1.0000002, 2.9802317e-08, 1.6864664e-08, 2.9802326e-08, 1.0000005, 3.5527133e-15, 4.2632564e-14, 2.9802315e-08, 1.0000001, -0.037662506, -1.53527, -0.013092041)
 disable_tp = false
 speed = 0.3
 start_open = true
@@ -3559,7 +3559,7 @@ transform = Transform3D(0.9999999, -1.7763564e-15, -6.3948846e-14, 1.7763564e-15
 size = Vector3(2.5, 0.005, 0.2)
 
 [node name="No_Acess_Gate" parent="Observer_EndofTraps_Section" unique_id=1275090890 instance=ExtResource("7_wn42o")]
-transform = Transform3D(1.0000002, 2.9802317e-08, 1.6864664e-08, 2.9802326e-08, 1.0000005, 3.5527133e-15, 3.907985e-14, 2.9802315e-08, 1.0000001, 0.099999905, -1.53527, -0.013092041)
+transform = Transform3D(1.0000002, 2.9802317e-08, 1.686466e-08, 2.9802326e-08, 1.0000005, 3.5527133e-15, 6.3948846e-14, 2.9802315e-08, 1.0000001, -0.040086746, -1.53527, -0.013092041)
 disable_tp = false
 speed = 0.3
 start_open = true
@@ -3570,6 +3570,7 @@ metadata/date_generated = "2026-09-29T17:43:36"
 [connection signal="area_entered" from="PAT_potholesstop2/Area3D" to="PAT_potholesstop2" method="_player_entered"]
 [connection signal="area_exited" from="PAT_potholesstop2/Area3D" to="PAT_potholesstop2" method="_player_exited"]
 [connection signal="on_activated" from="Beginning_Part(Easier)/First_Trap/First_Pressure_Plate" to="Beginning_Part(Easier)/First_Trap/trap_projectile" method="trigger_trap"]
+[connection signal="on_activated" from="Beginning_Part(Easier)/First_Trap/First_Pressure_Plate" to="Beginning_Part(Easier)/First_Trap/Intro_Gate" method="open_gate"]
 [connection signal="on_activated" from="Beginning_Part(Easier)/First_Trap/Tutorial/PlayerAreaTrigger_Tutorial" to="Beginning_Part(Easier)/First_Trap/Tutorial/Tutorial_Gate" method="open_gate"]
 [connection signal="area_entered" from="Beginning_Part(Easier)/First_Trap/Tutorial/PlayerAreaTrigger_Tutorial/Area3D" to="Beginning_Part(Easier)/First_Trap/Tutorial/PlayerAreaTrigger_Tutorial" method="_player_entered"]
 [connection signal="area_exited" from="Beginning_Part(Easier)/First_Trap/Tutorial/PlayerAreaTrigger_Tutorial/Area3D" to="Beginning_Part(Easier)/First_Trap/Tutorial/PlayerAreaTrigger_Tutorial" method="_player_exited"]
