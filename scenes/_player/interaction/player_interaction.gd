@@ -26,6 +26,7 @@ func _ready() -> void:
 	movement.on_turn.connect(hand_right.on_player_turned)
 	movement.on_crouch.connect(hand_left.on_player_crouched)
 	movement.on_crouch.connect(hand_right.on_player_crouched)
+	var tween = create_tween()
 
 @onready var load_game_graphics: TextureProgressBar = $Control/TextureRect/TextureProgressBar
 var is_reloading: bool
@@ -119,6 +120,7 @@ func enable_ending_stuff() -> void:
 func crouched_UI_toggle(state: bool) -> void :
 	var tween = create_tween()
 	if state:
+		
 		Stand_icon.modulate.a = 1
 		Crouch_icon.visible = true
 		Stand_icon.visible = false
