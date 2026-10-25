@@ -26,7 +26,6 @@ func _ready() -> void:
 	movement.on_turn.connect(hand_right.on_player_turned)
 	movement.on_crouch.connect(hand_left.on_player_crouched)
 	movement.on_crouch.connect(hand_right.on_player_crouched)
-	var tween = create_tween()
 
 @onready var load_game_graphics: TextureProgressBar = $Control/TextureRect/TextureProgressBar
 var is_reloading: bool
@@ -118,14 +117,13 @@ func enable_ending_stuff() -> void:
 
 #UI crouch stuff func
 func crouched_UI_toggle(state: bool) -> void :
-	var tween = create_tween()
 	if state:
-		
 		Stand_icon.modulate.a = 1
 		Crouch_icon.visible = true
 		Stand_icon.visible = false
 		#Stand_icon.modulate.a = 1.0
-	else :
+	elif !state :
+		var tween = create_tween()
 		tween.tween_property(Stand_icon, "modulate:a", 1, 0.1)
 		Crouch_icon.visible = false
 		Stand_icon.visible = true
@@ -134,7 +132,7 @@ func crouched_UI_toggle(state: bool) -> void :
 	pass
 	
 func enable_crouch_promt() -> void:
-	print("ligma")
+	print("crouch prompt")
 	var context = hand_right_sprite.get_node("InputContexts")
 	context.enable_crouch_action()
 
