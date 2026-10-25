@@ -486,7 +486,7 @@ _data = {
 &"fade_out": SubResource("Animation_j4a7u")
 }
 
-[sub_resource type="Shader" id="Shader_3f577"]
+[sub_resource type="Shader" id="Shader_y8ebg"]
 code = "shader_type spatial;
 render_mode diffuse_lambert_wrap,cull_disabled;
 
@@ -563,9 +563,9 @@ void fragment() {
 }
 "
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_c2wdu"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_3f577"]
 render_priority = 0
-shader = SubResource("Shader_3f577")
+shader = SubResource("Shader_y8ebg")
 shader_parameter/rows = 5.0
 shader_parameter/columns = 8.0
 shader_parameter/frame = 0.0
@@ -574,18 +574,18 @@ shader_parameter/sprite = ExtResource("51_nhqle")
 shader_parameter/mode = 0
 shader_parameter/Normal = ExtResource("50_4xi4b")
 
-[sub_resource type="PlaneMesh" id="PlaneMesh_twbo1"]
-material = SubResource("ShaderMaterial_c2wdu")
+[sub_resource type="PlaneMesh" id="PlaneMesh_c2wdu"]
+material = SubResource("ShaderMaterial_3f577")
 size = Vector2(1.7279999, 1.7279999)
 orientation = 2
 
-[sub_resource type="Resource" id="Resource_iskxt"]
+[sub_resource type="Resource" id="Resource_twbo1"]
 script = ExtResource("53_b43h7")
 sprite = ExtResource("54_juvur")
 texture_normal = ExtResource("55_36u6w")
 columns = 8.0
 
-[sub_resource type="Resource" id="Resource_xdkfd"]
+[sub_resource type="Resource" id="Resource_iskxt"]
 script = ExtResource("53_b43h7")
 name = "walk"
 sprite = ExtResource("51_nhqle")
@@ -593,7 +593,7 @@ texture_normal = ExtResource("50_4xi4b")
 rows = 5.0
 columns = 8.0
 
-[sub_resource type="Resource" id="Resource_yh5mv"]
+[sub_resource type="Resource" id="Resource_xdkfd"]
 script = ExtResource("53_b43h7")
 name = "Attack_LbBottom"
 sprite = ExtResource("56_e1i07")
@@ -601,7 +601,7 @@ texture_normal = ExtResource("57_4tonh")
 rows = 2.0
 columns = 8.0
 
-[sub_resource type="Resource" id="Resource_qda8f"]
+[sub_resource type="Resource" id="Resource_yh5mv"]
 script = ExtResource("53_b43h7")
 name = "Attack_LMid"
 sprite = ExtResource("58_qhokm")
@@ -609,7 +609,7 @@ texture_normal = ExtResource("59_7bvpj")
 rows = 2.0
 columns = 8.0
 
-[sub_resource type="Resource" id="Resource_gn1si"]
+[sub_resource type="Resource" id="Resource_qda8f"]
 script = ExtResource("53_b43h7")
 name = "Attack_LTop"
 sprite = ExtResource("60_oy8hb")
@@ -617,7 +617,7 @@ texture_normal = ExtResource("61_1oeiy")
 rows = 2.0
 columns = 8.0
 
-[sub_resource type="Resource" id="Resource_ujgtm"]
+[sub_resource type="Resource" id="Resource_gn1si"]
 script = ExtResource("53_b43h7")
 name = "Attack_RBottom"
 sprite = ExtResource("62_aplly")
@@ -625,7 +625,7 @@ texture_normal = ExtResource("63_3wk16")
 rows = 2.0
 columns = 8.0
 
-[sub_resource type="Resource" id="Resource_ij1t4"]
+[sub_resource type="Resource" id="Resource_ujgtm"]
 script = ExtResource("53_b43h7")
 name = "Attack_RMid"
 sprite = ExtResource("64_vajfy")
@@ -633,7 +633,7 @@ texture_normal = ExtResource("65_cdcvb")
 rows = 2.0
 columns = 8.0
 
-[sub_resource type="Resource" id="Resource_kb3tp"]
+[sub_resource type="Resource" id="Resource_ij1t4"]
 script = ExtResource("53_b43h7")
 name = "Attack_RTop"
 sprite = ExtResource("66_pyvp0")
@@ -1350,9 +1350,9 @@ libraries/ = SubResource("AnimationLibrary_4xi4b")
 transform = Transform3D(0.0975481, 0, 0.9952308, 0, 1, 0, -0.9952308, 0, 0.0975481, -8.632547, 1.1772481, -17.09639)
 layers = 3
 sorting_offset = 1.0
-mesh = SubResource("PlaneMesh_twbo1")
+mesh = SubResource("PlaneMesh_c2wdu")
 script = ExtResource("52_fbcwi")
-animations_array = Array[ExtResource("53_b43h7")]([SubResource("Resource_iskxt"), SubResource("Resource_xdkfd"), SubResource("Resource_yh5mv"), SubResource("Resource_qda8f"), SubResource("Resource_gn1si"), SubResource("Resource_ujgtm"), SubResource("Resource_ij1t4"), SubResource("Resource_kb3tp")])
+animations_array = Array[ExtResource("53_b43h7")]([SubResource("Resource_twbo1"), SubResource("Resource_iskxt"), SubResource("Resource_xdkfd"), SubResource("Resource_yh5mv"), SubResource("Resource_qda8f"), SubResource("Resource_gn1si"), SubResource("Resource_ujgtm"), SubResource("Resource_ij1t4")])
 animation = 1
 frame = 1.0
 sprite_scale = 0.0016
