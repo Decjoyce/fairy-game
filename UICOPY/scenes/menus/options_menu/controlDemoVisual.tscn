@@ -6,6 +6,10 @@
 [ext_resource type="Texture2D" uid="uid://v34kt85wo5cv" path="res://assets/Controlelr_UI/ps_controls.png" id="4_i7vcm"]
 [ext_resource type="Texture2D" uid="uid://obeir2dgwjj8" path="res://assets/Controlelr_UI/pro_controls.png" id="5_rxw5c"]
 
+[sub_resource type="LabelSettings" id="LabelSettings_yi4f8"]
+font_size = 32
+font_color = Color(0.023529412, 0.023529412, 0.023529412, 1)
+
 [node name="Control" type="Control" unique_id=520649011 node_paths=PackedStringArray("joy_dict", "controller_image")]
 clip_contents = true
 layout_mode = 3
@@ -28,592 +32,907 @@ controller_image = NodePath("MarginContainer/XBOXController")
 metadata/_tab_index = 3
 
 [node name="MarginContainer" type="MarginContainer" parent="." unique_id=418553410]
-custom_minimum_size = Vector2(1000, 500)
+custom_minimum_size = Vector2(100, 100)
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -500.0
-offset_top = -250.0
-offset_right = 500.0
-offset_bottom = 250.0
+offset_left = -900.0
+offset_top = -450.405
+offset_right = 900.0
+offset_bottom = 450.40503
 grow_horizontal = 2
 grow_vertical = 2
 
 [node name="XBOXController" type="TextureRect" parent="MarginContainer" unique_id=209512142]
+custom_minimum_size = Vector2(800, 800)
 layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
 texture = ExtResource("2_rxw5c")
-expand_mode = 2
+expand_mode = 3
 stretch_mode = 5
 
 [node name="Label" type="Label" parent="MarginContainer/XBOXController" unique_id=1069394703]
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
+anchors_preset = 4
 anchor_top = 0.5
-anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = 48.0
-offset_top = -239.0
-offset_right = 114.0
-offset_bottom = -208.0
-grow_horizontal = 2
+offset_left = 774.0
+offset_top = -380.595
+offset_right = 879.0
+offset_bottom = -331.595
 grow_vertical = 2
 theme = ExtResource("3_yggyf")
 theme_override_font_sizes/font_size = 16
 text = "PAUSE"
+label_settings = SubResource("LabelSettings_yi4f8")
 vertical_alignment = 1
 
 [node name="Label2" type="Label" parent="MarginContainer/XBOXController" unique_id=1245483590]
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
+anchors_preset = 6
+anchor_left = 1.0
 anchor_top = 0.5
-anchor_right = 0.5
+anchor_right = 1.0
 anchor_bottom = 0.5
-offset_left = -448.0
-offset_top = -197.0
-offset_right = -303.0
-offset_bottom = -160.0
-grow_horizontal = 2
+offset_left = -1392.2223
+offset_top = -311.59497
+offset_right = -1199.2223
+offset_bottom = -262.59497
+grow_horizontal = 0
 grow_vertical = 2
 theme = ExtResource("3_yggyf")
 theme_override_font_sizes/font_size = 16
 text = "GRAB_LEFT"
+label_settings = SubResource("LabelSettings_yi4f8")
 horizontal_alignment = 2
 vertical_alignment = 1
 
 [node name="Label3" type="Label" parent="MarginContainer/XBOXController" unique_id=2131389329]
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
+anchors_preset = 6
+anchor_left = 1.0
 anchor_top = 0.5
-anchor_right = 0.5
+anchor_right = 1.0
 anchor_bottom = 0.5
-offset_left = -456.0
-offset_top = -142.0
-offset_right = -305.0
-offset_bottom = -105.0
-grow_horizontal = 2
+offset_left = -1400.2223
+offset_top = -221.59497
+offset_right = -1199.2223
+offset_bottom = -172.59497
+grow_horizontal = 0
 grow_vertical = 2
 theme = ExtResource("3_yggyf")
 theme_override_font_sizes/font_size = 16
 text = "TURN_LEFT"
+label_settings = SubResource("LabelSettings_yi4f8")
 horizontal_alignment = 2
 vertical_alignment = 1
 
 [node name="Label4" type="Label" parent="MarginContainer/XBOXController" unique_id=7756115]
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
+anchors_preset = 4
 anchor_top = 0.5
-anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = 302.0
-offset_top = -202.0
-offset_right = 461.0
-offset_bottom = -165.0
-grow_horizontal = 2
+offset_left = 1196.0
+offset_top = -311.595
+offset_right = 1408.0
+offset_bottom = -262.595
 grow_vertical = 2
 theme = ExtResource("3_yggyf")
 theme_override_font_sizes/font_size = 16
 text = "GRAB_RIGHT"
+label_settings = SubResource("LabelSettings_yi4f8")
 vertical_alignment = 1
 
 [node name="Label5" type="Label" parent="MarginContainer/XBOXController" unique_id=442351033]
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
+anchors_preset = 4
 anchor_top = 0.5
-anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = 303.0
-offset_top = -141.0
-offset_right = 468.0
-offset_bottom = -104.0
-grow_horizontal = 2
+offset_left = 1196.0
+offset_top = -217.595
+offset_right = 1416.0
+offset_bottom = -168.595
 grow_vertical = 2
 theme = ExtResource("3_yggyf")
 theme_override_font_sizes/font_size = 16
 text = "TURN_RIGHT"
+label_settings = SubResource("LabelSettings_yi4f8")
 vertical_alignment = 1
 
 [node name="Label6" type="Label" parent="MarginContainer/XBOXController" unique_id=1747625324]
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
+anchors_preset = 6
+anchor_left = 1.0
 anchor_top = 0.5
-anchor_right = 0.5
+anchor_right = 1.0
 anchor_bottom = 0.5
-offset_left = -462.0
-offset_top = -49.0
-offset_right = -307.0
-offset_bottom = -12.0
-grow_horizontal = 2
+offset_left = -1405.2223
+offset_top = -72.59497
+offset_right = -1199.2223
+offset_bottom = -23.59497
+grow_horizontal = 0
 grow_vertical = 2
 theme = ExtResource("3_yggyf")
 theme_override_font_sizes/font_size = 16
 text = "LEFT_HAND"
+label_settings = SubResource("LabelSettings_yi4f8")
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="Label13" type="Label" parent="MarginContainer/XBOXController" unique_id=520302570]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -1558.2223
+offset_top = -12.594971
+offset_right = -1199.2223
+offset_bottom = 36.40503
+grow_horizontal = 0
+grow_vertical = 2
+theme = ExtResource("3_yggyf")
+theme_override_font_sizes/font_size = 16
+text = "Toggle left hand speed"
+label_settings = SubResource("LabelSettings_yi4f8")
 horizontal_alignment = 2
 vertical_alignment = 1
 
 [node name="Label7" type="Label" parent="MarginContainer/XBOXController" unique_id=640994389]
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
+anchors_preset = 4
 anchor_top = 0.5
-anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = 311.0
-offset_top = 167.0
-offset_right = 480.0
-offset_bottom = 204.0
-grow_horizontal = 2
+offset_left = 1196.0
+offset_top = 278.40503
+offset_right = 1421.0
+offset_bottom = 327.40503
 grow_vertical = 2
 theme = ExtResource("3_yggyf")
 theme_override_font_sizes/font_size = 16
 text = "RIGHT_HAND"
+label_settings = SubResource("LabelSettings_yi4f8")
+vertical_alignment = 1
+
+[node name="Label12" type="Label" parent="MarginContainer/XBOXController" unique_id=1301914472]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 1196.0
+offset_top = 336.40503
+offset_right = 1579.0
+offset_bottom = 385.40503
+grow_vertical = 2
+theme = ExtResource("3_yggyf")
+theme_override_font_sizes/font_size = 16
+text = "Toggle right hand speed"
+label_settings = SubResource("LabelSettings_yi4f8")
 vertical_alignment = 1
 
 [node name="Label8" type="Label" parent="MarginContainer/XBOXController" unique_id=1141693074]
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
+anchors_preset = 6
+anchor_left = 1.0
 anchor_top = 0.5
-anchor_right = 0.5
+anchor_right = 1.0
 anchor_bottom = 0.5
-offset_left = -439.0
-offset_top = 147.0
-offset_right = -318.0
-offset_bottom = 184.0
-grow_horizontal = 2
+offset_left = -1400.2223
+offset_top = 163.40503
+offset_right = -1199.2223
+offset_bottom = 212.40503
+grow_horizontal = 0
 grow_vertical = 2
 theme = ExtResource("3_yggyf")
 theme_override_font_sizes/font_size = 16
-text = "WALKING"
+text = "Walk forward"
+label_settings = SubResource("LabelSettings_yi4f8")
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="Label14" type="Label" parent="MarginContainer/XBOXController" unique_id=1022487419]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -1413.2223
+offset_top = 218.40503
+offset_right = -1199.2223
+offset_bottom = 267.40503
+grow_horizontal = 0
+grow_vertical = 2
+theme = ExtResource("3_yggyf")
+theme_override_font_sizes/font_size = 16
+text = "Walk backward"
+label_settings = SubResource("LabelSettings_yi4f8")
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="Label15" type="Label" parent="MarginContainer/XBOXController" unique_id=2004346446]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -1413.2223
+offset_top = 275.40503
+offset_right = -1199.2223
+offset_bottom = 324.40503
+grow_horizontal = 0
+grow_vertical = 2
+theme = ExtResource("3_yggyf")
+theme_override_font_sizes/font_size = 16
+text = "Walk left"
+label_settings = SubResource("LabelSettings_yi4f8")
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="Label16" type="Label" parent="MarginContainer/XBOXController" unique_id=720827714]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -1413.2223
+offset_top = 333.40503
+offset_right = -1199.2223
+offset_bottom = 382.40503
+grow_horizontal = 0
+grow_vertical = 2
+theme = ExtResource("3_yggyf")
+theme_override_font_sizes/font_size = 16
+text = "Walk right"
+label_settings = SubResource("LabelSettings_yi4f8")
 horizontal_alignment = 2
 vertical_alignment = 1
 
 [node name="Label9" type="Label" parent="MarginContainer/XBOXController" unique_id=148510518]
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
+anchors_preset = 4
 anchor_top = 0.5
-anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = 307.0
-offset_top = -56.0
-offset_right = 449.0
-offset_bottom = -19.0
-grow_horizontal = 2
+offset_left = 1196.0
+offset_top = -74.595
+offset_right = 1386.0
+offset_bottom = -25.595001
 grow_vertical = 2
 theme = ExtResource("3_yggyf")
 theme_override_font_sizes/font_size = 16
 text = "USE_RIGHT"
+label_settings = SubResource("LabelSettings_yi4f8")
 vertical_alignment = 1
 
 [node name="Label11" type="Label" parent="MarginContainer/XBOXController" unique_id=1705069839]
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
+anchors_preset = 4
 anchor_top = 0.5
-anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = 307.0
-offset_top = -22.0
-offset_right = 414.0
-offset_bottom = 15.0
-grow_horizontal = 2
+offset_left = 1196.0
+offset_top = -24.595001
+offset_right = 1339.0
+offset_bottom = 24.404999
 grow_vertical = 2
 theme = ExtResource("3_yggyf")
 theme_override_font_sizes/font_size = 16
 text = "CROUCH"
+label_settings = SubResource("LabelSettings_yi4f8")
 vertical_alignment = 1
 
 [node name="Label10" type="Label" parent="MarginContainer/XBOXController" unique_id=305707231]
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
+anchors_preset = 4
 anchor_top = 0.5
-anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = 307.0
-offset_top = 14.0
-offset_right = 435.0
-offset_bottom = 51.0
-grow_horizontal = 2
+offset_left = 1196.0
+offset_top = 25.404999
+offset_right = 1367.0
+offset_bottom = 74.405
 grow_vertical = 2
 theme = ExtResource("3_yggyf")
 theme_override_font_sizes/font_size = 16
 text = "USE_LEFT"
+label_settings = SubResource("LabelSettings_yi4f8")
 vertical_alignment = 1
 
 [node name="PS4 Controller" type="TextureRect" parent="MarginContainer" unique_id=354582026]
 visible = false
+custom_minimum_size = Vector2(800, 800)
 layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
 texture = ExtResource("4_i7vcm")
-expand_mode = 1
+expand_mode = 3
 stretch_mode = 5
 
-[node name="Label" type="Label" parent="MarginContainer/PS4 Controller" unique_id=1126940873]
-layout_mode = 0
-offset_left = 611.0
-offset_top = 9.0
-offset_right = 780.0
-offset_bottom = 46.0
+[node name="Label" type="Label" parent="MarginContainer/PS4 Controller" unique_id=1114186400]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 873.0
+offset_top = -380.595
+offset_right = 978.0
+offset_bottom = -331.595
+grow_vertical = 2
 theme = ExtResource("3_yggyf")
 theme_override_font_sizes/font_size = 16
 text = "PAUSE"
+label_settings = SubResource("LabelSettings_yi4f8")
 vertical_alignment = 1
 
-[node name="Label2" type="Label" parent="MarginContainer/PS4 Controller" unique_id=518039495]
+[node name="Label2" type="Label" parent="MarginContainer/PS4 Controller" unique_id=305794454]
 layout_mode = 1
 anchors_preset = 6
 anchor_left = 1.0
 anchor_top = 0.5
 anchor_right = 1.0
 anchor_bottom = 0.5
-offset_left = -987.0
-offset_top = -176.0
-offset_right = -842.0
-offset_bottom = -139.0
+offset_left = -1440.2223
+offset_top = -276.595
+offset_right = -1247.2223
+offset_bottom = -227.595
 grow_horizontal = 0
 grow_vertical = 2
 theme = ExtResource("3_yggyf")
 theme_override_font_sizes/font_size = 16
 text = "GRAB_LEFT"
+label_settings = SubResource("LabelSettings_yi4f8")
 horizontal_alignment = 2
 vertical_alignment = 1
 
-[node name="Label3" type="Label" parent="MarginContainer/PS4 Controller" unique_id=1525881035]
+[node name="Label3" type="Label" parent="MarginContainer/PS4 Controller" unique_id=1659734816]
 layout_mode = 1
 anchors_preset = 6
 anchor_left = 1.0
 anchor_top = 0.5
 anchor_right = 1.0
 anchor_bottom = 0.5
-offset_left = -993.0
-offset_top = -130.0
-offset_right = -842.0
-offset_bottom = -93.0
+offset_left = -1448.2223
+offset_top = -203.595
+offset_right = -1247.2223
+offset_bottom = -154.595
 grow_horizontal = 0
 grow_vertical = 2
 theme = ExtResource("3_yggyf")
 theme_override_font_sizes/font_size = 16
 text = "TURN_LEFT"
+label_settings = SubResource("LabelSettings_yi4f8")
 horizontal_alignment = 2
 vertical_alignment = 1
 
-[node name="Label4" type="Label" parent="MarginContainer/PS4 Controller" unique_id=1505401074]
+[node name="Label4" type="Label" parent="MarginContainer/PS4 Controller" unique_id=1641918333]
 layout_mode = 1
 anchors_preset = 4
 anchor_top = 0.5
 anchor_bottom = 0.5
-offset_left = 855.0
-offset_top = -175.0
-offset_right = 1014.0
-offset_bottom = -138.0
+offset_left = 1245.0
+offset_top = -272.595
+offset_right = 1457.0
+offset_bottom = -223.595
 grow_vertical = 2
 theme = ExtResource("3_yggyf")
 theme_override_font_sizes/font_size = 16
 text = "GRAB_RIGHT"
+label_settings = SubResource("LabelSettings_yi4f8")
 vertical_alignment = 1
 
-[node name="Label5" type="Label" parent="MarginContainer/PS4 Controller" unique_id=856579337]
+[node name="Label5" type="Label" parent="MarginContainer/PS4 Controller" unique_id=1959670102]
 layout_mode = 1
 anchors_preset = 4
 anchor_top = 0.5
 anchor_bottom = 0.5
-offset_left = 853.0
-offset_top = -131.0
-offset_right = 1018.0
-offset_bottom = -94.0
+offset_left = 1245.0
+offset_top = -201.595
+offset_right = 1465.0
+offset_bottom = -152.595
 grow_vertical = 2
 theme = ExtResource("3_yggyf")
 theme_override_font_sizes/font_size = 16
 text = "TURN_RIGHT"
+label_settings = SubResource("LabelSettings_yi4f8")
 vertical_alignment = 1
 
-[node name="Label6" type="Label" parent="MarginContainer/PS4 Controller" unique_id=846365118]
+[node name="Label6" type="Label" parent="MarginContainer/PS4 Controller" unique_id=1760227900]
 layout_mode = 1
 anchors_preset = 6
 anchor_left = 1.0
 anchor_top = 0.5
 anchor_right = 1.0
 anchor_bottom = 0.5
-offset_left = -997.0
-offset_top = 166.0
-offset_right = -842.0
-offset_bottom = 203.0
+offset_left = -1453.2223
+offset_top = 268.40503
+offset_right = -1247.2223
+offset_bottom = 317.40503
 grow_horizontal = 0
 grow_vertical = 2
 theme = ExtResource("3_yggyf")
 theme_override_font_sizes/font_size = 16
 text = "LEFT_HAND"
+label_settings = SubResource("LabelSettings_yi4f8")
 horizontal_alignment = 2
 vertical_alignment = 1
 
-[node name="Label7" type="Label" parent="MarginContainer/PS4 Controller" unique_id=1684485809]
-layout_mode = 1
-anchors_preset = 4
-anchor_top = 0.5
-anchor_bottom = 0.5
-offset_left = 853.0
-offset_top = 158.0
-offset_right = 1022.0
-offset_bottom = 195.0
-grow_vertical = 2
-theme = ExtResource("3_yggyf")
-theme_override_font_sizes/font_size = 16
-text = "RIGHT_HAND"
-vertical_alignment = 1
-
-[node name="Label8" type="Label" parent="MarginContainer/PS4 Controller" unique_id=1567000627]
+[node name="Label13" type="Label" parent="MarginContainer/PS4 Controller" unique_id=2119046308]
 layout_mode = 1
 anchors_preset = 6
 anchor_left = 1.0
 anchor_top = 0.5
 anchor_right = 1.0
 anchor_bottom = 0.5
-offset_left = -971.0
-offset_top = -21.0
-offset_right = -850.0
-offset_bottom = 16.0
+offset_left = -1606.2223
+offset_top = 328.40503
+offset_right = -1247.2223
+offset_bottom = 377.40503
 grow_horizontal = 0
 grow_vertical = 2
 theme = ExtResource("3_yggyf")
 theme_override_font_sizes/font_size = 16
-text = "WALKING"
+text = "Toggle left hand speed"
+label_settings = SubResource("LabelSettings_yi4f8")
 horizontal_alignment = 2
 vertical_alignment = 1
 
-[node name="Label9" type="Label" parent="MarginContainer/PS4 Controller" unique_id=1556023100]
+[node name="Label7" type="Label" parent="MarginContainer/PS4 Controller" unique_id=1553610874]
 layout_mode = 1
 anchors_preset = 4
 anchor_top = 0.5
 anchor_bottom = 0.5
-offset_left = 853.0
-offset_top = -39.0
-offset_right = 995.0
-offset_bottom = -2.0
+offset_left = 1245.0
+offset_top = 264.40503
+offset_right = 1470.0
+offset_bottom = 313.40503
+grow_vertical = 2
+theme = ExtResource("3_yggyf")
+theme_override_font_sizes/font_size = 16
+text = "RIGHT_HAND"
+label_settings = SubResource("LabelSettings_yi4f8")
+vertical_alignment = 1
+
+[node name="Label12" type="Label" parent="MarginContainer/PS4 Controller" unique_id=1283434450]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 1245.0
+offset_top = 326.40503
+offset_right = 1628.0
+offset_bottom = 375.40503
+grow_vertical = 2
+theme = ExtResource("3_yggyf")
+theme_override_font_sizes/font_size = 16
+text = "Toggle right hand speed"
+label_settings = SubResource("LabelSettings_yi4f8")
+vertical_alignment = 1
+
+[node name="Label8" type="Label" parent="MarginContainer/PS4 Controller" unique_id=731563355]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -1448.2223
+offset_top = -73.59497
+offset_right = -1247.2223
+offset_bottom = -24.59497
+grow_horizontal = 0
+grow_vertical = 2
+theme = ExtResource("3_yggyf")
+theme_override_font_sizes/font_size = 16
+text = "Walk forward"
+label_settings = SubResource("LabelSettings_yi4f8")
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="Label14" type="Label" parent="MarginContainer/PS4 Controller" unique_id=929483920]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -1461.2223
+offset_top = -18.59497
+offset_right = -1247.2223
+offset_bottom = 30.40503
+grow_horizontal = 0
+grow_vertical = 2
+theme = ExtResource("3_yggyf")
+theme_override_font_sizes/font_size = 16
+text = "Walk backward"
+label_settings = SubResource("LabelSettings_yi4f8")
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="Label15" type="Label" parent="MarginContainer/PS4 Controller" unique_id=1266472529]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -1461.2223
+offset_top = 38.40503
+offset_right = -1247.2223
+offset_bottom = 87.40503
+grow_horizontal = 0
+grow_vertical = 2
+theme = ExtResource("3_yggyf")
+theme_override_font_sizes/font_size = 16
+text = "Walk left"
+label_settings = SubResource("LabelSettings_yi4f8")
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="Label16" type="Label" parent="MarginContainer/PS4 Controller" unique_id=524195186]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -1461.2223
+offset_top = 96.40503
+offset_right = -1247.2223
+offset_bottom = 145.40503
+grow_horizontal = 0
+grow_vertical = 2
+theme = ExtResource("3_yggyf")
+theme_override_font_sizes/font_size = 16
+text = "Walk right"
+label_settings = SubResource("LabelSettings_yi4f8")
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="Label9" type="Label" parent="MarginContainer/PS4 Controller" unique_id=21327972]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 1245.0
+offset_top = -49.595
+offset_right = 1435.0
+offset_bottom = -0.5950012
 grow_vertical = 2
 theme = ExtResource("3_yggyf")
 theme_override_font_sizes/font_size = 16
 text = "USE_RIGHT"
+label_settings = SubResource("LabelSettings_yi4f8")
 vertical_alignment = 1
 
-[node name="Label11" type="Label" parent="MarginContainer/PS4 Controller" unique_id=958795175]
+[node name="Label11" type="Label" parent="MarginContainer/PS4 Controller" unique_id=1506704285]
 layout_mode = 1
 anchors_preset = 4
 anchor_top = 0.5
 anchor_bottom = 0.5
-offset_left = 853.0
-offset_top = -4.0
-offset_right = 960.0
-offset_bottom = 33.0
+offset_left = 1245.0
+offset_top = 0.40499878
+offset_right = 1388.0
+offset_bottom = 49.405
 grow_vertical = 2
 theme = ExtResource("3_yggyf")
 theme_override_font_sizes/font_size = 16
 text = "CROUCH"
+label_settings = SubResource("LabelSettings_yi4f8")
 vertical_alignment = 1
 
-[node name="Label10" type="Label" parent="MarginContainer/PS4 Controller" unique_id=1370092175]
+[node name="Label10" type="Label" parent="MarginContainer/PS4 Controller" unique_id=515479894]
 layout_mode = 1
 anchors_preset = 4
 anchor_top = 0.5
 anchor_bottom = 0.5
-offset_left = 853.0
-offset_top = 36.0
-offset_right = 981.0
-offset_bottom = 73.0
+offset_left = 1245.0
+offset_top = 50.405
+offset_right = 1416.0
+offset_bottom = 99.405
 grow_vertical = 2
 theme = ExtResource("3_yggyf")
 theme_override_font_sizes/font_size = 16
 text = "USE_LEFT"
+label_settings = SubResource("LabelSettings_yi4f8")
 vertical_alignment = 1
 
 [node name="ProController" type="TextureRect" parent="MarginContainer" unique_id=100549748]
 visible = false
+custom_minimum_size = Vector2(800, 800)
 layout_mode = 2
 texture = ExtResource("5_rxw5c")
-expand_mode = 1
+expand_mode = 3
 stretch_mode = 5
 
-[node name="Label" type="Label" parent="MarginContainer/ProController" unique_id=1769948176]
-layout_mode = 0
-offset_left = 563.0
-offset_top = 2.0
-offset_right = 732.0
-offset_bottom = 39.0
+[node name="Label" type="Label" parent="MarginContainer/ProController" unique_id=1795709427]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 1010.0
+offset_top = -433.595
+offset_right = 1115.0
+offset_bottom = -384.595
+grow_vertical = 2
 theme = ExtResource("3_yggyf")
 theme_override_font_sizes/font_size = 16
 text = "PAUSE"
+label_settings = SubResource("LabelSettings_yi4f8")
 vertical_alignment = 1
 
-[node name="Label2" type="Label" parent="MarginContainer/ProController" unique_id=772073203]
+[node name="Label2" type="Label" parent="MarginContainer/ProController" unique_id=1170743491]
 layout_mode = 1
 anchors_preset = 6
 anchor_left = 1.0
 anchor_top = 0.5
 anchor_right = 1.0
 anchor_bottom = 0.5
-offset_left = -963.0
-offset_top = -202.0
-offset_right = -818.0
-offset_bottom = -165.0
+offset_left = -1657.0
+offset_top = -350.595
+offset_right = -1464.0
+offset_bottom = -301.595
 grow_horizontal = 0
 grow_vertical = 2
 theme = ExtResource("3_yggyf")
 theme_override_font_sizes/font_size = 16
 text = "GRAB_LEFT"
+label_settings = SubResource("LabelSettings_yi4f8")
 horizontal_alignment = 2
 vertical_alignment = 1
 
-[node name="Label3" type="Label" parent="MarginContainer/ProController" unique_id=1443064153]
+[node name="Label3" type="Label" parent="MarginContainer/ProController" unique_id=596641568]
 layout_mode = 1
 anchors_preset = 6
 anchor_left = 1.0
 anchor_top = 0.5
 anchor_right = 1.0
 anchor_bottom = 0.5
-offset_left = -969.0
-offset_top = -144.0
-offset_right = -818.0
-offset_bottom = -107.0
+offset_left = -1665.0
+offset_top = -260.595
+offset_right = -1464.0
+offset_bottom = -211.595
 grow_horizontal = 0
 grow_vertical = 2
 theme = ExtResource("3_yggyf")
 theme_override_font_sizes/font_size = 16
 text = "TURN_LEFT"
+label_settings = SubResource("LabelSettings_yi4f8")
 horizontal_alignment = 2
 vertical_alignment = 1
 
-[node name="Label4" type="Label" parent="MarginContainer/ProController" unique_id=1472075290]
+[node name="Label4" type="Label" parent="MarginContainer/ProController" unique_id=424018079]
 layout_mode = 1
 anchors_preset = 4
 anchor_top = 0.5
 anchor_bottom = 0.5
-offset_left = 816.0
-offset_top = -204.0
-offset_right = 975.0
-offset_bottom = -167.0
+offset_left = 1453.0
+offset_top = -358.595
+offset_right = 1665.0
+offset_bottom = -309.595
 grow_vertical = 2
 theme = ExtResource("3_yggyf")
 theme_override_font_sizes/font_size = 16
 text = "GRAB_RIGHT"
+label_settings = SubResource("LabelSettings_yi4f8")
 vertical_alignment = 1
 
-[node name="Label5" type="Label" parent="MarginContainer/ProController" unique_id=59797936]
+[node name="Label5" type="Label" parent="MarginContainer/ProController" unique_id=1282872159]
 layout_mode = 1
 anchors_preset = 4
 anchor_top = 0.5
 anchor_bottom = 0.5
-offset_left = 816.0
-offset_top = -149.0
-offset_right = 981.0
-offset_bottom = -112.0
+offset_left = 1453.0
+offset_top = -256.595
+offset_right = 1673.0
+offset_bottom = -207.595
 grow_vertical = 2
 theme = ExtResource("3_yggyf")
 theme_override_font_sizes/font_size = 16
 text = "TURN_RIGHT"
+label_settings = SubResource("LabelSettings_yi4f8")
 vertical_alignment = 1
 
-[node name="Label6" type="Label" parent="MarginContainer/ProController" unique_id=1594223959]
+[node name="Label6" type="Label" parent="MarginContainer/ProController" unique_id=1363505586]
 layout_mode = 1
 anchors_preset = 6
 anchor_left = 1.0
 anchor_top = 0.5
 anchor_right = 1.0
 anchor_bottom = 0.5
-offset_left = -972.0
-offset_top = -48.0
-offset_right = -817.0
-offset_bottom = -11.0
+offset_left = -1670.0
+offset_top = -81.595
+offset_right = -1464.0
+offset_bottom = -32.595
 grow_horizontal = 0
 grow_vertical = 2
 theme = ExtResource("3_yggyf")
 theme_override_font_sizes/font_size = 16
 text = "LEFT_HAND"
+label_settings = SubResource("LabelSettings_yi4f8")
 horizontal_alignment = 2
 vertical_alignment = 1
 
-[node name="Label7" type="Label" parent="MarginContainer/ProController" unique_id=2142705244]
-layout_mode = 1
-anchors_preset = 4
-anchor_top = 0.5
-anchor_bottom = 0.5
-offset_left = 816.0
-offset_top = 171.0
-offset_right = 985.0
-offset_bottom = 208.0
-grow_vertical = 2
-theme = ExtResource("3_yggyf")
-theme_override_font_sizes/font_size = 16
-text = "RIGHT_HAND"
-vertical_alignment = 1
-
-[node name="Label8" type="Label" parent="MarginContainer/ProController" unique_id=1754480689]
+[node name="Label13" type="Label" parent="MarginContainer/ProController" unique_id=40557595]
 layout_mode = 1
 anchors_preset = 6
 anchor_left = 1.0
 anchor_top = 0.5
 anchor_right = 1.0
 anchor_bottom = 0.5
-offset_left = -942.0
-offset_top = 169.0
-offset_right = -821.0
-offset_bottom = 206.0
+offset_left = -1823.0
+offset_top = -21.595001
+offset_right = -1464.0
+offset_bottom = 27.404999
 grow_horizontal = 0
 grow_vertical = 2
 theme = ExtResource("3_yggyf")
 theme_override_font_sizes/font_size = 16
-text = "WALKING"
+text = "Toggle left hand speed"
+label_settings = SubResource("LabelSettings_yi4f8")
 horizontal_alignment = 2
 vertical_alignment = 1
 
-[node name="Label9" type="Label" parent="MarginContainer/ProController" unique_id=721870833]
+[node name="Label7" type="Label" parent="MarginContainer/ProController" unique_id=361080613]
 layout_mode = 1
 anchors_preset = 4
 anchor_top = 0.5
 anchor_bottom = 0.5
-offset_left = 816.0
-offset_top = -54.0
-offset_right = 958.0
-offset_bottom = -17.0
+offset_left = 1453.0
+offset_top = 317.40503
+offset_right = 1678.0
+offset_bottom = 366.40503
+grow_vertical = 2
+theme = ExtResource("3_yggyf")
+theme_override_font_sizes/font_size = 16
+text = "RIGHT_HAND"
+label_settings = SubResource("LabelSettings_yi4f8")
+vertical_alignment = 1
+
+[node name="Label12" type="Label" parent="MarginContainer/ProController" unique_id=1450940480]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 1453.0
+offset_top = 383.40503
+offset_right = 1836.0
+offset_bottom = 432.40503
+grow_vertical = 2
+theme = ExtResource("3_yggyf")
+theme_override_font_sizes/font_size = 16
+text = "Toggle right hand speed"
+label_settings = SubResource("LabelSettings_yi4f8")
+vertical_alignment = 1
+
+[node name="Label8" type="Label" parent="MarginContainer/ProController" unique_id=1962957556]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -1659.0
+offset_top = 196.40503
+offset_right = -1458.0
+offset_bottom = 245.40503
+grow_horizontal = 0
+grow_vertical = 2
+theme = ExtResource("3_yggyf")
+theme_override_font_sizes/font_size = 16
+text = "Walk forward"
+label_settings = SubResource("LabelSettings_yi4f8")
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="Label14" type="Label" parent="MarginContainer/ProController" unique_id=1730244094]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -1672.0
+offset_top = 257.40503
+offset_right = -1458.0
+offset_bottom = 306.40503
+grow_horizontal = 0
+grow_vertical = 2
+theme = ExtResource("3_yggyf")
+theme_override_font_sizes/font_size = 16
+text = "Walk backward"
+label_settings = SubResource("LabelSettings_yi4f8")
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="Label15" type="Label" parent="MarginContainer/ProController" unique_id=28779081]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -1672.0
+offset_top = 314.40503
+offset_right = -1458.0
+offset_bottom = 363.40503
+grow_horizontal = 0
+grow_vertical = 2
+theme = ExtResource("3_yggyf")
+theme_override_font_sizes/font_size = 16
+text = "Walk left"
+label_settings = SubResource("LabelSettings_yi4f8")
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="Label16" type="Label" parent="MarginContainer/ProController" unique_id=2049044419]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -1672.0
+offset_top = 376.40503
+offset_right = -1458.0
+offset_bottom = 425.40503
+grow_horizontal = 0
+grow_vertical = 2
+theme = ExtResource("3_yggyf")
+theme_override_font_sizes/font_size = 16
+text = "Walk right"
+label_settings = SubResource("LabelSettings_yi4f8")
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="Label9" type="Label" parent="MarginContainer/ProController" unique_id=673363747]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 1453.0
+offset_top = -86.595
+offset_right = 1643.0
+offset_bottom = -37.595
 grow_vertical = 2
 theme = ExtResource("3_yggyf")
 theme_override_font_sizes/font_size = 16
 text = "USE_RIGHT"
+label_settings = SubResource("LabelSettings_yi4f8")
 vertical_alignment = 1
 
-[node name="Label11" type="Label" parent="MarginContainer/ProController" unique_id=2093376768]
+[node name="Label11" type="Label" parent="MarginContainer/ProController" unique_id=1833549822]
 layout_mode = 1
 anchors_preset = 4
 anchor_top = 0.5
 anchor_bottom = 0.5
-offset_left = 816.0
-offset_top = -21.0
-offset_right = 923.0
-offset_bottom = 16.0
+offset_left = 1453.0
+offset_top = -28.595001
+offset_right = 1596.0
+offset_bottom = 20.404999
 grow_vertical = 2
 theme = ExtResource("3_yggyf")
 theme_override_font_sizes/font_size = 16
 text = "CROUCH"
+label_settings = SubResource("LabelSettings_yi4f8")
 vertical_alignment = 1
 
-[node name="Label10" type="Label" parent="MarginContainer/ProController" unique_id=858141062]
+[node name="Label10" type="Label" parent="MarginContainer/ProController" unique_id=1866528811]
 layout_mode = 1
 anchors_preset = 4
 anchor_top = 0.5
 anchor_bottom = 0.5
-offset_left = 816.0
-offset_top = 13.0
-offset_right = 944.0
-offset_bottom = 50.0
+offset_left = 1453.0
+offset_top = 27.404999
+offset_right = 1624.0
+offset_bottom = 76.40503
 grow_vertical = 2
 theme = ExtResource("3_yggyf")
 theme_override_font_sizes/font_size = 16
 text = "USE_LEFT"
+label_settings = SubResource("LabelSettings_yi4f8")
 vertical_alignment = 1

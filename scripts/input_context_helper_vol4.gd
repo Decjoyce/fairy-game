@@ -18,8 +18,8 @@ func update_me() -> void:
 	else:  set_icons(joy_dict["DEFAULT"])
 
 func set_icons(icons: JoyIcons) -> void:
-	confirm_image.texture = icons.button_east
-	back_image.texture = icons.button_south
+	confirm_image.texture = icons.button_south
+	back_image.texture = icons.button_east
 	select_image.texture = icons.Lstick
 
 func hide_me() -> void:

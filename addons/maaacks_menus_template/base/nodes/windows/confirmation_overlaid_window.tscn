@@ -31,14 +31,14 @@ update_content = true
 close_button_text = "Cancel"
 
 [node name="PanelContainer" type="PanelContainer" parent="." index="0" unique_id=2062308364]
-custom_minimum_size = Vector2(430, 260)
+custom_minimum_size = Vector2(630, 400)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 theme_override_styles/panel = SubResource("StyleBoxTexture_8tmnb")
 
 [node name="ContentContainer" parent="." index="1" unique_id=1755486830]
-custom_minimum_size = Vector2(430, 250)
+custom_minimum_size = Vector2(630, 380)
 size_flags_horizontal = 4
 size_flags_vertical = 4
 theme_override_constants/margin_top = 32
@@ -51,20 +51,21 @@ visible = false
 theme = ExtResource("2_vi2bo")
 
 [node name="MenuButtonsMargin" parent="ContentContainer/BoxContainer" parent_id_path=PackedInt32Array(394030069) index="2" unique_id=1413292752]
-theme_override_constants/margin_top = 0
+theme_override_constants/margin_top = 15
+theme_override_constants/margin_bottom = 12
 
 [node name="MenuButtons" parent="ContentContainer/BoxContainer/MenuButtonsMargin" index="0" unique_id=1371114575]
-theme_override_constants/separation = 42
+theme_override_constants/separation = 92
 vertical = false
 
 [node name="CloseButton" parent="ContentContainer/BoxContainer/MenuButtonsMargin/MenuButtons" index="0" unique_id=314526102]
-theme_override_font_sizes/font_size = 24
+theme_override_font_sizes/font_size = 36
 text = "Cancel"
 
 [node name="ConfirmButton" type="Button" parent="ContentContainer/BoxContainer/MenuButtonsMargin/MenuButtons" index="1" unique_id=1052970550]
 unique_name_in_owner = true
 layout_mode = 2
-theme_override_font_sizes/font_size = 24
+theme_override_font_sizes/font_size = 36
 text = "CONFIRM"
 
 [connection signal="pressed" from="ContentContainer/BoxContainer/MenuButtonsMargin/MenuButtons/ConfirmButton" to="." method="_on_confirm_button_pressed"]

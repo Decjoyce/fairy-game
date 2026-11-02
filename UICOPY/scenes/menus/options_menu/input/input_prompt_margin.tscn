@@ -18,6 +18,8 @@ offset_top = -25.0
 grow_horizontal = 2
 grow_vertical = 0
 size_flags_vertical = 4
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_bottom = 16
 script = ExtResource("1_owa15")
 joy_dict = Dictionary[String, ExtResource("2_34khj")]({
 "DEFAULT": ExtResource("3_e2jmc"),
@@ -32,25 +34,24 @@ select_image = NodePath("InputContainer/SelectContainer/TextureRect")
 
 [node name="InputContainer" type="HBoxContainer" parent="." unique_id=1805157838]
 layout_mode = 2
-theme_override_constants/separation = 16
+theme_override_constants/separation = 24
 
 [node name="SelectContainer" type="HBoxContainer" parent="InputContainer" unique_id=740264555]
 layout_mode = 2
 
 [node name="TextureRect" type="TextureRect" parent="InputContainer/SelectContainer" unique_id=1174975758]
-custom_minimum_size = Vector2(25, 25)
+custom_minimum_size = Vector2(35, 35)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 texture = ExtResource("1_vlcg0")
-expand_mode = 1
-stretch_mode = 5
+expand_mode = 3
 
 [node name="Label" type="Label" parent="InputContainer/SelectContainer" unique_id=130449953]
 layout_mode = 2
 size_flags_vertical = 1
 theme_override_colors/font_color = Color(0.7792914, 0.7792914, 0.7792913, 1)
-theme_override_font_sizes/font_size = 15
+theme_override_font_sizes/font_size = 20
 text = "Select"
 vertical_alignment = 1
 
@@ -58,19 +59,18 @@ vertical_alignment = 1
 layout_mode = 2
 
 [node name="TextureRect" type="TextureRect" parent="InputContainer/ConfirmContainer" unique_id=1160157928]
-custom_minimum_size = Vector2(25, 25)
+custom_minimum_size = Vector2(35, 35)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 texture = ExtResource("2_33p4j")
-expand_mode = 1
-stretch_mode = 5
+expand_mode = 3
 
 [node name="Label" type="Label" parent="InputContainer/ConfirmContainer" unique_id=954174994]
 layout_mode = 2
 size_flags_vertical = 1
 theme_override_colors/font_color = Color(0.7792914, 0.7792914, 0.7792913, 1)
-theme_override_font_sizes/font_size = 15
+theme_override_font_sizes/font_size = 20
 text = "Confirm"
 vertical_alignment = 1
 
@@ -78,18 +78,17 @@ vertical_alignment = 1
 layout_mode = 2
 
 [node name="TextureRect" type="TextureRect" parent="InputContainer/BackContainer" unique_id=1435681599]
-custom_minimum_size = Vector2(25, 25)
+custom_minimum_size = Vector2(35, 35)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 texture = ExtResource("3_lskhm")
-expand_mode = 1
-stretch_mode = 5
+expand_mode = 3
 
 [node name="Label" type="Label" parent="InputContainer/BackContainer" unique_id=1370157357]
 layout_mode = 2
 size_flags_vertical = 1
 theme_override_colors/font_color = Color(0.7792914, 0.7792914, 0.7792913, 1)
-theme_override_font_sizes/font_size = 15
+theme_override_font_sizes/font_size = 20
 text = "Back"
 vertical_alignment = 1

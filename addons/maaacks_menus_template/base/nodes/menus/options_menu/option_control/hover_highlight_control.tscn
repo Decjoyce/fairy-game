@@ -2,10 +2,10 @@
 
 [ext_resource type="Theme" uid="uid://ktuc4glx3wgp" path="res://scenes/_levels/menus/main_menu/Main_Menu_UI_NEW/UI_themes/redesigned_ui_theme.tres" id="1_1wx4l"]
 [ext_resource type="Script" uid="uid://cqvlsy3oqbhbq" path="res://addons/maaacks_menus_template/base/nodes/menus/options_menu/option_control/hover_highlight_control.gd" id="2_ckbmv"]
-[ext_resource type="Texture2D" uid="uid://bqo1kbr5fs24a" path="res://assets/ui/new_redesigned_ui/button_main.png" id="3_cpurk"]
+[ext_resource type="Texture2D" uid="uid://dfcms4wkfu27p" path="res://assets/ui/new_redesigned_ui/menu_button_hover.png" id="3_1wx4l"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_8tmnb"]
-texture = ExtResource("3_cpurk")
+texture = ExtResource("3_1wx4l")
 texture_margin_left = 40.0
 texture_margin_right = 10.0
 
@@ -19,11 +19,14 @@ script = ExtResource("2_ckbmv")
 
 [node name="HighlightPanel" type="PanelContainer" parent="." unique_id=851440779]
 visible = false
-custom_minimum_size = Vector2(900, 64)
+custom_minimum_size = Vector2(1500, 64)
 layout_mode = 1
 anchors_preset = 4
 anchor_top = 0.5
 anchor_bottom = 0.5
+offset_top = -32.0
+offset_right = 900.0
+offset_bottom = 32.0
 grow_vertical = 2
 mouse_filter = 2
 theme = ExtResource("1_1wx4l")

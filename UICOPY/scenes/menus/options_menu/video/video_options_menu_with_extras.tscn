@@ -12,7 +12,7 @@ grow_vertical = 2
 
 [node name="VBoxContainer" parent="." index="0" unique_id=1251699420]
 custom_minimum_size = Vector2(750, 0)
-theme_override_constants/separation = 20
+theme_override_constants/separation = 42
 
 [node name="FullscreenControl" parent="VBoxContainer" index="0" unique_id=1477535498]
 option_name = "FULLSCREEN"
@@ -51,8 +51,9 @@ vertical_alignment = 1
 
 [node name="OptionButton" type="OptionButton" parent="VBoxContainer/Language" index="2" unique_id=1694932225]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(400, 0)
+custom_minimum_size = Vector2(600, 50)
 layout_mode = 2
+size_flags_vertical = 4
 
 [node name="ExperimentalHandLightingControl" type="HBoxContainer" parent="VBoxContainer" index="5" unique_id=1563851297]
 unique_name_in_owner = true
@@ -77,6 +78,8 @@ vertical_alignment = 1
 
 [node name="CheckButton" type="CheckButton" parent="VBoxContainer/ExperimentalHandLightingControl" index="2" unique_id=1452268147]
 layout_mode = 2
+size_flags_vertical = 4
+theme_override_constants/icon_max_width = 72
 
 [node name="CameraShakeControl" parent="VBoxContainer" index="6" unique_id=683521251 instance=ExtResource("2_guhhv")]
 visible = false

@@ -1562,7 +1562,7 @@ grow_vertical = 2
 alignment = 1
 
 [node name="TextureRect" type="TextureRect" parent="MainMenu/OpeningScene/BoxContainer" unique_id=2131277929]
-modulate = Color(0.6666667, 0.60784316, 0.5686275, 0)
+modulate = Color(0, 0, 0, 1)
 layout_mode = 2
 size_flags_horizontal = 3
 expand_mode = 1
@@ -1623,8 +1623,9 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="TitleMargin" type="MarginContainer" parent="MainMenu/MenuContainer" unique_id=2112060331]
+custom_minimum_size = Vector2(0, 300)
 layout_mode = 2
-theme_override_constants/margin_top = 33
+theme_override_constants/margin_top = 54
 
 [node name="TitleContainer" type="Control" parent="MainMenu/MenuContainer/TitleMargin" unique_id=556427956]
 modulate = Color(1, 1, 1, 0)
@@ -1645,11 +1646,14 @@ vertical_alignment = 1
 script = ExtResource("8_0evim")
 
 [node name="TextureRect" type="TextureRect" parent="MainMenu/MenuContainer/TitleMargin/TitleContainer" unique_id=956686403]
-custom_minimum_size = Vector2(0, 150)
+custom_minimum_size = Vector2(0, 250)
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
+offset_left = -464.99976
+offset_right = 465.00366
+offset_bottom = 250.0
 grow_horizontal = 2
 texture = ExtResource("43_ue1se")
 expand_mode = 3
@@ -1678,9 +1682,9 @@ vertical_alignment = 1
 [node name="MenuButtonsMargin" type="MarginContainer" parent="MainMenu/MenuContainer" unique_id=210553886]
 layout_mode = 2
 size_flags_vertical = 3
-theme_override_constants/margin_left = 48
+theme_override_constants/margin_left = 72
 theme_override_constants/margin_top = 190
-theme_override_constants/margin_right = 64
+theme_override_constants/margin_right = 72
 theme_override_constants/margin_bottom = 32
 
 [node name="MenuButtonsContainer" type="Control" parent="MainMenu/MenuContainer/MenuButtonsMargin" unique_id=116448484]
@@ -1699,7 +1703,7 @@ offset_right = 297.0
 offset_bottom = 200.5
 grow_vertical = 2
 size_flags_horizontal = 4
-theme_override_constants/separation = 8
+theme_override_constants/separation = 16
 vertical = true
 script = ExtResource("9_xwrb1")
 lock = true
@@ -1709,6 +1713,7 @@ unique_name_in_owner = true
 layout_mode = 2
 theme_type_variation = &"title_screen_button"
 theme_override_constants/outline_size = 3
+theme_override_font_sizes/font_size = 42
 text = "START_GAME"
 alignment = 0
 
@@ -1716,6 +1721,7 @@ alignment = 0
 unique_name_in_owner = true
 layout_mode = 2
 theme_type_variation = &"title_screen_button"
+theme_override_font_sizes/font_size = 42
 text = "LOAD_GAME"
 alignment = 0
 
@@ -1723,6 +1729,7 @@ alignment = 0
 unique_name_in_owner = true
 layout_mode = 2
 theme_type_variation = &"title_screen_button"
+theme_override_font_sizes/font_size = 42
 text = "DEV_ROOM"
 alignment = 0
 
@@ -1730,6 +1737,7 @@ alignment = 0
 unique_name_in_owner = true
 layout_mode = 2
 theme_type_variation = &"title_screen_button"
+theme_override_font_sizes/font_size = 42
 text = "OPTIONS"
 alignment = 0
 
@@ -1737,6 +1745,7 @@ alignment = 0
 unique_name_in_owner = true
 layout_mode = 2
 theme_type_variation = &"title_screen_button"
+theme_override_font_sizes/font_size = 42
 text = "CREDITS"
 alignment = 0
 
@@ -1744,6 +1753,7 @@ alignment = 0
 unique_name_in_owner = true
 layout_mode = 2
 theme_type_variation = &"title_screen_button"
+theme_override_font_sizes/font_size = 42
 text = "EXIT"
 alignment = 0
 
@@ -1752,6 +1762,7 @@ unique_name_in_owner = true
 visible = false
 layout_mode = 2
 theme_type_variation = &"title_screen_button"
+theme_override_font_sizes/font_size = 42
 text = "The Creature"
 alignment = 0
 
@@ -1815,10 +1826,8 @@ selection_enabled = true
 layout_mode = 2
 size_flags_vertical = 8
 mouse_filter = 2
-theme_override_constants/margin_left = 20
-theme_override_constants/margin_top = 8
+theme_override_constants/margin_left = 32
 theme_override_constants/margin_right = 32
-theme_override_constants/margin_bottom = 8
 
 [node name="InputPromptMargin" parent="MainMenu/MenuContainer/VersionMargin" unique_id=1104021911 node_paths=PackedStringArray("skip_image") instance=ExtResource("47_i1xur")]
 layout_mode = 2
@@ -1841,6 +1850,7 @@ theme_override_colors/font_color = Color(0.9098039, 0.9098039, 0.9098039, 1)
 theme_override_font_sizes/font_size = 16
 text = "vInternal_October_Demo"
 horizontal_alignment = 2
+vertical_alignment = 1
 script = ExtResource("10_gmba7")
 
 [node name="ExitConfirmation" parent="MainMenu" unique_id=912502155 instance=ExtResource("11_bus8x")]
@@ -1992,6 +2002,7 @@ theme = ExtResource("3_ue1se")
 theme_override_colors/font_color = Color(0.8689852, 0.8689848, 0.8689849, 1)
 theme_override_font_sizes/font_size = 28
 text = "SKIP"
+vertical_alignment = 1
 metadata/_edit_use_anchors_ = true
 
 [node name="hide" type="Timer" parent="SkipUI" unique_id=1858977337]

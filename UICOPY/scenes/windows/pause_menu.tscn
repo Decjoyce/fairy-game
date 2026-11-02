@@ -41,7 +41,7 @@ menu_container_node_path = NodePath("..")
 pauses_game = true
 
 [node name="PausePanel" type="PanelContainer" parent="." index="0" unique_id=1152086363]
-custom_minimum_size = Vector2(410, 500)
+custom_minimum_size = Vector2(610, 800)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
@@ -49,12 +49,12 @@ theme = ExtResource("2_qnj2a")
 theme_override_styles/panel = SubResource("StyleBoxTexture_mctgh")
 
 [node name="ContentContainer" parent="." index="1" unique_id=1755486830]
-custom_minimum_size = Vector2(400, 450)
+custom_minimum_size = Vector2(600, 700)
 size_flags_horizontal = 4
 size_flags_vertical = 4
 
 [node name="BoxContainer" parent="ContentContainer" index="0" unique_id=394030069]
-theme_override_constants/separation = -3
+theme_override_constants/separation = 39
 
 [node name="TitleMargin" parent="ContentContainer/BoxContainer" index="0" unique_id=1262022916]
 theme_override_constants/margin_left = 0
@@ -65,7 +65,7 @@ theme_override_constants/margin_bottom = 0
 [node name="TitleLabel" parent="ContentContainer/BoxContainer/TitleMargin/BoxContainer" parent_id_path=PackedInt32Array(1788474031) index="0" unique_id=1049966061]
 theme = ExtResource("2_qnj2a")
 theme_override_colors/font_color = Color(0.2627451, 0.15686275, 0.003921569, 1)
-theme_override_font_sizes/font_size = 64
+theme_override_font_sizes/font_size = 88
 text = "PAUSED"
 vertical_alignment = 1
 
@@ -81,26 +81,26 @@ theme_override_constants/margin_left = 16
 theme_override_constants/margin_right = 24
 
 [node name="MenuButtons" parent="ContentContainer/BoxContainer/MenuButtonsMargin" index="0" unique_id=1371114575]
-theme_override_constants/separation = 8
+theme_override_constants/separation = 20
 
 [node name="CloseButton" parent="ContentContainer/BoxContainer/MenuButtonsMargin/MenuButtons" index="0" unique_id=314526102]
 size_flags_horizontal = 4
 size_flags_vertical = 4
-theme_override_font_sizes/font_size = 28
+theme_override_font_sizes/font_size = 40
 text = "RESUME"
 
 [node name="LoadButton" type="Button" parent="ContentContainer/BoxContainer/MenuButtonsMargin/MenuButtons" index="1" unique_id=1371657172]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
-theme_override_font_sizes/font_size = 28
+theme_override_font_sizes/font_size = 40
 text = "RELOAD_LAST_SAVE"
 
 [node name="RestartButton2" type="Button" parent="ContentContainer/BoxContainer/MenuButtonsMargin/MenuButtons" index="2" unique_id=1092099725]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
-theme_override_font_sizes/font_size = 28
+theme_override_font_sizes/font_size = 40
 text = "RESTART_LEVEL"
 
 [node name="OptionsButton" type="Button" parent="ContentContainer/BoxContainer/MenuButtonsMargin/MenuButtons" index="3" unique_id=1126383675]
@@ -108,7 +108,7 @@ unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
-theme_override_font_sizes/font_size = 28
+theme_override_font_sizes/font_size = 40
 text = "OPTIONS"
 
 [node name="MainMenuButton" type="Button" parent="ContentContainer/BoxContainer/MenuButtonsMargin/MenuButtons" index="4" unique_id=928043706]
@@ -116,7 +116,7 @@ unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
-theme_override_font_sizes/font_size = 28
+theme_override_font_sizes/font_size = 40
 text = "EXIT_TO_MENU"
 
 [node name="ExitButton" type="Button" parent="ContentContainer/BoxContainer/MenuButtonsMargin/MenuButtons" index="5" unique_id=1398257582]
@@ -124,7 +124,7 @@ unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
-theme_override_font_sizes/font_size = 28
+theme_override_font_sizes/font_size = 40
 text = "EXIT"
 
 [node name="RestartConfirmation" parent="." index="2" unique_id=1405814931 instance=ExtResource("4_qnj2a")]
@@ -166,9 +166,8 @@ title_visible = false
 [node name="InputPromptMargin" parent="." index="5" unique_id=1104021911 instance=ExtResource("8_ec6cq")]
 layout_mode = 2
 size_flags_vertical = 8
-theme_override_constants/margin_left = 16
-theme_override_constants/margin_right = 16
-theme_override_constants/margin_bottom = 8
+theme_override_constants/margin_left = 32
+theme_override_constants/margin_right = 32
 
 [connection signal="pressed" from="ContentContainer/BoxContainer/MenuButtonsMargin/MenuButtons/LoadButton" to="." method="_on_Load_Save_confirmed"]
 [connection signal="pressed" from="ContentContainer/BoxContainer/MenuButtonsMargin/MenuButtons/RestartButton2" to="." method="_on_restart_button_pressed"]
