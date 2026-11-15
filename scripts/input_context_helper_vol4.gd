@@ -20,7 +20,7 @@ func update_me() -> void:
 func set_icons(icons: JoyIcons) -> void:
 	confirm_image.texture = icons.button_south
 	back_image.texture = icons.button_east
-	select_image.texture = icons.Lstick
+	select_image.texture = icons.Dpad
 
 func hide_me() -> void:
 	skip_image.visible = false

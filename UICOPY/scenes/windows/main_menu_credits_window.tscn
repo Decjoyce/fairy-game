@@ -5,6 +5,7 @@
 [ext_resource type="Script" uid="uid://dt3a5wf86t05p" path="res://UICOPY/scenes/windows/main_menu_credits_window.gd" id="2_v1bjb"]
 [ext_resource type="PackedScene" uid="uid://sugntfym4hf3" path="res://UICOPY/scenes/credits/scrollable_credits.tscn" id="3_7kqca"]
 [ext_resource type="Texture2D" uid="uid://c03vh38db0gvb" path="res://assets/ui/new_redesigned_ui/pause_menu_background.png" id="3_vunme"]
+[ext_resource type="PackedScene" uid="uid://onp0ebxn1ify" path="res://UICOPY/scenes/menus/options_menu/input/input_prompt_margin.tscn" id="6_vunme"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_2i1x5"]
 texture = ExtResource("3_vunme")
@@ -27,9 +28,9 @@ packed_scene = ExtResource("3_7kqca")
 
 [node name="ContentContainer" parent="." index="0" unique_id=1755486830]
 theme_override_constants/margin_left = 21
-theme_override_constants/margin_top = 63
+theme_override_constants/margin_top = 72
 theme_override_constants/margin_right = 25
-theme_override_constants/margin_bottom = 61
+theme_override_constants/margin_bottom = 72
 
 [node name="TitleMargin" parent="ContentContainer/BoxContainer" parent_id_path=PackedInt32Array(394030069) index="0" unique_id=1262022916]
 visible = false
@@ -43,3 +44,9 @@ visible = false
 [node name="CloseButton" parent="ContentContainer/BoxContainer/MenuButtonsMargin/MenuButtons" parent_id_path=PackedInt32Array(1371114575) index="0" unique_id=314526102]
 size_flags_horizontal = 0
 text = "Back"
+
+[node name="InputPromptMargin" parent="." index="1" unique_id=1104021911 instance=ExtResource("6_vunme")]
+layout_mode = 2
+size_flags_vertical = 8
+theme_override_constants/margin_left = 32
+theme_override_constants/margin_right = 32
