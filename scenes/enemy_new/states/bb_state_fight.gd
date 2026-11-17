@@ -7,6 +7,8 @@ extends EnemyState
 var is_attacking: bool
 var charge_delay: float = 0.5
 var recover_delay: float = 0.5
+const ATTACK_RANGE: float = 1.25 ## one cell is 1m, a diagonal 1.41m, so diagonals will miss
+const ATTACK_RAY_MASK: int = 9 ## layer 1 + layer 4
 
 var move_to_pos: Tween 
 
@@ -55,8 +57,7 @@ func physics_update(_delta: float) -> void:
 
 func charge_attack() -> void:
 	if !active: return
-	ballybog.graphics.look_at(ballybog.player.global_position, Vector3.UP)
-	ballybog.graphics.rotation_degrees.y += 180
+	_face_player()
 	ballybog.anim_player.play("telegraph")
 	print("i am chargy")
 	wait_timer.wait_time = charge_delay
@@ -65,8 +66,9 @@ func charge_attack() -> void:
 func attack() -> void:
 	if !active: return
 	ballybog.anim_player.play("attack")
-	print("i attack u")
-	killed_player = ballybog.player.stats.take_damage(33.0, 1)
+	if _can_hit_player():
+		print("%s: hit the player" % ballybog.name)
+		killed_player = ballybog.player.stats.take_damage(33.0, 1)
 	
 	if killed_player:
 		if ballybog.rng.randf_range(0, 1) > 0.75:
@@ -105,3 +107,43 @@ func on_player_enter_fight_radius() -> void:
 
 func exit_state_helper() -> void:
 	finished.emit("CHASE", {"skip_reaction": true})
+	
+## Face the cell the player is on or stepping into, keeping the level
+func _face_player() -> void:
+	var look: Vector3 = ballybog.player.movement.target_pos
+	look.y = ballybog.graphics.global_position.y
+	if ballybog.graphics.global_position.distance_to(look) < 0.1:
+		return # player is on our cell, look_at would fail
+	ballybog.graphics.look_at(look, Vector3.UP)
+	ballybog.graphics.rotation_degrees.y += 180
+
+## Checked when the swing lands, only ttrue if the player's cell is one cell
+## in front and nothing is between the player and myself (the ballybog)
+func _can_hit_player() -> bool:
+	var me: Vector3 = ballybog.global_position # Fight has already snapped
+	var target: Vector3 = ballybog.player.movement.target_pos
+	var to_player := Vector3(target.x - me.x, 0.0, target.z - me.z)
+	var dist := to_player.length()
+	
+	if dist > ATTACK_RANGE:
+		print("%s: swing missed, player %.2f m away" % [ballybog.name, dist])
+		return false
+	if dist < 0.5:
+		return true # player walked into our cell
+		
+	# Global basis, some ballybogs are placed rotated, so the local basis points the wrong way
+	var facing := ballybog.graphics.global_basis.z
+	facing.y = 0.0 
+	if facing.normalized().dot(to_player / dist) < 0.7: # within -45 degrees of straight ahead either side
+		print("%s: swing missed, player not in front" % ballybog.name)
+		return false
+	
+	# Bodies only, so the player's and ballybog's areas don't count
+	var from := me + Vector3.UP * 0.8
+	var to := Vector3(target.x, from.y, target.z)
+	var query := PhysicsRayQueryParameters3D.create(from, to, ATTACK_RAY_MASK)
+	var hit := ballybog.get_world_3d().direct_space_state.intersect_ray(query)
+	if !hit.is_empty():
+		print("%s: swing blocked by %s" % [ballybog.name, hit.collider.get_path()])
+		return false
+	return true

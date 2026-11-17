@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://cd0jbh4metflb"]
 
 [ext_resource type="Script" uid="uid://dgeewyjjpk4qn" path="res://addons/maaacks_menus_template/base/nodes/loading_screen/loading_screen.gd" id="1_gbk34"]
-[ext_resource type="Theme" uid="uid://4rqtecgji27t" path="res://scenes/_levels/menus/main_menu/Main_Menu_UI_NEW/UI_themes/customised_brush_theme.tres" id="2_n04bj"]
+[ext_resource type="Theme" uid="uid://ktuc4glx3wgp" path="res://scenes/_levels/menus/main_menu/Main_Menu_UI_NEW/UI_themes/redesigned_ui_theme.tres" id="2_n04bj"]
 
 [sub_resource type="Gradient" id="Gradient_xab64"]
 offsets = PackedFloat32Array(0.36261982, 1)
@@ -74,20 +74,22 @@ horizontal_alignment = 1
 unique_name_in_owner = true
 custom_minimum_size = Vector2(0, 86.555)
 layout_mode = 2
-theme = ExtResource("2_n04bj")
 max_value = 1.0
 
 [node name="ErrorMessage" type="AcceptDialog" parent="Control" unique_id=1421740495]
 unique_name_in_owner = true
+oversampling_override = 1.0
 title = "Loading Error"
 initial_position = 2
-size = Vector2i(360, 100)
+size = Vector2i(360, 237)
 
 [node name="StalledMessage" type="ConfirmationDialog" parent="Control" unique_id=1733180994]
 unique_name_in_owner = true
+oversampling_override = 1.0
 title = "Loading Stalled"
 initial_position = 2
-size = Vector2i(360, 100)
+size = Vector2i(380, 114)
+theme = ExtResource("2_n04bj")
 ok_button_text = "Try Waiting"
 cancel_button_text = "Reload"
 

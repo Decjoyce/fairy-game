@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://s5cfdf85lm5g" path="res://scenes/interactions/interactables/items/grabbable_item.gd" id="1_2k741"]
 [ext_resource type="PackedScene" uid="uid://cfkoaxhngk3gf" path="res://scenes/interactions/interactables/items/all_items/keys/item_key.tscn" id="3_d8h7e"]
+[ext_resource type="Script" uid="uid://cx6bhs5iiw7ss" path="res://scripts/Observer outlines/Outline_shader_attacher.gd" id="5_2k741"]
 [ext_resource type="AudioStream" uid="uid://cmlk4ndscpe3t" path="res://assets/audio/sfx/items/Thrown/pitcher_hit_randomizer.tres" id="5_srh1v"]
 [ext_resource type="Script" uid="uid://beaf3digx88d0" path="res://scenes/interactions/interactables/items/item_types/itemtype_breakable.gd" id="6_ix4o8"]
 [ext_resource type="Texture2D" uid="uid://ce58r2n0vi63r" path="res://assets/sprites/item_sprites/urn_item.png" id="7_nwc2n"]
@@ -94,6 +95,7 @@ billboard = 1
 shaded = true
 texture = ExtResource("7_nwc2n")
 hframes = 2
+script = ExtResource("5_2k741")
 
 [node name="_grabbed_graphics" type="Sprite3D" parent="." unique_id=1652422443]
 visible = false
@@ -103,6 +105,7 @@ shaded = true
 render_priority = 1
 texture = ExtResource("7_nwc2n")
 hframes = 2
+script = ExtResource("5_2k741")
 
 [node name="AudioPlayer" type="AudioStreamPlayer3D" parent="." unique_id=2108934192]
 stream = ExtResource("5_srh1v")

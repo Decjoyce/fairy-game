@@ -51,6 +51,7 @@ var is_broken: bool
 @export var grabbed_graphics: Node3D
 @export var untouched_graphics: Node3D
 @export var special_graphics: Node3D
+@export var observed_graphics: Node3D
 
 @export_group("Audio")
 @onready var audio_player: AudioStreamPlayer3D = $AudioPlayer

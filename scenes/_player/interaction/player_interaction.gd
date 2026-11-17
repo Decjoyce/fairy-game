@@ -13,6 +13,8 @@ const INT_RAY_LENGTH = 1.5
 @export var hand_right: PlayerHand # index = 1
 @export var hand_left_sprite: TextureRect
 @export var hand_right_sprite: TextureRect
+@export var Stand_icon : TextureRect
+@export var Crouch_icon : TextureRect
 
 @export var light_checker: LightChecker
 
@@ -112,3 +114,30 @@ func enable_ending_stuff() -> void:
 	hand_left.state.finished.emit("ENDME")
 	hand_right.state.finished.emit("ENDME")
 	pass
+
+#UI crouch stuff func
+func crouched_UI_toggle(state: bool) -> void :
+	var tween = create_tween()
+	if state:
+		Stand_icon.modulate.a = 1
+		Crouch_icon.visible = true
+		Stand_icon.visible = false
+		#Stand_icon.modulate.a = 1.0
+	else :
+		tween.tween_property(Stand_icon, "modulate:a", 1, 0.1)
+		Crouch_icon.visible = false
+		Stand_icon.visible = true
+		tween.tween_property(Stand_icon, "modulate:a", 0.4, 5.0)
+		
+	pass
+	
+func enable_crouch_promt() -> void:
+	print("ligma")
+	var context = hand_right_sprite.get_node("InputContexts")
+	context.enable_crouch_action()
+
+
+func disable_crouch_promt() -> void:
+	var context = hand_right_sprite.get_node("InputContexts")
+	context.disable_crouch_action()
+ 

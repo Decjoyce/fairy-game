@@ -2,10 +2,13 @@
 
 [ext_resource type="Script" uid="uid://s5cfdf85lm5g" path="res://scenes/interactions/interactables/items/grabbable_item.gd" id="1_youxa"]
 [ext_resource type="Script" uid="uid://cqhq7vrwiw3m6" path="res://scenes/interactions/interactables/items/item_types/item_type.gd" id="2_dbiq4"]
+[ext_resource type="Shader" uid="uid://dnl1384j3uyy6" path="res://scripts/Observer outlines/Observer_Outline.gdshader" id="3_g5p5d"]
 [ext_resource type="Texture2D" uid="uid://fi7u5hje4qql" path="res://assets/sprites/item_sprites/bell.png" id="3_youxa"]
 [ext_resource type="AudioStream" uid="uid://bbqnhfeniq7gu" path="res://assets/audio/sfx/items/bell/bell_hit_randomizer.tres" id="4_youxa"]
+[ext_resource type="Script" uid="uid://cx6bhs5iiw7ss" path="res://scripts/Observer outlines/Outline_shader_attacher.gd" id="5_ghq23"]
 [ext_resource type="Script" uid="uid://bhf6r6nw14krj" path="res://scripts/saving/persistent_objs/po_item.gd" id="5_ypg6s"]
 [ext_resource type="AudioStream" uid="uid://ct8n131fcmf8r" path="res://assets/audio/sfx/items/Grab/CupHandle.tres" id="6_dbiq4"]
+[ext_resource type="Shader" uid="uid://bnosysjuihfre" path="res://scripts/Observer outlines/Observer_Outline_Grabbed.gdshader" id="6_ypg6s"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_llc7q"]
 
@@ -18,6 +21,30 @@ size = Vector3(0.5, 0.5, 0.5)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_234jp"]
 size = Vector3(0.4, 0.4, 0.4)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_4d2qi"]
+render_priority = 0
+shader = ExtResource("3_g5p5d")
+shader_parameter/sprite_texture = ExtResource("3_youxa")
+shader_parameter/enable_billboard = true
+shader_parameter/enable_outline = false
+shader_parameter/simple_outline_color = Color(1, 0, 0, 1)
+shader_parameter/simple_outline_width = 4.00000019
+shader_parameter/flash_speed = 2.00000009174012
+shader_parameter/flash_min_alpha = 0.2
+shader_parameter/flash_max_alpha = 0.8
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ghq23"]
+render_priority = 0
+shader = ExtResource("6_ypg6s")
+shader_parameter/sprite_texture = ExtResource("3_youxa")
+shader_parameter/enable_billboard = true
+shader_parameter/enable_outline = false
+shader_parameter/simple_outline_color = Color(1, 0, 0, 1)
+shader_parameter/simple_outline_width = 4.00000019
+shader_parameter/flash_speed = 2.00000009174012
+shader_parameter/flash_min_alpha = 0.2
+shader_parameter/flash_max_alpha = 0.8
 
 [node name="bell" type="RigidBody3D" unique_id=234370081 node_paths=PackedStringArray("col", "grab_col", "idle_graphics", "grabbed_graphics") groups=["debug_PickableObjects"]]
 collision_layer = 2
@@ -49,19 +76,23 @@ debug_color = Color(0.8442249, 0.37985525, 5.7756904e-07, 0.41960785)
 
 [node name="_g_idle" type="Sprite3D" parent="." unique_id=553540307]
 layers = 4
+material_overlay = SubResource("ShaderMaterial_4d2qi")
 pixel_size = 0.0015
 billboard = 2
 shaded = true
 texture = ExtResource("3_youxa")
+script = ExtResource("5_ghq23")
 
 [node name="_g_grabbed" type="Sprite3D" parent="." unique_id=1304977173]
 visible = false
 layers = 4
+material_overlay = SubResource("ShaderMaterial_ghq23")
 pixel_size = 0.0015
 billboard = 2
 shaded = true
 render_priority = 1
 texture = ExtResource("3_youxa")
+script = ExtResource("5_ghq23")
 
 [node name="AudioPlayer" type="AudioStreamPlayer3D" parent="." unique_id=20800557]
 stream = ExtResource("4_youxa")
