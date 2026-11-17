@@ -1,0 +1,97 @@
+[gd_scene format=3 uid="uid://d1fcn01r2pcfk"]
+
+[ext_resource type="Script" uid="uid://b8a1foi1rckyc" path="res://scenes/interactions/_triggers/torch_sconce/torch_sconce.gd" id="1_ok2fp"]
+[ext_resource type="Texture2D" uid="uid://bdv15pyviy4kf" path="res://scenes/interactions/interactables/items/all_items/torch/ScontSprite/ScontFrontSide.png" id="2_ijrrd"]
+[ext_resource type="Texture2D" uid="uid://dblc3nb28nfp1" path="res://scenes/interactions/interactables/items/all_items/torch/ScontSprite/ScontSide.png" id="3_ifq6k"]
+[ext_resource type="PackedScene" uid="uid://gc2qo6ixywh3" path="res://scenes/decor/fire.tscn" id="4_jxklp"]
+[ext_resource type="Texture2D" uid="uid://d0mairuj2kbi" path="res://scenes/interactions/interactables/items/all_items/torch/ScontSprite/ScontSide_unlit.png" id="5_xxmyg"]
+[ext_resource type="Texture2D" uid="uid://dvp8s5j4heyx7" path="res://scenes/interactions/interactables/items/all_items/torch/ScontSprite/ScontFrontSide_unlit.png" id="6_e72j0"]
+[ext_resource type="Script" uid="uid://cc36kknugth5b" path="res://scripts/saving/persistent_objs/po_itmreceiver.gd" id="7_ldb1x"]
+[ext_resource type="Material" uid="uid://cykgn4cpccw6q" path="res://assets/models/cairn/Props/MountedTorch/MountedTorch.tres" id="8_fo57p"]
+[ext_resource type="ArrayMesh" uid="uid://bq3anitpbj6jj" path="res://assets/models/cairn/Props/MountedTorch/MountedTorch.obj" id="9_wwo05"]
+[ext_resource type="ArrayMesh" uid="uid://deenfjj76xugt" path="res://assets/models/cairn/Props/MountedTorch/mountedtorch_nobackboard.obj" id="10_blrbl"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_xy4ik"]
+radius = 0.15350685
+height = 0.3070137
+
+[node name="TorchSconce_Unlit_Blue" type="Node3D" unique_id=885625716]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, 0)
+script = ExtResource("1_ok2fp")
+type_of_item = 1
+num_needed_by_type = 1
+prompt_text = "TORCH_SCONCE"
+metadata/uid = "e78cd2f6-bd9a-44fc-a863-43ed754e9088"
+metadata/lock_uid = true
+metadata/date_generated = "2026-09-29T17:43:36"
+
+[node name="Lit_Sconce" type="Node3D" parent="." unique_id=1104865496]
+visible = false
+
+[node name="_g_front" type="Sprite3D" parent="Lit_Sconce" unique_id=665754002]
+transform = Transform3D(0.73, 0, 0, 0, 0.6321986, -0.365, 0, 0.365, 0.6321986, 0, 0, 0)
+visible = false
+layers = 2
+pixel_size = 0.0013
+shaded = true
+texture = ExtResource("2_ijrrd")
+
+[node name="_g_side" type="Sprite3D" parent="Lit_Sconce" unique_id=1756775473]
+transform = Transform3D(0, 0, 0.72999996, 0.36499998, 0.6321986, 0, -0.6321985, 0.365, 0, 0.0043800003, 0.0056897867, 0.0032849999)
+visible = false
+layers = 2
+pixel_size = 0.0013
+shaded = true
+texture = ExtResource("3_ifq6k")
+
+[node name="TorchLight" type="OmniLight3D" parent="Lit_Sconce" unique_id=1220172625]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.011330001, 0.14420725)
+light_color = Color(0.32156864, 0.5176471, 0.5254902, 1)
+light_energy = 2.645
+light_size = 0.593
+distance_fade_enabled = true
+distance_fade_begin = 11.2
+omni_range = 3.0
+
+[node name="Fire" parent="Lit_Sconce" unique_id=531285147 instance=ExtResource("4_jxklp")]
+transform = Transform3D(-5.9666028e-09, 0, -0.0903, 0, 0.1043, 0, 0.1365, 0, -3.9471373e-09, -0.018095499, 0.0061363727, 0.14327127)
+
+[node name="Unlit_Sconce" type="Node3D" parent="." unique_id=376812811]
+
+[node name="_g_front" type="Sprite3D" parent="Unlit_Sconce" unique_id=1695636620]
+transform = Transform3D(0.73, 0, 0, 0, 0.6321986, -0.365, 0, 0.365, 0.6321986, 0, 0, 0)
+visible = false
+layers = 2
+pixel_size = 0.0013
+shaded = true
+texture = ExtResource("5_xxmyg")
+
+[node name="_g_side" type="Sprite3D" parent="Unlit_Sconce" unique_id=1771886802]
+transform = Transform3D(0, 0, 0.72999996, 0.36499998, 0.6321986, 0, -0.6321985, 0.365, 0, 0.0043800003, 0.0056897867, 0.0032849999)
+visible = false
+layers = 2
+pixel_size = 0.0013
+shaded = true
+texture = ExtResource("6_e72j0")
+
+[node name="Trigger" type="Area3D" parent="." unique_id=709043021]
+monitoring = false
+
+[node name="_col" type="CollisionShape3D" parent="Trigger" unique_id=1901860807]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.013073653, 0.13964444)
+shape = SubResource("CapsuleShape3D_xy4ik")
+
+[node name="PO_ItmReceiver" type="Node" parent="." unique_id=1324657579 groups=["PO"]]
+script = ExtResource("7_ldb1x")
+metadata/_custom_type_script = "uid://cc36kknugth5b"
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1875893241]
+transform = Transform3D(-6.119594e-09, 0, -0.14, 0, 0.14, 0, 0.14, 0, -6.119594e-09, 0, -0.19999999, 0.018826813)
+visible = false
+material_override = ExtResource("8_fo57p")
+mesh = ExtResource("9_wwo05")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="." unique_id=1219226503]
+transform = Transform3D(-6.119594e-09, 0, -0.14, 0, 0.14, 0, 0.14, 0, -6.119594e-09, 0, -0.11482699, 0.018826813)
+material_override = ExtResource("8_fo57p")
+mesh = ExtResource("10_blrbl")

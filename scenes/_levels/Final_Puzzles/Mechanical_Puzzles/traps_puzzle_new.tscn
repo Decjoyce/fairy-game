@@ -28,7 +28,6 @@
 [ext_resource type="PackedScene" uid="uid://ck1b6l8s7xnxi" path="res://scenes/interactions/_triggers/lever/lever.tscn" id="17_lyaua"]
 [ext_resource type="Script" uid="uid://r8vvnup14amn" path="res://scenes/interactions/_receivers/traps/projectile/trap_projectile.gd" id="17_m2i18"]
 [ext_resource type="Script" uid="uid://di860i1v035oh" path="res://scenes/_levels/Final_Puzzles/Mechanical_Puzzles/special_timer.gd" id="17_vnkxx"]
-[ext_resource type="PackedScene" uid="uid://dcb8oam7e21ji" path="res://scenes/interactions/_triggers/torch_sconce/torch_sconce_ceiling_unlit.tscn" id="18_2fpgg"]
 [ext_resource type="AudioStream" uid="uid://8u7k6rnkra3g" path="res://assets/audio/sfx/environment/Traps/Arrow/Weapons, Arrow, Arrows, Shot 04, Bowstring, Twang, Thwack, 8070 (Mono) SND127426 1.wav" id="18_rs6sj"]
 [ext_resource type="AudioStream" uid="uid://bl70njdpufmni" path="res://assets/audio/sfx/environment/Traps/Arrow/Weapons, Arrow, Arrows, Shot 04, Bowstring, Twang, Thwack, 8070 (Mono) SND127426 2.wav" id="19_888e6"]
 [ext_resource type="PackedScene" uid="uid://oqosqgdkwcrb" path="res://scenes/interactions/_receivers/door/door_new.tscn" id="19_fymop"]
@@ -57,9 +56,10 @@
 [ext_resource type="Script" uid="uid://desaef8fc6y0v" path="res://scenes/interactions/_receivers/_logic/Caller/logic_caller.gd" id="31_1c2il"]
 [ext_resource type="Script" uid="uid://bbnwwbodc3xt3" path="res://scripts/level_sequencer.gd" id="32_2pmk1"]
 [ext_resource type="Script" uid="uid://bul4myvyhnpjc" path="res://scripts/saving/uid_generator.gd" id="32_lu18g"]
+[ext_resource type="PackedScene" uid="uid://d1fcn01r2pcfk" path="res://scenes/interactions/_triggers/torch_sconce/torch_sconce_unlit_blue.tscn" id="35_hhdgw"]
+[ext_resource type="PackedScene" uid="uid://betlbcn2q2p8m" path="res://scenes/interactions/_triggers/torch_sconce/torch_sconce_unlit_ceiling_blue.tscn" id="36_hhdgw"]
 [ext_resource type="AudioStream" uid="uid://dv8231i6w3v4l" path="res://assets/audio/sfx/environment/ambient/abience with things falling.wav" id="38_dvre6"]
 [ext_resource type="AudioStream" uid="uid://ct5a2q0anr0lw" path="res://assets/audio/sfx/environment/ambient/Ambience with water bubles.wav" id="39_ibmbp"]
-[ext_resource type="PackedScene" uid="uid://br35er4x4b6av" path="res://scenes/interactions/_triggers/torch_sconce/torch_sconce_unlit.tscn" id="40_ibmbp"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_7bdt6"]
 
@@ -278,7 +278,7 @@ size = Vector3(0.7632202, 1.2839844, 0.6595093)
 size = Vector3(1.6, 1.4, 1.7)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_of2sk"]
-size = Vector3(2.0653076, 2, 3.9392974)
+size = Vector3(1.4971161, 2.209961, 3.9392974)
 
 [sub_resource type="BoxMesh" id="BoxMesh_dvre6"]
 material = ExtResource("14_1c2il")
@@ -306,19 +306,20 @@ shape = SubResource("SphereShape3D_7bdt6")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
 mesh_library = ExtResource("1_jhxkl")
 data = {
-"cells": PackedInt32Array(2, 65530, 1048578, 6, 65530, 1441794, 7, 65531, 655362, 7, 65529, 2, 7, 65530, 0, 7, 65528, 2, 8, 65527, 1048578, 9, 65527, 1048578, 8, 65530, 1048578, 9, 65530, 1048580, 10, 65526, 655363, 11, 65526, 655361, 12, 65526, 655361, 13, 65526, 655361, 14, 65526, 1048579, 10, 65528, 1441795, 11, 65528, 1, 12, 65528, 1, 13, 65528, 1, 15, 65527, 1048580, 14, 65528, 3, 10, 65527, 0, 12, 65527, 0, 11, 65527, 0, 13, 65527, 0, 14, 65527, 0, 7, 65527, 655363, 7, 65532, 1441795, 8, 65532, 1441794, 9, 65532, 1441794, 12, 65532, 1441794, 13, 65532, 1441794, 14, 65532, 1441794, 15, 65532, 1441794, 12, 1, 1441809, 12, 2, 1048591, 13, 2, 1048591, 14, 1, 16, 15, 65535, 16, 15, 0, 16, 15, 1, 16, 15, 2, 16, 15, 3, 1048594, 16, 65533, 2, 16, 65534, 2, 16, 65535, 16, 16, 3, 16, 17, 65535, 1441810, 17, 0, 16, 17, 1, 16, 17, 2, 16, 17, 3, 1048594, 18, 1, 655378, -65523, 1, 1441812, -65522, 65535, 655380, -65522, 0, 20, -65522, 1, 655375, -65522, 2, 655380, -65522, 3, 20, -65521, 65535, 655375, -65521, 0, 655375, -65521, 2, 655375, -65521, 3, 655375, -65519, 65535, 1048597, -65519, 0, 1048597, -65518, 65535, 655380, -65518, 0, 20, -65518, 2, 655380, -65518, 3, 20, -65517, 1, 655375, -65517, 2, 655375, -65517, 3, 655375, 16, 5, 655362, 16, 4, 655362, 16, 65532, 655361, 17, 65532, 1048580, 16, 6, 1, 17, 6, 1048580, -65520, 2, 20, -65520, 0, 655380, -65520, 1, 655379, 11, 65532, 1441804, 10, 65532, 1441804, 0, 8, 2, 0, 6, 2, 1, 4, 1048579, 65535, 4, 655363, 65534, 5, 1048578, 0, 3, 2, 0, 2, 2, 0, 1, 2, 1, 65530, 1441794, 0, 0, 655362, 0, 65535, 655362, 0, 65534, 655362, 0, 65532, 655362, 0, 65533, 655362, 0, 65531, 655362, 2, 5, 1048578, 65535, 5, 1, 1, 5, 1, 0, 4, 0, 0, 5, 0, 65533, 5, 1441794, 65532, 5, 1441794, 65531, 5, 1441794, 65530, 5, 1441795, 65530, 4, 655362, 3, 5, 1048578, 4, 5, 1048578, 5, 5, 1048578, 6, 5, 1048579, 6, 7, 2, 5, 8, 655363, 7, 8, 1048579, 6, 8, 0, 65531, 3, 3, 65529, 3, 1441795, 65529, 2, 1441793, 65531, 2, 1048577, 65531, 1, 1048579, 65529, 1, 655363, 65530, 0, 655364, 65530, 1, 655360, 65530, 3, 655360, -6, 2, 25, -6, 1, 1441807, 5, 9, 1441793, 7, 9, 1048577, 5, 10, 1441795, 7, 10, 3, 6, 11, 4, 6, 10, 0, 6, 9, 0, 7, 6, 1048580, 6, 6, 1441793, 0, 7, 19, 0, 9, 2, 0, 10, 2, 15, 6, 1441794, 14, 6, 1441794, 13, 6, 655363, 13, 7, 655362, 13, 8, 655362, 65535, 65530, 1441796, 0, 65530, 655361)
+"cells": PackedInt32Array(2, 65530, 1048578, 6, 65530, 1441794, 7, 65531, 655362, 7, 65529, 2, 7, 65530, 0, 7, 65528, 2, 8, 65527, 1048578, 9, 65527, 1048578, 8, 65530, 1048578, 9, 65530, 1048580, 10, 65526, 655363, 11, 65526, 655361, 12, 65526, 655361, 13, 65526, 655361, 14, 65526, 1048579, 10, 65528, 1441795, 11, 65528, 1, 12, 65528, 1, 13, 65528, 1, 15, 65527, 1048580, 14, 65528, 3, 10, 65527, 0, 12, 65527, 0, 11, 65527, 0, 13, 65527, 0, 14, 65527, 0, 7, 65527, 655363, 7, 65532, 1441795, 8, 65532, 1441794, 9, 65532, 1441794, 12, 65532, 1441794, 13, 65532, 1441794, 14, 65532, 1441794, 15, 65532, 1441794, 12, 1, 1441809, 12, 2, 1048591, 13, 2, 1048591, 14, 1, 16, 15, 65535, 16, 15, 0, 16, 15, 1, 16, 15, 2, 16, 15, 3, 1048594, 16, 65533, 2, 16, 65534, 2, 16, 65535, 16, 16, 3, 16, 17, 65535, 1441810, 17, 0, 16, 17, 1, 16, 17, 2, 16, 17, 3, 1048594, 18, 1, 655378, -65523, 1, 1441812, -65522, 65535, 655380, -65522, 0, 20, -65522, 1, 655375, -65522, 2, 655380, -65522, 3, 20, -65521, 65535, 655375, -65521, 0, 655375, -65521, 2, 655375, -65521, 3, 655375, -65519, 65535, 1048597, -65519, 0, 1048597, -65518, 65535, 655380, -65518, 0, 20, -65518, 2, 655380, -65518, 3, 20, -65517, 1, 655375, -65517, 2, 655375, -65517, 3, 655375, 16, 5, 655362, 16, 4, 655362, 16, 65532, 655361, 17, 65532, 1048580, 16, 6, 1, 17, 6, 1048580, -65520, 2, 20, -65520, 0, 655380, -65520, 1, 655379, 11, 65532, 1441804, 10, 65532, 1441804, 1, 4, 1048579, 65535, 4, 655363, 65534, 5, 1048578, 0, 3, 2, 0, 2, 2, 0, 1, 2, 1, 65530, 1441794, 0, 0, 655362, 0, 65535, 655362, 0, 65534, 655362, 0, 65532, 655362, 0, 65533, 655362, 0, 65531, 655362, 2, 5, 1048578, 65535, 5, 1, 1, 5, 1, 0, 4, 0, 0, 5, 0, 65531, 5, 1441794, 65530, 5, 1441795, 65530, 4, 655362, 3, 5, 1048578, 4, 5, 1048578, 5, 5, 1048578, 6, 5, 1048579, 6, 7, 2, 5, 8, 655363, 7, 8, 1048579, 6, 8, 0, 65531, 3, 3, 65529, 3, 1441795, 65529, 2, 1441793, 65531, 2, 1048577, 65531, 1, 1048579, 65529, 1, 655363, 65530, 0, 655364, 65530, 1, 655360, 65530, 3, 655360, -6, 2, 25, -6, 1, 1441807, 5, 9, 1441793, 7, 9, 1048577, 5, 10, 1441795, 7, 10, 3, 6, 11, 4, 6, 10, 0, 6, 9, 0, 7, 6, 1048580, 6, 6, 1441793, 15, 6, 1441794, 14, 6, 1441794, 13, 6, 655363, 13, 7, 655362, 13, 8, 655362, 65535, 65530, 1441796, 0, 65530, 655361, 65532, 5, 1441794, 65533, 5, 1441794, 0, 6, 655362, 0, 7, 19, 0, 8, 655362, 0, 9, 655362)
 }
 metadata/_editor_floor_ = Vector3(0, 0, 0)
 
 [node name="Beginning_Part(Easier)" type="Node3D" parent="." unique_id=967571025]
 
 [node name="First_Trap" type="Node3D" parent="Beginning_Part(Easier)" unique_id=2140856452]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 0, -2)
 
 [node name="Torch_Mounted" parent="Beginning_Part(Easier)/First_Trap" unique_id=1479203938 instance=ExtResource("28_rym0g")]
-transform = Transform3D(0.8660254, -0.5, 0, 0.5, 0.8660254, 0, 0, 0, 1, 1.6533768, 1.1668693, 16.4)
+transform = Transform3D(0.8660254, -0.5, 0, 0.5, 0.8660254, 0, 0, 0, 1, 9.597069, 1.1668693, 16.6)
 
 [node name="Arrow" type="Node3D" parent="Beginning_Part(Easier)/First_Trap" unique_id=772705159]
-transform = Transform3D(-2.1855694e-08, 0, 0.5, 0, 0.5, 0, -0.5, 0, -2.1855694e-08, 0.56474733, 0.95350873, 15.415934)
+transform = Transform3D(-2.1855694e-08, 0, 0.5, 0, 0.5, 0, -0.5, 0, -2.1855694e-08, 8.564747, 0.95350873, 17.415934)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Beginning_Part(Easier)/First_Trap/Arrow" unique_id=1019898902]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, -1.2525717e-07, -0.5679159)
@@ -330,20 +331,20 @@ transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, -
 material_overlay = ExtResource("2_nwl5k")
 mesh = SubResource("CylinderMesh_ueblh")
 
-[node name="First_Pressure_Plate" parent="Beginning_Part(Easier)/First_Trap" unique_id=790035545 instance=ExtResource("3_nevts")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 15)
-metadata/uid = "7d9f4a83-9432-4358-b348-ab533e2a28fc"
-metadata/lock_uid = true
-metadata/date_generated = "2026-09-29T17:43:36"
-
 [node name="trap_projectile" parent="Beginning_Part(Easier)/First_Trap" unique_id=589372953 instance=ExtResource("4_krfnm")]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 1.7510376, 0.9964758, 15.491814)
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 9.751038, 0.9964758, 17.491814)
 metadata/uid = "3f1cab36-ec3c-4df3-ab12-2b6c3ec682db"
 metadata/lock_uid = true
 metadata/date_generated = "2026-09-29T17:43:36"
 
 [node name="Tutorial" type="Node3D" parent="Beginning_Part(Easier)/First_Trap" unique_id=123165485]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 15)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 0, 17)
+
+[node name="First_Gate" parent="Beginning_Part(Easier)/First_Trap/Tutorial" unique_id=2077487765 instance=ExtResource("7_wn42o")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -3)
+metadata/uid = "fef97b71-4b0a-46cd-a138-5e13011d735d"
+metadata/lock_uid = true
+metadata/date_generated = "2026-11-17T16:32:09"
 
 [node name="PlayerAreaTrigger_Tutorial" parent="Beginning_Part(Easier)/First_Trap/Tutorial" unique_id=1444544816 instance=ExtResource("15_fs7hw")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2)
@@ -355,7 +356,7 @@ trig_once = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 1)
 shape = SubResource("SphereShape3D_4n8n6")
 
-[node name="Tutorial_Gate" type="Node3D" parent="Beginning_Part(Easier)/First_Trap/Tutorial" unique_id=2077487765 node_paths=PackedStringArray("tp_checker_col", "out_pos_back", "out_pos_front") groups=["debug_PickableObjects"]]
+[node name="Tutorial_Gate" type="Node3D" parent="Beginning_Part(Easier)/First_Trap/Tutorial" unique_id=635141025 node_paths=PackedStringArray("tp_checker_col", "out_pos_back", "out_pos_front") groups=["debug_PickableObjects"]]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 2, 1)
 script = ExtResource("8_bblx1")
 height_to_toggle_player_barrier = 0.51
@@ -482,6 +483,15 @@ transform = Transform3D(-5.0268095e-08, 0, -1.15, 0, 1.15, 0, 1.15, 0, -5.026809
 [node name="cairn_fake_wall5" parent="Beginning_Part(Easier)/First_Trap/Tutorial" unique_id=1959086140 instance=ExtResource("21_xajqr")]
 transform = Transform3D(8.682258e-08, 1.4795, 5.0268095e-08, 0, -6.4671e-08, 1.15, 1.15, -1.11699144e-07, -3.7951358e-15, -0.9999999, 3.4, 0.045532227)
 
+[node name="First_Pressure_Plate" parent="Beginning_Part(Easier)/First_Trap/Tutorial" unique_id=790035545 instance=ExtResource("3_nevts")]
+weight_to_activate = 8.0
+metadata/uid = "7d9f4a83-9432-4358-b348-ab533e2a28fc"
+metadata/lock_uid = true
+metadata/date_generated = "2026-09-29T17:43:36"
+
+[node name="TorchSconce_Unlit_Ceiling_Blue" parent="Beginning_Part(Easier)/First_Trap/Tutorial" unique_id=1230047821 instance=ExtResource("36_hhdgw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0056972504, 1.51261, -2.4821625)
+
 [node name="Second_Part" type="Node3D" parent="Beginning_Part(Easier)" unique_id=88189312]
 
 [node name="LeftSide_Puzzle" type="Node3D" parent="Beginning_Part(Easier)/Second_Part" unique_id=1150373503]
@@ -492,7 +502,6 @@ transform = Transform3D(1.9106855e-15, -4.371139e-08, 1, -1, -4.371139e-08, 0, 4
 
 [node name="skull_LeftSide" parent="Beginning_Part(Easier)/Second_Part/LeftSide_Puzzle" unique_id=637668706 instance=ExtResource("5_dp00y")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.4234438, -2)
-item_weight = 2
 metadata/uid = "cdaa1a2d-b3b0-4848-9f14-95aac4328126"
 metadata/lock_uid = true
 metadata/date_generated = "2026-09-29T17:43:36"
@@ -502,6 +511,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1)
 metadata/uid = "1df7ab22-ce58-45a9-9a77-d362df8e253f"
 metadata/lock_uid = true
 metadata/date_generated = "2026-09-29T17:43:36"
+
+[node name="TorchSconce_Unlit_Blue" parent="Beginning_Part(Easier)/Second_Part/LeftSide_Puzzle" unique_id=885625716 instance=ExtResource("35_hhdgw")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -2.8315153, 1.4, 2)
 
 [node name="Button" parent="Beginning_Part(Easier)/Second_Part/LeftSide_Puzzle" unique_id=1164325605 instance=ExtResource("8_uqwb3")]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -2.7125692, 1, 2)
@@ -583,12 +595,12 @@ metadata/date_generated = "2026-09-29T17:43:36"
 [node name="Torches" type="Node3D" parent="Beginning_Part(Easier)/Second_Part/LeftSide_Puzzle" unique_id=921530514]
 
 [node name="Torch_Mounted" parent="Beginning_Part(Easier)/Second_Part/LeftSide_Puzzle/Torches" unique_id=354590087 instance=ExtResource("28_rym0g")]
-transform = Transform3D(-3.7855173e-08, 2.1855694e-08, 1, 0.5, 0.8660254, 0, -0.8660254, 0.5, -4.371139e-08, 7, 1.2671428, 7.378229)
+transform = Transform3D(-3.7855173e-08, 2.1855694e-08, -1, 0.5, 0.8660254, 0, 0.8660254, -0.5, -4.371139e-08, 7, 1.2671428, 8.678228)
 
 [node name="TorchSconce_Lit" parent="Beginning_Part(Easier)/Second_Part/LeftSide_Puzzle/Torches" unique_id=1729385187 instance=ExtResource("20_uwed5")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, -2)
 
-[node name="Stonepile_ReusableStones" parent="Beginning_Part(Easier)/Second_Part/LeftSide_Puzzle" unique_id=1682368129 node_paths=PackedStringArray("my_stone") instance=ExtResource("30_dhg0u")]
+[node name="Stonepile_ReusableStones" parent="Beginning_Part(Easier)/Second_Part/LeftSide_Puzzle" unique_id=578676634 node_paths=PackedStringArray("my_stone") instance=ExtResource("30_dhg0u")]
 transform = Transform3D(1, 0, -1.7484555e-07, 0, 1, 0, 1.7484555e-07, 0, 1, -1, 0, 4)
 my_stone = NodePath("stone")
 
@@ -735,13 +747,12 @@ new_wait_time = 2.0
 
 [node name="skull_RightSide" parent="Beginning_Part(Easier)/Second_Part/RightSide_Puzzle" unique_id=1298691742 instance=ExtResource("5_dp00y")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.34554842, 5)
-item_weight = 2
 metadata/uid = "b2b49b4b-cb76-41b0-9c9a-47f63371dc1a"
 metadata/lock_uid = true
 metadata/date_generated = "2026-09-29T17:43:36"
 
 [node name="Torch_Mounted" parent="Beginning_Part(Easier)/Second_Part/RightSide_Puzzle" unique_id=384716018 instance=ExtResource("28_rym0g")]
-transform = Transform3D(-3.7855173e-08, 2.1855694e-08, -1, 0.5, 0.8660254, 0, 0.8660254, -0.5, -4.371139e-08, -7, 1.3511673, -6.35958)
+transform = Transform3D(1.1356552e-07, -6.556708e-08, 1, 0.5, 0.8660254, 0, -0.8660254, 0.5, 1.3113416e-07, -3, 1.3511673, -7.65958)
 
 [node name="SpikeTraps" type="Node3D" parent="Beginning_Part(Easier)/Second_Part/RightSide_Puzzle" unique_id=1285731828]
 
@@ -783,20 +794,8 @@ metadata/date_generated = "2026-09-30T15:28:59"
 
 [node name="Left_Door" type="Node3D" parent="Beginning_Part(Easier)/Second_Part" unique_id=1999377584]
 
-[node name="trap_projectile_LeftDoor" parent="Beginning_Part(Easier)/Second_Part/Left_Door" unique_id=805296671 instance=ExtResource("4_krfnm")]
-transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, -0.52812016, 0.79999995, 8.283956)
-metadata/uid = "e20c75db-71b8-4681-8064-fbd9bcb5fe8c"
-metadata/lock_uid = true
-metadata/date_generated = "2026-09-29T17:43:36"
-
 [node name="trap_projectile_LeftDoor2" parent="Beginning_Part(Easier)/Second_Part/Left_Door" unique_id=1872175850 instance=ExtResource("4_krfnm")]
-transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, -0.533115, 0.5, 8.291116)
-metadata/uid = "7161f485-1b2c-4db2-a214-e8e2622a1026"
-metadata/lock_uid = true
-metadata/date_generated = "2026-09-29T17:43:36"
-
-[node name="trap_projectile_LeftDoor3" parent="Beginning_Part(Easier)/Second_Part/Left_Door" unique_id=1599577832 instance=ExtResource("4_krfnm")]
-transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, -0.533115, 0.2, 8.291116)
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, -0.533115, 0.8, 8.291116)
 metadata/uid = "7161f485-1b2c-4db2-a214-e8e2622a1026"
 metadata/lock_uid = true
 metadata/date_generated = "2026-09-29T17:43:36"
@@ -809,6 +808,7 @@ metadata/date_generated = "2026-09-29T17:43:36"
 
 [node name="PressurePlate_Door_Left" parent="Beginning_Part(Easier)/Second_Part/Left_Door" unique_id=157696588 instance=ExtResource("3_nevts")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 11)
+weight_to_activate = 8.0
 metadata/uid = "bcd193b3-efa2-4e2e-a429-8f4acfe134d0"
 metadata/lock_uid = true
 metadata/date_generated = "2026-09-29T17:43:36"
@@ -817,7 +817,7 @@ metadata/date_generated = "2026-09-29T17:43:36"
 
 [node name="PressurePlate_Door_Right" parent="Beginning_Part(Easier)/Second_Part/Right_Door" unique_id=278188506 instance=ExtResource("3_nevts")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, 11)
-weight_to_activate = 4.0
+weight_to_activate = 16.0
 metadata/uid = "530e6031-1507-49a4-9e38-59c42d11f271"
 metadata/lock_uid = true
 metadata/date_generated = "2026-09-29T17:43:36"
@@ -828,20 +828,8 @@ metadata/uid = "f57e7fd9-8816-4fd6-9807-a3ee608a0d5c"
 metadata/lock_uid = true
 metadata/date_generated = "2026-09-29T17:43:36"
 
-[node name="trap_projectile_RightDoor3" parent="Beginning_Part(Easier)/Second_Part/Right_Door" unique_id=119097972 instance=ExtResource("4_krfnm")]
-transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 2.6826766, 0.8, 8.3)
-metadata/uid = "aeb0e8c1-51cb-43f3-bfa9-ef35d858f24c"
-metadata/lock_uid = true
-metadata/date_generated = "2026-10-02T14:23:29"
-
-[node name="trap_projectile_RightDoor" parent="Beginning_Part(Easier)/Second_Part/Right_Door" unique_id=939226634 instance=ExtResource("4_krfnm")]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 2.6673553, 0.2, 8.306671)
-metadata/uid = "01962289-787f-40ed-ae61-5a56dd5de62a"
-metadata/lock_uid = true
-metadata/date_generated = "2026-09-29T17:43:36"
-
 [node name="trap_projectile_RightDoor2" parent="Beginning_Part(Easier)/Second_Part/Right_Door" unique_id=1870128157 instance=ExtResource("4_krfnm")]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 2.6739757, 0.5, 8.306671)
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 2.6739757, 0.8, 8.306671)
 metadata/uid = "1b0e8b13-7986-4d5e-b356-d3894ba3b02b"
 metadata/lock_uid = true
 metadata/date_generated = "2026-09-29T17:43:36"
@@ -851,7 +839,7 @@ transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 4, 0
 
 [node name="PressurePlate_Final_Door" parent="Beginning_Part(Easier)/Second_Part/Gate_Area_Finished" unique_id=1881767194 instance=ExtResource("3_nevts")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 20, 0, 2.999999)
-weight_to_activate = 8.0
+weight_to_activate = 24.0
 metadata/uid = "7021291f-9f53-44f2-98ec-afb93df7f44e"
 metadata/lock_uid = true
 metadata/date_generated = "2026-09-29T17:43:36"
@@ -912,31 +900,19 @@ metadata/date_generated = "2026-10-02T14:23:29"
 [node name="Torches" type="Node3D" parent="Beginning_Part(Easier)/Second_Part" unique_id=27874846]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 10)
 
-[node name="TorchSconce_Unlit_LeftSide" parent="Beginning_Part(Easier)/Second_Part/Torches" unique_id=359385643 instance=ExtResource("40_ibmbp")]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -2, 1, 1.833086)
-metadata/uid = "e78cd2f6-bd9a-44fc-a863-43ed754e9088"
-metadata/lock_uid = true
-metadata/date_generated = "2026-09-29T17:43:36"
+[node name="TorchSconce_Unlit_LeftSide" parent="Beginning_Part(Easier)/Second_Part/Torches" unique_id=1865140764 instance=ExtResource("35_hhdgw")]
+transform = Transform3D(-1, 0, -1.509958e-07, 0, 1, 0, 1.509958e-07, 0, -1, -2, 1, 1.833086)
 
-[node name="TorchSconce_Unlit_RightSide" parent="Beginning_Part(Easier)/Second_Part/Torches" unique_id=1284035898 instance=ExtResource("40_ibmbp")]
+[node name="TorchSconce_Unlit_RightSide" parent="Beginning_Part(Easier)/Second_Part/Torches" unique_id=350863339 instance=ExtResource("35_hhdgw")]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 2, 1, 1.8679352)
-metadata/uid = "93136850-60a1-4675-93a6-685000aa82b8"
-metadata/lock_uid = true
-metadata/date_generated = "2026-09-29T17:43:36"
 
-[node name="TorchSconce_Unlit_Main_Gate" parent="Beginning_Part(Easier)/Second_Part/Torches" unique_id=1440015357 instance=ExtResource("18_2fpgg")]
+[node name="TorchSconce_Unlit_Ceiling_MainTrigger" parent="Beginning_Part(Easier)/Second_Part/Torches" unique_id=1427255158 instance=ExtResource("36_hhdgw")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.4752645, -2)
-metadata/uid = "bab228be-2445-4ee4-ae59-e9c57f015b84"
-metadata/lock_uid = true
-metadata/date_generated = "2026-09-29T17:43:36"
 
 [node name="Third_Part" type="Node3D" parent="Beginning_Part(Easier)" unique_id=1295854055]
 
-[node name="TorchSconce_Unlit_For_Bridge" parent="Beginning_Part(Easier)/Third_Part" unique_id=335221596 instance=ExtResource("40_ibmbp")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.4789394, 1, -11.859401)
-metadata/uid = "28f6c6a2-fee0-4287-8623-23a26ddc3b74"
-metadata/lock_uid = true
-metadata/date_generated = "2026-09-29T17:43:36"
+[node name="TorchSconce_Unlit_Blue_ForBridge" parent="Beginning_Part(Easier)/Third_Part" unique_id=1706384477 instance=ExtResource("35_hhdgw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.49999997, 1.0999999, -11.818222)
 
 [node name="Bridge_Button" parent="Beginning_Part(Easier)/Third_Part" unique_id=138800280 instance=ExtResource("8_uqwb3")]
 transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 1, 1, -11.695147)
@@ -2284,12 +2260,18 @@ metadata/uid = "64ccea2e-53f4-48d7-bbfb-4365e81fef5c"
 metadata/lock_uid = true
 metadata/date_generated = "2026-09-29T17:43:36"
 
+[node name="TorchSconce_Unlit_Blue_SecondGate" parent="Second_Part(Harder)/Final Projectile Part/Gate_Puzzle" unique_id=1930662300 instance=ExtResource("35_hhdgw")]
+transform = Transform3D(1.3113416e-07, 0, -1, 0, 1, 0, 1, 0, 1.3113416e-07, 29.820614, 1.4, -15.2)
+
 [node name="First_Gate_Button" parent="Second_Part(Harder)/Final Projectile Part/Gate_Puzzle" unique_id=442174818 instance=ExtResource("8_uqwb3")]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 20.269361, 1, -18.786285)
 manual_reset = true
 metadata/uid = "4ac3c000-2533-4bd3-8bb0-c68487ae420a"
 metadata/lock_uid = true
 metadata/date_generated = "2026-09-29T17:43:36"
+
+[node name="TorchSconce_Unlit_Blue_First Button Gate" parent="Second_Part(Harder)/Final Projectile Part/Gate_Puzzle" unique_id=1890436075 instance=ExtResource("35_hhdgw")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 20.173756, 1.4, -18.8)
 
 [node name="Third_Button" parent="Second_Part(Harder)/Final Projectile Part/Gate_Puzzle" unique_id=488060575 instance=ExtResource("8_uqwb3")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 29.68211, 1, -15.197068)
@@ -2298,19 +2280,22 @@ metadata/uid = "33f23974-e1ac-4c89-9b2e-507275829b90"
 metadata/lock_uid = true
 metadata/date_generated = "2026-09-29T17:43:36"
 
+[node name="TorchSconce_Unlit_Blue" parent="Second_Part(Harder)/Final Projectile Part/Gate_Puzzle" unique_id=1404518268 instance=ExtResource("35_hhdgw")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 23, 1.3, -14.174393)
+
 [node name="Torches" type="Node3D" parent="Second_Part(Harder)/Final Projectile Part" unique_id=229239606]
 
 [node name="TorchSconce_Lit" parent="Second_Part(Harder)/Final Projectile Part/Torches" unique_id=2102977074 instance=ExtResource("14_ftbts")]
-transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 23.001657, 1.4657594, -14.253907)
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 25.001657, 1.4657594, -14.253907)
 
 [node name="TorchSconce_Lit2" parent="Second_Part(Harder)/Final Projectile Part/Torches" unique_id=689318691 instance=ExtResource("14_ftbts")]
-transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 29.635033, 1.4980867, -15.204594)
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 28.56881, 1.4980867, -14.195435)
 
 [node name="TorchSconce_Lit3" parent="Second_Part(Harder)/Final Projectile Part/Torches" unique_id=156417813 instance=ExtResource("14_ftbts")]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 29.737413, 1.5623292, -18.766502)
 
 [node name="TorchSconce_Lit4" parent="Second_Part(Harder)/Final Projectile Part/Torches" unique_id=1356277031 instance=ExtResource("14_ftbts")]
-transform = Transform3D(1.3113416e-07, 0, 1, 0, 1, 0, -1, 0, 1.3113416e-07, 20.247305, 1.4791521, -18.828093)
+transform = Transform3D(1, 0, -1.7484555e-07, 0, 1, 0, 1.7484555e-07, 0, 1, 22.017382, 1.4489652, -19.628092)
 
 [node name="Door" type="Node3D" parent="Second_Part(Harder)" unique_id=1359203133]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19, -1, -3)
@@ -3244,9 +3229,9 @@ transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -1.1
 [node name="TorchSconce_Lit6" type="Node3D" parent="Finale(Hardest)/Torches" unique_id=449757255]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -8.785595, 1.2731092, -0.9000001)
 
-[node name="Lit_Sconce" type="Node3D" parent="Finale(Hardest)/Torches/TorchSconce_Lit6" unique_id=1591104962]
+[node name="Lit_Sconce_Blue" type="Node3D" parent="Finale(Hardest)/Torches/TorchSconce_Lit6" unique_id=920900814]
 
-[node name="TorchLight" type="OmniLight3D" parent="Finale(Hardest)/Torches/TorchSconce_Lit6/Lit_Sconce" unique_id=801500960]
+[node name="TorchLight" type="OmniLight3D" parent="Finale(Hardest)/Torches/TorchSconce_Lit6/Lit_Sconce_Blue" unique_id=2065329813]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.013138853, 0.14283247)
 light_color = Color(0.31987736, 0.5164844, 0.5243838, 1)
 light_energy = 2.645
@@ -3255,12 +3240,12 @@ distance_fade_enabled = true
 distance_fade_begin = 20.1
 omni_range = 3.0
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Finale(Hardest)/Torches/TorchSconce_Lit6/Lit_Sconce" unique_id=317317458]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Finale(Hardest)/Torches/TorchSconce_Lit6/Lit_Sconce_Blue" unique_id=317317458]
 transform = Transform3D(-6.119594e-09, 0, -0.14, 0, 0.14, 0, 0.14, 0, -6.119594e-09, 0, -0.19999999, 0.018826813)
 material_override = ExtResource("25_dhg0u")
 mesh = ExtResource("26_2pmk1")
 
-[node name="Fire" parent="Finale(Hardest)/Torches/TorchSconce_Lit6/Lit_Sconce/MeshInstance3D" unique_id=531285147 instance=ExtResource("27_of2sk")]
+[node name="Fire" parent="Finale(Hardest)/Torches/TorchSconce_Lit6/Lit_Sconce_Blue/MeshInstance3D" unique_id=715780161 instance=ExtResource("27_of2sk")]
 transform = Transform3D(0.78, 0, 3.5527137e-15, 0, 0.54, 0, -3.5527137e-15, 0, 0.645, 0.88888896, 1.0007715, 0.012335767)
 modulate = Color(1.1017857, 0.62274027, 0.14369495, 1)
 pixel_size = 0.015
@@ -3346,8 +3331,7 @@ metadata/_custom_type_script = "uid://bbnwwbodc3xt3"
 [node name="Itms_First" type="Node3D" parent="Items" unique_id=1489677110]
 
 [node name="skull" parent="Items/Itms_First" unique_id=2042549531 instance=ExtResource("5_dp00y")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 2.4, 15)
-item_weight = 2
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.9999995, 2.5, 15)
 metadata/uid = "bd699b5e-5ba5-4fb4-99a2-ec033c41b279"
 metadata/lock_uid = true
 metadata/date_generated = "2026-10-21T15:38:35"
@@ -3430,7 +3414,7 @@ stream = ExtResource("39_ibmbp")
 autoplay = true
 max_distance = 19.95
 
-[node name="Observer_SpikeTraps" parent="." unique_id=223074910 instance=ExtResource("13_6vcod")]
+[node name="Observer_SpikeTraps" parent="." unique_id=2069293986 instance=ExtResource("13_6vcod")]
 transform = Transform3D(-4.3711395e-08, 0, -1.0000001, -1.7763568e-15, 1.0000001, 0, 1, 0, -4.3711392e-08, 23.951895, 1.540031, -6.9754663)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Observer_SpikeTraps" unique_id=1083089237]
@@ -3452,10 +3436,10 @@ shape = SubResource("BoxShape3D_ibmbp")
 disabled = true
 debug_color = Color(0, 0.6448386, 0.27909693, 0.41960785)
 
-[node name="CollisionEnabler_Disabler" parent="Observer_SpikeTraps/StaticBody3D" unique_id=768060295 node_paths=PackedStringArray("col") instance=ExtResource("15_70hwn")]
+[node name="CollisionEnabler_Disabler" parent="Observer_SpikeTraps/StaticBody3D" unique_id=2094904526 node_paths=PackedStringArray("col") instance=ExtResource("15_70hwn")]
 col = NodePath("../CollisionShape3D")
 
-[node name="BB_Line" parent="Observer_SpikeTraps" unique_id=674068649 instance=ExtResource("16_dhg0u")]
+[node name="BB_Line" parent="Observer_SpikeTraps" unique_id=739031824 instance=ExtResource("16_dhg0u")]
 transform = Transform3D(-0.9999999, -1.7763564e-15, -8.742272e-08, -1.7763564e-15, 0.9999999, -4.9414834e-23, 8.742272e-08, -1.7763563e-15, -1, 0.087, -1.519, 3.95)
 size = Vector3(2.5, 0.005, 0.2)
 
@@ -3522,7 +3506,6 @@ metadata/date_generated = "2026-09-29T17:43:36"
 
 [connection signal="area_entered" from="PAT_potholesstop2/Area3D" to="PAT_potholesstop2" method="_player_entered"]
 [connection signal="area_exited" from="PAT_potholesstop2/Area3D" to="PAT_potholesstop2" method="_player_exited"]
-[connection signal="on_activated" from="Beginning_Part(Easier)/First_Trap/First_Pressure_Plate" to="Beginning_Part(Easier)/First_Trap/trap_projectile" method="trigger_trap"]
 [connection signal="on_activated" from="Beginning_Part(Easier)/First_Trap/Tutorial/PlayerAreaTrigger_Tutorial" to="Beginning_Part(Easier)/First_Trap/Tutorial/Tutorial_Gate" method="open_gate"]
 [connection signal="area_entered" from="Beginning_Part(Easier)/First_Trap/Tutorial/PlayerAreaTrigger_Tutorial/Area3D" to="Beginning_Part(Easier)/First_Trap/Tutorial/PlayerAreaTrigger_Tutorial" method="_player_entered"]
 [connection signal="area_exited" from="Beginning_Part(Easier)/First_Trap/Tutorial/PlayerAreaTrigger_Tutorial/Area3D" to="Beginning_Part(Easier)/First_Trap/Tutorial/PlayerAreaTrigger_Tutorial" method="_player_exited"]
@@ -3533,7 +3516,11 @@ metadata/date_generated = "2026-09-29T17:43:36"
 [connection signal="area_entered" from="Beginning_Part(Easier)/First_Trap/Tutorial/Tutorial_Gate/out_pos_back/Area3D" to="Beginning_Part(Easier)/First_Trap/Tutorial/Tutorial_Gate" method="out_pos_area_entered_back"]
 [connection signal="area_entered" from="Beginning_Part(Easier)/First_Trap/Tutorial/Tutorial_Gate/out_pos_front/Area3D" to="Beginning_Part(Easier)/First_Trap/Tutorial/Tutorial_Gate" method="out_pos_area_entered_front"]
 [connection signal="area_entered" from="Beginning_Part(Easier)/First_Trap/Tutorial/Tutorial_Gate/TPChecker_player" to="Beginning_Part(Easier)/First_Trap/Tutorial/Tutorial_Gate" method="tp_checker_entered"]
+[connection signal="on_activated" from="Beginning_Part(Easier)/First_Trap/Tutorial/First_Pressure_Plate" to="Beginning_Part(Easier)/First_Trap/trap_projectile" method="trigger_trap"]
+[connection signal="on_activated" from="Beginning_Part(Easier)/First_Trap/Tutorial/First_Pressure_Plate" to="Beginning_Part(Easier)/First_Trap/Tutorial/First_Gate" method="open_gate"]
+[connection signal="on_activated" from="Beginning_Part(Easier)/First_Trap/Tutorial/First_Pressure_Plate" to="Beginning_Part(Easier)/First_Trap/Tutorial/TorchSconce_Unlit_Ceiling_Blue" method="light_up_torch_with_sig"]
 [connection signal="on_activated" from="Beginning_Part(Easier)/Second_Part/LeftSide_Puzzle/Button" to="Beginning_Part(Easier)/Second_Part/LeftSide_Puzzle/Bottom_Gate" method="open_gate"]
+[connection signal="on_activated" from="Beginning_Part(Easier)/Second_Part/LeftSide_Puzzle/Button" to="Beginning_Part(Easier)/Second_Part/LeftSide_Puzzle/TorchSconce_Unlit_Blue" method="light_up_torch_with_sig"]
 [connection signal="on_activated" from="Beginning_Part(Easier)/Second_Part/LeftSide_Puzzle/PressurePlate_Gate_Open" to="Beginning_Part(Easier)/Second_Part/LeftSide_Puzzle/Projectiles/trap_projectile3" method="trigger_trap"]
 [connection signal="on_activated" from="Beginning_Part(Easier)/Second_Part/LeftSide_Puzzle/PressurePlate_Gate_Open" to="Beginning_Part(Easier)/Second_Part/LeftSide_Puzzle/Projectiles/trap_projectile4" method="trigger_trap"]
 [connection signal="on_change" from="Beginning_Part(Easier)/Second_Part/LeftSide_Puzzle/PressurePlate_Gate_Open" to="Beginning_Part(Easier)/Second_Part/LeftSide_Puzzle/Skull_Gate" method="open_gate"]
@@ -3550,29 +3537,27 @@ metadata/date_generated = "2026-09-29T17:43:36"
 [connection signal="area_entered" from="Beginning_Part(Easier)/Second_Part/RightSide_Puzzle/PlayerAreaTrigger_SetTimedTrap&PreventSL/Area3D" to="Beginning_Part(Easier)/Second_Part/RightSide_Puzzle/PlayerAreaTrigger_SetTimedTrap&PreventSL" method="_player_entered"]
 [connection signal="area_exited" from="Beginning_Part(Easier)/Second_Part/RightSide_Puzzle/PlayerAreaTrigger_SetTimedTrap&PreventSL/Area3D" to="Beginning_Part(Easier)/Second_Part/RightSide_Puzzle/PlayerAreaTrigger_SetTimedTrap&PreventSL" method="_player_exited"]
 [connection signal="timeout" from="Beginning_Part(Easier)/Second_Part/RightSide_Puzzle/Timed_trap_projectile/Timer" to="Beginning_Part(Easier)/Second_Part/RightSide_Puzzle/Timed_trap_projectile" method="trigger_trap"]
-[connection signal="on_activated" from="Beginning_Part(Easier)/Second_Part/Left_Door/PressurePlate_Door_Left" to="Beginning_Part(Easier)/Second_Part/Left_Door/trap_projectile_LeftDoor" method="trigger_trap"]
 [connection signal="on_activated" from="Beginning_Part(Easier)/Second_Part/Left_Door/PressurePlate_Door_Left" to="Beginning_Part(Easier)/Second_Part/Left_Door/trap_projectile_LeftDoor2" method="trigger_trap"]
-[connection signal="on_activated" from="Beginning_Part(Easier)/Second_Part/Left_Door/PressurePlate_Door_Left" to="Beginning_Part(Easier)/Second_Part/Left_Door/trap_projectile_LeftDoor3" method="trigger_trap"]
 [connection signal="on_activated" from="Beginning_Part(Easier)/Second_Part/Left_Door/PressurePlate_Door_Left" to="Beginning_Part(Easier)/Second_Part/Torches/TorchSconce_Unlit_LeftSide" method="light_up_torch_with_sig"]
 [connection signal="on_change" from="Beginning_Part(Easier)/Second_Part/Left_Door/PressurePlate_Door_Left" to="Beginning_Part(Easier)/Second_Part/Left_Door/Gate_LeftSide" method="open_gate"]
-[connection signal="on_activated" from="Beginning_Part(Easier)/Second_Part/Right_Door/PressurePlate_Door_Right" to="Beginning_Part(Easier)/Second_Part/Right_Door/trap_projectile_RightDoor3" method="trigger_trap"]
-[connection signal="on_activated" from="Beginning_Part(Easier)/Second_Part/Right_Door/PressurePlate_Door_Right" to="Beginning_Part(Easier)/Second_Part/Right_Door/trap_projectile_RightDoor" method="trigger_trap"]
+[connection signal="on_deactivated" from="Beginning_Part(Easier)/Second_Part/Left_Door/PressurePlate_Door_Left" to="Beginning_Part(Easier)/Second_Part/Torches/TorchSconce_Unlit_LeftSide" method="unlight_torch_with_sig"]
 [connection signal="on_activated" from="Beginning_Part(Easier)/Second_Part/Right_Door/PressurePlate_Door_Right" to="Beginning_Part(Easier)/Second_Part/Right_Door/trap_projectile_RightDoor2" method="trigger_trap"]
 [connection signal="on_activated" from="Beginning_Part(Easier)/Second_Part/Right_Door/PressurePlate_Door_Right" to="Beginning_Part(Easier)/Second_Part/Torches/TorchSconce_Unlit_RightSide" method="light_up_torch_with_sig"]
 [connection signal="on_change" from="Beginning_Part(Easier)/Second_Part/Right_Door/PressurePlate_Door_Right" to="Beginning_Part(Easier)/Second_Part/Right_Door/Gate_RightSide" method="open_gate"]
+[connection signal="on_deactivated" from="Beginning_Part(Easier)/Second_Part/Right_Door/PressurePlate_Door_Right" to="Beginning_Part(Easier)/Second_Part/Torches/TorchSconce_Unlit_RightSide" method="unlight_torch_with_sig"]
 [connection signal="on_activated" from="Beginning_Part(Easier)/Second_Part/Gate_Area_Finished/PressurePlate_Final_Door" to="Beginning_Part(Easier)/Second_Part/trap_projectile_leftside3" method="trigger_trap"]
 [connection signal="on_activated" from="Beginning_Part(Easier)/Second_Part/Gate_Area_Finished/PressurePlate_Final_Door" to="Beginning_Part(Easier)/Second_Part/trap_projectile_leftside2" method="_on_pressure_plate_final_door_on_activated"]
 [connection signal="on_activated" from="Beginning_Part(Easier)/Second_Part/Gate_Area_Finished/PressurePlate_Final_Door" to="Beginning_Part(Easier)/Second_Part/trap_projectile_leftside2" method="trigger_trap"]
 [connection signal="on_activated" from="Beginning_Part(Easier)/Second_Part/Gate_Area_Finished/PressurePlate_Final_Door" to="Beginning_Part(Easier)/Second_Part/trap_projectile_rightside2" method="trigger_trap"]
 [connection signal="on_activated" from="Beginning_Part(Easier)/Second_Part/Gate_Area_Finished/PressurePlate_Final_Door" to="Beginning_Part(Easier)/Second_Part/trap_projectile_rightside" method="trigger_trap"]
 [connection signal="on_activated" from="Beginning_Part(Easier)/Second_Part/Gate_Area_Finished/PressurePlate_Final_Door" to="Beginning_Part(Easier)/Second_Part/trap_projectile_rightside3" method="trigger_trap"]
-[connection signal="on_activated" from="Beginning_Part(Easier)/Second_Part/Gate_Area_Finished/PressurePlate_Final_Door" to="Beginning_Part(Easier)/Second_Part/Torches/TorchSconce_Unlit_Main_Gate" method="light_up_torch_with_sig"]
+[connection signal="on_activated" from="Beginning_Part(Easier)/Second_Part/Gate_Area_Finished/PressurePlate_Final_Door" to="Beginning_Part(Easier)/Second_Part/Torches/TorchSconce_Unlit_Ceiling_MainTrigger" method="light_up_torch_with_sig"]
 [connection signal="on_change" from="Beginning_Part(Easier)/Second_Part/Gate_Area_Finished/PressurePlate_Final_Door" to="Beginning_Part(Easier)/Second_Part/Gate_Area_Finished/First_Area_FinishedGate" method="open_gate"]
 [connection signal="on_activated" from="Beginning_Part(Easier)/Second_Part/Gate_Area_Finished/PlayerAreaTrigger" to="Beginning_Part(Easier)/Second_Part/Gate_Area_Finished/First_Area_FinishedGate" method="close_gate"]
 [connection signal="area_entered" from="Beginning_Part(Easier)/Second_Part/Gate_Area_Finished/PlayerAreaTrigger/Area3D" to="Beginning_Part(Easier)/Second_Part/Gate_Area_Finished/PlayerAreaTrigger" method="_player_entered"]
 [connection signal="area_exited" from="Beginning_Part(Easier)/Second_Part/Gate_Area_Finished/PlayerAreaTrigger/Area3D" to="Beginning_Part(Easier)/Second_Part/Gate_Area_Finished/PlayerAreaTrigger" method="_player_exited"]
-[connection signal="on_activated" from="Beginning_Part(Easier)/Third_Part/Bridge_Button" to="Beginning_Part(Easier)/Third_Part/TorchSconce_Unlit_For_Bridge" method="light_up_torch_with_sig"]
 [connection signal="on_activated" from="Beginning_Part(Easier)/Third_Part/Bridge_Button" to="Beginning_Part(Easier)/Third_Part/First_Bridge" method="fully_open_bridge"]
+[connection signal="on_activated" from="Beginning_Part(Easier)/Third_Part/Bridge_Button" to="Beginning_Part(Easier)/Third_Part/TorchSconce_Unlit_Blue_ForBridge" method="light_up_torch_with_sig"]
 [connection signal="on_change" from="Second_Part(Harder)/Intersection/Lever" to="Second_Part(Harder)/Intersection/End_Gate" method="open_gate"]
 [connection signal="on_activated" from="Second_Part(Harder)/Final Projectile Part/BunbleofArrows_Trap8/PressurePlate_ArrowTrap" to="Second_Part(Harder)/Final Projectile Part/BunbleofArrows_Trap8/Arrow_Colony/trap_projectile" method="trigger_trap"]
 [connection signal="on_activated" from="Second_Part(Harder)/Final Projectile Part/BunbleofArrows_Trap8/PressurePlate_ArrowTrap" to="Second_Part(Harder)/Final Projectile Part/BunbleofArrows_Trap8/Arrow_Colony/trap_projectile3" method="trigger_trap"]
@@ -3695,8 +3680,11 @@ metadata/date_generated = "2026-09-29T17:43:36"
 [connection signal="on_activated" from="Second_Part(Harder)/Final Projectile Part/BunbleofArrows_Trap27/PressurePlate_ArrowTrap" to="Second_Part(Harder)/Final Projectile Part/BunbleofArrows_Trap27/Arrow_Colony/trap_projectile5" method="trigger_trap"]
 [connection signal="on_activated" from="Second_Part(Harder)/Final Projectile Part/BunbleofArrows_Trap27/PressurePlate_ArrowTrap" to="Second_Part(Harder)/Final Projectile Part/BunbleofArrows_Trap27/Arrow_Colony/trap_projectile6" method="trigger_trap"]
 [connection signal="on_activated" from="Second_Part(Harder)/Final Projectile Part/Gate_Puzzle/Second_Gate_Button" to="Second_Part(Harder)/Final Projectile Part/Gate_Puzzle/Gate_Two" method="open_gate"]
+[connection signal="on_activated" from="Second_Part(Harder)/Final Projectile Part/Gate_Puzzle/Second_Gate_Button" to="Second_Part(Harder)/Final Projectile Part/Gate_Puzzle/TorchSconce_Unlit_Blue" method="light_up_torch_with_sig"]
 [connection signal="on_activated" from="Second_Part(Harder)/Final Projectile Part/Gate_Puzzle/First_Gate_Button" to="Second_Part(Harder)/Final Projectile Part/Gate_Puzzle/Gate_One" method="open_gate"]
+[connection signal="on_activated" from="Second_Part(Harder)/Final Projectile Part/Gate_Puzzle/First_Gate_Button" to="Second_Part(Harder)/Final Projectile Part/Gate_Puzzle/TorchSconce_Unlit_Blue_First Button Gate" method="light_up_torch_with_sig"]
 [connection signal="on_activated" from="Second_Part(Harder)/Final Projectile Part/Gate_Puzzle/Third_Button" to="Second_Part(Harder)/Final Projectile Part/Gate_Puzzle/Gate_Three" method="open_gate"]
+[connection signal="on_activated" from="Second_Part(Harder)/Final Projectile Part/Gate_Puzzle/Third_Button" to="Second_Part(Harder)/Final Projectile Part/Gate_Puzzle/TorchSconce_Unlit_Blue_SecondGate" method="light_up_torch_with_sig"]
 [connection signal="on_activated" from="Second_Part(Harder)/Door/ItemReceiver" to="Second_Part(Harder)/Door/Door" method="open_door"]
 [connection signal="on_activated" from="Finale(Hardest)/Timed_Traps/Gate_Part/Gate_Open" to="Finale(Hardest)/Timed_Traps/Gate_Part/Iron_Gate" method="open_gate"]
 [connection signal="on_activated" from="Finale(Hardest)/Timed_Traps/PotHoles/PAT_potholes_start" to="Finale(Hardest)/Timed_Traps/PotHoles/LC_potholes_start" method="call_the_method"]

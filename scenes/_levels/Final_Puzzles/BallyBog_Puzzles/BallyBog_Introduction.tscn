@@ -1,6 +1,7 @@
 [gd_scene format=4 uid="uid://bvj3a43avx5bu"]
 
 [ext_resource type="MeshLibrary" uid="uid://br861hnjhp6ry" path="res://scenes/_levels/_palettes/gmpf_meshlib.tres" id="1_m8tlr"]
+[ext_resource type="PackedScene" uid="uid://bmiljk53ks7e7" path="res://scenes/interactions/_receivers/wip_spike_trap/spike_trap_floor.tscn" id="1_q00f3"]
 [ext_resource type="PackedScene" uid="uid://drsdttca4hc5w" path="res://scenes/enemy_new/enemy_ballybog_new.tscn" id="3_nfw6c"]
 [ext_resource type="MeshLibrary" uid="uid://bhdjk8h6chf0o" path="res://scenes/_levels/_palettes/cairn/mossy/meshlibrary_mossy_cairn.meshlib" id="3_qofka"]
 [ext_resource type="MeshLibrary" uid="uid://bu208a8l5866i" path="res://scenes/_levels/_palettes/cairn/meshlibrary_cairn.tres" id="4_r0k5g"]
@@ -9,23 +10,24 @@
 [ext_resource type="PackedScene" uid="uid://ci2extimpt5xl" path="res://scenes/interactions/interactables/items/all_items/breakables/item_urn_key.tscn" id="6_ewppu"]
 [ext_resource type="PackedScene" uid="uid://xuo5buj0odhi" path="res://scenes/interactions/_triggers/torch_sconce/torch_sconce_lit.tscn" id="8_m8tlr"]
 [ext_resource type="Material" uid="uid://c6lv8pfrvktb8" path="res://assets/models/cairn/Hall_BigRoof/Wall.tres" id="8_nn74u"]
+[ext_resource type="PackedScene" uid="uid://qu5rxgbydmet" path="res://scenes/interactions/_triggers/button/button.tscn" id="8_pw1ys"]
 [ext_resource type="Script" uid="uid://42c4j0jtwejr" path="res://scenes/interactions/_receivers/gate/gate.gd" id="9_o06uf"]
+[ext_resource type="PackedScene" uid="uid://betlbcn2q2p8m" path="res://scenes/interactions/_triggers/torch_sconce/torch_sconce_unlit_ceiling_blue.tscn" id="9_pac4h"]
 [ext_resource type="Material" uid="uid://c6ic70i7jpqeu" path="res://assets/models/cairn/Props/Gate/Gate.tres" id="10_pw1ys"]
 [ext_resource type="Script" uid="uid://3ihhc0me4bjf" path="res://scripts/saving/persistent_objs/po_gate.gd" id="11_pac4h"]
 [ext_resource type="AudioStream" uid="uid://cyo1b0ry2gwgu" path="res://assets/audio/sfx/player/death/Fight, Bodyfall, Asphalt, Concrete 01 SND120897.wav" id="12_q00f3"]
 [ext_resource type="PackedScene" uid="uid://dqh8lru4mt2ap" path="res://scenes/interactions/interactables/items/all_items/breakables/item_urn.tscn" id="12_vqsr6"]
-[ext_resource type="Script" uid="uid://d3averdt6fuqm" path="res://scenes/interactions/interactables/items/item_types/itemtype_torch.gd" id="13_4jukt"]
 [ext_resource type="Script" uid="uid://kg11gyciyied" path="res://scripts/audio_value_player.gd" id="13_js4hl"]
 [ext_resource type="PackedScene" uid="uid://bm8kaq0ah5g7q" path="res://scenes/interactions/interactables/items/all_items/torch/torch.tscn" id="13_vlnct"]
 [ext_resource type="AudioStream" uid="uid://cm72tdl825h2" path="res://assets/audio/sfx/environment/Doors/Gate/Gate_randomiser.tres" id="14_7cr33"]
 [ext_resource type="PackedScene" uid="uid://lxic7c72kvyt" path="res://scenes/interactions/interactables/items/all_items/misc/item_skull.tscn" id="14_ft3kk"]
 [ext_resource type="PackedScene" uid="uid://oqosqgdkwcrb" path="res://scenes/interactions/_receivers/door/door_new.tscn" id="15_g7r3i"]
-[ext_resource type="PackedScene" uid="uid://bw752cs1fru6w" path="res://scenes/interactions/interactables/items/all_items/consumables/item_pitcher.tscn" id="15_k23sl"]
 [ext_resource type="Script" uid="uid://beaf3digx88d0" path="res://scenes/interactions/interactables/items/item_types/itemtype_breakable.gd" id="16_yb2g6"]
 [ext_resource type="PackedScene" uid="uid://csot2mi7746ll" path="res://scenes/interactions/_triggers/pressure_plate/pressure_plate.tscn" id="19_0ox1x"]
 [ext_resource type="PackedScene" uid="uid://dkx1fyyqx7cmp" path="res://scenes/interactions/_triggers/torch_sconce/torch_sconce_ceiling.tscn" id="19_qofka"]
 [ext_resource type="Script" uid="uid://bicoc8ibhscjw" path="res://scenes/interactions/_receivers/enabler_disabler_v1/group_visibility_enabler.gd" id="20_ru5qk"]
 [ext_resource type="AudioStream" uid="uid://cte56l5nhnq88" path="res://assets/audio/sfx/environment/ambient/Ambience, Underground, Cave, Magic, Cold, Deep, Wind, Eerie SND46573.wav" id="23_ft3kk"]
+[ext_resource type="PackedScene" uid="uid://dr3608osp2js" path="res://scenes/interactions/interactables/items/all_items/misc/item_bell.tscn" id="23_pac4h"]
 [ext_resource type="Script" uid="uid://ejuiwwsmyrgi" path="res://scenes/interactions/_triggers/item_receiver/item_receiver.gd" id="25_pac4h"]
 [ext_resource type="Script" uid="uid://bul4myvyhnpjc" path="res://scripts/saving/uid_generator.gd" id="26_jbn6s"]
 [ext_resource type="Script" uid="uid://cc36kknugth5b" path="res://scripts/saving/persistent_objs/po_itmreceiver.gd" id="26_q00f3"]
@@ -132,48 +134,52 @@ fill_to = Vector2(0.94, 0.43)
 
 [sub_resource type="Resource" id="Resource_vlnct"]
 script = ExtResource("16_yb2g6")
-use_random_item = true
-random_items = Array[PackedScene]([ExtResource("13_vlnct"), ExtResource("14_ft3kk"), ExtResource("15_k23sl")])
 item_type = 4
 metadata/_custom_type_script = "uid://beaf3digx88d0"
 
 [sub_resource type="Resource" id="Resource_jbn6s"]
 script = ExtResource("16_yb2g6")
-use_random_item = true
-random_items = Array[PackedScene]([ExtResource("13_vlnct"), ExtResource("14_ft3kk"), ExtResource("15_k23sl")])
+specific_item_to_drop = ExtResource("14_ft3kk")
 item_type = 4
 metadata/_custom_type_script = "uid://beaf3digx88d0"
 
 [sub_resource type="Resource" id="Resource_o06uf"]
 script = ExtResource("16_yb2g6")
+specific_item_to_drop = ExtResource("23_pac4h")
 metadata/_custom_type_script = "uid://beaf3digx88d0"
 
 [sub_resource type="Resource" id="Resource_pw1ys"]
 script = ExtResource("16_yb2g6")
+specific_item_to_drop = ExtResource("14_ft3kk")
 metadata/_custom_type_script = "uid://beaf3digx88d0"
 
-[sub_resource type="Resource" id="Resource_r0k5g"]
-script = ExtResource("13_4jukt")
-metadata/_custom_type_script = "uid://d3averdt6fuqm"
-
-[sub_resource type="Resource" id="Resource_656c1"]
+[sub_resource type="Resource" id="Resource_q00f3"]
 script = ExtResource("16_yb2g6")
-use_random_item = true
-random_items = Array[PackedScene]([ExtResource("13_vlnct"), ExtResource("14_ft3kk"), ExtResource("15_k23sl")])
+specific_item_to_drop = ExtResource("13_vlnct")
 item_type = 4
 metadata/_custom_type_script = "uid://beaf3digx88d0"
 
-[sub_resource type="Resource" id="Resource_yb2g6"]
-script = ExtResource("13_4jukt")
-metadata/_custom_type_script = "uid://d3averdt6fuqm"
+[sub_resource type="Resource" id="Resource_656c1"]
+script = ExtResource("16_yb2g6")
+specific_item_to_drop = ExtResource("13_vlnct")
+item_type = 4
+metadata/_custom_type_script = "uid://beaf3digx88d0"
+
+[sub_resource type="Resource" id="Resource_7cr33"]
+script = ExtResource("16_yb2g6")
+specific_item_to_drop = ExtResource("23_pac4h")
+item_type = 4
+metadata/_custom_type_script = "uid://beaf3digx88d0"
 
 [sub_resource type="Resource" id="Resource_pac4h"]
 script = ExtResource("16_yb2g6")
 metadata/_custom_type_script = "uid://beaf3digx88d0"
 
-[sub_resource type="Resource" id="Resource_4n8n6"]
-script = ExtResource("13_4jukt")
-metadata/_custom_type_script = "uid://d3averdt6fuqm"
+[sub_resource type="Resource" id="Resource_js4hl"]
+script = ExtResource("16_yb2g6")
+specific_item_to_drop = ExtResource("13_vlnct")
+item_type = 4
+metadata/_custom_type_script = "uid://beaf3digx88d0"
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_js4hl"]
 size = Vector3(1.6, 2, 0.5)
@@ -182,6 +188,135 @@ size = Vector3(1.6, 2, 0.5)
 
 [node name="Ballybog_Scene" type="Node3D" unique_id=842226877]
 
+[node name="Alt_Kill_Area" type="Node3D" parent="." unique_id=600845019]
+
+[node name="SpikeTrap" parent="Alt_Kill_Area" unique_id=1388700218 instance=ExtResource("1_q00f3")]
+transform = Transform3D(1.2, 0, 0, 0, 1.2, 0, 0, 0, 1.2, 9, 0, -15)
+metadata/uid = "c237923a-59a7-4b5a-9d98-50eb4f85e35b"
+metadata/lock_uid = true
+metadata/date_generated = "2026-11-17T17:09:51"
+
+[node name="Ballybog_Alt_Kill_Door" type="Node3D" parent="Alt_Kill_Area" unique_id=386225010 node_paths=PackedStringArray("tp_checker_col", "out_pos_back", "out_pos_front") groups=["debug_PickableObjects"]]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 6, 0, -15)
+script = ExtResource("9_o06uf")
+height_to_toggle_player_barrier = 0.51
+tp_checker_col = NodePath("TPChecker_player/CollisionShape3D")
+out_pos_back = NodePath("out_pos_back")
+out_pos_front = NodePath("out_pos_front")
+metadata/_custom_type_script = "uid://42c4j0jtwejr"
+metadata/uid = "0b3349e2-f3f2-48fb-af70-64753a5b2874"
+metadata/lock_uid = true
+metadata/date_generated = "2026-10-21T15:38:46"
+
+[node name="gate" type="StaticBody3D" parent="Alt_Kill_Area/Ballybog_Alt_Kill_Door" unique_id=782967701]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Alt_Kill_Area/Ballybog_Alt_Kill_Door/gate" unique_id=42751032]
+shape = SubResource("BoxShape3D_i1hti")
+debug_color = Color(13.972358, 9.491839, 0, 1)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Alt_Kill_Area/Ballybog_Alt_Kill_Door/gate" unique_id=846679027]
+transform = Transform3D(0.135, 0, 0, 0, 0.135, 0, 0, 0, 0.135, 0, -1, 0)
+mesh = SubResource("ArrayMesh_83atu")
+
+[node name="mesh_Wall_007" type="MeshInstance3D" parent="Alt_Kill_Area/Ballybog_Alt_Kill_Door/gate/MeshInstance3D" unique_id=265196593]
+transform = Transform3D(4.1444874e-08, -1.2325926, -5.0148294e-08, -8.288974e-08, -5.3878335e-08, 1.1472594, -0.9481482, -5.387833e-08, -1.00296596e-07, 5.925926, 8.116071, 0)
+mesh = SubResource("ArrayMesh_ohkid")
+skeleton = NodePath("")
+
+[node name="_label" type="Label3D" parent="Alt_Kill_Area/Ballybog_Alt_Kill_Door/gate" unique_id=1882980324]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.2, -0.099999994)
+visible = false
+billboard = 1
+text = "GATE"
+font_size = 67
+
+[node name="UnderChecker_items" type="Area3D" parent="Alt_Kill_Area/Ballybog_Alt_Kill_Door/gate" unique_id=529445488]
+physics_interpolation_mode = 1
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.2, 0)
+collision_layer = 0
+collision_mask = 2
+monitorable = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Alt_Kill_Area/Ballybog_Alt_Kill_Door/gate/UnderChecker_items" unique_id=1567284593]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.050000012, 0)
+shape = SubResource("BoxShape3D_wx5q6")
+
+[node name="UnderChecker_player" type="Area3D" parent="Alt_Kill_Area/Ballybog_Alt_Kill_Door/gate" unique_id=16632390]
+physics_interpolation_mode = 1
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.2, 0)
+collision_layer = 0
+collision_mask = 2
+monitorable = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Alt_Kill_Area/Ballybog_Alt_Kill_Door/gate/UnderChecker_player" unique_id=942255711]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.050000012, 0)
+shape = SubResource("BoxShape3D_rophg")
+
+[node name="PlayerCollision" type="StaticBody3D" parent="Alt_Kill_Area/Ballybog_Alt_Kill_Door" unique_id=1667759798]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+collision_layer = 8
+collision_mask = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Alt_Kill_Area/Ballybog_Alt_Kill_Door/PlayerCollision" unique_id=1118886117]
+shape = SubResource("BoxShape3D_i1hti")
+debug_color = Color(13.972358, 9.491839, 0, 1)
+
+[node name="PO_Gate" type="Node" parent="Alt_Kill_Area/Ballybog_Alt_Kill_Door" unique_id=1766361517 groups=["PO"]]
+script = ExtResource("11_pac4h")
+metadata/_custom_type_script = "uid://3ihhc0me4bjf"
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="Alt_Kill_Area/Ballybog_Alt_Kill_Door" unique_id=1238673729]
+stream = ExtResource("12_q00f3")
+
+[node name="out_pos_back" type="Node3D" parent="Alt_Kill_Area/Ballybog_Alt_Kill_Door" unique_id=466937615]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -1)
+
+[node name="Area3D" type="Area3D" parent="Alt_Kill_Area/Ballybog_Alt_Kill_Door/out_pos_back" unique_id=621329776]
+collision_layer = 0
+monitorable = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Alt_Kill_Area/Ballybog_Alt_Kill_Door/out_pos_back/Area3D" unique_id=898586101]
+shape = SubResource("SphereShape3D_rophg")
+
+[node name="out_pos_front" type="Node3D" parent="Alt_Kill_Area/Ballybog_Alt_Kill_Door" unique_id=458075276]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 1)
+
+[node name="Area3D" type="Area3D" parent="Alt_Kill_Area/Ballybog_Alt_Kill_Door/out_pos_front" unique_id=969645901]
+collision_layer = 0
+monitorable = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Alt_Kill_Area/Ballybog_Alt_Kill_Door/out_pos_front/Area3D" unique_id=498225048]
+shape = SubResource("SphereShape3D_rophg")
+
+[node name="TPChecker_player" type="Area3D" parent="Alt_Kill_Area/Ballybog_Alt_Kill_Door" unique_id=823025995]
+physics_interpolation_mode = 1
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+collision_layer = 0
+collision_mask = 2
+monitorable = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Alt_Kill_Area/Ballybog_Alt_Kill_Door/TPChecker_player" unique_id=1877411843]
+shape = SubResource("BoxShape3D_ycxvs")
+
+[node name="AudioValuePlayer" type="AudioStreamPlayer3D" parent="Alt_Kill_Area/Ballybog_Alt_Kill_Door" unique_id=1393640600]
+volume_db = -5.0
+max_distance = 13.0
+max_polyphony = 4
+bus = &"items"
+script = ExtResource("13_js4hl")
+sounds = Array[AudioStream]([ExtResource("14_7cr33"), ExtResource("14_7cr33"), ExtResource("14_7cr33"), ExtResource("14_7cr33"), ExtResource("14_7cr33")])
+metadata/_custom_type_script = "uid://kg11gyciyied"
+
+[node name="Button" parent="Alt_Kill_Area" unique_id=1164325605 instance=ExtResource("8_pw1ys")]
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 5, 1.2, -15.7)
+metadata/uid = "b7a67030-5edb-4bc7-bf64-c361b0bbe101"
+metadata/lock_uid = true
+metadata/date_generated = "2026-11-17T17:09:51"
+
+[node name="TorchSconce_Unlit_Ceiling_Blue" parent="Alt_Kill_Area" unique_id=1230047821 instance=ExtResource("9_pac4h")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 1.6, -15.7)
+
 [node name="GridMapPathFinding2" type="GridMap" parent="." unique_id=1929151095]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.445, 0)
 visible = false
@@ -189,19 +324,19 @@ mesh_library = ExtResource("1_m8tlr")
 cell_size = Vector3(1, 1, 1)
 cell_octant_size = 4
 data = {
-"cells": PackedInt32Array(196602, 65520, 1, 196603, 65520, 1, 196604, 65520, 1, 196605, 65520, 1, 196602, 65521, 0, 196603, 65521, 0, 196605, 65521, 0, 196604, 65521, 0, 196606, 65521, 0, 196607, 65521, 0, 131072, 65521, 0, 131073, 65521, 0, 131074, 65521, 0, 131075, 65521, 0, 131076, 65521, 0, 131075, 65520, 0, 131074, 65520, 0, 131073, 65520, 0, 131072, 65520, 0, 196607, 65520, 0, 196606, 65520, 0, 196607, 65519, 0, 131072, 65519, 0, 131073, 65519, 0, 131074, 65519, 0, 131075, 65519, 0, 196605, 65522, 0, 196606, 65522, 0, 196607, 65522, 0, 131072, 65522, 0, 131073, 65522, 0, 131074, 65522, 0, 131075, 65522, 0, 131076, 65522, 0, 131077, 65522, 0, 131077, 65521, 0, 131076, 65523, 0, 131077, 65523, 0, 131075, 65523, 0, 131074, 65523, 0, 131072, 65523, 0, 131073, 65523, 0, 196607, 65523, 0, 196606, 65523, 0, 196605, 65523, 0, 196607, 65524, 0, 131072, 65524, 0, 131073, 65524, 0, 131074, 65524, 0, 131075, 65524, 0, 196607, 65525, 0, 131072, 65525, 0, 131073, 65525, 0, 131074, 65525, 0, 131075, 65525, 0, 196606, 65525, 1, 196606, 65524, 1, 131072, 65526, 1, 131073, 65526, 1, 131072, 65527, 1, 131073, 65527, 1, 131076, 65520, 1, 131077, 65520, 1, 131075, 65518, 1, 131074, 65518, 1, 131073, 65518, 1, 131072, 65518, 1, 196607, 65518, 1, 196606, 65518, 1, 196606, 65519, 1, 196604, 65522, 1, 196604, 65523, 1)
+"cells": PackedInt32Array(196602, 65520, 1, 196603, 65520, 1, 196604, 65520, 1, 196605, 65520, 1, 196602, 65521, 0, 196603, 65521, 0, 196605, 65521, 0, 196604, 65521, 0, 196606, 65521, 0, 196607, 65521, 0, 131072, 65521, 0, 131073, 65521, 0, 131074, 65521, 0, 131075, 65521, 0, 131076, 65521, 0, 131075, 65520, 0, 131074, 65520, 0, 131073, 65520, 0, 131072, 65520, 0, 196607, 65520, 0, 196606, 65520, 0, 196607, 65519, 0, 131072, 65519, 0, 131073, 65519, 0, 131074, 65519, 0, 131075, 65519, 0, 196605, 65522, 0, 196606, 65522, 0, 196607, 65522, 0, 131072, 65522, 0, 131073, 65522, 0, 131074, 65522, 0, 131075, 65522, 0, 131076, 65522, 0, 131077, 65522, 0, 131077, 65521, 0, 131076, 65523, 0, 131077, 65523, 0, 131075, 65523, 0, 131074, 65523, 0, 131072, 65523, 0, 131073, 65523, 0, 196607, 65523, 0, 196606, 65523, 0, 196605, 65523, 0, 196607, 65524, 0, 131072, 65524, 0, 131073, 65524, 0, 131074, 65524, 0, 131075, 65524, 0, 196607, 65525, 0, 131072, 65525, 0, 131073, 65525, 0, 131074, 65525, 0, 131075, 65525, 0, 196606, 65525, 1, 196606, 65524, 1, 131072, 65526, 1, 131073, 65526, 1, 131072, 65527, 1, 131073, 65527, 1, 131076, 65520, 1, 131077, 65520, 1, 131075, 65518, 1, 131074, 65518, 1, 131073, 65518, 1, 131072, 65518, 1, 196607, 65518, 1, 196606, 65518, 1, 196606, 65519, 1, 196604, 65522, 1, 196604, 65523, 1, 131078, 65521, 1048576, 131079, 65521, 1048576, 131080, 65521, 1048576, 131081, 65521, 1048576, 131081, 65520, 1048577, 131080, 65520, 1048577, 131079, 65520, 1048577, 131078, 65520, 1048577)
 }
 script = ExtResource("29_211nq")
 walkable_items = Array[int]([0])
 debug_start_cell = Vector3i(-2, 2, -5)
 debug_end_cell = Vector3i(-1, 2, -10)
-metadata/_editor_floor_ = Vector3(0, 3, 0)
+metadata/_editor_floor_ = Vector3(0, 2, 0)
 
 [node name="GridMap" type="GridMap" parent="." unique_id=848183923]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
 mesh_library = ExtResource("3_qofka")
 data = {
-"cells": PackedInt32Array(1, 65530, 3, 65535, 65530, 1441795, 2, 65529, 3, 65534, 65529, 1441795, 2, 65528, 1048579, 65535, 65527, 655363, 1, 65527, 1048579, 0, 65526, 2, 0, 65527, 0, 0, 65528, 0, 1, 65528, 0, 1, 65529, 0, 0, 65529, 0, 65535, 65528, 0, 65535, 65529, 0, 0, 65530, 0, 65533, 65528, 1441796, 65534, 65528, 655361)
+"cells": PackedInt32Array(1, 65530, 3, 65535, 65530, 1441795, 2, 65529, 3, 65534, 65529, 1441795, 65535, 65527, 655363, 1, 65527, 1048579, 0, 65526, 2, 0, 65527, 0, 0, 65528, 0, 1, 65528, 0, 1, 65529, 0, 0, 65529, 0, 65535, 65528, 0, 65535, 65529, 0, 0, 65530, 0, 65533, 65528, 1441796, 65534, 65528, 655361, 3, 65528, 1441794, 2, 65528, 655361, 4, 65528, 1048580)
 }
 
 [node name="GridMap2" type="GridMap" parent="." unique_id=1641066651]
@@ -227,11 +362,14 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, -3)
 [node name="BB_PP_4" type="Node3D" parent="Bally_1_PatrolPoints" unique_id=1171748018]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2.9999998)
 
-[node name="Ballybog" parent="." unique_id=1712475425 node_paths=PackedStringArray("grid_map", "patrol_points") instance=ExtResource("3_nfw6c")]
+[node name="BB_PP_5" type="Node3D" parent="Bally_1_PatrolPoints" unique_id=1026199964]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.9073486e-06, 0, -14)
+
+[node name="Ballybog" parent="." unique_id=1712475425 node_paths=PackedStringArray("grid_map", "patrol_points", "wander_starting_pos") instance=ExtResource("3_nfw6c")]
 transform = Transform3D(8.940697e-08, 0, -1, 0, 1, 0, 1, 0, 8.940697e-08, -5, 0, -15)
 grid_map = NodePath("../GridMapPathFinding2")
-patrol_points = [NodePath("../Bally_1_PatrolPoints/BB_PP_4"), NodePath("../Bally_1_PatrolPoints/BB_PP_1"), NodePath("../Bally_1_PatrolPoints/BB_PP_2"), NodePath("../Bally_1_PatrolPoints/BB_PP_3")]
-patrol_loop_mode = 1
+patrol_points = [NodePath("../Bally_1_PatrolPoints/BB_PP_4"), NodePath("../Bally_1_PatrolPoints/BB_PP_1"), NodePath("../Bally_1_PatrolPoints/BB_PP_5"), NodePath("../Bally_1_PatrolPoints/BB_PP_1"), NodePath("../Bally_1_PatrolPoints/BB_PP_2"), NodePath("../Bally_1_PatrolPoints/BB_PP_3")]
+wander_starting_pos = NodePath("../Bally_1_PatrolPoints/BB_PP_4")
 metadata/lock_uid = true
 metadata/uid = "694d3ba2-ea56-491e-bdbb-146068568bb4"
 metadata/date_generated = "2026-10-21T15:38:46"
@@ -451,7 +589,7 @@ metadata/date_generated = "2026-10-21T15:38:46"
 
 [node name="Urn6" parent="Urn_Area/Urns" unique_id=1538121186 instance=ExtResource("12_vqsr6")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0.4, 2)
-item_type = SubResource("Resource_r0k5g")
+item_type = SubResource("Resource_q00f3")
 metadata/uid = "75754d6e-2463-4a9b-98b8-aae7a552df05"
 metadata/lock_uid = true
 metadata/date_generated = "2026-10-21T15:38:46"
@@ -472,7 +610,7 @@ metadata/date_generated = "2026-10-21T15:38:46"
 
 [node name="Urn9" parent="Urn_Area/Urns" unique_id=1703179587 instance=ExtResource("12_vqsr6")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0.4, 4)
-item_type = SubResource("Resource_yb2g6")
+item_type = SubResource("Resource_7cr33")
 metadata/uid = "3a6fed3f-2bb7-462e-8a05-a1c2ef6ce860"
 metadata/lock_uid = true
 metadata/date_generated = "2026-10-21T15:38:46"
@@ -486,7 +624,7 @@ metadata/date_generated = "2026-10-21T15:38:46"
 
 [node name="Urn_Torch" parent="Urn_Area/Urns" unique_id=1303000934 instance=ExtResource("12_vqsr6")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.4, 0)
-item_type = SubResource("Resource_4n8n6")
+item_type = SubResource("Resource_js4hl")
 metadata/uid = "aee44c19-a85b-4bc9-8a26-25644be58689"
 metadata/lock_uid = true
 metadata/date_generated = "2026-10-21T15:38:46"
@@ -571,6 +709,7 @@ autoplay = true
 max_distance = 18.9
 
 [node name="Temp_Notes" type="Node3D" parent="." unique_id=1575090115]
+visible = false
 
 [node name="Label3D" type="Label3D" parent="Temp_Notes" unique_id=1845162439]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 1, -16)
@@ -583,6 +722,15 @@ key urn is here,
 Ballybog will scare
 player"
 
+[connection signal="body_entered" from="Alt_Kill_Area/Ballybog_Alt_Kill_Door/gate/UnderChecker_items" to="Alt_Kill_Area/Ballybog_Alt_Kill_Door" method="_on_body_entered_under_checker"]
+[connection signal="body_exited" from="Alt_Kill_Area/Ballybog_Alt_Kill_Door/gate/UnderChecker_items" to="Alt_Kill_Area/Ballybog_Alt_Kill_Door" method="_on_body_exited_under_checker"]
+[connection signal="area_entered" from="Alt_Kill_Area/Ballybog_Alt_Kill_Door/gate/UnderChecker_player" to="Alt_Kill_Area/Ballybog_Alt_Kill_Door" method="_on_area_entered_under_checker_back"]
+[connection signal="area_exited" from="Alt_Kill_Area/Ballybog_Alt_Kill_Door/gate/UnderChecker_player" to="Alt_Kill_Area/Ballybog_Alt_Kill_Door" method="_on_area_exited_under_checker"]
+[connection signal="area_entered" from="Alt_Kill_Area/Ballybog_Alt_Kill_Door/out_pos_back/Area3D" to="Alt_Kill_Area/Ballybog_Alt_Kill_Door" method="out_pos_area_entered_back"]
+[connection signal="area_entered" from="Alt_Kill_Area/Ballybog_Alt_Kill_Door/out_pos_front/Area3D" to="Alt_Kill_Area/Ballybog_Alt_Kill_Door" method="out_pos_area_entered_front"]
+[connection signal="area_entered" from="Alt_Kill_Area/Ballybog_Alt_Kill_Door/TPChecker_player" to="Alt_Kill_Area/Ballybog_Alt_Kill_Door" method="tp_checker_entered"]
+[connection signal="on_activated" from="Alt_Kill_Area/Button" to="Alt_Kill_Area/Ballybog_Alt_Kill_Door" method="open_gate"]
+[connection signal="on_activated" from="Alt_Kill_Area/Button" to="Alt_Kill_Area/TorchSconce_Unlit_Ceiling_Blue" method="light_up_torch_with_sig"]
 [connection signal="body_entered" from="Urn_Area/Ballybog_Secret_Door/gate/UnderChecker_items" to="Urn_Area/Ballybog_Secret_Door" method="_on_body_entered_under_checker"]
 [connection signal="body_exited" from="Urn_Area/Ballybog_Secret_Door/gate/UnderChecker_items" to="Urn_Area/Ballybog_Secret_Door" method="_on_body_exited_under_checker"]
 [connection signal="area_entered" from="Urn_Area/Ballybog_Secret_Door/gate/UnderChecker_player" to="Urn_Area/Ballybog_Secret_Door" method="_on_area_entered_under_checker_back"]

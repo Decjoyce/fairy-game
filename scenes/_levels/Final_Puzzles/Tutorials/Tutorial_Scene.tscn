@@ -38,7 +38,6 @@
 [ext_resource type="Script" uid="uid://cb04xjhu5ksor" path="res://scenes/interactions/_receivers/enabler_disabler_v1/visibility_enabler.gd" id="33_227be"]
 [ext_resource type="PackedScene" uid="uid://b1ug372yre60k" path="res://scenes/_levels/Final_Puzzles/Tutorials/throwing_puzzle_new.tscn" id="33_ughci"]
 [ext_resource type="Script" uid="uid://bul4myvyhnpjc" path="res://scripts/saving/uid_generator.gd" id="34_1qgam"]
-[ext_resource type="Script" uid="uid://d3averdt6fuqm" path="res://scenes/interactions/interactables/items/item_types/itemtype_torch.gd" id="34_nyk0u"]
 [ext_resource type="Script" uid="uid://s5cfdf85lm5g" path="res://scenes/interactions/interactables/items/grabbable_item.gd" id="40_h6q0i"]
 [ext_resource type="Texture2D" uid="uid://ce58r2n0vi63r" path="res://assets/sprites/item_sprites/urn_item.png" id="41_sc2t1"]
 [ext_resource type="AudioStream" uid="uid://dutddyikwuiut" path="res://assets/audio/sfx/combat/misc/hittingsound_shorter.wav" id="42_g531u"]
@@ -138,10 +137,6 @@ specific_item_to_drop = ExtResource("8_xl0u5")
 item_type = 4
 metadata/_custom_type_script = "uid://beaf3digx88d0"
 
-[sub_resource type="Resource" id="Resource_itmas"]
-script = ExtResource("34_nyk0u")
-metadata/_custom_type_script = "uid://d3averdt6fuqm"
-
 [sub_resource type="Resource" id="Resource_gyl80"]
 script = ExtResource("7_0nxer")
 use_random_item = true
@@ -174,9 +169,10 @@ metadata/_custom_type_script = "uid://beaf3digx88d0"
 script = ExtResource("7_0nxer")
 metadata/_custom_type_script = "uid://beaf3digx88d0"
 
-[sub_resource type="Resource" id="Resource_2x1ae"]
-script = ExtResource("34_nyk0u")
-metadata/_custom_type_script = "uid://d3averdt6fuqm"
+[sub_resource type="Resource" id="Resource_ypegw"]
+script = ExtResource("7_0nxer")
+specific_item_to_drop = ExtResource("20_nyk0u")
+metadata/_custom_type_script = "uid://beaf3digx88d0"
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_qbrer"]
 radius = 0.1
@@ -775,13 +771,13 @@ transform = Transform3D(-3.7855173e-08, 2.1855694e-08, 1, 0.5, 0.8660254, 0, -0.
 [node name="Urn" parent="Tutorial_Area/Items" unique_id=38004987 instance=ExtResource("6_6xiwt")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17, -1.6540679, -17)
 item_type = SubResource("Resource_7acmg")
+item_weight = 1
 metadata/uid = "8763117d-cb94-452c-a9cc-62ceb060c9a7"
 metadata/lock_uid = true
 metadata/date_generated = "2026-10-21T15:44:41"
 
 [node name="Urn3" parent="Tutorial_Area/Items" unique_id=1376443271 instance=ExtResource("6_6xiwt")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15, -1.6540679, -15)
-item_type = SubResource("Resource_itmas")
 metadata/uid = "224fa141-502e-4987-8444-8b7db7e8e92b"
 metadata/lock_uid = true
 metadata/date_generated = "2026-10-21T15:44:41"
@@ -789,6 +785,7 @@ metadata/date_generated = "2026-10-21T15:44:41"
 [node name="Urn8" parent="Tutorial_Area/Items" unique_id=1755524959 instance=ExtResource("6_6xiwt")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13, -1.6540679, -16)
 item_type = SubResource("Resource_gyl80")
+item_weight = 1
 metadata/uid = "8839913f-0fd3-4614-bcb2-c06382bb5822"
 metadata/lock_uid = true
 metadata/date_generated = "2026-10-21T15:44:41"
@@ -796,6 +793,7 @@ metadata/date_generated = "2026-10-21T15:44:41"
 [node name="Urn4" parent="Tutorial_Area/Items" unique_id=1362361830 instance=ExtResource("6_6xiwt")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15, -1.6540679, -23)
 item_type = SubResource("Resource_vxxbb")
+item_weight = 1
 metadata/uid = "fab819c3-b6ad-420e-b7d2-eaf713dba468"
 metadata/lock_uid = true
 metadata/date_generated = "2026-10-21T15:44:41"
@@ -803,6 +801,7 @@ metadata/date_generated = "2026-10-21T15:44:41"
 [node name="Urn5" parent="Tutorial_Area/Items" unique_id=2126164257 instance=ExtResource("6_6xiwt")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17, -1.6540679, -21)
 item_type = SubResource("Resource_5nqf6")
+item_weight = 1
 metadata/uid = "37c7c9db-bd16-4e0e-b50c-cab0e14fe573"
 metadata/lock_uid = true
 metadata/date_generated = "2026-10-21T15:44:41"
@@ -810,6 +809,7 @@ metadata/date_generated = "2026-10-21T15:44:41"
 [node name="Urn6" parent="Tutorial_Area/Items" unique_id=1454126408 instance=ExtResource("6_6xiwt")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13, -1.6540679, -20)
 item_type = SubResource("Resource_nyk0u")
+item_weight = 1
 metadata/uid = "b9e7bcd8-8f83-4897-8872-cc2501f338e0"
 metadata/lock_uid = true
 metadata/date_generated = "2026-10-21T15:44:41"
@@ -823,7 +823,8 @@ metadata/date_generated = "2026-10-21T15:44:41"
 
 [node name="Urn2" parent="Tutorial_Area/Items" unique_id=1277825634 instance=ExtResource("6_6xiwt")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13, -1.5716884, -23.1)
-item_type = SubResource("Resource_2x1ae")
+item_type = SubResource("Resource_ypegw")
+item_weight = 1
 metadata/uid = "4b8700de-61fc-4e46-967a-9e242e414d08"
 metadata/lock_uid = true
 metadata/date_generated = "2026-10-21T15:44:41"
