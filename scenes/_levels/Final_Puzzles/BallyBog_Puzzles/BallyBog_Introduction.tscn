@@ -22,6 +22,7 @@
 [ext_resource type="AudioStream" uid="uid://cm72tdl825h2" path="res://assets/audio/sfx/environment/Doors/Gate/Gate_randomiser.tres" id="14_7cr33"]
 [ext_resource type="PackedScene" uid="uid://lxic7c72kvyt" path="res://scenes/interactions/interactables/items/all_items/misc/item_skull.tscn" id="14_ft3kk"]
 [ext_resource type="PackedScene" uid="uid://oqosqgdkwcrb" path="res://scenes/interactions/_receivers/door/door_new.tscn" id="15_g7r3i"]
+[ext_resource type="PackedScene" uid="uid://cfkoaxhngk3gf" path="res://scenes/interactions/interactables/items/all_items/keys/item_key.tscn" id="16_js4hl"]
 [ext_resource type="Script" uid="uid://beaf3digx88d0" path="res://scenes/interactions/interactables/items/item_types/itemtype_breakable.gd" id="16_yb2g6"]
 [ext_resource type="PackedScene" uid="uid://csot2mi7746ll" path="res://scenes/interactions/_triggers/pressure_plate/pressure_plate.tscn" id="19_0ox1x"]
 [ext_resource type="PackedScene" uid="uid://dkx1fyyqx7cmp" path="res://scenes/interactions/_triggers/torch_sconce/torch_sconce_ceiling.tscn" id="19_qofka"]
@@ -317,21 +318,6 @@ metadata/date_generated = "2026-11-17T17:09:51"
 [node name="TorchSconce_Unlit_Ceiling_Blue" parent="Alt_Kill_Area" unique_id=1230047821 instance=ExtResource("9_pac4h")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 1.6, -15.7)
 
-[node name="GridMapPathFinding2" type="GridMap" parent="." unique_id=1929151095]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.445, 0)
-visible = false
-mesh_library = ExtResource("1_m8tlr")
-cell_size = Vector3(1, 1, 1)
-cell_octant_size = 4
-data = {
-"cells": PackedInt32Array(196602, 65520, 1, 196603, 65520, 1, 196604, 65520, 1, 196605, 65520, 1, 196602, 65521, 0, 196603, 65521, 0, 196605, 65521, 0, 196604, 65521, 0, 196606, 65521, 0, 196607, 65521, 0, 131072, 65521, 0, 131073, 65521, 0, 131074, 65521, 0, 131075, 65521, 0, 131076, 65521, 0, 131075, 65520, 0, 131074, 65520, 0, 131073, 65520, 0, 131072, 65520, 0, 196607, 65520, 0, 196606, 65520, 0, 196607, 65519, 0, 131072, 65519, 0, 131073, 65519, 0, 131074, 65519, 0, 131075, 65519, 0, 196605, 65522, 0, 196606, 65522, 0, 196607, 65522, 0, 131072, 65522, 0, 131073, 65522, 0, 131074, 65522, 0, 131075, 65522, 0, 131076, 65522, 0, 131077, 65522, 0, 131077, 65521, 0, 131076, 65523, 0, 131077, 65523, 0, 131075, 65523, 0, 131074, 65523, 0, 131072, 65523, 0, 131073, 65523, 0, 196607, 65523, 0, 196606, 65523, 0, 196605, 65523, 0, 196607, 65524, 0, 131072, 65524, 0, 131073, 65524, 0, 131074, 65524, 0, 131075, 65524, 0, 196607, 65525, 0, 131072, 65525, 0, 131073, 65525, 0, 131074, 65525, 0, 131075, 65525, 0, 196606, 65525, 1, 196606, 65524, 1, 131072, 65526, 1, 131073, 65526, 1, 131072, 65527, 1, 131073, 65527, 1, 131076, 65520, 1, 131077, 65520, 1, 131075, 65518, 1, 131074, 65518, 1, 131073, 65518, 1, 131072, 65518, 1, 196607, 65518, 1, 196606, 65518, 1, 196606, 65519, 1, 196604, 65522, 1, 196604, 65523, 1, 131078, 65521, 1048576, 131079, 65521, 1048576, 131080, 65521, 1048576, 131081, 65521, 1048576, 131081, 65520, 1048577, 131080, 65520, 1048577, 131079, 65520, 1048577, 131078, 65520, 1048577)
-}
-script = ExtResource("29_211nq")
-walkable_items = Array[int]([0])
-debug_start_cell = Vector3i(-2, 2, -5)
-debug_end_cell = Vector3i(-1, 2, -10)
-metadata/_editor_floor_ = Vector3(0, 2, 0)
-
 [node name="GridMap" type="GridMap" parent="." unique_id=848183923]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
 mesh_library = ExtResource("3_qofka")
@@ -347,6 +333,14 @@ data = {
 }
 metadata/_editor_floor_ = Vector3(0, 0, 0)
 
+[node name="Ballybog_tutorial" parent="." unique_id=1712475425 node_paths=PackedStringArray("patrol_points") instance=ExtResource("3_nfw6c")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -5, 0, -15)
+patrol_points = [NodePath("../Bally_1_PatrolPoints/BB_PP_4"), NodePath("../Bally_1_PatrolPoints/BB_PP_1"), NodePath("../Bally_1_PatrolPoints/BB_PP_5"), NodePath("../Bally_1_PatrolPoints/BB_PP_1"), NodePath("../Bally_1_PatrolPoints/BB_PP_2"), NodePath("../Bally_1_PatrolPoints/BB_PP_3")]
+drop_item = ExtResource("16_js4hl")
+metadata/uid = "3921bdf6-c76b-4ada-b140-45bbc3122ff7"
+metadata/lock_uid = true
+metadata/date_generated = "2026-10-18T16:15:03"
+
 [node name="Bally_1_PatrolPoints" type="Node3D" parent="." unique_id=666893484]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -4.98333, 0, -15)
 
@@ -360,19 +354,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, -9)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, -3)
 
 [node name="BB_PP_4" type="Node3D" parent="Bally_1_PatrolPoints" unique_id=1171748018]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2.9999998)
 
 [node name="BB_PP_5" type="Node3D" parent="Bally_1_PatrolPoints" unique_id=1026199964]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.9073486e-06, 0, -14)
-
-[node name="Ballybog" parent="." unique_id=1712475425 node_paths=PackedStringArray("grid_map", "patrol_points", "wander_starting_pos") instance=ExtResource("3_nfw6c")]
-transform = Transform3D(8.940697e-08, 0, -1, 0, 1, 0, 1, 0, 8.940697e-08, -5, 0, -15)
-grid_map = NodePath("../GridMapPathFinding2")
-patrol_points = [NodePath("../Bally_1_PatrolPoints/BB_PP_4"), NodePath("../Bally_1_PatrolPoints/BB_PP_1"), NodePath("../Bally_1_PatrolPoints/BB_PP_5"), NodePath("../Bally_1_PatrolPoints/BB_PP_1"), NodePath("../Bally_1_PatrolPoints/BB_PP_2"), NodePath("../Bally_1_PatrolPoints/BB_PP_3")]
-wander_starting_pos = NodePath("../Bally_1_PatrolPoints/BB_PP_4")
-metadata/lock_uid = true
-metadata/uid = "694d3ba2-ea56-491e-bdbb-146068568bb4"
-metadata/date_generated = "2026-10-21T15:38:46"
 
 [node name="Urn_Area" type="Node3D" parent="." unique_id=233466530]
 
@@ -676,7 +660,7 @@ monitorable = false
 shape = SubResource("SphereShape3D_257qr")
 
 [node name="TorchSconce_Lit3" parent="." unique_id=1729385187 instance=ExtResource("8_m8tlr")]
-transform = Transform3D(1.3113416e-07, 0, 1, 0, 1, 0, -1, 0, 1.3113416e-07, -5.7688937, 1.5393279, -14.785967)
+transform = Transform3D(1.3113416e-07, 0, 1, 0, 1, 0, -1, 0, 1.3113416e-07, -5.7688937, 1.5393279, -14.985967)
 
 [node name="TorchSconce_Lit" parent="." unique_id=645341785 instance=ExtResource("19_qofka")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 1.9521668, -9)
@@ -724,6 +708,21 @@ key urn is here,
 Ballybog will scare
 player"
 
+[node name="GridMapPathFinding" type="GridMap" parent="." unique_id=1312266290 groups=["GMPF"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, -2.5, -7)
+visible = false
+mesh_library = ExtResource("1_m8tlr")
+cell_size = Vector3(1, 1, 1)
+cell_octant_size = 4
+data = {
+"cells": PackedInt32Array(87, 31, 524288, 196606, 65528, 0, 196605, 65528, 0, 196607, 65528, 0, 131072, 65528, 0, 131073, 65528, 0, 131074, 65528, 0, 131075, 65528, 0, 131076, 65528, 0, 131077, 65528, 0, 131078, 65528, 0, 131079, 65528, 0, 131080, 65528, 0, 131081, 65528, 0, 131082, 65528, 0, 131083, 65528, 0, 131084, 65528, 0, 131079, 65529, 0, 131079, 65530, 0, 131080, 65529, 0, 131080, 65530, 0, 131078, 65529, 0, 131078, 65530, 0, 131077, 65530, 0, 131076, 65530, 0, 131077, 65529, 0, 131076, 65529, 0, 131078, 65527, 0, 131077, 65527, 0, 131076, 65527, 0, 131075, 65527, 0, 131074, 65527, 0, 131074, 65526, 0, 131075, 65526, 0, 131076, 65526, 0, 131077, 65526, 0, 131078, 65526, 0, 131075, 65529, 0, 131075, 65530, 0, 131074, 65529, 0, 131074, 65530, 0, 131073, 65529, 0, 131073, 65530, 0, 131072, 65529, 0, 131072, 65530, 0, 131074, 65531, 0, 131075, 65531, 0, 131076, 65531, 0, 131077, 65531, 0, 131078, 65531, 0, 131078, 65532, 0, 131077, 65532, 0, 131076, 65532, 0, 131075, 65532, 0, 131074, 65532, 0, 131073, 65532, 1, 131073, 65531, 1, 196607, 65530, 1, 196607, 65529, 1, 196607, 65527, 1, 131072, 65527, 1, 131073, 65527, 1, 131073, 65526, 1, 131073, 65525, 1, 131074, 65525, 1, 131075, 65525, 1, 131076, 65525, 1, 131077, 65525, 1, 131078, 65524, 1, 131078, 65525, 1, 131079, 65527, 1, 131080, 65527, 1, 131081, 65527, 1, 131082, 65527, 1, 131083, 65527, 1, 131084, 65527, 1, 196605, 65527, 1, 196606, 65527, 1)
+}
+script = ExtResource("29_211nq")
+walkable_items = Array[int]([0])
+debug_start_cell = Vector3i(-3, 2, -7)
+debug_end_cell = Vector3i(0, 2, 1)
+metadata/_editor_floor_ = Vector3(0, 2, 0)
+
 [connection signal="body_entered" from="Alt_Kill_Area/Ballybog_Alt_Kill_Door/gate/UnderChecker_items" to="Alt_Kill_Area/Ballybog_Alt_Kill_Door" method="_on_body_entered_under_checker"]
 [connection signal="body_exited" from="Alt_Kill_Area/Ballybog_Alt_Kill_Door/gate/UnderChecker_items" to="Alt_Kill_Area/Ballybog_Alt_Kill_Door" method="_on_body_exited_under_checker"]
 [connection signal="area_entered" from="Alt_Kill_Area/Ballybog_Alt_Kill_Door/gate/UnderChecker_player" to="Alt_Kill_Area/Ballybog_Alt_Kill_Door" method="_on_area_entered_under_checker_back"]
@@ -744,15 +743,14 @@ player"
 [connection signal="area_exited" from="Urn_Area/EnemyEnableTrig/Area3D" to="Urn_Area/EnemyEnableTrig" method="_player_exited"]
 [connection signal="on_activated" from="Urn_Area/GateAreaDoor_Trigger_Enter" to="Urn_Area/Ballybog_Secret_Door" method="open_gate"]
 [connection signal="on_activated" from="Urn_Area/GateAreaDoor_Trigger_Enter" to="Urn_Area/First_Gate" method="close_gate"]
+[connection signal="on_activated" from="Urn_Area/GateAreaDoor_Trigger_Enter" to="Ballybog_tutorial" method="enable_me"]
 [connection signal="area_entered" from="Urn_Area/GateAreaDoor_Trigger_Enter/Area3D" to="Urn_Area/GateAreaDoor_Trigger_Enter" method="_player_entered"]
 [connection signal="area_exited" from="Urn_Area/GateAreaDoor_Trigger_Enter/Area3D" to="Urn_Area/GateAreaDoor_Trigger_Enter" method="_player_exited"]
-[connection signal="on_activated" from="Urn_Area/GateAreaDoor_Trigger_Exit" to="Ballybog" method="disable_me"]
 [connection signal="on_activated" from="Urn_Area/GateAreaDoor_Trigger_Exit" to="Urn_Area/Exit_Gate" method="close_gate"]
 [connection signal="area_entered" from="Urn_Area/GateAreaDoor_Trigger_Exit/Area3D" to="Urn_Area/GateAreaDoor_Trigger_Exit" method="_player_entered"]
 [connection signal="area_exited" from="Urn_Area/GateAreaDoor_Trigger_Exit/Area3D" to="Urn_Area/GateAreaDoor_Trigger_Exit" method="_player_exited"]
 [connection signal="on_activated" from="Urn_Area/PressurePlateLight" to="Urn_Area/First_Gate" method="open_gate"]
 [connection signal="on_deactivated" from="Urn_Area/PressurePlateLight" to="Urn_Area/PressurePlateLight/indicator_visenabler" method="disable_obj"]
 [connection signal="on_activated" from="Urn_Area/ItemReceiver" to="Urn_Area/Main_Door" method="open_door"]
-[connection signal="on_activated" from="BallyBog_Trigger" to="Ballybog" method="enable_me"]
 [connection signal="area_entered" from="BallyBog_Trigger/Area3D" to="BallyBog_Trigger" method="_player_entered"]
 [connection signal="area_exited" from="BallyBog_Trigger/Area3D" to="BallyBog_Trigger" method="_player_exited"]
