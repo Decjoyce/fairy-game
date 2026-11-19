@@ -28,6 +28,7 @@
 [ext_resource type="PackedScene" uid="uid://dhb1ju03ckwh4" path="res://scenes/interactions/_receivers/enabler_disabler_v1/collision_enabler_disabler.tscn" id="22_itmas"]
 [ext_resource type="PackedScene" uid="uid://ije1mmh1wcad" path="res://scenes/interactions/interactables/items/all_items/torch/torch_mounted.tscn" id="23_gyl80"]
 [ext_resource type="PackedScene" uid="uid://d2ict3hg28spx" path="res://scenes/_levels/_palettes/cairn/props/cairn_fake_wall.tscn" id="24_5nqf6"]
+[ext_resource type="Texture2D" uid="uid://d2jhmixsg05v4" path="res://assets/sprites/Environment_Sprites/Button_Target.png" id="26_nyk0u"]
 [ext_resource type="PackedScene" uid="uid://cruv8v8wh8l06" path="res://scenes/interactions/_special/saving_stone/saving_stone.tscn" id="27_ea6e4"]
 [ext_resource type="PackedScene" uid="uid://chqox5wu7wm4q" path="res://scenes/_levels/_palettes/cairn/props/cairn_exit_pillars.tscn" id="27_qbrer"]
 [ext_resource type="AudioStream" uid="uid://cq7dtkcnrtjyk" path="res://assets/audio/sfx/environment/ambient/Ambience, Underground, Cave, Magic, Deep, Wind, Howling 01 SND46571.wav" id="28_k1g5s"]
@@ -695,6 +696,10 @@ transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 2.99
 metadata/uid = "e094b71e-c977-4dc6-8f6a-3a72beb71fca"
 metadata/lock_uid = true
 metadata/date_generated = "2026-10-21T15:44:41"
+
+[node name="Target_Button" type="Sprite3D" parent="Tutorial_Area/FirstBit/First Gate&Button/First_Button" unique_id=1549067305]
+transform = Transform3D(0.01, 0, 0, 0, 0.01, 0, 0, 0, 0.01, 0, 0.022721767, -0.050866604)
+texture = ExtResource("26_nyk0u")
 
 [node name="Torches" type="Node3D" parent="Tutorial_Area/FirstBit" unique_id=1073021904]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.37721205, 0, -2.0954456)
