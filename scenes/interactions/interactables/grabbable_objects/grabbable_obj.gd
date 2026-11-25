@@ -1,4 +1,4 @@
-class_name Grabbable_Obj
+class_name Grabbable_ObjV2
 extends Interactable
 
 @export var requires_two_hands: bool

@@ -1,0 +1,56 @@
+[gd_scene format=3 uid="uid://dmu05hi5svkni"]
+
+[ext_resource type="Script" uid="uid://duiqthe1vke0f" path="res://scenes/interactions/interactables/grabbable_objects/grabbable_objV2.gd" id="1_ac41q"]
+[ext_resource type="Material" uid="uid://bk8gbrrgpacoj" path="res://assets/_dev/materials/_dev_m_source.tres" id="2_misog"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_v1u7r"]
+size = Vector3(1, 0.65, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_w2q8g"]
+size = Vector3(1, 0.65, 1)
+
+[node name="TEST_Grabbable_Obj" type="Node3D" unique_id=386273012]
+script = ExtResource("1_ac41q")
+interaction_type = 2
+prompt_text = "Move BoxV2"
+metadata/_custom_type_script = "uid://pp7itc6y5bw"
+
+[node name="Collision" type="StaticBody3D" parent="." unique_id=12379911]
+collision_layer = 3
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="Collision" unique_id=962769829]
+shape = SubResource("BoxShape3D_v1u7r")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=977487705]
+mesh = SubResource("BoxMesh_w2q8g")
+surface_material_override/0 = ExtResource("2_misog")
+
+[node name="Detecters" type="Node3D" parent="." unique_id=252598711]
+
+[node name="North" type="ShapeCast3D" parent="Detecters" unique_id=1713464740]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.01)
+enabled = false
+shape = SubResource("BoxShape3D_v1u7r")
+target_position = Vector3(0, 0, 0)
+collision_mask = 9
+
+[node name="East" type="ShapeCast3D" parent="Detecters" unique_id=2016462719]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.01, 0, 0)
+enabled = false
+shape = SubResource("BoxShape3D_v1u7r")
+target_position = Vector3(0, 0, 0)
+collision_mask = 9
+
+[node name="South" type="ShapeCast3D" parent="Detecters" unique_id=621049573]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.01)
+enabled = false
+shape = SubResource("BoxShape3D_v1u7r")
+target_position = Vector3(0, 0, 0)
+collision_mask = 9
+
+[node name="West" type="ShapeCast3D" parent="Detecters" unique_id=721272593]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.01, 0, 0)
+enabled = false
+shape = SubResource("BoxShape3D_v1u7r")
+target_position = Vector3(0, 0, 0)
+collision_mask = 129

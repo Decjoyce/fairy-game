@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://dt13fur6twjep" path="res://scenes/interactions/_receivers/gate/gate.tscn" id="8_ovqnp"]
 [ext_resource type="Script" uid="uid://c4t3ko70ihpyy" path="res://scenes/interactions/_receivers/animated_object/animated_object.gd" id="9_i15uv"]
 [ext_resource type="PackedScene" uid="uid://qu5rxgbydmet" path="res://scenes/interactions/_triggers/button/button.tscn" id="10_xn0hr"]
+[ext_resource type="PackedScene" uid="uid://dmu05hi5svkni" path="res://scenes/interactions/interactables/grabbable_objects/testV2_grabbable_obj.tscn" id="11_5ryy2"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_feb5d"]
 albedo_color = Color(0.06879827, 0.06879828, 0.06879828, 1)
@@ -95,12 +96,8 @@ item_weight = 2
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 5)
 item_weight = 2
 
-[node name="TEST_Grabbable_Obj" parent="." unique_id=828504305 instance=ExtResource("4_j4xwb")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.6, -4)
-requires_two_hands = true
-
 [node name="player_test" parent="." unique_id=141844 instance=ExtResource("5_k0eln")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 1, 0)
 
 [node name="PressurePlate" parent="." unique_id=1557687692 instance=ExtResource("6_v1a7s")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0.1, 0.7)
@@ -142,6 +139,25 @@ metadata/_custom_type_script = "uid://c4t3ko70ihpyy"
 [node name="Button" parent="." unique_id=1400219753 instance=ExtResource("10_xn0hr")]
 transform = Transform3D(-1, 0, 8.742277e-08, 0, 1, 0, -8.742277e-08, 0, -1, -7.349106, 0.9, 0.19999999)
 delay_before_reset = 10.0
+
+[node name="TEST_Grabbable_Obj" parent="." unique_id=386273012 instance=ExtResource("4_j4xwb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.616343, 0.37500018, 3.0339642)
+prompt_text = "MOVE BOX"
+
+[node name="TEST_Grabbable_Obj2" parent="." unique_id=1913251671 instance=ExtResource("4_j4xwb")]
+transform = Transform3D(0.513118, 0, 0, 0, 1, 0, 0, 0, 0.5313292, -11, 0.5, 6)
+prompt_text = "MOVE BOX"
+
+[node name="TEST_Grabbable_Obj3" parent="." unique_id=1752457752 instance=ExtResource("4_j4xwb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.616343, 0.37500018, 11.033964)
+requires_two_hands = true
+prompt_text = "MOVE BOX"
+
+[node name="TEST_Grabbable_Obj4" parent="." unique_id=1345408401 instance=ExtResource("11_5ryy2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.031838, 0.37500066, -5.308717)
+
+[node name="TEST_Grabbable_Obj5" parent="." unique_id=1188572733 instance=ExtResource("11_5ryy2")]
+transform = Transform3D(0.5995865, 0, 0, 0, 1, 0, 0, 0, 0.5872671, -12.486731, 0.37500018, -4.383087)
 
 [connection signal="on_activated" from="PressurePlate" to="Signal_Checker" method="activated"]
 [connection signal="on_change" from="PressurePlate" to="Signal_Checker" method="changed"]
